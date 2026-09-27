@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="2.1.0">
+<meta name="version" content="2.1.1">
 <title>دانش‌آموز من</title>
 <style>
 :root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#687386;--primary:#4f46e5;--primary2:#7c3aed;--green:#16a34a;--red:#dc2626;--gray:#64748b;--border:#e7eaf0;--shadow:0 8px 28px rgba(23,32,51,.07);--r:18px}
@@ -58,7 +58,7 @@ input,select,textarea{width:100%;border:1px solid var(--border);background:#fff;
 .bottom-nav .nav-icon{font-size:20px!important;margin-bottom:1px!important}
 body{padding-bottom:92px!important}
 
-/* v2.1.0: photo viewer, birthday message, update panel */
+/* v2.1.1: photo viewer, birthday message, update panel */
 .photo-viewer{display:none;position:fixed;inset:0;background:#000e;z-index:120;align-items:center;justify-content:center;padding:14px}
 .photo-viewer.show{display:flex}
 .photo-viewer img{max-width:96vw;max-height:82vh;object-fit:contain;border-radius:14px;box-shadow:0 10px 40px #0008}
@@ -73,7 +73,7 @@ body{padding-bottom:92px!important}
 </head>
 <body>
 <div class="app">
-<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v2.1.0</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
+<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v2.1.1</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
 
 <main class="container">
 <section id="dashboard" class="view active">
@@ -409,7 +409,7 @@ ${interestBirthdayLine(st)}
       .replaceAll('{علاقه}',interestBirthdayLine(st));
   }
   msg=msg.replaceAll('{نام_معلم}',teacher);
-  if(teacher && !msg.includes(teacher)) msg += `\n\nبا مهر، ${teacher}`;
+  if(teacher && !msg.includes(teacher)) msg += `\n\nبا احترام، ${teacher}`;
   return msg;
 }
 function normalizePhone(p){
@@ -498,7 +498,7 @@ function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader
 function clearAll(){if(confirm('همه اطلاعات برنامه حذف شود؟')){db={version:1,schools:[]};save();showView('dashboard');toast('همه اطلاعات حذف شد')}}
 let toastTimer;function toast(t){const el=document.getElementById('toast');clearTimeout(toastTimer);el.textContent=t;el.classList.add('show');toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
 let deferredInstallPrompt = null;
-const APP_VERSION='2.1.0';
+const APP_VERSION='2.1.1';
 
 function updateInstallButton(){
   const b=document.getElementById('installAppBtn');
