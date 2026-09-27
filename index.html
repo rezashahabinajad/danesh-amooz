@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="application-name" content="دانش‌آموز من">
+<meta name="version" content="2.1.0">
+<title>دانش‌آموز من</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#687386;--primary:#4f46e5;--primary2:#7c3aed;--green:#16a34a;--red:#dc2626;--gray:#64748b;--border:#e7eaf0;--shadow:0 8px 28px rgba(23,32,51,.07);--r:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,"Segoe UI",sans-serif;font-size:15px}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}
+.app{min-height:100vh;padding-bottom:82px}.topbar{position:sticky;top:0;z-index:20;background:rgba(245,247,251,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:13px 16px}
+.toprow{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{display:flex;align-items:center;gap:10px}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--primary2));display:grid;place-items:center;color:#fff;font-size:22px;box-shadow:0 7px 18px #4f46e53b}.brand b{font-size:18px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.iconbtn{width:42px;height:42px;border-radius:13px;background:#fff;border:1px solid var(--border);color:var(--text);box-shadow:0 3px 12px #00000008}.container{max-width:1050px;margin:auto;padding:18px 15px}
+.view{display:none}.view.active{display:block}.title{font-size:24px;margin:6px 0}.subtitle{color:var(--muted);margin:0 0 18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}.stat{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:15px;box-shadow:var(--shadow)}.stat span{display:block;color:var(--muted);font-size:12px}.stat strong{font-size:25px;display:block;margin-top:5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:13px}.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}.school-head{display:flex;justify-content:space-between;gap:10px}.school-icon{width:48px;height:48px;border-radius:15px;background:#eef2ff;display:grid;place-items:center;font-size:23px}.card h3{margin:0 0 5px;font-size:17px}.muted{color:var(--muted);font-size:13px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin:13px 0}.chip{background:#f1f5f9;border-radius:999px;padding:6px 9px;font-size:12px}.actions{display:flex;gap:7px;margin-top:14px}.btn{min-height:42px;padding:9px 14px;border-radius:12px;font-weight:700}.btn.primary{background:var(--primary);color:#fff}.btn.soft{background:#eef2ff;color:#4338ca}.btn.danger{background:#fee2e2;color:#b91c1c}.btn.gray{background:#eef1f5;color:#334155}.btn.block{width:100%}.fab{position:fixed;left:18px;bottom:96px;z-index:25;background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;width:58px;height:58px;border-radius:18px;font-size:26px;box-shadow:0 12px 28px #4f46e54d}
+.nav{position:fixed;z-index:30;bottom:0;right:0;left:0;background:#fff;border-top:1px solid var(--border);display:flex;justify-content:center}.navin{max-width:600px;width:100%;display:grid;grid-template-columns:repeat(5,1fr)}.nav button{background:none;color:#788397;padding:9px 3px 10px;font-size:11px}.nav button b{display:block;font-size:20px;margin-bottom:3px}.nav button.active{color:var(--primary)}
+.searchbox{position:relative;margin:8px 0 16px}.searchbox input{padding-right:43px}.searchbox span{position:absolute;right:14px;top:12px;font-size:20px;color:var(--muted)}
+input,select,textarea{width:100%;border:1px solid var(--border);background:#fff;border-radius:13px;padding:12px;color:var(--text);outline:none}input:focus,select:focus,textarea:focus{border-color:#a5b4fc;box-shadow:0 0 0 3px #4f46e51a}textarea{min-height:95px;resize:vertical}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field label{display:block;font-size:12px;font-weight:700;margin:0 0 6px;color:#4b5563}.field.full{grid-column:1/-1}
+.empty{text-align:center;padding:38px 15px;color:var(--muted);background:#fff;border:1px dashed #d7dce5;border-radius:18px}.empty .big{font-size:38px;margin-bottom:8px}
+.modal{display:none;position:fixed;inset:0;background:#0007;z-index:50;padding:15px;overflow:auto}.modal.show{display:flex;align-items:flex-end;justify-content:center}.sheet{background:#fff;border-radius:24px 24px 16px 16px;width:min(680px,100%);padding:19px;max-height:92vh;overflow:auto}.sheet h2{margin:0 0 16px;font-size:20px}.sheethead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.close{background:#f1f5f9;border-radius:11px;width:38px;height:38px}.formactions{display:flex;gap:8px;margin-top:17px}.formactions .btn{flex:1}
+.student{display:flex;gap:12px;align-items:center}.avatar{width:58px;height:58px;flex:none;border-radius:17px;background:#eef2ff;overflow:hidden;display:grid;place-items:center;font-size:25px;color:#4f46e5;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.status{font-size:11px;border-radius:999px;padding:5px 8px;font-weight:700}.status.good{background:#dcfce7;color:#15803d}.status.attn{background:#fee2e2;color:#b91c1c}.status.none{background:#f1f5f9;color:#64748b}.studentcard{padding:13px}.studentcard .actions{margin-top:11px}.student-meta{margin-top:10px;line-height:1.8;color:#5b6575;font-size:12px}
+.breadcrumb{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:13px;margin-bottom:12px}.link{color:var(--primary);font-weight:700;background:none;padding:0}
+.detailhead{background:linear-gradient(135deg,#eef2ff,#faf5ff);border:1px solid #e0e7ff;border-radius:20px;padding:17px;margin-bottom:16px}
+.birth{border-right:4px solid #f59e0b}.settings-list{display:grid;gap:10px}.setting{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}.setting b{display:block;margin-bottom:4px}
+.toast{position:fixed;z-index:100;bottom:80px;right:50%;transform:translateX(50%) translateY(20px);opacity:0;background:#172033;color:#fff;padding:11px 16px;border-radius:12px;font-size:13px;transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translateX(50%)}
+.photo-input{display:flex;align-items:center;gap:12px}.photo-preview{width:70px;height:70px;border-radius:18px;overflow:hidden;background:#eef2ff;display:grid;place-items:center;font-size:28px}.photo-preview img{width:100%;height:100%;object-fit:cover}
+@media(max-width:560px){.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:21px}.grid{grid-template-columns:1fr}.container{padding:16px 12px}.title{font-size:21px}}
+
+.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.photo-thumb{position:relative;border-radius:14px;overflow:hidden;background:#eee;aspect-ratio:4/3}
+.photo-thumb img{width:100%;height:100%;object-fit:cover}
+.photo-thumb button{position:absolute;top:5px;right:5px;width:30px;height:30px;border:0;border-radius:50%;background:#fff;color:#c00;font-size:20px;box-shadow:0 2px 8px #0002}
+.class-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+.class-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
+
+.class-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.class-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
+.big-gallery .class-photo-item{min-width:0}
+.class-photo-item img{display:block}
+.download-photo{display:flex;justify-content:center;margin-top:6px;text-decoration:none}
+.photo-actions{display:flex;flex-wrap:wrap;gap:7px}
+.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.photo-thumb{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#eee}
+.photo-thumb img{width:100%;height:100%;object-fit:cover}
+.photo-thumb button{position:absolute;top:5px;right:5px;width:30px;height:30px;border:0;border-radius:50%;background:#fff;color:#c00;font-size:20px;box-shadow:0 2px 8px #0002}
+
+/* compact bottom navigation */
+.bottom-nav{height:58px!important;min-height:58px!important;padding:4px 6px!important;bottom:0!important}
+.bottom-nav button{padding:4px 2px!important;font-size:11px!important;line-height:1.1!important}
+.bottom-nav .nav-icon{font-size:20px!important;margin-bottom:1px!important}
+body{padding-bottom:92px!important}
+
+/* v2.1.0: photo viewer, birthday message, update panel */
+.photo-viewer{display:none;position:fixed;inset:0;background:#000e;z-index:120;align-items:center;justify-content:center;padding:14px}
+.photo-viewer.show{display:flex}
+.photo-viewer img{max-width:96vw;max-height:82vh;object-fit:contain;border-radius:14px;box-shadow:0 10px 40px #0008}
+.photo-viewer .viewer-close{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:13px;background:#fff;font-size:24px}
+.photo-viewer .viewer-actions{position:absolute;bottom:18px;left:14px;right:14px;display:flex;justify-content:center;gap:8px}
+.photo-clickable{cursor:zoom-in}
+.version-badge{display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:#4338ca;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}
+.update-box{margin-bottom:14px}
+.birthday-message{margin-top:12px;padding:12px;border:1px solid #fde68a;background:#fffbeb;border-radius:14px}
+
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v2.1.0</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
+
+<main class="container">
+<section id="dashboard" class="view active">
+<h1 class="title">سلام 👋</h1><p class="subtitle">مدیریت ساده و سریع دانش‌آموزان</p>
+<div class="stats"><div class="stat"><span>مدارس</span><strong id="statSchools">۰</strong></div><div class="stat"><span>کلاس‌ها</span><strong id="statClasses">۰</strong></div><div class="stat"><span>دانش‌آموزان</span><strong id="statStudents">۰</strong></div></div>
+<div id="dashboardSchools" class="grid"></div>
+</section>
+
+<section id="schools" class="view">
+<h1 class="title">مدارس</h1><p class="subtitle">مدارس و سال‌های تحصیلی شما</p>
+<div id="schoolsGrid" class="grid"></div>
+</section>
+
+<section id="schoolDetail" class="view">
+<div class="breadcrumb"><button class="link" onclick="showView('schools')">مدارس</button><span>›</span><span id="schoolCrumb"></span></div>
+<div id="schoolDetailContent"></div>
+</section>
+
+<section id="classDetail" class="view">
+<div class="breadcrumb"><button class="link" onclick="openSchool(currentSchoolId)">بازگشت</button><span>›</span><span id="classCrumb"></span></div>
+<div id="classDetailContent"></div>
+</section>
+
+<section id="studentDetail" class="view">
+<div class="breadcrumb"><button class="link" onclick="openClass(currentSchoolId,currentClassId)">بازگشت</button><span>›</span><span id="studentCrumb"></span></div>
+<div id="studentDetailContent"></div>
+</section>
+
+<section id="search" class="view">
+<h1 class="title">جستجوی دانش‌آموز</h1><p class="subtitle">در تمام مدارس و کلاس‌ها جستجو کنید</p>
+<div class="searchbox"><span>🔍</span><input id="globalSearch" oninput="renderSearch()" placeholder="نام یا نام خانوادگی..."></div>
+<div id="searchResults"></div>
+</section>
+
+<section id="birthdays" class="view">
+<h1 class="title">🎂 تولدهای نزدیک</h1>
+<p class="subtitle">بر اساس تاریخ تولد شمسی دانش‌آموزان</p>
+<div class="card" style="margin-bottom:14px">
+  <b>💌 متن تبریک تولد</b>
+  <p class="muted">در متن از <code>{نام}</code> و <code>{نام_خانوادگی}</code> استفاده کن تا برای هر دانش‌آموز خودکار جایگزین شود.</p>
+  <textarea id="birthdayTemplate" oninput="saveBirthdayTemplate()" placeholder="تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉">تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉 امیدوارم سالی پر از شادی، سلامتی و موفقیت داشته باشی.</textarea>
+</div>
+<div id="birthdaysList"></div>
+</section>
+
+<section id="statuses" class="view">
+<h1 class="title">وضعیت دانش‌آموزان</h1>
+<p class="subtitle">دانش‌آموزان علامت‌گذاری‌شده را جداگانه ببینید.</p>
+<div class="stats">
+<div class="stat"><span>🟢 خوب</span><strong id="goodCount">۰</strong></div>
+<div class="stat"><span>🔴 نیازمند توجه</span><strong id="attentionCount">۰</strong></div>
+<div class="stat"><span>⚪ بدون وضعیت</span><strong id="noneCount">۰</strong></div>
+</div>
+<div style="display:flex;gap:8px;margin-bottom:14px">
+<button id="statusGoodBtn" class="btn soft" onclick="renderStatuses('good')">🟢 خوب</button>
+<button id="statusAttnBtn" class="btn gray" onclick="renderStatuses('attn')">🔴 نیازمند توجه</button>
+</div>
+<div id="statusesList"></div>
+</section>
+
+<section id="backup" class="view">
+  <div class="setting" style="margin-bottom:14px">
+    <div><b>📱 افزودن به صفحه اصلی</b><span class="muted">برنامه را مثل یک اپ روی گوشی اجرا کنید.</span></div>
+    <button id="installAppBtn" class="btn primary" onclick="installApp()">➕ افزودن</button>
+  </div>
+<h1 class="title">💾 پشتیبان‌گیری</h1>
+<p class="subtitle">اطلاعات شما فقط روی همین دستگاه ذخیره می‌شود.</p>
+<div class="card update-box">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+    <div><b>🔄 بروزرسانی برنامه</b><div class="muted">نسخه نصب‌شده: <span id="appVersionText">۲.۱.۰</span></div></div>
+    <button class="btn primary" onclick="checkForUpdate(true)">🔄 بررسی بروزرسانی</button>
+  </div>
+  <div class="muted" id="updateStatus" style="margin-top:8px">آخرین نسخه همین نسخه است.</div>
+</div>
+<div class="settings-list">
+<div class="setting"><div><b>خروجی پشتیبان</b><span class="muted">تمام مدارس، کلاس‌ها و دانش‌آموزان</span></div><button class="btn primary" onclick="exportData()">دریافت فایل</button></div>
+<div class="setting"><div><b>بازیابی پشتیبان</b><span class="muted">فایل JSON قبلی را وارد کنید</span></div><label class="btn soft">انتخاب فایل<input type="file" accept=".json,application/json" hidden onchange="importData(event)"></label></div>
+<div class="setting"><div><b>پاک‌سازی همه اطلاعات</b><span class="muted">این کار قابل بازگشت نیست</span></div><button class="btn danger" onclick="clearAll()">حذف همه</button></div>
+</div>
+<div class="card" style="margin-top:14px"><b>نکته</b><p class="muted">برای جلوگیری از از دست رفتن اطلاعات، هر چند وقت یک‌بار فایل پشتیبان بگیرید.</p></div>
+</section>
+</main>
+
+<button class="fab" onclick="quickAdd()" title="افزودن">＋</button>
+<nav class="nav"><div class="navin">
+<button data-view="dashboard" onclick="showView('dashboard')"><b>⌂</b>خانه</button>
+<button data-view="schools" onclick="showView('schools')"><b>🏫</b>مدارس</button>
+<button data-view="birthdays" onclick="showView('birthdays')"><b>🎂</b>تولدها</button>
+<button data-view="statuses" onclick="showView('statuses')"><b>🟢</b>وضعیت‌ها</button>
+<button data-view="backup" onclick="showView('backup')"><b>⚙</b>بیشتر</button>
+</div></nav>
+
+<div id="photoViewer" class="photo-viewer" onclick="if(event.target===this)closePhotoViewer()">
+  <button class="viewer-close" onclick="closePhotoViewer()" aria-label="بستن">×</button>
+  <img id="photoViewerImg" src="" alt="عکس دانش‌آموز">
+  <div class="viewer-actions">
+    <a id="photoViewerDownload" class="btn primary" href="" download="photo.jpg">⬇️ ذخیره در گالری</a>
+  </div>
+</div>
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="sheet" id="sheet"></div></div>
+<div id="toast" class="toast"></div>
+</div>
+
+<script>
+const KEY='danesh_amooz_man_v1';
+let db=load(), currentSchoolId=null, currentClassId=null, currentStudentId=null;
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{version:1,schools:[]}}catch(e){return{version:1,schools:[]}}}
+
+// ذخیره پایدار: IndexedDB به‌عنوان محل اصلی ذخیره و localStorage به‌عنوان پشتیبان.
+const DB_NAME='danesh_amooz_man_storage', DB_STORE='app';
+function openStorage(){return new Promise((resolve,reject)=>{const r=indexedDB.open(DB_NAME,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(DB_STORE))r.result.createObjectStore(DB_STORE)};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+async function savePersistent(){
+  try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){console.warn('localStorage full; IndexedDB will be used.',e)}
+  try{const d=await openStorage();await new Promise((resolve,reject)=>{const tx=d.transaction(DB_STORE,'readwrite');tx.objectStore(DB_STORE).put(db,'data');tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)});d.close()}catch(e){console.warn('IndexedDB save failed',e)}
+}
+function save(){savePersistent();renderAll()}
+async function restorePersistent(){
+  try{
+    const d=await openStorage();
+    const saved=await new Promise((resolve,reject)=>{const tx=d.transaction(DB_STORE,'readonly');const r=tx.objectStore(DB_STORE).get('data');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});
+    d.close();
+    if(saved && Array.isArray(saved.schools)){
+      db=saved; renderAll();
+      // یک‌بار عکس‌های قدیمی را کم‌حجم می‌کنیم تا هم فضای گوشی و هم حجم پشتیبان کم شود.
+      migratePhotos().catch(e=>console.warn('Photo migration failed',e));
+    }else savePersistent();
+  }catch(e){console.warn('Persistent restore failed',e)}
+}
+
+// نسخه‌ی کم‌حجم‌سازی عکس‌ها. فقط یک بار روی اطلاعات قدیمی اجرا می‌شود.
+async function migratePhotos(){
+  if(!db || db.photoCompressionVersion===2) return;
+  let changed=false, processed=0, savedBytes=0;
+  toast('در حال کم‌حجم‌سازی عکس‌های قبلی…');
+  for(const school of (db.schools||[])){
+    for(const cls of (school.classes||[])){
+      // نسخه‌های قدیمی ممکن است عکس کلاس را هم در photo و هم در photos نگه داشته باشند.
+      let photos=Array.isArray(cls.photos)?cls.photos.slice():[];
+      if(!photos.length && cls.photo) photos=[cls.photo];
+      photos=[...new Set(photos.filter(Boolean))];
+      for(let i=0;i<photos.length;i++){
+        const before=photos[i];
+        if(typeof before==='string' && before.startsWith('data:image/') && before.length>180000){
+          try{
+            const after=await compressDataUrl(before,1600,0.82);
+            if(after && after.length<before.length){
+              photos[i]=after; savedBytes+=before.length-after.length; changed=true;
+            }
+          }catch(e){}
+        }
+        processed++;
+      }
+      cls.photos=photos;
+      // دیگر عکس اول را دوبار ذخیره نمی‌کنیم. photos مرجع اصلی عکس‌های کلاس است.
+      if('photo' in cls){delete cls.photo; changed=true;}
+      for(const st of (cls.students||[])){
+        if(typeof st.photo==='string' && st.photo.startsWith('data:image/') && st.photo.length>180000){
+          try{
+            const before=st.photo, after=await compressDataUrl(before,1400,0.82);
+            if(after && after.length<before.length){st.photo=after;savedBytes+=before.length-after.length;changed=true;}
+          }catch(e){}
+        }
+        if(st.photo) processed++;
+      }
+    }
+  }
+  db.photoCompressionVersion=2;
+  if(changed) await savePersistent();
+  renderAll();
+  const kb=Math.max(0,Math.round(savedBytes/1024));
+  toast(kb?`عکس‌ها کم‌حجم شدند؛ حدود ${fa(kb)} کیلوبایت کمتر شد.`:'اطلاعات عکس‌ها بهینه شد.');
+}
+
+function compressDataUrl(dataUrl,maxSide=1600,quality=0.82){
+  return new Promise((resolve,reject)=>{
+    const img=new Image();
+    img.onload=()=>{
+      const scale=Math.min(1,maxSide/Math.max(img.naturalWidth,img.naturalHeight));
+      const w=Math.max(1,Math.round(img.naturalWidth*scale)),h=Math.max(1,Math.round(img.naturalHeight*scale));
+      const c=document.createElement('canvas');c.width=w;c.height=h;
+      const ctx=c.getContext('2d');ctx.drawImage(img,0,0,w,h);
+      resolve(c.toDataURL('image/jpeg',quality));
+    };
+    img.onerror=()=>reject(new Error('image-decode'));
+    img.src=dataUrl;
+  });
+}
+// ذخیره خودکار هنگام خروج/بستن صفحه یا جابه‌جایی به برنامه دیگر
+window.addEventListener('pagehide',()=>{try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){}});
+window.addEventListener('beforeunload',()=>{try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){}});
+function fa(n){return String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d])}
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function findSchool(id){return db.schools.find(x=>x.id===id)}
+function findClass(sid,cid){return findSchool(sid)?.classes.find(x=>x.id===cid)}
+function findStudent(sid,cid,st){return findClass(sid,cid)?.students.find(x=>x.id===st)}
+function sortStudents(a){return [...a].sort((x,y)=>(x.lastName||x.name||'').localeCompare(y.lastName||y.name||'fa',{fa:'IR'}))}
+function counts(){let classes=0,students=0;db.schools.forEach(s=>{classes+=s.classes.length;s.classes.forEach(c=>students+=c.students.length)});return{schools:db.schools.length,classes,students}}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='dashboard')renderDashboard();if(id==='schools')renderSchools();if(id==='search'){document.getElementById('globalSearch').focus();renderSearch()}if(id==='birthdays'){const t=document.getElementById('birthdayTemplate');if(t)t.value=getBirthdayTemplate();renderBirthdays();}if(id==='statuses')renderStatuses('good')}
+function renderAll(){renderDashboard();renderSchools();if(document.getElementById('schoolDetail').classList.contains('active'))openSchool(currentSchoolId);if(document.getElementById('classDetail').classList.contains('active'))openClass(currentSchoolId,currentClassId);if(document.getElementById('studentDetail').classList.contains('active'))openStudent(currentSchoolId,currentClassId,currentStudentId)}
+function renderDashboard(){let c=counts();statSchools.textContent=fa(c.schools);statClasses.textContent=fa(c.classes);statStudents.textContent=fa(c.students);dashboardSchools.innerHTML=db.schools.length?db.schools.slice(0,6).map(schoolCard).join(''):empty('🏫','هنوز مدرسه‌ای اضافه نشده','اولین مدرسه را اضافه کنید.')}
+function schoolCard(s){let n=s.classes.reduce((a,c)=>a+c.students.length,0);return `<div class="card"><div class="school-head"><div><h3>${esc(s.name)}</h3><div class="muted">سال تحصیلی ${esc(s.year||'—')}</div></div><div class="school-icon">🏫</div></div><div class="chips"><span class="chip">🚪 ${fa(s.classes.length)} کلاس</span><span class="chip">👨‍🎓 ${fa(n)} دانش‌آموز</span></div><button class="btn soft block" onclick="openSchool('${s.id}')">مشاهده مدرسه ←</button></div>`}
+function renderSchools(){schoolsGrid.innerHTML=db.schools.length?db.schools.map(s=>schoolCard(s)+`<div style="display:none"></div>`).join(''):empty('🏫','مدرسه‌ای ثبت نشده','با دکمه + مدرسه جدید اضافه کنید.')}
+function empty(icon,title,sub){return `<div class="empty" style="grid-column:1/-1"><div class="big">${icon}</div><b>${title}</b><p>${sub}</p></div>`}
+function openSchool(id){currentSchoolId=id;let s=findSchool(id);if(!s)return;schoolCrumb.textContent=s.name;schoolDetailContent.innerHTML=`<div class="detailhead"><div class="school-head"><div><h1 class="title">${esc(s.name)}</h1><div class="muted">سال تحصیلی ${esc(s.year||'—')}</div></div><div class="school-icon">🏫</div></div><div class="actions"><button class="btn soft" onclick="editSchool('${id}')">ویرایش</button><button class="btn danger" onclick="deleteSchool('${id}')">حذف مدرسه</button></div></div><div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0"><div><b>کلاس‌ها</b><div class="muted">${fa(s.classes.length)} کلاس</div></div><button class="btn primary" onclick="addClass('${id}')">＋ کلاس جدید</button></div><div class="grid">${s.classes.length?s.classes.map(c=>classCard(s,c)).join(''):empty('🚪','کلاسی وجود ندارد','یک کلاس اضافه کنید.')}</div>`;showView('schoolDetail')}
+function classCard(s,c){let photos=Array.isArray(c.photos)?c.photos:(c.photo?[c.photo]:[]);return `<div class="card">${photos.length?`<div class="class-gallery">${photos.slice(0,4).map(src=>`<img src="${src}">`).join('')}</div>`:''}<div class="school-head"><div><h3>${esc(c.name)}</h3><div class="muted">کلاس ${esc(c.grade||'')}</div></div><div class="school-icon">🚪</div></div><div class="chips"><span class="chip">👨‍🎓 ${fa(c.students.length)} دانش‌آموز</span><span class="chip">📷 ${fa(photos.length)} عکس</span></div><div class="actions"><button class="btn soft" style="flex:1" onclick="openClass('${s.id}','${c.id}')">دانش‌آموزان</button><button class="btn gray" onclick="editClass('${s.id}','${c.id}')">✎</button></div></div>`}
+function openClass(sid,cid){currentSchoolId=sid;currentClassId=cid;let s=findSchool(sid),c=findClass(sid,cid);if(!s||!c)return;let photos=Array.isArray(c.photos)?c.photos:(c.photo?[c.photo]:[]);classCrumb.textContent=`${s.name} / ${c.name}`;let students=sortStudents(c.students);let gallery=photos.length?`<div class="card"><div class="section-title">📷 عکس‌های کلاس <span class="muted">(${fa(photos.length)})</span></div><div class="class-gallery big-gallery">${photos.map((src,i)=>`<div class="class-photo-item"><img src="${src}" alt="عکس کلاس ${i+1}"><a class="btn soft download-photo" href="${src}" download="کلاس-${safeFileName(c.name)}-${i+1}.jpg">⬇️ دانلود عکس</a></div>`).join('')}</div></div>`:'';classDetailContent.innerHTML=`<div class="detailhead"><div class="school-head"><div><h1 class="title">${esc(c.name)}</h1><div class="muted">${esc(s.name)} · ${esc(c.grade||'')}</div></div><div class="school-icon">🚪</div></div>${gallery}<div class="actions"><button class="btn soft" onclick="editClass('${sid}','${cid}')">ویرایش کلاس</button><button class="btn danger" onclick="deleteClass('${sid}','${cid}')">حذف کلاس</button></div></div><div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0"><div><b>دانش‌آموزان</b><div class="muted">${fa(c.students.length)} نفر · مرتب‌شده الفبایی</div></div><button class="btn primary" onclick="addStudent('${sid}','${cid}')">＋ دانش‌آموز</button></div><div class="grid">${students.length?students.map(st=>studentCard(s,c,st)).join(''):empty('👨‍🎓','دانش‌آموزی ثبت نشده','دانش‌آموز اول را اضافه کنید.')}</div>`;showView('classDetail')}
+function studentCard(s,c,st){let status=st.status==='good'?'<span class="status good">🟢 خوب</span>':st.status==='attn'?'<span class="status attn">🔴 نیازمند توجه</span>':'<span class="status none">⚪ بدون وضعیت</span>';return `<div class="card studentcard"><div class="student"><div class="avatar ${st.photo?'photo-clickable':''}" ${st.photo?`onclick="event.stopPropagation();openPhotoViewer('${st.photo.replace(/'/g,"\\'")}','${safeFileName(st.name+'-'+st.lastName)}.jpg')"`:''}>${st.photo?`<img src="${st.photo}">`:esc((st.name||'?')[0])}</div><div style="min-width:0;flex:1"><b>${esc(st.name||'')} ${esc(st.lastName||'')}</b><div style="margin-top:5px">${status}</div></div></div><div class="student-meta">${st.birth?'🎂 '+esc(st.birth):''}${st.phone?' · ☎ '+esc(st.phone):''}</div><div class="actions"><button class="btn soft" style="flex:1" onclick="openStudent('${s.id}','${c.id}','${st.id}')">مشاهده</button><button class="btn gray" onclick="editStudent('${s.id}','${c.id}','${st.id}')">✎</button></div></div>`}
+function openStudent(sid,cid,stid){currentSchoolId=sid;currentClassId=cid;currentStudentId=stid;let s=findSchool(sid),c=findClass(sid,cid),st=findStudent(sid,cid,stid);if(!st)return;studentCrumb.textContent=st.name+' '+st.lastName;let status=st.status==='good'?'🟢 خوب':st.status==='attn'?'🔴 نیازمند توجه':'⚪ بدون وضعیت';studentDetailContent.innerHTML=`<div class="card"><div class="student"><div class="avatar ${st.photo?'photo-clickable':''}" style="width:82px;height:82px;font-size:32px" ${st.photo?`onclick="openPhotoViewer('${st.photo.replace(/'/g,"\\'")}','${safeFileName(st.name+'-'+st.lastName)}.jpg')"`:''}>${st.photo?`<img src="${st.photo}">`:esc((st.name||'?')[0])}</div><div><h1 class="title">${esc(st.name||'')} ${esc(st.lastName||'')}</h1><div class="muted">${esc(s.name)} · ${esc(c.name)} · ${esc(c.grade||'')}</div><div class="chips"><span class="status ${st.status||'none'}">${status}</span></div></div></div><hr style="border:0;border-top:1px solid var(--border);margin:18px 0"><div class="formgrid"><div><b>🎂 تاریخ تولد</b><p class="muted">${esc(st.birth||'ثبت نشده')}</p></div><div><b>☎ شماره تلفن</b><p class="muted">${esc(st.phone||'ثبت نشده')}</p></div><div class="field full"><b>❤️ علایق</b><p class="muted">${esc(st.interests||'ثبت نشده')}</p></div><div class="field full"><b>🔒 یادداشت خصوصی معلم</b><p class="muted">${esc(st.notes||'ثبت نشده')}</p></div></div><div class="actions"><button class="btn primary" onclick="editStudent('${sid}','${cid}','${stid}')">ویرایش</button><button class="btn soft" onclick="moveStudent('${sid}','${cid}','${stid}')">🔀 انتقال کلاس</button><button class="btn danger" onclick="deleteStudent('${sid}','${cid}','${stid}')">حذف</button></div></div>`;showView('studentDetail')}
+function openModal(content){sheet.innerHTML=content;modal.classList.add('show')}function closeModal(){modal.classList.remove('show')}
+function formHeader(title){return `<div class="sheethead"><h2>${title}</h2><button class="close" onclick="closeModal()">×</button></div>`}
+function addSchool(){openModal(formHeader('🏫 افزودن مدرسه')+`<form onsubmit="saveSchool(event)"><div class="formgrid"><div class="field full"><label>نام مدرسه</label><input id="fName" required placeholder="مثلاً دبیرستان شهید بهشتی"></div><div class="field full"><label>سال تحصیلی</label><input id="fYear" value="۱۴۰۵/۱۴۰۶" placeholder="۱۴۰۵/۱۴۰۶"></div></div><div class="formactions"><button class="btn primary">ذخیره</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div></form>`)}
+function editSchool(id){let s=findSchool(id);openModal(formHeader('ویرایش مدرسه')+`<form onsubmit="updateSchool(event,'${id}')"><div class="field"><label>نام مدرسه</label><input id="fName" required value="${esc(s.name)}"></div><div class="field" style="margin-top:12px"><label>سال تحصیلی</label><input id="fYear" value="${esc(s.year||'')}"></div><div class="formactions"><button class="btn primary">ذخیره</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div></form>`)}
+function saveSchool(e){e.preventDefault();db.schools.push({id:uid(),name:fName.value.trim(),year:fYear.value.trim(),classes:[]});closeModal();save();toast('مدرسه اضافه شد')}
+function updateSchool(e,id){e.preventDefault();let s=findSchool(id);s.name=fName.value.trim();s.year=fYear.value.trim();save();closeModal();toast('مدرسه ویرایش شد')}
+function deleteSchool(id){let s=findSchool(id);if(confirm(`مدرسه «${s.name}» و تمام کلاس‌ها و دانش‌آموزانش حذف شود؟`)){db.schools=db.schools.filter(x=>x.id!==id);save();showView('schools');toast('مدرسه حذف شد')}}
+function addClass(sid){window._classPhotoTarget=[];openModal(formHeader('🚪 افزودن کلاس')+`<form onsubmit="saveClass(event,'${sid}')"><div class="formgrid"><div class="field"><label>نام کلاس</label><input id="cName" required placeholder="هفتم الف"></div><div class="field"><label>پایه</label><input id="cGrade" placeholder="هفتم"></div><div class="field full"><label>عکس‌های کلاس</label><div class="photo-actions"><label class="btn primary">📷 گرفتن عکس<input id="classCamera" type="file" accept="image/*" capture="environment" hidden onchange="previewClassPhoto(event)"></label><label class="btn soft">🖼️ انتخاب عکس<input id="classPhotoFile" type="file" accept="image/*" multiple hidden onchange="previewClassPhotos(event)"></label></div><div class="muted" style="margin-top:6px">می‌توانی چند عکس اضافه کنی؛ برای عکس‌برداری با دوربین، هر بار یک عکس بگیر.</div><div id="classPhotoPreview" class="photo-grid"></div></div></div><div class="formactions"><button class="btn primary">ذخیره</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div></form>`)}
+function editClass(sid,cid){let c=findClass(sid,cid);if(!c)return;window._classPhotoTarget=Array.isArray(c.photos)?[...c.photos]:(c.photo?[c.photo]:[]);openModal(formHeader('ویرایش کلاس')+`<form onsubmit="updateClass(event,'${sid}','${cid}')"><div class="formgrid"><div class="field"><label>نام کلاس</label><input id="cName" required value="${esc(c.name)}"></div><div class="field"><label>پایه</label><input id="cGrade" value="${esc(c.grade||'')}"></div><div class="field full"><label>عکس‌های کلاس</label><div class="photo-actions"><label class="btn primary">📷 گرفتن عکس<input id="classCamera" type="file" accept="image/*" capture="environment" hidden onchange="previewClassPhoto(event)"></label><label class="btn soft">🖼️ انتخاب عکس<input id="classPhotoFile" type="file" accept="image/*" multiple hidden onchange="previewClassPhotos(event)"></label></div><div class="muted" style="margin-top:6px">عکس‌های قبلی را هم می‌توانی حذف کنی.</div><div id="classPhotoPreview" class="photo-grid"></div></div></div><div class="formactions"><button class="btn primary">ذخیره</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div></form>`);renderClassPhotoPreviews()}
+function saveClass(e,sid){e.preventDefault();let photos=window._classPhotoTarget||[];findSchool(sid).classes.push({id:uid(),name:cName.value.trim(),grade:cGrade.value.trim(),photos:photos,students:[]});closeModal();save();openSchool(sid);toast('کلاس اضافه شد')}
+function updateClass(e,sid,cid){e.preventDefault();let c=findClass(sid,cid),photos=window._classPhotoTarget||[];c.name=cName.value.trim();c.grade=cGrade.value.trim();c.photos=photos;if('photo' in c)delete c.photo;save();closeModal();openClass(sid,cid);toast('کلاس ویرایش شد')}
+function compressImage(file, maxSide=1600, quality=0.82){
+  return new Promise((resolve,reject)=>{
+    if(!file || !file.type.startsWith('image/')) return reject(new Error('not-image'));
+    const reader=new FileReader();
+    reader.onload=()=>{
+      const img=new Image();
+      img.onload=()=>{
+        const scale=Math.min(1,maxSide/Math.max(img.naturalWidth,img.naturalHeight));
+        const w=Math.max(1,Math.round(img.naturalWidth*scale)), h=Math.max(1,Math.round(img.naturalHeight*scale));
+        // اگر تصویر کوچک است و JPEG/WebP است، فایل اصلی را نگه می‌داریم تا هیچ تبدیل اضافه‌ای انجام نشود.
+        if(scale===1 && /image\/(jpeg|webp)/i.test(file.type)){ resolve(reader.result); return; }
+        const c=document.createElement('canvas'); c.width=w; c.height=h;
+        const ctx=c.getContext('2d',{alpha:true}); ctx.drawImage(img,0,0,w,h);
+        // کیفیت ۸۲٪ و ضلع حداکثر ۱۶۰۰ پیکسل؛ برای عکس کلاس و دانش‌آموز کیفیت دیداری خوب و حجم بسیار کمتر می‌دهد.
+        let out=c.toDataURL('image/jpeg',quality);
+        resolve(out);
+      };
+      img.onerror=()=>reject(new Error('image-decode')); img.src=reader.result;
+    };
+    reader.onerror=()=>reject(reader.error||new Error('read-failed')); reader.readAsDataURL(file);
+  });
+}
+async function previewClassPhoto(e){let file=e.target.files&&e.target.files[0];if(!file)return;try{let data=await compressImage(file);if(!Array.isArray(window._classPhotoTarget))window._classPhotoTarget=[];window._classPhotoTarget.push(data);renderClassPhotoPreviews();}catch(err){alert('خواندن عکس انجام نشد.')}e.target.value=''}
+async function previewClassPhotos(e){let files=[...(e.target.files||[])];if(!files.length)return;if(!Array.isArray(window._classPhotoTarget))window._classPhotoTarget=[];try{const imgs=await Promise.all(files.map(f=>compressImage(f)));window._classPhotoTarget.push(...imgs);renderClassPhotoPreviews();}catch(err){alert('یکی از عکس‌ها قابل پردازش نبود.')}e.target.value=''}
+function renderClassPhotoPreviews(){let box=document.getElementById('classPhotoPreview');if(!box)return;let photos=window._classPhotoTarget||[];box.innerHTML=photos.map((src,i)=>`<div class="photo-thumb"><img src="${src}"><button type="button" onclick="removeClassPhoto(${i})">×</button></div>`).join('')}
+function removeClassPhoto(i){if(!window._classPhotoTarget)return;window._classPhotoTarget.splice(i,1);renderClassPhotoPreviews()}
+function safeFileName(s){return String(s||'کلاس').replace(/[\\/:*?"<>|]/g,'-').trim()||'کلاس'}
+function deleteClass(sid,cid){let c=findClass(sid,cid);if(confirm(`کلاس «${c.name}» و دانش‌آموزانش حذف شوند؟`)){let s=findSchool(sid);s.classes=s.classes.filter(x=>x.id!==cid);save();openSchool(sid);toast('کلاس حذف شد')}}
+function addStudent(sid,cid){studentForm(sid,cid,null)}
+function editStudent(sid,cid,stid){studentForm(sid,cid,findStudent(sid,cid,stid))}
+function studentForm(sid,cid,st){let editing=!!st, photo=st?.photo||'';openModal(formHeader(editing?'ویرایش دانش‌آموز':'👨‍🎓 افزودن دانش‌آموز')+`<form onsubmit="saveStudent(event,'${sid}','${cid}',${editing?`'${st.id}'`:'null'})"><div class="photo-input"><div class="photo-preview" id="photoPreview">${photo?`<img src="${photo}">`:'👤'}</div><div style="display:flex;flex-wrap:wrap;gap:7px">
+<label class="btn primary">📷 گرفتن عکس<input id="cameraFile" type="file" accept="image/*" capture="environment" hidden onchange="previewPhoto(event)"></label>
+<label class="btn soft">🖼️ انتخاب عکس<input id="photoFile" type="file" accept="image/*" hidden onchange="previewPhoto(event)"></label>
+<input id="photoData" type="hidden" value="${esc(photo)}">
+<div class="muted" style="width:100%;margin-top:2px">اختیاری · برای گرفتن عکس، دوربین گوشی باز می‌شود.</div>
+</div></div><div class="formgrid" style="margin-top:15px"><div class="field"><label>نام</label><input id="stName" required value="${esc(st?.name||'')}"></div><div class="field"><label>نام خانوادگی</label><input id="stLast" required value="${esc(st?.lastName||'')}"></div><div class="field"><label>تاریخ تولد شمسی</label><input id="stBirth" placeholder="مثلاً ۱۳۹۳/۰۵/۲۱" value="${esc(st?.birth||'')}"></div><div class="field"><label>شماره تلفن</label><input id="stPhone" inputmode="tel" value="${esc(st?.phone||'')}" placeholder="۰۹۱۲..."></div><div class="field full"><label>علایق</label><input id="stInterests" value="${esc(st?.interests||'')}" placeholder="ورزش، کتاب، نقاشی..."></div><div class="field"><label>وضعیت</label><select id="stStatus"><option value="none" ${!st||st.status==='none'?'selected':''}>⚪ بدون وضعیت</option><option value="good" ${st?.status==='good'?'selected':''}>🟢 خوب</option><option value="attn" ${st?.status==='attn'?'selected':''}>🔴 نیازمند توجه</option></select></div><div class="field full"><label>یادداشت خصوصی معلم</label><textarea id="stNotes" placeholder="فقط برای استفاده معلم...">${esc(st?.notes||'')}</textarea></div></div><div class="formactions"><button class="btn primary">ذخیره</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div></form>`)}
+async function previewPhoto(e){let f=e.target.files[0];if(!f)return;try{let data=await compressImage(f);photoPreview.innerHTML=`<img src="${data}">`;photoData.value=data;}catch(err){alert('خواندن عکس انجام نشد.')}e.target.value=''}
+function saveStudent(e,sid,cid,stid){e.preventDefault();let c=findClass(sid,cid);let st={id:stid||uid(),photo:photoData.value,name:stName.value.trim(),lastName:stLast.value.trim(),birth:stBirth.value.trim(),phone:stPhone.value.trim(),interests:stInterests.value.trim(),notes:stNotes.value.trim(),status:stStatus.value};if(stid){let i=c.students.findIndex(x=>x.id===stid);c.students[i]=st}else c.students.push(st);closeModal();save();openClass(sid,cid);toast(stid?'اطلاعات دانش‌آموز به‌روز شد':'دانش‌آموز اضافه شد')}
+function deleteStudent(sid,cid,stid){let st=findStudent(sid,cid,stid);if(confirm(`دانش‌آموز «${st.name} ${st.lastName}» حذف شود؟`)){let c=findClass(sid,cid);c.students=c.students.filter(x=>x.id!==stid);save();openClass(sid,cid);toast('دانش‌آموز حذف شد')}}
+function moveStudent(sid,cid,stid){let st=findStudent(sid,cid,stid),s=findSchool(sid),opts=s.classes.filter(c=>c.id!==cid).map(c=>`<option value="${c.id}">${esc(c.name)} — ${esc(c.grade||'')}</option>`).join('');if(!opts){alert('در این مدرسه کلاس دیگری برای انتقال وجود ندارد.');return}openModal(formHeader('🔀 انتقال دانش‌آموز')+`<p class="muted">اطلاعات «${esc(st.name)} ${esc(st.lastName)}» حفظ می‌شود.</p><select id="moveTo">${opts}</select><div class="formactions"><button class="btn primary" onclick="doMove(event,'${sid}','${cid}','${stid}')">انتقال</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div>`)}
+function doMove(e,sid,cid,stid){e.preventDefault();let from=findClass(sid,cid),to=findClass(sid,moveTo.value),st=findStudent(sid,cid,stid);from.students=from.students.filter(x=>x.id!==stid);to.students.push(st);save();closeModal();openClass(sid,to.id);toast('دانش‌آموز با موفقیت منتقل شد')}
+function renderStatuses(filter='good'){
+let good=[],attn=[],none=[];
+db.schools.forEach(s=>s.classes.forEach(c=>c.students.forEach(st=>{
+let item={s,c,st};
+if(st.status==='good')good.push(item);else if(st.status==='attn')attn.push(item);else none.push(item);
+})));
+goodCount.textContent=fa(good.length);attentionCount.textContent=fa(attn.length);noneCount.textContent=fa(none.length);
+let items=filter==='attn'?attn:good;
+statusGoodBtn.className=filter==='good'?'btn soft':'btn gray';
+statusAttnBtn.className=filter==='attn'?'btn soft':'btn gray';
+statusesList.innerHTML=items.length?`<div class="grid">${items.map(x=>`
+<div class="card studentcard">
+<div class="student">
+<div class="avatar">${x.st.photo?`<img src="${x.st.photo}">`:esc((x.st.name||'?')[0])}</div>
+<div style="min-width:0;flex:1">
+<b>${esc(x.st.name)} ${esc(x.st.lastName)}</b>
+<div class="muted" style="margin-top:5px">🏫 ${esc(x.s.name)}<br>🚪 ${esc(x.c.name)}</div>
+</div>
+</div>
+<div class="actions">
+<button class="btn soft" style="flex:1" onclick="openStudent('${x.s.id}','${x.c.id}','${x.st.id}')">مشاهده پرونده</button>
+</div>
+</div>`).join('')}</div>`:empty(filter==='attn'?'🔴':'🟢',filter==='attn'?'دانش‌آموز نیازمند توجهی ثبت نشده':'دانش‌آموزی با وضعیت خوب ثبت نشده','با تغییر وضعیت دانش‌آموزان، این فهرست به‌روزرسانی می‌شود.');
+}
+function renderSearch(){let q=(globalSearch.value||'').trim().toLowerCase();if(!q){searchResults.innerHTML=empty('🔍','نام دانش‌آموز را جستجو کنید','جستجو در همه مدارس و کلاس‌ها انجام می‌شود.');return}let out=[];db.schools.forEach(s=>s.classes.forEach(c=>c.students.forEach(st=>{let full=(st.name+' '+st.lastName).toLowerCase();if(full.includes(q))out.push({s,c,st})})));searchResults.innerHTML=out.length?`<div class="grid">${out.map(x=>`<div class="card studentcard"><div class="student"><div class="avatar">${x.st.photo?`<img src="${x.st.photo}">`:esc((x.st.name||'?')[0])}</div><div><b>${esc(x.st.name)} ${esc(x.st.lastName)}</b><div class="muted" style="margin-top:5px">🏫 ${esc(x.s.name)}<br>🚪 ${esc(x.c.name)}</div></div></div><button class="btn soft block" style="margin-top:11px" onclick="openStudent('${x.s.id}','${x.c.id}','${x.st.id}')">مشاهده پرونده</button></div>`).join('')}</div>`:empty('😕','نتیجه‌ای پیدا نشد','نام یا نام خانوادگی را بررسی کنید.')}
+
+function getBirthdayTemplate(){
+  const fallback='تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉 امیدوارم سالی پر از شادی، سلامتی و موفقیت داشته باشی.';
+  return localStorage.getItem('birthday_template') || fallback;
+}
+function saveBirthdayTemplate(){
+  const el=document.getElementById('birthdayTemplate');
+  if(el) localStorage.setItem('birthday_template',el.value);
+}
+function personalBirthdayMessage(st){
+  return getBirthdayTemplate()
+    .replaceAll('{نام}',st.name||'')
+    .replaceAll('{نام_خانوادگی}',st.lastName||'')
+    .replaceAll('{نام خانوادگی}',st.lastName||'');
+}
+function normalizePhone(p){
+  let x=String(p||'').replace(/[^\d+]/g,'');
+  if(x.startsWith('00')) x='+'+x.slice(2);
+  if(x.startsWith('0')) x='+98'+x.slice(1);
+  return x.replace('+','');
+}
+function findStudentGlobal(stid,cid,sid){return findStudent(sid,cid,stid)}
+function openBirthdaySender(stid,cid,sid){
+  const st=findStudentGlobal(stid,cid,sid); if(!st)return;
+  const msg=personalBirthdayMessage(st), phone=normalizePhone(st.phone||'');
+  const wa=phone?`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`:`https://wa.me/?text=${encodeURIComponent(msg)}`;
+  openModal(formHeader('💌 تبریک تولد')+
+    `<p><b>${esc(st.name)} ${esc(st.lastName)}</b></p>
+     <textarea id="birthdaySendText">${esc(msg)}</textarea>
+     <div class="formactions">
+       <button class="btn primary" onclick="copyText(document.getElementById('birthdaySendText').value)">📋 کپی پیام</button>
+       <a class="btn soft" href="${wa}" target="_blank" rel="noopener">💬 باز کردن واتساپ</a>
+     </div>
+     <p class="muted" style="margin-top:10px">برای امنیت، خود مرورگر اجازه ارسال بی‌اجازه پیام را نمی‌دهد؛ با دکمه واتساپ، پیام آماده باز می‌شود و ارسال نهایی با شماست.</p>`
+  );
+}
+async function copyText(t){
+  try{await navigator.clipboard.writeText(t);toast('پیام کپی شد');}
+  catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('پیام کپی شد');}
+}
+function copyBirthdayMessage(stid,cid,sid){
+  const st=findStudentGlobal(stid,cid,sid); if(!st)return;
+  copyText(personalBirthdayMessage(st));
+}
+function openPhotoViewer(src,name='photo.jpg'){
+  const img=document.getElementById('photoViewerImg'), dl=document.getElementById('photoViewerDownload');
+  if(!img||!dl)return;
+  img.src=src; dl.href=src; dl.download=name; document.getElementById('photoViewer').classList.add('show');
+}
+function closePhotoViewer(){
+  const v=document.getElementById('photoViewer'),img=document.getElementById('photoViewerImg');
+  if(v)v.classList.remove('show'); if(img)img.src='';
+}
+async function checkForUpdate(show=true){
+  try{
+    if('serviceWorker' in navigator){
+      const regs=await navigator.serviceWorker.getRegistrations();
+      for(const reg of regs) await reg.update();
+    }
+    const status=document.getElementById('updateStatus');
+    if(status) status.textContent='نسخه فعلی: '+fa(APP_VERSION)+' · بررسی انجام شد.';
+    if(show) toast('نسخه '+fa(APP_VERSION)+' فعال است.');
+  }catch(e){if(show)toast('بررسی بروزرسانی انجام نشد.')}
+}
+
+function renderBirthdays(){
+  let items=[];
+  db.schools.forEach(s=>s.classes.forEach(c=>c.students.forEach(st=>{
+    let m=(st.birth||'').match(/(\d{3,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+    if(m){items.push({s,c,st,mo:+m[2],d:+m[3]})}
+  })));
+  // ابتدا بر اساس ماه و روز تولد؛ در صورت یکسان بودن، نام خانوادگی
+  items.sort((a,b)=>(a.mo*31+a.d)-(b.mo*31+b.d) || (a.st.lastName||'').localeCompare(b.st.lastName||'','fa'));
+  const template=getBirthdayTemplate();
+  birthdaysList.innerHTML=items.length?`<div class="grid">${items.map(x=>{
+    const msg=personalBirthdayMessage(x.st);
+    const encoded=encodeURIComponent(msg);
+    const phone=normalizePhone(x.st.phone||'');
+    const wa=phone?`https://wa.me/${phone}?text=${encoded}`:`https://wa.me/?text=${encoded}`;
+    return `<div class="card birth">
+      <div class="student">
+        <div class="avatar ${x.st.photo?'photo-clickable':''}" ${x.st.photo?`onclick="openPhotoViewer('${x.st.photo.replace(/'/g,"\\'")}','${safeFileName(x.st.name+'-'+x.st.lastName)}.jpg')"`:''}>${x.st.photo?`<img src="${x.st.photo}">`:'🎂'}</div>
+        <div style="min-width:0;flex:1"><b>${esc(x.st.name)} ${esc(x.st.lastName)}</b><div class="muted">${fa(x.st.birth)}<br>${esc(x.s.name)} · ${esc(x.c.name)}</div></div>
+      </div>
+      <div class="birthday-message"><div class="muted">پیام آماده:</div><div style="margin-top:5px">${esc(msg)}</div></div>
+      <div class="actions">
+        <button class="btn primary" style="flex:1" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 تبریک</button>
+        <button class="btn soft" onclick="copyBirthdayMessage('${x.st.id}','${x.c.id}','${x.s.id}')">📋 کپی</button>
+      </div>
+    </div>`;
+  }).join('')}</div>`:empty('🎂','هنوز تاریخ تولدی ثبت نشده','تاریخ تولد دانش‌آموزان را وارد کنید.');
+}
+function quickAdd(){if(db.schools.length===0){addSchool();return}if(currentClassId){addStudent(currentSchoolId,currentClassId);return}addSchool()}
+function exportData(){let blob=new Blob([JSON.stringify(db)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='danesh-amooz-man-backup.json';a.click();URL.revokeObjectURL(a.href);toast('فایل پشتیبان آماده شد')}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x||!Array.isArray(x.schools))throw 0;if(confirm('اطلاعات فعلی با این فایل جایگزین شود؟')){db=x;save();toast('بازیابی با موفقیت انجام شد')}}catch(err){alert('فایل پشتیبان معتبر نیست.')}};r.readAsText(f);e.target.value=''}
+function clearAll(){if(confirm('همه اطلاعات برنامه حذف شود؟')){db={version:1,schools:[]};save();showView('dashboard');toast('همه اطلاعات حذف شد')}}
+let toastTimer;function toast(t){const el=document.getElementById('toast');clearTimeout(toastTimer);el.textContent=t;el.classList.add('show');toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
+let deferredInstallPrompt = null;
+const APP_VERSION='2.1.0';
+
+function updateInstallButton(){
+  const b=document.getElementById('installAppBtn');
+  const h=document.getElementById('installHint');
+  if(!b)return;
+  const standalone=window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
+  if(standalone){b.disabled=true;b.textContent='✅ نصب شده';if(h)h.textContent='برنامه از صفحه اصلی اجرا شده است.';return;}
+  if(deferredInstallPrompt){b.disabled=false;b.textContent='➕ افزودن';if(h)h.textContent='برای نصب، همین دکمه را بزنید.';return;}
+  b.disabled=false;b.textContent='📱 راهنمای نصب';
+  if(h)h.textContent='اگر پنجره نصب باز نشد، از منوی مرورگر گزینه Install app یا Add to Home screen را بزنید.';
+}
+
+window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredInstallPrompt=e;updateInstallButton();});
+window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;updateInstallButton();toast('برنامه به صفحه اصلی اضافه شد');});
+
+async function installApp(){
+  if(deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    const result=await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt=null;
+    updateInstallButton();
+    return;
+  }
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isAndroid=/android/i.test(navigator.userAgent);
+  if(isIOS){alert('در آیفون: دکمه Share/اشتراک‌گذاری مرورگر را بزنید، سپس «Add to Home Screen / افزودن به صفحه اصلی» را انتخاب کنید.');}
+  else if(isAndroid){alert('در اندروید: از منوی سه‌نقطه مرورگر گزینه «Install app» یا «Add to Home screen / افزودن به صفحه اصلی» را انتخاب کنید. اگر این گزینه نیست، برنامه را با آدرس HTTPS باز کنید.');}
+  else{alert('برای نصب، برنامه را با HTTPS باز کنید و از منوی مرورگر گزینه Install app یا Add to Home screen را انتخاب کنید.');}
+}
+
+if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('./sw.js?v='+encodeURIComponent(APP_VERSION),{updateViaCache:'none'}).then(reg=>{
+      reg.update();
+      if(reg.waiting){reg.waiting.postMessage({type:'SKIP_WAITING'});}
+      reg.addEventListener('updatefound',()=>{
+        const w=reg.installing;
+        if(w)w.addEventListener('statechange',()=>{
+          if(w.state==='installed' && navigator.serviceWorker.controller){
+            toast('نسخه جدید آماده شد؛ برنامه در حال به‌روزرسانی است.');
+            w.postMessage({type:'SKIP_WAITING'});
+          }
+        });
+      });
+    }).catch(()=>{});
+    navigator.serviceWorker.addEventListener('controllerchange',()=>{
+      if(!window.__swReloaded){window.__swReloaded=true;location.reload();}
+    });
+  });
+}
+
+window.addEventListener('load',updateInstallButton);
+window.addEventListener('pageshow',updateInstallButton);
+
+renderAll();
+restorePersistent();
+const appVersionText=document.getElementById('appVersionText'); if(appVersionText) appVersionText.textContent=fa(APP_VERSION); const topVersion=document.getElementById('topVersion'); if(topVersion) topVersion.textContent='v'+APP_VERSION;
+const bt=document.getElementById('birthdayTemplate'); if(bt) bt.value=getBirthdayTemplate();
+</script>
+</body>
+</html>
