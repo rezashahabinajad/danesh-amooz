@@ -157,6 +157,7 @@ body{padding-bottom:92px!important}
 <div class="settings-list">
 <div class="setting"><div><b>خروجی پشتیبان</b><span class="muted">تمام مدارس، کلاس‌ها و دانش‌آموزان</span></div><button class="btn primary" onclick="exportData()">دریافت فایل</button></div>
 <div class="setting"><div><b>بازیابی پشتیبان</b><span class="muted">فایل JSON قبلی را وارد کنید</span></div><label class="btn soft">انتخاب فایل<input type="file" accept=".json,application/json" hidden onchange="importData(event)"></label></div>
+<div class="setting"><div><b>🧹 پاک کردن کش برنامه</b><span class="muted">فایل‌های موقت و کش را پاک می‌کند؛ اطلاعات دانش‌آموزان حذف نمی‌شود.</span></div><button class="btn soft" onclick="clearAppCache()">پاک کردن کش</button></div>
 <div class="setting"><div><b>پاک‌سازی همه اطلاعات</b><span class="muted">این کار قابل بازگشت نیست</span></div><button class="btn danger" onclick="clearAll()">حذف همه</button></div>
 </div>
 <div class="card" style="margin-top:14px"><b>نکته</b><p class="muted">برای جلوگیری از از دست رفتن اطلاعات، هر چند وقت یک‌بار فایل پشتیبان بگیرید.</p></div>
@@ -383,26 +384,50 @@ function saveBirthdayTemplate(){
   if(el) localStorage.setItem('birthday_template',el.value);
 }
 function interestBirthdayLine(st){
-  const i=String(st.interests||'').trim();
-  if(!i) return 'علایق و چیزهایی که دوست داری';
-  const x=i.toLowerCase();
-  if(/فوتبال|ورزش|بسکتبال|والیبال|شنا|دوچرخه/.test(x)) return 'ورزش و رسیدن به هدف‌هایت';
-  if(/کتاب|مطالعه|داستان|نویس/.test(x)) return 'کتاب و دنیای زیبای مطالعه';
-  if(/نقاشی|هنر|موسیقی|ساز|گیتار|پیانو/.test(x)) return 'هنر و استعدادهای زیبایت';
-  if(/کامپیوتر|برنامه|بازی|گیم|ربات|تکنولوژی/.test(x)) return 'دنیای فناوری و چیزهایی که دوست داری';
-  if(/ریاضی|علوم|فیزیک|شیمی/.test(x)) return 'یادگیری و کشف چیزهای تازه';
-  return i;
+  const raw=String(st.interests||'').trim();
+  if(!raw) return 'امیدوارم امسال هم چیزهایی که دوست داری، برایت کلی لحظه‌های قشنگ بسازند';
+  const x=raw.toLowerCase();
+  if(/فوتبال/.test(x)) return 'امیدوارم امسال هر بار که فوتبال بازی می‌کنی، از ته دل لذت ببری و به هدف‌هایی که برای خودت داری نزدیک‌تر شوی ⚽';
+  if(/بسکتبال/.test(x)) return 'امیدوارم همیشه با همان انرژی خوبت بسکتبال بازی کنی و برای رسیدن به هدف‌هایت با انگیزه جلو بروی 🏀';
+  if(/والیبال/.test(x)) return 'امیدوارم امسال پر از بازی‌های هیجان‌انگیز والیبال، خنده و موفقیت‌های قشنگ برایت باشد 🏐';
+  if(/شنا/.test(x)) return 'امیدوارم در شنا هر روز چیز تازه‌ای یاد بگیری و از لحظه‌هایی که دوستشان داری حسابی لذت ببری 🏊';
+  if(/دوچرخه|دوچرخه.?سواری/.test(x)) return 'امیدوارم امسال هم کلی مسیر تازه را با دوچرخه کشف کنی و روزهای پرانرژی و خاطره‌انگیزی داشته باشی 🚲';
+  if(/ورزش/.test(x)) return 'امیدوارم امسال ورزش و انرژی خوبت همیشه همراهت باشد و هر روز یک قدم به هدف‌هایت نزدیک‌تر شوی 🏆';
+  if(/کتاب|مطالعه|داستان|نویس/.test(x)) return 'امیدوارم امسال کتاب‌های قشنگ زیادی بخوانی، داستان‌های تازه کشف کنی و با هر چیزی که یاد می‌گیری بیشتر بدرخشی 📚';
+  if(/نقاشی/.test(x)) return 'امیدوارم امسال هم ایده‌های رنگارنگت را روی کاغذ بیاوری و با نقاشی‌هایت حال خودت و اطرافیانت را خوب کنی 🎨';
+  if(/موسیقی|ساز|گیتار|پیانو|ویولن/.test(x)) return 'امیدوارم امسال با موسیقی و سازت کلی لحظه‌های قشنگ بسازی و از هنری که دوستش داری لذت ببری 🎵';
+  if(/کامپیوتر|برنامه.?نویسی|برنامه نویسی|تکنولوژی|ربات|رباتیک/.test(x)) return 'امیدوارم امسال ایده‌های جالبی که در ذهنت داری را دنبال کنی و در دنیای فناوری چیزهای هیجان‌انگیز تازه‌ای کشف کنی 💻';
+  if(/بازی|گیم/.test(x)) return 'امیدوارم امسال کلی بازی و لحظه‌های شاد داشته باشی و در کنار سرگرمی، چیزهای تازه و جالب هم یاد بگیری 🎮';
+  if(/ریاضی/.test(x)) return 'امیدوارم امسال هم با همان کنجکاوی و علاقه‌ات، مسئله‌های سخت را یکی‌یکی حل کنی و از موفقیت‌هایت لذت ببری 🧮';
+  if(/علوم|فیزیک|شیمی/.test(x)) return 'امیدوارم امسال کلی سؤال جالب در ذهنت شکل بگیرد و با کنجکاوی جواب‌های تازه‌ای برایشان پیدا کنی 🔬';
+  if(/عکاسی/.test(x)) return 'امیدوارم امسال لحظه‌های زیبای زیادی پیدا کنی و با نگاه خاص خودت آن‌ها را ثبت کنی 📷';
+  if(/آشپزی/.test(x)) return 'امیدوارم امسال با همان ذوق و خلاقیتی که در آشپزی داری، چیزهای خوشمزه و خاطره‌های شیرین زیادی بسازی 🍳';
+  if(/حیوان|گربه|سگ/.test(x)) return 'امیدوارم امسال هم مهربانی و علاقه‌ات به حیوانات باعث شود لحظه‌های شیرین و دوست‌داشتنی زیادی داشته باشی 🐾';
+  return `امیدوارم امسال در ${raw} بیشتر پیشرفت کنی، از چیزی که دوستش داری لذت ببری و اتفاق‌های قشنگی برایت رقم بخورد 🌟`;
 }
 function personalBirthdayMessage(st){
-  let msg=getBirthdayTemplate()
-    .replaceAll('{نام}',st.name||'')
-    .replaceAll('{نام_خانوادگی}',st.lastName||'')
-    .replaceAll('{نام خانوادگی}',st.lastName||'')
-    .replaceAll('{علاقه}',interestBirthdayLine(st))
-    .replaceAll('{نام_معلم}',getTeacherName());
-  if(!msg.includes(getTeacherName()) && !msg.includes('{نام_معلم}') && getTeacherName()){
-    msg += '\n\nبا احترام، '+getTeacherName();
+  const name=(st.name||'').trim();
+  const last=(st.lastName||'').trim();
+  const teacher=getTeacherName().trim();
+  const interest=String(st.interests||'').trim();
+  let msg=getBirthdayTemplate();
+  // اگر قالب پیش‌فرض است، یک متن گرم و طبیعی بسازیم؛ نه یک جمله‌ی خشک و تکراری.
+  const defaultTemplate='تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉';
+  if(!localStorage.getItem('birthday_template') || msg===defaultTemplate || msg.includes('امیدوارم در {علاقه} همیشه موفق')){
+    msg=`${name} عزیز، تولدت مبارک! 🎂🎉
+
+${interestBirthdayLine(st)}
+
+امیدوارم سال جدید زندگی‌ات پر از خنده، اتفاق‌های خوب و موفقیت‌های قشنگ باشد. همیشه همین‌قدر پرانرژی و دوست‌داشتنی بمانی 🌟`;
+  } else {
+    msg=msg
+      .replaceAll('{نام}',name)
+      .replaceAll('{نام_خانوادگی}',last)
+      .replaceAll('{نام خانوادگی}',last)
+      .replaceAll('{علاقه}',interestBirthdayLine(st));
   }
+  msg=msg.replaceAll('{نام_معلم}',teacher);
+  if(teacher && !msg.includes(teacher)) msg += `\n\nبا مهر، ${teacher}`;
   return msg;
 }
 function normalizePhone(p){
@@ -488,6 +513,25 @@ function renderBirthdays(){
 function quickAdd(){if(db.schools.length===0){addSchool();return}if(currentClassId){addStudent(currentSchoolId,currentClassId);return}addSchool()}
 function exportData(){let blob=new Blob([JSON.stringify(db)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='danesh-amooz-man-backup.json';a.click();URL.revokeObjectURL(a.href);toast('فایل پشتیبان آماده شد')}
 function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x||!Array.isArray(x.schools))throw 0;if(confirm('اطلاعات فعلی با این فایل جایگزین شود؟')){db=x;save();toast('بازیابی با موفقیت انجام شد')}}catch(err){alert('فایل پشتیبان معتبر نیست.')}};r.readAsText(f);e.target.value=''}
+function clearAppCache(){
+  if(!confirm('کش برنامه پاک شود؟\nاطلاعات دانش‌آموزان، مدارس و کلاس‌ها حذف نمی‌شود.'))return;
+  (async()=>{
+    try{
+      if('caches' in window){
+        const keys=await caches.keys();
+        await Promise.all(keys.map(k=>caches.delete(k)));
+      }
+      if('serviceWorker' in navigator){
+        const regs=await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map(r=>r.unregister()));
+      }
+      toast('کش پاک شد؛ برنامه دوباره بارگذاری می‌شود');
+      setTimeout(()=>location.reload(),700);
+    }catch(e){
+      alert('پاک کردن کش انجام نشد. لطفاً دوباره تلاش کنید.');
+    }
+  })();
+}
 function clearAll(){if(confirm('همه اطلاعات برنامه حذف شود؟')){db={version:1,schools:[]};save();showView('dashboard');toast('همه اطلاعات حذف شد')}}
 let toastTimer;function toast(t){const el=document.getElementById('toast');clearTimeout(toastTimer);el.textContent=t;el.classList.add('show');toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
 let deferredInstallPrompt = null;
