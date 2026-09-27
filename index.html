@@ -113,8 +113,14 @@ body{padding-bottom:92px!important}
 <p class="subtitle">بر اساس تاریخ تولد شمسی دانش‌آموزان</p>
 <div class="card" style="margin-bottom:14px">
   <b>💌 متن تبریک تولد</b>
-  <p class="muted">در متن از <code>{نام}</code> و <code>{نام_خانوادگی}</code> استفاده کن تا برای هر دانش‌آموز خودکار جایگزین شود.</p>
-  <textarea id="birthdayTemplate" oninput="saveBirthdayTemplate()" placeholder="تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉">تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉 امیدوارم سالی پر از شادی، سلامتی و موفقیت داشته باشی.</textarea>
+  <div class="field" style="margin-top:10px">
+    <label>👨‍🏫 نام معلم</label>
+    <input id="teacherName" oninput="saveTeacherName()" placeholder="مثلاً رضا شهابی" value="">
+  </div>
+  <p class="muted">در متن از <code>{نام}</code>، <code>{نام_خانوادگی}</code> و <code>{نام_معلم}</code> استفاده کن تا خودکار جایگزین شوند.</p>
+  <textarea id="birthdayTemplate" oninput="saveBirthdayTemplate()" placeholder="تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉">تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉 امیدوارم سالی پر از شادی، سلامتی و موفقیت داشته باشی.
+
+با احترام، {نام_معلم}</textarea>
 </div>
 <div id="birthdaysList"></div>
 </section>
@@ -272,7 +278,7 @@ function findClass(sid,cid){return findSchool(sid)?.classes.find(x=>x.id===cid)}
 function findStudent(sid,cid,st){return findClass(sid,cid)?.students.find(x=>x.id===st)}
 function sortStudents(a){return [...a].sort((x,y)=>(x.lastName||x.name||'').localeCompare(y.lastName||y.name||'fa',{fa:'IR'}))}
 function counts(){let classes=0,students=0;db.schools.forEach(s=>{classes+=s.classes.length;s.classes.forEach(c=>students+=c.students.length)});return{schools:db.schools.length,classes,students}}
-function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='dashboard')renderDashboard();if(id==='schools')renderSchools();if(id==='search'){document.getElementById('globalSearch').focus();renderSearch()}if(id==='birthdays'){const t=document.getElementById('birthdayTemplate');if(t)t.value=getBirthdayTemplate();renderBirthdays();}if(id==='statuses')renderStatuses('good')}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='dashboard')renderDashboard();if(id==='schools')renderSchools();if(id==='search'){document.getElementById('globalSearch').focus();renderSearch()}if(id==='birthdays'){const t=document.getElementById('birthdayTemplate');if(t)t.value=getBirthdayTemplate();const tn=document.getElementById('teacherName');if(tn)tn.value=getTeacherName();renderBirthdays();}if(id==='statuses')renderStatuses('good')}
 function renderAll(){renderDashboard();renderSchools();if(document.getElementById('schoolDetail').classList.contains('active'))openSchool(currentSchoolId);if(document.getElementById('classDetail').classList.contains('active'))openClass(currentSchoolId,currentClassId);if(document.getElementById('studentDetail').classList.contains('active'))openStudent(currentSchoolId,currentClassId,currentStudentId)}
 function renderDashboard(){let c=counts();statSchools.textContent=fa(c.schools);statClasses.textContent=fa(c.classes);statStudents.textContent=fa(c.students);dashboardSchools.innerHTML=db.schools.length?db.schools.slice(0,6).map(schoolCard).join(''):empty('🏫','هنوز مدرسه‌ای اضافه نشده','اولین مدرسه را اضافه کنید.')}
 function schoolCard(s){let n=s.classes.reduce((a,c)=>a+c.students.length,0);return `<div class="card"><div class="school-head"><div><h3>${esc(s.name)}</h3><div class="muted">سال تحصیلی ${esc(s.year||'—')}</div></div><div class="school-icon">🏫</div></div><div class="chips"><span class="chip">🚪 ${fa(s.classes.length)} کلاس</span><span class="chip">👨‍🎓 ${fa(n)} دانش‌آموز</span></div><button class="btn soft block" onclick="openSchool('${s.id}')">مشاهده مدرسه ←</button></div>`}
@@ -361,8 +367,15 @@ statusesList.innerHTML=items.length?`<div class="grid">${items.map(x=>`
 }
 function renderSearch(){let q=(globalSearch.value||'').trim().toLowerCase();if(!q){searchResults.innerHTML=empty('🔍','نام دانش‌آموز را جستجو کنید','جستجو در همه مدارس و کلاس‌ها انجام می‌شود.');return}let out=[];db.schools.forEach(s=>s.classes.forEach(c=>c.students.forEach(st=>{let full=(st.name+' '+st.lastName).toLowerCase();if(full.includes(q))out.push({s,c,st})})));searchResults.innerHTML=out.length?`<div class="grid">${out.map(x=>`<div class="card studentcard"><div class="student"><div class="avatar">${x.st.photo?`<img src="${x.st.photo}">`:esc((x.st.name||'?')[0])}</div><div><b>${esc(x.st.name)} ${esc(x.st.lastName)}</b><div class="muted" style="margin-top:5px">🏫 ${esc(x.s.name)}<br>🚪 ${esc(x.c.name)}</div></div></div><button class="btn soft block" style="margin-top:11px" onclick="openStudent('${x.s.id}','${x.c.id}','${x.st.id}')">مشاهده پرونده</button></div>`).join('')}</div>`:empty('😕','نتیجه‌ای پیدا نشد','نام یا نام خانوادگی را بررسی کنید.')}
 
+function getTeacherName(){
+  return localStorage.getItem('teacher_name') || '';
+}
+function saveTeacherName(){
+  const el=document.getElementById('teacherName');
+  if(el) localStorage.setItem('teacher_name',el.value.trim());
+}
 function getBirthdayTemplate(){
-  const fallback='تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉 امیدوارم سالی پر از شادی، سلامتی و موفقیت داشته باشی.';
+  const fallback='تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉 امیدوارم سالی پر از شادی، سلامتی و موفقیت داشته باشی.\n\nبا احترام، {نام_معلم}';
   return localStorage.getItem('birthday_template') || fallback;
 }
 function saveBirthdayTemplate(){
@@ -370,10 +383,15 @@ function saveBirthdayTemplate(){
   if(el) localStorage.setItem('birthday_template',el.value);
 }
 function personalBirthdayMessage(st){
-  return getBirthdayTemplate()
+  let msg=getBirthdayTemplate()
     .replaceAll('{نام}',st.name||'')
     .replaceAll('{نام_خانوادگی}',st.lastName||'')
-    .replaceAll('{نام خانوادگی}',st.lastName||'');
+    .replaceAll('{نام خانوادگی}',st.lastName||'')
+    .replaceAll('{نام_معلم}',getTeacherName());
+  if(!msg.includes(getTeacherName()) && !msg.includes('{نام_معلم}') && getTeacherName()){
+    msg += '\n\nبا احترام، '+getTeacherName();
+  }
+  return msg;
 }
 function normalizePhone(p){
   let x=String(p||'').replace(/[^\d+]/g,'');
@@ -428,11 +446,13 @@ async function checkForUpdate(show=true){
 function renderBirthdays(){
   let items=[];
   db.schools.forEach(s=>s.classes.forEach(c=>c.students.forEach(st=>{
-    let m=(st.birth||'').match(/(\d{3,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+    const raw=String(st.birth||'').replace(/[۰-۹]/g,d=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)));
+    let m=raw.match(/(\d{3,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
     if(m){items.push({s,c,st,mo:+m[2],d:+m[3]})}
   })));
-  // ابتدا بر اساس ماه و روز تولد؛ در صورت یکسان بودن، نام خانوادگی
-  items.sort((a,b)=>(a.mo*31+a.d)-(b.mo*31+b.d) || (a.st.lastName||'').localeCompare(b.st.lastName||'','fa'));
+  // ترتیب ماه‌ها از مهر (ماه ۷) شروع می‌شود: مهر، آبان ... اسفند، فروردین ... شهریور
+  const monthOrder=mo=>((mo-7+12)%12);
+  items.sort((a,b)=>monthOrder(a.mo)-monthOrder(b.mo) || a.d-b.d || (a.st.lastName||'').localeCompare(b.st.lastName||'','fa'));
   const template=getBirthdayTemplate();
   birthdaysList.innerHTML=items.length?`<div class="grid">${items.map(x=>{
     const msg=personalBirthdayMessage(x.st);
@@ -516,7 +536,7 @@ window.addEventListener('pageshow',updateInstallButton);
 renderAll();
 restorePersistent();
 const appVersionText=document.getElementById('appVersionText'); if(appVersionText) appVersionText.textContent=fa(APP_VERSION); const topVersion=document.getElementById('topVersion'); if(topVersion) topVersion.textContent='v'+APP_VERSION;
-const bt=document.getElementById('birthdayTemplate'); if(bt) bt.value=getBirthdayTemplate();
+const bt=document.getElementById('birthdayTemplate'); if(bt) bt.value=getBirthdayTemplate(); const tn=document.getElementById('teacherName'); if(tn) tn.value=getTeacherName();
 </script>
 </body>
 </html>
