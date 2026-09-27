@@ -117,8 +117,8 @@ body{padding-bottom:92px!important}
     <label>👨‍🏫 نام معلم</label>
     <input id="teacherName" oninput="saveTeacherName()" placeholder="مثلاً رضا شهابی" value="">
   </div>
-  <p class="muted">در متن از <code>{نام}</code>، <code>{نام_خانوادگی}</code> و <code>{نام_معلم}</code> استفاده کن تا خودکار جایگزین شوند.</p>
-  <textarea id="birthdayTemplate" oninput="saveBirthdayTemplate()" placeholder="تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉">تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉 امیدوارم سالی پر از شادی، سلامتی و موفقیت داشته باشی.
+  <p class="muted">در متن از <code>{نام}</code>، <code>{نام_خانوادگی}</code>، <code>{علاقه}</code> و <code>{نام_معلم}</code> استفاده کن تا خودکار جایگزین شوند.</p>
+  <textarea id="birthdayTemplate" oninput="saveBirthdayTemplate()" placeholder="تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉">تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉 امیدوارم در {علاقه} همیشه موفق و شاد باشی و سالی پر از شادی و موفقیت داشته باشی.
 
 با احترام، {نام_معلم}</textarea>
 </div>
@@ -375,18 +375,30 @@ function saveTeacherName(){
   if(el) localStorage.setItem('teacher_name',el.value.trim());
 }
 function getBirthdayTemplate(){
-  const fallback='تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉 امیدوارم سالی پر از شادی، سلامتی و موفقیت داشته باشی.\n\nبا احترام، {نام_معلم}';
+  const fallback='تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉 امیدوارم در {علاقه} همیشه موفق و شاد باشی و سالی پر از شادی و موفقیت داشته باشی.\n\nبا احترام، {نام_معلم}';
   return localStorage.getItem('birthday_template') || fallback;
 }
 function saveBirthdayTemplate(){
   const el=document.getElementById('birthdayTemplate');
   if(el) localStorage.setItem('birthday_template',el.value);
 }
+function interestBirthdayLine(st){
+  const i=String(st.interests||'').trim();
+  if(!i) return 'علایق و چیزهایی که دوست داری';
+  const x=i.toLowerCase();
+  if(/فوتبال|ورزش|بسکتبال|والیبال|شنا|دوچرخه/.test(x)) return 'ورزش و رسیدن به هدف‌هایت';
+  if(/کتاب|مطالعه|داستان|نویس/.test(x)) return 'کتاب و دنیای زیبای مطالعه';
+  if(/نقاشی|هنر|موسیقی|ساز|گیتار|پیانو/.test(x)) return 'هنر و استعدادهای زیبایت';
+  if(/کامپیوتر|برنامه|بازی|گیم|ربات|تکنولوژی/.test(x)) return 'دنیای فناوری و چیزهایی که دوست داری';
+  if(/ریاضی|علوم|فیزیک|شیمی/.test(x)) return 'یادگیری و کشف چیزهای تازه';
+  return i;
+}
 function personalBirthdayMessage(st){
   let msg=getBirthdayTemplate()
     .replaceAll('{نام}',st.name||'')
     .replaceAll('{نام_خانوادگی}',st.lastName||'')
     .replaceAll('{نام خانوادگی}',st.lastName||'')
+    .replaceAll('{علاقه}',interestBirthdayLine(st))
     .replaceAll('{نام_معلم}',getTeacherName());
   if(!msg.includes(getTeacherName()) && !msg.includes('{نام_معلم}') && getTeacherName()){
     msg += '\n\nبا احترام، '+getTeacherName();
@@ -403,15 +415,16 @@ function findStudentGlobal(stid,cid,sid){return findStudent(sid,cid,stid)}
 function openBirthdaySender(stid,cid,sid){
   const st=findStudentGlobal(stid,cid,sid); if(!st)return;
   const msg=personalBirthdayMessage(st), phone=normalizePhone(st.phone||'');
-  const wa=phone?`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`:`https://wa.me/?text=${encodeURIComponent(msg)}`;
-  openModal(formHeader('💌 تبریک تولد')+
+  const smsHref=phone?`sms:+${phone}?body=${encodeURIComponent(msg)}`:`sms:?body=${encodeURIComponent(msg)}`;
+  openModal(formHeader('💌 تبریک تولد با پیامک')+
     `<p><b>${esc(st.name)} ${esc(st.lastName)}</b></p>
+     <div class="muted" style="margin-bottom:8px">علاقه: ${esc(st.interests||'ثبت نشده')}</div>
      <textarea id="birthdaySendText">${esc(msg)}</textarea>
      <div class="formactions">
-       <button class="btn primary" onclick="copyText(document.getElementById('birthdaySendText').value)">📋 کپی پیام</button>
-       <a class="btn soft" href="${wa}" target="_blank" rel="noopener">💬 باز کردن واتساپ</a>
+       <a class="btn primary" href="${smsHref}">📱 باز کردن پیامک</a>
+       <button class="btn soft" onclick="copyText(document.getElementById('birthdaySendText').value)">📋 کپی پیام</button>
      </div>
-     <p class="muted" style="margin-top:10px">برای امنیت، خود مرورگر اجازه ارسال بی‌اجازه پیام را نمی‌دهد؛ با دکمه واتساپ، پیام آماده باز می‌شود و ارسال نهایی با شماست.</p>`
+     <p class="muted" style="margin-top:10px">با «باز کردن پیامک»، برنامه پیامک گوشی باز می‌شود و متن و شماره در آن قرار می‌گیرد؛ ارسال نهایی با خود شماست.</p>`
   );
 }
 async function copyText(t){
