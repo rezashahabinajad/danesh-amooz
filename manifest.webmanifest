@@ -1,14 +1,12 @@
 {
   "name": "دانش‌آموز من",
   "short_name": "دانش‌آموز من",
-  "lang": "fa",
-  "dir": "rtl",
   "start_url": "./index.html",
-  "scope": "./",
   "display": "standalone",
   "background_color": "#f5f7fb",
   "theme_color": "#4f46e5",
-  "description": "برنامه مدیریت مدرسه، کلاس و دانش‌آموزان",
+  "dir": "rtl",
+  "lang": "fa",
   "icons": [
     {
       "src": "./icon-192.png",

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="2.2.0">
+<meta name="version" content="2.3.0">
 <title>دانش‌آموز من</title>
 <style>
 :root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#687386;--primary:#4f46e5;--primary2:#7c3aed;--green:#16a34a;--red:#dc2626;--gray:#64748b;--border:#e7eaf0;--shadow:0 8px 28px rgba(23,32,51,.07);--r:18px}
@@ -58,7 +58,7 @@ input,select,textarea{width:100%;border:1px solid var(--border);background:#fff;
 .bottom-nav .nav-icon{font-size:20px!important;margin-bottom:1px!important}
 body{padding-bottom:92px!important}
 
-/* v2.1.1: photo viewer, birthday message, update panel */
+/* v2.3.0: photo viewer, birthday, attendance, grades, behavior, update panel */
 .photo-viewer{display:none;position:fixed;inset:0;background:#000e;z-index:120;align-items:center;justify-content:center;padding:14px}
 .photo-viewer.show{display:flex}
 .photo-viewer img{max-width:96vw;max-height:82vh;object-fit:contain;border-radius:14px;box-shadow:0 10px 40px #0008}
@@ -85,7 +85,7 @@ body{padding-bottom:92px!important}
 </head>
 <body>
 <div class="app">
-<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v2.1.1</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
+<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v2.3.0</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
 
 <main class="container">
 <section id="dashboard" class="view active">
@@ -161,12 +161,13 @@ body{padding-bottom:92px!important}
   <div class="setting" style="margin-bottom:14px">
     <div><b>📱 افزودن به صفحه اصلی</b><span class="muted">برنامه را مثل یک اپ روی گوشی اجرا کنید.</span></div>
     <button id="installAppBtn" class="btn primary" onclick="installApp()">➕ افزودن</button>
+  <div id="installHint" class="muted" style="margin-top:7px"></div>
   </div>
 <h1 class="title">💾 پشتیبان‌گیری</h1>
 <p class="subtitle">اطلاعات شما فقط روی همین دستگاه ذخیره می‌شود.</p>
 <div class="card update-box">
   <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-    <div><b>🔄 بروزرسانی برنامه</b><div class="muted">نسخه نصب‌شده: <span id="appVersionText">۲.۲.۰</span></div></div>
+    <div><b>🔄 بروزرسانی برنامه</b><div class="muted">نسخه نصب‌شده: <span id="appVersionText">۲.۳.۰</span></div></div>
     <button class="btn primary" onclick="checkForUpdate(true)">🔄 بررسی بروزرسانی</button>
   </div>
   <div class="muted" id="updateStatus" style="margin-top:8px">آخرین نسخه همین نسخه است.</div>
@@ -293,6 +294,9 @@ function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt
 function findSchool(id){return db.schools.find(x=>x.id===id)}
 function findClass(sid,cid){return findSchool(sid)?.classes.find(x=>x.id===cid)}
 function findStudent(sid,cid,st){return findClass(sid,cid)?.students.find(x=>x.id===st)}
+function formHeader(title){return `<div class="sheethead"><h2>${esc(title)}</h2><button type="button" class="close" onclick="closeModal()" aria-label="بستن">×</button></div>`}
+function openModal(html){const modal=document.getElementById('modal'),sheet=document.getElementById('sheet');if(!modal||!sheet)return;sheet.innerHTML=html;modal.classList.add('show');document.body.style.overflow='hidden'}
+function closeModal(){const modal=document.getElementById('modal'),sheet=document.getElementById('sheet');if(modal)modal.classList.remove('show');if(sheet)sheet.innerHTML='';document.body.style.overflow=''}
 function sortStudents(a){return [...a].sort((x,y)=>(x.lastName||x.name||'').localeCompare(y.lastName||y.name||'fa',{fa:'IR'}))}
 function counts(){let classes=0,students=0;db.schools.forEach(s=>{classes+=s.classes.length;s.classes.forEach(c=>students+=c.students.length)});return{schools:db.schools.length,classes,students}}
 function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='dashboard')renderDashboard();if(id==='schools')renderSchools();if(id==='search'){document.getElementById('globalSearch').focus();renderSearch()}if(id==='birthdays'){const t=document.getElementById('birthdayTemplate');if(t)t.value=getBirthdayTemplate();const tn=document.getElementById('teacherName');if(tn)tn.value=getTeacherName();renderBirthdays();}if(id==='statuses')renderStatuses('good')}
@@ -317,7 +321,7 @@ function renderTopStudents(c){const top=topStudents(c);return `<div class="card"
 function openStudent(sid,cid,stid){currentSchoolId=sid;currentClassId=cid;currentStudentId=stid;let s=findSchool(sid),c=findClass(sid,cid),st=findStudent(sid,cid,stid);if(!st)return;behaviorData(st);gradesData(st);studentCrumb.textContent=st.name+' '+st.lastName;let status=st.status==='good'?'🟢 خوب':st.status==='attn'?'🔴 نیازمند توجه':'⚪ بدون وضعیت';let b=st.behavior, g=gradesData(st), score=behaviorScore(st), avg=avgGrade(st);studentDetailContent.innerHTML=`<div class="card"><div class="student"><div class="avatar ${st.photo?'photo-clickable':''}" style="width:82px;height:82px;font-size:32px" ${st.photo?`onclick="openPhotoViewer('${st.photo.replace(/'/g,"\\'")}','${safeFileName(st.name+'-'+st.lastName)}.jpg')"`:''}>${st.photo?`<img src="${st.photo}">`:esc((st.name||'?')[0])}</div><div><h1 class="title">${esc(st.name||'')} ${esc(st.lastName||'')}</h1><div class="muted">${esc(s.name)} · ${esc(c.name)} · ${esc(c.grade||'')}</div><div class="chips"><span class="status ${st.status||'none'}">${status}</span><span class="chip">➕ ${fa(b.positives.length)}</span><span class="chip">➖ ${fa(b.negatives.length)}</span><span class="chip">⭐ ${fmtScore(score)}</span>${avg!==null?`<span class="chip">📚 میانگین ${fmtScore(avg)}</span>`:''}</div></div></div><hr style="border:0;border-top:1px solid var(--border);margin:18px 0"><div class="formgrid"><div><b>🎂 تاریخ تولد</b><p class="muted">${esc(st.birth||'ثبت نشده')}</p></div><div><b>☎ شماره تلفن</b><p class="muted">${esc(st.phone||'ثبت نشده')}</p></div><div class="field full"><b>❤️ علایق</b><p class="muted">${esc(st.interests||'ثبت نشده')}</p></div><div class="field full"><b>🔒 یادداشت خصوصی معلم</b><p class="muted">${esc(st.notes||'ثبت نشده')}</p></div></div></div>
 <div class="card" style="margin-top:14px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div><b>➕➖ امتیاز رفتاری</b><div class="muted">هر مثبت +${fmtScore(behaviorValues().positive)} · هر منفی −${fmtScore(behaviorValues().negative)}</div></div><b>امتیاز: ${fmtScore(score)}</b></div><div class="actions"><button class="btn primary" onclick="addBehavior('${sid}','${cid}','${stid}','positive')">➕ مثبت</button><button class="btn danger" onclick="addBehavior('${sid}','${cid}','${stid}','negative')">➖ منفی</button></div><div style="margin-top:12px;display:grid;gap:7px">${[...b.positives.map(x=>({...x,type:'positive'})),...b.negatives.map(x=>({...x,type:'negative'}))].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,8).map(x=>`<div style="padding:9px;background:#f8fafc;border-radius:12px"><b>${x.type==='positive'?'➕':'➖'} ${esc(x.reason)}</b><div class="muted">${formatEventDate(x.date)}</div></div>`).join('')||'<div class="muted">هنوز موردی ثبت نشده است.</div>'}</div></div>
 <div class="card" style="margin-top:14px"><div style="display:flex;justify-content:space-between;align-items:center"><div><b>📚 نمره‌ها</b><div class="muted">میانگین خودکار: ${avg===null?'—':fmtScore(avg)}</div></div><button class="btn primary" onclick="addGrade('${sid}','${cid}','${stid}')">＋ ثبت نمره</button></div><div style="margin-top:10px;display:grid;gap:7px">${g.slice().sort((a,b)=>new Date(b.date)-new Date(a.date)).map(x=>`<div style="padding:10px;background:#f8fafc;border-radius:12px;display:flex;justify-content:space-between;gap:8px"><div><b>${esc(x.subject||'بدون عنوان')}</b><div class="muted">معلم: ${esc(x.teacher||'ثبت نشده')} · ${formatEventDate(x.date)}</div></div><b>${fmtScore(x.score)}</b></div>`).join('')||'<div class="muted">هنوز نمره‌ای ثبت نشده است.</div>'}</div></div>
-<div class="actions"><button class="btn primary" onclick="editStudent('${sid}','${cid}','${stid}')">ویرایش</button><button class="btn soft" onclick="moveStudent('${sid}','${cid}','${stid}')">🔀 انتقال کلاس</button><button class="btn danger" onclick="deleteStudent('${sid}','${cid}','${stid}')">حذف</button></div>`;save();showView('studentDetail')}
+<div class="actions"><button class="btn primary" onclick="editStudent('${sid}','${cid}','${stid}')">ویرایش</button><button class="btn soft" onclick="moveStudent('${sid}','${cid}','${stid}')">🔀 انتقال کلاس</button><button class="btn danger" onclick="deleteStudent('${sid}','${cid}','${stid}')">حذف</button></div>`;showView('studentDetail')}
 
 function addSchool(){openModal(formHeader('🏫 افزودن مدرسه')+`<form onsubmit="saveSchool(event)"><div class="formgrid"><div class="field full"><label>نام مدرسه</label><input id="fName" required placeholder="مثلاً دبیرستان شهید بهشتی"></div><div class="field full"><label>سال تحصیلی</label><input id="fYear" value="۱۴۰۵/۱۴۰۶" placeholder="۱۴۰۵/۱۴۰۶"></div></div><div class="formactions"><button class="btn primary">ذخیره</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div></form>`)}
 function editSchool(id){let s=findSchool(id);openModal(formHeader('ویرایش مدرسه')+`<form onsubmit="updateSchool(event,'${id}')"><div class="field"><label>نام مدرسه</label><input id="fName" required value="${esc(s.name)}"></div><div class="field" style="margin-top:12px"><label>سال تحصیلی</label><input id="fYear" value="${esc(s.year||'')}"></div><div class="formactions"><button class="btn primary">ذخیره</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div></form>`)}
