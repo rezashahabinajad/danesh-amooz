@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="3.0.0">
+<meta name="version" content="3.1.0">
 <title>دانش‌آموز من</title>
 <style>
 :root{--bg:#fffaf5;--card:#fff;--text:#172033;--muted:#687386;--primary:#ea580c;--primary2:#f97316;--green:#10b981;--red:#ef4444;--gray:#64748b;--border:#ffedd5;--shadow:0 8px 28px rgba(234,88,12,0.08);--r:18px;--orange:#f97316;--orange-light:#fff7ed}
@@ -98,7 +98,7 @@ input,select,textarea{width:100%;border:1px solid var(--border);background:#fff;
 </head>
 <body>
 <div class="app">
-<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v3.0.0 (نارنجی)</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
+<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v3.1.0</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
 
 <main class="container">
 <section id="dashboard" class="view active">
@@ -199,9 +199,9 @@ input,select,textarea{width:100%;border:1px solid var(--border);background:#fff;
 <script>
 const KEY='danesh_amooz_man_v1';
 
-// سیستم ترمیم دیتابیس (جلوگیری از صفحه سفید)
+// سیستم هوشمند ترمیم پایگاه داده (برای جلوگیری از سفیدی صفحه)
 function sanitizeDb(data){
-  if(!data) data={version:1,schools:[]};
+  if(!data || typeof data !== 'object') data={version:1,schools:[]};
   if(!Array.isArray(data.schools)) data.schools=[];
   data.schools.forEach(s=>{
     if(!s.id) s.id=uid();
@@ -227,9 +227,16 @@ function sanitizeDb(data){
   return data;
 }
 
-let db=load(), currentSchoolId=null, currentClassId=null, currentStudentId=null;
+let db={version:1,schools:[]}, currentSchoolId=null, currentClassId=null, currentStudentId=null;
+
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
-function load(){try{const d = JSON.parse(localStorage.getItem(KEY)); return sanitizeDb(d);}catch(e){return{version:1,schools:[]}}}
+function load(){
+    try{
+        const d = JSON.parse(localStorage.getItem(KEY)); 
+        return sanitizeDb(d);
+    }catch(e){ return {version:1,schools:[]}; }
+}
+
 const DB_NAME='danesh_amooz_man_storage', DB_STORE='app';
 function openStorage(){return new Promise((resolve,reject)=>{const r=indexedDB.open(DB_NAME,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(DB_STORE))r.result.createObjectStore(DB_STORE)};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
 async function savePersistent(){
@@ -289,6 +296,14 @@ function formHeader(title){return `<div class="sheethead"><h2>${esc(title)}</h2>
 function openModal(html){const m=document.getElementById('modal'),s=document.getElementById('sheet');if(!m||!s)return;s.innerHTML=html;m.classList.add('show');document.body.style.overflow='hidden'}
 function closeModal(){const m=document.getElementById('modal');if(m)m.classList.remove('show');document.body.style.overflow=''}
 
+// فرمت‌دهی هوشمند نام (نمایش نام پدر در صورت وجود)
+function formatStudentName(st) {
+    let nameStr = `${esc(st.lastName||'')} ${esc(st.name||'')}`;
+    if(st.fatherName) nameStr += ` <span style="font-size:12px; color:var(--muted)">(${esc(st.fatherName)})</span>`;
+    return nameStr;
+}
+
+// مرتب‌سازی هوشمند: نام خانوادگی، سپس نام
 function sortStudents(a){return [...a].sort((x,y)=>{
     const lastCmp = (x.lastName||'').localeCompare(y.lastName||'','fa',{fa:'IR'});
     return lastCmp !== 0 ? lastCmp : (x.name||'').localeCompare(y.name||'','fa',{fa:'IR'});
@@ -296,13 +311,22 @@ function sortStudents(a){return [...a].sort((x,y)=>{
 function counts(){let c=0,st=0;db.schools.forEach(s=>{c+=s.classes.length;s.classes.forEach(cl=>st+=cl.students.length)});return{schools:db.schools.length,classes:c,students:st}}
 
 function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='dashboard')renderDashboard();if(id==='schools')renderSchools();if(id==='search')document.getElementById('globalSearch').focus();if(id==='backup'){document.getElementById('behaviorPositiveDefault').value=behaviorValues().positive;document.getElementById('behaviorNegativeDefault').value=behaviorValues().negative;}if(id==='birthdays')renderBirthdays();if(id==='statuses')renderStatuses('good')}
-function renderAll(){if(document.getElementById('dashboard').classList.contains('active'))renderDashboard();if(document.getElementById('schools').classList.contains('active'))renderSchools();if(document.getElementById('schoolDetail').classList.contains('active'))openSchool(currentSchoolId);if(document.getElementById('classDetail').classList.contains('active'))openClass(currentSchoolId,currentClassId);if(document.getElementById('studentDetail').classList.contains('active'))openStudent(currentSchoolId,currentClassId,currentStudentId)}
+function renderAll(){
+    if(!document.getElementById('dashboard')) return; // جلوگیری از کرش
+    if(document.getElementById('dashboard').classList.contains('active'))renderDashboard();
+    if(document.getElementById('schools').classList.contains('active'))renderSchools();
+    if(document.getElementById('schoolDetail').classList.contains('active'))openSchool(currentSchoolId);
+    if(document.getElementById('classDetail').classList.contains('active'))openClass(currentSchoolId,currentClassId);
+    if(document.getElementById('studentDetail').classList.contains('active'))openStudent(currentSchoolId,currentClassId,currentStudentId);
+}
 
 function getJalaliDayOfYear(m, d) { if (m <= 6) return (m - 1) * 31 + d; return 186 + (m - 7) * 30 + d; }
 
 function renderDashboard(){
     let c=counts();
-    statSchools.textContent=fa(c.schools);statClasses.textContent=fa(c.classes);statStudents.textContent=fa(c.students);
+    document.getElementById('statSchools').textContent=fa(c.schools);
+    document.getElementById('statClasses').textContent=fa(c.classes);
+    document.getElementById('statStudents').textContent=fa(c.students);
     
     const sBox = document.getElementById('dashboardSchools');
     if(sBox) {
@@ -331,7 +355,7 @@ function renderDashBirthdays() {
         if(m) {
             const bMonth = +m[2], bDay = +m[3];
             let diff = getJalaliDayOfYear(bMonth, bDay) - todayDOY;
-            if (diff < 0) diff += 365; // گذشته ها آخر
+            if (diff < 0) diff += 365;
             if (diff <= 7 || diff >= 364) upcomings.push({s,c,st, bDay, bMonth, diff});
         }
     })));
@@ -346,7 +370,7 @@ function renderDashBirthdays() {
             ${upcomings.map(x => `
             <div class="dash-b-item">
                 <div>
-                    <b style="color:var(--primary); font-size:15px; display:block">${esc(x.st.lastName)} ${esc(x.st.name)}</b>
+                    <b style="color:var(--primary); font-size:15px; display:block">${formatStudentName(x.st)}</b>
                     <span class="muted" style="font-size:12px">${esc(x.c.name)} · ${fa(x.bDay)} / ${fa(x.bMonth)}</span>
                 </div>
                 <button class="dash-b-btn" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 پیام</button>
@@ -400,7 +424,7 @@ function renderBirthdays(){
     return `<div class="b-card ${isPast?'past':''}">
       <div class="b-head">
         <div style="flex:1">
-          <b style="font-size:17px; color:#1e293b; display:block">${esc(x.st.lastName)} ${esc(x.st.name)}</b>
+          <b style="font-size:17px; color:#1e293b; display:block">${formatStudentName(x.st)}</b>
           <div class="muted" style="margin-top:4px">${fa(x.st.birth)}<br>${esc(x.s.name)} · ${esc(x.c.name)}</div>
         </div>
         <div class="b-avatar">${x.st.photo?`<img src="${x.st.photo}" style="width:100%;height:100%;border-radius:16px;object-fit:cover">`:'🎂'}</div>
@@ -484,7 +508,7 @@ function renderTodayListInner(sid, cid) {
             <div style="display:flex; align-items:center; gap:10px; flex:1; min-width:0">
                 <button class="td-att-btn ${isAbs?'absent':'present'}" onclick="inlAtt('${sid}','${cid}','${st.id}')">${isAbs?'✖':'✓'}</button>
                 <div style="min-width:0; overflow:hidden">
-                    <b style="font-size:15px; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer" onclick="openStudent('${sid}','${cid}','${st.id}')">${esc(st.lastName)} ${esc(st.name)}</b>
+                    <b style="font-size:15px; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b>
                     <div class="muted" style="font-size:11px; margin-top:4px">➕ ${fa(b.positives.length)} · ➖ ${fa(b.negatives.length)}</div>
                 </div>
             </div>
@@ -555,7 +579,7 @@ window.inlAllPresent = function(sid,cid) {
     save(); renderTodayListInner(sid,cid); toast('همه حاضر شدند');
 }
 
-function studentCard(s,c,st){let status=st.status==='good'?'<span class="status good">🟢 خوب</span>':st.status==='attn'?'<span class="status attn">🔴 نیازمند توجه</span>':'<span class="status none">⚪ بدون وضعیت</span>';return `<div class="card studentcard"><div class="student"><div class="avatar ${st.photo?'photo-clickable':''}" ${st.photo?`onclick="event.stopPropagation();openPhotoViewer('${st.photo.replace(/'/g,"\\'")}','${safeFileName(st.name+'-'+st.lastName)}.jpg')"`:''}>${st.photo?`<img src="${st.photo}">`:esc((st.name||'?')[0])}</div><div style="min-width:0;flex:1"><b>${esc(st.lastName||'')} ${esc(st.name||'')}</b><div style="margin-top:5px">${status}</div></div></div><div class="actions"><button class="btn soft" style="flex:1" onclick="openStudent('${s.id}','${c.id}','${st.id}')">پرونده دانش‌آموز</button></div></div>`}
+function studentCard(s,c,st){let status=st.status==='good'?'<span class="status good">🟢 خوب</span>':st.status==='attn'?'<span class="status attn">🔴 نیازمند توجه</span>':'<span class="status none">⚪ بدون وضعیت</span>';return `<div class="card studentcard"><div class="student"><div class="avatar ${st.photo?'photo-clickable':''}" ${st.photo?`onclick="event.stopPropagation();openPhotoViewer('${st.photo.replace(/'/g,"\\'")}','${safeFileName(st.name+'-'+st.lastName)}.jpg')"`:''}>${st.photo?`<img src="${st.photo}">`:esc((st.name||'?')[0])}</div><div style="min-width:0;flex:1"><b>${formatStudentName(st)}</b><div style="margin-top:5px">${status}</div></div></div><div class="actions"><button class="btn soft" style="flex:1" onclick="openStudent('${s.id}','${c.id}','${st.id}')">پرونده دانش‌آموز</button></div></div>`}
 
 function cloneJSON(x){try{return JSON.parse(JSON.stringify(x))}catch(e){return x}}
 function ensureTerms(c){if(!c)return null;if(!Array.isArray(c.terms)||!c.terms.length){const tid=uid();c.terms=[{id:tid,name:'ترم ۱',createdAt:new Date().toISOString()}];c.activeTermId=tid;c.termArchives={};}if(!c.activeTermId||!c.terms.some(t=>t.id===c.activeTermId))c.activeTermId=c.terms[0].id;if(!c.termArchives||typeof c.termArchives!=='object')c.termArchives={};return c}
@@ -574,7 +598,7 @@ function finalAvgGrade(st){const a=avgGrade(st);if(a===null)return null;return M
 function fmtScore(n){return Number(n).toLocaleString('fa-IR',{maximumFractionDigits:2})}
 function formatEventDate(x){try{return new Date(x).toLocaleString('fa-IR-u-ca-persian',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(e){return x||''}}
 
-function openStudent(sid,cid,stid){currentSchoolId=sid;currentClassId=cid;currentStudentId=stid;let s=findSchool(sid),c=findClass(sid,cid),st=findStudent(sid,cid,stid);if(!st)return;behaviorData(st);gradesData(st);studentCrumb.textContent=st.lastName+' '+st.name;let status=st.status==='good'?'🟢 خوب':st.status==='attn'?'🔴 نیازمند توجه':'⚪ بدون وضعیت';let b=st.behavior, g=gradesData(st), score=behaviorScore(st), avg=avgGrade(st), finalAvg=finalAvgGrade(st);studentDetailContent.innerHTML=`<div class="card"><div class="student"><div class="avatar ${st.photo?'photo-clickable':''}" style="width:82px;height:82px;font-size:32px" ${st.photo?`onclick="openPhotoViewer('${st.photo.replace(/'/g,"\\'")}','${safeFileName(st.name+'-'+st.lastName)}.jpg')"`:''}>${st.photo?`<img src="${st.photo}">`:esc((st.name||'?')[0])}</div><div><h1 class="title">${esc(st.lastName||'')} ${esc(st.name||'')}</h1><div class="muted">${esc(s.name)} · ${esc(c.name)}</div><div class="chips"><span class="status ${st.status||'none'}">${status}</span><span class="chip">➕ ${fa(b.positives.length)}</span><span class="chip">➖ ${fa(b.negatives.length)}</span><span class="chip">⭐ ${fmtScore(score)}</span>${avg!==null?`<span class="chip">📚 درسی ${fmtScore(avg)}</span><span class="chip">⭐ نهایی ${fmtScore(finalAvg)}</span>`:''}</div></div></div><hr style="border:0;border-top:1px solid var(--border);margin:18px 0"><div class="formgrid"><div><b>🎂 تاریخ تولد</b><p class="muted">${esc(st.birth||'ثبت نشده')}</p></div><div><b>☎ شماره تلفن</b><p class="muted">${esc(st.phone||'ثبت نشده')}</p></div><div class="field full"><b>❤️ علایق</b><p class="muted">${esc(st.interests||'ثبت نشده')}</p></div><div class="field full"><b>🔒 یادداشت معلم</b><p class="muted">${esc(st.notes||'ثبت نشده')}</p></div></div></div>
+function openStudent(sid,cid,stid){currentSchoolId=sid;currentClassId=cid;currentStudentId=stid;let s=findSchool(sid),c=findClass(sid,cid),st=findStudent(sid,cid,stid);if(!st)return;behaviorData(st);gradesData(st);studentCrumb.textContent=st.lastName+' '+st.name;let status=st.status==='good'?'🟢 خوب':st.status==='attn'?'🔴 نیازمند توجه':'⚪ بدون وضعیت';let b=st.behavior, g=gradesData(st), score=behaviorScore(st), avg=avgGrade(st), finalAvg=finalAvgGrade(st);studentDetailContent.innerHTML=`<div class="card"><div class="student"><div class="avatar ${st.photo?'photo-clickable':''}" style="width:82px;height:82px;font-size:32px" ${st.photo?`onclick="openPhotoViewer('${st.photo.replace(/'/g,"\\'")}','${safeFileName(st.name+'-'+st.lastName)}.jpg')"`:''}>${st.photo?`<img src="${st.photo}">`:esc((st.name||'?')[0])}</div><div><h1 class="title">${formatStudentName(st)}</h1><div class="muted">${esc(s.name)} · ${esc(c.name)}</div><div class="chips"><span class="status ${st.status||'none'}">${status}</span><span class="chip">➕ ${fa(b.positives.length)}</span><span class="chip">➖ ${fa(b.negatives.length)}</span><span class="chip">⭐ ${fmtScore(score)}</span>${avg!==null?`<span class="chip">📚 درسی ${fmtScore(avg)}</span><span class="chip">⭐ نهایی ${fmtScore(finalAvg)}</span>`:''}</div></div></div><hr style="border:0;border-top:1px solid var(--border);margin:18px 0"><div class="formgrid"><div><b>🎂 تاریخ تولد</b><p class="muted">${esc(st.birth||'ثبت نشده')}</p></div><div><b>☎ شماره تلفن</b><p class="muted">${esc(st.phone||'ثبت نشده')}</p></div><div class="field full"><b>❤️ علایق</b><p class="muted">${esc(st.interests||'ثبت نشده')}</p></div><div class="field full"><b>🔒 یادداشت معلم</b><p class="muted">${esc(st.notes||'ثبت نشده')}</p></div></div></div>
 <div class="card" style="margin-top:14px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div><b>➕➖ امتیاز رفتاری</b></div><b>خالص: ${fmtScore(score)}</b></div><div class="actions" style="margin-top:10px"><button class="btn primary" onclick="addBehavior('${sid}','${cid}','${stid}','positive')">➕ مثبت</button><button class="btn danger" onclick="addBehavior('${sid}','${cid}','${stid}','negative')">➖ منفی</button></div><div style="margin-top:12px;display:grid;gap:7px">${[...b.positives.map(x=>({...x,type:'positive'})),...b.negatives.map(x=>({...x,type:'negative'}))].sort((a,b)=>new Date(b.date)-new Date(a.date)).map(x=>`<div style="padding:9px;background:#f8fafc;border-radius:12px"><div style="display:flex;justify-content:space-between;gap:8px"><b>${x.type==='positive'?'➕':'➖'} ${esc(x.reason)}</b><b>${x.type==='positive'?'+':'−'}${fmtScore(behaviorEventValue(x,x.type))}</b></div><div class="muted">${formatEventDate(x.date)}${x.code?' · کد '+esc(x.code):''}</div><div class="actions no-print" style="margin-top:6px"><button class="btn gray" style="min-height:32px;padding:5px 9px" onclick="editBehavior('${sid}','${cid}','${stid}','${x.type}','${x.id}')">✎</button><button class="btn danger" style="min-height:32px;padding:5px 9px" onclick="deleteBehavior('${sid}','${cid}','${stid}','${x.type}','${x.id}')">حذف</button></div></div>`).join('')||'<div class="muted">موردی نیست.</div>'}</div></div>
 <div class="card" style="margin-top:14px"><div style="display:flex;justify-content:space-between;align-items:center"><div><b>📚 نمره‌ها</b></div><button class="btn primary" onclick="addGrade('${sid}','${cid}','${stid}')">＋ نمره</button></div><div style="margin-top:10px;display:grid;gap:7px">${g.slice().sort((a,b)=>new Date(b.date)-new Date(a.date)).map(x=>`<div style="padding:10px;background:#f8fafc;border-radius:12px"><div style="display:flex;justify-content:space-between;gap:8px"><div><b>${esc(x.subject||'بدون عنوان')}</b><div class="muted">${formatEventDate(x.date)}</div></div><b>${fmtScore(x.score)}</b></div><div class="actions no-print" style="margin-top:6px"><button class="btn gray" style="min-height:32px;padding:5px 9px" onclick="editGrade('${sid}','${cid}','${stid}','${x.id}')">✎</button><button class="btn danger" style="min-height:32px;padding:5px 9px" onclick="deleteGrade('${sid}','${cid}','${stid}','${x.id}')">حذف</button></div></div>`).join('')||'<div class="muted">نمره‌ای نیست.</div>'}</div></div>
 <div class="actions"><button class="btn primary" onclick="editStudent('${sid}','${cid}','${stid}')">ویرایش</button><button class="btn soft" onclick="openStudentReport('${sid}','${cid}','${stid}')">📄 گزارش</button><button class="btn soft" onclick="copyStudentAdvanced('${sid}','${cid}','${stid}')">📋 کپی</button><button class="btn danger" onclick="deleteStudent('${sid}','${cid}','${stid}')">حذف</button></div>`;showView('studentDetail')}
@@ -594,11 +618,14 @@ function updateClass(e,sid,cid){ handleFormSubmit(e, () => { let c=findClass(sid
 
 function addStudent(sid,cid){studentForm(sid,cid,null)}
 function editStudent(sid,cid,stid){studentForm(sid,cid,findStudent(sid,cid,stid))}
-function studentForm(sid,cid,st){let editing=!!st, photo=st?.photo||'';openModal(formHeader(editing?'ویرایش':'👨‍🎓 افزودن دانش‌آموز')+`<form onsubmit="saveStudent(event,'${sid}','${cid}',${editing?`'${st.id}'`:'null'})"><div class="photo-input"><div class="photo-preview" id="photoPreview">${photo?`<img src="${photo}">`:'👤'}</div><div style="display:flex;flex-wrap:wrap;gap:7px"><label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="previewPhoto(event)"></label><label class="btn soft">🖼️ گالری<input type="file" accept="image/*" hidden onchange="previewPhoto(event)"></label><input id="photoData" type="hidden" value="${esc(photo)}"></div></div><div class="formgrid" style="margin-top:15px"><div class="field"><label>نام</label><input id="stName" required value="${esc(st?.name||'')}"></div><div class="field"><label>نام خانوادگی</label><input id="stLast" required value="${esc(st?.lastName||'')}"></div><div class="field"><label>تولد شمسی</label><input id="stBirth" placeholder="مثلاً ۱۳۹۳/۰۵/۲۱" value="${esc(st?.birth||'')}"></div><div class="field"><label>تلفن</label><input id="stPhone" inputmode="tel" value="${esc(st?.phone||'')}"></div><div class="field full"><label>علایق</label><input id="stInterests" value="${esc(st?.interests||'')}"></div><div class="field"><label>وضعیت</label><select id="stStatus"><option value="none" ${!st||st.status==='none'?'selected':''}>⚪ بدون وضعیت</option><option value="good" ${st?.status==='good'?'selected':''}>🟢 خوب</option><option value="attn" ${st?.status==='attn'?'selected':''}>🔴 توجه</option></select></div><div class="field full"><label>یادداشت</label><textarea id="stNotes">${esc(st?.notes||'')}</textarea></div></div><div class="formactions"><button type="submit" class="btn primary">ذخیره</button></div></form>`)}
+function studentForm(sid,cid,st){
+    let editing=!!st, photo=st?.photo||'';
+    openModal(formHeader(editing?'ویرایش':'👨‍🎓 افزودن دانش‌آموز')+`<form onsubmit="saveStudent(event,'${sid}','${cid}',${editing?`'${st.id}'`:'null'})"><div class="photo-input"><div class="photo-preview" id="photoPreview">${photo?`<img src="${photo}">`:'👤'}</div><div style="display:flex;flex-wrap:wrap;gap:7px"><label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="previewPhoto(event)"></label><label class="btn soft">🖼️ گالری<input type="file" accept="image/*" hidden onchange="previewPhoto(event)"></label><input id="photoData" type="hidden" value="${esc(photo)}"></div></div><div class="formgrid" style="margin-top:15px"><div class="field"><label>نام</label><input id="stName" required value="${esc(st?.name||'')}"></div><div class="field"><label>نام خانوادگی</label><input id="stLast" required value="${esc(st?.lastName||'')}"></div><div class="field full"><label>نام پدر (برای تشابه اسمی)</label><input id="stFather" value="${esc(st?.fatherName||'')}"></div><div class="field"><label>تولد شمسی</label><input id="stBirth" placeholder="مثلاً ۱۳۹۳/۰۵/۲۱" value="${esc(st?.birth||'')}"></div><div class="field"><label>تلفن</label><input id="stPhone" inputmode="tel" value="${esc(st?.phone||'')}"></div><div class="field full"><label>علایق</label><input id="stInterests" value="${esc(st?.interests||'')}"></div><div class="field"><label>وضعیت</label><select id="stStatus"><option value="none" ${!st||st.status==='none'?'selected':''}>⚪ بدون وضعیت</option><option value="good" ${st?.status==='good'?'selected':''}>🟢 خوب</option><option value="attn" ${st?.status==='attn'?'selected':''}>🔴 توجه</option></select></div><div class="field full"><label>یادداشت</label><textarea id="stNotes">${esc(st?.notes||'')}</textarea></div></div><div class="formactions"><button type="submit" class="btn primary">ذخیره</button></div></form>`)
+}
 async function previewPhoto(e){let f=e.target.files[0];if(!f)return;try{let data=await compressImage(f);photoPreview.innerHTML=`<img src="${data}">`;photoData.value=data;}catch(err){}e.target.value=''}
 function saveStudent(e,sid,cid,stid){ handleFormSubmit(e, () => {
     let c=findClass(sid,cid),old=stid?findStudent(sid,cid,stid):null;
-    let st={...(old||{}),id:stid||uid(),photo:photoData.value,name:stName.value.trim(),lastName:stLast.value.trim(),birth:stBirth.value.trim(),phone:stPhone.value.trim(),interests:stInterests.value.trim(),notes:stNotes.value.trim(),status:stStatus.value};
+    let st={...(old||{}),id:stid||uid(),photo:photoData.value,name:stName.value.trim(),lastName:stLast.value.trim(),fatherName:stFather.value.trim(),birth:stBirth.value.trim(),phone:stPhone.value.trim(),interests:stInterests.value.trim(),notes:stNotes.value.trim(),status:stStatus.value};
     behaviorData(st);gradesData(st);
     if(stid){let i=c.students.findIndex(x=>x.id===stid);c.students[i]=st}else c.students.push(st);
     closeModal();save();openClass(sid,cid);toast(stid?'به‌روز شد':'اضافه شد');
@@ -698,9 +725,9 @@ function renderAttendance(sid=currentSchoolId,cid=currentClassId){
   const s=findSchool(sid),c=findClass(sid,cid);if(!s||!c)return;attendanceData(c);
   const dates=attendanceDates(c),students=sortStudents(c.students||[]),step=Number(c.attendanceSettings.intervalDays)||7;
   const isCustom = (c.attendanceSettings.weekDays || []).length > 0;
-  const header=`<div class="detailhead"><div class="school-head"><div><h1 class="title">📋 جدول کل ترم</h1><div class="muted">${esc(s.name)} · ${esc(c.name)}</div></div><div class="school-icon">📋</div></div><div class="att-actions"><button class="btn soft" onclick="editAttendanceSettings('${sid}','${cid}')">⚙ تنظیم جلسه‌ها</button><button class="btn gray" onclick="addAttendanceDate('${sid}','${cid}')">＋ افزودن جلسه</button><button class="btn primary" onclick="openExportCenter('${sid}','${cid}')">📤 خروجی</button></div></div>`;
+  const header=`<div class="detailhead"><div class="school-head"><div><h1 class="title">📋 جدول کل ترم</h1><div class="muted">${esc(s.name)} · ${esc(c.name)}</div></div><div class="school-icon">📋</div></div><div class="att-actions"><button class="btn soft" onclick="editAttendanceSettings('${sid}','${cid}')">⚙ تنظیم جلسه‌ها</button><button class="btn primary" onclick="openExportCenter('${sid}','${cid}')">📤 خروجی</button></div></div>`;
   if(!students.length){attendanceContent.innerHTML=header+empty('👨‍🎓','دانش‌آموزی ثبت نشده','ابتدا دانش‌آموزان کلاس را اضافه کنید.');return}
-  const table=`<div class="card"><div class="att-wrap"><table class="att-table"><thead><tr><th>دانش‌آموز</th>${dates.map(d=>`<th><button class="link att-date" onclick="editAttendanceDate('${sid}','${cid}','${d}')">✎ ${formatAttendanceDate(d)}</button></th>`).join('')}</tr></thead><tbody>${students.map(st=>{const hasAbsent=dates.some(d=>attendanceStatus(c,d,st.id)==='absent');return `<tr><td><b>${esc(st.lastName)} ${esc(st.name)}</b>${hasAbsent&&st.phone?`<div style="margin-top:4px"><a class="btn danger" style="padding:4px 7px;font-size:10px;text-decoration:none" href="tel:${esc(st.phone)}">📞 تماس</a></div>`:''}</td>${dates.map(d=>{const absent=attendanceStatus(c,d,st.id)==='absent',sc=attendanceScore(c,d,st.id);return `<td><div class="att-combo"><button class="att-cell ${absent?'absent':'present'}" onclick="toggleAttendance('${sid}','${cid}','${st.id}','${d}')">${absent?'✖':'✓'}</button><input class="att-score-input" type="number" min="0" max="20" step="0.01" value="${sc===null?'':sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${d}',this.value)"></div></td>`}).join('')}</tr>`}).join('')}</tbody></table></div></div>`;attendanceContent.innerHTML=header+table;
+  const table=`<div class="card"><div class="att-wrap"><table class="att-table"><thead><tr><th>دانش‌آموز</th>${dates.map(d=>`<th><button class="link att-date" onclick="editAttendanceDate('${sid}','${cid}','${d}')">✎ ${formatAttendanceDate(d)}</button></th>`).join('')}</tr></thead><tbody>${students.map(st=>{const hasAbsent=dates.some(d=>attendanceStatus(c,d,st.id)==='absent');return `<tr><td><b>${formatStudentName(st)}</b>${hasAbsent&&st.phone?`<div style="margin-top:4px"><a class="btn danger" style="padding:4px 7px;font-size:10px;text-decoration:none" href="tel:${esc(st.phone)}">📞 تماس</a></div>`:''}</td>${dates.map(d=>{const absent=attendanceStatus(c,d,st.id)==='absent',sc=attendanceScore(c,d,st.id);return `<td><div class="att-combo"><button class="att-cell ${absent?'absent':'present'}" onclick="toggleAttendance('${sid}','${cid}','${st.id}','${d}')">${absent?'✖':'✓'}</button><input class="att-score-input" type="number" min="0" max="20" step="0.01" value="${sc===null?'':sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${d}',this.value)"></div></td>`}).join('')}</tr>`}).join('')}</tbody></table></div></div>`;attendanceContent.innerHTML=header+table;
 }
 function saveAttendanceGrade(sid,cid,stid,date,value){const c=findClass(sid,cid),st=findStudent(sid,cid,stid);if(!c||!st)return;attendanceData(c);const normalizedValue=enDigits(String(value).trim());const n=normalizedValue===''?null:Number(normalizedValue);if(n!==null&&(!Number.isFinite(n)||n<0||n>20)){alert('نمره باید بین ۰ تا ۲۰ باشد.');renderAttendance(sid,cid);return}if(!c.attendance[date])c.attendance[date]={};if(n===null){if(c.attendance[date][stid]&&typeof c.attendance[date][stid]==='object')delete c.attendance[date][stid].score;const gi=gradesData(st).findIndex(g=>g.source==='attendance'&&g.attendanceDate===date);if(gi>=0)st.grades.splice(gi,1);save();return}const rec=attendanceRecord(c,date,stid);c.attendance[date][stid]={...rec,status:rec.status||'present',score:n};const existing=gradesData(st).find(g=>g.source==='attendance'&&g.attendanceDate===date);const record={id:existing?.id||uid(),date:new Date().toISOString(),subject:`ارزیابی ${formatJalaliDate(date)}`,teacher:'',score:n,source:'attendance',attendanceDate:date};if(existing)Object.assign(existing,record);else gradesData(st).push(record);save();toast('نمره ذخیره شد')}
 function editAttendanceDate(sid,cid,oldDate){
@@ -798,33 +825,32 @@ function saveAttendanceSettings(sid,cid){
     save(); closeModal(); renderAttendance(sid,cid); toast('تنظیمات جلسه‌ها ذخیره شد');
 }
 
-function addAttendanceDate(sid,cid){const c=findClass(sid,cid);if(!c)return;attendanceData(c);const dates=Object.keys(c.attendance||{}).sort();const last=dates.length?dates[dates.length-1]:attendanceDates(c).slice(-1)[0];const d=addDaysISO(last,Number(c.attendanceSettings.intervalDays)||7);c.attendance[d]=c.attendance[d]||{};save();renderAttendance(sid,cid);toast('تاریخ جدید اضافه شد')}
-
 function renderStatuses(filter='good'){
 let good=[],attn=[],none=[];
 db.schools.forEach(s=>s.classes.forEach(c=>c.students.forEach(st=>{
 let item={s,c,st};
 if(st.status==='good')good.push(item);else if(st.status==='attn')attn.push(item);else none.push(item);
 })));
-goodCount.textContent=fa(good.length);attentionCount.textContent=fa(attn.length);noneCount.textContent=fa(none.length);
+document.getElementById('goodCount').textContent=fa(good.length);
+document.getElementById('attentionCount').textContent=fa(attn.length);
+document.getElementById('statusGoodBtn').className=filter==='good'?'btn soft':'btn gray';
+document.getElementById('statusAttnBtn').className=filter==='attn'?'btn soft':'btn gray';
 let items=filter==='attn'?attn:good;
-statusGoodBtn.className=filter==='good'?'btn soft':'btn gray';
-statusAttnBtn.className=filter==='attn'?'btn soft':'btn gray';
-statusesList.innerHTML=items.length?`<div class="grid">${items.map(x=>`
+document.getElementById('statusesList').innerHTML=items.length?`<div class="grid">${items.map(x=>`
 <div class="card studentcard">
 <div class="student">
 <div class="avatar">${x.st.photo?`<img src="${x.st.photo}">`:esc((x.st.name||'?')[0])}</div>
 <div style="min-width:0;flex:1">
-<b>${esc(x.st.lastName)}${esc(x.st.name)}</b>
+<b>${formatStudentName(x.st)}</b>
 <div class="muted" style="margin-top:5px">🏫 ${esc(x.s.name)}<br>🚪 ${esc(x.c.name)}</div>
 </div>
 </div>
 <div class="actions">
 <button class="btn soft" style="flex:1" onclick="openStudent('${x.s.id}','${x.c.id}','${x.st.id}')">مشاهده پرونده</button>
 </div>
-</div>`).join('')}</div>`:empty(filter==='attn'?'🔴':'🟢',filter==='attn'?'دانش‌آموز نیازمند توجهی ثبت نشده':'دانش‌آموزی با وضعیت خوب ثبت نشده','');
+</div>`).join('')}</div>`:empty(filter==='attn'?'🔴':'🟢',filter==='attn'?'موردی نیست':'موردی نیست','');
 }
-function renderSearch(){let q=(globalSearch.value||'').trim().toLowerCase();if(!q){searchResults.innerHTML=empty('🔍','نام دانش‌آموز را جستجو کنید','');return}let out=[];db.schools.forEach(s=>s.classes.forEach(c=>c.students.forEach(st=>{let full=(st.name+' '+st.lastName).toLowerCase();if(full.includes(q))out.push({s,c,st})})));searchResults.innerHTML=out.length?`<div class="grid">${out.map(x=>`<div class="card studentcard"><div class="student"><div class="avatar">${x.st.photo?`<img src="${x.st.photo}">`:esc((x.st.name||'?')[0])}</div><div><b>${esc(x.st.lastName)}${esc(x.st.name)}</b><div class="muted" style="margin-top:5px">🏫 ${esc(x.s.name)}<br>🚪 ${esc(x.c.name)}</div></div></div><button class="btn soft block" style="margin-top:11px" onclick="openStudent('${x.s.id}','${x.c.id}','${x.st.id}')">مشاهده پرونده</button></div>`).join('')}</div>`:empty('😕','نتیجه‌ای پیدا نشد','نام یا نام خانوادگی را بررسی کنید.')}
+function renderSearch(){let q=(globalSearch.value||'').trim().toLowerCase();if(!q){searchResults.innerHTML=empty('🔍','نام دانش‌آموز را جستجو کنید','');return}let out=[];db.schools.forEach(s=>s.classes.forEach(c=>c.students.forEach(st=>{let full=(st.name+' '+st.lastName).toLowerCase();if(full.includes(q))out.push({s,c,st})})));searchResults.innerHTML=out.length?`<div class="grid">${out.map(x=>`<div class="card studentcard"><div class="student"><div class="avatar">${x.st.photo?`<img src="${x.st.photo}">`:esc((x.st.name||'?')[0])}</div><div><b>${formatStudentName(x.st)}</b><div class="muted" style="margin-top:5px">🏫 ${esc(x.s.name)}<br>🚪 ${esc(x.c.name)}</div></div></div><button class="btn soft block" style="margin-top:11px" onclick="openStudent('${x.s.id}','${x.c.id}','${x.st.id}')">مشاهده پرونده</button></div>`).join('')}</div>`:empty('😕','نتیجه‌ای پیدا نشد','نام یا نام خانوادگی را بررسی کنید.')}
 
 function getTeacherName(){return localStorage.getItem('teacher_name') || '';}
 function saveTeacherName(){const el=document.getElementById('teacherName');if(el) localStorage.setItem('teacher_name',el.value.trim());}
@@ -838,8 +864,7 @@ function openBirthdaySender(stid,cid,sid){const st=findStudentGlobal(stid,cid,si
 async function copyText(t){try{await navigator.clipboard.writeText(t);toast('پیام کپی شد');}catch(e){}}
 function copyBirthdayMessage(stid,cid,sid){const st=findStudentGlobal(stid,cid,sid); if(!st)return;copyText(personalBirthdayMessage(st));}
 function openPhotoViewer(src,name='photo.jpg'){const img=document.getElementById('photoViewerImg'), dl=document.getElementById('photoViewerDownload');if(!img||!dl)return;img.src=src; dl.href=src; dl.download=name; document.getElementById('photoViewer').classList.add('show');}
-function closePhotoViewer(){const v=document.getElementById('photoViewer'),img=document.getElementById('photoViewerImg');if(v)v.classList.remove('show'); if(img)img.src='';}
-async function checkForUpdate(show=true){try{if('serviceWorker' in navigator){const regs=await navigator.serviceWorker.getRegistrations();for(const reg of regs) await reg.update();}const status=document.getElementById('updateStatus');if(status) status.textContent='نسخه فعلی: '+fa(APP_VERSION)+' · بررسی انجام شد.';if(show) toast('نسخه '+fa(APP_VERSION)+' فعال است.');}catch(e){if(show)toast('بررسی بروزرسانی انجام نشد.')}}
+function closePhotoViewer(){const v=document.getElementById('photoViewer');if(v)v.classList.remove('show');}
 
 function collectReportRows(scopeSid='',scopeCid=''){const rows=[];for(const s of db.schools||[]){if(scopeSid&&s.id!==scopeSid)continue;for(const c of s.classes||[]){if(scopeCid&&c.id!==scopeCid)continue;ensureTerms(c);const term=activeTerm(c);for(const st of c.students||[]){const bt=behaviorTotals(st),avg=avgGrade(st),final=finalAvgGrade(st);rows.push({s,c,st,term,behavior:bt,avg,final})}}}return rows.sort((a,b)=> (a.st.lastName||'').localeCompare(b.st.lastName||'','fa'));}
 function reportScope(){return {sid:document.getElementById('reportScopeSchool')?.value||'',cid:document.getElementById('reportScopeClass')?.value||''}}
@@ -849,71 +874,69 @@ function refreshReportClassOptions(){const s=document.getElementById('reportScop
 function exportReport(kind){
     const sId=document.getElementById('reportScopeSchool')?.value, cId=document.getElementById('reportScopeClass')?.value;
     const rows=collectReportRows(sId,cId); if(!rows.length){alert('داده‌ای نیست');return;}
-    const head=['مدرسه','کلاس','نام خانوادگی','نام','میانگین درسی','تأثیر رفتار', 'نمره نهایی'];
-    const data=rows.map(x=>[x.s.name, x.c.name, x.st.lastName, x.st.name, x.avg===null?'':x.avg, x.behavior.net, x.final===null?'':x.final]);
+    const head=['مدرسه','کلاس','نام خانوادگی','نام','نام پدر','میانگین درسی','تأثیر رفتار', 'نمره نهایی'];
+    const data=rows.map(x=>[x.s.name, x.c.name, x.st.lastName, x.st.name, x.st.fatherName||'', x.avg===null?'':x.avg, x.behavior.net, x.final===null?'':x.final]);
     const csv='\\ufeff'+[head,...data].map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\\r\\n');
     const blob=new Blob([csv],{type:'text/csv;charset=utf-8'}), a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`گزارش-${Date.now()}.csv`; a.click();
 }
 
 function quickAdd(){if(db.schools.length===0){addSchool();return}if(currentClassId){addStudent(currentSchoolId,currentClassId);return}addSchool()}
-function backupStamp(){const d=new Date();const p=jalaliPartsFromISO(localISODate());return p?`${p.y}-${String(p.m).padStart(2,'0')}-${String(p.d).padStart(2,'0')}_${String(d.getHours()).padStart(2,'0')}-${String(d.getMinutes()).padStart(2,'0')}`:String(Date.now())}
-function downloadJson(data,name){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-function exportRawData(){const raw={version:1,backupType:'raw',createdAt:new Date().toISOString(),schools:(db.schools||[]).map(s=>({...s,classes:(s.classes||[]).map(c=>({...c,attendance:undefined,attendanceSettings:undefined,attendanceMode:undefined,students:(c.students||[]).map(st=>{const {behavior,grades,...base}=st;return base})}))}))};downloadJson(raw,`دانش‌آموزان-خام-${backupStamp()}.json`);toast('پشتیبان خام آماده شد')}
-function exportFullData(){const full={...db,version:db.version||1,backupType:'full',createdAt:new Date().toISOString()};downloadJson(full,`دانش‌آموزان-کامل-${backupStamp()}.json`);toast('پشتیبان کامل آماده شد')}
-function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x||!Array.isArray(x.schools))throw 0;if(x.backupType==='raw'){if(!confirm('اطلاعات خام وارد شود؟'))return;mergeRawBackup(x);save();toast('پشتیبان خام وارد شد')}else{if(!confirm('پشتیبان کامل جایگزین همه اطلاعات فعلی شود؟'))return;db=sanitizeDb(x);delete db.backupType;save();toast('پشتیبان کامل بازیابی شد')}}catch(err){alert('فایل پشتیبان معتبر نیست.')}};r.readAsText(f);e.target.value=''}
-function mergeRawBackup(x){(x.schools||[]).forEach(rs=>{let s=db.schools.find(z=>z.id===rs.id)||db.schools.find(z=>z.name===rs.name);if(!s){s={...rs,classes:[]};db.schools.push(s)};(rs.classes||[]).forEach(rc=>{let c=(s.classes||[]).find(z=>z.id===rc.id)||s.classes.find(z=>z.name===rc.name);if(!c){c={...rc,students:[]};delete c.attendance;delete c.attendanceSettings;delete c.attendanceMode;s.classes.push(c)};(rc.students||[]).forEach(rs=>{const i=c.students.findIndex(z=>z.id===rs.id||((z.name||'')===(rs.name||'')&&(z.lastName||'')===(rs.lastName||'')));if(i>=0){const old=c.students[i];c.students[i]={...old,...rs,behavior:old.behavior,grades:old.grades}}else c.students.push({...rs,behavior:{positives:[],negatives:[]},grades:[]})})})})}
-function saveBehaviorDefaults(){const p=Number(document.getElementById('behaviorPositiveDefault')?.value),n=Number(document.getElementById('behaviorNegativeDefault')?.value);if(!Number.isFinite(p)||p<0||!Number.isFinite(n)||n<0){alert('هر دو عدد را درست وارد کنید.');return}localStorage.setItem('behavior_positive_value',String(p));localStorage.setItem('behavior_negative_value',String(n));renderAll();toast('امتیازهای پیش‌فرض ذخیره شد')}
-function clearAll(){if(confirm('همه اطلاعات برنامه حذف شود؟')){db={version:1,schools:[]};save();showView('dashboard');toast('همه اطلاعات حذف شد')}}
+function downloadJson(data,name){const blob=new Blob([JSON.stringify(data)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();}
+function exportFullData(){downloadJson(db,`دانش‌آموزان-${Date.now()}.json`);toast('پشتیبان دریافت شد')}
+function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x||!Array.isArray(x.schools))throw 0;if(!confirm('اطلاعات فعلی پاک و فایل جایگزین شود؟'))return;db=sanitizeDb(x);save();toast('بازیابی شد')}catch(err){alert('فایل نامعتبر است.')}};r.readAsText(f);e.target.value=''}
+function saveBehaviorDefaults(){localStorage.setItem('behavior_positive_value',String(Number(document.getElementById('behaviorPositiveDefault')?.value)||0));localStorage.setItem('behavior_negative_value',String(Number(document.getElementById('behaviorNegativeDefault')?.value)||0));toast('ذخیره شد')}
+function clearAll(){if(confirm('حذف همه اطلاعات؟؟')){db={version:1,schools:[]};save();showView('dashboard');}}
 let toastTimer;function toast(t){const el=document.getElementById('toast');clearTimeout(toastTimer);el.textContent=t;el.classList.add('show');toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
-let deferredInstallPrompt = null;
-const APP_VERSION='3.0.0 (نارنجی)';
+
+// --- Service Worker Force Update ---
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for(let registration of registrations) { registration.update(); }
+  });
+}
+
+const APP_VERSION='3.1.0';
 
 function updateInstallButton(){
   const b=document.getElementById('installAppBtn');
-  const h=document.getElementById('installHint');
   if(!b)return;
   const standalone=window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
-  if(standalone){b.disabled=true;b.textContent='✅ نصب شده';if(h)h.textContent='برنامه از صفحه اصلی اجرا شده است.';return;}
-  if(deferredInstallPrompt){b.disabled=false;b.textContent='➕ افزودن';if(h)h.textContent='برای نصب، همین دکمه را بزنید.';return;}
+  if(standalone){b.disabled=true;b.textContent='✅ نصب شده';return;}
+  if(window.deferredInstallPrompt){b.disabled=false;b.textContent='➕ افزودن';return;}
   b.disabled=false;b.textContent='📱 راهنمای نصب';
-  if(h)h.textContent='اگر پنجره نصب باز نشد، از منوی مرورگر گزینه Install app یا Add to Home screen را بزنید.';
 }
 
-window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredInstallPrompt=e;updateInstallButton();});
-window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;updateInstallButton();toast('برنامه به صفحه اصلی اضافه شد');});
+window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();window.deferredInstallPrompt=e;updateInstallButton();});
+window.addEventListener('appinstalled',()=>{window.deferredInstallPrompt=null;updateInstallButton();toast('اضافه شد');});
 
 async function installApp(){
-  if(deferredInstallPrompt){
-    deferredInstallPrompt.prompt();
-    const result=await deferredInstallPrompt.userChoice;
-    deferredInstallPrompt=null;
+  if(window.deferredInstallPrompt){
+    window.deferredInstallPrompt.prompt();
+    await window.deferredInstallPrompt.userChoice;
+    window.deferredInstallPrompt=null;
     updateInstallButton();
     return;
   }
-  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
-  const isAndroid=/android/i.test(navigator.userAgent);
-  if(isIOS){alert('در آیفون: دکمه Share/اشتراک‌گذاری مرورگر را بزنید، سپس «Add to Home Screen / افزودن به صفحه اصلی» را انتخاب کنید.');}
-  else if(isAndroid){alert('در اندروید: از منوی سه‌نقطه مرورگر گزینه «Install app» یا «Add to Home screen / افزودن به صفحه اصلی» را انتخاب کنید. اگر این گزینه نیست، برنامه را با آدرس HTTPS باز کنید.');}
-  else{alert('برای نصب، برنامه را با HTTPS باز کنید و از منوی مرورگر گزینه Install app یا Add to Home screen را انتخاب کنید.');}
+  alert('از منوی مرورگر گزینه Add to Home screen یا Install را بزنید.');
 }
 
 if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){
   window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('./sw.js?v='+encodeURIComponent(APP_VERSION),{updateViaCache:'none'}).then(reg=>{
+    navigator.serviceWorker.register('./sw.js?v='+encodeURIComponent(APP_VERSION)).then(reg=>{
       reg.update();
-      if(reg.waiting){reg.waiting.postMessage({type:'SKIP_WAITING'});}
+      if(reg.waiting) reg.waiting.postMessage({type:'SKIP_WAITING'});
       reg.addEventListener('updatefound',()=>{
         const w=reg.installing;
         if(w)w.addEventListener('statechange',()=>{
           if(w.state==='installed' && navigator.serviceWorker.controller){
-            toast('نسخه جدید آماده شد؛ برنامه در حال به‌روزرسانی است.');
             w.postMessage({type:'SKIP_WAITING'});
           }
         });
       });
     }).catch(()=>{});
+    let refreshing = false;
     navigator.serviceWorker.addEventListener('controllerchange',()=>{
-      if(!window.__swReloaded){window.__swReloaded=true;location.reload();}
+      if(!refreshing){window.location.reload(); refreshing=true;}
     });
   });
 }
@@ -921,10 +944,8 @@ if('serviceWorker' in navigator && (location.protocol==='https:' || location.hos
 window.addEventListener('load',updateInstallButton);
 window.addEventListener('pageshow',updateInstallButton);
 
-migrateTerms();
-renderAll();
-restorePersistent();
-const appVersionText=document.getElementById('appVersionText'); if(appVersionText) appVersionText.textContent=fa(APP_VERSION); const topVersion=document.getElementById('topVersion'); if(topVersion) topVersion.textContent='v'+APP_VERSION;
+migrateTerms(); renderAll(); restorePersistent();
+const appVersionText=document.getElementById('appVersionText'); if(appVersionText) appVersionText.textContent=fa(APP_VERSION); const topVersion=document.getElementById('topVersion'); if(topVersion) topVersion.textContent='v'+fa(APP_VERSION);
 const bt=document.getElementById('birthdayTemplate'); if(bt) bt.value=getBirthdayTemplate(); const tn=document.getElementById('teacherName'); if(tn) tn.value=getTeacherName();
 </script>
 </body>

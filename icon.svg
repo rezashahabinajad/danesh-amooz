@@ -1,27 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <!-- طیف رنگی نارنجی جذاب مشابه داشبورد -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#fdba74" />
       <stop offset="100%" stop-color="#ea580c" />
     </linearGradient>
-    <!-- سایه نرم برای المان وسط -->
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="20" stdDeviation="15" flood-color="#9a3412" flood-opacity="0.35"/>
     </filter>
   </defs>
-  
-  <!-- پس‌زمینه آیکون -->
   <rect width="512" height="512" rx="115" fill="url(#bgGrad)" />
-  
-  <!-- هاله نورانی پشت کلاه -->
   <circle cx="256" cy="256" r="180" fill="#ffffff" opacity="0.15" />
-  
-  <!-- طراحی گرافیکی کلاه فارغ‌التحصیلی -->
   <g filter="url(#shadow)">
     <path d="M256 140 L90 230 L256 320 L422 230 Z" fill="#ffffff" />
     <path d="M140 260 L140 350 C140 380 256 420 256 420 C256 420 372 380 372 350 L372 260 L256 320 Z" fill="#ffffff" opacity="0.9" />
-    <!-- بند و منگوله کلاه -->
     <rect x="405" y="240" width="10" height="80" rx="5" fill="#ffffff" />
     <circle cx="410" cy="330" r="15" fill="#ffffff" />
   </g>
