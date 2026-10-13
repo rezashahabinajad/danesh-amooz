@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="2.9.5">
+<meta name="version" content="2.9.6">
 <title>دانش‌آموز من</title>
 <style>
 :root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#687386;--primary:#4f46e5;--primary2:#7c3aed;--green:#16a34a;--red:#dc2626;--gray:#64748b;--border:#e7eaf0;--shadow:0 8px 28px rgba(23,32,51,.07);--r:18px;--orange:#f97316;--orange-light:#fff7ed}
@@ -40,25 +40,16 @@ input,select,textarea{width:100%;border:1px solid var(--border);background:#fff;
 .photo-thumb button{position:absolute;top:5px;right:5px;width:30px;height:30px;border:0;border-radius:50%;background:#fff;color:#c00;font-size:20px;box-shadow:0 2px 8px #0002}
 .class-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
 .class-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
-
-.class-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
-.class-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
 .big-gallery .class-photo-item{min-width:0}
 .class-photo-item img{display:block}
 .download-photo{display:flex;justify-content:center;margin-top:6px;text-decoration:none}
 .photo-actions{display:flex;flex-wrap:wrap;gap:7px}
-.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
-.photo-thumb{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#eee}
-.photo-thumb img{width:100%;height:100%;object-fit:cover}
-.photo-thumb button{position:absolute;top:5px;right:5px;width:30px;height:30px;border:0;border-radius:50%;background:#fff;color:#c00;font-size:20px;box-shadow:0 2px 8px #0002}
 
-/* compact bottom navigation */
 .bottom-nav{height:58px!important;min-height:58px!important;padding:4px 6px!important;bottom:0!important}
 .bottom-nav button{padding:4px 2px!important;font-size:11px!important;line-height:1.1!important}
 .bottom-nav .nav-icon{font-size:20px!important;margin-bottom:1px!important}
 body{padding-bottom:92px!important}
 
-/* v2.9.0: advanced dashboard, quick workflow and undo */
 .photo-viewer{display:none;position:fixed;inset:0;background:#000e;z-index:120;align-items:center;justify-content:center;padding:14px}
 .photo-viewer.show{display:flex}
 .photo-viewer img{max-width:96vw;max-height:82vh;object-fit:contain;border-radius:14px;box-shadow:0 10px 40px #0008}
@@ -75,16 +66,14 @@ body{padding-bottom:92px!important}
 .att-table th{background:#f8fafc;position:sticky;top:0;z-index:2}
 .att-table th:first-child,.att-table td:first-child{position:sticky;right:0;background:#fff;z-index:3;text-align:right;min-width:150px}
 .att-table th:first-child{background:#f8fafc;z-index:4}
-.att-cell{min-width:58px;cursor:pointer;border-radius:8px;font-weight:700}
+.att-cell{min-width:58px;cursor:pointer;border-radius:8px;font-weight:700; transition:0.2s}
 .att-cell.present{color:#15803d;background:#f0fdf4}.att-cell.absent{color:#b91c1c;background:#fee2e2}
 .att-cell.absent::after{content:'غیبت';display:block;font-size:10px;margin-top:2px}
 .att-cell.present::after{content:'حاضر';display:block;font-size:10px;margin-top:2px}
 .att-date{font-size:11px}.att-actions{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
 
-
 .today-absence-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:10px}.absence-class{background:#fff;border:1px solid var(--border);border-radius:16px;padding:13px}.absence-list{display:grid;gap:6px;margin-top:8px}.absence-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 9px;background:#fff7f7;border-radius:10px}.mini-stat{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.att-mode{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.att-score-input{min-width:68px;width:78px;padding:7px 6px;text-align:center}.att-score-cell{background:#eff6ff}.behavior-leaders{display:grid;grid-template-columns:1fr 1fr;gap:10px}.leader-list{display:grid;gap:6px;margin-top:8px}.leader-item{display:flex;justify-content:space-between;gap:8px;padding:8px 9px;background:#f8fafc;border-radius:10px}.behavior-shortcuts{display:grid;gap:7px;margin-top:10px}.behavior-shortcut{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:8px 10px;background:#f8fafc;border-radius:10px}.backup-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.backup-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px}.backup-card .actions{flex-wrap:wrap}@media(max-width:560px){.behavior-leaders,.backup-grid{grid-template-columns:1fr}}
 
-/* v2.9.0 improvements */
 .quick-behavior{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.quick-behavior .qb{min-height:34px;padding:6px 9px;border-radius:10px;font-size:11px;font-weight:800}.quick-behavior .qb.pos{background:#dcfce7;color:#166534}.quick-behavior .qb.neg{background:#fee2e2;color:#991b1b}
 .behavior-impact{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.impact-box{background:#f8fafc;border-radius:12px;padding:9px;text-align:center}.impact-box b{display:block;font-size:15px}.impact-box small{color:var(--muted)}
 .term-bar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:10px}.term-chip{background:#fff;border:1px solid #dbe3ff;color:#4338ca;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}
@@ -96,11 +85,9 @@ body{padding-bottom:92px!important}
 @media(max-width:560px){.export-grid,.export-actions{grid-template-columns:1fr}.quick-behavior .qb{flex:1;min-width:48px}}
 @media print{body{background:#fff!important;padding:0!important}.nav,.fab,.topbar,.no-print{display:none!important}.report-print{padding:0}.report-table{font-size:9px}.report-table th,.report-table td{padding:4px}}
 
-/* v2.9.0 advanced teacher dashboard */
-.dashboard-advanced{display:grid;gap:12px;margin:14px 0}.dash-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.dash-kpi{background:#fff;border:1px solid var(--border);border-radius:15px;padding:12px}.dash-kpi b{display:block;font-size:20px}.dash-kpi small{color:var(--muted)}.dash-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dash-list{display:grid;gap:7px;margin-top:9px}.dash-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px;background:#f8fafc;border-radius:12px}.progress{height:9px;background:#eef1f5;border-radius:99px;overflow:hidden;margin-top:7px}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--primary2));border-radius:99px}.trend{display:flex;align-items:flex-end;gap:5px;height:90px;margin-top:12px}.trend-bar{flex:1;min-width:8px;background:#c7d2fe;border-radius:7px 7px 2px 2px;position:relative}.trend-bar span{position:absolute;bottom:100%;right:50%;transform:translateX(50%);font-size:9px;color:var(--muted);white-space:nowrap}.trend-labels{display:flex;gap:5px}.trend-labels span{flex:1;text-align:center;font-size:9px;color:var(--muted)}.undo-bar{position:fixed;left:50%;bottom:76px;transform:translateX(-50%) translateY(20px);z-index:110;background:#172033;color:#fff;padding:8px 10px 8px 13px;border-radius:13px;display:flex;align-items:center;gap:9px;opacity:0;pointer-events:none;transition:.2s;box-shadow:0 8px 24px #0004}.undo-bar.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}.undo-bar button{background:#fff;color:#172033;border-radius:9px;padding:6px 9px;font-weight:700}.alert-dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#dc2626}.quick-class-tools{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-start}.quick-class-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px;border:1px solid var(--border);border-radius:12px;background:#fff}.quick-class-name{min-width:130px}.qb{min-height:34px;padding:5px 8px;border-radius:9px;background:#eef2ff;color:#4338ca;font-weight:800}.qb.pos{background:#dcfce7;color:#15803d}.qb.neg{background:#fee2e2;color:#b91c1c}.dash-action{display:flex;gap:7px;flex-wrap:wrap}.dash-action .btn{flex:1;min-width:120px}
+.dashboard-advanced{display:grid;gap:12px;margin:14px 0}.dash-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.dash-kpi{background:#fff;border:1px solid var(--border);border-radius:15px;padding:12px}.dash-kpi b{display:block;font-size:20px}.dash-kpi small{color:var(--muted)}.dash-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dash-list{display:grid;gap:7px;margin-top:9px}.dash-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px;background:#f8fafc;border-radius:12px}.progress{height:9px;background:#eef1f5;border-radius:99px;overflow:hidden;margin-top:7px}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--primary2));border-radius:99px}.trend{display:flex;align-items:flex-end;gap:5px;height:90px;margin-top:12px}.trend-bar{flex:1;min-width:8px;background:#c7d2fe;border-radius:7px 7px 2px 2px;position:relative}.trend-bar span{position:absolute;bottom:100%;right:50%;transform:translateX(50%);font-size:9px;color:var(--muted);white-space:nowrap}.trend-labels{display:flex;gap:5px}.trend-labels span{flex:1;text-align:center;font-size:9px;color:var(--muted)}.undo-bar{position:fixed;left:50%;bottom:76px;transform:translateX(-50%) translateY(20px);z-index:110;background:#172033;color:#fff;padding:8px 10px 8px 13px;border-radius:13px;display:flex;align-items:center;gap:9px;opacity:0;pointer-events:none;transition:.2s;box-shadow:0 8px 24px #0004}.undo-bar.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}.undo-bar button{background:#fff;color:#172033;border-radius:9px;padding:6px 9px;font-weight:700}.alert-dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#dc2626}.quick-class-tools{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-start}.quick-class-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px;border:1px solid var(--border);border-radius:12px;background:#fff}.quick-class-name{min-width:130px}.qb{min-height:34px;padding:5px 8px;border-radius:9px;background:#eef2ff;color:#4338ca;font-weight:800; cursor:pointer}.qb.pos{background:#dcfce7;color:#15803d}.qb.neg{background:#fee2e2;color:#b91c1c}.dash-action{display:flex;gap:7px;flex-wrap:wrap}.dash-action .btn{flex:1;min-width:120px}
 @media(max-width:760px){.dash-grid{grid-template-columns:repeat(2,1fr)}.dash-two{grid-template-columns:1fr}.quick-class-row{align-items:flex-start;flex-direction:column}.quick-class-tools{width:100%}.quick-class-tools .qb{flex:1}}
 
-/* استایل‌های اختصاصی کلاس‌های امروز و تولدهای داشبورد */
 .today-class-card {background: var(--orange-light); border: 1px solid #fed7aa; border-radius: var(--r); padding: 14px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;}
 .today-class-card .icon-box {width: 48px; height: 48px; border-radius: 14px; background: var(--orange); color: #fff; display: grid; place-items: center; font-size: 24px;}
 .dash-birth-box {background: #fdf2f8; border: 1px solid #fbcfe8; border-radius: 16px; padding: 12px; margin-bottom: 14px; animation: fadeIn 0.4s ease-out;}
@@ -113,7 +100,7 @@ body{padding-bottom:92px!important}
 </head>
 <body>
 <div class="app">
-<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v2.9.5</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
+<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v2.9.6</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
 
 <main class="container">
 <section id="dashboard" class="view active">
@@ -212,7 +199,7 @@ body{padding-bottom:92px!important}
 
 <div class="card update-box">
   <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-    <div><b>🔄 بروزرسانی برنامه</b><div class="muted">نسخه نصب‌شده: <span id="appVersionText">۲.۹.۵</span></div></div>
+    <div><b>🔄 بروزرسانی برنامه</b><div class="muted">نسخه نصب‌شده: <span id="appVersionText">۲.۹.۶</span></div></div>
     <button class="btn primary" onclick="checkForUpdate(true)">🔄 بررسی بروزرسانی</button>
   </div>
   <div class="muted" id="updateStatus" style="margin-top:8px">آخرین نسخه همین نسخه است.</div>
@@ -275,9 +262,6 @@ async function restorePersistent(){
   }catch(e){console.warn('Persistent restore failed',e)}
 }
 
-// -------------------------------------------------------------
-// قابلیت پیشرفته 1: فشرده‌سازی بسیار سبک عکس‌ها با فرمت WebP
-// -------------------------------------------------------------
 function compressImage(file, maxSide=1280, quality=0.70){
   return new Promise((resolve,reject)=>{
     if(!file || !file.type.startsWith('image/')) return reject(new Error('not-image'));
@@ -288,10 +272,9 @@ function compressImage(file, maxSide=1280, quality=0.70){
         const scale=Math.min(1,maxSide/Math.max(img.naturalWidth,img.naturalHeight));
         const w=Math.max(1,Math.round(img.naturalWidth*scale)), h=Math.max(1,Math.round(img.naturalHeight*scale));
         const c=document.createElement('canvas'); c.width=w; c.height=h;
-        const ctx=c.getContext('2d',{alpha:false}); // حذف آلفا برای حجم کمتر
+        const ctx=c.getContext('2d',{alpha:false});
         ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,w,h);
         ctx.drawImage(img,0,0,w,h);
-        // استفاده از فرمت مدرن webp برای کمترین حجم ممکن
         let out = c.toDataURL('image/webp', quality);
         if(out.indexOf('data:image/webp') !== 0) { out = c.toDataURL('image/jpeg', quality); }
         resolve(out);
@@ -301,7 +284,6 @@ function compressImage(file, maxSide=1280, quality=0.70){
     reader.onerror=()=>reject(reader.error||new Error('read-failed')); reader.readAsDataURL(file);
   });
 }
-
 async function migratePhotos(){
   if(!db || db.photoCompressionVersion===3) return;
   let changed=false;
@@ -318,9 +300,6 @@ async function migratePhotos(){
   if(changed) await savePersistent();
 }
 
-// -------------------------------------------------------------
-// قابلیت پیشرفته 2: جلوگیری از ثبت تکراری فرم‌ها (Debounce)
-// -------------------------------------------------------------
 let isSubmitting = false;
 function handleFormSubmit(e, callback) {
     e.preventDefault();
@@ -356,9 +335,6 @@ function counts(){let classes=0,students=0;db.schools.forEach(s=>{classes+=s.cla
 function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='dashboard'){renderDashboard();}if(id==='schools')renderSchools();if(id==='search'){document.getElementById('globalSearch').focus();renderSearch()}if(id==='backup'){const p=document.getElementById('behaviorPositiveDefault'),n=document.getElementById('behaviorNegativeDefault');if(p)p.value=behaviorValues().positive;if(n)n.value=behaviorValues().negative;renderBehaviorShortcutSettings();}if(id==='birthdays'){const t=document.getElementById('birthdayTemplate');if(t)t.value=getBirthdayTemplate();const tn=document.getElementById('teacherName');if(tn)tn.value=getTeacherName();renderBirthdays();}if(id==='statuses')renderStatuses('good')}
 function renderAll(){renderDashboard();renderSchools();if(document.getElementById('schoolDetail').classList.contains('active'))openSchool(currentSchoolId);if(document.getElementById('classDetail').classList.contains('active'))openClass(currentSchoolId,currentClassId);if(document.getElementById('studentDetail').classList.contains('active'))openStudent(currentSchoolId,currentClassId,currentStudentId)}
 
-// -------------------------------------------------------------
-// قابلیت پیشرفته 3: داشبورد هوشمند (کلاس‌های امروز و تولدها)
-// -------------------------------------------------------------
 function getDayOfWeekJalali(isoString) {
     if(!isoString) return -1;
     const d = new Date(isoString + 'T12:00:00Z');
@@ -408,11 +384,18 @@ function renderDashBirthdays() {
 
     if(upcomings.length > 0) {
         box.innerHTML = `<div class="dash-birth-box">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px">
                 <span style="font-size:20px">🎂</span><b>تولدهای نزدیک</b>
             </div>
-            <div style="display:flex; flex-direction:column; gap:5px">
-                ${upcomings.map(x => `<div style="font-size:13px"><b style="color:var(--primary)">${esc(x.st.name)} ${esc(x.st.lastName)}</b> از کلاس ${esc(x.c.name)} (${fa(x.bDay)} / ${fa(x.bMonth)})</div>`).join('')}
+            <div style="display:flex; flex-direction:column; gap:8px">
+                ${upcomings.map(x => `
+                <div style="display:flex; align-items:center; justify-content:space-between; background:#fff; padding:8px 10px; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,0.05)">
+                    <div>
+                        <b style="color:var(--primary); font-size:14px; display:block">${esc(x.st.name)} ${esc(x.st.lastName)}</b>
+                        <span class="muted" style="font-size:11px">${esc(x.c.name)} · ${fa(x.bDay)} / ${fa(x.bMonth)}</span>
+                    </div>
+                    <button class="btn soft" style="padding:6px 10px; font-size:12px; min-height:auto; border-radius:8px" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 پیام</button>
+                </div>`).join('')}
             </div>
         </div>`;
     } else {
@@ -462,7 +445,142 @@ function empty(icon,title,sub){return `<div class="empty" style="grid-column:1/-
 
 function openSchool(id){currentSchoolId=id;let s=findSchool(id);if(!s)return;schoolCrumb.textContent=s.name;schoolDetailContent.innerHTML=`<div class="detailhead"><div class="school-head"><div><h1 class="title">${esc(s.name)}</h1><div class="muted">سال تحصیلی ${esc(s.year||'—')}</div></div><div class="school-icon">🏫</div></div><div class="actions"><button class="btn soft" onclick="editSchool('${id}')">ویرایش</button><button class="btn danger" onclick="deleteSchool('${id}')">حذف مدرسه</button></div></div><div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0"><div><b>کلاس‌ها</b><div class="muted">${fa(s.classes.length)} کلاس</div></div><button class="btn primary" onclick="addClass('${id}')">＋ کلاس جدید</button></div><div class="grid">${s.classes.length?s.classes.map(c=>classCard(s,c)).join(''):empty('🚪','کلاسی وجود ندارد','یک کلاس اضافه کنید.')}</div>`;showView('schoolDetail')}
 function classCard(s,c){let photos=Array.isArray(c.photos)?c.photos:(c.photo?[c.photo]:[]);return `<div class="card">${photos.length?`<div class="class-gallery">${photos.slice(0,4).map(src=>`<img src="${src}">`).join('')}</div>`:''}<div class="school-head"><div><h3>${esc(c.name)}</h3><div class="muted">کلاس ${esc(c.grade||'')}</div></div><div class="school-icon">🚪</div></div><div class="chips"><span class="chip">👨‍🎓 ${fa(c.students.length)} دانش‌آموز</span><span class="chip">📷 ${fa(photos.length)} عکس</span></div><div class="actions"><button class="btn soft" style="flex:1" onclick="openClass('${s.id}','${c.id}')">دانش‌آموزان</button><button class="btn gray" onclick="openAttendance('${s.id}','${c.id}')">📋 حضور</button><button class="btn gray" onclick="copyClass('${s.id}','${c.id}')">📋 کپی</button><button class="btn gray" onclick="editClass('${s.id}','${c.id}')">✎</button></div></div>`}
-function openClass(sid,cid){currentSchoolId=sid;currentClassId=cid;let s=findSchool(sid),c=findClass(sid,cid);if(!s||!c)return;let photos=Array.isArray(c.photos)?c.photos:(c.photo?[c.photo]:[]);classCrumb.textContent=`${s.name} / ${c.name}`;let students=sortStudents(c.students);let gallery=photos.length?`<div class="card"><div class="section-title">📷 عکس‌های کلاس <span class="muted">(${fa(photos.length)})</span></div><div class="class-gallery big-gallery">${photos.map((src,i)=>`<div class="class-photo-item"><img src="${src}" alt="عکس کلاس ${i+1}"><a class="btn soft download-photo" href="${src}" download="کلاس-${safeFileName(c.name)}-${i+1}.jpg">⬇️ دانلود عکس</a></div>`).join('')}</div></div>`:'';classDetailContent.innerHTML=`<div class="detailhead"><div class="school-head"><div><h1 class="title">${esc(c.name)}</h1><div class="muted">${esc(s.name)} · ${esc(c.grade||'')}</div></div><div class="school-icon">🚪</div></div>${gallery}<div class="actions"><button class="btn soft" onclick="editClass('${sid}','${cid}')">ویرایش کلاس</button><button class="btn gray" onclick="copyClass('${sid}','${cid}')">📋 کپی کلاس</button><button class="btn danger" onclick="deleteClass('${sid}','${cid}')">حذف کلاس</button></div></div><div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0"><div><b>دانش‌آموزان</b><div class="muted">${fa(c.students.length)} نفر · مرتب‌شده الفبایی</div><div class="term-bar"><span class="term-chip">📚 ${esc(activeTerm(c).name)}</span><button class="btn soft" style="min-height:34px;padding:6px 9px;font-size:11px" onclick="openTermManager('${sid}','${cid}')">مدیریت ترم</button></div></div><div style="display:flex;gap:7px;flex-wrap:wrap"><button class="btn primary" onclick="addStudent('${sid}','${cid}')">＋ دانش‌آموز</button><button class="btn gray" onclick="openAttendance('${sid}','${cid}')">📋 حضور و غیاب</button><button class="btn primary" onclick="openQuickClass('${sid}','${cid}')">⚡ کلاس سریع</button><button class="btn soft" onclick="collectiveBehavior('${sid}','${cid}','positive')">➕ مثبت جمعی</button><button class="btn danger" onclick="collectiveBehavior('${sid}','${cid}','negative')">➖ منفی جمعی</button></div></div>${renderTopStudents(c)}${renderBehaviorLeaders(c)}<div class="grid">${students.length?students.map(st=>studentCard(s,c,st)).join(''):empty('👨‍🎓','دانش‌آموزی ثبت نشده','دانش‌آموز اول را اضافه کنید.')}</div>`;showView('classDetail')}
+
+function openClass(sid,cid){
+    currentSchoolId=sid;currentClassId=cid;let s=findSchool(sid),c=findClass(sid,cid);if(!s||!c)return;
+    let photos=Array.isArray(c.photos)?c.photos:(c.photo?[c.photo]:[]);classCrumb.textContent=`${s.name} / ${c.name}`;
+    let gallery=photos.length?`<div class="card"><div class="section-title">📷 عکس‌های کلاس <span class="muted">(${fa(photos.length)})</span></div><div class="class-gallery big-gallery">${photos.map((src,i)=>`<div class="class-photo-item"><img src="${src}" alt="عکس کلاس ${i+1}"><a class="btn soft download-photo" href="${src}" download="کلاس-${safeFileName(c.name)}-${i+1}.jpg">⬇️ دانلود عکس</a></div>`).join('')}</div></div>`:'';
+    classDetailContent.innerHTML=`<div class="detailhead"><div class="school-head"><div><h1 class="title">${esc(c.name)}</h1><div class="muted">${esc(s.name)} · ${esc(c.grade||'')}</div></div><div class="school-icon">🚪</div></div>${gallery}<div class="actions"><button class="btn soft" onclick="editClass('${sid}','${cid}')">ویرایش کلاس</button><button class="btn gray" onclick="copyClass('${sid}','${cid}')">📋 کپی کلاس</button><button class="btn danger" onclick="deleteClass('${sid}','${cid}')">حذف کلاس</button></div></div>
+    <div style="margin-bottom:14px"><div class="term-bar"><span class="term-chip">📚 ${esc(activeTerm(c).name)}</span><button class="btn soft" style="min-height:34px;padding:6px 9px;font-size:11px" onclick="openTermManager('${sid}','${cid}')">مدیریت ترم</button></div></div>
+    ${renderTopStudents(c)}${renderBehaviorLeaders(c)}
+    <div id="classStudentsSection"></div>`;
+    renderClassStudentsSection(sid, cid);
+    showView('classDetail');
+}
+
+window.classViewMode = window.classViewMode || 'list';
+function renderClassStudentsSection(sid, cid) {
+    const s = findSchool(sid), c = findClass(sid, cid); if(!c) return;
+    const container = document.getElementById('classStudentsSection');
+    if(!container) return;
+
+    let html = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0">
+        <div>
+            <b>لیست دانش‌آموزان</b>
+            <div class="muted">${fa(c.students.length)} نفر</div>
+        </div>
+        <div style="display:flex; gap:6px; background:#f1f5f9; padding:4px; border-radius:12px">
+            <button class="btn ${window.classViewMode==='list'?'primary':'gray'}" style="padding:6px 10px; min-height:auto; font-size:12px" onclick="window.classViewMode='list'; renderClassStudentsSection('${sid}','${cid}')">📄 لیست امروز</button>
+            <button class="btn ${window.classViewMode==='cards'?'primary':'gray'}" style="padding:6px 10px; min-height:auto; font-size:12px" onclick="window.classViewMode='cards'; renderClassStudentsSection('${sid}','${cid}')">📇 کارتی</button>
+        </div>
+    </div>
+    <div style="display:flex;gap:7px;flex-wrap:wrap; margin-bottom:14px">
+        <button class="btn primary" onclick="addStudent('${sid}','${cid}')">＋ دانش‌آموز جدید</button>
+        <button class="btn gray" onclick="openAttendance('${sid}','${cid}')">📋 جدول کل ترم</button>
+        <button class="btn soft" onclick="collectiveBehavior('${sid}','${cid}','positive')">➕ مثبت جمعی</button>
+        <button class="btn danger" onclick="collectiveBehavior('${sid}','${cid}','negative')">➖ منفی جمعی</button>
+    </div>`;
+
+    if (window.classViewMode === 'cards') {
+        let students=sortStudents(c.students);
+        html += `<div class="grid">${students.length?students.map(st=>studentCard(s,c,st)).join(''):empty('👨‍🎓','دانش‌آموزی ثبت نشده','دانش‌آموز اول را اضافه کنید.')}</div>`;
+    } else {
+        const dates=attendanceDates(c); const today=localISODate();
+        if(!window.currentListDate) window.currentListDate = (dates.includes(today)?today:dates.find(d=>d>=today)||today);
+        const defaultDate = window.currentListDate;
+        const p=behaviorShortcuts('positive'), n=behaviorShortcuts('negative');
+        const make=(arr,type,cl)=>arr.map(x=>`<button class="qb ${cl}" title="${esc(x.reason)}" onclick="inlineAddBehavior('${sid}','${cid}','__ST__','${type}','${esc(x.code).replace(/'/g,"\\'")}')">${type==='positive'?'➕':'➖'}${esc(x.code)}</button>`).join('');
+
+        const rows = sortStudents(c.students).map(st => {
+            const bData = behaviorData(st);
+            const status = attendanceStatus(c, defaultDate, st.id);
+            const attBtn = `<button id="inlAtt-${st.id}" class="att-cell ${status==='absent'?'absent':'present'}" style="width:40px; height:36px; padding:0; border-radius:10px" onclick="inlineToggleAttendance('${sid}','${cid}','${st.id}')">${status==='absent'?'✖':'✓'}</button>`;
+
+            return `<div class="quick-class-row" id="inlRow-${st.id}" style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px; border-bottom:1px solid #e7eaf0; background:#fff">
+                <div style="display:flex; align-items:center; gap:10px; min-width:110px">
+                    ${attBtn}
+                    <div>
+                        <b style="font-size:14px; display:block; color:var(--text); cursor:pointer" onclick="openStudent('${sid}','${cid}','${st.id}')">${esc(st.name)} ${esc(st.lastName)}</b>
+                        <div class="muted" style="font-size:11px; margin-top:3px" id="inlStat-${st.id}">➕ ${fa(bData.positives.length)} · ➖ ${fa(bData.negatives.length)}</div>
+                    </div>
+                </div>
+                <div class="quick-class-tools" style="display:flex; gap:5px; flex-wrap:wrap; justify-content:flex-end">
+                    ${make(p,'positive','pos').replaceAll('__ST__',st.id)}
+                    ${make(n,'negative','neg').replaceAll('__ST__',st.id)}
+                    <button class="qb" onclick="addBehavior('${sid}','${cid}','${st.id}','positive')">⚙</button>
+                </div>
+            </div>`;
+        }).join('');
+
+        html += `
+        <div style="background:#fff; border-radius:18px; border:1px solid var(--border); overflow:hidden">
+            <div style="padding:12px 14px; background:#f8fafc; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px">
+                <div style="display:flex; align-items:center; gap:8px">
+                    <b style="font-size:13px">تاریخ لیست:</b>
+                    <input id="inlineDate" value="${formatJalaliDate(defaultDate)}" style="width:110px; padding:6px; font-size:13px; height:34px; border-radius:8px; text-align:center" onchange="inlineChangeDate('${sid}','${cid}',this.value)">
+                </div>
+                <div style="display:flex; gap:6px">
+                    <button class="btn soft" style="padding:5px 10px; font-size:12px; min-height:auto" onclick="inlineAllPresent('${sid}','${cid}')">✓ همه حاضر</button>
+                    <button class="btn danger" style="padding:5px 10px; font-size:12px; min-height:auto" onclick="inlineAllAbsent('${sid}','${cid}')">✖ همه غایب</button>
+                </div>
+            </div>
+            <div style="max-height:65vh; overflow-y:auto">
+                ${rows || '<div class="muted" style="padding:20px; text-align:center">دانش‌آموزی ثبت نشده است.</div>'}
+            </div>
+        </div>`;
+    }
+    container.innerHTML = html;
+}
+
+function inlineChangeDate(sid, cid, val) {
+    val = normalizeJalaliInput(val);
+    const iso = jalaliToISO(val);
+    if(!iso) { alert('تاریخ شمسی معتبر نیست. نمونه: ۱۴۰۵/۰۷/۰۶'); return; }
+    window.currentListDate = iso;
+    renderClassStudentsSection(sid, cid);
+}
+function inlineToggleAttendance(sid, cid, stid) {
+    const c=findClass(sid,cid); if(!c)return;
+    const date = window.currentListDate;
+    attendanceData(c);
+    if(!c.attendance[date]) c.attendance[date]={};
+    const cur = attendanceStatus(c, date, stid);
+    if(cur==='absent') delete c.attendance[date][stid];
+    else c.attendance[date][stid]={status:'absent'};
+    save();
+    const btn = document.getElementById(`inlAtt-${stid}`);
+    if(btn) {
+        const isAbs = attendanceStatus(c, date, stid) === 'absent';
+        btn.className = `att-cell ${isAbs?'absent':'present'}`;
+        btn.innerHTML = isAbs ? '✖' : '✓';
+    }
+}
+function inlineAddBehavior(sid, cid, stid, type, code) {
+    const st=findStudent(sid,cid,stid), x=behaviorShortcuts(type).find(a=>a.code===code);
+    if(!st||!x)return;
+    const b=behaviorData(st);
+    b[type==='positive'?'positives':'negatives'].push({id:uid(),date:new Date().toISOString(),reason:x.reason,value:shortcutValue(type,x),code:x.code});
+    save();
+    const stat = document.getElementById(`inlStat-${stid}`);
+    if(stat) stat.innerHTML = `➕ ${fa(b.positives.length)} · ➖ ${fa(b.negatives.length)}`;
+    toast(`${type==='positive'?'مثبت':'منفی'} «${x.code}» ثبت شد`);
+}
+function inlineAllPresent(sid, cid) {
+    const c=findClass(sid,cid), date=window.currentListDate; if(!c||!date)return;
+    pushUndo('ثبت حضور همه'); attendanceData(c);
+    if(!c.attendance[date]) c.attendance[date]={};
+    for(const st of c.students||[]) delete c.attendance[date][st.id];
+    save(); renderClassStudentsSection(sid, cid); toast('همه حاضر شدند');
+}
+function inlineAllAbsent(sid, cid) {
+    const c=findClass(sid,cid), date=window.currentListDate; if(!c||!date)return;
+    pushUndo('ثبت غیبت همه'); attendanceData(c);
+    if(!c.attendance[date]) c.attendance[date]={};
+    for(const st of c.students||[]) c.attendance[date][st.id]={status:'absent'};
+    save(); renderClassStudentsSection(sid, cid); toast('همه غایب شدند');
+}
+
 function studentCard(s,c,st){let status=st.status==='good'?'<span class="status good">🟢 خوب</span>':st.status==='attn'?'<span class="status attn">🔴 نیازمند توجه</span>':'<span class="status none">⚪ بدون وضعیت</span>';return `<div class="card studentcard"><div class="student"><div class="avatar ${st.photo?'photo-clickable':''}" ${st.photo?`onclick="event.stopPropagation();openPhotoViewer('${st.photo.replace(/'/g,"\\'")}','${safeFileName(st.name+'-'+st.lastName)}.jpg')"`:''}>${st.photo?`<img src="${st.photo}">`:esc((st.name||'?')[0])}</div><div style="min-width:0;flex:1"><b>${esc(st.name||'')} ${esc(st.lastName||'')}</b><div style="margin-top:5px">${status}</div></div></div><div class="student-meta">${st.birth?'🎂 '+esc(st.birth):''}${st.phone?' · ☎ '+esc(st.phone):''}<br>➕ ${fa(behaviorData(st).positives.length)} · ➖ ${fa(behaviorData(st).negatives.length)} · ⭐ ${fmtScore(behaviorScore(st))}${avgGrade(st)!==null?' · 📚 '+fmtScore(finalAvgGrade(st)):''}</div>${renderQuickBehaviorButtons(s.id,c.id,st)}<div class="actions"><button class="btn soft" style="flex:1" onclick="openStudent('${s.id}','${c.id}','${st.id}')">مشاهده</button><button class="btn gray" onclick="editStudent('${s.id}','${c.id}','${st.id}')">✎</button></div></div>`}
 function cloneJSON(x){try{return JSON.parse(JSON.stringify(x))}catch(e){return x}}
 function ensureTerms(c){if(!c)return null;if(!Array.isArray(c.terms)||!c.terms.length){const tid=uid();c.terms=[{id:tid,name:'ترم ۱',createdAt:new Date().toISOString()}];c.activeTermId=tid;c.termArchives={};}if(!c.activeTermId||!c.terms.some(t=>t.id===c.activeTermId))c.activeTermId=c.terms[0].id;if(!c.termArchives||typeof c.termArchives!=='object')c.termArchives={};return c}
@@ -492,7 +610,6 @@ function openStudent(sid,cid,stid){currentSchoolId=sid;currentClassId=cid;curren
 function addSchool(){openModal(formHeader('🏫 افزودن مدرسه')+`<form onsubmit="saveSchool(event)"><div class="formgrid"><div class="field full"><label>نام مدرسه</label><input id="fName" required placeholder="مثلاً دبیرستان شهید بهشتی"></div><div class="field full"><label>سال تحصیلی</label><input id="fYear" value="۱۴۰۵/۱۴۰۶" placeholder="۱۴۰۵/۱۴۰۶"></div></div><div class="formactions"><button type="submit" class="btn primary">ذخیره</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div></form>`)}
 function editSchool(id){let s=findSchool(id);openModal(formHeader('ویرایش مدرسه')+`<form onsubmit="updateSchool(event,'${id}')"><div class="field"><label>نام مدرسه</label><input id="fName" required value="${esc(s.name)}"></div><div class="field" style="margin-top:12px"><label>سال تحصیلی</label><input id="fYear" value="${esc(s.year||'')}"></div><div class="formactions"><button type="submit" class="btn primary">ذخیره</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div></form>`)}
 
-// استفاده از handleFormSubmit در فرم‌ها
 function saveSchool(e){ handleFormSubmit(e, () => {
     db.schools.push({id:uid(),name:fName.value.trim(),year:fYear.value.trim(),classes:[]});
     closeModal();save();toast('مدرسه اضافه شد');
@@ -546,23 +663,7 @@ function saveBehaviorShortcut(type,code,reason,value){code=String(code||'').trim
 function shortcutValue(type,x){const v=Number(x?.value);return Number.isFinite(v)?Math.abs(v):(type==='positive'?behaviorValues().positive:behaviorValues().negative)}
 function removeBehaviorShortcut(type,code){const key=type==='positive'?'behavior_shortcuts_positive':'behavior_shortcuts_negative';localStorage.setItem(key,JSON.stringify(behaviorShortcuts(type).filter(x=>x.code!==code)));renderBehaviorShortcutSettings()}
 function applyBehaviorShortcut(type,code){const x=behaviorShortcuts(type).find(a=>a.code===code);if(!x)return;const r=document.getElementById('behaviorReason'),v=document.getElementById('behaviorValue'),c=document.getElementById('behaviorCode');if(r)r.value=x.reason;if(v)v.value=shortcutValue(type,x);if(c)c.value=x.code}
-function quickAddBehavior(sid,cid,stid,type,code){const st=findStudent(sid,cid,stid),x=behaviorShortcuts(type).find(a=>a.code===code);if(!st||!x)return;pushUndo(`ثبت ${type==='positive'?'مثبت':'منفی'} «${x.code}»`);const b=behaviorData(st);b[type==='positive'?'positives':'negatives'].push({id:uid(),date:new Date().toISOString(),reason:x.reason,value:shortcutValue(type,x),code:x.code});save();toast(`${type==='positive'?'مثبت':'منفی'} «${x.code}» ثبت شد`)}
-function renderQuickBehaviorButtons(sid,cid,st){const p=behaviorShortcuts('positive').slice(-3),n=behaviorShortcuts('negative').slice(-3);if(!p.length&&!n.length)return '';const make=(arr,type,cl)=>arr.map(x=>`<button class="qb ${cl}" title="${esc(x.reason)} · امتیاز ${fmtScore(shortcutValue(type,x))}" onclick="quickAddBehavior('${sid}','${cid}','${st.id}','${type}','${esc(x.code).replace(/'/g,"\\'")}')">${type==='positive'?'➕':'➖'}${esc(x.code)}</button>`).join('');return `<div class="quick-behavior" title="ثبت سریع بدون فرم">${make(p,'positive','pos')}${make(n,'negative','neg')}<button class="qb" onclick="addBehavior('${sid}','${cid}','${st.id}','positive')">⚙</button></div>`}
-function openQuickClass(sid,cid){
-  const c=findClass(sid,cid); if(!c||!c.students?.length){alert('دانش‌آموزی در این کلاس ثبت نشده است.');return}
-  const dates=attendanceDates(c); const today=localISODate(); const defaultDate=dates.includes(today)?today:dates.find(d=>d>=today)||today;
-  const p=behaviorShortcuts('positive'), n=behaviorShortcuts('negative');
-  const make=(arr,type,cl)=>arr.map(x=>`<button class="qb ${cl}" title="${esc(x.reason)} · ${fmtScore(shortcutValue(type,x))}" onclick="quickAddBehaviorAndRefresh('${sid}','${cid}','__ST__','${type}','${esc(x.code).replace(/'/g,"\'")}')">${type==='positive'?'➕':'➖'}${esc(x.code)}</button>`).join('');
-  const rows=sortStudents(c.students).map(st=>`<div class="quick-class-row" data-student="${st.id}"><div class="quick-class-name"><b>${esc(st.name)} ${esc(st.lastName)}</b><div class="muted" id="qstat-${st.id}">➕ ${fa(behaviorData(st).positives.length)} · ➖ ${fa(behaviorData(st).negatives.length)} · ${attendanceStatus(c,defaultDate,st.id)==='absent'?'🔴 غایب':'🟢 حاضر'}</div></div><div class="quick-class-tools">${make(p,'positive','pos').replaceAll('__ST__',st.id)}${make(n,'negative','neg').replaceAll('__ST__',st.id)}<button class="qb" onclick="quickToggleAttendance('${sid}','${cid}','${st.id}',document.getElementById('quickDate').value)">📋</button></div></div>`).join('');
-  openModal(formHeader('⚡ کلاس سریع')+`<div class="quick-class-head"><div class="formgrid"><div class="field"><label>تاریخ جلسه</label><div style="display:flex;gap:6px"><input id="quickDate" value="${formatJalaliDate(defaultDate)}" inputmode="numeric" autocomplete="off" oninput="normalizeDateField(this)" style="flex:1"><button type="button" class="btn soft" onclick="applyQuickDate('${sid}','${cid}')">اعمال</button></div></div><div class="field"><label>دستور سریع</label><div class="actions" style="margin-top:0"><button type="button" class="btn soft" onclick="quickAllPresent('${sid}','${cid}')">✓ همه حاضر</button><button type="button" class="btn danger" onclick="quickAllAbsent('${sid}','${cid}')">✖ همه غایب</button></div></div></div><div class="quick-class-stats"><span class="chip">➕/➖ با یک لمس</span><span class="chip">📋 حضور با یک لمس</span><span class="chip">${fa(c.students.length)} دانش‌آموز</span></div></div><div class="quick-class-list">${rows}</div><p class="muted" style="margin-top:8px">تاریخ را با اعداد فارسی یا انگلیسی وارد کن؛ برنامه خودش تبدیل و اعتبارسنجی می‌کند.</p>`);
-}
-function quickDateISO(){const v=document.getElementById('quickDate')?.value||'';return jalaliToISO(v)}
-function applyQuickDate(sid,cid){const el=document.getElementById('quickDate');normalizeDateField(el);const iso=jalaliToISO(el?.value);if(!iso){alert('تاریخ شمسی معتبر نیست. نمونه: ۱۴۰۵/۰۷/۰۶');return}const c=findClass(sid,cid);if(!c)return;for(const st of c.students||[])refreshQuickClassRow(sid,cid,st.id);toast(`تاریخ جلسه روی ${formatJalaliDate(iso)} تنظیم شد`)}
-function quickAddBehaviorAndRefresh(sid,cid,stid,type,code){quickAddBehavior(sid,cid,stid,type,code);refreshQuickClassRow(sid,cid,stid)}
-function refreshQuickClassRow(sid,cid,stid){const c=findClass(sid,cid),st=findStudent(sid,cid,stid),el=document.getElementById('qstat-'+stid);if(!c||!st||!el)return;const d=quickDateISO();el.textContent=`➕ ${fa(behaviorData(st).positives.length)} · ➖ ${fa(behaviorData(st).negatives.length)} · ${attendanceStatus(c,d,stid)==='absent'?'🔴 غایب':'🟢 حاضر'}`}
-function quickToggleAttendance(sid,cid,stid,dateJ){const c=findClass(sid,cid);if(!c)return;const date=jalaliToISO(dateJ);if(!date){alert('تاریخ جلسه معتبر نیست. ابتدا تاریخ را اصلاح کن و «اعمال» بزن.');return}pushUndo('تغییر حضور و غیاب');attendanceData(c);if(!c.attendance[date])c.attendance[date]={};if(attendanceStatus(c,date,stid)==='absent')delete c.attendance[date][stid];else c.attendance[date][stid]={status:'absent'};save();refreshQuickClassRow(sid,cid,stid);toast(attendanceStatus(c,date,stid)==='absent'?'غیبت ثبت شد':'حاضر شد')}
-function quickAllPresent(sid,cid){const c=findClass(sid,cid),date=quickDateISO();if(!c)return;if(!date){alert('تاریخ جلسه معتبر نیست. ابتدا تاریخ را اصلاح کن و «اعمال» بزن.');return}pushUndo('ثبت حضور همه');attendanceData(c);if(!c.attendance[date])c.attendance[date]={};for(const st of c.students||[])delete c.attendance[date][st.id];save();for(const st of c.students||[])refreshQuickClassRow(sid,cid,st.id);toast('همه دانش‌آموزان حاضر ثبت شدند')}
-function quickAllAbsent(sid,cid){const c=findClass(sid,cid),date=quickDateISO();if(!c)return;if(!date){alert('تاریخ جلسه معتبر نیست. ابتدا تاریخ را اصلاح کن و «اعمال» بزن.');return}pushUndo('ثبت غیبت همه');attendanceData(c);if(!c.attendance[date])c.attendance[date]={};for(const st of c.students||[])c.attendance[date][st.id]={status:'absent'};save();for(const st of c.students||[])refreshQuickClassRow(sid,cid,st.id);toast('همه دانش‌آموزان غایب ثبت شدند')}
+function renderQuickBehaviorButtons(sid,cid,st){const p=behaviorShortcuts('positive').slice(-3),n=behaviorShortcuts('negative').slice(-3);if(!p.length&&!n.length)return '';const make=(arr,type,cl)=>arr.map(x=>`<button class="qb ${cl}" title="${esc(x.reason)} · امتیاز ${fmtScore(shortcutValue(type,x))}" onclick="inlineAddBehavior('${sid}','${cid}','${st.id}','${type}','${esc(x.code).replace(/'/g,"\\'")}')">${type==='positive'?'➕':'➖'}${esc(x.code)}</button>`).join('');return `<div class="quick-behavior" title="ثبت سریع بدون فرم">${make(p,'positive','pos')}${make(n,'negative','neg')}<button class="qb" onclick="addBehavior('${sid}','${cid}','${st.id}','positive')">⚙</button></div>`}
 
 function addBehavior(sid,cid,stid,type){const st=findStudent(sid,cid,stid);if(!st)return;const defaults=behaviorValues(),def=type==='positive'?defaults.positive:defaults.negative,title=type==='positive'?'ثبت مثبت':'ثبت منفی',shortcuts=behaviorShortcuts(type);openModal(formHeader(type==='positive'?'➕ ثبت مثبت':'➖ ثبت منفی')+`<div class="formgrid"><div class="field"><label>امتیاز ${type==='positive'?'مثبت':'منفی'}</label><input id="behaviorValue" type="number" step="0.01" min="0" value="${def}"></div><div class="field"><label>حرف/کد کوتاه (اختیاری)</label><input id="behaviorCode" maxlength="12" placeholder="مثلاً خ"></div><div class="field full"><label>دلیل</label><input id="behaviorReason" required placeholder="مثلاً خوراکی خورد، از روی کتاب خواند..."></div></div>${shortcuts.length?`<div class="muted" style="margin-top:8px">کدهای آماده:</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">${shortcuts.map(x=>`<button type="button" class="btn soft" onclick="applyBehaviorShortcut('${type}','${esc(x.code).replace(/'/g,"\\'")}')">${esc(x.code)} · ${esc(x.reason)}</button>`).join('')}</div>`:''}<div class="muted" style="margin-top:8px">عدد و دلیل هر ثبت مستقل است؛ کد کوتاه فقط برای انتخاب سریع استفاده می‌شود.</div><div class="formactions"><button class="btn primary" onclick="saveBehavior(event,'${sid}','${cid}','${stid}','${type}')">${title}</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>`)}
 function saveBehavior(e,sid,cid,stid,type){
@@ -628,9 +729,6 @@ function doMove(sid,cid,stid){
   save();closeModal();openClass(sid,to.id);toast('دانش‌آموز با موفقیت منتقل شد')
 }
 
-// -------------------------------------------------------------
-// تقویم نامنظم و منظم برای حضور و غیاب
-// -------------------------------------------------------------
 function attendanceData(c){
   if(!c.attendance || typeof c.attendance!=='object') c.attendance={};
   if(!c.attendanceSettings || typeof c.attendanceSettings!=='object') c.attendanceSettings={startDate:localISODate(),intervalDays:7,sessionCount:20,weekDays:[]};
@@ -709,12 +807,6 @@ function editAttendanceDate(sid,cid,oldDate){
   delete c.attendance[oldDate];save();renderAttendance(sid,cid);toast('تاریخ ویرایش شد')
 }
 function toggleAttendance(sid,cid,stid,date){const c=findClass(sid,cid);if(!c)return;pushUndo('تغییر حضور و غیاب');attendanceData(c);if(!c.attendance[date])c.attendance[date]={};const cur=attendanceStatus(c,date,stid);if(cur==='absent')delete c.attendance[date][stid];else c.attendance[date][stid]={status:'absent'};save();renderAttendance(sid,cid)}
-
-window.toggleAttMode = function() {
-    const isWeekdays = document.querySelector('input[name="attMode"]:checked').value === 'weekdays';
-    document.getElementById('intervalSettings').style.display = isWeekdays ? 'none' : 'block';
-    document.getElementById('weekdaySettings').style.display = isWeekdays ? 'block' : 'none';
-};
 
 function editAttendanceSettings(sid,cid){
     const c=findClass(sid,cid);if(!c)return;attendanceData(c);
@@ -912,8 +1004,7 @@ function pushUndo(label){undoState={label,data:cloneJSON(db)};const bar=document
 function performUndo(){if(!undoState)return;db=cloneJSON(undoState.data);save();const label=undoState.label;undoState=null;clearTimeout(undoTimer);document.getElementById('undoBar')?.classList.remove('show');if(currentClassId)openClass(currentSchoolId,currentClassId);toast(`لغو شد: ${label}`)}
 function dashboardStudents(){const a=[];for(const s of db.schools||[])for(const c of s.classes||[])for(const st of c.students||[])a.push({s,c,st});return a}
 function renderAdvancedDashboard(){const box=document.getElementById('advancedDashboard');if(!box)return;const all=dashboardStudents(),today=localISODate();let abs=0,grades=0,alerts=[];const classStats=[];for(const s of db.schools||[])for(const c of s.classes||[]){let ca=0,cg=0;for(const st of c.students||[]){if(attendanceStatus(c,today,st.id)==='absent')ca++;if(avgGrade(st)!==null)cg++;const gs=gradesData(st);grades+=gs.length;if(gs.length>=3){const recent=gs.slice().sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,3).map(x=>Number(x.score)).filter(Number.isFinite);if(recent.length===3){const r=recent.reduce((a,b)=>a+b,0)/3;if(r<10)alerts.push({s,c,st,text:`میانگین ۳ نمره اخیر ${fmtScore(r)}`})}}}abs+=ca;classStats.push({s,c,abs:ca,graded:cg,total:c.students.length})}
-const topAlerts=alerts.slice(0,5),topClasses=classStats.filter(x=>x.total).sort((a,b)=>(b.graded/b.total)-(a.graded/a.total)).slice(0,4);const recentByDay=[];for(let i=6;i>=0;i--){const d=addDaysISO(today,-i);let sum=0,n=0;for(const {c,st} of all){const r=attendanceRecord(c,d,st.id);if(r.status==='absent')sum++;n++}recentByDay.push({d,abs:sum})}const max=Math.max(1,...recentByDay.map(x=>x.abs));box.innerHTML=`<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div><b>🎯 داشبورد امروز</b><div class="muted">${formatJalaliDate(today)}</div></div><span class="chip">${fa(all.length)} دانش‌آموز</span></div><div class="dash-grid" style="margin-top:10px"><div class="dash-kpi"><small>🚨 غایب امروز</small><b>${fa(abs)}</b></div><div class="dash-kpi"><small>📚 تعداد نمره‌ها</small><b>${fa(grades)}</b></div><div class="dash-kpi"><small>⚠️ نیاز به بررسی</small><b>${fa(alerts.length)}</b></div><div class="dash-kpi"><small>🏫 کلاس فعال</small><b>${fa(classStats.length)}</b></div></div><div class="dash-action" style="margin-top:10px"><button class="btn primary" onclick="showView('schools')">🏫 ورود به کلاس‌ها</button><button class="btn soft" onclick="openFirstClassQuick()">⚡ کلاس سریع</button><button class="btn gray" onclick="openExportCenter()">📤 گزارش</button></div></div><div class="dash-two"><div class="card"><b>📈 غیبت ۷ روز اخیر</b><div class="trend">${recentByDay.map(x=>`<div class="trend-bar" style="height:${Math.max(8,Math.round(x.abs/max*78))}px"><span>${fa(x.abs)}</span></div>`).join('')}</div><div class="trend-labels">${recentByDay.map(x=>`<span>${formatJalaliDate(x.d).slice(5)}</span>`).join('')}</div></div><div class="card"><b>⚡ هشدارهای قابل بررسی</b><div class="dash-list">${topAlerts.length?topAlerts.map(x=>`<div class="dash-row"><span><span class="alert-dot"></span> ${esc(x.st.name)}${esc(x.st.lastName)}<div class="muted">${esc(x.c.name)} ·${esc(x.text)}</div></span><button class="btn soft" style="padding:5px 8px" onclick="openStudent('${x.s.id}','${x.c.id}','${x.st.id}')">پرونده</button></div>`).join(''):'<div class="muted">هشداری برای بررسی پیدا نشد.</div>'}</div></div></div><div class="card"><b>📊 پیشرفت ثبت نمره کلاس‌ها</b><div class="dash-list">${topClasses.length?topClasses.map(x=>{const pct=Math.round(x.graded/Math.max(1,x.total)*100);return `<div><div class="dash-row"><span>${esc(x.c.name)}</span><b>${fa(pct)}٪</b></div><div class="progress"><i style="width:${pct}%"></i></div></div>`}).join(''):'<div class="muted">هنوز کلاسی ثبت نشده است.</div>'}</div></div>`}
-function openFirstClassQuick(){for(const s of db.schools||[])for(const c of s.classes||[])if(c.students?.length){openQuickClass(s.id,c.id);return}toast('کلاسی با دانش‌آموز پیدا نشد')}
+const topAlerts=alerts.slice(0,5),topClasses=classStats.filter(x=>x.total).sort((a,b)=>(b.graded/b.total)-(a.graded/a.total)).slice(0,4);const recentByDay=[];for(let i=6;i>=0;i--){const d=addDaysISO(today,-i);let sum=0,n=0;for(const {c,st} of all){const r=attendanceRecord(c,d,st.id);if(r.status==='absent')sum++;n++}recentByDay.push({d,abs:sum})}const max=Math.max(1,...recentByDay.map(x=>x.abs));box.innerHTML=`<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div><b>🎯 داشبورد امروز</b><div class="muted">${formatJalaliDate(today)}</div></div><span class="chip">${fa(all.length)} دانش‌آموز</span></div><div class="dash-grid" style="margin-top:10px"><div class="dash-kpi"><small>🚨 غایب امروز</small><b>${fa(abs)}</b></div><div class="dash-kpi"><small>📚 تعداد نمره‌ها</small><b>${fa(grades)}</b></div><div class="dash-kpi"><small>⚠️ نیاز به بررسی</small><b>${fa(alerts.length)}</b></div><div class="dash-kpi"><small>🏫 کلاس فعال</small><b>${fa(classStats.length)}</b></div></div><div class="dash-action" style="margin-top:10px"><button class="btn primary" onclick="showView('schools')">🏫 ورود به کلاس‌ها</button><button class="btn gray" onclick="openExportCenter()">📤 گزارش</button></div></div><div class="dash-two"><div class="card"><b>📈 غیبت ۷ روز اخیر</b><div class="trend">${recentByDay.map(x=>`<div class="trend-bar" style="height:${Math.max(8,Math.round(x.abs/max*78))}px"><span>${fa(x.abs)}</span></div>`).join('')}</div><div class="trend-labels">${recentByDay.map(x=>`<span>${formatJalaliDate(x.d).slice(5)}</span>`).join('')}</div></div><div class="card"><b>⚡ هشدارهای قابل بررسی</b><div class="dash-list">${topAlerts.length?topAlerts.map(x=>`<div class="dash-row"><span><span class="alert-dot"></span> ${esc(x.st.name)}${esc(x.st.lastName)}<div class="muted">${esc(x.c.name)} ·${esc(x.text)}</div></span><button class="btn soft" style="padding:5px 8px" onclick="openStudent('${x.s.id}','${x.c.id}','${x.st.id}')">پرونده</button></div>`).join(''):'<div class="muted">هشداری برای بررسی پیدا نشد.</div>'}</div></div></div><div class="card"><b>📊 پیشرفت ثبت نمره کلاس‌ها</b><div class="dash-list">${topClasses.length?topClasses.map(x=>{const pct=Math.round(x.graded/Math.max(1,x.total)*100);return `<div><div class="dash-row"><span>${esc(x.c.name)}</span><b>${fa(pct)}٪</b></div><div class="progress"><i style="width:${pct}%"></i></div></div>`}).join(''):'<div class="muted">هنوز کلاسی ثبت نشده است.</div>'}</div></div>`}
 
 function quickAdd(){if(db.schools.length===0){addSchool();return}if(currentClassId){addStudent(currentSchoolId,currentClassId);return}addSchool()}
 function backupStamp(){const d=new Date();const p=jalaliPartsFromISO(localISODate());return p?`${p.y}-${String(p.m).padStart(2,'0')}-${String(p.d).padStart(2,'0')}_${String(d.getHours()).padStart(2,'0')}-${String(d.getMinutes()).padStart(2,'0')}`:String(Date.now())}
@@ -928,7 +1019,7 @@ function renderBehaviorShortcutSettings(){const box=document.getElementById('beh
 function clearAll(){if(confirm('همه اطلاعات برنامه حذف شود؟')){db={version:1,schools:[]};save();showView('dashboard');toast('همه اطلاعات حذف شد')}}
 let toastTimer;function toast(t){const el=document.getElementById('toast');clearTimeout(toastTimer);el.textContent=t;el.classList.add('show');toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
 let deferredInstallPrompt = null;
-const APP_VERSION='2.9.5';
+const APP_VERSION='2.9.6';
 
 function updateInstallButton(){
   const b=document.getElementById('installAppBtn');
