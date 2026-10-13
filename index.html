@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="3.4.0">
+<meta name="version" content="3.6.0">
 <title>دانش‌آموز من</title>
 <style>
 :root {
@@ -18,125 +18,125 @@
   --text: #1e293b;
   --muted: #64748b;
   --primary: #ea580c;
-  --primary-hover: #c2410c;
-  --primary-light: #fff7ed;
-  --primary-border: #fed7aa;
+  --primary2: #f97316;
   --green: #10b981;
-  --green-light: #ecfdf5;
   --red: #ef4444;
-  --red-light: #fef2f2;
-  --border: #f1f5f9;
-  --shadow-sm: 0 2px 8px rgba(234, 88, 12, 0.05);
-  --shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
-  --shadow-lg: 0 20px 25px -5px rgba(234, 88, 12, 0.15);
-  --r: 20px;
+  --border: #fed7aa;
+  --shadow: 0 4px 16px rgba(234, 88, 12, 0.08);
+  --r: 16px;
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Tahoma, "Segoe UI", sans-serif; font-size: 14.5px; line-height: 1.5; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: Tahoma, "Segoe UI", sans-serif; font-size: 13.5px; line-height: 1.5; }
 button, input, select, textarea { font: inherit; }
 button { cursor: pointer; border: 0; outline: none; }
 
 .app { min-height: 100vh; padding-bottom: 95px; }
-.topbar { position: sticky; top: 0; z-index: 25; background: rgba(255, 251, 247, 0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--primary-border); padding: 12px 16px; }
+.topbar { position: sticky; top: 0; z-index: 25; background: rgba(255, 251, 247, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 10px 14px; }
 .toprow { max-width: 1050px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.brand { display: flex; align-items: center; gap: 12px; }
-.logo { width: 44px; height: 44px; border-radius: 15px; background: linear-gradient(135deg, #f97316, #ea580c); display: grid; place-items: center; color: #fff; font-size: 22px; box-shadow: 0 8px 18px rgba(234, 88, 12, 0.35); }
-.brand b { font-size: 17px; color: #9a3412; font-weight: 800; }
-.brand small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
-.iconbtn { width: 40px; height: 40px; border-radius: 12px; background: #fff; border: 1px solid var(--primary-border); color: var(--primary); display: grid; place-items: center; box-shadow: var(--shadow-sm); transition: 0.2s; }
-.iconbtn:active { transform: scale(0.95); }
+.brand { display: flex; align-items: center; gap: 10px; }
+.logo { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--primary2), var(--primary)); display: grid; place-items: center; color: #fff; font-size: 20px; box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35); }
+.brand b { font-size: 16px; color: #9a3412; font-weight: 800; }
+.brand small { display: block; color: var(--muted); font-size: 10.5px; }
+.iconbtn { width: 38px; height: 38px; border-radius: 11px; background: #fff; border: 1px solid var(--border); color: var(--primary); display: grid; place-items: center; }
 
-.container { max-width: 1050px; margin: auto; padding: 18px 14px; }
+.container { max-width: 1050px; margin: auto; padding: 14px 12px; }
 .view { display: none; }
-.view.active { display: block; animation: fadeIn 0.25s ease-out; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.view.active { display: block; }
 
-.title { font-size: 22px; margin: 4px 0 6px; color: #9a3412; font-weight: 800; }
-.subtitle { color: var(--muted); margin: 0 0 16px; font-size: 13px; }
+.title { font-size: 19px; margin: 2px 0 4px; color: #9a3412; font-weight: 800; }
+.subtitle { color: var(--muted); margin: 0 0 12px; font-size: 12px; }
 
-/* آمار داشبورد */
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
-.stat { background: var(--card); border: 1px solid var(--primary-border); border-radius: var(--r); padding: 14px 12px; text-align: center; box-shadow: var(--shadow-sm); }
-.stat span { display: block; color: var(--muted); font-size: 11.5px; font-weight: 600; }
-.stat strong { font-size: 24px; display: block; margin-top: 4px; color: var(--primary); font-weight: 900; }
+/* آمار */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+.stat { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 10px 6px; text-align: center; box-shadow: var(--shadow); }
+.stat span { display: block; color: var(--muted); font-size: 11px; font-weight: 600; }
+.stat strong { font-size: 20px; display: block; margin-top: 2px; color: var(--primary); font-weight: 900; }
 
-/* کارت‌ها و المان‌ها */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
-.card { background: var(--card); border: 1px solid var(--primary-border); border-radius: var(--r); padding: 16px; box-shadow: var(--shadow); position: relative; }
-.school-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.school-icon { width: 46px; height: 46px; border-radius: 14px; background: var(--primary-light); display: grid; place-items: center; font-size: 22px; color: var(--primary); flex-shrink: 0; }
-.card h3 { margin: 0 0 4px; font-size: 16px; color: #1e293b; font-weight: 800; }
-.muted { color: var(--muted); font-size: 12.5px; }
+/* کارت‌ها */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 13px; box-shadow: var(--shadow); position: relative; }
+.school-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.school-icon { width: 42px; height: 42px; border-radius: 12px; background: #fff7ed; display: grid; place-items: center; font-size: 20px; color: var(--primary); flex-shrink: 0; }
+.card h3 { margin: 0 0 3px; font-size: 15px; color: #1e293b; font-weight: 800; }
+.muted { color: var(--muted); font-size: 12px; }
 
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 8px; }
-.chip { background: var(--primary-light); color: #c2410c; border: 1px solid #fed7aa; border-radius: 999px; padding: 4px 10px; font-size: 11.5px; font-weight: 700; }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0 6px; }
+.chip { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; border-radius: 999px; padding: 3px 8px; font-size: 10.5px; font-weight: 700; }
 
-.actions { display: flex; gap: 8px; margin-top: 14px; }
-.btn { min-height: 40px; padding: 8px 14px; border-radius: 12px; font-weight: 700; font-size: 13.5px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: 0.15s; border: none; }
+.actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.btn { min-height: 36px; padding: 6px 12px; border-radius: 10px; font-weight: 700; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; transition: 0.15s; border: none; text-decoration: none; }
 .btn:active { transform: scale(0.97); }
-.btn.primary { background: linear-gradient(135deg, var(--primary2), var(--primary)); color: #fff; box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3); }
-.btn.soft { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
-.btn.danger { background: var(--red-light); color: var(--red); border: 1px solid #fecaca; }
-.btn.gray { background: #fff; border: 1px solid #e2e8f0; color: #475569; }
+.btn.primary { background: linear-gradient(135deg, #f97316, #ea580c) !important; color: #ffffff !important; box-shadow: 0 3px 10px rgba(234, 88, 12, 0.3) !important; }
+.btn.soft { background: #fff7ed !important; color: #ea580c !important; border: 1px solid var(--border) !important; }
+.btn.danger { background: #fee2e2 !important; color: #b91c1c !important; border: 1px solid #fecaca !important; }
+.btn.gray { background: #fff !important; border: 1px solid #cbd5e1 !important; color: #334155 !important; }
 .btn.block { width: 100%; }
 
-.fab { position: fixed; left: 18px; bottom: 85px; z-index: 25; background: linear-gradient(135deg, var(--primary2), var(--primary)); color: #fff; width: 56px; height: 56px; border-radius: 18px; font-size: 26px; box-shadow: var(--shadow-lg); display: grid; place-items: center; }
-.fab:active { transform: scale(0.92); }
+/* کنترل ابعاد عکس دانش‌آموز تا از صفحه بیرون نزند */
+.student { display: flex; align-items: center; gap: 10px; }
+.avatar { width: 52px !important; height: 52px !important; max-width: 52px !important; max-height: 52px !important; border-radius: 14px; background: #fff7ed; border: 1px solid var(--border); overflow: hidden; display: grid; place-items: center; font-size: 22px; color: var(--primary); font-weight: 800; flex-shrink: 0; }
+.avatar img { width: 100% !important; height: 100% !important; max-width: 100% !important; max-height: 100% !important; object-fit: cover !important; border-radius: 13px; display: block; }
 
-/* نوار پیمایش پایین */
-.nav { position: fixed; z-index: 30; bottom: 0; right: 0; left: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); border-top: 1px solid var(--primary-border); display: flex; justify-content: center; }
-.navin { max-width: 600px; width: 100%; display: grid; grid-template-columns: repeat(5, 1fr); height: 64px; }
-.nav button { background: none; color: #94a3b8; padding: 6px 0; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; }
-.nav button b { font-size: 19px; line-height: 1; transition: 0.2s; }
+/* دکمه شناور (+) */
+.fab { position: fixed; left: 16px; bottom: 85px; z-index: 25; background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; width: 50px; height: 50px; border-radius: 16px; font-size: 24px; box-shadow: 0 6px 18px rgba(234, 88, 12, 0.4); display: grid; place-items: center; }
+
+/* نوار پایین */
+.nav { position: fixed; z-index: 30; bottom: 0; right: 0; left: 0; background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(14px); border-top: 1px solid var(--border); display: flex; justify-content: center; }
+.navin { max-width: 600px; width: 100%; display: grid; grid-template-columns: repeat(5, 1fr); height: 58px; }
+.nav button { background: none; color: #94a3b8; padding: 4px 0; font-size: 10.5px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+.nav button b { font-size: 17px; line-height: 1; }
 .nav button.active { color: var(--primary); }
-.nav button.active b { transform: translateY(-2px); }
 
-/* داشبورد: برنامه‌های امروز و تولد */
-.dash-b-card { background: #fff7ed; border: 1px solid #ffedd5; border-radius: var(--r); padding: 14px; margin-bottom: 14px; }
-.dash-b-item { background: #fff; border-radius: 14px; padding: 10px 14px; margin-top: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fed7aa; box-shadow: var(--shadow-sm); }
-.dash-c-card { background: #fff; border: 1.5px solid var(--primary-border); border-radius: 18px; padding: 12px 14px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm); }
-.dash-c-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #fdba74, #ea580c); border-radius: 13px; display: grid; place-items: center; font-size: 22px; color: #fff; }
+/* داشبورد */
+.dash-b-card { background: #fff7ed; border: 1px solid #ffedd5; border-radius: var(--r); padding: 11px; margin-bottom: 11px; }
+.dash-b-item { background: #fff; border-radius: 12px; padding: 8px 11px; margin-top: 6px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fed7aa; }
+.dash-c-card { background: #fff; border: 1.5px solid var(--border); border-radius: 15px; padding: 9px 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+.dash-c-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #fdba74, #ea580c); border-radius: 11px; display: grid; place-items: center; font-size: 19px; color: #fff; flex-shrink: 0; }
 
 /* کارت‌های تولد */
-.b-card { background: #fff; border-radius: 18px; padding: 15px; margin-bottom: 12px; border: 1px solid var(--primary-border); border-right: 5px solid var(--primary); box-shadow: var(--shadow-sm); }
+.b-card { background: #fff; border-radius: 15px; padding: 11px; margin-bottom: 9px; border: 1px solid var(--border); border-right: 5px solid var(--primary); }
 .b-card.past { opacity: 0.55; filter: grayscale(70%); border-right-color: #cbd5e1; }
-.b-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.b-avatar { width: 50px; height: 50px; border-radius: 14px; object-fit: cover; background: var(--primary-light); display: grid; place-items: center; font-size: 24px; }
-.b-msg { background: var(--primary-light); border: 1px solid #fed7aa; padding: 12px; border-radius: 14px; font-size: 13px; line-height: 1.6; color: #431407; margin-bottom: 10px; }
 
 /* جدول لیست جامع */
-.att-wrap { overflow-x: auto; border: 1px solid var(--primary-border); border-radius: 16px; background: #fff; box-shadow: var(--shadow-sm); }
-.att-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 720px; font-size: 12px; }
-.att-table th, .att-table td { padding: 8px 6px; border-bottom: 1px solid var(--border); text-align: center; white-space: nowrap; }
+.att-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; background: #fff; }
+.att-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 700px; font-size: 11.5px; }
+.att-table th, .att-table td { padding: 6px 4px; border-bottom: 1px solid #f1f5f9; text-align: center; white-space: nowrap; }
 .att-table th { background: #fff7ed; position: sticky; top: 0; z-index: 2; color: #9a3412; font-weight: 800; }
-.att-table th:first-child, .att-table td:first-child { position: sticky; right: 0; background: #fff; z-index: 3; text-align: right; min-width: 145px; border-left: 1px solid #fed7aa; }
+.att-table th:first-child, .att-table td:first-child { position: sticky; right: 0; background: #fff; z-index: 3; text-align: right; min-width: 140px; border-left: 1px solid #fed7aa; }
 .att-table th:first-child { background: #fff7ed; }
-.att-cell { min-width: 42px; height: 32px; border-radius: 8px; font-weight: 800; border: none; font-size: 13px; transition: 0.15s; }
+.att-cell { min-width: 38px; height: 28px; border-radius: 7px; font-weight: 800; border: none; font-size: 12px; }
 .att-cell.present { color: #15803d; background: #dcfce7; }
 .att-cell.absent { color: #b91c1c; background: #fee2e2; }
-.att-score-input { width: 44px; height: 30px; border-radius: 8px; text-align: center; font-size: 12px; border: 1px solid #cbd5e1; font-weight: 700; color: #0f172a; }
-.term-score-input { width: 54px; height: 32px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 800; border: 2px solid var(--primary); background: #fff7ed; color: var(--primary); }
+.att-score-input { width: 42px; height: 26px; border-radius: 7px; text-align: center; font-size: 11.5px; border: 1px solid #cbd5e1; font-weight: 700; }
+.term-score-input { width: 48px; height: 28px; border-radius: 7px; text-align: center; font-size: 12px; font-weight: 800; border: 2px solid var(--primary); background: #fff7ed; color: var(--primary); }
 
-/* لیست امروز کلاس */
-.td-list-card { background: #fff; border-radius: 18px; border: 1px solid var(--primary-border); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
-.td-list-head { background: #fff7ed; padding: 12px 16px; border-bottom: 1px solid var(--primary-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-.td-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #f8fafc; }
-.td-row:last-child { border-bottom: none; }
-.td-score-inp { width: 50px; height: 34px; border: 1.5px solid var(--primary-border); border-radius: 10px; text-align: center; font-size: 13px; font-weight: 800; background: #fffaf5; color: var(--primary); }
-.td-btn-plus { background: var(--green); color: #fff; width: 36px; height: 36px; border-radius: 10px; font-size: 20px; font-weight: bold; border: none; }
-.td-btn-minus { background: var(--red); color: #fff; width: 36px; height: 36px; border-radius: 10px; font-size: 20px; font-weight: bold; border: none; }
+/* لیست سریع امروز */
+.td-list-card { background: #fff; border-radius: 15px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 12px; }
+.td-list-head { background: #fff7ed; padding: 10px 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.td-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 11px; border-bottom: 1px solid #ffedd5; }
+.td-score-inp { width: 46px; height: 30px; border: 1.5px solid var(--border); border-radius: 7px; text-align: center; font-size: 12.5px; font-weight: 800; background: #fffaf5; color: var(--primary); }
+.td-btn-plus { background: var(--green); color: #fff; width: 32px; height: 32px; border-radius: 9px; font-size: 17px; font-weight: bold; border: none; }
+.td-btn-minus { background: var(--red); color: #fff; width: 32px; height: 32px; border-radius: 9px; font-size: 17px; font-weight: bold; border: none; }
 
-/* دکمه‌های کدهای اختصاری */
-.qb { min-height: 26px; padding: 2px 7px; border-radius: 7px; font-weight: 800; font-size: 11px; border: none; }
+.qb { min-height: 24px; padding: 2px 6px; border-radius: 6px; font-weight: 800; font-size: 10px; border: none; }
 .qb.pos { background: #dcfce7; color: #15803d; }
 .qb.neg { background: #fee2e2; color: #b91c1c; }
 
-/* ورودی‌ها و مودال */
-input, select, textarea { width: 100%; border: 1px solid #cbd5e1; background: #fff; border-radius: 12px; padding: 10px 12px; color: var(--text); outline: none; }
+input, select, textarea { width: 100%; border: 1px solid #cbd5e1; background: #fff; border-radius: 9px; padding: 8px 10px; color: var(--text); outline: none; }
 input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12); }
-.chart-container { background: #fff; border: 1px solid var(--primary-border); border-radius: 18px; padding: 14px; margin: 14px 0; box-shadow: var(--shadow-sm); }
-.chart-box { width: 100%; height: 160px; position: relative; margin-top: 8px; }
+.chart-container { background: #fff; border: 1px solid var(--border); border-radius: 15px; padding: 11px; margin: 10px 0; }
+.chart-box { width: 100%; height: 130px; position: relative; margin-top: 6px; }
 svg.chart { width: 100%; height: 100%; overflow: visible; }
+.empty { text-align: center; padding: 26px 12px; color: var(--muted); background: #fff; border: 1px dashed #fed7aa; border-radius: 14px; }
+.breadcrumb { display: flex; align-items: center; gap: 5px; color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+.link { color: var(--primary); font-weight: 700; background: none; padding: 0; }
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 50; padding: 12px; overflow: auto; }
+.modal.show { display: flex; align-items: flex-end; justify-content: center; }
+.sheet { background: #fff; border-radius: 18px 18px 12px 12px; width: min(640px, 100%); padding: 15px; max-height: 90vh; overflow: auto; }
+.sheethead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.close { background: #ffedd5; color: var(--primary); border-radius: 9px; width: 32px; height: 32px; font-weight: bold; }
+.toast { position: fixed; z-index: 100; bottom: 80px; right: 50%; transform: translateX(50%) translateY(20px); opacity: 0; background: #172033; color: #fff; padding: 9px 14px; border-radius: 11px; font-size: 12px; transition: 0.25s; pointer-events: none; }
+.toast.show { opacity: 1; transform: translateX(50%); }
 </style>
 </head>
 <body>
@@ -145,17 +145,17 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
   <div class="toprow">
     <div class="brand">
       <div class="logo">🎓</div>
-      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v3.4.0</span></small></div>
+      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v3.6.0</span></small></div>
     </div>
     <button class="iconbtn" onclick="showView('search')" title="جستجو">🔍</button>
   </div>
 </header>
 
 <main class="container">
-<!-- نمای ۱: داشبورد -->
+<!-- ۱: خانه -->
 <section id="dashboard" class="view active">
   <h1 class="title">سلام استاد 👋</h1>
-  <p class="subtitle">مدیریت سریع حضور، نمرات مستمر و انضباطی کلاس‌ها</p>
+  <p class="subtitle">مدیریت سریع کلاس‌ها، نمرات و انضباط</p>
   <div id="dashBirthdaysBox"></div>
   <div id="todayClassesBox"></div>
   <div class="stats">
@@ -167,127 +167,124 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
   <div id="schoolProgressChart"></div>
 </section>
 
-<!-- نمای ۲: مدارس -->
+<!-- ۲: مدارس -->
 <section id="schools" class="view">
-  <h1 class="title">مدارس و پایه‌ها</h1>
-  <p class="subtitle">فهرست آموزشگاه‌های فعال شما</p>
+  <h1 class="title">مدارس</h1>
   <div id="schoolsGrid" class="grid"></div>
 </section>
 
-<!-- نمای ۳: جزئیات مدرسه -->
+<!-- ۳: جزئیات مدرسه -->
 <section id="schoolDetail" class="view">
   <div class="breadcrumb"><button class="link" onclick="showView('schools')">مدارس</button><span>›</span><span id="schoolCrumb"></span></div>
   <div id="schoolDetailContent"></div>
 </section>
 
-<!-- نمای ۴: جزئیات کلاس -->
+<!-- ۴: کلاس -->
 <section id="classDetail" class="view">
   <div class="breadcrumb"><button class="link" onclick="openSchool(currentSchoolId)">بازگشت به مدرسه</button><span>›</span><span id="classCrumb"></span></div>
   <div id="classDetailContent"></div>
 </section>
 
-<!-- نمای ۵: پرونده دانش‌آموز -->
+<!-- ۵: پرونده دانش‌آموز -->
 <section id="studentDetail" class="view">
   <div class="breadcrumb"><button class="link" onclick="openClass(currentSchoolId,currentClassId)">بازگشت به کلاس</button><span>›</span><span id="studentCrumb"></span></div>
   <div id="studentDetailContent"></div>
 </section>
 
-<!-- نمای ۶: جستجو -->
+<!-- ۶: جستجو -->
 <section id="search" class="view">
-  <h1 class="title">جستجوی هوشمند</h1>
-  <div class="searchbox"><span>🔍</span><input id="globalSearch" oninput="renderSearch()" placeholder="جستجوی نام، فامیل یا نام پدر..."></div>
+  <h1 class="title">جستجو</h1>
+  <div style="margin-bottom:12px"><input id="globalSearch" oninput="renderSearch()" placeholder="نام، نام خانوادگی یا نام پدر..."></div>
   <div id="searchResults"></div>
 </section>
 
-<!-- نمای ۷: تولدها -->
+<!-- ۷: تولدها -->
 <section id="birthdays" class="view">
   <h1 class="title">🎂 تقویم تولدها</h1>
-  <p class="subtitle">تولدهای نزدیک در بالا و گذشته‌ها در انتها قرار دارند</p>
+  <p class="subtitle">تولدهای نزدیک در بالا و گذشته‌ها در انتهای لیست</p>
   <div id="birthdaysList"></div>
-  <div class="card" style="margin-top:14px">
-    <b>💌 تنظیم متن پیش‌فرض تبریک</b>
-    <div class="field" style="margin-top:8px"><label class="muted">نام معلم جهت امضا</label><input id="teacherName" oninput="saveTeacherName()"></div>
-    <textarea id="birthdayTemplate" style="margin-top:8px" oninput="saveBirthdayTemplate()"></textarea>
+  <div class="card" style="margin-top:12px">
+    <b>پیام تبریک آماده</b>
+    <div style="margin-top:6px"><label class="muted">نام معلم</label><input id="teacherName" oninput="saveTeacherName()"></div>
+    <textarea id="birthdayTemplate" style="margin-top:6px" oninput="saveBirthdayTemplate()"></textarea>
   </div>
 </section>
 
-<!-- نمای ۸: وضعیت‌ها -->
+<!-- ۸: وضعیت‌ها -->
 <section id="statuses" class="view">
-  <h1 class="title">ارزیابی رفتاری</h1>
+  <h1 class="title">وضعیت‌ها</h1>
   <div class="stats"><div class="stat"><span>🟢 خوب</span><strong id="goodCount">۰</strong></div><div class="stat"><span>🔴 نیازمند توجه</span><strong id="attentionCount">۰</strong></div></div>
   <div id="statusesList"></div>
 </section>
 
-<!-- نمای ۹: جدول و لیست جامع -->
+<!-- ۹: جدول جامع -->
 <section id="attendance" class="view">
   <div class="breadcrumb"><button class="link" onclick="openClass(currentSchoolId,currentClassId)">بازگشت به کلاس</button><span>›</span><span>لیست جامع، نمرات و ترم</span></div>
   <div id="attendanceContent"></div>
 </section>
 
-<!-- نمای ۱۰: تنظیمات و پشتیبان‌گیری -->
+<!-- ۱۰: بیشتر -->
 <section id="backup" class="view">
-  <h1 class="title">⚙️ تنظیمات و خروجی</h1>
+  <h1 class="title">تنظیمات و خروجی</h1>
 
   <div class="card" style="margin-bottom:12px">
     <b style="color:var(--primary)">🧮 فرمول انضباطی نمره ترم</b>
-    <p class="muted">تأثیر خودکار مثبت/منفی‌ها روی نمره نهایی:</p>
-    <div class="formgrid">
-      <div class="field"><label class="muted">نمره پاداش (بدون منفی)</label><input id="ruleBonusNoNeg" type="number" step="0.25" value="1"></div>
-      <div class="field"><label class="muted">سقف مجاز منفی</label><input id="ruleMaxNegAllowed" type="number" step="1" value="2"></div>
-      <div class="field"><label class="muted">کسر نمره به ازای منفی مازاد</label><input id="rulePenaltyPerNeg" type="number" step="0.25" value="0.5"></div>
-      <div class="field"><label class="muted">ارزش هر مثبت روزانه</label><input id="behaviorPositiveDefault" type="number" step="0.05" value="0.25"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+      <div><label class="muted">پاداش بدون منفی</label><input id="ruleBonusNoNeg" type="number" step="0.25" value="1"></div>
+      <div><label class="muted">سقف مجاز منفی</label><input id="ruleMaxNegAllowed" type="number" step="1" value="2"></div>
+      <div><label class="muted">کسر نمره به ازای مازاد</label><input id="rulePenaltyPerNeg" type="number" step="0.25" value="0.5"></div>
+      <div><label class="muted">ارزش هر مثبت روزانه</label><input id="behaviorPositiveDefault" type="number" step="0.05" value="0.25"></div>
     </div>
     <button class="btn primary block" style="margin-top:10px" onclick="saveRules()">ذخیره فرمول انضباطی</button>
   </div>
 
   <div class="card" style="margin-bottom:12px">
     <b style="color:var(--primary)">🔤 کدهای اختصاری سریع</b>
-    <p class="muted">برای ثبت آنی فعالیت‌ها (مثلاً د = دستشویی یا خ = خواندن):</p>
     <div id="shortcutListUi" style="display:grid;gap:6px;margin:8px 0"></div>
     <button class="btn soft block" onclick="addShortcutPrompt()">＋ تعریف کد جدید</button>
   </div>
 
   <div class="card" style="margin-bottom:12px">
-    <b style="color:var(--primary)">📤 مرکز دریافت خروجی (انتخاب ستون‌ها)</b>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;font-size:13px">
+    <b style="color:var(--primary)">📤 دریافت خروجی (انتخاب ستون‌ها)</b>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0;font-size:12px">
       <label><input type="checkbox" id="expColAtt" checked> تعداد غیبت‌ها</label>
       <label><input type="checkbox" id="expColContGrades" checked> میانگین مستمر</label>
       <label><input type="checkbox" id="expColBeh" checked> مثبت و منفی</label>
-      <label><input type="checkbox" id="expColTerm" checked> نمره پایانی ترم</label>
+      <label><input type="checkbox" id="expColTerm" checked> نمره ترم و نهایی</label>
     </div>
     <div class="actions">
-      <button class="btn primary" style="flex:1" onclick="exportCustomReport('excel')">📊 فایل Excel</button>
+      <button class="btn primary" style="flex:1" onclick="exportCustomReport('excel')">📊 فایل اکسل</button>
       <button class="btn soft" style="flex:1" onclick="exportCustomReport('word')">📝 فایل Word</button>
       <button class="btn gray" style="flex:1" onclick="exportCustomReport('print')">🖨️ چاپ کارنامه</button>
     </div>
   </div>
 
-  <div class="backup-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
     <div class="card">
-      <b>👨‍🎓 پشتیبان خام</b>
-      <p class="muted">فقط اطلاعات مدارس و دانش‌آموزان بدون سوابق نمره (مناسب شروع سال جدید).</p>
+      <b>پشتیبان خام</b>
+      <p class="muted" style="margin:4px 0 8px">بدون نمرات و غیبت</p>
       <button class="btn soft block" onclick="exportRawData()">⬇️ دانلود خام</button>
     </div>
     <div class="card">
-      <b>📚 پشتیبان کامل</b>
-      <p class="muted">شامل تمام نمرات، غیبت‌ها و یادداشت‌ها.</p>
+      <b>پشتیبان کامل</b>
+      <p class="muted" style="margin:4px 0 8px">با تمام اطلاعات</p>
       <button class="btn primary block" onclick="exportFullData()">⬇️ دانلود کامل</button>
     </div>
   </div>
 
-  <div class="card" style="margin-top:12px">
-    <b>📥 بازیابی اطلاعات پشتیبان</b>
-    <label class="btn soft block" style="text-align:center;margin-top:8px">
+  <div class="card" style="margin-bottom:12px">
+    <b>بازیابی فایل پشتیبان</b>
+    <label class="btn soft block" style="text-align:center;margin-top:6px">
       انتخاب فایل JSON پشتیبان
       <input type="file" accept=".json,application/json" hidden onchange="importData(event)">
     </label>
   </div>
 
-  <div class="card" style="margin-top:12px"><button class="btn danger block" onclick="clearAll()">⚠️ پاک‌سازی همه اطلاعات برنامه</button></div>
+  <div class="card"><button class="btn danger block" onclick="clearAll()">⚠️ پاک‌سازی کامل اطلاعات</button></div>
 </section>
 </main>
 
-<button class="fab" onclick="quickAdd()" title="افزودن سریع">＋</button>
+<button class="fab" onclick="quickAdd()" title="افزودن">＋</button>
 
 <nav class="nav">
   <div class="navin">
@@ -391,7 +388,7 @@ function findStudent(sid, cid, st) { return findClass(sid, cid)?.students.find(x
 
 function formatStudentName(st) {
   let nameStr = `${esc(st.lastName || '')} ${esc(st.name || '')}`;
-  if (st.fatherName) nameStr += ` <span style="font-size:11.5px;color:var(--muted)">(${esc(st.fatherName)})</span>`;
+  if (st.fatherName) nameStr += ` <span style="font-size:11px;color:var(--muted)">(${esc(st.fatherName)})</span>`;
   return nameStr;
 }
 
@@ -469,16 +466,16 @@ function renderDashBirthdays() {
 
   if (upcomings.length > 0) {
     box.innerHTML = `<div class="dash-b-card">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-        <span style="font-size:20px">🎂</span><b style="color:var(--primary);font-size:14.5px">تولدهای نزدیک</b>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+        <span style="font-size:18px">🎂</span><b style="color:var(--primary);font-size:13.5px">تولدهای نزدیک</b>
       </div>
       ${upcomings.map(x => `
       <div class="dash-b-item">
         <div>
-          <b style="color:var(--primary);font-size:14px;display:block">${formatStudentName(x.st)}</b>
-          <span class="muted" style="font-size:11.5px">${esc(x.c.name)} · ${fa(x.bDay)} /${fa(x.bMonth)}</span>
+          <b style="color:var(--primary);font-size:13px;display:block">${formatStudentName(x.st)}</b>
+          <span class="muted" style="font-size:11px">${esc(x.c.name)} · ${fa(x.bDay)} / ${fa(x.bMonth)}</span>
         </div>
-        <button class="btn soft" style="padding:4px 10px;font-size:12px;min-height:auto" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 پیام</button>
+        <button class="btn soft" style="padding:4px 9px;font-size:11.5px;min-height:auto" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 تبریک</button>
       </div>`).join('')}
     </div>`;
   } else { box.innerHTML = ''; }
@@ -490,18 +487,18 @@ function renderTodayClasses() {
   db.schools.forEach(s => s.classes.forEach(c => { if (attendanceDates(c).includes(todayISO)) todayClasses.push({ s, c }); }));
 
   if (todayClasses.length > 0) {
-    box.innerHTML = `<div class="dash-c-wrap">
-      <div style="font-weight:800;color:var(--primary);font-size:14px;margin-bottom:8px">📅 برنامه‌های امروز کلاس‌ها</div>
+    box.innerHTML = `<div>
+      <div style="font-weight:800;color:var(--primary);font-size:13px;margin-bottom:6px">📅 کلاس‌های دارای جلسه امروز</div>
       ${todayClasses.map(x => `
         <div class="dash-c-card">
           <div style="display:flex;align-items:center;gap:10px">
             <div class="dash-c-icon">🎒</div>
             <div>
-              <b style="font-size:15px;display:block">${esc(x.c.name)}</b>
-              <span class="muted" style="font-size:11.5px">${esc(x.s.name)}</span>
+              <b style="font-size:14px;display:block">${esc(x.c.name)}</b>
+              <span class="muted" style="font-size:11px">${esc(x.s.name)}</span>
             </div>
           </div>
-          <button class="btn primary" style="min-height:36px;padding:6px 12px;font-size:12.5px" onclick="openClass('${x.s.id}','${x.c.id}'); setTimeout(()=>openTodayList('${x.s.id}','${x.c.id}'), 60);">لیست سریع امروز ←</button>
+          <button class="btn primary" style="min-height:34px;padding:5px 12px;font-size:12px" onclick="openClass('${x.s.id}','${x.c.id}'); setTimeout(()=>openTodayList('${x.s.id}','${x.c.id}'), 60);">لیست سریع امروز ←</button>
         </div>
       `).join('')}
     </div>`;
@@ -527,19 +524,18 @@ function renderSchools() {
 
 function openSchool(id) {
   currentSchoolId = id; let s = findSchool(id); if (!s) return;
-  const sc = document.getElementById('schoolCrumb'), sdc = document.getElementById('schoolDetailContent');
-  if (sc) sc.textContent = s.name;
-  if (sdc) {
-    sdc.innerHTML = `<div class="detailhead">
+  document.getElementById('schoolCrumb').textContent = s.name;
+  document.getElementById('schoolDetailContent').innerHTML = `
+    <div class="detailhead">
       <div class="school-head"><div><h1 class="title">${esc(s.name)}</h1><div class="muted">سال تحصیلی ${esc(s.year || '—')}</div></div><div class="school-icon">🏫</div></div>
-      <div class="actions"><button class="btn soft" onclick="editSchool('${id}')">ویرایش</button><button class="btn danger" onclick="deleteSchool('${id}')">حذف</button></div>
+      <div class="actions"><button class="btn soft" onclick="editSchool('${id}')">ویرایش نام</button><button class="btn danger" onclick="deleteSchool('${id}')">حذف مدرسه</button></div>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0">
-      <div><b>کلاس‌ها</b><div class="muted">${fa(s.classes.length)} کلاس</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:12px 0">
+      <div><b>کلاس‌های فعال</b><div class="muted">${fa(s.classes.length)} کلاس</div></div>
       <button class="btn primary" onclick="addClass('${id}')">＋ کلاس جدید</button>
     </div>
-    <div class="grid">${s.classes.length ? s.classes.map(c => classCard(s, c)).join('') : empty('🚪', 'کلاسی وجود ندارد', '')}</div>`;
-  }
+    <div class="grid">${s.classes.length ? s.classes.map(c => classCard(s, c)).join('') : empty('🚪', 'کلاسی وجود ندارد', '')}</div>
+  `;
   showView('schoolDetail');
 }
 
@@ -557,29 +553,26 @@ function classCard(s, c) {
 /* صفحه کلاس */
 function openClass(sid, cid) {
   currentSchoolId = sid; currentClassId = cid; let s = findSchool(sid), c = findClass(sid, cid); if (!s || !c) return;
-  const cc = document.getElementById('classCrumb'), cdc = document.getElementById('classDetailContent');
-  if (cc) cc.textContent = `${s.name} / ${c.name}`;
-  if (cdc) {
-    cdc.innerHTML = `
-      <div class="detailhead">
-        <div class="school-head"><div><h1 class="title">${esc(c.name)}</h1><div class="muted">${esc(s.name)} · پایه ${esc(c.grade || '')}</div></div><div class="school-icon">🚪</div></div>
-        <div class="actions" style="margin-top:12px">
-          <button class="btn primary" style="flex:1" onclick="openAttendance('${sid}','${cid}')">📋 لیست جامع (حضور، نمرات و ترم)</button>
-          <button class="btn soft" onclick="openTodayList('${sid}','${cid}')">⚡ لیست سریع امروز</button>
-          <button class="btn gray" onclick="copyClass('${sid}','${cid}')">📋 کپی کلاس</button>
-          <button class="btn danger" onclick="deleteClass('${sid}','${cid}')">حذف</button>
-        </div>
+  document.getElementById('classCrumb').textContent = `${s.name} / ${c.name}`;
+  document.getElementById('classDetailContent').innerHTML = `
+    <div class="detailhead">
+      <div class="school-head"><div><h1 class="title">${esc(c.name)}</h1><div class="muted">${esc(s.name)} · پایه ${esc(c.grade || '')}</div></div><div class="school-icon">🚪</div></div>
+      <div class="actions" style="margin-top:10px">
+        <button class="btn primary" style="flex:1" onclick="openAttendance('${sid}','${cid}')">📋 لیست جامع، نمرات و ترم</button>
+        <button class="btn soft" onclick="openTodayList('${sid}','${cid}')">⚡ لیست سریع امروز</button>
+        <button class="btn gray" onclick="copyClass('${sid}','${cid}')">کپی</button>
+        <button class="btn danger" onclick="deleteClass('${sid}','${cid}')">حذف</button>
       </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
-        <button class="btn primary" onclick="addStudent('${sid}','${cid}')">＋ دانش‌آموز جدید</button>
-        <button class="btn soft" onclick="collectiveBehavior('${sid}','${cid}','positive')">➕ مثبت جمعی</button>
-        <button class="btn danger" onclick="collectiveBehavior('${sid}','${cid}','negative')">➖ منفی جمعی</button>
-      </div>
-      ${renderClassLineChart(c)}
-      <div style="margin:14px 0 8px"><b>👨‍🎓 فهرست دانش‌آموزان (${fa(c.students.length)} نفر)</b></div>
-      <div class="grid">${c.students.length ? sortStudents(c.students).map(st => studentCard(s, c, st)).join('') : empty('👨‍🎓', 'دانش‌آموزی ثبت نشده', '')}</div>
-    `;
-  }
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0">
+      <button class="btn primary" onclick="addStudent('${sid}','${cid}')">＋ دانش‌آموز جدید</button>
+      <button class="btn soft" onclick="collectiveBehavior('${sid}','${cid}','positive')">➕ مثبت جمعی</button>
+      <button class="btn danger" onclick="collectiveBehavior('${sid}','${cid}','negative')">➖ منفی جمعی</button>
+    </div>
+    ${renderClassLineChart(c)}
+    <div style="margin:12px 0 6px"><b>👨‍🎓 فهرست دانش‌آموزان (${fa(c.students.length)} نفر)</b></div>
+    <div class="grid">${c.students.length ? sortStudents(c.students).map(st => studentCard(s, c, st)).join('') : empty('👨‍🎓', 'دانش‌آموزی ثبت نشده', '')}</div>
+  `;
   showView('classDetail');
 }
 
@@ -595,7 +588,7 @@ function openAttendance(sid, cid) {
         <div><h1 class="title">📋 لیست جامع و نمرات پایانی</h1><div class="muted">${esc(s.name)} · ${esc(c.name)}</div></div>
         <div class="school-icon">📋</div>
       </div>
-      <div class="actions" style="margin-top:10px">
+      <div class="actions" style="margin-top:8px">
         <button class="btn primary" onclick="exportCustomReport('excel')">📊 دریافت اکسل کامل</button>
         <button class="btn soft" onclick="openTodayList('${sid}','${cid}')">⚡ رفتن به لیست سریع امروز</button>
       </div>
@@ -615,7 +608,7 @@ function openAttendance(sid, cid) {
       let isAbs = attendanceStatus(c, d, st.id) === 'absent';
       let sc = attendanceScore(c, d, st.id);
       return `<td>
-        <div style="display:grid;gap:3px;justify-items:center">
+        <div style="display:grid;gap:2px;justify-items:center">
           <button class="att-cell ${isAbs ? 'absent' : 'present'}" onclick="gridToggleAtt('${sid}','${cid}','${st.id}','${d}')">${isAbs ? '✖' : '✓'}</button>
           <input class="att-score-input" type="number" step="0.25" min="0" max="20" value="${sc === null ? '' : sc}" placeholder="-" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${d}',this.value)">
         </div>
@@ -694,9 +687,9 @@ window.openTodayList = function(sid, cid) {
     return `
       <div class="td-row">
         <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
-          <button class="att-cell ${isAbs ? 'absent' : 'present'}" style="width:40px;height:40px" onclick="todayToggleAtt('${sid}','${cid}','${st.id}','${dateISO}')">${isAbs ? '✖' : '✓'}</button>
+          <button class="att-cell ${isAbs ? 'absent' : 'present'}" style="width:36px;height:36px" onclick="todayToggleAtt('${sid}','${cid}','${st.id}','${dateISO}')">${isAbs ? '✖' : '✓'}</button>
           <div style="min-width:0;overflow:hidden">
-            <b style="font-size:14.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b>
+            <b style="font-size:13.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b>
             <div class="muted" style="font-size:11px">➕ ${fa(st.behavior.positives.length)} | ➖ ${fa(st.behavior.negatives.length)}</div>
           </div>
         </div>
@@ -735,7 +728,7 @@ window.todayScore = function(sid, cid, stid, type) {
   save(); openTodayList(sid, cid); toast(type === 'positive' ? 'مثبت ثبت شد' : 'منفی ثبت شد');
 };
 
-/* فرمول محاسبه نمره نهایی */
+/* فرمول نمره نهایی */
 function calculateFinalStudentScore(c, st) {
   let term = Number(c.termScores?.[st.id]);
   let baseScore = Number.isFinite(term) ? term : (avgGrade(st) ?? 0);
@@ -781,12 +774,12 @@ function saveShortcuts(arr) { localStorage.setItem('behavior_shortcuts_v2', JSON
 function renderShortcutSettingsUi() {
   const box = document.getElementById('shortcutListUi'); if (!box) return;
   box.innerHTML = getShortcuts().map((item, idx) => `
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#fffaf5;border:1px solid var(--primary-border);border-radius:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#fffaf5;border:1px solid var(--border);border-radius:9px">
       <div>
         <b style="color:${item.type === 'positive' ? 'green' : 'red'}">${item.type === 'positive' ? '➕' : '➖'} کد «${esc(item.code)}»</b>
-        <span class="muted" style="margin-right:8px">${esc(item.reason)} (${fmtScore(item.value)} نمره)</span>
+        <span class="muted" style="margin-right:6px">${esc(item.reason)} (${fmtScore(item.value)} نمره)</span>
       </div>
-      <button class="btn danger" style="min-height:auto;padding:3px 8px;font-size:11px" onclick="deleteShortcut(${idx})">حذف</button>
+      <button class="btn danger" style="min-height:auto;padding:2px 7px;font-size:11px" onclick="deleteShortcut(${idx})">حذف</button>
     </div>
   `).join('');
 }
@@ -801,7 +794,7 @@ window.addShortcutPrompt = function() {
 };
 window.deleteShortcut = function(idx) { const list = getShortcuts(); list.splice(idx, 1); saveShortcuts(list); toast('کد حذف شد'); };
 
-/* نمودارهای خطی */
+/* نمودار خطی */
 function renderClassLineChart(c) {
   const dates = attendanceDates(c);
   if (dates.length < 2) return '';
@@ -816,7 +809,7 @@ function renderClassLineChart(c) {
     points.push({ i, avg });
   });
 
-  const w = 600, h = 130;
+  const w = 600, h = 120;
   const svgPoints = points.map(p => {
     let x = (p.i / (points.length - 1)) * (w - 60) + 30;
     let y = h - (p.avg / 20) * (h - 40) - 20;
@@ -827,16 +820,16 @@ function renderClassLineChart(c) {
     <div class="chart-container">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <b>📈 روند میانگین نمرات جلسات</b>
-        <span class="muted" style="font-size:11.5px">نمودار خطی ارزیابی مستمر</span>
+        <span class="muted" style="font-size:11px">نمودار خطی ارزیابی مستمر</span>
       </div>
       <div class="chart-box">
         <svg class="chart" viewBox="0 0 ${w} ${h}">
           <line x1="30" y1="${h - 20}" x2="${w - 30}" y2="${h - 20}" stroke="#fed7aa" stroke-width="1.5" />
-          <polyline fill="none" stroke="var(--primary)" stroke-width="3" points="${svgPoints}" />
+          <polyline fill="none" stroke="var(--primary)" stroke-width="2.5" points="${svgPoints}" />
           ${points.map(p => {
             let x = (p.i / (points.length - 1)) * (w - 60) + 30;
             let y = h - (p.avg / 20) * (h - 40) - 20;
-            return `<circle cx="${x}" cy="${y}" r="4" fill="var(--primary2)" /><text x="${x}" y="${y - 8}" font-size="10" text-anchor="middle" fill="#555">${fmtScore(p.avg)}</text>`;
+            return `<circle cx="${x}" cy="${y}" r="3.5" fill="var(--primary)" /><text x="${x}" y="${y - 6}" font-size="9" text-anchor="middle" fill="#555">${fmtScore(p.avg)}</text>`;
           }).join('')}
         </svg>
       </div>
@@ -855,13 +848,13 @@ function renderSchoolProgressChart() {
     return { name: s.name, avg: all.length ? all.reduce((a, b) => a + b, 0) / all.length : 0 };
   });
   box.innerHTML = `
-    <div class="card" style="margin-top:14px">
-      <b>📊 سطح مقایسه‌ای مدارس (میانگین نمرات)</b>
-      <div style="display:grid;gap:8px;margin-top:10px">
+    <div class="card" style="margin-top:10px">
+      <b>📊 وضعیت مقایسه‌ای مدارس (میانگین نمرات)</b>
+      <div style="display:grid;gap:6px;margin-top:8px">
         ${schAvgs.map(x => `
           <div>
-            <div style="display:flex;justify-content:space-between;font-size:12.5px"><span>${esc(x.name)}</span><b>${fmtScore(x.avg)} از ۲۰</b></div>
-            <div style="height:7px;background:#ffedd5;border-radius:4px;overflow:hidden;margin-top:4px">
+            <div style="display:flex;justify-content:space-between;font-size:11.5px"><span>${esc(x.name)}</span><b>${fmtScore(x.avg)} از ۲۰</b></div>
+            <div style="height:6px;background:#ffedd5;border-radius:4px;overflow:hidden;margin-top:2px">
               <div style="height:100%;width:${(x.avg / 20) * 100}%;background:var(--primary);border-radius:4px"></div>
             </div>
           </div>
@@ -871,7 +864,7 @@ function renderSchoolProgressChart() {
   `;
 }
 
-/* خروجی گزارشات */
+/* خروجی گزارش */
 window.exportCustomReport = function(kind) {
   const incAtt = document.getElementById('expColAtt')?.checked;
   const incGrades = document.getElementById('expColContGrades')?.checked;
@@ -925,15 +918,18 @@ window.exportCustomReport = function(kind) {
   }
 };
 
-/* سایر توابع تقویم، پشتیبان و ثبت */
+/* کارت دانش‌آموز */
 function studentCard(s, c, st) {
-  let status = st.status === 'good' ? '<span class="status good">🟢 خوب</span>' : st.status === 'attn' ? '<span class="status attn">🔴 توجه</span>' : '<span class="status none">⚪ عادی</span>';
+  let status = st.status === 'good' ? '<span style="background:#dcfce7;color:#15803d;padding:2px 6px;border-radius:6px;font-size:10px">🟢 خوب</span>' : st.status === 'attn' ? '<span style="background:#fee2e2;color:#b91c1c;padding:2px 6px;border-radius:6px;font-size:10px">🔴 توجه</span>' : '<span style="background:#f1f5f9;color:#64748b;padding:2px 6px;border-radius:6px;font-size:10px">⚪ عادی</span>';
   return `<div class="card">
-    <div style="display:flex;align-items:center;gap:10px">
+    <div class="student">
       <div class="avatar">${st.photo ? `<img src="${st.photo}">` : esc((st.name || '?')[0])}</div>
-      <div style="flex:1"><b>${formatStudentName(st)}</b><div style="margin-top:3px">${status}</div></div>
+      <div style="flex:1;min-width:0">
+        <b style="font-size:13.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${formatStudentName(st)}</b>
+        <div style="margin-top:2px">${status}</div>
+      </div>
     </div>
-    <div class="muted" style="margin-top:8px;font-size:11.5px">➕ ${fa(st.behavior.positives.length)} | ➖ ${fa(st.behavior.negatives.length)} | میانگین: ${avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—'}</div>
+    <div class="muted" style="margin-top:6px;font-size:11px">➕ ${fa(st.behavior.positives.length)} | ➖ ${fa(st.behavior.negatives.length)} | میانگین: ${avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—'}</div>
     <div class="actions">
       <button class="btn soft" style="flex:1" onclick="openStudent('${s.id}','${c.id}','${st.id}')">پرونده</button>
       <button class="btn gray" onclick="copyStudentAdvanced('${s.id}','${c.id}','${st.id}')">📋 کپی</button>
@@ -948,8 +944,13 @@ function openStudent(sid, cid, stid) {
   document.getElementById('studentCrumb').textContent = `${st.lastName} ${st.name}`;
   document.getElementById('studentDetailContent').innerHTML = `
     <div class="card">
-      <h2>${formatStudentName(st)}</h2>
-      <div class="muted">${esc(s.name)} · ${esc(c.name)} · همراه: ${esc(st.phone || '—')}</div>
+      <div class="student">
+        <div class="avatar" style="width:60px!important;height:60px!important;max-width:60px!important;max-height:60px!important">${st.photo ? `<img src="${st.photo}">` : '👤'}</div>
+        <div>
+          <h2 style="margin:0;font-size:17px">${formatStudentName(st)}</h2>
+          <div class="muted" style="margin-top:2px">${esc(s.name)} · ${esc(c.name)} · همراه: ${esc(st.phone || '—')}</div>
+        </div>
+      </div>
       <div class="actions" style="margin-top:12px">
         <button class="btn primary" onclick="addBehavior('${sid}','${cid}','${stid}','positive')">➕ ثبت مثبت</button>
         <button class="btn danger" onclick="addBehavior('${sid}','${cid}','${stid}','negative')">➖ ثبت منفی</button>
@@ -963,14 +964,14 @@ function openStudent(sid, cid, stid) {
 
 function addStudent(sid, cid) {
   openModal(formHeader('👨‍🎓 افزودن دانش‌آموز') + `
-    <div class="formgrid">
-      <div class="field"><label>نام</label><input id="stName" required></div>
-      <div class="field"><label>نام خانوادگی</label><input id="stLast" required></div>
-      <div class="field full"><label>نام پدر (جهت تفکیک تشابه اسمی)</label><input id="stFather"></div>
-      <div class="field"><label>تاریخ تولد شمسی</label><input id="stBirth" placeholder="مثلاً ۱۳۸۸/۰۵/۲۱"></div>
-      <div class="field"><label>شماره همراه</label><input id="stPhone" inputmode="tel"></div>
+    <div style="display:grid;gap:7px">
+      <div><label class="muted">نام</label><input id="stName" required></div>
+      <div><label class="muted">نام خانوادگی</label><input id="stLast" required></div>
+      <div><label class="muted">نام پدر (برای تشابه اسمی)</label><input id="stFather"></div>
+      <div><label class="muted">تولد شمسی</label><input id="stBirth" placeholder="مثلاً ۱۳۸۸/۰۵/۲۱"></div>
+      <div><label class="muted">شماره همراه</label><input id="stPhone" inputmode="tel"></div>
     </div>
-    <div class="formactions"><button class="btn primary" onclick="saveStudentDirect('${sid}','${cid}')">ذخیره</button></div>
+    <div style="margin-top:10px"><button class="btn primary block" onclick="saveStudentDirect('${sid}','${cid}')">ذخیره دانش‌آموز</button></div>
   `);
 }
 
@@ -986,14 +987,38 @@ function saveStudentDirect(sid, cid) {
   closeModal(); save(); toast('دانش‌آموز اضافه شد');
 }
 
+function editStudent(sid, cid, stid) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  openModal(formHeader('ویرایش دانش‌آموز') + `
+    <div style="display:grid;gap:7px">
+      <div><label class="muted">نام</label><input id="stName" value="${esc(st.name)}"></div>
+      <div><label class="muted">نام خانوادگی</label><input id="stLast" value="${esc(st.lastName)}"></div>
+      <div><label class="muted">نام پدر</label><input id="stFather" value="${esc(st.fatherName || '')}"></div>
+      <div><label class="muted">تولد شمسی</label><input id="stBirth" value="${esc(st.birth || '')}"></div>
+      <div><label class="muted">تلفن</label><input id="stPhone" value="${esc(st.phone || '')}"></div>
+    </div>
+    <div style="margin-top:10px"><button class="btn primary block" onclick="updateStudentDirect('${sid}','${cid}','${stid}')">ذخیره تغییرات</button></div>
+  `);
+}
+
+function updateStudentDirect(sid, cid, stid) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  st.name = document.getElementById('stName').value.trim();
+  st.lastName = document.getElementById('stLast').value.trim();
+  st.fatherName = document.getElementById('stFather').value.trim();
+  st.birth = document.getElementById('stBirth').value.trim();
+  st.phone = document.getElementById('stPhone').value.trim();
+  closeModal(); save(); toast('اطلاعات ویرایش شد');
+}
+
 function copyStudentAdvanced(sid, cid, stid) {
   const st = findStudent(sid, cid, stid); if (!st) return;
   let options = '';
   db.schools.forEach(s => s.classes.forEach(c => { options += `<option value="${s.id}|${c.id}">${esc(s.name)} - ${esc(c.name)}</option>`; }));
   openModal(formHeader('📋 کپی به کلاس دیگر') + `
-    <p class="muted">دانش‌آموز بدون نمرات قبلی به کلاس مقصد منتقل می‌شود.</p>
-    <div class="field"><label>انتخاب کلاس مقصد</label><select id="copyDest">${options}</select></div>
-    <div class="formactions"><button class="btn primary" onclick="execCopyStudent('${stid}')">کپی کن</button></div>
+    <p class="muted">دانش‌آموز بدون نمرات قبلی به کلاس مقصد کپی می‌شود.</p>
+    <div><label class="muted">انتخاب کلاس مقصد</label><select id="copyDest">${options}</select></div>
+    <div style="margin-top:10px"><button class="btn primary block" onclick="execCopyStudent('${stid}')">کپی کن</button></div>
   `);
 }
 function execCopyStudent(stid) {
@@ -1029,12 +1054,9 @@ function renderBirthdays() {
   if (bl) {
     bl.innerHTML = items.length ? items.map(x => `
       <div class="b-card ${x.diff >= 300 ? 'past' : ''}">
-        <div class="b-head">
+        <div style="display:flex;justify-content:space-between;align-items:center">
           <div><b>${formatStudentName(x.st)}</b><div class="muted">${fa(x.st.birth)} · ${esc(x.s.name)} - ${esc(x.c.name)}</div></div>
-          <div class="b-avatar">🎂</div>
-        </div>
-        <div class="b-actions">
-          <button class="btn primary" style="flex:1" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 تبریک با پیامک</button>
+          <button class="btn soft" style="padding:4px 9px;min-height:auto" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 پیامک</button>
         </div>
       </div>
     `).join('') : empty('🎂', 'تاریخ تولدی ثبت نشده', '');
@@ -1052,9 +1074,9 @@ function exportRawData() {
       }))
     }))
   };
-  downloadJson(raw, `پشتیبان-خام-${localISODate()}.json`); toast('پشتیبان خام دانلود شد');
+  downloadJson(raw, `پشتیبان-خام-مدارس-${localISODate()}.json`); toast('پشتیبان خام دانلود شد');
 }
-function exportFullData() { downloadJson(db, `پشتیبان-کامل-${localISODate()}.json`); toast('پشتیبان کامل دانلود شد'); }
+function exportFullData() { downloadJson(db, `پشتیبان-کامل-دانش‌آموزان-${localISODate()}.json`); toast('پشتیبان کامل دانلود شد'); }
 function downloadJson(data, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })); a.download = name; a.click(); }
 
 function importData(e) {
@@ -1086,30 +1108,40 @@ function importData(e) {
   r.readAsText(f); e.target.value = '';
 }
 
-function clearAll() { if (confirm('تمام اطلاعات برنامه پاک شود؟ این عمل بازگشت ندارد.')) { db = { version: 1, schools: [] }; save(); showView('dashboard'); } }
-let toastTimer; function toast(m) { const t = document.getElementById('toast'); if (!t) return; t.textContent = m; t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2200); }
+function clearAll() { if (confirm('تمام اطلاعات برنامه پاک شود؟')) { db = { version: 1, schools: [] }; save(); showView('dashboard'); } }
+let toastTimer; function toast(m) { const t = document.getElementById('toast'); if (!t) return; t.textContent = m; t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2000); }
 
-function localISODate(d = new Date()) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
-function addDaysISO(s, d) { let dt = new Date(s); dt.setDate(dt.getDate() + d); return localISODate(dt); }
-function jalaliPartsFromISO(s) { try { let [y, m, d] = s.split('-').map(Number); let dt = new Date(Date.UTC(y, m - 1, d, 12)); let parts = new Intl.DateTimeFormat('en-US-u-ca-persian', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' }).formatToParts(dt); return { y: +parts.find(x => x.type === 'year').value, m: +parts.find(x => x.type === 'month').value, d: +parts.find(x => x.type === 'day').value }; } catch(e) { return null; } }
+function localISODate() { return new Date().toISOString().slice(0, 10); }
+function addDaysISO(s, d) { let dt = new Date(s); dt.setDate(dt.getDate() + d); return dt.toISOString().slice(0, 10); }
+function jalaliPartsFromISO(s) { try { let [y, m, d] = s.split('-').map(Number); let parts = new Intl.DateTimeFormat('en-US-u-ca-persian', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' }).formatToParts(new Date(Date.UTC(y, m - 1, d, 12))); return { y: +parts.find(x => x.type === 'year').value, m: +parts.find(x => x.type === 'month').value, d: +parts.find(x => x.type === 'day').value }; } catch(e) { return null; } }
 function formatJalaliDate(s) { let p = jalaliPartsFromISO(s); return p ? `${fa(p.y)}/${fa(p.m)}/${fa(p.d)}` : '—'; }
 function formatAttendanceDate(s) { let p = jalaliPartsFromISO(s); return p ? `${fa(p.m)}/${fa(p.d)}` : '—'; }
-function attendanceDates(c) { const a = c.attendanceSettings || {}; let start = a.startDate || localISODate(), count = Number(a.sessionCount) || 16; let out = [], step = Number(a.intervalDays) || 7; for (let i = 0; i < count; i++) { out.push(addDaysISO(start, i * step)); } return out; }
+function attendanceDates(c) {
+  const a = c.attendanceSettings || {}; let start = a.startDate || localISODate(), count = Number(a.sessionCount) || 16;
+  let out = [], step = Number(a.intervalDays) || 7;
+  for (let i = 0; i < count; i++) out.push(addDaysISO(start, i * step));
+  return out;
+}
 function attendanceRecord(c, date, stid) { return c.attendance?.[date]?.[stid] || { status: 'present' }; }
 function attendanceStatus(c, date, stid) { return attendanceRecord(c, date, stid).status || 'present'; }
 function attendanceScore(c, date, stid) { let s = Number(attendanceRecord(c, date, stid).score); return Number.isFinite(s) ? s : null; }
-function saveAttendanceGrade(sid, cid, stid, date, val) { const c = findClass(sid, cid); if (!c) return; if (!c.attendance[date]) c.attendance[date] = {}; let n = val === '' ? null : Number(enDigits(val)); if (n === null) { delete c.attendance[date][stid]?.score; } else { c.attendance[date][stid] = { ...attendanceRecord(c, date, stid), score: n }; } save(); toast('نمره ثبت شد'); }
+function saveAttendanceGrade(sid, cid, stid, date, val) {
+  const c = findClass(sid, cid); if (!c) return; if (!c.attendance[date]) c.attendance[date] = {};
+  let n = val === '' ? null : Number(enDigits(val));
+  if (n === null) { delete c.attendance[date][stid]?.score; } else { c.attendance[date][stid] = { ...attendanceRecord(c, date, stid), score: n }; }
+  save(); toast('نمره ثبت شد');
+}
 function avgGrade(st) { let g = (st.grades || []).map(x => Number(x.score)).filter(Number.isFinite); return g.length ? g.reduce((a, b) => a + b, 0) / g.length : null; }
 function fmtScore(n) { return Number(n).toLocaleString('fa-IR', { maximumFractionDigits: 2 }); }
 function behaviorData(st) { if (!st.behavior) st.behavior = { positives: [], negatives: [] }; return st.behavior; }
-function empty(icon, title, sub) { return `<div class="card" style="text-align:center;padding:30px;grid-column:1/-1"><div style="font-size:32px;margin-bottom:6px">${icon}</div><b>${title}</b><div class="muted">${sub}</div></div>`; }
+function gradesData(st) { if (!st.grades) st.grades = []; return st.grades; }
 function quickAdd() { if (!db.schools.length) addSchool(); else if (currentClassId) addStudent(currentSchoolId, currentClassId); else addSchool(); }
 
 function addSchool() {
   openModal(formHeader('🏫 افزودن مدرسه') + `
-    <div class="field"><label>نام مدرسه</label><input id="fName" required placeholder="مثلاً دبیرستان شهید بهشتی"></div>
-    <div class="field" style="margin-top:10px"><label>سال تحصیلی</label><input id="fYear" value="۱۴۰۵/۱۴۰۶"></div>
-    <div class="formactions"><button class="btn primary" onclick="saveSchoolDirect()">ذخیره مدرسه</button></div>
+    <div><label class="muted">نام مدرسه</label><input id="fName" required placeholder="مثلاً دبیرستان شهید بهشتی"></div>
+    <div style="margin-top:7px"><label class="muted">سال تحصیلی</label><input id="fYear" value="۱۴۰۵/۱۴۰۶"></div>
+    <div style="margin-top:10px"><button class="btn primary block" onclick="saveSchoolDirect()">ذخیره مدرسه</button></div>
   `);
 }
 function saveSchoolDirect() {
@@ -1121,9 +1153,9 @@ function saveSchoolDirect() {
 
 function addClass(sid) {
   openModal(formHeader('🚪 افزودن کلاس') + `
-    <div class="field"><label>نام کلاس</label><input id="cName" required placeholder="مثلاً هفتم الف"></div>
-    <div class="field" style="margin-top:10px"><label>پایه</label><input id="cGrade" placeholder="مثلاً هفتم"></div>
-    <div class="formactions"><button class="btn primary" onclick="saveClassDirect('${sid}')">ذخیره کلاس</button></div>
+    <div><label class="muted">نام کلاس</label><input id="cName" required placeholder="هفتم الف"></div>
+    <div style="margin-top:7px"><label class="muted">پایه</label><input id="cGrade" placeholder="هفتم"></div>
+    <div style="margin-top:10px"><button class="btn primary block" onclick="saveClassDirect('${sid}')">ذخیره کلاس</button></div>
   `);
 }
 function saveClassDirect(sid) {
@@ -1148,7 +1180,73 @@ function deleteClass(sid, cid) {
   }
 }
 
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js?v=3.4.0').catch(() => {}); }
+function collectiveBehavior(sid, cid, type) {
+  const c = findClass(sid, cid); if (!c || !c.students.length) return;
+  openModal(formHeader(type === 'positive' ? '➕ ثبت مثبت جمعی' : '➖ ثبت منفی جمعی') + `
+    <div><label class="muted">دلیل</label><input id="colReason" placeholder="مثلاً فعالیت در کلاس"></div>
+    <div style="margin:8px 0;max-height:40vh;overflow-y:auto">
+      ${sortStudents(c.students).map(st => `<label style="display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f1f5f9"><input type="checkbox" value="${st.id}" checked class="colChk"> <span>${formatStudentName(st)}</span></label>`).join('')}
+    </div>
+    <button class="btn primary block" onclick="execCollectiveBehavior('${sid}','${cid}','${type}')">ثبت جمعی</button>
+  `);
+}
+function execCollectiveBehavior(sid, cid, type) {
+  const c = findClass(sid, cid); if (!c) return;
+  const reason = document.getElementById('colReason')?.value || (type === 'positive' ? 'مثبت جمعی' : 'منفی جمعی');
+  const chks = document.querySelectorAll('.colChk:checked');
+  chks.forEach(chk => {
+    const st = c.students.find(x => x.id === chk.value);
+    if (st) behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason, value: 0.25, code: '' });
+  });
+  closeModal(); save(); toast('ثبت جمعی انجام شد');
+}
+
+function addBehavior(sid, cid, stid, type) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  const reason = prompt(`دلیل ${type === 'positive' ? 'مثبت' : 'منفی'}:`, type === 'positive' ? 'فعالیت در کلاس' : 'بی‌انضباطی');
+  if (reason === null) return;
+  behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason: reason || 'ثبت شده', value: 0.25, code: '' });
+  save(); toast('ثبت شد');
+}
+
+function addGrade(sid, cid, stid) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  const val = prompt('نمره بین ۰ تا ۲۰ را وارد کنید:'); if (val === null) return;
+  const n = Number(enDigits(val)); if (!Number.isFinite(n) || n < 0 || n > 20) { alert('نمره نامعتبر است.'); return; }
+  gradesData(st).push({ id: uid(), date: new Date().toISOString(), subject: 'ارزیابی کلاسی', teacher: '', score: n });
+  save(); toast('نمره ثبت شد');
+}
+
+function getTeacherName() { return localStorage.getItem('teacher_name') || ''; }
+function saveTeacherName() { localStorage.setItem('teacher_name', document.getElementById('teacherName').value); }
+function getBirthdayTemplate() { return localStorage.getItem('birthday_template') || 'تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉'; }
+function saveBirthdayTemplate() { localStorage.setItem('birthday_template', document.getElementById('birthdayTemplate').value); }
+function personalBirthdayMessage(st) { return getBirthdayTemplate().replaceAll('{نام}', st.name || '').replaceAll('{نام_خانوادگی}', st.lastName || ''); }
+function openBirthdaySender(stid, cid, sid) { let st = findStudent(sid, cid, stid); if (st) window.location.href = `sms:${st.phone || ''}?body=${encodeURIComponent(personalBirthdayMessage(st))}`; }
+
+function renderSearch() {
+  const q = document.getElementById('globalSearch')?.value.trim().toLowerCase();
+  const box = document.getElementById('searchResults'); if (!box) return;
+  if (!q) { box.innerHTML = ''; return; }
+  let list = [];
+  db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
+    if ((st.name + ' ' + st.lastName + ' ' + (st.fatherName || '')).toLowerCase().includes(q)) list.push({ s, c, st });
+  })));
+  box.innerHTML = list.length ? `<div class="grid">${list.map(x => studentCard(x.s, x.c, x.st)).join('')}</div>` : empty('🔍', 'یافت نشد', '');
+}
+
+function renderStatuses() {
+  let good = 0, attn = 0;
+  db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
+    if (st.status === 'good') good++; else if (st.status === 'attn') attn++;
+  })));
+  document.getElementById('goodCount').textContent = fa(good);
+  document.getElementById('attentionCount').textContent = fa(attn);
+}
+
+function empty(icon, title, sub) { return `<div class="empty"><div style="font-size:30px;margin-bottom:4px">${icon}</div><b>${title}</b><div class="muted">${sub}</div></div>`; }
+
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js?v=3.6.0').catch(() => {}); }
 renderAll(); restorePersistent();
 </script>
 </body>
