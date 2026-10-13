@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="2.9.9">
+<meta name="version" content="2.9.10">
 <title>دانش‌آموز من</title>
 <style>
 :root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#687386;--primary:#5b21b6;--primary2:#7c3aed;--green:#10b981;--red:#ef4444;--gray:#64748b;--border:#e7eaf0;--shadow:0 8px 28px rgba(23,32,51,.07);--r:18px;--orange:#f97316;--orange-light:#fff7ed}
@@ -94,11 +94,15 @@ input,select,textarea{width:100%;border:1px solid var(--border);background:#fff;
 .weekday-selector label {background: #f1f5f9; padding: 6px 12px; border-radius:20px; font-size: 12px; cursor: pointer; border: 1px solid transparent; transition: .2s;}
 .weekday-selector input:checked + label {background: var(--primary); color: #fff; font-weight: 700;}
 .weekday-selector input {display: none;}
+
+/* Advanced Dashboard Stats */
+.dashboard-advanced{display:grid;gap:12px;margin:14px 0}.dash-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.dash-kpi{background:#fff;border:1px solid var(--border);border-radius:15px;padding:12px}.dash-kpi b{display:block;font-size:20px}.dash-kpi small{color:var(--muted)}.dash-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dash-list{display:grid;gap:7px;margin-top:9px}.dash-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px;background:#f8fafc;border-radius:12px}.progress{height:9px;background:#eef1f5;border-radius:99px;overflow:hidden;margin-top:7px}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--primary2));border-radius:99px}.trend{display:flex;align-items:flex-end;gap:5px;height:90px;margin-top:12px}.trend-bar{flex:1;min-width:8px;background:#c7d2fe;border-radius:7px 7px 2px 2px;position:relative}.trend-bar span{position:absolute;bottom:100%;right:50%;transform:translateX(50%);font-size:9px;color:var(--muted);white-space:nowrap}.trend-labels{display:flex;gap:5px}.trend-labels span{flex:1;text-align:center;font-size:9px;color:var(--muted)}
+@media(max-width:760px){.dash-grid{grid-template-columns:repeat(2,1fr)}.dash-two{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v2.9.9</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
+<header class="topbar"><div class="toprow"><div class="brand"><div class="logo">🎓</div><div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v2.9.10</span></small></div></div><button class="iconbtn" onclick="showView('search')" aria-label="جستجو">🔍</button></div></header>
 
 <main class="container">
 <section id="dashboard" class="view active">
@@ -107,6 +111,8 @@ input,select,textarea{width:100%;border:1px solid var(--border);background:#fff;
 <div id="todayClassesBox"></div>
 <div class="stats"><div class="stat"><span>مدارس</span><strong id="statSchools">۰</strong></div><div class="stat"><span>کلاس‌ها</span><strong id="statClasses">۰</strong></div><div class="stat"><span>دانش‌آموزان</span><strong id="statStudents">۰</strong></div></div>
 <div id="dashboardSchools" class="grid"></div>
+<div id="todayAbsencesBox" style="margin-top:14px"></div>
+<div id="advancedDashboard" class="dashboard-advanced"></div>
 </section>
 
 <section id="schools" class="view">
@@ -143,7 +149,7 @@ input,select,textarea{width:100%;border:1px solid var(--border);background:#fff;
     <label>👨‍🏫 نام شما (معلم)</label>
     <input id="teacherName" oninput="saveTeacherName()" placeholder="مثلاً رضا شهابی" value="">
   </div>
-  <textarea id="birthdayTemplate" style="margin-top:8px" oninput="saveBirthdayTemplate()" placeholder="تولدت مبارک..."></textarea>
+  <textarea id="birthdayTemplate" style="margin-top:8px; width:100%; height:80px" oninput="saveBirthdayTemplate()" placeholder="تولدت مبارک..."></textarea>
 </div>
 </section>
 
@@ -243,7 +249,7 @@ function handleFormSubmit(e, callback) {
     e.preventDefault(); if (isSubmitting) return; isSubmitting = true;
     const submitBtn = e.target.querySelector('button[type="submit"]');
     const originalText = submitBtn ? submitBtn.innerText : '';
-    if(submitBtn) { submitBtn.disabled = true; submitBtn.innerText = 'کمی صبر کنید...'; }
+    if(submitBtn) { submitBtn.disabled = true; submitBtn.innerText = 'صبر کنید...'; }
     setTimeout(() => { callback(); isSubmitting = false; if(submitBtn) { submitBtn.disabled = false; submitBtn.innerText = originalText; } }, 250);
 }
 
@@ -272,10 +278,18 @@ function renderAll(){if(document.getElementById('dashboard').classList.contains(
 
 function getJalaliDayOfYear(m, d) { if (m <= 6) return (m - 1) * 31 + d; return 186 + (m - 7) * 30 + d; }
 
+// --- اصلاح رندر داشبورد جهت نمایش صحیح لیست مدارس ---
 function renderDashboard(){
     let c=counts();
     statSchools.textContent=fa(c.schools);statClasses.textContent=fa(c.classes);statStudents.textContent=fa(c.students);
+    
+    // اینجا مشکل نسخه قبل رفع شد تا مدارس دوباره نمایش داده شوند
+    document.getElementById('dashboardSchools').innerHTML = db.schools.length 
+        ? db.schools.slice(0,6).map(schoolCard).join('') 
+        : empty('🏫','هنوز مدرسه‌ای ثبت نشده','ابتدا از طریق دکمه + یک مدرسه اضافه کنید.');
+    
     renderDashBirthdays(); renderTodayClasses();
+    renderTodayAbsences(); renderAdvancedDashboard();
 }
 
 function renderDashBirthdays() {
@@ -379,40 +393,35 @@ function renderBirthdays(){
 }
 
 function schoolCard(s){let n=s.classes.reduce((a,c)=>a+c.students.length,0);return `<div class="card"><div class="school-head"><div><h3>${esc(s.name)}</h3><div class="muted">سال تحصیلی ${esc(s.year||'—')}</div></div><div class="school-icon">🏫</div></div><div class="chips"><span class="chip">🚪 ${fa(s.classes.length)} کلاس</span><span class="chip">👨‍🎓 ${fa(n)} دانش‌آموز</span></div><button class="btn soft block" onclick="openSchool('${s.id}')">مدیریت کلاس‌ها ←</button></div>`}
-function renderSchools(){schoolsGrid.innerHTML=db.schools.length?db.schools.map(s=>schoolCard(s)).join(''):empty('🏫','مدرسه‌ای ثبت نشده','با دکمه + مدرسه جدید اضافه کنید.')}
+function renderSchools(){document.getElementById('schoolsGrid').innerHTML=db.schools.length?db.schools.map(s=>schoolCard(s)).join(''):empty('🏫','مدرسه‌ای ثبت نشده','با دکمه + مدرسه جدید اضافه کنید.')}
 
 function openSchool(id){currentSchoolId=id;let s=findSchool(id);if(!s)return;schoolCrumb.textContent=s.name;schoolDetailContent.innerHTML=`<div class="detailhead"><div class="school-head"><div><h1 class="title">${esc(s.name)}</h1><div class="muted">سال تحصیلی ${esc(s.year||'—')}</div></div><div class="school-icon">🏫</div></div><div class="actions"><button class="btn soft" onclick="editSchool('${id}')">ویرایش</button><button class="btn danger" onclick="deleteSchool('${id}')">حذف</button></div></div><div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0"><div><b>کلاس‌ها</b><div class="muted">${fa(s.classes.length)} کلاس</div></div><button class="btn primary" onclick="addClass('${id}')">＋ کلاس جدید</button></div><div class="grid">${s.classes.length?s.classes.map(c=>classCard(s,c)).join(''):empty('🚪','کلاسی وجود ندارد','')}</div>`;showView('schoolDetail')}
 function classCard(s,c){return `<div class="card"><div class="school-head"><div><h3>${esc(c.name)}</h3><div class="muted">کلاس ${esc(c.grade||'')}</div></div><div class="school-icon">🚪</div></div><div class="chips"><span class="chip">👨‍🎓 ${fa(c.students.length)} دانش‌آموز</span></div><div class="actions"><button class="btn soft" style="flex:1" onclick="openClass('${s.id}','${c.id}')">ورود به کلاس</button><button class="btn gray" onclick="editClass('${s.id}','${c.id}')">✎</button></div></div>`}
 
-// --- هسته اصلی کلاس ---
 window.currentListDate = null;
 function openClass(sid,cid){
     currentSchoolId=sid;currentClassId=cid;let s=findSchool(sid),c=findClass(sid,cid);if(!s||!c)return;
     classCrumb.textContent=`${s.name} / ${c.name}`;
+    const dates = attendanceDates(c); const today = localISODate();
+    window.currentListDate = window.currentListDate || (dates.includes(today)?today:dates.find(d=>d>=today)||today);
     
-    // کانتینر اصلی کلاس که اگر لیست امروز باز شود مخفی می‌شود
     classDetailContent.innerHTML=`
     <div id="classMainView">
         <div class="detailhead" style="margin-bottom:20px">
             <div class="school-head"><div><h1 class="title">${esc(c.name)}</h1><div class="muted">${esc(s.name)} · ${esc(c.grade||'')}</div></div><div class="school-icon">🚪</div></div>
             <div class="actions"><button class="btn gray" style="flex:1" onclick="copyClass('${sid}','${cid}')">📋 کپی کلاس</button><button class="btn gray" style="flex:1" onclick="editClass('${sid}','${cid}')">⚙️ تنظیمات</button></div>
         </div>
-        
         <div style="display:flex;justify-content:space-between;align-items:center;margin:24px 0 14px">
             <div><b>لیست دانش‌آموزان</b><div class="muted">${fa(c.students.length)} نفر</div></div>
             <button class="btn primary" onclick="addStudent('${sid}','${cid}')">＋ جدید</button>
         </div>
-        
         <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px">
             <button id="btnTodayList_${cid}" class="btn primary" onclick="openTodayList('${sid}','${cid}')">📄 لیست امروز (سریع)</button>
             <button class="btn gray" onclick="openAttendance('${sid}','${cid}')">📋 جدول کل ترم</button>
             <button class="btn soft" onclick="openTermManager('${sid}','${cid}')">📚 ترم: ${esc(activeTerm(c).name)}</button>
         </div>
-        
         <div class="grid">${c.students.length?sortStudents(c.students).map(st=>studentCard(s,c,st)).join(''):empty('👨‍🎓','دانش‌آموزی نیست','ابتدا یک دانش‌آموز اضافه کنید.')}</div>
     </div>
-    
-    <!-- کانتینر لیست امروز -->
     <div id="classTodayListContainer" style="display:none"></div>
     `;
     showView('classDetail');
@@ -428,7 +437,6 @@ window.openTodayList = function(sid, cid) {
     window.currentListDate = window.currentListDate || (dates.includes(today)?today:dates.find(d=>d>=today)||today);
     renderTodayListInner(sid, cid);
 }
-
 window.closeTodayList = function() {
     document.getElementById('classTodayListContainer').style.display = 'none';
     document.getElementById('classMainView').style.display = 'block';
@@ -461,7 +469,7 @@ function renderTodayListInner(sid, cid) {
 
     document.getElementById('classTodayListContainer').innerHTML = `
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px">
-        <button class="btn gray" onclick="closeTodayList()" style="padding:8px 12px">← بازگشت به کلاس</button>
+        <button class="btn gray" onclick="closeTodayList()" style="padding:8px 12px; font-weight:bold">← بازگشت به کلاس</button>
         <div style="font-size:18px; font-weight:bold; color:var(--primary)">لیست امروز</div>
     </div>
     <div class="td-list-card">
@@ -539,8 +547,6 @@ function editClass(sid,cid){let c=findClass(sid,cid);if(!c)return;window._classP
 
 function saveClass(e,sid){ handleFormSubmit(e, () => { findSchool(sid).classes.push({id:uid(),name:cName.value.trim(),grade:cGrade.value.trim(),photos:[],students:[]}); closeModal();save();openSchool(sid);toast('کلاس اضافه شد'); });}
 function updateClass(e,sid,cid){ handleFormSubmit(e, () => { let c=findClass(sid,cid); c.name=cName.value.trim();c.grade=cGrade.value.trim(); save();closeModal();openClass(sid,cid);toast('ویرایش شد'); });}
-function copyClass(sid,cid){const source=findClass(sid,cid),school=findSchool(sid);if(!source||!school)return;const name=prompt('نام کلاس جدید:',(source.name||'کلاس')+' - کپی');if(!name)return;const newClass={id:uid(),name:name.trim(),grade:source.grade||'',photos:[],students:(source.students||[]).map(st=>{const copy={...st,id:uid()};delete copy.grades;delete copy.behavior;return copy;}),attendance:{},attendanceSettings:{startDate:localISODate(),intervalDays:7,weekDays:[]}};school.classes.push(newClass);save();openSchool(sid);toast('کلاس کپی شد')}
-function deleteClass(sid,cid){let c=findClass(sid,cid);if(confirm(`کلاس «${c.name}» حذف شود؟`)){let s=findSchool(sid);s.classes=s.classes.filter(x=>x.id!==cid);save();openSchool(sid);toast('حذف شد')}}
 
 function addStudent(sid,cid){studentForm(sid,cid,null)}
 function editStudent(sid,cid,stid){studentForm(sid,cid,findStudent(sid,cid,stid))}
@@ -553,11 +559,6 @@ function saveStudent(e,sid,cid,stid){ handleFormSubmit(e, () => {
     if(stid){let i=c.students.findIndex(x=>x.id===stid);c.students[i]=st}else c.students.push(st);
     closeModal();save();openClass(sid,cid);toast(stid?'به‌روز شد':'اضافه شد');
 });}
-
-function behaviorShortcuts(type){const key=type==='positive'?'behavior_shortcuts_positive':'behavior_shortcuts_negative';try{const x=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(x)?x.filter(a=>a&&a.code&&a.reason):[]}catch(e){return []}}
-function saveBehaviorShortcut(type,code,reason,value){code=String(code||'').trim();reason=String(reason||'').trim();const v=Number(value);if(!code||!reason||!Number.isFinite(v)||v<0)return;const key=type==='positive'?'behavior_shortcuts_positive':'behavior_shortcuts_negative';const arr=behaviorShortcuts(type).filter(x=>x.code!==code);arr.push({code,reason,value:Math.abs(v)});localStorage.setItem(key,JSON.stringify(arr))}
-function shortcutValue(type,x){const v=Number(x?.value);return Number.isFinite(v)?Math.abs(v):(type==='positive'?behaviorValues().positive:behaviorValues().negative)}
-function removeBehaviorShortcut(type,code){const key=type==='positive'?'behavior_shortcuts_positive':'behavior_shortcuts_negative';localStorage.setItem(key,JSON.stringify(behaviorShortcuts(type).filter(x=>x.code!==code)));renderBehaviorShortcutSettings()}
 
 function addBehavior(sid,cid,stid,type){const st=findStudent(sid,cid,stid);if(!st)return;const def=type==='positive'?behaviorValues().positive:behaviorValues().negative;openModal(formHeader(type==='positive'?'➕ ثبت مثبت':'➖ ثبت منفی')+`<div class="formgrid"><div class="field"><label>امتیاز</label><input id="behaviorValue" type="number" step="0.01" min="0" value="${def}"></div><div class="field full"><label>دلیل</label><input id="behaviorReason" required placeholder="مثلاً فعالیت در کلاس..."></div></div><div class="formactions"><button class="btn primary" onclick="saveBehavior(event,'${sid}','${cid}','${stid}','${type}')">ثبت</button></div>`)}
 function saveBehavior(e,sid,cid,stid,type){
@@ -657,8 +658,7 @@ function renderAttendance(sid=currentSchoolId,cid=currentClassId){
   const s=findSchool(sid),c=findClass(sid,cid);if(!s||!c)return;attendanceData(c);
   const dates=attendanceDates(c),students=sortStudents(c.students||[]),step=Number(c.attendanceSettings.intervalDays)||7;
   const isCustom = (c.attendanceSettings.weekDays || []).length > 0;
-  const infoTxt = isCustom ? 'روزهای انتخابی هفته' : `${fa(step)} روز یک‌بار`;
-  const header=`<div class="detailhead"><div class="school-head"><div><h1 class="title">📋 جدول کل ترم</h1><div class="muted">${esc(s.name)} · ${esc(c.name)} · ${infoTxt} · ${fa(dates.length)} جلسه</div></div><div class="school-icon">📋</div></div><div class="att-actions"><button class="btn soft" onclick="editAttendanceSettings('${sid}','${cid}')">⚙ تنظیم جلسه‌ها</button><button class="btn gray" onclick="addAttendanceDate('${sid}','${cid}')">＋ افزودن جلسه</button><button class="btn primary" onclick="openExportCenter('${sid}','${cid}')">📤 خروجی</button></div><div class="muted">بالا حضور/غیبت و پایین نمره. روی تاریخ بزنید تا ویرایش شود.</div></div>`;
+  const header=`<div class="detailhead"><div class="school-head"><div><h1 class="title">📋 جدول کل ترم</h1><div class="muted">${esc(s.name)} · ${esc(c.name)}</div></div><div class="school-icon">📋</div></div><div class="att-actions"><button class="btn soft" onclick="editAttendanceSettings('${sid}','${cid}')">⚙ تنظیم جلسه‌ها</button><button class="btn gray" onclick="addAttendanceDate('${sid}','${cid}')">＋ افزودن جلسه</button><button class="btn primary" onclick="openExportCenter('${sid}','${cid}')">📤 خروجی</button></div></div>`;
   if(!students.length){attendanceContent.innerHTML=header+empty('👨‍🎓','دانش‌آموزی ثبت نشده','ابتدا دانش‌آموزان کلاس را اضافه کنید.');return}
   const table=`<div class="card"><div class="att-wrap"><table class="att-table"><thead><tr><th>دانش‌آموز</th>${dates.map(d=>`<th><button class="link att-date" onclick="editAttendanceDate('${sid}','${cid}','${d}')">✎ ${formatAttendanceDate(d)}</button></th>`).join('')}</tr></thead><tbody>${students.map(st=>{const hasAbsent=dates.some(d=>attendanceStatus(c,d,st.id)==='absent');return `<tr><td><b>${esc(st.lastName)} ${esc(st.name)}</b>${hasAbsent&&st.phone?`<div style="margin-top:4px"><a class="btn danger" style="padding:4px 7px;font-size:10px;text-decoration:none" href="tel:${esc(st.phone)}">📞 تماس</a></div>`:''}</td>${dates.map(d=>{const absent=attendanceStatus(c,d,st.id)==='absent',sc=attendanceScore(c,d,st.id);return `<td><div class="att-combo"><button class="att-cell ${absent?'absent':'present'}" onclick="toggleAttendance('${sid}','${cid}','${st.id}','${d}')">${absent?'✖':'✓'}</button><input class="att-score-input" type="number" min="0" max="20" step="0.01" value="${sc===null?'':sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${d}',this.value)"></div></td>`}).join('')}</tr>`}).join('')}</tbody></table></div></div>`;attendanceContent.innerHTML=header+table;
 }
@@ -671,7 +671,6 @@ function editAttendanceDate(sid,cid,oldDate){
   if(iso===oldDate)return;
   attendanceData(c);if(c.attendance[iso]&&Object.keys(c.attendance[iso]).length){if(!confirm('برای تاریخ جدید از قبل اطلاعات ثبت شده است. اطلاعات دو تاریخ ادغام شود؟'))return}
   c.attendance[iso]=Object.assign({},c.attendance[oldDate]||{},c.attendance[iso]||{});
-  for(const st of c.students||[])for(const g of gradesData(st)){if(g.source==='attendance'&&g.attendanceDate===oldDate){g.attendanceDate=iso;g.subject=`ارزیابی ${formatJalaliDate(iso)}`}}
   delete c.attendance[oldDate];save();renderAttendance(sid,cid);toast('تاریخ ویرایش شد')
 }
 function toggleAttendance(sid,cid,stid,date){const c=findClass(sid,cid);if(!c)return;attendanceData(c);if(!c.attendance[date])c.attendance[date]={};const cur=attendanceStatus(c,date,stid);if(cur==='absent')delete c.attendance[date][stid];else c.attendance[date][stid]={status:'absent'};save();renderAttendance(sid,cid)}
@@ -826,7 +825,7 @@ function saveBehaviorDefaults(){const p=Number(document.getElementById('behavior
 function clearAll(){if(confirm('همه اطلاعات برنامه حذف شود؟')){db={version:1,schools:[]};save();showView('dashboard');toast('همه اطلاعات حذف شد')}}
 let toastTimer;function toast(t){const el=document.getElementById('toast');clearTimeout(toastTimer);el.textContent=t;el.classList.add('show');toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
 let deferredInstallPrompt = null;
-const APP_VERSION='2.9.9';
+const APP_VERSION='2.9.10';
 
 function updateInstallButton(){
   const b=document.getElementById('installAppBtn');
