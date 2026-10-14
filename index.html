@@ -9,134 +9,224 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="3.6.0">
+<meta name="version" content="3.7.0">
 <title>دانش‌آموز من</title>
 <style>
 :root {
-  --bg: #fffbf7;
+  --bg: #fffaf5;
   --card: #ffffff;
   --text: #1e293b;
   --muted: #64748b;
   --primary: #ea580c;
   --primary2: #f97316;
-  --green: #10b981;
-  --red: #ef4444;
+  --primary-dark: #9a3412;
+  --primary-light: #fff7ed;
   --border: #fed7aa;
-  --shadow: 0 4px 16px rgba(234, 88, 12, 0.08);
-  --r: 16px;
+  --green: #16a34a;
+  --red: #dc2626;
+  --gray: #64748b;
+  --shadow: 0 6px 22px rgba(234, 88, 12, 0.08);
+  --r: 18px;
+  --orange: #ea580c;
+  --orange-light: #fff7ed;
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { margin: 0; background: var(--bg); color: var(--text); font-family: Tahoma, "Segoe UI", sans-serif; font-size: 13.5px; line-height: 1.5; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: Tahoma, "Segoe UI", sans-serif; font-size: 14px; line-height: 1.5; padding-bottom: 92px !important; }
 button, input, select, textarea { font: inherit; }
 button { cursor: pointer; border: 0; outline: none; }
+img { max-width: 100%; height: auto; }
 
-.app { min-height: 100vh; padding-bottom: 95px; }
-.topbar { position: sticky; top: 0; z-index: 25; background: rgba(255, 251, 247, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 10px 14px; }
+.app { min-height: 100vh; }
+.topbar { position: sticky; top: 0; z-index: 25; background: rgba(255, 250, 245, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 11px 15px; }
 .toprow { max-width: 1050px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .brand { display: flex; align-items: center; gap: 10px; }
-.logo { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--primary2), var(--primary)); display: grid; place-items: center; color: #fff; font-size: 20px; box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35); }
-.brand b { font-size: 16px; color: #9a3412; font-weight: 800; }
-.brand small { display: block; color: var(--muted); font-size: 10.5px; }
-.iconbtn { width: 38px; height: 38px; border-radius: 11px; background: #fff; border: 1px solid var(--border); color: var(--primary); display: grid; place-items: center; }
+.logo { width: 42px; height: 42px; border-radius: 13px; background-color: #ea580c; background-image: linear-gradient(135deg, #f97316, #ea580c); display: grid; place-items: center; color: #fff; font-size: 21px; box-shadow: 0 5px 15px rgba(234, 88, 12, 0.3); }
+.brand b { font-size: 17px; color: var(--primary-dark); font-weight: 800; }
+.brand small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+.iconbtn { width: 40px; height: 40px; border-radius: 12px; background: #fff; border: 1px solid var(--border); color: var(--primary); display: grid; place-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
 
-.container { max-width: 1050px; margin: auto; padding: 14px 12px; }
+.container { max-width: 1050px; margin: auto; padding: 15px 12px; }
 .view { display: none; }
-.view.active { display: block; }
+.view.active { display: block; animation: fadeIn 0.2s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-.title { font-size: 19px; margin: 2px 0 4px; color: #9a3412; font-weight: 800; }
-.subtitle { color: var(--muted); margin: 0 0 12px; font-size: 12px; }
+.title { font-size: 20px; margin: 4px 0 6px; color: var(--primary-dark); font-weight: 800; }
+.subtitle { color: var(--muted); margin: 0 0 14px; font-size: 12.5px; }
 
 /* آمار */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
-.stat { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 10px 6px; text-align: center; box-shadow: var(--shadow); }
-.stat span { display: block; color: var(--muted); font-size: 11px; font-weight: 600; }
-.stat strong { font-size: 20px; display: block; margin-top: 2px; color: var(--primary); font-weight: 900; }
+.stat { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 12px 8px; text-align: center; box-shadow: var(--shadow); }
+.stat span { display: block; color: var(--muted); font-size: 11.5px; font-weight: 700; }
+.stat strong { font-size: 22px; display: block; margin-top: 3px; color: var(--primary); font-weight: 900; }
 
-/* کارت‌ها */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
-.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 13px; box-shadow: var(--shadow); position: relative; }
-.school-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.school-icon { width: 42px; height: 42px; border-radius: 12px; background: #fff7ed; display: grid; place-items: center; font-size: 20px; color: var(--primary); flex-shrink: 0; }
-.card h3 { margin: 0 0 3px; font-size: 15px; color: #1e293b; font-weight: 800; }
+/* شبکه و کارت‌ها */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 15px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.school-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.school-icon { width: 46px; height: 46px; border-radius: 14px; background: #ffedd5; display: grid; place-items: center; font-size: 22px; color: var(--primary); flex-shrink: 0; overflow: hidden; }
+.school-icon img { width: 100%; height: 100%; object-fit: cover; }
+.card h3 { margin: 0 0 4px; font-size: 15.5px; color: #0f172a; font-weight: 800; }
 .muted { color: var(--muted); font-size: 12px; }
 
-.chips { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0 6px; }
-.chip { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; border-radius: 999px; padding: 3px 8px; font-size: 10.5px; font-weight: 700; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 6px; }
+.chip { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; border-radius: 999px; padding: 4px 10px; font-size: 11px; font-weight: 700; }
 
-.actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
-.btn { min-height: 36px; padding: 6px 12px; border-radius: 10px; font-weight: 700; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; transition: 0.15s; border: none; text-decoration: none; }
+/* دکمه‌ها با رنگ‌های قطعی و ضد سفیدشدگی */
+.actions { display: flex; gap: 7px; margin-top: 12px; flex-wrap: wrap; }
+.btn { min-height: 38px; padding: 7px 12px; border-radius: 11px; font-weight: 700; font-size: 12.5px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; transition: 0.15s; border: none; text-decoration: none; cursor: pointer; }
 .btn:active { transform: scale(0.97); }
-.btn.primary { background: linear-gradient(135deg, #f97316, #ea580c) !important; color: #ffffff !important; box-shadow: 0 3px 10px rgba(234, 88, 12, 0.3) !important; }
-.btn.soft { background: #fff7ed !important; color: #ea580c !important; border: 1px solid var(--border) !important; }
-.btn.danger { background: #fee2e2 !important; color: #b91c1c !important; border: 1px solid #fecaca !important; }
-.btn.gray { background: #fff !important; border: 1px solid #cbd5e1 !important; color: #334155 !important; }
+.btn.primary { background-color: #ea580c !important; background-image: linear-gradient(135deg, #f97316, #ea580c) !important; color: #ffffff !important; box-shadow: 0 4px 12px rgba(234, 88, 12, 0.28); }
+.btn.soft { background-color: #ffedd5 !important; color: #c2410c !important; border: 1px solid #fed7aa !important; }
+.btn.danger { background-color: #fee2e2 !important; color: #b91c1c !important; border: 1px solid #fecaca !important; }
+.btn.gray { background-color: #f8fafc !important; border: 1px solid #cbd5e1 !important; color: #334155 !important; }
+.btn.green { background-color: #16a34a !important; color: #ffffff !important; }
 .btn.block { width: 100%; }
 
-/* کنترل ابعاد عکس دانش‌آموز تا از صفحه بیرون نزند */
-.student { display: flex; align-items: center; gap: 10px; }
-.avatar { width: 52px !important; height: 52px !important; max-width: 52px !important; max-height: 52px !important; border-radius: 14px; background: #fff7ed; border: 1px solid var(--border); overflow: hidden; display: grid; place-items: center; font-size: 22px; color: var(--primary); font-weight: 800; flex-shrink: 0; }
-.avatar img { width: 100% !important; height: 100% !important; max-width: 100% !important; max-height: 100% !important; object-fit: cover !important; border-radius: 13px; display: block; }
-
 /* دکمه شناور (+) */
-.fab { position: fixed; left: 16px; bottom: 85px; z-index: 25; background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; width: 50px; height: 50px; border-radius: 16px; font-size: 24px; box-shadow: 0 6px 18px rgba(234, 88, 12, 0.4); display: grid; place-items: center; }
+.fab { position: fixed; left: 16px; bottom: 74px; z-index: 25; background-color: #ea580c; background-image: linear-gradient(135deg, #f97316, #ea580c); color: #fff; width: 52px; height: 52px; border-radius: 16px; font-size: 26px; box-shadow: 0 8px 22px rgba(234, 88, 12, 0.4); display: grid; place-items: center; }
 
-/* نوار پایین */
-.nav { position: fixed; z-index: 30; bottom: 0; right: 0; left: 0; background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(14px); border-top: 1px solid var(--border); display: flex; justify-content: center; }
-.navin { max-width: 600px; width: 100%; display: grid; grid-template-columns: repeat(5, 1fr); height: 58px; }
-.nav button { background: none; color: #94a3b8; padding: 4px 0; font-size: 10.5px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
-.nav button b { font-size: 17px; line-height: 1; }
+/* نوار پیمایش پایین */
+.nav { position: fixed; z-index: 30; bottom: 0; right: 0; left: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); border-top: 1px solid var(--border); display: flex; justify-content: center; }
+.navin { max-width: 600px; width: 100%; display: grid; grid-template-columns: repeat(5, 1fr); height: 60px; }
+.nav button { background: none; color: #64748b; padding: 4px 0; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+.nav button b { font-size: 18px; line-height: 1; }
 .nav button.active { color: var(--primary); }
 
-/* داشبورد */
-.dash-b-card { background: #fff7ed; border: 1px solid #ffedd5; border-radius: var(--r); padding: 11px; margin-bottom: 11px; }
-.dash-b-item { background: #fff; border-radius: 12px; padding: 8px 11px; margin-top: 6px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fed7aa; }
-.dash-c-card { background: #fff; border: 1.5px solid var(--border); border-radius: 15px; padding: 9px 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
-.dash-c-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #fdba74, #ea580c); border-radius: 11px; display: grid; place-items: center; font-size: 19px; color: #fff; flex-shrink: 0; }
+/* فرم‌ها و ورودی‌ها */
+.searchbox { position: relative; margin: 8px 0 14px; }
+.searchbox input { padding-right: 40px; }
+.searchbox span { position: absolute; right: 12px; top: 10px; font-size: 18px; color: var(--muted); }
+input, select, textarea { width: 100%; border: 1px solid #cbd5e1; background: #fff; border-radius: 11px; padding: 9px 11px; color: var(--text); outline: none; }
+input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.14); }
+textarea { min-height: 85px; resize: vertical; }
+.formgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.field label { display: block; font-size: 11.5px; font-weight: 700; margin: 0 0 5px; color: #475569; }
+.field.full { grid-column: 1 / -1; }
+@media(max-width: 560px) { .formgrid { grid-template-columns: 1fr; } .field.full { grid-column: auto; } }
 
-/* کارت‌های تولد */
-.b-card { background: #fff; border-radius: 15px; padding: 11px; margin-bottom: 9px; border: 1px solid var(--border); border-right: 5px solid var(--primary); }
-.b-card.past { opacity: 0.55; filter: grayscale(70%); border-right-color: #cbd5e1; }
+/* قاب عکس و گالری (کاملاً مهار شده) */
+.student { display: flex; gap: 12px; align-items: center; }
+.avatar { width: 56px !important; height: 56px !important; min-width: 56px !important; max-width: 56px !important; max-height: 56px !important; flex: none; border-radius: 16px; background: #ffedd5; border: 1px solid #fed7aa; overflow: hidden; display: grid; place-items: center; font-size: 22px; color: var(--primary); font-weight: 800; }
+.avatar img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block; }
+.photo-clickable { cursor: zoom-in; }
+.photo-input { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.photo-preview { width: 68px !important; height: 68px !important; border-radius: 16px; overflow: hidden; background: #ffedd5; border: 1px solid var(--border); display: grid; place-items: center; font-size: 26px; flex-shrink: 0; }
+.photo-preview img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.photo-thumb { position: relative; border-radius: 12px; overflow: hidden; background: #f1f5f9; aspect-ratio: 4/3; border: 1px solid var(--border); }
+.photo-thumb img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block; }
+.photo-thumb button { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.9); color: #dc2626; font-size: 16px; font-weight: bold; }
+.class-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 10px; }
+.class-gallery img { width: 100% !important; aspect-ratio: 4/3; max-height: 150px; object-fit: cover !important; border-radius: 12px; display: block; border: 1px solid var(--border); }
 
-/* جدول لیست جامع */
-.att-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; background: #fff; }
-.att-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 700px; font-size: 11.5px; }
-.att-table th, .att-table td { padding: 6px 4px; border-bottom: 1px solid #f1f5f9; text-align: center; white-space: nowrap; }
-.att-table th { background: #fff7ed; position: sticky; top: 0; z-index: 2; color: #9a3412; font-weight: 800; }
-.att-table th:first-child, .att-table td:first-child { position: sticky; right: 0; background: #fff; z-index: 3; text-align: right; min-width: 140px; border-left: 1px solid #fed7aa; }
-.att-table th:first-child { background: #fff7ed; }
-.att-cell { min-width: 38px; height: 28px; border-radius: 7px; font-weight: 800; border: none; font-size: 12px; }
+/* نمایشگر تمام‌صفحه عکس و دانلود به گالری */
+.photo-viewer { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9); z-index: 120; align-items: center; justify-content: center; padding: 14px; }
+.photo-viewer.show { display: flex; }
+.photo-viewer img { max-width: 94vw; max-height: 78vh; object-fit: contain; border-radius: 14px; }
+.photo-viewer .viewer-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border-radius: 12px; background: #fff; color: var(--primary); font-size: 24px; font-weight: bold; }
+.photo-viewer .viewer-actions { position: absolute; bottom: 22px; left: 14px; right: 14px; display: flex; justify-content: center; gap: 10px; }
+
+/* وضعیت و متا */
+.status { font-size: 11px; border-radius: 999px; padding: 3px 8px; font-weight: 700; display: inline-block; }
+.status.good { background: #dcfce7; color: #15803d; }
+.status.attn { background: #fee2e2; color: #b91c1c; }
+.status.none { background: #f1f5f9; color: #64748b; }
+.studentcard { padding: 13px; }
+.student-meta { margin-top: 8px; line-height: 1.7; color: #475569; font-size: 12px; }
+.breadcrumb { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12.5px; margin-bottom: 10px; }
+.link { color: var(--primary); font-weight: 700; background: none; padding: 0; }
+.detailhead { background: linear-gradient(135deg, #fff7ed, #ffedd5); border: 1px solid #fed7aa; border-radius: 18px; padding: 15px; margin-bottom: 14px; }
+
+/* داشبورد: تولد و برنامه امروز */
+.dash-b-card { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 18px; padding: 14px; margin-bottom: 14px; }
+.dash-b-item { background: #fff; border-radius: 12px; padding: 9px 12px; margin-top: 7px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
+.today-class-card { background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 16px; padding: 12px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.today-class-card .icon-box { width: 44px; height: 44px; border-radius: 13px; background: var(--primary); color: #fff; display: grid; place-items: center; font-size: 21px; flex-shrink: 0; }
+
+/* تولدها */
+.b-card { background: #fff; border-radius: 16px; padding: 14px; margin-bottom: 11px; border: 1px solid var(--border); border-right: 5px solid var(--primary); box-shadow: var(--shadow); }
+.b-card.past { opacity: 0.58; filter: grayscale(65%); border-right-color: #94a3b8; }
+.birthday-message { margin-top: 10px; padding: 10px 12px; border: 1px solid #fed7aa; background: #fffaf5; border-radius: 12px; font-size: 12.5px; line-height: 1.6; white-space: pre-line; }
+
+/* جدول جامع حضور و غیاب و نمره ترم */
+.att-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 15px; background: #fff; }
+.att-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 720px; font-size: 12px; }
+.att-table th, .att-table td { padding: 7px 5px; border-bottom: 1px solid #f1f5f9; text-align: center; white-space: nowrap; }
+.att-table th { background: #fff7ed; position: sticky; top: 0; z-index: 2; color: var(--primary-dark); font-weight: 800; }
+.att-table th:first-child, .att-table td:first-child { position: sticky; right: 0; background: #fff; z-index: 3; text-align: right; min-width: 150px; border-left: 1px solid #fed7aa; }
+.att-table th:first-child { background: #fff7ed; z-index: 4; }
+.att-cell { min-width: 42px; height: 30px; border-radius: 8px; font-weight: 800; border: none; font-size: 12px; cursor: pointer; }
 .att-cell.present { color: #15803d; background: #dcfce7; }
 .att-cell.absent { color: #b91c1c; background: #fee2e2; }
-.att-score-input { width: 42px; height: 26px; border-radius: 7px; text-align: center; font-size: 11.5px; border: 1px solid #cbd5e1; font-weight: 700; }
-.term-score-input { width: 48px; height: 28px; border-radius: 7px; text-align: center; font-size: 12px; font-weight: 800; border: 2px solid var(--primary); background: #fff7ed; color: var(--primary); }
+.att-score-input { width: 45px; height: 28px; border-radius: 7px; text-align: center; font-size: 11.5px; border: 1px solid #cbd5e1; font-weight: 700; padding: 2px; }
+.term-score-input { width: 52px; height: 30px; border-radius: 8px; text-align: center; font-size: 12.5px; font-weight: 800; border: 2px solid var(--primary); background: #fff7ed; color: var(--primary); padding: 2px; }
+.att-combo { display: grid; gap: 3px; justify-items: center; }
 
-/* لیست سریع امروز */
-.td-list-card { background: #fff; border-radius: 15px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 12px; }
-.td-list-head { background: #fff7ed; padding: 10px 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-.td-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 11px; border-bottom: 1px solid #ffedd5; }
-.td-score-inp { width: 46px; height: 30px; border: 1.5px solid var(--border); border-radius: 7px; text-align: center; font-size: 12.5px; font-weight: 800; background: #fffaf5; color: var(--primary); }
-.td-btn-plus { background: var(--green); color: #fff; width: 32px; height: 32px; border-radius: 9px; font-size: 17px; font-weight: bold; border: none; }
-.td-btn-minus { background: var(--red); color: #fff; width: 32px; height: 32px; border-radius: 9px; font-size: 17px; font-weight: bold; border: none; }
+/* لیست امروز درون کلاس */
+.td-list-card { background: #fff; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 14px; box-shadow: var(--shadow); }
+.td-list-head { background: #fff7ed; padding: 11px 14px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.td-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; border-bottom: 1px solid #ffedd5; gap: 8px; }
+.td-row:last-child { border-bottom: none; }
+.td-score-inp { width: 48px; height: 34px; border: 1.5px solid var(--border); border-radius: 9px; text-align: center; font-size: 13px; font-weight: 800; background: #fffaf5; color: var(--primary); padding: 2px; }
+.td-btn-plus { background-color: #16a34a !important; color: #fff !important; width: 34px; height: 34px; border-radius: 9px; font-size: 18px; font-weight: bold; display: grid; place-items: center; }
+.td-btn-minus { background-color: #dc2626 !important; color: #fff !important; width: 34px; height: 34px; border-radius: 9px; font-size: 18px; font-weight: bold; display: grid; place-items: center; }
 
-.qb { min-height: 24px; padding: 2px 6px; border-radius: 6px; font-weight: 800; font-size: 10px; border: none; }
-.qb.pos { background: #dcfce7; color: #15803d; }
-.qb.neg { background: #fee2e2; color: #b91c1c; }
+/* میانبرهای مثبت و منفی */
+.quick-behavior { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+.qb { min-height: 28px; padding: 3px 8px; border-radius: 8px; font-weight: 800; font-size: 11px; border: none; background: #ffedd5; color: #c2410c; cursor: pointer; }
+.qb.pos { background: #dcfce7 !important; color: #15803d !important; }
+.qb.neg { background: #fee2e2 !important; color: #b91c1c !important; }
 
-input, select, textarea { width: 100%; border: 1px solid #cbd5e1; background: #fff; border-radius: 9px; padding: 8px 10px; color: var(--text); outline: none; }
-input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12); }
-.chart-container { background: #fff; border: 1px solid var(--border); border-radius: 15px; padding: 11px; margin: 10px 0; }
-.chart-box { width: 100%; height: 130px; position: relative; margin-top: 6px; }
+/* کلیدهای فعال/غیرفعال تنظیمات */
+.toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f5f9; gap: 10px; }
+.toggle-row:last-child { border-bottom: none; }
+.switch { position: relative; display: inline-block; width: 46px; height: 26px; flex-shrink: 0; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; inset: 0; background-color: #cbd5e1; transition: .25s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .25s; border-radius: 50%; }
+.switch input:checked + .slider { background-color: var(--primary); }
+.switch input:checked + .slider:before { transform: translateX(20px); }
+
+/* نمودار و آمارها */
+.chart-container { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 13px; margin: 12px 0; box-shadow: var(--shadow); }
+.chart-box { width: 100%; height: 145px; position: relative; margin-top: 8px; }
 svg.chart { width: 100%; height: 100%; overflow: visible; }
-.empty { text-align: center; padding: 26px 12px; color: var(--muted); background: #fff; border: 1px dashed #fed7aa; border-radius: 14px; }
-.breadcrumb { display: flex; align-items: center; gap: 5px; color: var(--muted); font-size: 12px; margin-bottom: 8px; }
-.link { color: var(--primary); font-weight: 700; background: none; padding: 0; }
-.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 50; padding: 12px; overflow: auto; }
+.behavior-leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.leader-item { display: flex; justify-content: space-between; gap: 8px; padding: 7px 9px; background: #fffaf5; border: 1px solid var(--border); border-radius: 9px; margin-top: 5px; font-size: 12px; }
+.behavior-impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-top: 10px; }
+.impact-box { background: #fffaf5; border: 1px solid var(--border); border-radius: 11px; padding: 8px; text-align: center; }
+.impact-box b { display: block; font-size: 14.5px; color: var(--primary); }
+.impact-box small { color: var(--muted); font-size: 11px; }
+
+/* مودال و کارنامه */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 50; padding: 12px; overflow: auto; }
 .modal.show { display: flex; align-items: flex-end; justify-content: center; }
-.sheet { background: #fff; border-radius: 18px 18px 12px 12px; width: min(640px, 100%); padding: 15px; max-height: 90vh; overflow: auto; }
-.sheethead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-.close { background: #ffedd5; color: var(--primary); border-radius: 9px; width: 32px; height: 32px; font-weight: bold; }
-.toast { position: fixed; z-index: 100; bottom: 80px; right: 50%; transform: translateX(50%) translateY(20px); opacity: 0; background: #172033; color: #fff; padding: 9px 14px; border-radius: 11px; font-size: 12px; transition: 0.25s; pointer-events: none; }
+.sheet { background: #fff; border-radius: 22px 22px 14px 14px; width: min(720px, 100%); padding: 16px; max-height: 92vh; overflow: auto; }
+.sheethead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.sheethead h2 { margin: 0; font-size: 17px; color: var(--primary-dark); }
+.close { background: #ffedd5; color: var(--primary); border-radius: 10px; width: 34px; height: 34px; font-weight: bold; font-size: 18px; }
+.formactions { display: flex; gap: 8px; margin-top: 14px; }
+.formactions .btn { flex: 1; }
+.empty { text-align: center; padding: 30px 14px; color: var(--muted); background: #fff; border: 1px dashed #fed7aa; border-radius: 16px; grid-column: 1 / -1; }
+.empty .big { font-size: 32px; margin-bottom: 6px; }
+.toast { position: fixed; z-index: 110; bottom: 75px; right: 50%; transform: translateX(50%) translateY(20px); opacity: 0; background: #1e293b; color: #fff; padding: 9px 15px; border-radius: 11px; font-size: 12.5px; transition: 0.25s; pointer-events: none; }
 .toast.show { opacity: 1; transform: translateX(50%); }
+.undo-bar { position: fixed; left: 50%; bottom: 72px; transform: translateX(-50%) translateY(20px); z-index: 105; background: #172033; color: #fff; padding: 8px 12px; border-radius: 12px; display: flex; align-items: center; gap: 10px; opacity: 0; pointer-events: none; transition: .2s; }
+.undo-bar.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+.undo-bar button { background: var(--primary); color: #fff; border-radius: 8px; padding: 4px 10px; font-weight: 700; }
+
+.weekday-selector { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.weekday-selector label { background: #fff; padding: 6px 11px; border-radius: 20px; font-size: 12px; cursor: pointer; border: 1px solid var(--border); user-select: none; }
+.weekday-selector input:checked + label { background: var(--primary); color: #fff; font-weight: 700; }
+.weekday-selector input { display: none; }
+
+.report-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin: 12px 0; }
+.report-summary > div { background: #fffaf5; border: 1px solid var(--border); border-radius: 11px; padding: 8px; text-align: center; }
+.report-summary b { display: block; font-size: 15px; color: var(--primary); }
+.report-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 11.5px; }
+.report-table th, .report-table td { border: 1px solid #fed7aa; padding: 6px; text-align: right; }
+.report-table th { background: #fff7ed; color: var(--primary-dark); }
+@media(max-width: 560px) { .behavior-leaders, .report-summary { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -145,17 +235,17 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
   <div class="toprow">
     <div class="brand">
       <div class="logo">🎓</div>
-      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v3.6.0</span></small></div>
+      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v3.7.0</span></small></div>
     </div>
     <button class="iconbtn" onclick="showView('search')" title="جستجو">🔍</button>
   </div>
 </header>
 
 <main class="container">
-<!-- ۱: خانه -->
+<!-- ۱. داشبورد -->
 <section id="dashboard" class="view active">
   <h1 class="title">سلام استاد 👋</h1>
-  <p class="subtitle">مدیریت سریع کلاس‌ها، نمرات و انضباط</p>
+  <p class="subtitle">مدیریت سریع کلاس‌ها، حضور و غیاب، نمرات و انضباط</p>
   <div id="dashBirthdaysBox"></div>
   <div id="todayClassesBox"></div>
   <div class="stats">
@@ -164,166 +254,211 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
     <div class="stat"><span>دانش‌آموزان</span><strong id="statStudents">۰</strong></div>
   </div>
   <div id="dashboardSchools" class="grid"></div>
+  <div id="todayAbsencesBox" style="margin-top:12px"></div>
   <div id="schoolProgressChart"></div>
 </section>
 
-<!-- ۲: مدارس -->
+<!-- ۲. مدارس -->
 <section id="schools" class="view">
-  <h1 class="title">مدارس</h1>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <div><h1 class="title">مدارس</h1><p class="subtitle" style="margin:0">مدارس و سال‌های تحصیلی شما</p></div>
+    <button class="btn primary" onclick="addSchool()">＋ مدرسه جدید</button>
+  </div>
   <div id="schoolsGrid" class="grid"></div>
 </section>
 
-<!-- ۳: جزئیات مدرسه -->
+<!-- ۳. جزئیات مدرسه -->
 <section id="schoolDetail" class="view">
   <div class="breadcrumb"><button class="link" onclick="showView('schools')">مدارس</button><span>›</span><span id="schoolCrumb"></span></div>
   <div id="schoolDetailContent"></div>
 </section>
 
-<!-- ۴: کلاس -->
+<!-- ۴. جزئیات کلاس -->
 <section id="classDetail" class="view">
   <div class="breadcrumb"><button class="link" onclick="openSchool(currentSchoolId)">بازگشت به مدرسه</button><span>›</span><span id="classCrumb"></span></div>
   <div id="classDetailContent"></div>
 </section>
 
-<!-- ۵: پرونده دانش‌آموز -->
+<!-- ۵. پرونده دانش‌آموز -->
 <section id="studentDetail" class="view">
   <div class="breadcrumb"><button class="link" onclick="openClass(currentSchoolId,currentClassId)">بازگشت به کلاس</button><span>›</span><span id="studentCrumb"></span></div>
   <div id="studentDetailContent"></div>
 </section>
 
-<!-- ۶: جستجو -->
+<!-- ۶. جستجو -->
 <section id="search" class="view">
-  <h1 class="title">جستجو</h1>
-  <div style="margin-bottom:12px"><input id="globalSearch" oninput="renderSearch()" placeholder="نام، نام خانوادگی یا نام پدر..."></div>
+  <h1 class="title">جستجوی دانش‌آموز</h1>
+  <div class="searchbox"><span>🔍</span><input id="globalSearch" oninput="renderSearch()" placeholder="نام، نام خانوادگی یا نام پدر..."></div>
   <div id="searchResults"></div>
 </section>
 
-<!-- ۷: تولدها -->
+<!-- ۷. تولدها -->
 <section id="birthdays" class="view">
-  <h1 class="title">🎂 تقویم تولدها</h1>
-  <p class="subtitle">تولدهای نزدیک در بالا و گذشته‌ها در انتهای لیست</p>
-  <div id="birthdaysList"></div>
-  <div class="card" style="margin-top:12px">
-    <b>پیام تبریک آماده</b>
-    <div style="margin-top:6px"><label class="muted">نام معلم</label><input id="teacherName" oninput="saveTeacherName()"></div>
-    <textarea id="birthdayTemplate" style="margin-top:6px" oninput="saveBirthdayTemplate()"></textarea>
+  <h1 class="title">🎂 تقویم هوشمند تولدها</h1>
+  <p class="subtitle">تولدهای نزدیک در صدر و تولدهای گذشته در انتهای لیست قرار دارند</p>
+  <div class="card" style="margin-bottom:14px">
+    <b style="color:var(--primary)">💌 ویرایش متن پیام تبریک تولد</b>
+    <div class="field" style="margin-top:8px">
+      <label>👨‍🏫 نام معلم (برای امضای پایان پیام)</label>
+      <input id="teacherName" oninput="saveTeacherName()" placeholder="مثلاً رضا شهابی نژاد">
+    </div>
+    <p class="muted" style="margin:6px 0">کلمات <code>{نام}</code>، <code>{نام_خانوادگی}</code>، <code>{نام_پدر}</code>، <code>{علاقه}</code> و <code>{نام_معلم}</code> خودکار جایگزین می‌شوند.</p>
+    <textarea id="birthdayTemplate" oninput="saveBirthdayTemplate()"></textarea>
   </div>
+  <div id="birthdaysList"></div>
 </section>
 
-<!-- ۸: وضعیت‌ها -->
+<!-- ۸. وضعیت‌ها -->
 <section id="statuses" class="view">
-  <h1 class="title">وضعیت‌ها</h1>
-  <div class="stats"><div class="stat"><span>🟢 خوب</span><strong id="goodCount">۰</strong></div><div class="stat"><span>🔴 نیازمند توجه</span><strong id="attentionCount">۰</strong></div></div>
+  <h1 class="title">وضعیت دانش‌آموزان</h1>
+  <div class="stats">
+    <div class="stat"><span>🟢 خوب</span><strong id="goodCount">۰</strong></div>
+    <div class="stat"><span>🔴 نیازمند توجه</span><strong id="attentionCount">۰</strong></div>
+    <div class="stat"><span>⚪ عادی</span><strong id="noneCount">۰</strong></div>
+  </div>
+  <div style="display:flex;gap:8px;margin-bottom:12px">
+    <button id="statusGoodBtn" class="btn soft" onclick="renderStatuses('good')">🟢 خوب</button>
+    <button id="statusAttnBtn" class="btn gray" onclick="renderStatuses('attn')">🔴 نیازمند توجه</button>
+  </div>
   <div id="statusesList"></div>
 </section>
 
-<!-- ۹: جدول جامع -->
+<!-- ۹. جدول جامع حضور و نمرات -->
 <section id="attendance" class="view">
-  <div class="breadcrumb"><button class="link" onclick="openClass(currentSchoolId,currentClassId)">بازگشت به کلاس</button><span>›</span><span>لیست جامع، نمرات و ترم</span></div>
+  <div class="breadcrumb"><button class="link" onclick="openClass(currentSchoolId,currentClassId)">بازگشت به کلاس</button><span>›</span><span>جدول جامع، نمرات و ترم</span></div>
   <div id="attendanceContent"></div>
 </section>
 
-<!-- ۱۰: بیشتر -->
+<!-- ۱۰. تنظیمات و پشتیبان‌گیری -->
 <section id="backup" class="view">
-  <h1 class="title">تنظیمات و خروجی</h1>
+  <h1 class="title">⚙️ تنظیمات، شخصی‌سازی و خروجی</h1>
 
   <div class="card" style="margin-bottom:12px">
-    <b style="color:var(--primary)">🧮 فرمول انضباطی نمره ترم</b>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
-      <div><label class="muted">پاداش بدون منفی</label><input id="ruleBonusNoNeg" type="number" step="0.25" value="1"></div>
-      <div><label class="muted">سقف مجاز منفی</label><input id="ruleMaxNegAllowed" type="number" step="1" value="2"></div>
-      <div><label class="muted">کسر نمره به ازای مازاد</label><input id="rulePenaltyPerNeg" type="number" step="0.25" value="0.5"></div>
-      <div><label class="muted">ارزش هر مثبت روزانه</label><input id="behaviorPositiveDefault" type="number" step="0.05" value="0.25"></div>
+    <b style="color:var(--primary)">🎛️ فعال و غیرفعال‌سازی بخش‌های برنامه</b>
+    <p class="muted" style="margin:4px 0 8px">هر بخشی را که نیاز ندارید می‌توانید خاموش یا روشن کنید:</p>
+    <div id="featureTogglesBox"></div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <b style="color:var(--primary)">🧮 فرمول تأثیر مثبت و منفی روی نمره ترم</b>
+    <div class="formgrid" style="margin-top:8px">
+      <div class="field"><label>پاداش نداشتن منفی در ترم</label><input id="ruleBonusNoNeg" type="number" step="0.25" value="1"></div>
+      <div class="field"><label>سقف مجاز منفی قبل از جریمه</label><input id="ruleMaxNegAllowed" type="number" step="1" value="2"></div>
+      <div class="field"><label>کسر نمره به ازای هر منفی مازاد</label><input id="rulePenaltyPerNeg" type="number" step="0.25" value="0.5"></div>
+      <div class="field"><label>امتیاز پیش‌فرض هر مثبت عادی</label><input id="behaviorPositiveDefault" type="number" step="0.05" value="0.25"></div>
     </div>
-    <button class="btn primary block" style="margin-top:10px" onclick="saveRules()">ذخیره فرمول انضباطی</button>
+    <button class="btn primary block" style="margin-top:10px" onclick="saveRules()">ذخیره فرمول انضباطی و امتیازات</button>
   </div>
 
   <div class="card" style="margin-bottom:12px">
-    <b style="color:var(--primary)">🔤 کدهای اختصاری سریع</b>
+    <b style="color:var(--primary)">🔤 مدیریت و ویرایش کدهای اختصاری مثبت/منفی</b>
+    <p class="muted" style="margin:4px 0 8px">مثلاً: «د» = رفته دستشویی یا «خ» = خواندن از روی کتاب</p>
     <div id="shortcutListUi" style="display:grid;gap:6px;margin:8px 0"></div>
-    <button class="btn soft block" onclick="addShortcutPrompt()">＋ تعریف کد جدید</button>
+    <button class="btn soft block" onclick="addShortcutPrompt()">＋ افزودن کد اختصاری جدید</button>
   </div>
 
   <div class="card" style="margin-bottom:12px">
-    <b style="color:var(--primary)">📤 دریافت خروجی (انتخاب ستون‌ها)</b>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0;font-size:12px">
-      <label><input type="checkbox" id="expColAtt" checked> تعداد غیبت‌ها</label>
-      <label><input type="checkbox" id="expColContGrades" checked> میانگین مستمر</label>
-      <label><input type="checkbox" id="expColBeh" checked> مثبت و منفی</label>
-      <label><input type="checkbox" id="expColTerm" checked> نمره ترم و نهایی</label>
+    <b style="color:var(--primary)">📤 مرکز دریافت خروجی سفارشی (Excel / Word / PDF)</b>
+    <p class="muted" style="margin:4px 0 8px">انتخاب کنید کدام ستون‌ها در فایل خروجی قرار بگیرند:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;font-size:12.5px">
+      <label><input type="checkbox" id="expColAtt" checked> تعداد غیبت‌ها و حضور</label>
+      <label><input type="checkbox" id="expColContGrades" checked> نمرات مستمر و میانگین</label>
+      <label><input type="checkbox" id="expColBeh" checked> مثبت و منفی‌ها</label>
+      <label><input type="checkbox" id="expColTerm" checked> نمره پایانی ترم و نهایی</label>
     </div>
     <div class="actions">
-      <button class="btn primary" style="flex:1" onclick="exportCustomReport('excel')">📊 فایل اکسل</button>
-      <button class="btn soft" style="flex:1" onclick="exportCustomReport('word')">📝 فایل Word</button>
-      <button class="btn gray" style="flex:1" onclick="exportCustomReport('print')">🖨️ چاپ کارنامه</button>
+      <button class="btn primary" style="flex:1" onclick="exportCustomReport('excel')">📊 دانلود اکسل</button>
+      <button class="btn soft" style="flex:1" onclick="exportCustomReport('word')">📝 دانلود Word</button>
+      <button class="btn gray" style="flex:1" onclick="exportCustomReport('print')">🖨️ چاپ / PDF</button>
     </div>
   </div>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+  <div class="formgrid" style="margin-bottom:12px">
     <div class="card">
-      <b>پشتیبان خام</b>
-      <p class="muted" style="margin:4px 0 8px">بدون نمرات و غیبت</p>
-      <button class="btn soft block" onclick="exportRawData()">⬇️ دانلود خام</button>
+      <b>👨‍🎓 پشتیبان خام</b>
+      <p class="muted" style="margin:4px 0 10px">فقط مدارس، کلاس‌ها و مشخصات پایه دانش‌آموزان بدون نمره و غیبت.</p>
+      <button class="btn soft block" onclick="exportRawData()">⬇️ دانلود پشتیبان خام</button>
     </div>
     <div class="card">
-      <b>پشتیبان کامل</b>
-      <p class="muted" style="margin:4px 0 8px">با تمام اطلاعات</p>
-      <button class="btn primary block" onclick="exportFullData()">⬇️ دانلود کامل</button>
+      <b>📚 پشتیبان کامل</b>
+      <p class="muted" style="margin:4px 0 10px">تمام اطلاعات شامل عکس‌ها، نمرات، ترم، غیبت‌ها و مثبت/منفی‌ها.</p>
+      <button class="btn primary block" onclick="exportFullData()">⬇️ دانلود پشتیبان کامل</button>
     </div>
   </div>
 
   <div class="card" style="margin-bottom:12px">
-    <b>بازیابی فایل پشتیبان</b>
-    <label class="btn soft block" style="text-align:center;margin-top:6px">
-      انتخاب فایل JSON پشتیبان
+    <b>📥 بازیابی اطلاعات از فایل پشتیبان</b>
+    <p class="muted" style="margin:4px 0 8px">فایل JSON خام یا کامل را انتخاب کنید:</p>
+    <label class="btn primary block" style="text-align:center">
+      📂 انتخاب فایل پشتیبان (JSON)
       <input type="file" accept=".json,application/json" hidden onchange="importData(event)">
     </label>
   </div>
 
-  <div class="card"><button class="btn danger block" onclick="clearAll()">⚠️ پاک‌سازی کامل اطلاعات</button></div>
+  <div class="card"><button class="btn danger block" onclick="clearAll()">⚠️ پاک‌سازی کامل تمام اطلاعات برنامه</button></div>
 </section>
 </main>
 
-<button class="fab" onclick="quickAdd()" title="افزودن">＋</button>
+<button class="fab" onclick="quickAdd()" title="افزودن سریع">＋</button>
 
 <nav class="nav">
   <div class="navin">
-    <button data-view="dashboard" onclick="showView('dashboard')"><b>⌂</b>خانه</button>
+    <button data-view="dashboard" class="active" onclick="showView('dashboard')"><b>⌂</b>خانه</button>
     <button data-view="schools" onclick="showView('schools')"><b>🏫</b>مدارس</button>
     <button data-view="birthdays" onclick="showView('birthdays')"><b>🎂</b>تولدها</button>
     <button data-view="statuses" onclick="showView('statuses')"><b>🟢</b>وضعیت‌ها</button>
-    <button data-view="backup" onclick="showView('backup')"><b>⚙</b>بیشتر</button>
+    <button data-view="backup" onclick="showView('backup')"><b>⚙</b>تنظیمات</button>
   </div>
 </nav>
 
+<!-- نمایشگر تمام‌صفحه عکس با دکمه ذخیره در گالری -->
+<div id="photoViewer" class="photo-viewer" onclick="if(event.target===this)closePhotoViewer()">
+  <button class="viewer-close" onclick="closePhotoViewer()">×</button>
+  <img id="photoViewerImg" src="" alt="تصویر">
+  <div class="viewer-actions">
+    <button class="btn primary" onclick="downloadActivePhoto()">⬇️ ذخیره در گالری گوشی</button>
+  </div>
+</div>
+
+<div id="undoBar" class="undo-bar"><span id="undoText">انجام شد</span><button onclick="performUndo()">↩️ واگرد</button></div>
 <div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="sheet" id="sheet"></div></div>
 <div id="toast" class="toast"></div>
 </div>
 
 <script>
 const KEY = 'danesh_amooz_man_v1';
+const APP_VERSION = '3.7.0';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
+let activeViewerSrc = '', activeViewerName = 'photo.jpg';
+let undoState = null, undoTimer = null;
 
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
 
+/* موتور ترمیم خودکار دیتابیس */
 function sanitizeDb(data) {
   if (!data || typeof data !== 'object') data = { version: 1, schools: [] };
   if (!Array.isArray(data.schools)) data.schools = [];
   data.schools.forEach(s => {
     if (!s.id) s.id = uid();
     if (!s.name) s.name = 'مدرسه';
+    if (!Array.isArray(s.photos)) s.photos = s.photo ? [s.photo] : [];
     if (!Array.isArray(s.classes)) s.classes = [];
     s.classes.forEach(c => {
       if (!c.id) c.id = uid();
       if (!c.name) c.name = 'کلاس';
+      if (!Array.isArray(c.photos)) c.photos = c.photo ? [c.photo] : [];
       if (!Array.isArray(c.students)) c.students = [];
       if (!c.attendance || typeof c.attendance !== 'object') c.attendance = {};
       if (!c.termScores || typeof c.termScores !== 'object') c.termScores = {};
-      if (!c.attendanceSettings || typeof c.attendanceSettings !== 'object') c.attendanceSettings = { startDate: localISODate(), intervalDays: 7, sessionCount: 16 };
+      if (!c.sessionNotes || typeof c.sessionNotes !== 'object') c.sessionNotes = {};
+      if (!c.attendanceSettings || typeof c.attendanceSettings !== 'object') {
+        c.attendanceSettings = { startDate: localISODate(), intervalDays: 7, sessionCount: 16, weekDays: [] };
+      }
+      if (!Array.isArray(c.attendanceSettings.weekDays)) c.attendanceSettings.weekDays = [];
       c.students.forEach(st => {
         if (!st.id) st.id = uid();
         if (!st.fatherName) st.fatherName = '';
-        if (!st.behavior) st.behavior = { positives: [], negatives: [] };
+        if (!st.behavior || typeof st.behavior !== 'object') st.behavior = { positives: [], negatives: [] };
         if (!Array.isArray(st.behavior.positives)) st.behavior.positives = [];
         if (!Array.isArray(st.behavior.negatives)) st.behavior.negatives = [];
         if (!Array.isArray(st.grades)) st.grades = [];
@@ -334,8 +469,8 @@ function sanitizeDb(data) {
 }
 
 function load() {
-  try { return sanitizeDb(JSON.parse(localStorage.getItem(KEY))) || { version: 1, schools: [] }; }
-  catch(e) { return { version: 1, schools: [] }; }
+  try { return sanitizeDb(JSON.parse(localStorage.getItem(KEY))); }
+  catch (e) { return { version: 1, schools: [] }; }
 }
 
 const DB_NAME = 'danesh_amooz_man_storage', DB_STORE = 'app';
@@ -349,7 +484,7 @@ function openStorage() {
 }
 
 async function savePersistent() {
-  try { localStorage.setItem(KEY, JSON.stringify(db)); } catch(e){}
+  try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (e) {}
   try {
     const d = await openStorage();
     await new Promise((resolve, reject) => {
@@ -358,7 +493,7 @@ async function savePersistent() {
       tx.oncomplete = resolve; tx.onerror = () => reject(tx.error);
     });
     d.close();
-  } catch(e){}
+  } catch (e) {}
 }
 
 function save() { savePersistent(); renderAll(); }
@@ -374,31 +509,130 @@ async function restorePersistent() {
     d.close();
     if (saved && Array.isArray(saved.schools)) { db = sanitizeDb(saved); renderAll(); }
     else savePersistent();
-  } catch(e){}
+  } catch (e) {}
 }
 
-function fa(n) { return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]); }
+/* فشرده‌سازی عکس برای دوربین و گالری */
+function compressImage(file, maxSide = 1100, quality = 0.72) {
+  return new Promise((resolve, reject) => {
+    if (!file || !file.type.startsWith('image/')) return reject(new Error('not-image'));
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const scale = Math.min(1, maxSide / Math.max(img.naturalWidth, img.naturalHeight));
+        const w = Math.max(1, Math.round(img.naturalWidth * scale));
+        const h = Math.max(1, Math.round(img.naturalHeight * scale));
+        const c = document.createElement('canvas'); c.width = w; c.height = h;
+        const ctx = c.getContext('2d', { alpha: false });
+        ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+        resolve(c.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = () => reject(new Error('decode'));
+      img.src = reader.result;
+    };
+    reader.onerror = () => reject(new Error('read'));
+    reader.readAsDataURL(file);
+  });
+}
+
+/* نمایشگر عکس و ذخیره مستقیم در گالری */
+function openPhotoViewer(src, name = 'photo.jpg') {
+  activeViewerSrc = src;
+  activeViewerName = name;
+  const img = document.getElementById('photoViewerImg');
+  if (img) img.src = src;
+  document.getElementById('photoViewer')?.classList.add('show');
+}
+function closePhotoViewer() {
+  document.getElementById('photoViewer')?.classList.remove('show');
+  const img = document.getElementById('photoViewerImg');
+  if (img) img.src = '';
+}
+async function downloadActivePhoto() {
+  if (!activeViewerSrc) return;
+  await triggerPhotoDownload(activeViewerSrc, activeViewerName);
+}
+async function triggerPhotoDownload(dataUrl, filename) {
+  try {
+    const res = await fetch(dataUrl);
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename || 'photo.jpg';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+    toast('عکس در گالری/دانلودها ذخیره شد ✅');
+  } catch (e) {
+    const a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = filename || 'photo.jpg';
+    a.click();
+    toast('عکس ذخیره شد ✅');
+  }
+}
+
+/* مدیریت تنظیمات فعال/غیرفعال (Feature Toggles) */
+const FEATURE_LIST = [
+  { key: 'feat_dash_birthdays', title: '🎂 نمایش تولدهای نزدیک در صفحه اصلی', def: true },
+  { key: 'feat_dash_today_classes', title: '📅 نمایش برنامه‌های امروز کلاس‌ها در خانه', def: true },
+  { key: 'feat_dash_absences', title: '🚨 نمایش لیست غایبین امروز در خانه', def: true },
+  { key: 'feat_dash_chart', title: '📊 نمایش نمودار مقایسه مدارس در خانه', def: true },
+  { key: 'feat_class_chart', title: '📈 نمایش نمودار خطی پیشرفت در صفحه کلاس', def: true },
+  { key: 'feat_class_leaders', title: '🏆 نمایش نفرات برتر و بیشترین مثبت/منفی کلاس', def: true },
+  { key: 'feat_card_shortcuts', title: '🔤 نمایش دکمه‌های کد اختصاری روی کارت دانش‌آموز', def: true }
+];
+
+function isFeatOn(key) {
+  const val = localStorage.getItem(key);
+  if (val === null) return true;
+  return val === 'true';
+}
+function toggleFeat(key, checked) {
+  localStorage.setItem(key, checked ? 'true' : 'false');
+  renderAll();
+  toast('تنظیمات ذخیره شد');
+}
+function renderFeatureToggles() {
+  const box = document.getElementById('featureTogglesBox');
+  if (!box) return;
+  box.innerHTML = FEATURE_LIST.map(f => `
+    <div class="toggle-row">
+      <span style="font-size:13px;font-weight:700">${f.title}</span>
+      <label class="switch">
+        <input type="checkbox" ${isFeatOn(f.key) ? 'checked' : ''} onchange="toggleFeat('${f.key}', this.checked)">
+        <span class="slider"></span>
+      </label>
+    </div>
+  `).join('');
+}
+
+/* توابع کمکی پایه */
+function fa(n) { return String(n ?? '').replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]); }
 function enDigits(v) { return String(v ?? '').replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).replace(/[٠-٩]/g, d => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d))); }
 function normalizeJalaliInput(v) { return enDigits(v).trim().replace(/[\.\-\s]+/g, '/').replace(/\/{2,}/g, '/'); }
 function esc(s = '') { return String(s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m])); }
+function safeFileName(s) { return String(s || 'file').replace(/[\\/:*?"<>|]/g, '-').trim() || 'file'; }
 
 function findSchool(id) { return db.schools.find(x => x.id === id); }
 function findClass(sid, cid) { return findSchool(sid)?.classes.find(x => x.id === cid); }
 function findStudent(sid, cid, st) { return findClass(sid, cid)?.students.find(x => x.id === st); }
 
 function formatStudentName(st) {
-  let nameStr = `${esc(st.lastName || '')} ${esc(st.name || '')}`;
+  let nameStr = `${esc(st.lastName || '')} ${esc(st.name || '')}`.trim();
   if (st.fatherName) nameStr += ` <span style="font-size:11px;color:var(--muted)">(${esc(st.fatherName)})</span>`;
   return nameStr;
 }
-
 function sortStudents(a) {
-  return [...a].sort((x, y) => {
+  return [...(a || [])].sort((x, y) => {
     const lastCmp = (x.lastName || '').localeCompare(y.lastName || '', 'fa', { fa: 'IR' });
     return lastCmp !== 0 ? lastCmp : (x.name || '').localeCompare(y.name || '', 'fa', { fa: 'IR' });
   });
 }
-
 function counts() {
   let c = 0, st = 0;
   db.schools.forEach(s => { c += s.classes.length; s.classes.forEach(cl => st += cl.students.length); });
@@ -408,17 +642,47 @@ function counts() {
 function formHeader(title) { return `<div class="sheethead"><h2>${esc(title)}</h2><button type="button" class="close" onclick="closeModal()">×</button></div>`; }
 function openModal(html) { const m = document.getElementById('modal'), s = document.getElementById('sheet'); if (!m || !s) return; s.innerHTML = html; m.classList.add('show'); document.body.style.overflow = 'hidden'; }
 function closeModal() { const m = document.getElementById('modal'); if (m) m.classList.remove('show'); document.body.style.overflow = ''; }
+function empty(icon, title, sub) { return `<div class="empty"><div class="big">${icon}</div><b>${title}</b><div class="muted" style="margin-top:4px">${sub}</div></div>`; }
+
+function pushUndo(label) {
+  undoState = { label, data: JSON.parse(JSON.stringify(db)) };
+  const bar = document.getElementById('undoBar'), txt = document.getElementById('undoText');
+  if (txt) txt.textContent = label + ' انجام شد';
+  if (bar) bar.classList.add('show');
+  clearTimeout(undoTimer);
+  undoTimer = setTimeout(() => { undoState = null; bar?.classList.remove('show'); }, 6000);
+}
+function performUndo() {
+  if (!undoState) return;
+  db = sanitizeDb(undoState.data);
+  undoState = null;
+  document.getElementById('undoBar')?.classList.remove('show');
+  save();
+  toast('عملیات به حالت قبل برگشت ↩️');
+}
 
 function showView(id) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  const target = document.getElementById(id); if (target) target.classList.add('active');
+  document.getElementById(id)?.classList.add('active');
   document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('active', b.dataset.view === id));
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (id === 'dashboard') renderDashboard();
   if (id === 'schools') renderSchools();
-  if (id === 'birthdays') renderBirthdays();
-  if (id === 'statuses') renderStatuses();
-  if (id === 'backup') renderShortcutSettingsUi();
+  if (id === 'birthdays') {
+    const bt = document.getElementById('birthdayTemplate'); if (bt) bt.value = getBirthdayTemplate();
+    const tn = document.getElementById('teacherName'); if (tn) tn.value = getTeacherName();
+    renderBirthdays();
+  }
+  if (id === 'statuses') renderStatuses('good');
+  if (id === 'backup') {
+    renderFeatureToggles();
+    renderShortcutSettingsUi();
+    const r = getRules();
+    document.getElementById('ruleBonusNoNeg').value = r.bonusNoNeg;
+    document.getElementById('ruleMaxNegAllowed').value = r.maxNegAllowed;
+    document.getElementById('rulePenaltyPerNeg').value = r.penaltyPerNeg;
+    document.getElementById('behaviorPositiveDefault').value = r.positiveValue;
+  }
 }
 
 function renderAll() {
@@ -428,54 +692,110 @@ function renderAll() {
   if (document.getElementById('schoolDetail')?.classList.contains('active')) openSchool(currentSchoolId);
   if (document.getElementById('classDetail')?.classList.contains('active')) openClass(currentSchoolId, currentClassId);
   if (document.getElementById('studentDetail')?.classList.contains('active')) openStudent(currentSchoolId, currentClassId, currentStudentId);
+  if (document.getElementById('attendance')?.classList.contains('active')) openAttendance(currentSchoolId, currentClassId);
 }
 
+/* تاریخ شمسی */
+function localISODate(d = new Date()) {
+  const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, '0'), day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+function addDaysISO(dateStr, days) {
+  const d = new Date(dateStr + 'T12:00:00Z');
+  d.setUTCDate(d.getUTCDate() + Number(days));
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+}
+function getDayOfWeekJalali(isoString) {
+  if (!isoString) return -1;
+  const d = new Date(isoString + 'T12:00:00Z');
+  return (d.getUTCDay() + 1) % 7;
+}
+function jalaliPartsFromISO(dateStr) {
+  try {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    const dt = new Date(Date.UTC(y, m - 1, d, 12));
+    const parts = new Intl.DateTimeFormat('en-US-u-ca-persian', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' }).formatToParts(dt);
+    return {
+      y: +parts.find(x => x.type === 'year').value,
+      m: +parts.find(x => x.type === 'month').value,
+      d: +parts.find(x => x.type === 'day').value
+    };
+  } catch (e) { return null; }
+}
+function formatJalaliDate(dateStr) {
+  const p = jalaliPartsFromISO(dateStr);
+  return p ? `${fa(p.y)}/${fa(String(p.m).padStart(2, '0'))}/${fa(String(p.d).padStart(2, '0'))}` : '—';
+}
+function formatAttendanceDate(dateStr) {
+  const p = jalaliPartsFromISO(dateStr);
+  return p ? `${fa(String(p.m).padStart(2, '0'))}/${fa(String(p.d).padStart(2, '0'))}` : '—';
+}
+function jalaliToISO(input) {
+  const raw = normalizeJalaliInput(input);
+  const m = raw.match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/);
+  if (!m) return null;
+  const jy = +m[1], jm = +m[2], jd = +m[3];
+  if (jy < 1300 || jy > 1500 || jm < 1 || jm > 12 || jd < 1 || jd > 31) return null;
+  const start = new Date(Date.UTC(jy + 621, 2, 1, 12));
+  for (let i = 0; i <= 400; i++) {
+    const dt = new Date(start); dt.setUTCDate(start.getUTCDate() + i);
+    const iso = `${dt.getUTCFullYear()}-${String(dt.getUTCMonth() + 1).padStart(2, '0')}-${String(dt.getUTCDate()).padStart(2, '0')}`;
+    const p = jalaliPartsFromISO(iso);
+    if (p && p.y === jy && p.m === jm && p.d === jd) return iso;
+  }
+  return null;
+}
 function getJalaliDayOfYear(m, d) { return m <= 6 ? (m - 1) * 31 + d : 186 + (m - 7) * 30 + d; }
 
 /* داشبورد */
 function renderDashboard() {
-  let c = counts();
-  const stSc = document.getElementById('statSchools'), stCl = document.getElementById('statClasses'), stSt = document.getElementById('statStudents');
-  if (stSc) stSc.textContent = fa(c.schools);
-  if (stCl) stCl.textContent = fa(c.classes);
-  if (stSt) stSt.textContent = fa(c.students);
+  const c = counts();
+  document.getElementById('statSchools').textContent = fa(c.schools);
+  document.getElementById('statClasses').textContent = fa(c.classes);
+  document.getElementById('statStudents').textContent = fa(c.students);
 
   const sBox = document.getElementById('dashboardSchools');
-  if (sBox) sBox.innerHTML = db.schools.length ? db.schools.slice(0, 6).map(schoolCard).join('') : empty('🏫', 'مدرسه‌ای ثبت نشده', 'اولین مدرسه را اضافه کنید.');
-
-  renderDashBirthdays(); renderTodayClasses(); renderSchoolProgressChart();
+  if (sBox) {
+    sBox.innerHTML = db.schools.length ? db.schools.map(schoolCard).join('') : empty('🏫', 'هنوز مدرسه‌ای ثبت نشده', 'با زدن دکمه + اولین مدرسه را اضافه کنید.');
+  }
+  renderDashBirthdays();
+  renderTodayClasses();
+  renderTodayAbsences();
+  renderSchoolProgressChart();
 }
 
 function renderDashBirthdays() {
   const box = document.getElementById('dashBirthdaysBox'); if (!box) return;
-  const today = localISODate(); const todayParts = jalaliPartsFromISO(today); if (!todayParts) return;
+  if (!isFeatOn('feat_dash_birthdays')) { box.innerHTML = ''; return; }
+  const todayParts = jalaliPartsFromISO(localISODate()); if (!todayParts) return;
   const todayDOY = getJalaliDayOfYear(todayParts.m, todayParts.d);
   let upcomings = [];
 
   db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
     if (!st.birth) return;
-    let m = String(st.birth).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).match(/(\d{3,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+    let m = enDigits(st.birth).match(/(\d{3,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
     if (m) {
       let diff = getJalaliDayOfYear(+m[2], +m[3]) - todayDOY;
       if (diff < 0) diff += 365;
-      if (diff <= 7 || diff >= 364) upcomings.push({ s, c, st, bDay: +m[3], bMonth: +m[2], diff });
+      if (diff <= 7) upcomings.push({ s, c, st, bDay: +m[3], bMonth: +m[2], diff });
     }
   })));
 
   upcomings.sort((a, b) => a.diff - b.diff || (a.st.lastName || '').localeCompare(b.st.lastName || '', 'fa'));
 
-  if (upcomings.length > 0) {
+  if (upcomings.length) {
     box.innerHTML = `<div class="dash-b-card">
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
-        <span style="font-size:18px">🎂</span><b style="color:var(--primary);font-size:13.5px">تولدهای نزدیک</b>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <b style="color:var(--primary);font-size:14px">🎂 تولدهای نزدیک (${fa(upcomings.length)} نفر)</b>
+        <button class="link" style="font-size:11.5px" onclick="showView('birthdays')">همه تولدها ←</button>
       </div>
       ${upcomings.map(x => `
       <div class="dash-b-item">
         <div>
-          <b style="color:var(--primary);font-size:13px;display:block">${formatStudentName(x.st)}</b>
-          <span class="muted" style="font-size:11px">${esc(x.c.name)} · ${fa(x.bDay)} / ${fa(x.bMonth)}</span>
+          <b style="color:var(--primary-dark);font-size:13.5px;display:block">${formatStudentName(x.st)}</b>
+          <span class="muted">${esc(x.c.name)} · ${x.diff === 0 ? '🎉 امروز!' : `${fa(x.bDay)} / ${fa(x.bMonth)}`}</span>
         </div>
-        <button class="btn soft" style="padding:4px 9px;font-size:11.5px;min-height:auto" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 تبریک</button>
+        <button class="btn soft" style="min-height:32px;padding:4px 10px" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 پیام تبریک</button>
       </div>`).join('')}
     </div>`;
   } else { box.innerHTML = ''; }
@@ -483,456 +803,583 @@ function renderDashBirthdays() {
 
 function renderTodayClasses() {
   const box = document.getElementById('todayClassesBox'); if (!box) return;
-  const todayISO = localISODate(); let todayClasses = [];
-  db.schools.forEach(s => s.classes.forEach(c => { if (attendanceDates(c).includes(todayISO)) todayClasses.push({ s, c }); }));
+  if (!isFeatOn('feat_dash_today_classes')) { box.innerHTML = ''; return; }
+  const todayISO = localISODate();
+  let todayClasses = [];
+  db.schools.forEach(s => s.classes.forEach(c => {
+    if (attendanceDates(c).includes(todayISO)) todayClasses.push({ s, c });
+  }));
 
-  if (todayClasses.length > 0) {
-    box.innerHTML = `<div>
-      <div style="font-weight:800;color:var(--primary);font-size:13px;margin-bottom:6px">📅 کلاس‌های دارای جلسه امروز</div>
+  if (todayClasses.length) {
+    box.innerHTML = `<div style="margin-bottom:14px">
+      <b style="display:block;margin-bottom:8px;color:var(--primary);font-size:14px">📅 برنامه‌های امروز کلاس‌ها</b>
       ${todayClasses.map(x => `
-        <div class="dash-c-card">
+        <div class="today-class-card">
           <div style="display:flex;align-items:center;gap:10px">
-            <div class="dash-c-icon">🎒</div>
+            <div class="icon-box">🎒</div>
             <div>
-              <b style="font-size:14px;display:block">${esc(x.c.name)}</b>
-              <span class="muted" style="font-size:11px">${esc(x.s.name)}</span>
+              <b style="font-size:15px;display:block">${esc(x.c.name)}</b>
+              <span class="muted">${esc(x.s.name)}</span>
             </div>
           </div>
-          <button class="btn primary" style="min-height:34px;padding:5px 12px;font-size:12px" onclick="openClass('${x.s.id}','${x.c.id}'); setTimeout(()=>openTodayList('${x.s.id}','${x.c.id}'), 60);">لیست سریع امروز ←</button>
+          <button class="btn primary" onclick="openClass('${x.s.id}','${x.c.id}'); setTimeout(()=>openTodayList('${x.s.id}','${x.c.id}'), 60);">لیست امروز ←</button>
         </div>
       `).join('')}
     </div>`;
   } else { box.innerHTML = ''; }
 }
 
+function renderTodayAbsences() {
+  const box = document.getElementById('todayAbsencesBox'); if (!box) return;
+  if (!isFeatOn('feat_dash_absences')) { box.innerHTML = ''; return; }
+  const today = localISODate();
+  let list = [];
+  db.schools.forEach(s => s.classes.forEach(c => {
+    const abs = (c.students || []).filter(st => attendanceStatus(c, today, st.id) === 'absent');
+    if (abs.length) list.push({ s, c, abs });
+  }));
+  if (!list.length) { box.innerHTML = ''; return; }
+  box.innerHTML = `<div class="card">
+    <b style="color:#b91c1c">🚨 غایبین ثبت‌شده امروز (${formatJalaliDate(today)})</b>
+    <div style="display:grid;gap:8px;margin-top:8px">
+      ${list.map(x => `<div style="padding:8px 10px;background:#fef2f2;border:1px solid #fecaca;border-radius:10px">
+        <b>${esc(x.s.name)} · ${esc(x.c.name)}:</b>
+        <span style="font-size:12.5px">${x.abs.map(st => formatStudentName(st)).join(' ، ')}</span>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+/* مدارس و گالری عکس مدرسه */
 function schoolCard(s) {
   let n = s.classes.reduce((a, c) => a + c.students.length, 0);
+  let photos = Array.isArray(s.photos) ? s.photos : [];
   return `<div class="card">
     <div class="school-head">
       <div><h3>${esc(s.name)}</h3><div class="muted">سال تحصیلی ${esc(s.year || '—')}</div></div>
-      <div class="school-icon">🏫</div>
+      <div class="school-icon ${photos[0] ? 'photo-clickable' : ''}" ${photos[0] ? `onclick="openPhotoViewer('${photos[0]}','مدرسه-${safeFileName(s.name)}.jpg')"` : ''}>
+        ${photos[0] ? `<img src="${photos[0]}">` : '🏫'}
+      </div>
     </div>
-    <div class="chips"><span class="chip">🚪 ${fa(s.classes.length)} کلاس</span><span class="chip">👨‍🎓 ${fa(n)} دانش‌آموز</span></div>
-    <button class="btn soft block" onclick="openSchool('${s.id}')">مدیریت کلاس‌ها ←</button>
+    <div class="chips">
+      <span class="chip">🚪 ${fa(s.classes.length)} کلاس</span>
+      <span class="chip">👨‍🎓 ${fa(n)} دانش‌آموز</span>
+      ${photos.length ? `<span class="chip">📷 ${fa(photos.length)} عکس</span>` : ''}
+    </div>
+    <button class="btn soft block" onclick="openSchool('${s.id}')">مشاهده و مدیریت مدرسه ←</button>
   </div>`;
 }
 
 function renderSchools() {
   const sg = document.getElementById('schoolsGrid');
-  if (sg) sg.innerHTML = db.schools.length ? db.schools.map(s => schoolCard(s)).join('') : empty('🏫', 'مدرسه‌ای ثبت نشده', 'با دکمه + مدرسه جدید اضافه کنید.');
+  if (sg) sg.innerHTML = db.schools.length ? db.schools.map(schoolCard).join('') : empty('🏫', 'مدرسه‌ای ثبت نشده', 'روی «＋ مدرسه جدید» بزنید.');
 }
 
 function openSchool(id) {
-  currentSchoolId = id; let s = findSchool(id); if (!s) return;
+  currentSchoolId = id; currentClassId = null;
+  let s = findSchool(id); if (!s) return;
+  let photos = Array.isArray(s.photos) ? s.photos : [];
   document.getElementById('schoolCrumb').textContent = s.name;
+  let galleryHtml = photos.length ? `<div class="card" style="margin-bottom:12px">
+    <b>📷 تصاویر و لوگوی مدرسه (${fa(photos.length)})</b>
+    <div class="class-gallery">
+      ${photos.map((src, i) => `<div>
+        <img src="${src}" class="photo-clickable" onclick="openPhotoViewer('${src}','مدرسه-${safeFileName(s.name)}-${i+1}.jpg')">
+        <button class="btn soft block" style="margin-top:5px;min-height:32px;font-size:11.5px" onclick="triggerPhotoDownload('${src}','مدرسه-${safeFileName(s.name)}-${i+1}.jpg')">⬇️ ذخیره در گالری</button>
+      </div>`).join('')}
+    </div>
+  </div>` : '';
+
   document.getElementById('schoolDetailContent').innerHTML = `
     <div class="detailhead">
-      <div class="school-head"><div><h1 class="title">${esc(s.name)}</h1><div class="muted">سال تحصیلی ${esc(s.year || '—')}</div></div><div class="school-icon">🏫</div></div>
-      <div class="actions"><button class="btn soft" onclick="editSchool('${id}')">ویرایش نام</button><button class="btn danger" onclick="deleteSchool('${id}')">حذف مدرسه</button></div>
+      <div class="school-head">
+        <div><h1 class="title">${esc(s.name)}</h1><div class="muted">سال تحصیلی ${esc(s.year || '—')}</div></div>
+        <div class="school-icon">${photos[0] ? `<img src="${photos[0]}">` : '🏫'}</div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" onclick="addClass('${id}')">＋ افزودن کلاس</button>
+        <button class="btn soft" onclick="editSchool('${id}')">✎ ویرایش و عکس مدرسه</button>
+        <button class="btn danger" onclick="deleteSchool('${id}')">حذف مدرسه</button>
+      </div>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin:12px 0">
-      <div><b>کلاس‌های فعال</b><div class="muted">${fa(s.classes.length)} کلاس</div></div>
-      <button class="btn primary" onclick="addClass('${id}')">＋ کلاس جدید</button>
-    </div>
-    <div class="grid">${s.classes.length ? s.classes.map(c => classCard(s, c)).join('') : empty('🚪', 'کلاسی وجود ندارد', '')}</div>
+    ${galleryHtml}
+    <div class="grid">${s.classes.length ? s.classes.map(c => classCard(s, c)).join('') : empty('🚪', 'هنوز کلاسی در این مدرسه ثبت نشده', 'روی «＋ افزودن کلاس» بزنید.')}</div>
   `;
   showView('schoolDetail');
 }
 
+function addSchool() {
+  window._schoolPhotos = [];
+  openModal(formHeader('🏫 افزودن مدرسه جدید') + `
+    <div class="formgrid">
+      <div class="field full"><label>نام مدرسه</label><input id="fName" required placeholder="مثلاً دبیرستان حاج دیدار شول"></div>
+      <div class="field full"><label>سال تحصیلی</label><input id="fYear" value="۱۴۰۵/۱۴۰۶"></div>
+      <div class="field full">
+        <label>عکس یا تابلوی مدرسه (اختیاری)</label>
+        <div class="actions" style="margin-top:4px">
+          <label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="addSchoolPhotoFile(event)"></label>
+          <label class="btn soft">🖼️ انتخاب از گالری<input type="file" accept="image/*" multiple hidden onchange="addSchoolPhotoFile(event)"></label>
+        </div>
+        <div id="schoolPhotoPrev" class="photo-grid"></div>
+      </div>
+    </div>
+    <div class="formactions"><button class="btn primary" onclick="saveSchoolForm()">ذخیره مدرسه</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>
+  `);
+}
+function editSchool(id) {
+  let s = findSchool(id); if (!s) return;
+  window._schoolPhotos = Array.isArray(s.photos) ? [...s.photos] : [];
+  openModal(formHeader('✎ ویرایش مدرسه') + `
+    <div class="formgrid">
+      <div class="field full"><label>نام مدرسه</label><input id="fName" value="${esc(s.name)}"></div>
+      <div class="field full"><label>سال تحصیلی</label><input id="fYear" value="${esc(s.year || '')}"></div>
+      <div class="field full">
+        <label>تصاویر مدرسه</label>
+        <div class="actions" style="margin-top:4px">
+          <label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="addSchoolPhotoFile(event)"></label>
+          <label class="btn soft">🖼️ گالری<input type="file" accept="image/*" multiple hidden onchange="addSchoolPhotoFile(event)"></label>
+        </div>
+        <div id="schoolPhotoPrev" class="photo-grid"></div>
+      </div>
+    </div>
+    <div class="formactions"><button class="btn primary" onclick="saveSchoolForm('${id}')">ذخیره تغییرات</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>
+  `);
+  renderSchoolPhotoPrevs();
+}
+async function addSchoolPhotoFile(e) {
+  const files = [...(e.target.files || [])];
+  for (const f of files) {
+    try { const data = await compressImage(f); window._schoolPhotos.push(data); } catch (err) {}
+  }
+  renderSchoolPhotoPrevs();
+  e.target.value = '';
+}
+function renderSchoolPhotoPrevs() {
+  const box = document.getElementById('schoolPhotoPrev'); if (!box) return;
+  box.innerHTML = (window._schoolPhotos || []).map((src, i) => `<div class="photo-thumb"><img src="${src}"><button type="button" onclick="window._schoolPhotos.splice(${i},1);renderSchoolPhotoPrevs()">×</button></div>`).join('');
+}
+function saveSchoolForm(editId = null) {
+  const name = document.getElementById('fName')?.value.trim();
+  const year = document.getElementById('fYear')?.value.trim();
+  if (!name) { alert('نام مدرسه را وارد کنید.'); return; }
+  if (editId) {
+    let s = findSchool(editId);
+    if (s) { s.name = name; s.year = year; s.photos = window._schoolPhotos || []; }
+  } else {
+    db.schools.push({ id: uid(), name, year, photos: window._schoolPhotos || [], classes: [] });
+  }
+  closeModal(); save(); toast('مدرسه ذخیره شد ✅');
+}
+function deleteSchool(id) {
+  let s = findSchool(id); if (!s) return;
+  if (confirm(`مدرسه «${s.name}» و تمام کلاس‌هایش حذف شوند؟`)) {
+    pushUndo('حذف مدرسه');
+    db.schools = db.schools.filter(x => x.id !== id);
+    save(); showView('schools');
+  }
+}
+
+/* کلاس‌ها و گالری عکس کلاس */
 function classCard(s, c) {
+  let photos = Array.isArray(c.photos) ? c.photos : [];
   return `<div class="card">
-    <div class="school-head"><div><h3>${esc(c.name)}</h3><div class="muted">پایه ${esc(c.grade || '')}</div></div><div class="school-icon">🚪</div></div>
-    <div class="chips"><span class="chip">👨‍🎓 ${fa(c.students.length)} دانش‌آموز</span></div>
+    ${photos.length ? `<div class="class-gallery" style="margin-top:0;margin-bottom:10px">${photos.slice(0, 2).map(src => `<img src="${src}" class="photo-clickable" onclick="openPhotoViewer('${src}','کلاس-${safeFileName(c.name)}.jpg')">`).join('')}</div>` : ''}
+    <div class="school-head">
+      <div><h3>${esc(c.name)}</h3><div class="muted">پایه ${esc(c.grade || '—')}</div></div>
+      <div class="school-icon">🚪</div>
+    </div>
+    <div class="chips">
+      <span class="chip">👨‍🎓 ${fa(c.students.length)} دانش‌آموز</span>
+      <span class="chip">📷 ${fa(photos.length)} عکس</span>
+    </div>
     <div class="actions">
-      <button class="btn soft" style="flex:1" onclick="openClass('${s.id}','${c.id}')">ورود به کلاس</button>
-      <button class="btn gray" onclick="openAttendance('${s.id}','${c.id}')">📋 لیست جامع</button>
+      <button class="btn primary" style="flex:1" onclick="openClass('${s.id}','${c.id}')">ورود به کلاس</button>
+      <button class="btn soft" onclick="openAttendance('${s.id}','${c.id}')">📋 جدول ترم</button>
+      <button class="btn gray" onclick="editClass('${s.id}','${c.id}')">✎</button>
     </div>
   </div>`;
 }
 
-/* صفحه کلاس */
-function openClass(sid, cid) {
-  currentSchoolId = sid; currentClassId = cid; let s = findSchool(sid), c = findClass(sid, cid); if (!s || !c) return;
-  document.getElementById('classCrumb').textContent = `${s.name} / ${c.name}`;
-  document.getElementById('classDetailContent').innerHTML = `
-    <div class="detailhead">
-      <div class="school-head"><div><h1 class="title">${esc(c.name)}</h1><div class="muted">${esc(s.name)} · پایه ${esc(c.grade || '')}</div></div><div class="school-icon">🚪</div></div>
-      <div class="actions" style="margin-top:10px">
-        <button class="btn primary" style="flex:1" onclick="openAttendance('${sid}','${cid}')">📋 لیست جامع، نمرات و ترم</button>
-        <button class="btn soft" onclick="openTodayList('${sid}','${cid}')">⚡ لیست سریع امروز</button>
-        <button class="btn gray" onclick="copyClass('${sid}','${cid}')">کپی</button>
-        <button class="btn danger" onclick="deleteClass('${sid}','${cid}')">حذف</button>
+function addClass(sid) {
+  window._classPhotos = [];
+  openModal(formHeader('🚪 افزودن کلاس جدید') + `
+    <div class="formgrid">
+      <div class="field"><label>نام کلاس</label><input id="cName" required placeholder="مثلاً هفتم الف"></div>
+      <div class="field"><label>پایه تحصیلی</label><input id="cGrade" placeholder="مثلاً هفتم"></div>
+      <div class="field full">
+        <label>عکس دسته‌جمعی یا برنامه کلاس (اختیاری)</label>
+        <div class="actions" style="margin-top:4px">
+          <label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="addClassPhotoFile(event)"></label>
+          <label class="btn soft">🖼️ انتخاب از گالری<input type="file" accept="image/*" multiple hidden onchange="addClassPhotoFile(event)"></label>
+        </div>
+        <div id="classPhotoPrev" class="photo-grid"></div>
       </div>
     </div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0">
-      <button class="btn primary" onclick="addStudent('${sid}','${cid}')">＋ دانش‌آموز جدید</button>
-      <button class="btn soft" onclick="collectiveBehavior('${sid}','${cid}','positive')">➕ مثبت جمعی</button>
-      <button class="btn danger" onclick="collectiveBehavior('${sid}','${cid}','negative')">➖ منفی جمعی</button>
+    <div class="formactions"><button class="btn primary" onclick="saveClassForm('${sid}')">ذخیره کلاس</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>
+  `);
+}
+function editClass(sid, cid) {
+  let c = findClass(sid, cid); if (!c) return;
+  window._classPhotos = Array.isArray(c.photos) ? [...c.photos] : [];
+  openModal(formHeader('✎ ویرایش کلاس و عکس‌ها') + `
+    <div class="formgrid">
+      <div class="field"><label>نام کلاس</label><input id="cName" value="${esc(c.name)}"></div>
+      <div class="field"><label>پایه تحصیلی</label><input id="cGrade" value="${esc(c.grade || '')}"></div>
+      <div class="field full">
+        <label>عکس‌های کلاس</label>
+        <div class="actions" style="margin-top:4px">
+          <label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="addClassPhotoFile(event)"></label>
+          <label class="btn soft">🖼️ انتخاب از گالری<input type="file" accept="image/*" multiple hidden onchange="addClassPhotoFile(event)"></label>
+        </div>
+        <div id="classPhotoPrev" class="photo-grid"></div>
+      </div>
     </div>
-    ${renderClassLineChart(c)}
-    <div style="margin:12px 0 6px"><b>👨‍🎓 فهرست دانش‌آموزان (${fa(c.students.length)} نفر)</b></div>
-    <div class="grid">${c.students.length ? sortStudents(c.students).map(st => studentCard(s, c, st)).join('') : empty('👨‍🎓', 'دانش‌آموزی ثبت نشده', '')}</div>
+    <div class="formactions"><button class="btn primary" onclick="saveClassForm('${sid}','${cid}')">ذخیره تغییرات</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>
+  `);
+  renderClassPhotoPrevs();
+}
+async function addClassPhotoFile(e) {
+  const files = [...(e.target.files || [])];
+  for (const f of files) {
+    try { const data = await compressImage(f); window._classPhotos.push(data); } catch (err) {}
+  }
+  renderClassPhotoPrevs();
+  e.target.value = '';
+}
+function renderClassPhotoPrevs() {
+  const box = document.getElementById('classPhotoPrev'); if (!box) return;
+  box.innerHTML = (window._classPhotos || []).map((src, i) => `<div class="photo-thumb"><img src="${src}"><button type="button" onclick="window._classPhotos.splice(${i},1);renderClassPhotoPrevs()">×</button></div>`).join('');
+}
+function saveClassForm(sid, editCid = null) {
+  const s = findSchool(sid); if (!s) return;
+  const name = document.getElementById('cName')?.value.trim();
+  const grade = document.getElementById('cGrade')?.value.trim();
+  if (!name) { alert('نام کلاس را وارد کنید.'); return; }
+  if (editCid) {
+    let c = findClass(sid, editCid);
+    if (c) { c.name = name; c.grade = grade; c.photos = window._classPhotos || []; }
+  } else {
+    s.classes.push({ id: uid(), name, grade, photos: window._classPhotos || [], students: [], attendance: {}, termScores: {}, sessionNotes: {} });
+  }
+  closeModal(); save(); toast('کلاس ذخیره شد ✅');
+}
+
+/* نمای داخل کلاس + لیست امروز + قرعه‌کشی پرسش */
+window.currentListDate = null;
+function openClass(sid, cid) {
+  currentSchoolId = sid; currentClassId = cid;
+  let s = findSchool(sid), c = findClass(sid, cid); if (!s || !c) return;
+  let photos = Array.isArray(c.photos) ? c.photos : [];
+  document.getElementById('classCrumb').textContent = `${s.name} / ${c.name}`;
+
+  const dates = attendanceDates(c); const today = localISODate();
+  window.currentListDate = window.currentListDate || (dates.includes(today) ? today : dates.find(d => d >= today) || today);
+
+  let galleryHtml = photos.length ? `<div class="card" style="margin-bottom:12px">
+    <b>📷 عکس‌های کلاس (${fa(photos.length)})</b>
+    <div class="class-gallery">
+      ${photos.map((src, i) => `<div>
+        <img src="${src}" class="photo-clickable" onclick="openPhotoViewer('${src}','کلاس-${safeFileName(c.name)}-${i+1}.jpg')">
+        <button class="btn soft block" style="margin-top:5px;min-height:32px;font-size:11.5px" onclick="triggerPhotoDownload('${src}','کلاس-${safeFileName(c.name)}-${i+1}.jpg')">⬇️ ذخیره در گالری</button>
+      </div>`).join('')}
+    </div>
+  </div>` : '';
+
+  document.getElementById('classDetailContent').innerHTML = `
+    <div id="classMainView">
+      <div class="detailhead">
+        <div class="school-head">
+          <div><h1 class="title">${esc(c.name)}</h1><div class="muted">${esc(s.name)} · پایه ${esc(c.grade || '—')}</div></div>
+          <div class="school-icon">🚪</div>
+        </div>
+        <div class="actions">
+          <button class="btn primary" style="flex:1" onclick="openTodayList('${sid}','${cid}')">📄 لیست امروز (سریع)</button>
+          <button class="btn soft" style="flex:1" onclick="openAttendance('${sid}','${cid}')">📋 جدول جامع و نمره ترم</button>
+        </div>
+        <div class="actions" style="margin-top:7px">
+          <button class="btn soft" onclick="pickRandomStudent('${sid}','${cid}')">🎲 قرعه‌کشی پرسش</button>
+          <button class="btn gray" onclick="editClass('${sid}','${cid}')">✎ ویرایش/عکس</button>
+          <button class="btn gray" onclick="copyClass('${sid}','${cid}')">📋 کپی کلاس</button>
+          <button class="btn danger" onclick="deleteClass('${sid}','${cid}')">حذف</button>
+        </div>
+      </div>
+
+      ${galleryHtml}
+
+      <div style="display:flex;gap:7px;flex-wrap:wrap;margin:12px 0">
+        <button class="btn primary" onclick="addStudent('${sid}','${cid}')">＋ دانش‌آموز جدید</button>
+        <button class="btn soft" onclick="collectiveBehavior('${sid}','${cid}','positive')">➕ مثبت جمعی</button>
+        <button class="btn danger" onclick="collectiveBehavior('${sid}','${cid}','negative')">➖ منفی جمعی</button>
+      </div>
+
+      ${isFeatOn('feat_class_chart') ? renderClassLineChart(c) : ''}
+      ${isFeatOn('feat_class_leaders') ? renderTopStudents(c) + renderBehaviorLeaders(c) : ''}
+
+      <div style="margin:14px 0 8px"><b>👨‍🎓 دانش‌آموزان کلاس (${fa(c.students.length)} نفر)</b></div>
+      <div class="grid">${c.students.length ? sortStudents(c.students).map(st => studentCard(s, c, st)).join('') : empty('👨‍🎓', 'هنوز دانش‌آموزی اضافه نشده', 'روی «＋ دانش‌آموز جدید» بزنید.')}</div>
+    </div>
+    <div id="classTodayListContainer" style="display:none"></div>
   `;
   showView('classDetail');
 }
 
-/* جدول لیست جامع */
+/* لیست امروز با قابلیت حضور، نمره، مثبت/منفی و یادداشت جلسه */
+window.openTodayList = function(sid, cid) {
+  const c = findClass(sid, cid); if (!c) return;
+  const cmv = document.getElementById('classMainView'), ctl = document.getElementById('classTodayListContainer');
+  if (!cmv || !ctl) {
+    openClass(sid, cid);
+    setTimeout(() => window.openTodayList(sid, cid), 50);
+    return;
+  }
+  cmv.style.display = 'none';
+  ctl.style.display = 'block';
+  renderTodayListInner(sid, cid);
+};
+
+window.closeTodayList = function() {
+  const ctl = document.getElementById('classTodayListContainer'), cmv = document.getElementById('classMainView');
+  if (ctl) ctl.style.display = 'none';
+  if (cmv) cmv.style.display = 'block';
+};
+
+function renderTodayListInner(sid, cid) {
+  const c = findClass(sid, cid); if (!c) return;
+  const dateISO = window.currentListDate || localISODate();
+  if (!c.attendance) c.attendance = {};
+  if (!c.attendance[dateISO]) c.attendance[dateISO] = {};
+  if (!c.sessionNotes) c.sessionNotes = {};
+  const noteVal = c.sessionNotes[dateISO] || '';
+
+  const rows = sortStudents(c.students).map(st => {
+    const isAbs = attendanceStatus(c, dateISO, st.id) === 'absent';
+    const sc = attendanceScore(c, dateISO, st.id);
+    const b = behaviorData(st);
+    return `
+      <div class="td-row">
+        <div style="display:flex;align-items:center;gap:9px;flex:1;min-width:0">
+          <button class="att-cell ${isAbs ? 'absent' : 'present'}" style="width:40px;height:38px" onclick="inlAtt('${sid}','${cid}','${st.id}')">${isAbs ? '✖' : '✓'}</button>
+          <div style="min-width:0;overflow:hidden">
+            <b style="font-size:14px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;color:var(--primary-dark)" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b>
+            <div class="muted" style="font-size:11px">➕ ${fa(b.positives.length)} · ➖ ${fa(b.negatives.length)}</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;flex-shrink:0">
+          <input type="number" step="0.25" min="0" max="20" class="td-score-inp" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${dateISO}',this.value)">
+          <button class="td-btn-plus" onclick="inlScore('${sid}','${cid}','${st.id}','positive')">＋</button>
+          <button class="td-btn-minus" onclick="inlScore('${sid}','${cid}','${st.id}','negative')">－</button>
+        </div>
+      </div>`;
+  }).join('');
+
+  document.getElementById('classTodayListContainer').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px">
+      <button class="btn gray" onclick="closeTodayList()">← بازگشت به کلاس</button>
+      <button class="btn soft" onclick="pickRandomStudent('${sid}','${cid}')">🎲 قرعه‌کشی پرسش</button>
+    </div>
+    <div class="td-list-card">
+      <div class="td-list-head">
+        <div style="display:flex;align-items:center;gap:6px">
+          <b>📅 تاریخ جلسه:</b>
+          <input type="text" value="${formatJalaliDate(dateISO)}" onchange="changeListDate('${sid}','${cid}',this.value)" style="width:105px;padding:5px 8px;font-weight:bold;text-align:center;font-size:12.5px">
+        </div>
+        <button class="btn soft" style="min-height:32px;padding:4px 10px" onclick="inlAllPresent('${sid}','${cid}')">✓ همه حاضر</button>
+      </div>
+      <div style="padding:10px 14px;background:#fffaf5;border-bottom:1px solid var(--border)">
+        <input type="text" value="${esc(noteVal)}" placeholder="📝 یادداشت یا مبحث تدریس‌شده امروز (مثلاً: صفحه ۳۰ پرسیده شود)..." onchange="saveSessionNote('${sid}','${cid}','${dateISO}',this.value)" style="font-size:12.5px">
+      </div>
+      <div style="max-height:64vh;overflow-y:auto">
+        ${rows || '<div class="muted" style="padding:20px;text-align:center">دانش‌آموزی ثبت نشده است.</div>'}
+      </div>
+    </div>
+  `;
+}
+
+window.saveSessionNote = function(sid, cid, dateISO, text) {
+  const c = findClass(sid, cid); if (!c) return;
+  if (!c.sessionNotes) c.sessionNotes = {};
+  c.sessionNotes[dateISO] = text.trim();
+  savePersistent();
+  toast('یادداشت جلسه ذخیره شد 📝');
+};
+window.changeListDate = function(sid, cid, val) {
+  const iso = jalaliToISO(val);
+  if (!iso) { alert('تاریخ شمسی معتبر وارد کنید (مثلاً ۱۴۰۵/۰۷/۲۰)'); return; }
+  window.currentListDate = iso;
+  renderTodayListInner(sid, cid);
+};
+window.inlAtt = function(sid, cid, stid) {
+  const c = findClass(sid, cid); if (!c) return;
+  const date = window.currentListDate || localISODate();
+  if (!c.attendance[date]) c.attendance[date] = {};
+  if (attendanceStatus(c, date, stid) === 'absent') delete c.attendance[date][stid];
+  else c.attendance[date][stid] = { status: 'absent' };
+  savePersistent();
+  renderTodayListInner(sid, cid);
+};
+window.inlScore = function(sid, cid, stid, type) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  const r = getRules();
+  const val = type === 'positive' ? r.positiveValue : r.penaltyPerNeg;
+  behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason: 'ثبت از لیست امروز', value: val, code: '' });
+  savePersistent();
+  renderTodayListInner(sid, cid);
+  toast(type === 'positive' ? '➕ مثبت ثبت شد' : '➖ منفی ثبت شد');
+};
+window.inlAllPresent = function(sid, cid) {
+  const c = findClass(sid, cid), date = window.currentListDate || localISODate(); if (!c) return;
+  if (!c.attendance[date]) c.attendance[date] = {};
+  (c.students || []).forEach(st => { if (c.attendance[date][st.id]) delete c.attendance[date][st.id].status; });
+  savePersistent();
+  renderTodayListInner(sid, cid);
+  toast('همه حاضر شدند ✓');
+};
+
+/* قرعه‌کشی هوشمند پرسش کلاسی */
+function pickRandomStudent(sid, cid) {
+  const c = findClass(sid, cid); if (!c || !c.students.length) { alert('دانش‌آموزی در کلاس نیست.'); return; }
+  const today = window.currentListDate || localISODate();
+  const presentStudents = c.students.filter(st => attendanceStatus(c, today, st.id) !== 'absent');
+  const pool = presentStudents.length ? presentStudents : c.students;
+  const chosen = pool[Math.floor(Math.random() * pool.length)];
+
+  openModal(formHeader('🎲 قرعه‌کشی پرسش کلاسی') + `
+    <div style="text-align:center;padding:14px 10px">
+      <div class="avatar" style="margin:auto;width:74px!important;height:74px!important;max-width:74px!important;max-height:74px!important;font-size:28px">
+        ${chosen.photo ? `<img src="${chosen.photo}">` : esc((chosen.name || '?')[0])}
+      </div>
+      <h2 style="margin:12px 0 4px;color:var(--primary)">${formatStudentName(chosen)}</h2>
+      <div class="muted">میانگین فعلی: ${avgGrade(chosen) !== null ? fmtScore(avgGrade(chosen)) : 'بدون نمره'} · ➕ ${fa(chosen.behavior.positives.length)} · ➖ ${fa(chosen.behavior.negatives.length)}</div>
+      <div class="actions" style="justify-content:center;margin-top:16px">
+        <button class="btn green" onclick="inlScore('${sid}','${cid}','${chosen.id}','positive');closeModal()">➕ مثبت پاسخ عالی</button>
+        <button class="btn danger" onclick="inlScore('${sid}','${cid}','${chosen.id}','negative');closeModal()">➖ منفی عدم آمادگی</button>
+        <button class="btn primary" onclick="closeModal();addGrade('${sid}','${cid}','${chosen.id}')">📚 ثبت نمره پرسش</button>
+      </div>
+      <button class="btn soft block" style="margin-top:12px" onclick="pickRandomStudent('${sid}','${cid}')">🔄 قرعه‌کشی نفر بعدی</button>
+    </div>
+  `);
+}
+
+/* جدول جامع کل ترم + نمره پایانی ترم */
 function openAttendance(sid, cid) {
-  currentSchoolId = sid; currentClassId = cid; const s = findSchool(sid), c = findClass(sid, cid); if (!s || !c) return;
+  currentSchoolId = sid; currentClassId = cid;
+  const s = findSchool(sid), c = findClass(sid, cid); if (!s || !c) return;
   const dates = attendanceDates(c), students = sortStudents(c.students || []);
   const shortcuts = getShortcuts();
 
-  let headerHtml = `
+  let header = `
     <div class="detailhead">
       <div class="school-head">
-        <div><h1 class="title">📋 لیست جامع و نمرات پایانی</h1><div class="muted">${esc(s.name)} · ${esc(c.name)}</div></div>
+        <div><h1 class="title">📋 جدول جامع حضور، نمرات و ترم</h1><div class="muted">${esc(s.name)} · ${esc(c.name)} · ${fa(dates.length)} جلسه</div></div>
         <div class="school-icon">📋</div>
       </div>
-      <div class="actions" style="margin-top:8px">
-        <button class="btn primary" onclick="exportCustomReport('excel')">📊 دریافت اکسل کامل</button>
-        <button class="btn soft" onclick="openTodayList('${sid}','${cid}')">⚡ رفتن به لیست سریع امروز</button>
+      <div class="actions">
+        <button class="btn soft" onclick="editAttendanceSettings('${sid}','${cid}')">⚙ تنظیم جلسات و روزهای هفته</button>
+        <button class="btn gray" onclick="addAttendanceDate('${sid}','${cid}')">＋ جلسه جدید</button>
+        <button class="btn primary" onclick="showView('backup')">📤 مرکز خروجی</button>
       </div>
     </div>
   `;
 
   if (!students.length) {
-    document.getElementById('attendanceContent').innerHTML = headerHtml + empty('👨‍🎓', 'دانش‌آموزی نیست', '');
+    document.getElementById('attendanceContent').innerHTML = header + empty('👨‍🎓', 'دانش‌آموزی نیست', '');
     showView('attendance'); return;
   }
 
-  let tableRows = students.map(st => {
+  let rows = students.map(st => {
     let termScore = c.termScores?.[st.id] ?? '';
     let calcFinal = calculateFinalStudentScore(c, st);
+    let shBtns = shortcuts.slice(0, 4).map(sh => `
+      <button class="qb ${sh.type === 'positive' ? 'pos' : 'neg'}" title="${esc(sh.reason)}" onclick="gridApplyShortcut('${sid}','${cid}','${st.id}','${esc(sh.code)}')">${sh.type === 'positive' ? '＋' : '－'}${esc(sh.code)}</button>
+    `).join('');
 
-    let sessionCols = dates.map(d => {
+    let cols = dates.map(d => {
       let isAbs = attendanceStatus(c, d, st.id) === 'absent';
       let sc = attendanceScore(c, d, st.id);
       return `<td>
-        <div style="display:grid;gap:2px;justify-items:center">
+        <div class="att-combo">
           <button class="att-cell ${isAbs ? 'absent' : 'present'}" onclick="gridToggleAtt('${sid}','${cid}','${st.id}','${d}')">${isAbs ? '✖' : '✓'}</button>
-          <input class="att-score-input" type="number" step="0.25" min="0" max="20" value="${sc === null ? '' : sc}" placeholder="-" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${d}',this.value)">
+          <input class="att-score-input" type="number" step="0.25" min="0" max="20" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${d}',this.value)">
         </div>
       </td>`;
     }).join('');
 
-    let shortcutBtns = shortcuts.slice(0, 3).map(sh => `
-      <button class="qb ${sh.type === 'positive' ? 'pos' : 'neg'}" title="${esc(sh.reason)}" onclick="gridApplyShortcut('${sid}','${cid}','${st.id}','${sh.code}')">${sh.type === 'positive' ? '＋' : '－'}${esc(sh.code)}</button>
-    `).join('');
-
     return `<tr>
       <td>
-        <b style="cursor:pointer;color:var(--primary)" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b>
-        <div style="display:flex;gap:3px;margin-top:3px">${shortcutBtns}</div>
+        <b style="cursor:pointer;color:var(--primary-dark)" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b>
+        <div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:4px">${shBtns}</div>
       </td>
-      <td>
-        <input class="term-score-input" type="number" step="0.25" min="0" max="20" value="${termScore}" placeholder="پایانی" onchange="saveTermScore('${sid}','${cid}','${st.id}',this.value)">
-      </td>
-      <td style="font-weight:900;color:${calcFinal < 10 ? '#dc2626' : '#16a34a'}">${fmtScore(calcFinal)}</td>
-      <td>➕ ${fa(st.behavior.positives.length)} | ➖ ${fa(st.behavior.negatives.length)}</td>
-      ${sessionCols}
+      <td><input class="term-score-input" type="number" step="0.25" min="0" max="20" value="${termScore}" placeholder="ترم" onchange="saveTermScore('${sid}','${cid}','${st.id}',this.value)"></td>
+      <td style="font-weight:900;color:${calcFinal < 10 ? '#dc2626' : '#15803d'}">${fmtScore(calcFinal)}</td>
+      <td>➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}</td>
+      ${cols}
     </tr>`;
   }).join('');
 
-  let tableHtml = `
+  document.getElementById('attendanceContent').innerHTML = header + `
     <div class="card"><div class="att-wrap">
       <table class="att-table">
         <thead>
           <tr>
-            <th>دانش‌آموز</th>
-            <th style="background:#ffedd5;color:var(--primary)">نمره پایانی ترم</th>
-            <th style="background:#ffedd5;color:var(--primary)">نهایی با انضباط</th>
-            <th>مثبت / منفی</th>
-            ${dates.map(d => `<th>${formatAttendanceDate(d)}</th>`).join('')}
+            <th>نام خانوادگی و نام</th>
+            <th>نمره ترم</th>
+            <th>نهایی با رفتار</th>
+            <th>مثبت/منفی</th>
+            ${dates.map(d => `<th><button class="link att-date" onclick="editAttendanceDate('${sid}','${cid}','${d}')">✎ ${formatAttendanceDate(d)}</button></th>`).join('')}
           </tr>
         </thead>
-        <tbody>${tableRows}</tbody>
+        <tbody>${rows}</tbody>
       </table>
     </div></div>
   `;
-
-  document.getElementById('attendanceContent').innerHTML = headerHtml + tableHtml;
   showView('attendance');
 }
 
 window.saveTermScore = function(sid, cid, stid, val) {
   const c = findClass(sid, cid); if (!c) return;
   if (!c.termScores) c.termScores = {};
-  c.termScores[stid] = val === '' ? '' : Number(enDigits(val));
-  save(); toast('نمره ترم ثبت شد');
+  const n = val === '' ? '' : Number(enDigits(val));
+  if (n !== '' && (!Number.isFinite(n) || n < 0 || n > 20)) { alert('نمره ترم باید بین ۰ تا ۲۰ باشد.'); return; }
+  c.termScores[stid] = n;
+  save(); toast('نمره ترم ذخیره شد ✅');
 };
-
 window.gridToggleAtt = function(sid, cid, stid, date) {
   const c = findClass(sid, cid); if (!c) return;
   if (!c.attendance[date]) c.attendance[date] = {};
   if (attendanceStatus(c, date, stid) === 'absent') delete c.attendance[date][stid];
   else c.attendance[date][stid] = { status: 'absent' };
-  save(); openAttendance(sid, cid);
+  save();
 };
-
 window.gridApplyShortcut = function(sid, cid, stid, code) {
-  const sh = getShortcuts().find(x => x.code === code); const st = findStudent(sid, cid, stid); if (!sh || !st) return;
-  behaviorData(st)[sh.type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason: sh.reason, value: sh.value, code: sh.code });
-  save(); openAttendance(sid, cid); toast(`کد «${sh.code}» ثبت شد`);
+  const sh = getShortcuts().find(x => x.code === code), st = findStudent(sid, cid, stid);
+  if (!sh || !st) return;
+  behaviorData(st)[sh.type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason: sh.reason, value: Number(sh.value), code: sh.code });
+  save(); toast(`کد «${sh.code}» ثبت شد`);
 };
 
-/* لیست سریع امروز */
-window.openTodayList = function(sid, cid) {
-  const c = findClass(sid, cid); if (!c) return;
-  const dates = attendanceDates(c); const today = localISODate();
-  const dateISO = dates.includes(today) ? today : (dates.find(d => d >= today) || today);
-
-  const rows = sortStudents(c.students).map(st => {
-    const isAbs = attendanceStatus(c, dateISO, st.id) === 'absent';
-    const sc = attendanceScore(c, dateISO, st.id);
-    return `
-      <div class="td-row">
-        <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
-          <button class="att-cell ${isAbs ? 'absent' : 'present'}" style="width:36px;height:36px" onclick="todayToggleAtt('${sid}','${cid}','${st.id}','${dateISO}')">${isAbs ? '✖' : '✓'}</button>
-          <div style="min-width:0;overflow:hidden">
-            <b style="font-size:13.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b>
-            <div class="muted" style="font-size:11px">➕ ${fa(st.behavior.positives.length)} | ➖ ${fa(st.behavior.negatives.length)}</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:6px">
-          <input type="number" step="0.25" min="0" max="20" class="td-score-inp" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${dateISO}',this.value)">
-          <button class="td-btn-plus" onclick="todayScore('${sid}','${cid}','${st.id}','positive')">＋</button>
-          <button class="td-btn-minus" onclick="todayScore('${sid}','${cid}','${st.id}','negative')">－</button>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  openModal(`
-    <div class="sheethead">
-      <div><h2>⚡ ارزیابی سریع امروز</h2><div class="muted">جلسه: ${formatJalaliDate(dateISO)}</div></div>
-      <button type="button" class="close" onclick="closeModal()">×</button>
-    </div>
-    <div class="td-list-card" style="max-height:65vh;overflow-y:auto;border:none">
-      ${rows || '<div class="muted" style="text-align:center;padding:20px">دانش‌آموزی نیست</div>'}
-    </div>
-  `);
-};
-
-window.todayToggleAtt = function(sid, cid, stid, date) {
-  const c = findClass(sid, cid); if (!c) return;
-  if (!c.attendance[date]) c.attendance[date] = {};
-  if (attendanceStatus(c, date, stid) === 'absent') delete c.attendance[date][stid];
-  else c.attendance[date][stid] = { status: 'absent' };
-  save(); openTodayList(sid, cid);
-};
-
-window.todayScore = function(sid, cid, stid, type) {
-  const st = findStudent(sid, cid, stid); if (!st) return;
-  const defVal = type === 'positive' ? getRules().positiveValue : getRules().penaltyPerNeg;
-  behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason: 'ارزیابی سریع روزانه', value: defVal, code: '' });
-  save(); openTodayList(sid, cid); toast(type === 'positive' ? 'مثبت ثبت شد' : 'منفی ثبت شد');
-};
-
-/* فرمول نمره نهایی */
-function calculateFinalStudentScore(c, st) {
-  let term = Number(c.termScores?.[st.id]);
-  let baseScore = Number.isFinite(term) ? term : (avgGrade(st) ?? 0);
-  const rules = getRules();
-  const posCount = st.behavior.positives.length;
-  const negCount = st.behavior.negatives.length;
-
-  let delta = 0;
-  if (negCount === 0 && posCount > 0) delta += rules.bonusNoNeg;
-  if (negCount > rules.maxNegAllowed) delta -= (negCount - rules.maxNegAllowed) * rules.penaltyPerNeg;
-  delta += posCount * rules.positiveValue;
-
-  return Math.max(0, Math.min(20, baseScore + delta));
-}
-
-function getRules() {
-  return {
-    bonusNoNeg: Number(localStorage.getItem('rule_bonus_no_neg') || 1),
-    maxNegAllowed: Number(localStorage.getItem('rule_max_neg_allowed') || 2),
-    penaltyPerNeg: Number(localStorage.getItem('rule_penalty_per_neg') || 0.5),
-    positiveValue: Number(localStorage.getItem('behavior_positive_value') || 0.25)
-  };
-}
-window.saveRules = function() {
-  localStorage.setItem('rule_bonus_no_neg', document.getElementById('ruleBonusNoNeg').value);
-  localStorage.setItem('rule_max_neg_allowed', document.getElementById('ruleMaxNegAllowed').value);
-  localStorage.setItem('rule_penalty_per_neg', document.getElementById('rulePenaltyPerNeg').value);
-  localStorage.setItem('behavior_positive_value', document.getElementById('behaviorPositiveDefault').value);
-  save(); toast('فرمول نمره ترم ذخیره شد');
-};
-
-/* کدهای اختصاری */
-function getShortcuts() {
-  const def = [
-    { code: 'د', reason: 'رفته دستشویی', value: 0.25, type: 'negative' },
-    { code: 'خ', reason: 'خواندن از روی کتاب', value: 0.5, type: 'positive' },
-    { code: 'ت', reason: 'تکلیف کامل بود', value: 0.25, type: 'positive' }
-  ];
-  try { return JSON.parse(localStorage.getItem('behavior_shortcuts_v2')) || def; } catch(e) { return def; }
-}
-function saveShortcuts(arr) { localStorage.setItem('behavior_shortcuts_v2', JSON.stringify(arr)); renderShortcutSettingsUi(); }
-
-function renderShortcutSettingsUi() {
-  const box = document.getElementById('shortcutListUi'); if (!box) return;
-  box.innerHTML = getShortcuts().map((item, idx) => `
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#fffaf5;border:1px solid var(--border);border-radius:9px">
-      <div>
-        <b style="color:${item.type === 'positive' ? 'green' : 'red'}">${item.type === 'positive' ? '➕' : '➖'} کد «${esc(item.code)}»</b>
-        <span class="muted" style="margin-right:6px">${esc(item.reason)} (${fmtScore(item.value)} نمره)</span>
-      </div>
-      <button class="btn danger" style="min-height:auto;padding:2px 7px;font-size:11px" onclick="deleteShortcut(${idx})">حذف</button>
-    </div>
-  `).join('');
-}
-window.addShortcutPrompt = function() {
-  const code = prompt('حرف یا کد اختصاری (مثلاً د):'); if (!code) return;
-  const reason = prompt(`دلیل این کد برای «${code}» (مثلاً رفته دستشویی):`); if (!reason) return;
-  const type = confirm('آیا این کد «مثبت» است؟ (تأیید = مثبت / انصراف = منفی)') ? 'positive' : 'negative';
-  const val = Number(prompt('میزان نمره:', '0.25')) || 0.25;
-  const list = getShortcuts();
-  list.push({ code: code.trim(), reason: reason.trim(), value: Math.abs(val), type });
-  saveShortcuts(list); toast('کد اضافه شد');
-};
-window.deleteShortcut = function(idx) { const list = getShortcuts(); list.splice(idx, 1); saveShortcuts(list); toast('کد حذف شد'); };
-
-/* نمودار خطی */
-function renderClassLineChart(c) {
-  const dates = attendanceDates(c);
-  if (dates.length < 2) return '';
-  let points = [];
-  dates.forEach((d, i) => {
-    let scores = [];
-    c.students.forEach(st => {
-      let sc = attendanceScore(c, d, st.id);
-      if (sc !== null) scores.push(sc);
-    });
-    let avg = scores.length ? scores.reduce((a, b) => a + b, 0) / scores.length : 0;
-    points.push({ i, avg });
-  });
-
-  const w = 600, h = 120;
-  const svgPoints = points.map(p => {
-    let x = (p.i / (points.length - 1)) * (w - 60) + 30;
-    let y = h - (p.avg / 20) * (h - 40) - 20;
-    return `${x},${y}`;
-  }).join(' ');
-
-  return `
-    <div class="chart-container">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <b>📈 روند میانگین نمرات جلسات</b>
-        <span class="muted" style="font-size:11px">نمودار خطی ارزیابی مستمر</span>
-      </div>
-      <div class="chart-box">
-        <svg class="chart" viewBox="0 0 ${w} ${h}">
-          <line x1="30" y1="${h - 20}" x2="${w - 30}" y2="${h - 20}" stroke="#fed7aa" stroke-width="1.5" />
-          <polyline fill="none" stroke="var(--primary)" stroke-width="2.5" points="${svgPoints}" />
-          ${points.map(p => {
-            let x = (p.i / (points.length - 1)) * (w - 60) + 30;
-            let y = h - (p.avg / 20) * (h - 40) - 20;
-            return `<circle cx="${x}" cy="${y}" r="3.5" fill="var(--primary)" /><text x="${x}" y="${y - 6}" font-size="9" text-anchor="middle" fill="#555">${fmtScore(p.avg)}</text>`;
-          }).join('')}
-        </svg>
-      </div>
-    </div>
-  `;
-}
-
-function renderSchoolProgressChart() {
-  const box = document.getElementById('schoolProgressChart'); if (!box) return;
-  if (!db.schools.length) { box.innerHTML = ''; return; }
-  let schAvgs = db.schools.map(s => {
-    let all = [];
-    s.classes.forEach(c => c.students.forEach(st => {
-      let g = avgGrade(st); if (g !== null) all.push(g);
-    }));
-    return { name: s.name, avg: all.length ? all.reduce((a, b) => a + b, 0) / all.length : 0 };
-  });
-  box.innerHTML = `
-    <div class="card" style="margin-top:10px">
-      <b>📊 وضعیت مقایسه‌ای مدارس (میانگین نمرات)</b>
-      <div style="display:grid;gap:6px;margin-top:8px">
-        ${schAvgs.map(x => `
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:11.5px"><span>${esc(x.name)}</span><b>${fmtScore(x.avg)} از ۲۰</b></div>
-            <div style="height:6px;background:#ffedd5;border-radius:4px;overflow:hidden;margin-top:2px">
-              <div style="height:100%;width:${(x.avg / 20) * 100}%;background:var(--primary);border-radius:4px"></div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `;
-}
-
-/* خروجی گزارش */
-window.exportCustomReport = function(kind) {
-  const incAtt = document.getElementById('expColAtt')?.checked;
-  const incGrades = document.getElementById('expColContGrades')?.checked;
-  const incBeh = document.getElementById('expColBeh')?.checked;
-  const incTerm = document.getElementById('expColTerm')?.checked;
-
-  let headers = ['مدرسه', 'کلاس', 'نام خانوادگی و نام', 'نام پدر'];
-  if (incAtt) headers.push('غیبت‌ها');
-  if (incGrades) headers.push('میانگین مستمر');
-  if (incBeh) headers.push('مثبت/منفی');
-  if (incTerm) headers.push('نمره پایانی', 'نمره نهایی با انضباط');
-
-  let rows = [];
-  db.schools.forEach(s => s.classes.forEach(c => {
-    sortStudents(c.students).forEach(st => {
-      let r = [s.name, c.name, `${st.lastName} ${st.name}`, st.fatherName || '—'];
-      if (incAtt) {
-        let absCount = attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
-        r.push(absCount);
-      }
-      if (incGrades) r.push(avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—');
-      if (incBeh) r.push(`+${st.behavior.positives.length} / -${st.behavior.negatives.length}`);
-      if (incTerm) {
-        let tSc = c.termScores?.[st.id] ?? '—';
-        r.push(tSc, fmtScore(calculateFinalStudentScore(c, st)));
-      }
-      rows.push(r);
-    });
-  }));
-
-  if (!rows.length) { alert('داده‌ای برای خروجی وجود ندارد.'); return; }
-
-  if (kind === 'excel') {
-    let csv = '\ufeff' + [headers, ...rows].map(e => e.map(x => `"${x}"`).join(',')).join('\r\n');
-    let a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
-    a.download = `گزارش-آموزشی-${localISODate()}.csv`; a.click();
-    toast('فایل اکسل آماده شد');
-  } else if (kind === 'word') {
-    let tableHtml = `<table border="1" style="border-collapse:collapse;width:100%;font-family:Tahoma;direction:rtl;text-align:right">
-      <tr style="background:#ffedd5">${headers.map(h => `<th>${h}</th>`).join('')}</tr>
-      ${rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}
-    </table>`;
-    let a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob(['\ufeff' + tableHtml], { type: 'application/msword' }));
-    a.download = `گزارش-${localISODate()}.doc`; a.click();
-    toast('فایل ورد آماده شد');
-  } else {
-    let printWin = window.open('', '_blank');
-    printWin.document.write(`<html dir="rtl"><head><title>کارنامه تحصیلی</title><style>body{font-family:Tahoma;padding:20px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #ccc;padding:8px;text-align:right}th{background:#ffedd5}</style></head><body><h2>گزارش تحصیلی و انضباطی دانش‌آموزان</h2><table border="1"><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr>${rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</table></body></html>`);
-    printWin.document.close(); printWin.focus(); setTimeout(() => printWin.print(), 300);
-  }
-};
-
-/* کارت دانش‌آموز */
+/* کارت دانش‌آموز و پرونده کامل + ویرایش مثبت/منفی + حالت اولیا */
 function studentCard(s, c, st) {
-  let status = st.status === 'good' ? '<span style="background:#dcfce7;color:#15803d;padding:2px 6px;border-radius:6px;font-size:10px">🟢 خوب</span>' : st.status === 'attn' ? '<span style="background:#fee2e2;color:#b91c1c;padding:2px 6px;border-radius:6px;font-size:10px">🔴 توجه</span>' : '<span style="background:#f1f5f9;color:#64748b;padding:2px 6px;border-radius:6px;font-size:10px">⚪ عادی</span>';
-  return `<div class="card">
+  let status = st.status === 'good' ? '<span class="status good">🟢 خوب</span>' : st.status === 'attn' ? '<span class="status attn">🔴 نیازمند توجه</span>' : '<span class="status none">⚪ عادی</span>';
+  let b = behaviorData(st);
+  let fin = calculateFinalStudentScore(c, st);
+  return `<div class="card studentcard">
     <div class="student">
-      <div class="avatar">${st.photo ? `<img src="${st.photo}">` : esc((st.name || '?')[0])}</div>
-      <div style="flex:1;min-width:0">
-        <b style="font-size:13.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${formatStudentName(st)}</b>
-        <div style="margin-top:2px">${status}</div>
+      <div class="avatar ${st.photo ? 'photo-clickable' : ''}" ${st.photo ? `onclick="event.stopPropagation();openPhotoViewer('${st.photo}','${safeFileName(st.lastName+'-'+st.name)}.jpg')"` : ''}>
+        ${st.photo ? `<img src="${st.photo}">` : esc((st.name || '?')[0])}
+      </div>
+      <div style="min-width:0;flex:1">
+        <b style="font-size:14.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${formatStudentName(st)}</b>
+        <div style="margin-top:4px">${status}</div>
       </div>
     </div>
-    <div class="muted" style="margin-top:6px;font-size:11px">➕ ${fa(st.behavior.positives.length)} | ➖ ${fa(st.behavior.negatives.length)} | میانگین: ${avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—'}</div>
+    <div class="student-meta">
+      ${st.birth ? '🎂 ' + fa(st.birth) : ''}${st.phone ? ' · ☎ ' + fa(st.phone) : ''}<br>
+      ➕ ${fa(b.positives.length)} · ➖ ${fa(b.negatives.length)} · ⭐ نهایی: <b>${fmtScore(fin)}</b>
+    </div>
+    ${isFeatOn('feat_card_shortcuts') ? renderQuickBehaviorButtons(s.id, c.id, st) : ''}
     <div class="actions">
-      <button class="btn soft" style="flex:1" onclick="openStudent('${s.id}','${c.id}','${st.id}')">پرونده</button>
-      <button class="btn gray" onclick="copyStudentAdvanced('${s.id}','${c.id}','${st.id}')">📋 کپی</button>
+      <button class="btn soft" style="flex:1" onclick="openStudent('${s.id}','${c.id}','${st.id}')">پرونده و نمودار</button>
+      <button class="btn gray" onclick="openParentView('${s.id}','${c.id}','${st.id}')" title="نمایش به والدین">👨‍👩‍👦</button>
       <button class="btn gray" onclick="editStudent('${s.id}','${c.id}','${st.id}')">✎</button>
     </div>
   </div>`;
@@ -941,108 +1388,739 @@ function studentCard(s, c, st) {
 function openStudent(sid, cid, stid) {
   currentSchoolId = sid; currentClassId = cid; currentStudentId = stid;
   let s = findSchool(sid), c = findClass(sid, cid), st = findStudent(sid, cid, stid); if (!st) return;
+  let b = behaviorData(st), g = gradesData(st);
+  let avg = avgGrade(st), fin = calculateFinalStudentScore(c, st), bt = behaviorTotals(st);
   document.getElementById('studentCrumb').textContent = `${st.lastName} ${st.name}`;
+  let status = st.status === 'good' ? '🟢 خوب' : st.status === 'attn' ? '🔴 نیازمند توجه' : '⚪ عادی';
+
+  let allBeh = [
+    ...b.positives.map(x => ({ ...x, type: 'positive' })),
+    ...b.negatives.map(x => ({ ...x, type: 'negative' }))
+  ].sort((a, z) => new Date(z.date) - new Date(a.date));
+
   document.getElementById('studentDetailContent').innerHTML = `
     <div class="card">
       <div class="student">
-        <div class="avatar" style="width:60px!important;height:60px!important;max-width:60px!important;max-height:60px!important">${st.photo ? `<img src="${st.photo}">` : '👤'}</div>
-        <div>
-          <h2 style="margin:0;font-size:17px">${formatStudentName(st)}</h2>
-          <div class="muted" style="margin-top:2px">${esc(s.name)} · ${esc(c.name)} · همراه: ${esc(st.phone || '—')}</div>
+        <div class="avatar ${st.photo ? 'photo-clickable' : ''}" style="width:74px!important;height:74px!important;min-width:74px!important;max-width:74px!important;max-height:74px!important;font-size:28px" ${st.photo ? `onclick="openPhotoViewer('${st.photo}','${safeFileName(st.lastName+'-'+st.name)}.jpg')"` : ''}>
+          ${st.photo ? `<img src="${st.photo}">` : esc((st.name || '?')[0])}
+        </div>
+        <div style="flex:1">
+          <h1 class="title" style="margin:0">${formatStudentName(st)}</h1>
+          <div class="muted" style="margin-top:3px">${esc(s.name)} · ${esc(c.name)}</div>
+          <div class="chips">
+            <span class="status ${st.status || 'none'}">${status}</span>
+            <span class="chip">📚 مستمر: ${avg === null ? '—' : fmtScore(avg)}</span>
+            <span class="chip">⭐ نهایی با انضباط: ${fmtScore(fin)}</span>
+          </div>
         </div>
       </div>
+
       <div class="actions" style="margin-top:12px">
-        <button class="btn primary" onclick="addBehavior('${sid}','${cid}','${stid}','positive')">➕ ثبت مثبت</button>
-        <button class="btn danger" onclick="addBehavior('${sid}','${cid}','${stid}','negative')">➖ ثبت منفی</button>
-        <button class="btn soft" onclick="addGrade('${sid}','${cid}','${stid}')">📚 نمره جدید</button>
-        <button class="btn danger" onclick="deleteStudent('${sid}','${cid}','${stid}')">حذف</button>
+        <button class="btn primary" style="flex:1" onclick="openParentView('${sid}','${cid}','${stid}')">👨‍👩‍👦 حالت نمایش به اولیا (بدون یادداشت محرمانه)</button>
+        <button class="btn soft" onclick="sendParentSmsReport('${sid}','${cid}','${stid}')">📱 پیامک کارنامه به والدین</button>
       </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:14px 0">
+      <div class="formgrid">
+        <div><b>🎂 تاریخ تولد:</b> <span class="muted">${fa(st.birth || 'ثبت نشده')}</span></div>
+        <div><b>☎ تلفن تماس:</b> <span class="muted">${fa(st.phone || 'ثبت نشده')}</span></div>
+        <div class="field full"><b>❤️ علایق و استعدادها:</b> <span class="muted">${esc(st.interests || 'ثبت نشده')}</span></div>
+        <div class="field full"><b>🔒 یادداشت خصوصی معلم:</b> <span class="muted">${esc(st.notes || 'ثبت نشده')}</span></div>
+      </div>
+    </div>
+
+    ${renderStudentLineChart(c, st)}
+
+    <!-- سوابق مثبت و منفی با قابلیت ویرایش و حذف -->
+    <div class="card" style="margin-top:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <b>➕➖ سوابق مثبت و منفی (قابل ویرایش)</b>
+        <span class="chip">تأثیر خالص: ${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)}</span>
+      </div>
+      <div class="behavior-impact">
+        <div class="impact-box"><b>+${fmtScore(bt.positive)}</b><small>${fa(b.positives.length)} مثبت</small></div>
+        <div class="impact-box"><b>−${fmtScore(bt.negative)}</b><small>${fa(b.negatives.length)} منفی</small></div>
+        <div class="impact-box"><b>${fmtScore(fin)}</b><small>نمره نهایی</small></div>
+      </div>
+      <div class="actions">
+        <button class="btn green" style="flex:1" onclick="addBehaviorModal('${sid}','${cid}','${stid}','positive')">➕ ثبت مثبت جدید</button>
+        <button class="btn danger" style="flex:1" onclick="addBehaviorModal('${sid}','${cid}','${stid}','negative')">➖ ثبت منفی جدید</button>
+      </div>
+      <div style="margin-top:10px;display:grid;gap:7px">
+        ${allBeh.map(x => `
+          <div style="padding:9px 11px;background:#fffaf5;border:1px solid var(--border);border-radius:11px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+            <div>
+              <b>${x.type === 'positive' ? '➕' : '➖'} ${esc(x.reason)} ${x.code ? `<span class="chip">کد ${esc(x.code)}</span>` : ''}</b>
+              <div class="muted">${formatEventDate(x.date)} · امتیاز: ${x.type === 'positive' ? '+' : '−'}${fmtScore(x.value || 0.25)}</div>
+            </div>
+            <div style="display:flex;gap:5px">
+              <button class="btn gray" style="min-height:30px;padding:4px 8px;font-size:11px" onclick="editBehavior('${sid}','${cid}','${stid}','${x.type}','${x.id}')">✎ ویرایش</button>
+              <button class="btn danger" style="min-height:30px;padding:4px 8px;font-size:11px" onclick="deleteBehavior('${sid}','${cid}','${stid}','${x.type}','${x.id}')">حذف</button>
+            </div>
+          </div>
+        `).join('') || '<div class="muted">هنوز مورد رفتاری ثبت نشده است.</div>'}
+      </div>
+    </div>
+
+    <!-- نمرات درسی با قابلیت ویرایش و حذف -->
+    <div class="card" style="margin-top:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div><b>📚 نمره‌های ثبت‌شده</b></div>
+        <button class="btn primary" onclick="addGrade('${sid}','${cid}','${stid}')">＋ ثبت نمره</button>
+      </div>
+      <div style="margin-top:10px;display:grid;gap:7px">
+        ${g.slice().sort((a, z) => new Date(z.date) - new Date(a.date)).map(x => `
+          <div style="padding:9px 11px;background:#fffaf5;border:1px solid var(--border);border-radius:11px;display:flex;justify-content:space-between;align-items:center;gap:8px">
+            <div>
+              <b>${esc(x.subject || 'ارزیابی')} — نمره: <span style="color:var(--primary)">${fmtScore(x.score)}</span></b>
+              <div class="muted">${formatEventDate(x.date)}</div>
+            </div>
+            <div style="display:flex;gap:5px">
+              <button class="btn gray" style="min-height:30px;padding:4px 8px;font-size:11px" onclick="editGrade('${sid}','${cid}','${stid}','${x.id}')">✎ ویرایش</button>
+              <button class="btn danger" style="min-height:30px;padding:4px 8px;font-size:11px" onclick="deleteGrade('${sid}','${cid}','${stid}','${x.id}')">حذف</button>
+            </div>
+          </div>
+        `).join('') || '<div class="muted">هنوز نمره‌ای ثبت نشده است.</div>'}
+      </div>
+    </div>
+
+    <div class="actions" style="margin-top:14px">
+      <button class="btn primary" onclick="editStudent('${sid}','${cid}','${stid}')">✎ ویرایش مشخصات و عکس</button>
+      <button class="btn soft" onclick="copyStudentAdvanced('${sid}','${cid}','${stid}')">📋 کپی به کلاس دیگر</button>
+      <button class="btn soft" onclick="moveStudent('${sid}','${cid}','${stid}')">🔀 انتقال کلاس</button>
+      <button class="btn danger" onclick="deleteStudent('${sid}','${cid}','${stid}')">حذف دانش‌آموز</button>
     </div>
   `;
   showView('studentDetail');
 }
 
-function addStudent(sid, cid) {
-  openModal(formHeader('👨‍🎓 افزودن دانش‌آموز') + `
-    <div style="display:grid;gap:7px">
-      <div><label class="muted">نام</label><input id="stName" required></div>
-      <div><label class="muted">نام خانوادگی</label><input id="stLast" required></div>
-      <div><label class="muted">نام پدر (برای تشابه اسمی)</label><input id="stFather"></div>
-      <div><label class="muted">تولد شمسی</label><input id="stBirth" placeholder="مثلاً ۱۳۸۸/۰۵/۲۱"></div>
-      <div><label class="muted">شماره همراه</label><input id="stPhone" inputmode="tel"></div>
-    </div>
-    <div style="margin-top:10px"><button class="btn primary block" onclick="saveStudentDirect('${sid}','${cid}')">ذخیره دانش‌آموز</button></div>
-  `);
-}
-
-function saveStudentDirect(sid, cid) {
-  const c = findClass(sid, cid); if (!c) return;
-  const name = document.getElementById('stName').value.trim();
-  const lastName = document.getElementById('stLast').value.trim();
-  const fatherName = document.getElementById('stFather').value.trim();
-  const birth = document.getElementById('stBirth').value.trim();
-  const phone = document.getElementById('stPhone').value.trim();
-  if (!name || !lastName) { alert('نام و نام خانوادگی الزامی است.'); return; }
-  c.students.push({ id: uid(), name, lastName, fatherName, birth, phone, behavior: { positives: [], negatives: [] }, grades: [] });
-  closeModal(); save(); toast('دانش‌آموز اضافه شد');
-}
-
-function editStudent(sid, cid, stid) {
-  const st = findStudent(sid, cid, stid); if (!st) return;
-  openModal(formHeader('ویرایش دانش‌آموز') + `
-    <div style="display:grid;gap:7px">
-      <div><label class="muted">نام</label><input id="stName" value="${esc(st.name)}"></div>
-      <div><label class="muted">نام خانوادگی</label><input id="stLast" value="${esc(st.lastName)}"></div>
-      <div><label class="muted">نام پدر</label><input id="stFather" value="${esc(st.fatherName || '')}"></div>
-      <div><label class="muted">تولد شمسی</label><input id="stBirth" value="${esc(st.birth || '')}"></div>
-      <div><label class="muted">تلفن</label><input id="stPhone" value="${esc(st.phone || '')}"></div>
-    </div>
-    <div style="margin-top:10px"><button class="btn primary block" onclick="updateStudentDirect('${sid}','${cid}','${stid}')">ذخیره تغییرات</button></div>
-  `);
-}
-
-function updateStudentDirect(sid, cid, stid) {
-  const st = findStudent(sid, cid, stid); if (!st) return;
-  st.name = document.getElementById('stName').value.trim();
-  st.lastName = document.getElementById('stLast').value.trim();
-  st.fatherName = document.getElementById('stFather').value.trim();
-  st.birth = document.getElementById('stBirth').value.trim();
-  st.phone = document.getElementById('stPhone').value.trim();
-  closeModal(); save(); toast('اطلاعات ویرایش شد');
-}
-
-function copyStudentAdvanced(sid, cid, stid) {
-  const st = findStudent(sid, cid, stid); if (!st) return;
-  let options = '';
-  db.schools.forEach(s => s.classes.forEach(c => { options += `<option value="${s.id}|${c.id}">${esc(s.name)} - ${esc(c.name)}</option>`; }));
-  openModal(formHeader('📋 کپی به کلاس دیگر') + `
-    <p class="muted">دانش‌آموز بدون نمرات قبلی به کلاس مقصد کپی می‌شود.</p>
-    <div><label class="muted">انتخاب کلاس مقصد</label><select id="copyDest">${options}</select></div>
-    <div style="margin-top:10px"><button class="btn primary block" onclick="execCopyStudent('${stid}')">کپی کن</button></div>
-  `);
-}
-function execCopyStudent(stid) {
-  const dest = document.getElementById('copyDest')?.value; if (!dest) return;
-  const [dSid, dCid] = dest.split('|'); const destClass = findClass(dSid, dCid);
-  const st = findStudent(currentSchoolId, currentClassId, stid); if (!destClass || !st) return;
-  destClass.students.push({ ...JSON.parse(JSON.stringify(st)), id: uid(), behavior: { positives: [], negatives: [] }, grades: [] });
-  closeModal(); save(); toast('در کلاس مقصد کپی شد');
-}
-
-function deleteStudent(sid, cid, stid) {
-  if (confirm('دانش‌آموز حذف شود؟')) {
-    const c = findClass(sid, cid); c.students = c.students.filter(x => x.id !== stid);
-    closeModal(); save(); toast('حذف شد');
+/* نمودار خطی اختصاصی پیشرفت دانش‌آموز */
+function getStudentChronologicalGrades(c, st) {
+  let pts = [];
+  const dates = attendanceDates(c);
+  dates.forEach(d => {
+    const sc = attendanceScore(c, d, st.id);
+    if (sc !== null) pts.push({ label: formatAttendanceDate(d), score: sc });
+  });
+  (st.grades || []).forEach(g => {
+    if (g.source !== 'attendance' && Number.isFinite(Number(g.score))) {
+      pts.push({ label: g.subject || 'آزمون', score: Number(g.score) });
+    }
+  });
+  if (c.termScores && Number.isFinite(Number(c.termScores[st.id])) && c.termScores[st.id] !== '') {
+    pts.push({ label: 'پایانی ترم', score: Number(c.termScores[st.id]) });
   }
+  return pts;
 }
 
+function renderStudentLineChart(c, st) {
+  const pts = getStudentChronologicalGrades(c, st);
+  if (pts.length < 2) {
+    return `<div class="chart-container"><b style="color:var(--primary-dark)">📈 نمودار روند پیشرفت تحصیلی</b><p class="muted" style="margin:6px 0 0">پس از ثبت حداقل ۲ نمره برای دانش‌آموز، نمودار خطی پیشرفت او در اینجا رسم می‌شود.</p></div>`;
+  }
+  const w = 560, h = 135;
+  const svgPoints = pts.map((p, i) => {
+    let x = (i / (pts.length - 1)) * (w - 70) + 35;
+    let y = h - (p.score / 20) * (h - 42) - 22;
+    return `${x},${y}`;
+  }).join(' ');
+
+  return `
+    <div class="chart-container">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <b style="color:var(--primary-dark)">📈 نمودار خطی روند پیشرفت دانش‌آموز</b>
+        <span class="chip">${fa(pts.length)} ارزیابی</span>
+      </div>
+      <div class="chart-box">
+        <svg class="chart" viewBox="0 0 ${w} ${h}">
+          <line x1="30" y1="${h - 22}" x2="${w - 30}" y2="${h - 22}" stroke="#fed7aa" stroke-width="1.5" />
+          <polyline fill="none" stroke="#ea580c" stroke-width="3" points="${svgPoints}" />
+          ${pts.map((p, i) => {
+            let x = (i / (pts.length - 1)) * (w - 70) + 35;
+            let y = h - (p.score / 20) * (h - 42) - 22;
+            return `<circle cx="${x}" cy="${y}" r="4.5" fill="#16a34a" />
+                    <text x="${x}" y="${y - 8}" font-size="10" font-weight="bold" text-anchor="middle" fill="#1e293b">${fmtScore(p.score)}</text>
+                    <text x="${x}" y="${h - 6}" font-size="9" text-anchor="middle" fill="#64748b">${esc(p.label.slice(0, 8))}</text>`;
+          }).join('')}
+        </svg>
+      </div>
+    </div>
+  `;
+}
+
+/* حالت نمایش به اولیا (بدون یادداشت خصوصی معلم + نمودار + چاپ) */
+function openParentView(sid, cid, stid) {
+  const s = findSchool(sid), c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!s || !c || !st) return;
+  const dates = attendanceDates(c);
+  const absCount = dates.filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+  const presCount = dates.length - absCount;
+  const avg = avgGrade(st), fin = calculateFinalStudentScore(c, st), b = behaviorData(st);
+
+  const html = `
+    <div id="parentReportPrintable" style="direction:rtl;font-family:Tahoma,sans-serif">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#fff7ed;border:1px solid #fed7aa;border-radius:16px">
+        <div class="avatar" style="width:68px!important;height:68px!important">${st.photo ? `<img src="${st.photo}">` : '👨‍🎓'}</div>
+        <div>
+          <h2 style="margin:0;color:#9a3412">${formatStudentName(st)}</h2>
+          <div class="muted" style="margin-top:4px">🏫 ${esc(s.name)} · 🚪 کلاس ${esc(c.name)}</div>
+        </div>
+      </div>
+
+      <div class="report-summary">
+        <div><b>${avg === null ? '—' : fmtScore(avg)}</b><small>میانگین مستمر</small></div>
+        <div><b>${c.termScores?.[st.id] ?? '—'}</b><small>نمره پایانی ترم</small></div>
+        <div><b>+${fa(b.positives.length)} / −${fa(b.negatives.length)}</b><small>مثبت و منفی</small></div>
+        <div><b>${fmtScore(fin)}</b><small>نمره نهایی</small></div>
+      </div>
+
+      <div style="padding:9px 12px;background:#f8fafc;border-radius:11px;font-size:12.5px;margin-bottom:10px">
+        📋 <b>وضعیت حضور و غیاب:</b> ${fa(presCount)} جلسه حاضر · <b style="color:${absCount ? '#dc2626' : '#16a34a'}">${fa(absCount)} جلسه غیبت</b>
+      </div>
+
+      ${renderStudentLineChart(c, st)}
+
+      <h3 style="font-size:14px;color:#9a3412;margin:12px 0 6px">➕➖ فعالیت‌های رفتاری و کلاسی</h3>
+      <table class="report-table">
+        <thead><tr><th>نوع</th><th>توضیح / فعالیت</th><th>امتیاز</th><th>تاریخ</th></tr></thead>
+        <tbody>
+          ${[...b.positives.map(x => ({ ...x, t: 'مثبت' })), ...b.negatives.map(x => ({ ...x, t: 'منفی' }))].map(x => `
+            <tr><td>${x.t}</td><td>${esc(x.reason)}</td><td>${fmtScore(x.value || 0.25)}</td><td>${formatEventDate(x.date)}</td></tr>
+          `).join('') || '<tr><td colspan="4">موردی ثبت نشده است.</td></tr>'}
+        </tbody>
+      </table>
+    </div>
+    <div class="formactions" style="margin-top:14px">
+      <button class="btn primary" onclick="printParentReport()">🖨️ چاپ / PDF کارنامه</button>
+      <button class="btn soft" onclick="sendParentSmsReport('${sid}','${cid}','${stid}')">📱 ارسال پیامک به والدین</button>
+      <button class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `;
+  openModal(formHeader('👨‍👩‍👦 کارنامه و گزارش ویژه اولیا') + html);
+}
+
+function printParentReport() {
+  const content = document.getElementById('parentReportPrintable')?.innerHTML;
+  if (!content) return;
+  const w = window.open('', '_blank');
+  if (!w) { alert('پنجره چاپ مسدود شد.'); return; }
+  w.document.write(`<html dir="rtl"><head><meta charset="utf-8"><title>کارنامه دانش‌آموز</title><style>body{font-family:Tahoma;padding:20px;direction:rtl}table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px}th,td{border:1px solid #ccc;padding:6px;text-align:right}th{background:#fff7ed}.avatar{width:64px;height:64px;border-radius:12px;overflow:hidden;display:inline-block}.avatar img{width:100%;height:100%;object-fit:cover}.report-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.report-summary>div{border:1px solid #ccc;padding:8px;text-align:center;border-radius:8px}svg{max-width:100%;height:130px}</style></head><body>${content}</body></html>`);
+  w.document.close(); w.focus(); setTimeout(() => w.print(), 350);
+}
+
+function sendParentSmsReport(sid, cid, stid) {
+  const s = findSchool(sid), c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!st) return;
+  const dates = attendanceDates(c);
+  const absCount = dates.filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+  const fin = calculateFinalStudentScore(c, st);
+  const teacher = getTeacherName();
+  const msg = `اولیای گرامی دانش‌آموز «${st.name} ${st.lastName}»\nگزارش وضعیت تحصیلی در کلاس ${c.name} (${s.name}):\n• نمره نهایی (با احتساب فعالیت): ${fmtScore(fin)}\n• مثبت‌ها: ${fa(st.behavior.positives.length)} | منفی‌ها: ${fa(st.behavior.negatives.length)}\n• تعداد غیبت: ${fa(absCount)} جلسه\n${teacher ? `\nبا احترام، ${teacher}` : ''}`;
+  const phone = normalizePhone(st.phone || '');
+  window.location.href = phone ? `sms:+${phone}?body=${encodeURIComponent(msg)}` : `sms:?body=${encodeURIComponent(msg)}`;
+}
+
+/* افزودن و ویرایش دانش‌آموز (با دوربین و گالری) */
+function addStudent(sid, cid) { studentForm(sid, cid, null); }
+function editStudent(sid, cid, stid) { studentForm(sid, cid, findStudent(sid, cid, stid)); }
+function studentForm(sid, cid, st) {
+  let editing = !!st, photo = st?.photo || '';
+  openModal(formHeader(editing ? '✎ ویرایش دانش‌آموز' : '👨‍🎓 افزودن دانش‌آموز جدید') + `
+    <form onsubmit="saveStudentForm(event,'${sid}','${cid}',${editing ? `'${st.id}'` : 'null'})">
+      <div class="photo-input">
+        <div class="photo-preview" id="photoPreview">${photo ? `<img src="${photo}">` : '👤'}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="previewStudentPhoto(event)"></label>
+          <label class="btn soft">🖼️ انتخاب از گالری<input type="file" accept="image/*" hidden onchange="previewStudentPhoto(event)"></label>
+          ${photo ? `<button type="button" class="btn danger" onclick="document.getElementById('photoData').value='';document.getElementById('photoPreview').innerHTML='👤'">حذف عکس</button>` : ''}
+          <input id="photoData" type="hidden" value="${esc(photo)}">
+        </div>
+      </div>
+      <div class="formgrid" style="margin-top:12px">
+        <div class="field"><label>نام</label><input id="stName" required value="${esc(st?.name || '')}"></div>
+        <div class="field"><label>نام خانوادگی</label><input id="stLast" required value="${esc(st?.lastName || '')}"></div>
+        <div class="field"><label>نام پدر (جهت تفکیک تشابه اسمی)</label><input id="stFather" value="${esc(st?.fatherName || '')}"></div>
+        <div class="field"><label>تاریخ تولد شمسی</label><input id="stBirth" placeholder="مثلاً ۱۳۸۹/۰۷/۲۱" value="${esc(st?.birth || '')}"></div>
+        <div class="field"><label>شماره تلفن والدین</label><input id="stPhone" inputmode="tel" placeholder="۰۹۱۲..." value="${esc(st?.phone || '')}"></div>
+        <div class="field"><label>وضعیت</label>
+          <select id="stStatus">
+            <option value="none" ${!st || st.status === 'none' ? 'selected' : ''}>⚪ عادی</option>
+            <option value="good" ${st?.status === 'good' ? 'selected' : ''}>🟢 خوب</option>
+            <option value="attn" ${st?.status === 'attn' ? 'selected' : ''}>🔴 نیازمند توجه</option>
+          </select>
+        </div>
+        <div class="field full"><label>علایق دانش‌آموز (جهت درج در پیام تبریک تولد)</label><input id="stInterests" placeholder="مثلاً فوتبال، نقاشی، کدنویسی..." value="${esc(st?.interests || '')}"></div>
+        <div class="field full"><label>🔒 یادداشت محرمانه معلم (در حالت نمایش به اولیا مخفی است)</label><textarea id="stNotes">${esc(st?.notes || '')}</textarea></div>
+      </div>
+      <div class="formactions">
+        <button type="submit" class="btn primary">ذخیره اطلاعات</button>
+        <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+      </div>
+    </form>
+  `);
+}
+async function previewStudentPhoto(e) {
+  let f = e.target.files?.[0]; if (!f) return;
+  try {
+    let data = await compressImage(f);
+    document.getElementById('photoPreview').innerHTML = `<img src="${data}">`;
+    document.getElementById('photoData').value = data;
+  } catch (err) { alert('خطا در خواندن عکس'); }
+  e.target.value = '';
+}
+function saveStudentForm(e, sid, cid, stid) {
+  e.preventDefault();
+  let c = findClass(sid, cid); if (!c) return;
+  let old = stid ? findStudent(sid, cid, stid) : null;
+  let st = {
+    ...(old || {}),
+    id: stid || uid(),
+    photo: document.getElementById('photoData')?.value || '',
+    name: document.getElementById('stName').value.trim(),
+    lastName: document.getElementById('stLast').value.trim(),
+    fatherName: document.getElementById('stFather').value.trim(),
+    birth: normalizeJalaliInput(document.getElementById('stBirth').value),
+    phone: document.getElementById('stPhone').value.trim(),
+    interests: document.getElementById('stInterests').value.trim(),
+    notes: document.getElementById('stNotes').value.trim(),
+    status: document.getElementById('stStatus').value
+  };
+  behaviorData(st); gradesData(st);
+  if (stid) {
+    let idx = c.students.findIndex(x => x.id === stid);
+    if (idx >= 0) c.students[idx] = st;
+  } else {
+    c.students.push(st);
+  }
+  closeModal(); save(); toast('اطلاعات دانش‌آموز ذخیره شد ✅');
+}
+
+/* ثبت و ویرایش کامل مثبت و منفی‌ها */
+function addBehaviorModal(sid, cid, stid, type) {
+  const r = getRules();
+  const def = type === 'positive' ? r.positiveValue : r.penaltyPerNeg;
+  const shortcuts = getShortcuts().filter(x => x.type === type);
+  openModal(formHeader(type === 'positive' ? '➕ ثبت مثبت جدید' : '➖ ثبت منفی جدید') + `
+    <div class="formgrid">
+      <div class="field"><label>امتیاز</label><input id="behVal" type="number" step="0.05" min="0" value="${def}"></div>
+      <div class="field"><label>کد کوتاه (اختیاری)</label><input id="behCode" placeholder="مثلاً خ یا د"></div>
+      <div class="field full"><label>دلیل / توضیح</label><input id="behReason" placeholder="مثلاً پاسخ عالی یا رفتن به دستشویی"></div>
+    </div>
+    ${shortcuts.length ? `<div style="margin-top:8px"><small class="muted">انتخاب سریع از کدهای آماده:</small><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:5px">${shortcuts.map(sh => `<button type="button" class="btn soft" style="min-height:30px;padding:4px 9px;font-size:11.5px" onclick="document.getElementById('behReason').value='${esc(sh.reason)}';document.getElementById('behVal').value='${sh.value}';document.getElementById('behCode').value='${esc(sh.code)}'">${esc(sh.code)} ·${esc(sh.reason)}</button>`).join('')}</div></div>` : ''}
+    <div class="formactions">
+      <button class="btn primary" onclick="saveNewBehavior('${sid}','${cid}','${stid}','${type}')">ثبت</button>
+      <button class="btn gray" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+}
+function saveNewBehavior(sid, cid, stid, type) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  const reason = document.getElementById('behReason')?.value.trim() || (type === 'positive' ? 'فعالیت مثبت' : 'مورد منفی');
+  const value = Math.abs(Number(document.getElementById('behVal')?.value) || 0.25);
+  const code = document.getElementById('behCode')?.value.trim() || '';
+  behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason, value, code });
+  closeModal(); save(); toast('ثبت شد ✅');
+}
+function editBehavior(sid, cid, stid, type, bid) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  const arr = behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'];
+  const item = arr.find(x => x.id === bid); if (!item) return;
+  openModal(formHeader('✎ ویرایش مورد رفتاری') + `
+    <div class="formgrid">
+      <div class="field"><label>نوع</label>
+        <select id="editBehType">
+          <option value="positive" ${type === 'positive' ? 'selected' : ''}>➕ مثبت</option>
+          <option value="negative" ${type === 'negative' ? 'selected' : ''}>➖ منفی</option>
+        </select>
+      </div>
+      <div class="field"><label>امتیاز</label><input id="editBehVal" type="number" step="0.05" min="0" value="${item.value || 0.25}"></div>
+      <div class="field"><label>کد کوتاه</label><input id="editBehCode" value="${esc(item.code || '')}"></div>
+      <div class="field full"><label>دلیل / توضیح</label><input id="editBehReason" value="${esc(item.reason || '')}"></div>
+    </div>
+    <div class="formactions">
+      <button class="btn primary" onclick="saveEditedBehavior('${sid}','${cid}','${stid}','${type}','${bid}')">ذخیره تغییرات</button>
+      <button class="btn gray" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+}
+function saveEditedBehavior(sid, cid, stid, oldType, bid) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  const b = behaviorData(st);
+  const oldArr = b[oldType === 'positive' ? 'positives' : 'negatives'];
+  const idx = oldArr.findIndex(x => x.id === bid); if (idx < 0) return;
+  const item = oldArr[idx];
+  const newType = document.getElementById('editBehType').value;
+  item.reason = document.getElementById('editBehReason').value.trim() || 'ثبت شده';
+  item.value = Math.abs(Number(document.getElementById('editBehVal').value) || 0.25);
+  item.code = document.getElementById('editBehCode').value.trim();
+  if (newType !== oldType) {
+    oldArr.splice(idx, 1);
+    b[newType === 'positive' ? 'positives' : 'negatives'].push(item);
+  }
+  closeModal(); save(); toast('ویرایش انجام شد ✅');
+}
+function deleteBehavior(sid, cid, stid, type, bid) {
+  if (!confirm('این مورد رفتاری حذف شود؟')) return;
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  const arr = behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'];
+  const idx = arr.findIndex(x => x.id === bid);
+  if (idx >= 0) arr.splice(idx, 1);
+  save(); toast('حذف شد');
+}
+
+/* کدهای اختصاری با قابلیت ویرایش و حذف */
+function getShortcuts() {
+  const def = [
+    { code: 'د', reason: 'رفته دستشویی', value: 0.25, type: 'negative' },
+    { code: 'خ', reason: 'خواندن از روی کتاب', value: 0.5, type: 'positive' },
+    { code: 'ت', reason: 'تکلیف کامل و عالی', value: 0.25, type: 'positive' }
+  ];
+  try { return JSON.parse(localStorage.getItem('behavior_shortcuts_v2')) || def; } catch (e) { return def; }
+}
+function saveShortcuts(arr) {
+  localStorage.setItem('behavior_shortcuts_v2', JSON.stringify(arr));
+  renderShortcutSettingsUi();
+  renderAll();
+}
+function renderShortcutSettingsUi() {
+  const box = document.getElementById('shortcutListUi'); if (!box) return;
+  box.innerHTML = getShortcuts().map((item, idx) => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:#fffaf5;border:1px solid var(--border);border-radius:10px;gap:8px">
+      <div>
+        <b style="color:${item.type === 'positive' ? '#15803d' : '#b91c1c'}">${item.type === 'positive' ? '➕' : '➖'} کد «${esc(item.code)}»</b>
+        <span class="muted" style="margin-right:6px">${esc(item.reason)} (${fmtScore(item.value)} نمره)</span>
+      </div>
+      <div style="display:flex;gap:5px">
+        <button class="btn gray" style="min-height:28px;padding:3px 8px;font-size:11px" onclick="editShortcutPrompt(${idx})">✎ ویرایش</button>
+        <button class="btn danger" style="min-height:28px;padding:3px 8px;font-size:11px" onclick="deleteShortcut(${idx})">حذف</button>
+      </div>
+    </div>
+  `).join('');
+}
+function addShortcutPrompt() { openShortcutModal(-1); }
+function editShortcutPrompt(idx) { openShortcutModal(idx); }
+function openShortcutModal(idx) {
+  const list = getShortcuts();
+  const item = idx >= 0 ? list[idx] : { code: '', reason: '', value: 0.25, type: 'positive' };
+  openModal(formHeader(idx >= 0 ? '✎ ویرایش کد اختصاری' : '＋ تعریف کد اختصاری جدید') + `
+    <div class="formgrid">
+      <div class="field"><label>حرف یا کد اختصاری (مثلاً د یا خ)</label><input id="shCode" value="${esc(item.code)}"></div>
+      <div class="field"><label>نوع کد</label>
+        <select id="shType">
+          <option value="positive" ${item.type === 'positive' ? 'selected' : ''}>➕ مثبت</option>
+          <option value="negative" ${item.type === 'negative' ? 'selected' : ''}>➖ منفی</option>
+        </select>
+      </div>
+      <div class="field"><label>میزان نمره / امتیاز</label><input id="shVal" type="number" step="0.05" min="0" value="${item.value}"></div>
+      <div class="field"><label>شرح کامل کد</label><input id="shReason" placeholder="مثلاً رفته دستشویی" value="${esc(item.reason)}"></div>
+    </div>
+    <div class="formactions">
+      <button class="btn primary" onclick="saveShortcutModal(${idx})">ذخیره کد</button>
+      <button class="btn gray" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+}
+function saveShortcutModal(idx) {
+  const code = document.getElementById('shCode')?.value.trim();
+  const reason = document.getElementById('shReason')?.value.trim();
+  const type = document.getElementById('shType')?.value;
+  const value = Math.abs(Number(document.getElementById('shVal')?.value) || 0.25);
+  if (!code || !reason) { alert('کد و شرح آن را وارد کنید.'); return; }
+  const list = getShortcuts();
+  if (idx >= 0) list[idx] = { code, reason, value, type };
+  else list.push({ code, reason, value, type });
+  closeModal(); saveShortcuts(list); toast('کد اختصاری ذخیره شد ✅');
+}
+function deleteShortcut(idx) {
+  const list = getShortcuts(); list.splice(idx, 1); saveShortcuts(list); toast('کد حذف شد');
+}
+function renderQuickBehaviorButtons(sid, cid, st) {
+  const list = getShortcuts();
+  if (!list.length) return '';
+  return `<div class="quick-behavior">
+    ${list.map(x => `<button class="qb ${x.type === 'positive' ? 'pos' : 'neg'}" title="${esc(x.reason)}" onclick="event.stopPropagation();gridApplyShortcut('${sid}','${cid}','${st.id}','${esc(x.code)}')">${x.type === 'positive' ? '＋' : '－'}${esc(x.code)}</button>`).join('')}
+  </div>`;
+}
+
+/* ثبت و ویرایش نمرات کلاسی */
+function addGrade(sid, cid, stid) {
+  openModal(formHeader('📚 ثبت نمره جدید') + `
+    <div class="formgrid">
+      <div class="field full"><label>عنوان درس یا آزمون</label><input id="gradeSubject" value="پرسش کلاسی"></div>
+      <div class="field full"><label>نمره (۰ تا ۲۰)</label><input id="gradeScore" type="number" step="0.25" min="0" max="20" required></div>
+    </div>
+    <div class="formactions"><button class="btn primary" onclick="saveGradeForm('${sid}','${cid}','${stid}')">ثبت نمره</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>
+  `);
+}
+function saveGradeForm(sid, cid, stid) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  const subject = document.getElementById('gradeSubject')?.value.trim() || 'ارزیابی';
+  const score = Number(enDigits(document.getElementById('gradeScore')?.value));
+  if (!Number.isFinite(score) || score < 0 || score > 20) { alert('نمره بین ۰ تا ۲۰ وارد کنید.'); return; }
+  gradesData(st).push({ id: uid(), date: new Date().toISOString(), subject, score });
+  closeModal(); save(); toast('نمره ثبت شد ✅');
+}
+function editGrade(sid, cid, stid, gid) {
+  const st = findStudent(sid, cid, stid), g = gradesData(st).find(x => x.id === gid); if (!g) return;
+  openModal(formHeader('✎ ویرایش نمره') + `
+    <div class="formgrid">
+      <div class="field full"><label>عنوان</label><input id="editGSub" value="${esc(g.subject || '')}"></div>
+      <div class="field full"><label>نمره</label><input id="editGScore" type="number" step="0.25" min="0" max="20" value="${g.score}"></div>
+    </div>
+    <div class="formactions"><button class="btn primary" onclick="saveEditedGrade('${sid}','${cid}','${stid}','${gid}')">ذخیره</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>
+  `);
+}
+function saveEditedGrade(sid, cid, stid, gid) {
+  const st = findStudent(sid, cid, stid), g = gradesData(st).find(x => x.id === gid); if (!g) return;
+  const sc = Number(enDigits(document.getElementById('editGScore')?.value));
+  if (!Number.isFinite(sc) || sc < 0 || sc > 20) return;
+  g.subject = document.getElementById('editGSub')?.value.trim() || 'ارزیابی';
+  g.score = sc;
+  closeModal(); save(); toast('نمره ویرایش شد ✅');
+}
+function deleteGrade(sid, cid, stid, gid) {
+  if (!confirm('این نمره حذف شود؟')) return;
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  st.grades = gradesData(st).filter(x => x.id !== gid);
+  save(); toast('نمره حذف شد');
+}
+
+/* تنظیمات جلسات حضور و غیاب (منظم یا روزهای خاص هفته) */
+function attendanceDates(c) {
+  const a = c.attendanceSettings || {};
+  let start = a.startDate || localISODate(), count = Math.max(8, Math.min(50, Number(a.sessionCount) || 16));
+  let out = [], selectedWeekDays = a.weekDays || [];
+  if (selectedWeekDays.length > 0) {
+    let cur = start, added = 0, guard = 0;
+    while (added < count && guard < 366) {
+      if (selectedWeekDays.includes(getDayOfWeekJalali(cur))) { out.push(cur); added++; }
+      cur = addDaysISO(cur, 1); guard++;
+    }
+  } else {
+    let step = Number(a.intervalDays) || 7;
+    for (let i = 0; i < count; i++) out.push(addDaysISO(start, i * step));
+  }
+  return out;
+}
+function editAttendanceSettings(sid, cid) {
+  const c = findClass(sid, cid); if (!c) return;
+  const a = c.attendanceSettings || { startDate: localISODate(), intervalDays: 7, sessionCount: 16, weekDays: [] };
+  const days = a.weekDays || [];
+  openModal(formHeader('⚙ تنظیم تقویم جلسات کلاس') + `
+    <div class="formgrid">
+      <div class="field"><label>تاریخ شروع شمسی</label><input id="attStart" value="${formatJalaliDate(a.startDate)}"></div>
+      <div class="field"><label>تعداد جلسات ترم</label><input id="attCount" type="number" min="8" max="45" value="${a.sessionCount || 16}"></div>
+      <div class="field full">
+        <label>روزهای برگزاری کلاس در هفته (اگر انتخاب نکنید، هر ۷ روز یک‌بار چیده می‌شود):</label>
+        <div class="weekday-selector">
+          ${['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'].map((d, idx) => `
+            <div><input type="checkbox" id="wd_${idx}" value="${idx}" class="wd-cb" ${days.includes(idx) ? 'checked' : ''}><label for="wd_${idx}">${d}</label></div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="formactions"><button class="btn primary" onclick="saveAttSettings('${sid}','${cid}')">ذخیره تقویم</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>
+  `);
+}
+function saveAttSettings(sid, cid) {
+  const c = findClass(sid, cid); if (!c) return;
+  const iso = jalaliToISO(document.getElementById('attStart')?.value);
+  if (!iso) { alert('تاریخ شروع شمسی معتبر نیست.'); return; }
+  const count = Number(document.getElementById('attCount')?.value) || 16;
+  const wds = [...document.querySelectorAll('.wd-cb:checked')].map(x => Number(x.value));
+  c.attendanceSettings = { startDate: iso, intervalDays: 7, sessionCount: count, weekDays: wds };
+  closeModal(); save(); toast('تقویم جلسات بروزرسانی شد ✅');
+}
+function editAttendanceDate(sid, cid, oldDate) {
+  const c = findClass(sid, cid); if (!c) return;
+  const val = prompt('تاریخ جدید جلسه را به شمسی وارد کنید:', formatJalaliDate(oldDate));
+  if (!val) return;
+  const iso = jalaliToISO(val);
+  if (!iso) { alert('فرمت تاریخ شمسی نادرست است.'); return; }
+  c.attendance[iso] = Object.assign({}, c.attendance[oldDate] || {}, c.attendance[iso] || {});
+  delete c.attendance[oldDate];
+  save(); toast('تاریخ ویرایش شد');
+}
+function addAttendanceDate(sid, cid) {
+  const c = findClass(sid, cid); if (!c) return;
+  c.attendanceSettings.sessionCount = (Number(c.attendanceSettings.sessionCount) || 16) + 1;
+  save(); toast('یک جلسه به جدول اضافه شد');
+}
+
+/* محاسبه نمرات و رتبه‌بندی */
+function attendanceRecord(c, date, stid) { return c.attendance?.[date]?.[stid] || { status: 'present' }; }
+function attendanceStatus(c, date, stid) { return attendanceRecord(c, date, stid).status || 'present'; }
+function attendanceScore(c, date, stid) { let s = Number(attendanceRecord(c, date, stid).score); return Number.isFinite(s) ? s : null; }
+function saveAttendanceGrade(sid, cid, stid, date, val) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid); if (!c || !st) return;
+  if (!c.attendance[date]) c.attendance[date] = {};
+  let n = val === '' ? null : Number(enDigits(val));
+  if (n !== null && (!Number.isFinite(n) || n < 0 || n > 20)) { alert('نمره بین ۰ تا ۲۰ باشد.'); return; }
+  if (n === null) {
+    if (c.attendance[date][stid]) delete c.attendance[date][stid].score;
+    st.grades = (st.grades || []).filter(g => !(g.source === 'attendance' && g.attendanceDate === date));
+  } else {
+    c.attendance[date][stid] = { ...attendanceRecord(c, date, stid), score: n };
+    let ex = (st.grades || []).find(g => g.source === 'attendance' && g.attendanceDate === date);
+    if (ex) ex.score = n;
+    else gradesData(st).push({ id: uid(), date: new Date().toISOString(), subject: `جلسه ${formatAttendanceDate(date)}`, score: n, source: 'attendance', attendanceDate: date });
+  }
+  savePersistent();
+  toast('نمره ذخیره شد ✅');
+}
+
+function behaviorData(st) { if (!st.behavior) st.behavior = { positives: [], negatives: [] }; return st.behavior; }
+function gradesData(st) { if (!st.grades) st.grades = []; return st.grades; }
+function behaviorTotals(st) {
+  const b = behaviorData(st), r = getRules();
+  const pos = b.positives.reduce((s, x) => s + (Number(x.value) || r.positiveValue), 0);
+  const neg = b.negatives.reduce((s, x) => s + (Number(x.value) || r.penaltyPerNeg), 0);
+  return { positive: pos, negative: neg, net: pos - neg };
+}
+function avgGrade(st) {
+  const g = (st.grades || []).map(x => Number(x.score)).filter(Number.isFinite);
+  return g.length ? g.reduce((a, b) => a + b, 0) / g.length : null;
+}
+function calculateFinalStudentScore(c, st) {
+  if (!c || !st) return 0;
+  let term = c.termScores?.[st.id];
+  let hasTerm = term !== undefined && term !== '' && Number.isFinite(Number(term));
+  let baseScore = hasTerm ? Number(term) : (avgGrade(st) ?? 0);
+  const rules = getRules();
+  const b = behaviorData(st);
+  const bt = behaviorTotals(st);
+  let delta = bt.positive;
+  if (b.negatives.length === 0 && b.positives.length > 0) delta += rules.bonusNoNeg;
+  if (b.negatives.length > rules.maxNegAllowed) {
+    delta -= (b.negatives.length - rules.maxNegAllowed) * rules.penaltyPerNeg;
+  }
+  return Math.max(0, Math.min(20, baseScore + delta));
+}
+function fmtScore(n) { return Number(n || 0).toLocaleString('fa-IR', { maximumFractionDigits: 2 }); }
+function formatEventDate(iso) {
+  try { return new Date(iso).toLocaleDateString('fa-IR-u-ca-persian', { year: 'numeric', month: '2-digit', day: '2-digit' }); }
+  catch (e) { return ''; }
+}
+
+function getRules() {
+  return {
+    bonusNoNeg: Number(localStorage.getItem('rule_bonus_no_neg') ?? 1),
+    maxNegAllowed: Number(localStorage.getItem('rule_max_neg_allowed') ?? 2),
+    penaltyPerNeg: Number(localStorage.getItem('rule_penalty_per_neg') ?? 0.5),
+    positiveValue: Number(localStorage.getItem('behavior_positive_value') ?? 0.25)
+  };
+}
+window.saveRules = function() {
+  localStorage.setItem('rule_bonus_no_neg', document.getElementById('ruleBonusNoNeg').value);
+  localStorage.setItem('rule_max_neg_allowed', document.getElementById('ruleMaxNegAllowed').value);
+  localStorage.setItem('rule_penalty_per_neg', document.getElementById('rulePenaltyPerNeg').value);
+  localStorage.setItem('behavior_positive_value', document.getElementById('behaviorPositiveDefault').value);
+  save(); toast('فرمول انضباطی ذخیره شد ✅');
+};
+
+function renderTopStudents(c) {
+  const top = [...(c.students || [])].map(st => ({ st, fin: calculateFinalStudentScore(c, st), raw: avgGrade(st) })).filter(x => x.raw !== null || (c.termScores?.[x.st.id] !== undefined && c.termScores?.[x.st.id] !== '')).sort((a, b) => b.fin - a.fin).slice(0, 5);
+  if (!top.length) return '';
+  return `<div class="card" style="margin:12px 0">
+    <b>🏆 نفرات برتر کلاس (با احتساب انضباط و فعالیت)</b>
+    <div style="display:grid;gap:6px;margin-top:8px">
+      ${top.map((x, i) => `<div class="leader-item"><span><b>${['🥇','🥈','🥉','۴.','۵.'][i]}</b> ${formatStudentName(x.st)}</span><b>${fmtScore(x.fin)}</b></div>`).join('')}
+    </div>
+  </div>`;
+}
+function renderBehaviorLeaders(c) {
+  const pos = [...(c.students || [])].map(st => ({ st, n: behaviorData(st).positives.length })).filter(x => x.n > 0).sort((a, b) => b.n - a.n).slice(0, 4);
+  const neg = [...(c.students || [])].map(st => ({ st, n: behaviorData(st).negatives.length })).filter(x => x.n > 0).sort((a, b) => b.n - a.n).slice(0, 4);
+  if (!pos.length && !neg.length) return '';
+  return `<div class="card" style="margin:12px 0">
+    <div class="behavior-leaders">
+      <div><b>➕ بیشترین مثبت</b>${pos.map(x => `<div class="leader-item"><span>${formatStudentName(x.st)}</span><b>+${fa(x.n)}</b></div>`).join('') || '<div class="muted">ثبت نشده</div>'}</div>
+      <div><b>➖ بیشترین منفی</b>${neg.map(x => `<div class="leader-item"><span>${formatStudentName(x.st)}</span><b>−${fa(x.n)}</b></div>`).join('') || '<div class="muted">ثبت نشده</div>'}</div>
+    </div>
+  </div>`;
+}
+
+/* نمودار خطی کلاس و مقایسه مدارس */
+function renderClassLineChart(c) {
+  const dates = attendanceDates(c);
+  let pts = [];
+  dates.forEach((d, i) => {
+    let scs = (c.students || []).map(st => attendanceScore(c, d, st.id)).filter(x => x !== null);
+    if (scs.length) pts.push({ label: formatAttendanceDate(d), avg: scs.reduce((a, b) => a + b, 0) / scs.length });
+  });
+  if (pts.length < 2) return '';
+  const w = 560, h = 125;
+  const svgPoints = pts.map((p, i) => `${(i / (pts.length - 1)) * (w - 60) + 30},${h - (p.avg / 20) * (h - 40) - 20}`).join(' ');
+  return `<div class="chart-container">
+    <b>📈 روند میانگین نمرات جلسات کلاس</b>
+    <div class="chart-box">
+      <svg class="chart" viewBox="0 0 ${w}${h}">
+        <line x1="25" y1="${h - 20}" x2="${w - 25}" y2="${h - 20}" stroke="#fed7aa" stroke-width="1.5"/>
+        <polyline fill="none" stroke="#ea580c" stroke-width="3" points="${svgPoints}"/>
+        ${pts.map((p, i) => {
+          let x = (i / (pts.length - 1)) * (w - 60) + 30, y = h - (p.avg / 20) * (h - 40) - 20;
+          return `<circle cx="${x}" cy="${y}" r="4" fill="#ea580c"/><text x="${x}" y="${y - 7}" font-size="9.5" text-anchor="middle" fill="#1e293b">${fmtScore(p.avg)}</text>`;
+        }).join('')}
+      </svg>
+    </div>
+  </div>`;
+}
+
+function renderSchoolProgressChart() {
+  const box = document.getElementById('schoolProgressChart'); if (!box) return;
+  if (!isFeatOn('feat_dash_chart') || !db.schools.length) { box.innerHTML = ''; return; }
+  let schAvgs = db.schools.map(s => {
+    let all = [];
+    s.classes.forEach(c => c.students.forEach(st => { let g = avgGrade(st); if (g !== null) all.push(g); }));
+    return { name: s.name, avg: all.length ? all.reduce((a, b) => a + b, 0) / all.length : 0 };
+  });
+  box.innerHTML = `<div class="card" style="margin-top:12px">
+    <b>📊 مقایسه میانگین تحصیلی مدارس</b>
+    <div style="display:grid;gap:8px;margin-top:10px">
+      ${schAvgs.map(x => `<div>
+        <div style="display:flex;justify-content:space-between;font-size:12px"><span>${esc(x.name)}</span><b>${fmtScore(x.avg)} از ۲۰</b></div>
+        <div style="height:8px;background:#ffedd5;border-radius:6px;overflow:hidden;margin-top:3px"><div style="height:100%;width:${(x.avg / 20) * 100}%;background:var(--primary)"></div></div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+/* تولدها و ویرایشگر پیام تبریک */
+function getTeacherName() { return localStorage.getItem('teacher_name') || 'رضا شهابی نژاد'; }
+function saveTeacherName() { localStorage.setItem('teacher_name', document.getElementById('teacherName')?.value.trim() || ''); renderBirthdays(); }
+function getBirthdayTemplate() {
+  return localStorage.getItem('birthday_template') || 'تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉\nامیدوارم در {علاقه} و تمام مراحل زندگی همیشه موفق، سلامت و شاد باشی.\n\nبا احترام، {نام_معلم}';
+}
+function saveBirthdayTemplate() { localStorage.setItem('birthday_template', document.getElementById('birthdayTemplate')?.value || ''); renderBirthdays(); }
+function personalBirthdayMessage(st) {
+  let msg = getBirthdayTemplate();
+  return msg
+    .replaceAll('{نام}', st.name || '')
+    .replaceAll('{نام_خانوادگی}', st.lastName || '')
+    .replaceAll('{نام_پدر}', st.fatherName || '')
+    .replaceAll('{علاقه}', st.interests || 'درس و زندگی')
+    .replaceAll('{نام_معلم}', getTeacherName());
+}
+function normalizePhone(p) {
+  let x = enDigits(p || '').replace(/[^\d+]/g, '');
+  if (x.startsWith('0')) x = '+98' + x.slice(1);
+  return x.replace('+', '');
+}
+function openBirthdaySender(stid, cid, sid) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  const msg = personalBirthdayMessage(st), phone = normalizePhone(st.phone || '');
+  window.location.href = phone ? `sms:+${phone}?body=${encodeURIComponent(msg)}` : `sms:?body=${encodeURIComponent(msg)}`;
+}
+async function copyText(t) {
+  try { await navigator.clipboard.writeText(t); toast('متن پیام کپی شد 📋'); } catch (e) { toast('کپی انجام شد'); }
+}
 function renderBirthdays() {
   const todayParts = jalaliPartsFromISO(localISODate()); if (!todayParts) return;
   const todayDOY = getJalaliDayOfYear(todayParts.m, todayParts.d);
   let items = [];
   db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
     if (!st.birth) return;
-    let m = String(st.birth).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).match(/(\d{3,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+    let m = enDigits(st.birth).match(/(\d{3,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
     if (m) {
       let diff = getJalaliDayOfYear(+m[2], +m[3]) - todayDOY;
       if (diff < 0) diff += 365;
@@ -1050,204 +2128,253 @@ function renderBirthdays() {
     }
   })));
   items.sort((a, b) => a.diff - b.diff || (a.st.lastName || '').localeCompare(b.st.lastName || '', 'fa'));
-  const bl = document.getElementById('birthdaysList');
-  if (bl) {
-    bl.innerHTML = items.length ? items.map(x => `
-      <div class="b-card ${x.diff >= 300 ? 'past' : ''}">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div><b>${formatStudentName(x.st)}</b><div class="muted">${fa(x.st.birth)} · ${esc(x.s.name)} - ${esc(x.c.name)}</div></div>
-          <button class="btn soft" style="padding:4px 9px;min-height:auto" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 پیامک</button>
+  const bl = document.getElementById('birthdaysList'); if (!bl) return;
+  bl.innerHTML = items.length ? `<div class="grid">${items.map(x => {
+    const msg = personalBirthdayMessage(x.st);
+    const isPast = x.diff >= 300;
+    return `<div class="b-card ${isPast ? 'past' : ''}">
+      <div class="student">
+        <div class="avatar ${x.st.photo ? 'photo-clickable' : ''}" ${x.st.photo ? `onclick="openPhotoViewer('${x.st.photo}','${safeFileName(x.st.lastName)}.jpg')"` : ''}>
+          ${x.st.photo ? `<img src="${x.st.photo}">` : '🎂'}
+        </div>
+        <div style="flex:1">
+          <b>${formatStudentName(x.st)}</b>
+          <div class="muted">${fa(x.st.birth)} · ${esc(x.s.name)} (${esc(x.c.name)})</div>
         </div>
       </div>
-    `).join('') : empty('🎂', 'تاریخ تولدی ثبت نشده', '');
+      <div class="birthday-message">${esc(msg)}</div>
+      <div class="actions">
+        <button class="btn primary" style="flex:1" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 ارسال پیامک تبریک</button>
+        <button class="btn soft" onclick="copyText(\`${msg.replace(/`/g, '')}\`)">📋 کپی متن</button>
+      </div>
+    </div>`;
+  }).join('')}</div>` : empty('🎂', 'تاریخ تولدی ثبت نشده است', 'در فرم ویرایش دانش‌آموز تاریخ تولد را وارد کنید.');
+}
+
+/* کپی، انتقال و حذف دانش‌آموز/کلاس */
+function copyStudentAdvanced(sid, cid, stid) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  let opts = '';
+  db.schools.forEach(s => s.classes.forEach(c => { opts += `<option value="${s.id}|${c.id}">${esc(s.name)} — ${esc(c.name)}</option>`; }));
+  openModal(formHeader('📋 کپی دانش‌آموز به کلاس دیگر') + `
+    <p class="muted">مشخصات پایه دانش‌آموز (بدون نمرات و غیبت‌ها) به کلاس مقصد اضافه می‌شود.</p>
+    <div class="field"><label>کلاس مقصد</label><select id="copyDest">${opts}</select></div>
+    <div class="formactions"><button class="btn primary" onclick="execCopyStudent('${stid}')">کپی کن</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>
+  `);
+}
+function execCopyStudent(stid) {
+  const dest = document.getElementById('copyDest')?.value; if (!dest) return;
+  const [dSid, dCid] = dest.split('|');
+  const destClass = findClass(dSid, dCid), st = findStudent(currentSchoolId, currentClassId, stid);
+  if (!destClass || !st) return;
+  destClass.students.push({ ...JSON.parse(JSON.stringify(st)), id: uid(), behavior: { positives: [], negatives: [] }, grades: [] });
+  closeModal(); save(); toast('در کلاس مقصد کپی شد ✅');
+}
+function moveStudent(sid, cid, stid) {
+  const s = findSchool(sid), st = findStudent(sid, cid, stid); if (!s || !st) return;
+  const opts = s.classes.filter(c => c.id !== cid).map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('');
+  if (!opts) { alert('کلاس دیگری در این مدرسه وجود ندارد.'); return; }
+  openModal(formHeader('🔀 انتقال دانش‌آموز به کلاس دیگر') + `
+    <div class="field"><label>کلاس مقصد</label><select id="moveDest">${opts}</select></div>
+    <div class="formactions"><button class="btn primary" onclick="execMoveStudent('${sid}','${cid}','${stid}')">انتقال</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>
+  `);
+}
+function execMoveStudent(sid, cid, stid) {
+  const from = findClass(sid, cid), to = findClass(sid, document.getElementById('moveDest')?.value), st = findStudent(sid, cid, stid);
+  if (!from || !to || !st) return;
+  pushUndo('انتقال دانش‌آموز');
+  from.students = from.students.filter(x => x.id !== stid);
+  to.students.push(st);
+  closeModal(); save(); openClass(sid, to.id); toast('دانش‌آموز منتقل شد ✅');
+}
+function deleteStudent(sid, cid, stid) {
+  const st = findStudent(sid, cid, stid); if (!st) return;
+  if (confirm(`دانش‌آموز «${st.name} ${st.lastName}» حذف شود؟`)) {
+    pushUndo('حذف دانش‌آموز');
+    const c = findClass(sid, cid);
+    c.students = c.students.filter(x => x.id !== stid);
+    save(); openClass(sid, cid);
   }
 }
+function copyClass(sid, cid) {
+  const source = findClass(sid, cid), s = findSchool(sid); if (!source || !s) return;
+  const name = prompt('نام کلاس جدید:', `${source.name} - کپی`); if (!name) return;
+  s.classes.push({
+    id: uid(), name: name.trim(), grade: source.grade, photos: [...(source.photos || [])],
+    students: (source.students || []).map(st => ({ ...JSON.parse(JSON.stringify(st)), id: uid(), behavior: { positives: [], negatives: [] }, grades: [] })),
+    attendance: {}, termScores: {}, sessionNotes: {}
+  });
+  save(); openSchool(sid); toast('کلاس کپی شد ✅');
+}
+function deleteClass(sid, cid) {
+  const c = findClass(sid, cid), s = findSchool(sid); if (!c || !s) return;
+  if (confirm(`کلاس «${c.name}» و دانش‌آموزانش حذف شوند؟`)) {
+    pushUndo('حذف کلاس');
+    s.classes = s.classes.filter(x => x.id !== cid);
+    save(); openSchool(sid);
+  }
+}
+function collectiveBehavior(sid, cid, type) {
+  const c = findClass(sid, cid); if (!c || !c.students.length) return;
+  openModal(formHeader(type === 'positive' ? '➕ ثبت مثبت جمعی' : '➖ ثبت منفی جمعی') + `
+    <div class="field"><label>دلیل</label><input id="colReason" placeholder="مثلاً مشارکت عالی در فعالیت گروهی"></div>
+    <div style="margin:10px 0;max-height:42vh;overflow-y:auto">
+      ${sortStudents(c.students).map(st => `<label style="display:flex;align-items:center;gap:8px;padding:7px;border-bottom:1px solid #f1f5f9"><input type="checkbox" value="${st.id}" checked class="colChk"> <span>${formatStudentName(st)}</span></label>`).join('')}
+    </div>
+    <div class="formactions"><button class="btn primary" onclick="execCollective('${sid}','${cid}','${type}')">ثبت برای انتخاب‌شده‌ها</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>
+  `);
+}
+function execCollective(sid, cid, type) {
+  const c = findClass(sid, cid); if (!c) return;
+  const reason = document.getElementById('colReason')?.value.trim() || (type === 'positive' ? 'مثبت جمعی' : 'منفی جمعی');
+  const val = type === 'positive' ? getRules().positiveValue : getRules().penaltyPerNeg;
+  document.querySelectorAll('.colChk:checked').forEach(chk => {
+    const st = c.students.find(x => x.id === chk.value);
+    if (st) behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason, value: val, code: '' });
+  });
+  closeModal(); save(); toast('ثبت جمعی انجام شد ✅');
+}
+
+/* جستجو و وضعیت‌ها */
+function renderSearch() {
+  const q = document.getElementById('globalSearch')?.value.trim().toLowerCase();
+  const box = document.getElementById('searchResults'); if (!box) return;
+  if (!q) { box.innerHTML = empty('🔍', 'نام، فامیل یا نام پدر را بنویسید', ''); return; }
+  let out = [];
+  db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
+    if (`${st.name} ${st.lastName} ${st.fatherName || ''}`.toLowerCase().includes(q)) out.push({ s, c, st });
+  })));
+  box.innerHTML = out.length ? `<div class="grid">${out.map(x => studentCard(x.s, x.c, x.st)).join('')}</div>` : empty('😕', 'دانش‌آموزی پیدا نشد', '');
+}
+function renderStatuses(filter = 'good') {
+  let good = [], attn = [], none = [];
+  db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
+    if (st.status === 'good') good.push({ s, c, st });
+    else if (st.status === 'attn') attn.push({ s, c, st });
+    else none.push({ s, c, st });
+  })));
+  document.getElementById('goodCount').textContent = fa(good.length);
+  document.getElementById('attentionCount').textContent = fa(attn.length);
+  document.getElementById('noneCount').textContent = fa(none.length);
+  document.getElementById('statusGoodBtn').className = filter === 'good' ? 'btn primary' : 'btn gray';
+  document.getElementById('statusAttnBtn').className = filter === 'attn' ? 'btn primary' : 'btn gray';
+  const items = filter === 'attn' ? attn : good;
+  document.getElementById('statusesList').innerHTML = items.length ? `<div class="grid">${items.map(x => studentCard(x.s, x.c, x.st)).join('')}</div>` : empty('📋', 'موردی در این دسته ثبت نشده است', '');
+}
+
+/* خروجی اکسل، ورد، چاپ و پشتیبان‌گیری خام/کامل */
+window.exportCustomReport = function(kind) {
+  const incAtt = document.getElementById('expColAtt')?.checked;
+  const incGrades = document.getElementById('expColContGrades')?.checked;
+  const incBeh = document.getElementById('expColBeh')?.checked;
+  const incTerm = document.getElementById('expColTerm')?.checked;
+
+  let headers = ['مدرسه', 'کلاس', 'نام خانوادگی و نام', 'نام پدر'];
+  if (incAtt) headers.push('تعداد غیبت');
+  if (incGrades) headers.push('میانگین مستمر');
+  if (incBeh) headers.push('مثبت / منفی');
+  if (incTerm) headers.push('نمره پایانی ترم', 'نمره نهایی (با انضباط)');
+
+  let rows = [];
+  db.schools.forEach(s => s.classes.forEach(c => {
+    sortStudents(c.students).forEach(st => {
+      let r = [s.name, c.name, `${st.lastName} ${st.name}`, st.fatherName || '—'];
+      if (incAtt) r.push(attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length);
+      if (incGrades) r.push(avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—');
+      if (incBeh) r.push(`+${st.behavior.positives.length} / -${st.behavior.negatives.length}`);
+      if (incTerm) r.push(c.termScores?.[st.id] ?? '—', fmtScore(calculateFinalStudentScore(c, st)));
+      rows.push(r);
+    });
+  }));
+
+  if (!rows.length) { alert('دانش‌آموزی برای خروجی ثبت نشده است.'); return; }
+
+  if (kind === 'excel') {
+    let csv = '\ufeff' + [headers, ...rows].map(e => e.map(x => `"${String(x ?? '').replace(/"/g, '""')}"`).join(',')).join('\r\n');
+    let a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = `گزارش-دانش‌آموزان-${localISODate()}.csv`; a.click();
+    toast('فایل اکسل دانلود شد 📊');
+  } else if (kind === 'word') {
+    let tableHtml = `<html dir="rtl"><head><meta charset="utf-8"></head><body style="font-family:Tahoma"><h2 style="color:#9a3412">گزارش جامع دانش‌آموزان</h2><table border="1" style="border-collapse:collapse;width:100%;text-align:right"><tr style="background:#ffedd5">${headers.map(h => `<th style="padding:6px">${h}</th>`).join('')}</tr>${rows.map(r => `<tr>${r.map(c => `<td style="padding:6px">${c}</td>`).join('')}</tr>`).join('')}</table></body></html>`;
+    let a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(['\ufeff' + tableHtml], { type: 'application/msword' }));
+    a.download = `گزارش-دانش‌آموزان-${localISODate()}.doc`; a.click();
+    toast('فایل Word دانلود شد 📝');
+  } else {
+    let w = window.open('', '_blank');
+    w.document.write(`<html dir="rtl"><head><meta charset="utf-8"><title>گزارش دانش‌آموزان</title><style>body{font-family:Tahoma;padding:20px;direction:rtl}table{width:100%;border-collapse:collapse}th,td{border:1px solid #999;padding:7px;text-align:right;font-size:12px}th{background:#ffedd5}</style></head><body><h2>گزارش جامع تحصیلی و انضباطی دانش‌آموزان</h2><table><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr>${rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</table></body></html>`);
+    w.document.close(); w.focus(); setTimeout(() => w.print(), 350);
+  }
+};
 
 function exportRawData() {
   const raw = {
-    version: 1, type: 'raw', createdAt: new Date().toISOString(),
+    version: 1, backupType: 'raw', createdAt: new Date().toISOString(),
     schools: db.schools.map(s => ({
-      name: s.name, year: s.year,
+      id: s.id, name: s.name, year: s.year, photos: s.photos || [],
       classes: s.classes.map(c => ({
-        name: c.name, grade: c.grade,
-        students: c.students.map(st => ({ name: st.name, lastName: st.lastName, fatherName: st.fatherName || '', birth: st.birth || '', phone: st.phone || '' }))
+        id: c.id, name: c.name, grade: c.grade, photos: c.photos || [],
+        students: c.students.map(st => ({ id: st.id, name: st.name, lastName: st.lastName, fatherName: st.fatherName || '', birth: st.birth || '', phone: st.phone || '', photo: st.photo || '', interests: st.interests || '' }))
       }))
     }))
   };
-  downloadJson(raw, `پشتیبان-خام-مدارس-${localISODate()}.json`); toast('پشتیبان خام دانلود شد');
+  downloadJson(raw, `پشتیبان-خام-دانش‌آموزان-${localISODate()}.json`);
+  toast('پشتیبان خام دانلود شد ⬇️');
 }
-function exportFullData() { downloadJson(db, `پشتیبان-کامل-دانش‌آموزان-${localISODate()}.json`); toast('پشتیبان کامل دانلود شد'); }
-function downloadJson(data, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })); a.download = name; a.click(); }
-
+function exportFullData() {
+  downloadJson({ ...db, backupType: 'full', createdAt: new Date().toISOString() }, `پشتیبان-کامل-دانش‌آموزان-${localISODate()}.json`);
+  toast('پشتیبان کامل دانلود شد ⬇️');
+}
+function downloadJson(data, name) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
+  a.download = name; a.click();
+}
 function importData(e) {
-  const f = e.target.files[0]; if (!f) return;
+  const f = e.target.files?.[0]; if (!f) return;
   const r = new FileReader();
   r.onload = () => {
     try {
       const parsed = JSON.parse(r.result);
-      if (parsed.type === 'raw') {
-        parsed.schools.forEach(rs => {
-          let s = db.schools.find(x => x.name === rs.name) || { id: uid(), name: rs.name, year: rs.year, classes: [] };
-          if (!db.schools.includes(s)) db.schools.push(s);
-          rs.classes.forEach(rc => {
-            let c = s.classes.find(x => x.name === rc.name) || { id: uid(), name: rc.name, grade: rc.grade, students: [], attendance: {}, termScores: {} };
-            if (!s.classes.includes(c)) s.classes.push(c);
-            rc.students.forEach(rst => {
-              if (!c.students.some(x => x.name === rst.name && x.lastName === rst.lastName)) {
-                c.students.push({ ...rst, id: uid(), behavior: { positives: [], negatives: [] }, grades: [] });
-              }
-            });
-          });
-        });
-        save(); toast('اطلاعات خام ادغام شد ✅');
-      } else {
-        db = sanitizeDb(parsed); save(); toast('اطلاعات کامل بازیابی شد ✅');
-      }
-    } catch(err) { alert('فایل نامعتبر است.'); }
+      if (!parsed || !Array.isArray(parsed.schools)) throw 0;
+      db = sanitizeDb(parsed);
+      save();
+      showView('dashboard');
+      toast('اطلاعات با موفقیت بازیابی شد ✅');
+    } catch (err) { alert('فایل پشتیبان معتبر نیست.'); }
   };
   r.readAsText(f); e.target.value = '';
 }
-
-function clearAll() { if (confirm('تمام اطلاعات برنامه پاک شود؟')) { db = { version: 1, schools: [] }; save(); showView('dashboard'); } }
-let toastTimer; function toast(m) { const t = document.getElementById('toast'); if (!t) return; t.textContent = m; t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2000); }
-
-function localISODate() { return new Date().toISOString().slice(0, 10); }
-function addDaysISO(s, d) { let dt = new Date(s); dt.setDate(dt.getDate() + d); return dt.toISOString().slice(0, 10); }
-function jalaliPartsFromISO(s) { try { let [y, m, d] = s.split('-').map(Number); let parts = new Intl.DateTimeFormat('en-US-u-ca-persian', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' }).formatToParts(new Date(Date.UTC(y, m - 1, d, 12))); return { y: +parts.find(x => x.type === 'year').value, m: +parts.find(x => x.type === 'month').value, d: +parts.find(x => x.type === 'day').value }; } catch(e) { return null; } }
-function formatJalaliDate(s) { let p = jalaliPartsFromISO(s); return p ? `${fa(p.y)}/${fa(p.m)}/${fa(p.d)}` : '—'; }
-function formatAttendanceDate(s) { let p = jalaliPartsFromISO(s); return p ? `${fa(p.m)}/${fa(p.d)}` : '—'; }
-function attendanceDates(c) {
-  const a = c.attendanceSettings || {}; let start = a.startDate || localISODate(), count = Number(a.sessionCount) || 16;
-  let out = [], step = Number(a.intervalDays) || 7;
-  for (let i = 0; i < count; i++) out.push(addDaysISO(start, i * step));
-  return out;
-}
-function attendanceRecord(c, date, stid) { return c.attendance?.[date]?.[stid] || { status: 'present' }; }
-function attendanceStatus(c, date, stid) { return attendanceRecord(c, date, stid).status || 'present'; }
-function attendanceScore(c, date, stid) { let s = Number(attendanceRecord(c, date, stid).score); return Number.isFinite(s) ? s : null; }
-function saveAttendanceGrade(sid, cid, stid, date, val) {
-  const c = findClass(sid, cid); if (!c) return; if (!c.attendance[date]) c.attendance[date] = {};
-  let n = val === '' ? null : Number(enDigits(val));
-  if (n === null) { delete c.attendance[date][stid]?.score; } else { c.attendance[date][stid] = { ...attendanceRecord(c, date, stid), score: n }; }
-  save(); toast('نمره ثبت شد');
-}
-function avgGrade(st) { let g = (st.grades || []).map(x => Number(x.score)).filter(Number.isFinite); return g.length ? g.reduce((a, b) => a + b, 0) / g.length : null; }
-function fmtScore(n) { return Number(n).toLocaleString('fa-IR', { maximumFractionDigits: 2 }); }
-function behaviorData(st) { if (!st.behavior) st.behavior = { positives: [], negatives: [] }; return st.behavior; }
-function gradesData(st) { if (!st.grades) st.grades = []; return st.grades; }
-function quickAdd() { if (!db.schools.length) addSchool(); else if (currentClassId) addStudent(currentSchoolId, currentClassId); else addSchool(); }
-
-function addSchool() {
-  openModal(formHeader('🏫 افزودن مدرسه') + `
-    <div><label class="muted">نام مدرسه</label><input id="fName" required placeholder="مثلاً دبیرستان شهید بهشتی"></div>
-    <div style="margin-top:7px"><label class="muted">سال تحصیلی</label><input id="fYear" value="۱۴۰۵/۱۴۰۶"></div>
-    <div style="margin-top:10px"><button class="btn primary block" onclick="saveSchoolDirect()">ذخیره مدرسه</button></div>
-  `);
-}
-function saveSchoolDirect() {
-  const name = document.getElementById('fName').value.trim(), year = document.getElementById('fYear').value.trim();
-  if (!name) return;
-  db.schools.push({ id: uid(), name, year, classes: [] });
-  closeModal(); save(); toast('مدرسه اضافه شد');
-}
-
-function addClass(sid) {
-  openModal(formHeader('🚪 افزودن کلاس') + `
-    <div><label class="muted">نام کلاس</label><input id="cName" required placeholder="هفتم الف"></div>
-    <div style="margin-top:7px"><label class="muted">پایه</label><input id="cGrade" placeholder="هفتم"></div>
-    <div style="margin-top:10px"><button class="btn primary block" onclick="saveClassDirect('${sid}')">ذخیره کلاس</button></div>
-  `);
-}
-function saveClassDirect(sid) {
-  const s = findSchool(sid); if (!s) return;
-  const name = document.getElementById('cName').value.trim(), grade = document.getElementById('cGrade').value.trim();
-  if (!name) return;
-  s.classes.push({ id: uid(), name, grade, students: [], attendance: {}, termScores: {} });
-  closeModal(); save(); toast('کلاس اضافه شد');
-}
-
-function copyClass(sid, cid) {
-  const source = findClass(sid, cid), s = findSchool(sid); if (!source || !s) return;
-  const name = prompt('نام کلاس کپی‌شده:', `${source.name} - کپی`); if (!name) return;
-  s.classes.push({ id: uid(), name: name.trim(), grade: source.grade, students: source.students.map(st => ({ ...st, id: uid(), behavior: { positives: [], negatives: [] }, grades: [] })), attendance: {}, termScores: {} });
-  save(); toast('کلاس کپی شد');
-}
-
-function deleteClass(sid, cid) {
-  if (confirm('کلاس و دانش‌آموزانش حذف شوند؟')) {
-    const s = findSchool(sid); s.classes = s.classes.filter(x => x.id !== cid);
-    save(); showView('schools'); toast('کلاس حذف شد');
+function clearAll() {
+  if (confirm('آیا مطمئن هستید که تمام اطلاعات مدارس و دانش‌آموزان پاک شود؟')) {
+    pushUndo('پاک‌سازی کل اطلاعات');
+    db = { version: 1, schools: [] };
+    save(); showView('dashboard');
   }
 }
 
-function collectiveBehavior(sid, cid, type) {
-  const c = findClass(sid, cid); if (!c || !c.students.length) return;
-  openModal(formHeader(type === 'positive' ? '➕ ثبت مثبت جمعی' : '➖ ثبت منفی جمعی') + `
-    <div><label class="muted">دلیل</label><input id="colReason" placeholder="مثلاً فعالیت در کلاس"></div>
-    <div style="margin:8px 0;max-height:40vh;overflow-y:auto">
-      ${sortStudents(c.students).map(st => `<label style="display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f1f5f9"><input type="checkbox" value="${st.id}" checked class="colChk"> <span>${formatStudentName(st)}</span></label>`).join('')}
-    </div>
-    <button class="btn primary block" onclick="execCollectiveBehavior('${sid}','${cid}','${type}')">ثبت جمعی</button>
-  `);
-}
-function execCollectiveBehavior(sid, cid, type) {
-  const c = findClass(sid, cid); if (!c) return;
-  const reason = document.getElementById('colReason')?.value || (type === 'positive' ? 'مثبت جمعی' : 'منفی جمعی');
-  const chks = document.querySelectorAll('.colChk:checked');
-  chks.forEach(chk => {
-    const st = c.students.find(x => x.id === chk.value);
-    if (st) behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason, value: 0.25, code: '' });
-  });
-  closeModal(); save(); toast('ثبت جمعی انجام شد');
+function quickAdd() {
+  if (!db.schools.length) addSchool();
+  else if (currentClassId && document.getElementById('classDetail')?.classList.contains('active')) addStudent(currentSchoolId, currentClassId);
+  else if (currentSchoolId && document.getElementById('schoolDetail')?.classList.contains('active')) addClass(currentSchoolId);
+  else addSchool();
 }
 
-function addBehavior(sid, cid, stid, type) {
-  const st = findStudent(sid, cid, stid); if (!st) return;
-  const reason = prompt(`دلیل ${type === 'positive' ? 'مثبت' : 'منفی'}:`, type === 'positive' ? 'فعالیت در کلاس' : 'بی‌انضباطی');
-  if (reason === null) return;
-  behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason: reason || 'ثبت شده', value: 0.25, code: '' });
-  save(); toast('ثبت شد');
+let toastTimer;
+function toast(m) {
+  const t = document.getElementById('toast'); if (!t) return;
+  t.textContent = m; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
 }
 
-function addGrade(sid, cid, stid) {
-  const st = findStudent(sid, cid, stid); if (!st) return;
-  const val = prompt('نمره بین ۰ تا ۲۰ را وارد کنید:'); if (val === null) return;
-  const n = Number(enDigits(val)); if (!Number.isFinite(n) || n < 0 || n > 20) { alert('نمره نامعتبر است.'); return; }
-  gradesData(st).push({ id: uid(), date: new Date().toISOString(), subject: 'ارزیابی کلاسی', teacher: '', score: n });
-  save(); toast('نمره ثبت شد');
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js?v=' + APP_VERSION).then(r => r.update()).catch(() => {});
 }
 
-function getTeacherName() { return localStorage.getItem('teacher_name') || ''; }
-function saveTeacherName() { localStorage.setItem('teacher_name', document.getElementById('teacherName').value); }
-function getBirthdayTemplate() { return localStorage.getItem('birthday_template') || 'تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉'; }
-function saveBirthdayTemplate() { localStorage.setItem('birthday_template', document.getElementById('birthdayTemplate').value); }
-function personalBirthdayMessage(st) { return getBirthdayTemplate().replaceAll('{نام}', st.name || '').replaceAll('{نام_خانوادگی}', st.lastName || ''); }
-function openBirthdaySender(stid, cid, sid) { let st = findStudent(sid, cid, stid); if (st) window.location.href = `sms:${st.phone || ''}?body=${encodeURIComponent(personalBirthdayMessage(st))}`; }
-
-function renderSearch() {
-  const q = document.getElementById('globalSearch')?.value.trim().toLowerCase();
-  const box = document.getElementById('searchResults'); if (!box) return;
-  if (!q) { box.innerHTML = ''; return; }
-  let list = [];
-  db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
-    if ((st.name + ' ' + st.lastName + ' ' + (st.fatherName || '')).toLowerCase().includes(q)) list.push({ s, c, st });
-  })));
-  box.innerHTML = list.length ? `<div class="grid">${list.map(x => studentCard(x.s, x.c, x.st)).join('')}</div>` : empty('🔍', 'یافت نشد', '');
-}
-
-function renderStatuses() {
-  let good = 0, attn = 0;
-  db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
-    if (st.status === 'good') good++; else if (st.status === 'attn') attn++;
-  })));
-  document.getElementById('goodCount').textContent = fa(good);
-  document.getElementById('attentionCount').textContent = fa(attn);
-}
-
-function empty(icon, title, sub) { return `<div class="empty"><div style="font-size:30px;margin-bottom:4px">${icon}</div><b>${title}</b><div class="muted">${sub}</div></div>`; }
-
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js?v=3.6.0').catch(() => {}); }
-renderAll(); restorePersistent();
+renderAll();
+restorePersistent();
 </script>
 </body>
 </html>

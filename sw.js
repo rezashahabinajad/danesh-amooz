@@ -1,4 +1,4 @@
-const CACHE_NAME = 'danesh-amooz-v3.2.0';
+const CACHE_NAME = 'danesh-amooz-v3.7.0';
 const CORE = ['./', './index.html', './manifest.webmanifest'];
 
 self.addEventListener('install', event => {
