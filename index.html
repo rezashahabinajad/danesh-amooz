@@ -3,269 +3,1096 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#ea580c">
+<meta name="theme-color" content="#050914">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="4.4.0">
+<meta name="version" content="5.0.0">
 <title>دانش‌آموز من</title>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 :root {
-  --bg: #fffaf5; --card: #ffffff; --text: #1e293b; --muted: #64748b;
-  --primary: #ea580c; --primary2: #f97316; --primary-dark: #9a3412;
-  --primary-light: #fff7ed; --primary-border: #fed7aa; --border: #fed7aa;
-  --green: #16a34a; --success: #16a34a; --success-bg: #f0fdf4;
-  --red: #dc2626; --danger: #dc2626; --danger-bg: #fef2f2; --gray: #64748b;
-  --shadow: 0 6px 22px rgba(234, 88, 12, 0.08); --r: 18px;
+  color-scheme: dark;
+  /* پالت رنگ مرکزی Cyber-JARVIS */
+  --bg-main: #050914;
+  --bg-card: #0B1424;
+  --bg-panel: #101D30;
+  --neon-cyan: #22D3EE;
+  --neon-blue: #38BDF8;
+  --neon-green: #4ADE80;
+  --neon-red: #F87171;
+  --neon-purple: #A78BFA;
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --border-cyber: rgba(34, 211, 238, 0.24);
+  --border-subtle: rgba(56, 189, 248, 0.16);
+
+  /* نگاشت متغیرهای برنامه به پالت سایبری */
+  --bg: var(--bg-main);
+  --card: var(--bg-card);
+  --panel: var(--bg-panel);
+  --text: var(--text-main);
+  --muted: var(--text-muted);
+  --primary: var(--neon-cyan);
+  --primary2: var(--neon-blue);
+  --primary-dark: #67E8F9;
+  --primary-light: rgba(34, 211, 238, 0.12);
+  --primary-border: rgba(34, 211, 238, 0.30);
+  --border: var(--border-cyber);
+  --green: var(--neon-green);
+  --success: var(--neon-green);
+  --success-bg: rgba(74, 222, 128, 0.14);
+  --red: var(--neon-red);
+  --danger: var(--neon-red);
+  --danger-bg: rgba(248, 113, 113, 0.14);
+  --purple: var(--neon-purple);
+  --purple-bg: rgba(167, 139, 250, 0.14);
+  --gray: #94A3B8;
+  --shadow: 0 10px 28px rgba(2, 6, 23, 0.72), 0 0 16px rgba(34, 211, 238, 0.07);
+  --glow-cyan: 0 0 16px rgba(34, 211, 238, 0.32);
+  --r: 18px;
+
+  /* متغیرهای اختصاصی برگه چاپی A4 (بدون تغییر برای چاپ استاندارد) */
   --exam-font-family: 'Vazirmatn', Tahoma, sans-serif;
   --exam-calligraphy-font: 'Noto Nastaliq Urdu', 'Amiri', serif;
-  --exam-font-size: 12.8px; --exam-line-height: 1.58; --exam-row-pad: 5px; --exam-line-h: 21px;
+  --exam-font-size: 12.8px;
+  --exam-line-height: 1.58;
+  --exam-row-pad: 5px;
+  --exam-line-h: 21px;
 }
+
+/* حالت روشن اختیاری در صورت تغییر تم توسط معلم در محیط پرنور */
+body.light-mode {
+  color-scheme: light;
+  --bg-main: #F0F7FF;
+  --bg-card: #FFFFFF;
+  --bg-panel: #E6F2FF;
+  --neon-cyan: #0284C7;
+  --neon-blue: #0369A1;
+  --neon-green: #16A34A;
+  --neon-red: #DC2626;
+  --neon-purple: #7C3AED;
+  --text-main: #0F172A;
+  --text-muted: #475569;
+  --border-cyber: rgba(2, 132, 199, 0.26);
+  --border-subtle: rgba(2, 132, 199, 0.16);
+  --primary-dark: #075985;
+  --primary-light: rgba(2, 132, 199, 0.10);
+  --primary-border: rgba(2, 132, 199, 0.28);
+  --success-bg: #DCFCE7;
+  --danger-bg: #FEE2E2;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --glow-cyan: 0 4px 12px rgba(2, 132, 199, 0.22);
+}
+
+/* خاموش کردن کامل همه انیمیشن‌ها */
 body.no-animations *, body.no-animations *::before, body.no-animations *::after {
-  animation: none !important; transition: none !important; transform: none !important;
+  animation: none !important;
+  transition: none !important;
 }
+
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Vazirmatn', Tahoma, "Segoe UI", sans-serif; font-size: 14px; line-height: 1.5; padding-bottom: 94px !important; overflow-x: hidden; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at 50% 0%, #0D1B32 0%, var(--bg-main) 65%);
+  background-color: var(--bg-main);
+  color: var(--text);
+  font-family: 'Vazirmatn', Tahoma, "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  padding-bottom: 98px !important;
+  overflow-x: hidden;
+}
+body.light-mode {
+  background: linear-gradient(180deg, #E0F2FE 0%, #F8FAFC 35%);
+}
 button, input, select, textarea { font: inherit; }
 button { cursor: pointer; border: 0; outline: none; }
 img { max-width: 100%; height: auto; }
 
-.app { min-height: 100vh; }
-.topbar { position: sticky; top: 0; z-index: 35; background: rgba(255, 250, 245, 0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 10px 14px; }
+/* بوم شبکه سایبری زنده (انیمیشن شماره ۳) */
+#cyberNetworkCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.72;
+  transition: opacity 0.4s ease;
+}
+body.no-animations #cyberNetworkCanvas,
+body:not(.anim-network) #cyberNetworkCanvas {
+  display: none !important;
+}
+
+/* انیمیشن شماره ۱: ورود سینمایی به برنامه (Intro Overlay) */
+#cyberIntroOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(circle at 50% 45%, #0D1F38 0%, #050914 75%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#cyberIntroOverlay.intro-hidden {
+  opacity: 0;
+  transform: scale(1.03);
+  pointer-events: none;
+}
+.intro-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.16) 1px, transparent 1px),
+    linear-gradient(to right, rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+  background-size: 36px 36px, 72px 72px, 72px 72px;
+  opacity: 0;
+  animation: introGridFade 1.1s ease forwards;
+  pointer-events: none;
+}
+.intro-core-wrap {
+  position: relative;
+  width: 156px;
+  height: 156px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+}
+.intro-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+.intro-ring-1 {
+  inset: 0;
+  border: 2px dashed rgba(34, 211, 238, 0.65);
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.25);
+  animation: introRingAppear 0.55s 0.18s ease-out forwards, jarvisSpinCW 9s linear infinite;
+}
+.intro-ring-2 {
+  inset: 14px;
+  border: 2px solid rgba(56, 189, 248, 0.45);
+  border-top-color: var(--neon-purple);
+  border-bottom-color: var(--neon-cyan);
+  animation: introRingAppear 0.55s 0.28s ease-out forwards, jarvisSpinCCW 6.5s linear infinite;
+}
+.intro-ring-3 {
+  inset: 28px;
+  border: 1.5px dotted rgba(74, 222, 128, 0.6);
+  animation: introRingAppear 0.55s 0.36s ease-out forwards, jarvisSpinCW 5s linear infinite;
+}
+.intro-logo-emblem {
+  width: 78px;
+  height: 78px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(16, 29, 48, 0.95), rgba(11, 20, 36, 0.95));
+  border: 1.5px solid var(--neon-cyan);
+  box-shadow: 0 0 28px rgba(34, 211, 238, 0.45), inset 0 0 14px rgba(34, 211, 238, 0.2);
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+  opacity: 0;
+  transform: scale(0.75);
+  animation: introLogoPop 0.5s 0.12s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.intro-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #F1F5F9;
+  letter-spacing: -0.3px;
+  text-shadow: 0 0 18px rgba(34, 211, 238, 0.55);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: introTextSlide 0.48s 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.intro-subtitle {
+  margin-top: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: introTextSlide 0.45s 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.intro-scan-bar {
+  width: 190px;
+  height: 3px;
+  background: rgba(34, 211, 238, 0.15);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 18px;
+  position: relative;
+}
+.intro-scan-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-purple), transparent);
+  animation: introBarSweep 1.1s ease-in-out infinite;
+}
+.intro-skip-btn {
+  margin-top: 22px;
+  padding: 6px 14px;
+  border-radius: 99px;
+  background: rgba(16, 29, 48, 0.75);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+@keyframes introGridFade { from { opacity: 0; } to { opacity: 0.85; } }
+@keyframes introLogoPop { from { opacity: 0; transform: scale(0.75); } to { opacity: 1; transform: scale(1); } }
+@keyframes introRingAppear { from { opacity: 0; transform: scale(0.86); } to { opacity: 1; transform: scale(1); } }
+@keyframes introTextSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes introBarSweep { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+
+/* ساختار اصلی و نوار بالا */
+.app { min-height: 100vh; position: relative; z-index: 1; }
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 45;
+  background: rgba(5, 9, 20, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  padding: 10px 14px;
+}
+body.light-mode .topbar {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+}
 .toprow { max-width: 1120px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.logo { width: 42px; height: 42px; border-radius: 13px; background: linear-gradient(135deg, #f97316, #ea580c); display: grid; place-items: center; color: #fff; font-size: 21px; box-shadow: 0 5px 15px rgba(234, 88, 12, 0.3); flex-shrink: 0; }
-.brand b { font-size: 16px; color: var(--primary-dark); font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
-.brand small { display: block; color: var(--muted); font-size: 11px; margin-top: 1px; }
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.22), rgba(16, 29, 48, 0.95));
+  border: 1.5px solid var(--neon-cyan);
+  display: grid;
+  place-items: center;
+  color: var(--neon-cyan);
+  font-size: 21px;
+  box-shadow: var(--glow-cyan);
+  flex-shrink: 0;
+  position: relative;
+}
+body.anim-jarvis-core .logo {
+  animation: fxGlow 3.6s ease-in-out infinite;
+}
+.brand b {
+  font-size: 16px;
+  color: var(--text-main);
+  font-weight: 900;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  text-shadow: 0 0 12px rgba(34, 211, 238, 0.28);
+}
+.brand small { display: block; color: var(--neon-cyan); font-size: 11px; margin-top: 1px; font-weight: 600; }
 .top-icons { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
-.iconbtn { width: 38px; height: 38px; border-radius: 11px; background: #fff; border: 1px solid var(--border); color: var(--primary); display: grid; place-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-size: 16px; transition: transform 0.2s; }
-.iconbtn:active { transform: scale(0.9); }
+.iconbtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--neon-cyan);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.iconbtn:hover { border-color: var(--neon-cyan); box-shadow: 0 0 12px rgba(34, 211, 238, 0.25); }
+.iconbtn:active { transform: scale(0.92); }
 
-.container { max-width: 1120px; margin: auto; padding: 14px 12px; }
-.view { display: none; }
-.view.active { display: block; animation: viewEnter 0.28s cubic-bezier(0.22, 1, 0.36, 1); }
-@keyframes viewEnter { from { opacity: 0; transform: translateY(10px) scale(0.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.container { max-width: 1120px; margin: auto; padding: 14px 12px; position: relative; }
+.view { display: none; position: relative; }
+.view.active { display: block; }
+body.anim-page-transition .view.active {
+  animation: cyberPageEnter 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes cyberPageEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-.title { font-size: 19px; margin: 4px 0 6px; color: var(--primary-dark); font-weight: 900; }
+.title { font-size: 19px; margin: 4px 0 6px; color: var(--primary-dark); font-weight: 900; letter-spacing: -0.2px; }
 .subtitle { color: var(--muted); margin: 0 0 14px; font-size: 12.5px; }
 
-/* انیمیشن‌های ویژه اسکرول اسامی و کارت‌ها (ScrollFX 3D Wave) */
-.scroll-fx-item {
-  will-change: transform, opacity;
-  transition: transform 0.46s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s ease, box-shadow 0.25s ease;
-  transform-origin: center center;
+/* انیمیشن شماره ۲: هسته هوشمند هولوگرافیک JARVIS در داشبورد */
+.jarvis-command-deck {
+  background: linear-gradient(145deg, rgba(16, 29, 48, 0.88), rgba(11, 20, 36, 0.94));
+  border: 1px solid var(--border-cyber);
+  border-radius: 22px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 18px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
-.scroll-fx-item.fx-hidden-down { opacity: 0; transform: perspective(700px) translateY(36px) rotateX(-10deg) scale(0.93); }
-.scroll-fx-item.fx-hidden-up { opacity: 0; transform: perspective(700px) translateY(-36px) rotateX(10deg) scale(0.93); }
-.scroll-fx-item.fx-visible { opacity: 1; transform: perspective(700px) translateY(0) rotateX(0deg) scale(1); }
+body.light-mode .jarvis-command-deck {
+  background: linear-gradient(145deg, #FFFFFF, #F0F9FF);
+}
+.jarvis-command-deck::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-purple), transparent);
+  opacity: 0.8;
+  pointer-events: none;
+}
+.jarvis-core-stage {
+  position: relative;
+  width: 186px;
+  height: 186px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  user-select: none;
+}
+.jarvis-svg-rings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.28));
+}
+body.anim-jarvis-core .jarvis-ring-outer {
+  transform-origin: 100px 100px;
+  animation: jarvisSpinCW 9.5s linear infinite;
+}
+body.anim-jarvis-core .jarvis-ring-mid {
+  transform-origin: 100px 100px;
+  animation: jarvisSpinCCW 7.2s linear infinite;
+}
+body.anim-jarvis-core .jarvis-ring-inner {
+  transform-origin: 100px 100px;
+  animation: jarvisSpinCW 6.2s linear infinite;
+}
+body.anim-jarvis-core .jarvis-scan-beam {
+  transform-origin: 100px 100px;
+  animation: jarvisSpinCW 6.8s linear infinite;
+}
+body:not(.anim-jarvis-core) .jarvis-scan-beam {
+  display: none;
+}
+@keyframes jarvisSpinCW { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes jarvisSpinCCW { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
 
+.jarvis-core-center {
+  position: relative;
+  z-index: 3;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 29, 48, 0.96) 0%, rgba(5, 9, 20, 0.98) 100%);
+  border: 1.5px solid rgba(34, 211, 238, 0.45);
+  box-shadow: inset 0 0 16px rgba(34, 211, 238, 0.22), 0 0 14px rgba(5, 9, 20, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.18s ease;
+}
+body.light-mode .jarvis-core-center {
+  background: radial-gradient(circle, #FFFFFF 0%, #E0F2FE 100%);
+}
+.jarvis-core-center:active { transform: scale(0.95); border-color: var(--neon-purple); }
+.jarvis-core-tag {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: var(--neon-cyan);
+  letter-spacing: 0.4px;
+  opacity: 0.9;
+}
+.jarvis-core-value {
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--text-main);
+  line-height: 1.15;
+  margin: 2px 0;
+  text-shadow: 0 0 12px rgba(34, 211, 238, 0.45);
+}
+.jarvis-core-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.jarvis-hud-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.jarvis-status-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.jarvis-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: 99px;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.32);
+  color: var(--neon-cyan);
+  font-size: 11.5px;
+  font-weight: 800;
+}
+.jarvis-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green);
+}
+.jarvis-metric-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.jarvis-metric-btn {
+  padding: 5px 10px;
+  border-radius: 9px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  transition: all 0.18s ease;
+}
+.jarvis-metric-btn.active {
+  background: rgba(34, 211, 238, 0.16);
+  border-color: var(--neon-cyan);
+  color: var(--text-main);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.18);
+}
+
+@media (max-width: 680px) {
+  .jarvis-command-deck {
+    grid-template-columns: 1fr;
+    padding: 13px;
+    gap: 12px;
+  }
+  .jarvis-core-stage {
+    width: 152px;
+    height: 152px;
+  }
+  .jarvis-core-center {
+    width: 88px;
+    height: 88px;
+  }
+  .jarvis-core-value { font-size: 21px; }
+}
+
+/* انیمیشن شماره ۴: ورود سینمایی کارت‌ها (۳۰۰ تا ۴۵۰ میلی‌ثانیه با تأخیر ۵۰ تا ۷۰ میلی‌ثانیه) */
+@keyframes cyberCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+body.anim-card-enter .cyber-card-anim {
+  animation: cyberCardEnter 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* جلوه لمس کارت (موج نور کوتاه، روشنایی حاشیه، تغییر مقیاس ظریف بدون تأخیر) */
+.card, .studentcard, .b-card, .today-class-card, .stat, .box-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.2s ease;
+}
+body.anim-card-touch .card.card-touch-active,
+body.anim-card-touch .studentcard.card-touch-active,
+body.anim-card-touch .today-class-card.card-touch-active,
+body.anim-card-touch .b-card.card-touch-active {
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.28), var(--shadow) !important;
+  transform: scale(0.992);
+}
+.cyber-ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.34) 0%, rgba(56, 189, 248, 0.14) 50%, transparent 72%);
+  transform: scale(0);
+  animation: cyberRippleAnim 0.42s ease-out forwards;
+  z-index: 2;
+}
+@keyframes cyberRippleAnim {
+  to { transform: scale(2.4); opacity: 0; }
+}
+
+/* انیمیشن شماره ۵: اسکن اطلاعات (۳۵۰ تا ۵۰۰ میلی‌ثانیه، غیرمسدودکننده) */
+.cyber-scan-active {
+  position: relative;
+}
+.cyber-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--neon-cyan) 25%, #FFFFFF 50%, var(--neon-purple) 75%, transparent 100%);
+  box-shadow: 0 0 18px 3px rgba(34, 211, 238, 0.55);
+  pointer-events: none;
+  z-index: 30;
+  animation: cyberScanSweep 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes cyberScanSweep {
+  0% { top: 0%; opacity: 0.95; }
+  85% { opacity: 0.85; }
+  100% { top: 98%; opacity: 0; }
+}
+
+/* انیمیشن شماره ۶: بازخوردهای کاربردی آموزشی (حضور و غیاب، ثبت نمره، امتیازات، نمودارها) */
+@keyframes attPresentFlash {
+  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.65); border-color: var(--neon-green); background-color: rgba(74, 222, 128, 0.18); }
+  100% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+}
+@keyframes attAbsentFlash {
+  0% { box-shadow: 0 0 0 0 rgba(248, 113, 113, 0.65); border-color: var(--neon-red); background-color: rgba(248, 113, 113, 0.18); }
+  100% { box-shadow: 0 0 0 6px rgba(248, 113, 113, 0); }
+}
+body.anim-attendance .att-flash-present {
+  animation: attPresentFlash 0.22s ease-out;
+}
+body.anim-attendance .att-flash-absent {
+  animation: attAbsentFlash 0.22s ease-out;
+}
+
+@keyframes gradeSavedPulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.75); border-color: var(--neon-cyan); }
+  50% { box-shadow: 0 0 14px 2px rgba(74, 222, 128, 0.45); border-color: var(--neon-green); }
+  100% { box-shadow: none; }
+}
+body.anim-grades .grade-saved-pulse {
+  animation: gradeSavedPulse 0.32s ease-out;
+}
+body.anim-grades .beh-pulse-pos {
+  animation: attPresentFlash 0.24s ease-out;
+}
+body.anim-grades .beh-pulse-neg {
+  animation: attAbsentFlash 0.24s ease-out;
+}
+
+/* انیمیشن نمودارها (۴۰۰ تا ۷۰۰ میلی‌ثانیه) */
+@keyframes chartLineDraw {
+  from { stroke-dashoffset: 1400; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes chartBarGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+body.anim-charts svg.chart polyline {
+  stroke-dasharray: 1400;
+  animation: chartLineDraw 0.58s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+body.anim-charts .cyber-progress-fill {
+  transform-origin: right center;
+  animation: chartBarGrow 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* کارت‌ها، آمار و المان‌های رابط کاربری در تم Cyber-JARVIS */
 .studentcard, .td-row, .b-card, .dash-b-item, .leader-item {
-  transition: transform 0.26s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
-.studentcard:hover, .studentcard:active {
-  transform: translateY(-4px) scale(1.015);
-  box-shadow: 0 14px 30px rgba(234, 88, 12, 0.16);
-  border-color: var(--primary);
+.studentcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.8), 0 0 16px rgba(34, 211, 238, 0.16);
+  border-color: var(--neon-cyan);
 }
-.studentcard:active .avatar, .td-row:active .att-cell { transform: scale(1.14) rotate(-5deg); }
-.avatar, .att-cell { transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); }
-.td-row { position: relative; overflow: hidden; border-right: 4px solid transparent; }
-.td-row:hover, .td-row:active { background-color: #fff0e0 !important; border-right-color: var(--primary); transform: scale(0.994); }
+.avatar, .att-cell { transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease; }
+.td-row { position: relative; overflow: hidden; border-right: 3px solid transparent; }
+.td-row:hover { background-color: rgba(34, 211, 238, 0.06) !important; border-right-color: var(--neon-cyan); }
 
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
-.stat { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 12px 8px; text-align: center; box-shadow: var(--shadow); }
+.stat {
+  background: linear-gradient(160deg, var(--bg-panel), var(--bg-card));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px 8px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
 .stat span { display: block; color: var(--muted); font-size: 11.5px; font-weight: 700; }
-.stat strong { font-size: 21px; display: block; margin-top: 3px; color: var(--primary); font-weight: 900; }
+.stat strong { font-size: 21px; display: block; margin-top: 3px; color: var(--neon-cyan); font-weight: 900; text-shadow: 0 0 10px rgba(34, 211, 238, 0.25); }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
-.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 14px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.card {
+  background: rgba(11, 20, 36, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+body.light-mode .card {
+  background: rgba(255, 255, 255, 0.95);
+}
 .school-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.school-icon { width: 46px; height: 46px; border-radius: 14px; background: #ffedd5; display: grid; place-items: center; font-size: 22px; color: var(--primary); flex-shrink: 0; overflow: hidden; }
+.school-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  color: var(--neon-cyan);
+  flex-shrink: 0;
+  overflow: hidden;
+}
 .school-icon img { width: 100%; height: 100%; object-fit: cover; }
-.card h3 { margin: 0 0 4px; font-size: 15.5px; color: #0f172a; font-weight: 800; }
+.card h3 { margin: 0 0 4px; font-size: 15.5px; color: var(--text-main); font-weight: 800; }
 .muted { color: var(--muted); font-size: 12px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 6px; }
-.chip { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; border-radius: 999px; padding: 4px 10px; font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.chip {
+  background: rgba(34, 211, 238, 0.12);
+  color: var(--neon-cyan);
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
 
 .actions { display: flex; gap: 7px; margin-top: 12px; flex-wrap: wrap; }
-.btn { min-height: 38px; padding: 7px 12px; border-radius: 11px; font-weight: 700; font-size: 12.5px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; transition: transform 0.15s, box-shadow 0.15s; border: none; text-decoration: none; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
-.btn:active { transform: scale(0.95); }
+.btn {
+  min-height: 38px;
+  padding: 7px 12px;
+  border-radius: 11px;
+  font-weight: 700;
+  font-size: 12.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: transform 0.15s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btn:active { transform: scale(0.96); }
 .btn:disabled { opacity: 0.55; pointer-events: none; }
-.btn.primary { background: linear-gradient(135deg, #f97316, #ea580c) !important; color: #ffffff !important; box-shadow: 0 4px 12px rgba(234, 88, 12, 0.28); }
-.btn.soft { background-color: #ffedd5 !important; color: #c2410c !important; border: 1px solid #fed7aa !important; }
-.btn.danger { background-color: #fee2e2 !important; color: #b91c1c !important; border: 1px solid #fecaca !important; }
-.btn.gray { background-color: #f8fafc !important; border: 1px solid #cbd5e1 !important; color: #334155 !important; }
-.btn.green { background-color: #16a34a !important; color: #ffffff !important; }
+.btn.primary {
+  background: linear-gradient(135deg, #06B6D4, #0284C7) !important;
+  color: #F8FAFC !important;
+  border-color: rgba(34, 211, 238, 0.5) !important;
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.32);
+}
+.btn.soft {
+  background-color: rgba(34, 211, 238, 0.12) !important;
+  color: var(--neon-cyan) !important;
+  border: 1px solid rgba(34, 211, 238, 0.30) !important;
+}
+.btn.danger {
+  background-color: rgba(248, 113, 113, 0.14) !important;
+  color: var(--neon-red) !important;
+  border: 1px solid rgba(248, 113, 113, 0.35) !important;
+}
+.btn.gray {
+  background-color: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-main) !important;
+}
+.btn.green {
+  background: linear-gradient(135deg, #10B981, #059669) !important;
+  color: #ffffff !important;
+  border-color: rgba(74, 222, 128, 0.4) !important;
+}
 .btn.block { width: 100%; white-space: normal; }
 .btn-sm { min-height: 32px; padding: 5px 9px; font-size: 11.5px; border-radius: 9px; }
 
-.fab { position: fixed; left: 16px; bottom: 74px; z-index: 25; background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; width: 50px; height: 50px; border-radius: 16px; font-size: 25px; box-shadow: 0 8px 22px rgba(234, 88, 12, 0.4); display: grid; place-items: center; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s; }
+.fab {
+  position: fixed;
+  left: 16px;
+  bottom: 76px;
+  z-index: 35;
+  background: linear-gradient(135deg, var(--neon-cyan), #0284C7);
+  color: #050914;
+  font-weight: 900;
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  font-size: 25px;
+  box-shadow: 0 8px 24px rgba(34, 211, 238, 0.42);
+  display: grid;
+  place-items: center;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s;
+}
 .fab.hidden-fab { transform: scale(0); opacity: 0; pointer-events: none; }
 
-.nav { position: fixed; z-index: 40; bottom: 0; right: 0; left: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); border-top: 1px solid var(--border); display: flex; justify-content: center; }
-.navin { max-width: 680px; width: 100%; display: grid; grid-template-columns: repeat(6, 1fr); height: 62px; padding: 3px; }
-.nav button { background: none; color: #64748b; padding: 4px 0; font-size: 10.5px; font-weight: 800; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transition: all 0.2s; border-radius: 11px; }
-.nav button b { font-size: 17px; line-height: 1; transition: transform 0.2s; }
-.nav button.active { color: var(--primary); background: #fff7ed; }
-.nav button.active b { transform: translateY(-2px) scale(1.1); }
+.nav {
+  position: fixed;
+  z-index: 45;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(5, 9, 20, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+}
+body.light-mode .nav { background: rgba(255, 255, 255, 0.96); }
+.navin { max-width: 760px; width: 100%; display: grid; grid-template-columns: repeat(7, 1fr); height: 64px; padding: 3px; }
+.nav button {
+  background: none;
+  color: var(--muted);
+  padding: 4px 0;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: all 0.18s ease;
+  border-radius: 11px;
+}
+.nav button b { font-size: 16px; line-height: 1; transition: transform 0.18s ease; }
+.nav button.active {
+  color: var(--neon-cyan);
+  background: rgba(34, 211, 238, 0.12);
+  box-shadow: inset 0 0 10px rgba(34, 211, 238, 0.12);
+}
+.nav button.active b { transform: translateY(-2px) scale(1.08); }
 
 .searchbox { position: relative; margin: 8px 0 14px; }
 .searchbox input { padding-right: 40px; }
 .searchbox span { position: absolute; right: 12px; top: 10px; font-size: 18px; color: var(--muted); }
-input, select, textarea { width: 100%; border: 1px solid #cbd5e1; background: #fff; border-radius: 11px; padding: 8px 10px; color: var(--text); outline: none; }
-input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.14); }
+input, select, textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg-panel);
+  border-radius: 11px;
+  padding: 8px 10px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+body.light-mode input, body.light-mode select, body.light-mode textarea {
+  background: #FFFFFF;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.18);
+}
 textarea { min-height: 75px; resize: vertical; }
 .formgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-.field label { display: block; font-size: 11.5px; font-weight: 700; margin: 0 0 4px; color: #475569; }
+.field label { display: block; font-size: 11.5px; font-weight: 700; margin: 0 0 4px; color: var(--muted); }
 .field.full { grid-column: 1 / -1; }
 @media(max-width: 560px) { .formgrid { grid-template-columns: 1fr; } .field.full { grid-column: auto; } }
 
 .student { display: flex; gap: 12px; align-items: center; }
-.avatar { width: 56px !important; height: 56px !important; min-width: 56px !important; max-width: 56px !important; max-height: 56px !important; flex: none; border-radius: 16px; background: #ffedd5; border: 1px solid #fed7aa; overflow: hidden; display: grid; place-items: center; font-size: 22px; color: var(--primary); font-weight: 800; }
+.avatar {
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  max-width: 56px !important;
+  max-height: 56px !important;
+  flex: none;
+  border-radius: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  color: var(--neon-cyan);
+  font-weight: 800;
+}
 .avatar img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block; }
 .photo-clickable { cursor: zoom-in; }
 .photo-input { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.photo-preview { width: 68px !important; height: 68px !important; border-radius: 16px; overflow: hidden; background: #ffedd5; border: 1px solid var(--border); display: grid; place-items: center; font-size: 26px; flex-shrink: 0; }
+.photo-preview { width: 68px !important; height: 68px !important; border-radius: 16px; overflow: hidden; background: var(--panel); border: 1px solid var(--border); display: grid; place-items: center; font-size: 26px; flex-shrink: 0; }
 .photo-preview img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
 .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
-.photo-thumb { position: relative; border-radius: 12px; overflow: hidden; background: #f1f5f9; aspect-ratio: 4/3; border: 1px solid var(--border); }
+.photo-thumb { position: relative; border-radius: 12px; overflow: hidden; background: var(--panel); aspect-ratio: 4/3; border: 1px solid var(--border); }
 .photo-thumb img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block; }
-.photo-thumb button { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.9); color: #dc2626; font-size: 16px; font-weight: bold; }
+.photo-thumb button { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; border-radius: 50%; background: rgba(5, 9, 20, 0.85); color: var(--neon-red); font-size: 16px; font-weight: bold; }
 .class-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 10px; }
 .class-gallery img { width: 100% !important; aspect-ratio: 4/3; max-height: 150px; object-fit: cover !important; border-radius: 12px; display: block; border: 1px solid var(--border); }
 
-.photo-viewer { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9); z-index: 120; align-items: center; justify-content: center; padding: 14px; }
+.photo-viewer { display: none; position: fixed; inset: 0; background: rgba(2, 6, 23, 0.94); z-index: 120; align-items: center; justify-content: center; padding: 14px; }
 .photo-viewer.show { display: flex; }
-.photo-viewer img { max-width: 94vw; max-height: 78vh; object-fit: contain; border-radius: 14px; }
-.photo-viewer .viewer-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border-radius: 12px; background: #fff; color: var(--primary); font-size: 24px; font-weight: bold; }
+.photo-viewer img { max-width: 94vw; max-height: 78vh; object-fit: contain; border-radius: 14px; border: 1px solid var(--border); }
+.photo-viewer .viewer-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border-radius: 12px; background: var(--panel); border: 1px solid var(--border); color: var(--neon-cyan); font-size: 24px; font-weight: bold; }
 .photo-viewer .viewer-actions { position: absolute; bottom: 22px; left: 14px; right: 14px; display: flex; justify-content: center; gap: 10px; }
 
 .status { font-size: 11px; border-radius: 999px; padding: 3px 8px; font-weight: 700; display: inline-block; }
-.status.good { background: #dcfce7; color: #15803d; }
-.status.attn { background: #fee2e2; color: #b91c1c; }
-.status.none { background: #f1f5f9; color: #64748b; }
+.status.good { background: rgba(74, 222, 128, 0.16); color: var(--neon-green); border: 1px solid rgba(74, 222, 128, 0.35); }
+.status.attn { background: rgba(248, 113, 113, 0.16); color: var(--neon-red); border: 1px solid rgba(248, 113, 113, 0.35); }
+.status.none { background: rgba(148, 163, 184, 0.14); color: var(--muted); border: 1px solid rgba(148, 163, 184, 0.25); }
 .studentcard { padding: 13px; }
-.studentcard.attn-border { border: 1.5px solid #fca5a5; background: #fff5f5; }
-.student-meta { margin-top: 8px; line-height: 1.7; color: #475569; font-size: 12px; }
+.studentcard.attn-border { border: 1.5px solid rgba(248, 113, 113, 0.55); background: linear-gradient(160deg, rgba(248, 113, 113, 0.08), var(--bg-card)); }
+.student-meta { margin-top: 8px; line-height: 1.7; color: var(--muted); font-size: 12px; }
 .breadcrumb { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12.5px; margin-bottom: 10px; }
-.link { color: var(--primary); font-weight: 700; background: none; padding: 0; }
-.detailhead { background: linear-gradient(135deg, #fff7ed, #ffedd5); border: 1px solid #fed7aa; border-radius: 18px; padding: 15px; margin-bottom: 14px; }
+.link { color: var(--neon-cyan); font-weight: 700; background: none; padding: 0; }
+.detailhead {
+  background: linear-gradient(135deg, var(--bg-panel), var(--bg-card));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 15px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+}
 
-.dash-b-card { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 18px; padding: 14px; margin-bottom: 14px; }
-.dash-b-item { background: #fff; border-radius: 12px; padding: 9px 12px; margin-top: 7px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
-.today-class-card { background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 16px; padding: 12px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.today-class-card .icon-box { width: 44px; height: 44px; border-radius: 13px; background: var(--primary); color: #fff; display: grid; place-items: center; font-size: 21px; flex-shrink: 0; }
+.dash-b-card { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 14px; margin-bottom: 14px; }
+.dash-b-item { background: var(--card); border-radius: 12px; padding: 9px 12px; margin-top: 7px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
+.today-class-card { background: var(--panel); border: 1.5px solid var(--border); border-radius: 16px; padding: 12px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.today-class-card .icon-box { width: 44px; height: 44px; border-radius: 13px; background: rgba(34, 211, 238, 0.16); border: 1px solid var(--neon-cyan); color: var(--neon-cyan); display: grid; place-items: center; font-size: 21px; flex-shrink: 0; }
 
-.b-card { background: #fff; border-radius: 16px; padding: 14px; margin-bottom: 11px; border: 1px solid var(--border); border-right: 5px solid var(--primary); box-shadow: var(--shadow); }
-.b-card.past { opacity: 0.58; filter: grayscale(65%); border-right-color: #94a3b8; }
-.birthday-message { margin-top: 10px; padding: 10px 12px; border: 1px solid #fed7aa; background: #fffaf5; border-radius: 12px; font-size: 12.5px; line-height: 1.6; white-space: pre-line; }
+.b-card { background: var(--card); border-radius: 16px; padding: 14px; margin-bottom: 11px; border: 1px solid var(--border); border-right: 5px solid var(--neon-cyan); box-shadow: var(--shadow); }
+.b-card.past { opacity: 0.58; filter: grayscale(65%); border-right-color: #64748b; }
+.birthday-message { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--border); background: var(--panel); border-radius: 12px; font-size: 12.5px; line-height: 1.6; white-space: pre-line; }
 
-.att-wrap { overflow: auto; max-height: calc(100vh - 205px); overscroll-behavior: contain; border: 1px solid var(--border); border-radius: 15px; background: #fff; }
+/* بخش یازدهم: ثابت ماندن تاریخ و سرستون‌ها هنگام اسکرول (بدون هم‌پوشانی) */
+.att-top-sticky-bar {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-shadow: var(--shadow);
+}
+.att-wrap {
+  overflow: auto;
+  max-height: calc(100vh - 235px);
+  overscroll-behavior: contain;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--bg-card);
+  position: relative;
+  box-shadow: var(--shadow);
+}
 .att-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 720px; font-size: 12px; }
-.att-table th, .att-table td { padding: 7px 5px; border-bottom: 1px solid #f1f5f9; text-align: center; white-space: nowrap; }
-.att-table th { background: #fff7ed; position: sticky; top: 0; z-index: 2; color: var(--primary-dark); font-weight: 800; }
-.att-table th:first-child, .att-table td:first-child { position: sticky; right: 0; background: #fff; z-index: 3; text-align: right; min-width: 150px; border-left: 1px solid #fed7aa; }
-.att-table th:first-child { background: #fff7ed; z-index: 4; }
-.att-cell { min-width: 42px; height: 30px; border-radius: 8px; font-weight: 800; border: none; font-size: 12px; cursor: pointer; }
-.att-cell.present { color: #15803d; background: #dcfce7; }
-.att-cell.absent { color: #b91c1c; background: #fee2e2; }
-.att-score-input { width: 45px; height: 28px; border-radius: 7px; text-align: center; font-size: 11.5px; border: 1px solid #cbd5e1; font-weight: 700; padding: 2px; }
-.term-score-input { width: 52px; height: 30px; border-radius: 8px; text-align: center; font-size: 12.5px; font-weight: 800; border: 2px solid var(--primary); background: #fff7ed; color: var(--primary); padding: 2px; }
-.att-combo { display: grid; gap: 3px; justify-items: center; }
+.att-table th, .att-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: center;
+  white-space: nowrap;
+}
+.att-table thead th {
+  background: var(--bg-panel) !important;
+  position: sticky;
+  top: 0;
+  z-index: 16;
+  color: var(--neon-cyan) !important;
+  font-weight: 800;
+  box-shadow: 0 2px 0 var(--border);
+}
+.att-table th:first-child, .att-table td:first-child {
+  position: sticky;
+  right: 0;
+  background: var(--bg-card);
+  z-index: 12;
+  text-align: right;
+  min-width: 158px;
+  border-left: 1px solid var(--border);
+}
+.att-table thead th:first-child {
+  background: var(--bg-panel) !important;
+  z-index: 22;
+}
+.att-table th.active-date-col, .att-table td.active-date-col {
+  background: rgba(34, 211, 238, 0.10) !important;
+  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.32);
+}
+.att-cell { min-width: 42px; height: 32px; border-radius: 9px; font-weight: 800; border: 1px solid transparent; font-size: 13px; cursor: pointer; }
+.att-cell.present { color: var(--neon-green); background: rgba(74, 222, 128, 0.15); border-color: rgba(74, 222, 128, 0.35); }
+.att-cell.absent { color: var(--neon-red); background: rgba(248, 113, 113, 0.16); border-color: rgba(248, 113, 113, 0.40); }
+.att-score-input { width: 48px; height: 29px; border-radius: 7px; text-align: center; font-size: 11.5px; border: 1px solid var(--border); background: var(--bg-main); color: var(--text); font-weight: 700; padding: 2px; }
+.term-score-input { width: 54px; height: 31px; border-radius: 8px; text-align: center; font-size: 12.5px; font-weight: 800; border: 1.5px solid var(--neon-cyan); background: rgba(34, 211, 238, 0.10); color: var(--neon-cyan); padding: 2px; }
+.att-combo { display: grid; gap: 4px; justify-items: center; }
 
-.td-list-card { background: #fff; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 14px; box-shadow: var(--shadow); }
-.td-list-head { background: #fff7ed; padding: 11px 14px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-.td-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-bottom: 1px solid #ffedd5; gap: 8px; }
+/* فهرست حضور و غیاب سریع (لیست امروز) با نوار تاریخ و سرستون‌های Sticky */
+.td-list-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 155px);
+}
+.td-sticky-header-group {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg-panel);
+  border-bottom: 1.5px solid var(--border);
+  flex-shrink: 0;
+}
+.td-list-head {
+  background: var(--bg-panel);
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.td-col-headers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 14px;
+  background: rgba(5, 9, 20, 0.72);
+  color: var(--neon-cyan);
+  font-size: 11.5px;
+  font-weight: 800;
+  border-top: 1px solid var(--border-subtle);
+}
+body.light-mode .td-col-headers {
+  background: #E0F2FE;
+}
+.td-scroll-body {
+  overflow-y: auto;
+  flex: 1;
+  overscroll-behavior: contain;
+}
+.td-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-bottom: 1px solid var(--border-subtle); gap: 8px; }
 .td-row:last-child { border-bottom: none; }
-.td-score-inp { width: 48px; height: 34px; border: 1.5px solid var(--border); border-radius: 9px; text-align: center; font-size: 13px; font-weight: 800; background: #fffaf5; color: var(--primary); padding: 2px; }
-.td-btn-plus { background-color: #16a34a !important; color: #fff !important; width: 34px; height: 34px; border-radius: 9px; font-size: 18px; font-weight: bold; display: grid; place-items: center; }
-.td-btn-minus { background-color: #dc2626 !important; color: #fff !important; width: 34px; height: 34px; border-radius: 9px; font-size: 18px; font-weight: bold; display: grid; place-items: center; }
+.td-score-inp { width: 52px; height: 34px; border: 1.5px solid var(--border); border-radius: 9px; text-align: center; font-size: 13px; font-weight: 800; background: var(--bg-panel); color: var(--neon-cyan); padding: 2px; }
+.td-btn-plus { background: rgba(74, 222, 128, 0.18) !important; border: 1px solid rgba(74, 222, 128, 0.45) !important; color: var(--neon-green) !important; width: 34px; height: 34px; border-radius: 9px; font-size: 18px; font-weight: bold; display: grid; place-items: center; }
+.td-btn-minus { background: rgba(248, 113, 113, 0.18) !important; border: 1px solid rgba(248, 113, 113, 0.45) !important; color: var(--neon-red) !important; width: 34px; height: 34px; border-radius: 9px; font-size: 18px; font-weight: bold; display: grid; place-items: center; }
 
 .quick-behavior { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
-.qb { min-height: 28px; padding: 3px 8px; border-radius: 8px; font-weight: 800; font-size: 11px; border: none; background: #ffedd5; color: #c2410c; cursor: pointer; }
-.qb.pos { background: #dcfce7 !important; color: #15803d !important; }
-.qb.neg { background: #fee2e2 !important; color: #b91c1c !important; }
+.qb { min-height: 28px; padding: 3px 8px; border-radius: 8px; font-weight: 800; font-size: 11px; border: 1px solid var(--border); background: var(--panel); color: var(--neon-cyan); cursor: pointer; }
+.qb.pos { background: rgba(74, 222, 128, 0.15) !important; color: var(--neon-green) !important; border-color: rgba(74, 222, 128, 0.35) !important; }
+.qb.neg { background: rgba(248, 113, 113, 0.15) !important; color: var(--neon-red) !important; border-color: rgba(248, 113, 113, 0.35) !important; }
 
-.toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f5f9; gap: 10px; }
+.toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--border-subtle); gap: 10px; }
 .toggle-row:last-child { border-bottom: none; }
-.switch { position: relative; display: inline-block; width: 46px; height: 26px; flex-shrink: 0; }
+.switch { position: relative; display: inline-block; width: 48px; height: 26px; flex-shrink: 0; }
 .switch input { opacity: 0; width: 0; height: 0; }
-.slider { position: absolute; cursor: pointer; inset: 0; background-color: #cbd5e1; transition: .25s; border-radius: 34px; }
-.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .25s; border-radius: 50%; }
-.switch input:checked + .slider { background-color: var(--primary); }
-.switch input:checked + .slider:before { transform: translateX(20px); }
+.slider { position: absolute; cursor: pointer; inset: 0; background-color: #1E293B; border: 1px solid var(--border); transition: .22s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: #94A3B8; transition: .22s; border-radius: 50%; }
+.switch input:checked + .slider { background-color: rgba(34, 211, 238, 0.25); border-color: var(--neon-cyan); box-shadow: 0 0 10px rgba(34, 211, 238, 0.3); }
+.switch input:checked + .slider:before { transform: translateX(22px); background-color: var(--neon-cyan); }
 
-.chart-container { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 13px; margin: 12px 0; box-shadow: var(--shadow); }
+.chart-container { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 13px; margin: 12px 0; box-shadow: var(--shadow); }
 .chart-box { width: 100%; height: 145px; position: relative; margin-top: 8px; }
 svg.chart { width: 100%; height: 100%; overflow: visible; }
 .behavior-leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.leader-item { display: flex; justify-content: space-between; gap: 8px; padding: 7px 9px; background: #fffaf5; border: 1px solid var(--border); border-radius: 9px; margin-top: 5px; font-size: 12px; }
+.leader-item { display: flex; justify-content: space-between; gap: 8px; padding: 7px 9px; background: var(--panel); border: 1px solid var(--border); border-radius: 9px; margin-top: 5px; font-size: 12px; }
 .behavior-impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-top: 10px; }
-.impact-box { background: #fffaf5; border: 1px solid var(--border); border-radius: 11px; padding: 8px; text-align: center; }
-.impact-box b { display: block; font-size: 14.5px; color: var(--primary); }
+.impact-box { background: var(--panel); border: 1px solid var(--border); border-radius: 11px; padding: 8px; text-align: center; }
+.impact-box b { display: block; font-size: 14.5px; color: var(--neon-cyan); }
 .impact-box small { color: var(--muted); font-size: 11px; }
 
-.modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 80; padding: 12px; overflow: auto; }
+.modal { display: none; position: fixed; inset: 0; background: rgba(2, 6, 23, 0.78); backdrop-filter: blur(5px); z-index: 80; padding: 12px; overflow: auto; }
 .modal.show { display: flex; align-items: flex-end; justify-content: center; }
-.sheet { background: #fff; border-radius: 22px 22px 14px 14px; width: min(720px, 100%); padding: 16px; max-height: 92vh; overflow: auto; }
+.sheet { background: var(--bg-card); border: 1px solid var(--border); border-radius: 22px 22px 14px 14px; width: min(720px, 100%); padding: 16px; max-height: 92vh; overflow: auto; color: var(--text); box-shadow: var(--shadow); }
 .sheethead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.sheethead h2 { margin: 0; font-size: 17px; color: var(--primary-dark); }
-.close { background: #ffedd5; color: var(--primary); border-radius: 10px; width: 34px; height: 34px; font-weight: bold; font-size: 18px; }
+.sheethead h2 { margin: 0; font-size: 17px; color: var(--neon-cyan); }
+.close { background: var(--panel); border: 1px solid var(--border); color: var(--neon-cyan); border-radius: 10px; width: 34px; height: 34px; font-weight: bold; font-size: 18px; }
 .formactions { display: flex; gap: 8px; margin-top: 14px; }
 .formactions .btn { flex: 1; }
-.empty { text-align: center; padding: 30px 14px; color: var(--muted); background: #fff; border: 1px dashed #fed7aa; border-radius: 16px; grid-column: 1 / -1; }
+.empty { text-align: center; padding: 30px 14px; color: var(--muted); background: var(--bg-card); border: 1px dashed var(--border); border-radius: 16px; grid-column: 1 / -1; }
 .empty .big { font-size: 32px; margin-bottom: 6px; }
-.toast { position: fixed; z-index: 150; bottom: 75px; right: 50%; transform: translateX(50%) translateY(20px); opacity: 0; background: #1e293b; color: #fff; padding: 9px 15px; border-radius: 11px; font-size: 12.5px; transition: 0.25s; pointer-events: none; }
-.toast.show { opacity: 1; transform: translateX(50%); }
-.undo-bar { position: fixed; left: 50%; bottom: 72px; transform: translateX(-50%) translateY(20px); z-index: 105; background: #172033; color: #fff; padding: 8px 12px; border-radius: 12px; display: flex; align-items: center; gap: 10px; opacity: 0; pointer-events: none; transition: .2s; }
+.toast { position: fixed; z-index: 150; bottom: 78px; right: 50%; transform: translateX(50%) translateY(20px); opacity: 0; background: #0F172A; border: 1px solid var(--neon-cyan); box-shadow: 0 0 18px rgba(34, 211, 238, 0.35); color: #F1F5F9; padding: 9px 16px; border-radius: 11px; font-size: 12.5px; font-weight: 700; transition: 0.22s; pointer-events: none; }
+.toast.show { opacity: 1; transform: translateX(50%) translateY(0); }
+.undo-bar { position: fixed; left: 50%; bottom: 74px; transform: translateX(-50%) translateY(20px); z-index: 105; background: #0B1424; border: 1px solid var(--neon-cyan); color: #fff; padding: 8px 12px; border-radius: 12px; display: flex; align-items: center; gap: 10px; opacity: 0; pointer-events: none; transition: .2s; }
 .undo-bar.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
-.undo-bar button { background: var(--primary); color: #fff; border-radius: 8px; padding: 4px 10px; font-weight: 700; }
+.undo-bar button { background: var(--neon-cyan); color: #050914; border-radius: 8px; padding: 4px 10px; font-weight: 800; }
 
 .weekday-selector { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-.weekday-selector label { background: #fff; padding: 6px 11px; border-radius: 20px; font-size: 12px; cursor: pointer; border: 1px solid var(--border); user-select: none; }
-.weekday-selector input:checked + label { background: var(--primary); color: #fff; font-weight: 700; }
+.weekday-selector label { background: var(--panel); padding: 6px 11px; border-radius: 20px; font-size: 12px; cursor: pointer; border: 1px solid var(--border); user-select: none; color: var(--text); }
+.weekday-selector input:checked + label { background: var(--neon-cyan); color: #050914; font-weight: 800; border-color: var(--neon-cyan); }
 .weekday-selector input { display: none; }
 
 .report-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin: 12px 0; }
-.report-summary > div { background: #fffaf5; border: 1px solid var(--border); border-radius: 11px; padding: 8px; text-align: center; }
-.report-summary b { display: block; font-size: 15px; color: var(--primary); }
+.report-summary > div { background: var(--panel); border: 1px solid var(--border); border-radius: 11px; padding: 8px; text-align: center; }
+.report-summary b { display: block; font-size: 15px; color: var(--neon-cyan); }
 .report-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 11.5px; }
-.report-table th, .report-table td { border: 1px solid #fed7aa; padding: 6px; text-align: right; }
-.report-table th { background: #fff7ed; color: var(--primary-dark); }
+.report-table th, .report-table td { border: 1px solid var(--border); padding: 6px; text-align: right; }
+.report-table th { background: var(--panel); color: var(--neon-cyan); }
 @media(max-width: 560px) { .behavior-leaders, .report-summary { grid-template-columns: 1fr 1fr; } }
 
-/* استایل‌های اصلاح‌شده آزمون‌ساز الماس (رفع کامل فشردگی روی موبایل) */
-.exam-top-actions { background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%); color: #fff; padding: 12px; border-radius: 16px; margin-bottom: 10px; box-shadow: 0 6px 18px rgba(234, 88, 12, 0.25); }
+/* استایل‌های آزمون‌ساز الماس (با حفظ کامل برگه چاپی سفید استاندارد A4) */
+.exam-top-actions { background: linear-gradient(135deg, #0E7490 0%, #1E3A8A 100%); border: 1px solid var(--border); color: #fff; padding: 12px; border-radius: 16px; margin-bottom: 10px; box-shadow: var(--shadow); }
 .exam-top-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; gap: 8px; flex-wrap: wrap; }
 .exam-actions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
 .exam-actions-grid .btn { width: 100%; min-height: 36px; font-size: 11.5px; padding: 5px 6px; }
 
-.branch-bar { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 9px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--shadow); }
+.branch-bar { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 9px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--shadow); }
 .branch-pills-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; width: 100%; }
-.branch-pill { padding: 7px 4px; border-radius: 9px; border: 1px solid #cbd5e1; background: #f8fafc; font-size: 12px; font-weight: 800; color: var(--muted); text-align: center; white-space: nowrap; transition: 0.15s; }
-.branch-pill.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 3px 8px rgba(234,88,12,0.25); }
+.branch-pill { padding: 7px 4px; border-radius: 9px; border: 1px solid var(--border); background: var(--panel); font-size: 12px; font-weight: 800; color: var(--muted); text-align: center; white-space: nowrap; transition: 0.15s; }
+.branch-pill.active { background: var(--neon-cyan); color: #050914; border-color: var(--neon-cyan); box-shadow: 0 3px 10px rgba(34, 211, 238, 0.3); }
 .branch-tools-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: space-between; }
 .branch-tools-row .btn { flex: 1; min-width: max-content; }
 
-.exam-subnav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 5px; margin-bottom: 10px; box-shadow: var(--shadow); }
+.exam-subnav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 5px; margin-bottom: 10px; box-shadow: var(--shadow); }
 @media(min-width: 680px) { .exam-subnav { grid-template-columns: repeat(6, 1fr); } }
-.ex-nav-btn { padding: 8px 4px; border-radius: 10px; background: #fffaf5; color: var(--muted); font-size: 11.5px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 3px; transition: 0.2s; }
-.ex-nav-btn.active { background: var(--primary); color: #fff; box-shadow: 0 3px 10px rgba(234,88,12,0.25); }
+.ex-nav-btn { padding: 8px 4px; border-radius: 10px; background: var(--panel); color: var(--muted); font-size: 11.5px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 3px; transition: 0.2s; }
+.ex-nav-btn.active { background: var(--neon-cyan); color: #050914; box-shadow: 0 3px 10px rgba(34, 211, 238, 0.28); }
 
 .exam-pane { display: none; }
-.exam-pane.active { display: block; animation: viewEnter 0.25s ease; }
+.exam-pane.active { display: block; animation: cyberPageEnter 0.22s ease; }
 
-.box-card { background: #fff; border: 1px solid var(--border); border-radius: 15px; padding: 13px; margin-bottom: 11px; box-shadow: var(--shadow); }
-.box-card.highlight { background: #fff7ed; border-color: #fed7aa; }
-.box-header { font-size: 13px; font-weight: 800; color: var(--primary-dark); margin-bottom: 9px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+.box-card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 13px; margin-bottom: 11px; box-shadow: var(--shadow); }
+.box-card.highlight { background: var(--panel); border-color: var(--primary-border); }
+.box-header { font-size: 13px; font-weight: 800; color: var(--neon-cyan); margin-bottom: 9px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
 .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 8px; }
@@ -273,35 +1100,36 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
 @media(max-width: 560px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
 
 .qtype-selector { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 10px; }
-.qtype-btn { padding: 6px 2px; border: 1.5px solid #cbd5e1; background: #f8fafc; border-radius: 8px; font-size: 11px; font-weight: 800; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.qtype-btn.active { border-color: var(--primary); background: var(--primary-light); color: var(--primary-dark); }
+.qtype-btn { padding: 6px 2px; border: 1.5px solid var(--border); background: var(--panel); border-radius: 8px; font-size: 11px; font-weight: 800; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.qtype-btn.active { border-color: var(--neon-cyan); background: rgba(34, 211, 238, 0.16); color: var(--neon-cyan); }
 
 .opt-input-row { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
 .opt-input-row input[type="radio"] { accent-color: var(--green); width: 18px; height: 18px; flex-shrink: 0; }
 
 .switch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
 @media(max-width: 560px) { .switch-grid { grid-template-columns: 1fr; } }
-.switch-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 7px 10px; display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 12px; font-weight: 700; cursor: pointer; }
-.switch-card input[type="checkbox"] { accent-color: var(--primary); width: 17px; height: 17px; flex-shrink: 0; }
+.switch-card { background: var(--panel); border: 1px solid var(--border); border-radius: 9px; padding: 7px 10px; display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 12px; font-weight: 700; cursor: pointer; color: var(--text); }
+.switch-card input[type="checkbox"] { accent-color: var(--neon-cyan); width: 17px; height: 17px; flex-shrink: 0; }
 
 .barom-row { display: grid; grid-template-columns: 1fr 80px 36px; gap: 6px; margin-bottom: 6px; align-items: center; }
-.pdf-gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 8px; max-height: 330px; overflow-y: auto; padding: 6px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; }
-.pdf-page-card { background: #fff; border: 2px solid #cbd5e1; border-radius: 8px; padding: 5px; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
-.pdf-page-card.selected { border-color: var(--primary); background: var(--primary-light); }
+.pdf-gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 8px; max-height: 330px; overflow-y: auto; padding: 6px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; }
+.pdf-page-card { background: var(--card); border: 2px solid var(--border); border-radius: 8px; padding: 5px; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+.pdf-page-card.selected { border-color: var(--neon-cyan); background: rgba(34, 211, 238, 0.14); }
 .pdf-page-card canvas { width: 100%; height: auto; border-radius: 4px; }
 .pdf-page-label { margin-top: 4px; font-size: 11.5px; font-weight: 800; }
 
-.preview-stage { background: #64748b; border-radius: 14px; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 8px; overflow: hidden; }
-.stage-toolbar { background: #fff; padding: 6px 10px; border-radius: 11px; display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: center; width: 100%; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
-.pill-switch { display: flex; background: #f1f5f9; padding: 2px; border-radius: 8px; }
+.preview-stage { background: #0F172A; border: 1px solid var(--border); border-radius: 14px; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 8px; overflow: hidden; }
+.stage-toolbar { background: var(--panel); border: 1px solid var(--border); padding: 6px 10px; border-radius: 11px; display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: center; width: 100%; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
+.pill-switch { display: flex; background: var(--card); padding: 2px; border-radius: 8px; border: 1px solid var(--border); }
 .pill-btn { padding: 4px 8px; border: none; background: transparent; border-radius: 6px; font-size: 11px; font-weight: 800; color: var(--muted); }
-.pill-btn.active { background: var(--primary); color: #fff; }
-.page-status-chip { font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 99px; background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-.page-status-chip.warn { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+.pill-btn.active { background: var(--neon-cyan); color: #050914; }
+.page-status-chip { font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 99px; background: rgba(74, 222, 128, 0.16); color: var(--neon-green); border: 1px solid rgba(74, 222, 128, 0.35); }
+.page-status-chip.warn { background: rgba(248, 113, 113, 0.16); color: var(--neon-red); border: 1px solid rgba(248, 113, 113, 0.35); }
 
+/* برگه A4 واقعی برای چاپ (سفید و استاندارد) */
 .a4-zoom-viewport { display: flex; justify-content: center; align-items: flex-start; width: 100%; overflow-x: hidden; padding-bottom: 20px; }
 .a4-scale-box { position: relative; margin: 0 auto; }
-.a4-sheet { width: 794px; min-height: 1123px; background: #fff !important; color: #000 !important; padding: 26px; box-shadow: 0 12px 36px rgba(15, 23, 42, 0.32); font-family: var(--exam-font-family); font-size: var(--exam-font-size); line-height: var(--exam-line-height); position: relative; transform-origin: top right; }
+.a4-sheet { width: 794px; min-height: 1123px; background: #fff !important; color: #000 !important; padding: 26px; box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55); font-family: var(--exam-font-family); font-size: var(--exam-font-size); line-height: var(--exam-line-height); position: relative; transform-origin: top right; }
 .a4-sheet * { font-family: inherit; color: inherit; }
 .calligraphy-active .sheet-besmellah, .calligraphy-active .official-title-cell, .calligraphy-active .sheet-bottom-bar span:first-child { font-family: var(--exam-calligraphy-font) !important; line-height: 1.95; font-size: 1.12em; }
 .page-limit-line { position: absolute; left: 0; right: 0; border-bottom: 2px dashed #dc2626; z-index: 20; pointer-events: none; display: flex; justify-content: center; }
@@ -310,9 +1138,9 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
 .sheet-frame { min-height: 1068px; padding: 7px; display: flex; flex-direction: column; position: relative; z-index: 2; }
 .frame-double { border: 4px double #000; }
 .frame-solid { border: 2px solid #000; }
-.frame-modern { border: 2.5px solid #ea580c; }
+.frame-modern { border: 2.5px solid #0284c7; }
 [contenteditable="true"] { outline: none; border-radius: 3px; cursor: text; }
-[contenteditable="true"]:hover, [contenteditable="true"]:focus { background: rgba(234, 88, 12, 0.14); box-shadow: 0 0 0 1px var(--primary); }
+[contenteditable="true"]:hover, [contenteditable="true"]:focus { background: rgba(34, 211, 238, 0.14); box-shadow: 0 0 0 1px #0284c7; }
 .sheet-besmellah { text-align: center; font-weight: 800; font-size: 0.92em; margin-bottom: 3px; }
 .mandatory-name-warning { border: 1.8px solid #000; background: #f1f5f9; color: #000; padding: 3px 8px; margin-bottom: 4px; font-size: 0.82em; font-weight: 900; text-align: center; }
 .official-header-table { width: 100%; border-collapse: collapse; border: 1.8px solid #000; margin-bottom: 5px; font-size: 0.87em; background: #fff; }
@@ -355,99 +1183,216 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
 .key-answer-banner { margin-top: 4px; padding: 3px 8px; background: #dcfce7; border-right: 3px solid #16a34a; color: #166534 !important; font-size: 0.83em; font-weight: 700; border-radius: 4px; }
 .q-pic-wrap { margin: 4px 0; text-align: center; }
 .q-pic-wrap img { max-height: 150px; border: 1px solid #94a3b8; border-radius: 4px; }
-.row-actions { display: inline-flex; gap: 2px; background: #fff7ed; border: 1px solid #fed7aa; border-radius: 6px; padding: 1px 4px; margin-bottom: 2px; flex-wrap: wrap; }
-.quick-add-bar { padding: 5px; background: #fff7ed; border: 1px dashed #ea580c; margin-top: 5px; border-radius: 6px; display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; }
+.row-actions { display: inline-flex; gap: 2px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 1px 4px; margin-bottom: 2px; flex-wrap: wrap; }
+.quick-add-bar { padding: 5px; background: #f0f9ff; border: 1px dashed #0284c7; margin-top: 5px; border-radius: 6px; display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; }
 .hide-tools .row-actions, .hide-tools .quick-add-bar, .hide-tools .page-split-badge, .hide-tools .page-limit-line { display: none !important; }
-.act-icon { border: none; background: none; padding: 1px 5px; font-size: 11px; cursor: pointer; font-weight: 700; border-radius: 4px; color: #9a3412 !important; }
+.act-icon { border: none; background: none; padding: 1px 5px; font-size: 11px; cursor: pointer; font-weight: 700; border-radius: 4px; color: #0369a1 !important; }
 .sheet-bottom-bar { border: 1.8px solid #000; border-top: none; padding: 4px 10px; background: #f8fafc; display: flex; justify-content: space-between; align-items: center; font-size: 0.84em; font-weight: 800; }
 .half-page .a4-sheet { padding: 14px !important; font-size: 11px !important; }
 .half-page .sheet-frame { min-height: 510px !important; padding: 4px !important; }
 .half-cut-line { display: none; border-bottom: 2px dashed #334155; margin: 8px 0; text-align: center; font-size: 10px; color: #475569; }
 .half-page .half-cut-line { display: block; }
-.modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(3px); display: none; justify-content: center; align-items: center; z-index: 100; padding: 12px; }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(2, 6, 23, 0.82); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 100; padding: 12px; }
 .modal-overlay.open { display: flex; }
-.modal-box { background: #fff; width: 100%; max-width: 720px; max-height: 90dvh; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
-.modal-top { background: #fff7ed; border-bottom: 1px solid #fed7aa; padding: 11px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 800; color: var(--primary-dark); }
+.modal-box { background: var(--card); border: 1px solid var(--border); color: var(--text); width: 100%; max-width: 720px; max-height: 90dvh; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow); }
+.modal-top { background: var(--panel); border-bottom: 1px solid var(--border); padding: 11px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 800; color: var(--neon-cyan); }
 .modal-content { padding: 14px; overflow-y: auto; font-size: 13px; line-height: 1.7; }
-.speed-key-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 6px; border-bottom: 1px solid #e2e8f0; font-size: 12px; }
-.speed-opt-btn { padding: 3px 9px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; cursor: pointer; font-weight: 700; font-size: 11.5px; }
-.speed-opt-btn.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
+.speed-key-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 6px; border-bottom: 1px solid var(--border-subtle); font-size: 12px; }
+.speed-opt-btn { padding: 3px 9px; border: 1px solid var(--border); border-radius: 6px; background: var(--panel); color: var(--text); cursor: pointer; font-weight: 700; font-size: 11.5px; }
+.speed-opt-btn.selected { background: var(--neon-cyan); color: #050914; border-color: var(--neon-cyan); }
+
+.att-extra-controls { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+.att-custom-input { width: 78px; min-width: 72px; padding: 6px; border: 1px solid var(--border); border-radius: 9px; background: var(--bg-main); color: var(--text); text-align: center; font-weight: 700; }
+.study-pdf-canvas-wrap { width: 100%; overflow: auto; display: flex; justify-content: center; background: #050914; border: 1px solid var(--border); border-radius: 12px; padding: 8px; min-height: 180px; }
+#teacherPdfCanvas { max-width: 100%; height: auto; background: #fff; box-shadow: 0 4px 18px #0006; }
+.study-pdf-tools { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+
+.term-action-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; align-items: center; }
+.term-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--neon-cyan);
+  background: rgba(34, 211, 238, 0.12);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--neon-cyan);
+}
+.archive-readonly-banner {
+  background: linear-gradient(90deg, rgba(167, 139, 250, 0.18), rgba(34, 211, 238, 0.14));
+  border: 1px solid var(--neon-purple);
+  color: var(--text-main);
+  padding: 10px 14px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sw-update-banner {
+  position: fixed;
+  top: 66px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 140;
+  background: #0B1424;
+  border: 1.5px solid var(--neon-cyan);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.75), 0 0 18px rgba(34, 211, 238, 0.35);
+  color: var(--text-main);
+  padding: 10px 14px;
+  border-radius: 14px;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.sw-update-banner.show { display: flex; }
+
+@keyframes fxGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(34, 211, 238, 0.25); }
+  50% { box-shadow: 0 0 22px rgba(34, 211, 238, 0.65); }
+}
+
+@media (max-width: 640px) {
+  .att-table td:first-child, .att-table th:first-child { min-width: 132px; }
+  .navin { grid-template-columns: repeat(7, 1fr); }
+}
 
 @media print {
   @page { size: A4 portrait; margin: 5mm; }
-  body { background: #fff !important; padding: 0 !important; }
-  .topbar, .nav, .fab, .exam-top-actions, .branch-bar, .exam-subnav, .stage-toolbar, .row-actions, .quick-add-bar, .page-split-badge, .page-limit-line, .modal-overlay, .modal, .toast, .undo-bar { display: none !important; }
-  .container, .view.active, #examPane-preview, .preview-stage, .a4-zoom-viewport, .a4-scale-box { display: block !important; max-width: 100% !important; width: 100% !important; padding: 0 !important; margin: 0 !important; background: #fff !important; }
+  body { background: #fff !important; color: #000 !important; padding: 0 !important; }
+  #cyberNetworkCanvas, #cyberIntroOverlay, .topbar, .nav, .fab, .exam-top-actions, .branch-bar, .exam-subnav, .stage-toolbar, .row-actions, .quick-add-bar, .page-split-badge, .page-limit-line, .modal-overlay, .modal, .toast, .undo-bar, .sw-update-banner { display: none !important; }
+  .container, .view.active, #examPane-preview, .preview-stage, .a4-zoom-viewport, .a4-scale-box { display: block !important; max-width: 100% !important; width: 100% !important; padding: 0 !important; margin: 0 !important; background: #fff !important; border: none !important; }
   .a4-sheet { box-shadow: none !important; width: 100% !important; min-height: auto !important; padding: 0 !important; transform: none !important; }
   .q-tr, .section-row, .omr-box, .official-header-table { break-inside: avoid !important; page-break-inside: avoid !important; }
 }
 
-/* نسخه ۴.۴: جلوه‌های قابل تنظیم، سرستون ثابت و آرشیو ترم */
-:root { color-scheme: light; }
-body.dark { color-scheme: dark; --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; --muted:#a7b3c5; --primary-light:#3b2519; --primary-border:#854d0e; --border:#475569; --primary-dark:#fdba74; --shadow:0 8px 26px rgba(0,0,0,.25); }
-body.dark .topbar { background:rgba(15,23,42,.94); }
-body.dark .card, body.dark .stat, body.dark .iconbtn, body.dark .sheet, body.dark .modal-content, body.dark .box, body.dark .exam-pane, body.dark .searchbox { background:#1e293b !important; color:#e2e8f0 !important; border-color:#475569 !important; }
-body.dark input, body.dark select, body.dark textarea { background:#0f172a !important; color:#e2e8f0 !important; border-color:#475569 !important; }
-body.dark .att-table th, body.dark .report-table th, body.dark .modal-top { background:#273449 !important; color:#fdba74 !important; border-color:#475569 !important; }
-body.dark .nav { background:rgba(15,23,42,.96); border-color:#475569; }
-body.dark .nav button { color:#cbd5e1; }
-body.dark .nav button.active { color:#fdba74; }
-.att-sticky-controls { position:sticky; top:58px; z-index:28; padding:7px 0; background:var(--bg); border-bottom:1px solid var(--border); }
-.att-table thead th { position:sticky; top:0; z-index:8; }
-#attendanceContent { scroll-margin-top: 120px; }
-.att-table thead th:first-child { right:0; z-index:10; }
-.att-table td:first-child { position:sticky; right:0; z-index:3; background:var(--card); min-width:150px; }
-.att-extra-controls { display:flex; gap:7px; align-items:center; flex-wrap:wrap; margin:10px 0; }
-.att-custom-input { width:78px; min-width:72px; padding:6px; border:1px solid var(--border); border-radius:9px; }
-.study-pdf-canvas-wrap { width:100%; overflow:auto; display:flex; justify-content:center; background:#e2e8f0; border-radius:12px; padding:8px; min-height:180px; }
-#teacherPdfCanvas { max-width:100%; height:auto; background:#fff; box-shadow:0 4px 18px #0002; }
-.study-pdf-tools { display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; margin:8px 0; }
-
-/* 4.4 cinematic UI: lightweight, individually switchable motion */
-body.fx-cards .card, body.fx-cards .stat { animation: fxCardIn .42s ease-out both; }
-body.fx-hud .logo { animation: fxGlow 3.2s ease-in-out infinite; }
-body.fx-feedback button:active { filter: brightness(1.18); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 22%, transparent); }
-body.fx-charts .chart-bar, body.fx-charts canvas { animation: fxFadeIn .55s ease-out both; }
-body.fx-network::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.12; background-image:radial-gradient(circle at 15% 25%, #22d3ee 0 1px, transparent 2px),radial-gradient(circle at 75% 65%, #38bdf8 0 1px, transparent 2px),linear-gradient(120deg, transparent 49.8%, #22d3ee 50%, transparent 50.2%); background-size:130px 130px,170px 170px,100% 100%; animation:fxNetwork 18s linear infinite; }
-body.fx-entry .view.active { animation:fxViewIn .28s ease-out both; }
-@keyframes fxCardIn { from {opacity:.72; transform:translateY(7px)} to {opacity:1; transform:translateY(0)} }
-@keyframes fxGlow { 0%,100% {box-shadow:0 0 8px #22d3ee22} 50% {box-shadow:0 0 18px #22d3ee66} }
-@keyframes fxFadeIn { from {opacity:.65} to {opacity:1} }
-@keyframes fxNetwork { from {background-position:0 0,0 0,0 0} to {background-position:130px 130px,-170px 170px,0 0} }
-@keyframes fxViewIn { from {opacity:.82; transform:translateY(4px)} to {opacity:1; transform:translateY(0)} }
-body.dark.fx-network::before { opacity:.18; }
-.att-wrap { position:relative; }
-.att-table thead th { position:sticky; top:0; z-index:12; box-shadow:0 1px 0 var(--border); }
-.att-table thead th:first-child { right:0; z-index:14; }
-.att-table td:first-child { right:0; }
-.term-action-row { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 12px; }
-.term-badge { display:inline-flex; align-items:center; gap:5px; border:1px solid var(--border); border-radius:999px; padding:5px 10px; font-size:12px; color:var(--muted); }
-@media (max-width:640px) { .att-sticky-controls { top:55px; } .att-table thead th { top:0; } .att-table td:first-child { min-width:132px; } body.fx-network::before { opacity:.08; background-size:180px 180px,220px 220px,100% 100%; } }
-@media (max-width:640px) { .att-sticky-controls { top:55px; } .att-table thead th { top:0; } .att-table td:first-child { min-width:132px; } }
-@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; scroll-behavior:auto !important; } }
-
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  #cyberNetworkCanvas { display: none !important; }
+}
 </style>
 </head>
 <body>
+<!-- انیمیشن شماره ۳: بوم شبکه سایبری زنده -->
+<canvas id="cyberNetworkCanvas" aria-hidden="true"></canvas>
+
+<!-- انیمیشن شماره ۱: ورود سینمایی Cyber-JARVIS -->
+<div id="cyberIntroOverlay" role="dialog" aria-label="ورود به دانش‌آموز من">
+  <div class="intro-grid-bg"></div>
+  <div class="intro-core-wrap">
+    <div class="intro-ring intro-ring-1"></div>
+    <div class="intro-ring intro-ring-2"></div>
+    <div class="intro-ring intro-ring-3"></div>
+    <div class="intro-logo-emblem">🎓</div>
+  </div>
+  <div class="intro-title">دانش‌آموز من</div>
+  <div class="intro-subtitle">دفتر هوشمند معلم · سامانه فرماندهی Cyber-JARVIS</div>
+  <div class="intro-scan-bar"></div>
+  <button type="button" class="intro-skip-btn" onclick="dismissCyberIntro()">ورود سریع به داشبورد ⏭️</button>
+</div>
+
+<!-- اعلان به‌روزرسانی نسخه PWA -->
+<div id="swUpdateBanner" class="sw-update-banner">
+  <span>🚀 نسخه جدید Cyber-JARVIS آماده است (بدون تغییر در اطلاعات ذخیره‌شده)</span>
+  <button type="button" class="btn primary btn-sm" onclick="applyPendingSwUpdate()">به‌روزرسانی</button>
+  <button type="button" class="btn gray btn-sm" onclick="document.getElementById('swUpdateBanner').classList.remove('show')">بعداً</button>
+</div>
+
 <div class="app">
 <header class="topbar">
   <div class="toprow">
     <div class="brand">
       <div class="logo">🎓</div>
-      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v4.4.0</span></small></div>
+      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v5.0.0 Cyber-JARVIS</span></small></div>
     </div>
     <div class="top-icons">
-      <button class="iconbtn" onclick="showView('birthdays')" title="تولدها">🎂</button>
-      <button class="iconbtn" onclick="showView('search')" title="جستجو">🔍</button>
-      <button class="iconbtn" id="themeToggleBtn" onclick="toggleTheme()" title="تغییر پوسته" aria-label="تغییر پوسته">🌙</button>
+      <button class="iconbtn" onclick="showView('termsView')" title="مدیریت ترم و ترم‌های گذشته" aria-label="مدیریت ترم">🗂️</button>
+      <button class="iconbtn" onclick="showView('animSettingsView')" title="ظاهر و انیمیشن‌ها" aria-label="ظاهر و انیمیشن‌ها">✨</button>
+      <button class="iconbtn" onclick="showView('birthdays')" title="تولدها" aria-label="تولدها">🎂</button>
+      <button class="iconbtn" onclick="showView('search')" title="جستجو" aria-label="جستجو">🔍</button>
+      <button class="iconbtn" id="themeToggleBtn" onclick="toggleTheme()" title="تغییر پوسته" aria-label="تغییر پوسته">☀️</button>
     </div>
   </div>
 </header>
 
 <main class="container">
 <section id="dashboard" class="view active">
-  <h1 class="title">سلام استاد 👋</h1>
-  <p class="subtitle">مدیریت سریع کلاس‌ها، حضور و غیاب، نمرات ضریب‌دار، آموزش و آزمون‌ساز</p>
+  <!-- انیمیشن شماره ۲: هسته هوشمند هولوگرافیک JARVIS -->
+  <div class="jarvis-command-deck" id="jarvisCommandDeck">
+    <div class="jarvis-core-stage" id="jarvisCoreWidget" title="برای تغییر شاخص آماری لمس کنید">
+      <svg class="jarvis-svg-rings" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <linearGradient id="jarvisCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.9"/>
+            <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#A78BFA" stop-opacity="0.85"/>
+          </linearGradient>
+          <radialGradient id="jarvisBeamGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0"/>
+            <stop offset="70%" stop-color="#22D3EE" stop-opacity="0.16"/>
+            <stop offset="100%" stop-color="#22D3EE" stop-opacity="0.42"/>
+          </radialGradient>
+        </defs>
+        <!-- حلقه اول بیرونی مدرج -->
+        <g class="jarvis-ring-outer">
+          <circle cx="100" cy="100" r="92" fill="none" stroke="url(#jarvisCyanGrad)" stroke-width="2" stroke-dasharray="18 8 4 8 42 10"/>
+          <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(34,211,238,0.28)" stroke-width="3" stroke-dasharray="2 8"/>
+        </g>
+        <!-- حلقه دوم میانی با چرخش معکوس -->
+        <g class="jarvis-ring-mid">
+          <circle cx="100" cy="100" r="76" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-dasharray="36 16 10 16" stroke-opacity="0.72"/>
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#A78BFA" stroke-width="1.4" stroke-dasharray="6 14" stroke-opacity="0.55"/>
+        </g>
+        <!-- پرتو اسکن فیروزه‌ای -->
+        <g class="jarvis-scan-beam">
+          <path d="M100,100 L100,14 A86,86 0 0,1 162,40 Z" fill="url(#jarvisBeamGrad)"/>
+          <line x1="100" y1="100" x2="100" y2="14" stroke="#22D3EE" stroke-width="1.5" stroke-opacity="0.75"/>
+        </g>
+        <!-- حلقه سوم داخلی -->
+        <g class="jarvis-ring-inner">
+          <circle cx="100" cy="100" r="60" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-dasharray="14 10 3 10" stroke-opacity="0.65"/>
+        </g>
+      </svg>
+      <div class="jarvis-core-center" onclick="cycleJarvisCoreMetric()" role="button" tabindex="0" aria-label="هسته آماری JARVIS">
+        <span class="jarvis-core-tag" id="jarvisCoreTag">JARVIS CORE</span>
+        <strong class="jarvis-core-value" id="jarvisCoreValue">۰</strong>
+        <span class="jarvis-core-label" id="jarvisCoreLabel">دانش‌آموزان</span>
+      </div>
+    </div>
+    <div class="jarvis-hud-info">
+      <div class="jarvis-status-strip">
+        <div>
+          <h1 class="title" style="margin:0">سلام استاد 👋 · اتاق فرمان آموزشی</h1>
+          <p class="subtitle" style="margin:3px 0 0">مدیریت هوشمند مدارس، حضور و غیاب، نمرات ضریب‌دار، آرشیو ترم و آزمون‌ساز</p>
+        </div>
+        <span class="jarvis-live-pill"><span class="jarvis-live-dot"></span><span id="jarvisActiveTermBadge">ترم جاری</span></span>
+      </div>
+      <div class="jarvis-metric-pills" id="jarvisMetricPills">
+        <button type="button" class="jarvis-metric-btn active" data-metric="students" onclick="setJarvisCoreMetric('students')">👨‍🎓 دانش‌آموزان</button>
+        <button type="button" class="jarvis-metric-btn" data-metric="classes" onclick="setJarvisCoreMetric('classes')">🚪 کلاس‌ها</button>
+        <button type="button" class="jarvis-metric-btn" data-metric="schools" onclick="setJarvisCoreMetric('schools')">🏫 مدارس</button>
+        <button type="button" class="jarvis-metric-btn" data-metric="avg" onclick="setJarvisCoreMetric('avg')">⭐ میانگین کل</button>
+        <button type="button" class="jarvis-metric-btn" data-metric="present" onclick="setJarvisCoreMetric('present')">✓ حاضرین امروز</button>
+      </div>
+      <div class="actions" style="margin-top:4px">
+        <button type="button" class="btn soft btn-sm" onclick="showView('termsView')">🗂️ مدیریت ترم و آرشیو</button>
+        <button type="button" class="btn gray btn-sm" onclick="showView('animSettingsView')">✨ تنظیمات ظاهر و انیمیشن‌ها</button>
+      </div>
+    </div>
+  </div>
+
   <div id="dashBirthdaysBox"></div>
   <div id="todayClassesBox"></div>
   <div class="stats">
@@ -541,7 +1486,7 @@ body.dark.fx-network::before { opacity:.18; }
     <div class="field" style="margin-top:8px"><label for="teacherPageNote">📝 یادداشت اختصاصی این صفحه</label><textarea id="teacherPageNote" rows="3" placeholder="نکته‌های تدریس، توضیح‌ها یا یادآوری‌های این صفحه..."></textarea><button class="btn soft block" style="margin-top:7px" onclick="TeachAssistant.savePageNote()">💾 ذخیره یادداشت این صفحه</button></div>
   </div>
   <p class="subtitle">اسکن دائمی کتاب درسی در حافظه، پاسخ به فعالیت‌ها و تمرین‌ها، استخراج خط‌به‌خط سوالات هر درس و پاسخ فوری به سوالات ناگهانی دانش‌آموزان</p>
-  <div class="card" style="margin-bottom:12px;background:#fff7ed;border-color:#fed7aa">
+  <div class="card" style="margin-bottom:12px;background:var(--panel);border-color:var(--border)">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
       <b style="color:var(--primary-dark)">⚡ دستیار فوری سوالات بداهه سر کلاس (پاسخ علمی در ۳ ثانیه)</b>
       <button class="btn soft btn-sm" onclick="TeachAssistant.voiceImpromptu()" id="btnVoiceImp">🎙️ پرسش صوتی</button>
@@ -550,7 +1495,7 @@ body.dark.fx-network::before { opacity:.18; }
       <input id="impromptuInp" placeholder="سوال ناگهانی دانش‌آموز را بنویسید..." style="flex:1;min-width:200px">
       <button class="btn primary" id="btnRunImpromptu" onclick="TeachAssistant.askImpromptu()">🚀 دریافت پاسخ معلمانه</button>
     </div>
-    <div id="impromptuResultBox" style="display:none;margin-top:10px;padding:11px;background:#fff;border:1px solid var(--border);border-radius:12px;line-height:1.75;font-size:13px"></div>
+    <div id="impromptuResultBox" style="display:none;margin-top:10px;padding:11px;background:var(--card);border:1px solid var(--border);border-radius:12px;line-height:1.75;font-size:13px"></div>
   </div>
 
   <div class="card" style="margin-bottom:12px">
@@ -694,7 +1639,7 @@ body.dark.fx-network::before { opacity:.18; }
           <select id="aiLevel"><option value="آسان و کلاسی">آسان و کلاسی</option><option value="استاندارد امتحانی" selected>استاندارد امتحانی</option><option value="مفهومی و چالشی">مفهومی و چالشی</option><option value="خیلی خیلی سخت">خیلی‌خیلی سخت</option></select>
         </div>
         <div style="display:flex;align-items:flex-end">
-          <label class="switch-card" style="width:100%;background:#fff7ed;border-color:#fed7aa"><span>🧹 پاک شدن سوالات قبلی</span><input type="checkbox" id="swClearBeforeAi" checked onchange="ExamApp.syncSwitchesFromUI()"></label>
+          <label class="switch-card" style="width:100%;background:var(--panel);border-color:var(--border)"><span>🧹 پاک شدن سوالات قبلی</span><input type="checkbox" id="swClearBeforeAi" checked onchange="ExamApp.syncSwitchesFromUI()"></label>
         </div>
       </div>
       <button class="btn primary block" style="margin-top:8px;padding:11px" id="btnRunAi" onclick="ExamApp.generateQuestionsByAI()">✨ طراحی خودکار آزمون (با نمرات رُند ۰.۲۵ و تراز صفحه)</button>
@@ -820,7 +1765,7 @@ body.dark.fx-network::before { opacity:.18; }
           </select>
         </div>
         <div style="display:flex;align-items:flex-end">
-          <label class="switch-card" style="width:100%;background:#fff"><span>✨ خطاطی سرلوحه</span><input type="checkbox" id="swCalligraphyHeader" checked onchange="ExamApp.syncSwitchesFromUI()"></label>
+          <label class="switch-card" style="width:100%;background:var(--panel)"><span>✨ خطاطی سرلوحه</span><input type="checkbox" id="swCalligraphyHeader" checked onchange="ExamApp.syncSwitchesFromUI()"></label>
         </div>
       </div>
     </div>
@@ -906,8 +1851,20 @@ body.dark.fx-network::before { opacity:.18; }
 
 <section id="backup" class="view">
   <h1 class="title">⚙️ تنظیمات، ضرایب نمره، شخصی‌سازی و خروجی</h1>
+  <div class="formgrid" style="margin-bottom:12px">
+    <div class="card" style="border-color:var(--neon-cyan)">
+      <b style="color:var(--neon-cyan)">✨ ظاهر و انیمیشن‌ها (۱۰ کلید مستقل)</b>
+      <p class="muted" style="margin:4px 0 10px">کنترل کامل انیمیشن ورود، هسته JARVIS، شبکه زنده، اسکن اطلاعات و افکت‌های آموزشی.</p>
+      <button type="button" class="btn primary block" onclick="showView('animSettingsView')">ورود به صفحه «ظاهر و انیمیشن‌ها» ←</button>
+    </div>
+    <div class="card" style="border-color:var(--neon-purple)">
+      <b style="color:var(--neon-purple)">🗂️ مدیریت ترم و آرشیو ترم‌های گذشته</b>
+      <p class="muted" style="margin:4px 0 10px">شروع ترم جدید از صفر با بایگانی کامل سوابق ترم قبلی و مشاهده یا خروجی JSON هر ترم.</p>
+      <button type="button" class="btn soft block" onclick="showView('termsView')">ورود به «مدیریت ترم و آرشیو» ←</button>
+    </div>
+  </div>
   <div class="card" style="margin-bottom:12px">
-    <b style="color:var(--primary)">🎛️ فعال و غیرفعال‌سازی بخش‌های برنامه (همراه با سوئیچ انیمیشن‌های اسکرول)</b>
+    <b style="color:var(--primary)">🎛️ فعال و غیرفعال‌سازی بخش‌های نمایشی داشبورد و کلاس</b>
     <div id="featureTogglesBox" style="margin-top:8px"></div>
   </div>
   <div class="card" style="margin-bottom:12px">
@@ -953,6 +1910,71 @@ body.dark.fx-network::before { opacity:.18; }
   </div>
   <div class="card"><button class="btn danger block" onclick="clearAll()">⚠️ پاک‌سازی کامل تمام اطلاعات برنامه</button></div>
 </section>
+
+<!-- بخش دهم: صفحه مستقل تنظیمات «ظاهر و انیمیشن‌ها» -->
+<section id="animSettingsView" class="view">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+    <div>
+      <h1 class="title">✨ ظاهر و انیمیشن‌ها</h1>
+      <p class="subtitle" style="margin:0">کنترل مستقل جلوه‌های بصری، هسته هولوگرافیک JARVIS، شبکه زنده و بازخوردهای آموزشی</p>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button type="button" class="btn soft btn-sm" onclick="replayCyberIntroNow()">🎬 پیش‌نمایش ورود سینمایی</button>
+      <button type="button" class="btn gray btn-sm" onclick="showView('backup')">⚙️ بازگشت به تنظیمات کل</button>
+    </div>
+  </div>
+
+  <div id="reducedMotionNotice" class="card" style="display:none;margin-bottom:12px;border-color:var(--neon-purple);background:var(--purple-bg)">
+    <b style="color:var(--neon-purple)">ℹ️ حالت کاهش حرکت سیستم‌عامل (prefers-reduced-motion) فعال است</b>
+    <p class="muted" style="margin:4px 0 0">برنامه به صورت خودکار انیمیشن‌های پیوسته را برای راحتی چشم و صرفه‌جویی در باتری محدود کرده است.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:12px;border-color:var(--neon-cyan)">
+    <div class="toggle-row" style="padding:4px 0">
+      <div>
+        <b style="font-size:14.5px;color:var(--neon-red)">🛑 خاموش‌کردن همه انیمیشن‌ها</b>
+        <div class="muted">با فعال‌سازی این کلید، تمام ۱۰ جلوه حرکتی و تزئینی بلافاصله متوقف می‌شوند (بدون هیچ تأثیری بر داده‌ها)</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="swMasterAnimOff" onchange="toggleMasterAnimationsOff(this.checked)">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="actions" style="margin-top:10px">
+      <button type="button" class="btn primary btn-sm" onclick="setAllCyberAnimations(true)">✨ روشن‌کردن همه انیمیشن‌ها</button>
+      <button type="button" class="btn soft btn-sm" onclick="applyLowPowerAnimPreset()">🔋 حالت بهینه باتری (گوشی‌های ضعیف)</button>
+      <button type="button" class="btn danger btn-sm" onclick="setAllCyberAnimations(false)">⏹️ خاموش‌کردن همه</button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <b style="color:var(--neon-cyan);display:block;margin-bottom:6px">🎛️ کلیدهای مستقل ۱۰ انیمیشن Cyber-JARVIS</b>
+    <div id="cyberAnimTogglesList"></div>
+  </div>
+
+  <div class="card">
+    <b style="color:var(--neon-cyan);display:block;margin-bottom:6px">🎨 پوسته رنگی برنامه</b>
+    <div class="actions" style="margin-top:6px">
+      <button type="button" class="btn primary" style="flex:1" onclick="setCyberThemeMode('dark')">🌌 تم سایبری تاریک Cyber-JARVIS (پیش‌فرض)</button>
+      <button type="button" class="btn gray" style="flex:1" onclick="setCyberThemeMode('light')">☀️ تم روشن روز (کنتراست بالا)</button>
+    </div>
+  </div>
+</section>
+
+<!-- بخش دوازدهم: صفحه جامع «مدیریت ترم و ترم‌های گذشته» -->
+<section id="termsView" class="view">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+    <div>
+      <h1 class="title">🗂️ مدیریت ترم و آرشیو ترم‌های گذشته</h1>
+      <p class="subtitle" style="margin:0">شروع ترم جدید از صفر با بایگانی کامل و امن نمرات، حضور و غیاب و سوابق رفتاری ترم قبلی</p>
+    </div>
+    <button type="button" class="btn soft btn-sm" onclick="exportFullData()">📚 دریافت پشتیبان کامل برنامه (JSON)</button>
+  </div>
+
+  <div id="termsManagementOverview"></div>
+  <div id="pastTermsListContainer" style="margin-top:14px"></div>
+  <div id="archivedTermInspectorBox" style="margin-top:14px;display:none"></div>
+</section>
 </main>
 
 <button class="fab" id="mainFabBtn" onclick="quickAdd()" title="افزودن سریع">＋</button>
@@ -961,6 +1983,7 @@ body.dark.fx-network::before { opacity:.18; }
   <div class="navin">
     <button data-view="dashboard" class="active" onclick="showView('dashboard')"><b>⌂</b>خانه</button>
     <button data-view="schools" onclick="showView('schools')"><b>🏫</b>مدارس</button>
+    <button data-view="termsView" onclick="showView('termsView')"><b>🗂️</b>ترم‌ها</button>
     <button data-view="teachView" onclick="showView('teachView')"><b>📖</b>آموزش</button>
     <button data-view="examView" onclick="showView('examView')"><b>📝</b>آزمون‌ساز</button>
     <button data-view="statuses" onclick="showView('statuses')"><b>🟢</b>وضعیت‌ها</button>
@@ -1026,7 +2049,7 @@ body.dark.fx-network::before { opacity:.18; }
     <div class="modal-top"><span>🖥️ نمایش اسلایدی سوالات (شعبه <span id="projBranchLbl">الف</span>)</span><button class="btn gray btn-sm" onclick="ExamApp.closeModal('projectorModal')">✖ خروج</button></div>
     <div class="modal-content" style="text-align:center;padding:22px 16px">
       <div id="projSlideCounter" style="font-weight:800;color:var(--primary);margin-bottom:10px"></div>
-      <div id="projSlideBody" style="font-size:1.1rem;font-weight:800;background:#f8fafc;border:2px solid #cbd5e1;border-radius:14px;padding:20px;min-height:160px;display:flex;flex-direction:column;justify-content:center;gap:12px"></div>
+      <div id="projSlideBody" style="font-size:1.1rem;font-weight:800;background:var(--panel);border:2px solid var(--border);border-radius:14px;padding:20px;min-height:160px;display:flex;flex-direction:column;justify-content:center;gap:12px"></div>
       <div id="projAnswerBox" style="display:none;margin-top:12px;padding:10px;background:#dcfce7;color:#15803d;border-radius:10px;font-weight:800"></div>
       <div style="display:flex;justify-content:center;gap:10px;margin-top:16px">
         <button class="btn gray" onclick="ExamApp.StepProjector(-1)">➡️ قبلی</button>
@@ -1041,7 +2064,7 @@ body.dark.fx-network::before { opacity:.18; }
   <div class="modal-box">
     <div class="modal-top"><span>🪄 ساخت خودکار آزمون بدون کلید API</span><button class="btn gray btn-sm" onclick="ExamApp.closeModal('noApiModal')">✖ بستن</button></div>
     <div class="modal-content">
-      <textarea id="noApiPromptText" readonly style="min-height:90px;background:#f8fafc;font-size:11.5px"></textarea>
+      <textarea id="noApiPromptText" readonly style="min-height:90px;background:var(--panel);font-size:11.5px"></textarea>
       <button class="btn soft btn-sm" style="margin:6px 0 12px" onclick="ExamApp.copyNoApiPrompt()">📋 کپی دستور</button>
       <textarea id="noApiPasteBox" placeholder="کد JSON پاسخ را اینجا پیست کنید..." style="min-height:90px"></textarea>
       <button class="btn primary block" style="margin-top:8px" onclick="ExamApp.importNoApiJSON()">🚀 چیدن فوری در جدول برگه</button>
@@ -1055,8 +2078,38 @@ body.dark.fx-network::before { opacity:.18; }
 </div>
 
 <script>
+(function() {
+  try {
+    const t = '__cyber_ls_test__';
+    window.localStorage.setItem(t, '1');
+    window.localStorage.removeItem(t);
+  } catch (e) {
+    const _mem = {};
+    const _shim = {
+      getItem: (k) => Object.prototype.hasOwnProperty.call(_mem, k) ? _mem[k] : null,
+      setItem: (k, v) => { _mem[k] = String(v); },
+      removeItem: (k) => { delete _mem[k]; },
+      clear: () => { for (const k in _mem) delete _mem[k]; }
+    };
+    try { Object.defineProperty(window, 'localStorage', { value: _shim, configurable: true }); } catch (_) {}
+  }
+  try {
+    const st = '__cyber_ss_test__';
+    window.sessionStorage.setItem(st, '1');
+    window.sessionStorage.removeItem(st);
+  } catch (e) {
+    const _smem = {};
+    const _sshim = {
+      getItem: (k) => Object.prototype.hasOwnProperty.call(_smem, k) ? _smem[k] : null,
+      setItem: (k, v) => { _smem[k] = String(v); },
+      removeItem: (k) => { delete _smem[k]; },
+      clear: () => { for (const k in _smem) delete _smem[k]; }
+    };
+    try { Object.defineProperty(window, 'sessionStorage', { value: _sshim, configurable: true }); } catch (_) {}
+  }
+})();
 const KEY = 'danesh_amooz_man_v1';
-const APP_VERSION = '4.4.0';
+const APP_VERSION = '5.0.0';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -1390,7 +2443,7 @@ function renderTodayAbsences() {
     const abs = (c.students || []).filter(st => attendanceStatus(c, today, st.id) === 'absent');
     if (abs.length) list.push({ s, c, abs });
   }));
-  box.innerHTML = list.length ? `<div class="card"><b style="color:#b91c1c">🚨 غایبین ثبت‌شده امروز (${formatJalaliDate(today)})</b><div style="display:grid;gap:8px;margin-top:8px">${list.map(x => `<div style="padding:8px 10px;background:#fef2f2;border:1px solid #fecaca;border-radius:10px"><b>${esc(x.s.name)} · ${esc(x.c.name)}:</b> <span style="font-size:12.5px">${x.abs.map(st => formatStudentName(st)).join(' ، ')}</span></div>`).join('')}</div></div>` : '';
+  box.innerHTML = list.length ? `<div class="card"><b style="color:#b91c1c">🚨 غایبین ثبت‌شده امروز (${formatJalaliDate(today)})</b><div style="display:grid;gap:8px;margin-top:8px">${list.map(x => `<div style="padding:8px 10px;background:var(--danger-bg);border:1px solid rgba(248,113,113,0.35);border-radius:10px"><b>${esc(x.s.name)} · ${esc(x.c.name)}:</b> <span style="font-size:12.5px">${x.abs.map(st => formatStudentName(st)).join(' ، ')}</span></div>`).join('')}</div></div>` : '';
 }
 
 /* مدارس و کلاس‌ها */
@@ -1491,12 +2544,13 @@ function renderTodayListInner(sid, cid) {
   const dateISO = window.currentListDate || localISODate();
   if (!c.attendance) c.attendance = {}; if (!c.attendance[dateISO]) c.attendance[dateISO] = {}; if (!c.sessionNotes) c.sessionNotes = {};
   const noteVal = c.sessionNotes[dateISO] || '';
+  const allDates = attendanceDates(c);
   const rows = sortStudents(c.students).map(st => {
     const isAbs = attendanceStatus(c, dateISO, st.id) === 'absent', sc = attendanceScore(c, dateISO, st.id), b = behaviorData(st), autoAttn = isAutoAttention(c, st);
-    return `<div class="td-row scroll-fx-item fx-visible" style="${autoAttn ? 'background:#fef2f2' : ''}"><div style="display:flex;align-items:center;gap:9px;flex:1;min-width:0"><button class="att-cell ${isAbs ? 'absent' : 'present'}" style="width:40px;height:38px" onclick="inlAtt('${sid}','${cid}','${st.id}')">${isAbs ? '✖' : '✓'}</button><div style="min-width:0;overflow:hidden"><b style="font-size:14px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;color:${autoAttn ? '#dc2626' : 'var(--primary-dark)'}" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}${autoAttn ? '🔴' : ''}</b><div class="muted" style="font-size:11px">➕ ${fa(b.positives.length)} · ➖ ${fa(b.negatives.length)}</div></div></div><div style="display:flex;align-items:center;gap:5px;flex-shrink:0"><input type="number" step="0.25" min="0" max="20" class="td-score-inp" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${dateISO}',this.value)"><button class="td-btn-plus" onclick="inlScore('${sid}','${cid}','${st.id}','positive')">＋</button><button class="td-btn-minus" onclick="inlScore('${sid}','${cid}','${st.id}','negative')">－</button></div></div>`;
+    return `<div class="td-row" id="tdRow_${st.id}" style="${autoAttn ? 'background:rgba(248,113,113,0.10)' : ''}"><div style="display:flex;align-items:center;gap:9px;flex:1;min-width:0"><button id="tdAttBtn_${st.id}" class="att-cell ${isAbs ? 'absent' : 'present'}" style="width:42px;height:38px" onclick="inlAtt('${sid}','${cid}','${st.id}')" title="${isAbs ? 'غایب' : 'حاضر'}">${isAbs ? '✖' : '✓'}</button><div style="min-width:0;overflow:hidden"><b style="font-size:14px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;color:${autoAttn ? 'var(--neon-red)' : 'var(--text-main)'}" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}${autoAttn ? ' 🔴' : ''}</b><div class="muted" style="font-size:11px">➕ <span id="tdPos_${st.id}">${fa(b.positives.length)}</span> · ➖ <span id="tdNeg_${st.id}">${fa(b.negatives.length)}</span> · میانگین: <span id="tdAvg_${st.id}">${avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—'}</span></div></div></div><div style="display:flex;align-items:center;gap:5px;flex-shrink:0"><input id="tdScore_${st.id}" type="number" step="0.25" min="0" max="20" class="td-score-inp" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${dateISO}',this.value,this)"><button class="td-btn-plus" onclick="inlScore('${sid}','${cid}','${st.id}','positive')" title="امتیاز مثبت">＋</button><button class="td-btn-minus" onclick="inlScore('${sid}','${cid}','${st.id}','negative')" title="امتیاز منفی">－</button></div></div>`;
   }).join('');
-  document.getElementById('classTodayListContainer').innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px"><button class="btn gray" onclick="closeTodayList()">← بازگشت به کلاس</button><button class="btn soft" onclick="pickRandomStudent('${sid}','${cid}')">🎲 قرعه‌کشی پرسش</button></div><div class="td-list-card"><div class="td-list-head"><div style="display:flex;align-items:center;gap:6px"><b>📅 تاریخ جلسه:</b><input type="text" value="${formatJalaliDate(dateISO)}" onchange="changeListDate('${sid}','${cid}',this.value)" style="width:105px;padding:5px 8px;font-weight:bold;text-align:center;font-size:12.5px"></div><button class="btn soft btn-sm" onclick="inlAllPresent('${sid}','${cid}')">✓ همه حاضر</button></div><div style="padding:10px 14px;background:#fffaf5;border-bottom:1px solid var(--border)"><input type="text" value="${esc(noteVal)}" placeholder="📝 یادداشت یا مبحث تدریس‌شده امروز..." onchange="saveSessionNote('${sid}','${cid}','${dateISO}',this.value)" style="font-size:12.5px"></div><div style="max-height:64vh;overflow-y:auto" onscroll="ScrollFX.refresh()">${rows || '<div class="muted" style="padding:20px;text-align:center">دانش‌آموزی ثبت نشده است.</div>'}</div></div>`;
-  setTimeout(() => ScrollFX.refresh(), 40);
+  const dateOptions = allDates.map(d => `<option value="${d}" ${d === dateISO ? 'selected' : ''}>${formatJalaliDate(d)}</option>`).join('');
+  document.getElementById('classTodayListContainer').innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap"><button class="btn gray" onclick="closeTodayList()">← بازگشت به کلاس</button><div style="display:flex;gap:6px"><button class="btn soft" onclick="pickRandomStudent('${sid}','${cid}')">🎲 قرعه‌کشی پرسش</button><button class="btn soft" onclick="openAttendance('${sid}','${cid}')">📋 جدول جامع</button></div></div><div class="td-list-card" id="todayListCardBox"><div class="td-sticky-header-group"><div class="td-list-head"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap"><b>📅 تاریخ جلسه:</b><input id="todayDateJalaliInput" type="text" value="${formatJalaliDate(dateISO)}" onchange="changeListDate('${sid}','${cid}',this.value)" style="width:108px;padding:5px 8px;font-weight:bold;text-align:center;font-size:12.5px" title="ویرایش تاریخ شمسی">${allDates.length ? `<select onchange="selectListDateISO('${sid}','${cid}',this.value)" style="width:auto;padding:4px 8px;font-size:11.5px" title="انتخاب از جلسات تقویم"><option value="${dateISO}">انتخاب جلسه...</option>${dateOptions}</select>` : ''}</div><button class="btn soft btn-sm" onclick="inlAllPresent('${sid}','${cid}')">✓ همه حاضر</button></div><div style="padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--border-subtle)"><input type="text" value="${esc(noteVal)}" placeholder="📝 یادداشت یا مبحث تدریس‌شده در تاریخ ${formatJalaliDate(dateISO)}..." onchange="saveSessionNote('${sid}','${cid}','${dateISO}',this.value)" style="font-size:12px;padding:6px 10px"></div><div class="td-col-headers"><span>وضعیت حضور و نام دانش‌آموز (${fa(c.students.length)} نفر)</span><span>نمره جلسه · امتیاز (+ / −)</span></div></div><div class="td-scroll-body" id="tdScrollBody">${rows || '<div class="muted" style="padding:20px;text-align:center">دانش‌آموزی ثبت نشده است.</div>'}</div></div>`;
 }
 window.saveSessionNote = function(sid, cid, d, t) { const c = findClass(sid, cid); if (!c) return; c.sessionNotes[d] = t.trim(); savePersistent(); toast('یادداشت ذخیره شد 📝'); };
 window.changeListDate = function(sid, cid, v) { const iso = jalaliToISO(v); if (!iso) { alert('تاریخ معتبر وارد کنید.'); return; } window.currentListDate = iso; renderTodayListInner(sid, cid); };
@@ -1522,17 +2576,21 @@ function openAttendance(sid, cid) {
   let rows = students.map(st => {
     let termScore = c.termScores?.[st.id] ?? '', calcFinal = calculateFinalStudentScore(c, st);
     let shBtns = shortcuts.slice(0, 4).map(sh => `<button class="qb ${sh.type === 'positive' ? 'pos' : 'neg'}" onclick="gridApplyShortcut('${sid}','${cid}','${st.id}','${esc(sh.code)}')">${sh.type === 'positive' ? '＋' : '－'}${esc(sh.code)}</button>`).join('');
+    const activeFocusDate = window._attFocusDate && dates.includes(window._attFocusDate) ? window._attFocusDate : (dates[0] || localISODate());
     let cols = dates.map(d => {
       let isAbs = attendanceStatus(c, d, st.id) === 'absent', sc = attendanceScore(c, d, st.id);
-      return `<td><div class="att-combo"><button class="att-cell ${isAbs ? 'absent' : 'present'}" onclick="gridToggleAtt('${sid}','${cid}','${st.id}','${d}')">${isAbs ? '✖' : '✓'}</button><input class="att-score-input" type="number" step="0.25" min="0" max="20" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${d}',this.value)"></div></td>`;
+      return `<td data-date="${d}" class="${d === activeFocusDate ? 'active-date-col' : ''}"><div class="att-combo"><button id="attCell_${st.id}_${d}" class="att-cell ${isAbs ? 'absent' : 'present'}" onclick="gridToggleAtt('${sid}','${cid}','${st.id}','${d}',this)">${isAbs ? '✖' : '✓'}</button><input id="attInp_${st.id}_${d}" class="att-score-input" type="number" step="0.25" min="0" max="20" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${d}',this.value,this)"></div></td>`;
     }).join('');
     const customCells = gradeCols.map(g => { const val = g.scores?.[st.id] ?? ''; return `<td><input class="att-custom-input" type="number" min="0" max="${Number(g.max)||20}" step="0.25" value="${val}" placeholder="/${Number(g.max)||20}" onchange="saveCustomGrade('${sid}','${cid}','${st.id}','${g.id}',this.value)"></td>`; }).join('');
     const vals = gradeCols.map(g => { const v = Number(g.scores?.[st.id]); const mx = Number(g.max)||20; return g.scores?.[st.id] !== undefined && g.scores?.[st.id] !== '' && Number.isFinite(v) && mx > 0 ? (v/mx)*20 : null; }).filter(v => v !== null);
     const customAvg = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
-    return `<tr><td><b style="cursor:pointer;color:var(--primary-dark)" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b><div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:4px">${shBtns}</div></td><td><input class="term-score-input" type="number" step="0.25" min="0" max="20" value="${termScore}" placeholder="ترم" onchange="saveTermScore('${sid}','${cid}','${st.id}',this.value)"></td><td style="font-weight:900;color:${calcFinal < 10 ? '#dc2626' : '#15803d'}">${fmtScore(calcFinal)}</td><td>${customAvg===null?'—':fmtScore(customAvg)}</td><td>➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}</td>${customCells}${cols}</tr>`;
+    return `<tr id="attRow_${st.id}"><td><b style="cursor:pointer;color:var(--primary-dark)" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b><div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:4px">${shBtns}</div></td><td><input id="termInp_${st.id}" class="term-score-input" type="number" step="0.25" min="0" max="20" value="${termScore}" placeholder="ترم" onchange="saveTermScore('${sid}','${cid}','${st.id}',this.value,this)"></td><td id="finalCell_${st.id}" data-score="${calcFinal}" style="font-weight:900;color:${calcFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)'}">${fmtScore(calcFinal)}</td><td id="customAvgCell_${st.id}">${customAvg===null?'—':fmtScore(customAvg)}</td><td id="behCell_${st.id}">➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}</td>${customCells}${cols}</tr>`;
   }).join('');
-  document.getElementById('attendanceContent').innerHTML = header + `<div class="term-action-row"><span class="term-badge">📚 ترم فعال: ${esc(c.currentTermName || 'ترم جاری')}</span><button class="btn soft btn-sm" onclick="showTermArchive('${sid}','${cid}')">🗃️ آرشیو ترم‌های گذشته (${fa((c.archivedTerms || []).length)})</button></div><div class="att-sticky-controls"><div class="att-extra-controls"><button class="btn primary btn-sm" onclick="addCustomGradeColumn('${sid}','${cid}')">＋ ستون نمره جدید</button><span class="muted">ستون‌های اختصاصی این کلاس · سقف نمره قابل تنظیم</span></div></div><div class="card"><div class="att-wrap"><table class="att-table"><thead><tr><th>نام خانوادگی و نام</th><th>نمره ترم</th><th>نهایی</th><th>میانگین ارزیابی‌ها /۲۰</th><th>مثبت/منفی</th>${gradeCols.map(g=>`<th><div style="display:grid;gap:4px;min-width:95px"><b>${esc(g.title)} (${fa(g.max)})</b><div style="display:flex;gap:3px"><button class="btn gray btn-sm" onclick="editCustomGradeColumn('${sid}','${cid}','${g.id}')">✎</button><button class="btn danger btn-sm" onclick="removeCustomGradeColumn('${sid}','${cid}','${g.id}')">×</button></div></div></th>`).join('')}${dates.map(d => `<th><button class="link att-date" onclick="editAttendanceDate('${sid}','${cid}','${d}')">✎ ${formatAttendanceDate(d)}</button></th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  const activeFocusDate = window._attFocusDate && dates.includes(window._attFocusDate) ? window._attFocusDate : (dates[0] || localISODate());
+  const dateSelectOpts = dates.map((d, idx) => `<option value="${d}" ${d === activeFocusDate ? 'selected' : ''}>جلسه ${fa(idx + 1)}: ${formatJalaliDate(d)}</option>`).join('');
+  document.getElementById('attendanceContent').innerHTML = header + `<div class="att-top-sticky-bar" id="attTopStickyBar"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="term-badge">📚 ترم فعال: ${esc(c.currentTermName || 'ترم جاری')}</span><button class="btn soft btn-sm" onclick="showTermArchive('${sid}','${cid}')">🗃️ ترم‌های گذشته (${fa((c.archivedTerms || []).length)})</button><button class="btn primary btn-sm" onclick="addCustomGradeColumn('${sid}','${cid}')">＋ ستون نمره سفارشی</button></div><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap"><label class="muted" style="font-weight:700">📅 تاریخ جلسه فعال:</label><select id="attFocusDateSelect" onchange="focusAttendanceDateColumn('${sid}','${cid}',this.value)" style="width:auto;padding:5px 9px;font-size:12px;font-weight:700">${dateSelectOpts}</select><button class="btn gray btn-sm" onclick="editAttendanceDate('${sid}','${cid}',document.getElementById('attFocusDateSelect')?.value || '${activeFocusDate}')">✎ ویرایش تاریخ</button></div></div><div class="card" style="padding:0;overflow:hidden"><div class="att-wrap" id="attTableScrollWrap"><table class="att-table" id="attMainTable"><thead><tr><th>نام خانوادگی و نام (${fa(students.length)} نفر)</th><th>نمره ترم</th><th>نهایی</th><th>میانگین ارزیابی‌ها /۲۰</th><th>مثبت/منفی</th>${gradeCols.map(g=>`<th><div style="display:grid;gap:4px;min-width:95px"><b>${esc(g.title)} (${fa(g.max)})</b><div style="display:flex;gap:3px;justify-content:center"><button class="btn gray btn-sm" onclick="editCustomGradeColumn('${sid}','${cid}','${g.id}')">✎</button><button class="btn danger btn-sm" onclick="removeCustomGradeColumn('${sid}','${cid}','${g.id}')">×</button></div></div></th>`).join('')}${dates.map(d => `<th data-date="${d}" class="${d === activeFocusDate ? 'active-date-col' : ''}"><button class="link att-date" onclick="editAttendanceDate('${sid}','${cid}','${d}')" title="ویرایش تاریخ ${formatJalaliDate(d)}">✎ ${formatAttendanceDate(d)}</button></th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
   showView('attendance');
+  triggerCyberScan('attendanceContent');
 }
 function clonePlain(value) { return JSON.parse(JSON.stringify(value)); }
 function startNewTerm(sid, cid) {
@@ -1651,7 +2709,7 @@ function openStudent(sid, cid, stid) {
   const autoReasons = getAutoAttentionReasons(c, st), effStat = (st.status === 'attn' || autoReasons.length > 0) ? 'attn' : (st.status || 'none');
   let allBeh = [...b.positives.map(x => ({ ...x, type: 'positive' })), ...b.negatives.map(x => ({ ...x, type: 'negative' }))].sort((a, z) => new Date(z.date) - new Date(a.date));
   let papersHtml = (st.examPapers && st.examPapers.length) ? `<div class="card" style="margin-top:12px"><b>📸 برگه‌های امتحانی تصحیح‌شده (${fa(st.examPapers.length)})</b><div class="class-gallery" style="margin-top:8px">${st.examPapers.map((p, idx) => `<div style="border:1px solid var(--border);border-radius:12px;padding:6px;background:#fffaf5"><img src="${p.img}" class="photo-clickable" onclick="openPhotoViewer('${p.img}','برگه-${idx+1}.jpg')"><div style="font-size:11.5px;font-weight:bold;margin-top:4px">${esc(p.title || 'آزمون')} — نمره: ${fmtScore(p.score)}</div><button class="btn soft block btn-sm" style="margin-top:4px" onclick="triggerPhotoDownload('${p.img}','برگه-${idx+1}.jpg')">⬇️ ذخیره برگه</button></div>`).join('')}</div></div>` : '';
-  document.getElementById('studentDetailContent').innerHTML = `<div class="card"><div class="student"><div class="avatar ${st.photo ? 'photo-clickable' : ''}" style="width:74px!important;height:74px!important;font-size:28px" ${st.photo ? `onclick="openPhotoViewer('${st.photo}','photo.jpg')"` : ''}>${st.photo ? `<img src="${st.photo}">` : esc((st.name || '?')[0])}</div><div style="flex:1"><h1 class="title" style="margin:0">${formatStudentName(st)}</h1><div class="muted">${esc(s.name)} · ${esc(c.name)}</div><div class="chips"><span class="status ${effStat}">${effStat === 'good' ? '🟢 خوب' : effStat === 'attn' ? '🔴 نیازمند توجه' : '⚪ عادی'}</span><span class="chip">📚 مستمر: ${avg === null ? '—' : fmtScore(avg)}</span><span class="chip">⭐ نهایی: ${fmtScore(fin)}</span></div></div></div><div class="actions" style="margin-top:12px"><button class="btn primary" style="flex:1" onclick="openParentView('${sid}','${cid}','${stid}')">👨‍👩‍👦 نمایش به اولیا</button><button class="btn soft" onclick="sendParentSmsReport('${sid}','${cid}','${stid}')">📱 پیامک کارنامه</button></div><hr style="border:0;border-top:1px solid var(--border);margin:14px 0"><div class="formgrid"><div><b>🎂 تولد:</b> <span class="muted">${fa(st.birth || '—')}</span></div><div><b>☎ تلفن:</b> <span class="muted">${fa(st.phone || '—')}</span></div><div class="field full"><b>❤️ علایق:</b> <span class="muted">${esc(st.interests || '—')}</span></div><div class="field full"><b>🔒 یادداشت معلم:</b> <span class="muted">${esc(st.notes || '—')}</span></div></div></div>${renderStudentLineChart(c, st)}${papersHtml}<div class="card" style="margin-top:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b>➕➖ سوابق مثبت و منفی</b><span class="chip">خالص: ${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)}</span></div><div class="actions"><button class="btn green" style="flex:1" onclick="addBehaviorModal('${sid}','${cid}','${stid}','positive')">➕ ثبت مثبت</button><button class="btn danger" style="flex:1" onclick="addBehaviorModal('${sid}','${cid}','${stid}','negative')">➖ ثبت منفی</button></div><div style="margin-top:10px;display:grid;gap:7px">${allBeh.map(x => `<div style="padding:9px 11px;background:#fffaf5;border:1px solid var(--border);border-radius:11px;display:flex;justify-content:space-between;align-items:center;gap:8px"><div><b>${x.type === 'positive' ? '➕' : '➖'} ${esc(x.reason)}</b><div class="muted">${formatEventDate(x.date)} · ${fmtScore(x.value || 0.25)}</div></div><div style="display:flex;gap:5px"><button class="btn gray btn-sm" onclick="editBehavior('${sid}','${cid}','${stid}','${x.type}','${x.id}')">✎</button><button class="btn danger btn-sm" onclick="deleteBehavior('${sid}','${cid}','${stid}','${x.type}','${x.id}')">حذف</button></div></div>`).join('') || '<div class="muted">موردی ثبت نشده.</div>'}</div></div><div class="card" style="margin-top:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b>📚 نمرات ثبت‌شده</b><button class="btn primary btn-sm" onclick="addGrade('${sid}','${cid}','${stid}')">＋ ثبت نمره</button></div><div style="margin-top:10px;display:grid;gap:7px">${g.slice().sort((a, z) => new Date(z.date) - new Date(a.date)).map(x => `<div style="padding:9px 11px;background:#fffaf5;border:1px solid var(--border);border-radius:11px;display:flex;justify-content:space-between;align-items:center"><div><b>${esc(x.subject || 'ارزیابی')} — <span style="color:var(--primary)">${fmtScore(x.score)}</span></b> <span class="chip" style="font-size:10px">${x.gradeType === 'cont_exam' ? 'کتبی مستمر' : 'کلاسی'}</span></div><div style="display:flex;gap:5px"><button class="btn gray btn-sm" onclick="editGrade('${sid}','${cid}','${stid}','${x.id}')">✎</button><button class="btn danger btn-sm" onclick="deleteGrade('${sid}','${cid}','${stid}','${x.id}')">حذف</button></div></div>`).join('') || '<div class="muted">نمره‌ای ثبت نشده.</div>'}</div></div><div class="actions" style="margin-top:14px"><button class="btn primary" onclick="editStudent('${sid}','${cid}','${stid}')">✎ ویرایش</button><button class="btn soft" onclick="copyStudentAdvanced('${sid}','${cid}','${stid}')">📋 کپی</button><button class="btn soft" onclick="moveStudent('${sid}','${cid}','${stid}')">🔀 انتقال</button><button class="btn danger" onclick="deleteStudent('${sid}','${cid}','${stid}')">حذف</button></div>`;
+  document.getElementById('studentDetailContent').innerHTML = `<div class="card"><div class="student"><div class="avatar ${st.photo ? 'photo-clickable' : ''}" style="width:74px!important;height:74px!important;font-size:28px" ${st.photo ? `onclick="openPhotoViewer('${st.photo}','photo.jpg')"` : ''}>${st.photo ? `<img src="${st.photo}">` : esc((st.name || '?')[0])}</div><div style="flex:1"><h1 class="title" style="margin:0">${formatStudentName(st)}</h1><div class="muted">${esc(s.name)} · ${esc(c.name)}</div><div class="chips"><span class="status ${effStat}">${effStat === 'good' ? '🟢 خوب' : effStat === 'attn' ? '🔴 نیازمند توجه' : '⚪ عادی'}</span><span class="chip">📚 مستمر: ${avg === null ? '—' : fmtScore(avg)}</span><span class="chip">⭐ نهایی: ${fmtScore(fin)}</span></div></div></div><div class="actions" style="margin-top:12px"><button class="btn primary" style="flex:1" onclick="openParentView('${sid}','${cid}','${stid}')">👨‍👩‍👦 نمایش به اولیا</button><button class="btn soft" onclick="sendParentSmsReport('${sid}','${cid}','${stid}')">📱 پیامک کارنامه</button></div><hr style="border:0;border-top:1px solid var(--border);margin:14px 0"><div class="formgrid"><div><b>🎂 تولد:</b> <span class="muted">${fa(st.birth || '—')}</span></div><div><b>☎ تلفن:</b> <span class="muted">${fa(st.phone || '—')}</span></div><div class="field full"><b>❤️ علایق:</b> <span class="muted">${esc(st.interests || '—')}</span></div><div class="field full"><b>🔒 یادداشت معلم:</b> <span class="muted">${esc(st.notes || '—')}</span></div></div></div>${renderStudentLineChart(c, st)}${papersHtml}<div class="card" style="margin-top:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b>➕➖ سوابق مثبت و منفی</b><span class="chip">خالص: ${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)}</span></div><div class="actions"><button class="btn green" style="flex:1" onclick="addBehaviorModal('${sid}','${cid}','${stid}','positive')">➕ ثبت مثبت</button><button class="btn danger" style="flex:1" onclick="addBehaviorModal('${sid}','${cid}','${stid}','negative')">➖ ثبت منفی</button></div><div style="margin-top:10px;display:grid;gap:7px">${allBeh.map(x => `<div style="padding:9px 11px;background:var(--panel);border:1px solid var(--border);border-radius:11px;display:flex;justify-content:space-between;align-items:center;gap:8px"><div><b>${x.type === 'positive' ? '➕' : '➖'} ${esc(x.reason)}</b><div class="muted">${formatEventDate(x.date)} · ${fmtScore(x.value || 0.25)}</div></div><div style="display:flex;gap:5px"><button class="btn gray btn-sm" onclick="editBehavior('${sid}','${cid}','${stid}','${x.type}','${x.id}')">✎</button><button class="btn danger btn-sm" onclick="deleteBehavior('${sid}','${cid}','${stid}','${x.type}','${x.id}')">حذف</button></div></div>`).join('') || '<div class="muted">موردی ثبت نشده.</div>'}</div></div><div class="card" style="margin-top:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b>📚 نمرات ثبت‌شده</b><button class="btn primary btn-sm" onclick="addGrade('${sid}','${cid}','${stid}')">＋ ثبت نمره</button></div><div style="margin-top:10px;display:grid;gap:7px">${g.slice().sort((a, z) => new Date(z.date) - new Date(a.date)).map(x => `<div style="padding:9px 11px;background:var(--panel);border:1px solid var(--border);border-radius:11px;display:flex;justify-content:space-between;align-items:center"><div><b>${esc(x.subject || 'ارزیابی')} — <span style="color:var(--primary)">${fmtScore(x.score)}</span></b> <span class="chip" style="font-size:10px">${x.gradeType === 'cont_exam' ? 'کتبی مستمر' : 'کلاسی'}</span></div><div style="display:flex;gap:5px"><button class="btn gray btn-sm" onclick="editGrade('${sid}','${cid}','${stid}','${x.id}')">✎</button><button class="btn danger btn-sm" onclick="deleteGrade('${sid}','${cid}','${stid}','${x.id}')">حذف</button></div></div>`).join('') || '<div class="muted">نمره‌ای ثبت نشده.</div>'}</div></div><div class="actions" style="margin-top:14px"><button class="btn primary" onclick="editStudent('${sid}','${cid}','${stid}')">✎ ویرایش</button><button class="btn soft" onclick="copyStudentAdvanced('${sid}','${cid}','${stid}')">📋 کپی</button><button class="btn soft" onclick="moveStudent('${sid}','${cid}','${stid}')">🔀 انتقال</button><button class="btn danger" onclick="deleteStudent('${sid}','${cid}','${stid}')">حذف</button></div>`;
   showView('studentDetail');
 }
 
@@ -1666,13 +2724,13 @@ function renderStudentLineChart(c, st) {
   const pts = getStudentChronologicalGrades(c, st);
   if (pts.length < 2) return `<div class="chart-container"><b>📈 نمودار پیشرفت</b><p class="muted" style="margin:6px 0 0">پس از ثبت حداقل ۲ نمره رسم می‌شود.</p></div>`;
   const w = 560, h = 135, svgPts = pts.map((p, i) => `${(i / (pts.length - 1)) * (w - 70) + 35},${h - (p.score / 20) * (h - 42) - 22}`).join(' ');
-  return `<div class="chart-container"><b>📈 نمودار پیشرفت دانش‌آموز</b><div class="chart-box"><svg class="chart" viewBox="0 0 ${w} ${h}"><line x1="30" y1="${h - 22}" x2="${w - 30}" y2="${h - 22}" stroke="#fed7aa" stroke-width="1.5"/><polyline fill="none" stroke="#ea580c" stroke-width="3" points="${svgPts}"/>${pts.map((p, i) => { let x = (i / (pts.length - 1)) * (w - 70) + 35, y = h - (p.score / 20) * (h - 42) - 22; return `<circle cx="${x}" cy="${y}" r="4.5" fill="#16a34a"/><text x="${x}" y="${y - 8}" font-size="10" font-weight="bold" text-anchor="middle" fill="#1e293b">${fmtScore(p.score)}</text>`; }).join('')}</svg></div></div>`;
+  return `<div class="chart-container"><b>📈 نمودار پیشرفت دانش‌آموز</b><div class="chart-box"><svg class="chart" viewBox="0 0 ${w} ${h}"><line x1="30" y1="${h - 22}" x2="${w - 30}" y2="${h - 22}" stroke="rgba(56,189,248,0.28)" stroke-width="1.5"/><polyline fill="none" stroke="#22D3EE" stroke-width="3" points="${svgPts}"/>${pts.map((p, i) => { let x = (i / (pts.length - 1)) * (w - 70) + 35, y = h - (p.score / 20) * (h - 42) - 22; return `<circle cx="${x}" cy="${y}" r="4.5" fill="#4ADE80"/><text x="${x}" y="${y - 8}" font-size="10" font-weight="bold" text-anchor="middle" fill="#F1F5F9">${fmtScore(p.score)}</text>`; }).join('')}</svg></div></div>`;
 }
 
 function openParentView(sid, cid, stid) {
   const s = findSchool(sid), c = findClass(sid, cid), st = findStudent(sid, cid, stid); if (!s || !c || !st) return;
   const dates = attendanceDates(c), abs = dates.filter(d => attendanceStatus(c, d, st.id) === 'absent').length, avg = avgGrade(st), fin = calculateFinalStudentScore(c, st), b = behaviorData(st);
-  openModal(formHeader('👨‍👩‍👦 کارنامه ویژه اولیا') + `<div id="parentReportPrintable"><div style="display:flex;align-items:center;gap:12px;padding:12px;background:#fff7ed;border:1px solid #fed7aa;border-radius:16px"><div class="avatar">${st.photo ? `<img src="${st.photo}">` : '👨‍🎓'}</div><div><h2 style="margin:0;color:#9a3412">${formatStudentName(st)}</h2><div class="muted">${esc(s.name)} · ${esc(c.name)}</div></div></div><div class="report-summary"><div><b>${avg === null ? '—' : fmtScore(avg)}</b><small>مستمر</small></div><div><b>${c.termScores?.[st.id] ?? '—'}</b><small>پایانی</small></div><div><b>+${fa(b.positives.length)} / −${fa(b.negatives.length)}</b><small>رفتاری</small></div><div><b>${fmtScore(fin)}</b><small>نهایی</small></div></div><div style="padding:8px;background:#f8fafc;border-radius:10px;font-size:12px">غیبت‌ها: <b>${fa(abs)} جلسه</b></div>${renderStudentLineChart(c, st)}</div><div class="formactions"><button class="btn primary" onclick="printParentReport()">🖨️ چاپ / PDF</button><button class="btn soft" onclick="sendParentSmsReport('${sid}','${cid}','${stid}')">📱 پیامک</button><button class="btn gray" onclick="closeModal()">بستن</button></div>`);
+  openModal(formHeader('👨‍👩‍👦 کارنامه ویژه اولیا') + `<div id="parentReportPrintable"><div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--panel);border:1px solid var(--border);border-radius:16px"><div class="avatar">${st.photo ? `<img src="${st.photo}">` : '👨‍🎓'}</div><div><h2 style="margin:0;color:#9a3412">${formatStudentName(st)}</h2><div class="muted">${esc(s.name)} · ${esc(c.name)}</div></div></div><div class="report-summary"><div><b>${avg === null ? '—' : fmtScore(avg)}</b><small>مستمر</small></div><div><b>${c.termScores?.[st.id] ?? '—'}</b><small>پایانی</small></div><div><b>+${fa(b.positives.length)} / −${fa(b.negatives.length)}</b><small>رفتاری</small></div><div><b>${fmtScore(fin)}</b><small>نهایی</small></div></div><div style="padding:8px;background:#f8fafc;border-radius:10px;font-size:12px">غیبت‌ها: <b>${fa(abs)} جلسه</b></div>${renderStudentLineChart(c, st)}</div><div class="formactions"><button class="btn primary" onclick="printParentReport()">🖨️ چاپ / PDF</button><button class="btn soft" onclick="sendParentSmsReport('${sid}','${cid}','${stid}')">📱 پیامک</button><button class="btn gray" onclick="closeModal()">بستن</button></div>`);
 }
 function printParentReport() {
   const content = document.getElementById('parentReportPrintable')?.innerHTML; if (!content) return;
@@ -1738,7 +2796,7 @@ function getShortcuts() {
 function saveShortcuts(arr) { localStorage.setItem('behavior_shortcuts_v2', JSON.stringify(arr)); renderShortcutSettingsUi(); renderAll(); }
 function renderShortcutSettingsUi() {
   const box = document.getElementById('shortcutListUi'); if (!box) return;
-  box.innerHTML = getShortcuts().map((item, idx) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:#fffaf5;border:1px solid var(--border);border-radius:10px"><div><b style="color:${item.type === 'positive' ? '#15803d' : '#b91c1c'}">${item.type === 'positive' ? '➕' : '➖'} «${esc(item.code)}»</b> <span class="muted">${esc(item.reason)} (${fmtScore(item.value)})</span></div><div style="display:flex;gap:5px"><button class="btn gray btn-sm" onclick="openShortcutModal(${idx})">✎</button><button class="btn danger btn-sm" onclick="deleteShortcut(${idx})">حذف</button></div></div>`).join('');
+  box.innerHTML = getShortcuts().map((item, idx) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:10px"><div><b style="color:${item.type === 'positive' ? '#15803d' : '#b91c1c'}">${item.type === 'positive' ? '➕' : '➖'} «${esc(item.code)}»</b> <span class="muted">${esc(item.reason)} (${fmtScore(item.value)})</span></div><div style="display:flex;gap:5px"><button class="btn gray btn-sm" onclick="openShortcutModal(${idx})">✎</button><button class="btn danger btn-sm" onclick="deleteShortcut(${idx})">حذف</button></div></div>`).join('');
 }
 function addShortcutPrompt() { openShortcutModal(-1); }
 function openShortcutModal(idx) {
@@ -1869,13 +2927,13 @@ function renderClassLineChart(c) {
   let pts = []; attendanceDates(c).forEach(d => { let scs = (c.students || []).map(st => attendanceScore(c, d, st.id)).filter(x => x !== null); if (scs.length) pts.push({ label: formatAttendanceDate(d), avg: scs.reduce((a, b) => a + b, 0) / scs.length }); });
   if (pts.length < 2) return '';
   const w = 560, h = 125, svgPts = pts.map((p, i) => `${(i / (pts.length - 1)) * (w - 60) + 30},${h - (p.avg / 20) * (h - 40) - 20}`).join(' ');
-  return `<div class="chart-container"><b>📈 روند میانگین جلسات کلاس</b><div class="chart-box"><svg class="chart" viewBox="0 0 ${w} ${h}"><line x1="25" y1="${h - 20}" x2="${w - 25}" y2="${h - 20}" stroke="#fed7aa" stroke-width="1.5"/><polyline fill="none" stroke="#ea580c" stroke-width="3" points="${svgPts}"/>${pts.map((p, i) => { let x = (i / (pts.length - 1)) * (w - 60) + 30, y = h - (p.avg / 20) * (h - 40) - 20; return `<circle cx="${x}" cy="${y}" r="4" fill="#ea580c"/><text x="${x}" y="${y - 7}" font-size="9.5" text-anchor="middle" fill="#1e293b">${fmtScore(p.avg)}</text>`; }).join('')}</svg></div></div>`;
+  return `<div class="chart-container"><b>📈 روند میانگین جلسات کلاس</b><div class="chart-box"><svg class="chart" viewBox="0 0 ${w} ${h}"><line x1="25" y1="${h - 20}" x2="${w - 25}" y2="${h - 20}" stroke="rgba(56,189,248,0.28)" stroke-width="1.5"/><polyline fill="none" stroke="#22D3EE" stroke-width="3" points="${svgPts}"/>${pts.map((p, i) => { let x = (i / (pts.length - 1)) * (w - 60) + 30, y = h - (p.avg / 20) * (h - 40) - 20; return `<circle cx="${x}" cy="${y}" r="4" fill="#22D3EE"/><text x="${x}" y="${y - 7}" font-size="9.5" text-anchor="middle" fill="#F1F5F9">${fmtScore(p.avg)}</text>`; }).join('')}</svg></div></div>`;
 }
 function renderSchoolProgressChart() {
   const box = document.getElementById('schoolProgressChart'); if (!box) return;
   if (!isFeatOn('feat_dash_chart') || !db.schools.length) { box.innerHTML = ''; return; }
   let schAvgs = db.schools.map(s => { let all = []; s.classes.forEach(c => c.students.forEach(st => { let g = avgGrade(st); if (g !== null) all.push(g); })); return { name: s.name, avg: all.length ? all.reduce((a, b) => a + b, 0) / all.length : 0 }; });
-  box.innerHTML = `<div class="card" style="margin-top:12px"><b>📊 مقایسه میانگین مدارس</b><div style="display:grid;gap:8px;margin-top:10px">${schAvgs.map(x => `<div><div style="display:flex;justify-content:space-between;font-size:12px"><span>${esc(x.name)}</span><b>${fmtScore(x.avg)} از ۲۰</b></div><div style="height:8px;background:#ffedd5;border-radius:6px;overflow:hidden;margin-top:3px"><div style="height:100%;width:${(x.avg / 20) * 100}%;background:var(--primary)"></div></div></div>`).join('')}</div></div>`;
+  box.innerHTML = `<div class="card" style="margin-top:12px"><b>📊 مقایسه میانگین مدارس</b><div style="display:grid;gap:8px;margin-top:10px">${schAvgs.map(x => `<div><div style="display:flex;justify-content:space-between;font-size:12px"><span>${esc(x.name)}</span><b>${fmtScore(x.avg)} از ۲۰</b></div><div style="height:8px;background:var(--panel);border-radius:6px;overflow:hidden;margin-top:3px"><div class="cyber-progress-fill" style="height:100%;width:${(x.avg / 20) * 100}%;background:linear-gradient(90deg,var(--neon-cyan),var(--neon-purple))"></div></div></div>`).join('')}</div></div>`;
 }
 
 function getTeacherName() { return localStorage.getItem('teacher_name') || 'رضا شهابی نژاد'; }
@@ -1930,7 +2988,7 @@ function copyClass(sid, cid) {
 function deleteClass(sid, cid) { const c = findClass(sid, cid), s = findSchool(sid); if (c && s && confirm(`کلاس «${c.name}» حذف شود؟`)) { pushUndo('حذف کلاس'); s.classes = s.classes.filter(x => x.id !== cid); save(); openSchool(sid); } }
 function collectiveBehavior(sid, cid, type) {
   const c = findClass(sid, cid); if (!c || !c.students.length) return;
-  openModal(formHeader(type === 'positive' ? '➕ مثبت جمعی' : '➖ منفی جمعی') + `<div class="field"><label>دلیل</label><input id="colReason" placeholder="مشارکت گروهی"></div><div style="margin:10px 0;max-height:42vh;overflow-y:auto">${sortStudents(c.students).map(st => `<label style="display:flex;align-items:center;gap:8px;padding:7px;border-bottom:1px solid #f1f5f9"><input type="checkbox" value="${st.id}" checked class="colChk"> <span>${formatStudentName(st)}</span></label>`).join('')}</div><div class="formactions"><button class="btn primary" onclick="execCollective('${sid}','${cid}','${type}')">ثبت</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>`);
+  openModal(formHeader(type === 'positive' ? '➕ مثبت جمعی' : '➖ منفی جمعی') + `<div class="field"><label>دلیل</label><input id="colReason" placeholder="مشارکت گروهی"></div><div style="margin:10px 0;max-height:42vh;overflow-y:auto">${sortStudents(c.students).map(st => `<label style="display:flex;align-items:center;gap:8px;padding:7px;border-bottom:1px solid var(--border-subtle)"><input type="checkbox" value="${st.id}" checked class="colChk"> <span>${formatStudentName(st)}</span></label>`).join('')}</div><div class="formactions"><button class="btn primary" onclick="execCollective('${sid}','${cid}','${type}')">ثبت</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>`);
 }
 function execCollective(sid, cid, type) {
   const c = findClass(sid, cid); if (!c) return;
@@ -2063,7 +3121,7 @@ const TeachAssistant = {
     try {
       const raw = await ExamApp.callArgonAI(`تمام فعالیت‌ها، کاردرکلاس‌ها و تمرین‌های متن زیر را پیدا کن و پاسخ تشریحی بده:\n"${src}"\nفقط آرایه JSON برگردان: [{"title":"عنوان","solution":"پاسخ کامل"}]`);
       const arr = JSON.parse((raw.match(/\[[\s\S]*\]/) || [raw])[0]);
-      box.innerHTML = arr.map((it, i) => `<div style="padding:10px;background:#fffaf5;border:1px solid var(--border);border-radius:11px"><b>📌 تمرین ${fa(i + 1)}: ${esc(it.title)}</b><div style="margin-top:5px;color:#15803d;font-weight:bold;font-size:12.5px">💡 پاسخ: ${esc(it.solution)}</div></div>`).join('');
+      box.innerHTML = arr.map((it, i) => `<div style="padding:10px;background:var(--panel);border:1px solid var(--border);border-radius:11px"><b>📌 تمرین ${fa(i + 1)}: ${esc(it.title)}</b><div style="margin-top:5px;color:#15803d;font-weight:bold;font-size:12.5px">💡 پاسخ: ${esc(it.solution)}</div></div>`).join('');
     } catch (err) { alert('خطا: ' + err.message); } finally { btn.disabled = false; btn.textContent = '📝 استخراج پاسخ فعالیت‌ها و تمرین‌ها'; }
   },
   async extractLineByLineQuestions() {
@@ -2081,7 +3139,7 @@ const TeachAssistant = {
   renderExtractedBank() {
     const box = document.getElementById('extractedQuestionsBox'); if (!box) return;
     const list = db.cachedBook?.extractedBank || [];
-    box.innerHTML = list.length ? list.slice(0, 25).map((it, idx) => `<div style="padding:9px 11px;background:#fffaf5;border:1px solid var(--border);border-radius:11px"><div style="display:flex;justify-content:space-between;gap:6px"><b>${fa(idx + 1)}. ${esc(it.q)}</b><button class="btn soft btn-sm" onclick="TeachAssistant.sendToExamSheet('${it.id}')">➕ به آزمون</button></div><div style="margin-top:4px;color:#15803d;font-size:12px;font-weight:bold">✅ پاسخ: ${esc(it.a)}</div></div>`).join('') : '<div class="muted">هنوز سوالی استخراج نشده.</div>';
+    box.innerHTML = list.length ? list.slice(0, 25).map((it, idx) => `<div style="padding:9px 11px;background:var(--panel);border:1px solid var(--border);border-radius:11px"><div style="display:flex;justify-content:space-between;gap:6px"><b>${fa(idx + 1)}. ${esc(it.q)}</b><button class="btn soft btn-sm" onclick="TeachAssistant.sendToExamSheet('${it.id}')">➕ به آزمون</button></div><div style="margin-top:4px;color:#15803d;font-size:12px;font-weight:bold">✅ پاسخ: ${esc(it.a)}</div></div>`).join('') : '<div class="muted">هنوز سوالی استخراج نشده.</div>';
   },
   sendToExamSheet(id) {
     const it = (db.cachedBook?.extractedBank || []).find(x => x.id === id); if (!it) return;
@@ -2654,9 +3712,1236 @@ const ExamApp = {
   clearExamQuestions() { if (confirm('پاک شود؟')) { this.state.branches[this.currentBranch] = []; this.save(); this.renderAll(); } }
 };
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=' + APP_VERSION).then(r => r.update()).catch(() => {});
-window.addEventListener('DOMContentLoaded', () => { applyTheme(localStorage.getItem('danesh_theme') || 'light');
-applyAnimationSetting(); ScrollFX.init(); renderAll(); restorePersistent(); ExamApp.init(); });
+
+/* ==================== موتور سینمایی Cyber-JARVIS (نسخه 5.0.0) ==================== */
+const CYBER_ANIM_KEY = 'cyber_anim_settings_v1';
+const CYBER_ANIM_DEFS = [
+  { key: 'anim_intro', legacy: 'fx_entry', title: '۱. انیمیشن سینمایی ورود', desc: 'نمایش صفحه خوش‌آمدگویی هولوگرافیک هنگام باز شدن اولیه برنامه (۱۲۰۰ تا ۱۸۰۰ میلی‌ثانیه)' },
+  { key: 'anim_network', legacy: 'fx_network', title: '۲. پس‌زمینه شبکه‌ای زنده', desc: 'شبکه عصبی سایبری با نقاط نورانی و ذرات متحرک در پس‌زمینه (توقف خودکار در تب مخفی)' },
+  { key: 'anim_jarvis_core', legacy: 'fx_hud', title: '۳. هسته هولوگرافیک JARVIS', desc: 'چرخش حلقه‌های هم‌مرکز، خطوط مدرج دیجیتال و پرتو اسکن فیروزه‌ای در داشبورد' },
+  { key: 'anim_card_touch', legacy: 'fx_feedback', title: '۴. درخشش و موج نور کارت‌ها', desc: 'روشن شدن حاشیه و موج نور کوتاه هنگام لمس کارت‌های مدرسه، کلاس و دانش‌آموز' },
+  { key: 'anim_card_enter', legacy: 'fx_cards', title: '۵. انیمیشن ورود کارت‌ها', desc: 'ظاهر شدن مرحله‌ای و نرم کارت‌ها هنگام باز کردن صفحات (بدون تکرار مزاحم هنگام ثبت نمره)' },
+  { key: 'anim_scan', legacy: null, title: '۶. اسکن اطلاعات', desc: 'عبور خط نور فیروزه‌ای کوتاه (۴۲۰ میلی‌ثانیه) هنگام باز کردن کلاس، لیست دانش‌آموزان یا گزارش' },
+  { key: 'anim_charts', legacy: 'fx_charts', title: '۷. انیمیشن نمودارها', desc: 'رسم نرم نمودارهای پیشرفت، نوارهای درصدی و شمارش کوتاه اعداد گزارش‌ها' },
+  { key: 'anim_attendance', legacy: null, title: '۸. افکت ثبت حضور و غیاب', desc: 'بازخورد نوری سبز برای حاضر و نشان قرمز واضح برای غایب (۲۰۰ میلی‌ثانیه)' },
+  { key: 'anim_grades', legacy: null, title: '۹. افکت ثبت نمره و امتیازها', desc: 'شمارش کوتاه تغییر نمره و بازخورد رنگی سبز/قرمز هنگام ثبت امتیاز مثبت و منفی' },
+  { key: 'anim_page_transition', legacy: 'fx_entry', title: '۱۰. انیمیشن تغییر صفحه', desc: 'انتقال نرم و سریع بین صفحات مختلف برنامه با حفظ کامل سرعت دسترسی' }
+];
+
+function getCyberAnimState() {
+  const defaults = {
+    masterOff: false,
+    anim_intro: true,
+    anim_network: true,
+    anim_jarvis_core: true,
+    anim_card_touch: true,
+    anim_card_enter: true,
+    anim_scan: true,
+    anim_charts: true,
+    anim_attendance: true,
+    anim_grades: true,
+    anim_page_transition: true
+  };
+  try {
+    const raw = localStorage.getItem(CYBER_ANIM_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      return { ...defaults, ...parsed };
+    }
+    if (localStorage.getItem('feat_animations') === 'false') {
+      defaults.masterOff = true;
+    }
+  } catch (e) {}
+  return defaults;
+}
+
+function saveCyberAnimState(st) {
+  try {
+    localStorage.setItem(CYBER_ANIM_KEY, JSON.stringify(st));
+    localStorage.setItem('feat_animations', st.masterOff ? 'false' : 'true');
+  } catch (e) {}
+  applyAnimationSetting();
+}
+
+function isCyberAnimOn(key) {
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const st = getCyberAnimState();
+  if (st.masterOff) return false;
+  if (prefersReduced && ['anim_network', 'anim_jarvis_core', 'anim_intro'].includes(key)) return false;
+  return st[key] !== false;
+}
+
+applyAnimationSetting = function() {
+  const st = getCyberAnimState();
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.body.classList.toggle('no-animations', !!st.masterOff);
+  CYBER_ANIM_DEFS.forEach(def => {
+    const cls = def.key.replace(/_/g, '-');
+    const on = !st.masterOff && st[def.key] !== false && !(prefersReduced && ['anim_network', 'anim_jarvis_core', 'anim_intro'].includes(def.key));
+    document.body.classList.toggle(cls, on);
+  });
+
+  document.body.classList.toggle('fx-cards', isCyberAnimOn('anim_card_enter'));
+  document.body.classList.toggle('fx-hud', isCyberAnimOn('anim_jarvis_core'));
+  document.body.classList.toggle('fx-feedback', isCyberAnimOn('anim_card_touch'));
+  document.body.classList.toggle('fx-charts', isCyberAnimOn('anim_charts'));
+  document.body.classList.toggle('fx-network', isCyberAnimOn('anim_network'));
+  document.body.classList.toggle('fx-entry', isCyberAnimOn('anim_page_transition'));
+
+  if (window.CyberNetwork) {
+    if (isCyberAnimOn('anim_network') && !document.hidden) window.CyberNetwork.start();
+    else window.CyberNetwork.stop();
+  }
+  const rmNotice = document.getElementById('reducedMotionNotice');
+  if (rmNotice) rmNotice.style.display = prefersReduced ? 'block' : 'none';
+};
+
+function renderAnimSettingsPage() {
+  const st = getCyberAnimState();
+  const masterChk = document.getElementById('swMasterAnimOff');
+  if (masterChk) masterChk.checked = !!st.masterOff;
+  const box = document.getElementById('cyberAnimTogglesList');
+  if (!box) return;
+  box.innerHTML = CYBER_ANIM_DEFS.map(def => {
+    const checked = !st.masterOff && st[def.key] !== false;
+    return `<div class="toggle-row">
+      <div>
+        <b style="font-size:13.5px;color:${checked ? 'var(--text-main)' : 'var(--muted)'}">${def.title}</b>
+        <div class="muted" style="font-size:11.5px;margin-top:2px">${def.desc}</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" data-anim-key="${def.key}" ${checked ? 'checked' : ''} onchange="toggleSingleCyberAnim('${def.key}', this.checked)">
+        <span class="slider"></span>
+      </label>
+    </div>`;
+  }).join('');
+}
+
+window.toggleSingleCyberAnim = function(key, checked) {
+  const st = getCyberAnimState();
+  st[key] = !!checked;
+  if (checked && st.masterOff) st.masterOff = false;
+  saveCyberAnimState(st);
+  renderAnimSettingsPage();
+  toast(`${checked ? 'روشن شد ✨' : 'خاموش شد ⏹️'}`);
+};
+
+window.toggleMasterAnimationsOff = function(off) {
+  const st = getCyberAnimState();
+  st.masterOff = !!off;
+  saveCyberAnimState(st);
+  renderAnimSettingsPage();
+  toast(off ? 'همه انیمیشن‌ها متوقف شدند 🛑' : 'انیمیشن‌ها فعال شدند ✨');
+};
+
+window.setAllCyberAnimations = function(enableAll) {
+  const st = getCyberAnimState();
+  st.masterOff = !enableAll;
+  CYBER_ANIM_DEFS.forEach(d => { st[d.key] = !!enableAll; });
+  saveCyberAnimState(st);
+  renderAnimSettingsPage();
+  toast(enableAll ? 'تمام ۱۰ انیمیشن روشن شدند ✨' : 'تمام انیمیشن‌ها خاموش شدند 🛑');
+};
+
+window.applyLowPowerAnimPreset = function() {
+  const st = getCyberAnimState();
+  st.masterOff = false;
+  st.anim_intro = false;
+  st.anim_network = false;
+  st.anim_jarvis_core = false;
+  st.anim_card_touch = true;
+  st.anim_card_enter = true;
+  st.anim_scan = true;
+  st.anim_charts = true;
+  st.anim_attendance = true;
+  st.anim_grades = true;
+  st.anim_page_transition = true;
+  saveCyberAnimState(st);
+  renderAnimSettingsPage();
+  toast('حالت کم‌مصرف باتری فعال شد 🔋');
+};
+
+/* ۱. کنترل انیمیشن سینمایی ورود (۱۲۰۰ تا ۱۸۰۰ میلی‌ثانیه) */
+let _introTimer = null;
+window.dismissCyberIntro = function() {
+  const ov = document.getElementById('cyberIntroOverlay');
+  if (!ov) return;
+  clearTimeout(_introTimer);
+  ov.classList.add('intro-hidden');
+  setTimeout(() => { if (ov) ov.style.display = 'none'; }, 360);
+};
+
+window.runInitialCyberIntro = function() {
+  const ov = document.getElementById('cyberIntroOverlay');
+  if (!ov) return;
+  if (!isCyberAnimOn('anim_intro')) {
+    ov.style.display = 'none';
+    return;
+  }
+  let seenInSession = false;
+  try { seenInSession = sessionStorage.getItem('cyber_intro_seen_v5') === '1'; } catch (e) {}
+  const duration = seenInSession ? 950 : 1550;
+  try { sessionStorage.setItem('cyber_intro_seen_v5', '1'); } catch (e) {}
+  ov.style.display = 'flex';
+  ov.classList.remove('intro-hidden');
+  clearTimeout(_introTimer);
+  _introTimer = setTimeout(() => {
+    window.dismissCyberIntro();
+  }, duration);
+};
+
+window.replayCyberIntroNow = function() {
+  const ov = document.getElementById('cyberIntroOverlay');
+  if (!ov) return;
+  ov.style.display = 'flex';
+  ov.classList.remove('intro-hidden');
+  clearTimeout(_introTimer);
+  _introTimer = setTimeout(() => window.dismissCyberIntro(), 1600);
+};
+
+/* ۲. هسته هولوگرافیک JARVIS با آمار واقعی از پایگاه داده */
+window._jarvisMetricMode = 'students';
+window._isDbLoading = true;
+
+window.updateJarvisCoreDisplay = function(animate = false) {
+  const valEl = document.getElementById('jarvisCoreValue');
+  const lblEl = document.getElementById('jarvisCoreLabel');
+  const tagEl = document.getElementById('jarvisCoreTag');
+  const badgeEl = document.getElementById('jarvisActiveTermBadge');
+  if (!valEl || !lblEl) return;
+
+  if (window._isDbLoading) {
+    valEl.textContent = '...';
+    lblEl.textContent = 'در حال بارگذاری';
+    return;
+  }
+
+  const c = counts();
+  const mode = window._jarvisMetricMode || 'students';
+  let targetNum = 0;
+  let label = 'دانش‌آموزان';
+  let tag = 'JARVIS · STUDENTS';
+  let isFloat = false;
+
+  if (mode === 'students') {
+    targetNum = c.students; label = 'دانش‌آموز فعال'; tag = 'TOTAL STUDENTS';
+  } else if (mode === 'classes') {
+    targetNum = c.classes; label = 'کلاس فعال'; tag = 'ACTIVE CLASSES';
+  } else if (mode === 'schools') {
+    targetNum = c.schools; label = 'مدرسه'; tag = 'SCHOOLS';
+  } else if (mode === 'avg') {
+    let allScores = [];
+    db.schools.forEach(s => s.classes.forEach(cl => cl.students.forEach(st => {
+      const f = calculateFinalStudentScore(cl, st);
+      if (Number.isFinite(f) && (st.grades?.length || cl.termScores?.[st.id] !== undefined)) allScores.push(f);
+    })));
+    targetNum = allScores.length ? (allScores.reduce((a, b) => a + b, 0) / allScores.length) : 0;
+    label = 'میانگین کل'; tag = 'OVERALL AVG'; isFloat = true;
+  } else if (mode === 'present') {
+    const today = localISODate();
+    let pres = 0;
+    db.schools.forEach(s => s.classes.forEach(cl => cl.students.forEach(st => {
+      if (attendanceStatus(cl, today, st.id) !== 'absent') pres++;
+    })));
+    targetNum = pres; label = 'حاضرین امروز'; tag = 'TODAY PRESENT';
+  }
+
+  if (tagEl) tagEl.textContent = tag;
+  lblEl.textContent = label;
+
+  let termTitle = db.activeTermName || 'نیمسال اول ۱۴۰۵-۱۴۰۶';
+  if (db.schools?.[0]?.classes?.[0]?.currentTermName) {
+    termTitle = db.schools[0].classes[0].currentTermName;
+  }
+  if (badgeEl) badgeEl.textContent = termTitle;
+
+  document.querySelectorAll('#jarvisMetricPills .jarvis-metric-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.metric === mode);
+  });
+
+  if (animate && isCyberAnimOn('anim_charts')) {
+    animateNumberValue(valEl, 0, targetNum, 420, isFloat);
+  } else {
+    valEl.textContent = isFloat ? fmtScore(targetNum) : fa(Math.round(targetNum));
+  }
+};
+
+window.setJarvisCoreMetric = function(mode) {
+  window._jarvisMetricMode = mode;
+  window.updateJarvisCoreDisplay(true);
+};
+
+window.cycleJarvisCoreMetric = function() {
+  const order = ['students', 'classes', 'schools', 'avg', 'present'];
+  const idx = order.indexOf(window._jarvisMetricMode || 'students');
+  window._jarvisMetricMode = order[(idx + 1) % order.length];
+  window.updateJarvisCoreDisplay(true);
+};
+
+/* ۳. شبکه سایبری زنده در پس‌زمینه (Canvas بهینه با توقف در تب مخفی) */
+window.CyberNetwork = {
+  canvas: null,
+  ctx: null,
+  nodes: [],
+  pulses: [],
+  rafId: null,
+  running: false,
+  lastFrame: 0,
+  scrollOffset: 0,
+
+  init() {
+    this.canvas = document.getElementById('cyberNetworkCanvas');
+    if (!this.canvas) return;
+    this.ctx = this.canvas.getContext('2d');
+    this.resize();
+    window.addEventListener('resize', () => this.resize(), { passive: true });
+    window.addEventListener('scroll', () => { this.scrollOffset = (window.scrollY || 0) * 0.08; }, { passive: true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) this.stop();
+      else if (isCyberAnimOn('anim_network')) this.start();
+    });
+    if (isCyberAnimOn('anim_network') && !document.hidden) this.start();
+  },
+
+  resize() {
+    if (!this.canvas) return;
+    const w = window.innerWidth || 360;
+    const h = window.innerHeight || 640;
+    this.canvas.width = w;
+    this.canvas.height = h;
+    const isMobile = w < 640;
+    const count = isMobile ? 14 : 26;
+    this.nodes = Array.from({ length: count }, (_, i) => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.22,
+      vy: (Math.random() - 0.5) * 0.22,
+      r: isMobile ? (1.4 + (i % 2) * 0.6) : (1.6 + (i % 3) * 0.6),
+      phase: Math.random() * Math.PI * 2,
+      color: i % 5 === 0 ? '#A78BFA' : (i % 2 === 0 ? '#22D3EE' : '#38BDF8')
+    }));
+    this.pulses = [];
+  },
+
+  start() {
+    if (this.running || !this.canvas) return;
+    this.running = true;
+    const loop = (ts) => {
+      if (!this.running) return;
+      if (ts - this.lastFrame >= 34) {
+        this.lastFrame = ts;
+        this.draw(ts);
+      }
+      this.rafId = requestAnimationFrame(loop);
+    };
+    this.rafId = requestAnimationFrame(loop);
+  },
+
+  stop() {
+    this.running = false;
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+      this.rafId = null;
+    }
+  },
+
+  draw(ts) {
+    const ctx = this.ctx, w = this.canvas.width, h = this.canvas.height;
+    if (!ctx) return;
+    ctx.clearRect(0, 0, w, h);
+    const maxDist = w < 640 ? 115 : 155;
+    const nodes = this.nodes;
+
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < 0) n.x = w; else if (n.x > w) n.x = 0;
+      if (n.y < 0) n.y = h; else if (n.y > h) n.y = 0;
+    }
+
+    ctx.lineWidth = 0.8;
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < maxDist) {
+          const alpha = (1 - dist / maxDist) * 0.22;
+          ctx.strokeStyle = `rgba(34, 211, 238, ${alpha.toFixed(3)})`;
+          ctx.beginPath();
+          ctx.moveTo(a.x, (a.y - this.scrollOffset + h) % h);
+          ctx.lineTo(b.x, (b.y - this.scrollOffset + h) % h);
+          ctx.stroke();
+
+          if (this.pulses.length < (w < 640 ? 3 : 6) && Math.random() < 0.002) {
+            this.pulses.push({ a, b, t: 0, speed: 0.012 + Math.random() * 0.01 });
+          }
+        }
+      }
+    }
+
+    for (let i = this.pulses.length - 1; i >= 0; i--) {
+      const p = this.pulses[i];
+      p.t += p.speed;
+      if (p.t >= 1) {
+        this.pulses.splice(i, 1);
+        continue;
+      }
+      const pyA = (p.a.y - this.scrollOffset + h) % h;
+      const pyB = (p.b.y - this.scrollOffset + h) % h;
+      if (Math.abs(pyA - pyB) < maxDist) {
+        const px = p.a.x + (p.b.x - p.a.x) * p.t;
+        const py = pyA + (pyB - pyA) * p.t;
+        ctx.fillStyle = '#22D3EE';
+        ctx.beginPath();
+        ctx.arc(px, py, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      const glow = 0.45 + 0.35 * Math.sin(ts * 0.0015 + n.phase);
+      const ny = (n.y - this.scrollOffset + h) % h;
+      ctx.globalAlpha = glow;
+      ctx.fillStyle = n.color;
+      ctx.beginPath();
+      ctx.arc(n.x, ny, n.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+};
+
+/* ۴. انیمیشن ورود مرحله‌ای کارت‌ها و جلوه لمس کارت (بدون اجرای مجدد مزاحم هنگام ثبت نمره) */
+window.applyStaggeredCardEntrance = function(containerEl) {
+  if (!isCyberAnimOn('anim_card_enter')) return;
+  const root = typeof containerEl === 'string' ? document.getElementById(containerEl) : (containerEl || document);
+  if (!root) return;
+  const cards = root.querySelectorAll('.card, .studentcard, .today-class-card, .b-card, .stat');
+  cards.forEach((el, idx) => {
+    el.classList.remove('cyber-card-anim');
+    el.style.animationDelay = `${Math.min(idx, 10) * 55}ms`;
+    void el.offsetWidth;
+    el.classList.add('cyber-card-anim');
+  });
+};
+
+document.addEventListener('pointerdown', (ev) => {
+  if (!isCyberAnimOn('anim_card_touch')) return;
+  const card = ev.target.closest('.card, .studentcard, .today-class-card, .b-card');
+  if (!card || card.closest('.a4-sheet')) return;
+  card.classList.add('card-touch-active');
+  setTimeout(() => card.classList.remove('card-touch-active'), 320);
+
+  const rect = card.getBoundingClientRect();
+  if (rect.width > 0 && rect.height > 0) {
+    const ripple = document.createElement('span');
+    ripple.className = 'cyber-ripple-wave';
+    const size = Math.min(Math.max(rect.width, rect.height) * 0.65, 220);
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${(ev.clientX || (rect.left + rect.width / 2)) - rect.left - size / 2}px`;
+    ripple.style.top = `${(ev.clientY || (rect.top + rect.height / 2)) - rect.top - size / 2}px`;
+    card.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 440);
+  }
+}, { passive: true });
+
+/* ۵. انیمیشن اسکن اطلاعات (۳۵۰ تا ۵۰۰ میلی‌ثانیه، غیرمسدودکننده) */
+window.triggerCyberScan = function(targetId) {
+  if (!isCyberAnimOn('anim_scan')) return;
+  const el = typeof targetId === 'string' ? document.getElementById(targetId) : targetId;
+  if (!el) return;
+  el.classList.add('cyber-scan-active');
+  el.querySelectorAll(':scope > .cyber-scan-line').forEach(x => x.remove());
+  const line = document.createElement('div');
+  line.className = 'cyber-scan-line';
+  el.prepend(line);
+  setTimeout(() => line.remove(), 450);
+};
+
+/* ۶. تابع شمارش کوتاه اعداد (برای ثبت نمره و نمودارها) */
+window.animateNumberValue = function(el, fromVal, toVal, duration = 320, isFloat = true) {
+  if (!el) return;
+  if (!isCyberAnimOn('anim_grades') && !isCyberAnimOn('anim_charts')) {
+    el.textContent = isFloat ? fmtScore(toVal) : fa(Math.round(toVal));
+    return;
+  }
+  const start = performance.now();
+  const diff = toVal - fromVal;
+  const step = (now) => {
+    const p = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const cur = fromVal + diff * eased;
+    el.textContent = isFloat ? fmtScore(cur) : fa(Math.round(cur));
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = isFloat ? fmtScore(toVal) : fa(Math.round(toVal));
+  };
+  requestAnimationFrame(step);
+};
+
+/* بازنویسی هوشمند توابع حضور و غیاب، ثبت نمره و امتیازات برای بازخورد سریع بدون پرش کارت‌ها */
+window.selectListDateISO = function(sid, cid, iso) {
+  if (!iso) return;
+  window.currentListDate = iso;
+  renderTodayListInner(sid, cid);
+  triggerCyberScan('todayListCardBox');
+};
+
+window.changeListDate = function(sid, cid, v) {
+  const iso = jalaliToISO(v);
+  if (!iso) {
+    alert('تاریخ شمسی معتبر وارد کنید (مثلاً ۱۴۰۵/۰۷/۱۵).');
+    return;
+  }
+  window.currentListDate = iso;
+  renderTodayListInner(sid, cid);
+  triggerCyberScan('todayListCardBox');
+  toast(`سوابق تاریخ ${formatJalaliDate(iso)} بارگذاری شد 📅`);
+};
+
+window.focusAttendanceDateColumn = function(sid, cid, d) {
+  if (!d) return;
+  window._attFocusDate = d;
+  const table = document.getElementById('attMainTable');
+  if (table) {
+    table.querySelectorAll('[data-date]').forEach(cell => {
+      cell.classList.toggle('active-date-col', cell.getAttribute('data-date') === d);
+    });
+    const th = table.querySelector(`thead th[data-date="${d}"]`);
+    if (th && th.scrollIntoView) {
+      th.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }
+};
+
+window.inlAtt = function(sid, cid, stid) {
+  const c = findClass(sid, cid), d = window.currentListDate || localISODate();
+  if (!c) return;
+  if (!c.attendance) c.attendance = {};
+  if (!c.attendance[d]) c.attendance[d] = {};
+  const wasAbsent = attendanceStatus(c, d, stid) === 'absent';
+  if (wasAbsent) {
+    if (c.attendance[d][stid]) delete c.attendance[d][stid].status;
+  } else {
+    c.attendance[d][stid] = { ...(c.attendance[d][stid] || {}), status: 'absent' };
+  }
+  savePersistent();
+  const isNowAbsent = attendanceStatus(c, d, stid) === 'absent';
+  const btn = document.getElementById('tdAttBtn_' + stid);
+  const row = document.getElementById('tdRow_' + stid);
+  if (btn) {
+    btn.className = 'att-cell ' + (isNowAbsent ? 'absent' : 'present');
+    btn.textContent = isNowAbsent ? '✖' : '✓';
+  }
+  if (row && isCyberAnimOn('anim_attendance')) {
+    row.classList.remove('att-flash-present', 'att-flash-absent');
+    void row.offsetWidth;
+    row.classList.add(isNowAbsent ? 'att-flash-absent' : 'att-flash-present');
+    setTimeout(() => row.classList.remove('att-flash-present', 'att-flash-absent'), 250);
+  }
+  toast(isNowAbsent ? '🔴 غایب ثبت شد' : '🟢 حاضر ثبت شد');
+};
+
+window.gridToggleAtt = function(sid, cid, stid, d, btnEl) {
+  const c = findClass(sid, cid);
+  if (!c) return;
+  if (!c.attendance) c.attendance = {};
+  if (!c.attendance[d]) c.attendance[d] = {};
+  const wasAbsent = attendanceStatus(c, d, stid) === 'absent';
+  if (wasAbsent) {
+    if (c.attendance[d][stid]) delete c.attendance[d][stid].status;
+  } else {
+    c.attendance[d][stid] = { ...(c.attendance[d][stid] || {}), status: 'absent' };
+  }
+  savePersistent();
+  const isNowAbsent = attendanceStatus(c, d, stid) === 'absent';
+  const btn = btnEl || document.getElementById(`attCell_${stid}_${d}`);
+  const row = document.getElementById(`attRow_${stid}`);
+  if (btn) {
+    btn.className = 'att-cell ' + (isNowAbsent ? 'absent' : 'present');
+    btn.textContent = isNowAbsent ? '✖' : '✓';
+  }
+  if (row && isCyberAnimOn('anim_attendance')) {
+    row.classList.remove('att-flash-present', 'att-flash-absent');
+    void row.offsetWidth;
+    row.classList.add(isNowAbsent ? 'att-flash-absent' : 'att-flash-present');
+    setTimeout(() => row.classList.remove('att-flash-present', 'att-flash-absent'), 250);
+  }
+  toast(isNowAbsent ? '🔴 غایب ثبت شد' : '🟢 حاضر ثبت شد');
+};
+
+window.saveAttendanceGrade = function(sid, cid, stid, d, val, inputEl) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!c || !st) { alert('خطا: کلاس یا دانش‌آموز یافت نشد.'); return; }
+  const prevFinal = calculateFinalStudentScore(c, st);
+  const rawStr = enDigits(String(val ?? '')).trim();
+  if (rawStr !== '') {
+    const parsed = Number(rawStr);
+    if (!Number.isFinite(parsed) || parsed < 0 || parsed > 20) {
+      alert('خطا در ثبت نمره: لطفاً عددی بین ۰ تا ۲۰ وارد کنید.');
+      if (inputEl) inputEl.value = attendanceScore(c, d, stid) ?? '';
+      return;
+    }
+  }
+  try {
+    if (!c.attendance) c.attendance = {};
+    if (!c.attendance[d]) c.attendance[d] = {};
+    const n = rawStr === '' ? null : roundQuarter(rawStr);
+    if (n === null) {
+      if (c.attendance[d][stid]) delete c.attendance[d][stid].score;
+      st.grades = (st.grades || []).filter(g => !(g.source === 'attendance' && g.attendanceDate === d));
+    } else {
+      c.attendance[d][stid] = { ...attendanceRecord(c, d, stid), score: n };
+      let ex = (st.grades || []).find(g => g.source === 'attendance' && g.attendanceDate === d);
+      if (ex) ex.score = n;
+      else gradesData(st).push({ id: uid(), date: new Date().toISOString(), subject: `جلسه ${formatAttendanceDate(d)}`, score: n, source: 'attendance', gradeType: 'class_score', attendanceDate: d });
+    }
+    evaluateAutoStatus(c, st);
+    savePersistent();
+    const newFinal = calculateFinalStudentScore(c, st);
+    if (inputEl && n !== null) inputEl.value = n;
+    if (inputEl && isCyberAnimOn('anim_grades')) {
+      inputEl.classList.remove('grade-saved-pulse');
+      void inputEl.offsetWidth;
+      inputEl.classList.add('grade-saved-pulse');
+    }
+    const finalCell = document.getElementById(`finalCell_${stid}`);
+    if (finalCell) {
+      finalCell.style.color = newFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)';
+      animateNumberValue(finalCell, prevFinal, newFinal, 300, true);
+    }
+    const tdAvg = document.getElementById(`tdAvg_${stid}`);
+    if (tdAvg) {
+      const av = avgGrade(st);
+      tdAvg.textContent = av !== null ? fmtScore(av) : '—';
+    }
+    toast('نمره با موفقیت ذخیره شد ✅');
+  } catch (err) {
+    alert('خطا در ذخیره‌سازی نمره: ' + (err?.message || 'عملیات ناموفق بود'));
+  }
+};
+
+window.saveTermScore = function(sid, cid, stid, val, inputEl) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!c || !st) { alert('خطا: دانش‌آموز یافت نشد.'); return; }
+  const prevFinal = calculateFinalStudentScore(c, st);
+  const rawStr = enDigits(String(val ?? '')).trim();
+  if (rawStr !== '') {
+    const parsed = Number(rawStr);
+    if (!Number.isFinite(parsed) || parsed < 0 || parsed > 20) {
+      alert('خطا در ثبت نمره ترم: نمره باید بین ۰ تا ۲۰ باشد.');
+      if (inputEl) inputEl.value = c.termScores?.[stid] ?? '';
+      return;
+    }
+  }
+  try {
+    c.termScores[stid] = rawStr === '' ? '' : roundQuarter(rawStr);
+    evaluateAutoStatus(c, st);
+    savePersistent();
+    const newFinal = calculateFinalStudentScore(c, st);
+    if (inputEl && c.termScores[stid] !== '') inputEl.value = c.termScores[stid];
+    if (inputEl && isCyberAnimOn('anim_grades')) {
+      inputEl.classList.remove('grade-saved-pulse');
+      void inputEl.offsetWidth;
+      inputEl.classList.add('grade-saved-pulse');
+    }
+    const finalCell = document.getElementById(`finalCell_${stid}`);
+    if (finalCell) {
+      finalCell.style.color = newFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)';
+      animateNumberValue(finalCell, prevFinal, newFinal, 320, true);
+    }
+    toast('نمره ترم ذخیره شد ✅');
+  } catch (err) {
+    alert('خطا در ذخیره‌سازی نمره ترم.');
+  }
+};
+
+window.inlScore = function(sid, cid, stid, type) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!st) return;
+  const r = getRules();
+  behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({
+    id: uid(),
+    date: new Date().toISOString(),
+    reason: 'ثبت از لیست امروز',
+    value: type === 'positive' ? r.positiveValue : r.penaltyPerNeg,
+    code: ''
+  });
+  evaluateAutoStatus(c, st);
+  savePersistent();
+  const posEl = document.getElementById(`tdPos_${stid}`);
+  const negEl = document.getElementById(`tdNeg_${stid}`);
+  const row = document.getElementById(`tdRow_${stid}`);
+  if (posEl) posEl.textContent = fa(st.behavior.positives.length);
+  if (negEl) negEl.textContent = fa(st.behavior.negatives.length);
+  if (row && isCyberAnimOn('anim_grades')) {
+    row.classList.remove('beh-pulse-pos', 'beh-pulse-neg');
+    void row.offsetWidth;
+    row.classList.add(type === 'positive' ? 'beh-pulse-pos' : 'beh-pulse-neg');
+    setTimeout(() => row.classList.remove('beh-pulse-pos', 'beh-pulse-neg'), 260);
+  }
+  toast(type === 'positive' ? '➕ امتیاز مثبت ثبت شد' : '➖ امتیاز منفی ثبت شد');
+};
+
+window.gridApplyShortcut = function(sid, cid, stid, code) {
+  const sh = getShortcuts().find(x => x.code === code), c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!sh || !st) return;
+  const prevFinal = calculateFinalStudentScore(c, st);
+  behaviorData(st)[sh.type === 'positive' ? 'positives' : 'negatives'].push({
+    id: uid(),
+    date: new Date().toISOString(),
+    reason: sh.reason,
+    value: Number(sh.value),
+    code: sh.code
+  });
+  evaluateAutoStatus(c, st);
+  savePersistent();
+  const newFinal = calculateFinalStudentScore(c, st);
+  const behCell = document.getElementById(`behCell_${stid}`);
+  const finalCell = document.getElementById(`finalCell_${stid}`);
+  const row = document.getElementById(`attRow_${stid}`);
+  if (behCell) {
+    behCell.textContent = `➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}`;
+  } else {
+    renderAll();
+  }
+  if (finalCell) {
+    finalCell.style.color = newFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)';
+    animateNumberValue(finalCell, prevFinal, newFinal, 300, true);
+  }
+  if (row && isCyberAnimOn('anim_grades')) {
+    row.classList.remove('beh-pulse-pos', 'beh-pulse-neg');
+    void row.offsetWidth;
+    row.classList.add(sh.type === 'positive' ? 'beh-pulse-pos' : 'beh-pulse-neg');
+    setTimeout(() => row.classList.remove('beh-pulse-pos', 'beh-pulse-neg'), 260);
+  }
+  toast(`کد «${sh.code}» (${sh.reason}) ثبت شد`);
+};
+
+/* ==================== بخش دوازدهم: سیستم جامع «مدیریت ترم» و «ترم‌های گذشته» ==================== */
+let _termTransitionLock = false;
+
+function ensureTermMigration(data) {
+  if (!data || typeof data !== 'object') return;
+  if (!data.activeTermId) data.activeTermId = 'term_init_1';
+  if (!data.activeTermName) data.activeTermName = 'نیمسال اول ۱۴۰۵-۱۴۰۶';
+  if (!Array.isArray(data.archivedTermsGlobal)) data.archivedTermsGlobal = [];
+  (data.schools || []).forEach(s => {
+    (s.classes || []).forEach(c => {
+      if (!c.currentTermId) c.currentTermId = data.activeTermId || 'term_init_1';
+      if (!c.currentTermName || c.currentTermName === 'ترم جاری') c.currentTermName = data.activeTermName;
+      if (!Array.isArray(c.archivedTerms)) c.archivedTerms = [];
+    });
+  });
+}
+
+function summarizeTermDataForArchive(targetSchoolId = null, targetClassId = null) {
+  let schoolCount = 0, classCount = 0, studentCount = 0, gradesCount = 0, attDaysCount = 0, absentCount = 0, posCount = 0, negCount = 0, customColsCount = 0;
+  db.schools.forEach(s => {
+    if (targetSchoolId && s.id !== targetSchoolId) return;
+    let sHasClass = false;
+    (s.classes || []).forEach(c => {
+      if (targetClassId && c.id !== targetClassId) return;
+      sHasClass = true;
+      classCount++;
+      customColsCount += (c.gradeColumns || []).length;
+      const attObj = c.attendance || {};
+      attDaysCount += Object.keys(attObj).length;
+      Object.values(attObj).forEach(dayMap => {
+        Object.values(dayMap || {}).forEach(rec => {
+          if (rec && rec.status === 'absent') absentCount++;
+        });
+      });
+      (c.students || []).forEach(st => {
+        studentCount++;
+        gradesCount += (st.grades || []).length;
+        if (c.termScores?.[st.id] !== undefined && c.termScores?.[st.id] !== '') gradesCount++;
+        posCount += (st.behavior?.positives || []).length;
+        negCount += (st.behavior?.negatives || []).length;
+      });
+    });
+    if (sHasClass) schoolCount++;
+  });
+  return { schoolCount, classCount, studentCount, gradesCount, attDaysCount, absentCount, posCount, negCount, customColsCount };
+}
+
+function buildClassArchiveSnapshot(s, c, archiveId, archiveTitle) {
+  const snap = clonePlain(c);
+  delete snap.archivedTerms;
+  snap.termId = c.currentTermId || archiveId;
+  snap.termName = c.currentTermName || archiveTitle || 'ترم بایگانی‌شده';
+  snap.schoolId = s.id;
+  snap.schoolName = s.name;
+  snap.schoolYear = s.year || '';
+  snap.archivedAt = new Date().toISOString();
+  snap.computedReport = (c.students || []).map(st => ({
+    studentId: st.id,
+    name: st.name,
+    lastName: st.lastName,
+    fatherName: st.fatherName || '',
+    continuousAvg: avgGrade(st),
+    termScore: c.termScores?.[st.id] ?? null,
+    finalScore: calculateFinalStudentScore(c, st),
+    positivesCount: (st.behavior?.positives || []).length,
+    negativesCount: (st.behavior?.negatives || []).length,
+    absencesCount: Object.keys(c.attendance || {}).filter(d => attendanceStatus(c, d, st.id) === 'absent').length
+  }));
+  return snap;
+}
+
+window.openNewTermModal = function(sid = null, cid = null) {
+  const isSingleClass = !!(sid && cid);
+  const s = sid ? findSchool(sid) : null;
+  const c = (sid && cid) ? findClass(sid, cid) : null;
+  const currentTermTitle = isSingleClass ? (c?.currentTermName || db.activeTermName || 'نیمسال اول') : (db.activeTermName || 'نیمسال اول ۱۴۰۵-۱۴۰۶');
+  const sum = summarizeTermDataForArchive(sid, cid);
+
+  openModal(formHeader(isSingleClass ? `🗂️ شروع ترم جدید برای کلاس «${c?.name || ''}»` : '🗂️ شروع ترم جدید (همه مدارس و کلاس‌ها)') + `
+    <div class="card" style="background:var(--panel);margin-bottom:12px">
+      <b style="color:var(--neon-cyan)">📊 خلاصه اطلاعاتی که از «${esc(currentTermTitle)}» بایگانی می‌شوند:</b>
+      <div class="report-summary" style="margin-top:8px">
+        <div><b>${fa(sum.classCount)}</b><small>کلاس</small></div>
+        <div><b>${fa(sum.studentCount)}</b><small>دانش‌آموز (حفظ پایه)</small></div>
+        <div><b>${fa(sum.gradesCount)}</b><small>نمره ثبت‌شده</small></div>
+        <div><b>+${fa(sum.posCount)} / −${fa(sum.negCount)}</b><small>امتیازات رفتاری</small></div>
+      </div>
+      <div class="muted" style="font-size:12px">
+        • جلسات حضور و غیاب: <b>${fa(sum.attDaysCount)} روز</b> (${fa(sum.absentCount)} غیبت ثبت‌شده) · ستون‌های نمره سفارشی: <b>${fa(sum.customColsCount)} ستون</b><br>
+        • <span style="color:var(--neon-green);font-weight:700">✓ مشخصات پایه دانش‌آموزان، عکس‌ها، مدارس و کلاس‌ها ۱۰۰٪ حفظ می‌شوند.</span>
+      </div>
+    </div>
+    <div class="formgrid">
+      <div class="field full">
+        <label>🏷️ نام ترم، نیمسال یا سال تحصیلی جدید:</label>
+        <input id="newTermNameInput" value="نیمسال دوم ۱۴۰۵-۱۴۰۶" placeholder="مثلاً نیمسال دوم ۱۴۰۵-۱۴۰۶" required>
+      </div>
+      <div class="field full">
+        <label class="switch-card" style="background:var(--panel)">
+          <span>📌 حفظ عنوان ستون‌های نمره سفارشی در ترم جدید (با پاک شدن نمرات قبلی)</span>
+          <input type="checkbox" id="keepCustomColTitlesChk" checked>
+        </label>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px;border-radius:11px;background:rgba(34,211,238,0.08);border:1px solid var(--border);font-size:12px">
+      🛡️ <b>تضمین امنیت داده:</b> پیش از شروع ترم جدید، یک نسخه پشتیبان خودکار در حافظه امن برنامه ذخیره می‌شود و می‌توانید همین الان فایل پشتیبان JSON را نیز دانلود کنید.
+      <div style="margin-top:6px">
+        <button type="button" class="btn soft btn-sm" onclick="exportFullData()">⬇️ دانلود فایل پشتیبان کامل پیش از تغییر ترم</button>
+      </div>
+    </div>
+    <div class="formactions">
+      <button type="button" class="btn primary" id="btnConfirmNewTerm" onclick="executeStartNewTerm(${sid ? `'${sid}'` : 'null'}, ${cid ? `'${cid}'` : 'null'})">✅ تأیید نهایی و شروع ترم جدید</button>
+      <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+};
+
+window.executeStartNewTerm = function(sid = null, cid = null) {
+  if (_termTransitionLock) {
+    toast('عملیات در حال انجام است، لطفاً صبر کنید...');
+    return;
+  }
+  const newNameEl = document.getElementById('newTermNameInput');
+  const newName = (newNameEl ? newNameEl.value : '').trim();
+  if (!newName) {
+    alert('لطفاً نام ترم جدید را وارد کنید.');
+    return;
+  }
+  const keepCols = document.getElementById('keepCustomColTitlesChk')?.checked !== false;
+
+  _termTransitionLock = true;
+  const preBackupSnapshot = clonePlain(db);
+  try {
+    try {
+      localStorage.setItem('danesh_pre_term_backup_v1', JSON.stringify({
+        savedAt: new Date().toISOString(),
+        reason: 'pre_new_term',
+        db: preBackupSnapshot
+      }));
+    } catch (_) {}
+
+    if (window._simulateTermSaveFailure) {
+      throw new Error('SIMULATED_STORAGE_FAILURE');
+    }
+
+    ensureTermMigration(db);
+    const archiveBatchId = 'term_' + uid();
+    const newTermId = 'term_' + uid();
+    const archivedClassesList = [];
+
+    db.schools.forEach(s => {
+      if (sid && s.id !== sid) return;
+      (s.classes || []).forEach(c => {
+        if (cid && c.id !== cid) return;
+        const lastArch = (c.archivedTerms || [])[c.archivedTerms.length - 1];
+        if (lastArch && c.currentTermName === newName && (Date.now() - new Date(lastArch.archivedAt).getTime() < 5000)) {
+          return;
+        }
+        const snap = buildClassArchiveSnapshot(s, c, archiveBatchId, c.currentTermName || db.activeTermName);
+        if (!Array.isArray(c.archivedTerms)) c.archivedTerms = [];
+        c.archivedTerms.push(snap);
+        archivedClassesList.push(snap);
+
+        c.currentTermId = newTermId;
+        c.currentTermName = newName;
+        c.termStartedAt = new Date().toISOString();
+        c.attendance = {};
+        c.termScores = {};
+        c.sessionNotes = {};
+        if (keepCols && Array.isArray(c.gradeColumns)) {
+          c.gradeColumns.forEach(g => { g.scores = {}; });
+        } else {
+          c.gradeColumns = [];
+        }
+        c.attendanceSettings = { ...(c.attendanceSettings || {}), startDate: localISODate() };
+
+        (c.students || []).forEach(st => {
+          st.grades = [];
+          st.examPapers = [];
+          st.behavior = { positives: [], negatives: [] };
+          if (st.status === 'attn') st.status = 'none';
+          if (st.autoStatus) st.autoStatus = null;
+        });
+      });
+    });
+
+    if (!sid && !cid) {
+      db.archivedTermsGlobal.push({
+        archiveId: archiveBatchId,
+        termName: preBackupSnapshot.activeTermName || 'ترم قبلی',
+        newTermName: newName,
+        archivedAt: new Date().toISOString(),
+        classes: archivedClassesList
+      });
+      db.activeTermId = newTermId;
+      db.activeTermName = newName;
+    } else if (archivedClassesList.length) {
+      db.archivedTermsGlobal.push({
+        archiveId: archiveBatchId,
+        termName: `${archivedClassesList[0].termName} (${archivedClassesList[0].name})`,
+        newTermName: newName,
+        archivedAt: new Date().toISOString(),
+        classes: archivedClassesList
+      });
+    }
+
+    localStorage.setItem(KEY, JSON.stringify(db));
+    savePersistent();
+
+    closeModal();
+    toast(`ترم جدید «${newName}» آغاز شد و ترم قبلی با موفقیت بایگانی شد ✅`);
+    if (sid && cid && document.getElementById('attendance')?.classList.contains('active')) {
+      openAttendance(sid, cid);
+    } else {
+      renderTermsView();
+      renderAll();
+    }
+  } catch (err) {
+    db = sanitizeDb(preBackupSnapshot);
+    try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (_) {}
+    alert('⛔ خطا در ذخیره‌سازی ترم جدید! تمام اطلاعات ترم قبلی بدون هیچ تغییری به حالت قبل بازگردانده شد: ' + (err?.message || err));
+  } finally {
+    _termTransitionLock = false;
+  }
+};
+
+startNewTerm = function(sid, cid) {
+  window.openNewTermModal(sid, cid);
+};
+
+window.renderTermsView = function() {
+  ensureTermMigration(db);
+  const ovBox = document.getElementById('termsManagementOverview');
+  const listBox = document.getElementById('pastTermsListContainer');
+  if (!ovBox || !listBox) return;
+
+  const sum = summarizeTermDataForArchive(null, null);
+  const hasPreBackup = !!localStorage.getItem('danesh_pre_term_backup_v1');
+
+  ovBox.innerHTML = `
+    <div class="detailhead">
+      <div class="school-head">
+        <div>
+          <span class="term-badge" style="margin-bottom:6px">🟢 ترم فعال فعلی: ${esc(db.activeTermName || 'نیمسال اول ۱۴۰۵-۱۴۰۶')}</span>
+          <h2 class="title" style="margin:4px 0">وضعیت سوابق آموزشی ترم جاری</h2>
+          <div class="muted">${fa(sum.schoolCount)} مدرسه · ${fa(sum.classCount)} کلاس · ${fa(sum.studentCount)} دانش‌آموز · ${fa(sum.gradesCount)} نمره · +${fa(sum.posCount)} / −${fa(sum.negCount)} امتیاز رفتاری</div>
+        </div>
+        <div class="school-icon">🗂️</div>
+      </div>
+      <div class="actions" style="margin-top:12px">
+        <button type="button" class="btn primary" onclick="openNewTermModal(null, null)">🚀 شروع ترم جدید (بایگانی کامل ترم فعلی)</button>
+        ${hasPreBackup ? `<button type="button" class="btn gray" onclick="restorePreTermSafetyBackup()">↩️ بازگردانی آخرین پشتیبان قبل از تغییر ترم</button>` : ''}
+      </div>
+    </div>
+  `;
+
+  const allArchives = [];
+  db.schools.forEach(s => {
+    (s.classes || []).forEach(c => {
+      (c.archivedTerms || []).forEach((t, idx) => {
+        allArchives.push({
+          sid: s.id,
+          cid: c.id,
+          schoolName: s.name,
+          className: c.name,
+          index: idx,
+          term: t
+        });
+      });
+    });
+  });
+  allArchives.sort((a, b) => new Date(b.term.archivedAt || 0) - new Date(a.term.archivedAt || 0));
+
+  if (!allArchives.length) {
+    listBox.innerHTML = empty('🗃️', 'هنوز ترمی در آرشیو «ترم‌های گذشته» ثبت نشده است', 'هنگامی که «شروع ترم جدید» را بزنید، تمام نمرات، حضور و غیاب و سوابق ترم قبلی در اینجا بایگانی می‌شوند و همیشه قابل مشاهده و خروجی‌گرفتن خواهند بود.');
+    return;
+  }
+
+  listBox.innerHTML = `
+    <div class="card">
+      <b style="color:var(--neon-cyan);font-size:15px">🗃️ فهرست ترم‌های گذشته (${fa(allArchives.length)} آرشیو کلاس)</b>
+      <div class="grid" style="margin-top:10px">
+        ${allArchives.map(item => {
+          const t = item.term;
+          const stCount = (t.students || []).length;
+          const absCount = Object.values(t.attendance || {}).reduce((n, day) => n + Object.values(day || {}).filter(x => x && x.status === 'absent').length, 0);
+          const gCount = (t.students || []).reduce((n, st) => n + (st.grades || []).length, 0);
+          const dateFa = t.archivedAt ? new Date(t.archivedAt).toLocaleDateString('fa-IR') : '—';
+          return `<div class="card" style="background:var(--panel)">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px">
+              <div>
+                <h3 style="margin:0;color:var(--neon-cyan)">📚 ${esc(t.termName || 'ترم بایگانی‌شده')}</h3>
+                <div class="muted" style="margin-top:2px">${esc(item.schoolName)} · کلاس ${esc(item.className)}</div>
+              </div>
+              <span class="chip">${dateFa}</span>
+            </div>
+            <div class="chips" style="margin-top:8px">
+              <span class="chip">👨‍🎓 ${fa(stCount)} دانش‌آموز</span>
+              <span class="chip">📝 ${fa(gCount)} نمره</span>
+              <span class="chip">✖ ${fa(absCount)} غیبت</span>
+            </div>
+            <div class="actions">
+              <button type="button" class="btn primary btn-sm" style="flex:1" onclick="inspectArchivedTerm('${item.sid}','${item.cid}',${item.index})">👁️ مشاهده کامل سوابق و کارنامه</button>
+              <button type="button" class="btn soft btn-sm" onclick="exportArchivedTerm('${item.sid}','${item.cid}',${item.index})">📤 خروجی JSON</button>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+};
+
+window.inspectArchivedTerm = function(sid, cid, index) {
+  const c = findClass(sid, cid);
+  const t = c?.archivedTerms?.[index];
+  if (!t) { toast('آرشیو مورد نظر یافت نشد.'); return; }
+  closeModal();
+  if (!document.getElementById('termsView')?.classList.contains('active')) {
+    showView('termsView');
+  }
+  const box = document.getElementById('archivedTermInspectorBox');
+  if (!box) return;
+  box.style.display = 'block';
+
+  const students = sortStudents(t.students || []);
+  const attDates = Object.keys(t.attendance || {}).sort();
+  const customCols = Array.isArray(t.gradeColumns) ? t.gradeColumns : [];
+
+  const rowsHtml = students.map((st, idx) => {
+    const rep = (t.computedReport || []).find(r => r.studentId === st.id);
+    const contAvg = rep ? rep.continuousAvg : avgGrade(st);
+    const termSc = t.termScores?.[st.id] ?? '—';
+    const finalSc = rep ? rep.finalScore : calculateFinalStudentScore(t, st);
+    const posList = st.behavior?.positives || [];
+    const negList = st.behavior?.negatives || [];
+    const absCount = attDates.filter(d => t.attendance?.[d]?.[st.id]?.status === 'absent').length;
+    const gradesSummary = (st.grades || []).map(g => `${esc(g.subject || 'نمره')}: ${fmtScore(g.score)}`).join(' ، ') || '—';
+    const customSummary = customCols.map(col => `${esc(col.title)}: ${col.scores?.[st.id] !== undefined ? fa(col.scores[st.id]) : '—'}`).join(' | ');
+    const behReasons = [
+      ...posList.map(p => `➕ ${esc(p.reason || 'مثبت')} (${formatEventDate(p.date)})`),
+      ...negList.map(n => `➖ ${esc(n.reason || 'منفی')} (${formatEventDate(n.date)})`)
+    ].join(' · ') || '—';
+
+    return `<tr>
+      <td><b>${fa(idx + 1)}. ${formatStudentName(st)}</b></td>
+      <td>${contAvg !== null && contAvg !== undefined ? fmtScore(contAvg) : '—'}</td>
+      <td>${termSc !== '' && termSc !== null && termSc !== '—' ? fmtScore(termSc) : '—'}</td>
+      <td style="font-weight:900;color:${finalSc < 10 ? 'var(--neon-red)' : 'var(--neon-green)'}">${fmtScore(finalSc)}</td>
+      <td>${fa(absCount)} جلسه</td>
+      <td>➕${fa(posList.length)} / ➖${fa(negList.length)}</td>
+      <td style="font-size:11px;max-width:220px">${gradesSummary}${customSummary ? `<br><span class="muted">${customSummary}</span>` : ''}</td>
+      <td style="font-size:11px;max-width:200px">${behReasons}</td>
+    </tr>`;
+  }).join('');
+
+  box.innerHTML = `
+    <div class="archive-readonly-banner">
+      <div>
+        <b>🔒 حالت مشاهده آرشیو فقط-خواندنی: «${esc(t.termName || 'ترم گذشته')}» — کلاس ${esc(t.name || c.name)}</b>
+        <div class="muted" style="font-size:11.5px">مشاهده این بخش هیچ تغییری در اطلاعات ترم فعال ایجاد نمی‌کند.</div>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button type="button" class="btn soft btn-sm" onclick="exportArchivedTerm('${sid}','${cid}',${index})">📤 دانلود JSON این ترم</button>
+        <button type="button" class="btn gray btn-sm" onclick="document.getElementById('archivedTermInspectorBox').style.display='none'">✖ بستن بازبین</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="att-wrap" style="max-height:460px">
+        <table class="att-table">
+          <thead>
+            <tr>
+              <th>نام دانش‌آموز</th>
+              <th>میانگین مستمر</th>
+              <th>نمره پایانی ترم</th>
+              <th>نمره نهایی</th>
+              <th>غیبت‌ها</th>
+              <th>مثبت/منفی</th>
+              <th>ریز نمرات و ستون‌های سفارشی</th>
+              <th>سوابق و دلایل امتیازها</th>
+            </tr>
+          </thead>
+          <tbody>${rowsHtml || '<tr><td colspan="8">دانش‌آموزی در این آرشیو ثبت نشده است.</td></tr>'}</tbody>
+        </table>
+      </div>
+    </div>
+  `;
+  triggerCyberScan('archivedTermInspectorBox');
+  box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+showTermArchive = function(sid, cid) {
+  const c = findClass(sid, cid); if (!c) return;
+  const terms = [...(c.archivedTerms || [])].reverse();
+  const rows = terms.map((t, idx) => {
+    const realIdx = (c.archivedTerms || []).indexOf(t);
+    const name = esc(t.termName || t.currentTermName || `ترم ${terms.length - idx}`);
+    const date = t.archivedAt ? new Date(t.archivedAt).toLocaleDateString('fa-IR') : '—';
+    const students = (t.students || []).length;
+    const absences = (t.attendance && typeof t.attendance === 'object') ? Object.values(t.attendance).reduce((n, day) => n + Object.values(day || {}).filter(x => x && x.status === 'absent').length, 0) : 0;
+    return `<div class="card" style="margin:8px 0;background:var(--panel)">
+      <b>🗂️ ${name}</b>
+      <div class="muted" style="margin:5px 0">بایگانی: ${date} · ${fa(students)} دانش‌آموز · ${fa(absences)} مورد غیبت ثبت‌شده</div>
+      <div class="actions">
+        <button class="btn primary btn-sm" onclick="inspectArchivedTerm('${sid}','${cid}',${realIdx})">👁️ مشاهده کامل نمرات و حضور و غیاب</button>
+        <button class="btn soft btn-sm" onclick="exportArchivedTerm('${sid}','${cid}',${realIdx})">📤 خروجی این ترم (JSON)</button>
+      </div>
+    </div>`;
+  }).join('');
+  openModal(formHeader('🗃️ آرشیو ترم‌های گذشته این کلاس') + (rows || empty('🗂️','هنوز ترمی بایگانی نشده','با انتخاب «ترم جدید»، ترم فعلی به این بخش منتقل می‌شود.')) + `<div class="formactions"><button class="btn soft" onclick="closeModal();showView('termsView')">🗂️ مدیریت کل ترم‌ها</button><button class="btn gray" onclick="closeModal()">بستن</button></div>`);
+};
+
+window.restorePreTermSafetyBackup = function() {
+  try {
+    const raw = localStorage.getItem('danesh_pre_term_backup_v1');
+    if (!raw) { alert('پشتیبان قبلی یافت نشد.'); return; }
+    const parsed = JSON.parse(raw);
+    if (!parsed || !parsed.db) throw 0;
+    if (!confirm('آیا می‌خواهید اطلاعات برنامه را به وضعیت دقیق پیش از آخرین «شروع ترم جدید» بازگردانید؟')) return;
+    db = sanitizeDb(parsed.db);
+    save();
+    renderTermsView();
+    toast('اطلاعات به وضعیت پیش از تغییر ترم بازگردانی شد ↩️');
+  } catch (e) {
+    alert('خطا در بازیابی پشتیبان.');
+  }
+};
+
+/* مدیریت پوسته Cyber-JARVIS (تاریک پیش‌فرض + روشن اختیاری) */
+window.setCyberThemeMode = function(mode) {
+  const isLight = mode === 'light';
+  document.body.classList.toggle('light-mode', isLight);
+  document.body.classList.toggle('dark', !isLight);
+  try { localStorage.setItem('danesh_theme_v5', isLight ? 'light' : 'dark'); } catch (e) {}
+  const btn = document.getElementById('themeToggleBtn');
+  if (btn) {
+    btn.textContent = isLight ? '🌙' : '☀️';
+    btn.title = isLight ? 'تغییر به تم سایبری تاریک' : 'تغییر به تم روشن';
+  }
+};
+
+applyTheme = function(mode) {
+  window.setCyberThemeMode(mode === 'light' ? 'light' : 'dark');
+};
+
+toggleTheme = function() {
+  const next = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+  window.setCyberThemeMode(next);
+  toast(next === 'dark' ? 'تم سایبری Cyber-JARVIS فعال شد 🌌' : 'تم روشن فعال شد ☀️');
+};
+
+const _origShowView = showView;
+showView = function(id) {
+  _origShowView(id);
+  if (id === 'animSettingsView') renderAnimSettingsPage();
+  if (id === 'termsView') renderTermsView();
+  if (id === 'dashboard') window.updateJarvisCoreDisplay(false);
+  const viewEl = document.getElementById(id);
+  if (viewEl) {
+    window.applyStaggeredCardEntrance(viewEl);
+    if (['schoolDetail', 'classDetail', 'studentDetail', 'attendance', 'statuses', 'termsView'].includes(id)) {
+      window.triggerCyberScan(viewEl);
+    }
+  }
+};
+
+const _origRenderDashboard = renderDashboard;
+renderDashboard = function() {
+  _origRenderDashboard();
+  window.updateJarvisCoreDisplay(false);
+};
+
+/* مدیریت Service Worker و اعلان به‌روزرسانی نسخه 5.0.0 */
+let _pendingSwReg = null;
+window.applyPendingSwUpdate = function() {
+  document.getElementById('swUpdateBanner')?.classList.remove('show');
+  if (_pendingSwReg && _pendingSwReg.waiting) {
+    _pendingSwReg.waiting.postMessage({ type: 'SKIP_WAITING' });
+  }
+  window.location.reload();
+};
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('message', (ev) => {
+    if (ev.data && ev.data.type === 'SW_UPDATED') {
+      toast(`نسخه ${fa(ev.data.version || APP_VERSION)} آماده است ✅`);
+    }
+  });
+  navigator.serviceWorker.register('./sw.js?v=' + APP_VERSION).then(reg => {
+    _pendingSwReg = reg;
+    if (reg.waiting) {
+      document.getElementById('swUpdateBanner')?.classList.add('show');
+    }
+    reg.addEventListener('updatefound', () => {
+      const nw = reg.installing;
+      if (!nw) return;
+      nw.addEventListener('statechange', () => {
+        if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+          document.getElementById('swUpdateBanner')?.classList.add('show');
+        }
+      });
+    });
+  }).catch(() => {});
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  ensureTermMigration(db);
+  const savedThemeV5 = localStorage.getItem('danesh_theme_v5') || 'dark';
+  window.setCyberThemeMode(savedThemeV5);
+  applyAnimationSetting();
+  window.CyberNetwork.init();
+  window.runInitialCyberIntro();
+  ScrollFX.init();
+  window._isDbLoading = true;
+  renderAll();
+  await restorePersistent();
+  ensureTermMigration(db);
+  window._isDbLoading = false;
+  window.updateJarvisCoreDisplay(true);
+  window.applyStaggeredCardEntrance(document.getElementById('dashboard'));
+  ExamApp.init();
+});
 </script>
 </body>
 </html>
