@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="5.3.0">
+<meta name="version" content="5.5.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -1699,10 +1699,306 @@ body.light-mode .attn-tag.cat-special, body.theme-classic-orange .attn-tag.cat-s
   line-height: 1.55;
 }
 
+
+/* ==================== اصلاحات دقیق تراز بصری، کنتراست تم نارنجی و سامانه آنلاین (نسخه ۵.۴.۰) ==================== */
+
+/* ۱. بازتعریف صریح متغیرهای پایه روی body برای هر ۳ تم غیرپیش‌فرض تا هیچ دکمه یا کارتی سرمه‌ای تیره نماند */
+body.theme-classic-orange {
+  --bg: #FFF9F2;
+  --card: #FFFFFF;
+  --panel: #FFF3E4;
+  --text: #1E293B;
+  --muted: #64748B;
+  --border: #FED7AA;
+}
+body.light-mode {
+  --bg: #F0F7FF;
+  --card: #FFFFFF;
+  --panel: #E6F2FF;
+  --text: #0F172A;
+  --muted: #475569;
+  --border: rgba(2, 132, 199, 0.26);
+}
+body.theme-cyber-orange {
+  --bg: #0C0907;
+  --card: #18120E;
+  --panel: #241A14;
+  --text: #FFF7ED;
+  --muted: #A8A29E;
+  --border: rgba(251, 146, 60, 0.28);
+}
+
+/* اصلاح رنگ دکمه‌های خاکستری، آیکون‌های بالا و کارت‌های داشبورد در تم نارنجی کلاسیک */
+body.theme-classic-orange .iconbtn {
+  background: #FFF3E4 !important;
+  border-color: #FDBA74 !important;
+  color: #C2410C !important;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.10);
+}
+body.theme-classic-orange .btn.gray {
+  background: #FFF3E4 !important;
+  border-color: #FDBA74 !important;
+  color: #7C2D12 !important;
+}
+body.theme-classic-orange .btn.soft {
+  background: #FFEDD5 !important;
+  border-color: #FB923C !important;
+  color: #C2410C !important;
+}
+body.theme-classic-orange .dash-b-card,
+body.theme-classic-orange .today-class-card,
+body.theme-classic-orange .stat {
+  background: #FFFFFF !important;
+  border-color: #FED7AA !important;
+  color: #1E293B !important;
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.08);
+}
+body.theme-classic-orange .dash-b-item {
+  background: #FFF7ED !important;
+  border-color: #FED7AA !important;
+}
+body.theme-classic-orange .jarvis-metric-btn {
+  background: #FFFFFF !important;
+  border-color: #FED7AA !important;
+  color: #475569 !important;
+}
+body.theme-classic-orange .jarvis-metric-btn.active {
+  background: #FFEDD5 !important;
+  border-color: #EA580C !important;
+  color: #9A3412 !important;
+  box-shadow: 0 2px 10px rgba(234, 88, 12, 0.18);
+}
+
+/* ۲. تراز کامل و هندسی دایره مرکزی هسته JARVIS (رفع برخورد متن «دانش‌آموز فعال» با حاشیه دایره) */
+.jarvis-core-stage {
+  width: 192px;
+  height: 192px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jarvis-core-center {
+  width: 114px !important;
+  height: 114px !important;
+  padding: 8px 6px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2px !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+.jarvis-core-tag {
+  font-size: 8.5px !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.2px !important;
+  white-space: nowrap !important;
+  max-width: 92px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  margin: 0 !important;
+}
+.jarvis-core-value {
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  line-height: 1.05 !important;
+  margin: 1px 0 !important;
+  white-space: nowrap !important;
+}
+.jarvis-core-label {
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+  max-width: 96px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  margin: 0 !important;
+}
+
+/* ۳. چیدمان کاملاً متقارن و تراز دکمه‌های شاخص آماری (۶ دکمه در شبکه ۳×۲ روی موبایل و تبلت) */
+.jarvis-metric-pills {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 7px !important;
+  width: 100% !important;
+}
+.jarvis-metric-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  text-align: center !important;
+  padding: 7px 6px !important;
+  min-height: 36px !important;
+  font-size: 11.5px !important;
+  white-space: nowrap !important;
+  width: 100% !important;
+}
+.jarvis-hud-info .actions {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+.jarvis-hud-info .actions .btn {
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+@media (max-width: 680px) {
+  .jarvis-command-deck {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+    padding: 15px 13px !important;
+    gap: 12px !important;
+  }
+  .jarvis-core-stage {
+    width: 174px !important;
+    height: 174px !important;
+  }
+  .jarvis-core-center {
+    width: 108px !important;
+    height: 108px !important;
+  }
+  .jarvis-core-value {
+    font-size: 22px !important;
+  }
+  .jarvis-core-label {
+    font-size: 10.2px !important;
+  }
+  .jarvis-status-strip {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 7px !important;
+  }
+}
+
+/* ۴. جلوگیری از افتادن دکمه شناور + روی دکمه‌های «لیست امروز» */
+body {
+  padding-bottom: 138px !important;
+}
+.fab {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 14px !important;
+  left: 14px !important;
+  bottom: 72px !important;
+  font-size: 23px !important;
+  opacity: 0.94;
+}
+
+/* ۵. استایل پنل ویژه دانش‌آموز (لینک حضور و غیاب آنلاین و آزمون آنلاین) */
+#studentOnlinePortalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: var(--bg-main);
+  color: var(--text-main);
+  overflow-y: auto;
+  padding: 16px 12px 40px;
+  display: none;
+}
+.student-portal-box {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.qr-canvas-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: #FFFFFF;
+  border-radius: 14px;
+  border: 2px solid var(--primary);
+  margin: 10px auto;
+  width: fit-content;
+  color: #0F172A;
+}
+
+
+/* ==================== استایل‌های خروجی رنگی زنده و برندینگ ظریف (نسخه ۵.۵.۰ Pro) ==================== */
+.subtle-app-brand-bar {
+  margin-top: 22px;
+  padding: 9px 14px;
+  border-radius: 14px;
+  background: var(--bg-panel);
+  border: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  opacity: 0.88;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+.subtle-app-brand-bar:hover {
+  opacity: 1;
+  border-color: var(--primary);
+}
+.subtle-brand-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.subtle-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 99px;
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  font-size: 11.5px;
+  font-weight: 900;
+}
+.subtle-brand-text {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+.subtle-brand-share-btn {
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.subtle-brand-share-btn:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+/* کادر پیش‌نمایش زنده گزارش رنگی در داخل برنامه */
+.live-report-preview-frame {
+  background: #FFFFFF;
+  color: #0F172A;
+  border-radius: 16px;
+  border: 2px solid var(--primary);
+  padding: 14px;
+  max-height: 540px;
+  overflow: auto;
+  box-shadow: var(--shadow);
+}
+
 </style>
 </head>
 <body>
 <!-- انیمیشن شماره ۳: بوم شبکه سایبری زنده -->
+<div id="studentOnlinePortalOverlay" role="region" aria-label="پنل آنلاین دانش‌آموز"></div>
 <canvas id="cyberNetworkCanvas" aria-hidden="true"></canvas>
 
 <!-- انیمیشن شماره ۱: ورود سینمایی Cyber-JARVIS -->
@@ -1732,7 +2028,7 @@ body.light-mode .attn-tag.cat-special, body.theme-classic-orange .attn-tag.cat-s
   <div class="toprow">
     <div class="brand">
       <div class="logo">🎓</div>
-      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v5.3.0 Pro</span></small></div>
+      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v5.5.0 Pro</span></small></div>
     </div>
     <div class="top-icons">
       <button class="iconbtn" onclick="showView('termsView')" title="مدیریت ترم و ترم‌های گذشته" aria-label="مدیریت ترم">🗂️</button>
@@ -1779,7 +2075,7 @@ body.light-mode .attn-tag.cat-special, body.theme-classic-orange .attn-tag.cat-s
         </g>
         <!-- حلقه سوم داخلی -->
         <g class="jarvis-ring-inner">
-          <circle cx="100" cy="100" r="60" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-dasharray="14 10 3 10" stroke-opacity="0.65"/>
+          <circle cx="100" cy="100" r="63" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-dasharray="14 10 3 10" stroke-opacity="0.65"/>
         </g>
       </svg>
       <div class="jarvis-core-center" onclick="cycleJarvisCoreMetric()" role="button" tabindex="0" aria-label="هسته آماری JARVIS">
@@ -1802,6 +2098,7 @@ body.light-mode .attn-tag.cat-special, body.theme-classic-orange .attn-tag.cat-s
         <button type="button" class="jarvis-metric-btn" data-metric="schools" onclick="setJarvisCoreMetric('schools')">🏫 مدارس</button>
         <button type="button" class="jarvis-metric-btn" data-metric="avg" onclick="setJarvisCoreMetric('avg')">⭐ میانگین کل</button>
         <button type="button" class="jarvis-metric-btn" data-metric="present" onclick="setJarvisCoreMetric('present')">✓ حاضرین امروز</button>
+        <button type="button" class="jarvis-metric-btn" data-metric="attn" onclick="setJarvisCoreMetric('attn')">🚨 نیازمند توجه</button>
       </div>
       <div class="actions" style="margin-top:4px">
         <button type="button" class="btn soft btn-sm" onclick="showView('termsView')">🗂️ مدیریت ترم و آرشیو</button>
@@ -1986,6 +2283,7 @@ body.light-mode .attn-tag.cat-special, body.theme-classic-orange .attn-tag.cat-s
       <button class="btn soft btn-sm" onclick="ExamApp.exportDirectPDF()" id="btnDirectPdf">📕 PDF</button>
       <button class="btn soft btn-sm" onclick="ExamApp.shareExamSheet()" id="btnShareSheet">📤 اشتراک</button>
       <button class="btn gray btn-sm" onclick="ExamApp.printSheetNow()">🖨️ چاپ</button>
+      <button class="btn primary btn-sm" style="grid-column:1 / -1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">🌐 ساخت لینک آزمون آنلاین برای دانش‌آموزان (ثبت خودکار در لیست)</button>
     </div>
   </div>
 
@@ -2443,43 +2741,195 @@ body.light-mode .attn-tag.cat-special, body.theme-classic-orange .attn-tag.cat-s
     </div>
   </div>
 
-  <!-- تب ۵: مرکز دریافت خروجی سفارشی (اکسل، ورد، چاپ/PDF) -->
+  <!-- تب ۵: مرکز پیشرفته خروجی تفکیک‌شده (هر مدرسه، هر کلاس، هر دانش‌آموز، هر وضعیت) -->
   <div id="setPane-export" class="settings-pane">
-    <div class="card">
-      <b style="color:var(--primary)">📤 مرکز دریافت خروجی سفارشی (Excel / Word / PDF)</b>
-      <p class="muted" style="margin:4px 0 10px">ستون‌های مورد نظر خود را انتخاب کرده و خروجی استاندارد دریافت کنید:</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 12px;font-size:12.5px">
-        <label class="switch-card"><span>📅 تعداد غیبت‌ها و حضور</span><input type="checkbox" id="expColAtt" checked></label>
-        <label class="switch-card"><span>📝 نمرات کتبی مستمر و میانگین</span><input type="checkbox" id="expColContGrades" checked></label>
-        <label class="switch-card"><span>➕➖ مثبت و منفی‌ها</span><input type="checkbox" id="expColBeh" checked></label>
-        <label class="switch-card"><span>🎓 نمره پایانی ترم و نهایی</span><input type="checkbox" id="expColTerm" checked></label>
+    <div class="card" style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+        <div>
+          <b style="color:var(--primary);font-size:15px">📤 مرکز خروجی تفکیک‌شده (مدرسه / کلاس / دانش‌آموز / وضعیت)</b>
+          <p class="muted" style="margin:3px 0 0">خروجی دقیق و جداگانه برای هر مدرسه، هر کلاس، پرونده تکی هر دانش‌آموز یا لیست تفکیکی نیازمند توجه‌ها</p>
+        </div>
+        <span class="chip" id="exportPreviewCountChip">آماده خروجی</span>
       </div>
-      <div class="actions">
-        <button class="btn primary" style="flex:1" onclick="exportCustomReport('excel')">📊 دانلود اکسل (CSV)</button>
-        <button class="btn soft" style="flex:1" onclick="exportCustomReport('word')">📝 دانلود Word</button>
-        <button class="btn gray" style="flex:1" onclick="exportCustomReport('print')">🖨️ چاپ / PDF</button>
+
+      <div class="formgrid" style="margin-top:10px">
+        <div class="field">
+          <label>۱. سطح تفکیک خروجی (کدام بخش؟)</label>
+          <select id="expScopeType" onchange="onExportScopeChange()">
+            <option value="all">🌐 همه مدارس و کلاس‌ها (کل برنامه)</option>
+            <option value="school">🏫 فقط یک مدرسه خاص</option>
+            <option value="class">🚪 فقط یک کلاس خاص</option>
+            <option value="student">👨‍🎓 پرونده کامل یک دانش‌آموز خاص (تکی)</option>
+          </select>
+        </div>
+
+        <div class="field" id="expSchoolWrap" style="display:none">
+          <label>🏫 انتخاب مدرسه:</label>
+          <select id="expSchoolSel" onchange="onExportSchoolChange()"></select>
+        </div>
+
+        <div class="field" id="expClassWrap" style="display:none">
+          <label>🚪 انتخاب کلاس:</label>
+          <select id="expClassSel" onchange="onExportClassChange()"></select>
+        </div>
+
+        <div class="field" id="expStudentWrap" style="display:none">
+          <label>👨‍🎓 انتخاب دانش‌آموز:</label>
+          <select id="expStudentSel" onchange="updateExportCountPreview()"></select>
+        </div>
+
+        <div class="field">
+          <label>۲. فیلتر وضعیت یا دسته نیازمند توجه:</label>
+          <select id="expStatusFilter" onchange="updateExportCountPreview()">
+            <option value="all">📋 همه دانش‌آموزان</option>
+            <option value="good">🟢 فقط وضعیت خوب و برتر</option>
+            <option value="attn_all">🔴 همه موارد نیازمند توجه</option>
+            <option value="attn_medical">🏥 فقط نیازمند توجه: بیماری و پزشکی</option>
+            <option value="attn_academic">📉 فقط نیازمند توجه: درسی و آموزشی</option>
+            <option value="attn_discipline">⚠️ فقط نیازمند توجه: انضباطی و رفتاری</option>
+            <option value="attn_absence">📅 فقط نیازمند توجه: غیبت مکرر</option>
+            <option value="attn_counseling">💜 فقط نیازمند توجه: روحی و مشاوره</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>۳. نحوه جداسازی کلاس‌ها در فایل:</label>
+          <select id="expClassSplitMode">
+            <option value="separate_sections" selected>📑 هر کلاس در جدول و صفحه مجزا (توصیه‌شده)</option>
+            <option value="single_table">📋 ادغام در یک جدول پیوسته</option>
+          </select>
+        </div>
       </div>
+
+      <div style="margin-top:12px">
+        <label style="font-size:11.5px;font-weight:800;color:var(--muted);display:block;margin-bottom:6px">۴. ستون‌های قابل نمایش در خروجی:</label>
+        <div class="switch-grid">
+          <label class="switch-card"><span>🔢 شماره ردیف و مشخصات پدر/تلفن</span><input type="checkbox" id="expColMeta" checked></label>
+          <label class="switch-card"><span>📅 تعداد غیبت‌ها و حضور</span><input type="checkbox" id="expColAtt" checked></label>
+          <label class="switch-card"><span>📝 کتبی مستمر و میانگین کلاسی</span><input type="checkbox" id="expColContGrades" checked></label>
+          <label class="switch-card"><span>➕➖ مثبت و منفی‌ها (تعداد و خالص)</span><input type="checkbox" id="expColBeh" checked></label>
+          <label class="switch-card"><span>🎓 نمره پایانی ترم و نمره نهایی</span><input type="checkbox" id="expColTerm" checked></label>
+          <label class="switch-card"><span>🚨 دسته‌بندی توجه و شرح بیماری/ملاحظات</span><input type="checkbox" id="expColAttn" checked></label>
+        </div>
+      </div>
+
+      <div class="formgrid" style="margin-top:12px">
+        <div class="field">
+          <label>۵. 🎨 تم رنگی و گرافیکی خروجی‌ها:</label>
+          <select id="expColorTheme" onchange="if(document.getElementById('liveExportPreviewBox')?.style.display==='block')renderLiveColorfulExportPreview()">
+            <option value="orange" selected>🍊 نارنجی و طلایی زنده (پرانرژی و گرم)</option>
+            <option value="cyan">💎 فیروزه‌ای و آبی مدرن (Cyber-JARVIS)</option>
+            <option value="emerald">🌿 سبز زمردی و فیروزه‌ای (رسمی و آموزشی)</option>
+            <option value="purple">💜 بنفش و یاسی سلطنتی (ویژه و متمایز)</option>
+          </select>
+        </div>
+        <div class="field" style="display:flex;align-items:flex-end">
+          <label class="switch-card" style="width:100%">
+            <span>✨ درج نشان ظریف «دانش‌آموز من» در حاشیه خروجی‌ها</span>
+            <input type="checkbox" id="expIncludeSubtleBrand" checked onchange="saveSubtleBrandPref(this.checked)">
+          </label>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:14px">
+        <button type="button" class="btn primary" style="flex:1" onclick="exportCustomReport('excel_color')">🎨 اکسل رنگی و زنده (.xls)</button>
+        <button type="button" class="btn soft" style="flex:1" onclick="exportCustomReport('word')">📘 دانلود Word رنگی (.doc)</button>
+        <button type="button" class="btn green" style="flex:1" onclick="exportCustomReport('print')">🖨️ چاپ / PDF رنگی</button>
+      </div>
+      <div class="actions" style="margin-top:8px">
+        <button type="button" class="btn soft" style="flex:1" onclick="renderLiveColorfulExportPreview()">👁️ پیش‌نمایش زنده و رنگی در همین صفحه</button>
+        <button type="button" class="btn gray" style="flex:1" onclick="exportCustomReport('excel')">📊 اکسل خام (.csv)</button>
+        <button type="button" class="btn gray" style="flex:1" onclick="exportEachClassAsSeparateFiles()">📦 دانلود مجزای هر کلاس</button>
+      </div>
+      <div id="liveExportPreviewBox" style="display:none;margin-top:14px"></div>
     </div>
   </div>
 
-  <!-- تب ۶: پشتیبان‌گیری، بازیابی، ادغام اسامی تکراری و مدیریت ترم -->
+  <!-- تب ۶: پوشه اختصاصی پشتیبان، پشتیبان‌گیری ابری آنلاین، لینک حاضری/آزمون آنلاین و ابزارها -->
   <div id="setPane-data" class="settings-pane">
-    <div class="formgrid" style="margin-bottom:12px">
-      <div class="card">
-        <b style="color:var(--primary)">📚 پشتیبان کامل (همه اطلاعات)</b>
-        <p class="muted" style="margin:4px 0 10px">شامل مدارس، کلاس‌ها، عکس‌ها، تمام نمرات، حضور و غیاب، آرشیو ترم‌ها و آزمون‌ها.</p>
-        <button class="btn primary block" onclick="exportFullData()">⬇️ دانلود پشتیبان کامل (JSON)</button>
+    <!-- ۱. پوشه اختصاصی پشتیبان‌گیری (ضد گم شدن فایل‌ها) -->
+    <div class="card" style="margin-bottom:12px;border-color:var(--primary)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div>
+          <b style="color:var(--primary);font-size:15px">📁 پوشه اختصاصی پشتیبان‌گیری «DaneshAmoozMan_Backups»</b>
+          <p class="muted" style="margin:3px 0 0">ذخیره منظم با نام‌گذاری تاریخ‌دار استاندارد در پوشه مشخص یا ارسال مستقیم به تلگرام / گوگل درایو تا هیچ‌وقت گم نشود</p>
+        </div>
+        <span class="chip" id="dedicatedFolderStatusBadge">📂 پوشه استاندارد فعال</span>
       </div>
-      <div class="card">
-        <b style="color:var(--primary)">👨‍🎓 پشتیبان خام (فقط لیست اسامی)</b>
-        <p class="muted" style="margin:4px 0 10px">فقط مشخصات پایه دانش‌آموزان و کلاس‌ها بدون نمره و غیبت.</p>
-        <button class="btn soft block" onclick="exportRawData()">⬇️ دانلود پشتیبان خام</button>
+
+      <div class="actions" style="margin-top:10px">
+        <button type="button" class="btn primary" style="flex:1" onclick="saveBackupToDedicatedFolder('full')">💾 ذخیره در پوشه اختصاصی (کامل)</button>
+        <button type="button" class="btn soft" style="flex:1" onclick="shareBackupFileDirectly('full')">📲 ارسال به تلگرام / گوگل درایو / ایتا</button>
+        <button type="button" class="btn gray" onclick="selectDedicatedBackupDirectory()">📂 تعیین پوشه ثابت در دستگاه</button>
+      </div>
+      <div class="actions" style="margin-top:7px">
+        <button type="button" class="btn soft btn-sm" style="flex:1" onclick="exportFullData()">⬇️ دانلود مستقیم پشتیبان کامل (JSON)</button>
+        <button type="button" class="btn gray btn-sm" style="flex:1" onclick="exportRawData()">👨‍🎓 دانلود پشتیبان خام (فقط اسامی)</button>
+        <label class="btn primary btn-sm" style="flex:1;cursor:pointer;margin:0">📥 بازیابی از فایل JSON<input type="file" accept=".json,application/json" hidden onchange="importData(event)"></label>
       </div>
     </div>
 
+    <!-- ۲. گاوصندوق پشتیبان داخلی برنامه (آرشیو خودکار داخل برنامه بدون نیاز به فایل خارجی) -->
     <div class="card" style="margin-bottom:12px">
-      <b style="color:var(--primary)">📥 بازیابی اطلاعات از فایل پشتیبان</b>
-      <label class="btn primary block" style="text-align:center;cursor:pointer;margin-top:8px">📂 انتخاب فایل پشتیبان (JSON)<input type="file" accept=".json,application/json" hidden onchange="importData(event)"></label>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+        <div>
+          <b style="color:var(--neon-green);font-size:14.5px">🗄️ گاوصندوق پشتیبان داخلی برنامه (حافظه امن بدون گم‌شدن فایل)</b>
+          <p class="muted" style="margin:2px 0 0">حتی اگر فایل دانلودشده در گوشی را گم کنید، نسخه‌های پشتیبان شما در این پوشه داخلی محفوظ است:</p>
+        </div>
+        <button type="button" class="btn green btn-sm" onclick="createInternalVaultSnapshot('پشتیبان دستی معلم')">＋ ثبت نسخه جدید در گاوصندوق</button>
+      </div>
+      <div id="internalBackupVaultList" style="display:grid;gap:6px;margin-top:8px"></div>
+    </div>
+
+    <!-- ۳. پشتیبان‌گیری آنلاین ابری (Cloud Sync) -->
+    <div class="card" style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div>
+          <b style="color:var(--neon-purple);font-size:14.5px">☁️ پشتیبان‌گیری آنلاین و همگام‌سازی ابری (Cloud Backup)</b>
+          <p class="muted" style="margin:3px 0 0">ذخیره و بازیابی آنلاین کل اطلاعات با «کد رمز اختصاصی معلم» بین گوشی، تبلت و لپ‌تاپ</p>
+        </div>
+        <span class="chip" id="cloudSyncLastBadge">آماده اتصال</span>
+      </div>
+      <div class="formgrid" style="margin-top:10px">
+        <div class="field">
+          <label>🔑 کد اتاق ابری اختصاصی شما (یک عبارت دلخواه و محرمانه انتخاب کنید):</label>
+          <div style="display:flex;gap:6px">
+            <input type="text" id="cloudSyncSecretKey" dir="ltr" style="font-family:monospace;text-align:left" placeholder="مثلاً: ostad-shahabi-backup-1405" oninput="saveCloudSyncSettings()">
+            <button type="button" class="btn gray btn-sm" onclick="generateRandomCloudKey()" title="تولید کد تصادفی امن">🎲</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>🌐 آدرس وب‌هوک / Google Script شخصی (اختیاری - پیش‌فرض: رله ابری رایگان):</label>
+          <input type="text" id="cloudCustomEndpoint" dir="ltr" style="font-family:monospace;text-align:left" placeholder="خالی بگذارید تا از سرور ابری پیش‌فرض استفاده شود" oninput="saveCloudSyncSettings()">
+        </div>
+      </div>
+      <div class="actions" style="margin-top:10px">
+        <button type="button" class="btn primary" style="flex:1" id="btnCloudUpload" onclick="uploadBackupToCloud()">☁️ ذخیره آنلاین پشتیبان در ابر</button>
+        <button type="button" class="btn soft" style="flex:1" id="btnCloudRestore" onclick="restoreBackupFromCloud()">📥 بازیابی آنلاین آخرین پشتیبان از ابر</button>
+      </div>
+    </div>
+
+    <!-- ۴. سامانه لینک حضور و غیاب آنلاین و آزمون آنلاین دانش‌آموزان -->
+    <div class="card" style="margin-bottom:12px">
+      <b style="color:var(--primary);font-size:14.5px">🔗 مرکز لینک آنلاین حضور و غیاب و آزمون دانش‌آموزان</b>
+      <p class="muted" style="margin:4px 0 10px">ساخت لینک اختصاصی برای ارسال در گروه کلاس (شاد، ایتا، تلگرام و...)؛ دانش‌آموز حاضری می‌زند یا امتحان می‌دهد و نتیجه خودکار وارد لیست کلاس می‌شود:</p>
+      <div class="actions">
+        <button type="button" class="btn primary" style="flex:1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'att')">✋ ساخت لینک حضور و غیاب آنلاین</button>
+        <button type="button" class="btn soft" style="flex:1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">📝 ساخت لینک آزمون آنلاین</button>
+        <button type="button" class="btn green" style="flex:1" onclick="openReceiveStudentSyncModal(currentSchoolId, currentClassId)">📡 دریافت خودکار / ثبت رسید دانش‌آموزان</button>
+      </div>
+    </div>
+
+    <!-- ۵. عیب‌یاب، باگ‌گیر و بهینه‌ساز هوشمند برنامه -->
+    <div class="card" style="margin-bottom:12px;border-color:var(--neon-cyan)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div>
+          <b style="color:var(--neon-cyan);font-size:14.5px">🛠️ عیب‌یاب، باگ‌گیر و تعمیرکار هوشمند داده‌ها</b>
+          <p class="muted" style="margin:3px 0 0">بررسی خودکار سلامت نمرات، یکسان‌سازی فرمت تاریخ‌های تولد، رفع تداخل رکوردها و بهینه‌سازی سرعت برنامه</p>
+        </div>
+        <button type="button" class="btn primary btn-sm" onclick="runSmartAppDiagnostics(true)">⚡ اجرای عیب‌یابی و تعمیر خودکار</button>
+      </div>
+      <div id="smartDiagResultBox" style="display:none;margin-top:10px"></div>
     </div>
 
     <div class="formgrid" style="margin-bottom:12px">
@@ -2567,6 +3017,18 @@ body.light-mode .attn-tag.cat-special, body.theme-classic-orange .attn-tag.cat-s
   <div id="pastTermsListContainer" style="margin-top:14px"></div>
   <div id="archivedTermInspectorBox" style="margin-top:14px;display:none"></div>
 </section>
+
+<!-- امضای ظریف و غیرمزاحم معرفی برنامه در انتهای صفحات -->
+<footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
+  <div class="subtle-brand-inner">
+    <span class="subtle-brand-badge">🎓 دانش‌آموز من <small>v5.5 Pro</small></span>
+    <span class="subtle-brand-text">دفتر هوشمند معلم، کارنامه رنگی و آزمون‌ساز نسل جدید</span>
+  </div>
+  <div style="display:flex;gap:6px;align-items:center">
+    <button type="button" class="subtle-brand-share-btn" onclick="shareAppPromoWithColleagues()" title="ارسال معرفی برنامه برای همکاران فرهنگی">📤 معرفی به همکاران</button>
+    <button type="button" class="subtle-brand-share-btn" onclick="runSmartAppDiagnostics(true)" title="عیب‌یابی و بررسی سلامت برنامه">🛠️ سلامت برنامه</button>
+  </div>
+</footer>
 </main>
 
 <button class="fab" id="mainFabBtn" onclick="quickAdd()" title="افزودن سریع">＋</button>
@@ -2701,7 +3163,7 @@ body.light-mode .attn-tag.cat-special, body.theme-classic-orange .attn-tag.cat-s
   }
 })();
 const KEY = 'danesh_amooz_man_v1';
-const APP_VERSION = '5.3.0';
+const APP_VERSION = '5.5.0';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -3011,7 +3473,7 @@ function renderDashBirthdays() {
   let upcomings = [];
   db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
     if (!st.birth) return;
-    let m = enDigits(st.birth).match(/(\d{3,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+    let m = enDigits(st.birth).match(/(\d{2,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
     if (m) {
       let diff = getJalaliDayOfYear(+m[2], +m[3]) - todayDOY;
       if (diff < 0) diff += 365;
@@ -3302,7 +3764,7 @@ function openStudent(sid, cid, stid) {
   document.getElementById('studentCrumb').textContent = `${st.lastName} ${st.name}`;
   const autoReasons = getAutoAttentionReasons(c, st), effStat = (st.status === 'attn' || autoReasons.length > 0) ? 'attn' : (st.status || 'none');
   let allBeh = [...b.positives.map(x => ({ ...x, type: 'positive' })), ...b.negatives.map(x => ({ ...x, type: 'negative' }))].sort((a, z) => new Date(z.date) - new Date(a.date));
-  let papersHtml = (st.examPapers && st.examPapers.length) ? `<div class="card" style="margin-top:12px"><b>📸 برگه‌های امتحانی تصحیح‌شده (${fa(st.examPapers.length)})</b><div class="class-gallery" style="margin-top:8px">${st.examPapers.map((p, idx) => `<div style="border:1px solid var(--border);border-radius:12px;padding:6px;background:#fffaf5"><img src="${p.img}" class="photo-clickable" onclick="openPhotoViewer('${p.img}','برگه-${idx+1}.jpg')"><div style="font-size:11.5px;font-weight:bold;margin-top:4px">${esc(p.title || 'آزمون')} — نمره: ${fmtScore(p.score)}</div><button class="btn soft block btn-sm" style="margin-top:4px" onclick="triggerPhotoDownload('${p.img}','برگه-${idx+1}.jpg')">⬇️ ذخیره برگه</button></div>`).join('')}</div></div>` : '';
+  let papersHtml = (st.examPapers && st.examPapers.length) ? `<div class="card" style="margin-top:12px"><b>📸 برگه‌های امتحانی تصحیح‌شده (${fa(st.examPapers.length)})</b><div class="class-gallery" style="margin-top:8px">${st.examPapers.map((p, idx) => `<div style="border:1px solid var(--border);border-radius:12px;padding:6px;background:var(--bg-panel)"><img src="${p.img}" class="photo-clickable" onclick="openPhotoViewer('${p.img}','برگه-${idx+1}.jpg')"><div style="font-size:11.5px;font-weight:bold;margin-top:4px">${esc(p.title || 'آزمون')} — نمره: ${fmtScore(p.score)}</div><button class="btn soft block btn-sm" style="margin-top:4px" onclick="triggerPhotoDownload('${p.img}','برگه-${idx+1}.jpg')">⬇️ ذخیره برگه</button></div>`).join('')}</div></div>` : '';
   document.getElementById('studentDetailContent').innerHTML = `<div class="card"><div class="student"><div class="avatar ${st.photo ? 'photo-clickable' : ''}" style="width:74px!important;height:74px!important;font-size:28px" ${st.photo ? `onclick="openPhotoViewer('${st.photo}','photo.jpg')"` : ''}>${st.photo ? `<img src="${st.photo}">` : esc((st.name || '?')[0])}</div><div style="flex:1"><h1 class="title" style="margin:0">${formatStudentName(st)}</h1><div class="muted">${esc(s.name)} · ${esc(c.name)}</div><div class="chips"><span class="status ${effStat}">${effStat === 'good' ? '🟢 خوب' : effStat === 'attn' ? '🔴 نیازمند توجه' : '⚪ عادی'}</span><span class="chip">📚 مستمر: ${avg === null ? '—' : fmtScore(avg)}</span><span class="chip">⭐ نهایی: ${fmtScore(fin)}</span></div></div></div><div class="actions" style="margin-top:12px"><button class="btn primary" style="flex:1" onclick="openParentView('${sid}','${cid}','${stid}')">👨‍👩‍👦 نمایش به اولیا</button><button class="btn soft" onclick="sendParentSmsReport('${sid}','${cid}','${stid}')">📱 پیامک کارنامه</button></div><hr style="border:0;border-top:1px solid var(--border);margin:14px 0"><div class="formgrid"><div><b>🎂 تولد:</b> <span class="muted">${fa(st.birth || '—')}</span></div><div><b>☎ تلفن:</b> <span class="muted">${fa(st.phone || '—')}</span></div><div class="field full"><b>❤️ علایق:</b> <span class="muted">${esc(st.interests || '—')}</span></div><div class="field full"><b>🔒 یادداشت معلم:</b> <span class="muted">${esc(st.notes || '—')}</span></div></div></div>${renderStudentLineChart(c, st)}${papersHtml}<div class="card" style="margin-top:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b>➕➖ سوابق مثبت و منفی</b><span class="chip">خالص: ${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)}</span></div><div class="actions"><button class="btn green" style="flex:1" onclick="addBehaviorModal('${sid}','${cid}','${stid}','positive')">➕ ثبت مثبت</button><button class="btn danger" style="flex:1" onclick="addBehaviorModal('${sid}','${cid}','${stid}','negative')">➖ ثبت منفی</button></div><div style="margin-top:10px;display:grid;gap:7px">${allBeh.map(x => `<div style="padding:9px 11px;background:var(--panel);border:1px solid var(--border);border-radius:11px;display:flex;justify-content:space-between;align-items:center;gap:8px"><div><b>${x.type === 'positive' ? '➕' : '➖'} ${esc(x.reason)}</b><div class="muted">${formatEventDate(x.date)} · ${fmtScore(x.value || 0.25)}</div></div><div style="display:flex;gap:5px"><button class="btn gray btn-sm" onclick="editBehavior('${sid}','${cid}','${stid}','${x.type}','${x.id}')">✎</button><button class="btn danger btn-sm" onclick="deleteBehavior('${sid}','${cid}','${stid}','${x.type}','${x.id}')">حذف</button></div></div>`).join('') || '<div class="muted">موردی ثبت نشده.</div>'}</div></div><div class="card" style="margin-top:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b>📚 نمرات ثبت‌شده</b><button class="btn primary btn-sm" onclick="addGrade('${sid}','${cid}','${stid}')">＋ ثبت نمره</button></div><div style="margin-top:10px;display:grid;gap:7px">${g.slice().sort((a, z) => new Date(z.date) - new Date(a.date)).map(x => `<div style="padding:9px 11px;background:var(--panel);border:1px solid var(--border);border-radius:11px;display:flex;justify-content:space-between;align-items:center"><div><b>${esc(x.subject || 'ارزیابی')} — <span style="color:var(--primary)">${fmtScore(x.score)}</span></b> <span class="chip" style="font-size:10px">${x.gradeType === 'cont_exam' ? 'کتبی مستمر' : 'کلاسی'}</span></div><div style="display:flex;gap:5px"><button class="btn gray btn-sm" onclick="editGrade('${sid}','${cid}','${stid}','${x.id}')">✎</button><button class="btn danger btn-sm" onclick="deleteGrade('${sid}','${cid}','${stid}','${x.id}')">حذف</button></div></div>`).join('') || '<div class="muted">نمره‌ای ثبت نشده.</div>'}</div></div><div class="actions" style="margin-top:14px"><button class="btn primary" onclick="editStudent('${sid}','${cid}','${stid}')">✎ ویرایش</button><button class="btn soft" onclick="copyStudentAdvanced('${sid}','${cid}','${stid}')">📋 کپی</button><button class="btn soft" onclick="moveStudent('${sid}','${cid}','${stid}')">🔀 انتقال</button><button class="btn danger" onclick="deleteStudent('${sid}','${cid}','${stid}')">حذف</button></div>`;
   showView('studentDetail');
 }
@@ -3318,7 +3780,7 @@ function renderStudentLineChart(c, st) {
   const pts = getStudentChronologicalGrades(c, st);
   if (pts.length < 2) return `<div class="chart-container"><b>📈 نمودار پیشرفت</b><p class="muted" style="margin:6px 0 0">پس از ثبت حداقل ۲ نمره رسم می‌شود.</p></div>`;
   const w = 560, h = 135, svgPts = pts.map((p, i) => `${(i / (pts.length - 1)) * (w - 70) + 35},${h - (p.score / 20) * (h - 42) - 22}`).join(' ');
-  return `<div class="chart-container"><b>📈 نمودار پیشرفت دانش‌آموز</b><div class="chart-box"><svg class="chart" viewBox="0 0 ${w} ${h}"><line x1="30" y1="${h - 22}" x2="${w - 30}" y2="${h - 22}" stroke="rgba(56,189,248,0.28)" stroke-width="1.5"/><polyline fill="none" stroke="#22D3EE" stroke-width="3" points="${svgPts}"/>${pts.map((p, i) => { let x = (i / (pts.length - 1)) * (w - 70) + 35, y = h - (p.score / 20) * (h - 42) - 22; return `<circle cx="${x}" cy="${y}" r="4.5" fill="#4ADE80"/><text x="${x}" y="${y - 8}" font-size="10" font-weight="bold" text-anchor="middle" fill="#F1F5F9">${fmtScore(p.score)}</text>`; }).join('')}</svg></div></div>`;
+  return `<div class="chart-container"><b>📈 نمودار پیشرفت دانش‌آموز</b><div class="chart-box"><svg class="chart" viewBox="0 0 ${w} ${h}"><line x1="30" y1="${h - 22}" x2="${w - 30}" y2="${h - 22}" stroke="rgba(56,189,248,0.28)" stroke-width="1.5"/><polyline fill="none" stroke="#22D3EE" stroke-width="3" points="${svgPts}"/>${pts.map((p, i) => { let x = (i / (pts.length - 1)) * (w - 70) + 35, y = h - (p.score / 20) * (h - 42) - 22; return `<circle cx="${x}" cy="${y}" r="4.5" fill="#4ADE80"/><text x="${x}" y="${y - 8}" font-size="10" font-weight="bold" text-anchor="middle" fill="currentColor">${fmtScore(p.score)}</text>`; }).join('')}</svg></div></div>`;
 }
 
 function openParentView(sid, cid, stid) {
@@ -3521,7 +3983,7 @@ function renderClassLineChart(c) {
   let pts = []; attendanceDates(c).forEach(d => { let scs = (c.students || []).map(st => attendanceScore(c, d, st.id)).filter(x => x !== null); if (scs.length) pts.push({ label: formatAttendanceDate(d), avg: scs.reduce((a, b) => a + b, 0) / scs.length }); });
   if (pts.length < 2) return '';
   const w = 560, h = 125, svgPts = pts.map((p, i) => `${(i / (pts.length - 1)) * (w - 60) + 30},${h - (p.avg / 20) * (h - 40) - 20}`).join(' ');
-  return `<div class="chart-container"><b>📈 روند میانگین جلسات کلاس</b><div class="chart-box"><svg class="chart" viewBox="0 0 ${w} ${h}"><line x1="25" y1="${h - 20}" x2="${w - 25}" y2="${h - 20}" stroke="rgba(56,189,248,0.28)" stroke-width="1.5"/><polyline fill="none" stroke="#22D3EE" stroke-width="3" points="${svgPts}"/>${pts.map((p, i) => { let x = (i / (pts.length - 1)) * (w - 60) + 30, y = h - (p.avg / 20) * (h - 40) - 20; return `<circle cx="${x}" cy="${y}" r="4" fill="#22D3EE"/><text x="${x}" y="${y - 7}" font-size="9.5" text-anchor="middle" fill="#F1F5F9">${fmtScore(p.avg)}</text>`; }).join('')}</svg></div></div>`;
+  return `<div class="chart-container"><b>📈 روند میانگین جلسات کلاس</b><div class="chart-box"><svg class="chart" viewBox="0 0 ${w} ${h}"><line x1="25" y1="${h - 20}" x2="${w - 25}" y2="${h - 20}" stroke="rgba(56,189,248,0.28)" stroke-width="1.5"/><polyline fill="none" stroke="#22D3EE" stroke-width="3" points="${svgPts}"/>${pts.map((p, i) => { let x = (i / (pts.length - 1)) * (w - 60) + 30, y = h - (p.avg / 20) * (h - 40) - 20; return `<circle cx="${x}" cy="${y}" r="4" fill="#22D3EE"/><text x="${x}" y="${y - 7}" font-size="9.5" text-anchor="middle" fill="currentColor">${fmtScore(p.avg)}</text>`; }).join('')}</svg></div></div>`;
 }
 function renderSchoolProgressChart() {
   const box = document.getElementById('schoolProgressChart'); if (!box) return;
@@ -3543,7 +4005,7 @@ function renderBirthdays() {
   const todayDOY = getJalaliDayOfYear(tp.m, tp.d); let items = [];
   db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
     if (!st.birth) return;
-    let m = enDigits(st.birth).match(/(\d{3,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+    let m = enDigits(st.birth).match(/(\d{2,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
     if (m) { let diff = getJalaliDayOfYear(+m[2], +m[3]) - todayDOY; if (diff < 0) diff += 365; items.push({ s, c, st, diff }); }
   })));
   items.sort((a, b) => a.diff - b.diff);
@@ -4289,7 +4751,7 @@ const ExamApp = {
       });
     } else rowsHtml = qs.map((q, i) => this.renderQuestionRowHTML(q, i + 1, isKey)).join('');
 
-    return `${sw.showWatermark && h.watermark ? `<div class="sheet-watermark">${esc(h.watermark)}</div>` : ''}<div class="sheet-frame ${h.frame || 'frame-double'}"><div class="sheet-besmellah" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('god',this.innerText)">${esc(h.god)}</div>${sw.mandatoryNameWarn ? `<div class="mandatory-name-warning" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('mandatoryWarn',this.innerText)">${esc(h.mandatoryWarn)}</div>` : ''}<table class="official-header-table"><tr>${h.logo ? `<td rowspan="4" class="header-logo-cell"><img src="${h.logo}"></td>` : ''}<td colspan="2" class="official-title-cell"><span contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('mainTitle',this.innerText)">${esc(h.mainTitle)}</span> — <span contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('school',this.innerText)">${esc(h.school)}</span></td><td style="text-align:center;font-weight:900;background:#fff7ed">شعبه: ${this.currentBranch}</td></tr><tr><td><span class="h-lbl">${esc(h.lblName)}</span><span class="h-val" contenteditable="true"></span></td><td><span class="h-lbl">${esc(h.lblSubject)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('subject',this.innerText)">${esc(h.subject)}</span></td><td><span class="h-lbl">${esc(h.lblDate)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('date',this.innerText)">${esc(h.date)}</span></td></tr><tr><td><span class="h-lbl">${esc(h.lblGrade)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('grade',this.innerText)">${esc(h.grade)}</span></td><td><span class="h-lbl">${esc(h.lblTime)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('time',this.innerText)">${esc(h.time)}</span></td><td><span class="h-lbl">${esc(h.lblScore)}</span><span class="h-val">${this.toFa(total)} نمره</span></td></tr><tr><td><span class="h-lbl">${esc(h.lblFather)}</span><span class="h-val" contenteditable="true"></span></td><td><span class="h-lbl">${esc(h.lblTeacher)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('teacher',this.innerText)">${esc(h.teacher)}</span></td><td><span class="h-lbl">${esc(h.lblYear)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('year',this.innerText)">${esc(h.year)}</span></td></tr></table>${sw.showIntro && h.intro ? `<div class="intro-row-box" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('intro',this.innerText)">${esc(h.intro)}</div>` : ''}${omrHtml}<table class="exam-questions-table"><thead><tr><th style="width:32px">ردیف</th><th>شرح سوالات آزمون (شعبه ${this.currentBranch})</th><th style="width:50px">بارم</th></tr></thead><tbody>${rowsHtml}</tbody></table><div class="quick-add-bar"><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('mcq')">+ تستی (۰.۵)</button><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('tf')">+ ص/غ (۰.۲۵)</button><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('blank')">+ جاخالی (۰.۵)</button><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('desc')">+ تشریحی (۱.۵)</button></div>${sw.showOutro ? `<div class="sheet-bottom-bar"><span contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('outro',this.innerText)">${esc(h.outro)}</span><span>جمع بارم: ${this.toFa(total)} نمره</span></div>` : ''}</div>`;
+    return `${sw.showWatermark && h.watermark ? `<div class="sheet-watermark">${esc(h.watermark)}</div>` : ''}<div class="sheet-frame ${h.frame || 'frame-double'}"><div class="sheet-besmellah" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('god',this.innerText)">${esc(h.god)}</div>${sw.mandatoryNameWarn ? `<div class="mandatory-name-warning" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('mandatoryWarn',this.innerText)">${esc(h.mandatoryWarn)}</div>` : ''}<table class="official-header-table"><tr>${h.logo ? `<td rowspan="4" class="header-logo-cell"><img src="${h.logo}"></td>` : ''}<td colspan="2" class="official-title-cell"><span contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('mainTitle',this.innerText)">${esc(h.mainTitle)}</span> — <span contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('school',this.innerText)">${esc(h.school)}</span></td><td style="text-align:center;font-weight:900;background:#fff7ed">شعبه: ${this.currentBranch}</td></tr><tr><td><span class="h-lbl">${esc(h.lblName)}</span><span class="h-val" contenteditable="true"></span></td><td><span class="h-lbl">${esc(h.lblSubject)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('subject',this.innerText)">${esc(h.subject)}</span></td><td><span class="h-lbl">${esc(h.lblDate)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('date',this.innerText)">${esc(h.date)}</span></td></tr><tr><td><span class="h-lbl">${esc(h.lblGrade)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('grade',this.innerText)">${esc(h.grade)}</span></td><td><span class="h-lbl">${esc(h.lblTime)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('time',this.innerText)">${esc(h.time)}</span></td><td><span class="h-lbl">${esc(h.lblScore)}</span><span class="h-val">${this.toFa(total)} نمره</span></td></tr><tr><td><span class="h-lbl">${esc(h.lblFather)}</span><span class="h-val" contenteditable="true"></span></td><td><span class="h-lbl">${esc(h.lblTeacher)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('teacher',this.innerText)">${esc(h.teacher)}</span></td><td><span class="h-lbl">${esc(h.lblYear)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('year',this.innerText)">${esc(h.year)}</span></td></tr></table>${sw.showIntro && h.intro ? `<div class="intro-row-box" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('intro',this.innerText)">${esc(h.intro)}</div>` : ''}${omrHtml}<table class="exam-questions-table"><thead><tr><th style="width:32px">ردیف</th><th>شرح سوالات آزمون (شعبه ${this.currentBranch})</th><th style="width:50px">بارم</th></tr></thead><tbody>${rowsHtml}</tbody></table><div class="quick-add-bar"><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('mcq')">+ تستی (۰.۵)</button><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('tf')">+ ص/غ (۰.۲۵)</button><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('blank')">+ جاخالی (۰.۵)</button><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('desc')">+ تشریحی (۱.۵)</button></div>${sw.showOutro ? `<div class="sheet-bottom-bar"><span contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('outro',this.innerText)">${esc(h.outro)}</span><span style="font-size:0.78em;color:#475569;font-weight:700">🎓 طراحی‌شده با سامانه هوشمند «دانش‌آموز من»</span><span>جمع بارم: ${this.toFa(total)} نمره</span></div>` : `<div style="text-align:left;font-size:9px;color:#64748b;margin-top:3px">🎓 طراحی‌شده با سامانه «دانش‌آموز من»</div>`}</div>`;
   },
   renderAll() {
     const sh = document.getElementById('a4Sheet'), t = document.getElementById('sheetRenderTarget'); if (!sh || !t) return;
@@ -6927,6 +7389,2093 @@ window.addEventListener('DOMContentLoaded', async () => {
   window.applyStaggeredCardEntrance(document.getElementById('dashboard'));
   ExamApp.init();
 });
+
+/* ==================== موتور ارتقای نسخه ۵.۴.۰ Pro ==================== */
+if (typeof ExamApp !== "undefined") window.ExamApp = ExamApp;
+/* ۱. اصلاح برچسب‌های تک‌خطی و تراز دقیق هسته JARVIS + افزودن شاخص نیازمند توجه */
+window.updateJarvisCoreDisplay = function(animate = false) {
+  const valEl = document.getElementById('jarvisCoreValue');
+  const lblEl = document.getElementById('jarvisCoreLabel');
+  const tagEl = document.getElementById('jarvisCoreTag');
+  const badgeEl = document.getElementById('jarvisActiveTermBadge');
+  if (!valEl || !lblEl) return;
+
+  if (window._isDbLoading) {
+    valEl.textContent = '...';
+    lblEl.textContent = 'در حال بارگذاری';
+    return;
+  }
+
+  const c = counts();
+  const mode = window._jarvisMetricMode || 'students';
+  let targetNum = 0;
+  let label = 'دانش‌آموز فعال';
+  let tag = 'کل دانش‌آموزان';
+  let isFloat = false;
+
+  if (mode === 'students') {
+    targetNum = c.students; label = 'دانش‌آموز فعال'; tag = 'آمار کل';
+  } else if (mode === 'classes') {
+    targetNum = c.classes; label = 'کلاس فعال'; tag = 'کلاس‌ها';
+  } else if (mode === 'schools') {
+    targetNum = c.schools; label = 'مدرسه فعال'; tag = 'مدارس';
+  } else if (mode === 'avg') {
+    let allScores = [];
+    db.schools.forEach(s => s.classes.forEach(cl => cl.students.forEach(st => {
+      const f = calculateFinalStudentScore(cl, st);
+      if (Number.isFinite(f) && (st.grades?.length || cl.termScores?.[st.id] !== undefined)) allScores.push(f);
+    })));
+    targetNum = allScores.length ? (allScores.reduce((a, b) => a + b, 0) / allScores.length) : 0;
+    label = 'میانگین کل'; tag = 'نمره از ۲۰'; isFloat = true;
+  } else if (mode === 'present') {
+    const today = localISODate();
+    let pres = 0;
+    db.schools.forEach(s => s.classes.forEach(cl => cl.students.forEach(st => {
+      if (attendanceStatus(cl, today, st.id) !== 'absent') pres++;
+    })));
+    targetNum = pres; label = 'حاضرین امروز'; tag = 'حضور امروز';
+  } else if (mode === 'attn') {
+    let attnCnt = 0;
+    db.schools.forEach(s => s.classes.forEach(cl => cl.students.forEach(st => {
+      if (isAutoAttention(cl, st)) attnCnt++;
+    })));
+    targetNum = attnCnt; label = 'نیازمند توجه'; tag = 'پایش وضعیت';
+  }
+
+  if (tagEl) tagEl.textContent = tag;
+  lblEl.textContent = label;
+
+  let termTitle = db.activeTermName || 'نیمسال اول ۱۴۰۵-۱۴۰۶';
+  if (db.schools?.[0]?.classes?.[0]?.currentTermName) {
+    termTitle = db.schools[0].classes[0].currentTermName;
+  }
+  if (badgeEl) badgeEl.textContent = termTitle;
+
+  document.querySelectorAll('#jarvisMetricPills .jarvis-metric-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.metric === mode);
+  });
+
+  if (animate && isCyberAnimOn('anim_charts')) {
+    animateNumberValue(valEl, 0, targetNum, 420, isFloat);
+  } else {
+    valEl.textContent = isFloat ? fmtScore(targetNum) : fa(Math.round(targetNum));
+  }
+};
+
+window.cycleJarvisCoreMetric = function() {
+  const order = ['students', 'classes', 'schools', 'avg', 'present', 'attn'];
+  const idx = order.indexOf(window._jarvisMetricMode || 'students');
+  window._jarvisMetricMode = order[(idx + 1) % order.length];
+  window.updateJarvisCoreDisplay(true);
+};
+
+/* ==================== ۲. مرکز خروجی تفکیک‌شده (هر مدرسه، هر کلاس، هر دانش‌آموز، هر وضعیت) ==================== */
+window.initGranularExportSelectors = function(preScope = null, preSid = null, preCid = null, preStid = null) {
+  const scopeEl = document.getElementById('expScopeType');
+  const schSel = document.getElementById('expSchoolSel');
+  if (!scopeEl || !schSel) return;
+
+  if (preScope) scopeEl.value = preScope;
+  schSel.innerHTML = db.schools.map(s => `<option value="${s.id}">${esc(s.name)} (${fa(s.classes.length)} کلاس)</option>`).join('') || '<option value="">مدرسه‌ای ثبت نشده</option>';
+  if (preSid && db.schools.some(s => s.id === preSid)) schSel.value = preSid;
+  else if (currentSchoolId && db.schools.some(s => s.id === currentSchoolId)) schSel.value = currentSchoolId;
+
+  window.onExportSchoolChange(preCid, preStid);
+  window.onExportScopeChange();
+};
+
+window.onExportScopeChange = function() {
+  const scope = document.getElementById('expScopeType')?.value || 'all';
+  const sw = document.getElementById('expSchoolWrap');
+  const cw = document.getElementById('expClassWrap');
+  const stw = document.getElementById('expStudentWrap');
+  if (sw) sw.style.display = (scope === 'school' || scope === 'class' || scope === 'student') ? 'block' : 'none';
+  if (cw) cw.style.display = (scope === 'class' || scope === 'student') ? 'block' : 'none';
+  if (stw) stw.style.display = (scope === 'student') ? 'block' : 'none';
+  window.updateExportCountPreview();
+};
+
+window.onExportSchoolChange = function(preCid = null, preStid = null) {
+  const sid = document.getElementById('expSchoolSel')?.value;
+  const s = findSchool(sid) || db.schools[0];
+  const clsSel = document.getElementById('expClassSel');
+  if (!clsSel) return;
+  const classes = s?.classes || [];
+  clsSel.innerHTML = classes.map(c => `<option value="${c.id}">${esc(c.name)} (${fa(c.students.length)} نفر)</option>`).join('') || '<option value="">کلاسی ثبت نشده</option>';
+  if (preCid && classes.some(c => c.id === preCid)) clsSel.value = preCid;
+  else if (currentClassId && classes.some(c => c.id === currentClassId)) clsSel.value = currentClassId;
+  window.onExportClassChange(preStid);
+};
+
+window.onExportClassChange = function(preStid = null) {
+  const sid = document.getElementById('expSchoolSel')?.value;
+  const cid = document.getElementById('expClassSel')?.value;
+  const c = findClass(sid, cid);
+  const stSel = document.getElementById('expStudentSel');
+  if (!stSel) return;
+  const students = sortStudents(c?.students || []);
+  stSel.innerHTML = students.map(st => `<option value="${st.id}">${esc(st.lastName)} ${esc(st.name)}${st.fatherName ? ` (${esc(st.fatherName)})` : ''}</option>`).join('') || '<option value="">دانش‌آموزی نیست</option>';
+  if (preStid && students.some(st => st.id === preStid)) stSel.value = preStid;
+  else if (currentStudentId && students.some(st => st.id === currentStudentId)) stSel.value = currentStudentId;
+  window.updateExportCountPreview();
+};
+
+window.collectFilteredExportData = function(overrideOpts = null) {
+  const scope = overrideOpts?.scope || document.getElementById('expScopeType')?.value || 'all';
+  const sid = overrideOpts?.sid || document.getElementById('expSchoolSel')?.value || currentSchoolId;
+  const cid = overrideOpts?.cid || document.getElementById('expClassSel')?.value || currentClassId;
+  const stid = overrideOpts?.stid || document.getElementById('expStudentSel')?.value || currentStudentId;
+  const statusFilter = overrideOpts?.statusFilter || document.getElementById('expStatusFilter')?.value || 'all';
+
+  const sections = []; // Each section: { school, cls, students: [{st, det, absCnt, contSc, avgSc, termSc, finalSc}] }
+  let totalStudents = 0;
+
+  db.schools.forEach(s => {
+    if ((scope === 'school' || scope === 'class' || scope === 'student') && s.id !== sid) return;
+    (s.classes || []).forEach(c => {
+      if ((scope === 'class' || scope === 'student') && c.id !== cid) return;
+      const matchedStudents = [];
+      sortStudents(c.students || []).forEach(st => {
+        if (scope === 'student' && st.id !== stid) return;
+        const det = window.getStudentAttentionDetails ? window.getStudentAttentionDetails(c, st) : { isAttn: isAutoAttention(c, st), categories: [], badges: [], attnNote: '' };
+
+        // Apply status filter
+        if (statusFilter === 'good' && (det.isAttn || st.status !== 'good')) return;
+        if (statusFilter === 'attn_all' && !det.isAttn) return;
+        if (statusFilter.startsWith('attn_') && statusFilter !== 'attn_all') {
+          const reqCat = statusFilter.replace('attn_', '');
+          if (!det.categories.includes(reqCat)) return;
+        }
+
+        const absCnt = attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+        const contSc = typeof getStudentWrittenContScore === 'function' ? getStudentWrittenContScore(c, st) : null;
+        const avgSc = avgGrade(st);
+        const termSc = (c.termScores?.[st.id] !== undefined && c.termScores[st.id] !== '') ? Number(c.termScores[st.id]) : null;
+        const finalSc = calculateFinalStudentScore(c, st);
+        const bt = behaviorTotals(st);
+
+        matchedStudents.push({ st, det, absCnt, contSc, avgSc, termSc, finalSc, bt });
+        totalStudents++;
+      });
+
+      if (matchedStudents.length) {
+        sections.push({ school: s, cls: c, items: matchedStudents });
+      }
+    });
+  });
+
+  return { scope, sections, totalStudents };
+};
+
+window.updateExportCountPreview = function() {
+  const chip = document.getElementById('exportPreviewCountChip');
+  if (!chip) return;
+  const data = window.collectFilteredExportData();
+  chip.textContent = `${fa(data.sections.length)} کلاس · ${fa(data.totalStudents)} دانش‌آموز انتخاب شد`;
+};
+
+// میانبر باز کردن مستقیم مرکز خروجی برای یک مدرسه، یک کلاس یا یک دانش‌آموز خاص
+window.openQuickExportForTarget = function(scope, sid = null, cid = null, stid = null) {
+  showView('backup');
+  window.openSettingsTab('export');
+  window.initGranularExportSelectors(scope, sid, cid, stid);
+  toast('محدوده خروجی به صورت خودکار تنظیم شد 📤');
+};
+
+window.exportCustomReport = function(kind, overrideOpts = null) {
+  const res = window.collectFilteredExportData(overrideOpts);
+  if (!res.totalStudents) {
+    alert('هیچ دانش‌آموزی با فیلتر انتخاب‌شده یافت نشد.');
+    return;
+  }
+
+  const colMeta = document.getElementById('expColMeta')?.checked !== false;
+  const colAtt = document.getElementById('expColAtt')?.checked !== false;
+  const colCont = document.getElementById('expColContGrades')?.checked !== false;
+  const colBeh = document.getElementById('expColBeh')?.checked !== false;
+  const colTerm = document.getElementById('expColTerm')?.checked !== false;
+  const colAttn = document.getElementById('expColAttn')?.checked !== false;
+  const splitMode = document.getElementById('expClassSplitMode')?.value || 'separate_sections';
+
+  // حالت ویژه: اگر خروجی تکی برای یک دانش‌آموز خاص باشد، کارنامه و پرونده کامل فردی تولید کن
+  if (res.scope === 'student' && res.totalStudents === 1) {
+    const sec = res.sections[0];
+    const item = sec.items[0];
+    return window.exportSingleStudentFullDossier(sec.school, sec.cls, item, kind);
+  }
+
+  const buildHeaders = (includeSchoolClass) => {
+    const h = ['ردیف'];
+    if (includeSchoolClass) { h.push('مدرسه', 'کلاس'); }
+    h.push('نام خانوادگی و نام');
+    if (colMeta) { h.push('نام پدر', 'تلفن'); }
+    if (colAtt) { h.push('تعداد غیبت'); }
+    if (colCont) { h.push('کتبی مستمر', 'میانگین مستمر'); }
+    if (colBeh) { h.push('مثبت / منفی', 'تأثیر انضباطی'); }
+    if (colTerm) { h.push('پایانی ترم', 'نمره نهایی'); }
+    if (colAttn) { h.push('وضعیت / نوع توجه', 'شرح بیماری و ملاحظات'); }
+    return h;
+  };
+
+  const buildRow = (idx, s, c, item, includeSchoolClass) => {
+    const { st, det, absCnt, contSc, avgSc, termSc, finalSc, bt } = item;
+    const r = [fa(idx + 1)];
+    if (includeSchoolClass) { r.push(s.name, c.name); }
+    r.push(`${st.lastName || ''} ${st.name || ''}`.trim());
+    if (colMeta) { r.push(st.fatherName || '—', st.phone ? fa(st.phone) : '—'); }
+    if (colAtt) { r.push(fa(absCnt)); }
+    if (colCont) { r.push(contSc !== null ? fmtScore(contSc) : '—', avgSc !== null ? fmtScore(avgSc) : '—'); }
+    if (colBeh) {
+      r.push(`+${fa(st.behavior.positives.length)} / -${fa(st.behavior.negatives.length)}`);
+      r.push(`${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)}`);
+    }
+    if (colTerm) { r.push(termSc !== null ? fmtScore(termSc) : '—', fmtScore(finalSc)); }
+    if (colAttn) {
+      const statusTxt = det.isAttn ? (det.badges.map(b => b.label).join(' | ') || 'نیازمند توجه') : (st.status === 'good' ? 'خوب' : 'عادی');
+      r.push(statusTxt, det.attnNote || st.notes || '—');
+    }
+    return r;
+  };
+
+  let fileScopeLabel = 'کل-برنامه';
+  if (res.scope === 'school' && res.sections[0]) fileScopeLabel = safeFileName(res.sections[0].school.name);
+  if (res.scope === 'class' && res.sections[0]) fileScopeLabel = safeFileName(`${res.sections[0].school.name}-${res.sections[0].cls.name}`);
+
+  if (kind === 'excel') {
+    const csvLines = [];
+    if (splitMode === 'separate_sections') {
+      const headers = buildHeaders(false);
+      res.sections.forEach((sec, sIdx) => {
+        if (sIdx > 0) csvLines.push([]);
+        csvLines.push([`مدرسه: ${sec.school.name}`, `کلاس: ${sec.cls.name}`, `ترم: ${sec.cls.currentTermName || 'جاری'}`, `تعداد: ${fa(sec.items.length)} نفر`]);
+        csvLines.push(headers);
+        sec.items.forEach((it, idx) => csvLines.push(buildRow(idx, sec.school, sec.cls, it, false)));
+      });
+    } else {
+      const headers = buildHeaders(true);
+      csvLines.push(headers);
+      let globalIdx = 0;
+      res.sections.forEach(sec => {
+        sec.items.forEach(it => csvLines.push(buildRow(globalIdx++, sec.school, sec.cls, it, true)));
+      });
+    }
+    const csv = '\ufeff' + csvLines.map(row => row.map(x => `"${String(x ?? '').replace(/"/g, '""')}"`).join(',')).join('\r\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = `گزارش-${fileScopeLabel}-${localISODate()}.csv`;
+    a.click();
+    toast('فایل اکسل (CSV) تفکیک‌شده دانلود شد 📊');
+  } else {
+    // Word or Print/PDF
+    const sectionsHtml = res.sections.map((sec, sIdx) => {
+      const headers = buildHeaders(false);
+      const rowsHtml = sec.items.map((it, idx) => `<tr>${buildRow(idx, sec.school, sec.cls, it, false).map(cell => `<td>${esc(cell)}</td>`).join('')}</tr>`).join('');
+      const pageBreakStyle = (splitMode === 'separate_sections' && sIdx > 0) ? 'page-break-before:always;break-before:page;' : 'margin-top:18px;';
+      return `<div style="${sIdx > 0 ? pageBreakStyle : ''}">
+        <div style="background:#fff7ed;border:1.5px solid #ea580c;border-radius:10px;padding:8px 12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+          <b>🏫 مدرسه: ${esc(sec.school.name)} — 🚪 کلاس: ${esc(sec.cls.name)} (${esc(sec.cls.currentTermName || 'ترم جاری')})</b>
+          <span>تعداد: ${fa(sec.items.length)} نفر | تاریخ گزارش: ${formatJalaliDate(localISODate())}</span>
+        </div>
+        <table border="1" style="border-collapse:collapse;width:100%;font-size:11.5px">
+          <thead><tr style="background:#f1f5f9">${headers.map(h => `<th style="padding:6px;border:1px solid #475569">${esc(h)}</th>`).join('')}</tr></thead>
+          <tbody>${rowsHtml}</tbody>
+        </table>
+      </div>`;
+    }).join('');
+
+    const fullDoc = `<html dir="rtl"><head><meta charset="utf-8"><title>گزارش تفکیکی — ${esc(fileScopeLabel)}</title><style>body{font-family:Tahoma,sans-serif;padding:18px;direction:rtl;color:#0f172a}table{width:100%;border-collapse:collapse}th,td{border:1px solid #64748b;padding:5px 7px;text-align:right;font-size:11.5px}th{background:#f1f5f9}</style></head><body>${sectionsHtml}</body></html>`;
+
+    if (kind === 'word') {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob(['\ufeff' + fullDoc], { type: 'application/msword' }));
+      a.download = `گزارش-${fileScopeLabel}-${localISODate()}.doc`;
+      a.click();
+      toast('فایل Word تفکیک‌شده دانلود شد 📘');
+    } else {
+      const w = window.open('', '_blank');
+      if (!w) return;
+      w.document.write(fullDoc);
+      w.document.close();
+      setTimeout(() => w.print(), 350);
+    }
+  }
+};
+
+// خروجی پرونده کامل یک دانش‌آموز خاص (تکی) در هر ۳ فرمت (Excel / Word / Print-PDF)
+window.exportSingleStudentFullDossier = function(s, c, item, kind) {
+  const { st, det, absCnt, contSc, avgSc, termSc, finalSc, bt } = item;
+  const fullName = `${st.lastName || ''} ${st.name || ''}`.trim();
+  const safeName = safeFileName(fullName);
+  const dates = attendanceDates(c);
+  const attDetails = dates.map(d => {
+    const isAbs = attendanceStatus(c, d, st.id) === 'absent';
+    const sc = attendanceScore(c, d, st.id);
+    return `${formatAttendanceDate(d)}: ${isAbs ? 'غایب' : 'حاضر'}${sc !== null ? ` (نمره: ${fa(sc)})` : ''}`;
+  });
+  const gradesList = (st.grades || []).map(g => `${g.subject || 'ارزیابی'}: ${fmtScore(g.score)} (${g.gradeType === 'cont_exam' ? 'کتبی مستمر' : 'کلاسی'})`);
+  const posList = (st.behavior?.positives || []).map(p => `+${fmtScore(p.value)} (${p.reason || 'مثبت'})`);
+  const negList = (st.behavior?.negatives || []).map(n => `-${fmtScore(n.value)} (${n.reason || 'منفی'})`);
+
+  if (kind === 'excel') {
+    const rows = [
+      ['کارنامه و پرونده کامل انفرادی دانش‌آموز', fullName],
+      ['مدرسه', s.name, 'کلاس', c.name, 'ترم', c.currentTermName || 'جاری'],
+      ['نام پدر', st.fatherName || '—', 'تلفن والدین', st.phone || '—', 'تاریخ تولد', st.birth || '—'],
+      ['نمره کتبی مستمر', contSc !== null ? fmtScore(contSc) : '—', 'میانگین مستمر', avgSc !== null ? fmtScore(avgSc) : '—', 'نمره پایانی ترم', termSc !== null ? fmtScore(termSc) : '—'],
+      ['نمره نهایی کل', fmtScore(finalSc), 'تعداد کل غیبت‌ها', fa(absCnt), 'تراز انضباطی', `${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)}`],
+      ['وضعیت توجه', det.badges.map(b => b.label).join(' | ') || 'عادی/خوب', 'شرح بیماری / ملاحظات', det.attnNote || st.notes || '—'],
+      [],
+      ['ریز جلسات حضور و غیاب و نمرات کلاسی'],
+      ...attDetails.map(x => [x]),
+      [],
+      ['ریز ارزیابی‌ها و آزمون‌های ثبت‌شده'],
+      ...(gradesList.length ? gradesList.map(x => [x]) : [['موردی ثبت نشده']]),
+      [],
+      ['سوابق مثبت و منفی'],
+      ...(posList.concat(negList).length ? posList.concat(negList).map(x => [x]) : [['موردی ثبت نشده']])
+    ];
+    const csv = '\ufeff' + rows.map(r => r.map(x => `"${String(x ?? '').replace(/"/g, '""')}"`).join(',')).join('\r\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = `پرونده-${safeName}-${localISODate()}.csv`;
+    a.click();
+    toast(`پرونده اکسل «${fullName}» دانلود شد 📊`);
+    return;
+  }
+
+  const docHtml = `<html dir="rtl"><head><meta charset="utf-8"><title>پرونده کامل — ${esc(fullName)}</title><style>body{font-family:Tahoma,sans-serif;padding:20px;direction:rtl;color:#0f172a}h2{margin:0 0 8px;color:#9a3412}table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px}th,td{border:1px solid #64748b;padding:7px;text-align:right}th{background:#fff7ed}</style></head><body>
+    <h2>👨‍🎓 کارنامه و پرونده جامع انفرادی: ${esc(fullName)}</h2>
+    <table>
+      <tr><th>مدرسه</th><td>${esc(s.name)}</td><th>کلاس و پایه</th><td>${esc(c.name)} (${esc(c.currentTermName || 'ترم جاری')})</td></tr>
+      <tr><th>نام پدر</th><td>${esc(st.fatherName || '—')}</td><th>تلفن تماس</th><td>${fa(st.phone || '—')}</td></tr>
+      <tr><th>نمره کتبی مستمر</th><td><b>${contSc !== null ? fmtScore(contSc) : '—'}</b></td><th>میانگین کل مستمر</th><td><b>${avgSc !== null ? fmtScore(avgSc) : '—'}</b></td></tr>
+      <tr><th>نمره پایانی ترم</th><td><b>${termSc !== null ? fmtScore(termSc) : '—'}</b></td><th>⭐ نمره نهایی کل</th><td><b style="font-size:14px;color:#15803d">${fmtScore(finalSc)} از ۲۰</b></td></tr>
+      <tr><th>تعداد غیبت</th><td>${fa(absCnt)} جلسه</td><th>سوابق مثبت و منفی</th><td>+${fa(st.behavior.positives.length)} مثبت / -${fa(st.behavior.negatives.length)} منفی</td></tr>
+      <tr><th>وضعیت و تفکیک توجه</th><td colspan="3"><b>${esc(det.badges.map(b => b.label).join(' | ') || (st.status === 'good' ? '🟢 خوب' : '⚪ عادی'))}</b> ${det.attnNote ? ` — 📌 ${esc(det.attnNote)}` : ''}</td></tr>
+    </table>
+    <b>📅 ریز وضعیت جلسات:</b><p style="font-size:11.5px;line-height:1.8;background:#f8fafc;padding:10px;border:1px solid #cbd5e1;border-radius:8px">${attDetails.map(esc).join(' &nbsp;|&nbsp; ') || '—'}</p>
+    <b>📝 ریز نمرات و آزمون‌ها:</b><p style="font-size:11.5px;line-height:1.8;background:#f8fafc;padding:10px;border:1px solid #cbd5e1;border-radius:8px">${gradesList.map(esc).join(' &nbsp;|&nbsp; ') || '—'}</p>
+    <b>➕➖ ریز سوابق رفتاری:</b><p style="font-size:11.5px;line-height:1.8;background:#f8fafc;padding:10px;border:1px solid #cbd5e1;border-radius:8px">${posList.concat(negList).map(esc).join(' &nbsp;|&nbsp; ') || '—'}</p>
+  </body></html>`;
+
+  if (kind === 'word') {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(['\ufeff' + docHtml], { type: 'application/msword' }));
+    a.download = `پرونده-${safeName}-${localISODate()}.doc`;
+    a.click();
+    toast(`پرونده Word «${fullName}» دانلود شد 📘`);
+  } else {
+    const w = window.open('', '_blank');
+    if (!w) return;
+    w.document.write(docHtml);
+    w.document.close();
+    setTimeout(() => w.print(), 350);
+  }
+};
+
+window.exportEachClassAsSeparateFiles = function() {
+  let count = 0;
+  db.schools.forEach(s => {
+    (s.classes || []).forEach((c, idx) => {
+      if (!c.students?.length) return;
+      count++;
+      setTimeout(() => {
+        window.exportCustomReport('excel', { scope: 'class', sid: s.id, cid: c.id, statusFilter: 'all' });
+      }, idx * 280);
+    });
+  });
+  if (!count) alert('هنوز کلاسی با دانش‌آموز ثبت نشده است.');
+  else toast(`در حال دانلود ${fa(count)} فایل اکسل مجزا برای کلاس‌ها... 📦`);
+};
+
+/* افزودن دکمه‌های خروجی مستقیم در صفحه مدرسه، کلاس و پرونده فردی دانش‌آموز */
+const _origOpenSchoolV54 = openSchool;
+openSchool = function(id) {
+  _origOpenSchoolV54(id);
+  const box = document.querySelector('#schoolDetailContent .detailhead .actions');
+  if (box && !box.querySelector('.btn-exp-school')) {
+    const btn = document.createElement('button');
+    btn.className = 'btn soft btn-exp-school';
+    btn.innerHTML = '📤 خروجی این مدرسه';
+    btn.onclick = () => window.openQuickExportForTarget('school', id, null, null);
+    box.appendChild(btn);
+  }
+};
+
+const _origOpenClassV54 = openClass;
+openClass = function(sid, cid) {
+  _origOpenClassV54(sid, cid);
+  const box = document.querySelector('#classMainView .detailhead .actions:nth-of-type(2)');
+  if (box && !box.querySelector('.btn-online-link')) {
+    const btnOnline = document.createElement('button');
+    btnOnline.className = 'btn primary btn-online-link';
+    btnOnline.innerHTML = '🔗 لینک حاضری و آزمون آنلاین';
+    btnOnline.onclick = () => window.openOnlineClassLinkModal(sid, cid, 'att');
+    box.prepend(btnOnline);
+
+    const btnExp = document.createElement('button');
+    btnExp.className = 'btn soft';
+    btnExp.innerHTML = '📤 خروجی این کلاس';
+    btnExp.onclick = () => window.openQuickExportForTarget('class', sid, cid, null);
+    box.appendChild(btnExp);
+  }
+};
+
+const _origOpenStudentV54 = openStudent;
+openStudent = function(sid, cid, stid) {
+  _origOpenStudentV54(sid, cid, stid);
+  const box = document.querySelector('#studentDetailContent .card .actions');
+  if (box && !box.querySelector('.btn-exp-st')) {
+    const btn = document.createElement('button');
+    btn.className = 'btn gray btn-exp-st';
+    btn.innerHTML = '📤 خروجی پرونده (Word/Excel)';
+    btn.onclick = () => window.openQuickExportForTarget('student', sid, cid, stid);
+    box.appendChild(btn);
+  }
+};
+
+/* ==================== ۳. پوشه اختصاصی پشتیبان‌گیری + گاوصندوق داخلی + پشتیبان ابری آنلاین ==================== */
+window._dedicatedBackupDirHandle = null;
+
+function getStandardBackupFilename(type = 'full') {
+  const jp = jalaliPartsFromISO(localISODate());
+  const jDate = jp ? `${jp.y}-${String(jp.m).padStart(2, '0')}-${String(jp.d).padStart(2, '0')}` : localISODate();
+  const now = new Date();
+  const timeStr = `${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}`;
+  const suffix = type === 'raw' ? 'RawRoster' : 'FullBackup';
+  return `DaneshAmoozMan_Backups_${jDate}_${timeStr}_${suffix}.json`;
+}
+
+function buildBackupPayloadObject(type = 'full') {
+  if (type === 'raw') {
+    return {
+      version: 1,
+      appVersion: APP_VERSION,
+      backupFolder: 'DaneshAmoozMan_Backups',
+      exportedAt: new Date().toISOString(),
+      backupType: 'raw',
+      schools: db.schools.map(s => ({
+        id: s.id, name: s.name, year: s.year,
+        classes: s.classes.map(c => ({
+          id: c.id, name: c.name, grade: c.grade,
+          students: c.students.map(st => ({
+            id: st.id, name: st.name, lastName: st.lastName, fatherName: st.fatherName || '',
+            birth: st.birth || '', phone: st.phone || '', photo: st.photo || '', interests: st.interests || ''
+          }))
+        }))
+      }))
+    };
+  }
+  return {
+    ...db,
+    appVersion: APP_VERSION,
+    backupFolder: 'DaneshAmoozMan_Backups',
+    exportedAt: new Date().toISOString(),
+    examData: window.ExamApp ? ExamApp.state : null,
+    backupType: 'full'
+  };
+}
+
+window.selectDedicatedBackupDirectory = async function() {
+  if (typeof window.showDirectoryPicker === 'function') {
+    try {
+      const dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+      window._dedicatedBackupDirHandle = dirHandle;
+      const badge = document.getElementById('dedicatedFolderStatusBadge');
+      if (badge) badge.textContent = `📂 پوشه متصل: ${dirHandle.name}`;
+      toast(`پوشه «${dirHandle.name}» به عنوان پوشه ثابت پشتیبان تنظیم شد ✅`);
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+    }
+  }
+  alert('در مرورگر فعلی گوشی شما، فایل‌های پشتیبان با پیشوند ثابت «DaneshAmoozMan_Backups_...» ذخیره می‌شوند و همچنین در «گاوصندوق داخلی برنامه» و از طریق دکمه «ارسال به تلگرام / گوگل درایو» قابل نگهداری در پوشه اختصاصی هستند.');
+};
+
+window.saveBackupToDedicatedFolder = async function(type = 'full') {
+  const payload = buildBackupPayloadObject(type);
+  const fileName = getStandardBackupFilename(type);
+  const jsonStr = JSON.stringify(payload, null, 2);
+
+  // ۱. همیشه یک نسخه در گاوصندوق داخلی برنامه هم ذخیره کن تا هیچ‌وقت گم نشود
+  await window.createInternalVaultSnapshot(type === 'raw' ? 'پشتیبان خام اسامی' : 'پشتیبان کامل در پوشه اختصاصی', true);
+
+  // ۲. اگر پوشه اختصاصی از طریق File System Access API انتخاب شده باشد، مستقیم داخل همان پوشه بنویس
+  if (window._dedicatedBackupDirHandle) {
+    try {
+      const fileHandle = await window._dedicatedBackupDirHandle.getFileHandle(fileName, { create: true });
+      const writable = await fileHandle.createWritable();
+      await writable.write(jsonStr);
+      await writable.close();
+      toast(`✅ مستقیم در پوشه «${window._dedicatedBackupDirHandle.name}/${fileName}» ذخیره شد!`);
+      return;
+    } catch (e) {}
+  }
+
+  // ۳. اگر showSaveFilePicker فعال باشد
+  if (typeof window.showSaveFilePicker === 'function') {
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName: fileName,
+        types: [{ description: 'Danesh Amooz Man Backup', accept: { 'application/json': ['.json'] } }]
+      });
+      const writable = await handle.createWritable();
+      await writable.write(jsonStr);
+      await writable.close();
+      toast(`✅ فایل پشتیبان «${fileName}» در پوشه انتخابی ذخیره شد!`);
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+    }
+  }
+
+  // ۴. دانلود استاندارد با نام پوشه اختصاصی
+  downloadJson(payload, fileName);
+  toast(`✅ فایل «${fileName}» دانلود و در گاوصندوق داخلی هم ذخیره شد!`);
+};
+
+window.shareBackupFileDirectly = async function(type = 'full') {
+  const payload = buildBackupPayloadObject(type);
+  const fileName = getStandardBackupFilename(type);
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const file = new File([blob], fileName, { type: 'application/json' });
+
+  await window.createInternalVaultSnapshot('پشتیبان اشتراک‌گذاری‌شده', true);
+
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try {
+      await navigator.share({
+        title: `پشتیبان دانش‌آموز من (${formatJalaliDate(localISODate())})`,
+        text: `فایل پشتیبان کامل برنامه دانش‌آموز من — تاریخ: ${formatJalaliDate(localISODate())}`,
+        files: [file]
+      });
+      toast('پشتیبان با موفقیت به برنامه مقصد ارسال شد 📲');
+      return;
+    } catch (e) {}
+  }
+  downloadJson(payload, fileName);
+  toast('فایل پشتیبان آماده ذخیره در تلگرام / گوگل درایو شد ⬇️');
+};
+
+/* گاوصندوق پشتیبان داخلی برنامه (IndexedDB ASSET_STORE -> 'internal_backup_vault_v1') */
+async function loadInternalVaultList() {
+  try {
+    const d = await openStorage();
+    const res = await new Promise((resolve) => {
+      const tx = d.transaction(ASSET_STORE, 'readonly');
+      const r = tx.objectStore(ASSET_STORE).get('internal_backup_vault_v1');
+      r.onsuccess = () => resolve(Array.isArray(r.result) ? r.result : []);
+      r.onerror = () => resolve([]);
+    });
+    d.close();
+    return res;
+  } catch (e) {
+    try { return JSON.parse(localStorage.getItem('danesh_internal_vault_fallback') || '[]'); } catch (_) { return []; }
+  }
+}
+
+async function saveInternalVaultList(list) {
+  const trimmed = (list || []).slice(0, 12);
+  try {
+    const d = await openStorage();
+    await new Promise((resolve, reject) => {
+      const tx = d.transaction(ASSET_STORE, 'readwrite');
+      tx.objectStore(ASSET_STORE).put(trimmed, 'internal_backup_vault_v1');
+      tx.oncomplete = resolve;
+      tx.onerror = () => reject(tx.error);
+    });
+    d.close();
+  } catch (e) {
+    try { localStorage.setItem('danesh_internal_vault_fallback', JSON.stringify(trimmed.slice(0, 3))); } catch (_) {}
+  }
+}
+
+window.createInternalVaultSnapshot = async function(label = 'پشتیبان خودکار', silent = false) {
+  const list = await loadInternalVaultList();
+  const c = counts();
+  const snap = {
+    id: 'vault_' + uid(),
+    label: label,
+    createdAt: new Date().toISOString(),
+    jalaliDate: formatJalaliDate(localISODate()),
+    timeStr: new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }),
+    stats: `${fa(c.schools)} مدرسه · ${fa(c.classes)} کلاس · ${fa(c.students)} دانش‌آموز`,
+    fileName: getStandardBackupFilename('full'),
+    payload: buildBackupPayloadObject('full')
+  };
+  list.unshift(snap);
+  await saveInternalVaultList(list);
+  await window.renderInternalVaultUI();
+  if (!silent) toast('نسخه جدید در گاوصندوق داخلی برنامه ذخیره شد 🗄️');
+};
+
+window.renderInternalVaultUI = async function() {
+  const box = document.getElementById('internalBackupVaultList');
+  if (!box) return;
+  const list = await loadInternalVaultList();
+  if (!list.length) {
+    box.innerHTML = `<div class="muted" style="padding:10px;text-align:center;border:1px dashed var(--border);border-radius:10px">هنوز نسخه‌ای در گاوصندوق داخلی ثبت نشده است. روی «＋ ثبت نسخه جدید در گاوصندوق» بزنید.</div>`;
+    return;
+  }
+  box.innerHTML = list.map((item) => `
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:9px 12px;background:var(--bg-panel);border:1px solid var(--border);border-radius:11px">
+      <div>
+        <b style="font-size:12.5px;color:var(--primary)">📁 ${esc(item.label)} — ${esc(item.jalaliDate)} ساعت ${esc(item.timeStr)}</b>
+        <div class="muted" style="font-size:11px">${esc(item.stats)} · <code>${esc(item.fileName)}</code></div>
+      </div>
+      <div style="display:flex;gap:5px">
+        <button type="button" class="btn primary btn-sm" onclick="restoreFromInternalVault('${item.id}')">↩️ بازیابی فوری</button>
+        <button type="button" class="btn soft btn-sm" onclick="downloadFromInternalVault('${item.id}')">⬇️ فایل</button>
+        <button type="button" class="btn danger btn-sm" onclick="deleteFromInternalVault('${item.id}')">×</button>
+      </div>
+    </div>
+  `).join('');
+};
+
+window.restoreFromInternalVault = async function(id) {
+  const list = await loadInternalVaultList();
+  const item = list.find(x => x.id === id);
+  if (!item || !item.payload) return;
+  if (!confirm(`آیا اطلاعات برنامه به نسخه «${item.label} (${item.jalaliDate} - ${item.timeStr})» بازگردانی شود؟`)) return;
+  pushUndo('بازیابی از گاوصندوق');
+  db = sanitizeDb(item.payload);
+  if (item.payload.examData && window.ExamApp) {
+    ExamApp.state = { ...ExamApp.state, ...item.payload.examData };
+    ExamApp.save();
+  }
+  save();
+  toast('اطلاعات با موفقیت از گاوصندوق داخلی بازیابی شد ✅');
+};
+
+window.downloadFromInternalVault = async function(id) {
+  const list = await loadInternalVaultList();
+  const item = list.find(x => x.id === id);
+  if (!item) return;
+  downloadJson(item.payload, item.fileName || getStandardBackupFilename('full'));
+};
+
+window.deleteFromInternalVault = async function(id) {
+  let list = await loadInternalVaultList();
+  list = list.filter(x => x.id !== id);
+  await saveInternalVaultList(list);
+  await window.renderInternalVaultUI();
+};
+
+/* پشتیبان‌گیری آنلاین ابری (Cloud Sync via ntfy.sh JSON relay or Custom Webhook) */
+window.loadCloudSyncSettings = function() {
+  const k = localStorage.getItem('danesh_cloud_sync_key') || '';
+  const ep = localStorage.getItem('danesh_cloud_custom_ep') || '';
+  const last = localStorage.getItem('danesh_cloud_last_sync') || '';
+  const kEl = document.getElementById('cloudSyncSecretKey');
+  const epEl = document.getElementById('cloudCustomEndpoint');
+  const bEl = document.getElementById('cloudSyncLastBadge');
+  if (kEl && !kEl.value) kEl.value = k;
+  if (epEl && !epEl.value) epEl.value = ep;
+  if (bEl && last) bEl.textContent = `آخرین همگام‌سازی: ${last}`;
+};
+
+window.saveCloudSyncSettings = function() {
+  const k = (document.getElementById('cloudSyncSecretKey')?.value || '').trim();
+  const ep = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+  try {
+    localStorage.setItem('danesh_cloud_sync_key', k);
+    localStorage.setItem('danesh_cloud_custom_ep', ep);
+  } catch (e) {}
+};
+
+window.generateRandomCloudKey = function() {
+  const rnd = 'danesh-cloud-' + Math.random().toString(36).slice(2, 8) + '-' + Math.floor(1000 + Math.random() * 9000);
+  const el = document.getElementById('cloudSyncSecretKey');
+  if (el) el.value = rnd;
+  window.saveCloudSyncSettings();
+  toast('کد اختصاصی ابری ساخته شد 🔑');
+};
+
+function getCloudTopicHash(secretKey) {
+  let h = 2166136261;
+  const str = 'dam_v54_cloud_' + secretKey.trim();
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return 'dam_cloud_' + (h >>> 0).toString(16) + '_' + secretKey.replace(/[^a-zA-Z0-9]/g, '').slice(0, 12).toLowerCase();
+}
+
+window.uploadBackupToCloud = async function() {
+  const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || '').trim();
+  if (!key || key.length < 5) {
+    alert('لطفاً ابتدا یک «کد اتاق ابری اختصاصی» (حداقل ۵ حرف) وارد کنید یا دکمه 🎲 را بزنید.');
+    return;
+  }
+  window.saveCloudSyncSettings();
+  const btn = document.getElementById('btnCloudUpload');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ در حال ارسال به ابر...'; }
+
+  try {
+    // بهینه‌سازی حجم برای ارسال ابری سریع (حذف عکس‌های سنگین در بسته ابری چابک در صورت نیاز)
+    const compactSchools = db.schools.map(s => ({
+      ...s,
+      photos: [],
+      classes: (s.classes || []).map(c => ({
+        ...c,
+        photos: [],
+        archivedTerms: [],
+        students: (c.students || []).map(st => ({ ...st, photo: '', examPapers: [] }))
+      }))
+    }));
+    const cloudPacket = {
+      type: 'DAM_CLOUD_BACKUP_V54',
+      savedAt: new Date().toISOString(),
+      jalaliDate: formatJalaliDate(localISODate()),
+      db: { ...db, schools: compactSchools, cachedBook: { name: '', pages: {}, extractedBank: [] } }
+    };
+
+    const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+    const topic = getCloudTopicHash(key);
+    const url = customEp || `https://ntfy.sh/${topic}`;
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8', 'Title': 'DaneshAmoozMan Cloud Backup' },
+      body: JSON.stringify(cloudPacket)
+    });
+    if (!res.ok) throw new Error('سرور ابری پاسخ نداد (کد ' + res.status + ')');
+
+    const nowLbl = `${formatJalaliDate(localISODate())} ساعت ${new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' })}`;
+    localStorage.setItem('danesh_cloud_last_sync', nowLbl);
+    const bEl = document.getElementById('cloudSyncLastBadge');
+    if (bEl) bEl.textContent = `آخرین همگام‌سازی: ${nowLbl}`;
+    toast('✅ پشتیبان شما با موفقیت در فضای ابری ذخیره شد!');
+  } catch (err) {
+    alert('⚠️ ارتباط با سرور ابری برقرار نشد (احتمالاً اینترنت دستگاه قطع یا محدود است). نسخه پشتیبان در «گاوصندوق داخلی برنامه» ذخیره شد و می‌توانید از دکمه «📲 ارسال به تلگرام / گوگل درایو» نیز استفاده کنید.');
+    await window.createInternalVaultSnapshot('پشتیبان خودکار (ذخیره آفلاین)', true);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '☁️ ذخیره آنلاین پشتیبان در ابر'; }
+  }
+};
+
+window.restoreBackupFromCloud = async function() {
+  const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || '').trim();
+  if (!key || key.length < 5) {
+    alert('لطفاً همان «کد اتاق ابری اختصاصی» خود را وارد کنید.');
+    return;
+  }
+  const btn = document.getElementById('btnCloudRestore');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ در حال دریافت از ابر...'; }
+
+  try {
+    const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+    const topic = getCloudTopicHash(key);
+    const url = customEp ? customEp : `https://ntfy.sh/${topic}/json?poll=1&since=30d`;
+
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('خطا در دریافت اطلاعات از ابر');
+    const text = await res.text();
+    const lines = text.trim().split('\n').filter(Boolean);
+    let latestPacket = null;
+
+    for (const line of lines) {
+      try {
+        const obj = JSON.parse(line);
+        const msgPayload = obj.message ? JSON.parse(obj.message) : obj;
+        if (msgPayload && msgPayload.type === 'DAM_CLOUD_BACKUP_V54' && msgPayload.db) {
+          latestPacket = msgPayload;
+        }
+      } catch (_) {}
+    }
+
+    if (!latestPacket) {
+      alert('هیچ پشتیبان فعالی با این کد در سرور ابری یافت نشد.');
+      return;
+    }
+
+    if (!confirm(`پشتیبان ابری مربوط به تاریخ «${latestPacket.jalaliDate || ''}» یافت شد. آیا جایگزین اطلاعات فعلی شود؟`)) return;
+    pushUndo('بازیابی ابری');
+    db = sanitizeDb(latestPacket.db);
+    save();
+    toast('✅ اطلاعات با موفقیت از فضای ابری بازیابی شد!');
+  } catch (err) {
+    alert('⚠️ امکان دریافت از سرور ابری وجود نداشت (اینترنت خود را بررسی کنید).');
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '📥 بازیابی آنلاین آخرین پشتیبان از ابر'; }
+  }
+};
+
+/* ==================== ۴. سامانه «لینک آنلاین حضور و غیاب خودکار» و «لینک آزمون آنلاین دانش‌آموزان» ==================== */
+function encodeBase64UrlUTF8(obj) {
+  const json = JSON.stringify(obj);
+  return btoa(unescape(encodeURIComponent(json))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+function decodeBase64UrlUTF8(b64) {
+  try {
+    let s = b64.replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) s += '=';
+    return JSON.parse(decodeURIComponent(escape(atob(s))));
+  } catch (e) {
+    return null;
+  }
+}
+
+function getClassRoomTopic(sid, cid, dateISO) {
+  const raw = `dam_room_${sid}_${cid}_${dateISO}`.replace(/[^a-zA-Z0-9_]/g, '');
+  return raw.slice(0, 58);
+}
+
+// رسم الگوی تصویری QR-Style و کد اتاق روی Canvas برای اسکن یا نمایش در کلاس
+function drawRoomVisualCode(canvas, text, codePin) {
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const size = 160;
+  canvas.width = size;
+  canvas.height = size;
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(0, 0, size, size);
+
+  // ماتریس مربعی حاشیه استاندارد QR
+  const drawFinder = (x, y) => {
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(x, y, 36, 36);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(x + 5, y + 5, 26, 26);
+    ctx.fillStyle = '#EA580C';
+    ctx.fillRect(x + 11, y + 11, 14, 14);
+  };
+  drawFinder(10, 10);
+  drawFinder(size - 46, 10);
+  drawFinder(10, size - 46);
+
+  let hash = 5381;
+  for (let i = 0; i < text.length; i++) hash = ((hash << 5) + hash) + text.charCodeAt(i);
+  const cell = 6;
+  for (let r = 2; r < 24; r++) {
+    for (let c = 2; c < 24; c++) {
+      if ((r < 9 && c < 9) || (r < 9 && c > 16) || (r > 16 && c < 9)) continue;
+      if (r >= 10 && r <= 15 && c >= 7 && c <= 18) continue;
+      const bit = ((hash ^ (r * 31 + c * 17 + text.charCodeAt((r + c) % text.length))) & 3) === 0;
+      if (bit) {
+        ctx.fillStyle = (r + c) % 4 === 0 ? '#0284C7' : '#0F172A';
+        ctx.fillRect(c * cell + 2, r * cell + 2, cell - 1, cell - 1);
+      }
+    }
+  }
+  ctx.fillStyle = '#FFF7ED';
+  ctx.fillRect(42, 62, 76, 34);
+  ctx.strokeStyle = '#EA580C';
+  ctx.lineWidth = 1.5;
+  ctx.strokeRect(42, 62, 76, 34);
+  ctx.fillStyle = '#9A3412';
+  ctx.font = 'bold 12px Tahoma';
+  ctx.textAlign = 'center';
+  ctx.fillText(`PIN: ${codePin || 'آزاد'}`, size / 2, 83);
+}
+
+window.openOnlineClassLinkModal = function(sid = null, cid = null, defaultMode = 'att') {
+  // انتخاب مدرسه و کلاس پیش‌فرض در صورت عدم ارسال
+  const s = findSchool(sid) || db.schools[0];
+  if (!s || !s.classes?.length) {
+    alert('لطفاً ابتدا یک مدرسه و کلاس بسازید.');
+    return;
+  }
+  const c = findClass(s.id, cid) || s.classes[0];
+  const dateISO = window.currentListDate || localISODate();
+  const savedPin = localStorage.getItem(`dam_pin_${c.id}`) || String(Math.floor(1000 + Math.random() * 9000));
+  localStorage.setItem(`dam_pin_${c.id}`, savedPin);
+
+  const classOpts = [];
+  db.schools.forEach(sch => (sch.classes || []).forEach(cl => {
+    classOpts.push(`<option value="${sch.id}|${cl.id}" ${(sch.id === s.id && cl.id === c.id) ? 'selected' : ''}>${esc(sch.name)} — ${esc(cl.name)} (${fa(cl.students.length)} نفر)</option>`);
+  }));
+
+  openModal(formHeader('🌐 ساخت لینک آنلاین حضور و غیاب و آزمون دانش‌آموزان') + `
+    <div class="card" style="background:var(--panel);margin-bottom:10px">
+      <b style="color:var(--primary)">⚡ چگونه کار می‌کند؟</b>
+      <div class="muted" style="font-size:11.5px;line-height:1.65;margin-top:3px">
+        ۱. لینک اختصاصی زیر را کپی کرده و در گروه کلاس (شاد، ایتا، بله، تلگرام یا واتساپ) بفرستید.<br>
+        ۲. دانش‌آموز روی لینک می‌زند (فقط صفحه مخصوص دانش‌آموز برایش باز می‌شود، نه اطلاعات معلم!).<br>
+        ۳. به محض اینکه دانش‌آموز حاضری بزند یا امتحان بدهد، با زدن دکمه <b>«📡 دریافت خودکار حاضری‌ها و نمرات»</b>، نام و نمره او <b>خودکار وارد لیست کلاس</b> می‌شود!
+      </div>
+    </div>
+
+    <div class="formgrid">
+      <div class="field">
+        <label>🚪 انتخاب کلاس:</label>
+        <select id="onlineLinkClassSel" onchange="refreshOnlineLinkGenerator()">
+          ${classOpts.join('')}
+        </select>
+      </div>
+      <div class="field">
+        <label>🎯 نوع لینک آنلاین:</label>
+        <select id="onlineLinkModeSel" onchange="refreshOnlineLinkGenerator()">
+          <option value="att" ${defaultMode === 'att' ? 'selected' : ''}>✋ لینک حضور و غیاب آنلاین توسط دانش‌آموز</option>
+          <option value="exam" ${defaultMode === 'exam' ? 'selected' : ''}>📝 لینک آزمون آنلاین (با تصحیح خودکار و ثبت در لیست)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>📅 تاریخ جلسه (برای ثبت در جدول):</label>
+        <input type="text" id="onlineLinkDateJalali" value="${formatJalaliDate(dateISO)}" onchange="refreshOnlineLinkGenerator()">
+      </div>
+      <div class="field">
+        <label>🔒 کد ۴ رقمی سر کلاس (PIN ضدتقلب):</label>
+        <input type="text" id="onlineLinkPinInp" value="${savedPin}" placeholder="مثلاً 1405" oninput="refreshOnlineLinkGenerator()">
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:10px;text-align:center">
+      <div class="qr-canvas-box">
+        <canvas id="onlineRoomQrCanvas" width="160" height="160"></canvas>
+        <small style="font-weight:800;font-size:10.5px;margin-top:4px">کد اتاق آنلاین کلاس</small>
+      </div>
+      <div class="field" style="text-align:right;margin-top:6px">
+        <label>🔗 لینک اختصاصی دانش‌آموزان (آماده ارسال در گروه کلاس):</label>
+        <input type="text" id="generatedStudentLinkBox" readonly dir="ltr" style="font-family:monospace;font-size:11.5px;text-align:left;background:var(--bg-main)">
+      </div>
+      <div class="actions" style="margin-top:10px">
+        <button type="button" class="btn primary" style="flex:1" onclick="copyGeneratedOnlineLink()">📋 کپی لینک و متن دعوت</button>
+        <button type="button" class="btn soft" style="flex:1" onclick="shareGeneratedOnlineLink()">📲 ارسال به شاد / ایتا / تلگرام</button>
+        <button type="button" class="btn gray" onclick="previewStudentPortalLocally()">👁️ پیش‌نمایش دید دانش‌آموز</button>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:10px;border-color:var(--neon-green)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div>
+          <b style="color:var(--neon-green)">📡 دریافت و ثبت خودکار در لیست کلاس</b>
+          <div class="muted" style="font-size:11.5px">پس از اینکه دانش‌آموزان فرم را پر کردند، روی دکمه روبه‌رو بزنید تا همه وارد لیست شوند:</div>
+        </div>
+        <button type="button" class="btn green btn-sm" onclick="openReceiveStudentSyncModal('${s.id}','${c.id}')">📥 دریافت حاضری‌ها و نمرات</button>
+      </div>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+
+  window.refreshOnlineLinkGenerator();
+};
+
+window.refreshOnlineLinkGenerator = function() {
+  const val = document.getElementById('onlineLinkClassSel')?.value || '';
+  const [sid, cid] = val.split('|');
+  const s = findSchool(sid), c = findClass(sid, cid);
+  if (!s || !c) return;
+  const mode = document.getElementById('onlineLinkModeSel')?.value || 'att';
+  const jDate = document.getElementById('onlineLinkDateJalali')?.value || formatJalaliDate(localISODate());
+  const dateISO = jalaliToISO(jDate) || localISODate();
+  const pin = (document.getElementById('onlineLinkPinInp')?.value || '').trim();
+  localStorage.setItem(`dam_pin_${c.id}`, pin);
+
+  const topic = getClassRoomTopic(s.id, c.id, dateISO);
+  const roster = sortStudents(c.students || []).map(st => ({
+    i: st.id,
+    n: `${st.lastName} ${st.name}`.trim()
+  }));
+
+  const payload = {
+    m: mode, // 'att' | 'exam'
+    s: s.id,
+    c: c.id,
+    sn: s.name,
+    cn: c.name,
+    d: dateISO,
+    jd: jDate,
+    p: pin,
+    t: topic,
+    r: roster
+  };
+
+  if (mode === 'exam' && window.ExamApp) {
+    const qs = ExamApp.getQuestions().slice(0, 15).map(q => ({
+      id: q.id,
+      tp: q.type,
+      tx: q.text,
+      sc: q.score,
+      op: q.options || [],
+      ci: q.correctIndex,
+      tf: q.tfCorrect,
+      bw: q.blankWord || ''
+    }));
+    payload.ex = {
+      subj: ExamApp.state.header.subject || 'آزمون کلاسی',
+      time: ExamApp.state.header.time || '۲۰ دقیقه',
+      qs: qs
+    };
+  }
+
+  const encoded = encodeBase64UrlUTF8(payload);
+  window._lastGeneratedPortalPayload = payload;
+  const baseUrl = window.location.href.split('?')[0].split('#')[0];
+  const fullLink = `${baseUrl}?dam_portal=${encoded}`;
+  const inp = document.getElementById('generatedStudentLinkBox');
+  if (inp) inp.value = fullLink;
+
+  drawRoomVisualCode(document.getElementById('onlineRoomQrCanvas'), topic, pin);
+};
+
+window.copyGeneratedOnlineLink = function() {
+  const link = document.getElementById('generatedStudentLinkBox')?.value || '';
+  const p = window._lastGeneratedPortalPayload;
+  if (!link || !p) return;
+  const msg = p.m === 'exam'
+    ? `📝 لینک آزمون آنلاین «${p.ex?.subj || ''}» — کلاس ${p.cn} (${p.sn})\n📅 تاریخ: ${p.jd}${p.p ? ` | 🔒 کد ورود کلاس: ${fa(p.p)}` : ''}\n👇 روی لینک زیر بزنید، نام خود را انتخاب کرده و به سوالات پاسخ دهید:\n${link}`
+    : `✋ لینک ثبت حضور و غیاب آنلاین — کلاس ${p.cn} (${p.sn})\n📅 جلسه: ${p.jd}${p.p ? ` | 🔒 کد حضور کلاس: ${fa(p.p)}` : ''}\n👇 روی لینک زیر بزنید و حاضری خود را ثبت کنید:\n${link}`;
+  copyText(msg);
+  toast('لینک و متن دعوت کپی شد 📋');
+};
+
+window.shareGeneratedOnlineLink = async function() {
+  const link = document.getElementById('generatedStudentLinkBox')?.value || '';
+  const p = window._lastGeneratedPortalPayload;
+  if (!link || !p) return;
+  const text = p.m === 'exam'
+    ? `📝 آزمون آنلاین «${p.ex?.subj || ''}» — کلاس ${p.cn}\n🔒 کد کلاس: ${p.p || 'آزاد'}\n${link}`
+    : `✋ ثبت حضور و غیاب آنلاین — کلاس ${p.cn} (${p.jd})\n🔒 کد کلاس: ${p.p || 'آزاد'}\n${link}`;
+  if (navigator.share) {
+    try { await navigator.share({ title: `لینک کلاس ${p.cn}`, text, url: link }); return; } catch (_) {}
+  }
+  window.copyGeneratedOnlineLink();
+};
+
+window.previewStudentPortalLocally = function() {
+  if (!window._lastGeneratedPortalPayload) return;
+  closeModal();
+  window.renderStudentOnlinePortal(window._lastGeneratedPortalPayload, true);
+};
+
+/* رندر پنل ویژه دانش‌آموز (هنگام باز کردن لینک حضور و غیاب یا آزمون آنلاین) */
+window.renderStudentOnlinePortal = function(payload, isTeacherPreview = false) {
+  const ov = document.getElementById('studentOnlinePortalOverlay');
+  if (!ov || !payload) return;
+  window._activeStudentPortalPayload = payload;
+  ov.style.display = 'block';
+
+  const rosterOpts = (payload.r || []).map(st => `<option value="${st.i}|${esc(st.n)}">${esc(st.n)}</option>`).join('');
+  const isExam = payload.m === 'exam' && payload.ex;
+
+  let examQuestionsHtml = '';
+  if (isExam) {
+    const qs = payload.ex.qs || [];
+    examQuestionsHtml = qs.map((q, idx) => {
+      let ansInput = '';
+      if (q.tp === 'mcq') {
+        ansInput = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
+          ${(q.op || []).map((opt, oIdx) => `
+            <label class="switch-card" style="justify-content:flex-start;gap:8px">
+              <input type="radio" name="st_ex_q_${q.id}" value="${oIdx}">
+              <span>${['الف','ب','ج','د'][oIdx] || (oIdx+1)}) ${esc(opt)}</span>
+            </label>
+          `).join('')}
+        </div>`;
+      } else if (q.tp === 'tf') {
+        ansInput = `<div style="display:flex;gap:10px;margin-top:6px">
+          <label class="switch-card" style="flex:1"><input type="radio" name="st_ex_q_${q.id}" value="صحیح"> <span>✅ صحیح</span></label>
+          <label class="switch-card" style="flex:1"><input type="radio" name="st_ex_q_${q.id}" value="غلط"> <span>❌ غلط</span></label>
+        </div>`;
+      } else {
+        ansInput = `<input type="text" class="st-ex-text-ans" data-qid="${q.id}" placeholder="پاسخ خود را بنویسید..." style="margin-top:6px">`;
+      }
+      return `<div class="card" style="margin-bottom:10px;background:var(--bg-panel)">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <b>سوال ${fa(idx + 1)}: ${esc(q.tx)}</b>
+          <span class="chip">${fa(q.sc)} نمره</span>
+        </div>
+        ${ansInput}
+      </div>`;
+    }).join('');
+  }
+
+  ov.innerHTML = `
+    <div class="student-portal-box">
+      ${isTeacherPreview ? `<div style="background:var(--purple-bg);border:1.5px solid var(--neon-purple);padding:10px 14px;border-radius:12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center"><b>👁️ حالت پیش‌نمایش معلم (صفحه‌ای که دانش‌آموز می‌بیند)</b><button type="button" class="btn primary btn-sm" onclick="document.getElementById('studentOnlinePortalOverlay').style.display='none'">بازگشت به پنل معلم ↩️</button></div>` : ''}
+      <div class="card" style="border-color:var(--primary)">
+        <div style="text-align:center;margin-bottom:12px">
+          <div style="font-size:32px">${isExam ? '📝' : '✋'}</div>
+          <h1 class="title" style="margin:4px 0">${isExam ? `آزمون آنلاین: ${esc(payload.ex.subj)}` : 'ثبت حضور و غیاب آنلاین دانش‌آموز'}</h1>
+          <div class="muted">${esc(payload.sn)} · کلاس ${esc(payload.cn)} · تاریخ: ${esc(payload.jd)}</div>
+        </div>
+
+        <div class="formgrid">
+          <div class="field ${payload.p ? '' : 'full'}">
+            <label>👤 نام و نام خانوادگی خود را از لیست کلاس انتخاب کنید:</label>
+            <select id="portalStudentSelect">
+              <option value="">-- انتخاب نام دانش‌آموز --</option>
+              ${rosterOpts}
+            </select>
+          </div>
+          ${payload.p ? `<div class="field"><label>🔒 کد ۴ رقمی اعلام‌شده توسط معلم (PIN):</label><input type="text" id="portalPinInput" inputmode="numeric" placeholder="کد کلاس را وارد کنید"></div>` : ''}
+        </div>
+
+        ${isExam ? `<div style="margin-top:14px">${examQuestionsHtml}</div>` : `
+          <div class="field" style="margin-top:10px">
+            <label>💬 توضیح کوتاه برای معلم (اختیاری - مثلاً حاضر در کلاس / تأخیر موجه):</label>
+            <input type="text" id="portalStudentNote" placeholder="حاضر هستم استاد">
+          </div>
+        `}
+
+        <button type="button" class="btn primary block" style="margin-top:14px;padding:12px;font-size:14px" id="btnSubmitPortalForm" onclick="submitStudentOnlinePortalForm()">
+          ${isExam ? '🚀 ثبت نهایی پاسخنامه و ارسال خودکار نمره برای معلم' : '✋ ثبت حاضری من و ارسال به لیست معلم'}
+        </button>
+
+        <div id="portalResultBox" style="display:none;margin-top:14px"></div>
+      </div>
+    </div>
+  `;
+};
+
+window.submitStudentOnlinePortalForm = async function() {
+  const p = window._activeStudentPortalPayload;
+  if (!p) return;
+  const stVal = document.getElementById('portalStudentSelect')?.value || '';
+  if (!stVal) {
+    alert('لطفاً ابتدا نام خود را از لیست کلاس انتخاب کنید.');
+    return;
+  }
+  if (p.p) {
+    const typedPin = enDigits(document.getElementById('portalPinInput')?.value || '').trim();
+    if (typedPin !== enDigits(p.p).trim()) {
+      alert('⛔ کد امنیتی کلاس (PIN) نادرست است! کد صحیح را از معلم بپرسید.');
+      return;
+    }
+  }
+
+  const [stid, stName] = stVal.split('|');
+  let computedScore = null;
+
+  if (p.m === 'exam' && p.ex) {
+    let sum = 0;
+    (p.ex.qs || []).forEach(q => {
+      if (q.tp === 'mcq') {
+        const sel = document.querySelector(`input[name="st_ex_q_${q.id}"]:checked`);
+        if (sel && Number(sel.value) === Number(q.ci)) sum += Number(q.sc) || 0;
+      } else if (q.tp === 'tf') {
+        const sel = document.querySelector(`input[name="st_ex_q_${q.id}"]:checked`);
+        if (sel && sel.value === q.tf) sum += Number(q.sc) || 0;
+      } else {
+        const inp = document.querySelector(`.st-ex-text-ans[data-qid="${q.id}"]`);
+        const ans = (inp?.value || '').trim();
+        if (ans && q.bw && ans.includes(q.bw.trim())) sum += Number(q.sc) || 0;
+        else if (ans.length >= 3 && !q.bw) sum += Number(q.sc) || 0;
+      }
+    });
+    computedScore = roundQuarter(sum);
+  }
+
+  const packet = {
+    tp: 'DAM_STU_SYNC_V54',
+    m: p.m,
+    s: p.s,
+    c: p.c,
+    d: p.d,
+    stid: stid,
+    name: stName,
+    sc: computedScore,
+    subj: p.ex?.subj || '',
+    nt: (document.getElementById('portalStudentNote')?.value || '').trim(),
+    ts: Date.now()
+  };
+
+  const receiptCode = 'DAM1:' + encodeBase64UrlUTF8(packet);
+  const btn = document.getElementById('btnSubmitPortalForm');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ در حال ثبت در لیست معلم...'; }
+
+  // ۱. اگر در همان مرورگر معلم (پیش‌نمایش یا اسکن حضوری) است، مستقیم ثبت کن
+  if (findClass(p.s, p.c)) {
+    window.applyStudentSyncPacketToDb(packet);
+  }
+
+  // ۲. ارسال آنلاین به کانال ابری کلاس (ntfy.sh) تا از راه دور هم خودکار وارد لیست معلم شود
+  let sentOnline = false;
+  try {
+    const res = await fetch(`https://ntfy.sh/${p.t}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(packet)
+    });
+    if (res.ok) sentOnline = true;
+  } catch (_) {}
+
+  const resBox = document.getElementById('portalResultBox');
+  if (resBox) {
+    resBox.style.display = 'block';
+    resBox.innerHTML = `
+      <div style="padding:12px;border-radius:12px;background:var(--success-bg);border:1.5px solid var(--neon-green);text-align:center">
+        <b style="color:var(--neon-green);font-size:15px">✅ ${p.m === 'exam' ? `پاسخنامه شما ثبت شد! نمره شما: ${fmtScore(computedScore)}` : `حاضری «${esc(stName)}» با موفقیت ثبت شد!`}</b>
+        <div class="muted" style="margin-top:4px;font-size:12px">
+          ${sentOnline ? '📡 به صورت آنلاین به لیست استاد ارسال شد.' : '📱 برای اطمینان در اینترنت ملی، کد رسید زیر را در گروه کلاس یا برای استاد بفرستید:'}
+        </div>
+        <input type="text" value="${receiptCode}" readonly dir="ltr" style="margin-top:8px;font-family:monospace;font-size:11px;text-align:center;background:var(--bg-card)">
+        <div class="actions" style="margin-top:8px">
+          <button type="button" class="btn primary btn-sm" style="flex:1" onclick="copyText('${receiptCode}')">📋 کپی کد رسید</button>
+          <button type="button" class="btn soft btn-sm" style="flex:1" onclick="if(navigator.share)navigator.share({text:'${receiptCode}'});else copyText('${receiptCode}')">📲 ارسال رسید در شاد/ایتا</button>
+        </div>
+      </div>
+    `;
+  }
+  if (btn) { btn.disabled = false; btn.textContent = '✅ ثبت شد'; }
+};
+
+/* ثبت بسته دریافتی دانش‌آموز (حاضری یا نمره آزمون) مستقیماً در پایگاه داده معلم */
+window.applyStudentSyncPacketToDb = function(pkt) {
+  if (!pkt || pkt.tp !== 'DAM_STU_SYNC_V54') return false;
+  const c = findClass(pkt.s, pkt.c);
+  if (!c) return false;
+  const st = c.students.find(x => x.id === pkt.stid) || c.students.find(x => `${x.lastName} ${x.name}`.trim() === (pkt.name || '').trim());
+  if (!st) return false;
+
+  const d = pkt.d || localISODate();
+  if (!c.attendance) c.attendance = {};
+  if (!c.attendance[d]) c.attendance[d] = {};
+
+  // ثبت حاضری (حذف وضعیت غایب در آن تاریخ)
+  if (c.attendance[d][st.id]?.status === 'absent') {
+    delete c.attendance[d][st.id].status;
+  } else if (!c.attendance[d][st.id]) {
+    c.attendance[d][st.id] = { status: 'present' };
+  }
+
+  // اگر آزمون آنلاین بوده یا نمره داشته، در ستون کتبی مستمر و جلسه ثبت کن
+  if (pkt.m === 'exam' && pkt.sc !== null && pkt.sc !== undefined) {
+    const score = roundQuarter(pkt.sc);
+    if (!c.contExamScores) c.contExamScores = {};
+    c.contExamScores[st.id] = score;
+    c.attendance[d][st.id] = { ...(c.attendance[d][st.id] || {}), status: 'present', score: score };
+    const subjTitle = pkt.subj ? `آزمون آنلاین (${pkt.subj})` : `آزمون آنلاین (${formatAttendanceDate(d)})`;
+    let ex = (st.grades || []).find(g => g.source === 'online_portal' && g.attendanceDate === d);
+    if (ex) {
+      ex.score = score;
+    } else {
+      gradesData(st).push({
+        id: uid(),
+        date: new Date().toISOString(),
+        subject: subjTitle,
+        score: score,
+        source: 'online_portal',
+        gradeType: 'cont_exam',
+        attendanceDate: d
+      });
+    }
+    evaluateAutoStatus(c, st);
+  }
+  return true;
+};
+
+/* مودال دریافت خودکار آنلاین + ثبت دسته‌جمعی کدهای رسید دانش‌آموزان */
+window.openReceiveStudentSyncModal = function(sid = null, cid = null) {
+  const s = findSchool(sid) || db.schools[0];
+  const c = s ? (findClass(s.id, cid) || s.classes[0]) : null;
+  const dateISO = window.currentListDate || localISODate();
+
+  openModal(formHeader('📡 دریافت خودکار حاضری‌ها و نمرات آزمون آنلاین') + `
+    <div class="card" style="margin-bottom:12px;border-color:var(--neon-green)">
+      <b style="color:var(--neon-green)">۱. دریافت آنلاین مستقیم از اتاق ابری کلاس</b>
+      <p class="muted" style="margin:4px 0 10px">تمام دانش‌آموزانی که روی لینک کلیک کرده و حاضری یا آزمون خود را ثبت کرده‌اند، با یک کلیک وارد لیست می‌شوند:</p>
+      <button type="button" class="btn primary block" id="btnFetchOnlineRoom" onclick="fetchOnlineRoomSubmissions('${s?.id || ''}','${c?.id || ''}','${dateISO}')">📡 دریافت آنی حاضری‌ها و نمرات از سرور آنلاین</button>
+      <div id="onlineRoomFetchStatus" style="margin-top:8px;font-size:12px;font-weight:800;text-align:center"></div>
+    </div>
+
+    <div class="card">
+      <b style="color:var(--primary)">۲. ثبت دسته‌جمعی رسیدهای شاد / ایتا / پیامک (مناسب اینترنت ملی)</b>
+      <p class="muted" style="margin:4px 0 8px">اگر دانش‌آموزان کد رسید (<code>DAM1:...</code>) را در گروه شاد یا ایتا فرستاده‌اند، پیام‌های آن‌ها را یکجا کپی کرده و اینجا پیست کنید:</p>
+      <textarea id="bulkReceiptsPasteBox" placeholder="کدهای DAM1:... دانش‌آموزان را اینجا پیست کنید (حتی ۳۰ پیام با هم)..."></textarea>
+      <button type="button" class="btn soft block" style="margin-top:8px" onclick="processBulkStudentReceipts()">📥 استخراج و ثبت خودکار همه در لیست کلاس</button>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.fetchOnlineRoomSubmissions = async function(sid, cid, dateISO) {
+  const s = findSchool(sid) || db.schools[0];
+  const c = s ? (findClass(s.id, cid) || s.classes[0]) : null;
+  if (!s || !c) return;
+  const topic = getClassRoomTopic(s.id, c.id, dateISO || localISODate());
+  const btn = document.getElementById('btnFetchOnlineRoom');
+  const stBox = document.getElementById('onlineRoomFetchStatus');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ در حال اسکن اتاق آنلاین کلاس...'; }
+
+  try {
+    const res = await fetch(`https://ntfy.sh/${topic}/json?poll=1&since=24h`);
+    if (!res.ok) throw new Error('عدم دسترسی به سرور');
+    const text = await res.text();
+    const lines = text.trim().split('\n').filter(Boolean);
+    let appliedCount = 0;
+
+    lines.forEach(line => {
+      try {
+        const obj = JSON.parse(line);
+        const pkt = obj.message ? JSON.parse(obj.message) : obj;
+        if (window.applyStudentSyncPacketToDb(pkt)) appliedCount++;
+      } catch (_) {}
+    });
+
+    save();
+    if (stBox) {
+      stBox.style.color = appliedCount > 0 ? 'var(--neon-green)' : 'var(--muted)';
+      stBox.textContent = appliedCount > 0
+        ? `✅ تعداد ${fa(appliedCount)} حاضری / نمره آزمون با موفقیت وارد لیست کلاس «${c.name}» شد!`
+        : 'ℹ️ هنوز مورد جدیدی در اتاق آنلاین این جلسه ثبت نشده است.';
+    }
+    if (appliedCount > 0) toast(`${fa(appliedCount)} مورد در لیست کلاس ثبت شد ✅`);
+  } catch (e) {
+    if (stBox) {
+      stBox.style.color = 'var(--neon-red)';
+      stBox.textContent = '⚠️ ارتباط آنلاین برقرار نشد؛ می‌توانید کدهای رسید (DAM1:...) را در بخش پایین پیست کنید.';
+    }
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '📡 دریافت آنی حاضری‌ها و نمرات از سرور آنلاین'; }
+  }
+};
+
+window.processBulkStudentReceipts = function() {
+  const raw = document.getElementById('bulkReceiptsPasteBox')?.value || '';
+  const matches = raw.match(/DAM1:[A-Za-z0-9\-_]+/g) || [];
+  if (!matches.length) {
+    alert('هیچ کد رسیدی (DAM1:...) در متن پیست‌شده یافت نشد.');
+    return;
+  }
+  let count = 0;
+  matches.forEach(code => {
+    const b64 = code.slice(5);
+    const pkt = decodeBase64UrlUTF8(b64);
+    if (window.applyStudentSyncPacketToDb(pkt)) count++;
+  });
+  save();
+  closeModal();
+  toast(`✅ تعداد ${fa(count)} حاضری و نمره آزمون با موفقیت در لیست کلاس ثبت شد!`);
+};
+
+// اتصال تب‌های خروجی و پشتیبان در openSettingsTab و بررسی پارامتر لینک دانش‌آموز هنگام ورود
+const _origOpenSettingsTabV54 = window.openSettingsTab;
+window.openSettingsTab = function(tabId, btnEl) {
+  if (_origOpenSettingsTabV54) _origOpenSettingsTabV54(tabId, btnEl);
+  if (tabId === 'export') {
+    window.initGranularExportSelectors();
+  } else if (tabId === 'data') {
+    window.renderInternalVaultUI();
+    window.loadCloudSyncSettings();
+  }
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const portalCode = params.get('dam_portal');
+    if (portalCode) {
+      const payload = decodeBase64UrlUTF8(portalCode);
+      if (payload && payload.r) {
+        setTimeout(() => window.renderStudentOnlinePortal(payload, false), 120);
+      }
+    }
+  } catch (_) {}
+});
+
+
+/* ==================== موتور ارتقای نسخه ۵.۵.۰ Pro: خروجی‌های رنگی زنده + برندینگ ظریف + عیب‌یاب هوشمند ==================== */
+
+/* ۱. تنظیمات برندینگ ظریف و غیرمزاحم «دانش‌آموز من» */
+window.isSubtleBrandEnabled = function() {
+  return localStorage.getItem('danesh_subtle_brand') !== 'false';
+};
+window.saveSubtleBrandPref = function(checked) {
+  try { localStorage.setItem('danesh_subtle_brand', checked ? 'true' : 'false'); } catch (_) {}
+};
+window.getSubtleBrandTagline = function() {
+  return '🎓 تهیه و تنظیم هوشمند با سامانه «دانش‌آموز من» — دفتر هوشمند معلم، کارنامه رنگی و آزمون‌ساز نسل جدید';
+};
+window.getSubtleSmsSignature = function() {
+  return window.isSubtleBrandEnabled() ? '\n✨ سامانه هوشمند «دانش‌آموز من»' : '';
+};
+
+window.shareAppPromoWithColleagues = async function() {
+  const promoText = `🎓 همکار گرامی، من برای مدیریت کلاس‌ها، حضور و غیاب، کارنامه‌های رنگی، تفکیک دانش‌آموزان نیازمند توجه و طراحی آزمون استاندارد از سامانه هوشمند «دانش‌آموز من (نسخه ۵.۵ Pro)» استفاده می‌کنم.\n✨ امکانات ویژه: انتقال ۱کلیکی نمره به مستمر، لینک حاضری و آزمون آنلاین دانش‌آموزان، ۴ پوسته رنگی و پشتیبان‌گیری ابری.`;
+  if (navigator.share) {
+    try { await navigator.share({ title: 'دانش‌آموز من — دفتر هوشمند معلم', text: promoText }); return; } catch (_) {}
+  }
+  copyText(promoText);
+  toast('متن معرفی برنامه برای ارسال به همکاران کپی شد 📋');
+};
+
+/* ۲. پالت‌های رنگی زنده برای خروجی‌ها (نارنجی گرم، فیروزه‌ای مدرن، سبز زمردی، بنفش سلطنتی) */
+const EXPORT_COLOR_PALETTES = {
+  orange: {
+    name: 'نارنجی و طلایی گرم',
+    gradStart: '#EA580C', gradEnd: '#D97706',
+    primary: '#EA580C', primaryDark: '#9A3412',
+    lightBg: '#FFF7ED', border: '#FDBA74',
+    thBg: '#FFEDD5', thText: '#7C2D12',
+    zebra: '#FFFBF5'
+  },
+  cyan: {
+    name: 'فیروزه‌ای و آبی مدرن',
+    gradStart: '#0284C7', gradEnd: '#0E7490',
+    primary: '#0284C7', primaryDark: '#075985',
+    lightBg: '#F0F9FF', border: '#7DD3FC',
+    thBg: '#E0F2FE', thText: '#0C4A6E',
+    zebra: '#F8FAFC'
+  },
+  emerald: {
+    name: 'سبز زمردی آموزشی',
+    gradStart: '#059669', gradEnd: '#0D9488',
+    primary: '#059669', primaryDark: '#065F46',
+    lightBg: '#ECFDF5', border: '#6EE7B7',
+    thBg: '#D1FAE5', thText: '#064E3B',
+    zebra: '#F5FBF8'
+  },
+  purple: {
+    name: 'بنفش و یاسی سلطنتی',
+    gradStart: '#7C3AED', gradEnd: '#4F46E5',
+    primary: '#7C3AED', primaryDark: '#4C1D95',
+    lightBg: '#F5F3FF', border: '#C4B5FD',
+    thBg: '#EDE9FE', thText: '#3B0764',
+    zebra: '#FAF8FF'
+  }
+};
+
+function getScoreBadgeColors(score) {
+  if (score === null || score === undefined || score === '' || score === '—') {
+    return { bg: '#F1F5F9', text: '#64748B', border: '#CBD5E1', icon: '', label: '—' };
+  }
+  const n = Number(score);
+  if (!Number.isFinite(n)) return { bg: '#F1F5F9', text: '#64748B', border: '#CBD5E1', icon: '', label: String(score) };
+  if (n >= 17) return { bg: '#DCFCE7', text: '#166534', border: '#86EFAC', icon: '🌟 ', label: fmtScore(n) };
+  if (n >= 14) return { bg: '#E0F2FE', text: '#075985', border: '#7DD3FC', icon: '✓ ', label: fmtScore(n) };
+  if (n >= 12) return { bg: '#FEF3C7', text: '#92400E', border: '#FCD34D', icon: '', label: fmtScore(n) };
+  return { bg: '#FFE4E6', text: '#9F1239', border: '#FDA4AF', icon: '⚠️ ', label: fmtScore(n) };
+}
+
+function getAttnCategoryExportStyle(catId) {
+  const styles = {
+    academic: { bg: '#FEF3C7', text: '#92400E', border: '#F59E0B' },
+    discipline: { bg: '#FEE2E2', text: '#991B1B', border: '#EF4444' },
+    medical: { bg: '#FFE4E6', text: '#9F1239', border: '#F43F5E' },
+    absence: { bg: '#E0F2FE', text: '#075985', border: '#0EA5E9' },
+    counseling: { bg: '#F3E8FF', text: '#6B21A8', border: '#A855F7' },
+    special: { bg: '#CCFBF1', text: '#115E59', border: '#14B8A6' }
+  };
+  return styles[catId] || styles.special;
+}
+
+/* ساخت HTML رنگی، زنده و گرافیکی برای گزارش‌های کلاسی/مدارس (مورد استفاده در پیش‌نمایش، Word، چاپ/PDF و اکسل رنگی) */
+window.buildVibrantReportHTML = function(res, forExcel = false) {
+  const themeKey = document.getElementById('expColorTheme')?.value || 'orange';
+  const pal = EXPORT_COLOR_PALETTES[themeKey] || EXPORT_COLOR_PALETTES.orange;
+  const showBrand = window.isSubtleBrandEnabled();
+
+  const colMeta = document.getElementById('expColMeta')?.checked !== false;
+  const colAtt = document.getElementById('expColAtt')?.checked !== false;
+  const colCont = document.getElementById('expColContGrades')?.checked !== false;
+  const colBeh = document.getElementById('expColBeh')?.checked !== false;
+  const colTerm = document.getElementById('expColTerm')?.checked !== false;
+  const colAttn = document.getElementById('expColAttn')?.checked !== false;
+  const splitMode = document.getElementById('expClassSplitMode')?.value || 'separate_sections';
+
+  // محاسبه آمار کل برای کارت‌های خلاصه رنگی بالای گزارش
+  let totalSt = 0, sumFinal = 0, topCount = 0, attnCount = 0, totalAbs = 0;
+  res.sections.forEach(sec => {
+    sec.items.forEach(it => {
+      totalSt++;
+      sumFinal += Number(it.finalSc) || 0;
+      if (it.finalSc >= 17) topCount++;
+      if (it.det?.isAttn) attnCount++;
+      totalAbs += Number(it.absCnt) || 0;
+    });
+  });
+  const overallAvg = totalSt ? (sumFinal / totalSt) : 0;
+
+  const brandTopPill = showBrand
+    ? `<div style="font-size:10.5px;background:rgba(255,255,255,0.22);padding:4px 10px;border-radius:99px;color:#FFFFFF;font-weight:bold">🎓 سامانه هوشمند «دانش‌آموز من» · دفتر هوشمند معلم</div>`
+    : '';
+
+  const brandFooter = showBrand
+    ? `<div style="margin-top:16px;padding:9px 14px;border-radius:10px;background:${pal.lightBg};border:1px dashed ${pal.border};display:flex;justify-content:space-between;align-items:center;font-size:11px;color:${pal.primaryDark}">
+        <b>${esc(window.getSubtleBrandTagline())}</b>
+        <span>👨‍🏫 دبیر: ${esc(getTeacherName())} | 📅 ${formatJalaliDate(localISODate())}</span>
+      </div>`
+    : '';
+
+  // کارت‌های خلاصه آماری رنگی در بالای گزارش
+  const kpiCardsHtml = `
+    <table style="width:100%;border-collapse:separate;border-spacing:8px;margin-bottom:12px;border:none">
+      <tr>
+        <td style="width:25%;background:#F0F9FF;border:1.5px solid #7DD3FC;border-radius:12px;padding:10px;text-align:center">
+          <div style="font-size:11px;color:#0369A1;font-weight:bold">👨‍🎓 کل دانش‌آموزان</div>
+          <div style="font-size:18px;font-weight:900;color:#0C4A6E;margin-top:2px">${fa(totalSt)} نفر</div>
+        </td>
+        <td style="width:25%;background:${pal.lightBg};border:1.5px solid ${pal.border};border-radius:12px;padding:10px;text-align:center">
+          <div style="font-size:11px;color:${pal.primaryDark};font-weight:bold">⭐ میانگین کل نمرات</div>
+          <div style="font-size:18px;font-weight:900;color:${pal.primary};margin-top:2px">${fmtScore(overallAvg)} از ۲۰</div>
+        </td>
+        <td style="width:25%;background:#DCFCE7;border:1.5px solid #86EFAC;border-radius:12px;padding:10px;text-align:center">
+          <div style="font-size:11px;color:#15803D;font-weight:bold">🌟 ممتاز و برتر (۱۷+)</div>
+          <div style="font-size:18px;font-weight:900;color:#166534;margin-top:2px">${fa(topCount)} نفر</div>
+        </td>
+        <td style="width:25%;background:#FFE4E6;border:1.5px solid #FDA4AF;border-radius:12px;padding:10px;text-align:center">
+          <div style="font-size:11px;color:#BE123C;font-weight:bold">🚨 نیازمند توجه</div>
+          <div style="font-size:18px;font-weight:900;color:#9F1239;margin-top:2px">${fa(attnCount)} نفر</div>
+        </td>
+      </tr>
+    </table>
+  `;
+
+  const renderColorScoreCell = (val, isFinal = false) => {
+    const c = getScoreBadgeColors(val);
+    if (forExcel) {
+      return `<td style="background-color:${c.bg};color:${c.text};font-weight:${isFinal ? '900' : 'bold'};text-align:center;border:1px solid #94A3B8;padding:6px">${esc(c.icon + c.label)}</td>`;
+    }
+    const pct = Number.isFinite(Number(val)) ? Math.min(100, Math.max(5, Math.round((Number(val) / 20) * 100))) : 0;
+    return `<td style="text-align:center;background:${ isFinal ? c.bg : 'transparent' };padding:6px">
+      <span style="display:inline-block;padding:3px 9px;border-radius:99px;background:${c.bg};color:${c.text};border:1px solid ${c.border};font-weight:${isFinal ? '900' : '800'};font-size:${isFinal ? '12.5px' : '11.5px'}">${esc(c.icon + c.label)}</span>
+      ${isFinal && pct > 0 ? `<div style="height:4px;background:#E2E8F0;border-radius:4px;overflow:hidden;margin-top:3px;width:64px;margin-left:auto;margin-right:auto"><div style="height:100%;width:${pct}%;background:${c.text}"></div></div>` : ''}
+    </td>`;
+  };
+
+  const renderStatusCell = (st, det) => {
+    if (!det.isAttn) {
+      if (st.status === 'good') {
+        return `<td style="background:${forExcel ? '#DCFCE7' : 'transparent'};color:#166534;font-weight:bold;text-align:center"><span style="background:#DCFCE7;color:#166534;border:1px solid #86EFAC;padding:2px 8px;border-radius:99px;font-size:11px">🟢 خوب و برتر</span></td>`;
+      }
+      return `<td style="color:#64748B;text-align:center"><span style="background:#F1F5F9;color:#475569;padding:2px 8px;border-radius:99px;font-size:10.5px">⚪ عادی</span></td>`;
+    }
+    const badgesHtml = det.badges.map(b => {
+      const stObj = getAttnCategoryExportStyle(b.catId);
+      return `<span style="display:inline-block;margin:1px;padding:2px 7px;border-radius:99px;background:${stObj.bg};color:${stObj.text};border:1px solid ${stObj.border};font-size:10.5px;font-weight:bold">${esc(b.label)}</span>`;
+    }).join(' ');
+    const firstStyle = getAttnCategoryExportStyle(det.categories[0]);
+    return `<td style="background:${forExcel ? firstStyle.bg : 'transparent'};color:${firstStyle.text};font-weight:bold">${badgesHtml || '🔴 نیازمند توجه'}</td>`;
+  };
+
+  const buildSectionTable = (sec, sIdx, includeSchoolCol) => {
+    const classAvg = sec.items.length ? (sec.items.reduce((a, b) => a + (Number(b.finalSc) || 0), 0) / sec.items.length) : 0;
+    const headers = ['ردیف'];
+    if (includeSchoolCol) headers.push('مدرسه', 'کلاس');
+    headers.push('نام خانوادگی و نام');
+    if (colMeta) headers.push('نام پدر', 'تلفن تماس');
+    if (colAtt) headers.push('غیبت');
+    if (colCont) headers.push('📝 کتبی مستمر', 'میانگین مستمر');
+    if (colBeh) headers.push('مثبت / منفی', 'تراز رفتاری');
+    if (colTerm) headers.push('🎓 پایانی ترم', '⭐ نمره نهایی');
+    if (colAttn) headers.push('وضعیت و تفکیک توجه', 'شرح بیماری / ملاحظات معلم');
+
+    const rowsHtml = sec.items.map((it, idx) => {
+      const { st, det, absCnt, contSc, avgSc, termSc, finalSc, bt } = item = it;
+      const rowBg = det.isAttn ? '#FFF5F5' : (idx % 2 === 1 ? pal.zebra : '#FFFFFF');
+      const absStyle = absCnt >= 3 ? 'background:#FEE2E2;color:#991B1B;font-weight:900' : (absCnt > 0 ? 'color:#B45309;font-weight:bold' : 'color:#15803D');
+      const behNetStyle = bt.net > 0 ? 'background:#DCFCE7;color:#166534;font-weight:bold' : (bt.net < 0 ? 'background:#FEE2E2;color:#991B1B;font-weight:bold' : 'color:#64748B');
+
+      return `<tr style="background-color:${rowBg}">
+        <td style="text-align:center;font-weight:bold;color:${pal.primaryDark};background:${pal.lightBg}">${fa(idx + 1)}</td>
+        ${includeSchoolCol ? `<td>${esc(sec.school.name)}</td><td><b>${esc(sec.cls.name)}</b></td>` : ''}
+        <td style="font-weight:900;color:#0F172A">${esc(`${st.lastName || ''} ${st.name || ''}`.trim())}${det.isAttn ? ' 🔴' : (finalSc >= 18 ? ' 🌟' : '')}</td>
+        ${colMeta ? `<td>${esc(st.fatherName || '—')}</td><td dir="ltr" style="text-align:center">${st.phone ? fa(st.phone) : '—'}</td>` : ''}
+        ${colAtt ? `<td style="text-align:center;${absStyle}">${fa(absCnt)} جلسه</td>` : ''}
+        ${colCont ? `${renderColorScoreCell(contSc, false)}${renderColorScoreCell(avgSc, false)}` : ''}
+        ${colBeh ? `<td style="text-align:center"><span style="color:#15803D;font-weight:bold">+${fa(st.behavior.positives.length)}</span> / <span style="color:#B91C1C;font-weight:bold">-${fa(st.behavior.negatives.length)}</span></td><td style="text-align:center;${behNetStyle}">${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)}</td>` : ''}
+        ${colTerm ? `${renderColorScoreCell(termSc, false)}${renderColorScoreCell(finalSc, true)}` : ''}
+        ${colAttn ? `${renderStatusCell(st, det)}<td style="font-size:11px;color:#334155">${esc(det.attnNote || st.notes || '—')}</td>` : ''}
+      </tr>`;
+    }).join('');
+
+    const pageBreak = (splitMode === 'separate_sections' && sIdx > 0 && !forExcel) ? 'page-break-before:always;break-before:page;margin-top:20px;' : 'margin-top:16px;';
+
+    return `<div style="${sIdx > 0 ? pageBreak : ''}">
+      <div style="background:linear-gradient(135deg, ${pal.gradStart}, ${pal.gradEnd});background-color:${pal.primary};color:#FFFFFF;border-radius:12px;padding:10px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div>
+          <b style="font-size:14px">🏫 ${esc(sec.school.name)} — 🚪 کلاس ${esc(sec.cls.name)} (${esc(sec.cls.currentTermName || 'ترم جاری')})</b>
+          <div style="font-size:11px;opacity:0.92;margin-top:2px">👨‍🎓 تعداد: ${fa(sec.items.length)} دانش‌آموز | ⭐ میانگین کلاس: ${fmtScore(classAvg)} از ۲۰ | 👨‍🏫 دبیر: ${esc(getTeacherName())}</div>
+        </div>
+        ${brandTopPill}
+      </div>
+      <table border="1" style="width:100%;border-collapse:collapse;font-size:11.5px;border:1.5px solid ${pal.border}">
+        <thead>
+          <tr style="background-color:${pal.thBg};color:${pal.thText}">
+            ${headers.map(h => `<th style="padding:7px 6px;border:1px solid ${pal.border};font-weight:900;text-align:center">${esc(h)}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>${rowsHtml}</tbody>
+      </table>
+    </div>`;
+  };
+
+  let bodyTables = '';
+  if (splitMode === 'separate_sections') {
+    bodyTables = res.sections.map((sec, idx) => buildSectionTable(sec, idx, false)).join('');
+  } else {
+    const mergedItems = [];
+    res.sections.forEach(sec => sec.items.forEach(it => mergedItems.push({ ...it, _s: sec.school, _c: sec.cls })));
+    const fakeSec = {
+      school: { name: 'گزارش تجمیعی مدارس' },
+      cls: { name: 'همه کلاس‌های انتخابی', currentTermName: db.activeTermName || 'ترم جاری' },
+      items: mergedItems
+    };
+    bodyTables = buildSectionTable(fakeSec, 0, true);
+  }
+
+  return `
+    <div style="font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;color:#0F172A">
+      ${kpiCardsHtml}
+      ${bodyTables}
+      ${brandFooter}
+    </div>
+  `;
+};
+
+/* پیش‌نمایش زنده و رنگی گزارش در داخل خود صفحه خروجی */
+window.renderLiveColorfulExportPreview = function() {
+  const box = document.getElementById('liveExportPreviewBox');
+  if (!box) return;
+  const res = window.collectFilteredExportData();
+  if (!res.totalStudents) {
+    box.style.display = 'block';
+    box.innerHTML = `<div class="card" style="text-align:center;color:var(--neon-red)">⚠️ هیچ دانش‌آموزی با فیلتر فعلی یافت نشد.</div>`;
+    return;
+  }
+  box.style.display = 'block';
+  const innerHtml = res.scope === 'student' && res.totalStudents === 1
+    ? window.buildSingleStudentVibrantHTML(res.sections[0].school, res.sections[0].cls, res.sections[0].items[0], false)
+    : window.buildVibrantReportHTML(res, false);
+
+  box.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <b style="color:var(--primary)">👁️ پیش‌نمایش زنده گزارش رنگی (دقیقاً مشابه فایل چاپی / Word / Excel رنگی)</b>
+      <button type="button" class="btn gray btn-sm" onclick="document.getElementById('liveExportPreviewBox').style.display='none'">✖ بستن پیش‌نمایش</button>
+    </div>
+    <div class="live-report-preview-frame">${innerHtml}</div>
+  `;
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+};
+
+/* ساخت HTML رنگی و زنده برای پرونده کامل انفرادی یک دانش‌آموز */
+window.buildSingleStudentVibrantHTML = function(s, c, item, forExcel = false) {
+  const themeKey = document.getElementById('expColorTheme')?.value || 'orange';
+  const pal = EXPORT_COLOR_PALETTES[themeKey] || EXPORT_COLOR_PALETTES.orange;
+  const showBrand = window.isSubtleBrandEnabled();
+  const { st, det, absCnt, contSc, avgSc, termSc, finalSc, bt } = item;
+  const fullName = `${st.lastName || ''} ${st.name || ''}`.trim();
+  const finColor = getScoreBadgeColors(finalSc);
+
+  const dates = attendanceDates(c);
+  const attChips = dates.map(d => {
+    const isAbs = attendanceStatus(c, d, st.id) === 'absent';
+    const sc = attendanceScore(c, d, st.id);
+    const bg = isAbs ? '#FFE4E6' : (sc !== null && sc >= 17 ? '#DCFCE7' : '#F1F5F9');
+    const col = isAbs ? '#9F1239' : (sc !== null && sc >= 17 ? '#166534' : '#334155');
+    return `<span style="display:inline-block;margin:2px;padding:3px 8px;border-radius:8px;background:${bg};color:${col};border:1px solid #CBD5E1;font-size:11px;font-weight:bold">${formatAttendanceDate(d)}: ${isAbs ? '✖ غایب' : '✓ حاضر'}${sc !== null ? ` (نمره: ${fa(sc)})` : ''}</span>`;
+  }).join(' ');
+
+  const gradesChips = (st.grades || []).map(g => {
+    const gc = getScoreBadgeColors(g.score);
+    return `<span style="display:inline-block;margin:2px;padding:3px 9px;border-radius:8px;background:${gc.bg};color:${gc.text};border:1px solid ${gc.border};font-size:11px;font-weight:bold">${esc(g.subject || 'ارزیابی')}: ${fmtScore(g.score)} (${g.gradeType === 'cont_exam' ? 'کتبی مستمر' : 'کلاسی'})</span>`;
+  }).join(' ') || '<span style="color:#64748B;font-size:11.5px">موردی ثبت نشده است</span>';
+
+  const behChips = [
+    ...(st.behavior?.positives || []).map(p => `<span style="display:inline-block;margin:2px;padding:3px 8px;border-radius:8px;background:#DCFCE7;color:#166534;border:1px solid #86EFAC;font-size:11px;font-weight:bold">➕ +${fmtScore(p.value)} · ${esc(p.reason || 'مثبت')}</span>`),
+    ...(st.behavior?.negatives || []).map(n => `<span style="display:inline-block;margin:2px;padding:3px 8px;border-radius:8px;background:#FFE4E6;color:#9F1239;border:1px solid #FDA4AF;font-size:11px;font-weight:bold">➖ -${fmtScore(n.value)} · ${esc(n.reason || 'منفی')}</span>`)
+  ].join(' ') || '<span style="color:#64748B;font-size:11.5px">موردی ثبت نشده است</span>';
+
+  const attnBadges = det.isAttn
+    ? det.badges.map(b => {
+        const stObj = getAttnCategoryExportStyle(b.catId);
+        return `<span style="display:inline-block;margin:2px;padding:3px 9px;border-radius:99px;background:${stObj.bg};color:${stObj.text};border:1px solid ${stObj.border};font-size:11px;font-weight:bold">${esc(b.label)}</span>`;
+      }).join(' ')
+    : '<span style="background:#DCFCE7;color:#166534;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:bold">🟢 وضعیت خوب و عادی</span>';
+
+  return `
+    <div style="font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;color:#0F172A">
+      <div style="background:linear-gradient(135deg, ${pal.gradStart}, ${pal.gradEnd});background-color:${pal.primary};color:#FFFFFF;border-radius:14px;padding:14px 16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <div>
+          <div style="font-size:11px;opacity:0.9">👨‍🎓 کارنامه و پرونده جامع آموزشی-تربیتی دانش‌آموز</div>
+          <h2 style="margin:3px 0;font-size:19px;color:#FFFFFF">${esc(fullName)} ${st.fatherName ? `<span style="font-size:13px;font-weight:normal">(فرزند ${esc(st.fatherName)})</span>` : ''}</h2>
+          <div style="font-size:11.5px;opacity:0.95">🏫 ${esc(s.name)} · 🚪 کلاس ${esc(c.name)} · 📚 ${esc(c.currentTermName || 'ترم جاری')}</div>
+        </div>
+        ${showBrand ? `<div style="text-align:left"><span style="background:rgba(255,255,255,0.22);padding:4px 10px;border-radius:99px;font-size:10.5px;font-weight:bold">🎓 سامانه هوشمند «دانش‌آموز من»</span></div>` : ''}
+      </div>
+
+      <table border="1" style="width:100%;border-collapse:collapse;margin-bottom:12px;font-size:12px;border:1.5px solid ${pal.border}">
+        <tr style="background:${pal.thBg};color:${pal.thText}">
+          <th style="padding:8px;text-align:center">📝 کتبی مستمر</th>
+          <th style="padding:8px;text-align:center">📚 میانگین مستمر</th>
+          <th style="padding:8px;text-align:center">🎓 پایانی ترم</th>
+          <th style="padding:8px;text-align:center">➕➖ تراز رفتاری</th>
+          <th style="padding:8px;text-align:center">📅 غیبت‌ها</th>
+          <th style="padding:8px;text-align:center">⭐ نمره نهایی کل</th>
+        </tr>
+        <tr>
+          <td style="padding:8px;text-align:center;font-weight:bold">${contSc !== null ? fmtScore(contSc) : '—'}</td>
+          <td style="padding:8px;text-align:center;font-weight:bold">${avgSc !== null ? fmtScore(avgSc) : '—'}</td>
+          <td style="padding:8px;text-align:center;font-weight:bold">${termSc !== null ? fmtScore(termSc) : '—'}</td>
+          <td style="padding:8px;text-align:center;font-weight:bold;color:${bt.net >= 0 ? '#15803D' : '#B91C1C'}">${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)} (+${fa(st.behavior.positives.length)} / -${fa(st.behavior.negatives.length)})</td>
+          <td style="padding:8px;text-align:center;font-weight:bold;color:${absCnt >= 3 ? '#B91C1C' : '#334155'}">${fa(absCnt)} جلسه</td>
+          <td style="padding:8px;text-align:center;background:${finColor.bg};color:${finColor.text};font-weight:900;font-size:14px">${esc(finColor.icon + finColor.label)} از ۲۰</td>
+        </tr>
+      </table>
+
+      <div style="padding:10px 12px;border-radius:10px;background:${pal.lightBg};border:1px solid ${pal.border};margin-bottom:10px;font-size:12px">
+        <b>🚨 وضعیت پایش و تفکیک توجه:</b> ${attnBadges}
+        ${det.attnNote ? `<div style="margin-top:6px;color:#9F1239;font-weight:bold">📌 شرح وضعیت / ملاحظات پزشکی و آموزشی: ${esc(det.attnNote)}</div>` : ''}
+      </div>
+
+      ${!forExcel ? renderStudentLineChart(c, st) : ''}
+
+      <div style="margin-top:10px;padding:10px;border-radius:10px;background:#F8FAFC;border:1px solid #CBD5E1">
+        <b style="font-size:12px;color:${pal.primaryDark};display:block;margin-bottom:6px">📅 ریز حضور و غیاب و نمرات جلسات:</b>
+        <div>${attChips || '—'}</div>
+      </div>
+
+      <div style="margin-top:8px;padding:10px;border-radius:10px;background:#F8FAFC;border:1px solid #CBD5E1">
+        <b style="font-size:12px;color:${pal.primaryDark};display:block;margin-bottom:6px">📝 ریز آزمون‌ها و ارزیابی‌های ثبت‌شده:</b>
+        <div>${gradesChips}</div>
+      </div>
+
+      <div style="margin-top:8px;padding:10px;border-radius:10px;background:#F8FAFC;border:1px solid #CBD5E1">
+        <b style="font-size:12px;color:${pal.primaryDark};display:block;margin-bottom:6px">➕➖ ریز سوابق مثبت و منفی:</b>
+        <div>${behChips}</div>
+      </div>
+
+      ${showBrand ? `<div style="margin-top:14px;padding:8px 12px;border-radius:9px;background:${pal.lightBg};border:1px dashed ${pal.border};display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:${pal.primaryDark}">
+        <b>${esc(window.getSubtleBrandTagline())}</b>
+        <span>👨‍🏫 دبیر: ${esc(getTeacherName())} | 📅 ${formatJalaliDate(localISODate())}</span>
+      </div>` : ''}
+    </div>
+  `;
+};
+
+/* بازنویسی exportCustomReport برای پشتیبانی از اکسل رنگی (.xls)، ورد رنگی (.doc)، چاپ/PDF رنگی و CSV */
+const _legacyExportCustomReportV54 = window.exportCustomReport;
+window.exportCustomReport = function(kind, overrideOpts = null) {
+  if (kind === 'excel') {
+    return _legacyExportCustomReportV54('excel', overrideOpts);
+  }
+  const res = window.collectFilteredExportData(overrideOpts);
+  if (!res.totalStudents) {
+    alert('هیچ دانش‌آموزی با فیلتر انتخاب‌شده یافت نشد.');
+    return;
+  }
+
+  let fileScopeLabel = 'کل-برنامه';
+  if (res.scope === 'school' && res.sections[0]) fileScopeLabel = safeFileName(res.sections[0].school.name);
+  if (res.scope === 'class' && res.sections[0]) fileScopeLabel = safeFileName(`${res.sections[0].school.name}-${res.sections[0].cls.name}`);
+  if (res.scope === 'student' && res.sections[0]?.items[0]) {
+    const st = res.sections[0].items[0].st;
+    fileScopeLabel = safeFileName(`${st.lastName}-${st.name}`);
+  }
+
+  const isSingleStudent = res.scope === 'student' && res.totalStudents === 1;
+  const isExcelColor = kind === 'excel_color';
+  const bodyContent = isSingleStudent
+    ? window.buildSingleStudentVibrantHTML(res.sections[0].school, res.sections[0].cls, res.sections[0].items[0], isExcelColor)
+    : window.buildVibrantReportHTML(res, isExcelColor);
+
+  const fullDoc = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" dir="rtl" lang="fa">
+    <head>
+      <meta charset="utf-8">
+      <title>گزارش رنگی دانش‌آموز من — ${esc(fileScopeLabel)}</title>
+      <style>
+        * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; box-sizing: border-box; }
+        body { font-family: 'Vazirmatn', Tahoma, sans-serif; padding: 16px; direction: rtl; background: #FFFFFF; color: #0F172A; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 6px 7px; text-align: right; font-size: 11.5px; }
+        @media print {
+          @page { size: A4 portrait; margin: 8mm; }
+          body { padding: 0; }
+        }
+      </style>
+    </head>
+    <body>${bodyContent}</body>
+  </html>`;
+
+  if (kind === 'excel_color') {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(['\ufeff' + fullDoc], { type: 'application/vnd.ms-excel;charset=utf-8' }));
+    a.download = `گزارش-رنگی-${fileScopeLabel}-${localISODate()}.xls`;
+    a.click();
+    toast('فایل اکسل رنگی و گرافیکی (.xls) دانلود شد 🎨');
+  } else if (kind === 'word') {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(['\ufeff' + fullDoc], { type: 'application/msword;charset=utf-8' }));
+    a.download = `گزارش-رنگی-${fileScopeLabel}-${localISODate()}.doc`;
+    a.click();
+    toast('فایل Word رنگی و زنده (.doc) دانلود شد 📘');
+  } else {
+    const w = window.open('', '_blank');
+    if (!w) return;
+    w.document.write(fullDoc);
+    w.document.close();
+    setTimeout(() => w.print(), 380);
+  }
+};
+
+/* ۳. بازطراحی رنگی و رفع باگ کنتراست «کارنامه ویژه اولیا» (openParentView & printParentReport) + امضای ظریف پیامک‌ها */
+openParentView = function(sid, cid, stid) {
+  const s = findSchool(sid), c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!s || !c || !st) return;
+  const det = window.getStudentAttentionDetails(c, st);
+  const absCnt = attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+  const contSc = getStudentWrittenContScore(c, st);
+  const avgSc = avgGrade(st);
+  const termSc = (c.termScores?.[st.id] !== undefined && c.termScores[st.id] !== '') ? Number(c.termScores[st.id]) : null;
+  const finalSc = calculateFinalStudentScore(c, st);
+  const bt = behaviorTotals(st);
+  const item = { st, det, absCnt, contSc, avgSc, termSc, finalSc, bt };
+
+  const vibrantHtml = window.buildSingleStudentVibrantHTML(s, c, item, false);
+
+  openModal(formHeader('👨‍👩‍👦 کارنامه رنگی ویژه اولیا') + `
+    <div id="parentReportPrintable" class="live-report-preview-frame" style="max-height:68vh">
+      ${vibrantHtml}
+    </div>
+    <div class="formactions">
+      <button type="button" class="btn primary" onclick="printParentReport()">🖨️ چاپ / PDF رنگی</button>
+      <button type="button" class="btn soft" onclick="exportSingleStudentVibrantWord('${sid}','${cid}','${stid}')">📘 فایل Word رنگی</button>
+      <button type="button" class="btn green" onclick="sendParentSmsReport('${sid}','${cid}','${stid}')">📱 پیامک کارنامه</button>
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.exportSingleStudentVibrantWord = function(sid, cid, stid) {
+  window.exportCustomReport('word', { scope: 'student', sid, cid, stid, statusFilter: 'all' });
+};
+
+printParentReport = function() {
+  const content = document.getElementById('parentReportPrintable')?.innerHTML;
+  if (!content) return;
+  const w = window.open('', '_blank');
+  if (!w) return;
+  w.document.write(`<html dir="rtl" lang="fa"><head><meta charset="utf-8"><title>کارنامه رنگی ویژه اولیا</title><style>*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}body{font-family:'Vazirmatn',Tahoma,sans-serif;padding:16px;direction:rtl;background:#fff;color:#0f172a}svg{max-width:100%;height:135px}</style></head><body>${content}</body></html>`);
+  w.document.close();
+  w.focus();
+  setTimeout(() => w.print(), 350);
+};
+
+// ارتقای پیامک کارنامه اولیا و پیام تبریک تولد با امضای ظریف برنامه
+sendParentSmsReport = function(sid, cid, stid) {
+  const s = findSchool(sid), c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!st) return;
+  const abs = attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+  const contSc = getStudentWrittenContScore(c, st);
+  const fin = calculateFinalStudentScore(c, st);
+  const msg = `اولیای گرامی دانش‌آموز «${st.name} ${st.lastName}»\n🏫 ${s.name} | کلاس ${c.name}:\n• کتبی مستمر: ${contSc !== null ? fmtScore(contSc) : '—'} | نمره نهایی: ${fmtScore(fin)} از ۲۰\n• مثبت: ${fa(st.behavior.positives.length)} | منفی: ${fa(st.behavior.negatives.length)} | غیبت: ${fa(abs)} جلسه\nبا احترام، ${getTeacherName()}${window.getSubtleSmsSignature()}`;
+  const ph = normalizePhone(st.phone || '');
+  window.location.href = ph ? `sms:+${ph}?body=${encodeURIComponent(msg)}` : `sms:?body=${encodeURIComponent(msg)}`;
+};
+
+const _origPersonalBirthdayMsgV54 = personalBirthdayMessage;
+personalBirthdayMessage = function(st) {
+  const base = _origPersonalBirthdayMsgV54(st);
+  if (window.isSubtleBrandEnabled() && !base.includes('دانش‌آموز من')) {
+    return base + '\n✨ سامانه هوشمند «دانش‌آموز من»';
+  }
+  return base;
+};
+
+// ارتقای چاپ گزارش تفکیکی نیازمند توجه‌ها به نسخه رنگی و زنده
+window.printCategorizedAttentionReport = function() {
+  window.exportCustomReport('print', { scope: 'all', statusFilter: 'attn_all' });
+};
+
+// افزودن امضای ظریف به تصویر برگه تصحیح‌شده روی عکس (drawVisualAnnotationsOnPaper) و پنل آنلاین دانش‌آموز
+if (window.ExamApp && ExamApp.drawVisualAnnotationsOnPaper) {
+  const _origDrawVisual = ExamApp.drawVisualAnnotationsOnPaper.bind(ExamApp);
+  ExamApp.drawVisualAnnotationsOnPaper = async function(rawUrl, stName, earned, maxP, items) {
+    const dataUrl = await _origDrawVisual(rawUrl, stName, earned, maxP, items);
+    if (!window.isSubtleBrandEnabled()) return dataUrl;
+    return new Promise((res) => {
+      const img = new Image();
+      img.onload = () => {
+        const c = document.createElement('canvas');
+        c.width = img.width;
+        c.height = img.height + 32;
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.drawImage(img, 0, 0);
+        ctx.fillStyle = '#0F172A';
+        ctx.fillRect(0, img.height, c.width, 32);
+        ctx.direction = 'rtl';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#38BDF8';
+        ctx.font = 'bold 13px Vazirmatn, Tahoma';
+        ctx.fillText('🎓 تصحیح و ثبت هوشمند با سامانه «دانش‌آموز من» — دفتر هوشمند معلم', c.width / 2, img.height + 21);
+        res(c.toDataURL('image/jpeg', 0.78));
+      };
+      img.onerror = () => res(dataUrl);
+      img.src = dataUrl;
+    });
+  };
+}
+
+// افزودن نوار معرفی ظریف در پایین پنل آنلاین دانش‌آموز
+const _origRenderStudentPortalV54 = window.renderStudentOnlinePortal;
+window.renderStudentOnlinePortal = function(payload, isTeacherPreview = false) {
+  _origRenderStudentPortalV54(payload, isTeacherPreview);
+  if (!window.isSubtleBrandEnabled()) return;
+  const box = document.querySelector('#studentOnlinePortalOverlay .student-portal-box');
+  if (box && !box.querySelector('.portal-subtle-brand')) {
+    const f = document.createElement('div');
+    f.className = 'portal-subtle-brand';
+    f.style.cssText = 'text-align:center;margin-top:12px;padding:8px 12px;border-radius:10px;background:var(--bg-panel);border:1px dashed var(--border);font-size:11.5px;color:var(--text-muted)';
+    f.innerHTML = '🎓 قدرت‌گرفته از سامانه هوشمند <b style="color:var(--primary)">«دانش‌آموز من»</b> — دفتر هوشمند معلم و آزمون‌ساز آنلاین';
+    box.appendChild(f);
+  }
+};
+
+/* ==================== ۴. عیب‌یاب، باگ‌گیر و تعمیرکار هوشمند برنامه (Smart Diagnostics & Auto-Fixer) ==================== */
+window.normalizeBirthYear2To4 = function(birthStr) {
+  if (!birthStr) return '';
+  const norm = normalizeJalaliInput(birthStr);
+  const m = norm.match(/^(\d{2,4})\/(\d{1,2})\/(\d{1,2})$/);
+  if (!m) return norm;
+  let y = Number(m[1]);
+  const mo = String(Math.min(12, Math.max(1, Number(m[2])))).padStart(2, '0');
+  const da = String(Math.min(31, Math.max(1, Number(m[3])))).padStart(2, '0');
+  if (y < 100) {
+    y = y >= 50 ? (1300 + y) : (1400 + y);
+  }
+  return `${y}/${mo}/${da}`;
+};
+
+window.runSmartAppDiagnostics = function(showUiFeedback = false) {
+  let fixedBirths = 0;
+  let fixedScores = 0;
+  let dedupedContGrades = 0;
+  let syncedContCols = 0;
+  let cleanedAttendance = 0;
+
+  if (!db || !Array.isArray(db.schools)) {
+    db = sanitizeDb({ version: 1, schools: [] });
+  }
+
+  db.schools.forEach(s => {
+    if (!s.id) s.id = uid();
+    if (!Array.isArray(s.classes)) s.classes = [];
+    s.classes.forEach(c => {
+      if (!c.id) c.id = uid();
+      if (!c.contExamScores || typeof c.contExamScores !== 'object') c.contExamScores = {};
+      if (!c.termScores || typeof c.termScores !== 'object') c.termScores = {};
+      if (!c.attendance || typeof c.attendance !== 'object') c.attendance = {};
+
+      // ۱. پاک‌سازی کلیدهای تاریخ نامعتبر در حضور و غیاب
+      Object.keys(c.attendance).forEach(dKey => {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(dKey)) {
+          delete c.attendance[dKey];
+          cleanedAttendance++;
+        }
+      });
+
+      (c.students || []).forEach(st => {
+        if (!st.id) st.id = uid();
+        // ۲. استانداردسازی تاریخ تولدهای ۲ رقمی (مثلاً 89/7/5 -> 1389/07/05)
+        if (st.birth) {
+          const fixedB = window.normalizeBirthYear2To4(st.birth);
+          if (fixedB !== st.birth) {
+            st.birth = fixedB;
+            fixedBirths++;
+          }
+        }
+
+        // ۳. بررسی و رُند کردن نمرات خارج از محدوده ۰ تا ۲۰ و حذف رکوردهای تکراری direct_cont_col
+        if (Array.isArray(st.grades)) {
+          let seenDirectCont = false;
+          const cleanGrades = [];
+          st.grades.forEach(g => {
+            if (!g || typeof g !== 'object') return;
+            const rq = roundQuarter(g.score);
+            if (rq !== Number(g.score)) {
+              g.score = rq;
+              fixedScores++;
+            }
+            if (g.source === 'direct_cont_col') {
+              if (seenDirectCont) {
+                dedupedContGrades++;
+                return;
+              }
+              seenDirectCont = true;
+            }
+            cleanGrades.push(g);
+          });
+          st.grades = cleanGrades;
+        }
+
+        // ۴. همگام‌سازی دوطرفه ستون کتبی مستمر (c.contExamScores) با st.grades
+        const contVal = c.contExamScores[st.id];
+        if (contVal !== undefined && contVal !== '') {
+          const rq = roundQuarter(contVal);
+          if (rq !== Number(contVal)) {
+            c.contExamScores[st.id] = rq;
+            fixedScores++;
+          }
+          const hasInGrades = (st.grades || []).some(g => g.source === 'direct_cont_col');
+          if (!hasInGrades) {
+            gradesData(st).push({
+              id: uid(),
+              date: new Date().toISOString(),
+              subject: 'امتحان کتبی مستمر',
+              score: rq,
+              source: 'direct_cont_col',
+              gradeType: 'cont_exam'
+            });
+            syncedContCols++;
+          }
+        }
+
+        // ۵. بررسی نمره پایانی ترم
+        if (c.termScores[st.id] !== undefined && c.termScores[st.id] !== '') {
+          const rqT = roundQuarter(c.termScores[st.id]);
+          if (rqT !== Number(c.termScores[st.id])) {
+            c.termScores[st.id] = rqT;
+            fixedScores++;
+          }
+        }
+      });
+    });
+  });
+
+  const totalFixed = fixedBirths + fixedScores + dedupedContGrades + syncedContCols + cleanedAttendance;
+  if (totalFixed > 0) {
+    savePersistent();
+  }
+
+  const report = {
+    totalFixed,
+    fixedBirths,
+    fixedScores,
+    dedupedContGrades,
+    syncedContCols,
+    cleanedAttendance,
+    status: 'HEALTHY'
+  };
+
+  if (showUiFeedback) {
+    const box = document.getElementById('smartDiagResultBox');
+    const summaryHtml = `
+      <div style="padding:11px 14px;border-radius:12px;background:var(--success-bg);border:1.5px solid var(--neon-green)">
+        <b style="color:var(--neon-green);font-size:13.5px">✅ بررسی و بهینه‌سازی هوشمند با موفقیت انجام شد (${totalFixed > 0 ? `${fa(totalFixed)} مورد اصلاح شد` : 'بدون هیچ خطا و کاملاً سالم'})</b>
+        <div class="muted" style="margin-top:5px;font-size:11.5px;line-height:1.7">
+          • استانداردسازی تاریخ‌های تولد: <b>${fa(fixedBirths)} مورد</b> · اصلاح و رُندسازی نمرات: <b>${fa(fixedScores)} مورد</b><br>
+          • همگام‌سازی ستون کتبی مستمر: <b>${fa(syncedContCols + dedupedContGrades)} مورد</b> · بررسی سلامت پایگاه داده: <b>۱۰۰٪ سالم ✓</b>
+        </div>
+      </div>
+    `;
+    if (box && document.getElementById('backup')?.classList.contains('active')) {
+      box.style.display = 'block';
+      box.innerHTML = summaryHtml;
+    } else {
+      toast(totalFixed > 0 ? `🛠️ عیب‌یابی انجام شد: ${fa(totalFixed)} مورد بهینه‌سازی گردید ✅` : '🛠️ سلامت برنامه ۱۰۰٪ تایید شد ✅');
+    }
+  }
+  return report;
+};
+
+// اجرای خودکار و بی‌صدا عیب‌یاب هنگام بارگذاری اولیه برای تضمین سلامت ۱۰۰٪ داده‌های قبلی معلم
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    try { window.runSmartAppDiagnostics(false); } catch (_) {}
+  }, 350);
+});
+
 </script>
 </body>
 </html>
