@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="5.0.0">
+<meta name="version" content="5.3.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -1282,6 +1282,423 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
   }
   #cyberNetworkCanvas { display: none !important; }
 }
+
+/* ==================== پوسته‌های چندگانه نسخه ۵.۲.۰ (نارنجی کلاسیک، سایبری نارنجی، سایبری فیروزه‌ای، روشن) ==================== */
+body.theme-classic-orange {
+  color-scheme: light;
+  --bg-main: #FFF9F2;
+  --bg-card: #FFFFFF;
+  --bg-panel: #FFF3E4;
+  --neon-cyan: #EA580C;
+  --neon-blue: #F97316;
+  --neon-green: #16A34A;
+  --neon-red: #DC2626;
+  --neon-purple: #D97706;
+  --text-main: #1E293B;
+  --text-muted: #64748B;
+  --border-cyber: #FED7AA;
+  --border-subtle: #FFEDD5;
+  --primary: #EA580C;
+  --primary2: #F97316;
+  --primary-dark: #9A3412;
+  --primary-light: #FFF7ED;
+  --primary-border: #FDBA74;
+  --border: #FED7AA;
+  --success-bg: #DCFCE7;
+  --danger-bg: #FEE2E2;
+  --purple-bg: #FEF3C7;
+  --shadow: 0 6px 22px rgba(234, 88, 12, 0.09);
+  --glow-cyan: 0 4px 14px rgba(234, 88, 12, 0.25);
+  background: linear-gradient(180deg, #FFF7ED 0%, #FFF9F2 45%) !important;
+}
+body.theme-classic-orange .topbar {
+  background: rgba(255, 250, 245, 0.94);
+  box-shadow: 0 2px 12px rgba(234, 88, 12, 0.08);
+}
+body.theme-classic-orange .card {
+  background: #FFFFFF;
+}
+body.theme-classic-orange .nav {
+  background: rgba(255, 255, 255, 0.97);
+}
+body.theme-classic-orange input,
+body.theme-classic-orange select,
+body.theme-classic-orange textarea {
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+  color: #1E293B;
+}
+body.theme-classic-orange .jarvis-command-deck {
+  background: linear-gradient(145deg, #FFF7ED, #FFEDD5);
+  border-color: #FED7AA;
+}
+body.theme-classic-orange .jarvis-core-center {
+  background: radial-gradient(circle, #FFFFFF 0%, #FFF7ED 100%);
+  border-color: #F97316;
+  box-shadow: inset 0 0 14px rgba(234, 88, 12, 0.14), 0 4px 12px rgba(234, 88, 12, 0.12);
+}
+body.theme-classic-orange .btn.primary {
+  background: linear-gradient(135deg, #F97316, #EA580C) !important;
+  color: #FFFFFF !important;
+  border-color: #EA580C !important;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.28);
+}
+body.theme-classic-orange .fab {
+  background: linear-gradient(135deg, #F97316, #EA580C);
+  color: #FFFFFF;
+  box-shadow: 0 8px 22px rgba(234, 88, 12, 0.38);
+}
+body.theme-classic-orange .td-col-headers {
+  background: #FFEDD5;
+  color: #9A3412;
+}
+body.theme-classic-orange .att-table thead th {
+  background: #FFF7ED !important;
+  color: #9A3412 !important;
+}
+body.theme-classic-orange .att-table thead th:first-child {
+  background: #FFF7ED !important;
+}
+body.theme-classic-orange .att-table td:first-child {
+  background: #FFFFFF;
+}
+body.theme-classic-orange .exam-top-actions {
+  background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%);
+}
+body.theme-classic-orange .slider {
+  background-color: #CBD5E1;
+}
+body.theme-classic-orange .slider:before {
+  background-color: #FFFFFF;
+}
+
+/* پوسته سایبری نارنجی تیره (Dark Amber Cyber) */
+body.theme-cyber-orange {
+  color-scheme: dark;
+  --bg-main: #0C0907;
+  --bg-card: #18120E;
+  --bg-panel: #241A14;
+  --neon-cyan: #FB923C;
+  --neon-blue: #F97316;
+  --neon-green: #4ADE80;
+  --neon-red: #F87171;
+  --neon-purple: #FBBF24;
+  --text-main: #FFF7ED;
+  --text-muted: #A8A29E;
+  --border-cyber: rgba(251, 146, 60, 0.28);
+  --border-subtle: rgba(251, 146, 60, 0.16);
+  --primary: #FB923C;
+  --primary2: #F97316;
+  --primary-dark: #FDBA74;
+  --primary-light: rgba(249, 115, 22, 0.14);
+  --primary-border: rgba(251, 146, 60, 0.35);
+  --border: rgba(251, 146, 60, 0.26);
+  --shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 16px rgba(249, 115, 22, 0.08);
+  --glow-cyan: 0 0 16px rgba(249, 115, 22, 0.35);
+  background: radial-gradient(circle at 50% 0%, #27170E 0%, #0C0907 65%) !important;
+}
+body.theme-cyber-orange .btn.primary {
+  background: linear-gradient(135deg, #F97316, #EA580C) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(251, 146, 60, 0.5) !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+}
+body.theme-cyber-orange .jarvis-command-deck {
+  background: linear-gradient(145deg, rgba(36, 26, 20, 0.92), rgba(24, 18, 14, 0.96));
+}
+body.theme-cyber-orange .jarvis-core-center {
+  background: radial-gradient(circle, #241A14 0%, #0C0907 100%);
+  border-color: rgba(251, 146, 60, 0.5);
+}
+body.theme-cyber-orange .exam-top-actions {
+  background: linear-gradient(135deg, #C2410C 0%, #7C2D12 100%);
+}
+
+/* ناوبری تفکیک‌شده صفحه تنظیمات (۶ بخش مجزا) */
+.settings-tabs-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 6px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 62px;
+  z-index: 30;
+}
+@media (min-width: 680px) {
+  .settings-tabs-bar {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+.set-tab-btn {
+  padding: 8px 6px;
+  border-radius: 10px;
+  background: var(--bg-panel);
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  border: 1px solid transparent;
+  transition: all 0.18s ease;
+}
+.set-tab-btn span:first-child { font-size: 16px; }
+.set-tab-btn.active {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+  box-shadow: var(--glow-cyan);
+}
+body:not(.theme-classic-orange):not(.theme-cyber-orange):not(.light-mode) .set-tab-btn.active {
+  color: #050914;
+}
+.settings-pane { display: none; }
+.settings-pane.active { display: block; animation: cyberPageEnter 0.2s ease; }
+
+/* کارت‌های انتخاب پوسته (Theme Picker Cards) */
+.theme-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 8px;
+}
+@media (max-width: 480px) {
+  .theme-cards-grid { grid-template-columns: 1fr; }
+}
+.theme-pick-card {
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 11px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--bg-panel);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.theme-pick-card:hover { transform: translateY(-2px); }
+.theme-pick-card.active-theme {
+  border-color: var(--primary);
+  box-shadow: var(--glow-cyan);
+}
+.theme-swatch-dots {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.theme-swatch-dots span {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* بهبود جدول حضور و غیاب و ستون «کتبی مستمر» */
+.cont-exam-input {
+  width: 54px;
+  height: 31px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 800;
+  border: 1.5px solid var(--neon-purple);
+  background: var(--purple-bg);
+  color: var(--text-main);
+  padding: 2px;
+}
+.score-high { color: var(--neon-green) !important; border-color: rgba(74, 222, 128, 0.55) !important; }
+.score-low { color: var(--neon-red) !important; border-color: rgba(248, 113, 113, 0.65) !important; background: var(--danger-bg) !important; }
+
+/* حالت‌های نمایش جدول در موبایل (همه | فقط نمرات و مستمر | فقط حضور و غیاب) */
+.att-table.mode-grades-only .col-session-date { display: none !important; }
+.att-table.mode-att-only .col-grade-summary { display: none !important; }
+
+.row-num-badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: 7px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid var(--primary-border);
+  font-size: 11px;
+  font-weight: 900;
+  margin-left: 5px;
+  flex-shrink: 0;
+}
+
+.col-transfer-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 3px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  background: var(--purple-bg);
+  color: var(--neon-purple);
+  border: 1px solid var(--neon-purple);
+  cursor: pointer;
+}
+body.theme-classic-orange .col-transfer-chip {
+  background: #FFEDD5;
+  color: #C2410C;
+  border-color: #F97316;
+}
+
+.att-filter-strip {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.att-filter-strip input[type="search"] {
+  flex: 1;
+  min-width: 150px;
+  padding: 6px 10px;
+  font-size: 12px;
+  height: 34px;
+}
+
+
+/* ==================== استایل‌های تفکیک هوشمند «نیازمند توجه‌ها» (نسخه ۵.۳.۰) ==================== */
+.attn-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.attn-cat-pill {
+  background: var(--bg-panel);
+  border: 1.5px solid var(--border);
+  border-radius: 13px;
+  padding: 9px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-muted);
+  transition: all 0.18s ease;
+}
+.attn-cat-pill:hover { transform: translateY(-2px); border-color: var(--primary); }
+.attn-cat-pill.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--text-main);
+  box-shadow: var(--glow-cyan);
+}
+.attn-cat-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 99px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  font-size: 11.5px;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+/* نشان‌های رنگی اختصاصی هر دسته نیازمند توجه */
+.attn-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.attn-tag.cat-academic {
+  background: rgba(245, 158, 11, 0.16);
+  color: #FBBF24;
+  border-color: rgba(245, 158, 11, 0.40);
+}
+body.light-mode .attn-tag.cat-academic, body.theme-classic-orange .attn-tag.cat-academic {
+  background: #FEF3C7;
+  color: #B45309;
+  border-color: #FCD34D;
+}
+.attn-tag.cat-discipline {
+  background: rgba(239, 68, 68, 0.16);
+  color: #F87171;
+  border-color: rgba(239, 68, 68, 0.40);
+}
+body.light-mode .attn-tag.cat-discipline, body.theme-classic-orange .attn-tag.cat-discipline {
+  background: #FEE2E2;
+  color: #B91C1C;
+  border-color: #FCA5A5;
+}
+.attn-tag.cat-medical {
+  background: rgba(244, 63, 94, 0.16);
+  color: #FB7185;
+  border-color: rgba(244, 63, 94, 0.42);
+}
+body.light-mode .attn-tag.cat-medical, body.theme-classic-orange .attn-tag.cat-medical {
+  background: #FFE4E6;
+  color: #BE123C;
+  border-color: #FDA4AF;
+}
+.attn-tag.cat-absence {
+  background: rgba(14, 165, 233, 0.16);
+  color: #38BDF8;
+  border-color: rgba(14, 165, 233, 0.40);
+}
+body.light-mode .attn-tag.cat-absence, body.theme-classic-orange .attn-tag.cat-absence {
+  background: #E0F2FE;
+  color: #0369A1;
+  border-color: #7DD3FC;
+}
+.attn-tag.cat-counseling {
+  background: rgba(168, 85, 247, 0.16);
+  color: #C084FC;
+  border-color: rgba(168, 85, 247, 0.40);
+}
+body.light-mode .attn-tag.cat-counseling, body.theme-classic-orange .attn-tag.cat-counseling {
+  background: #F3E8FF;
+  color: #7E22CE;
+  border-color: #D8B4FE;
+}
+.attn-tag.cat-special {
+  background: rgba(20, 184, 166, 0.16);
+  color: #2DD4BF;
+  border-color: rgba(20, 184, 166, 0.40);
+}
+body.light-mode .attn-tag.cat-special, body.theme-classic-orange .attn-tag.cat-special {
+  background: #CCFBF1;
+  color: #0F766E;
+  border-color: #5EEAD4;
+}
+
+.attn-note-banner {
+  margin-top: 7px;
+  padding: 6px 10px;
+  border-radius: 9px;
+  background: var(--bg-panel);
+  border-right: 3px solid var(--neon-red);
+  font-size: 11.5px;
+  color: var(--text-main);
+  line-height: 1.55;
+}
+
 </style>
 </head>
 <body>
@@ -1315,7 +1732,7 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
   <div class="toprow">
     <div class="brand">
       <div class="logo">🎓</div>
-      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v5.0.0 Cyber-JARVIS</span></small></div>
+      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v5.3.0 Pro</span></small></div>
     </div>
     <div class="top-icons">
       <button class="iconbtn" onclick="showView('termsView')" title="مدیریت ترم و ترم‌های گذشته" aria-label="مدیریت ترم">🗂️</button>
@@ -1447,17 +1864,31 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
 </section>
 
 <section id="statuses" class="view">
-  <h1 class="title">وضعیت دانش‌آموزان (تشخیص خودکار + دستی)</h1>
-  <p class="subtitle">دانش‌آموزانی که تعداد منفی‌هایشان از سقف مجاز رد شود یا میانگینشان افت کند، خودکار به «🔴 نیازمند توجه» منتقل می‌شوند</p>
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+    <div>
+      <h1 class="title" style="margin:0">🚨 مرکز پایش وضعیت و تفکیک «نیازمند توجه‌ها»</h1>
+      <p class="subtitle" style="margin:3px 0 0">تفکیک هوشمند و دستی بر اساس: 📉 درسی، ⚠️ انضباطی، 🏥 بیماری و سلامت، 📅 غیبت مکرر و 💜 مشاوره</p>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button type="button" class="btn primary btn-sm" onclick="openQuickAssignAttentionModal()">➕ ثبت سریع مورد نیازمند توجه / بیماری</button>
+      <button type="button" class="btn soft btn-sm" onclick="printCategorizedAttentionReport()">🖨️ چاپ گزارش تفکیکی</button>
+    </div>
+  </div>
+
   <div class="stats">
-    <div class="stat"><span>🟢 خوب</span><strong id="goodCount">۰</strong></div>
-    <div class="stat"><span>🔴 نیازمند توجه</span><strong id="attentionCount">۰</strong></div>
-    <div class="stat"><span>⚪ عادی</span><strong id="noneCount">۰</strong></div>
+    <div class="stat" onclick="renderStatuses('good')" style="cursor:pointer"><span>🟢 وضعیت خوب</span><strong id="goodCount" style="color:var(--neon-green)">۰</strong></div>
+    <div class="stat" onclick="renderStatuses('attn')" style="cursor:pointer"><span>🔴 کل نیازمند توجه</span><strong id="attentionCount" style="color:var(--neon-red)">۰</strong></div>
+    <div class="stat" onclick="renderStatuses('none')" style="cursor:pointer"><span>⚪ وضعیت عادی</span><strong id="noneCount">۰</strong></div>
   </div>
-  <div style="display:flex;gap:8px;margin-bottom:12px">
-    <button id="statusGoodBtn" class="btn soft" onclick="renderStatuses('good')">🟢 خوب</button>
-    <button id="statusAttnBtn" class="btn gray" onclick="renderStatuses('attn')">🔴 نیازمند توجه</button>
+
+  <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+    <button id="statusAttnBtn" class="btn primary" style="flex:1" onclick="renderStatuses('attn')">🔴 نیازمند توجه (تفکیک‌شده)</button>
+    <button id="statusGoodBtn" class="btn gray" style="flex:1" onclick="renderStatuses('good')">🟢 دانش‌آموزان خوب و برتر</button>
   </div>
+
+  <!-- نوار دسته‌بندی‌های تفکیک‌شده نیازمند توجه -->
+  <div id="attnCategoriesFilterBox"></div>
+
   <div id="statusesList"></div>
 </section>
 
@@ -1850,65 +2281,224 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
 </section>
 
 <section id="backup" class="view">
-  <h1 class="title">⚙️ تنظیمات، ضرایب نمره، شخصی‌سازی و خروجی</h1>
-  <div class="formgrid" style="margin-bottom:12px">
-    <div class="card" style="border-color:var(--neon-cyan)">
-      <b style="color:var(--neon-cyan)">✨ ظاهر و انیمیشن‌ها (۱۰ کلید مستقل)</b>
-      <p class="muted" style="margin:4px 0 10px">کنترل کامل انیمیشن ورود، هسته JARVIS، شبکه زنده، اسکن اطلاعات و افکت‌های آموزشی.</p>
-      <button type="button" class="btn primary block" onclick="showView('animSettingsView')">ورود به صفحه «ظاهر و انیمیشن‌ها» ←</button>
-    </div>
-    <div class="card" style="border-color:var(--neon-purple)">
-      <b style="color:var(--neon-purple)">🗂️ مدیریت ترم و آرشیو ترم‌های گذشته</b>
-      <p class="muted" style="margin:4px 0 10px">شروع ترم جدید از صفر با بایگانی کامل سوابق ترم قبلی و مشاهده یا خروجی JSON هر ترم.</p>
-      <button type="button" class="btn soft block" onclick="showView('termsView')">ورود به «مدیریت ترم و آرشیو» ←</button>
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+    <div>
+      <h1 class="title" style="margin:0">⚙️ مرکز تنظیمات تفکیک‌شده معلم</h1>
+      <p class="subtitle" style="margin:2px 0 0">شخصی‌سازی پوسته (نارنجی/سایبری)، انیمیشن‌ها، ضرایب نمره، کدهای اختصاری، گزارش‌ها و پشتیبان</p>
     </div>
   </div>
-  <div class="card" style="margin-bottom:12px">
-    <b style="color:var(--primary)">🎛️ فعال و غیرفعال‌سازی بخش‌های نمایشی داشبورد و کلاس</b>
-    <div id="featureTogglesBox" style="margin-top:8px"></div>
+
+  <!-- نوار تب‌های تفکیک‌شده تنظیمات (۶ دسته مجزا) -->
+  <div class="settings-tabs-bar" id="settingsTabsBar">
+    <button type="button" class="set-tab-btn active" data-stab="theme" onclick="openSettingsTab('theme', this)">
+      <span>🎨</span><span>پوسته و ظاهر</span>
+    </button>
+    <button type="button" class="set-tab-btn" data-stab="rules" onclick="openSettingsTab('rules', this)">
+      <span>⚖️</span><span>فرمول و ضرایب</span>
+    </button>
+    <button type="button" class="set-tab-btn" data-stab="shortcuts" onclick="openSettingsTab('shortcuts', this)">
+      <span>🔤</span><span>کدها و پیامک</span>
+    </button>
+    <button type="button" class="set-tab-btn" data-stab="modules" onclick="openSettingsTab('modules', this)">
+      <span>🎛️</span><span>بخش‌های برنامه</span>
+    </button>
+    <button type="button" class="set-tab-btn" data-stab="export" onclick="openSettingsTab('export', this)">
+      <span>📊</span><span>گزارش و خروجی</span>
+    </button>
+    <button type="button" class="set-tab-btn" data-stab="data" onclick="openSettingsTab('data', this)">
+      <span>💾</span><span>پشتیبان و ابزارها</span>
+    </button>
   </div>
-  <div class="card" style="margin-bottom:12px">
-    <b style="color:var(--primary)">⚖️ ضرایب نمرات طول سال و فرمول تأثیر مثبت/منفی و وضعیت خودکار</b>
-    <div class="formgrid" style="margin-top:8px">
-      <div class="field"><label>ضریب نمرات کلاسی و حضور</label><input id="weightClassScore" type="number" step="0.5" min="0" value="1"></div>
-      <div class="field"><label>ضریب امتحانات کتبی مستمر (مهم‌تر)</label><input id="weightContExam" type="number" step="0.5" min="0" value="2"></div>
-      <div class="field"><label>ضریب آزمون پایانی ترم</label><input id="weightTermExam" type="number" step="0.5" min="0" value="3"></div>
-      <div class="field"><label>آستانه افت نمره برای وضعیت «نیازمند توجه»</label><input id="ruleLowScoreAttn" type="number" step="0.5" min="0" max="20" value="12"></div>
-      <div class="field"><label>پاداش نداشتن منفی در ترم</label><input id="ruleBonusNoNeg" type="number" step="0.25" value="1"></div>
-      <div class="field"><label>سقف مجاز منفی (بیشتر از این = نیازمند توجه خودکار)</label><input id="ruleMaxNegAllowed" type="number" step="1" value="2"></div>
-      <div class="field"><label>کسر نمره به ازای هر منفی مازاد</label><input id="rulePenaltyPerNeg" type="number" step="0.25" value="0.5"></div>
-      <div class="field"><label>امتیاز پیش‌فرض هر مثبت عادی</label><input id="behaviorPositiveDefault" type="number" step="0.05" value="0.25"></div>
+
+  <!-- تب ۱: پوسته رنگی (شامل نارنجی کلاسیک و سایبری) و انیمیشن‌ها -->
+  <div id="setPane-theme" class="settings-pane active">
+    <div class="card" style="margin-bottom:12px">
+      <b style="color:var(--primary);font-size:14.5px">🎨 انتخاب پوسته رنگی برنامه (قابل تعویض آنی)</b>
+      <p class="muted" style="margin:4px 0 8px">می‌توانید بین تم سایبری فیروزه‌ای، تم نارنجی کلاسیک و گرم، سایبری نارنجی تیره یا تم روشن روز جابه‌جا شوید:</p>
+      <div class="theme-cards-grid" id="themePickerCardsGrid">
+        <div class="theme-pick-card" data-theme-id="cyber-dark" onclick="setCyberThemeMode('cyber-dark')">
+          <div>
+            <b style="display:block;font-size:13.5px">🌌 سایبری تاریک (Cyber-JARVIS)</b>
+            <span class="muted" style="font-size:11px">سرمه‌ای تیره و نئون فیروزه‌ای</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#050914"></span>
+            <span style="background:#22D3EE"></span>
+            <span style="background:#A78BFA"></span>
+          </div>
+        </div>
+        <div class="theme-pick-card" data-theme-id="classic-orange" onclick="setCyberThemeMode('classic-orange')">
+          <div>
+            <b style="display:block;font-size:13.5px">🍊 نارنجی کلاسیک و گرم</b>
+            <span class="muted" style="font-size:11px">پوسته محبوب کرم و نارنجی</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#FFF9F2;border-color:#EA580C"></span>
+            <span style="background:#EA580C"></span>
+            <span style="background:#F97316"></span>
+          </div>
+        </div>
+        <div class="theme-pick-card" data-theme-id="cyber-orange" onclick="setCyberThemeMode('cyber-orange')">
+          <div>
+            <b style="display:block;font-size:13.5px">🔥 سایبری نارنجی تیره</b>
+            <span class="muted" style="font-size:11px">پس‌زمینه تیره با نئون نارنجی</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#0C0907"></span>
+            <span style="background:#F97316"></span>
+            <span style="background:#FBBF24"></span>
+          </div>
+        </div>
+        <div class="theme-pick-card" data-theme-id="light" onclick="setCyberThemeMode('light')">
+          <div>
+            <b style="display:block;font-size:13.5px">☀️ روشن روز (آبی آسمانی)</b>
+            <span class="muted" style="font-size:11px">کنتراست بالا برای محیط پرنور</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#F0F7FF;border-color:#0284C7"></span>
+            <span style="background:#0284C7"></span>
+            <span style="background:#16A34A"></span>
+          </div>
+        </div>
+      </div>
     </div>
-    <button class="btn primary block" style="margin-top:10px" onclick="saveRules()">ذخیره ضرایب نمرات و فرمول انضباطی</button>
-  </div>
-  <div class="card" style="margin-bottom:12px">
-    <b style="color:var(--primary)">🔤 مدیریت و ویرایش کدهای اختصاری مثبت/منفی</b>
-    <div id="shortcutListUi" style="display:grid;gap:6px;margin:8px 0"></div>
-    <button class="btn soft block" onclick="addShortcutPrompt()">＋ افزودن کد اختصاری جدید</button>
-  </div>
-  <div class="card" style="margin-bottom:12px">
-    <b style="color:var(--primary)">📤 مرکز دریافت خروجی سفارشی (Excel / Word / PDF)</b>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 10px;font-size:12.5px">
-      <label><input type="checkbox" id="expColAtt" checked> تعداد غیبت‌ها و حضور</label>
-      <label><input type="checkbox" id="expColContGrades" checked> نمرات مستمر و میانگین</label>
-      <label><input type="checkbox" id="expColBeh" checked> مثبت و منفی‌ها</label>
-      <label><input type="checkbox" id="expColTerm" checked> نمره پایانی ترم و نهایی</label>
-    </div>
-    <div class="actions">
-      <button class="btn primary" style="flex:1" onclick="exportCustomReport('excel')">📊 دانلود اکسل</button>
-      <button class="btn soft" style="flex:1" onclick="exportCustomReport('word')">📝 دانلود Word</button>
-      <button class="btn gray" style="flex:1" onclick="exportCustomReport('print')">🖨️ چاپ / PDF</button>
+
+    <div class="card" style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div>
+          <b style="color:var(--primary);font-size:14.5px">✨ مدیریت ۱۰ انیمیشن و جلوه حرکتی</b>
+          <p class="muted" style="margin:3px 0 0">کنترل تک‌تک انیمیشن‌ها یا فعال‌سازی حالت کم‌مصرف باتری</p>
+        </div>
+        <button type="button" class="btn soft btn-sm" onclick="showView('animSettingsView')">پنل تمام‌صفحه انیمیشن‌ها ↗️</button>
+      </div>
+      <div class="actions" style="margin-top:10px">
+        <button type="button" class="btn primary btn-sm" onclick="setAllCyberAnimations(true)">✨ روشن‌کردن همه</button>
+        <button type="button" class="btn soft btn-sm" onclick="applyLowPowerAnimPreset()">🔋 حالت بهینه باتری</button>
+        <button type="button" class="btn danger btn-sm" onclick="setAllCyberAnimations(false)">🛑 خاموش‌کردن همه</button>
+        <button type="button" class="btn gray btn-sm" onclick="replayCyberIntroNow()">🎬 تست انیمیشن ورود</button>
+      </div>
+      <div id="inlineAnimTogglesBox" style="margin-top:10px"></div>
     </div>
   </div>
-  <div class="formgrid" style="margin-bottom:12px">
-    <div class="card"><b>👨‍🎓 پشتیبان خام</b><p class="muted" style="margin:4px 0 10px">فقط مشخصات پایه بدون نمره و غیبت.</p><button class="btn soft block" onclick="exportRawData()">⬇️ دانلود پشتیبان خام</button></div>
-    <div class="card"><b>📚 پشتیبان کامل</b><p class="muted" style="margin:4px 0 10px">تمام اطلاعات، عکس‌ها، نمرات و آزمون‌ها.</p><button class="btn primary block" onclick="exportFullData()">⬇️ دانلود پشتیبان کامل</button></div>
+
+  <!-- تب ۲: ضرایب نمرات و فرمول انضباطی + شبیه‌ساز زنده -->
+  <div id="setPane-rules" class="settings-pane">
+    <div class="card" style="margin-bottom:12px">
+      <b style="color:var(--primary);font-size:14.5px">⚖️ ضرایب نمرات طول سال و فرمول تأثیر مثبت/منفی</b>
+      <p class="muted" style="margin:4px 0 10px">نمره نهایی هر دانش‌آموز به صورت خودکار بر اساس ضرایب زیر محاسبه می‌شود:</p>
+      <div class="formgrid">
+        <div class="field"><label>🗣️ ضریب نمرات کلاسی و جلسات روزانه</label><input id="weightClassScore" type="number" step="0.5" min="0" value="1" oninput="updateLiveFormulaPreview()"></div>
+        <div class="field"><label>📝 ضریب امتحانات کتبی مستمر (مهم‌تر)</label><input id="weightContExam" type="number" step="0.5" min="0" value="2" oninput="updateLiveFormulaPreview()"></div>
+        <div class="field"><label>🎓 ضریب آزمون پایانی ترم</label><input id="weightTermExam" type="number" step="0.5" min="0" value="3" oninput="updateLiveFormulaPreview()"></div>
+        <div class="field"><label>🚨 آستانه افت نمره برای وضعیت «نیازمند توجه»</label><input id="ruleLowScoreAttn" type="number" step="0.5" min="0" max="20" value="12"></div>
+        <div class="field"><label>🎁 پاداش نداشتن هیچ منفی در طول ترم</label><input id="ruleBonusNoNeg" type="number" step="0.25" value="1" oninput="updateLiveFormulaPreview()"></div>
+        <div class="field"><label>⚠️ سقف مجاز منفی (بیشتر از این = کسر نمره و نیازمند توجه)</label><input id="ruleMaxNegAllowed" type="number" step="1" value="2" oninput="updateLiveFormulaPreview()"></div>
+        <div class="field"><label>➖ کسر نمره به ازای هر منفی مازاد بر سقف</label><input id="rulePenaltyPerNeg" type="number" step="0.25" value="0.5" oninput="updateLiveFormulaPreview()"></div>
+        <div class="field"><label>➕ امتیاز پیش‌فرض هر مثبت عادی</label><input id="behaviorPositiveDefault" type="number" step="0.05" value="0.25" oninput="updateLiveFormulaPreview()"></div>
+      </div>
+      <button class="btn primary block" style="margin-top:12px" onclick="saveRules()">💾 ذخیره ضرایب نمرات و فرمول انضباطی</button>
+    </div>
+
+    <div class="card">
+      <b style="color:var(--primary)">🧮 شبیه‌ساز زنده فرمول نمره (تست محاسبه قبل از ذخیره)</b>
+      <p class="muted" style="margin:4px 0 8px">اعداد آزمایشی را تغییر دهید تا ببینید نمره نهایی دانش‌آموز با ضرایب فعلی چند می‌شود:</p>
+      <div class="grid-5">
+        <div><label style="font-size:11px">کلاسی</label><input id="simClassSc" type="number" value="15" min="0" max="20" step="0.25" oninput="updateLiveFormulaPreview()"></div>
+        <div><label style="font-size:11px">کتبی مستمر</label><input id="simContSc" type="number" value="18" min="0" max="20" step="0.25" oninput="updateLiveFormulaPreview()"></div>
+        <div><label style="font-size:11px">پایانی ترم</label><input id="simTermSc" type="number" value="17" min="0" max="20" step="0.25" oninput="updateLiveFormulaPreview()"></div>
+        <div><label style="font-size:11px">تعداد مثبت</label><input id="simPosCnt" type="number" value="2" min="0" max="20" oninput="updateLiveFormulaPreview()"></div>
+        <div><label style="font-size:11px">تعداد منفی</label><input id="simNegCnt" type="number" value="0" min="0" max="20" oninput="updateLiveFormulaPreview()"></div>
+      </div>
+      <div id="liveFormulaResultBox" style="padding:10px 12px;border-radius:11px;background:var(--panel);border:1px solid var(--border);font-weight:800;text-align:center;color:var(--primary)"></div>
+    </div>
   </div>
-  <div class="card" style="margin-bottom:12px">
-    <b>📥 بازیابی اطلاعات از فایل پشتیبان</b>
-    <label class="btn primary block" style="text-align:center;cursor:pointer;margin-top:8px">📂 انتخاب فایل پشتیبان (JSON)<input type="file" accept=".json,application/json" hidden onchange="importData(event)"></label>
+
+  <!-- تب ۳: کدهای اختصاری مثبت/منفی و تنظیمات نام معلم -->
+  <div id="setPane-shortcuts" class="settings-pane">
+    <div class="card" style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+        <b style="color:var(--primary)">🔤 مدیریت کدهای اختصاری مثبت و منفی</b>
+        <button type="button" class="btn soft btn-sm" onclick="addDefaultTeacherShortcutsPreset()">⚡ افزودن کدهای پیشنهادی معلم</button>
+      </div>
+      <p class="muted" style="margin:4px 0 8px">این دکمه‌ها زیر کارت دانش‌آموز و در جدول جامع نمایش داده می‌شوند تا با ۱ لمس دلیل مثبت یا منفی ثبت شود:</p>
+      <div id="shortcutListUi" style="display:grid;gap:6px;margin:8px 0"></div>
+      <button class="btn primary block" onclick="addShortcutPrompt()">＋ افزودن کد اختصاری جدید</button>
+    </div>
+
+    <div class="card">
+      <b style="color:var(--primary)">👨‍🏫 نام دبیر و امضای پیامک‌های کارنامه و تولد</b>
+      <div class="field" style="margin-top:8px">
+        <label>نام و عنوان دبیر (در سربرگ آزمون و پایان پیامک‌های اولیا درج می‌شود):</label>
+        <input id="settingsTeacherNameInp" placeholder="مثلاً رضا شهابی نژاد" oninput="saveTeacherNameFromSettings(this.value)">
+      </div>
+    </div>
   </div>
-  <div class="card"><button class="btn danger block" onclick="clearAll()">⚠️ پاک‌سازی کامل تمام اطلاعات برنامه</button></div>
+
+  <!-- تب ۴: فعال و غیرفعال‌سازی بخش‌های نمایشی برنامه -->
+  <div id="setPane-modules" class="settings-pane">
+    <div class="card">
+      <b style="color:var(--primary)">🎛️ شخصی‌سازی ویجت‌ها و بخش‌های نمایشی داشبورد و کلاس</b>
+      <p class="muted" style="margin:4px 0 8px">هر بخشی را که نیاز ندارید می‌توانید خاموش یا روشن کنید:</p>
+      <div id="featureTogglesBox" style="margin-top:8px"></div>
+    </div>
+  </div>
+
+  <!-- تب ۵: مرکز دریافت خروجی سفارشی (اکسل، ورد، چاپ/PDF) -->
+  <div id="setPane-export" class="settings-pane">
+    <div class="card">
+      <b style="color:var(--primary)">📤 مرکز دریافت خروجی سفارشی (Excel / Word / PDF)</b>
+      <p class="muted" style="margin:4px 0 10px">ستون‌های مورد نظر خود را انتخاب کرده و خروجی استاندارد دریافت کنید:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 12px;font-size:12.5px">
+        <label class="switch-card"><span>📅 تعداد غیبت‌ها و حضور</span><input type="checkbox" id="expColAtt" checked></label>
+        <label class="switch-card"><span>📝 نمرات کتبی مستمر و میانگین</span><input type="checkbox" id="expColContGrades" checked></label>
+        <label class="switch-card"><span>➕➖ مثبت و منفی‌ها</span><input type="checkbox" id="expColBeh" checked></label>
+        <label class="switch-card"><span>🎓 نمره پایانی ترم و نهایی</span><input type="checkbox" id="expColTerm" checked></label>
+      </div>
+      <div class="actions">
+        <button class="btn primary" style="flex:1" onclick="exportCustomReport('excel')">📊 دانلود اکسل (CSV)</button>
+        <button class="btn soft" style="flex:1" onclick="exportCustomReport('word')">📝 دانلود Word</button>
+        <button class="btn gray" style="flex:1" onclick="exportCustomReport('print')">🖨️ چاپ / PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- تب ۶: پشتیبان‌گیری، بازیابی، ادغام اسامی تکراری و مدیریت ترم -->
+  <div id="setPane-data" class="settings-pane">
+    <div class="formgrid" style="margin-bottom:12px">
+      <div class="card">
+        <b style="color:var(--primary)">📚 پشتیبان کامل (همه اطلاعات)</b>
+        <p class="muted" style="margin:4px 0 10px">شامل مدارس، کلاس‌ها، عکس‌ها، تمام نمرات، حضور و غیاب، آرشیو ترم‌ها و آزمون‌ها.</p>
+        <button class="btn primary block" onclick="exportFullData()">⬇️ دانلود پشتیبان کامل (JSON)</button>
+      </div>
+      <div class="card">
+        <b style="color:var(--primary)">👨‍🎓 پشتیبان خام (فقط لیست اسامی)</b>
+        <p class="muted" style="margin:4px 0 10px">فقط مشخصات پایه دانش‌آموزان و کلاس‌ها بدون نمره و غیبت.</p>
+        <button class="btn soft block" onclick="exportRawData()">⬇️ دانلود پشتیبان خام</button>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:12px">
+      <b style="color:var(--primary)">📥 بازیابی اطلاعات از فایل پشتیبان</b>
+      <label class="btn primary block" style="text-align:center;cursor:pointer;margin-top:8px">📂 انتخاب فایل پشتیبان (JSON)<input type="file" accept=".json,application/json" hidden onchange="importData(event)"></label>
+    </div>
+
+    <div class="formgrid" style="margin-bottom:12px">
+      <div class="card">
+        <b style="color:var(--neon-purple)">🔍 تشخیص و ادغام دانش‌آموزان تکراری</b>
+        <p class="muted" style="margin:4px 0 10px">بررسی خودکار کلاس‌ها برای یافتن دانش‌آموزانی که دو بار ثبت شده‌اند و ادغام سوابق آن‌ها.</p>
+        <button type="button" class="btn soft block" onclick="openDuplicateStudentsInspector()">🔎 بررسی اسامی تکراری در کلاس‌ها</button>
+      </div>
+      <div class="card">
+        <b style="color:var(--primary)">🗂️ مدیریت ترم و آرشیو ترم‌های گذشته</b>
+        <p class="muted" style="margin:4px 0 10px">شروع ترم جدید از صفر با بایگانی کامل سوابق ترم قبلی.</p>
+        <button type="button" class="btn soft block" onclick="showView('termsView')">ورود به مدیریت ترم‌ها ←</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <button class="btn danger block" onclick="clearAll()">⚠️ پاک‌سازی کامل تمام اطلاعات برنامه</button>
+    </div>
+  </div>
 </section>
 
 <!-- بخش دهم: صفحه مستقل تنظیمات «ظاهر و انیمیشن‌ها» -->
@@ -1953,10 +2543,12 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
   </div>
 
   <div class="card">
-    <b style="color:var(--neon-cyan);display:block;margin-bottom:6px">🎨 پوسته رنگی برنامه</b>
+    <b style="color:var(--primary);display:block;margin-bottom:6px">🎨 انتخاب پوسته رنگی برنامه (۴ تم کامل)</b>
     <div class="actions" style="margin-top:6px">
-      <button type="button" class="btn primary" style="flex:1" onclick="setCyberThemeMode('dark')">🌌 تم سایبری تاریک Cyber-JARVIS (پیش‌فرض)</button>
-      <button type="button" class="btn gray" style="flex:1" onclick="setCyberThemeMode('light')">☀️ تم روشن روز (کنتراست بالا)</button>
+      <button type="button" class="btn primary" style="flex:1" onclick="setCyberThemeMode('cyber-dark')">🌌 سایبری فیروزه‌ای</button>
+      <button type="button" class="btn soft" style="flex:1" onclick="setCyberThemeMode('classic-orange')">🍊 نارنجی کلاسیک</button>
+      <button type="button" class="btn soft" style="flex:1" onclick="setCyberThemeMode('cyber-orange')">🔥 سایبری نارنجی تیره</button>
+      <button type="button" class="btn gray" style="flex:1" onclick="setCyberThemeMode('light')">☀️ روشن روز</button>
     </div>
   </div>
 </section>
@@ -2109,7 +2701,7 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
   }
 })();
 const KEY = 'danesh_amooz_man_v1';
-const APP_VERSION = '5.0.0';
+const APP_VERSION = '5.3.0';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -2169,6 +2761,7 @@ function sanitizeDb(data) {
       if (!Array.isArray(c.gradeColumns)) c.gradeColumns = [];
       if (!c.attendance || typeof c.attendance !== 'object') c.attendance = {};
       if (!c.termScores || typeof c.termScores !== 'object') c.termScores = {};
+      if (!c.contExamScores || typeof c.contExamScores !== 'object') c.contExamScores = {};
       if (!c.sessionNotes || typeof c.sessionNotes !== 'object') c.sessionNotes = {};
       if (!c.attendanceSettings || typeof c.attendanceSettings !== 'object') c.attendanceSettings = { startDate: localISODate(), intervalDays: 7, sessionCount: 16, weekDays: [] };
       if (!Array.isArray(c.attendanceSettings.weekDays)) c.attendanceSettings.weekDays = [];
@@ -2614,6 +3207,7 @@ function startNewTerm(sid, cid) {
     c.termStartedAt = new Date().toISOString();
     c.attendance = {};
     c.termScores = {};
+        c.contExamScores = {};
     c.sessionNotes = {};
     (c.gradeColumns || []).forEach(g => { g.scores = {}; });
     (c.students || []).forEach(st => {
@@ -4589,6 +5183,7 @@ window.executeStartNewTerm = function(sid = null, cid = null) {
         c.termStartedAt = new Date().toISOString();
         c.attendance = {};
         c.termScores = {};
+        c.contExamScores = {};
         c.sessionNotes = {};
         if (keepCols && Array.isArray(c.gradeColumns)) {
           c.gradeColumns.forEach(g => { g.scores = {}; });
@@ -4924,6 +5519,1396 @@ if ('serviceWorker' in navigator) {
     });
   }).catch(() => {});
 }
+
+
+/* ==================== ارتقای جامع نسخه ۵.۲.۰ (ویرایش دلسوزانه معلم) ==================== */
+
+/* ۱. سیستم ۴ پوسته کامل (سایبری فیروزه‌ای، نارنجی کلاسیک، سایبری نارنجی تیره، روشن روز) */
+const THEME_MODES_V52 = [
+  { id: 'cyber-dark', title: '🌌 سایبری فیروزه‌ای (Cyber-JARVIS)', icon: '🌌', metaColor: '#050914' },
+  { id: 'classic-orange', title: '🍊 نارنجی کلاسیک و گرم', icon: '🍊', metaColor: '#ea580c' },
+  { id: 'cyber-orange', title: '🔥 سایبری نارنجی تیره', icon: '🔥', metaColor: '#0c0907' },
+  { id: 'light', title: '☀️ روشن روز', icon: '☀️', metaColor: '#0284c7' }
+];
+
+window.setCyberThemeMode = function(mode) {
+  let norm = mode;
+  if (norm === 'dark') norm = 'cyber-dark';
+  if (!['cyber-dark', 'classic-orange', 'cyber-orange', 'light'].includes(norm)) norm = 'cyber-dark';
+
+  document.body.classList.remove('dark', 'light-mode', 'theme-classic-orange', 'theme-cyber-orange');
+  if (norm === 'cyber-dark') {
+    document.body.classList.add('dark');
+  } else if (norm === 'classic-orange') {
+    document.body.classList.add('theme-classic-orange');
+  } else if (norm === 'cyber-orange') {
+    document.body.classList.add('dark', 'theme-cyber-orange');
+  } else if (norm === 'light') {
+    document.body.classList.add('light-mode');
+  }
+
+  try {
+    localStorage.setItem('danesh_theme_v5', norm);
+    localStorage.setItem('danesh_theme', (norm === 'light' || norm === 'classic-orange') ? 'light' : 'dark');
+  } catch (e) {}
+
+  const tMeta = document.querySelector('meta[name="theme-color"]');
+  const info = THEME_MODES_V52.find(x => x.id === norm) || THEME_MODES_V52[0];
+  if (tMeta) tMeta.setAttribute('content', info.metaColor);
+
+  const btn = document.getElementById('themeToggleBtn');
+  if (btn) {
+    btn.textContent = info.icon;
+    btn.title = `پوسته فعلی: ${info.title} (برای تغییر پوسته لمس کنید)`;
+  }
+
+  // به‌روزرسانی رنگ نقاط شبکه زنده متناسب با تم نارنجی یا فیروزه‌ای
+  if (window.CyberNetwork && Array.isArray(window.CyberNetwork.nodes)) {
+    const isOrange = norm === 'classic-orange' || norm === 'cyber-orange';
+    window.CyberNetwork.nodes.forEach((n, i) => {
+      n.color = isOrange
+        ? (i % 3 === 0 ? '#EA580C' : (i % 2 === 0 ? '#F97316' : '#FBBF24'))
+        : (i % 5 === 0 ? '#A78BFA' : (i % 2 === 0 ? '#22D3EE' : '#38BDF8'));
+    });
+  }
+
+  document.querySelectorAll('#themePickerCardsGrid .theme-pick-card').forEach(card => {
+    card.classList.toggle('active-theme', card.getAttribute('data-theme-id') === norm);
+  });
+};
+
+toggleTheme = function() {
+  const cur = localStorage.getItem('danesh_theme_v5') || 'cyber-dark';
+  const ids = THEME_MODES_V52.map(x => x.id);
+  const nextIdx = (ids.indexOf(cur) + 1) % ids.length;
+  const next = THEME_MODES_V52[nextIdx];
+  window.setCyberThemeMode(next.id);
+  toast(`پوسته «${next.title}» فعال شد`);
+};
+
+/* ۲. مدیریت ۶ تب تفکیک‌شده تنظیمات */
+window.openSettingsTab = function(tabId, btnEl) {
+  window._activeSettingsTab = tabId;
+  document.querySelectorAll('#settingsTabsBar .set-tab-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-stab') === tabId);
+  });
+  document.querySelectorAll('#backup .settings-pane').forEach(p => {
+    p.classList.toggle('active', p.id === 'setPane-' + tabId);
+  });
+  if (tabId === 'theme') {
+    renderInlineAnimToggles();
+    const cur = localStorage.getItem('danesh_theme_v5') || 'cyber-dark';
+    document.querySelectorAll('#themePickerCardsGrid .theme-pick-card').forEach(card => {
+      card.classList.toggle('active-theme', card.getAttribute('data-theme-id') === cur);
+    });
+  } else if (tabId === 'rules') {
+    updateLiveFormulaPreview();
+  } else if (tabId === 'shortcuts') {
+    renderShortcutSettingsUi();
+    const tInp = document.getElementById('settingsTeacherNameInp');
+    if (tInp) tInp.value = getTeacherName();
+  } else if (tabId === 'modules') {
+    renderFeatureToggles();
+  }
+};
+
+function renderInlineAnimToggles() {
+  const box = document.getElementById('inlineAnimTogglesBox');
+  if (!box) return;
+  const st = getCyberAnimState();
+  box.innerHTML = CYBER_ANIM_DEFS.map(def => {
+    const checked = !st.masterOff && st[def.key] !== false;
+    return `<div class="toggle-row">
+      <div>
+        <b style="font-size:13px">${def.title}</b>
+        <div class="muted" style="font-size:11px">${def.desc}</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleSingleCyberAnim('${def.key}', this.checked);renderInlineAnimToggles()">
+        <span class="slider"></span>
+      </label>
+    </div>`;
+  }).join('');
+}
+
+window.saveTeacherNameFromSettings = function(val) {
+  localStorage.setItem('teacher_name', (val || '').trim());
+  const tn = document.getElementById('teacherName');
+  if (tn) tn.value = (val || '').trim();
+};
+
+window.updateLiveFormulaPreview = function() {
+  const box = document.getElementById('liveFormulaResultBox');
+  if (!box) return;
+  const wClass = Number(document.getElementById('weightClassScore')?.value ?? 1);
+  const wCont = Number(document.getElementById('weightContExam')?.value ?? 2);
+  const wTerm = Number(document.getElementById('weightTermExam')?.value ?? 3);
+  const bonusNoNeg = Number(document.getElementById('ruleBonusNoNeg')?.value ?? 1);
+  const maxNeg = Number(document.getElementById('ruleMaxNegAllowed')?.value ?? 2);
+  const penNeg = Number(document.getElementById('rulePenaltyPerNeg')?.value ?? 0.5);
+  const posVal = Number(document.getElementById('behaviorPositiveDefault')?.value ?? 0.25);
+
+  const sClass = Number(document.getElementById('simClassSc')?.value ?? 15);
+  const sCont = Number(document.getElementById('simContSc')?.value ?? 18);
+  const sTerm = Number(document.getElementById('simTermSc')?.value ?? 17);
+  const pCnt = Number(document.getElementById('simPosCnt')?.value ?? 2);
+  const nCnt = Number(document.getElementById('simNegCnt')?.value ?? 0);
+
+  const contAvg = roundQuarter((sClass * wClass + sCont * wCont) / Math.max(1, wClass + wCont));
+  const base = ((contAvg * wCont) + (sTerm * wTerm)) / Math.max(1, wCont + wTerm);
+  let delta = pCnt * posVal;
+  if (nCnt === 0 && pCnt > 0) delta += bonusNoNeg;
+  if (nCnt > maxNeg) delta -= (nCnt - maxNeg) * penNeg;
+  const finalSc = roundQuarter(base + delta);
+
+  box.innerHTML = `میانگین مستمر: <b>${fmtScore(contAvg)}</b> · تغییر انضباطی: <b>${delta >= 0 ? '+' : ''}${fmtScore(delta)}</b> ⬅️ ⭐ نمره نهایی: <b style="font-size:16px;color:var(--neon-green)">${fmtScore(finalSc)} از ۲۰</b>`;
+};
+
+window.addDefaultTeacherShortcutsPreset = function() {
+  const list = getShortcuts();
+  const presets = [
+    { code: 'پ', reason: 'پاسخ عالی سر کلاس', value: 0.5, type: 'positive' },
+    { code: 'ک', reason: 'کنفرانس و ارائه درس', value: 0.5, type: 'positive' },
+    { code: 'ت', reason: 'تکلیف کامل و منظم', value: 0.25, type: 'positive' },
+    { code: 'ن', reason: 'نداشتن کتاب یا تکلیف', value: 0.25, type: 'negative' },
+    { code: 'ب', reason: 'بی‌نظمی در کلاس', value: 0.5, type: 'negative' }
+  ];
+  let added = 0;
+  presets.forEach(p => {
+    if (!list.some(x => x.code === p.code)) {
+      list.push(p);
+      added++;
+    }
+  });
+  saveShortcuts(list);
+  toast(added ? `${fa(added)} کد کاربردی اضافه شد ✅` : 'کدهای پیشنهادی قبلاً ثبت شده‌اند');
+};
+
+/* ۳. ستون مستقیم «📝 کتبی مستمر» + قابلیت کلیدی انتقال/تبدیل نمرات هر ستون تاریخ به «امتحان کتبی مستمر» */
+function getStudentWrittenContScore(c, st) {
+  if (c && c.contExamScores && c.contExamScores[st.id] !== undefined && c.contExamScores[st.id] !== '') {
+    return Number(c.contExamScores[st.id]);
+  }
+  const contGrades = (st.grades || []).filter(g => g.gradeType === 'cont_exam' && Number.isFinite(Number(g.score)));
+  if (!contGrades.length) return null;
+  const sum = contGrades.reduce((a, b) => a + Number(b.score), 0);
+  return roundQuarter(sum / contGrades.length);
+}
+
+window.saveContExamScore = function(sid, cid, stid, val, inputEl) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  if (!c.contExamScores || typeof c.contExamScores !== 'object') c.contExamScores = {};
+  const prevFinal = calculateFinalStudentScore(c, st);
+  const rawStr = enDigits(String(val ?? '')).trim();
+  if (rawStr !== '') {
+    const parsed = Number(rawStr);
+    if (!Number.isFinite(parsed) || parsed < 0 || parsed > 20) {
+      alert('نمره امتحان کتبی مستمر باید بین ۰ تا ۲۰ باشد.');
+      if (inputEl) inputEl.value = getStudentWrittenContScore(c, st) ?? '';
+      return;
+    }
+  }
+  if (rawStr === '') {
+    delete c.contExamScores[stid];
+    st.grades = (st.grades || []).filter(g => g.source !== 'direct_cont_col');
+  } else {
+    const n = roundQuarter(rawStr);
+    c.contExamScores[stid] = n;
+    let ex = (st.grades || []).find(g => g.source === 'direct_cont_col');
+    if (ex) {
+      ex.score = n;
+      ex.gradeType = 'cont_exam';
+    } else {
+      gradesData(st).push({
+        id: uid(),
+        date: new Date().toISOString(),
+        subject: 'امتحان کتبی مستمر',
+        score: n,
+        source: 'direct_cont_col',
+        gradeType: 'cont_exam'
+      });
+    }
+    if (inputEl) {
+      inputEl.value = n;
+      inputEl.classList.toggle('score-high', n >= 17);
+      inputEl.classList.toggle('score-low', n < 12);
+    }
+  }
+  evaluateAutoStatus(c, st);
+  savePersistent();
+  const newFinal = calculateFinalStudentScore(c, st);
+  if (inputEl && isCyberAnimOn('anim_grades')) {
+    inputEl.classList.remove('grade-saved-pulse');
+    void inputEl.offsetWidth;
+    inputEl.classList.add('grade-saved-pulse');
+  }
+  const finalCell = document.getElementById(`finalCell_${stid}`);
+  if (finalCell) {
+    finalCell.style.color = newFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)';
+    animateNumberValue(finalCell, prevFinal, newFinal, 300, true);
+  }
+  toast('نمره امتحان کتبی مستمر ثبت شد 📝');
+};
+
+function getScoreColorClass(sc) {
+  if (sc === null || sc === undefined || sc === '') return '';
+  const n = Number(sc);
+  if (!Number.isFinite(n)) return '';
+  if (n >= 17) return 'score-high';
+  if (n < 12) return 'score-low';
+  return '';
+}
+
+/* مودال هوشمند انتقال/تبدیل نمرات ستون جلسه به «امتحان کتبی مستمر» / «ستون سفارشی» / «نمره ترم» */
+window.openColumnTransferModal = function(sid, cid, preselectedDate = null) {
+  const c = findClass(sid, cid);
+  if (!c) return;
+  const dates = attendanceDates(c);
+  // همچنین هر تاریخی که در c.attendance ثبت شده حتی اگر خارج از تقویم فعلی باشد
+  Object.keys(c.attendance || {}).forEach(d => { if (!dates.includes(d)) dates.push(d); });
+  dates.sort();
+
+  const dateStats = dates.map(d => {
+    const scoredStudents = (c.students || []).filter(st => attendanceScore(c, d, st.id) !== null);
+    return { d, count: scoredStudents.length };
+  });
+
+  // اگر تاریخ پیش‌فرض نمره ندارد، اولین تاریخی که نمره دارد را انتخاب کن
+  let defaultDate = preselectedDate;
+  if (!defaultDate || !dateStats.find(x => x.d === defaultDate && x.count > 0)) {
+    const withScores = dateStats.find(x => x.count > 0);
+    if (withScores) defaultDate = withScores.d;
+    else defaultDate = preselectedDate || dates[0] || localISODate();
+  }
+
+  const dateOptsHtml = dateStats.map(item => {
+    const badge = item.count > 0 ? `✅ (${fa(item.count)} نمره ثبت‌شده)` : '(بدون نمره)';
+    return `<option value="date:${item.d}" ${item.d === defaultDate ? 'selected' : ''}>📅 جلسه ${formatJalaliDate(item.d)} — ${badge}</option>`;
+  }).join('');
+
+  const customOptsHtml = (c.gradeColumns || []).map(g => {
+    const cnt = Object.values(g.scores || {}).filter(v => v !== '' && v !== undefined).length;
+    return `<option value="custom:${g.id}">📊 ستون سفارشی «${esc(g.title)}» (${fa(cnt)} نمره)</option>`;
+  }).join('');
+
+  openModal(formHeader('🔄 انتقال و تبدیل هوشمند نمرات ستون') + `
+    <div class="card" style="background:var(--panel);margin-bottom:12px">
+      <b style="color:var(--primary)">💡 راهنمای معلم:</b>
+      <div class="muted" style="margin-top:4px;line-height:1.65">
+        اگر نمرات امتحان را فراموش کرده‌اید و در یکی از جلسات حضور و غیاب (یا لیست امروز) وارد کرده‌اید، با این ابزار می‌توانید با <b>یک کلیک</b> تمام نمرات آن ستون را به <b>«📝 ستون امتحان کتبی مستمر»</b> (با ضریب مستمر)، یا ستون نمره سفارشی، یا نمره پایانی ترم منتقل کنید!
+      </div>
+    </div>
+
+    <div class="formgrid">
+      <div class="field full">
+        <label>۱. کدام ستون (جلسه) را می‌خواهید منتقل کنید؟</label>
+        <select id="transferSourceSelect" onchange="updateTransferModalPreview('${sid}','${cid}')">
+          ${dateOptsHtml}
+          ${customOptsHtml}
+        </select>
+        <div id="transferSourcePreview" style="margin-top:6px;padding:8px 10px;border-radius:9px;background:var(--card);border:1px solid var(--border);font-size:12px"></div>
+      </div>
+
+      <div class="field full">
+        <label>۲. نمرات این ستون به کجا منتقل شوند؟</label>
+        <select id="transferTargetSelect" onchange="toggleTransferCustomTitleField(this.value)">
+          <option value="cont_exam_col" selected>📝 انتقال به ستون «امتحان کتبی مستمر» (با ضریب امتحانات کتبی مستمر)</option>
+          <option value="cont_plus_custom">📊 ثبت به عنوان «کتبی مستمر» + ساخت ستون مجزا در جدول</option>
+          <option value="custom_col">📋 انتقال به یک ستون نمره سفارشی جدید در جدول</option>
+          <option value="term_score">🎓 انتقال به ستون «نمره پایانی ترم»</option>
+          <option value="upgrade_in_place">⚡ حفظ در همین جلسه ولی تغییر ضریب آن از «کلاسی» به «کتبی مستمر»</option>
+        </select>
+      </div>
+
+      <div class="field full" id="transferCustomTitleWrap" style="display:none">
+        <label>عنوان ستون مقصد:</label>
+        <input type="text" id="transferCustomTitleInp" value="امتحان کتبی مستمر" placeholder="مثلاً امتحان کتبی مستمر آبان">
+      </div>
+
+      <div class="field full">
+        <label class="switch-card" style="background:var(--panel)">
+          <span>🧹 پاک کردن نمرات از ستون روزانه مبدأ پس از انتقال (تا دو بار حساب نشود)</span>
+          <input type="checkbox" id="transferClearSourceChk" checked>
+        </label>
+      </div>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn primary" onclick="executeColumnGradeTransfer('${sid}','${cid}')">🚀 انجام انتقال نمرات</button>
+      <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+  window.updateTransferModalPreview(sid, cid);
+};
+
+window.toggleTransferCustomTitleField = function(val) {
+  const w = document.getElementById('transferCustomTitleWrap');
+  if (w) w.style.display = (val === 'cont_plus_custom' || val === 'custom_col') ? 'block' : 'none';
+};
+
+window.updateTransferModalPreview = function(sid, cid) {
+  const c = findClass(sid, cid);
+  const sel = document.getElementById('transferSourceSelect')?.value || '';
+  const box = document.getElementById('transferSourcePreview');
+  if (!c || !box) return;
+
+  let samples = [];
+  if (sel.startsWith('date:')) {
+    const d = sel.slice(5);
+    (c.students || []).forEach(st => {
+      const sc = attendanceScore(c, d, st.id);
+      if (sc !== null) samples.push(`${st.lastName} ${st.name}: ${fa(sc)}`);
+    });
+  } else if (sel.startsWith('custom:')) {
+    const gid = sel.slice(7);
+    const g = (c.gradeColumns || []).find(x => x.id === gid);
+    if (g) {
+      (c.students || []).forEach(st => {
+        const sc = g.scores?.[st.id];
+        if (sc !== undefined && sc !== '') samples.push(`${st.lastName} ${st.name}: ${fa(sc)}`);
+      });
+    }
+  }
+
+  if (!samples.length) {
+    box.innerHTML = `<span style="color:var(--neon-red)">⚠️ در این ستون هنوز نمره‌ای ثبت نشده است. ستون دیگری را انتخاب کنید.</span>`;
+  } else {
+    box.innerHTML = `<b style="color:var(--neon-green)">✓ ${fa(samples.length)} نمره آماده انتقال:</b> <span class="muted">${samples.slice(0, 5).join(' ، ')}${samples.length > 5 ? ' و ...' : ''}</span>`;
+  }
+};
+
+window.executeColumnGradeTransfer = function(sid, cid) {
+  const c = findClass(sid, cid);
+  if (!c) return;
+  const srcVal = document.getElementById('transferSourceSelect')?.value || '';
+  const targetType = document.getElementById('transferTargetSelect')?.value || 'cont_exam_col';
+  const clearSource = !!document.getElementById('transferClearSourceChk')?.checked;
+  const customTitle = (document.getElementById('transferCustomTitleInp')?.value || '').trim() || 'امتحان کتبی مستمر';
+
+  // استخراج نمرات از ستون مبدأ
+  const extracted = [];
+  let sourceLabel = '';
+  if (srcVal.startsWith('date:')) {
+    const d = srcVal.slice(5);
+    sourceLabel = `جلسه ${formatAttendanceDate(d)}`;
+    (c.students || []).forEach(st => {
+      const sc = attendanceScore(c, d, st.id);
+      if (sc !== null) extracted.push({ st, score: sc, dateISO: d });
+    });
+  } else if (srcVal.startsWith('custom:')) {
+    const gid = srcVal.slice(7);
+    const g = (c.gradeColumns || []).find(x => x.id === gid);
+    if (g) {
+      sourceLabel = g.title;
+      (c.students || []).forEach(st => {
+        const raw = g.scores?.[st.id];
+        if (raw !== undefined && raw !== '' && Number.isFinite(Number(raw))) {
+          const norm20 = roundQuarter((Number(raw) / (Number(g.max) || 20)) * 20);
+          extracted.push({ st, score: norm20, customColId: gid });
+        }
+      });
+    }
+  }
+
+  if (!extracted.length) {
+    alert('در ستون انتخاب‌شده هیچ نمره‌ای برای انتقال وجود ندارد.');
+    return;
+  }
+
+  pushUndo('انتقال نمرات ستون به مستمر');
+  if (!c.contExamScores || typeof c.contExamScores !== 'object') c.contExamScores = {};
+  if (!c.termScores || typeof c.termScores !== 'object') c.termScores = {};
+      if (!c.contExamScores || typeof c.contExamScores !== 'object') c.contExamScores = {};
+  if (!Array.isArray(c.gradeColumns)) c.gradeColumns = [];
+
+  let targetCustomCol = null;
+  if (targetType === 'cont_plus_custom' || targetType === 'custom_col') {
+    targetCustomCol = c.gradeColumns.find(x => x.title === customTitle);
+    if (!targetCustomCol) {
+      targetCustomCol = { id: uid(), title: customTitle, max: 20, scores: {} };
+      c.gradeColumns.push(targetCustomCol);
+    }
+  }
+
+  extracted.forEach(({ st, score, dateISO, customColId }) => {
+    if (targetType === 'cont_exam_col' || targetType === 'cont_plus_custom') {
+      c.contExamScores[st.id] = score;
+      // ثبت در پرونده دانش‌آموز با ضریب امتحان کتبی مستمر (cont_exam)
+      let ex = (st.grades || []).find(g => g.source === 'direct_cont_col');
+      if (ex) {
+        ex.score = score;
+        ex.subject = `کتبی مستمر (${sourceLabel})`;
+        ex.gradeType = 'cont_exam';
+      } else {
+        gradesData(st).push({
+          id: uid(),
+          date: new Date().toISOString(),
+          subject: `کتبی مستمر (${sourceLabel})`,
+          score: score,
+          source: 'direct_cont_col',
+          gradeType: 'cont_exam'
+        });
+      }
+      if (targetCustomCol) {
+        targetCustomCol.scores[st.id] = score;
+      }
+    } else if (targetType === 'custom_col' && targetCustomCol) {
+      targetCustomCol.scores[st.id] = score;
+    } else if (targetType === 'term_score') {
+      c.termScores[st.id] = score;
+    } else if (targetType === 'upgrade_in_place' && dateISO) {
+      let ex = (st.grades || []).find(g => g.source === 'attendance' && g.attendanceDate === dateISO);
+      if (ex) {
+        ex.gradeType = 'cont_exam';
+        ex.subject = `امتحان کتبی مستمر (${formatAttendanceDate(dateISO)})`;
+      } else {
+        gradesData(st).push({
+          id: uid(),
+          date: new Date().toISOString(),
+          subject: `امتحان کتبی مستمر (${formatAttendanceDate(dateISO)})`,
+          score: score,
+          source: 'attendance',
+          gradeType: 'cont_exam',
+          attendanceDate: dateISO
+        });
+      }
+    }
+
+    // پاک کردن از ستون روزانه مبدأ در صورت انتخاب گزینه جابه‌جایی کامل
+    if (clearSource && targetType !== 'upgrade_in_place') {
+      if (dateISO && c.attendance?.[dateISO]?.[st.id]) {
+        delete c.attendance[dateISO][st.id].score;
+        st.grades = (st.grades || []).filter(g => !(g.source === 'attendance' && g.attendanceDate === dateISO));
+      } else if (customColId) {
+        const srcCol = c.gradeColumns.find(x => x.id === customColId);
+        if (srcCol && srcCol.scores) delete srcCol.scores[st.id];
+      }
+    }
+    evaluateAutoStatus(c, st);
+  });
+
+  closeModal();
+  save();
+  toast(`✅ ${fa(extracted.length)} نمره با موفقیت به «امتحان کتبی مستمر» منتقل شد!`);
+};
+
+/* ۴. ابزار نمره‌دهی جمعی و ارفاق به کل کلاس در یک ستون */
+window.openBatchScoreModal = function(sid, cid) {
+  const c = findClass(sid, cid);
+  if (!c) return;
+  const dates = attendanceDates(c);
+  const focusD = window._attFocusDate && dates.includes(window._attFocusDate) ? window._attFocusDate : (dates[0] || localISODate());
+
+  openModal(formHeader('⚡ نمره‌دهی جمعی / ارفاق به کل کلاس') + `
+    <div class="formgrid">
+      <div class="field full">
+        <label>کدام ستون نمره را می‌خواهید تغییر دهید؟</label>
+        <select id="batchTargetColSelect">
+          <option value="cont_exam">📝 ستون «امتحان کتبی مستمر»</option>
+          <option value="term_exam">🎓 ستون «نمره پایانی ترم»</option>
+          ${dates.map(d => `<option value="date:${d}" ${d === focusD ? 'selected' : ''}>📅 جلسه ${formatJalaliDate(d)}</option>`).join('')}
+          ${(c.gradeColumns || []).map(g => `<option value="custom:${g.id}">📊 ستون سفارشی «${esc(g.title)}»</option>`).join('')}
+        </select>
+      </div>
+      <div class="field">
+        <label>نوع عملیات:</label>
+        <select id="batchActionType">
+          <option value="set_empty">ثبت نمره ثابت برای افراد بدون نمره (حاضرین)</option>
+          <option value="add_curve">افزودن نمره ارفاق (+ مثلاً ۱ نمره) به نمرات موجود</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>مقدار نمره:</label>
+        <input type="number" id="batchScoreValue" step="0.25" value="20" min="0.25" max="20">
+      </div>
+    </div>
+    <div class="formactions">
+      <button type="button" class="btn primary" onclick="executeBatchScoreAction('${sid}','${cid}')">✅ اعمال روی کلاس</button>
+      <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+};
+
+window.executeBatchScoreAction = function(sid, cid) {
+  const c = findClass(sid, cid);
+  if (!c) return;
+  const target = document.getElementById('batchTargetColSelect')?.value || 'cont_exam';
+  const mode = document.getElementById('batchActionType')?.value || 'set_empty';
+  const val = roundQuarter(enDigits(document.getElementById('batchScoreValue')?.value || '0'));
+  if (!val) return;
+
+  pushUndo('نمره‌دهی جمعی');
+  if (!c.contExamScores) c.contExamScores = {};
+  if (!c.termScores) c.termScores = {};
+        c.contExamScores = {};
+  let affected = 0;
+
+  (c.students || []).forEach(st => {
+    if (target === 'cont_exam') {
+      const cur = getStudentWrittenContScore(c, st);
+      if (mode === 'set_empty' && cur === null) {
+        window.saveContExamScore(sid, cid, st.id, val);
+        affected++;
+      } else if (mode === 'add_curve' && cur !== null) {
+        window.saveContExamScore(sid, cid, st.id, Math.min(20, cur + val));
+        affected++;
+      }
+    } else if (target === 'term_exam') {
+      const cur = c.termScores?.[st.id];
+      const hasCur = cur !== undefined && cur !== '' && Number.isFinite(Number(cur));
+      if (mode === 'set_empty' && !hasCur) {
+        c.termScores[st.id] = val;
+        affected++;
+      } else if (mode === 'add_curve' && hasCur) {
+        c.termScores[st.id] = roundQuarter(Math.min(20, Number(cur) + val));
+        affected++;
+      }
+    } else if (target.startsWith('date:')) {
+      const d = target.slice(5);
+      if (attendanceStatus(c, d, st.id) === 'absent' && mode === 'set_empty') return;
+      const cur = attendanceScore(c, d, st.id);
+      if (mode === 'set_empty' && cur === null) {
+        window.saveAttendanceGrade(sid, cid, st.id, d, val);
+        affected++;
+      } else if (mode === 'add_curve' && cur !== null) {
+        window.saveAttendanceGrade(sid, cid, st.id, d, Math.min(20, cur + val));
+        affected++;
+      }
+    }
+  });
+
+  closeModal();
+  save();
+  toast(`برای ${fa(affected)} دانش‌آموز اعمال شد ✅`);
+};
+
+/* ۵. تشخیص و ادغام هوشمند دانش‌آموزان تکراری (مانند مورد مشاهده‌شده در اسکرین‌شات) */
+window.findDuplicateStudentsInClass = function(c) {
+  const map = {};
+  const dups = [];
+  (c?.students || []).forEach(st => {
+    const key = `${(st.lastName || '').trim()}|${(st.name || '').trim()}|${(st.fatherName || '').trim()}`.replace(/\s+/g, ' ');
+    if (!map[key]) map[key] = [st];
+    else {
+      map[key].push(st);
+      if (map[key].length === 2) dups.push(map[key]);
+    }
+  });
+  return dups;
+};
+
+window.openDuplicateStudentsInspector = function(filterSid = null, filterCid = null) {
+  const allGroups = [];
+  db.schools.forEach(s => {
+    if (filterSid && s.id !== filterSid) return;
+    (s.classes || []).forEach(c => {
+      if (filterCid && c.id !== filterCid) return;
+      const groups = window.findDuplicateStudentsInClass(c);
+      groups.forEach(g => allGroups.push({ s, c, group: g }));
+    });
+  });
+
+  if (!allGroups.length) {
+    openModal(formHeader('🔍 بررسی اسامی تکراری') + empty('✅', 'هیچ دانش‌آموز تکراری یافت نشد', 'تمامی اسامی دانش‌آموزان در کلاس‌ها یکتا هستند.') + `<div class="formactions"><button class="btn gray" onclick="closeModal()">بستن</button></div>`);
+    return;
+  }
+
+  const rowsHtml = allGroups.map((item, idx) => {
+    const first = item.group[0];
+    return `<div class="card" style="background:var(--panel);margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+        <div>
+          <b>👤 ${formatStudentName(first)} (${fa(item.group.length)} بار تکرار)</b>
+          <div class="muted">${esc(item.s.name)} · کلاس ${esc(item.c.name)}</div>
+        </div>
+        <button type="button" class="btn primary btn-sm" onclick="mergeDuplicateStudentGroup('${item.s.id}','${item.c.id}','${first.id}')">🔗 ادغام سوابق و حذف تکراری</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  openModal(formHeader(`🔍 اسامی تکراری شناسایی‌شده (${fa(allGroups.length)} مورد)`) + `
+    <p class="muted" style="margin:0 0 10px">با زدن دکمه «ادغام سوابق و حذف تکراری»، تمام نمرات، حضور و غیاب و مثبت/منفی‌های ردیف تکراری به ردیف اصلی منتقل شده و کپی اضافی حذف می‌شود:</p>
+    ${rowsHtml}
+    <div class="formactions">
+      <button type="button" class="btn primary" onclick="mergeAllDuplicateStudents('${filterSid || ''}','${filterCid || ''}')">✨ ادغام خودکار همه موارد</button>
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.mergeDuplicateStudentGroup = function(sid, cid, primaryStId) {
+  const c = findClass(sid, cid);
+  if (!c) return;
+  const groups = window.findDuplicateStudentsInClass(c);
+  const grp = groups.find(g => g.some(x => x.id === primaryStId));
+  if (!grp || grp.length < 2) return;
+
+  pushUndo('ادغام دانش‌آموز تکراری');
+  const main = grp[0];
+  const extras = grp.slice(1);
+
+  extras.forEach(dup => {
+    // انتقال نمرات و سوابق رفتاری
+    (dup.grades || []).forEach(g => main.grades.push(g));
+    (dup.behavior?.positives || []).forEach(p => main.behavior.positives.push(p));
+    (dup.behavior?.negatives || []).forEach(n => main.behavior.negatives.push(n));
+    (dup.examPapers || []).forEach(ep => main.examPapers.push(ep));
+    if (!main.photo && dup.photo) main.photo = dup.photo;
+    if (!main.phone && dup.phone) main.phone = dup.phone;
+    if (!main.birth && dup.birth) main.birth = dup.birth;
+
+    // انتقال حضور و غیاب و نمرات جلسات
+    Object.keys(c.attendance || {}).forEach(d => {
+      if (c.attendance[d]?.[dup.id]) {
+        c.attendance[d][main.id] = { ...(c.attendance[d][dup.id] || {}), ...(c.attendance[d][main.id] || {}) };
+        delete c.attendance[d][dup.id];
+      }
+    });
+    if (c.termScores?.[dup.id] !== undefined && (c.termScores[main.id] === undefined || c.termScores[main.id] === '')) {
+      c.termScores[main.id] = c.termScores[dup.id];
+    }
+    if (c.contExamScores?.[dup.id] !== undefined && (c.contExamScores[main.id] === undefined || c.contExamScores[main.id] === '')) {
+      c.contExamScores[main.id] = c.contExamScores[dup.id];
+    }
+    (c.gradeColumns || []).forEach(col => {
+      if (col.scores?.[dup.id] !== undefined && (col.scores[main.id] === undefined || col.scores[main.id] === '')) {
+        col.scores[main.id] = col.scores[dup.id];
+      }
+    });
+
+    c.students = c.students.filter(x => x.id !== dup.id);
+  });
+
+  save();
+  closeModal();
+  toast('سوابق ادغام شد و ردیف تکراری حذف گردید ✅');
+};
+
+window.mergeAllDuplicateStudents = function(sid, cid) {
+  pushUndo('ادغام همه اسامی تکراری');
+  db.schools.forEach(s => {
+    if (sid && s.id !== sid) return;
+    (s.classes || []).forEach(c => {
+      if (cid && c.id !== cid) return;
+      const groups = window.findDuplicateStudentsInClass(c);
+      groups.forEach(grp => {
+        if (grp.length >= 2) window.mergeDuplicateStudentGroup(s.id, c.id, grp[0].id);
+      });
+    });
+  });
+  closeModal();
+  save();
+  toast('تمامی اسامی تکراری با موفقیت ادغام شدند ✅');
+};
+
+/* ۶. ارتقای کامل جدول جامع حضور و غیاب (openAttendance) و لیست امروز (renderTodayListInner) */
+window._attTableViewMode = 'all'; // 'all' | 'grades' | 'att'
+window._attSearchQuery = '';
+window._attQuickFilter = 'all'; // 'all' | 'absent' | 'no_score' | 'attn'
+
+window.setAttTableViewMode = function(mode) {
+  window._attTableViewMode = mode;
+  const tbl = document.getElementById('attMainTable');
+  if (tbl) {
+    tbl.classList.toggle('mode-grades-only', mode === 'grades');
+    tbl.classList.toggle('mode-att-only', mode === 'att');
+  }
+  document.querySelectorAll('#attViewModePills .pill-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-vmode') === mode);
+  });
+};
+
+window.filterAttendanceTableRows = function(query, quickFilter = null) {
+  if (query !== null && query !== undefined) window._attSearchQuery = query.trim().toLowerCase();
+  if (quickFilter) window._attQuickFilter = quickFilter;
+  const q = window._attSearchQuery || '';
+  const qf = window._attQuickFilter || 'all';
+
+  document.querySelectorAll('#attQuickFilterPills .chip').forEach(ch => {
+    ch.style.borderColor = ch.getAttribute('data-qf') === qf ? 'var(--primary)' : '';
+    ch.style.background = ch.getAttribute('data-qf') === qf ? 'var(--primary-light)' : '';
+  });
+
+  document.querySelectorAll('#attMainTable tbody tr').forEach(tr => {
+    const nameTxt = (tr.getAttribute('data-st-name') || '').toLowerCase();
+    const isAbs = tr.getAttribute('data-st-abs') === '1';
+    const hasSc = tr.getAttribute('data-st-scored') === '1';
+    const isAttn = tr.getAttribute('data-st-attn') === '1';
+
+    let match = !q || nameTxt.includes(q);
+    if (match && qf === 'absent') match = isAbs;
+    if (match && qf === 'no_score') match = !hasSc;
+    if (match && qf === 'attn') match = isAttn;
+    tr.style.display = match ? '' : 'none';
+  });
+};
+
+// بازنویسی openAttendance با ستون «📝 کتبی مستمر»، دکمه انتقال ستون، شماره ردیف، فیلتر موبایل و تشخیص تکراری
+openAttendance = function(sid, cid) {
+  currentSchoolId = sid; currentClassId = cid;
+  const s = findSchool(sid), c = findClass(sid, cid); if (!s || !c) return;
+  const dates = attendanceDates(c), students = sortStudents(c.students || []), shortcuts = getShortcuts();
+  if (!Array.isArray(c.gradeColumns)) c.gradeColumns = [];
+  if (!c.contExamScores || typeof c.contExamScores !== 'object') c.contExamScores = {};
+  const gradeCols = c.gradeColumns;
+  const dupGroups = window.findDuplicateStudentsInClass(c);
+  const activeFocusDate = window._attFocusDate && dates.includes(window._attFocusDate) ? window._attFocusDate : (dates[0] || localISODate());
+
+  let header = `<div class="detailhead" style="padding:12px 14px;margin-bottom:10px">
+    <div class="school-head">
+      <div>
+        <h1 class="title" style="font-size:17px;margin:0">📋 جدول جامع حضور، کتبی مستمر و ترم</h1>
+        <div class="muted">${esc(s.name)} · ${esc(c.name)} · ${fa(students.length)} دانش‌آموز · ${fa(dates.length)} جلسه</div>
+      </div>
+      <span class="term-badge">📚 ${esc(c.currentTermName || 'ترم جاری')}</span>
+    </div>
+    <div class="actions" style="margin-top:9px">
+      <button class="btn primary btn-sm" onclick="openColumnTransferModal('${sid}','${cid}','${activeFocusDate}')">🔄 انتقال نمره جلسه به کتبی مستمر</button>
+      <button class="btn soft btn-sm" onclick="addCustomGradeColumn('${sid}','${cid}')">＋ ستون سفارشی</button>
+      <button class="btn soft btn-sm" onclick="openBatchScoreModal('${sid}','${cid}')">⚡ نمره‌دهی جمعی/ارفاق</button>
+      <button class="btn gray btn-sm" onclick="editAttendanceSettings('${sid}','${cid}')">⚙ جلسات</button>
+      <button class="btn gray btn-sm" onclick="showTermArchive('${sid}','${cid}')">🗃️ آرشیو (${fa((c.archivedTerms || []).length)})</button>
+      <button class="btn danger btn-sm" onclick="startNewTerm('${sid}','${cid}')">🗂️ ترم جدید</button>
+    </div>
+    ${dupGroups.length ? `<div style="margin-top:8px;padding:7px 10px;border-radius:10px;background:var(--danger-bg);border:1px solid var(--neon-red);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:12px;font-weight:800;color:var(--neon-red)">⚠️ ${fa(dupGroups.length)} نام تکراری در این کلاس دیده شد!</span><button type="button" class="btn primary btn-sm" onclick="openDuplicateStudentsInspector('${sid}','${cid}')">🔗 ادغام و اصلاح تکراری‌ها</button></div>` : ''}
+  </div>`;
+
+  if (!students.length) {
+    document.getElementById('attendanceContent').innerHTML = header + empty('👨‍🎓', 'دانش‌آموزی نیست', '');
+    showView('attendance');
+    return;
+  }
+
+  let rows = students.map((st, idx) => {
+    const contScoreVal = getStudentWrittenContScore(c, st);
+    const termScore = c.termScores?.[st.id] ?? '';
+    const calcFinal = calculateFinalStudentScore(c, st);
+    const isAbsFocus = attendanceStatus(c, activeFocusDate, st.id) === 'absent';
+    const hasScoreFocus = attendanceScore(c, activeFocusDate, st.id) !== null || contScoreVal !== null;
+    const isAttn = isAutoAttention(c, st);
+
+    let shBtns = shortcuts.slice(0, 4).map(sh => `<button class="qb ${sh.type === 'positive' ? 'pos' : 'neg'}" onclick="gridApplyShortcut('${sid}','${cid}','${st.id}','${esc(sh.code)}')">${sh.type === 'positive' ? '＋' : '－'}${esc(sh.code)}</button>`).join('');
+
+    let cols = dates.map(d => {
+      let isAbs = attendanceStatus(c, d, st.id) === 'absent', sc = attendanceScore(c, d, st.id);
+      const scClass = getScoreColorClass(sc);
+      return `<td data-date="${d}" class="col-session-date ${d === activeFocusDate ? 'active-date-col' : ''}"><div class="att-combo"><button id="attCell_${st.id}_${d}" class="att-cell ${isAbs ? 'absent' : 'present'}" onclick="gridToggleAtt('${sid}','${cid}','${st.id}','${d}',this)">${isAbs ? '✖' : '✓'}</button><input id="attInp_${st.id}_${d}" class="att-score-input ${scClass}" type="number" step="0.25" min="0" max="20" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${d}',this.value,this)"></div></td>`;
+    }).join('');
+
+    const customCells = gradeCols.map(g => {
+      const val = g.scores?.[st.id] ?? '';
+      return `<td class="col-grade-summary"><input class="att-custom-input ${getScoreColorClass(val)}" type="number" min="0" max="${Number(g.max)||20}" step="0.25" value="${val}" placeholder="/${Number(g.max)||20}" onchange="saveCustomGrade('${sid}','${cid}','${st.id}','${g.id}',this.value)"></td>`;
+    }).join('');
+
+    const contAvg = avgGrade(st);
+
+    return `<tr id="attRow_${st.id}" data-st-name="${esc(st.lastName + ' ' + st.name + ' ' + (st.fatherName || ''))}" data-st-abs="${isAbsFocus ? '1' : '0'}" data-st-scored="${hasScoreFocus ? '1' : '0'}" data-st-attn="${isAttn ? '1' : '0'}">
+      <td>
+        <div style="display:flex;align-items:center">
+          <span class="row-num-badge">${fa(idx + 1)}</span>
+          <b style="cursor:pointer;color:${isAttn ? 'var(--neon-red)' : 'var(--primary-dark)'}" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}${isAttn ? ' 🔴' : ''}</b>
+        </div>
+        <div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:4px">${shBtns}</div>
+      </td>
+      <td class="col-grade-summary">
+        <input id="contInp_${st.id}" class="cont-exam-input ${getScoreColorClass(contScoreVal)}" type="number" step="0.25" min="0" max="20" value="${contScoreVal === null ? '' : contScoreVal}" placeholder="مستمر" title="نمره امتحان کتبی مستمر (با ضریب مستمر)" onchange="saveContExamScore('${sid}','${cid}','${st.id}',this.value,this)">
+      </td>
+      <td class="col-grade-summary">
+        <input id="termInp_${st.id}" class="term-score-input ${getScoreColorClass(termScore)}" type="number" step="0.25" min="0" max="20" value="${termScore}" placeholder="ترم" onchange="saveTermScore('${sid}','${cid}','${st.id}',this.value,this)">
+      </td>
+      <td id="finalCell_${st.id}" class="col-grade-summary" data-score="${calcFinal}" style="font-weight:900;color:${calcFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)'}">${fmtScore(calcFinal)}</td>
+      <td id="customAvgCell_${st.id}" class="col-grade-summary">${contAvg === null ? '—' : fmtScore(contAvg)}</td>
+      <td id="behCell_${st.id}" class="col-grade-summary">➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}</td>
+      ${customCells}
+      ${cols}
+    </tr>`;
+  }).join('');
+
+  const dateSelectOpts = dates.map((d, idx) => {
+    const scCnt = (c.students || []).filter(st => attendanceScore(c, d, st.id) !== null).length;
+    return `<option value="${d}" ${d === activeFocusDate ? 'selected' : ''}>جلسه ${fa(idx + 1)}: ${formatJalaliDate(d)}${scCnt ? ` (${fa(scCnt)} نمره)` : ''}</option>`;
+  }).join('');
+
+  const vMode = window._attTableViewMode || 'all';
+  const modeClass = vMode === 'grades' ? 'mode-grades-only' : (vMode === 'att' ? 'mode-att-only' : '');
+
+  document.getElementById('attendanceContent').innerHTML = header + `
+    <div class="att-top-sticky-bar" id="attTopStickyBar">
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;width:100%;justify-content:space-between">
+        <div class="pill-switch" id="attViewModePills">
+          <button type="button" class="pill-btn ${vMode === 'all' ? 'active' : ''}" data-vmode="all" onclick="setAttTableViewMode('all')">📋 همه ستون‌ها</button>
+          <button type="button" class="pill-btn ${vMode === 'grades' ? 'active' : ''}" data-vmode="grades" onclick="setAttTableViewMode('grades')">📝 فقط نمرات و مستمر</button>
+          <button type="button" class="pill-btn ${vMode === 'att' ? 'active' : ''}" data-vmode="att" onclick="setAttTableViewMode('att')">📅 فقط حضور و غیاب</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">
+          <select id="attFocusDateSelect" onchange="focusAttendanceDateColumn('${sid}','${cid}',this.value)" style="width:auto;padding:4px 8px;font-size:11.5px;font-weight:700">${dateSelectOpts}</select>
+          <button type="button" class="btn soft btn-sm" onclick="openColumnTransferModal('${sid}','${cid}',document.getElementById('attFocusDateSelect')?.value || '${activeFocusDate}')" title="انتقال نمرات این جلسه به ستون امتحان کتبی مستمر">⚡ انتقال به مستمر</button>
+          <button type="button" class="btn gray btn-sm" onclick="addAttendanceDate('${sid}','${cid}')" title="افزودن جلسه جدید">＋ جلسه</button>
+        </div>
+      </div>
+      <div class="att-filter-strip" style="width:100%;margin-top:4px;margin-bottom:0">
+        <input type="search" placeholder="🔍 جستجوی سریع نام دانش‌آموز در جدول..." oninput="filterAttendanceTableRows(this.value, null)">
+        <div style="display:flex;gap:4px;flex-wrap:wrap" id="attQuickFilterPills">
+          <span class="chip" data-qf="all" onclick="filterAttendanceTableRows(null,'all')">همه (${fa(students.length)})</span>
+          <span class="chip" data-qf="absent" onclick="filterAttendanceTableRows(null,'absent')">🔴 غایبین جلسه</span>
+          <span class="chip" data-qf="no_score" onclick="filterAttendanceTableRows(null,'no_score')">⚪ بدون نمره</span>
+          <span class="chip" data-qf="attn" onclick="filterAttendanceTableRows(null,'attn')">⚠️ نیازمند توجه</span>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="att-wrap" id="attTableScrollWrap">
+        <table class="att-table ${modeClass}" id="attMainTable">
+          <thead>
+            <tr>
+              <th>ردیف و نام دانش‌آموز (${fa(students.length)} نفر)</th>
+              <th class="col-grade-summary">
+                <div style="display:grid;gap:2px">
+                  <span style="color:var(--neon-purple)">📝 کتبی مستمر</span>
+                  <button type="button" class="col-transfer-chip" onclick="openColumnTransferModal('${sid}','${cid}','${activeFocusDate}')">📥 دریافت از جلسه</button>
+                </div>
+              </th>
+              <th class="col-grade-summary">🎓 نمره ترم</th>
+              <th class="col-grade-summary">⭐ نهایی</th>
+              <th class="col-grade-summary">میانگین مستمر</th>
+              <th class="col-grade-summary">مثبت/منفی</th>
+              ${gradeCols.map(g => `<th class="col-grade-summary"><div style="display:grid;gap:3px;min-width:95px"><b>${esc(g.title)} (${fa(g.max)})</b><div style="display:flex;gap:3px;justify-content:center"><button class="btn gray btn-sm" onclick="editCustomGradeColumn('${sid}','${cid}','${g.id}')">✎</button><button class="btn danger btn-sm" onclick="removeCustomGradeColumn('${sid}','${cid}','${g.id}')">×</button></div></div></th>`).join('')}
+              ${dates.map(d => {
+                const scCnt = (c.students || []).filter(st => attendanceScore(c, d, st.id) !== null).length;
+                return `<th data-date="${d}" class="col-session-date ${d === activeFocusDate ? 'active-date-col' : ''}">
+                  <div style="display:grid;gap:2px;justify-items:center">
+                    <button class="link att-date" onclick="editAttendanceDate('${sid}','${cid}','${d}')" title="ویرایش تاریخ ${formatJalaliDate(d)}">✎ ${formatAttendanceDate(d)}</button>
+                    ${scCnt > 0 ? `<button type="button" class="col-transfer-chip" onclick="openColumnTransferModal('${sid}','${cid}','${d}')" title="انتقال ${fa(scCnt)} نمره این جلسه به امتحان کتبی مستمر">⚡ به مستمر (${fa(scCnt)})</button>` : ''}
+                  </div>
+                </th>`;
+              }).join('')}
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>`;
+  showView('attendance');
+  triggerCyberScan('attendanceContent');
+};
+
+// ارتقای لیست امروز (renderTodayListInner) با شماره ردیف و دکمه مستقیم انتقال نمرات امروز به امتحان کتبی مستمر
+renderTodayListInner = function(sid, cid) {
+  const c = findClass(sid, cid); if (!c) return;
+  const dateISO = window.currentListDate || localISODate();
+  if (!c.attendance) c.attendance = {}; if (!c.attendance[dateISO]) c.attendance[dateISO] = {}; if (!c.sessionNotes) c.sessionNotes = {};
+  const noteVal = c.sessionNotes[dateISO] || '';
+  const allDates = attendanceDates(c);
+  const scoredTodayCount = (c.students || []).filter(st => attendanceScore(c, dateISO, st.id) !== null).length;
+
+  const rows = sortStudents(c.students).map((st, idx) => {
+    const isAbs = attendanceStatus(c, dateISO, st.id) === 'absent', sc = attendanceScore(c, dateISO, st.id), b = behaviorData(st), autoAttn = isAutoAttention(c, st);
+    return `<div class="td-row" id="tdRow_${st.id}" style="${autoAttn ? 'background:rgba(248,113,113,0.10)' : ''}">
+      <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0">
+        <button id="tdAttBtn_${st.id}" class="att-cell ${isAbs ? 'absent' : 'present'}" style="width:40px;height:38px" onclick="inlAtt('${sid}','${cid}','${st.id}')" title="${isAbs ? 'غایب' : 'حاضر'}">${isAbs ? '✖' : '✓'}</button>
+        <div style="min-width:0;overflow:hidden">
+          <div style="display:flex;align-items:center">
+            <span class="row-num-badge">${fa(idx + 1)}</span>
+            <b style="font-size:13.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;color:${autoAttn ? 'var(--neon-red)' : 'var(--text-main)'}" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}${autoAttn ? ' 🔴' : ''}</b>
+          </div>
+          <div class="muted" style="font-size:11px;margin-top:2px">➕ <span id="tdPos_${st.id}">${fa(b.positives.length)}</span> · ➖ <span id="tdNeg_${st.id}">${fa(b.negatives.length)}</span> · مستمر: <span id="tdAvg_${st.id}">${avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—'}</span></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:5px;flex-shrink:0">
+        <input id="tdScore_${st.id}" type="number" step="0.25" min="0" max="20" class="td-score-inp ${getScoreColorClass(sc)}" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${dateISO}',this.value,this)">
+        <button class="td-btn-plus" onclick="inlScore('${sid}','${cid}','${st.id}','positive')" title="امتیاز مثبت">＋</button>
+        <button class="td-btn-minus" onclick="inlScore('${sid}','${cid}','${st.id}','negative')" title="امتیاز منفی">－</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  const dateOptions = allDates.map(d => `<option value="${d}" ${d === dateISO ? 'selected' : ''}>${formatJalaliDate(d)}</option>`).join('');
+  document.getElementById('classTodayListContainer').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap">
+      <button class="btn gray btn-sm" onclick="closeTodayList()">← بازگشت به کلاس</button>
+      <div style="display:flex;gap:5px;flex-wrap:wrap">
+        <button class="btn primary btn-sm" onclick="openColumnTransferModal('${sid}','${cid}','${dateISO}')">🔄 انتقال نمرات این روز به کتبی مستمر ${scoredTodayCount ? `(${fa(scoredTodayCount)})` : ''}</button>
+        <button class="btn soft btn-sm" onclick="pickRandomStudent('${sid}','${cid}')">🎲 قرعه‌کشی</button>
+        <button class="btn soft btn-sm" onclick="openAttendance('${sid}','${cid}')">📋 جدول جامع</button>
+      </div>
+    </div>
+    <div class="td-list-card" id="todayListCardBox">
+      <div class="td-sticky-header-group">
+        <div class="td-list-head">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <b>📅 تاریخ جلسه:</b>
+            <input id="todayDateJalaliInput" type="text" value="${formatJalaliDate(dateISO)}" onchange="changeListDate('${sid}','${cid}',this.value)" style="width:108px;padding:5px 8px;font-weight:bold;text-align:center;font-size:12.5px" title="ویرایش تاریخ شمسی">
+            ${allDates.length ? `<select onchange="selectListDateISO('${sid}','${cid}',this.value)" style="width:auto;padding:4px 8px;font-size:11.5px" title="انتخاب از جلسات تقویم"><option value="${dateISO}">انتخاب جلسه...</option>${dateOptions}</select>` : ''}
+          </div>
+          <button class="btn soft btn-sm" onclick="inlAllPresent('${sid}','${cid}')">✓ همه حاضر</button>
+        </div>
+        <div style="padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--border-subtle)">
+          <input type="text" value="${esc(noteVal)}" placeholder="📝 یادداشت یا مبحث تدریس‌شده در تاریخ ${formatJalaliDate(dateISO)}..." onchange="saveSessionNote('${sid}','${cid}','${dateISO}',this.value)" style="font-size:12px;padding:6px 10px">
+        </div>
+        <div class="td-col-headers">
+          <span>ردیف، حضور و نام دانش‌آموز (${fa(c.students.length)} نفر)</span>
+          <span>نمره جلسه · امتیاز (+ / −)</span>
+        </div>
+      </div>
+      <div class="td-scroll-body" id="tdScrollBody">${rows || '<div class="muted" style="padding:20px;text-align:center">دانش‌آموزی ثبت نشده است.</div>'}</div>
+    </div>`;
+};
+
+// همگام‌سازی تب‌های تنظیمات هنگام باز کردن صفحه تنظیمات
+const _prevShowViewV52 = showView;
+showView = function(id) {
+  _prevShowViewV52(id);
+  if (id === 'backup') {
+    window.openSettingsTab(window._activeSettingsTab || 'theme');
+  }
+};
+
+
+/* ==================== سامانه تفکیک هوشمند و دستی «نیازمند توجه‌ها» (نسخه ۵.۳.۰) ==================== */
+const ATTN_CATEGORIES = [
+  { id: 'all', title: '📋 همه موارد توجه', short: 'همه', icon: '📋', css: 'cat-special' },
+  { id: 'academic', title: '📉 درسی و آموزشی', short: 'درسی', icon: '📉', css: 'cat-academic' },
+  { id: 'discipline', title: '⚠️ انضباطی و رفتاری', short: 'انضباطی', icon: '⚠️', css: 'cat-discipline' },
+  { id: 'medical', title: '🏥 بیماری و پزشکی', short: 'بیماری/پزشکی', icon: '🏥', css: 'cat-medical' },
+  { id: 'absence', title: '📅 غیبت و تأخیر مکرر', short: 'غیبت مکرر', icon: '📅', css: 'cat-absence' },
+  { id: 'counseling', title: '💜 روحی، خانوادگی و مشاوره', short: 'مشاوره/خانوادگی', icon: '💜', css: 'cat-counseling' },
+  { id: 'special', title: '⭐ سایر موارد پیگیری', short: 'پیگیری ویژه', icon: '⭐', css: 'cat-special' }
+];
+
+window._currentAttnCategory = 'all';
+
+// تحلیل کامل دلایل و دسته‌های «نیازمند توجه» برای یک دانش‌آموز (ترکیب تشخیص خودکار + انتخاب دستی معلم)
+window.getStudentAttentionDetails = function(c, st) {
+  if (!st) return { isAttn: false, categories: [], badges: [], reasonsText: [] };
+  const rules = getRules();
+  const b = behaviorData(st);
+  const manualCats = Array.isArray(st.attnCategories) ? [...st.attnCategories] : [];
+  const catSet = new Set(manualCats);
+  const reasonsMap = {}; // catId -> array of detail strings
+  const addReason = (catId, txt) => {
+    catSet.add(catId);
+    if (!reasonsMap[catId]) reasonsMap[catId] = [];
+    if (txt && !reasonsMap[catId].includes(txt)) reasonsMap[catId].push(txt);
+  };
+
+  // ثبت دسته‌های انتخاب‌شده دستی توسط معلم
+  manualCats.forEach(cid => {
+    if (!reasonsMap[cid]) reasonsMap[cid] = [];
+  });
+
+  // ۱. تشخیص خودکار درسی (academic)
+  if (isFeatOn('feat_auto_attn')) {
+    const avg = avgGrade(st);
+    if (avg !== null && avg < rules.lowScoreAttn) {
+      addReason('academic', `افت مستمر (${fmtScore(avg)})`);
+    }
+    const contSc = typeof getStudentWrittenContScore === 'function' ? getStudentWrittenContScore(c, st) : null;
+    if (contSc !== null && contSc < rules.lowScoreAttn) {
+      addReason('academic', `افت کتبی مستمر (${fmtScore(contSc)})`);
+    }
+    if (c?.termScores?.[st.id] !== undefined && c.termScores[st.id] !== '' && Number(c.termScores[st.id]) < rules.lowScoreAttn) {
+      addReason('academic', `افت پایانی ترم (${fmtScore(c.termScores[st.id])})`);
+    }
+
+    // ۲. تشخیص خودکار انضباطی (discipline)
+    if (b.negatives.length > rules.maxNegAllowed) {
+      addReason('discipline', `${fa(b.negatives.length)} مورد منفی`);
+    }
+
+    // ۳. تشخیص خودکار غیبت مکرر (absence: ۳ جلسه غیبت یا بیشتر)
+    if (c && c.attendance) {
+      const absCnt = Object.keys(c.attendance).filter(d => attendanceStatus(c, d, st.id) === 'absent' || (c.attendance[d] && c.attendance[d][st.id] === 'absent')).length;
+      if (absCnt >= 3) {
+        addReason('absence', `${fa(absCnt)} جلسه غیبت`);
+      }
+    }
+  }
+
+  // ۴. تشخیص هوشمند کلیدواژه‌های پزشکی و مشاوره‌ای از یادداشت‌های معلم
+  const combinedNotes = `${st.attnNote || ''} ${st.notes || ''}`.trim();
+  if (combinedNotes) {
+    if (/(بیمار|پزشک|آسم|قلب|دیابت|صرع|بینایی|شنوایی|دارو|حساسیت|آلرژی|جراحی|معلول|عینک|تنفس)/i.test(combinedNotes)) {
+      addReason('medical', st.attnNote || 'ملاحظات پزشکی در پرونده');
+    }
+    if (/(مشاور|خانواد|روحی|اضطراب|افسرد|طلاق|فوت|یتیم|مالی|معیشت|عاطفی|پرخاش|انزوا)/i.test(combinedNotes)) {
+      addReason('counseling', st.attnNote || 'ملاحظات مشاوره‌ای/خانوادگی');
+    }
+  }
+
+  // اگر وضعیت دانش‌آموز به صورت دستی روی attn گذاشته شده ولی هنوز هیچ دسته‌ای انتخاب نشده
+  if (st.status === 'attn' && catSet.size === 0) {
+    addReason('special', st.attnNote || 'علامت‌گذاری دستی توسط معلم');
+  }
+
+  const categories = [...catSet];
+  const isAttn = st.status === 'attn' || categories.length > 0;
+
+  const badges = categories.map(cid => {
+    const def = ATTN_CATEGORIES.find(x => x.id === cid) || ATTN_CATEGORIES[6];
+    const rList = reasonsMap[cid] || [];
+    const detailStr = rList.length ? `: ${rList[0]}` : '';
+    return {
+      catId: cid,
+      icon: def.icon,
+      short: def.short,
+      css: def.css,
+      label: `${def.icon} ${def.short}${detailStr}`,
+      fullReasons: rList
+    };
+  });
+
+  const reasonsText = badges.map(b => b.label);
+  return { isAttn, categories, badges, reasonsText, attnNote: st.attnNote || '' };
+};
+
+getAutoAttentionReasons = function(c, st) {
+  return window.getStudentAttentionDetails(c, st).reasonsText;
+};
+
+isAutoAttention = function(c, st) {
+  return window.getStudentAttentionDetails(c, st).isAttn;
+};
+
+// مودال سریع تعیین یا ویرایش دسته‌بندی «نیازمند توجه» (بیماری، درسی، انضباطی، غیبت، مشاوره‌ای) برای هر دانش‌آموز
+window.openStudentAttentionModal = function(sid, cid, stid) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const det = window.getStudentAttentionDetails(c, st);
+  const manualSet = new Set(Array.isArray(st.attnCategories) ? st.attnCategories : []);
+
+  const catCheckboxes = ATTN_CATEGORIES.filter(x => x.id !== 'all').map(cat => {
+    const isChecked = manualSet.has(cat.id) || det.categories.includes(cat.id);
+    return `<label class="switch-card" style="background:var(--panel);padding:9px 11px">
+      <span><b>${cat.icon} ${cat.title.replace(/^[^\s]+\s/, '')}</b></span>
+      <input type="checkbox" class="st-attn-cat-cb" value="${cat.id}" ${isChecked ? 'checked' : ''}>
+    </label>`;
+  }).join('');
+
+  openModal(formHeader(`🏷️ تعیین دسته‌بندی نیازمند توجه — ${st.name} ${st.lastName}`) + `
+    <p class="muted" style="margin:0 0 10px">می‌توانید یک یا چند علت را برای این دانش‌آموز مشخص کنید (مثلاً هم <b>🏥 بیماری و پزشکی</b> و هم <b>📉 درسی</b>):</p>
+    <div class="switch-grid" style="margin-bottom:12px">
+      ${catCheckboxes}
+    </div>
+    <div class="field">
+      <label>📝 شرح وضعیت (بیماری، دارو، مشکل درسی، مورد انضباطی یا ملاحظات مشاوره‌ای):</label>
+      <textarea id="stAttnNoteInput" placeholder="مثلاً: آسم خفیف دارد و نباید در هوای سرد بدود / نیاز به تمرین بیشتر در فصل دوم / مسئله خانوادگی...">${esc(st.attnNote || '')}</textarea>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+      <span class="chip" onclick="document.getElementById('stAttnNoteInput').value='دارای بیماری زمینه‌ای / حساسیت — نیاز به مراقبت ویژه'">🏥 بیماری/مراقبت</span>
+      <span class="chip" onclick="document.getElementById('stAttnNoteInput').value='ضعف بینایی/شنوایی — نشاندن در ردیف اول کلاس'">👓 ردیف اول کلاس</span>
+      <span class="chip" onclick="document.getElementById('stAttnNoteInput').value='نیاز به تقویت درسی و پرسش مستمر'">📉 تقویت درسی</span>
+      <span class="chip" onclick="document.getElementById('stAttnNoteInput').value='نیاز به گفت‌وگو با اولیا و مشاور مدرسه'">💜 ارجاع به مشاور</span>
+    </div>
+    <div class="formactions">
+      <button type="button" class="btn primary" onclick="saveStudentAttentionCategories('${sid}','${cid}','${stid}')">💾 ذخیره وضعیت توجه</button>
+      <button type="button" class="btn soft" onclick="clearStudentAttentionCategories('${sid}','${cid}','${stid}')">🟢 تغییر به وضعیت عادی/خوب</button>
+      <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+};
+
+window.saveStudentAttentionCategories = function(sid, cid, stid) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!st) return;
+  const selected = [...document.querySelectorAll('.st-attn-cat-cb:checked')].map(cb => cb.value);
+  const note = (document.getElementById('stAttnNoteInput')?.value || '').trim();
+  st.attnCategories = selected;
+  st.attnNote = note;
+  if (selected.length > 0 || note) {
+    st.status = 'attn';
+  }
+  closeModal();
+  save();
+  toast('دسته‌بندی نیازمند توجه ذخیره شد ✅');
+};
+
+window.clearStudentAttentionCategories = function(sid, cid, stid) {
+  const st = findStudent(sid, cid, stid);
+  if (!st) return;
+  st.attnCategories = [];
+  st.attnNote = '';
+  st.status = 'good';
+  closeModal();
+  save();
+  toast('وضعیت دانش‌آموز به «🟢 خوب» تغییر یافت');
+};
+
+// مودال ثبت سریع مورد نیازمند توجه یا بیماری از بالای صفحه وضعیت‌ها
+window.openQuickAssignAttentionModal = function() {
+  let stOpts = '<option value="">-- انتخاب دانش‌آموز از کلاس‌ها --</option>';
+  db.schools.forEach(s => s.classes.forEach(c => sortStudents(c.students).forEach(st => {
+    stOpts += `<option value="${s.id}|${c.id}|${st.id}">${esc(st.lastName)} ${esc(st.name)} (${esc(c.name)} - ${esc(s.name)})</option>`;
+  })));
+
+  openModal(formHeader('➕ ثبت سریع دانش‌آموز نیازمند توجه (بیماری، درسی، انضباطی و...)') + `
+    <div class="field" style="margin-bottom:10px">
+      <label>👤 انتخاب دانش‌آموز:</label>
+      <select id="quickAttnStudentSel" onchange="if(this.value){const [s,c,st]=this.value.split('|');closeModal();openStudentAttentionModal(s,c,st);}">
+        ${stOpts}
+      </select>
+    </div>
+    <p class="muted">به محض انتخاب نام دانش‌آموز، پنجره انتخاب دسته‌بندی (🏥 بیماری، 📉 درسی، ⚠️ انضباطی، 📅 غیبت، 💜 مشاوره‌ای) برای او باز می‌شود.</p>
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+// ارتقای کارت دانش‌آموز (studentCard) برای نمایش تگ‌های رنگی تفکیک‌شده (بیماری، درسی، انضباطی و...) + دکمه تعیین نوع توجه
+studentCard = function(s, c, st) {
+  const det = window.getStudentAttentionDetails(c, st);
+  const eff = det.isAttn ? 'attn' : (st.status === 'good' ? 'good' : 'none');
+  let badgesHtml = '';
+  if (eff === 'good') {
+    badgesHtml = '<span class="status good">🟢 خوب</span>';
+  } else if (eff === 'attn') {
+    if (det.badges.length) {
+      badgesHtml = det.badges.map(b => `<span class="attn-tag ${b.css}">${esc(b.label)}</span>`).join(' ');
+    } else {
+      badgesHtml = '<span class="status attn">🔴 نیازمند توجه</span>';
+    }
+  } else {
+    badgesHtml = '<span class="status none">⚪ عادی</span>';
+  }
+
+  let b = behaviorData(st), fin = calculateFinalStudentScore(c, st);
+  const noteBanner = det.attnNote ? `<div class="attn-note-banner">📌 ${esc(det.attnNote)}</div>` : '';
+
+  return `<div class="card studentcard ${eff === 'attn' ? 'attn-border' : ''}">
+    <div class="student">
+      <div class="avatar ${st.photo ? 'photo-clickable' : ''}" ${st.photo ? `onclick="event.stopPropagation();openPhotoViewer('${st.photo}','${safeFileName(st.lastName+'-'+st.name)}.jpg')"` : ''}>${st.photo ? `<img src="${st.photo}">` : esc((st.name || '?')[0])}</div>
+      <div style="min-width:0;flex:1">
+        <b style="font-size:14.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${formatStudentName(st)}</b>
+        <div style="margin-top:4px;display:flex;gap:4px;flex-wrap:wrap">${badgesHtml}</div>
+      </div>
+    </div>
+    ${noteBanner}
+    <div class="student-meta">${st.birth ? '🎂 ' + fa(st.birth) : ''}${st.phone ? ' · ☎ ' + fa(st.phone) : ''}<br>➕ ${fa(b.positives.length)} · ➖ ${fa(b.negatives.length)} · ⭐ نهایی: <b>${fmtScore(fin)}</b></div>
+    ${isFeatOn('feat_card_shortcuts') ? renderQuickBehaviorButtons(s.id, c.id, st) : ''}
+    <div class="actions">
+      <button class="btn soft" style="flex:1" onclick="openStudent('${s.id}','${c.id}','${st.id}')">پرونده</button>
+      <button class="btn gray" title="تعیین دسته‌بندی توجه (بیماری، درسی، انضباطی...)" onclick="openStudentAttentionModal('${s.id}','${c.id}','${st.id}')">🏷️ نوع توجه</button>
+      <button class="btn gray" onclick="openParentView('${s.id}','${c.id}','${st.id}')">👨‍👩‍👦</button>
+      <button class="btn gray" onclick="editStudent('${s.id}','${c.id}','${st.id}')">✎</button>
+    </div>
+  </div>`;
+};
+
+// ارتقای فرم افزودن/ویرایش دانش‌آموز (studentForm) برای ثبت دسته‌بندی توجه و شرح بیماری
+studentForm = function(sid, cid, st) {
+  let ed = !!st, photo = st?.photo || '';
+  const manualSet = new Set(Array.isArray(st?.attnCategories) ? st.attnCategories : []);
+  const catChecks = ATTN_CATEGORIES.filter(x => x.id !== 'all').map(cat => `
+    <label class="switch-card" style="padding:5px 8px;font-size:11.5px">
+      <span>${cat.icon} ${cat.short}</span>
+      <input type="checkbox" class="form-attn-cat-cb" value="${cat.id}" ${manualSet.has(cat.id) ? 'checked' : ''}>
+    </label>
+  `).join('');
+
+  openModal(formHeader(ed ? '✎ ویرایش مشخصات و وضعیت دانش‌آموز' : '👨‍🎓 دانش‌آموز جدید') + `
+    <form onsubmit="saveStudentForm(event,'${sid}','${cid}',${ed ? `'${st.id}'` : 'null'})">
+      <div class="photo-input">
+        <div class="photo-preview" id="photoPreview">${photo ? `<img src="${photo}">` : '👤'}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="previewStudentPhoto(event)"></label>
+          <label class="btn soft">🖼️ گالری<input type="file" accept="image/*" hidden onchange="previewStudentPhoto(event)"></label>
+          <input id="photoData" type="hidden" value="${esc(photo)}">
+        </div>
+      </div>
+      <div class="formgrid" style="margin-top:12px">
+        <div class="field"><label>نام</label><input id="stName" required value="${esc(st?.name || '')}"></div>
+        <div class="field"><label>نام خانوادگی</label><input id="stLast" required value="${esc(st?.lastName || '')}"></div>
+        <div class="field"><label>نام پدر</label><input id="stFather" value="${esc(st?.fatherName || '')}"></div>
+        <div class="field"><label>تاریخ تولد شمسی</label><input id="stBirth" placeholder="۱۳۸۹/۰۷/۲۱" value="${esc(st?.birth || '')}"></div>
+        <div class="field"><label>تلفن والدین</label><input id="stPhone" inputmode="tel" value="${esc(st?.phone || '')}"></div>
+        <div class="field"><label>وضعیت کلی</label>
+          <select id="stStatus">
+            <option value="none" ${!st || st.status === 'none' ? 'selected' : ''}>⚪ عادی</option>
+            <option value="good" ${st?.status === 'good' ? 'selected' : ''}>🟢 خوب</option>
+            <option value="attn" ${st?.status === 'attn' ? 'selected' : ''}>🔴 نیازمند توجه</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>🏷️ تفکیک علت «نیازمند توجه» (در صورت نیاز یک یا چند مورد را تیک بزنید):</label>
+          <div class="grid-3" style="margin-top:4px">${catChecks}</div>
+        </div>
+        <div class="field full">
+          <label>🏥 شرح بیماری، حساسیت پزشکی یا علت نیازمند توجه:</label>
+          <input id="stAttnNote" placeholder="مثلاً: آسم / ضعف بینایی (ردیف جلو بنشیند) / نیاز به تقویت ریاضی..." value="${esc(st?.attnNote || '')}">
+        </div>
+        <div class="field full"><label>❤️ علایق و استعدادها</label><input id="stInterests" value="${esc(st?.interests || '')}"></div>
+        <div class="field full"><label>🔒 یادداشت محرمانه معلم</label><textarea id="stNotes">${esc(st?.notes || '')}</textarea></div>
+      </div>
+      <div class="formactions">
+        <button type="submit" class="btn primary">ذخیره</button>
+        <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+      </div>
+    </form>
+  `);
+};
+
+saveStudentForm = function(e, sid, cid, stid) {
+  e.preventDefault();
+  let c = findClass(sid, cid); if (!c) return;
+  let old = stid ? findStudent(sid, cid, stid) : null;
+  const selectedCats = [...document.querySelectorAll('.form-attn-cat-cb:checked')].map(cb => cb.value);
+  const attnNoteVal = (document.getElementById('stAttnNote')?.value || '').trim();
+  let statusVal = document.getElementById('stStatus').value;
+  if ((selectedCats.length > 0 || attnNoteVal) && statusVal === 'none') {
+    statusVal = 'attn';
+  }
+  let st = {
+    ...(old || {}),
+    id: stid || uid(),
+    photo: document.getElementById('photoData')?.value || '',
+    name: document.getElementById('stName').value.trim(),
+    lastName: document.getElementById('stLast').value.trim(),
+    fatherName: document.getElementById('stFather').value.trim(),
+    birth: normalizeJalaliInput(document.getElementById('stBirth').value),
+    phone: document.getElementById('stPhone').value.trim(),
+    interests: document.getElementById('stInterests').value.trim(),
+    notes: document.getElementById('stNotes').value.trim(),
+    status: statusVal,
+    attnCategories: selectedCats,
+    attnNote: attnNoteVal
+  };
+  behaviorData(st); gradesData(st);
+  if (stid) {
+    let idx = c.students.findIndex(x => x.id === stid);
+    if (idx >= 0) c.students[idx] = st;
+  } else {
+    c.students.push(st);
+  }
+  closeModal(); save(); toast('ذخیره شد ✅');
+};
+
+
+// ارتقای صفحه پرونده دانش‌آموز (openStudent) برای نمایش تفکیک وضعیت نیازمند توجه (بیماری، درسی، انضباطی و...)
+const _origOpenStudentV53 = openStudent;
+openStudent = function(sid, cid, stid) {
+  _origOpenStudentV53(sid, cid, stid);
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  const box = document.getElementById('studentDetailContent');
+  if (!c || !st || !box) return;
+  const det = window.getStudentAttentionDetails(c, st);
+  const badgesHtml = det.badges.length
+    ? det.badges.map(b => `<span class="attn-tag ${b.css}">${esc(b.label)}</span>`).join(' ')
+    : '<span class="muted" style="font-size:12px">موردی ثبت نشده (وضعیت عادی/خوب)</span>';
+  const attnCard = document.createElement('div');
+  attnCard.className = 'card';
+  attnCard.style.marginTop = '12px';
+  attnCard.style.borderColor = det.isAttn ? 'rgba(248,113,113,0.45)' : 'var(--border)';
+  attnCard.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <b>🚨 وضعیت پیگیری و تفکیک نیازمند توجه (درسی / انضباطی / بیماری / مشاوره)</b>
+      <button class="btn soft btn-sm" onclick="openStudentAttentionModal('${sid}','${cid}','${stid}')">🏷️ ویرایش دسته‌بندی و شرح بیماری</button>
+    </div>
+    <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">${badgesHtml}</div>
+    ${det.attnNote ? `<div class="attn-note-banner" style="margin-top:8px">🏥 شرح وضعیت / ملاحظات معلم: <b>${esc(det.attnNote)}</b></div>` : ''}
+  `;
+  box.insertBefore(attnCard, box.children[1] || null);
+};
+
+// بازنویسی کامل renderStatuses برای نمایش تب‌های تفکیک‌شده (همه | درسی | انضباطی | بیماری و پزشکی | غیبت مکرر | روحی و خانوادگی | سایر)
+window.selectAttnCategoryTab = function(catId) {
+  window._currentAttnCategory = catId;
+  renderStatuses('attn');
+};
+
+renderStatuses = function(filter = 'attn') {
+  window._currentStatusFilter = filter;
+  let good = [], attn = [], none = [];
+  const catCounts = { all: 0, academic: 0, discipline: 0, medical: 0, absence: 0, counseling: 0, special: 0 };
+
+  db.schools.forEach(s => s.classes.forEach(c => c.students.forEach(st => {
+    const det = window.getStudentAttentionDetails(c, st);
+    if (det.isAttn) {
+      attn.push({ s, c, st, det });
+      catCounts.all++;
+      det.categories.forEach(cid => {
+        if (catCounts[cid] !== undefined) catCounts[cid]++;
+      });
+    } else if (st.status === 'good') {
+      good.push({ s, c, st, det });
+    } else {
+      none.push({ s, c, st, det });
+    }
+  })));
+
+  document.getElementById('goodCount').textContent = fa(good.length);
+  document.getElementById('attentionCount').textContent = fa(attn.length);
+  document.getElementById('noneCount').textContent = fa(none.length);
+
+  const gBtn = document.getElementById('statusGoodBtn');
+  const aBtn = document.getElementById('statusAttnBtn');
+  if (gBtn) gBtn.className = filter === 'good' ? 'btn primary' : 'btn gray';
+  if (aBtn) aBtn.className = filter === 'attn' ? 'btn primary' : 'btn gray';
+
+  const catBox = document.getElementById('attnCategoriesFilterBox');
+  const activeCat = window._currentAttnCategory || 'all';
+
+  if (catBox) {
+    if (filter === 'attn') {
+      catBox.style.display = 'block';
+      catBox.innerHTML = `<div class="attn-cat-grid">
+        ${ATTN_CATEGORIES.map(cat => `
+          <div class="attn-cat-pill ${activeCat === cat.id ? 'active' : ''}" data-attn-cat="${cat.id}" onclick="selectAttnCategoryTab('${cat.id}')">
+            <span>${cat.icon} ${cat.short}</span>
+            <span class="attn-cat-count">${fa(catCounts[cat.id] || 0)}</span>
+          </div>
+        `).join('')}
+      </div>`;
+    } else {
+      catBox.style.display = 'none';
+    }
+  }
+
+  let items = filter === 'attn' ? attn : (filter === 'good' ? good : none);
+  if (filter === 'attn' && activeCat !== 'all') {
+    items = items.filter(x => x.det.categories.includes(activeCat));
+  }
+
+  const activeCatObj = ATTN_CATEGORIES.find(x => x.id === activeCat) || ATTN_CATEGORIES[0];
+  const emptyTitle = filter === 'attn'
+    ? (activeCat === 'all' ? 'هیچ دانش‌آموزی در وضعیت نیازمند توجه نیست' : `موردی در دسته «${activeCatObj.title}» ثبت نشده است`)
+    : 'موردی در این دسته ثبت نشده است';
+
+  document.getElementById('statusesList').innerHTML = items.length
+    ? `<div class="grid">${items.map(x => studentCard(x.s, x.c, x.st)).join('')}</div>`
+    : empty('📋', emptyTitle, 'می‌توانید با دکمه «🏷️ نوع توجه» روی کارت هر دانش‌آموز یا دکمه «➕ ثبت سریع مورد نیازمند توجه» در بالای همین صفحه، موارد پزشکی، درسی، انضباطی یا مشاوره‌ای را ثبت کنید.');
+  setTimeout(() => ScrollFX.refresh(), 40);
+};
+
+// چاپ و خروجی جدول تفکیک‌شده دانش‌آموزان نیازمند توجه (برای ارائه به مشاور، مربی بهداشت یا معاون)
+window.printCategorizedAttentionReport = function() {
+  const rows = [];
+  db.schools.forEach(s => s.classes.forEach(c => sortStudents(c.students).forEach(st => {
+    const det = window.getStudentAttentionDetails(c, st);
+    if (det.isAttn) {
+      rows.push({
+        school: s.name,
+        className: c.name,
+        name: `${st.lastName} ${st.name}`,
+        father: st.fatherName || '—',
+        cats: det.badges.map(b => b.label).join(' | '),
+        note: det.attnNote || st.notes || '—',
+        phone: st.phone || '—'
+      });
+    }
+  })));
+
+  if (!rows.length) {
+    alert('هنوز دانش‌آموزی در لیست نیازمند توجه ثبت نشده است.');
+    return;
+  }
+
+  const w = window.open('', '_blank');
+  if (!w) return;
+  w.document.write(`<html dir="rtl"><head><meta charset="utf-8"><title>گزارش تفکیکی دانش‌آموزان نیازمند توجه</title><style>body{font-family:Tahoma,sans-serif;padding:20px;direction:rtl}h2{margin:0 0 12px;color:#0f172a}table{width:100%;border-collapse:collapse;font-size:12px}th,td{border:1px solid #64748b;padding:7px;text-align:right}th{background:#f1f5f9}</style></head><body><h2>🚨 گزارش تفکیکی دانش‌آموزان نیازمند توجه (درسی، انضباطی، بیماری، غیبت و مشاوره)</h2><table><thead><tr><th>ردیف</th><th>مدرسه / کلاس</th><th>نام دانش‌آموز</th><th>نام پدر</th><th>دسته‌بندی و علت توجه</th><th>شرح وضعیت / بیماری / ملاحظات</th><th>تلفن تماس</th></tr></thead><tbody>${rows.map((r, i) => `<tr><td>${fa(i + 1)}</td><td>${esc(r.school)} - ${esc(r.className)}</td><td><b>${esc(r.name)}</b></td><td>${esc(r.father)}</td><td>${esc(r.cats)}</td><td>${esc(r.note)}</td><td>${fa(r.phone)}</td></tr>`).join('')}</tbody></table></body></html>`);
+  w.document.close();
+  setTimeout(() => w.print(), 350);
+};
 
 window.addEventListener('DOMContentLoaded', async () => {
   ensureTermMigration(db);
