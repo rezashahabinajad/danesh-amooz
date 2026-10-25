@@ -1208,6 +1208,313 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
 #teacherPdfCanvas { max-width: 100%; height: auto; background: #fff; box-shadow: 0 4px 18px #0006; }
 .study-pdf-tools { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
 
+/* ==================== استودیوی هوشمند تدریس و کتاب‌خوان معلم (v5.6 Pro) ==================== */
+.teach-studio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+.teach-book-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: var(--bg-panel);
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+.teach-book-bar select {
+  flex: 1;
+  min-width: 170px;
+  height: 36px;
+  padding: 4px 10px;
+  font-size: 12.5px;
+  font-weight: 800;
+}
+.teach-unified-nav {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-panel);
+  border: 1px solid var(--primary-border);
+  border-radius: 13px;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+}
+.teach-nav-btn {
+  height: 34px;
+  min-width: 36px;
+  padding: 0 10px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-weight: 800;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.teach-nav-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.teach-nav-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 0 4px;
+}
+.teach-nav-book-title {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 700;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.teach-nav-page-pill {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.teach-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px 8px;
+}
+.teach-slider-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--primary);
+  height: 6px;
+  cursor: pointer;
+}
+.teach-action-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.teach-zoom-group, .teach-tool-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-panel);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.teach-icon-btn {
+  height: 30px;
+  padding: 0 9px;
+  border-radius: 7px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-main);
+  font-size: 11.5px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.teach-icon-btn.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.teach-annot-bar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 7px 10px;
+  background: var(--bg-panel);
+  border: 1px dashed var(--primary);
+  border-radius: 11px;
+  margin-bottom: 8px;
+}
+.teach-annot-bar.show {
+  display: flex;
+}
+.teach-canvas-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #050914;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 8px;
+  min-height: 220px;
+  overflow: auto;
+}
+.teach-canvas-inner {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  max-width: 100%;
+}
+#teacherPdfCanvas {
+  max-width: 100%;
+  height: auto;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+  display: block;
+}
+#teacherAnnotCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  touch-action: pan-y;
+  border-radius: 6px;
+}
+#teacherAnnotCanvas.drawing-active {
+  pointer-events: auto;
+  touch-action: none;
+  cursor: crosshair;
+}
+#teacherStudyPdfCard.fullscreen-board {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  height: 100vh !important;
+  overflow-y: auto !important;
+  background: var(--bg-main) !important;
+  padding: 12px !important;
+}
+#teacherStudyPdfCard.fullscreen-board .teach-canvas-stage {
+  min-height: calc(100vh - 210px);
+}
+.teach-bookmarks-strip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 2px 6px;
+  scrollbar-width: thin;
+}
+.teach-bm-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: var(--bg-panel);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  font-size: 11.5px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.teach-bm-chip.class-pin {
+  background: rgba(74, 222, 128, 0.14);
+  border-color: #22c55e;
+  color: #4ade80;
+}
+.teach-workbench-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  background: var(--bg-panel);
+  padding: 6px;
+  border-radius: 13px;
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+@media (max-width: 520px) {
+  .teach-workbench-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.teach-wb-tab {
+  padding: 8px 6px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.teach-wb-tab.active {
+  background: var(--bg-card);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+}
+.teach-wb-pane {
+  display: none;
+}
+.teach-wb-pane.active {
+  display: block;
+}
+.teach-count-chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.teach-count-chip {
+  padding: 5px 11px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--bg-panel);
+  color: var(--text-main);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.teach-count-chip.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.teach-flashcard-box {
+  background: linear-gradient(135deg, var(--bg-panel), var(--bg-card));
+  border: 2px solid var(--primary);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  margin: 10px 0;
+  box-shadow: var(--shadow);
+}
+
 .term-action-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; align-items: center; }
 .term-badge {
   display: inline-flex;
@@ -1926,17 +2233,17 @@ body {
 
 /* ==================== استایل‌های خروجی رنگی زنده و برندینگ ظریف (نسخه ۵.۵.۰ Pro) ==================== */
 .subtle-app-brand-bar {
-  margin-top: 22px;
-  padding: 9px 14px;
-  border-radius: 14px;
+  margin-top: 16px;
+  padding: 7px 11px;
+  border-radius: 12px;
   background: var(--bg-panel);
   border: 1px dashed var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 8px;
-  opacity: 0.88;
+  gap: 6px;
+  opacity: 0.82;
   transition: opacity 0.2s ease, border-color 0.2s ease;
 }
 .subtle-app-brand-bar:hover {
@@ -2195,77 +2502,211 @@ body {
 </section>
 
 <section id="teachView" class="view">
-  <h1 class="title">📖 فضای مطالعهٔ معلم</h1>
-  <p class="subtitle">کتاب در بالا؛ پرسش‌ها، پاسخ‌ها و یادداشت‌های صفحه در پایین.</p>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+    <div>
+      <h1 class="title" style="margin-bottom:2px">📖 استودیوی هوشمند تدریس و کتاب‌خوان معلم</h1>
+      <p class="subtitle" style="margin:0">کتابخانه چندکتابی با حافظه دائمی، تخته و ماژیک تدریس روی صفحه، نشانک کلاسی، حل فعالیت‌ها و استخراج خط‌به‌خط سوالات</p>
+    </div>
+    <span class="chip" id="cachedBookBadge" style="font-weight:800">کتاب در حافظه: ندارد</span>
+  </div>
+
+  <!-- کارت اصلی کتاب‌خوان و تخته هوشمند کلاسی -->
   <div class="card" id="teacherStudyPdfCard" style="margin-bottom:12px">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
-      <b style="color:var(--primary)">📚 کتاب درسی (PDF اصلی)</b>
-      <label class="btn primary btn-sm" style="margin:0;cursor:pointer">انتخاب PDF<input type="file" accept="application/pdf" hidden onchange="TeachAssistant.scanAndCacheBookPDF(event)"></label>
+    <!-- نوار مدیریت کتابخانه چندکتابی (یکپارچه و بدون تکرار) -->
+    <div class="teach-book-bar">
+      <span style="font-size:12px;font-weight:900;color:var(--primary);white-space:nowrap">📚 کتاب فعال:</span>
+      <select id="teacherBookLibrarySelect" onchange="TeachAssistant.switchLibraryBook(this.value)" aria-label="انتخاب کتاب از کتابخانه">
+        <option value="">-- هنوز کتابی در کتابخانه ذخیره نشده --</option>
+      </select>
+      <label class="btn primary btn-sm" style="margin:0;cursor:pointer;white-space:nowrap">
+        ➕ افزودن / اسکن PDF جدید
+        <input type="file" accept="application/pdf" hidden onchange="TeachAssistant.scanAndCacheBookPDF(event)">
+      </label>
+      <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.scanCurrentPageHighAccuracy()" title="بازخوانی متن همین صفحه با دقت بالا">🔄 اسکن متن صفحه</button>
+      <button type="button" class="btn danger btn-sm" onclick="TeachAssistant.deleteActiveLibraryBook()" title="حذف کتاب فعلی از حافظه">🗑️</button>
     </div>
-    <div class="study-pdf-tools">
-      <button class="btn gray btn-sm" onclick="TeachAssistant.changeStudyPage(-1)">صفحه قبل</button>
-      <span id="teacherPdfPageInfo" class="muted">هنوز کتابی بارگذاری نشده</span>
-      <button class="btn gray btn-sm" onclick="TeachAssistant.changeStudyPage(1)">صفحه بعد</button>
-      <button class="btn soft btn-sm" onclick="TeachAssistant.zoomStudyPdf(-0.15)">−</button>
-      <button class="btn soft btn-sm" onclick="TeachAssistant.zoomStudyPdf(0.15)">+</button>
+    <div id="bookScanStatus" style="display:none;margin-bottom:8px;padding:6px 10px;border-radius:9px;background:var(--primary-light);border:1px solid var(--primary-border);font-weight:800;color:var(--primary);font-size:12px"></div>
+
+    <!-- نوار ناوبری یک‌خطی، متقارن و تراز برای موبایل و تبلت -->
+    <div class="teach-unified-nav">
+      <button type="button" class="teach-nav-btn" onclick="TeachAssistant.goStudyPage(1)" title="صفحه اول">⏮</button>
+      <button type="button" class="teach-nav-btn" onclick="TeachAssistant.changeStudyPage(-1)" title="صفحه قبل">◀ قبلی</button>
+      <div class="teach-nav-center">
+        <div id="teacherPdfBookTitle" class="teach-nav-book-title">کتاب درسی</div>
+        <div id="teacherPdfPageInfo" class="teach-nav-page-pill">هنوز کتابی بارگذاری نشده</div>
+      </div>
+      <button type="button" class="teach-nav-btn" onclick="TeachAssistant.changeStudyPage(1)" title="صفحه بعد">بعدی ▶</button>
+      <button type="button" class="teach-nav-btn" onclick="TeachAssistant.goLastStudyPage()" title="صفحه آخر">⏭</button>
     </div>
-    <div class="study-pdf-canvas-wrap"><canvas id="teacherPdfCanvas" aria-label="صفحه کتاب"></canvas><div id="teacherPdfEmpty" class="muted" style="padding:24px;text-align:center">برای مشاهدهٔ کتاب، فایل PDF را انتخاب کن.</div></div>
-    <div class="study-pdf-tools"><label class="muted" for="teacherPdfPageInput">رفتن به صفحه</label><input id="teacherPdfPageInput" type="number" min="1" value="1" style="width:86px" onchange="TeachAssistant.goStudyPage(this.value)"><span id="teacherPdfRenderStatus" class="muted"></span></div>
-    <div class="field" style="margin-top:8px"><label for="teacherPageNote">📝 یادداشت اختصاصی این صفحه</label><textarea id="teacherPageNote" rows="3" placeholder="نکته‌های تدریس، توضیح‌ها یا یادآوری‌های این صفحه..."></textarea><button class="btn soft block" style="margin-top:7px" onclick="TeachAssistant.savePageNote()">💾 ذخیره یادداشت این صفحه</button></div>
-  </div>
-  <p class="subtitle">اسکن دائمی کتاب درسی در حافظه، پاسخ به فعالیت‌ها و تمرین‌ها، استخراج خط‌به‌خط سوالات هر درس و پاسخ فوری به سوالات ناگهانی دانش‌آموزان</p>
-  <div class="card" style="margin-bottom:12px;background:var(--panel);border-color:var(--border)">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-      <b style="color:var(--primary-dark)">⚡ دستیار فوری سوالات بداهه سر کلاس (پاسخ علمی در ۳ ثانیه)</b>
-      <button class="btn soft btn-sm" onclick="TeachAssistant.voiceImpromptu()" id="btnVoiceImp">🎙️ پرسش صوتی</button>
+
+    <!-- اسلایدر ورق‌زدن سریع + پرش مستقیم به شماره صفحه + فهرست صفحات -->
+    <div class="teach-slider-row">
+      <span class="muted" style="font-size:11px;font-weight:800;white-space:nowrap">ورق‌زدن سریع:</span>
+      <input type="range" id="teacherPdfPageSlider" min="1" max="1" value="1" oninput="TeachAssistant.previewSliderPage(this.value)" onchange="TeachAssistant.goStudyPage(this.value)">
+      <div style="display:inline-flex;align-items:center;gap:4px">
+        <label class="muted" for="teacherPdfPageInput" style="font-size:11px;white-space:nowrap">صفحه:</label>
+        <input id="teacherPdfPageInput" type="number" inputmode="numeric" min="1" value="1" style="width:64px;height:32px;text-align:center;font-weight:900;padding:2px 4px" onchange="TeachAssistant.goStudyPage(this.value)">
+      </div>
     </div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap">
-      <input id="impromptuInp" placeholder="سوال ناگهانی دانش‌آموز را بنویسید..." style="flex:1;min-width:200px">
-      <button class="btn primary" id="btnRunImpromptu" onclick="TeachAssistant.askImpromptu()">🚀 دریافت پاسخ معلمانه</button>
+
+    <!-- نوار ابزار زوم، قلم و ماژیک تدریس، نشانک کلاسی و تمام‌صفحه -->
+    <div class="teach-action-strip">
+      <div class="teach-zoom-group">
+        <button type="button" class="teach-icon-btn" onclick="TeachAssistant.zoomStudyPdf(-0.15)" title="کوچک‌نمایی">➖</button>
+        <button type="button" class="teach-icon-btn" id="teacherPdfZoomLabel" onclick="TeachAssistant.resetStudyZoom()" title="بازنشانی زوم">۱۰۰٪</button>
+        <button type="button" class="teach-icon-btn" onclick="TeachAssistant.zoomStudyPdf(0.15)" title="بزرگ‌نمایی">➕</button>
+      </div>
+      <div class="teach-tool-group">
+        <button type="button" class="teach-icon-btn" id="btnToggleAnnotate" onclick="TeachAssistant.toggleAnnotateBar()">🖍️ قلم و هایلایت</button>
+        <button type="button" class="teach-icon-btn" id="btnToggleBookmark" onclick="TeachAssistant.togglePageBookmark()">🔖 نشانک</button>
+        <button type="button" class="teach-icon-btn" id="btnPinClassProgress" onclick="TeachAssistant.pinClassProgressHere()" title="ثبت اینکه این کلاس تا این صفحه تدریس شده">📍 تا اینجا درس دادم</button>
+        <button type="button" class="teach-icon-btn" onclick="TeachAssistant.sendPageToExamBuilder()" title="ارسال متن این صفحه به آزمون‌ساز">📝 به آزمون‌ساز</button>
+        <button type="button" class="teach-icon-btn" id="btnFullscreenBoard" onclick="TeachAssistant.toggleFullscreenBoard()">🖥️ تمام‌صفحه</button>
+      </div>
     </div>
-    <div id="impromptuResultBox" style="display:none;margin-top:10px;padding:11px;background:var(--card);border:1px solid var(--border);border-radius:12px;line-height:1.75;font-size:13px"></div>
+
+    <!-- نوار ابزار قلم نوری و ماژیک هایلایت روی کتاب -->
+    <div class="teach-annot-bar" id="teacherAnnotToolbar">
+      <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">
+        <span style="font-size:11.5px;font-weight:900;color:var(--primary)">🎨 ابزار روی صفحه:</span>
+        <button type="button" class="teach-icon-btn active" data-tool="highlight" onclick="TeachAssistant.setAnnotTool('highlight', this)">🟨 ماژیک زرد</button>
+        <button type="button" class="teach-icon-btn" data-tool="redpen" onclick="TeachAssistant.setAnnotTool('redpen', this)">🔴 قلم قرمز</button>
+        <button type="button" class="teach-icon-btn" data-tool="cyanpen" onclick="TeachAssistant.setAnnotTool('cyanpen', this)">🔵 قلم آبی</button>
+        <button type="button" class="teach-icon-btn" data-tool="greenpen" onclick="TeachAssistant.setAnnotTool('greenpen', this)">🟢 قلم سبز</button>
+        <button type="button" class="teach-icon-btn" data-tool="eraser" onclick="TeachAssistant.setAnnotTool('eraser', this)">🧹 پاک‌کن</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:5px">
+        <button type="button" class="btn gray btn-sm" onclick="TeachAssistant.undoAnnotation()">↩️ واگرد خط</button>
+        <button type="button" class="btn danger btn-sm" onclick="TeachAssistant.clearPageAnnotations()">🗑️ پاک‌کردن صفحه</button>
+        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleAnnotateBar()">✖ بستن قلم</button>
+      </div>
+    </div>
+
+    <!-- نوار نشانک‌ها و پین پیشرفت کلاس‌ها -->
+    <div id="teacherBookmarksStrip" class="teach-bookmarks-strip" style="display:none"></div>
+
+    <!-- بوم نمایش باکیفیت کتاب + لایه قلم نوری معلم -->
+    <div class="teach-canvas-stage" id="teacherPdfStage">
+      <div class="teach-canvas-inner" id="teacherCanvasInner">
+        <canvas id="teacherPdfCanvas" aria-label="صفحه کتاب"></canvas>
+        <canvas id="teacherAnnotCanvas" aria-label="لایه یادداشت‌برداری روی کتاب"></canvas>
+      </div>
+      <div id="teacherPdfEmpty" class="muted" style="padding:28px 16px;text-align:center">
+        <div style="font-size:32px;margin-bottom:6px">📘</div>
+        <b>برای شروع تدریس یا مطالعه، فایل PDF کتاب درسی را از دکمه «➕ افزودن / اسکن PDF جدید» انتخاب کن.</b>
+        <div style="font-size:11.5px;margin-top:4px">کتاب در حافظه دائمی برنامه ذخیره می‌شود و همیشه بدون نیاز به انتخاب مجدد در دسترس خواهد بود.</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:6px">
+      <span id="teacherPdfRenderStatus" class="muted" style="font-size:11.5px"></span>
+      <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:210px;justify-content:flex-end">
+        <label class="muted" for="cachedPageSelect" style="font-size:11px;white-space:nowrap">فهرست صفحات:</label>
+        <select id="cachedPageSelect" style="max-width:260px;height:32px;font-size:11.5px;padding:2px 8px" onchange="TeachAssistant.selectCachedPage(this.value)">
+          <option value="">-- ابتدا PDF کتاب را انتخاب کنید --</option>
+        </select>
+      </div>
+    </div>
   </div>
 
+  <!-- میز کار ۴ تبی معلم در پایین صفحه کتاب (بدون شلوغی و اسکرول اضافی) -->
   <div class="card" style="margin-bottom:12px">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
-      <b style="color:var(--primary)">📚 اسکن کتاب PDF در حافظه دائمی (همه دروس)</b>
-      <span class="chip" id="cachedBookBadge">کتاب در حافظه: ندارد</span>
+    <div class="teach-workbench-tabs" role="tablist">
+      <button type="button" class="teach-wb-tab active" id="wbTabBtn-extract" onclick="TeachAssistant.openWorkbenchTab('extract')">🎯 استخراج سوال و فلش‌کارت</button>
+      <button type="button" class="teach-wb-tab" id="wbTabBtn-solve" onclick="TeachAssistant.openWorkbenchTab('solve')">💡 حل فعالیت و تمرین</button>
+      <button type="button" class="teach-wb-tab" id="wbTabBtn-impromptu" onclick="TeachAssistant.openWorkbenchTab('impromptu')">⚡ پاسخ بداهه ۳ثانیه‌ای</button>
+      <button type="button" class="teach-wb-tab" id="wbTabBtn-note" onclick="TeachAssistant.openWorkbenchTab('note')">📝 یادداشت و متن صفحه</button>
     </div>
-    <div class="formgrid">
-      <div class="field">
-        <label>بارگذاری فایل PDF کتاب درسی (یک‌بار اسکن برای همیشه):</label>
-        <label class="btn soft block" style="cursor:pointer;margin:0">📂 انتخاب فایل PDF کتاب درسی<input type="file" accept="application/pdf" hidden onchange="TeachAssistant.scanAndCacheBookPDF(event)"></label>
-      </div>
-      <div class="field">
-        <label>انتخاب صفحه ذخیره‌شده در حافظه:</label>
-        <select id="cachedPageSelect" onchange="TeachAssistant.selectCachedPage(this.value)"><option value="">-- ابتدا PDF کتاب را انتخاب کنید --</option></select>
-      </div>
-    </div>
-    <div id="bookScanStatus" style="display:none;margin-top:6px;font-weight:bold;color:var(--primary);font-size:12px"></div>
-    <div class="field" style="margin-top:8px">
-      <label>متن تمیز صفحه انتخاب‌شده (آماده استخراج سوال خط‌به‌خط و حل فعالیت‌ها):</label>
-      <textarea id="cachedPageText" placeholder="متن صفحه کتاب پس از اسکن اینجا قرار می‌گیرد..."></textarea>
-    </div>
-  </div>
 
-  <div class="formgrid">
-    <div class="card">
-      <b style="color:var(--primary)">💡 حل‌المسائل فعالیت‌ها، کاردرکلاس و تمرین‌ها</b>
-      <textarea id="customExerciseText" placeholder="اگر تمرین خاصی مد نظرتان است بنویسید، یا خالی بگذارید تا کل فعالیت‌های صفحه بالا را حل کند..." style="min-height:60px;margin:8px 0"></textarea>
-      <button class="btn primary block" id="btnSolveActivities" onclick="TeachAssistant.solveActivities()">📝 استخراج پاسخ فعالیت‌ها و تمرین‌ها</button>
+    <!-- تب ۱: استخراج خط‌به‌خط سوالات + چیپ‌های بدون کیبورد + فلش‌کارت کلاسی + خروجی جزوه -->
+    <div class="teach-wb-pane active" id="wbPane-extract">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+        <b style="color:var(--primary)">🎯 استخراج خط‌به‌خط سوالات این صفحه (با جواب تشریحی)</b>
+        <div style="display:flex;gap:5px;flex-wrap:wrap">
+          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleClassroomFlashcardMode()">🃏 پرسش کلاسی و قرعه‌کشی</button>
+          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.exportLessonHandout('word')">📘 جزوه رنگی Word</button>
+          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.exportLessonHandout('print')">🖨️ چاپ / PDF جزوه</button>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:10px;align-items:end">
+        <div>
+          <label style="font-size:11.5px;font-weight:800;display:block;margin-bottom:4px">درجه سختی سوالات:</label>
+          <select id="extractDiffSelect">
+            <option value="آسان">🟢 آسان و مروری</option>
+            <option value="استاندارد خط‌به‌خط" selected>🔵 استاندارد خط‌به‌خط امتحانی</option>
+            <option value="سخت و مفهومی">🟠 سخت و مفهومی</option>
+            <option value="خیلی خیلی سخت">🔴 خیلی‌خیلی سخت (المپیادی/تیزهوشان)</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:11.5px;font-weight:800;display:block;margin-bottom:4px">تعداد سوالات (انتخاب سریع بدون بازشدن کیبورد):</label>
+          <div class="teach-count-chips" id="extractCountChips">
+            <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(3)">۳ سوال</button>
+            <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(5)">۵ سوال</button>
+            <button type="button" class="teach-count-chip active" onclick="TeachAssistant.setExtractCount(8)">۸ سوال</button>
+            <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(10)">۱۰ سوال</button>
+            <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(12)">۱۲ سوال</button>
+            <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(15)">۱۵ سوال</button>
+            <input type="hidden" id="extractCountInp" value="8">
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button type="button" class="btn primary" style="flex:2;min-width:200px" id="btnExtractLineQuestions" onclick="TeachAssistant.extractLineByLineQuestions()">✨ استخراج هوشمند خط‌به‌خط (AI)</button>
+        <button type="button" class="btn soft" style="flex:1;min-width:150px" onclick="TeachAssistant.extractLocalSmartQuestions()" title="استخراج آنی و آفلاین سوالات از جملات کلیدی همین صفحه بدون نیاز به اینترنت">⚡ استخراج فوری آفلاین</button>
+        <button type="button" class="btn gray btn-sm" onclick="TeachAssistant.sendAllExtractedToExam()" title="افزودن همه سوالات استخراج‌شده به برگه آزمون">➕ همه به آزمون</button>
+      </div>
+
+      <!-- باکس فلش‌کارت پرسش کلاسی و قرعه‌کشی دانش‌آموز -->
+      <div id="classroomFlashcardBox" class="teach-flashcard-box" style="display:none"></div>
+
+      <div id="extractedQuestionsBox" style="margin-top:10px;display:grid;gap:8px"></div>
+    </div>
+
+    <!-- تب ۲: حل‌المسائل فعالیت‌ها، کاردرکلاس و تمرین‌ها -->
+    <div class="teach-wb-pane" id="wbPane-solve">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
+        <b style="color:var(--primary)">💡 حل‌المسائل فعالیت‌ها، کاردرکلاس و فکر کنید</b>
+        <span class="muted" style="font-size:11px">بر اساس متن صفحهٔ فعلی یا صورت تمرین دلخواه</span>
+      </div>
+      <textarea id="customExerciseText" placeholder="اگر تمرین یا فعالیت خاصی مد نظرتان است اینجا بنویسید، یا خالی بگذارید تا تمام فعالیت‌های همین صفحه کتاب را تشخیص داده و حل کند..." style="min-height:66px;margin:6px 0"></textarea>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button type="button" class="btn primary" style="flex:2" id="btnSolveActivities" onclick="TeachAssistant.solveActivities()">📝 حل تشریحی فعالیت‌ها و تمرین‌های این صفحه</button>
+        <button type="button" class="btn soft" style="flex:1" onclick="TeachAssistant.solveActivitiesOfflineGuide()">📋 راهنمای گام‌به‌گام تدریس صفحه</button>
+      </div>
       <div id="activitiesSolutionBox" style="margin-top:10px;display:grid;gap:8px"></div>
     </div>
-    <div class="card">
-      <b style="color:var(--primary)">🎯 استخراج خط‌به‌خط تمام سوالات درس (با جواب)</b>
-      <div class="grid-2" style="margin-top:8px">
-        <div>
-          <label style="font-size:11px;font-weight:bold">درجه سختی سوالات:</label>
-          <select id="extractDiffSelect"><option value="آسان">آسان</option><option value="استاندارد خط‌به‌خط" selected>استاندارد خط‌به‌خط</option><option value="سخت و مفهومی">سخت و مفهومی</option><option value="خیلی خیلی سخت">خیلی‌خیلی سخت</option></select>
-        </div>
-        <div><label style="font-size:11px;font-weight:bold">تعداد سوالات:</label><input type="number" id="extractCountInp" value="8" min="2" max="25"></div>
+
+    <!-- تب ۳: دستیار فوری سوالات بداهه سر کلاس -->
+    <div class="teach-wb-pane" id="wbPane-impromptu">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px">
+        <b style="color:var(--primary)">⚡ دستیار فوری سوالات بداهه دانش‌آموزان سر کلاس (پاسخ در ۳ ثانیه)</b>
+        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.voiceImpromptu()" id="btnVoiceImp">🎙️ پرسش صوتی</button>
       </div>
-      <button class="btn soft block" id="btnExtractLineQuestions" onclick="TeachAssistant.extractLineByLineQuestions()">✨ استخراج خط‌به‌خط سوالات با جواب</button>
-      <div id="extractedQuestionsBox" style="margin-top:10px;display:grid;gap:8px"></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <input id="impromptuInp" placeholder="سوال ناگهانی دانش‌آموز را بنویسید یا با میکروفون بگویید..." style="flex:1;min-width:200px">
+        <button type="button" class="btn primary" id="btnRunImpromptu" onclick="TeachAssistant.askImpromptu()">🚀 دریافت پاسخ معلمانه</button>
+      </div>
+      <div id="impromptuResultBox" style="display:none;margin-top:10px;padding:12px;background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;line-height:1.8;font-size:13px"></div>
+    </div>
+
+    <!-- تب ۴: یادداشت اختصاصی صفحه و متن استخراج‌شده -->
+    <div class="teach-wb-pane" id="wbPane-note">
+      <div class="grid-2">
+        <div class="field" style="margin:0">
+          <label for="teacherPageNote" style="font-weight:800;color:var(--primary)">📝 یادداشت و نکات تدریس همین صفحه:</label>
+          <textarea id="teacherPageNote" rows="4" placeholder="نکته‌های مهم امتحانی، مثال‌های کلاسی یا تکلیف این صفحه را بنویسید..."></textarea>
+          <button type="button" class="btn primary block" style="margin-top:6px" onclick="TeachAssistant.savePageNote()">💾 ذخیره یادداشت این صفحه</button>
+        </div>
+        <div class="field" style="margin:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <label for="cachedPageText" style="font-weight:800;margin:0">📄 متن استخراج‌شده صفحه فعلی:</label>
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.saveEditedPageText()">💾 ثبت ویرایش متن</button>
+          </div>
+          <textarea id="cachedPageText" rows="4" placeholder="متن صفحه کتاب پس از اسکن اینجا قرار می‌گیرد و برای استخراج سوال استفاده می‌شود..."></textarea>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -3021,7 +3462,7 @@ body {
 <!-- امضای ظریف و غیرمزاحم معرفی برنامه در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-brand-badge">🎓 دانش‌آموز من <small>v5.5 Pro</small></span>
+    <span class="subtle-brand-badge">🎓 دانش‌آموز من <small>v5.6 Pro</small></span>
     <span class="subtle-brand-text">دفتر هوشمند معلم، کارنامه رنگی و آزمون‌ساز نسل جدید</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -3211,7 +3652,8 @@ const ScrollFX = {
 function sanitizeDb(data) {
   if (!data || typeof data !== 'object') data = { version: 1, schools: [] };
   if (!Array.isArray(data.schools)) data.schools = [];
-  if (!data.cachedBook || typeof data.cachedBook !== 'object') data.cachedBook = { name: '', pages: {}, extractedBank: [] };
+  if (!data.cachedBook || typeof data.cachedBook !== 'object') data.cachedBook = { id: 'default_book', name: '', pages: {}, pageCount: 0, notes: {}, bookmarks: [], classPins: {}, annotations: {}, extractedBank: [] };
+  if (!Array.isArray(data.bookLibrary)) data.bookLibrary = [];
   data.schools.forEach(s => {
     if (!s.id) s.id = uid(); if (!s.name) s.name = 'مدرسه';
     if (!Array.isArray(s.photos)) s.photos = s.photo ? [s.photo] : [];
@@ -3249,15 +3691,52 @@ function openStorage() {
     r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
   });
 }
-async function saveBookPdfAsset(buffer) {
+async function saveBookPdfAsset(buffer, bookId = null) {
   const d = await openStorage();
-  await new Promise((resolve, reject) => { const tx=d.transaction(ASSET_STORE,'readwrite'); tx.objectStore(ASSET_STORE).put(buffer,'teacher-book-pdf'); tx.oncomplete=resolve; tx.onerror=()=>reject(tx.error); });
+  await new Promise((resolve, reject) => {
+    const tx = d.transaction(ASSET_STORE, 'readwrite');
+    const st = tx.objectStore(ASSET_STORE);
+    st.put(buffer, 'teacher-book-pdf');
+    if (bookId) st.put(buffer, 'teacher-book-pdf-' + bookId);
+    tx.oncomplete = resolve;
+    tx.onerror = () => reject(tx.error);
+  });
   d.close();
 }
-async function loadBookPdfAsset() {
+async function loadBookPdfAsset(bookId = null) {
   const d = await openStorage();
-  const result = await new Promise((resolve, reject) => { const tx=d.transaction(ASSET_STORE,'readonly'); const r=tx.objectStore(ASSET_STORE).get('teacher-book-pdf'); r.onsuccess=()=>resolve(r.result || null); r.onerror=()=>reject(r.error); });
-  d.close(); return result;
+  const result = await new Promise((resolve, reject) => {
+    const tx = d.transaction(ASSET_STORE, 'readonly');
+    const st = tx.objectStore(ASSET_STORE);
+    const key = bookId ? ('teacher-book-pdf-' + bookId) : 'teacher-book-pdf';
+    const r = st.get(key);
+    r.onsuccess = () => {
+      if (r.result) { resolve(r.result); return; }
+      if (bookId) {
+        const rFallback = st.get('teacher-book-pdf');
+        rFallback.onsuccess = () => resolve(rFallback.result || null);
+        rFallback.onerror = () => resolve(null);
+      } else {
+        resolve(null);
+      }
+    };
+    r.onerror = () => reject(r.error);
+  });
+  d.close();
+  return result;
+}
+async function deleteBookPdfAsset(bookId) {
+  if (!bookId) return;
+  try {
+    const d = await openStorage();
+    await new Promise((resolve) => {
+      const tx = d.transaction(ASSET_STORE, 'readwrite');
+      tx.objectStore(ASSET_STORE).delete('teacher-book-pdf-' + bookId);
+      tx.oncomplete = resolve;
+      tx.onerror = resolve;
+    });
+    d.close();
+  } catch (e) {}
 }
 async function savePersistent() {
   db._updatedAt = Date.now();
@@ -4116,93 +4595,1014 @@ function toast(m) { const t = document.getElementById('toast'); if (!t) return; 
 
 /* دستیار آموزش و کتاب‌خوان */
 const TeachAssistant = {
+  _pdfInstance: null,
+  _pdfBufferCache: null,
+  _activeBookId: null,
+  _annotMode: false,
+  _annotTool: 'highlight',
+  _isDrawing: false,
+  _currentStroke: null,
+  _flashcardIdx: 0,
+  _flashcardShowAns: false,
+  _pickedStudentName: '',
+
+  ensureLibraryStructure() {
+    if (!db.cachedBook || typeof db.cachedBook !== 'object') {
+      db.cachedBook = { id: 'default_book', name: '', pages: {}, pageCount: 0, notes: {}, bookmarks: [], classPins: {}, annotations: {}, extractedBank: [] };
+    }
+    if (!db.cachedBook.notes) db.cachedBook.notes = {};
+    if (!Array.isArray(db.cachedBook.bookmarks)) db.cachedBook.bookmarks = [];
+    if (!db.cachedBook.classPins || typeof db.cachedBook.classPins !== 'object') db.cachedBook.classPins = {};
+    if (!db.cachedBook.annotations || typeof db.cachedBook.annotations !== 'object') db.cachedBook.annotations = {};
+    if (!Array.isArray(db.cachedBook.extractedBank)) db.cachedBook.extractedBank = [];
+    if (!Array.isArray(db.bookLibrary)) db.bookLibrary = [];
+    // اگر کتاب فعلی در حافظه است ولی هنوز وارد آرایه کتابخانه چندکتابی نشده، آن را اضافه کن
+    if (db.cachedBook.name && !db.bookLibrary.some(b => b.name === db.cachedBook.name)) {
+      if (!db.cachedBook.id) db.cachedBook.id = 'book_' + uid();
+      db.bookLibrary.unshift({
+        id: db.cachedBook.id,
+        name: db.cachedBook.name,
+        pageCount: db.cachedBook.pageCount || Object.keys(db.cachedBook.pages || {}).length || 1,
+        pages: db.cachedBook.pages || {},
+        notes: db.cachedBook.notes || {},
+        bookmarks: db.cachedBook.bookmarks || [],
+        classPins: db.cachedBook.classPins || {},
+        annotations: db.cachedBook.annotations || {},
+        extractedBank: db.cachedBook.extractedBank || [],
+        lastPage: Number(window._teacherPdfPage) || 1
+      });
+    }
+  },
+
+  syncActiveToLibrary() {
+    this.ensureLibraryStructure();
+    if (!db.cachedBook?.name) return;
+    const idx = db.bookLibrary.findIndex(b => b.id === db.cachedBook.id || b.name === db.cachedBook.name);
+    const snapshot = {
+      id: db.cachedBook.id || ('book_' + uid()),
+      name: db.cachedBook.name,
+      pageCount: db.cachedBook.pageCount || Object.keys(db.cachedBook.pages || {}).length || 1,
+      pages: db.cachedBook.pages || {},
+      notes: db.cachedBook.notes || {},
+      bookmarks: db.cachedBook.bookmarks || [],
+      classPins: db.cachedBook.classPins || {},
+      annotations: db.cachedBook.annotations || {},
+      extractedBank: db.cachedBook.extractedBank || [],
+      lastPage: Number(window._teacherPdfPage) || 1
+    };
+    db.cachedBook.id = snapshot.id;
+    if (idx >= 0) db.bookLibrary[idx] = snapshot;
+    else db.bookLibrary.unshift(snapshot);
+  },
+
+  getPdfDocumentConfig(buffer) {
+    return {
+      data: new Uint8Array(buffer.slice(0)),
+      cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+      cMapPacked: true,
+      standardFontDataUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/standard_fonts/'
+    };
+  },
+
+  cleanPersianPdfText(rawItems) {
+    if (!Array.isArray(rawItems)) return '';
+    return rawItems
+      .map(i => (i && i.str) ? i.str : '')
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  },
+
   async scanAndCacheBookPDF(e) {
-    const file = e.target.files?.[0]; if (!file) return;
-    const stBox = document.getElementById('bookScanStatus'); stBox.style.display = 'block'; stBox.textContent = '⏳ در حال اسکن کتاب در حافظه...';
+    const file = e?.target?.files?.[0];
+    if (!file) return;
+    this.ensureLibraryStructure();
+    const stBox = document.getElementById('bookScanStatus');
+    if (stBox) { stBox.style.display = 'block'; stBox.textContent = '⏳ در حال بارگذاری و اسکن هوشمند کتاب در حافظه دائمی...'; }
     try {
       const pdfBuffer = await file.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument(new Uint8Array(pdfBuffer.slice(0))).promise;
-      await saveBookPdfAsset(pdfBuffer.slice(0));
-      const maxP = Math.min(pdf.numPages, 70), pagesObj = {};
-      for (let p = 1; p <= maxP; p++) {
-        stBox.textContent = `⏳ اسکن صفحه ${fa(p)} از ${fa(maxP)}...`;
-        const page = await pdf.getPage(p), tc = await page.getTextContent();
-        const clean = tc.items.map(i => i.str).join(' ').replace(/\s+/g, ' ').trim();
-        pagesObj[String(p)] = clean;
-      }
       const bookName = file.name.replace(/\.pdf$/i, '');
-      const oldNotes = db.cachedBook?.name === bookName ? (db.cachedBook?.notes || {}) : {};
-      db.cachedBook = { name: bookName, pages: pagesObj, pageCount: pdf.numPages, notes: oldNotes, extractedBank: db.cachedBook?.name === bookName ? (db.cachedBook?.extractedBank || []) : [] };
-      window._teacherPdfPage = 1; window._teacherPdfZoom = 1;
+      const existing = (db.bookLibrary || []).find(b => b.name === bookName);
+      const bookId = existing?.id || ('book_' + uid());
+
+      const pdf = await pdfjsLib.getDocument(this.getPdfDocumentConfig(pdfBuffer)).promise;
+      this._pdfInstance = pdf;
+      this._pdfBufferCache = pdfBuffer.slice(0);
+      this._activeBookId = bookId;
+
+      await saveBookPdfAsset(pdfBuffer.slice(0), bookId);
+
+      // اسکن سریع صفحات اولیه (تا ۸۰ صفحه اول بلافاصله و بقیه صفحات تا ۳۰۰+ صفحه در لحظه ورق‌زدن به‌صورت خودکار اسکن می‌شوند)
+      const totalPages = pdf.numPages;
+      const initialScanCount = Math.min(totalPages, 80);
+      const pagesObj = existing?.pages ? { ...existing.pages } : {};
+
+      for (let p = 1; p <= initialScanCount; p++) {
+        if (p % 5 === 0 || p === initialScanCount || p === 1) {
+          if (stBox) stBox.textContent = `⏳ اسکن متن صفحه ${fa(p)} از ${fa(totalPages)}...`;
+        }
+        const page = await pdf.getPage(p);
+        const tc = await page.getTextContent();
+        pagesObj[String(p)] = this.cleanPersianPdfText(tc.items);
+      }
+
+      db.cachedBook = {
+        id: bookId,
+        name: bookName,
+        pages: pagesObj,
+        pageCount: totalPages,
+        notes: existing?.notes || {},
+        bookmarks: Array.isArray(existing?.bookmarks) ? existing.bookmarks : [],
+        classPins: existing?.classPins || {},
+        annotations: existing?.annotations || {},
+        extractedBank: Array.isArray(existing?.extractedBank) ? existing.extractedBank : []
+      };
+      window._teacherPdfPage = 1;
+      window._teacherPdfZoom = 1;
+      this.syncActiveToLibrary();
+
       if (window.ExamApp) ExamApp.autoDetectHeaderFromText(file.name + ' ' + (pagesObj['1'] || ''));
-      savePersistent(); this.renderCachedBookUI(); stBox.textContent = `✅ کتاب «${db.cachedBook.name}» ذخیره شد!`;
-    } catch (err) { stBox.textContent = '❌ خطا: ' + err.message; }
+      await savePersistent();
+      this.renderCachedBookUI();
+      if (stBox) {
+        stBox.textContent = `✅ کتاب «${db.cachedBook.name}» (${fa(totalPages)} صفحه) در کتابخانه دائمی ذخیره شد!`;
+        setTimeout(() => { if (stBox) stBox.style.display = 'none'; }, 5000);
+      }
+      toast(`کتاب «${bookName}» به کتابخانه اضافه شد 📚`);
+    } catch (err) {
+      if (stBox) stBox.textContent = '❌ خطا در خواندن PDF: ' + (err?.message || 'فایل نامعتبر');
+    }
   },
-  renderCachedBookUI() {
-    const cb = db.cachedBook || { name: '', pages: {}, extractedBank: [] }, keys = Object.keys(cb.pages || {});
-    const b = document.getElementById('cachedBookBadge'), s = document.getElementById('cachedPageSelect');
-    if (b) b.textContent = keys.length ? `📚 ${cb.name} (${fa(keys.length)} صفحه)` : 'کتاب در حافظه: ندارد';
-    if (s && keys.length) { s.innerHTML = keys.map(k => `<option value="${k}">صفحه ${fa(k)}${(cb.pages[k]||'').trim() ? ' · '+esc((cb.pages[k] || '').slice(0, 38)) : ' · متن قابل استخراج نیست'}</option>`).join(''); if (!s.value) s.value = String(window._teacherPdfPage || keys[0]); this.selectCachedPage(s.value || keys[0]); }
-    this.renderExtractedBank(); this.renderStudyPdf().catch(()=>{});
+
+  async switchLibraryBook(bookId) {
+    if (!bookId) return;
+    this.ensureLibraryStructure();
+    this.syncActiveToLibrary();
+    const target = (db.bookLibrary || []).find(b => b.id === bookId || b.name === bookId);
+    if (!target) return;
+
+    db.cachedBook = {
+      id: target.id,
+      name: target.name,
+      pages: target.pages || {},
+      pageCount: target.pageCount || Object.keys(target.pages || {}).length || 1,
+      notes: target.notes || {},
+      bookmarks: Array.isArray(target.bookmarks) ? target.bookmarks : [],
+      classPins: target.classPins || {},
+      annotations: target.annotations || {},
+      extractedBank: Array.isArray(target.extractedBank) ? target.extractedBank : []
+    };
+    this._activeBookId = target.id;
+    this._pdfInstance = null;
+    this._pdfBufferCache = null;
+    window._teacherPdfPage = Number(target.lastPage) || 1;
+    await savePersistent();
+    this.renderCachedBookUI();
+    toast(`کتاب «${target.name}» فعال شد 📖`);
   },
-  async selectCachedPage(k) { const b = document.getElementById('cachedPageText'); if (b) b.value = db.cachedBook?.pages?.[k] || ''; window._teacherPdfPage = Number(k)||1; const note=document.getElementById('teacherPageNote'); if(note) note.value=db.cachedBook?.notes?.[String(window._teacherPdfPage)] || ''; const inp=document.getElementById('teacherPdfPageInput'); if(inp) inp.value=window._teacherPdfPage; await this.renderStudyPdf(); },
-  async renderStudyPdf() {
-    const canvas=document.getElementById('teacherPdfCanvas'), empty=document.getElementById('teacherPdfEmpty'), info=document.getElementById('teacherPdfPageInfo'), status=document.getElementById('teacherPdfRenderStatus'); if(!canvas) return;
-    let buffer=null; try { buffer=await loadBookPdfAsset(); } catch(e) {}
-    if(!buffer || !window.pdfjsLib) { if(empty) empty.style.display='block'; if(info) info.textContent='هنوز کتابی بارگذاری نشده'; canvas.style.display='none'; return; }
-    try { const pdf=await pdfjsLib.getDocument({data:new Uint8Array(buffer.slice(0))}).promise; const total=pdf.numPages; let pageNo=Math.min(total,Math.max(1,Number(window._teacherPdfPage)||1)); window._teacherPdfPage=pageNo; const page=await pdf.getPage(pageNo); const vp=page.getViewport({scale:Math.min(2.2,Math.max(.5,window._teacherPdfZoom||1))}); const ctx=canvas.getContext('2d'); canvas.width=vp.width; canvas.height=vp.height; canvas.style.display='block'; if(empty) empty.style.display='none'; if(info) info.textContent=`${db.cachedBook?.name||'کتاب'} · صفحه ${fa(pageNo)} از ${fa(total)}`; if(status) status.textContent=(db.cachedBook?.pages?.[String(pageNo)]||'').trim() ? '' : 'این صفحه متن قابل استخراج ندارد؛ ممکن است اسکن تصویری باشد.'; const input=document.getElementById('teacherPdfPageInput'); if(input) {input.max=total;input.value=pageNo;} await page.render({canvasContext:ctx,viewport:vp}).promise; } catch(e) { if(status) status.textContent='نمایش PDF ناموفق بود؛ دوباره فایل را انتخاب کن.'; }
+
+  async deleteActiveLibraryBook() {
+    this.ensureLibraryStructure();
+    if (!db.cachedBook?.name) { toast('کتابی برای حذف وجود ندارد.'); return; }
+    const name = db.cachedBook.name;
+    const id = db.cachedBook.id;
+    if (!confirm(`آیا کتاب «${name}» از کتابخانه حذف شود؟`)) return;
+    db.bookLibrary = (db.bookLibrary || []).filter(b => b.id !== id && b.name !== name);
+    await deleteBookPdfAsset(id);
+    if (db.bookLibrary.length > 0) {
+      const next = db.bookLibrary[0];
+      db.cachedBook = { ...next };
+      this._activeBookId = next.id;
+      window._teacherPdfPage = Number(next.lastPage) || 1;
+    } else {
+      db.cachedBook = { id: '', name: '', pages: {}, pageCount: 0, notes: {}, bookmarks: [], classPins: {}, annotations: {}, extractedBank: [] };
+      this._activeBookId = null;
+      window._teacherPdfPage = 1;
+    }
+    this._pdfInstance = null;
+    this._pdfBufferCache = null;
+    await savePersistent();
+    this.renderCachedBookUI();
+    toast(`کتاب «${name}» حذف شد.`);
   },
-  async changeStudyPage(delta) { const max=Number(db.cachedBook?.pageCount)||Object.keys(db.cachedBook?.pages||{}).length||1; const next=Math.min(max,Math.max(1,(Number(window._teacherPdfPage)||1)+delta)); window._teacherPdfPage=next; const sel=document.getElementById('cachedPageSelect'); if(sel) sel.value=String(next); await this.selectCachedPage(next); },
-  async goStudyPage(value) { const max=Number(db.cachedBook?.pageCount)||Object.keys(db.cachedBook?.pages||{}).length||1; const n=Number(enDigits(value)); if(!Number.isFinite(n)||n<1||n>max){toast('شماره صفحه معتبر نیست.');return;} window._teacherPdfPage=n; const sel=document.getElementById('cachedPageSelect'); if(sel) sel.value=String(n); await this.selectCachedPage(n); },
-  async zoomStudyPdf(delta) { window._teacherPdfZoom=Math.min(2.2,Math.max(.5,(window._teacherPdfZoom||1)+delta)); await this.renderStudyPdf(); },
-  savePageNote() { const page=String(Number(window._teacherPdfPage)||1), val=document.getElementById('teacherPageNote')?.value||''; if(!db.cachedBook) {toast('ابتدا PDF کتاب را انتخاب کن.');return;} if(!db.cachedBook.notes) db.cachedBook.notes={}; db.cachedBook.notes[page]=val; savePersistent(); toast('یادداشت این صفحه ذخیره شد.'); },
-  voiceImpromptu() {
-    const S = window.SpeechRecognition || window.webkitSpeechRecognition; if (!S) { alert('پشتیبانی نمی‌شود'); return; }
-    const r = new S(); r.lang = 'fa-IR'; r.onresult = (ev) => { document.getElementById('impromptuInp').value = ev.results[0][0].transcript; }; r.start();
-  },
-  async askImpromptu() {
-    const q = document.getElementById('impromptuInp')?.value.trim(); if (!q) return;
-    const btn = document.getElementById('btnRunImpromptu'), box = document.getElementById('impromptuResultBox');
-    btn.disabled = true; box.style.display = 'block'; box.innerHTML = '⏳ در حال آماده‌سازی پاسخ علمی و مثال کلاسی...';
+
+  async ensurePageTextExtracted(pageNo) {
+    const k = String(pageNo);
+    if (!db.cachedBook) return '';
+    if (!db.cachedBook.pages) db.cachedBook.pages = {};
+    if ((db.cachedBook.pages[k] || '').trim()) return db.cachedBook.pages[k];
     try {
-      const ans = await ExamApp.callArgonAI(`دانش‌آموزی سر کلاس پرسیده: "${q}". در ۳ بخش کوتاه برای معلم پاسخ بده: ۱. پاسخ علمی و قاطع ۲. مثال ملموس کلاسی ۳. ارتباط با درس.`);
-      box.innerHTML = ans.replace(/\n/g, '<br>');
-    } catch (err) { box.innerHTML = `<span style="color:#dc2626">❌ ${esc(err.message)}</span>`; } finally { btn.disabled = false; }
+      if (!this._pdfInstance) {
+        const buf = this._pdfBufferCache || await loadBookPdfAsset(db.cachedBook?.id);
+        if (!buf || !window.pdfjsLib) return '';
+        this._pdfBufferCache = buf;
+        this._pdfInstance = await pdfjsLib.getDocument(this.getPdfDocumentConfig(buf)).promise;
+      }
+      if (pageNo >= 1 && pageNo <= this._pdfInstance.numPages) {
+        const page = await this._pdfInstance.getPage(pageNo);
+        const tc = await page.getTextContent();
+        const clean = this.cleanPersianPdfText(tc.items);
+        if (clean) {
+          db.cachedBook.pages[k] = clean;
+          this.syncActiveToLibrary();
+          savePersistent();
+        }
+        return clean;
+      }
+    } catch (e) {}
+    return db.cachedBook?.pages?.[k] || '';
   },
+
+  async scanCurrentPageHighAccuracy() {
+    const p = Number(window._teacherPdfPage) || 1;
+    if (!db.cachedBook?.name) { toast('ابتدا فایل PDF کتاب را انتخاب کنید.'); return; }
+    if (db.cachedBook.pages) delete db.cachedBook.pages[String(p)];
+    const txt = await this.ensurePageTextExtracted(p);
+    const box = document.getElementById('cachedPageText');
+    if (box) box.value = txt || '';
+    if (txt) toast(`متن صفحه ${fa(p)} با موفقیت بازخوانی شد ✅`);
+    else toast('این صفحه در فایل PDF متن لایه‌ای ندارد (اسکن تصویری است).');
+  },
+
+  renderCachedBookUI() {
+    this.ensureLibraryStructure();
+    const cb = db.cachedBook || { name: '', pages: {}, pageCount: 0, extractedBank: [] };
+    const totalP = Number(cb.pageCount) || Object.keys(cb.pages || {}).length || 0;
+    const curP = Math.min(Math.max(1, Number(window._teacherPdfPage) || 1), Math.max(1, totalP));
+    window._teacherPdfPage = curP;
+
+    const b = document.getElementById('cachedBookBadge');
+    if (b) b.textContent = cb.name ? `📚 ${cb.name} (${fa(totalP)} صفحه)` : 'کتاب در حافظه: ندارد';
+
+    const libSel = document.getElementById('teacherBookLibrarySelect');
+    if (libSel) {
+      const list = db.bookLibrary || [];
+      if (list.length) {
+        libSel.innerHTML = list.map(item => `<option value="${esc(item.id)}" ${(item.id === cb.id || item.name === cb.name) ? 'selected' : ''}>📘 ${esc(item.name)} (${fa(item.pageCount || Object.keys(item.pages || {}).length)} صفحه)</option>`).join('');
+      } else {
+        libSel.innerHTML = '<option value="">-- هنوز کتابی در کتابخانه ذخیره نشده --</option>';
+      }
+    }
+
+    const s = document.getElementById('cachedPageSelect');
+    if (s) {
+      if (totalP > 0) {
+        const opts = [];
+        for (let i = 1; i <= totalP; i++) {
+          const k = String(i);
+          const snippet = (cb.pages?.[k] || '').trim().slice(0, 34);
+          const bm = (cb.bookmarks || []).includes(i) ? '🔖 ' : '';
+          opts.push(`<option value="${k}" ${i === curP ? 'selected' : ''}>${bm}صفحه ${fa(i)}${snippet ? ' · ' + esc(snippet) : ''}</option>`);
+        }
+        s.innerHTML = opts.join('');
+        s.value = String(curP);
+      } else {
+        s.innerHTML = '<option value="">-- ابتدا PDF کتاب را انتخاب کنید --</option>';
+      }
+    }
+
+    const slider = document.getElementById('teacherPdfPageSlider');
+    if (slider) {
+      slider.max = String(Math.max(1, totalP));
+      slider.value = String(curP);
+    }
+
+    this.renderBookmarksStrip();
+    this.renderExtractedBank();
+    this.selectCachedPage(curP);
+  },
+
+  previewSliderPage(val) {
+    const p = Number(val) || 1;
+    const total = Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 1;
+    const info = document.getElementById('teacherPdfPageInfo');
+    if (info) info.textContent = `صفحه ${fa(p)} از ${fa(total)}`;
+  },
+
+  async selectCachedPage(k) {
+    const pageNo = Math.max(1, Number(k) || 1);
+    window._teacherPdfPage = pageNo;
+    const immediateTxt = db.cachedBook?.pages?.[String(pageNo)] || "";
+    const bImm = document.getElementById("cachedPageText");
+    if (bImm) bImm.value = immediateTxt;
+    const noteImm = document.getElementById("teacherPageNote");
+    if (noteImm) noteImm.value = db.cachedBook?.notes?.[String(pageNo)] || "";
+    const txt = await this.ensurePageTextExtracted(pageNo);
+    const b = document.getElementById('cachedPageText');
+    if (b) b.value = txt || '';
+    const note = document.getElementById('teacherPageNote');
+    if (note) note.value = db.cachedBook?.notes?.[String(pageNo)] || '';
+    const inp = document.getElementById('teacherPdfPageInput');
+    if (inp) inp.value = pageNo;
+    const slider = document.getElementById('teacherPdfPageSlider');
+    if (slider) slider.value = String(pageNo);
+    const sel = document.getElementById('cachedPageSelect');
+    if (sel && sel.value !== String(pageNo)) sel.value = String(pageNo);
+
+    if (db.cachedBook?.name) {
+      this.syncActiveToLibrary();
+    }
+    this.updateBookmarkBtnState();
+    await this.renderStudyPdf();
+  },
+
+  async renderStudyPdf() {
+    const canvas = document.getElementById('teacherPdfCanvas');
+    const empty = document.getElementById('teacherPdfEmpty');
+    const titleEl = document.getElementById('teacherPdfBookTitle');
+    const info = document.getElementById('teacherPdfPageInfo');
+    const status = document.getElementById('teacherPdfRenderStatus');
+    const zoomLbl = document.getElementById('teacherPdfZoomLabel');
+    if (!canvas) return;
+
+    const zoomVal = Math.min(2.4, Math.max(0.55, Number(window._teacherPdfZoom) || 1));
+    if (zoomLbl) zoomLbl.textContent = fa(Math.round(zoomVal * 100)) + '٪';
+
+    let buffer = this._pdfBufferCache;
+    if (!buffer) {
+      try { buffer = await loadBookPdfAsset(db.cachedBook?.id); } catch (e) {}
+      if (buffer) this._pdfBufferCache = buffer;
+    }
+
+    if (!buffer || !window.pdfjsLib) {
+      if (empty) empty.style.display = 'block';
+      if (titleEl) titleEl.textContent = db.cachedBook?.name || 'کتاب درسی';
+      if (info) info.textContent = db.cachedBook?.name ? `صفحه ${fa(window._teacherPdfPage || 1)} (فایل PDF را یک‌بار انتخاب کنید)` : 'هنوز کتابی بارگذاری نشده';
+      canvas.style.display = 'none';
+      const annotCanvas = document.getElementById('teacherAnnotCanvas');
+      if (annotCanvas) annotCanvas.style.display = 'none';
+      return;
+    }
+
+    try {
+      if (!this._pdfInstance) {
+        this._pdfInstance = await pdfjsLib.getDocument(this.getPdfDocumentConfig(buffer)).promise;
+      }
+      const pdf = this._pdfInstance;
+      const total = pdf.numPages;
+      if (db.cachedBook && db.cachedBook.pageCount !== total) {
+        db.cachedBook.pageCount = total;
+      }
+      const pageNo = Math.min(total, Math.max(1, Number(window._teacherPdfPage) || 1));
+      window._teacherPdfPage = pageNo;
+
+      const page = await pdf.getPage(pageNo);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2.25);
+      const cssViewport = page.getViewport({ scale: zoomVal });
+      const renderViewport = page.getViewport({ scale: zoomVal * dpr });
+
+      const ctx = canvas.getContext('2d');
+      canvas.width = Math.floor(renderViewport.width);
+      canvas.height = Math.floor(renderViewport.height);
+      canvas.style.width = Math.floor(cssViewport.width) + 'px';
+      canvas.style.height = Math.floor(cssViewport.height) + 'px';
+      canvas.style.display = 'block';
+      if (empty) empty.style.display = 'none';
+
+      if (titleEl) titleEl.textContent = db.cachedBook?.name || 'کتاب درسی';
+      if (info) info.textContent = `صفحه ${fa(pageNo)} از ${fa(total)}`;
+
+      const slider = document.getElementById('teacherPdfPageSlider');
+      if (slider) { slider.max = String(total); slider.value = String(pageNo); }
+      const input = document.getElementById('teacherPdfPageInput');
+      if (input) { input.max = total; input.value = pageNo; }
+
+      await page.render({ canvasContext: ctx, viewport: renderViewport }).promise;
+
+      // همگام‌سازی لایه قلم نوری و هایلایت روی همین صفحه
+      this.setupAnnotationLayer(Math.floor(cssViewport.width), Math.floor(cssViewport.height));
+
+      const pageTxt = await this.ensurePageTextExtracted(pageNo);
+      const txtArea = document.getElementById('cachedPageText');
+      if (txtArea && !txtArea.value.trim() && pageTxt) txtArea.value = pageTxt;
+      if (status) {
+        status.textContent = pageTxt.trim()
+          ? `✅ متن صفحه ${fa(pageNo)} آماده استخراج سوال و حل فعالیت است (${fa(pageTxt.split(' ').length)} کلمه)`
+          : 'ℹ️ این صفحه اسکن تصویری است؛ می‌توانید در تب «یادداشت و متن صفحه» موضوع درس را بنویسید.';
+      }
+    } catch (e) {
+      if (status) status.textContent = '⚠️ نمایش PDF نیازمند انتخاب مجدد فایل است.';
+    }
+  },
+
+  async changeStudyPage(delta) {
+    const max = Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 1;
+    const next = Math.min(max, Math.max(1, (Number(window._teacherPdfPage) || 1) + delta));
+    window._teacherPdfPage = next;
+    await this.selectCachedPage(next);
+  },
+
+  async goLastStudyPage() {
+    const max = Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 1;
+    await this.goStudyPage(max);
+  },
+
+  async goStudyPage(value) {
+    const max = Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 1;
+    const n = Number(enDigits(value));
+    if (!Number.isFinite(n) || n < 1 || n > max) {
+      toast(`شماره صفحه باید بین ۱ تا ${fa(max)} باشد.`);
+      return;
+    }
+    window._teacherPdfPage = n;
+    await this.selectCachedPage(n);
+  },
+
+  async zoomStudyPdf(delta) {
+    window._teacherPdfZoom = Math.min(2.4, Math.max(0.55, (Number(window._teacherPdfZoom) || 1) + delta));
+    await this.renderStudyPdf();
+  },
+
+  async resetStudyZoom() {
+    window._teacherPdfZoom = 1;
+    await this.renderStudyPdf();
+  },
+
+  /* ==================== لایه قلم نوری و ماژیک هایلایت روی کتاب ==================== */
+  toggleAnnotateBar() {
+    this._annotMode = !this._annotMode;
+    document.getElementById('teacherAnnotToolbar')?.classList.toggle('show', this._annotMode);
+    document.getElementById('btnToggleAnnotate')?.classList.toggle('active', this._annotMode);
+    const ac = document.getElementById('teacherAnnotCanvas');
+    if (ac) ac.classList.toggle('drawing-active', this._annotMode);
+    if (this._annotMode) toast('قلم تدریس روی صفحه فعال شد 🖍️');
+  },
+
+  setAnnotTool(tool, btnEl) {
+    this._annotTool = tool;
+    document.querySelectorAll('#teacherAnnotToolbar .teach-icon-btn').forEach(b => b.classList.remove('active'));
+    if (btnEl) btnEl.classList.add('active');
+  },
+
+  setupAnnotationLayer(cssW, cssH) {
+    const ac = document.getElementById('teacherAnnotCanvas');
+    if (!ac) return;
+    ac.width = cssW || 600;
+    ac.height = cssH || 800;
+    ac.style.width = (cssW || 600) + 'px';
+    ac.style.height = (cssH || 800) + 'px';
+    ac.style.display = 'block';
+    ac.classList.toggle('drawing-active', !!this._annotMode);
+
+    if (!ac._boundEvents) {
+      ac._boundEvents = true;
+      const getPt = (ev) => {
+        const rect = ac.getBoundingClientRect();
+        const clientX = ev.touches?.[0]?.clientX ?? ev.clientX;
+        const clientY = ev.touches?.[0]?.clientY ?? ev.clientY;
+        return {
+          x: Math.round(((clientX - rect.left) / (rect.width || 1)) * 1000) / 1000,
+          y: Math.round(((clientY - rect.top) / (rect.height || 1)) * 1000) / 1000
+        };
+      };
+      const startDraw = (ev) => {
+        if (!this._annotMode) return;
+        if (ev.cancelable) ev.preventDefault();
+        this._isDrawing = true;
+        const pt = getPt(ev);
+        this._currentStroke = { tool: this._annotTool, pts: [pt] };
+        this.redrawPageAnnotations();
+      };
+      const moveDraw = (ev) => {
+        if (!this._isDrawing || !this._currentStroke) return;
+        if (ev.cancelable) ev.preventDefault();
+        this._currentStroke.pts.push(getPt(ev));
+        this.redrawPageAnnotations();
+      };
+      const endDraw = () => {
+        if (!this._isDrawing || !this._currentStroke) return;
+        this._isDrawing = false;
+        this.ensureLibraryStructure();
+        const pKey = String(Number(window._teacherPdfPage) || 1);
+        if (!Array.isArray(db.cachedBook.annotations[pKey])) db.cachedBook.annotations[pKey] = [];
+        if (this._currentStroke.tool === 'eraser') {
+          // پاک‌کن: حذف خطوطی که نزدیک مسیر پاک‌کن هستند
+          const erasePts = this._currentStroke.pts;
+          db.cachedBook.annotations[pKey] = db.cachedBook.annotations[pKey].filter(st => {
+            return !st.pts.some(p1 => erasePts.some(p2 => Math.hypot(p1.x - p2.x, p1.y - p2.y) < 0.045));
+          });
+        } else {
+          db.cachedBook.annotations[pKey].push(this._currentStroke);
+        }
+        this._currentStroke = null;
+        this.syncActiveToLibrary();
+        savePersistent();
+        this.redrawPageAnnotations();
+      };
+      ac.addEventListener('mousedown', startDraw);
+      ac.addEventListener('mousemove', moveDraw);
+      window.addEventListener('mouseup', endDraw);
+      ac.addEventListener('touchstart', startDraw, { passive: false });
+      ac.addEventListener('touchmove', moveDraw, { passive: false });
+      ac.addEventListener('touchend', endDraw);
+    }
+    this.redrawPageAnnotations();
+  },
+
+  redrawPageAnnotations() {
+    const ac = document.getElementById('teacherAnnotCanvas');
+    if (!ac) return;
+    const ctx = ac.getContext('2d');
+    ctx.clearRect(0, 0, ac.width, ac.height);
+    const pKey = String(Number(window._teacherPdfPage) || 1);
+    const strokes = [...(db.cachedBook?.annotations?.[pKey] || [])];
+    if (this._currentStroke && this._currentStroke.tool !== 'eraser') strokes.push(this._currentStroke);
+
+    strokes.forEach(st => {
+      if (!st.pts || !st.pts.length) return;
+      ctx.save();
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      if (st.tool === 'highlight') {
+        ctx.strokeStyle = 'rgba(250, 204, 21, 0.42)';
+        ctx.lineWidth = Math.max(14, ac.width * 0.028);
+      } else if (st.tool === 'redpen') {
+        ctx.strokeStyle = 'rgba(239, 68, 68, 0.92)';
+        ctx.lineWidth = Math.max(3, ac.width * 0.005);
+      } else if (st.tool === 'cyanpen') {
+        ctx.strokeStyle = 'rgba(14, 165, 233, 0.92)';
+        ctx.lineWidth = Math.max(3, ac.width * 0.005);
+      } else if (st.tool === 'greenpen') {
+        ctx.strokeStyle = 'rgba(34, 197, 94, 0.92)';
+        ctx.lineWidth = Math.max(3, ac.width * 0.005);
+      }
+      ctx.beginPath();
+      st.pts.forEach((pt, idx) => {
+        const x = pt.x * ac.width;
+        const y = pt.y * ac.height;
+        if (idx === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+      if (st.pts.length === 1) {
+        ctx.lineTo(st.pts[0].x * ac.width + 0.5, st.pts[0].y * ac.height + 0.5);
+      }
+      ctx.stroke();
+      ctx.restore();
+    });
+  },
+
+  undoAnnotation() {
+    this.ensureLibraryStructure();
+    const pKey = String(Number(window._teacherPdfPage) || 1);
+    const arr = db.cachedBook?.annotations?.[pKey];
+    if (Array.isArray(arr) && arr.length) {
+      arr.pop();
+      this.syncActiveToLibrary();
+      savePersistent();
+      this.redrawPageAnnotations();
+    }
+  },
+
+  clearPageAnnotations() {
+    this.ensureLibraryStructure();
+    const pKey = String(Number(window._teacherPdfPage) || 1);
+    if (db.cachedBook?.annotations?.[pKey]?.length) {
+      db.cachedBook.annotations[pKey] = [];
+      this.syncActiveToLibrary();
+      savePersistent();
+      this.redrawPageAnnotations();
+      toast('خطوط این صفحه پاک شد 🧹');
+    }
+  },
+
+  /* ==================== نشانک‌ها، پین پیشرفت کلاس و تمام‌صفحه ==================== */
+  togglePageBookmark() {
+    this.ensureLibraryStructure();
+    if (!db.cachedBook?.name) { toast('ابتدا کتاب PDF را انتخاب کنید.'); return; }
+    const p = Number(window._teacherPdfPage) || 1;
+    const idx = db.cachedBook.bookmarks.indexOf(p);
+    if (idx >= 0) {
+      db.cachedBook.bookmarks.splice(idx, 1);
+      toast(`نشانک صفحه ${fa(p)} برداشته شد.`);
+    } else {
+      db.cachedBook.bookmarks.push(p);
+      db.cachedBook.bookmarks.sort((a, b) => a - b);
+      toast(`صفحه ${fa(p)} نشانک‌گذاری شد 🔖`);
+    }
+    this.syncActiveToLibrary();
+    savePersistent();
+    this.updateBookmarkBtnState();
+    this.renderBookmarksStrip();
+  },
+
+  pinClassProgressHere() {
+    this.ensureLibraryStructure();
+    if (!db.cachedBook?.name) { toast('ابتدا کتاب PDF را انتخاب کنید.'); return; }
+    const p = Number(window._teacherPdfPage) || 1;
+    let defaultLabel = 'کلاس فعال';
+    if (currentSchoolId && currentClassId) {
+      const cl = findClass(currentSchoolId, currentClassId);
+      if (cl?.name) defaultLabel = cl.name;
+    }
+    const label = prompt(`این صفحه (صفحه ${fa(p)}) به عنوان «تا اینجا درس دادم» برای کدام کلاس ثبت شود؟`, defaultLabel);
+    if (!label) return;
+    db.cachedBook.classPins[label.trim()] = p;
+    this.syncActiveToLibrary();
+    savePersistent();
+    this.renderBookmarksStrip();
+    toast(`📍 ثبت شد: «${label.trim()}» تا صفحه ${fa(p)}`);
+  },
+
+  updateBookmarkBtnState() {
+    const p = Number(window._teacherPdfPage) || 1;
+    const isBm = (db.cachedBook?.bookmarks || []).includes(p);
+    const btn = document.getElementById('btnToggleBookmark');
+    if (btn) {
+      btn.classList.toggle('active', isBm);
+      btn.textContent = isBm ? '🔖 نشانک‌شده' : '🔖 نشانک';
+    }
+  },
+
+  renderBookmarksStrip() {
+    const strip = document.getElementById('teacherBookmarksStrip');
+    if (!strip) return;
+    const bms = db.cachedBook?.bookmarks || [];
+    const pins = Object.entries(db.cachedBook?.classPins || {});
+    if (!bms.length && !pins.length) {
+      strip.style.display = 'none';
+      strip.innerHTML = '';
+      return;
+    }
+    strip.style.display = 'flex';
+    const pinHtml = pins.map(([cName, pg]) => `<span class="teach-bm-chip class-pin" onclick="TeachAssistant.goStudyPage(${Number(pg)})" title="پرش به صفحه تدریس‌شده این کلاس">📍 ${esc(cName)}: ص ${fa(pg)}</span>`).join('');
+    const bmHtml = bms.map(pg => `<span class="teach-bm-chip" onclick="TeachAssistant.goStudyPage(${Number(pg)})">🔖 صفحه ${fa(pg)}</span>`).join('');
+    strip.innerHTML = pinHtml + bmHtml;
+  },
+
+  toggleFullscreenBoard() {
+    const card = document.getElementById('teacherStudyPdfCard');
+    const btn = document.getElementById('btnFullscreenBoard');
+    if (!card) return;
+    const isFs = card.classList.toggle('fullscreen-board');
+    if (btn) {
+      btn.classList.toggle('active', isFs);
+      btn.textContent = isFs ? '✖ خروج از تمام‌صفحه' : '🖥️ تمام‌صفحه';
+    }
+    setTimeout(() => this.renderStudyPdf(), 80);
+  },
+
+  sendPageToExamBuilder() {
+    const txt = document.getElementById('cachedPageText')?.value?.trim() || db.cachedBook?.pages?.[String(window._teacherPdfPage || 1)] || '';
+    if (!txt) { toast('متنی در این صفحه برای ارسال به آزمون‌ساز یافت نشد.'); return; }
+    const aiLessonInp = document.getElementById('aiLessonText');
+    if (aiLessonInp) aiLessonInp.value = txt;
+    showView('examView');
+    toast('متن صفحه به بخش آزمون‌ساز منتقل شد 📝');
+  },
+
+  /* ==================== میز کار ۴ تبی پایین صفحه کتاب ==================== */
+  openWorkbenchTab(tabId) {
+    ['extract', 'solve', 'impromptu', 'note'].forEach(id => {
+      document.getElementById('wbTabBtn-' + id)?.classList.toggle('active', id === tabId);
+      document.getElementById('wbPane-' + id)?.classList.toggle('active', id === tabId);
+    });
+  },
+
+  setExtractCount(n) {
+    const inp = document.getElementById('extractCountInp');
+    if (inp) inp.value = String(n);
+    document.querySelectorAll('#extractCountChips .teach-count-chip').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.includes(fa(n)));
+    });
+  },
+
+  savePageNote() {
+    const page = String(Number(window._teacherPdfPage) || 1);
+    const val = document.getElementById('teacherPageNote')?.value || '';
+    if (!db.cachedBook?.name) { toast('ابتدا PDF کتاب را انتخاب کن.'); return; }
+    if (!db.cachedBook.notes) db.cachedBook.notes = {};
+    db.cachedBook.notes[page] = val;
+    this.syncActiveToLibrary();
+    savePersistent();
+    toast(`یادداشت صفحه ${fa(page)} ذخیره شد 📝`);
+  },
+
+  saveEditedPageText() {
+    const page = String(Number(window._teacherPdfPage) || 1);
+    const val = document.getElementById('cachedPageText')?.value || '';
+    if (!db.cachedBook) return;
+    if (!db.cachedBook.pages) db.cachedBook.pages = {};
+    db.cachedBook.pages[page] = val;
+    this.syncActiveToLibrary();
+    savePersistent();
+    toast(`متن صفحه ${fa(page)} بروزرسانی شد ✅`);
+  },
+
+  voiceImpromptu() {
+    const S = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!S) { toast('مرورگر شما از تایپ صوتی پشتیبانی نمی‌کند.'); return; }
+    const r = new S();
+    r.lang = 'fa-IR';
+    r.onresult = (ev) => {
+      const inp = document.getElementById('impromptuInp');
+      if (inp) inp.value = ev.results[0][0].transcript;
+    };
+    r.start();
+  },
+
+  async askImpromptu() {
+    const q = document.getElementById('impromptuInp')?.value.trim();
+    if (!q) { toast('سوال دانش‌آموز را بنویسید.'); return; }
+    const btn = document.getElementById('btnRunImpromptu'), box = document.getElementById('impromptuResultBox');
+    if (btn) btn.disabled = true;
+    if (box) { box.style.display = 'block'; box.innerHTML = '⏳ در حال آماده‌سازی پاسخ علمی و مثال ملموس کلاسی...'; }
+    try {
+      const pageContext = (document.getElementById('cachedPageText')?.value || '').slice(0, 600);
+      const ans = await ExamApp.callArgonAI(`دانش‌آموزی سر کلاس پرسیده: "${q}". ${pageContext ? 'متن صفحه فعلی کتاب: ' + pageContext : ''} در ۳ بخش کوتاه و کاربردی برای معلم پاسخ بده: ۱. پاسخ علمی و دقیق ۲. مثال ملموس و جذاب کلاسی ۳. ارتباط با درس.`);
+      if (box) box.innerHTML = ans.replace(/\n/g, '<br>');
+    } catch (err) {
+      // پاسخ ساختاریافته راهنما در صورت عدم دسترسی به اینترنت یا کلید هوش مصنوعی
+      if (box) {
+        box.innerHTML = `
+          <div style="color:var(--primary);font-weight:900;margin-bottom:6px">💡 چارچوب پاسخ معلمانه در کلاس برای پرسش: «${esc(q)}»</div>
+          <div><b>۱. تایید هوشمندانه پرسش:</b> «سوال بسیار دقیقی پرسیدی! این موضوع دقیقاً به هسته اصلی مبحث صفحه ${fa(window._teacherPdfPage || 1)} برمی‌گردد.»</div>
+          <div style="margin-top:4px"><b>۲. پیوند با تجربه روزمره:</b> مفهوم را با یک مثال ملموس از زندگی روزمره دانش‌آموزان (موبایل، اینترنت، محیط مدرسه یا خانه) مقایسه کنید تا انتزاعی نماند.</div>
+          <div style="margin-top:4px"><b>۳. تبدیل سوال به فعالیت مشارکتی:</b> از ۲ دانش‌آموز دیگر بخواهید نظرشان را در ۳۰ ثانیه بگویند و سپس جمع‌بندی علمی را روی تخته بنویسید.</div>
+          <div class="muted" style="font-size:11px;margin-top:6px">ℹ️ برای دریافت پاسخ تخصصی آنلاین از هوش مصنوعی، کلید API را در بخش آزمون‌ساز یا تنظیمات وارد کنید.</div>
+        `;
+      }
+    } finally {
+      if (btn) btn.disabled = false;
+    }
+  },
+
   async solveActivities() {
     const src = document.getElementById('customExerciseText')?.value.trim() || document.getElementById('cachedPageText')?.value.trim();
-    if (!src) { alert('ابتدا صفحه کتاب را انتخاب کنید.'); return; }
+    if (!src) { toast('ابتدا صفحه کتاب را انتخاب کنید یا صورت تمرین را بنویسید.'); return; }
     const btn = document.getElementById('btnSolveActivities'), box = document.getElementById('activitiesSolutionBox');
-    btn.disabled = true; btn.textContent = '⏳ در حال حل فعالیت‌ها و تمرین‌ها...';
+    if (btn) { btn.disabled = true; btn.textContent = '⏳ در حال تحلیل و حل فعالیت‌های صفحه...'; }
     try {
-      const raw = await ExamApp.callArgonAI(`تمام فعالیت‌ها، کاردرکلاس‌ها و تمرین‌های متن زیر را پیدا کن و پاسخ تشریحی بده:\n"${src}"\nفقط آرایه JSON برگردان: [{"title":"عنوان","solution":"پاسخ کامل"}]`);
+      const raw = await ExamApp.callArgonAI(`تمام فعالیت‌ها، کاردرکلاس‌ها، گفتگوها و تمرین‌های متن زیر را پیدا کن و پاسخ تشریحی و دقیق بده:\n"${src}"\nفقط آرایه JSON برگردان: [{"title":"عنوان فعالیت یا سوال","solution":"پاسخ کامل و معلمانه"}]`);
       const arr = JSON.parse((raw.match(/\[[\s\S]*\]/) || [raw])[0]);
-      box.innerHTML = arr.map((it, i) => `<div style="padding:10px;background:var(--panel);border:1px solid var(--border);border-radius:11px"><b>📌 تمرین ${fa(i + 1)}: ${esc(it.title)}</b><div style="margin-top:5px;color:#15803d;font-weight:bold;font-size:12.5px">💡 پاسخ: ${esc(it.solution)}</div></div>`).join('');
-    } catch (err) { alert('خطا: ' + err.message); } finally { btn.disabled = false; btn.textContent = '📝 استخراج پاسخ فعالیت‌ها و تمرین‌ها'; }
+      if (box) {
+        box.innerHTML = arr.map((it, i) => `<div style="padding:11px;background:var(--bg-panel);border:1px solid var(--border);border-radius:12px"><b>📌 فعالیت ${fa(i + 1)}: ${esc(it.title)}</b><div style="margin-top:6px;color:#22c55e;font-weight:800;font-size:12.5px;line-height:1.7">💡 پاسخ تشریحی: ${esc(it.solution)}</div></div>`).join('');
+      }
+    } catch (err) {
+      this.solveActivitiesOfflineGuide();
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = '📝 حل تشریحی فعالیت‌ها و تمرین‌های این صفحه'; }
+    }
   },
+
+  solveActivitiesOfflineGuide() {
+    const src = document.getElementById('customExerciseText')?.value.trim() || document.getElementById('cachedPageText')?.value.trim();
+    const box = document.getElementById('activitiesSolutionBox');
+    if (!box) return;
+    if (!src) {
+      box.innerHTML = '<div class="muted">ابتدا یک صفحه دارای متن انتخاب کنید یا صورت فعالیت را در کادر بالا بنویسید.</div>';
+      return;
+    }
+    const sentences = src.split(/[\.؟!\n]+/).map(s => s.trim()).filter(s => s.length > 18);
+    const items = sentences.slice(0, 4).map((s, idx) => ({
+      title: `محور آموزشی ${fa(idx + 1)} در صفحه ${fa(window._teacherPdfPage || 1)}`,
+      solution: s
+    }));
+    box.innerHTML = items.length ? items.map((it, i) => `
+      <div style="padding:11px;background:var(--bg-panel);border:1px solid var(--border);border-radius:12px">
+        <b style="color:var(--primary)">📌 ${esc(it.title)}</b>
+        <div style="margin-top:5px;font-size:12.5px;line-height:1.7">💡 <b>نکته کلیدی و پاسخ:</b> ${esc(it.solution)}</div>
+      </div>
+    `).join('') : '<div class="muted">متن کافی برای استخراج نکات یافت نشد.</div>';
+  },
+
   async extractLineByLineQuestions() {
-    const src = document.getElementById('cachedPageText')?.value.trim(); if (!src) { alert('متن درس خالی است.'); return; }
-    const diff = document.getElementById('extractDiffSelect')?.value || 'استاندارد', count = Number(document.getElementById('extractCountInp')?.value) || 8;
-    const btn = document.getElementById('btnExtractLineQuestions'); btn.disabled = true; btn.textContent = '⏳ در حال استخراج خط‌به‌خط...';
+    const src = document.getElementById('cachedPageText')?.value.trim();
+    if (!src) {
+      this.openWorkbenchTab('note');
+      toast('متن این صفحه خالی است؛ ابتدا دکمه «🔄 اسکن متن صفحه» را بزنید یا متن را وارد کنید.');
+      return;
+    }
+    const diff = document.getElementById('extractDiffSelect')?.value || 'استاندارد خط‌به‌خط';
+    const count = Number(document.getElementById('extractCountInp')?.value) || 8;
+    const btn = document.getElementById('btnExtractLineQuestions');
+    if (btn) { btn.disabled = true; btn.textContent = '⏳ در حال استخراج خط‌به‌خط سوالات...'; }
     try {
       const raw = await ExamApp.callArgonAI(`متن درس زیر را خط‌به‌خط بررسی کن و ${count} سوال با سختی «${diff}» و پاسخ دقیق استخراج کن:\n"${src}"\nفقط آرایه JSON برگردان: [{"q":"سوال","a":"پاسخ","diff":"${diff}"}]`);
       const arr = JSON.parse((raw.match(/\[[\s\S]*\]/) || [raw])[0]);
-      if (!db.cachedBook) db.cachedBook = { name: '', pages: {}, extractedBank: [] };
-      arr.forEach(it => db.cachedBook.extractedBank.unshift({ id: uid(), q: it.q, a: it.a, diff: it.diff || diff }));
-      savePersistent(); this.renderExtractedBank(); toast(`${fa(arr.length)} سوال ذخیره شد ✅`);
-    } catch (err) { alert('خطا: ' + err.message); } finally { btn.disabled = false; btn.textContent = '✨ استخراج خط‌به‌خط سوالات با جواب'; }
+      this.ensureLibraryStructure();
+      const pageNo = Number(window._teacherPdfPage) || 1;
+      arr.forEach(it => db.cachedBook.extractedBank.unshift({ id: uid(), page: pageNo, q: it.q, a: it.a, diff: it.diff || diff }));
+      this.syncActiveToLibrary();
+      savePersistent();
+      this.renderExtractedBank();
+      toast(`${fa(arr.length)} سوال خط‌به‌خط ذخیره شد ✅`);
+    } catch (err) {
+      // در صورت نبود اینترنت یا کلید API، استخراج هوشمند آفلاین را اجرا کن تا معلم سر کلاس معطل نماند
+      this.extractLocalSmartQuestions();
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = '✨ استخراج هوشمند خط‌به‌خط (AI)'; }
+    }
   },
+
+  extractLocalSmartQuestions() {
+    const pageNo = Number(window._teacherPdfPage) || 1;
+    const src = (document.getElementById('cachedPageText')?.value || db.cachedBook?.pages?.[String(pageNo)] || '').trim();
+    if (!src) {
+      toast('متن صفحه خالی است؛ ابتدا صفحه دارای متن را انتخاب کنید.');
+      return;
+    }
+    const diff = document.getElementById('extractDiffSelect')?.value || 'استاندارد خط‌به‌خط';
+    const count = Number(document.getElementById('extractCountInp')?.value) || 8;
+    const rawSentences = src
+      .split(/[\.!\n؟؛]+/)
+      .map(s => s.trim())
+      .filter(s => s.length >= 22 && s.split(' ').length >= 5);
+
+    if (!rawSentences.length) {
+      toast('جملات کافی در متن این صفحه یافت نشد.');
+      return;
+    }
+
+    const generated = [];
+    const stems = [
+      'بر اساس متن صفحه ' + fa(pageNo) + '، مفهوم عبارت زیر را توضیح دهید: «',
+      'نکته کلیدی و منظور اصلی این بخش از درس چیست؟ «',
+      'چرا در این مبحث تاکید شده است که: «',
+      'صحیح یا غلط بودن عبارت زیر را همراه با دلیل بررسی کنید: «'
+    ];
+    for (let i = 0; i < Math.min(count, rawSentences.length); i++) {
+      const sent = rawSentences[i];
+      const words = sent.split(' ');
+      const preview = words.slice(0, Math.min(8, words.length)).join(' ') + '...';
+      const stem = stems[i % stems.length];
+      generated.push({
+        id: uid(),
+        page: pageNo,
+        q: `${stem}${preview}»`,
+        a: sent,
+        diff
+      });
+    }
+
+    this.ensureLibraryStructure();
+    generated.reverse().forEach(it => db.cachedBook.extractedBank.unshift(it));
+    this.syncActiveToLibrary();
+    savePersistent();
+    this.renderExtractedBank();
+    toast(`${fa(generated.length)} سوال از متن صفحه ${fa(pageNo)} استخراج شد ⚡`);
+  },
+
   renderExtractedBank() {
-    const box = document.getElementById('extractedQuestionsBox'); if (!box) return;
+    const box = document.getElementById('extractedQuestionsBox');
+    if (!box) return;
     const list = db.cachedBook?.extractedBank || [];
-    box.innerHTML = list.length ? list.slice(0, 25).map((it, idx) => `<div style="padding:9px 11px;background:var(--panel);border:1px solid var(--border);border-radius:11px"><div style="display:flex;justify-content:space-between;gap:6px"><b>${fa(idx + 1)}. ${esc(it.q)}</b><button class="btn soft btn-sm" onclick="TeachAssistant.sendToExamSheet('${it.id}')">➕ به آزمون</button></div><div style="margin-top:4px;color:#15803d;font-size:12px;font-weight:bold">✅ پاسخ: ${esc(it.a)}</div></div>`).join('') : '<div class="muted">هنوز سوالی استخراج نشده.</div>';
+    box.innerHTML = list.length ? list.slice(0, 30).map((it, idx) => `
+      <div style="padding:10px 12px;background:var(--bg-panel);border:1px solid var(--border);border-radius:12px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap">
+          <b style="line-height:1.6;flex:1">${fa(idx + 1)}. ${esc(it.q)}</b>
+          <div style="display:flex;gap:4px;align-items:center">
+            ${it.page ? `<span class="chip" style="font-size:10.5px">ص ${fa(it.page)}</span>` : ''}
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.sendToExamSheet('${it.id}')">➕ به آزمون</button>
+            <button type="button" class="btn danger btn-sm" onclick="TeachAssistant.deleteExtractedQuestion('${it.id}')" title="حذف سوال">×</button>
+          </div>
+        </div>
+        <div style="margin-top:5px;color:#22c55e;font-size:12px;font-weight:800;line-height:1.65">✅ پاسخ: ${esc(it.a)}</div>
+      </div>
+    `).join('') : '<div class="muted" style="padding:12px;text-align:center">هنوز سوالی استخراج نشده است. تعداد سوال را از دکمه‌های بالا انتخاب کنید و دکمه استخراج را بزنید.</div>';
+
+    const fcBox = document.getElementById('classroomFlashcardBox');
+    if (fcBox && fcBox.style.display !== 'none') {
+      this.renderFlashcardContent();
+    }
   },
+
+  deleteExtractedQuestion(id) {
+    if (!db.cachedBook?.extractedBank) return;
+    db.cachedBook.extractedBank = db.cachedBook.extractedBank.filter(x => x.id !== id);
+    this.syncActiveToLibrary();
+    savePersistent();
+    this.renderExtractedBank();
+  },
+
   sendToExamSheet(id) {
-    const it = (db.cachedBook?.extractedBank || []).find(x => x.id === id); if (!it) return;
-    ExamApp.getQuestions().push({ id: Date.now(), type: 'desc', text: it.q, score: 1, lines: 2, hint: 'پاسخ را کامل بنویسید.', explanation: it.a });
-    ExamApp.save(); ExamApp.renderAll(); toast('به برگه آزمون اضافه شد 📝');
+    const it = (db.cachedBook?.extractedBank || []).find(x => x.id === id);
+    if (!it) return;
+    ExamApp.getQuestions().push({ id: Date.now() + Math.floor(Math.random() * 999), type: 'desc', text: it.q, score: 1, lines: 2, hint: 'پاسخ را کامل بنویسید.', explanation: it.a });
+    ExamApp.save();
+    ExamApp.renderAll();
+    toast('به برگه آزمون اضافه شد 📝');
+  },
+
+  sendAllExtractedToExam() {
+    const list = db.cachedBook?.extractedBank || [];
+    if (!list.length) { toast('ابتدا سوالات صفحه را استخراج کنید.'); return; }
+    list.forEach((it, idx) => {
+      ExamApp.getQuestions().push({ id: Date.now() + idx, type: 'desc', text: it.q, score: 1, lines: 2, hint: 'پاسخ را کامل بنویسید.', explanation: it.a });
+    });
+    ExamApp.save();
+    ExamApp.renderAll();
+    toast(`${fa(list.length)} سوال به برگه آزمون اضافه شد ✅`);
+  },
+
+  /* ==================== فلش‌کارت پرسش کلاسی + قرعه‌کشی دانش‌آموز ==================== */
+  toggleClassroomFlashcardMode() {
+    const fcBox = document.getElementById('classroomFlashcardBox');
+    if (!fcBox) return;
+    const list = db.cachedBook?.extractedBank || [];
+    if (!list.length) {
+      toast('ابتدا چند سوال از صفحه استخراج کنید تا فلش‌کارت پرسش کلاسی فعال شود.');
+      return;
+    }
+    const isVisible = fcBox.style.display !== 'none';
+    fcBox.style.display = isVisible ? 'none' : 'block';
+    this._flashcardIdx = 0;
+    this._flashcardShowAns = false;
+    if (!isVisible) this.renderFlashcardContent();
+  },
+
+  pickRandomStudentForFlashcard() {
+    let pool = [];
+    if (currentSchoolId && currentClassId) {
+      const cl = findClass(currentSchoolId, currentClassId);
+      if (cl?.students?.length) pool = cl.students;
+    }
+    if (!pool.length) {
+      (db.schools || []).forEach(s => (s.classes || []).forEach(c => { pool = pool.concat(c.students || []); }));
+    }
+    if (!pool.length) {
+      this._pickedStudentName = 'دانش‌آموز داوطلب';
+    } else {
+      const st = pool[Math.floor(Math.random() * pool.length)];
+      this._pickedStudentName = `${st.name || ''} ${st.lastName || ''}`.trim();
+    }
+    this.renderFlashcardContent();
+  },
+
+  renderFlashcardContent() {
+    const fcBox = document.getElementById('classroomFlashcardBox');
+    if (!fcBox) return;
+    const list = db.cachedBook?.extractedBank || [];
+    if (!list.length) { fcBox.style.display = 'none'; return; }
+    this._flashcardIdx = Math.max(0, Math.min(list.length - 1, this._flashcardIdx));
+    const item = list[this._flashcardIdx];
+    fcBox.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+        <span class="chip">🃏 پرسش کلاسی: سوال ${fa(this._flashcardIdx + 1)} از ${fa(list.length)}</span>
+        <div style="display:flex;gap:5px;align-items:center">
+          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.pickRandomStudentForFlashcard()">🎲 قرعه‌کشی دانش‌آموز</button>
+          <button type="button" class="btn gray btn-sm" onclick="TeachAssistant.toggleClassroomFlashcardMode()">✖ بستن</button>
+        </div>
+      </div>
+      ${this._pickedStudentName ? `<div style="margin-bottom:8px;padding:5px 12px;border-radius:99px;background:rgba(56,189,248,0.15);border:1px solid var(--primary);display:inline-block;font-weight:900;color:var(--primary)">🙋 نوبت پاسخ‌گویی: ${esc(this._pickedStudentName)}</div>` : ''}
+      <div style="font-size:15px;font-weight:900;line-height:1.75;padding:10px;background:var(--bg-card);border-radius:12px;border:1px solid var(--border)">
+        ${esc(item.q)}
+      </div>
+      ${this._flashcardShowAns ? `<div style="margin-top:8px;padding:10px;background:rgba(34,197,94,0.12);border:1px solid #22c55e;border-radius:12px;color:#4ade80;font-weight:800;line-height:1.7">✅ پاسخ صحیح: ${esc(item.a)}</div>` : ''}
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button type="button" class="btn gray btn-sm" onclick="TeachAssistant._flashcardIdx=Math.max(0,TeachAssistant._flashcardIdx-1);TeachAssistant._flashcardShowAns=false;TeachAssistant.renderFlashcardContent()">◀ سوال قبل</button>
+        <button type="button" class="btn primary btn-sm" onclick="TeachAssistant._flashcardShowAns=!TeachAssistant._flashcardShowAns;TeachAssistant.renderFlashcardContent()">${this._flashcardShowAns ? '🙈 مخفی‌کردن پاسخ' : '👁️ نمایش پاسخ صحیح'}</button>
+        <button type="button" class="btn gray btn-sm" onclick="TeachAssistant._flashcardIdx=Math.min(${list.length - 1},TeachAssistant._flashcardIdx+1);TeachAssistant._flashcardShowAns=false;TeachAssistant.renderFlashcardContent()">سوال بعد ▶</button>
+      </div>
+    `;
+  },
+
+  /* ==================== خروجی جزوه رنگی سوال و جواب درس ==================== */
+  exportLessonHandout(mode = 'word') {
+    const list = db.cachedBook?.extractedBank || [];
+    const bookTitle = db.cachedBook?.name || 'کتاب درسی';
+    const pageNo = Number(window._teacherPdfPage) || 1;
+    const pageNote = db.cachedBook?.notes?.[String(pageNo)] || '';
+    if (!list.length && !pageNote) {
+      toast('ابتدا سوالات این صفحه را استخراج کنید یا یادداشت بنویسید تا جزوه ساخته شود.');
+      return;
+    }
+    const teacher = getTeacherName();
+    const dateFa = new Intl.DateTimeFormat('fa-IR').format(new Date());
+    const rowsHtml = list.map((it, idx) => `
+      <div style="margin-bottom:10px;padding:10px 14px;border:1px solid #cbd5e1;border-right:5px solid #0284c7;border-radius:10px;background:#f8fafc">
+        <div style="font-weight:900;color:#0f172a;font-size:13.5px">سوال ${fa(idx + 1)}: ${esc(it.q)}</div>
+        <div style="margin-top:5px;color:#15803d;font-weight:700;font-size:12.5px">✅ پاسخ: ${esc(it.a)}</div>
+      </div>
+    `).join('');
+
+    const docHtml = `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>جزوه آموزشی ${esc(bookTitle)}</title>
+      <style>body{font-family:Tahoma,'Vazirmatn',sans-serif;direction:rtl;padding:24px;color:#0f172a;line-height:1.7}</style></head><body>
+      <div style="border:2px solid #0284c7;border-radius:16px;padding:16px;background:linear-gradient(135deg,#e0f2fe,#f0f9ff);margin-bottom:16px">
+        <h2 style="margin:0 0 6px;color:#0369a1">📘 جزوه آموزشی و بانک سوالات خط‌به‌خط — ${esc(bookTitle)}</h2>
+        <div style="font-size:12.5px;color:#334155;font-weight:700">صفحه مرتبط: صفحه ${fa(pageNo)} | دبیر: ${esc(teacher)} | تاریخ: ${esc(dateFa)}</div>
+      </div>
+      ${pageNote ? `<div style="margin-bottom:16px;padding:12px;border-radius:12px;background:#fef9c3;border:1px solid #facc15"><b>📝 نکات کلیدی تدریس صفحه ${fa(pageNo)}:</b><div style="margin-top:4px">${esc(pageNote)}</div></div>` : ''}
+      ${rowsHtml}
+      <div style="margin-top:20px;padding-top:10px;border-top:1px dashed #94a3b8;text-align:center;font-size:11px;color:#64748b">
+        🎓 تولیدشده با سامانه هوشمند «دانش‌آموز من» (نسخه v5.6 Pro) — دستیار دیجیتال معلمان
+      </div>
+    </body></html>`;
+
+    if (mode === 'print') {
+      const w = window.open('', '_blank');
+      if (w) { w.document.write(docHtml); w.document.close(); setTimeout(() => w.print(), 350); }
+      else toast('پنجره چاپ مسدود شد؛ لطفاً خروجی Word را بزنید.');
+    } else {
+      const blob = new Blob(['\ufeff' + docHtml], { type: 'application/msword;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `جزوه_${safeFileName(bookTitle)}_صفحه_${pageNo}.doc`;
+      a.click();
+      toast('جزوه رنگی درس دانلود شد 📘');
+    }
   }
 };
+window.TeachAssistant = TeachAssistant;
 
 /* ==================== موتور آزمون‌ساز الماس و مصحح هوشمند (ExamApp) ==================== */
 if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
