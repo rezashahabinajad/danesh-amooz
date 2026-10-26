@@ -1209,24 +1209,29 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
 .study-pdf-tools { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
 
 /* ==================== استودیوی هوشمند تدریس و کتاب‌خوان معلم (v5.8 Pro) ==================== */
+canvas, #teacherPdfCanvas, #teacherAnnotCanvas, .pdf-page-card canvas {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
 .teach-book-bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
+  gap: 5px;
   background: var(--bg-panel);
-  padding: 7px 10px;
+  padding: 6px 8px;
   border-radius: 12px;
   border: 1px solid var(--border);
   margin-bottom: 8px;
 }
 .teach-book-bar select {
-  flex: 1;
-  min-width: 145px;
-  height: 34px;
-  padding: 2px 8px;
-  font-size: 12px;
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  padding: 2px 6px;
+  font-size: 11.5px;
   font-weight: 800;
+  text-overflow: ellipsis;
 }
 .teach-unified-nav {
   display: grid;
@@ -1302,39 +1307,48 @@ svg.chart { width: 100%; height: 100%; overflow: visible; }
 }
 .teach-action-strip {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 5px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  margin-bottom: 6px;
-  scrollbar-width: none;
+  margin-bottom: 7px;
 }
-.teach-action-strip::-webkit-scrollbar { display: none; }
-.teach-zoom-group, .teach-tool-group {
-  display: inline-flex;
+.teach-zoom-group {
+  display: grid;
+  grid-template-columns: 38px 1fr 38px auto auto;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   background: var(--bg-panel);
-  padding: 3px;
-  border-radius: 9px;
+  padding: 4px;
+  border-radius: 10px;
   border: 1px solid var(--border);
-  flex-shrink: 0;
+  width: 100%;
+}
+.teach-tool-group {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-panel);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  width: 100%;
 }
 .teach-icon-btn {
-  height: 28px;
-  padding: 0 7px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  background: transparent;
+  height: 29px;
+  padding: 0 5px;
+  border-radius: 7px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: var(--bg-card);
   color: var(--text-main);
   font-size: 11px;
   font-weight: 800;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 3px;
   white-space: nowrap;
+  min-width: 0;
 }
 .teach-icon-btn.active {
   background: var(--primary-light);
@@ -2760,17 +2774,17 @@ body {
 
   <!-- کارت کتاب‌خوان جمع‌وجور، متناسب و شیک -->
   <div class="card" id="teacherStudyPdfCard" style="margin-bottom:10px;padding:11px">
-    <!-- نوار انتخاب کتاب و بارگذاری PDF -->
+    <!-- نوار انتخاب کتاب و بارگذاری PDF (تک‌خطی و کاملاً تراز در موبایل) -->
     <div class="teach-book-bar">
-      <span style="font-size:11.5px;font-weight:900;color:var(--primary);white-space:nowrap">📚 کتاب:</span>
+      <span style="font-size:11px;font-weight:900;color:var(--primary);white-space:nowrap">📚 کتاب:</span>
       <select id="teacherBookLibrarySelect" onchange="TeachAssistant.switchLibraryBook(this.value)" aria-label="انتخاب کتاب">
         <option value="">-- کتابی ذخیره نشده --</option>
       </select>
-      <label class="btn primary btn-sm" style="margin:0;cursor:pointer;white-space:nowrap">
-        📂 انتخاب PDF کتاب
+      <label class="btn primary btn-sm" style="margin:0;cursor:pointer;white-space:nowrap;height:32px;padding:0 9px;display:inline-flex;align-items:center;font-size:11px">
+        📂 انتخاب PDF
         <input type="file" accept="application/pdf" hidden onchange="TeachAssistant.scanAndCacheBookPDF(event)">
       </label>
-      <button type="button" class="btn danger btn-sm" onclick="TeachAssistant.deleteActiveLibraryBook()" title="حذف کتاب فعلی">🗑️</button>
+      <button type="button" class="btn danger btn-sm" style="height:32px;width:32px;padding:0;display:inline-flex;align-items:center;justify-content:center" onclick="TeachAssistant.deleteActiveLibraryBook()" title="حذف کتاب فعلی">🗑️</button>
     </div>
     <div id="bookScanStatus" style="display:none;margin-bottom:6px;padding:5px 9px;border-radius:8px;background:var(--primary-light);border:1px solid var(--primary-border);font-weight:800;color:var(--primary);font-size:11.5px"></div>
 
@@ -2796,20 +2810,20 @@ body {
       </div>
     </div>
 
-    <!-- نوار ابزار یک‌خطی و جمع‌وجور: اندازه صفحه، قلم، نشانک و تمام‌صفحه -->
+    <!-- نوار ابزار تراز و بدون بریدگی در موبایل: ردیف زوم/وضوح و ردیف ابزارهای صفحه -->
     <div class="teach-action-strip">
       <div class="teach-zoom-group">
         <button type="button" class="teach-icon-btn" onclick="TeachAssistant.zoomStudyPdf(-0.15)" title="کوچک‌تر">➖</button>
         <button type="button" class="teach-icon-btn" id="teacherPdfZoomLabel" onclick="TeachAssistant.resetStudyZoom()" title="اندازه متناسب با صفحه گوشی">📐 متناسب</button>
         <button type="button" class="teach-icon-btn" onclick="TeachAssistant.zoomStudyPdf(0.15)" title="بزرگ‌تر">➕</button>
+        <button type="button" class="teach-icon-btn" id="btnToggleCrispPdf" style="padding:0 8px" onclick="TeachAssistant.togglePdfCrispMode()" title="افزایش وضوح و شفافیت متون کتاب">🔆 وضوح</button>
+        <button type="button" class="teach-icon-btn" id="btnFullscreenBoard" style="padding:0 8px" onclick="TeachAssistant.toggleFullscreenBoard()">🖥️ تمام‌صفحه</button>
       </div>
       <div class="teach-tool-group">
         <button type="button" class="teach-icon-btn" id="btnToggleAnnotate" onclick="TeachAssistant.toggleAnnotateBar()">🖍️ قلم</button>
         <button type="button" class="teach-icon-btn" id="btnToggleBookmark" onclick="TeachAssistant.togglePageBookmark()">🔖 نشانک</button>
         <button type="button" class="teach-icon-btn" id="btnPinClassProgress" onclick="TeachAssistant.pinClassProgressHere()" title="ثبت اینکه تا این صفحه تدریس شده">📍 تا اینجا</button>
         <button type="button" class="teach-icon-btn" onclick="TeachAssistant.sendPageToExamBuilder()" title="ارسال مستقیم این صفحه به آزمون‌ساز">📝 به آزمون</button>
-        <button type="button" class="teach-icon-btn" id="btnToggleCrispPdf" onclick="TeachAssistant.togglePdfCrispMode()" title="افزایش وضوح و شفافیت متون کتاب">🔆 وضوح متن</button>
-        <button type="button" class="teach-icon-btn" id="btnFullscreenBoard" onclick="TeachAssistant.toggleFullscreenBoard()">🖥️ تمام‌صفحه</button>
       </div>
     </div>
 
@@ -2834,9 +2848,9 @@ body {
 
     <!-- قاب نمایش جمع‌وجور و شیک صفحه کتاب (حداکثر ارتفاع کنترل‌شده تا صفحه کشیده و غول‌پیکر نشود) -->
     <div class="teach-canvas-stage" id="teacherPdfStage">
-      <div class="teach-canvas-inner" id="teacherCanvasInner">
-        <canvas id="teacherPdfCanvas" aria-label="صفحه کتاب"></canvas>
-        <canvas id="teacherAnnotCanvas" aria-label="لایه قلم روی کتاب"></canvas>
+      <div class="teach-canvas-inner" id="teacherCanvasInner" dir="ltr" style="direction:ltr">
+        <canvas id="teacherPdfCanvas" dir="ltr" style="direction:ltr" aria-label="صفحه کتاب"></canvas>
+        <canvas id="teacherAnnotCanvas" dir="ltr" style="direction:ltr" aria-label="لایه قلم روی کتاب"></canvas>
       </div>
       <div id="teacherPdfEmpty" class="muted" style="padding:22px 14px;text-align:center">
         <div style="font-size:28px;margin-bottom:4px">📘</div>
@@ -3856,6 +3870,25 @@ body {
   }
 })();
 const KEY = 'danesh_amooz_man_v1';
+/* محافظت صددرصدی از جهت LTR در تمام Canvasهای برنامه برای جلوگیری از به‌هم‌ریختگی حروف فارسی PDF در صفحات RTL */
+(function enforceCanvasLtrForPdfJs() {
+  try {
+    const origGetContext = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function(type, attrs) {
+      if (type === '2d' && !this.hasAttribute('data-allow-rtl')) {
+        if (this.getAttribute('dir') !== 'ltr') this.setAttribute('dir', 'ltr');
+        this.style.direction = 'ltr';
+        this.style.unicodeBidi = 'isolate';
+      }
+      const ctx = origGetContext.call(this, type, attrs);
+      if (type === '2d' && ctx && !this.hasAttribute('data-allow-rtl')) {
+        try { ctx.direction = 'ltr'; } catch (e) {}
+      }
+      return ctx;
+    };
+  } catch (e) {}
+})();
+
 const APP_VERSION = '5.8.0';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
@@ -4915,9 +4948,9 @@ const TeachAssistant = {
       cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
       cMapPacked: true,
       standardFontDataUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/standard_fonts/',
-      disableFontFace: false,
-      useSystemFonts: true,
-      isEvalSupported: false
+      disableFontFace: true,
+      useSystemFonts: false,
+      isEvalSupported: true
     };
   },
 
@@ -5316,9 +5349,15 @@ const TeachAssistant = {
       const cssViewport = page.getViewport({ scale: effectiveCssScale });
       const renderViewport = page.getViewport({ scale: effectiveCssScale * dpr });
 
+      if (this._activeRenderTask && typeof this._activeRenderTask.cancel === 'function') {
+        try { this._activeRenderTask.cancel(); } catch (e) {}
+      }
+      canvas.setAttribute('dir', 'ltr');
+      canvas.style.direction = 'ltr';
       const ctx = canvas.getContext('2d');
       canvas.width = Math.floor(renderViewport.width);
       canvas.height = Math.floor(renderViewport.height);
+      try { ctx.direction = 'ltr'; } catch (e) {}
       canvas.style.width = Math.floor(cssViewport.width) + 'px';
       canvas.style.height = Math.floor(cssViewport.height) + 'px';
       canvas.style.display = 'block';
@@ -5332,7 +5371,9 @@ const TeachAssistant = {
       const input = document.getElementById('teacherPdfPageInput');
       if (input) { input.max = total; input.value = pageNo; }
 
-      await page.render({ canvasContext: ctx, viewport: renderViewport }).promise;
+      this._activeRenderTask = page.render({ canvasContext: ctx, viewport: renderViewport });
+      await this._activeRenderTask.promise;
+      this._activeRenderTask = null;
 
       this.setupAnnotationLayer(Math.floor(cssViewport.width), Math.floor(cssViewport.height));
 
@@ -6395,7 +6436,11 @@ const ExamApp = {
   async loadPdfBook(e) {
     const f = e.target.files?.[0]; if (!f) return; this.autoDetectHeaderFromText(f.name);
     try {
-      this.pdfDoc = await pdfjsLib.getDocument(new Uint8Array(await f.arrayBuffer())).promise;
+      const buf = await f.arrayBuffer();
+      const cfg = (window.TeachAssistant && TeachAssistant.getPdfDocumentConfig)
+        ? TeachAssistant.getPdfDocumentConfig(buf)
+        : { data: new Uint8Array(buf), disableFontFace: true, useSystemFonts: false, isEvalSupported: true };
+      this.pdfDoc = await pdfjsLib.getDocument(cfg).promise;
       this.pdfGalleryOffset = 1; this.selectedPdfPages.clear();
       document.getElementById('pdfControlsBox').style.display = 'block';
       await this.renderPdfGallery();
@@ -6410,10 +6455,14 @@ const ExamApp = {
     for (let p = start; p <= end; p++) {
       const card = document.createElement('div'); card.className = 'pdf-page-card' + (this.selectedPdfPages.has(p) ? ' selected' : '');
       card.onclick = () => { if (this.selectedPdfPages.has(p)) this.selectedPdfPages.delete(p); else this.selectedPdfPages.add(p); this.renderPdfGallery(); };
-      const c = document.createElement('canvas'), l = document.createElement('div'); l.className = 'pdf-page-label'; l.textContent = `${this.selectedPdfPages.has(p) ? '✅' : '⬜'} صفحه ${this.toFa(p)}`;
+      const c = document.createElement('canvas'), l = document.createElement('div');
+      c.setAttribute('dir', 'ltr'); c.style.direction = 'ltr';
+      l.className = 'pdf-page-label'; l.textContent = `${this.selectedPdfPages.has(p) ? '✅' : '⬜'} صفحه ${this.toFa(p)}`;
       card.appendChild(c); card.appendChild(l); grid.appendChild(card);
       const page = await this.pdfDoc.getPage(p), vp = page.getViewport({ scale: 0.4 }); c.width = vp.width; c.height = vp.height;
-      await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+      const gCtx = c.getContext('2d');
+      try { gCtx.direction = 'ltr'; } catch (e) {}
+      await page.render({ canvasContext: gCtx, viewport: vp }).promise;
     }
     const arr = [...this.selectedPdfPages].sort((a, b) => a - b);
     document.getElementById('selectedPagesBadge').textContent = arr.length ? `✅ صفحات: ${arr.map(n => this.toFa(n)).join('، ')}` : 'صفحات انتخاب‌شده: هیچ‌کدام';
