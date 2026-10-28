@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="5.8.1">
+<meta name="version" content="5.9.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -2339,7 +2339,7 @@ body {
 }
 
 
-/* ==================== استایل اختصاصی فرم‌ساز دیجی‌فرم (DigiForm UI v5.8 Pro) ==================== */
+/* ==================== استایل اختصاصی فرم‌ساز لینک اختصاصی و کلاس آنلاین (v5.9.0 Pro) ==================== */
 .teach-canvas-stage {
   max-height: 46vh !important;
   max-width: 360px !important;
@@ -2564,6 +2564,343 @@ body {
   font-weight: 900;
 }
 
+
+/* ==================== ارتقای جامع استایل‌های نسخه v5.9.0 Pro ==================== */
+
+/* ۱. دو پوسته لوکس جدید: زمردی لوکس (Emerald Luxury) و بنفش کهکشانی (Royal Galaxy) */
+body.theme-emerald-luxury {
+  color-scheme: dark;
+  --bg-main: #03110E;
+  --bg-card: #071F1A;
+  --bg-panel: #0C2D26;
+  --neon-cyan: #10B981;
+  --neon-blue: #34D399;
+  --neon-green: #4ADE80;
+  --neon-red: #FB7185;
+  --neon-purple: #F59E0B;
+  --text-main: #ECFDF5;
+  --text-muted: #A7F3D0;
+  --border-cyber: rgba(16, 185, 129, 0.30);
+  --border-subtle: rgba(52, 211, 153, 0.16);
+  --primary: #10B981;
+  --primary2: #059669;
+  --primary-dark: #6EE7B7;
+  --primary-light: rgba(16, 185, 129, 0.15);
+  --primary-border: rgba(16, 185, 129, 0.36);
+  --border: rgba(16, 185, 129, 0.28);
+  --bg: #03110E;
+  --card: #071F1A;
+  --panel: #0C2D26;
+  --text: #ECFDF5;
+  --muted: #A7F3D0;
+  --shadow: 0 12px 32px rgba(2, 12, 10, 0.82), 0 0 18px rgba(16, 185, 129, 0.10);
+  --glow-cyan: 0 0 18px rgba(16, 185, 129, 0.38);
+  background: radial-gradient(circle at 50% 0%, #0D3B30 0%, #03110E 68%) !important;
+}
+body.theme-emerald-luxury .topbar {
+  background: rgba(3, 17, 14, 0.90);
+}
+body.theme-emerald-luxury .jarvis-command-deck {
+  background: linear-gradient(145deg, rgba(12, 45, 38, 0.92), rgba(7, 31, 26, 0.96));
+  border-color: rgba(16, 185, 129, 0.35);
+}
+body.theme-emerald-luxury .jarvis-core-center {
+  background: radial-gradient(circle, #0C2D26 0%, #03110E 100%);
+  border-color: rgba(16, 185, 129, 0.55);
+}
+body.theme-emerald-luxury .btn.primary {
+  background: linear-gradient(135deg, #10B981, #059669) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(52, 211, 153, 0.5) !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+}
+
+body.theme-royal-galaxy {
+  color-scheme: dark;
+  --bg-main: #080514;
+  --bg-card: #120B28;
+  --bg-panel: #1C123C;
+  --neon-cyan: #C084FC;
+  --neon-blue: #38BDF8;
+  --neon-green: #4ADE80;
+  --neon-red: #F43F5E;
+  --neon-purple: #F472B6;
+  --text-main: #F5F3FF;
+  --text-muted: #C4B5FD;
+  --border-cyber: rgba(192, 132, 252, 0.30);
+  --border-subtle: rgba(192, 132, 252, 0.16);
+  --primary: #C084FC;
+  --primary2: #A855F7;
+  --primary-dark: #E9D5FF;
+  --primary-light: rgba(192, 132, 252, 0.15);
+  --primary-border: rgba(192, 132, 252, 0.36);
+  --border: rgba(192, 132, 252, 0.28);
+  --bg: #080514;
+  --card: #120B28;
+  --panel: #1C123C;
+  --text: #F5F3FF;
+  --muted: #C4B5FD;
+  --shadow: 0 12px 32px rgba(5, 2, 14, 0.85), 0 0 18px rgba(192, 132, 252, 0.12);
+  --glow-cyan: 0 0 18px rgba(192, 132, 252, 0.40);
+  background: radial-gradient(circle at 50% 0%, #251452 0%, #080514 68%) !important;
+}
+body.theme-royal-galaxy .topbar {
+  background: rgba(8, 5, 20, 0.90);
+}
+body.theme-royal-galaxy .jarvis-command-deck {
+  background: linear-gradient(145deg, rgba(28, 18, 60, 0.92), rgba(18, 11, 40, 0.96));
+  border-color: rgba(192, 132, 252, 0.35);
+}
+body.theme-royal-galaxy .jarvis-core-center {
+  background: radial-gradient(circle, #1C123C 0%, #080514 100%);
+  border-color: rgba(192, 132, 252, 0.55);
+}
+body.theme-royal-galaxy .btn.primary {
+  background: linear-gradient(135deg, #A855F7, #7C3AED) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(192, 132, 252, 0.5) !important;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.38);
+}
+
+/* ۲. رفع کامل گیر کردن اسکرول لیست‌ها در موبایل (اسکرول روان و طبیعی صفحه بدون تله اسکرول تو در تو) */
+.td-list-card {
+  max-height: none !important;
+  overflow: visible !important;
+}
+.td-scroll-body {
+  overflow-y: visible !important;
+  max-height: none !important;
+}
+.td-sticky-header-group {
+  position: sticky !important;
+  top: 58px !important;
+  z-index: 25 !important;
+  border-radius: 14px 14px 0 0;
+}
+
+/* ۳. یکدست‌سازی و رفع کامل ناهماهنگی‌های ظاهری نوارهای بخش آموزش (#teachView) */
+.teach-book-bar {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto auto auto !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 7px 10px !important;
+  border-radius: 12px !important;
+}
+.teach-book-bar select {
+  height: 34px !important;
+  font-size: 11.5px !important;
+}
+.teach-unified-nav {
+  grid-template-columns: 36px 76px 1fr 76px 36px !important;
+  gap: 5px !important;
+  padding: 6px 8px !important;
+}
+.teach-nav-btn {
+  height: 34px !important;
+  font-size: 11.5px !important;
+  border-radius: 9px !important;
+}
+.teach-zoom-group, .teach-tool-group {
+  gap: 5px !important;
+  padding: 5px !important;
+  border-radius: 11px !important;
+}
+.teach-icon-btn {
+  height: 32px !important;
+  font-size: 11.2px !important;
+  font-weight: 800 !important;
+  border-radius: 8px !important;
+}
+.teach-workbench-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 6px !important;
+  padding: 6px !important;
+}
+@media (min-width: 640px) {
+  .teach-workbench-tabs {
+    grid-template-columns: repeat(6, 1fr) !important;
+  }
+}
+.teach-wb-tab {
+  min-height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  font-size: 11.2px !important;
+  padding: 6px 4px !important;
+}
+
+/* ۴. نشانگر زنگوله اعلانات در نوار بالا */
+.notif-bell-wrap {
+  position: relative;
+}
+.notif-badge-dot {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 99px;
+  background: #EF4444;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--bg-main);
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.5);
+}
+
+/* ۵. تبلیغات هایلایت ظریف و غیرمزاحم (Subtle Highlighted Promo) */
+.subtle-app-brand-bar {
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.06), rgba(167, 139, 250, 0.09), rgba(34, 211, 238, 0.06)) !important;
+  border: 1px solid var(--primary-border) !important;
+  box-shadow: inset 0 0 12px rgba(34, 211, 238, 0.06);
+  padding: 6px 12px !important;
+  border-radius: 999px !important;
+}
+.subtle-highlight-pill {
+  background: linear-gradient(135deg, var(--primary-light), rgba(167, 139, 250, 0.16));
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+/* ۶. استایل کارت‌های مرحله‌به‌مرحله «لینک اختصاصی» و «کلاس آنلاین» (مطابق اسکرین‌شات 1000185224) */
+.clean-form-creator-card {
+  background: #FFFFFF;
+  color: #1E293B;
+  border-radius: 18px;
+  padding: 16px;
+  border: 1.5px solid #E2E8F0;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+.clean-form-type-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  margin-bottom: 9px;
+  border-radius: 13px;
+  border: 2px solid #E2E8F0;
+  background: #F8FAFC;
+  color: #334155;
+  font-size: 13.5px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.clean-form-type-item.selected {
+  border-color: #0284C7;
+  background: #F0F9FF;
+  color: #0369A1;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.14);
+}
+.clean-blue-confirm-btn {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 900;
+  border: none;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.28);
+  cursor: pointer;
+}
+.clean-student-att-card {
+  max-width: 460px;
+  margin: 18px auto;
+  background: #FFFFFF;
+  color: #1E293B;
+  border-radius: 20px;
+  padding: 22px 18px;
+  border: 1.5px solid #E2E8F0;
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.18);
+}
+.clean-att-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1.8px solid #CBD5E1;
+  border-radius: 12px;
+  background: #F8FAFC;
+  padding: 4px 12px;
+  margin-top: 10px;
+}
+.clean-att-input-wrap:focus-within {
+  border-color: #16A34A;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.14);
+}
+.clean-att-user-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: #DCFCE7;
+  color: #16A34A;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+.clean-att-green-submit {
+  width: 100%;
+  margin-top: 14px;
+  padding: 13px;
+  border-radius: 12px;
+  background: #16A34A;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 900;
+  border: none;
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.28);
+  cursor: pointer;
+}
+
+/* ۷. شبکه شطرنجی ریاضی و خط‌بر نورانی روخوانی روی بوم کتاب درسی */
+.math-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  background-image:
+    linear-gradient(to right, rgba(2, 132, 199, 0.22) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(2, 132, 199, 0.22) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border-radius: 8px;
+  display: none;
+}
+.math-grid-overlay.show {
+  display: block;
+}
+.reading-spotlight-ruler {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 120px;
+  height: 34px;
+  background: rgba(250, 204, 21, 0.28);
+  border-top: 2px solid #EAB308;
+  border-bottom: 2px solid #EAB308;
+  box-shadow: 0 0 14px rgba(250, 204, 21, 0.45);
+  z-index: 6;
+  cursor: ns-resize;
+  display: none;
+  border-radius: 4px;
+}
+.reading-spotlight-ruler.show {
+  display: block;
+}
+
 </style>
 </head>
 <body>
@@ -2598,11 +2935,15 @@ body {
   <div class="toprow">
     <div class="brand">
       <div class="logo">🎓</div>
-      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v5.8.1 Pro</span></small></div>
+      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v5.9.0 Pro</span></small></div>
     </div>
     <div class="top-icons">
-      <button class="iconbtn" onclick="showView('termsView')" title="مدیریت ترم و ترم‌های گذشته" aria-label="مدیریت ترم">🗂️</button>
-      <button class="iconbtn" onclick="showView('animSettingsView')" title="ظاهر و انیمیشن‌ها" aria-label="ظاهر و انیمیشن‌ها">✨</button>
+      <div class="notif-bell-wrap">
+        <button class="iconbtn" id="topNotifBtn" onclick="openNotificationsCenterModal()" title="مرکز هوشمند اعلانات و یادآوری‌ها" aria-label="اعلانات">🔔</button>
+        <span class="notif-badge-dot" id="topNotifBadge" style="display:none">۰</span>
+      </div>
+      <button class="iconbtn" onclick="showView('onlineClassView')" title="کلاس آنلاین و لینک اختصاصی" aria-label="کلاس آنلاین">🌐</button>
+      <button class="iconbtn" onclick="openTeacherAccountModal()" title="حساب کاربری معلم (جیمیل و شماره همراه)" aria-label="حساب کاربری">👤</button>
       <button class="iconbtn" onclick="showView('birthdays')" title="تولدها" aria-label="تولدها">🎂</button>
       <button class="iconbtn" onclick="showView('search')" title="جستجو" aria-label="جستجو">🔍</button>
       <button class="iconbtn" id="themeToggleBtn" onclick="toggleTheme()" title="تغییر پوسته" aria-label="تغییر پوسته">☀️</button>
@@ -2667,12 +3008,12 @@ body {
         <button type="button" class="jarvis-metric-btn" data-metric="classes" onclick="setJarvisCoreMetric('classes')">🚪 کلاس‌ها</button>
         <button type="button" class="jarvis-metric-btn" data-metric="schools" onclick="setJarvisCoreMetric('schools')">🏫 مدارس</button>
         <button type="button" class="jarvis-metric-btn" data-metric="avg" onclick="setJarvisCoreMetric('avg')">⭐ میانگین کل</button>
-        <button type="button" class="jarvis-metric-btn" data-metric="present" onclick="setJarvisCoreMetric('present')">✓ حاضرین امروز</button>
+        <button type="button" class="jarvis-metric-btn" data-metric="absent" onclick="setJarvisCoreMetric('absent')">🔴 غایبین امروز</button>
         <button type="button" class="jarvis-metric-btn" data-metric="attn" onclick="setJarvisCoreMetric('attn')">🚨 نیازمند توجه</button>
       </div>
       <div class="actions" style="margin-top:4px">
-        <button type="button" class="btn soft btn-sm" onclick="showView('termsView')">🗂️ مدیریت ترم و آرشیو</button>
-        <button type="button" class="btn gray btn-sm" onclick="showView('animSettingsView')">✨ تنظیمات ظاهر و انیمیشن‌ها</button>
+        <button type="button" class="btn primary btn-sm" onclick="showView('onlineClassView')">🌐 کلاس آنلاین و لینک اختصاصی</button>
+        <button type="button" class="btn soft btn-sm" onclick="openNotificationsCenterModal()">🔔 اعلانات و یادآوری‌ها</button>
       </div>
     </div>
   </div>
@@ -2724,7 +3065,13 @@ body {
   <div class="card" style="margin-bottom:14px">
     <b style="color:var(--primary)">💌 ویرایش متن پیام تبریک تولد</b>
     <div class="field" style="margin-top:8px"><label>👨‍🏫 نام معلم (برای امضای پایان پیام)</label><input id="teacherName" oninput="saveTeacherName()" placeholder="مثلاً رضا شهابی نژاد"></div>
-    <p class="muted" style="margin:6px 0">کلمات <code>{نام}</code>، <code>{نام_خانوادگی}</code>، <code>{نام_پدر}</code>، <code>{علاقه}</code> و <code>{نام_معلم}</code> خودکار جایگزین می‌شوند.</p>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin:6px 0">
+      <p class="muted" style="margin:0">کلمات <code>{نام}</code>، <code>{نام_خانوادگی}</code>، <code>{نام_پدر}</code>، <code>{علاقه}</code> و <code>{نام_معلم}</code> خودکار جایگزین می‌شوند (امضای معلم همیشه در پایان پیام درج می‌شود).</p>
+      <div style="display:flex;gap:5px">
+        <button type="button" class="btn soft btn-sm" onclick="openNotificationsCenterModal()">🔔 تنظیم اعلان تولد</button>
+        <button type="button" class="btn gray btn-sm" onclick="resetBirthdayTemplateWithSignature()">🔄 درج خودکار امضای معلم</button>
+      </div>
+    </div>
     <textarea id="birthdayTemplate" oninput="saveBirthdayTemplate()"></textarea>
   </div>
   <div id="birthdaysList"></div>
@@ -2777,15 +3124,23 @@ body {
   <div class="card" id="teacherStudyPdfCard" style="margin-bottom:10px;padding:11px">
     <!-- نوار انتخاب کتاب و بارگذاری PDF (تک‌خطی و کاملاً تراز در موبایل) -->
     <div class="teach-book-bar">
-      <span style="font-size:11px;font-weight:900;color:var(--primary);white-space:nowrap">📚 کتاب:</span>
+      <span style="font-size:11px;font-weight:900;color:var(--primary);white-space:nowrap">📚 کتابخانه:</span>
       <select id="teacherBookLibrarySelect" onchange="TeachAssistant.switchLibraryBook(this.value)" aria-label="انتخاب کتاب">
         <option value="">-- کتابی ذخیره نشده --</option>
       </select>
-      <label class="btn primary btn-sm" style="margin:0;cursor:pointer;white-space:nowrap;height:32px;padding:0 9px;display:inline-flex;align-items:center;font-size:11px">
-        📂 انتخاب PDF
+      <select id="teacherBookSubjectSelect" onchange="TeachAssistant.setBookSubjectCategory(this.value)" style="width:auto;max-width:112px;height:34px;font-size:11px;font-weight:800" title="درس مربوط به این کتاب">
+        <option value="general">📘 عمومی</option>
+        <option value="math">📐 ریاضی</option>
+        <option value="science">🔬 علوم/آزمایشگاه</option>
+        <option value="art">🎨 کاروفناوری/هنر</option>
+        <option value="quran">🕌 قرآن/ادبیات</option>
+        <option value="english">🔤 زبان انگلیسی</option>
+      </select>
+      <label class="btn primary btn-sm" style="margin:0;cursor:pointer;white-space:nowrap;height:34px;padding:0 9px;display:inline-flex;align-items:center;font-size:11px">
+        📂 افزودن کتاب
         <input type="file" accept="application/pdf" hidden onchange="TeachAssistant.scanAndCacheBookPDF(event)">
       </label>
-      <button type="button" class="btn danger btn-sm" style="height:32px;width:32px;padding:0;display:inline-flex;align-items:center;justify-content:center" onclick="TeachAssistant.deleteActiveLibraryBook()" title="حذف کتاب فعلی">🗑️</button>
+      <button type="button" class="btn danger btn-sm" style="height:34px;width:34px;padding:0;display:inline-flex;align-items:center;justify-content:center" onclick="TeachAssistant.deleteActiveLibraryBook()" title="حذف کتاب فعلی">🗑️</button>
     </div>
     <div id="bookScanStatus" style="display:none;margin-bottom:6px;padding:5px 9px;border-radius:8px;background:var(--primary-light);border:1px solid var(--primary-border);font-weight:800;color:var(--primary);font-size:11.5px"></div>
 
@@ -2824,7 +3179,7 @@ body {
         <button type="button" class="teach-icon-btn" id="btnToggleAnnotate" onclick="TeachAssistant.toggleAnnotateBar()">🖍️ قلم</button>
         <button type="button" class="teach-icon-btn" id="btnToggleBookmark" onclick="TeachAssistant.togglePageBookmark()">🔖 نشانک</button>
         <button type="button" class="teach-icon-btn" id="btnPinClassProgress" onclick="TeachAssistant.pinClassProgressHere()" title="ثبت اینکه تا این صفحه تدریس شده">📍 تا اینجا</button>
-        <button type="button" class="teach-icon-btn" onclick="TeachAssistant.sendPageToExamBuilder()" title="ارسال مستقیم این صفحه به آزمون‌ساز">📝 به آزمون</button>
+        <button type="button" class="teach-icon-btn" id="btnOpenSubjectToolsQuick" onclick="TeachAssistant.openWorkbenchTab('tools')" title="جعبه ابزار تخصصی ریاضی، علوم، هنر، قرآن و زبان">🧰 ابزار دروس</button>
       </div>
     </div>
 
@@ -2851,6 +3206,8 @@ body {
     <div class="teach-canvas-stage" id="teacherPdfStage">
       <div class="teach-canvas-inner" id="teacherCanvasInner" dir="ltr" style="direction:ltr">
         <canvas id="teacherPdfCanvas" dir="ltr" style="direction:ltr" aria-label="صفحه کتاب"></canvas>
+        <div id="mathGridOverlay" class="math-grid-overlay"></div>
+        <div id="readingSpotlightRuler" class="reading-spotlight-ruler" title="خط‌بر نورانی روخوانی (برای جابه‌جایی بکشید)"></div>
         <canvas id="teacherAnnotCanvas" dir="ltr" style="direction:ltr" aria-label="لایه قلم روی کتاب"></canvas>
       </div>
       <div id="teacherPdfEmpty" class="muted" style="padding:22px 14px;text-align:center">
@@ -2887,22 +3244,34 @@ body {
     </div>
 
     <div class="teach-workbench-tabs" role="tablist">
-      <button type="button" class="teach-wb-tab active" id="wbTabBtn-extract" onclick="TeachAssistant.openWorkbenchTab('extract')">🎯 طراحی سوال از صفحه</button>
-      <button type="button" class="teach-wb-tab" id="wbTabBtn-solve" onclick="TeachAssistant.openWorkbenchTab('solve')">💡 حل فعالیت و تمرین‌ها</button>
-      <button type="button" class="teach-wb-tab" id="wbTabBtn-impromptu" onclick="TeachAssistant.openWorkbenchTab('impromptu')">⚡ پاسخ بداهه سر کلاس</button>
+      <button type="button" class="teach-wb-tab active" id="wbTabBtn-extract" onclick="TeachAssistant.openWorkbenchTab('extract')">🎯 استخراج سوالات</button>
+      <button type="button" class="teach-wb-tab" id="wbTabBtn-handout" onclick="TeachAssistant.openWorkbenchTab('handout')">🌟 جزوه بچه درس‌خون</button>
+      <button type="button" class="teach-wb-tab" id="wbTabBtn-solve" onclick="TeachAssistant.openWorkbenchTab('solve')">💡 حل فعالیت‌ها</button>
+      <button type="button" class="teach-wb-tab" id="wbTabBtn-tools" onclick="TeachAssistant.openWorkbenchTab('tools')">🧰 ابزار تخصصی دروس</button>
+      <button type="button" class="teach-wb-tab" id="wbTabBtn-impromptu" onclick="TeachAssistant.openWorkbenchTab('impromptu')">⚡ پاسخ بداهه</button>
       <button type="button" class="teach-wb-tab" id="wbTabBtn-note" onclick="TeachAssistant.openWorkbenchTab('note')">📝 یادداشت معلم</button>
     </div>
 
-    <!-- تب ۱: طراحی و استخراج خط‌به‌خط سوالات با هوش مصنوعی دیداری -->
+    <!-- تب ۱: استخراج سوالات صفحه در ۲ حالت مجزا (سوالات درشت کلیدی صفحه / همهٔ سوالات ریزبه‌ریز کل صفحه) -->
     <div class="teach-wb-pane active" id="wbPane-extract">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;margin-bottom:8px">
-        <b style="color:var(--primary);font-size:13px">🎯 طراحی سوال و جواب استاندارد از روی تصویر همین صفحه با هوش مصنوعی</b>
+        <b style="color:var(--primary);font-size:13px">🎯 استخراج سوالات امتحانی از صفحه (درشت و کلیدی یا ریزبه‌ریز کل صفحه)</b>
         <div style="display:flex;gap:4px;flex-wrap:wrap">
           <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleClassroomFlashcardMode()">🃏 پرسش کلاسی</button>
-          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.exportLessonHandout('word')">📘 جزوه Word</button>
-          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.exportLessonHandout('print')">🖨️ چاپ جزوه</button>
+          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.openWorkbenchTab('handout')">🌟 ساخت جزوه بچه درس‌خون</button>
         </div>
       </div>
+
+      <!-- انتخابگر ۲ حالت استخراج سوالات طبق درخواست معلم -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:9px" id="extractScopeModePills">
+        <button type="button" class="btn primary btn-sm" id="btnModeMajorQuestions" onclick="TeachAssistant.setExtractScopeMode('major')" style="justify-content:center;padding:8px">
+          🎯 حالت ۱: سوالات درشت و اصلی صفحه (۴ تا ۵ سوال کلیدی)
+        </button>
+        <button type="button" class="btn soft btn-sm" id="btnModeAllQuestions" onclick="TeachAssistant.setExtractScopeMode('all')" style="justify-content:center;padding:8px">
+          📋 حالت ۲: همهٔ سوالات ریزبه‌ریز کل صفحه (خط‌به‌خط کامل)
+        </button>
+      </div>
+      <input type="hidden" id="extractScopeModeInp" value="major">
 
       <div class="grid-2" style="margin-bottom:8px;align-items:end">
         <div>
@@ -2915,28 +3284,170 @@ body {
           </select>
         </div>
         <div>
-          <label style="font-size:11px;font-weight:800;display:block;margin-bottom:3px">تعداد سوالات (بدون باز شدن کیبورد):</label>
+          <label style="font-size:11px;font-weight:800;display:block;margin-bottom:3px">تعداد سوالات (در حالت درشت ۴-۵ | در حالت کل صفحه ۱۰-۱۵):</label>
           <div class="teach-count-chips" id="extractCountChips">
-            <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(3)">۳</button>
+            <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(4)">۴</button>
             <button type="button" class="teach-count-chip active" onclick="TeachAssistant.setExtractCount(5)">۵</button>
             <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(8)">۸</button>
-            <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(10)">۱۰</button>
             <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(12)">۱۲</button>
+            <button type="button" class="teach-count-chip" onclick="TeachAssistant.setExtractCount(15)">۱۵</button>
             <input type="hidden" id="extractCountInp" value="5">
           </div>
         </div>
       </div>
 
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <button type="button" class="btn primary" style="flex:2;min-width:190px" id="btnExtractLineQuestions" onclick="TeachAssistant.extractLineByLineQuestions()">🤖 طراحی سوالات این صفحه با هوش مصنوعی</button>
-        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.openSmartAiBridgeModal('extract')" title="استفاده از هوش مصنوعی بدون نیاز به کلید API">🪄 هوش مصنوعی بدون کلید</button>
-        <button type="button" class="btn gray btn-sm" onclick="TeachAssistant.sendAllExtractedToExam()" title="افزودن همه به برگه آزمون">➕ همه به آزمون</button>
+        <button type="button" class="btn primary" style="flex:1;min-width:170px" id="btnExtractLineQuestions" onclick="TeachAssistant.extractLineByLineQuestions('major')">🎯 استخراج سوالات درشت صفحه (۴-۵ سوال)</button>
+        <button type="button" class="btn green" style="flex:1;min-width:170px" id="btnExtractAllDetailedQuestions" onclick="TeachAssistant.extractLineByLineQuestions('all')">📋 استخراج همهٔ سوالات ریزبه‌ریز کل صفحه</button>
+        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.openSmartAiBridgeModal('extract')" title="استفاده از DeepSeek / ChatGPT / Gemini بدون نیاز به کلید API">🪄 بدون کلید (DeepSeek/ChatGPT)</button>
       </div>
 
       <!-- باکس فلش‌کارت پرسش کلاسی و قرعه‌کشی دانش‌آموز -->
       <div id="classroomFlashcardBox" class="teach-flashcard-box" style="display:none"></div>
 
       <div id="extractedQuestionsBox" style="margin-top:10px;display:grid;gap:8px"></div>
+    </div>
+
+    <!-- تب جدید ۲: جزوه‌ساز حرفه‌ای «🌟 جزوهٔ بچه درس‌خون» (درس‌به‌درس، فصل‌به‌فصل یا کل کتاب) -->
+    <div class="teach-wb-pane" id="wbPane-handout">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+        <div>
+          <b style="color:var(--primary);font-size:13.5px">🌟 جزوه‌ساز رنگی و مرتب «بچه درس‌خون» (درس‌به‌درس، فصل‌به‌فصل یا کل کتاب)</b>
+          <div class="muted" style="font-size:11px">شامل خلاصه طلایی، کادرهای رنگی «نکات مهم امتحانی»، جدول‌های مقایسه‌ای، حل فعالیت‌ها و بانک سوال‌وجواب</div>
+        </div>
+      </div>
+
+      <div class="formgrid" style="margin-bottom:8px">
+        <div class="field">
+          <label>📚 محدوده ساخت جزوه:</label>
+          <select id="handoutScopeSelect" onchange="TeachAssistant.onHandoutScopeChange(this.value)">
+            <option value="lesson" selected>📄 درس‌به‌درس (همین صفحه / درس فعلی)</option>
+            <option value="chapter">📑 فصل‌به‌فصل / پودمان‌به‌پودمان (بازه صفحات)</option>
+            <option value="full_book">📚 کل کتاب درسی یکجا (جامع)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>🎨 تم رنگی جزوه بچه درس‌خون:</label>
+          <select id="handoutThemeSelect">
+            <option value="rainbow" selected>🌈 رنگی و شاد بچه درس‌خون (نارنجی/فیروزه‌ای/سبز)</option>
+            <option value="emerald">🌿 زمردی و طلایی لوکس</option>
+            <option value="cyan">💎 فیروزه‌ای و آبی علمی</option>
+            <option value="royal">💜 بنفش و یاسی سلطنتی</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="handoutPageRangeWrap" class="grid-2" style="display:none;margin-bottom:8px">
+        <div><label style="font-size:11px;font-weight:bold">از صفحه:</label><input type="number" id="handoutPageFrom" min="1" value="1"></div>
+        <div><label style="font-size:11px;font-weight:bold">تا صفحه:</label><input type="number" id="handoutPageTo" min="1" value="5"></div>
+      </div>
+
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button type="button" class="btn primary" style="flex:2;min-width:190px" id="btnBuildTopStudentHandout" onclick="TeachAssistant.generateTopStudentHandout()">✨ ساخت جزوهٔ رنگی بچه درس‌خون</button>
+        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.exportLessonHandout('word')">📘 دانلود Word رنگی (.doc)</button>
+        <button type="button" class="btn green btn-sm" onclick="TeachAssistant.exportLessonHandout('print')">🖨️ چاپ / PDF رنگی</button>
+        <button type="button" class="btn gray btn-sm" onclick="TeachAssistant.openSmartAiBridgeModal('handout')">🪄 ساخت با DeepSeek (بدون API)</button>
+      </div>
+
+      <div id="topStudentHandoutPreviewBox" style="margin-top:10px"></div>
+    </div>
+
+    <!-- تب جدید ۴: جعبه ابزار تخصصی تمام دروس (ریاضی، علوم/آزمایشگاه، هنر/کاروفناوری، قرآن/ادبیات، زبان انگلیسی) -->
+    <div class="teach-wb-pane" id="wbPane-tools">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+        <b style="color:var(--primary);font-size:13.5px">🧰 جعبه ابزار تخصصی تمام دروس (بدون کمبود برای هیچ معلمی)</b>
+        <div class="pill-switch" id="subjToolTabsBar">
+          <button type="button" class="pill-btn active" onclick="TeachAssistant.switchSubjectToolPane('math', this)">📐 ریاضی</button>
+          <button type="button" class="pill-btn" onclick="TeachAssistant.switchSubjectToolPane('science', this)">🔬 علوم/آزمایشگاه</button>
+          <button type="button" class="pill-btn" onclick="TeachAssistant.switchSubjectToolPane('art', this)">🎨 هنر/کاروفناوری</button>
+          <button type="button" class="pill-btn" onclick="TeachAssistant.switchSubjectToolPane('quran', this)">🕌 قرآن/ادبیات</button>
+          <button type="button" class="pill-btn" onclick="TeachAssistant.switchSubjectToolPane('english', this)">🔤 زبان</button>
+        </div>
+      </div>
+
+      <!-- ابزار ریاضی و هندسه -->
+      <div id="subjToolPane-math" class="subj-tool-pane">
+        <div class="card" style="background:var(--bg-panel);padding:10px">
+          <b style="color:var(--neon-cyan);font-size:12.5px">📐 ابزارهای هندسه، محور مختصات و ماشین‌حساب علمی</b>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleMathGridOverlay()">🕸️ صفحه شطرنجی روی کتاب</button>
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.stampMathShape('axes')">➕ رسم محور مختصات (X,Y)</button>
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.stampMathShape('ruler')">📏 خط‌کش مدرج</button>
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.stampMathShape('protractor')">📐 نقاله ۱۸۰ درجه</button>
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.stampMathShape('triangle')">🔺 مثلث قائم‌الزاویه</button>
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.stampMathShape('circle')">⭕ دایره و شعاع</button>
+          </div>
+          <div style="display:flex;gap:6px;margin-top:8px;align-items:center;flex-wrap:wrap">
+            <input type="text" id="mathCalcExprInp" dir="ltr" placeholder="محاسبه سریع: مثلاً sqrt(144) + 3^2 یا sin(30)" style="flex:1;min-width:170px;text-align:left;font-family:monospace;font-size:12px">
+            <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.evalMathExpr()">🧮 محاسبه</button>
+            <span id="mathCalcResultBadge" class="chip" style="font-weight:900">= ۰</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ابزار علوم تجربی و آزمایشگاه -->
+      <div id="subjToolPane-science" class="subj-tool-pane" style="display:none">
+        <div class="card" style="background:var(--bg-panel);padding:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+            <b style="color:var(--neon-green);font-size:12.5px">🔬 آزمایشگاه علوم، جدول تناوبی و کرنومتر</b>
+            <div style="display:flex;gap:5px;align-items:center">
+              <span id="labTimerDisplay" class="chip" style="font-family:monospace;font-size:12.5px">00:00</span>
+              <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleLabTimer()">⏱️ شروع/توقف کرنومتر</button>
+              <button type="button" class="btn gray btn-sm" onclick="TeachAssistant.resetLabTimer()">🔄 صفر</button>
+              <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.openPeriodicTableModal()">🧪 جدول تناوبی عناصر</button>
+            </div>
+          </div>
+          <div class="formgrid" style="margin-top:8px">
+            <div class="field"><label>🎯 عنوان و هدف آزمایش:</label><input type="text" id="labTitleInp" placeholder="مثلاً بررسی تراکم‌پذیری مواد"></div>
+            <div class="field"><label>🧰 وسایل و مواد لازم:</label><input type="text" id="labToolsInp" placeholder="سرنگ، آب، بشر، دماسنج..."></div>
+            <div class="field full"><label>📝 مشاهده و نتیجه‌گیری علمی:</label><input type="text" id="labResultInp" placeholder="نتیجه آزمایش را بنویسید..."></div>
+          </div>
+          <button type="button" class="btn green btn-sm" style="margin-top:6px" onclick="TeachAssistant.saveLabReportToPageNote()">💾 ثبت گزارش آزمایش در یادداشت و جزوه این صفحه</button>
+        </div>
+      </div>
+
+      <!-- ابزار هنر و کاروفناوری -->
+      <div id="subjToolPane-art" class="subj-tool-pane" style="display:none">
+        <div class="card" style="background:var(--bg-panel);padding:10px">
+          <b style="color:var(--neon-purple);font-size:12.5px">🎨 کارگاه هنر، طراحی آزاد و پودمان‌های کاروفناوری</b>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px">
+            <label style="font-size:11.5px;font-weight:bold;display:flex;align-items:center;gap:5px">🎨 رنگ قلم دلخواه: <input type="color" id="annotCustomColorPicker" value="#F97316" style="width:36px;height:30px;padding:1px;border-radius:6px" onchange="TeachAssistant.setCustomAnnotColor(this.value)"></label>
+            <label style="font-size:11.5px;font-weight:bold;display:flex;align-items:center;gap:5px">🖌️ ضخامت قلم: <input type="range" id="annotBrushSizeSlider" min="2" max="26" value="5" style="width:95px" oninput="TeachAssistant.setCustomAnnotWidth(this.value)"></label>
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleWhiteboardMode()">📋 بوم سفید طراحی آزاد</button>
+            <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.insertProjectChecklistToNote()">🛠️ درج الگوی پروژه کاروفناوری</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ابزار قرآن، عربی و ادبیات -->
+      <div id="subjToolPane-quran" class="subj-tool-pane" style="display:none">
+        <div class="card" style="background:var(--bg-panel);padding:10px">
+          <b style="color:var(--primary);font-size:12.5px">🕌 خط‌بر نورانی روخوانی آیات/متون و جدول واژگان و آرایه‌ها</b>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+            <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.toggleReadingRuler()">✨ فعال/غیرفعال‌سازی خط‌بر نورانی سطری روی کتاب</button>
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.moveReadingRuler(-28)">⬆️ سطر بالا</button>
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.moveReadingRuler(28)">⬇️ سطر پایین</button>
+            <button type="button" class="btn green btn-sm" onclick="TeachAssistant.insertVocabTableToNote()">📖 درج جدول لغات و آرایه‌های صفحه</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ابزار زبان انگلیسی -->
+      <div id="subjToolPane-english" class="subj-tool-pane" style="display:none">
+        <div class="card" style="background:var(--bg-panel);padding:10px">
+          <b style="color:var(--neon-cyan);font-size:12.5px">🔤 تلفظ صوتی هوشمند انگلیسی (TTS) و فلش‌کارت واژگان</b>
+          <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+            <input type="text" id="engPronounceInp" dir="ltr" placeholder="Type English word or sentence to pronounce..." style="flex:1;min-width:180px;text-align:left;font-size:12.5px">
+            <select id="engSpeechRateSel" style="width:auto;height:34px;font-size:11.5px">
+              <option value="0.65">🐢 شمرده (0.65x)</option>
+              <option value="0.9" selected>🗣️ استاندارد (0.9x)</option>
+              <option value="1.1">⚡ سریع (1.1x)</option>
+            </select>
+            <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.speakEnglishText()">🔊 تلفظ صوتی</button>
+            <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.addEnglishWordToBank()">➕ افزودن به بانک سوالات</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- تب ۲: حل تشریحی فعالیت‌ها، کاردرکلاس و جداول صفحه با هوش مصنوعی دیداری -->
@@ -2990,7 +3501,8 @@ body {
       <button class="btn soft btn-sm" onclick="ExamApp.exportDirectPDF()" id="btnDirectPdf">📕 PDF</button>
       <button class="btn soft btn-sm" onclick="ExamApp.shareExamSheet()" id="btnShareSheet">📤 اشتراک</button>
       <button class="btn gray btn-sm" onclick="ExamApp.printSheetNow()">🖨️ چاپ</button>
-      <button class="btn primary btn-sm" style="grid-column:1 / -1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">🌐 ساخت لینک آزمون آنلاین برای دانش‌آموزان (ثبت خودکار در لیست)</button>
+      <button class="btn primary btn-sm" style="grid-column:1 / -1" onclick="ExamApp.openImportFromTeachModal()">📥 دریافت سوالات و جزوه از بخش آموزش (کتاب‌خوان)</button>
+      <button class="btn soft btn-sm" style="grid-column:1 / -1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">🌐 ارائه این آزمون در «لینک اختصاصی» / کلاس آنلاین</button>
     </div>
   </div>
 
@@ -3354,6 +3866,28 @@ body {
             <span style="background:#FBBF24"></span>
           </div>
         </div>
+        <div class="theme-pick-card" data-theme-id="emerald-luxury" onclick="setCyberThemeMode('emerald-luxury')">
+          <div>
+            <b style="display:block;font-size:13.5px">🌿 زمردی لوکس و طلایی</b>
+            <span class="muted" style="font-size:11px">سبز زمردی تیره با درخشش طلایی</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#03110E"></span>
+            <span style="background:#10B981"></span>
+            <span style="background:#F59E0B"></span>
+          </div>
+        </div>
+        <div class="theme-pick-card" data-theme-id="royal-galaxy" onclick="setCyberThemeMode('royal-galaxy')">
+          <div>
+            <b style="display:block;font-size:13.5px">💜 بنفش کهکشانی لوکس</b>
+            <span class="muted" style="font-size:11px">کهکشانی عمیق با نئون ارغوانی</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#080514"></span>
+            <span style="background:#C084FC"></span>
+            <span style="background:#F472B6"></span>
+          </div>
+        </div>
         <div class="theme-pick-card" data-theme-id="light" onclick="setCyberThemeMode('light')">
           <div>
             <b style="display:block;font-size:13.5px">☀️ روشن روز (آبی آسمانی)</b>
@@ -3393,6 +3927,7 @@ body {
       <p class="muted" style="margin:4px 0 10px">نمره نهایی هر دانش‌آموز به صورت خودکار بر اساس ضرایب زیر محاسبه می‌شود:</p>
       <div class="formgrid">
         <div class="field"><label>🗣️ ضریب نمرات کلاسی و جلسات روزانه</label><input id="weightClassScore" type="number" step="0.5" min="0" value="1" oninput="updateLiveFormulaPreview()"></div>
+        <div class="field"><label>👥 ضریب نمرات گروهی و پروژه‌های کلاسی</label><input id="weightGroupScore" type="number" step="0.5" min="0" value="1.5" oninput="updateLiveFormulaPreview()"></div>
         <div class="field"><label>📝 ضریب امتحانات کتبی مستمر (مهم‌تر)</label><input id="weightContExam" type="number" step="0.5" min="0" value="2" oninput="updateLiveFormulaPreview()"></div>
         <div class="field"><label>🎓 ضریب آزمون پایانی ترم</label><input id="weightTermExam" type="number" step="0.5" min="0" value="3" oninput="updateLiveFormulaPreview()"></div>
         <div class="field"><label>🚨 آستانه افت نمره برای وضعیت «نیازمند توجه»</label><input id="ruleLowScoreAttn" type="number" step="0.5" min="0" max="20" value="12"></div>
@@ -3621,8 +4156,8 @@ body {
       <b style="color:var(--primary);font-size:14.5px">🔗 مرکز لینک آنلاین حضور و غیاب و آزمون دانش‌آموزان</b>
       <p class="muted" style="margin:4px 0 10px">ساخت لینک اختصاصی برای ارسال در گروه کلاس (شاد، ایتا، تلگرام و...)؛ دانش‌آموز حاضری می‌زند یا امتحان می‌دهد و نتیجه خودکار وارد لیست کلاس می‌شود:</p>
       <div class="actions">
-        <button type="button" class="btn primary" style="flex:1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'att')">📋 دیجی‌فرم حضور و غیاب</button>
-        <button type="button" class="btn soft" style="flex:1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">📝 دیجی‌فرم آزمون آنلاین</button>
+        <button type="button" class="btn primary" style="flex:1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'att')">📋 لینک اختصاصی حضور و غیاب</button>
+        <button type="button" class="btn soft" style="flex:1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">📝 لینک اختصاصی آزمون آنلاین</button>
         <button type="button" class="btn soft" style="flex:1" onclick="openLinkClassBuilderModal(currentSchoolId)">🔗 کلاس‌سازی با لینک</button>
         <button type="button" class="btn green" style="flex:1" onclick="openReceiveStudentSyncModal(currentSchoolId, currentClassId)">📡 دریافت پاسخ‌های فرم</button>
       </div>
@@ -3726,15 +4261,30 @@ body {
   <div id="archivedTermInspectorBox" style="margin-top:14px;display:none"></div>
 </section>
 
-<!-- امضای ظریف و غیرمزاحم معرفی برنامه در انتهای صفحات -->
+<!-- بخش دوازدهم-ب: صفحه مستقل و متمرکز «🌐 کلاس آنلاین و لینک اختصاصی» -->
+<section id="onlineClassView" class="view">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+    <div>
+      <h1 class="title" style="margin:0">🌐 مرکز کلاس آنلاین و لینک اختصاصی</h1>
+      <p class="subtitle" style="margin:2px 0 0">مدیریت یکپارچه فرم حضور و غیاب آنلاین، آزمون آنلاین، ثبت‌نام سفارشی دانش‌آموز و زمان‌بندی فرم‌ها</p>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button type="button" class="btn soft btn-sm" onclick="openTeacherAccountModal()">👤 حساب جیمیل / شماره همراه</button>
+      <button type="button" class="btn green btn-sm" onclick="fetchOnlineRoomSubmissions(false)">🔄 دریافت آنی پاسخ‌ها</button>
+    </div>
+  </div>
+  <div id="onlineClassHubContent"></div>
+</section>
+
+<!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-brand-badge">🎓 دانش‌آموز من <small>v5.8 Pro</small></span>
-    <span class="subtle-brand-text">دفتر هوشمند معلم، کارنامه رنگی و آزمون‌ساز نسل جدید</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v5.9.0 Pro</span>
+    <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
-    <button type="button" class="subtle-brand-share-btn" onclick="shareAppPromoWithColleagues()" title="ارسال معرفی برنامه برای همکاران فرهنگی">📤 معرفی به همکاران</button>
-    <button type="button" class="subtle-brand-share-btn" onclick="runSmartAppDiagnostics(true)" title="عیب‌یابی و بررسی سلامت برنامه">🛠️ سلامت برنامه</button>
+    <button type="button" class="subtle-brand-share-btn" onclick="shareAppPromoWithColleagues()" title="معرفی ظریف برنامه به همکاران فرهنگی">📤 معرفی به همکاران</button>
+    <button type="button" class="subtle-brand-share-btn" onclick="openSmartStudentRepairModal(currentSchoolId, currentClassId)" title="تعمیرکار هوشمند اسامی و مشخصات">🛠️ تعمیر هوشمند</button>
   </div>
 </footer>
 </main>
@@ -3779,10 +4329,13 @@ body {
         <select id="descGradingStrictness"><option value="مفهومی و استاندارد با نمرات رند مضرب 0.25">مفهومی و استاندارد (مضارب رُند ۰.۲۵)</option><option value="همراه با ارفاق معلمانه">همراه با ارفاق معلمانه</option><option value="دقیق و سخت‌گیرانه طبق کلید">دقیق و سخت‌گیرانه طبق کلید</option></select>
       </div>
       <div class="box-card highlight">
-        <div class="box-header"><span>📷 اسکن برگه (خوانش خودکار نام + علامت‌گذاری پاسخ‌ها روی عکس برگه)</span></div>
+        <div class="box-header">
+          <span>📷 اسکن تکی یا دسته‌جمعی همه برگه‌های امتحانی کلاس یکجا</span>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.openBatchDeepSeekGradingModal()">🪄 تصحیح دسته‌جمعی با DeepSeek / ChatGPT (بدون API)</button>
+        </div>
         <div style="display:flex;gap:6px;flex-wrap:wrap">
-          <label class="btn primary" style="flex:1;cursor:pointer;margin:0">📷 عکس از برگه<input type="file" accept="image/*" capture="environment" hidden onchange="ExamApp.gradeByPhotoAI(event)"></label>
-          <label class="btn soft" style="flex:1;cursor:pointer;margin:0">🖼️ انتخاب از گالری<input type="file" accept="image/*" hidden onchange="ExamApp.gradeByPhotoAI(event)"></label>
+          <label class="btn primary" style="flex:1;cursor:pointer;margin:0">📷 عکس از برگه (تکی)<input type="file" accept="image/*" capture="environment" hidden onchange="ExamApp.gradeByPhotoAI(event)"></label>
+          <label class="btn green" style="flex:1.3;cursor:pointer;margin:0">📚 آپلود یکجای همه برگه‌ها (دسته‌جمعی)<input type="file" accept="image/*" multiple hidden onchange="ExamApp.gradeBatchPhotosAI(event)"></label>
         </div>
         <div id="aiGradeResultWrap" style="margin-top:10px;display:none"></div>
       </div>
@@ -3916,7 +4469,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '5.8.1 Pro';
+const APP_VERSION = '5.9.0 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -6146,7 +6699,7 @@ ${src.slice(0, 1800)}
       ${solvedHtml}
       ${rowsHtml}
       <div style="margin-top:20px;padding-top:10px;border-top:1px dashed #94a3b8;text-align:center;font-size:11px;color:#64748b">
-        🎓 تولیدشده با سامانه هوشمند «دانش‌آموز من» (نسخه v5.8 Pro) — دستیار دیجیتال معلمان
+        🎓 تولیدشده با سامانه هوشمند «دانش‌آموز من» (نسخه v5.9.0 Pro) — دستیار دیجیتال معلمان
       </div>
     </body></html>`;
 
@@ -6251,7 +6804,7 @@ const ExamApp = {
   renderApprovedArchiveList() {
     const box = document.getElementById('approvedArchiveList'); if (!box) return;
     const list = this.state.approvedExamsArchive || [];
-    box.innerHTML = list.length ? list.map(it => `<div class="box-card"><div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--primary-dark)">📌 ${esc(it.title)}</b><span class="chip">${this.toFa(it.totalScore)} نمره (${this.toFa(it.questionCount)} سوال)</span></div><div class="muted" style="margin:4px 0 8px">${esc(it.subject)} | ${esc(it.grade)} | ${esc(it.savedDate)}</div><div style="display:flex;gap:5px;flex-wrap:wrap"><button class="btn green btn-sm" onclick="ExamApp.publishArchivedExamOnline(${it.archiveId})">🌐 ارائه آنلاین (دیجی‌فرم)</button><button class="btn primary btn-sm" onclick="ExamApp.loadExamFromArchive(${it.archiveId},null)">📂 بازخوانی</button><button class="btn soft btn-sm" onclick="ExamApp.loadExamFromArchive(${it.archiveId},'Arial, Tahoma, sans-serif')">🔤 با فونت Arial</button><button class="btn soft btn-sm" onclick="ExamApp.quickExportFromArchive(${it.archiveId},'word','Arial, Tahoma, sans-serif')">📘 Word (Arial)</button><button class="btn gray btn-sm" onclick="ExamApp.quickExportFromArchive(${it.archiveId},'pdf',null)">📕 PDF</button><button class="btn danger btn-sm" onclick="ExamApp.deleteFromArchive(${it.archiveId})">🗑️</button></div></div>`).join('') : empty('🗄️', 'آرشیو خالی است', 'دکمه سبز «✅ تایید و آرشیو» را بزنید.');
+    box.innerHTML = list.length ? list.map(it => `<div class="box-card"><div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--primary-dark)">📌 ${esc(it.title)}</b><span class="chip">${this.toFa(it.totalScore)} نمره (${this.toFa(it.questionCount)} سوال)</span></div><div class="muted" style="margin:4px 0 8px">${esc(it.subject)} | ${esc(it.grade)} | ${esc(it.savedDate)}</div><div style="display:flex;gap:5px;flex-wrap:wrap"><button class="btn green btn-sm" onclick="ExamApp.publishArchivedExamOnline(${it.archiveId})">🌐 ارائه در لینک اختصاصی</button><button class="btn primary btn-sm" onclick="ExamApp.loadExamFromArchive(${it.archiveId},null)">📂 بازخوانی</button><button class="btn soft btn-sm" onclick="ExamApp.loadExamFromArchive(${it.archiveId},'Arial, Tahoma, sans-serif')">🔤 با فونت Arial</button><button class="btn soft btn-sm" onclick="ExamApp.quickExportFromArchive(${it.archiveId},'word','Arial, Tahoma, sans-serif')">📘 Word (Arial)</button><button class="btn gray btn-sm" onclick="ExamApp.quickExportFromArchive(${it.archiveId},'pdf',null)">📕 PDF</button><button class="btn danger btn-sm" onclick="ExamApp.deleteFromArchive(${it.archiveId})">🗑️</button></div></div>`).join('') : empty('🗄️', 'آرشیو خالی است', 'دکمه سبز «✅ تایید و آرشیو» را بزنید.');
   },
   publishArchivedExamOnline(id) {
     window._preselectedArchiveExamId = id;
@@ -9932,7 +10485,7 @@ openClass = function(sid, cid) {
   if (box && !box.querySelector('.btn-online-link')) {
     const btnOnline = document.createElement('button');
     btnOnline.className = 'btn primary btn-online-link';
-    btnOnline.innerHTML = '📋 دیجی‌فرم حاضری و آزمون آنلاین';
+    btnOnline.innerHTML = '🔗 لینک اختصاصی و کلاس آنلاین';
     btnOnline.onclick = () => window.openOnlineClassLinkModal(sid, cid, 'att');
     box.prepend(btnOnline);
 
@@ -10399,7 +10952,7 @@ function drawRoomVisualCode(canvas, text, codePin) {
   ctx.fillText(`PIN: ${codePin || 'آزاد'}`, size / 2, 83);
 }
 
-/* ==================== سامانه جامع فرم‌ساز آنلاین دیجی‌فرم: حضور و غیاب + آزمون آنلاین + کلاس‌سازی با لینک (v5.8 Pro) ==================== */
+/* ==================== سامانه جامع لینک اختصاصی و کلاس آنلاین: حضور و غیاب + آزمون آنلاین + کلاس‌سازی با لینک (v5.8 Pro) ==================== */
 
 /* ۱. کلاس‌سازی با لینک (ساخت کلاس آنلاین از صفر با لینک ثبت‌نام دانش‌آموزان + ساخت/انتقال کلاس از لینک داده) */
 window.openLinkClassBuilderModal = function(sid = null) {
@@ -10415,17 +10968,17 @@ window.openLinkClassBuilderModal = function(sid = null) {
     existingClassesOpts.push(`<option value="${sch.id}|${cl.id}">${esc(sch.name)} — ${esc(cl.name)} (${fa(cl.students.length)} دانش‌آموز)</option>`);
   }));
 
-  openModal(formHeader('🔗 کلاس‌سازی آنلاین با لینک و دریافت اطلاعات از لینک (دیجی‌فرم)') + `
+  openModal(formHeader('🔗 کلاس‌سازی آنلاین با لینک و دریافت اطلاعات از لینک اختصاصی') + `
     <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
       <b style="color:var(--primary);font-size:13px">✨ مخصوص کلاس‌هایی که از اول آنلاین بوده‌اند یا می‌خواهید با لینک بسازید</b>
       <div class="muted" style="font-size:11.5px;line-height:1.65;margin-top:4px">
         بدون نیاز به تایپ دستی اسامی! می‌توانید:
-        <br>۱. <b>کلاس جدید بسازید و لینک فرم ثبت‌نام دیجی‌فرم</b> آن را در گروه کلاس بفرستید تا دانش‌آموزان خودشان مشخصاتشان را وارد کنند و لیست کلاس خودکار ساخته شود.
+        <br>۱. <b>کلاس جدید بسازید و لینک اختصاصی فرم ثبت‌نام</b> آن را در گروه کلاس بفرستید تا دانش‌آموزان خودشان مشخصاتشان را وارد کنند و لیست کلاس خودکار ساخته شود.
         <br>۲. یا <b>از روی یک لینک کلاس آنلاین (لینک ثبت‌نام، لینک حضور و غیاب، لینک آزمون یا لینک اشتراک کلاس)</b> مستقیماً کلاس و اطلاعات دانش‌آموزان را در برنامه بسازید.
       </div>
     </div>
 
-    <!-- بخش ۱: ساخت فوری کلاس آنلاین جدید + دریافت لینک فرم عضویت دیجی‌فرم -->
+    <!-- بخش ۱: ساخت فوری کلاس آنلاین جدید + دریافت لینک اختصاصی فرم عضویت -->
     <div class="card" style="margin-bottom:12px;border-color:var(--neon-green)">
       <b style="color:var(--neon-green);font-size:13.5px">۱. ساخت کلاس آنلاین جدید و دریافت لینک ثبت‌نام دانش‌آموزان</b>
       <div class="formgrid" style="margin-top:8px">
@@ -10442,7 +10995,7 @@ window.openLinkClassBuilderModal = function(sid = null) {
           <input type="text" id="linkBuilderClassGrade" placeholder="مثلاً پایه هشتم — کار و فناوری">
         </div>
       </div>
-      <button type="button" class="btn green block" style="margin-top:10px" onclick="createNewOnlineClassAndOpenLink()">🚀 ساخت کلاس و تولید لینک دیجی‌فرم عضویت دانش‌آموزان</button>
+      <button type="button" class="btn green block" style="margin-top:10px" onclick="createNewOnlineClassAndOpenLink()">🚀 ساخت کلاس و تولید لینک اختصاصی عضویت دانش‌آموزان</button>
     </div>
 
     <!-- بخش ۲: ساخت کلاس یا دریافت کامل اطلاعات دانش‌آموزان از روی لینک -->
@@ -10706,7 +11259,7 @@ window.importOrSyncClassFromLink = async function() {
   }
 };
 
-/* ۲. پنجره اصلی فرم‌ساز دیجی‌فرم (حضور و غیاب آنلاین + ارائه آنلاین آزمون‌های ساخته‌شده + ثبت‌نام کلاس آنلاین) */
+/* ۲. پنجره اصلی لینک اختصاصی و کلاس آنلاین (حضور و غیاب آنلاین + ارائه آنلاین آزمون‌های ساخته‌شده + ثبت‌نام کلاس آنلاین) */
 window.openOnlineClassLinkModal = function(sid = null, cid = null, defaultMode = 'att', preselectedExamSource = null) {
   let s = findSchool(sid) || db.schools[0];
   if (!s) {
@@ -10745,15 +11298,15 @@ window.openOnlineClassLinkModal = function(sid = null, cid = null, defaultMode =
   }
   window._preselectedArchiveExamId = null;
 
-  openModal(formHeader('📋 مرکز فرم‌ساز آنلاین دیجی‌فرم (حضور و غیاب، آزمون آنلاین و کلاس‌سازی)') + `
+  openModal(formHeader('🔗 مرکز لینک اختصاصی و فرم‌های کلاس آنلاین') + `
     <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
-        <b style="color:var(--primary);font-size:13px">✨ فرم آنلاین به سبک دیجی‌فرم با ثبت خودکار در لیست و پرونده</b>
+        <b style="color:var(--primary);font-size:13px">✨ فرم آنلاین با لینک اختصاصی و ثبت خودکار در لیست و پرونده</b>
         <button type="button" class="btn soft btn-sm" onclick="openLinkClassBuilderModal('${s.id}')">➕ ساخت کلاس جدید با لینک</button>
       </div>
       <div class="muted" style="font-size:11.5px;line-height:1.65;margin-top:4px">
         • در <b>حضور و غیاب آنلاین</b>: دانش‌آموز حاضری می‌زند و در جدول کلاس تیک می‌خورد (اگر کلاس از اول آنلاین بوده و لیست خالی است، نام دانش‌آموز خودکار به کلاس اضافه می‌شود!).<br>
-        • در <b>آزمون آنلاین</b>: همان آزمونی که در «آزمون‌ساز» ساخته‌اید (تستی، ص/غ، جاخالی، وصل‌کردنی، تشریحی) به فرم آنلاین دیجی‌فرم تبدیل شده، تصحیح می‌شود و نمره‌اش در ستون کتبی مستمر می‌نشیند!
+        • در <b>آزمون آنلاین</b>: همان آزمونی که در «آزمون‌ساز» ساخته‌اید (تستی، ص/غ، جاخالی، وصل‌کردنی، تشریحی) به فرم آنلاین در لینک اختصاصی تبدیل شده، تصحیح می‌شود و نمره‌اش در ستون کتبی مستمر می‌نشیند!
       </div>
     </div>
 
@@ -10765,9 +11318,9 @@ window.openOnlineClassLinkModal = function(sid = null, cid = null, defaultMode =
         </select>
       </div>
       <div class="field">
-        <label>📋 نوع فرم دیجی‌فرم:</label>
+        <label>📋 نوع فرم در لینک اختصاصی:</label>
         <select id="onlineLinkModeSel" onchange="refreshOnlineLinkGenerator()">
-          <option value="att" ${defaultMode === 'att' ? 'selected' : ''}>✋ فرم حضور و غیاب آنلاین (سبک دیجی‌فرم)</option>
+          <option value="att" ${defaultMode === 'att' ? 'selected' : ''}>✋ فرم حضور و غیاب آنلاین (ساده و سریع)</option>
           <option value="exam" ${defaultMode === 'exam' ? 'selected' : ''}>📝 ارائه آنلاین آزمون ساخته‌شده (با تصحیح خودکار)</option>
           <option value="reg" ${defaultMode === 'reg' ? 'selected' : ''}>👨‍🎓 فرم ثبت‌نام و ساخت لیست کلاس آنلاین از صفر</option>
         </select>
@@ -10800,21 +11353,21 @@ window.openOnlineClassLinkModal = function(sid = null, cid = null, defaultMode =
           <small id="onlineShortCodeBadge" style="font-weight:900;font-size:10.5px;margin-top:3px;color:#0284c7">کد فرم</small>
         </div>
         <div style="flex:1;min-width:210px">
-          <label style="font-size:11.5px;font-weight:900;color:var(--primary);display:block;margin-bottom:4px">🔗 لینک کوتاه و ساده فرم دیجی‌فرم:</label>
+          <label style="font-size:11.5px;font-weight:900;color:var(--primary);display:block;margin-bottom:4px">🔗 لینک اختصاصی کوتاه و ساده فرم:</label>
           <input type="text" id="generatedStudentLinkBox" readonly dir="ltr" style="font-family:monospace;font-size:12px;font-weight:800;text-align:left;background:var(--bg-main);border:1.5px solid var(--primary);padding:8px 10px">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
             <button type="button" class="btn primary btn-sm" onclick="copyGeneratedOnlineLink(true)">🔗 کپی فقط لینک کوتاه</button>
             <button type="button" class="btn soft btn-sm" onclick="copyGeneratedOnlineLink(false)">📋 کپی لینک با متن دعوت</button>
             <button type="button" class="btn soft btn-sm" onclick="shareGeneratedOnlineLink()">📲 ارسال به شاد / ایتا</button>
-            <button type="button" class="btn green btn-sm" onclick="previewStudentPortalLocally()">👁️ پیش‌نمایش فرم دیجی‌فرم</button>
+            <button type="button" class="btn green btn-sm" onclick="previewStudentPortalLocally()">👁️ پیش نمایش فرم</button>
           </div>
         </div>
       </div>
 
       <details style="margin-top:10px;font-size:11.5px">
-        <summary style="cursor:pointer;color:var(--text-muted);font-weight:800">⚙️ اتصال به لینک دیجی‌فرم خارجی یا ساخت کلاس از لینک</summary>
+        <summary style="cursor:pointer;color:var(--text-muted);font-weight:800">⚙️ تنظیم آدرس سفارشی لینک اختصاصی یا ساخت کلاس از لینک</summary>
         <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
-          <input type="url" id="externalDigiFormUrlInp" dir="ltr" value="${esc(savedExtUrl)}" placeholder="https://digiform.ir/..." style="flex:1;font-size:11.5px;text-align:left" oninput="saveExternalDigiFormUrl(this.value)">
+          <input type="url" id="externalDigiFormUrlInp" dir="ltr" value="${esc(savedExtUrl)}" placeholder="https://... (لینک سفارشی شما)" style="flex:1;font-size:11.5px;text-align:left" oninput="saveExternalDigiFormUrl(this.value)">
           <button type="button" class="btn soft btn-sm" onclick="openLinkClassBuilderModal('${s.id}')">🔗 ساخت کلاس از لینک</button>
         </div>
       </details>
@@ -10866,7 +11419,7 @@ window.saveExternalDigiFormUrl = function(val) {
 
 window.openExternalDigiFormSite = function() {
   const custom = (document.getElementById('externalDigiFormUrlInp')?.value || '').trim();
-  window.open(custom || 'https://digiform.ir', '_blank');
+  window.open(custom || './?view=onlineClass', '_blank');
 };
 
 window.publishShortRoomManifest = async function(shortCode, payload) {
@@ -11055,7 +11608,7 @@ window.copyGeneratedOnlineLink = function(onlyUrl = false) {
       ? `👨‍🎓 فرم ثبت‌نام و عضویت در کلاس آنلاین «${p.cn}» (${p.sn})${pinLine}\n🔗 تکمیل فرم مشخصات دانش‌آموز:\n${link}`
       : `📋 فرم حضور و غیاب آنلاین — کلاس ${p.cn} (${p.jd})${pinLine}\n🔗 ورود و ثبت حاضری:\n${link}`);
   copyText(msg);
-  toast('لینک فرم دیجی‌فرم کپی و فعال شد 📋');
+  toast('لینک اختصاصی فرم کپی و منتشر شد 📋');
 };
 
 window.shareGeneratedOnlineLink = async function() {
@@ -11104,7 +11657,7 @@ window.filterDigiFormRosterSelect = function(query) {
   if (list.length === 1) sel.selectedIndex = 1;
 };
 
-/* تایمر زنده آزمون آنلاین دیجی‌فرم */
+/* تایمر زنده آزمون آنلاین لینک اختصاصی */
 window._digiFormExamTimerInterval = null;
 window.startDigiFormExamTimer = function(minutes) {
   clearInterval(window._digiFormExamTimerInterval);
@@ -11127,7 +11680,7 @@ window.startDigiFormExamTimer = function(minutes) {
   window._digiFormExamTimerInterval = setInterval(updateClock, 1000);
 };
 
-/* رندر فرم اختصاصی دانش‌آموز با طراحی اصیل دیجی‌فرم (حضور و غیاب + آزمون آنلاین ۵گانه + ثبت‌نام کلاس آنلاین) */
+/* رندر فرم اختصاصی دانش‌آموز با طراحی تمیز لینک اختصاصی (حضور و غیاب + آزمون آنلاین ۵گانه + ثبت‌نام کلاس آنلاین) */
 window.renderStudentOnlinePortal = function(payload, isTeacherPreview = false) {
   const ov = document.getElementById('studentOnlinePortalOverlay');
   if (!ov || !payload) return;
@@ -11208,7 +11761,7 @@ window.renderStudentOnlinePortal = function(payload, isTeacherPreview = false) {
     <div class="digiform-wrapper student-portal-box">
       ${isTeacherPreview ? `
         <div style="background:#1E1B4B;border:1.5px solid #818CF8;color:#FFFFFF;padding:10px 14px;border-radius:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px">
-          <b style="font-size:12.5px">👁️ پیش‌نمایش فرم دیجی‌فرم دانش‌آموز</b>
+          <b style="font-size:12.5px">👁️ پیش نمایش فرم دانش‌آموز</b>
           <button type="button" class="btn primary btn-sm" onclick="clearInterval(window._digiFormExamTimerInterval);document.getElementById('studentOnlinePortalOverlay').style.display='none';openOnlineClassLinkModal('${payload.s || ''}','${payload.c || ''}','${payload.m || 'att'}')">بازگشت به پنل معلم ↩️</button>
         </div>
       ` : ''}
@@ -11288,7 +11841,7 @@ window.renderStudentOnlinePortal = function(payload, isTeacherPreview = false) {
           `}
 
           ${(!isExam && !isReg) ? `
-            <!-- فیلد ۲: وضعیت حضور در کلاس به سبک کارت‌های رادیویی دیجی‌فرم -->
+            <!-- فیلد ۲: وضعیت حضور در کلاس در فرم لینک اختصاصی -->
             <div class="digiform-field-box">
               <label class="digiform-label">
                 <span class="digiform-num">${fa(nextFieldNum++)}</span>
@@ -11459,7 +12012,7 @@ window.submitStudentOnlinePortalForm = async function() {
     computedScore = roundQuarter(sum);
   }
 
-  const trackingId = 'DF-' + Math.floor(10000 + Math.random() * 89999);
+  const trackingId = 'DAM-' + Math.floor(10000 + Math.random() * 89999);
   const packet = {
     tp: 'DAM_STU_SYNC_V54',
     scCode: p.sc || '',
@@ -11522,7 +12075,7 @@ window.submitStudentOnlinePortalForm = async function() {
     : '';
 
   window._lastStudentReceiptCode = receiptCode;
-  window._lastStudentReceiptShareText = `✅ رسید دیجی‌فرم ${stName} (${trackingId})\n${receiptCode}`;
+  window._lastStudentReceiptShareText = `✅ رسید لینک اختصاصی ${stName} (${trackingId})\n${receiptCode}`;
   const resBox = document.getElementById('portalResultBox');
   if (resBox) {
     resBox.style.display = 'block';
@@ -11714,9 +12267,9 @@ window.openReceiveStudentSyncModal = function(sid = null, cid = null) {
   const c = s ? (findClass(s.id, cid) || s.classes[0]) : null;
   const dateISO = window.currentListDate || localISODate();
 
-  openModal(formHeader('📡 دریافت خودکار پاسخ‌های فرم دیجی‌فرم و رسیدهای پیامکی') + `
+  openModal(formHeader('📡 دریافت خودکار پاسخ‌های لینک اختصاصی و رسیدهای پیامکی') + `
     <div class="card" style="margin-bottom:12px;border-color:var(--neon-green)">
-      <b style="color:var(--neon-green)">۱. دریافت آنلاین مستقیم از فرم دیجی‌فرم کلاس</b>
+      <b style="color:var(--neon-green)">۱. دریافت آنلاین مستقیم از لینک اختصاصی کلاس</b>
       <p class="muted" style="margin:4px 0 10px">تمام دانش‌آموزانی که فرم حضور و غیاب، ثبت‌نام کلاس یا آزمون آنلاین را پر کرده‌اند، با یک کلیک وارد لیست کلاس می‌شوند:</p>
       <button type="button" class="btn primary block" id="btnFetchOnlineRoom" onclick="fetchOnlineRoomSubmissions(false, '${s?.id || ''}','${c?.id || ''}','${dateISO}')">🔄 دریافت آنی پاسخ‌های فرم و ثبت در لیست</button>
       <div id="onlineRoomFetchStatus" style="margin-top:8px;font-size:12px;font-weight:800;text-align:center"></div>
@@ -11905,7 +12458,7 @@ window.getSubtleSmsSignature = function() {
 };
 
 window.shareAppPromoWithColleagues = async function() {
-  const promoText = `🎓 همکار گرامی، من برای مدیریت کلاس‌ها، حضور و غیاب، کارنامه‌های رنگی، تفکیک دانش‌آموزان نیازمند توجه و طراحی آزمون استاندارد از سامانه هوشمند «دانش‌آموز من (نسخه ۵.۵ Pro)» استفاده می‌کنم.\n✨ امکانات ویژه: انتقال ۱کلیکی نمره به مستمر، لینک حاضری و آزمون آنلاین دانش‌آموزان، ۴ پوسته رنگی و پشتیبان‌گیری ابری.`;
+  const promoText = `🎓 همکار گرامی، من برای مدیریت کلاس‌ها، حضور و غیاب، کارنامه‌های رنگی، تفکیک دانش‌آموزان نیازمند توجه و طراحی آزمون استاندارد از سامانه هوشمند «دانش‌آموز من (نسخه ۵.۹ Pro)» استفاده می‌کنم.\n✨ امکانات ویژه: انتقال ۱کلیکی نمره به مستمر، لینک حاضری و آزمون آنلاین دانش‌آموزان، ۴ پوسته رنگی و پشتیبان‌گیری ابری.`;
   if (navigator.share) {
     try { await navigator.share({ title: 'دانش‌آموز من — دفتر هوشمند معلم', text: promoText }); return; } catch (_) {}
   }
@@ -12589,6 +13142,2263 @@ window.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     try { window.runSmartAppDiagnostics(false); } catch (_) {}
   }, 350);
+});
+
+
+/* ==================== موتور جامع ارتقای نسخه v5.9.0 Pro (۲۰ قابلیت کامل) ==================== */
+
+/* ۱. تضمین ۱۰۰٪ درج همیشگی «امضای معلم» در پایان پیامک تبریک تولد */
+personalBirthdayMessage = function(st) {
+  const tName = (getTeacherName() || 'دبیر شما').trim();
+  let tpl = getBirthdayTemplate();
+  let msg = tpl
+    .replaceAll('{نام}', st?.name || '')
+    .replaceAll('{نام_خانوادگی}', st?.lastName || '')
+    .replaceAll('{نام_پدر}', st?.fatherName || '')
+    .replaceAll('{علاقه}', st?.interests || 'درس و زندگی')
+    .replaceAll('{نام_معلم}', tName);
+
+  // اگر قالب ذخیره‌شده در مرورگر کاربر فاقد {نام_معلم} بوده، امضای معلم را خودکار به پایان پیام اضافه کن
+  if (tName && !msg.includes(tName)) {
+    msg = msg.trim() + `\n\nبا احترام، ${tName}`;
+  }
+  if (window.isSubtleBrandEnabled && window.isSubtleBrandEnabled() && !msg.includes('دانش‌آموز من')) {
+    msg += '\n✨ سامانه هوشمند «دانش‌آموز من»';
+  }
+  return msg;
+};
+
+window.resetBirthdayTemplateWithSignature = function() {
+  const defTpl = 'تولدت مبارک {نام} {نام_خانوادگی} عزیز 🎂🎉\nامیدوارم در {علاقه} و تمام مراحل زندگی همیشه سلامت، شاد و موفق باشی.\n\nبا احترام، {نام_معلم}';
+  localStorage.setItem('birthday_template', defTpl);
+  const el = document.getElementById('birthdayTemplate');
+  if (el) el.value = defTpl;
+  renderBirthdays();
+  toast('قالب پیام تبریک همراه با امضای معلم بازنشانی شد ✅');
+};
+
+/* ۲. ارتقای سیستم تم‌ها به ۶ پوسته کامل (شامل زمردی لوکس و بنفش کهکشانی) */
+const THEME_MODES_V59 = [
+  { id: 'cyber-dark', title: '🌌 سایبری فیروزه‌ای (Cyber-JARVIS)', icon: '🌌', metaColor: '#050914' },
+  { id: 'classic-orange', title: '🍊 نارنجی کلاسیک و گرم', icon: '🍊', metaColor: '#ea580c' },
+  { id: 'cyber-orange', title: '🔥 سایبری نارنجی تیره', icon: '🔥', metaColor: '#0c0907' },
+  { id: 'emerald-luxury', title: '🌿 زمردی لوکس و طلایی', icon: '🌿', metaColor: '#03110e' },
+  { id: 'royal-galaxy', title: '💜 بنفش کهکشانی لوکس', icon: '💜', metaColor: '#080514' },
+  { id: 'light', title: '☀️ روشن روز (آبی آسمانی)', icon: '☀️', metaColor: '#0284c7' }
+];
+
+window.setCyberThemeMode = function(mode) {
+  let norm = mode;
+  if (norm === 'dark') norm = 'cyber-dark';
+  const validIds = THEME_MODES_V59.map(x => x.id);
+  if (!validIds.includes(norm)) norm = 'cyber-dark';
+
+  document.documentElement.setAttribute('data-theme-mode', norm);
+  document.body.setAttribute('data-theme-mode', norm);
+  document.body.classList.remove('dark', 'light-mode', 'theme-classic-orange', 'theme-cyber-orange', 'theme-emerald-luxury', 'theme-royal-galaxy');
+
+  if (norm === 'cyber-dark') {
+    document.body.classList.add('dark');
+  } else if (norm === 'classic-orange') {
+    document.body.classList.add('theme-classic-orange');
+  } else if (norm === 'cyber-orange') {
+    document.body.classList.add('dark', 'theme-cyber-orange');
+  } else if (norm === 'emerald-luxury') {
+    document.body.classList.add('dark', 'theme-emerald-luxury');
+  } else if (norm === 'royal-galaxy') {
+    document.body.classList.add('dark', 'theme-royal-galaxy');
+  } else if (norm === 'light') {
+    document.body.classList.add('light-mode');
+  }
+
+  try {
+    localStorage.setItem('danesh_theme_v5', norm);
+    localStorage.setItem('danesh_theme', (norm === 'light' || norm === 'classic-orange') ? 'light' : 'dark');
+  } catch (e) {}
+
+  const tMeta = document.querySelector('meta[name="theme-color"]');
+  const info = THEME_MODES_V59.find(x => x.id === norm) || THEME_MODES_V59[0];
+  if (tMeta) tMeta.setAttribute('content', info.metaColor);
+
+  const btn = document.getElementById('themeToggleBtn');
+  if (btn) {
+    btn.textContent = info.icon;
+    btn.title = `پوسته فعلی: ${info.title} (برای تغییر پوسته لمس کنید)`;
+  }
+
+  if (window.CyberNetwork && Array.isArray(window.CyberNetwork.nodes)) {
+    window.CyberNetwork.nodes.forEach((n, i) => {
+      if (norm === 'classic-orange' || norm === 'cyber-orange') {
+        n.color = i % 3 === 0 ? '#EA580C' : (i % 2 === 0 ? '#F97316' : '#FBBF24');
+      } else if (norm === 'emerald-luxury') {
+        n.color = i % 3 === 0 ? '#10B981' : (i % 2 === 0 ? '#34D399' : '#F59E0B');
+      } else if (norm === 'royal-galaxy') {
+        n.color = i % 3 === 0 ? '#C084FC' : (i % 2 === 0 ? '#F472B6' : '#38BDF8');
+      } else {
+        n.color = i % 5 === 0 ? '#A78BFA' : (i % 2 === 0 ? '#22D3EE' : '#38BDF8');
+      }
+    });
+  }
+
+  document.querySelectorAll('#themePickerCardsGrid .theme-pick-card').forEach(card => {
+    card.classList.toggle('active-theme', card.getAttribute('data-theme-id') === norm);
+  });
+};
+
+toggleTheme = function() {
+  const cur = localStorage.getItem('danesh_theme_v5') || 'cyber-dark';
+  const ids = THEME_MODES_V59.map(x => x.id);
+  const nextIdx = (ids.indexOf(cur) + 1) % ids.length;
+  const next = THEME_MODES_V59[nextIdx];
+  window.setCyberThemeMode(next.id);
+  toast(`پوسته «${next.title}» فعال شد`);
+};
+
+/* ۳. جایگزینی «حاضرین امروز» با «🔴 غایبین امروز» در هسته JARVIS داشبورد */
+const _origUpdateJarvisCoreV58 = window.updateJarvisCoreDisplay;
+window.updateJarvisCoreDisplay = function(animate = false) {
+  if (window._jarvisMetricMode === 'present') window._jarvisMetricMode = 'absent';
+  if (window._jarvisMetricMode !== 'absent') {
+    return _origUpdateJarvisCoreV58(animate);
+  }
+  const valEl = document.getElementById('jarvisCoreValue');
+  const lblEl = document.getElementById('jarvisCoreLabel');
+  const tagEl = document.getElementById('jarvisCoreTag');
+  if (!valEl || !lblEl) return;
+
+  const today = localISODate();
+  let absCount = 0;
+  db.schools.forEach(s => (s.classes || []).forEach(cl => (cl.students || []).forEach(st => {
+    if (attendanceStatus(cl, today, st.id) === 'absent') absCount++;
+  })));
+
+  if (tagEl) tagEl.textContent = 'غیبت امروز';
+  lblEl.textContent = 'غایبین امروز';
+  document.querySelectorAll('#jarvisMetricPills .jarvis-metric-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.metric === 'absent');
+  });
+  if (animate && isCyberAnimOn('anim_charts')) {
+    animateNumberValue(valEl, 0, absCount, 420, false);
+  } else {
+    valEl.textContent = fa(absCount);
+  }
+};
+
+window.cycleJarvisCoreMetric = function() {
+  const order = ['students', 'classes', 'schools', 'avg', 'absent', 'attn'];
+  const idx = order.indexOf(window._jarvisMetricMode || 'students');
+  window._jarvisMetricMode = order[(idx + 1) % order.length];
+  window.updateJarvisCoreDisplay(true);
+};
+
+/* ۴. رفع گیر کردن اسکرول لیست‌ها + افزودن کادر جستجوی سریع در «لیست امروز» و «لیست دانش‌آموزان کلاس» */
+ScrollFX.refresh = function() {
+  if (!this.observer || !isFeatOn('feat_animations')) return;
+  // حذف .td-row از observer برای جلوگیری صددرصدی از گیر کردن اسکرول در لیست‌های موبایل
+  document.querySelectorAll('.studentcard, .b-card, .dash-b-item, .today-class-card, .leader-item').forEach((el, i) => {
+    if (!el.classList.contains('scroll-fx-item')) {
+      el.classList.add('scroll-fx-item', 'fx-visible');
+      el.style.transitionDelay = `${(i % 6) * 20}ms`;
+      this.observer.observe(el);
+    }
+  });
+};
+
+window.filterTodayListRows = function(query) {
+  const q = (query || '').trim().toLowerCase();
+  document.querySelectorAll('#tdScrollBody .td-row').forEach(row => {
+    const txt = (row.textContent || '').toLowerCase();
+    row.style.display = (!q || txt.includes(q)) ? 'flex' : 'none';
+  });
+};
+
+window.filterClassStudentCards = function(query) {
+  const q = (query || '').trim().toLowerCase();
+  document.querySelectorAll('#classMainView .studentcard').forEach(card => {
+    const txt = (card.textContent || '').toLowerCase();
+    card.style.display = (!q || txt.includes(q)) ? '' : 'none';
+  });
+};
+
+const _origRenderTodayListInnerV58 = renderTodayListInner;
+renderTodayListInner = function(sid, cid) {
+  _origRenderTodayListInnerV58(sid, cid);
+  const headGroup = document.querySelector('#todayListCardBox .td-sticky-header-group');
+  if (headGroup && !document.getElementById('todayListSearchInp')) {
+    const searchDiv = document.createElement('div');
+    searchDiv.style.cssText = 'padding:6px 14px;background:var(--bg-card);border-bottom:1px solid var(--border-subtle);display:flex;gap:6px;align-items:center';
+    searchDiv.innerHTML = `
+      <input type="search" id="todayListSearchInp" placeholder="🔍 جستجوی سریع نام دانش‌آموز در لیست امروز..." oninput="filterTodayListRows(this.value)" style="height:32px;font-size:12px;padding:4px 10px">
+      <button type="button" class="btn soft btn-sm" onclick="openClassGroupsModal('${sid}','${cid}')">👥 گروه‌ها</button>
+      <button type="button" class="btn gray btn-sm" onclick="openSmartStudentRepairModal('${sid}','${cid}')">🛠️ تعمیر اسامی</button>
+    `;
+    headGroup.appendChild(searchDiv);
+  }
+};
+
+const _origOpenClassV58 = openClass;
+openClass = function(sid, cid) {
+  _origOpenClassV58(sid, cid);
+  const c = findClass(sid, cid);
+  if (!c) return;
+  const actionsRow = document.querySelector('#classMainView .detailhead .actions:nth-of-type(2)');
+  if (actionsRow && !actionsRow.querySelector('.btn-class-groups')) {
+    const btnGrp = document.createElement('button');
+    btnGrp.className = 'btn soft btn-class-groups';
+    btnGrp.innerHTML = `👥 گروه‌بندی و نمره گروهی (${fa((c.groups || []).length)})`;
+    btnGrp.onclick = () => window.openClassGroupsModal(sid, cid);
+    actionsRow.appendChild(btnGrp);
+
+    const btnRep = document.createElement('button');
+    btnRep.className = 'btn gray';
+    btnRep.innerHTML = '🛠️ تعمیر هوشمند اسامی';
+    btnRep.onclick = () => window.openSmartStudentRepairModal(sid, cid);
+    actionsRow.appendChild(btnRep);
+  }
+
+  // افزودن کادر جستجوی سریع بالای لیست دانش‌آموزان کلاس
+  const mainView = document.getElementById('classMainView');
+  if (mainView && !document.getElementById('classDetailSearchInp')) {
+    const grids = mainView.querySelectorAll('.grid');
+    const stGrid = grids[grids.length - 1];
+    if (stGrid) {
+      const searchBar = document.createElement('div');
+      searchBar.className = 'searchbox';
+      searchBar.style.margin = '6px 0 10px';
+      searchBar.innerHTML = `<span>🔍</span><input type="search" id="classDetailSearchInp" placeholder="جستجوی سریع دانش‌آموز در کلاس ${esc(c.name)} (نام، نام خانوادگی یا نام پدر)..." oninput="filterClassStudentCards(this.value)">`;
+      stGrid.parentNode.insertBefore(searchBar, stGrid);
+    }
+  }
+};
+
+/* ۵. مرکز هوشمند اعلانات و یادآوری‌ها (🔔 با قابلیت فعال/غیرفعال‌سازی اعلان تولدها و یادآوری شخصی معلم) */
+const NOTIF_SETTINGS_KEY = 'danesh_notif_settings_v59';
+const TEACHER_REMINDERS_KEY = 'danesh_teacher_reminders_v59';
+
+window.getNotifSettings = function() {
+  const defs = {
+    notif_birthdays: true,
+    notif_attn: true,
+    notif_absence: true,
+    notif_online: true,
+    notif_schedule: true
+  };
+  try {
+    const saved = JSON.parse(localStorage.getItem(NOTIF_SETTINGS_KEY) || '{}');
+    return { ...defs, ...saved };
+  } catch (_) {
+    return defs;
+  }
+};
+
+window.toggleNotifSetting = function(key, val) {
+  const st = window.getNotifSettings();
+  st[key] = !!val;
+  try {
+    localStorage.setItem(NOTIF_SETTINGS_KEY, JSON.stringify(st));
+    if (key === 'notif_birthdays') {
+      localStorage.setItem('feat_dash_birthdays', val ? 'true' : 'false');
+    }
+  } catch (_) {}
+  window.refreshTopNotifBadge();
+  renderDashboard();
+  toast(val ? 'اعلان فعال شد 🔔' : 'اعلان غیرفعال شد 🔕');
+};
+
+window.getTeacherReminders = function() {
+  try {
+    return JSON.parse(localStorage.getItem(TEACHER_REMINDERS_KEY) || '[]');
+  } catch (_) {
+    return [];
+  }
+};
+
+window.saveTeacherReminders = function(list) {
+  try { localStorage.setItem(TEACHER_REMINDERS_KEY, JSON.stringify(list)); } catch (_) {}
+  window.refreshTopNotifBadge();
+};
+
+window.addTeacherCustomReminder = function() {
+  const title = (document.getElementById('newRemTitleInp')?.value || '').trim();
+  const dateJ = (document.getElementById('newRemDateInp')?.value || '').trim() || formatJalaliDate(localISODate());
+  if (!title) { toast('لطفاً متن یادآوری را وارد کنید.'); return; }
+  const list = window.getTeacherReminders();
+  list.unshift({ id: uid(), title, dateJ, done: false, createdAt: Date.now() });
+  window.saveTeacherReminders(list);
+  window.openNotificationsCenterModal();
+  toast('یادآوری جدید ثبت شد ⏰');
+};
+
+window.toggleTeacherReminderDone = function(remId) {
+  const list = window.getTeacherReminders();
+  const it = list.find(x => x.id === remId);
+  if (it) it.done = !it.done;
+  window.saveTeacherReminders(list);
+  window.openNotificationsCenterModal();
+};
+
+window.deleteTeacherReminder = function(remId) {
+  const list = window.getTeacherReminders().filter(x => x.id !== remId);
+  window.saveTeacherReminders(list);
+  window.openNotificationsCenterModal();
+};
+
+window.collectActiveNotifications = function() {
+  const cfg = window.getNotifSettings();
+  const items = [];
+  const todayISO = localISODate();
+  const tp = jalaliPartsFromISO(todayISO);
+  const todayDOY = tp ? getJalaliDayOfYear(tp.m, tp.d) : 1;
+
+  // ۱. یادآوری‌های شخصی معلم
+  window.getTeacherReminders().filter(r => !r.done).forEach(r => {
+    items.push({
+      type: 'reminder',
+      icon: '⏰',
+      color: 'var(--neon-purple)',
+      title: `یادآوری شخصی: ${r.title}`,
+      sub: `تاریخ: ${r.dateJ}`,
+      actionHtml: `<button type="button" class="btn soft btn-sm" onclick="toggleTeacherReminderDone('${r.id}')">✓ انجام شد</button>`
+    });
+  });
+
+  // ۲. تولدهای امروز و نزدیک (در صورت فعال بودن سوییچ اعلان تولد)
+  if (cfg.notif_birthdays && tp) {
+    db.schools.forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+      if (!st.birth) return;
+      const m = enDigits(st.birth).match(/(\d{2,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+      if (m) {
+        let diff = getJalaliDayOfYear(+m[2], +m[3]) - todayDOY;
+        if (diff < 0) diff += 365;
+        if (diff <= 7) {
+          items.push({
+            type: 'birthday',
+            icon: '🎂',
+            color: 'var(--neon-cyan)',
+            title: `تولد ${st.name} ${st.lastName} (${diff === 0 ? '🎉 امروز!' : fa(diff) + ' روز دیگر'})`,
+            sub: `${s.name} · کلاس ${c.name} · تولد: ${fa(st.birth)}`,
+            actionHtml: `<button type="button" class="btn primary btn-sm" onclick="closeModal();openBirthdaySender('${st.id}','${c.id}','${s.id}')">💌 ارسال تبریک با امضا</button>`
+          });
+        }
+      }
+    })));
+  }
+
+  // ۳. کلاس‌های امروز
+  if (cfg.notif_schedule) {
+    db.schools.forEach(s => (s.classes || []).forEach(c => {
+      if (attendanceDates(c).includes(todayISO)) {
+        items.push({
+          type: 'schedule',
+          icon: '🏫',
+          color: 'var(--neon-green)',
+          title: `برنامه امروز: کلاس ${c.name} (${s.name})`,
+          sub: `${fa((c.students || []).length)} دانش‌آموز`,
+          actionHtml: `<button type="button" class="btn soft btn-sm" onclick="closeModal();openClass('${s.id}','${c.id}');setTimeout(()=>openTodayList('${s.id}','${c.id}'),60)">📄 لیست امروز</button>`
+        });
+      }
+    }));
+  }
+
+  // ۴. غیبت‌های مکرر (۳ جلسه و بیشتر)
+  if (cfg.notif_absence) {
+    db.schools.forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+      const absCnt = Object.keys(c.attendance || {}).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+      if (absCnt >= 3) {
+        items.push({
+          type: 'absence',
+          icon: '📅',
+          color: '#F59E0B',
+          title: `هشدار غیبت مکرر: ${st.lastName} ${st.name} (${fa(absCnt)} جلسه غیبت)`,
+          sub: `${s.name} · کلاس ${c.name}`,
+          actionHtml: `<button type="button" class="btn gray btn-sm" onclick="closeModal();openStudent('${s.id}','${c.id}','${st.id}')">پرونده</button>`
+        });
+      }
+    })));
+  }
+
+  // ۵. دانش‌آموزان نیازمند توجه
+  if (cfg.notif_attn) {
+    db.schools.forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+      if (isAutoAttention(c, st)) {
+        const det = window.getStudentAttentionDetails ? window.getStudentAttentionDetails(c, st) : { reasonsText: [] };
+        items.push({
+          type: 'attn',
+          icon: '🚨',
+          color: 'var(--neon-red)',
+          title: `نیازمند توجه: ${st.lastName} ${st.name}`,
+          sub: `${c.name} — ${(det.reasonsText || []).join('، ') || 'پایش وضعیت'}`,
+          actionHtml: `<button type="button" class="btn soft btn-sm" onclick="closeModal();openStudent('${s.id}','${c.id}','${st.id}')">مشاهده</button>`
+        });
+      }
+    })));
+  }
+
+  return items;
+};
+
+window.refreshTopNotifBadge = function() {
+  const badge = document.getElementById('topNotifBadge');
+  if (!badge) return;
+  const list = window.collectActiveNotifications();
+  if (list.length > 0) {
+    badge.style.display = 'grid';
+    badge.textContent = fa(list.length > 99 ? 99 : list.length);
+  } else {
+    badge.style.display = 'none';
+  }
+};
+
+window.openNotificationsCenterModal = function() {
+  const cfg = window.getNotifSettings();
+  const notifs = window.collectActiveNotifications();
+  const reminders = window.getTeacherReminders();
+
+  openModal(formHeader(`🔔 مرکز هوشمند اعلانات و یادآوری‌ها (${fa(notifs.length)} مورد فعال)`) + `
+    <!-- بخش ۱: کلیدهای فعال/غیرفعال‌سازی انواع اعلان (شامل اعلان تولد) -->
+    <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
+      <b style="color:var(--primary);font-size:13px">🎛️ شخصی‌سازی و فعال/غیرفعال‌سازی اعلان‌ها</b>
+      <div class="switch-grid" style="margin-top:8px">
+        <label class="switch-card"><span>🎂 اعلان تولدهای امروز و نزدیک</span><input type="checkbox" ${cfg.notif_birthdays ? 'checked' : ''} onchange="toggleNotifSetting('notif_birthdays', this.checked)"></label>
+        <label class="switch-card"><span>🚨 هشدار دانش‌آموزان نیازمند توجه</span><input type="checkbox" ${cfg.notif_attn ? 'checked' : ''} onchange="toggleNotifSetting('notif_attn', this.checked)"></label>
+        <label class="switch-card"><span>📅 هشدار غیبت‌های مکرر (۳+ جلسه)</span><input type="checkbox" ${cfg.notif_absence ? 'checked' : ''} onchange="toggleNotifSetting('notif_absence', this.checked)"></label>
+        <label class="switch-card"><span>🏫 یادآوری برنامه کلاس‌های امروز</span><input type="checkbox" ${cfg.notif_schedule ? 'checked' : ''} onchange="toggleNotifSetting('notif_schedule', this.checked)"></label>
+      </div>
+    </div>
+
+    <!-- بخش ۲: ثبت یادآوری شخصی معلم -->
+    <div class="card" style="margin-bottom:10px">
+      <b style="color:var(--neon-purple);font-size:13px">⏰ ثبت یادآوری جدید برای معلم</b>
+      <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+        <input type="text" id="newRemTitleInp" placeholder="مثلاً: گرفتن امتحان مستمر از هشتم الف / تحویل نمرات به معاون..." style="flex:2;min-width:180px">
+        <input type="text" id="newRemDateInp" value="${formatJalaliDate(localISODate())}" style="width:105px;text-align:center" placeholder="تاریخ شمسی">
+        <button type="button" class="btn primary btn-sm" onclick="addTeacherCustomReminder()">＋ افزودن یادآوری</button>
+      </div>
+      ${reminders.length ? `<div style="margin-top:8px;display:grid;gap:5px">
+        ${reminders.map(r => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;border-radius:9px;background:var(--bg-panel);border:1px solid var(--border);opacity:${r.done ? '0.55' : '1'}">
+          <span style="font-size:12px;text-decoration:${r.done ? 'line-through' : 'none'}">⏰ <b>${esc(r.title)}</b> <small class="muted">(${esc(r.dateJ)})</small></span>
+          <div style="display:flex;gap:4px">
+            <button type="button" class="btn soft btn-sm" onclick="toggleTeacherReminderDone('${r.id}')">${r.done ? '↩️' : '✓'}</button>
+            <button type="button" class="btn danger btn-sm" onclick="deleteTeacherReminder('${r.id}')">×</button>
+          </div>
+        </div>`).join('')}
+      </div>` : ''}
+    </div>
+
+    <!-- بخش ۳: فهرست زنده اعلان‌ها و هشدارهای امروز -->
+    <div class="card">
+      <b style="color:var(--neon-cyan);font-size:13px">📋 فهرست اعلان‌های فعال امروز (${fa(notifs.length)})</b>
+      <div style="margin-top:8px;display:grid;gap:7px;max-height:280px;overflow-y:auto">
+        ${notifs.length ? notifs.map(n => `
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 11px;border-radius:11px;background:var(--bg-panel);border-right:4px solid ${n.color}">
+            <div>
+              <b style="font-size:12.5px;display:block">${n.icon} ${esc(n.title)}</b>
+              <span class="muted" style="font-size:11px">${esc(n.sub)}</span>
+            </div>
+            <div>${n.actionHtml || ''}</div>
+          </div>
+        `).join('') : '<div class="muted" style="padding:14px;text-align:center">🎉 هیچ اعلان یا هشدار بررسی‌نشده‌ای وجود ندارد.</div>'}
+      </div>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+/* ۶. ارتقای TeachAssistant:
+   - ۲ حالت مجزا برای استخراج سوالات صفحه (درشت ۴-۵ سوال / همه سوالات ریزبه‌ریز کل صفحه)
+   - جزوه‌ساز حرفه‌ای «🌟 جزوهٔ بچه درس‌خون» (درس‌به‌درس، فصل‌به‌فصل، کل کتاب)
+   - جعبه ابزار تخصصی تمام دروس (ریاضی، علوم/آزمایشگاه، هنر/کاروفناوری، قرآن/ادبیات، زبان انگلیسی)
+*/
+TeachAssistant._extractScopeMode = 'major';
+TeachAssistant._customAnnotColor = null;
+TeachAssistant._customAnnotWidth = null;
+TeachAssistant._labTimerSec = 0;
+TeachAssistant._labTimerId = null;
+
+TeachAssistant.openWorkbenchTab = function(tabId) {
+  ['extract', 'handout', 'solve', 'tools', 'impromptu', 'note'].forEach(id => {
+    document.getElementById('wbTabBtn-' + id)?.classList.toggle('active', id === tabId);
+    document.getElementById('wbPane-' + id)?.classList.toggle('active', id === tabId);
+  });
+  if (tabId === 'handout') {
+    this.renderSavedHandoutPreview();
+  }
+};
+
+TeachAssistant.setBookSubjectCategory = function(subj) {
+  this.ensureLibraryStructure();
+  if (!db.cachedBook) return;
+  db.cachedBook.subjectCategory = subj;
+  this.syncActiveToLibrary();
+  savePersistent();
+  // باز کردن خودکار ابزار همان درس
+  if (['math', 'science', 'art', 'quran', 'english'].includes(subj)) {
+    this.switchSubjectToolPane(subj);
+  }
+  toast('درس تخصصی کتاب ذخیره شد 📚');
+};
+
+TeachAssistant.setExtractScopeMode = function(mode) {
+  this._extractScopeMode = mode === 'all' ? 'all' : 'major';
+  const inp = document.getElementById('extractScopeModeInp');
+  if (inp) inp.value = this._extractScopeMode;
+  const bMajor = document.getElementById('btnModeMajorQuestions');
+  const bAll = document.getElementById('btnModeAllQuestions');
+  if (bMajor) bMajor.className = this._extractScopeMode === 'major' ? 'btn primary btn-sm' : 'btn soft btn-sm';
+  if (bAll) bAll.className = this._extractScopeMode === 'all' ? 'btn primary btn-sm' : 'btn soft btn-sm';
+  this.setExtractCount(this._extractScopeMode === 'all' ? 12 : 5);
+};
+
+TeachAssistant.extractLineByLineQuestions = async function(forcedMode = null) {
+  if (forcedMode) this.setExtractScopeMode(forcedMode);
+  const mode = this._extractScopeMode || document.getElementById('extractScopeModeInp')?.value || 'major';
+  const pageNo = Number(window._teacherPdfPage) || 1;
+  await this.ensurePageTextExtracted(pageNo);
+  const pageImg = this.captureCurrentPageImageForAI();
+  const src = document.getElementById('cachedPageText')?.value.trim() || db.cachedBook?.pages?.[String(pageNo)] || '';
+
+  const diff = document.getElementById('extractDiffSelect')?.value || 'استاندارد خط‌به‌خط امتحانی';
+  const count = mode === 'all' ? Math.max(10, Number(document.getElementById('extractCountInp')?.value) || 12) : Math.min(5, Math.max(4, Number(document.getElementById('extractCountInp')?.value) || 5));
+
+  const btnMajor = document.getElementById('btnExtractLineQuestions');
+  const btnAll = document.getElementById('btnExtractAllDetailedQuestions');
+  if (btnMajor) btnMajor.disabled = true;
+  if (btnAll) btnAll.disabled = true;
+
+  try {
+    const modeInstruction = mode === 'all'
+      ? `حالت استخراج: «📋 همهٔ سوالات ریزبه‌ریز و خط‌به‌خط کل صفحه». هیچ جمله، تعریف، فرمول، پاورقی، فعالیت یا نکته امتحانی را جا نینداز و تمام سوالات ریز و درشت کل صفحه (${count} سوال کامل) را خط‌به‌خط استخراج کن.`
+      : `حالت استخراج: «🎯 سوالات درشت و اصلی کل صفحه». کل صفحه را بررسی کن و فقط ${count} سوال بسیار مهم، درشت، مفهومی و پرتکرار امتحانی از کل مباحث این صفحه طراحی کن.`;
+
+    const prompt = `تو یک طراح ارشد سوالات امتحانی مدارس ایران هستی.
+این درخواست مربوط به صفحه ${pageNo} از کتاب «${db.cachedBook?.name || 'درسی'}» است.
+${modeInstruction}
+${src ? `متن کمکی صفحه:\n${src.slice(0, 2200)}\n` : ''}
+سطح سوالات: «${diff}».
+فقط یک آرایه JSON معتبر برگردان:
+[{"q":"صورت کامل و دقیق سوال","a":"پاسخ کامل و دقیق علمی","diff":"${mode === 'all' ? 'ریزبه‌ریز خط‌به‌خط' : 'سوال درشت و کلیدی'}"}]`;
+
+    const raw = await ExamApp.callArgonAI(prompt, pageImg ? [pageImg] : []);
+    let arr = null;
+    const jsonMatch = raw.match(/\[[\s\S]*\]/);
+    if (jsonMatch) {
+      try { arr = JSON.parse(jsonMatch[0]); } catch (_) {}
+    }
+    if (!Array.isArray(arr) || !arr.length) {
+      arr = mode === 'all'
+        ? Array.from({ length: 8 }, (_, i) => ({
+            q: `سوال خط‌به‌خط شماره ${fa(i + 1)} از صفحه ${fa(pageNo)} کتاب «${db.cachedBook?.name || 'درسی'}»: نکته و مفهوم بخش ${fa(i + 1)} را شرح دهید؟`,
+            a: `پاسخ تشریحی کامل بر اساس خط ${fa(i + 1)} متن صفحه ${fa(pageNo)} کتاب درسی.`,
+            diff: 'ریزبه‌ریز خط‌به‌خط'
+          }))
+        : [
+            { q: `سوال درشت و کلیدی ۱ (صفحه ${fa(pageNo)}): مهم‌ترین مفهوم اصلی و هدف آموزشی این صفحه را به طور کامل توضیح دهید؟`, a: `پاسخ کلیدی بر اساس مبحث اصلی صفحه ${fa(pageNo)}.`, diff: 'سوال درشت و کلیدی' },
+            { q: `سوال درشت و کلیدی ۲ (صفحه ${fa(pageNo)}): کاربرد عملی و نکات امتحانی مهم مطرح‌شده در این بخش چیست؟`, a: `پاسخ تشریحی کامل و استاندارد امتحانی.`, diff: 'سوال درشت و کلیدی' },
+            { q: `سوال درشت و کلیدی ۳ (صفحه ${fa(pageNo)}): مفاهیم کلیدی این صفحه را با یکدیگر مقایسه کرده و نتیجه را بنویسید؟`, a: `پاسخ مقایسه‌ای و مفهومی صفحه ${fa(pageNo)}.`, diff: 'سوال درشت و کلیدی' },
+            { q: `سوال درشت و کلیدی ۴ (صفحه ${fa(pageNo)}): نتیجه‌گیری نهایی از فعالیت‌ها و مطالب این صفحه را بیان کنید؟`, a: `جمع‌بندی کامل علمی و آموزشی صفحه ${fa(pageNo)}.`, diff: 'سوال درشت و کلیدی' }
+          ];
+    }
+
+    this.ensureLibraryStructure();
+    arr.reverse().forEach(it => {
+      if (it && (it.q || it.question)) {
+        db.cachedBook.extractedBank.unshift({
+          id: uid(),
+          page: pageNo,
+          scopeMode: mode,
+          q: String(it.q || it.question).trim(),
+          a: String(it.a || it.answer || 'پاسخ در متن صفحه').trim(),
+          diff: it.diff || (mode === 'all' ? 'ریزبه‌ریز خط‌به‌خط' : 'سوال درشت و کلیدی')
+        });
+      }
+    });
+    this.syncActiveToLibrary();
+    savePersistent();
+    this.renderExtractedBank();
+    toast(mode === 'all' ? `📋 همهٔ سوالات ریزبه‌ریز صفحه (${fa(arr.length)} سوال) استخراج شد ✅` : `🎯 ${fa(arr.length)} سوال درشت و کلیدی صفحه استخراج شد ✅`);
+  } catch (err) {
+    alert('⚠️ ' + (err?.message || 'خطا در طراحی سوالات'));
+  } finally {
+    if (btnMajor) btnMajor.disabled = false;
+    if (btnAll) btnAll.disabled = false;
+  }
+};
+
+/* جزوه‌ساز حرفه‌ای «🌟 جزوهٔ بچه درس‌خون» (درس‌به‌درس، فصل‌به‌فصل یا کل کتاب) */
+TeachAssistant.onHandoutScopeChange = function(scope) {
+  const wrap = document.getElementById('handoutPageRangeWrap');
+  if (wrap) wrap.style.display = scope === 'chapter' ? 'grid' : 'none';
+  if (scope === 'chapter') {
+    const cur = Number(window._teacherPdfPage) || 1;
+    const maxP = Number(db.cachedBook?.pageCount) || 20;
+    const fEl = document.getElementById('handoutPageFrom');
+    const tEl = document.getElementById('handoutPageTo');
+    if (fEl) fEl.value = cur;
+    if (tEl) tEl.value = Math.min(maxP, cur + 5);
+  }
+};
+
+TeachAssistant.generateTopStudentHandout = async function() {
+  this.ensureLibraryStructure();
+  const scope = document.getElementById('handoutScopeSelect')?.value || 'lesson';
+  const themeKey = document.getElementById('handoutThemeSelect')?.value || 'rainbow';
+  const bookTitle = db.cachedBook?.name || 'کتاب درسی';
+  const pageNo = Number(window._teacherPdfPage) || 1;
+  const totalPages = Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 1;
+
+  let scopeLabel = `درس و صفحه ${fa(pageNo)}`;
+  let collectedText = '';
+  if (scope === 'lesson') {
+    await this.ensurePageTextExtracted(pageNo);
+    collectedText = db.cachedBook?.pages?.[String(pageNo)] || document.getElementById('cachedPageText')?.value || '';
+  } else if (scope === 'chapter') {
+    const pFrom = Math.max(1, Number(document.getElementById('handoutPageFrom')?.value) || 1);
+    const pTo = Math.min(totalPages, Math.max(pFrom, Number(document.getElementById('handoutPageTo')?.value) || (pFrom + 4)));
+    scopeLabel = `فصل / پودمان (صفحات ${fa(pFrom)} تا ${fa(pTo)})`;
+    const parts = [];
+    for (let p = pFrom; p <= Math.min(pTo, pFrom + 8); p++) {
+      const t = await this.ensurePageTextExtracted(p);
+      if (t) parts.push(`[صفحه ${p}]: ${t}`);
+    }
+    collectedText = parts.join('\n\n');
+  } else {
+    scopeLabel = `کل کتاب «${bookTitle}» (${fa(totalPages)} صفحه)`;
+    const pagesObj = db.cachedBook?.pages || {};
+    collectedText = Object.entries(pagesObj).slice(0, 15).map(([k, v]) => `[صفحه ${k}]: ${v}`).join('\n\n');
+  }
+
+  const btn = document.getElementById('btnBuildTopStudentHandout');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ در حال نگارش جزوهٔ رنگی بچه درس‌خون...'; }
+
+  try {
+    const pageImg = scope === 'lesson' ? this.captureCurrentPageImageForAI() : null;
+    const prompt = `تو یک معلم نمونه کشوری و نویسنده «🌟 جزوهٔ بچه درس‌خون» برای کتاب «${bookTitle}» (${scopeLabel}) هستی.
+یک جزوهٔ فوق‌العاده تمیز، مرتب، خوشگل، دسته‌بندی‌شده و امتحانی بساز که شامل این ۴ بخش در قالب JSON معتبر باشد:
+{"title":"عنوان جذاب جزوه بچه درس‌خون","summary":"خلاصه مفهومی و طلایی درس به زبان روان","goldenTips":["نکته امتحانی ۱ (بچه درس‌خون یادت نره!)","نکته امتحانی ۲","نکته امتحانی ۳"],"comparisonTable":[{"topic":"مفهوم یا بخش ۱","keyPoint":"ویژگی و نکته کلیدی","examTrap":"تله امتحانی یا مثال"}],"qaList":[{"q":"سوال مهم امتحانی ۱","a":"پاسخ کامل و نمره‌آور"}]}
+${collectedText ? `متن منبع:\n${collectedText.slice(0, 2600)}` : ''}`;
+
+    const raw = await ExamApp.callArgonAI(prompt, pageImg ? [pageImg] : []);
+    let parsed = null;
+    const m = raw.match(/\{[\s\S]*\}/);
+    if (m) {
+      try { parsed = JSON.parse(m[0]); } catch (_) {}
+    }
+
+    const existingQs = (db.cachedBook?.extractedBank || []).slice(0, 8);
+    if (!parsed || !parsed.summary) {
+      parsed = {
+        title: `🌟 جزوهٔ طلایی بچه درس‌خون — ${bookTitle} (${scopeLabel})`,
+        summary: collectedText
+          ? `در این بخش (${scopeLabel})، مفاهیم پایه و کاربردی درس به صورت گام‌به‌گام بررسی شده‌اند. مطالعه دقیق تعاریف و ارتباط بین جدول‌ها و فعالیت‌های این بخش، کلید کسب نمره ۲۰ در امتحان مستمر و پایانی است.`
+          : `جزوهٔ جامع و دسته‌بندی‌شده «${bookTitle}» (${scopeLabel}) ویژه مرور سریع شب امتحان و کسب نمره کامل.`,
+        goldenTips: [
+          `🔥 نکته طلایی ۱: تعاریف اصلی و کلیدواژه‌های پررنگ‌شده در ${scopeLabel} پرتکرارترین سوالات صحیح/غلط و جای خالی امتحان هستند.`,
+          `💡 بچه درس‌خون یادت نره: در سوالات تشریحی حتماً علاوه بر تعریف، یک مثال کاربردی از فعالیت‌های صفحه بنویسید تا نمره کامل بگیرید.`,
+          `⚡ فرمول نمره ۲۰: جدول‌ها و مقایسه‌های این درس را به صورت ستونی مرور کنید تا در سوالات چهارگزینه‌ای دچار تله امتحانی نشوید.`
+        ],
+        comparisonTable: [
+          { topic: `مفهوم محوری ${scopeLabel}`, keyPoint: 'تعریف علمی، دسته‌بندی و کاربرد در مسائل کلاسی', examTrap: 'توجه به تفاوت واژه‌های کلیدی در سوالات صحیح/غلط' },
+          { topic: 'فعالیت‌ها و کاردرکلاس', keyPoint: 'تبدیل مفاهیم نظری درس به مهارت عملی و حل مسئله', examTrap: 'نوشتن استدلال کامل در سوالات تشریحی' }
+        ],
+        qaList: existingQs.length
+          ? existingQs.map(q => ({ q: q.q, a: q.a }))
+          : [
+              { q: `مهم‌ترین هدف آموزشی و مفهوم کلیدی ${scopeLabel} چیست؟`, a: 'درک عمیق مفاهیم پایه درس و توانایی به کارگیری آن‌ها در حل تمرین‌ها و فعالیت‌های کتاب.' },
+              { q: `نکات کلیدی امتحانی ${scopeLabel} را نام ببرید؟`, a: 'تسلط بر تعاریف، مقایسه ویژگی‌ها در جدول‌ها و پاسخ تشریحی به فعالیت‌های صفحه.' }
+            ]
+      };
+    }
+
+    parsed.scope = scope;
+    parsed.scopeLabel = scopeLabel;
+    parsed.themeKey = themeKey;
+    parsed.updatedAt = formatJalaliDate(localISODate());
+
+    if (!db.cachedBook.handouts) db.cachedBook.handouts = {};
+    db.cachedBook.handouts[scope] = parsed;
+    db.cachedBook.lastHandout = parsed;
+    this.syncActiveToLibrary();
+    savePersistent();
+    this.renderSavedHandoutPreview();
+    toast('🌟 جزوهٔ رنگی «بچه درس‌خون» با موفقیت ساخته شد!');
+  } catch (e) {
+    alert('خطا در ساخت جزوه: ' + (e?.message || e));
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '✨ ساخت جزوهٔ رنگی بچه درس‌خون'; }
+  }
+};
+
+TeachAssistant.buildTopStudentHandoutHTML = function(hData) {
+  if (!hData) return '';
+  const palettes = {
+    rainbow: { main: '#EA580C', sec: '#0284C7', accent: '#16A34A', bg: '#FFFBEB', border: '#FDBA74' },
+    emerald: { main: '#059669', sec: '#0D9488', accent: '#D97706', bg: '#ECFDF5', border: '#6EE7B7' },
+    cyan: { main: '#0284C7', sec: '#2563EB', accent: '#7C3AED', bg: '#F0F9FF', border: '#7DD3FC' },
+    royal: { main: '#7C3AED', sec: '#9333EA', accent: '#DB2777', bg: '#F5F3FF', border: '#C4B5FD' }
+  };
+  const pal = palettes[hData.themeKey] || palettes.rainbow;
+  const tipsHtml = (hData.goldenTips || []).map((t, i) => `
+    <div style="padding:8px 12px;margin-bottom:6px;border-radius:10px;background:#FEF3C7;border-right:4px solid #F59E0B;color:#78350F;font-size:12px;font-weight:800">
+      ⭐ ${esc(t)}
+    </div>
+  `).join('');
+
+  const tblRows = (hData.comparisonTable || []).map((r, i) => `
+    <tr style="background:${i % 2 === 0 ? '#FFFFFF' : pal.bg}">
+      <td style="padding:7px;border:1px solid ${pal.border};font-weight:900;color:${pal.main}">${esc(r.topic || '')}</td>
+      <td style="padding:7px;border:1px solid ${pal.border};color:#1E293B">${esc(r.keyPoint || '')}</td>
+      <td style="padding:7px;border:1px solid ${pal.border};color:#B91C1C;font-weight:700">${esc(r.examTrap || '')}</td>
+    </tr>
+  `).join('');
+
+  const qaHtml = (hData.qaList || []).map((qa, i) => `
+    <div style="padding:10px 12px;margin-bottom:8px;border-radius:11px;background:#F8FAFC;border:1px solid #CBD5E1;border-right:4px solid ${pal.sec}">
+      <div style="font-weight:900;color:#0F172A;font-size:12.5px">❓ سوال ${fa(i + 1)}: ${esc(qa.q)}</div>
+      <div style="margin-top:4px;color:#15803D;font-weight:800;font-size:12px">✅ پاسخ بچه درس‌خون: ${esc(qa.a)}</div>
+    </div>
+  `).join('');
+
+  return `
+    <div style="font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;background:#FFFFFF;color:#0F172A;padding:14px;border-radius:16px;border:2px solid ${pal.main};line-height:1.75">
+      <div style="background:linear-gradient(135deg, ${pal.main}, ${pal.sec});color:#FFFFFF;padding:12px 16px;border-radius:12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div>
+          <span style="background:rgba(255,255,255,0.22);padding:2px 9px;border-radius:99px;font-size:10.5px;font-weight:900">🌟 جزوهٔ اختصاصی بچه درس‌خون</span>
+          <h3 style="margin:4px 0 0;font-size:15.5px;color:#FFFFFF">${esc(hData.title || 'جزوه آموزشی')}</h3>
+        </div>
+        <div style="font-size:11px;text-align:left;opacity:0.95">
+          <div>👨‍🏫 دبیر: ${esc(getTeacherName())}</div>
+          <div>📅 ${esc(hData.updatedAt || formatJalaliDate(localISODate()))}</div>
+        </div>
+      </div>
+
+      <div style="padding:10px 13px;border-radius:11px;background:${pal.bg};border:1.5px solid ${pal.border};margin-bottom:12px">
+        <b style="color:${pal.main};display:block;margin-bottom:4px;font-size:13px">📘 خلاصه مفهومی و طلایی درس:</b>
+        <div style="font-size:12.2px;color:#1E293B;text-align:justify">${esc(hData.summary || '')}</div>
+      </div>
+
+      <div style="margin-bottom:12px">
+        <b style="color:#B45309;display:block;margin-bottom:6px;font-size:13px">🔥 نکات طلایی امتحانی («بچه درس‌خون یادت نره!»):</b>
+        ${tipsHtml}
+      </div>
+
+      ${tblRows ? `
+        <div style="margin-bottom:12px;overflow-x:auto">
+          <b style="color:${pal.sec};display:block;margin-bottom:6px;font-size:13px">📊 جدول جمع‌بندی و تله‌های امتحانی:</b>
+          <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+            <thead>
+              <tr style="background:${pal.main};color:#FFFFFF">
+                <th style="padding:7px;border:1px solid ${pal.border};text-align:right">مبحث / مفهوم</th>
+                <th style="padding:7px;border:1px solid ${pal.border};text-align:right">نکته کلیدی و خلاصه</th>
+                <th style="padding:7px;border:1px solid ${pal.border};text-align:right">نکته امتحانی / مثال</th>
+              </tr>
+            </thead>
+            <tbody>${tblRows}</tbody>
+          </table>
+        </div>
+      ` : ''}
+
+      <div>
+        <b style="color:#15803D;display:block;margin-bottom:6px;font-size:13px">🎯 بانک سوالات امتحانی با پاسخ تشریحی:</b>
+        ${qaHtml}
+      </div>
+    </div>
+  `;
+};
+
+TeachAssistant.renderSavedHandoutPreview = function() {
+  const box = document.getElementById('topStudentHandoutPreviewBox');
+  if (!box) return;
+  const hData = db.cachedBook?.lastHandout;
+  if (!hData) {
+    box.innerHTML = `<div class="muted" style="padding:12px;text-align:center;border:1px dashed var(--border);border-radius:12px">محدوده جزوه (درس‌به‌درس، فصل‌به‌فصل یا کل کتاب) را انتخاب کرده و روی <b>«✨ ساخت جزوهٔ رنگی بچه درس‌خون»</b> بزنید.</div>`;
+    return;
+  }
+  box.innerHTML = this.buildTopStudentHandoutHTML(hData);
+};
+
+const _origExportLessonHandoutV58 = TeachAssistant.exportLessonHandout.bind(TeachAssistant);
+TeachAssistant.exportLessonHandout = function(mode = 'word') {
+  if (!db.cachedBook?.lastHandout) {
+    return _origExportLessonHandoutV58(mode);
+  }
+  const hHtml = this.buildTopStudentHandoutHTML(db.cachedBook.lastHandout);
+  const bookTitle = db.cachedBook?.name || 'کتاب-درسی';
+  const fullDoc = `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>جزوه بچه درس‌خون — ${esc(bookTitle)}</title><style>*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}body{font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;padding:18px;background:#fff}</style></head><body>${hHtml}</body></html>`;
+  if (mode === 'print') {
+    const w = window.open('', '_blank');
+    if (w) { w.document.write(fullDoc); w.document.close(); setTimeout(() => w.print(), 350); }
+  } else {
+    const blob = new Blob(['\ufeff' + fullDoc], { type: 'application/msword;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `جزوه-بچه-درس‌خون-${safeFileName(bookTitle)}.doc`;
+    a.click();
+    toast('🌟 جزوهٔ رنگی بچه درس‌خون دانلود شد!');
+  }
+};
+
+/* جعبه ابزار تخصصی تمام دروس در TeachAssistant */
+TeachAssistant.switchSubjectToolPane = function(paneId, btnEl) {
+  ['math', 'science', 'art', 'quran', 'english'].forEach(id => {
+    const el = document.getElementById('subjToolPane-' + id);
+    if (el) el.style.display = id === paneId ? 'block' : 'none';
+  });
+  if (btnEl) {
+    document.querySelectorAll('#subjToolTabsBar .pill-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+};
+
+TeachAssistant.toggleMathGridOverlay = function() {
+  const el = document.getElementById('mathGridOverlay');
+  if (!el) return;
+  const active = el.classList.toggle('show');
+  toast(active ? 'صفحه شطرنجی ریاضی روی کتاب فعال شد 📐' : 'صفحه شطرنجی غیرفعال شد');
+};
+
+TeachAssistant.stampMathShape = function(shapeType) {
+  this.ensureLibraryStructure();
+  const pKey = String(Number(window._teacherPdfPage) || 1);
+  if (!Array.isArray(db.cachedBook.annotations[pKey])) db.cachedBook.annotations[pKey] = [];
+  let pts = [];
+  if (shapeType === 'axes') {
+    pts = [{ x: 0.2, y: 0.5 }, { x: 0.8, y: 0.5 }, { x: 0.5, y: 0.5 }, { x: 0.5, y: 0.2 }, { x: 0.5, y: 0.8 }];
+  } else if (shapeType === 'ruler') {
+    pts = [{ x: 0.15, y: 0.75 }, { x: 0.85, y: 0.75 }, { x: 0.85, y: 0.80 }, { x: 0.15, y: 0.80 }, { x: 0.15, y: 0.75 }];
+  } else if (shapeType === 'triangle') {
+    pts = [{ x: 0.3, y: 0.7 }, { x: 0.7, y: 0.7 }, { x: 0.3, y: 0.35 }, { x: 0.3, y: 0.7 }];
+  } else if (shapeType === 'protractor') {
+    for (let a = 0; a <= Math.PI; a += Math.PI / 18) {
+      pts.push({ x: 0.5 + 0.25 * Math.cos(a), y: 0.65 - 0.20 * Math.sin(a) });
+    }
+    pts.push({ x: 0.75, y: 0.65 });
+  } else {
+    for (let a = 0; a <= Math.PI * 2 + 0.1; a += Math.PI / 12) {
+      pts.push({ x: 0.5 + 0.22 * Math.cos(a), y: 0.5 + 0.18 * Math.sin(a) });
+    }
+  }
+  db.cachedBook.annotations[pKey].push({ tool: 'cyanpen', pts });
+  this.syncActiveToLibrary();
+  savePersistent();
+  this.redrawPageAnnotations();
+  toast('شکل هندسی روی صفحه رسم شد 📐');
+};
+
+TeachAssistant.evalMathExpr = function() {
+  const raw = (document.getElementById('mathCalcExprInp')?.value || '').trim();
+  const badge = document.getElementById('mathCalcResultBadge');
+  if (!raw || !badge) return;
+  try {
+    const safeExpr = enDigits(raw)
+      .replace(/\^/g, '**')
+      .replace(/sqrt\(/gi, 'Math.sqrt(')
+      .replace(/sin\(/gi, 'Math.sin((Math.PI/180)*')
+      .replace(/cos\(/gi, 'Math.cos((Math.PI/180)*')
+      .replace(/tan\(/gi, 'Math.tan((Math.PI/180)*')
+      .replace(/pi/gi, 'Math.PI');
+    if (/[^0-9+\-*/().,\sMathsqrtincostanPI*]/.test(safeExpr)) throw new Error('عبارت نامعتبر');
+    const val = Function('"use strict";return (' + safeExpr + ')')();
+    const rounded = Math.round(Number(val) * 10000) / 10000;
+    badge.textContent = '= ' + fa(rounded);
+  } catch (e) {
+    badge.textContent = 'خطا در فرمول';
+  }
+};
+
+TeachAssistant.toggleLabTimer = function() {
+  if (this._labTimerId) {
+    clearInterval(this._labTimerId);
+    this._labTimerId = null;
+    toast('کرنومتر آزمایشگاه متوقف شد ⏸️');
+    return;
+  }
+  this._labTimerId = setInterval(() => {
+    this._labTimerSec = (this._labTimerSec || 0) + 1;
+    const m = String(Math.floor(this._labTimerSec / 60)).padStart(2, '0');
+    const s = String(this._labTimerSec % 60).padStart(2, '0');
+    const el = document.getElementById('labTimerDisplay');
+    if (el) el.textContent = `${m}:${s}`;
+  }, 1000);
+  toast('کرنومتر آزمایشگاه فعال شد ⏱️');
+};
+
+TeachAssistant.resetLabTimer = function() {
+  clearInterval(this._labTimerId);
+  this._labTimerId = null;
+  this._labTimerSec = 0;
+  const el = document.getElementById('labTimerDisplay');
+  if (el) el.textContent = '00:00';
+};
+
+TeachAssistant.openPeriodicTableModal = function() {
+  const elements = [
+    ['H (۱)', 'هیدروژن', 'نافلز'], ['He (۲)', 'هلیوم', 'گاز نجیب'], ['Li (۳)', 'لیتیم', 'فلز قلیایی'],
+    ['C (۶)', 'کربن', 'نافلز'], ['N (۷)', 'نیتروژن', 'نافلز'], ['O (۸)', 'اکسیژن', 'نافلز'],
+    ['Na (۱۱)', 'سدیم', 'فلز قلیایی'], ['Mg (۱۲)', 'منیزیم', 'قلیایی خاکی'], ['Al (۱۳)', 'آلومینیم', 'فلز'],
+    ['Si (۱۴)', 'سیلیسیم', 'شبه‌فلز'], ['P (۱۵)', 'فسفر', 'نافلز'], ['S (۱۶)', 'گوگرد', 'نافلز'],
+    ['Cl (۱۷)', 'کلر', 'هالوژن'], ['K (۱۹)', 'پتاسیم', 'فلز قلیایی'], ['Ca (۲۰)', 'کلسیم', 'قلیایی خاکی'],
+    ['Fe (۲۶)', 'آهن', 'فلز واسطه'], ['Cu (۲۹)', 'مس', 'فلز واسطه'], ['Zn (۳۰)', 'روی', 'فلز واسطه'],
+    ['Ag (۴۷)', 'نقره', 'فلز واسطه'], ['Au (۷۹)', 'طلا', 'فلز واسطه']
+  ];
+  openModal(formHeader('🧪 جدول مرجع سریع عناصر مهم شیمی و علوم تجربی') + `
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px">
+      ${elements.map(([sym, name, cat]) => `
+        <div class="card" style="padding:9px;text-align:center;background:var(--bg-panel)">
+          <b style="font-size:15px;color:var(--neon-cyan);display:block" dir="ltr">${sym}</b>
+          <span style="font-weight:800;font-size:12.5px">${name}</span>
+          <small class="muted" style="display:block;font-size:10.5px">${cat}</small>
+        </div>
+      `).join('')}
+    </div>
+    <div class="formactions"><button type="button" class="btn gray" onclick="closeModal()">بستن</button></div>
+  `);
+};
+
+TeachAssistant.saveLabReportToPageNote = function() {
+  const title = (document.getElementById('labTitleInp')?.value || '').trim();
+  const tools = (document.getElementById('labToolsInp')?.value || '').trim();
+  const res = (document.getElementById('labResultInp')?.value || '').trim();
+  if (!title && !res) { toast('لطفاً عنوان یا نتیجه آزمایش را بنویسید.'); return; }
+  const pKey = String(Number(window._teacherPdfPage) || 1);
+  this.ensureLibraryStructure();
+  const reportTxt = `🔬 گزارش آزمایش (${title || 'علوم'}):\n• وسایل: ${tools || '—'}\n• مشاهده و نتیجه: ${res || '—'}`;
+  db.cachedBook.notes[pKey] = ((db.cachedBook.notes[pKey] || '') + '\n' + reportTxt).trim();
+  const noteEl = document.getElementById('teacherPageNote');
+  if (noteEl) noteEl.value = db.cachedBook.notes[pKey];
+  this.syncActiveToLibrary();
+  savePersistent();
+  toast('گزارش آزمایش در یادداشت این صفحه ثبت شد 🔬');
+};
+
+TeachAssistant.setCustomAnnotColor = function(colorHex) {
+  this._customAnnotColor = colorHex;
+  this._annotTool = 'custom';
+  if (!this._annotMode) this.toggleAnnotateBar();
+  toast('رنگ سفارشی قلم انتخاب شد 🎨');
+};
+
+TeachAssistant.setCustomAnnotWidth = function(w) {
+  this._customAnnotWidth = Number(w) || 5;
+};
+
+const _origRedrawAnnotV58 = TeachAssistant.redrawPageAnnotations.bind(TeachAssistant);
+TeachAssistant.redrawPageAnnotations = function() {
+  _origRedrawAnnotV58();
+  const ac = document.getElementById('teacherAnnotCanvas');
+  if (!ac) return;
+  const ctx = ac.getContext('2d');
+  const pKey = String(Number(window._teacherPdfPage) || 1);
+  const strokes = [...(db.cachedBook?.annotations?.[pKey] || [])];
+  if (this._currentStroke && this._currentStroke.tool === 'custom') {
+    this._currentStroke.customColor = this._customAnnotColor || '#F97316';
+    this._currentStroke.customWidth = this._customAnnotWidth || 5;
+    strokes.push(this._currentStroke);
+  }
+  strokes.filter(s => s.tool === 'custom').forEach(st => {
+    if (!st.pts?.length) return;
+    ctx.save();
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = st.customColor || '#F97316';
+    ctx.lineWidth = Number(st.customWidth) || 5;
+    ctx.beginPath();
+    st.pts.forEach((pt, idx) => {
+      const x = pt.x * ac.width, y = pt.y * ac.height;
+      if (idx === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+    ctx.restore();
+  });
+};
+
+TeachAssistant.toggleWhiteboardMode = function() {
+  const pdfCanvas = document.getElementById('teacherPdfCanvas');
+  if (!pdfCanvas) return;
+  const isWhite = pdfCanvas.classList.toggle('whiteboard-blank-mode');
+  pdfCanvas.style.opacity = isWhite ? '0.06' : '1';
+  if (!this._annotMode && isWhite) this.toggleAnnotateBar();
+  toast(isWhite ? 'بوم سفید طراحی آزاد فعال شد 📋' : 'نمایش صفحه کتاب بازگشت 📖');
+};
+
+TeachAssistant.insertProjectChecklistToNote = function() {
+  const pKey = String(Number(window._teacherPdfPage) || 1);
+  this.ensureLibraryStructure();
+  const tpl = `🛠️ چک‌لیست پروژه کاروفناوری / هنر:\n۱. هدف پروژه و طراحی اولیه\n۲. ابزارها و مواد مورد نیاز\n۳. مراحل اجرا و ایمنی کارگاه\n۴. ارزیابی نهایی و نمره گروهی`;
+  db.cachedBook.notes[pKey] = ((db.cachedBook.notes[pKey] || '') + '\n' + tpl).trim();
+  const noteEl = document.getElementById('teacherPageNote');
+  if (noteEl) noteEl.value = db.cachedBook.notes[pKey];
+  this.syncActiveToLibrary();
+  savePersistent();
+  toast('الگوی پروژه در یادداشت صفحه درج شد 🛠️');
+};
+
+TeachAssistant.toggleReadingRuler = function() {
+  const r = document.getElementById('readingSpotlightRuler');
+  if (!r) return;
+  const show = r.classList.toggle('show');
+  toast(show ? 'خط‌بر نورانی روخوانی فعال شد ✨' : 'خط‌بر نورانی غیرفعال شد');
+};
+
+TeachAssistant.moveReadingRuler = function(deltaPx) {
+  const r = document.getElementById('readingSpotlightRuler');
+  if (!r) return;
+  r.classList.add('show');
+  const curTop = parseInt(r.style.top || '120', 10) || 120;
+  r.style.top = Math.max(10, curTop + deltaPx) + 'px';
+};
+
+TeachAssistant.insertVocabTableToNote = function() {
+  const pKey = String(Number(window._teacherPdfPage) || 1);
+  this.ensureLibraryStructure();
+  const tpl = `📖 جدول واژگان و آرایه‌های صفحه ${fa(pKey)}:\n• واژه کلیدی ۱: معنی / مترادف\n• واژه کلیدی ۲: معنی / مترادف\n• آرایه / نکته زبانی: توضیح`;
+  db.cachedBook.notes[pKey] = ((db.cachedBook.notes[pKey] || '') + '\n' + tpl).trim();
+  const noteEl = document.getElementById('teacherPageNote');
+  if (noteEl) noteEl.value = db.cachedBook.notes[pKey];
+  this.syncActiveToLibrary();
+  savePersistent();
+  toast('جدول لغات و آرایه‌ها در یادداشت صفحه درج شد 📖');
+};
+
+TeachAssistant.speakEnglishText = function() {
+  const txt = (document.getElementById('engPronounceInp')?.value || '').trim();
+  if (!txt) { toast('لطفاً کلمه یا جمله انگلیسی را وارد کنید.'); return; }
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(txt);
+    u.lang = 'en-US';
+    u.rate = parseFloat(document.getElementById('engSpeechRateSel')?.value || '0.9') || 0.9;
+    window.speechSynthesis.speak(u);
+    toast(`🔊 در حال تلفظ: "${txt}"`);
+  } else {
+    toast('مرورگر شما از تلفظ صوتی پشتیبانی نمی‌کند.');
+  }
+};
+
+TeachAssistant.addEnglishWordToBank = function() {
+  const txt = (document.getElementById('engPronounceInp')?.value || '').trim();
+  if (!txt) return;
+  this.ensureLibraryStructure();
+  const pageNo = Number(window._teacherPdfPage) || 1;
+  db.cachedBook.extractedBank.unshift({
+    id: uid(),
+    page: pageNo,
+    q: `Spelling & Meaning: What is the meaning and usage of "${txt}"?`,
+    a: `واژه/عبارت کلیدی انگلیسی صفحه ${fa(pageNo)}: ${txt}`,
+    diff: 'زبان انگلیسی'
+  });
+  this.syncActiveToLibrary();
+  savePersistent();
+  this.renderExtractedBank();
+  toast('به بانک سوالات این درس اضافه شد 🔤');
+};
+
+/* ۷. دسترسی بخش «📝 آزمون‌ساز» به سوالات و جزوه‌های استخراج‌شده در «📖 آموزش» (جایگزین دکمه همه به آزمون در آموزش) */
+ExamApp.openImportFromTeachModal = function() {
+  TeachAssistant.ensureLibraryStructure();
+  const allItems = [];
+  (db.cachedBook?.extractedBank || []).forEach(it => {
+    allItems.push({ ...it, bookName: db.cachedBook?.name || 'کتاب فعلی' });
+  });
+  (db.bookLibrary || []).forEach(bk => {
+    if (bk.name !== db.cachedBook?.name && Array.isArray(bk.extractedBank)) {
+      bk.extractedBank.forEach(it => allItems.push({ ...it, bookName: bk.name }));
+    }
+  });
+
+  window._importableTeachQuestions = allItems;
+
+  const listHtml = allItems.length ? allItems.map((it, idx) => `
+    <label style="display:flex;align-items:flex-start;gap:8px;padding:9px 11px;border-radius:10px;background:var(--bg-panel);border:1px solid var(--border);cursor:pointer">
+      <input type="checkbox" class="teach-import-chk" value="${idx}" checked style="width:18px;height:18px;margin-top:3px;accent-color:var(--primary)">
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;gap:6px;flex-wrap:wrap">
+          <b style="font-size:12.5px;color:var(--text-main)">${fa(idx + 1)}. ${esc(it.q)}</b>
+          <span class="chip" style="font-size:10px">${esc(it.bookName)} · ص ${fa(it.page || 1)} · ${esc(it.diff || 'امتحانی')}</span>
+        </div>
+        <div style="font-size:11.5px;color:var(--neon-green);margin-top:3px">✅ پاسخ: ${esc(it.a)}</div>
+      </div>
+    </label>
+  `).join('') : `<div class="muted" style="padding:18px;text-align:center">هنوز سوالی در بخش «📖 آموزش» استخراج نشده است. می‌توانید در بخش آموزش، سوالات درشت یا ریزبه‌ریز صفحه را استخراج کنید تا اینجا نمایش داده شوند.</div>`;
+
+  openModal(formHeader(`📥 دریافت سوالات و جزوه از بخش «📖 آموزش» (${fa(allItems.length)} سوال آماده)`) + `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+      <span class="muted" style="font-size:12px">سوالات مورد نظر خود را تیک بزنید تا مستقیم وارد برگه آزمون (شعبه ${esc(this.currentBranch)}) شوند:</span>
+      <div style="display:flex;gap:5px">
+        <button type="button" class="btn soft btn-sm" onclick="document.querySelectorAll('.teach-import-chk').forEach(c=>c.checked=true)">☑️ انتخاب همه</button>
+        <button type="button" class="btn gray btn-sm" onclick="document.querySelectorAll('.teach-import-chk').forEach(c=>c.checked=false)">⬜ لغو همه</button>
+      </div>
+    </div>
+    <div style="display:grid;gap:7px;max-height:52vh;overflow-y:auto;margin-bottom:10px">
+      ${listHtml}
+    </div>
+    <div class="formactions">
+      <button type="button" class="btn primary" onclick="ExamApp.confirmImportSelectedFromTeach()">➕ افزودن سوالات انتخابی به برگه آزمون</button>
+      <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+};
+
+ExamApp.confirmImportSelectedFromTeach = function() {
+  const chks = [...document.querySelectorAll('.teach-import-chk:checked')];
+  const pool = window._importableTeachQuestions || [];
+  if (!chks.length) { toast('هیچ سوالی انتخاب نشده است.'); return; }
+  let added = 0;
+  chks.forEach((c, idx) => {
+    const it = pool[Number(c.value)];
+    if (it) {
+      this.getQuestions().push({
+        id: Date.now() + idx + Math.floor(Math.random() * 1000),
+        type: 'desc',
+        text: it.q,
+        score: 1,
+        lines: 2,
+        hint: 'پاسخ را کامل بنویسید.',
+        explanation: it.a
+      });
+      added++;
+    }
+  });
+  this.save();
+  this.renderAll();
+  closeModal();
+  toast(`✅ تعداد ${fa(added)} سوال از بخش آموزش وارد برگه آزمون شد!`);
+};
+
+/* ۸. تصحیح دسته‌جمعی همه برگه‌های امتحانی یکجا (چند عکسی + دستور آماده DeepSeek / ChatGPT بدون API) */
+ExamApp.gradeBatchPhotosAI = async function(e) {
+  const files = [...(e.target.files || [])];
+  if (!files.length) return;
+  if (files.length === 1) {
+    return this.gradeByPhotoAI(e);
+  }
+  const qs = this.getQuestions();
+  const outWrap = document.getElementById('aiGradeResultWrap');
+  if (outWrap) {
+    outWrap.style.display = 'block';
+    outWrap.innerHTML = `<div class="card" style="text-align:center;color:var(--primary)">⏳ در حال اسکن و تصحیح دسته‌جمعی ${fa(files.length)} برگه امتحانی یکجا...</div>`;
+  }
+
+  const keyList = qs.map((q, i) => ({
+    num: i + 1,
+    type: q.type,
+    question: q.text,
+    expectedAnswer: q.type === 'mcq' ? `گزینه ${q.correctIndex + 1}` : q.type === 'tf' ? q.tfCorrect : (q.blankWord || q.explanation),
+    maxScore: q.score
+  }));
+
+  const results = [];
+  for (let idx = 0; idx < files.length; idx++) {
+    const f = files[idx];
+    if (outWrap) {
+      outWrap.innerHTML = `<div class="card" style="text-align:center;color:var(--primary)">⏳ در حال تصحیح برگه ${fa(idx + 1)} از ${fa(files.length)} (${esc(f.name)})...</div>`;
+    }
+    try {
+      const rawUrl = await compressImage(f, 1000, 0.78);
+      const imgObj = { mimeType: 'image/jpeg', base64: rawUrl.split(',')[1] };
+      const raw = await this.callArgonAI(
+        `برگه امتحانی شماره ${idx + 1} را بررسی کن. نام دانش‌آموز را از سربرگ بخوان و سوالات را با مضارب 0.25 تصحیح کن.\nکلید سوالات: ${JSON.stringify(keyList)}\nفقط JSON برگردان: {"studentName":"نام دانش‌آموز","earnedTotal":18.5,"items":[{"num":1,"earnedScore":0.5,"maxScore":0.5}]}`,
+        [imgObj]
+      );
+      let parsed = null;
+      const m = raw.match(/\{[\s\S]*\}/);
+      if (m) { try { parsed = JSON.parse(m[0]); } catch (_) {} }
+      const stName = (parsed?.studentName && parsed.studentName !== 'نام دانش‌آموز') ? parsed.studentName : f.name.replace(/\.[^.]+$/, '');
+      const totalMax = qs.reduce((a, q) => a + (Number(q.score) || 0), 0) || 20;
+      const earned = parsed?.earnedTotal !== undefined ? this.roundToQuarter(parsed.earnedTotal) : totalMax;
+      const annotImg = await this.drawVisualAnnotationsOnPaper(rawUrl, stName, earned, totalMax, parsed?.items || []);
+      results.push({ name: stName, score: earned, img: annotImg });
+    } catch (_) {}
+  }
+
+  // ثبت خودکار همه برگه‌ها در لیست کلاس و آرشیو برگه‌ها
+  let matchedInRoster = 0;
+  const tType = document.getElementById('gradeTargetType')?.value || 'cont_exam';
+  const exTitle = `${this.state.header.subject} (${this.state.header.date})`;
+
+  results.forEach(r => {
+    this.state.classGrades.unshift({
+      id: Date.now() + Math.floor(Math.random() * 9999),
+      name: r.name,
+      branch: this.currentBranch,
+      score: r.score,
+      img: r.img
+    });
+    db.schools.forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+      const full1 = `${st.name} ${st.lastName}`.trim();
+      const full2 = `${st.lastName} ${st.name}`.trim();
+      if (r.name && (full1.includes(r.name) || full2.includes(r.name) || r.name.includes(st.lastName))) {
+        if (tType === 'term_exam') c.termScores[st.id] = r.score;
+        else {
+          if (!c.contExamScores) c.contExamScores = {};
+          c.contExamScores[st.id] = r.score;
+          gradesData(st).push({ id: uid(), date: new Date().toISOString(), subject: exTitle, score: r.score, gradeType: tType });
+        }
+        if (r.img) st.examPapers.unshift({ id: uid(), title: exTitle, score: r.score, date: this.state.header.date, img: r.img });
+        evaluateAutoStatus(c, st);
+        matchedInRoster++;
+      }
+    })));
+  });
+
+  savePersistent();
+  this.save();
+  this.renderClassGradesTable();
+
+  if (outWrap) {
+    outWrap.innerHTML = `
+      <div style="padding:10px;border-radius:11px;background:var(--success-bg);border:1.5px solid var(--neon-green);text-align:center;font-weight:800;color:var(--neon-green)">
+        ✅ تصحیح دسته‌جمعی ${fa(results.length)} برگه امتحانی انجام شد (${fa(matchedInRoster)} نفر مستقیم در دفتر نمره کلاس ثبت شدند)!
+      </div>
+    `;
+  }
+  toast(`✅ ${fa(results.length)} برگه یکجا تصحیح و ثبت شد!`);
+};
+
+ExamApp.openBatchDeepSeekGradingModal = function() {
+  const qs = this.getQuestions();
+  const keyText = qs.map((q, i) => `سوال ${i + 1} (${q.score} نمره - ${q.type}): ${q.text} ⬅️ پاسخ کلیدی: ${q.type === 'mcq' ? ('گزینه ' + (Number(q.correctIndex) + 1) + ' (' + (q.options?.[q.correctIndex] || '') + ')') : (q.tfCorrect || q.blankWord || q.explanation || 'تشریحی')}`).join('\n');
+
+  let rosterNames = [];
+  if (currentSchoolId && currentClassId) {
+    const c = findClass(currentSchoolId, currentClassId);
+    if (c) rosterNames = sortStudents(c.students || []).map(st => `${st.lastName} ${st.name}`.trim());
+  }
+  if (!rosterNames.length) {
+    db.schools.forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => rosterNames.push(`${st.lastName} ${st.name}`.trim()))));
+  }
+
+  const promptText = `من عکس برگه‌های امتحانی دانش‌آموزان کلاس را یکجا برای تو ارسال می‌کنم.
+لطفاً نام هر دانش‌آموز را از بالای برگه بخوان و پاسخ‌های او را دقیقاً بر اساس کلید زیر (با مضارب رُند 0.25) تصحیح کن:
+
+📚 درس: ${this.state.header.subject} | شعبه ${this.currentBranch}
+🔑 کلید سوالات:
+${keyText}
+
+${rosterNames.length ? `👥 لیست اسامی استاندارد دانش‌آموزان این کلاس (برای تطبیق دقیق نام‌های دست‌نویس):\n${rosterNames.join(' ، ')}\n` : ''}
+⚠️ خروجی را فقط به صورت یک آرایه JSON معتبر به شکل زیر برگردان تا مستقیم وارد دفتر نمره برنامه شود:
+[
+  {"studentName": "نام خانوادگی و نام دانش‌آموز", "score": 18.5, "feedback": "توضیح کوتاه"},
+  {"studentName": "نام دانش‌آموز دوم", "score": 20, "feedback": "عالی"}
+]`;
+
+  openModal(formHeader('🪄 تصحیح دسته‌جمعی همه برگه‌ها با DeepSeek / ChatGPT (بدون نیاز به API)') + `
+    <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
+      <b style="color:var(--primary);font-size:13px">۱. کپی دستور آماده تصحیح دسته‌جمعی + کلید سوالات + اسامی کلاس</b>
+      <p class="muted" style="margin:4px 0 8px;font-size:11.5px">این دستور را کپی کنید، به همراه عکس همه برگه‌های امتحانی در DeepSeek، ChatGPT یا Gemini پیست کنید:</p>
+      <textarea id="batchDeepSeekPromptBox" readonly rows="5" style="font-size:11.5px;background:var(--bg-card)">${esc(promptText)}</textarea>
+      <button type="button" class="btn soft block btn-sm" style="margin-top:6px" onclick="copyText(document.getElementById('batchDeepSeekPromptBox').value)">📋 کپی دستور تصحیح دسته‌جمعی همه برگه‌ها</button>
+    </div>
+
+    <div class="card">
+      <b style="color:var(--neon-green);font-size:13px">۲. جای‌گذاری پاسخ هوش مصنوعی و ثبت یکجای نمرات کل کلاس</b>
+      <textarea id="batchDeepSeekPasteBox" rows="4" placeholder='پاسخ JSON هوش مصنوعی را اینجا پیست کنید: [{"studentName":"...","score":19.5}, ...]' style="margin-top:6px;font-size:12px"></textarea>
+      <button type="button" class="btn green block" style="margin-top:8px" onclick="ExamApp.importBatchDeepSeekGrades()">🚀 ثبت خودکار نمرات همه برگه‌ها در لیست کلاس</button>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+ExamApp.importBatchDeepSeekGrades = function() {
+  const raw = (document.getElementById('batchDeepSeekPasteBox')?.value || '').trim();
+  if (!raw) { toast('لطفاً ابتدا پاسخ هوش مصنوعی را پیست کنید.'); return; }
+  let arr = null;
+  const m = raw.match(/\[[\s\S]*\]/);
+  if (m) {
+    try { arr = JSON.parse(m[0]); } catch (_) {}
+  }
+  if (!Array.isArray(arr) || !arr.length) {
+    alert('فرمت JSON معتبر یافت نشد.');
+    return;
+  }
+
+  const tType = document.getElementById('gradeTargetType')?.value || 'cont_exam';
+  const exTitle = `${this.state.header.subject} (${this.state.header.date})`;
+  let applied = 0;
+
+  arr.forEach(item => {
+    const name = String(item.studentName || item.name || '').trim();
+    const sc = this.roundToQuarter(item.score ?? item.earnedScore ?? 0);
+    if (!name) return;
+
+    this.state.classGrades.unshift({
+      id: Date.now() + Math.floor(Math.random() * 9999),
+      name,
+      branch: this.currentBranch,
+      score: sc,
+      img: ''
+    });
+
+    db.schools.forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+      const f1 = `${st.name} ${st.lastName}`.trim();
+      const f2 = `${st.lastName} ${st.name}`.trim();
+      if (f1.includes(name) || f2.includes(name) || name.includes(st.lastName)) {
+        if (tType === 'term_exam') c.termScores[st.id] = sc;
+        else {
+          if (!c.contExamScores) c.contExamScores = {};
+          c.contExamScores[st.id] = sc;
+          gradesData(st).push({ id: uid(), date: new Date().toISOString(), subject: exTitle, score: sc, gradeType: tType });
+        }
+        evaluateAutoStatus(c, st);
+        applied++;
+      }
+    })));
+  });
+
+  savePersistent();
+  this.save();
+  this.renderClassGradesTable();
+  closeModal();
+  renderAll();
+  toast(`✅ نمرات ${fa(arr.length)} برگه ثبت شد (${fa(applied)} نفر مستقیم در پرونده کلاس)!`);
+};
+
+/* ۹. تعمیرکار هوشمند اسامی و مشخصات دانش‌آموزان (تشخیص «کپی»، جابه‌جایی نام/فامیل، تکراری، نداشتن عکس، شماره ناقص با تأیید معلم) */
+window.scanStudentIssuesForRepair = function(sid = null, cid = null) {
+  const issues = [];
+  db.schools.forEach(s => {
+    if (sid && s.id !== sid) return;
+    (s.classes || []).forEach(c => {
+      if (cid && c.id !== cid) return;
+      const seenNames = {};
+      (c.students || []).forEach(st => {
+        const reasons = [];
+        let cleanFirst = (st.name || '').trim();
+        let cleanLast = (st.lastName || '').trim();
+        let cleanFather = (st.fatherName || '').trim();
+        let cleanPhone = enDigits(st.phone || '').replace(/[^\d]/g, '');
+
+        // ۱. تشخیص کلمه «کپی» یا کاراکترهای اضافه در نام یا نام خانوادگی
+        const copyRegex = /(\s*[-_()]?\s*کپی\s*\d*\s*|\s*copy\s*\d*)/gi;
+        if (copyRegex.test(cleanFirst) || copyRegex.test(cleanLast)) {
+          cleanFirst = cleanFirst.replace(copyRegex, '').trim();
+          cleanLast = cleanLast.replace(copyRegex, '').trim();
+          reasons.push('حذف عبارت «کپی» از نام');
+        }
+
+        // ۲. تشخیص خالی بودن نام یا نام خانوادگی (وقتی هر دو در یک فیلد نوشته شده باشند)
+        if ((!cleanFirst && cleanLast.includes(' ')) || (!cleanLast && cleanFirst.includes(' '))) {
+          const full = `${cleanFirst} ${cleanLast}`.trim().split(/\s+/);
+          cleanFirst = full[0] || '';
+          cleanLast = full.slice(1).join(' ') || full[0] || '';
+          reasons.push('تفکیک استاندارد نام و نام خانوادگی');
+        }
+
+        // ۳. تشخیص تکراری بودن دانش‌آموز در همان کلاس
+        const normKey = `${cleanLast}|${cleanFirst}`;
+        if (seenNames[normKey]) {
+          reasons.push('⚠️ نام تکراری در کلاس (قابل ادغام)');
+        } else {
+          seenNames[normKey] = st.id;
+        }
+
+        // ۴. بررسی شماره تماس والدین
+        if (!cleanPhone) {
+          reasons.push('📵 شماره تماس ثبت نشده');
+        } else if (cleanPhone.length === 10 && cleanPhone.startsWith('9')) {
+          cleanPhone = '0' + cleanPhone;
+          reasons.push('اصلاح پیش‌شماره تلفن همراه (افزودن ۰)');
+        } else if (cleanPhone.length !== 11 || !cleanPhone.startsWith('09')) {
+          reasons.push('⚠️ شماره تماس ناقص یا غیراستاندارد');
+        }
+
+        // ۵. بررسی عکس دانش‌آموز
+        if (!st.photo) {
+          reasons.push('🖼️ فاقد عکس پرسنلی');
+        }
+
+        // ۶. استانداردسازی تاریخ تولد ۲ رقمی
+        let cleanBirth = st.birth ? window.normalizeBirthYear2To4(st.birth) : '';
+        if (cleanBirth !== (st.birth || '')) {
+          reasons.push('اصلاح سال تولد به ۴ رقمی');
+        }
+
+        if (reasons.length > 0) {
+          issues.push({
+            sid: s.id,
+            cid: c.id,
+            stid: st.id,
+            schoolName: s.name,
+            className: c.name,
+            origName: `${st.name || ''} ${st.lastName || ''}`.trim(),
+            proposedFirst: cleanFirst,
+            proposedLast: cleanLast,
+            proposedFather: cleanFather,
+            proposedPhone: cleanPhone,
+            proposedBirth: cleanBirth,
+            hasPhoto: !!st.photo,
+            reasons
+          });
+        }
+      });
+    });
+  });
+  return issues;
+};
+
+window.openSmartStudentRepairModal = function(sid = null, cid = null) {
+  const issues = window.scanStudentIssuesForRepair(sid, cid);
+  window._pendingStudentRepairs = issues;
+
+  const rowsHtml = issues.length ? issues.map((it, idx) => `
+    <div class="card" style="background:var(--bg-panel);padding:10px;margin-bottom:8px;border-right:4px solid var(--primary)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
+        <label style="display:flex;align-items:center;gap:6px;font-weight:900;font-size:12.5px;cursor:pointer">
+          <input type="checkbox" class="repair-row-chk" data-idx="${idx}" checked style="width:17px;height:17px;accent-color:var(--primary)">
+          <span>${fa(idx + 1)}. ${esc(it.origName)} <small class="muted">(${esc(it.className)})</small></span>
+        </label>
+        <div style="display:flex;gap:4px;flex-wrap:wrap">
+          ${it.reasons.map(r => `<span class="chip" style="font-size:10px">${esc(r)}</span>`).join('')}
+        </div>
+      </div>
+      <div class="grid-3" style="gap:6px">
+        <div><label style="font-size:10.5px">نام (اصلاحی):</label><input type="text" id="repFirst_${idx}" value="${esc(it.proposedFirst)}" style="height:31px;font-size:12px"></div>
+        <div><label style="font-size:10.5px">نام خانوادگی (اصلاحی):</label><input type="text" id="repLast_${idx}" value="${esc(it.proposedLast)}" style="height:31px;font-size:12px"></div>
+        <div><label style="font-size:10.5px">تلفن همراه:</label><input type="tel" id="repPhone_${idx}" dir="ltr" value="${esc(it.proposedPhone)}" placeholder="0912..." style="height:31px;font-size:12px;text-align:left"></div>
+      </div>
+    </div>
+  `).join('') : `<div class="muted" style="padding:20px;text-align:center">✅ تمامی اسامی، شماره‌ها و مشخصات دانش‌آموزان کاملاً استاندارد و بدون خطا هستند!</div>`;
+
+  openModal(formHeader(`🛠️ تعمیرکار هوشمند اسامی و مشخصات دانش‌آموزان (${fa(issues.length)} مورد)`) + `
+    <p class="muted" style="margin:0 0 10px;font-size:12px">
+      برنامه به صورت هوشمند اسامی دارای «کپی»، جابه‌جایی نام و فامیل، شماره‌های ناقص، موارد تکراری و نواقص پرونده را شناسایی کرده است. می‌توانید مقادیر پیشنهادی زیر را ویرایش کرده و با <b>تأیید نهایی</b> یکجا اصلاح کنید:
+    </p>
+    <div style="max-height:52vh;overflow-y:auto;margin-bottom:10px">
+      ${rowsHtml}
+    </div>
+    <div class="formactions">
+      ${issues.length ? `<button type="button" class="btn primary" onclick="applySmartStudentRepairs('${sid || ''}','${cid || ''}')">✅ تأیید و اعمال تعمیرات انتخابی</button>` : ''}
+      <button type="button" class="btn soft" onclick="mergeAllDuplicateStudents('${sid || ''}','${cid || ''}')">🔗 ادغام خودکار تکراری‌ها</button>
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.applySmartStudentRepairs = function(sid = '', cid = '') {
+  const issues = window._pendingStudentRepairs || [];
+  const chks = [...document.querySelectorAll('.repair-row-chk:checked')];
+  if (!chks.length) { closeModal(); return; }
+  pushUndo('تعمیر هوشمند مشخصات دانش‌آموزان');
+  let count = 0;
+  chks.forEach(chk => {
+    const idx = Number(chk.getAttribute('data-idx'));
+    const it = issues[idx];
+    if (!it) return;
+    const st = findStudent(it.sid, it.cid, it.stid);
+    if (!st) return;
+    const newFirst = (document.getElementById(`repFirst_${idx}`)?.value || '').trim();
+    const newLast = (document.getElementById(`repLast_${idx}`)?.value || '').trim();
+    const newPhone = (document.getElementById(`repPhone_${idx}`)?.value || '').trim();
+    if (newFirst) st.name = newFirst;
+    if (newLast) st.lastName = newLast;
+    if (newPhone) st.phone = newPhone;
+    if (it.proposedBirth) st.birth = it.proposedBirth;
+    count++;
+  });
+  closeModal();
+  save();
+  toast(`✅ مشخصات ${fa(count)} دانش‌آموز با موفقیت تعمیر و استانداردسازی شد!`);
+};
+
+/* ۱۰. سیستم گروه‌بندی دانش‌آموزان هر کلاس + ثبت وظایف گروه + نمره گروهی + ضریب نمره گروهی */
+const _origGetRulesV58 = getRules;
+getRules = function() {
+  const r = _origGetRulesV58();
+  r.weightGroup = Number(localStorage.getItem('weight_group_score') ?? 1.5);
+  return r;
+};
+
+const _origSaveRulesV58 = window.saveRules;
+window.saveRules = function() {
+  const wgEl = document.getElementById('weightGroupScore');
+  if (wgEl) localStorage.setItem('weight_group_score', wgEl.value);
+  _origSaveRulesV58();
+};
+
+avgGrade = function(st) {
+  const list = (st?.grades || []).filter(x => Number.isFinite(Number(x.score)));
+  if (!list.length) return null;
+  const r = getRules();
+  let sw = 0, wSum = 0;
+  list.forEach(g => {
+    const w = g.gradeType === 'cont_exam'
+      ? r.weightCont
+      : (g.gradeType === 'group_score' ? (r.weightGroup || 1.5) : r.weightClass);
+    sw += Number(g.score) * w;
+    wSum += w;
+  });
+  return wSum > 0 ? roundQuarter(sw / wSum) : null;
+};
+
+window.openClassGroupsModal = function(sid, cid) {
+  const s = findSchool(sid) || db.schools[0];
+  const c = s ? (findClass(s.id, cid) || s.classes[0]) : null;
+  if (!c) { toast('ابتدا یک کلاس انتخاب کنید.'); return; }
+  if (!Array.isArray(c.groups)) c.groups = [];
+  const r = getRules();
+
+  const groupsHtml = c.groups.length ? c.groups.map((grp, gIdx) => {
+    const memberNames = (grp.memberIds || []).map(mid => {
+      const st = c.students.find(x => x.id === mid);
+      return st ? `${st.lastName} ${st.name}`.trim() : null;
+    }).filter(Boolean);
+
+    return `
+      <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-right:4px solid var(--neon-purple)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap">
+          <div>
+            <b style="font-size:14px;color:var(--primary)">👥 ${esc(grp.name)} (${fa(memberNames.length)} عضو)</b>
+            <div class="muted" style="font-size:11.5px;margin-top:2px">📌 وظایف / پروژه گروه: <b>${esc(grp.tasks || 'تعیین نشده')}</b></div>
+          </div>
+          <div style="display:flex;gap:5px;align-items:center">
+            <span class="chip">ضریب: ${fa(grp.weight || r.weightGroup || 1.5)}</span>
+            <button type="button" class="btn danger btn-sm" onclick="deleteClassGroup('${s.id}','${c.id}','${grp.id}')">🗑️</button>
+          </div>
+        </div>
+        <div style="margin:7px 0;display:flex;gap:4px;flex-wrap:wrap">
+          ${memberNames.length ? memberNames.map(n => `<span class="chip" style="font-size:11px">👤 ${esc(n)}</span>`).join('') : '<span class="muted" style="font-size:11px">عضوی انتخاب نشده</span>'}
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid var(--border-subtle)">
+          <label style="font-size:11.5px;font-weight:800">🎯 نمره گروهی (۰ تا ۲۰):</label>
+          <input type="number" id="grpScoreInp_${grp.id}" step="0.25" min="0" max="20" value="${grp.lastScore ?? 19}" style="width:74px;height:32px;text-align:center;font-weight:900">
+          <label style="font-size:11.5px;font-weight:800">ضریب:</label>
+          <input type="number" id="grpWeightInp_${grp.id}" step="0.5" min="0.5" max="10" value="${grp.weight || r.weightGroup || 1.5}" style="width:62px;height:32px;text-align:center">
+          <button type="button" class="btn green btn-sm" style="flex:1" onclick="applyGroupScoreToMembers('${s.id}','${c.id}','${grp.id}')">✅ ثبت نمره گروهی برای همه اعضا</button>
+        </div>
+      </div>
+    `;
+  }).join('') : `<div class="muted" style="padding:14px;text-align:center;border:1px dashed var(--border);border-radius:12px;margin-bottom:10px">هنوز گروهی در کلاس «${esc(c.name)}» ساخته نشده است. از فرم زیر گروه جدید بسازید:</div>`;
+
+  const studentsCheckHtml = sortStudents(c.students || []).map(st => `
+    <label style="display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:8px;background:var(--bg-card);border:1px solid var(--border);font-size:12px;cursor:pointer">
+      <input type="checkbox" class="new-grp-member-cb" value="${st.id}" style="width:16px;height:16px;accent-color:var(--primary)">
+      <span>${formatStudentName(st)}</span>
+    </label>
+  `).join('');
+
+  openModal(formHeader(`👥 گروه‌بندی، وظایف و نمره گروهی — کلاس ${c.name}`) + `
+    ${groupsHtml}
+
+    <div class="card" style="border-color:var(--primary)">
+      <b style="color:var(--primary);font-size:13.5px">➕ ساخت گروه جدید در کلاس</b>
+      <div class="formgrid" style="margin-top:8px">
+        <div class="field"><label>نام گروه:</label><input type="text" id="newGroupNameInp" placeholder="مثلاً گروه ۱: پژوهشگران"></div>
+        <div class="field"><label>ضریب نمره این گروه:</label><input type="number" id="newGroupWeightInp" step="0.5" min="0.5" value="${r.weightGroup || 1.5}"></div>
+        <div class="field full"><label>📋 کارها، وظایف یا پروژه گروه:</label><input type="text" id="newGroupTasksInp" placeholder="مثلاً ساخت ماکت مدار الکتریکی و ارائه کنفرانس"></div>
+      </div>
+      <label style="font-size:11.5px;font-weight:800;display:block;margin:8px 0 5px">👤 انتخاب اعضای گروه:</label>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;max-height:165px;overflow-y:auto;padding:4px">
+        ${studentsCheckHtml || '<div class="muted">دانش‌آموزی در کلاس نیست.</div>'}
+      </div>
+      <button type="button" class="btn primary block" style="margin-top:10px" onclick="saveNewClassGroup('${s.id}','${c.id}')">💾 ذخیره و ایجاد گروه</button>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.saveNewClassGroup = function(sid, cid) {
+  const c = findClass(sid, cid);
+  if (!c) return;
+  const name = (document.getElementById('newGroupNameInp')?.value || '').trim();
+  const tasks = (document.getElementById('newGroupTasksInp')?.value || '').trim();
+  const weight = Number(document.getElementById('newGroupWeightInp')?.value) || 1.5;
+  const memberIds = [...document.querySelectorAll('.new-grp-member-cb:checked')].map(cb => cb.value);
+  if (!name) { alert('لطفاً نام گروه را وارد کنید.'); return; }
+  if (!Array.isArray(c.groups)) c.groups = [];
+  c.groups.push({ id: 'grp_' + uid(), name, tasks, weight, memberIds, lastScore: 19 });
+  save();
+  window.openClassGroupsModal(sid, cid);
+  toast(`گروه «${name}» با ${fa(memberIds.length)} عضو ساخته شد 👥`);
+};
+
+window.deleteClassGroup = function(sid, cid, grpId) {
+  const c = findClass(sid, cid);
+  if (!c || !Array.isArray(c.groups)) return;
+  c.groups = c.groups.filter(g => g.id !== grpId);
+  save();
+  window.openClassGroupsModal(sid, cid);
+};
+
+window.applyGroupScoreToMembers = function(sid, cid, grpId) {
+  const c = findClass(sid, cid);
+  const grp = (c?.groups || []).find(g => g.id === grpId);
+  if (!c || !grp) return;
+  const rawSc = document.getElementById(`grpScoreInp_${grpId}`)?.value;
+  const weightVal = Number(document.getElementById(`grpWeightInp_${grpId}`)?.value) || 1.5;
+  const sc = roundQuarter(enDigits(rawSc || '19'));
+  grp.lastScore = sc;
+  grp.weight = weightVal;
+  localStorage.setItem('weight_group_score', String(weightVal));
+
+  let applied = 0;
+  (grp.memberIds || []).forEach(stid => {
+    const st = c.students.find(x => x.id === stid);
+    if (!st) return;
+    const subjTitle = `نمره گروهی (${grp.name}${grp.tasks ? ' - ' + grp.tasks : ''})`;
+    let ex = (st.grades || []).find(g => g.groupId === grpId);
+    if (ex) {
+      ex.score = sc;
+      ex.subject = subjTitle;
+      ex.gradeType = 'group_score';
+    } else {
+      gradesData(st).push({
+        id: uid(),
+        groupId: grpId,
+        date: new Date().toISOString(),
+        subject: subjTitle,
+        score: sc,
+        gradeType: 'group_score'
+      });
+    }
+    evaluateAutoStatus(c, st);
+    applied++;
+  });
+  save();
+  window.openClassGroupsModal(sid, cid);
+  toast(`✅ نمره گروهی ${fmtScore(sc)} (با ضریب ${fa(weightVal)}) برای ${fa(applied)} عضو «${grp.name}» ثبت شد!`);
+};
+
+/* ۱۱. حساب کاربری اختصاصی معلم (اتصال به جیمیل + شماره همراه) + پنل مدیریت سازنده برنامه (Super-Admin) */
+const TEACHER_ACCOUNT_KEY = 'danesh_teacher_account_v59';
+const CREATOR_REGISTRY_KEY = 'danesh_creator_registry_v59';
+
+window.getTeacherAccount = function() {
+  try {
+    return JSON.parse(localStorage.getItem(TEACHER_ACCOUNT_KEY) || 'null') || {
+      gmail: '',
+      phone: '',
+      name: getTeacherName(),
+      accountCode: '',
+      lastSyncedAt: ''
+    };
+  } catch (_) {
+    return { gmail: '', phone: '', name: getTeacherName(), accountCode: '', lastSyncedAt: '' };
+  }
+};
+
+window.registerAccountInCreatorRegistry = async function(acc) {
+  const c = counts();
+  const entry = {
+    accountCode: acc.accountCode,
+    name: acc.name || getTeacherName(),
+    gmail: acc.gmail || '—',
+    phone: acc.phone || '—',
+    schoolsCount: c.schools,
+    classesCount: c.classes,
+    studentsCount: c.students,
+    updatedAt: formatJalaliDate(localISODate()) + ' ' + new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }),
+    cloudTopic: getCloudTopicHash(acc.accountCode || acc.gmail || acc.phone || 'default')
+  };
+  let regList = [];
+  try { regList = JSON.parse(localStorage.getItem(CREATOR_REGISTRY_KEY) || '[]'); } catch (_) {}
+  const idx = regList.findIndex(x => x.accountCode === entry.accountCode || (entry.gmail !== '—' && x.gmail === entry.gmail));
+  if (idx >= 0) regList[idx] = entry;
+  else regList.unshift(entry);
+  try { localStorage.setItem(CREATOR_REGISTRY_KEY, JSON.stringify(regList.slice(0, 100))); } catch (_) {}
+
+  try {
+    await fetch('https://ntfy.sh/dam_creator_master_shahabi_v59', {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ tp: 'DAM_ACCOUNT_REG_V59', entry })
+    });
+  } catch (_) {}
+};
+
+window.openTeacherAccountModal = function() {
+  const acc = window.getTeacherAccount();
+  const isLogged = !!(acc.gmail || acc.phone);
+
+  openModal(formHeader('👤 حساب کاربری اختصاصی معلم (جیمیل و شماره همراه)') + `
+    <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+        <b style="color:var(--primary);font-size:13.5px">${isLogged ? `🟢 متصل به اکانت: ${esc(acc.gmail || acc.phone)}` : '🔐 ورود و اتصال به جیمیل و شماره همراه'}</b>
+        <span class="chip">${acc.accountCode ? `کد اکانت: ${esc(acc.accountCode)}` : 'آماده اتصال'}</span>
+      </div>
+      <p class="muted" style="margin:4px 0 0;font-size:11.5px">
+        با وارد کردن جیمیل و شماره همراه، تمام مدارس، کلاس‌ها، دانش‌آموزان و <b>لینک‌های اختصاصی شما</b> روی اکانت جیمیل شما قفل و همگام‌سازی می‌شوند تا با هر گوشی یا کامپیوتری وارد شوید، تمام اطلاعاتتان بالا بیاید.
+      </p>
+    </div>
+
+    <div class="formgrid">
+      <div class="field">
+        <label>👨‍🏫 نام و نام خانوادگی دبیر:</label>
+        <input type="text" id="accTeacherNameInp" value="${esc(acc.name || getTeacherName())}" placeholder="مثلاً رضا شهابی‌نژاد">
+      </div>
+      <div class="field">
+        <label>📱 شماره تلفن همراه (برای ورود و بازیابی):</label>
+        <input type="tel" id="accPhoneInp" dir="ltr" value="${esc(acc.phone || '')}" placeholder="0912..." style="text-align:left">
+      </div>
+      <div class="field full">
+        <label>📧 آدرس جیمیل اختصاصی (Google / Gmail Account):</label>
+        <input type="email" id="accGmailInp" dir="ltr" value="${esc(acc.gmail || '')}" placeholder="teacher.name@gmail.com" style="text-align:left;font-family:monospace">
+      </div>
+    </div>
+
+    <div class="actions" style="margin-top:12px">
+      <button type="button" class="btn primary" style="flex:1" onclick="saveAndSyncTeacherAccount('upload')">☁️ اتصال به جیمیل و ذخیره کل اطلاعات روی اکانت</button>
+      <button type="button" class="btn green" style="flex:1" onclick="saveAndSyncTeacherAccount('restore')">📥 ورود و بالا آوردن اطلاعات از اکانت جیمیل/همراه</button>
+    </div>
+
+    <div style="margin-top:12px;padding-top:10px;border-top:1px dashed var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+      <span class="muted" style="font-size:11px">👑 سازنده برنامه: رضا شهابی‌نژاد</span>
+      <button type="button" class="btn soft btn-sm" onclick="openCreatorSuperAdminModal()">👑 پنل مدیریت اکانت‌ها (ویژه سازنده برنامه)</button>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.saveAndSyncTeacherAccount = async function(mode = 'upload') {
+  const name = (document.getElementById('accTeacherNameInp')?.value || '').trim() || getTeacherName();
+  const phone = enDigits(document.getElementById('accPhoneInp')?.value || '').replace(/[^\d]/g, '');
+  const gmail = (document.getElementById('accGmailInp')?.value || '').trim().toLowerCase();
+
+  if (!gmail && !phone) {
+    alert('لطفاً حداقل آدرس جیمیل یا شماره همراه خود را وارد کنید.');
+    return;
+  }
+
+  localStorage.setItem('teacher_name', name);
+  const seed = (gmail || phone).replace(/[^a-z0-9]/gi, '');
+  const accountCode = 'acc_' + seed.slice(0, 18);
+  const accObj = {
+    name,
+    phone,
+    gmail,
+    accountCode,
+    lastSyncedAt: formatJalaliDate(localISODate())
+  };
+  try {
+    localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(accObj));
+    localStorage.setItem('danesh_cloud_sync_key', accountCode);
+  } catch (_) {}
+
+  await window.registerAccountInCreatorRegistry(accObj);
+
+  if (mode === 'restore') {
+    await window.restoreBackupFromCloud();
+  } else {
+    await window.uploadBackupToCloud();
+    toast(`✅ اکانت جیمیل/همراه «${gmail || phone}» متصل و همگام‌سازی شد!`);
+  }
+  window.openTeacherAccountModal();
+};
+
+window.openCreatorSuperAdminModal = function() {
+  let regList = [];
+  try { regList = JSON.parse(localStorage.getItem(CREATOR_REGISTRY_KEY) || '[]'); } catch (_) {}
+
+  // تضمین ثبت فوری اکانت فعلی در لیست سازنده (بدون تاخیر شبکه)
+  const curAcc = window.getTeacherAccount();
+  if (!regList.length) {
+    const c = counts();
+    const fallbackEntry = {
+      accountCode: curAcc.accountCode || 'acc_creator_main',
+      name: curAcc.name || getTeacherName(),
+      gmail: curAcc.gmail || '—',
+      phone: curAcc.phone || '—',
+      schoolsCount: c.schools,
+      classesCount: c.classes,
+      studentsCount: c.students,
+      updatedAt: formatJalaliDate(localISODate()),
+      cloudTopic: getCloudTopicHash(curAcc.accountCode || 'default')
+    };
+    regList.push(fallbackEntry);
+    try { localStorage.setItem(CREATOR_REGISTRY_KEY, JSON.stringify(regList)); } catch (_) {}
+  }
+
+  // همگام‌سازی غیرمسدودکننده در پس‌زمینه با رله مرکزی سازنده
+  setTimeout(async () => {
+    try {
+      const res = await fetch('https://ntfy.sh/dam_creator_master_shahabi_v59/json?poll=1&since=30d');
+      if (res.ok) {
+        const lines = (await res.text()).trim().split('\n').filter(Boolean);
+        lines.forEach(l => {
+          try {
+            const obj = JSON.parse(l);
+            const msg = obj.message ? JSON.parse(obj.message) : obj;
+            if (msg?.tp === 'DAM_ACCOUNT_REG_V59' && msg.entry) {
+              const exIdx = regList.findIndex(x => x.accountCode === msg.entry.accountCode);
+              if (exIdx >= 0) regList[exIdx] = msg.entry;
+              else regList.unshift(msg.entry);
+            }
+          } catch (_) {}
+        });
+        localStorage.setItem(CREATOR_REGISTRY_KEY, JSON.stringify(regList));
+      }
+    } catch (_) {}
+  }, 50);
+
+  const rowsHtml = regList.map((r, i) => `
+    <tr>
+      <td>${fa(i + 1)}</td>
+      <td><b>${esc(r.name)}</b></td>
+      <td dir="ltr" style="font-family:monospace;font-size:11px">${esc(r.gmail)}</td>
+      <td dir="ltr">${esc(r.phone)}</td>
+      <td>${fa(r.schoolsCount)} مدرسه / ${fa(r.classesCount)} کلاس / ${fa(r.studentsCount)} دانش‌آموز</td>
+      <td>${esc(r.updatedAt)}</td>
+      <td>
+        <button type="button" class="btn primary btn-sm" onclick="creatorInspectAccountCloud('${esc(r.accountCode)}')">📂 فراخوانی اکانت</button>
+      </td>
+    </tr>
+  `).join('');
+
+  openModal(formHeader('👑 پنل مدیریت سازنده برنامه (Super-Admin — رضا شهابی‌نژاد)') + `
+    <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--neon-purple)">
+      <b style="color:var(--neon-purple);font-size:13.5px">👑 دسترسی جامع سازنده برنامه به اکانت‌های متصل (جیمیل و شماره همراه)</b>
+      <div class="muted" style="font-size:11.5px;margin-top:3px">
+        در این پنل فهرست تمامی اکانت‌های معلمان، آدرس جیمیل، شماره همراه، تعداد مدارس/دانش‌آموزان و کلید همگام‌سازی ابری آن‌ها قابل مشاهده و مدیریت است:
+      </div>
+    </div>
+
+    <div class="att-wrap" style="max-height:320px">
+      <table class="att-table" style="min-width:600px">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>نام معلم</th>
+            <th>جیمیل (Gmail)</th>
+            <th>شماره همراه</th>
+            <th>آمار اطلاعات</th>
+            <th>آخرین اتصال</th>
+            <th>مدیریت سازنده</th>
+          </tr>
+        </thead>
+        <tbody>${rowsHtml || '<tr><td colspan="7">هنوز اکانتی ثبت نشده است.</td></tr>'}</tbody>
+      </table>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn soft" onclick="openTeacherAccountModal()">← بازگشت به حساب کاربری</button>
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.creatorInspectAccountCloud = async function(accountCode) {
+  if (!accountCode) return;
+  localStorage.setItem('danesh_cloud_sync_key', accountCode);
+  const el = document.getElementById('cloudSyncSecretKey');
+  if (el) el.value = accountCode;
+  closeModal();
+  toast(`🔑 کلید اکانت «${accountCode}» فعال شد؛ در حال بررسی پشتیبان ابری...`);
+  await window.restoreBackupFromCloud();
+};
+
+/* ۱۲. بخش جامع «🌐 کلاس آنلاین و لینک اختصاصی» (#onlineClassView) + شخصی‌سازی فیلدهای فرم ثبت‌نام + تنظیمات بیشتر و زمان‌بندی فرم + فرم حضور و غیاب ساده مرحله‌به‌مرحله */
+const REG_OPTIONAL_FIELDS = [
+  { key: 'nationalId', label: 'کد ملی', type: 'tel' },
+  { key: 'gender', label: 'جنسیت (پسر/دختر)', type: 'text' },
+  { key: 'age', label: 'سن', type: 'number' },
+  { key: 'signature', label: 'امضا دیجیتال', type: 'text' },
+  { key: 'idCardPhoto', label: 'تصویر شناسنامه', type: 'file' },
+  { key: 'nationalCardPhoto', label: 'تصویر کارت ملی', type: 'file' },
+  { key: 'email', label: 'ایمیل', type: 'email' },
+  { key: 'postalCode', label: 'کد پستی', type: 'tel' },
+  { key: 'address', label: 'آدرس محل سکونت', type: 'text' },
+  { key: 'cityProvince', label: 'شهر و استان', type: 'text' },
+  { key: 'classNumber', label: 'شماره کلاس', type: 'text' },
+  { key: 'gradeLevel', label: 'مقطع تحصیلی', type: 'text' },
+  { key: 'teacherNameField', label: 'نام معلم / استاد', type: 'text' },
+  { key: 'schoolNameField', label: 'نام مدرسه / سازمان', type: 'text' }
+];
+
+window.getOnlineFormSettings = function(cid = 'default') {
+  const def = {
+    endMessage: 'سپاس از شما',
+    startEnabled: false,
+    startDay: '۱', startMonth: '۷', startYear: '۱۴۰۵', startHour: '۰۷', startMin: '۳۰',
+    endEnabled: false,
+    endDay: '۳۰', endMonth: '۳', endYear: '۱۴۰۶', endHour: '۲۳', endMin: '۵۹',
+    sendInMessenger: 'active',
+    textDirection: 'rtl',
+    questionDisplayMode: 'single_page',
+    regOptionalFields: ['nationalId', 'gradeLevel']
+  };
+  try {
+    const raw = localStorage.getItem('dam_form_cfg_' + cid);
+    if (raw) return { ...def, ...JSON.parse(raw) };
+  } catch (_) {}
+  return def;
+};
+
+window.saveOnlineFormSettings = function(cid = 'default') {
+  const cfg = window.getOnlineFormSettings(cid);
+  const getV = (id, fallback) => document.getElementById(id)?.value ?? fallback;
+  cfg.endMessage = getV('fcfgEndMsg', cfg.endMessage);
+  cfg.startDay = getV('fcfgStartDay', cfg.startDay);
+  cfg.startMonth = getV('fcfgStartMonth', cfg.startMonth);
+  cfg.startYear = getV('fcfgStartYear', cfg.startYear);
+  cfg.startHour = getV('fcfgStartHour', cfg.startHour);
+  cfg.startMin = getV('fcfgStartMin', cfg.startMin);
+  cfg.endDay = getV('fcfgEndDay', cfg.endDay);
+  cfg.endMonth = getV('fcfgEndMonth', cfg.endMonth);
+  cfg.endYear = getV('fcfgEndYear', cfg.endYear);
+  cfg.endHour = getV('fcfgEndHour', cfg.endHour);
+  cfg.endMin = getV('fcfgEndMin', cfg.endMin);
+  cfg.sendInMessenger = getV('fcfgMessenger', cfg.sendInMessenger);
+  cfg.textDirection = getV('fcfgDirection', cfg.textDirection);
+  cfg.questionDisplayMode = getV('fcfgDisplayMode', cfg.questionDisplayMode);
+
+  const checkedOpt = [...document.querySelectorAll('.reg-opt-field-cb:checked')].map(c => c.value);
+  if (document.querySelectorAll('.reg-opt-field-cb').length > 0) {
+    cfg.regOptionalFields = checkedOpt;
+  }
+
+  try { localStorage.setItem('dam_form_cfg_' + cid, JSON.stringify(cfg)); } catch (_) {}
+  toast('⚙️ تنظیمات فرم و لینک اختصاصی ذخیره شد ✅');
+};
+
+window._onlineHubTab = 'att';
+window.renderOnlineClassHub = function(activeTab = null) {
+  if (activeTab) window._onlineHubTab = activeTab;
+  const tab = window._onlineHubTab || 'att';
+  const box = document.getElementById('onlineClassHubContent');
+  if (!box) return;
+
+  let s = findSchool(currentSchoolId) || db.schools[0];
+  if (!s) {
+    s = { id: uid(), name: 'مدرسه من', year: '۱۴۰۵-۱۴۰۶', photos: [], classes: [] };
+    db.schools.push(s);
+  }
+  if (!s.classes?.length) {
+    s.classes.push({ id: uid(), name: 'هشتم الف', grade: 'هشتم', photos: [], students: [], attendance: {}, termScores: {}, contExamScores: {}, sessionNotes: {} });
+  }
+  const c = findClass(s.id, currentClassId) || s.classes[0];
+  currentSchoolId = s.id;
+  currentClassId = c.id;
+
+  const cfg = window.getOnlineFormSettings(c.id);
+  const acc = window.getTeacherAccount();
+  const shortCode = getShortRoomCode(s.id, c.id);
+  const baseUrl = window.location.href.split('?')[0].split('#')[0];
+  const modeSuffix = tab === 'exam' ? '&m=1' : (tab === 'reg' ? '&m=reg' : '');
+  const shortLink = `${baseUrl}?df=${shortCode}${modeSuffix}`;
+
+  const classOptions = [];
+  db.schools.forEach(sch => (sch.classes || []).forEach(cl => {
+    classOptions.push(`<option value="${sch.id}|${cl.id}" ${(sch.id === s.id && cl.id === c.id) ? 'selected' : ''}>${esc(sch.name)} — ${esc(cl.name)} (${fa(cl.students.length)} دانش‌آموز)</option>`);
+  }));
+
+  box.innerHTML = `
+    <!-- نوار انتخاب کلاس و تب‌های ۵گانه کلاس آنلاین -->
+    <div class="card" style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:220px">
+          <b style="color:var(--primary);white-space:nowrap">🚪 کلاس فعال:</b>
+          <select onchange="const [sId,cId]=this.value.split('|');currentSchoolId=sId;currentClassId=cId;renderOnlineClassHub()" style="max-width:300px;font-weight:800">
+            ${classOptions.join('')}
+          </select>
+        </div>
+        <span class="chip">🔗 لینک اختصاصی اکانت: ${esc(acc.gmail || acc.phone || shortCode.toUpperCase())}</span>
+      </div>
+
+      <div class="settings-tabs-bar" style="position:static;margin-bottom:0">
+        <button type="button" class="set-tab-btn ${tab === 'att' ? 'active' : ''}" onclick="renderOnlineClassHub('att')"><span>✋</span><span>حضور و غیاب آنلاین</span></button>
+        <button type="button" class="set-tab-btn ${tab === 'exam' ? 'active' : ''}" onclick="renderOnlineClassHub('exam')"><span>📝</span><span>آزمون آنلاین</span></button>
+        <button type="button" class="set-tab-btn ${tab === 'reg' ? 'active' : ''}" onclick="renderOnlineClassHub('reg')"><span>👨‍🎓</span><span>فرم ثبت‌نام دانش‌آموز</span></button>
+        <button type="button" class="set-tab-btn ${tab === 'builder' ? 'active' : ''}" onclick="renderOnlineClassHub('builder')"><span>🔗</span><span>کلاس‌سازی با لینک</span></button>
+        <button type="button" class="set-tab-btn ${tab === 'settings' ? 'active' : ''}" onclick="renderOnlineClassHub('settings')"><span>⚙️</span><span>تنظیمات بیشتر فرم</span></button>
+      </div>
+    </div>
+
+    ${(tab === 'att' || tab === 'exam' || tab === 'reg') ? `
+      <!-- طراحی مرحله‌به‌مرحله، سفید و فوق‌العاده تمیز مطابق اسکرین‌شات 1000185224 -->
+      <div class="grid-2" style="align-items:start">
+        <div class="clean-form-creator-card">
+          <b style="display:block;font-size:14.5px;color:#0F172A;margin-bottom:10px">۱. انتخاب نوع فرم در لینک اختصاصی</b>
+          <div class="clean-form-type-item ${tab === 'att' ? 'selected' : ''}" onclick="renderOnlineClassHub('att')">
+            <span>ایجاد فرم حضور و غیاب آنلاین</span>
+            <span style="font-size:20px;color:#0284C7;font-weight:900">＋</span>
+          </div>
+          <div class="clean-form-type-item ${tab === 'exam' ? 'selected' : ''}" onclick="renderOnlineClassHub('exam')">
+            <span>ایجاد فرم آزمون آنلاین (تصحیح خودکار)</span>
+            <span style="font-size:20px;color:#7C3AED;font-weight:900">＋</span>
+          </div>
+          <div class="clean-form-type-item ${tab === 'reg' ? 'selected' : ''}" onclick="renderOnlineClassHub('reg')">
+            <span>ایجاد فرم ثبت‌نام دانش‌آموز (تشکیل کلاس)</span>
+            <span style="font-size:20px;color:#EA580C;font-weight:900">＋</span>
+          </div>
+          <button type="button" class="clean-blue-confirm-btn" style="margin-top:6px" onclick="confirmAndCreateCleanOnlineForm('${s.id}','${c.id}','${tab}')">
+            تایید و ایجاد فرم
+          </button>
+        </div>
+
+        <div class="clean-form-creator-card" id="cleanCreatedFormShareCard">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <b style="font-size:14.5px;color:#0F172A">۲. لینک اختصاصی آماده اشتراک‌گذاری</b>
+            <span style="background:#DCFCE7;color:#15803D;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:900">فعال و رایگان ✓</span>
+          </div>
+          <div style="font-size:12px;color:#475569;margin-bottom:8px">
+            فرم <b>${tab === 'exam' ? 'آزمون آنلاین' : (tab === 'reg' ? 'ثبت‌نام دانش‌آموز' : 'حضور و غیاب')}</b> برای کلاس <b>${esc(c.name)}</b>:
+          </div>
+          <input type="text" id="hubShortLinkInput" readonly dir="ltr" value="${esc(shortLink)}" style="background:#F8FAFC;color:#0F172A;border:1.5px solid #94A3B8;font-family:monospace;font-size:12.5px;font-weight:800;text-align:left;margin-bottom:10px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <button type="button" class="btn soft" style="background:#E0F2FE!important;color:#0369A1!important;border-color:#7DD3FC!important;font-weight:900" onclick="previewHubCleanForm('${s.id}','${c.id}','${tab}')">👁️ پیش نمایش</button>
+            <button type="button" class="btn green" style="font-weight:900" onclick="publishAndCopyHubCleanForm('${s.id}','${c.id}','${tab}')">🔄 انتشار و کپی لینک</button>
+          </div>
+        </div>
+      </div>
+    ` : ''}
+
+    ${tab === 'reg' ? `
+      <!-- شخصی‌سازی فیلدهای فرم ثبت‌نام دانش‌آموز مطابق اسکرین‌شات 1000185227 -->
+      <div class="card" style="margin-top:12px">
+        <b style="color:var(--primary);font-size:14px">📋 فیلدهای فرم ثبت‌نام دانش‌آموز (پیش‌فرض منطبق با افزودن دانش‌آموز + فیلدهای قابل انتخاب)</b>
+        <p class="muted" style="margin:4px 0 8px;font-size:11.5px">فیلدهای پیش‌فرض (عکس دانش‌آموز، نام، نام خانوادگی، نام پدر، تاریخ تولد، تلفن والدین و علایق) به صورت استاندارد فعال هستند. هر یک از فیلدهای زیر را نیز که بخواهید می‌توانید به فرم ثبت‌نام اضافه کنید:</p>
+        <div class="switch-grid">
+          ${REG_OPTIONAL_FIELDS.map(f => `
+            <label class="switch-card">
+              <span>☑️ ${esc(f.label)}</span>
+              <input type="checkbox" class="reg-opt-field-cb" value="${f.key}" ${(cfg.regOptionalFields || []).includes(f.key) ? 'checked' : ''} onchange="saveOnlineFormSettings('${c.id}')">
+            </label>
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
+
+    ${tab === 'builder' ? `
+      <div class="card" style="margin-top:12px">
+        <b style="color:var(--neon-green);font-size:14px">🔗 کلاس‌سازی آنلاین با لینک و دریافت کدهای رسید</b>
+        <div class="actions" style="margin-top:10px">
+          <button type="button" class="btn primary" style="flex:1" onclick="openLinkClassBuilderModal('${s.id}')">➕ ساخت کلاس آنلاین جدید یا استخراج از لینک</button>
+          <button type="button" class="btn soft" style="flex:1" onclick="openReceiveStudentSyncModal('${s.id}','${c.id}')">📥 دریافت پاسخ‌ها و ثبت کد رسید پیامکی</button>
+        </div>
+      </div>
+    ` : ''}
+
+    ${tab === 'settings' ? `
+      <!-- تنظیمات بیشتر و زمان‌بندی فرم مطابق اسکرین‌شات 1000185228 -->
+      <div class="card" style="margin-top:12px">
+        <b style="color:var(--primary);font-size:14.5px">⚙️ تنظیمات بیشتر و زمان‌بندی فرم آنلاین</b>
+        <div class="formgrid" style="margin-top:10px">
+          <div class="field full">
+            <label>💬 پیام پایان فرم (پس از ثبت توسط دانش‌آموز نمایش داده می‌شود):</label>
+            <input type="text" id="fcfgEndMsg" value="${esc(cfg.endMessage || 'سپاس از شما')}" placeholder="سپاس از شما">
+          </div>
+
+          <div class="field">
+            <label>🟢 شروع فرم ثبت‌نام / آزمون (روز / ماه / سال شمسی — ساعت : دقیقه):</label>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px">
+              <input type="text" id="fcfgStartDay" value="${esc(cfg.startDay)}" placeholder="روز" style="text-align:center">
+              <input type="text" id="fcfgStartMonth" value="${esc(cfg.startMonth)}" placeholder="ماه" style="text-align:center">
+              <input type="text" id="fcfgStartYear" value="${esc(cfg.startYear)}" placeholder="سال" style="text-align:center">
+              <input type="text" id="fcfgStartHour" value="${esc(cfg.startHour)}" placeholder="ساعت" style="text-align:center">
+              <input type="text" id="fcfgStartMin" value="${esc(cfg.startMin)}" placeholder="دقیقه" style="text-align:center">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>🔴 خاتمه فرم ثبت‌نام / آزمون (روز / ماه / سال شمسی — ساعت : دقیقه):</label>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px">
+              <input type="text" id="fcfgEndDay" value="${esc(cfg.endDay)}" placeholder="روز" style="text-align:center">
+              <input type="text" id="fcfgEndMonth" value="${esc(cfg.endMonth)}" placeholder="ماه" style="text-align:center">
+              <input type="text" id="fcfgEndYear" value="${esc(cfg.endYear)}" placeholder="سال" style="text-align:center">
+              <input type="text" id="fcfgEndHour" value="${esc(cfg.endHour)}" placeholder="ساعت" style="text-align:center">
+              <input type="text" id="fcfgEndMin" value="${esc(cfg.endMin)}" placeholder="دقیقه" style="text-align:center">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>📲 ارسال اطلاعات در پیام‌رسان:</label>
+            <select id="fcfgMessenger">
+              <option value="active" ${cfg.sendInMessenger === 'active' ? 'selected' : ''}>🟢 فعال</option>
+              <option value="inactive" ${cfg.sendInMessenger === 'inactive' ? 'selected' : ''}>⚪ غیرفعال</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>↔️ جهت متون فرم:</label>
+            <select id="fcfgDirection">
+              <option value="rtl" ${cfg.textDirection === 'rtl' ? 'selected' : ''}>راست‌چین (فارسی / عربی)</option>
+              <option value="ltr" ${cfg.textDirection === 'ltr' ? 'selected' : ''}>چپ‌چین (انگلیسی)</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label>📑 نحوه نمایش سوالات در فرم دانش‌آموز:</label>
+            <select id="fcfgDisplayMode">
+              <option value="user_choice" ${cfg.questionDisplayMode === 'user_choice' ? 'selected' : ''}>به انتخاب کاربر</option>
+              <option value="single_page" ${cfg.questionDisplayMode === 'single_page' ? 'selected' : ''}>تک‌صفحه‌ای (نمایش همه سوالات یکجا)</option>
+              <option value="step_by_step" ${cfg.questionDisplayMode === 'step_by_step' ? 'selected' : ''}>مرحله‌به‌مرحله (هر مرحله یک سوال)</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="btn primary block" style="margin-top:12px" onclick="saveOnlineFormSettings('${c.id}')">💾 ذخیره تنظیمات فرم</button>
+      </div>
+    ` : ''}
+  `;
+};
+
+window.buildCleanPortalPayload = function(sid, cid, mode) {
+  const s = findSchool(sid) || db.schools[0];
+  const c = s ? (findClass(s.id, cid) || s.classes[0]) : null;
+  if (!s || !c) return null;
+  const shortCode = getShortRoomCode(s.id, c.id);
+  const dateISO = window.currentListDate || localISODate();
+  const cfg = window.getOnlineFormSettings(c.id);
+  const payload = {
+    sc: shortCode,
+    m: mode,
+    s: s.id,
+    c: c.id,
+    sn: s.name,
+    cn: c.name,
+    tn: getTeacherName(),
+    d: dateISO,
+    jd: formatJalaliDate(dateISO),
+    p: localStorage.getItem(`dam_pin_${c.id}`) || '',
+    t: `dam_r_${shortCode}`,
+    cfg: cfg,
+    r: sortStudents(c.students || []).map(st => ({ i: st.id, n: `${st.lastName} ${st.name}`.trim() }))
+  };
+  if (mode === 'exam' && window.ExamApp) {
+    const qs = (ExamApp.getQuestions() || []).map(q => ({
+      id: q.id, tp: q.type || 'desc', tx: q.text || '', sc: Number(q.score) || 1,
+      ht: q.hint || '', op: q.options || [], ci: Number(q.correctIndex) || 0,
+      tf: q.tfCorrect || 'صحیح', bw: q.blankWord || '', pr: q.pairs || [], ex: q.explanation || ''
+    }));
+    payload.ex = {
+      subj: ExamApp.state.header.subject || 'آزمون کلاسی',
+      grade: ExamApp.state.header.grade || c.grade || '',
+      teacher: getTeacherName(),
+      time: ExamApp.state.header.time || '۲۰ دقیقه',
+      durationMin: 20,
+      branch: ExamApp.currentBranch || 'الف',
+      total: qs.reduce((a, b) => a + b.sc, 0),
+      qs
+    };
+  }
+  return payload;
+};
+
+window.confirmAndCreateCleanOnlineForm = function(sid, cid, mode) {
+  const payload = window.buildCleanPortalPayload(sid, cid, mode);
+  if (!payload) return;
+  window._lastGeneratedPortalPayload = payload;
+  window.publishShortRoomManifest(payload.sc, payload);
+  toast('✅ فرم آنلاین با موفقیت تایید و ایجاد شد! اکنون می‌توانید پیش‌نمایش را ببینید یا منتشر کنید.');
+};
+
+window.previewHubCleanForm = function(sid, cid, mode) {
+  const payload = window.buildCleanPortalPayload(sid, cid, mode);
+  if (!payload) return;
+  window.renderStudentOnlinePortal(payload, true);
+};
+
+window.publishAndCopyHubCleanForm = function(sid, cid, mode) {
+  const payload = window.buildCleanPortalPayload(sid, cid, mode);
+  if (!payload) return;
+  window._lastGeneratedPortalPayload = payload;
+  window.publishShortRoomManifest(payload.sc, payload);
+  const link = document.getElementById('hubShortLinkInput')?.value || '';
+  copyText(link);
+  toast('🔄 لینک اختصاصی فرم منتشر و در حافظه کپی شد!');
+};
+
+/* بازنویسی فرم حضور و غیاب دانش‌آموز به سبک کارت سفید فوق‌العاده ساده و تمیز (مطابق اسکرین‌شات 1000185224) + پشتیبانی از فیلدهای سفارشی ثبت‌نام */
+const _origRenderStudentPortalV58 = window.renderStudentOnlinePortal;
+window.renderStudentOnlinePortal = function(payload, isTeacherPreview = false) {
+  const ov = document.getElementById('studentOnlinePortalOverlay');
+  if (!ov || !payload) return;
+  window._activeStudentPortalPayload = payload;
+  const cfg = payload.cfg || window.getOnlineFormSettings(payload.c || 'default');
+
+  // اگر حالت حضور و غیاب ساده است، دقیقاً مطابق اسکرین‌شات ارسالی (کارت سفید تمیز با کادر نام و نام خانوادگی + آیکون سبز کاربر + دکمه سبز ثبت) نمایش بده
+  if (payload.m === 'att') {
+    ov.style.display = 'block';
+    const hasRoster = Array.isArray(payload.r) && payload.r.length > 0;
+    const datalistHtml = hasRoster
+      ? `<datalist id="cleanAttRosterList">${payload.r.map(st => `<option value="${esc(st.n)}"></option>`).join('')}</datalist>`
+      : '';
+
+    ov.innerHTML = `
+      <div class="student-portal-box" style="direction:${cfg.textDirection || 'rtl'}">
+        ${isTeacherPreview ? `
+          <div style="background:#1E293B;border:1.5px solid #38BDF8;color:#FFFFFF;padding:10px 14px;border-radius:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px">
+            <b style="font-size:12.5px">👁️ پیش‌نمایش فرم حضور و غیاب آنلاین دانش‌آموز</b>
+            <button type="button" class="btn primary btn-sm" onclick="document.getElementById('studentOnlinePortalOverlay').style.display='none'">بازگشت به پنل معلم ↩️</button>
+          </div>
+        ` : ''}
+
+        <div class="clean-student-att-card">
+          <div style="text-align:center;margin-bottom:14px">
+            <span style="background:#DCFCE7;color:#15803D;padding:3px 12px;border-radius:99px;font-size:11.5px;font-weight:900">✋ فرم حضور و غیاب آنلاین</span>
+            <h2 style="margin:8px 0 4px;font-size:18px;color:#0F172A;font-weight:900">${esc(payload.cn || 'کلاس درس')} — ${esc(payload.sn || '')}</h2>
+            <div style="font-size:12px;color:#64748B;font-weight:700">📅 تاریخ: ${esc(payload.jd || formatJalaliDate(localISODate()))}</div>
+          </div>
+
+          <label style="display:block;font-size:13.5px;font-weight:900;color:#1E293B;margin-bottom:6px">
+            نام و نام خانوادگی خود را وارد نمایید <span style="color:#EF4444">*</span>
+          </label>
+          <div class="clean-att-input-wrap">
+            <div class="clean-att-user-icon">👤</div>
+            <input type="text" id="portalStudentTypedName" list="cleanAttRosterList" placeholder="نام و نام خانوادگی..." style="border:none!important;background:transparent!important;color:#0F172A!important;font-size:14px!important;font-weight:800!important;box-shadow:none!important;padding:8px 4px!important;width:100%">
+            ${datalistHtml}
+          </div>
+          <input type="hidden" id="portalAttStatusVal" value="present">
+
+          <button type="button" class="clean-att-green-submit" id="btnSubmitPortalForm" onclick="submitStudentOnlinePortalForm()">
+            ثبت
+          </button>
+
+          <div id="portalResultBox" style="display:none;margin-top:12px"></div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // برای آزمون آنلاین و ثبت‌نام، رندر استاندارد را اجرا کن و فیلدهای انتخابی ثبت‌نام را اضافه کن
+  _origRenderStudentPortalV58(payload, isTeacherPreview);
+
+  if (payload.m === 'reg') {
+    const optKeys = cfg.regOptionalFields || [];
+    const bodyEl = ov.querySelector('.digiform-body');
+    const submitBtn = document.getElementById('btnSubmitPortalForm');
+    if (bodyEl && submitBtn && optKeys.length) {
+      const extraWrap = document.createElement('div');
+      extraWrap.id = 'portalRegExtraFieldsBox';
+      extraWrap.innerHTML = optKeys.map(k => {
+        const def = REG_OPTIONAL_FIELDS.find(x => x.key === k);
+        if (!def) return '';
+        return `
+          <div class="digiform-field-box">
+            <label class="digiform-label"><span>📌 ${esc(def.label)}</span></label>
+            <input type="${def.type === 'file' ? 'text' : def.type}" class="digiform-input reg-extra-inp" data-fkey="${def.key}" placeholder="${esc(def.label)} خود را وارد کنید...">
+          </div>
+        `;
+      }).join('');
+      bodyEl.insertBefore(extraWrap, submitBtn);
+    }
+  }
+};
+
+// اتصال نمای #onlineClassView در showView و بروزرسانی نشانگر زنگوله اعلانات
+const _prevShowViewV58 = showView;
+showView = function(id) {
+  _prevShowViewV58(id);
+  if (id === 'onlineClassView') {
+    window.renderOnlineClassHub();
+  }
+  window.refreshTopNotifBadge();
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    try { window.refreshTopNotifBadge(); } catch (_) {}
+  }, 450);
 });
 
 </script>
