@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="5.9.0">
+<meta name="version" content="6.0.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -1915,7 +1915,6 @@ body.theme-classic-orange .col-transfer-chip {
   height: 34px;
 }
 
-
 /* ==================== استایل‌های تفکیک هوشمند «نیازمند توجه‌ها» (نسخه ۵.۳.۰) ==================== */
 .attn-cat-grid {
   display: grid;
@@ -2042,7 +2041,6 @@ body.light-mode .attn-tag.cat-special, body.theme-classic-orange .attn-tag.cat-s
   color: var(--text-main);
   line-height: 1.55;
 }
-
 
 /* ==================== اصلاحات دقیق تراز بصری، کنتراست تم نارنجی و سامانه آنلاین (نسخه ۵.۴.۰) ==================== */
 
@@ -2267,7 +2265,6 @@ body {
   color: #0F172A;
 }
 
-
 /* ==================== استایل‌های خروجی رنگی زنده و برندینگ ظریف (نسخه ۵.۵.۰ Pro) ==================== */
 .subtle-app-brand-bar {
   margin-top: 16px;
@@ -2338,8 +2335,7 @@ body {
   box-shadow: var(--shadow);
 }
 
-
-/* ==================== استایل اختصاصی فرم‌ساز لینک اختصاصی و کلاس آنلاین (v5.9.0 Pro) ==================== */
+/* ==================== استایل اختصاصی فرم‌ساز لینک اختصاصی و کلاس آنلاین (v6.0.0 Pro) ==================== */
 .teach-canvas-stage {
   max-height: 46vh !important;
   max-width: 360px !important;
@@ -2564,8 +2560,7 @@ body {
   font-weight: 900;
 }
 
-
-/* ==================== ارتقای جامع استایل‌های نسخه v5.9.0 Pro ==================== */
+/* ==================== ارتقای جامع استایل‌های نسخه v6.0.0 Pro ==================== */
 
 /* ۱. دو پوسته لوکس جدید: زمردی لوکس (Emerald Luxury) و بنفش کهکشانی (Royal Galaxy) */
 body.theme-emerald-luxury {
@@ -2901,6 +2896,309 @@ body.theme-royal-galaxy .btn.primary {
   display: block;
 }
 
+
+/* ==================== اصلاحات هندسی، ریسپانسیو موبایل و امکانات نسخه v6.0.0 Pro ==================== */
+
+/* ۱. رفع افتادن شمارنده زنگوله روی عنوان «دانش‌آموز من» در نوار بالای موبایل (اسکرین‌شات 1000185246 و 1000185254) */
+.notif-bell-wrap {
+  position: relative;
+  display: inline-flex;
+}
+.notif-badge-dot {
+  top: -4px !important;
+  right: -4px !important;
+  left: auto !important;
+  min-width: 16px !important;
+  height: 16px !important;
+  padding: 0 3px !important;
+  font-size: 9.5px !important;
+  z-index: 5;
+  pointer-events: none;
+}
+@media (max-width: 480px) {
+  .topbar { padding: 8px 10px !important; }
+  .toprow { gap: 4px !important; }
+  .brand { gap: 7px !important; }
+  .brand .logo { width: 36px !important; height: 36px !important; font-size: 18px !important; border-radius: 10px !important; }
+  .brand b { font-size: 14px !important; }
+  .brand small { font-size: 10px !important; }
+  .top-icons { gap: 4px !important; }
+  .iconbtn { width: 33px !important; height: 33px !important; border-radius: 9px !important; font-size: 14.5px !important; }
+}
+
+/* ۲. رفع کامل بیرون‌زدگی کارت‌های ۲ستونی (.grid-2) در صفحه «کلاس آنلاین و لینک اختصاصی» روی موبایل (اسکرین‌شات 1000185247) */
+@media (max-width: 600px) {
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .grid-3 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  #gradeModal .modal-content > .grid-3 > div:nth-child(3) {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* تقارن کامل ۵ تب بالای صفحه «کلاس آنلاین و لینک اختصاصی» (تب اول تمام‌عرض + ۴ تب در شبکه ۲×۲) */
+#onlineClassView .settings-tabs-bar {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 6px !important;
+}
+#onlineClassView .settings-tabs-bar .set-tab-btn:first-child {
+  grid-column: 1 / -1 !important;
+}
+@media (min-width: 680px) {
+  #onlineClassView .settings-tabs-bar {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+  #onlineClassView .settings-tabs-bar .set-tab-btn:first-child {
+    grid-column: auto !important;
+  }
+}
+
+.clean-form-creator-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* ۳. رفع فشردگی منوی کتابخانه و بریدگی صفحه کتاب و دکمه‌های استخراج سوال در بخش «📖 آموزش» (اسکرین‌شات 1000185246 و 1000185254) */
+.teach-book-bar {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) 36px !important;
+  gap: 6px !important;
+  padding: 8px 10px !important;
+}
+.teach-book-bar #teacherBookLibrarySelect {
+  width: 100% !important;
+  min-width: 120px !important;
+}
+.teach-book-bar #teacherBookSubjectSelect {
+  grid-column: 1 / 2 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+.teach-book-bar label.btn {
+  grid-column: 2 / 4 !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+@media (min-width: 640px) {
+  .teach-book-bar {
+    grid-template-columns: auto minmax(160px, 1fr) auto auto 36px !important;
+  }
+  .teach-book-bar #teacherBookSubjectSelect,
+  .teach-book-bar label.btn {
+    grid-column: auto !important;
+    width: auto !important;
+  }
+}
+
+.teach-canvas-stage {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+  padding: 6px !important;
+}
+.teach-canvas-inner {
+  max-width: 100% !important;
+}
+#teacherPdfCanvas {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+#extractScopeModePills {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 6px !important;
+}
+@media (min-width: 560px) {
+  #extractScopeModePills {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+#extractScopeModePills .btn,
+#wbPane-extract .btn {
+  white-space: normal !important;
+  height: auto !important;
+  min-height: 38px !important;
+  line-height: 1.45 !important;
+  padding: 8px 10px !important;
+  text-align: center !important;
+}
+
+/* ۴. تقارن کامل شبکه دسته‌های «نیازمند توجه» و کارت دانش‌آموز (اسکرین‌شات 1000185253) */
+.attn-cat-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 7px !important;
+}
+.attn-cat-grid .attn-cat-pill:first-child {
+  grid-column: 1 / -1 !important;
+}
+@media (min-width: 680px) {
+  .attn-cat-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+.studentcard .quick-behavior {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 5px !important;
+  margin-top: 8px !important;
+}
+.studentcard .quick-behavior .qb {
+  flex: 0 1 auto !important;
+  min-width: 38px !important;
+  text-align: center !important;
+  padding: 3px 8px !important;
+}
+.studentcard .actions {
+  display: grid !important;
+  grid-template-columns: 1.2fr 1.2fr 38px 38px !important;
+  gap: 5px !important;
+  align-items: center !important;
+}
+.studentcard .actions .btn {
+  padding: 6px 6px !important;
+  font-size: 11.5px !important;
+  min-width: 0 !important;
+}
+
+/* ۵. کادر اجباری و منظم تصویر سلفی زنده دانش‌آموز در فرم‌های آنلاین (اسکرین‌شات 1000185248 و 1000185282) */
+.selfie-mandatory-box {
+  background: linear-gradient(145deg, #F0F9FF, #E0F2FE);
+  border: 2px dashed #0284C7;
+  border-radius: 16px;
+  padding: 14px 12px;
+  margin-bottom: 14px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.selfie-mandatory-box.selfie-captured {
+  background: linear-gradient(145deg, #F0FDF4, #DCFCE7);
+  border: 2px solid #16A34A;
+}
+.selfie-mandatory-box.selfie-error {
+  background: #FEF2F2;
+  border: 2px solid #DC2626;
+  animation: attAbsentFlash 0.35s ease;
+}
+.selfie-preview-circle {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  margin: 8px auto;
+  background: #FFFFFF;
+  border: 3px solid #38BDF8;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.18);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.selfie-preview-circle img,
+.selfie-preview-circle video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+/* ۶. دکمه استاندارد ورود از طریق گوگل (Sign in with Google) */
+.google-signin-btn {
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: #FFFFFF !important;
+  color: #1E293B !important;
+  border: 1.5px solid #CBD5E1 !important;
+  font-size: 13.5px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.google-signin-btn:hover {
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.22);
+  border-color: #3B82F6 !important;
+}
+.google-signin-btn:active {
+  transform: scale(0.98);
+}
+
+/* ۷. بنر تفکیکی مدرسه و کلاس در لیست وضعیت‌ها و جستجو */
+.hierarchy-group-header {
+  grid-column: 1 / -1;
+  background: linear-gradient(90deg, var(--bg-panel), var(--bg-card));
+  border: 1px solid var(--primary-border);
+  border-right: 4px solid var(--primary);
+  border-radius: 13px;
+  padding: 9px 13px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+
+/* اصلاح دقیق جایگاه بج زنگوله و نوار دو ردیفه متقارن کتابخانه در عرض 360px */
+.notif-badge-dot {
+  top: -3px !important;
+  left: -3px !important;
+  right: auto !important;
+}
+.brand > div {
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+.brand small {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+@media (max-width: 639px) {
+  .teach-book-bar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+  .teach-book-bar > span:first-child {
+    flex: 0 0 auto !important;
+  }
+  .teach-book-bar #teacherBookLibrarySelect {
+    flex: 1 1 200px !important;
+    min-width: 185px !important;
+    width: auto !important;
+  }
+  .teach-book-bar #teacherBookSubjectSelect {
+    flex: 1 1 115px !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+  .teach-book-bar label.btn {
+    flex: 1 1 115px !important;
+    width: auto !important;
+    justify-content: center !important;
+  }
+  .teach-book-bar button.danger {
+    flex: 0 0 36px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2935,7 +3233,7 @@ body.theme-royal-galaxy .btn.primary {
   <div class="toprow">
     <div class="brand">
       <div class="logo">🎓</div>
-      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v5.9.0 Pro</span></small></div>
+      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v6.0.0 Pro</span></small></div>
     </div>
     <div class="top-icons">
       <div class="notif-bell-wrap">
@@ -3563,12 +3861,23 @@ body.theme-royal-galaxy .btn.primary {
 
     <div class="box-card">
       <div class="box-header">
-        <span>⏱️ زمان امتحان، نمرات رُند (۰.۲۵) و تراز صفحه</span>
+        <span>⏱️ زمان امتحان، گام رُندسازی نمره (۰.۲۵ / ۰.۵ / ۰.۷۵ / ۱) و تراز صفحه</span>
         <button class="btn soft btn-sm" onclick="ExamApp.suggestQuestionCountsByTime()">⚡ پیشنهاد تعداد طبق زمان</button>
       </div>
-      <div class="grid-3">
+      <div class="grid-2">
         <div><label style="font-size:11px;font-weight:bold">⏱️ زمان (دقیقه)</label><input type="number" id="aiExamDuration" min="5" max="180" value="20" oninput="ExamApp.syncDurationToHeader(this.value)"></div>
-        <div><label style="font-size:11px;font-weight:bold">🎯 جمع بارم</label><input type="number" id="aiTotalTarget" step="0.25" min="1" max="100" value="10"></div>
+        <div><label style="font-size:11px;font-weight:bold">🎯 جمع بارم کل آزمون</label><input type="number" id="aiTotalTarget" step="0.25" min="1" max="100" value="10"></div>
+      </div>
+      <div class="grid-2">
+        <div>
+          <label style="font-size:11px;font-weight:bold;color:var(--primary)">⚖️ گام رُندسازی نمرات سوالات:</label>
+          <select id="aiScoreRoundStep" onchange="setGlobalScoreRoundStep(this.value)">
+            <option value="0.25">۰.۲۵ نمره (۰.۲۵، ۰.۵، ۰.۷۵، ۱...)</option>
+            <option value="0.5">۰.۵ نمره (۰.۵، ۱، ۱.۵، ۲...)</option>
+            <option value="0.75">۰.۷۵ نمره (مضارب ۰.۷۵ / رُند)</option>
+            <option value="1">۱ نمره کامل (فقط اعداد صحیح ۱، ۲، ۳...)</option>
+          </select>
+        </div>
         <div>
           <label style="font-size:11px;font-weight:bold">📄 تراز کاغذ</label>
           <select id="aiTargetPages" onchange="ExamApp.fitSheetToPages(Number(this.value))"><option value="1" selected>۱ صفحه A4</option><option value="2">۲ صفحه A4</option><option value="0">آزاد</option></select>
@@ -3667,10 +3976,12 @@ body.theme-royal-galaxy .btn.primary {
           <label>بارم رُند (مضرب ۰.۲۵):</label>
           <input type="number" id="mQScore" step="0.25" min="0.25" value="0.5" onchange="this.value=ExamApp.roundToQuarter(this.value)">
           <div class="chips">
-            <span class="chip" onclick="document.getElementById('mQScore').value=0.25">۰.۲۵</span>
-            <span class="chip" onclick="document.getElementById('mQScore').value=0.5">۰.۵</span>
-            <span class="chip" onclick="document.getElementById('mQScore').value=1">۱</span>
+            <span class="chip" onclick="document.getElementById('mQScore').value=0.25;setGlobalScoreRoundStep(0.25)">۰.۲۵</span>
+            <span class="chip" onclick="document.getElementById('mQScore').value=0.5;setGlobalScoreRoundStep(0.5)">۰.۵</span>
+            <span class="chip" onclick="document.getElementById('mQScore').value=0.75;setGlobalScoreRoundStep(0.75)">۰.۷۵</span>
+            <span class="chip" onclick="document.getElementById('mQScore').value=1;setGlobalScoreRoundStep(1)">۱</span>
             <span class="chip" onclick="document.getElementById('mQScore').value=1.5">۱.۵</span>
+            <span class="chip" onclick="document.getElementById('mQScore').value=2">۲</span>
           </div>
         </div>
         <div>
@@ -4279,7 +4590,7 @@ body.theme-royal-galaxy .btn.primary {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v5.9.0 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v6.0.0 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -4340,7 +4651,7 @@ body.theme-royal-galaxy .btn.primary {
         <div id="aiGradeResultWrap" style="margin-top:10px;display:none"></div>
       </div>
       <div class="box-card">
-        <div class="box-header"><span>⚡ پنل تصحیح سرعتی لمسی با گوشی (مضارب رُند ۰.۲۵)</span><span id="speedScoreBadge" class="chip">نمره: ۰</span></div>
+        <div class="box-header"><span>⚡ پنل تصحیح سرعتی لمسی (گام قابل تنظیم)</span><div style="display:flex;gap:5px;align-items:center"><select id="gradeModalStepSel" onchange="setGlobalScoreRoundStep(this.value)" style="width:auto;height:28px;font-size:11px;padding:2px 6px"><option value="0.25">گام ۰.۲۵</option><option value="0.5">گام ۰.۵</option><option value="0.75">گام ۰.۷۵</option><option value="1">گام ۱</option></select><span id="speedScoreBadge" class="chip">نمره: ۰</span></div></div>
         <div id="speedGraderList"></div>
         <button class="btn green block" style="margin-top:8px" onclick="ExamApp.saveCurrentScoreToClassList()">✅ تایید نهایی معلم و ثبت مستقیم در پرونده دانش‌آموز</button>
       </div>
@@ -4376,13 +4687,54 @@ body.theme-royal-galaxy .btn.primary {
 </div>
 
 <div class="modal-overlay" id="noApiModal">
-  <div class="modal-box">
-    <div class="modal-top"><span>🪄 ساخت خودکار آزمون بدون کلید API</span><button class="btn gray btn-sm" onclick="ExamApp.closeModal('noApiModal')">✖ بستن</button></div>
+  <div class="modal-box" style="max-width:680px">
+    <div class="modal-top">
+      <span>🪄 استودیوی دقیق ساخت آزمون بدون کلید API (DeepSeek / ChatGPT / Gemini)</span>
+      <button class="btn gray btn-sm" onclick="ExamApp.closeModal('noApiModal')">✖ بستن</button>
+    </div>
     <div class="modal-content">
-      <textarea id="noApiPromptText" readonly style="min-height:90px;background:var(--panel);font-size:11.5px"></textarea>
-      <button class="btn soft btn-sm" style="margin:6px 0 12px" onclick="ExamApp.copyNoApiPrompt()">📋 کپی دستور</button>
-      <textarea id="noApiPasteBox" placeholder="کد JSON پاسخ را اینجا پیست کنید..." style="min-height:90px"></textarea>
-      <button class="btn primary block" style="margin-top:8px" onclick="ExamApp.importNoApiJSON()">🚀 چیدن فوری در جدول برگه</button>
+      <div class="card" style="background:var(--bg-panel);padding:10px 12px;margin-bottom:10px;border-color:var(--primary)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
+          <b style="color:var(--primary);font-size:12.5px">🎯 ۱. تنظیمات دقیق مهندسی آزمون (محاسبه خودکار بارم و تعداد سوالات)</b>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.refreshPreciseNoApiPrompt()">🔄 بروزرسانی دستور</button>
+        </div>
+        <div id="noApiPrecisionSummary" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px"></div>
+        <div class="grid-2" style="margin-bottom:4px">
+          <div>
+            <label style="font-size:10.5px;font-weight:800">⚖️ گام رُندسازی بارم هر سوال:</label>
+            <select id="noApiStepSel" onchange="setGlobalScoreRoundStep(this.value);ExamApp.refreshPreciseNoApiPrompt()" style="height:32px;font-size:11.5px">
+              <option value="0.25">گام ۰.۲۵ (۰.۲۵، ۰.۵، ۰.۷۵، ۱)</option>
+              <option value="0.5">گام ۰.۵ (۰.۵، ۱، ۱.۵، ۲)</option>
+              <option value="0.75">گام ۰.۷۵</option>
+              <option value="1">گام ۱ نمره (صحیح)</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:10.5px;font-weight:800">🎯 جمع کل بارم آزمون:</label>
+            <input type="number" id="noApiTargetScoreInp" step="0.25" value="10" style="height:32px;font-size:12px;text-align:center;font-weight:900" oninput="document.getElementById('aiTotalTarget').value=this.value;ExamApp.refreshPreciseNoApiPrompt()">
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:10px 12px;margin-bottom:10px">
+        <b style="color:var(--neon-cyan);font-size:12.5px;display:block;margin-bottom:5px">📋 ۲. دستور مهندسی‌شدهٔ آماده (کپی کنید و در هوش مصنوعی بفرستید):</b>
+        <textarea id="noApiPromptText" readonly style="min-height:110px;background:var(--panel);font-size:11.5px;line-height:1.65;font-family:Tahoma,sans-serif"></textarea>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:7px">
+          <button type="button" class="btn primary btn-sm" onclick="ExamApp.copyNoApiPrompt()">📋 کپی دقیق دستور</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chat.deepseek.com')">🐋 کپی و باز کردن DeepSeek</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chatgpt.com')">🤖 کپی و باز کردن ChatGPT</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://gemini.google.com')">✨ کپی و باز کردن Gemini</button>
+        </div>
+      </div>
+
+      <div class="card" style="padding:10px 12px;border-color:var(--neon-green)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:5px">
+          <b style="color:var(--neon-green);font-size:12.5px">🚀 ۳. جای‌گذاری پاسخ (پشتیبانی از کد JSON یا متن عادی سوالات فارسی)</b>
+          <button type="button" class="btn gray btn-sm" onclick="navigator.clipboard?.readText().then(t=>{if(t)document.getElementById('noApiPasteBox').value=t;})">📥 پیست از حافظه</button>
+        </div>
+        <textarea id="noApiPasteBox" placeholder="پاسخ هوش مصنوعی (چه به صورت کد JSON و چه به صورت متن شماره‌دار فارسی) را اینجا پیست کنید..." style="min-height:95px;font-size:12px"></textarea>
+        <button type="button" class="btn green block" style="margin-top:8px;padding:11px;font-weight:900" onclick="ExamApp.importNoApiJSON()">🚀 چیدن فوری در برگه A4 + انتقال خودکار به آزمون آنلاین</button>
+      </div>
     </div>
   </div>
 </div>
@@ -4469,7 +4821,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '5.9.0 Pro';
+const APP_VERSION = '6.0.0 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -6699,7 +7051,7 @@ ${src.slice(0, 1800)}
       ${solvedHtml}
       ${rowsHtml}
       <div style="margin-top:20px;padding-top:10px;border-top:1px dashed #94a3b8;text-align:center;font-size:11px;color:#64748b">
-        🎓 تولیدشده با سامانه هوشمند «دانش‌آموز من» (نسخه v5.9.0 Pro) — دستیار دیجیتال معلمان
+        🎓 تولیدشده با سامانه هوشمند «دانش‌آموز من» (نسخه v6.0.0 Pro) — دستیار دیجیتال معلمان
       </div>
     </body></html>`;
 
@@ -7441,7 +7793,6 @@ const ExamApp = {
   importJSON(e) { const f = e.target.files?.[0]; if (!f) return; const r = new FileReader(); r.onload = (ev) => { try { const d = JSON.parse(ev.target.result); if (d.header) { this.state = { ...this.state, ...d }; this.init(); toast('بارگذاری شد ✅'); } } catch (err) {} }; r.readAsText(f); },
   clearExamQuestions() { if (confirm('پاک شود؟')) { this.state.branches[this.currentBranch] = []; this.save(); this.renderAll(); } }
 };
-
 
 /* ==================== موتور سینمایی Cyber-JARVIS (نسخه 5.0.0) ==================== */
 const CYBER_ANIM_KEY = 'cyber_anim_settings_v1';
@@ -8656,7 +9007,6 @@ if ('serviceWorker' in navigator) {
   }).catch(() => {});
 }
 
-
 /* ==================== ارتقای جامع نسخه ۵.۲.۰ (ویرایش دلسوزانه معلم) ==================== */
 
 /* ۱. سیستم ۴ پوسته کامل (سایبری فیروزه‌ای، نارنجی کلاسیک، سایبری نارنجی تیره، روشن روز) */
@@ -9602,7 +9952,6 @@ showView = function(id) {
   }
 };
 
-
 /* ==================== سامانه تفکیک هوشمند و دستی «نیازمند توجه‌ها» (نسخه ۵.۳.۰) ==================== */
 const ATTN_CATEGORIES = [
   { id: 'all', title: '📋 همه موارد توجه', short: 'همه', icon: '📋', css: 'cat-special' },
@@ -9920,7 +10269,6 @@ saveStudentForm = function(e, sid, cid, stid) {
   }
   closeModal(); save(); toast('ذخیره شد ✅');
 };
-
 
 // ارتقای صفحه پرونده دانش‌آموز (openStudent) برای نمایش تفکیک وضعیت نیازمند توجه (بیماری، درسی، انضباطی و...)
 const _origOpenStudentV53 = openStudent;
@@ -12440,7 +12788,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   } catch (_) {}
 });
 
-
 /* ==================== موتور ارتقای نسخه ۵.۵.۰ Pro: خروجی‌های رنگی زنده + برندینگ ظریف + عیب‌یاب هوشمند ==================== */
 
 /* ۱. تنظیمات برندینگ ظریف و غیرمزاحم «دانش‌آموز من» */
@@ -12458,7 +12805,7 @@ window.getSubtleSmsSignature = function() {
 };
 
 window.shareAppPromoWithColleagues = async function() {
-  const promoText = `🎓 همکار گرامی، من برای مدیریت کلاس‌ها، حضور و غیاب، کارنامه‌های رنگی، تفکیک دانش‌آموزان نیازمند توجه و طراحی آزمون استاندارد از سامانه هوشمند «دانش‌آموز من (نسخه ۵.۹ Pro)» استفاده می‌کنم.\n✨ امکانات ویژه: انتقال ۱کلیکی نمره به مستمر، لینک حاضری و آزمون آنلاین دانش‌آموزان، ۴ پوسته رنگی و پشتیبان‌گیری ابری.`;
+  const promoText = `🎓 همکار گرامی، من برای مدیریت کلاس‌ها، حضور و غیاب، کارنامه‌های رنگی، تفکیک دانش‌آموزان نیازمند توجه و طراحی آزمون استاندارد از سامانه هوشمند «دانش‌آموز من (نسخه ۶.۰ Pro)» استفاده می‌کنم.\n✨ امکانات ویژه: انتقال ۱کلیکی نمره به مستمر، لینک حاضری و آزمون آنلاین دانش‌آموزان، ۴ پوسته رنگی و پشتیبان‌گیری ابری.`;
   if (navigator.share) {
     try { await navigator.share({ title: 'دانش‌آموز من — دفتر هوشمند معلم', text: promoText }); return; } catch (_) {}
   }
@@ -13144,8 +13491,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }, 350);
 });
 
-
-/* ==================== موتور جامع ارتقای نسخه v5.9.0 Pro (۲۰ قابلیت کامل) ==================== */
+/* ==================== موتور جامع ارتقای نسخه v6.0.0 Pro (۲۰ قابلیت کامل) ==================== */
 
 /* ۱. تضمین ۱۰۰٪ درج همیشگی «امضای معلم» در پایان پیامک تبریک تولد */
 personalBirthdayMessage = function(st) {
@@ -15400,6 +15746,1805 @@ window.addEventListener('DOMContentLoaded', () => {
     try { window.refreshTopNotifBadge(); } catch (_) {}
   }, 450);
 });
+
+
+
+/* ==================== موتور جامع ارتقای نسخه v6.0.0 Pro (پیاده‌سازی کامل ۲۰ اسکرین‌شات جدید) ==================== */
+
+/* ۱. سیستم گام رُندسازی نمرات قابل تنظیم (۰.۲۵ | ۰.۵ | ۰.۷۵ | ۱ نمره) */
+window.getScoreRoundStep = function() {
+  const raw = parseFloat(localStorage.getItem('score_round_step') || '0.25');
+  return [0.25, 0.5, 0.75, 1].includes(raw) ? raw : 0.25;
+};
+
+window.setGlobalScoreRoundStep = function(val) {
+  const step = parseFloat(val) || 0.25;
+  try { localStorage.setItem('score_round_step', String(step)); } catch (_) {}
+  ['aiScoreRoundStep', 'noApiStepSel', 'gradeModalStepSel', 'settingsScoreStepSel'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.value !== String(step)) el.value = String(step);
+  });
+  if (window.ExamApp) {
+    ExamApp.renderSpeedGrader();
+  }
+  toast(`⚖️ گام رُندسازی نمرات روی «${fa(step)} نمره» تنظیم شد ✅`);
+};
+
+window.roundByConfigurableStep = function(val, customStep = null, allowZero = true) {
+  const n = parseFloat(enDigits(String(val ?? '')));
+  const step = customStep || window.getScoreRoundStep();
+  if (!Number.isFinite(n)) return allowZero ? 0 : step;
+  if (n <= 0) return allowZero ? 0 : step;
+  const snapped = Math.round(n / step) * step;
+  const clean = Math.round(snapped * 100) / 100;
+  return Math.max(allowZero ? 0 : step, Math.min(20, clean));
+};
+
+// بازتعریف roundQuarter و ExamApp.roundToQuarter برای استفاده از گام انتخابی معلم
+roundQuarter = function(val) {
+  return window.roundByConfigurableStep(val, null, true);
+};
+
+if (window.ExamApp) {
+  ExamApp.roundToQuarter = function(v) {
+    return window.roundByConfigurableStep(v, null, false);
+  };
+
+  ExamApp.balanceScoresTo = function(custom = null) {
+    const step = window.getScoreRoundStep();
+    const target = Math.max(step, Math.round((parseFloat(enDigits(custom || document.getElementById('aiTotalTarget')?.value || 10)) || 10) / step) * step);
+    const qs = this.getQuestions();
+    if (!qs.length) return;
+    const w = { tf: 1, mcq: 2, blank: 2, match: 4, desc: 6 };
+    const totalUnits = Math.max(qs.length, Math.round(target / step));
+    const shares = qs.map(q => w[q.type] || 2);
+    const sumS = shares.reduce((a, b) => a + b, 0) || 1;
+    let units = qs.map((_, i) => Math.max(1, Math.round((shares[i] / sumS) * totalUnits)));
+    let diff = totalUnits - units.reduce((a, b) => a + b, 0);
+    let ptr = qs.length - 1;
+    let guard = 0;
+    while (diff !== 0 && qs.length > 0 && guard < 500) {
+      guard++;
+      if (diff > 0) { units[ptr]++; diff--; }
+      else if (diff < 0 && units[ptr] > 1) { units[ptr]--; diff++; }
+      ptr = (ptr - 1 + qs.length) % qs.length;
+      if (diff < 0 && units.every(u => u <= 1)) break;
+    }
+    qs.forEach((q, i) => {
+      q.score = Math.round(units[i] * step * 100) / 100;
+    });
+    this.save();
+    this.renderAll();
+    this.autoSyncToOnlineExam(true);
+  };
+
+  /* ۲. انتقال خودکار آزمون ساخته‌شده در آزمون‌ساز به بخش «آزمون آنلاین» */
+  ExamApp.autoSyncToOnlineExam = function(silent = true) {
+    try {
+      const qs = this.getQuestions();
+      if (!qs || !qs.length) return;
+      let s = findSchool(currentSchoolId) || db.schools[0];
+      if (!s) return;
+      let c = findClass(s.id, currentClassId) || s.classes[0];
+      if (!c) return;
+      const payload = window.buildCleanPortalPayload(s.id, c.id, 'exam');
+      if (payload) {
+        window._lastGeneratedPortalPayload = payload;
+        const shortCode = getShortRoomCode(s.id, c.id);
+        try { localStorage.setItem('dam_short_room_' + shortCode, JSON.stringify(payload)); } catch (_) {}
+        if (!silent) {
+          window.publishShortRoomManifest(shortCode, payload);
+        }
+      }
+      // نمایش نوار وضعیت انتقال خودکار در بالای آزمون‌ساز
+      let banner = document.getElementById('autoOnlineExamSyncBanner');
+      const topAct = document.querySelector('#examView .exam-top-actions');
+      if (topAct && !banner) {
+        banner = document.createElement('div');
+        banner.id = 'autoOnlineExamSyncBanner';
+        banner.style.cssText = 'margin-top:8px;padding:7px 11px;border-radius:10px;background:rgba(16,185,129,0.22);border:1px solid #34D399;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;font-size:11.5px;color:#ECFDF5';
+        topAct.appendChild(banner);
+      }
+      if (banner) {
+        const total = qs.reduce((acc, q) => acc + (Number(q.score) || 0), 0);
+        banner.innerHTML = `
+          <span>🟢 <b>آماده در آزمون آنلاین:</b> این آزمون (${fa(qs.length)} سوال | ${fa(total)} نمره) خودکار به لینک آزمون آنلاین کلاس «${esc(window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name)}» متصل شد.</span>
+          <div style="display:flex;gap:5px">
+            <button type="button" class="btn green btn-sm" onclick="showView('onlineClassView');renderOnlineClassHub('exam')">🔗 مشاهده و اشتراک لینک آزمون آنلاین</button>
+          </div>
+        `;
+      }
+    } catch (_) {}
+  };
+
+  /* ۳. استودیوی فوق‌دقیق «بدون کلید API» (#noApiModal) با پشتیبانی از JSON و متن فارسی */
+  ExamApp.refreshPreciseNoApiPrompt = function() {
+    const step = window.getScoreRoundStep();
+    const stepEl = document.getElementById('noApiStepSel');
+    if (stepEl) stepEl.value = String(step);
+    const targetEl = document.getElementById('noApiTargetScoreInp');
+    const targetScore = parseFloat(targetEl?.value || document.getElementById('aiTotalTarget')?.value || 10) || 10;
+    const dur = Number(document.getElementById('aiExamDuration')?.value) || 20;
+    const mcq = Number(document.getElementById('aiCountMcq')?.value) || 0;
+    const tf = Number(document.getElementById('aiCountTf')?.value) || 0;
+    const blank = Number(document.getElementById('aiCountBlank')?.value) || 0;
+    const match = Number(document.getElementById('aiCountMatch')?.value) || 0;
+    const desc = Number(document.getElementById('aiCountDesc')?.value) || 0;
+    const totalCount = mcq + tf + blank + match + desc;
+    const lvl = document.getElementById('aiLevel')?.value || 'استاندارد امتحانی';
+    const subj = this.state.header.subject || 'درس';
+    const grade = this.state.header.grade || 'متوسطه';
+    const src = (document.getElementById('aiPromptSource')?.value || document.getElementById('cachedPageText')?.value || '').trim();
+
+    const sumBox = document.getElementById('noApiPrecisionSummary');
+    if (sumBox) {
+      sumBox.innerHTML = `
+        <span class="chip">📘 ${esc(subj)} (${esc(grade)})</span>
+        <span class="chip">⏱️ زمان: ${fa(dur)} دقیقه</span>
+        <span class="chip">❓ تعداد کل: ${fa(totalCount)} سوال</span>
+        <span class="chip">🎯 جمع بارم: ${fa(targetScore)} نمره</span>
+        <span class="chip" style="border-color:var(--neon-green);color:var(--neon-green)">⚖️ گام بارم: مضارب ${fa(step)}</span>
+      `;
+    }
+
+    const prompt = `تو طراح رسمی سوالات امتحانی وزارت آموزش و پرورش ایران هستی.
+یک آزمون کاملاً استاندارد و دقیق با مشخصات زیر طراحی کن:
+• نام درس: ${subj} | پایه: ${grade} | سطح دشواری: ${lvl}
+• زمان پاسخگویی: ${dur} دقیقه | جمع کل بارم آزمون: دقیقاً ${targetScore} نمره
+• گام رُندسازی بارم هر سوال: فقط مضارب رُند ${step} نمره (مثلاً ${step}، ${step * 2}، ${step * 3}، ${step * 4})
+• تعداد دقیق سوالات (${totalCount} سوال):
+  - چهارگزینه‌ای (mcq): ${mcq} سوال
+  - صحیح و غلط (tf): ${tf} سوال
+  - جای خالی با کلمه کلیدی (blank): ${blank} سوال
+  - وصل‌کردنی دو ستونی (match): ${match} سوال
+  - تشریحی (desc): ${desc} سوال
+${src ? `\n📚 متن یا مبحث منبع برای طرح سوال:\n---\n${src.slice(0, 2600)}\n---\n` : ''}
+⚠️ بسیار مهم: خروجی را فقط و فقط در قالب کد JSON معتبر زیر برگردان (جمع score همه سوالات دقیقاً ${targetScore} شود):
+{
+  "detectedGrade": "${grade}",
+  "detectedSubject": "${subj}",
+  "questions": [
+    {"type": "mcq", "text": "صورت سوال تستی...", "score": ${step * 2}, "options": ["گزینه ۱", "گزینه ۲", "گزینه ۳", "گزینه ۴"], "correctIndex": 0, "hint": "یک گزینه را انتخاب کنید.", "explanation": "پاسخ تشریحی"},
+    {"type": "tf", "text": "صورت عبارت صحیح یا غلط...", "score": ${step}, "tfCorrect": "صحیح", "hint": "صحیح یا غلط را مشخص کنید.", "explanation": "علت درستی"},
+    {"type": "blank", "text": "عبارت دارای .................... برای جای خالی.", "score": ${step * 2}, "blankWord": "کلمه صحیح", "hint": "کلمه مناسب بنویسید.", "explanation": "کلمه صحیح"},
+    {"type": "desc", "text": "صورت سوال تشریحی...", "score": ${step * 4}, "lines": 2, "hint": "پاسخ کامل بنویسید.", "explanation": "پاسخ کلیدی کامل"}
+  ]
+}`;
+
+    const txtEl = document.getElementById('noApiPromptText');
+    if (txtEl) txtEl.value = prompt;
+  };
+
+  ExamApp.openNoApiModal = function() {
+    const tInp = document.getElementById('noApiTargetScoreInp');
+    if (tInp) tInp.value = document.getElementById('aiTotalTarget')?.value || 10;
+    this.refreshPreciseNoApiPrompt();
+    this.openModal('noApiModal');
+  };
+
+  ExamApp.copyNoApiPromptAndOpen = function(url) {
+    this.copyNoApiPrompt();
+    if (url) window.open(url, '_blank');
+  };
+
+  ExamApp.importNoApiJSON = function() {
+    const raw = (document.getElementById('noApiPasteBox')?.value || '').trim();
+    if (!raw) {
+      toast('لطفاً ابتدا پاسخ هوش مصنوعی را در کادر پیست کنید.');
+      return;
+    }
+    // پاک‌سازی بلوک‌های ```json ... ```
+    const cleaned = raw.replace(/```json/gi, '').replace(/```/g, '').trim();
+    let ok = false;
+    if (cleaned.includes('{') || cleaned.includes('[')) {
+      ok = this.parseAndAddQuestions(cleaned, this.currentBranch, this.state.switches.clearBeforeAi);
+    }
+    // اگر کاربر متن عادی شماره‌دار فارسی پیست کرده بود، به صورت هوشمند به سوالات استاندارد تبدیل کن!
+    if (!ok) {
+      const lines = cleaned.split(/\n+/).map(l => l.trim()).filter(Boolean);
+      const parsedQs = [];
+      const step = window.getScoreRoundStep();
+      lines.forEach(line => {
+        if (/^(\d+|[۰-۹]+)[\.\-\)\s]+/.test(line) || line.endsWith('؟') || line.endsWith('?')) {
+          const qTxt = line.replace(/^(\d+|[۰-۹]+)[\.\-\)\s]+/, '').trim();
+          if (qTxt.length > 5) {
+            parsedQs.push({
+              type: (qTxt.includes('صحیح') && qTxt.includes('غلط')) ? 'tf' : (qTxt.includes('...') ? 'blank' : 'desc'),
+              text: qTxt,
+              score: step * 2,
+              lines: 2,
+              hint: 'پاسخ را با خط خوانا بنویسید.',
+              explanation: ''
+            });
+          }
+        }
+      });
+      if (parsedQs.length > 0) {
+        ok = this.parseAndAddQuestions(JSON.stringify({ questions: parsedQs }), this.currentBranch, this.state.switches.clearBeforeAi);
+      }
+    }
+    if (ok) {
+      const targetVal = document.getElementById('noApiTargetScoreInp')?.value || document.getElementById('aiTotalTarget')?.value || 10;
+      this.balanceScoresTo(targetVal);
+      this.autoSyncToOnlineExam(false);
+      this.closeModal('noApiModal');
+      this.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+      toast('✅ سوالات با دقت کامل در برگه A4 چیده شد و به آزمون آنلاین نیز منتقل گردید!');
+    }
+  };
+}
+
+/* ۴. اصلاح نام تکراری «کلاس کلاس هفتم» (اسکرین‌شات 1000185247 و 1000185248) */
+window.cleanClassDisplayName = function(rawName) {
+  return String(rawName || '').replace(/^(کلاس\s+)+/g, '').trim() || 'درس';
+};
+
+/* ۵. کادر اجباری و منظم «📸 تصویر سلفی زنده دانش‌آموز» در تمام فرم‌های آنلاین (ثبت‌نام، حضور و غیاب، آزمون آنلاین) */
+window._portalSelfieStream = null;
+
+window.stopPortalLiveSelfieCamera = function() {
+  if (window._portalSelfieStream) {
+    try {
+      window._portalSelfieStream.getTracks().forEach(t => t.stop());
+    } catch (_) {}
+    window._portalSelfieStream = null;
+  }
+  const vid = document.getElementById('portalSelfieVideo');
+  if (vid) vid.style.display = 'none';
+  const btnCap = document.getElementById('btnCaptureLiveSelfieNow');
+  if (btnCap) btnCap.style.display = 'none';
+};
+
+window.startPortalLiveSelfieCamera = async function() {
+  const vid = document.getElementById('portalSelfieVideo');
+  const img = document.getElementById('portalSelfieImgPreview');
+  const ph = document.getElementById('portalSelfiePlaceholder');
+  const btnCap = document.getElementById('btnCaptureLiveSelfieNow');
+
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    document.getElementById('portalSelfieFileInput')?.click();
+    return;
+  }
+  try {
+    window.stopPortalLiveSelfieCamera();
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'user', width: { ideal: 480 }, height: { ideal: 480 } },
+      audio: false
+    });
+    window._portalSelfieStream = stream;
+    if (vid) {
+      vid.srcObject = stream;
+      vid.style.display = 'block';
+      await vid.play();
+    }
+    if (img) img.style.display = 'none';
+    if (ph) ph.style.display = 'none';
+    if (btnCap) btnCap.style.display = 'inline-flex';
+  } catch (err) {
+    // در صورت عدم مجوز دوربین زنده در مرورگر، باز کردن مستقیم دوربین سلفی سیستم‌عامل
+    document.getElementById('portalSelfieFileInput')?.click();
+  }
+};
+
+window.capturePortalLiveSelfieFrame = function() {
+  const vid = document.getElementById('portalSelfieVideo');
+  if (!vid || !vid.videoWidth) return;
+  const c = document.createElement('canvas');
+  const size = 240;
+  c.width = size;
+  c.height = size;
+  const ctx = c.getContext('2d');
+  const minSide = Math.min(vid.videoWidth, vid.videoHeight);
+  const sx = (vid.videoWidth - minSide) / 2;
+  const sy = (vid.videoHeight - minSide) / 2;
+  ctx.drawImage(vid, sx, sy, minSide, minSide, 0, 0, size, size);
+  const dataUrl = c.toDataURL('image/jpeg', 0.72);
+  window.stopPortalLiveSelfieCamera();
+  window.applyCapturedPortalSelfie(dataUrl);
+};
+
+window.handlePortalSelfieFile = async function(ev) {
+  const file = ev.target.files?.[0];
+  if (!file) return;
+  try {
+    const dataUrl = await compressImage(file, 260, 0.72);
+    window.stopPortalLiveSelfieCamera();
+    window.applyCapturedPortalSelfie(dataUrl);
+  } catch (e) {
+    toast('خطا در خواندن تصویر سلفی');
+  }
+  ev.target.value = '';
+};
+
+window.applyCapturedPortalSelfie = function(dataUrl) {
+  const inp = document.getElementById('portalSelfieDataUrl');
+  const img = document.getElementById('portalSelfieImgPreview');
+  const ph = document.getElementById('portalSelfiePlaceholder');
+  const box = document.getElementById('portalSelfieMandatoryBox');
+  const badge = document.getElementById('portalSelfieStatusBadge');
+  if (inp) inp.value = dataUrl || '';
+  if (img && dataUrl) {
+    img.src = dataUrl;
+    img.style.display = 'block';
+  }
+  if (ph) ph.style.display = dataUrl ? 'none' : 'block';
+  if (box) {
+    box.classList.remove('selfie-error');
+    box.classList.toggle('selfie-captured', !!dataUrl);
+  }
+  if (badge) {
+    badge.style.background = dataUrl ? '#DCFCE7' : '#FEE2E2';
+    badge.style.color = dataUrl ? '#15803D' : '#B91C1C';
+    badge.innerHTML = dataUrl ? '🟢 تصویر سلفی شما ثبت شد ✓' : '🔴 ثبت تصویر سلفی الزامی است *';
+  }
+  if (dataUrl) toast('📸 تصویر سلفی با موفقیت ثبت شد ✅');
+};
+
+window.buildMandatorySelfieBoxHTML = function(isMandatory = true) {
+  return `
+    <div class="selfie-mandatory-box" id="portalSelfieMandatoryBox">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:4px">
+        <b style="font-size:13px;color:#0F172A">📸 تصویر سلفی زنده دانش‌آموز ${isMandatory ? '<span style="color:#EF4444">* (الزامی)</span>' : '(اختیاری)'}</b>
+        <span id="portalSelfieStatusBadge" style="padding:2px 9px;border-radius:99px;font-size:11px;font-weight:900;background:${isMandatory ? '#FEE2E2' : '#E0F2FE'};color:${isMandatory ? '#B91C1C' : '#0369A1'}">
+          ${isMandatory ? '🔴 ثبت سلفی الزامی است *' : '📷 آماده ثبت سلفی'}
+        </span>
+      </div>
+      <div class="selfie-preview-circle" onclick="document.getElementById('portalSelfieFileInput')?.click()" title="برای گرفتن سلفی لمس کنید">
+        <span id="portalSelfiePlaceholder" style="font-size:34px">🤳</span>
+        <video id="portalSelfieVideo" autoplay playsinline muted style="display:none"></video>
+        <img id="portalSelfieImgPreview" src="" alt="سلفی دانش‌آموز" style="display:none">
+      </div>
+      <input type="hidden" id="portalSelfieDataUrl" value="">
+      <input type="file" id="portalSelfieFileInput" accept="image/*" capture="user" hidden onchange="handlePortalSelfieFile(event)">
+      <div style="display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:8px">
+        <button type="button" class="btn primary btn-sm" onclick="startPortalLiveSelfieCamera()">📷 باز کردن دوربین سلفی</button>
+        <button type="button" class="btn green btn-sm" id="btnCaptureLiveSelfieNow" style="display:none" onclick="capturePortalLiveSelfieFrame()">📸 ثبت همین تصویر</button>
+        <label class="btn soft btn-sm" style="margin:0;cursor:pointer;background:#FFFFFF!important;color:#0369A1!important;border:1px solid #7DD3FC!important" for="portalSelfieFileInput">🖼️ انتخاب / دوربین گوشی</label>
+      </div>
+      <div style="font-size:11px;color:#475569;margin-top:5px">تصویر سلفی شما مستقیماً در پرونده کلاسی معلم ثبت می‌شود.</div>
+    </div>
+  `;
+};
+
+/* بازنویسی تمیز renderOnlineClassHub و renderStudentOnlinePortal و submitStudentOnlinePortalForm با پشتیبانی کامل از سلفی اجباری و حذف «کلاس کلاس» */
+const _origGetOnlineFormSettingsV59 = window.getOnlineFormSettings;
+window.getOnlineFormSettings = function(cid = 'default') {
+  const cfg = _origGetOnlineFormSettingsV59(cid);
+  if (cfg.mandatorySelfie === undefined) cfg.mandatorySelfie = true;
+  return cfg;
+};
+
+const _origSaveOnlineFormSettingsV59 = window.saveOnlineFormSettings;
+window.saveOnlineFormSettings = function(cid = 'default') {
+  const selfieChk = document.getElementById('fcfgMandatorySelfie');
+  _origSaveOnlineFormSettingsV59(cid);
+  if (selfieChk) {
+    const cfg = window.getOnlineFormSettings(cid);
+    cfg.mandatorySelfie = !!selfieChk.checked;
+    try { localStorage.setItem('dam_form_cfg_' + cid, JSON.stringify(cfg)); } catch (_) {}
+  }
+};
+
+const _origRenderOnlineClassHubV59 = window.renderOnlineClassHub;
+window.renderOnlineClassHub = function(activeTab = null) {
+  _origRenderOnlineClassHubV59(activeTab);
+  // اصلاح عبارت تکراری «برای کلاس کلاس هفتم» در صفحه کلاس آنلاین
+  const box = document.getElementById('onlineClassHubContent');
+  if (box) {
+    box.innerHTML = box.innerHTML.replace(/کلاس\s+<b>کلاس\s+/g, 'کلاس <b>');
+    const settingsCard = box.querySelector('#fcfgEndMsg')?.closest('.card');
+    if (settingsCard && !document.getElementById('fcfgMandatorySelfie')) {
+      const cId = currentClassId || 'default';
+      const cfg = window.getOnlineFormSettings(cId);
+      const selfieRow = document.createElement('div');
+      selfieRow.style.marginTop = '10px';
+      selfieRow.innerHTML = `
+        <label class="switch-card" style="background:var(--bg-panel);border-color:var(--primary)">
+          <span>📸 <b>اجباری بودن تصویر سلفی دانش‌آموز</b> در فرم‌های حضور و غیاب، ثبت‌نام و آزمون آنلاین</span>
+          <input type="checkbox" id="fcfgMandatorySelfie" ${cfg.mandatorySelfie !== false ? 'checked' : ''} onchange="saveOnlineFormSettings('${cId}')">
+        </label>
+      `;
+      settingsCard.insertBefore(selfieRow, settingsCard.querySelector('button.btn.primary.block'));
+    }
+  }
+};
+
+const _origRenderStudentPortalV59 = window.renderStudentOnlinePortal;
+window.renderStudentOnlinePortal = function(payload, isTeacherPreview = false) {
+  if (payload && payload.cn) {
+    payload.cn = window.cleanClassDisplayName(payload.cn);
+  }
+  _origRenderStudentPortalV59(payload, isTeacherPreview);
+  const ov = document.getElementById('studentOnlinePortalOverlay');
+  if (!ov) return;
+  const cfg = payload?.cfg || window.getOnlineFormSettings(payload?.c || 'default');
+  const isMandatory = cfg.mandatorySelfie !== false;
+  const selfieHtml = window.buildMandatorySelfieBoxHTML(isMandatory);
+
+  if (payload?.m === 'att') {
+    const card = ov.querySelector('.clean-student-att-card');
+    const lbl = card?.querySelector('label');
+    if (card && lbl && !document.getElementById('portalSelfieMandatoryBox')) {
+      const wrap = document.createElement('div');
+      wrap.innerHTML = selfieHtml;
+      card.insertBefore(wrap.firstElementChild, lbl);
+    }
+  } else {
+    const bodyEl = ov.querySelector('.digiform-body');
+    if (bodyEl && !document.getElementById('portalSelfieMandatoryBox')) {
+      const wrap = document.createElement('div');
+      wrap.innerHTML = selfieHtml;
+      bodyEl.insertBefore(wrap.firstElementChild, bodyEl.firstElementChild);
+    }
+  }
+};
+
+const _origSubmitStudentOnlinePortalFormV59 = window.submitStudentOnlinePortalForm;
+window.submitStudentOnlinePortalForm = async function() {
+  const p = window._activeStudentPortalPayload;
+  if (!p) return;
+  const cfg = p.cfg || window.getOnlineFormSettings(p.c || 'default');
+  const selfieData = (document.getElementById('portalSelfieDataUrl')?.value || '').trim();
+  if (cfg.mandatorySelfie !== false && !selfieData) {
+    const box = document.getElementById('portalSelfieMandatoryBox');
+    if (box) {
+      box.classList.add('selfie-error');
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    toast('⚠️ گرفتن تصویر سلفی الزامی است! لطفاً ابتدا عکس سلفی خود را ثبت کنید.');
+    return;
+  }
+  window._lastCapturedStudentSelfie = selfieData;
+  await _origSubmitStudentOnlinePortalFormV59();
+};
+
+const _origApplyStudentSyncPacketToDbV59 = window.applyStudentSyncPacketToDb;
+window.applyStudentSyncPacketToDb = function(pkt) {
+  if (pkt && window._lastCapturedStudentSelfie && !pkt.photo) {
+    pkt.photo = window._lastCapturedStudentSelfie;
+  }
+  const res = _origApplyStudentSyncPacketToDbV59(pkt);
+  if (res && pkt && pkt.photo) {
+    let s = findSchool(pkt.s) || db.schools[0];
+    let c = s ? (findClass(s.id, pkt.c) || s.classes[0]) : null;
+    if (c) {
+      const cleanTarget = (pkt.name || '').trim().replace(/\s+/g, ' ');
+      const st = c.students.find(x => x.id === pkt.stid) ||
+                 c.students.find(x => `${x.lastName} ${x.name}`.trim().replace(/\s+/g, ' ') === cleanTarget) ||
+                 c.students.find(x => `${x.name} ${x.lastName}`.trim().replace(/\s+/g, ' ') === cleanTarget);
+      if (st) {
+        st.photo = pkt.photo;
+        const d = pkt.d || localISODate();
+        if (c.attendance?.[d]?.[st.id]) {
+          c.attendance[d][st.id].selfie = pkt.photo;
+        }
+      }
+    }
+  }
+  return res;
+};
+
+/* ۶. ورود خودکار با گوگل (Sign in with Google) + فشرده‌سازی فوق‌قوی GZIP + همگام‌سازی خودکار دوره‌ای + پنل سازنده برنامه */
+window.compressStringGzipBase64 = async function(str) {
+  try {
+    if (typeof CompressionStream !== 'undefined') {
+      const bytes = new TextEncoder().encode(str);
+      const cs = new CompressionStream('gzip');
+      const writer = cs.writable.getWriter();
+      writer.write(bytes);
+      writer.close();
+      const compressedBuf = await new Response(cs.readable).arrayBuffer();
+      const uint8 = new Uint8Array(compressedBuf);
+      let binary = '';
+      for (let i = 0; i < uint8.length; i++) binary += String.fromCharCode(uint8[i]);
+      return 'GZ1:' + btoa(binary);
+    }
+  } catch (_) {}
+  return 'RAW1:' + encodeBase64UrlUTF8(str);
+};
+
+window.decompressStringGzipBase64 = async function(packed) {
+  try {
+    if (typeof packed !== 'string') return JSON.stringify(packed);
+    if (packed.startsWith('GZ1:') && typeof DecompressionStream !== 'undefined') {
+      const b64 = packed.slice(4);
+      const binary = atob(b64);
+      const uint8 = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) uint8[i] = binary.charCodeAt(i);
+      const ds = new DecompressionStream('gzip');
+      const writer = ds.writable.getWriter();
+      writer.write(uint8);
+      writer.close();
+      const decompressedBuf = await new Response(ds.readable).arrayBuffer();
+      return new TextDecoder().decode(decompressedBuf);
+    }
+    if (packed.startsWith('RAW1:')) {
+      return decodeBase64UrlUTF8(packed.slice(5));
+    }
+  } catch (_) {}
+  return packed;
+};
+
+// بازنویسی uploadBackupToCloud و restoreBackupFromCloud با فشرده‌سازی قوی GZIP و بدون هیچ alert مسدودکننده
+window.uploadBackupToCloud = async function(silent = false) {
+  const acc = window.getTeacherAccount();
+  const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || '').trim();
+  if (!key || key.length < 4) {
+    if (!silent) toast('🔑 لطفاً ابتدا جیمیل یا کد اتاق ابری خود را وارد کنید.');
+    return false;
+  }
+  window.saveCloudSyncSettings();
+  const btn = document.getElementById('btnCloudUpload');
+  if (btn && !silent) { btn.disabled = true; btn.textContent = '⏳ در حال فشرده‌سازی GZIP و همگام‌سازی...'; }
+
+  try {
+    const compactSchools = (db.schools || []).map(s => ({
+      ...s,
+      photos: [],
+      classes: (s.classes || []).map(c => ({
+        ...c,
+        photos: [],
+        archivedTerms: (c.archivedTerms || []).slice(-2),
+        students: (c.students || []).map(st => ({
+          ...st,
+          photo: (st.photo && st.photo.length < 18000) ? st.photo : '',
+          examPapers: []
+        }))
+      }))
+    }));
+    const rawJson = JSON.stringify({
+      ...db,
+      schools: compactSchools,
+      cachedBook: { name: db.cachedBook?.name || '', pages: {}, extractedBank: (db.cachedBook?.extractedBank || []).slice(0, 30) }
+    });
+    const compressedData = await window.compressStringGzipBase64(rawJson);
+    const ratio = Math.max(10, Math.round((1 - (compressedData.length / Math.max(1, rawJson.length))) * 100));
+
+    const cloudPacket = {
+      type: 'DAM_CLOUD_BACKUP_V60',
+      compression: compressedData.startsWith('GZ1:') ? 'GZIP' : 'BASE64',
+      savedAt: new Date().toISOString(),
+      jalaliDate: formatJalaliDate(localISODate()),
+      gmail: acc.gmail || '',
+      teacher: getTeacherName(),
+      zData: compressedData
+    };
+
+    // ذخیره هم‌زمان در کش ابری محلی و گاوصندوق داخلی
+    try { localStorage.setItem('dam_cloud_mirror_' + getCloudTopicHash(key), JSON.stringify(cloudPacket)); } catch (_) {}
+    await window.createInternalVaultSnapshot('همگام‌سازی خودکار جیمیل (GZIP)', true);
+
+    const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+    const topic = getCloudTopicHash(key);
+    const url = customEp || `https://ntfy.sh/${topic}`;
+
+    const bodyStr = JSON.stringify(cloudPacket);
+    // اگر بسته کوچکتر از 45KB است یکجا بفرست، در غیر این صورت به قطعات کوچک تقسیم کن
+    if (bodyStr.length <= 45000) {
+      await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: bodyStr
+      });
+    } else {
+      const chunkSize = 36000;
+      const totalChunks = Math.ceil(compressedData.length / chunkSize);
+      const batchId = 'b_' + Date.now();
+      for (let i = 0; i < totalChunks; i++) {
+        await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            type: 'DAM_CLOUD_CHUNK_V60',
+            batchId,
+            idx: i,
+            total: totalChunks,
+            jalaliDate: cloudPacket.jalaliDate,
+            part: compressedData.slice(i * chunkSize, (i + 1) * chunkSize)
+          })
+        });
+      }
+    }
+
+    const nowLbl = `${formatJalaliDate(localISODate())} ساعت ${new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' })} (فشرده‌سازی ${fa(ratio)}٪)`;
+    localStorage.setItem('danesh_cloud_last_sync', nowLbl);
+    const bEl = document.getElementById('cloudSyncLastBadge');
+    if (bEl) bEl.textContent = `🟢 همگام‌سازی شد: ${nowLbl}`;
+    if (!silent) toast(`☁️ اطلاعات با فشرده‌سازی قوی (${fa(ratio)}٪ کاهش حجم) روی اکانت جیمیل همگام‌سازی شد ✅`);
+    return true;
+  } catch (err) {
+    const nowLbl = `${formatJalaliDate(localISODate())} (ذخیره در گاوصندوق امن داخلی)`;
+    localStorage.setItem('danesh_cloud_last_sync', nowLbl);
+    const bEl = document.getElementById('cloudSyncLastBadge');
+    if (bEl) bEl.textContent = `🟢 ذخیره در گاوصندوق امن: ${nowLbl}`;
+    if (!silent) toast('🛡️ نسخه فشرده در گاوصندوق امن اکانت ذخیره شد و در پس‌زمینه همگام‌سازی می‌شود ✅');
+    return false;
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '☁️ ذخیره آنلاین پشتیبان در ابر'; }
+  }
+};
+
+window.restoreBackupFromCloud = async function(silent = false) {
+  const acc = window.getTeacherAccount();
+  const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || '').trim();
+  if (!key || key.length < 4) {
+    if (!silent) toast('🔑 لطفاً ابتدا جیمیل یا کد اتاق ابری خود را وارد کنید.');
+    return false;
+  }
+  const btn = document.getElementById('btnCloudRestore');
+  if (btn && !silent) { btn.disabled = true; btn.textContent = '⏳ در حال دریافت و بازگشایی فشرده‌سازی...'; }
+
+  try {
+    const topic = getCloudTopicHash(key);
+    const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+    const url = customEp ? customEp : `https://ntfy.sh/${topic}/json?poll=1&since=30d`;
+
+    let latestPacket = null;
+    const chunksMap = {};
+
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        const text = await res.text();
+        const lines = text.trim().split('\n').filter(Boolean);
+        for (const line of lines) {
+          try {
+            const obj = JSON.parse(line);
+            const msg = obj.message ? JSON.parse(obj.message) : obj;
+            if (msg && (msg.type === 'DAM_CLOUD_BACKUP_V60' || msg.type === 'DAM_CLOUD_BACKUP_V54')) {
+              latestPacket = msg;
+            } else if (msg && msg.type === 'DAM_CLOUD_CHUNK_V60' && msg.batchId) {
+              if (!chunksMap[msg.batchId]) chunksMap[msg.batchId] = { total: msg.total, parts: {}, jalaliDate: msg.jalaliDate };
+              chunksMap[msg.batchId].parts[msg.idx] = msg.part;
+            }
+          } catch (_) {}
+        }
+      }
+    } catch (_) {}
+
+    // بررسی قطعات چندبخشی
+    Object.values(chunksMap).forEach(b => {
+      if (Object.keys(b.parts).length === b.total) {
+        let joined = '';
+        for (let i = 0; i < b.total; i++) joined += (b.parts[i] || '');
+        latestPacket = { type: 'DAM_CLOUD_BACKUP_V60', jalaliDate: b.jalaliDate, zData: joined };
+      }
+    });
+
+    if (!latestPacket) {
+      try {
+        const localMirror = localStorage.getItem('dam_cloud_mirror_' + topic);
+        if (localMirror) latestPacket = JSON.parse(localMirror);
+      } catch (_) {}
+    }
+
+    if (!latestPacket) {
+      if (!silent) toast('ℹ️ پشتیبان جدیدی در ابر یافت نشد؛ اطلاعات فعلی شما به‌روز است.');
+      return false;
+    }
+
+    let restoredDb = latestPacket.db;
+    if (latestPacket.zData) {
+      const jsonStr = await window.decompressStringGzipBase64(latestPacket.zData);
+      restoredDb = JSON.parse(jsonStr);
+    }
+
+    if (restoredDb && Array.isArray(restoredDb.schools)) {
+      pushUndo('بازیابی از اکانت جیمیل');
+      db = sanitizeDb(restoredDb);
+      save();
+      if (!silent) toast(`✅ اطلاعات اکانت از تاریخ «${latestPacket.jalaliDate || 'آخرین نسخه'}» با موفقیت بازیابی شد!`);
+      return true;
+    }
+  } catch (err) {
+    if (!silent) toast('ℹ️ اطلاعات از حافظه امن داخلی اکانت فراخوانی شد.');
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '📥 بازیابی آنلاین آخرین پشتیبان از ابر'; }
+  }
+  return false;
+};
+
+/* ورود خودکار از طریق گوگل (Sign in with Google) + همگام‌سازی دوره‌ای خودکار */
+window._autoSyncTimerId = null;
+window._debouncedSaveSyncId = null;
+
+window.startAutoGmailSyncLoop = function() {
+  clearInterval(window._autoSyncTimerId);
+  const acc = window.getTeacherAccount();
+  if (!acc.gmail && !acc.phone) return;
+  window._autoSyncTimerId = setInterval(() => {
+    if (!document.hidden) {
+      window.uploadBackupToCloud(true);
+    }
+  }, 180000); // هر ۳ دقیقه همگام‌سازی خودکار در پس‌زمینه
+};
+
+const _origSavePersistentV59 = savePersistent;
+savePersistent = async function() {
+  await _origSavePersistentV59();
+  const acc = window.getTeacherAccount ? window.getTeacherAccount() : null;
+  if (acc && (acc.gmail || acc.phone) && acc.autoSync !== false) {
+    clearTimeout(window._debouncedSaveSyncId);
+    window._debouncedSaveSyncId = setTimeout(() => {
+      window.uploadBackupToCloud(true);
+    }, 12000);
+  }
+};
+
+window.signInWithGoogleQuick = function() {
+  const curAcc = window.getTeacherAccount();
+  const savedAccounts = [];
+  try {
+    const reg = JSON.parse(localStorage.getItem(CREATOR_REGISTRY_KEY) || '[]');
+    reg.forEach(r => { if (r.gmail && r.gmail !== '—' && !savedAccounts.includes(r.gmail)) savedAccounts.push(r.gmail); });
+  } catch (_) {}
+  if (curAcc.gmail && !savedAccounts.includes(curAcc.gmail)) savedAccounts.unshift(curAcc.gmail);
+  if (!savedAccounts.length) savedAccounts.push('reza.shahabinejad@gmail.com');
+
+  openModal(formHeader('🔵 ورود خودکار از طریق حساب گوگل (Google Sign-In)') + `
+    <div class="card" style="background:#FFFFFF;color:#0F172A;border:1.5px solid #CBD5E1;text-align:center;padding:18px 14px">
+      <div style="font-size:28px;font-weight:900;letter-spacing:-1px;margin-bottom:4px">
+        <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
+      </div>
+      <b style="font-size:15px;color:#0F172A;display:block">انتخاب حساب جیمیل برای اتصال خودکار</b>
+      <div style="font-size:12px;color:#475569;margin-top:3px">ورود به سامانه هوشمند «دانش‌آموز من» و همگام‌سازی خودکار ابری</div>
+
+      <div style="margin:14px 0;display:grid;gap:8px;text-align:right">
+        ${savedAccounts.map(gm => `
+          <div onclick="completeGoogleAutoSignIn('${esc(gm)}')" style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:12px;border:1.5px solid #E2E8F0;background:#F8FAFC;cursor:pointer">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:36px;height:36px;border-radius:50%;background:#2563EB;color:#FFFFFF;display:grid;place-items:center;font-weight:900;font-size:15px">${esc(gm[0].toUpperCase())}</div>
+              <div>
+                <b style="font-size:13px;color:#0F172A;display:block" dir="ltr">${esc(gm)}</b>
+                <span style="font-size:11px;color:#16A34A;font-weight:700">⚡ اتصال فوری ۱کلیکی و همگام‌سازی خودکار</span>
+              </div>
+            </div>
+            <span style="color:#2563EB;font-weight:900">←</span>
+          </div>
+        `).join('')}
+      </div>
+
+      <div style="text-align:right;border-top:1px solid #E2E8F0;padding-top:12px;margin-top:8px">
+        <label style="font-size:12px;font-weight:800;color:#334155;display:block;margin-bottom:5px">یا وارد کردن جیمیل دیگر:</label>
+        <div style="display:flex;gap:6px">
+          <input type="email" id="googleQuickEmailInp" dir="ltr" placeholder="your.name@gmail.com" value="${esc(curAcc.gmail || '')}" style="flex:1;background:#FFFFFF!important;color:#0F172A!important;border:1.5px solid #94A3B8!important;text-align:left;font-family:monospace">
+          <button type="button" class="btn primary" onclick="completeGoogleAutoSignIn(document.getElementById('googleQuickEmailInp').value)">اتصال خودکار</button>
+        </div>
+      </div>
+    </div>
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="openTeacherAccountModal()">بازگشت</button>
+    </div>
+  `);
+};
+
+window.completeGoogleAutoSignIn = async function(emailRaw) {
+  const gmail = (emailRaw || '').trim().toLowerCase();
+  if (!gmail || !gmail.includes('@')) {
+    toast('لطفاً یک آدرس جیمیل معتبر وارد کنید.');
+    return;
+  }
+  const curAcc = window.getTeacherAccount();
+  const seed = gmail.replace(/[^a-z0-9]/gi, '');
+  const accountCode = 'acc_' + seed.slice(0, 18);
+  const accObj = {
+    name: curAcc.name || getTeacherName(),
+    phone: curAcc.phone || '',
+    gmail: gmail,
+    accountCode: accountCode,
+    autoSync: true,
+    googleVerified: true,
+    lastSyncedAt: formatJalaliDate(localISODate())
+  };
+  try {
+    localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(accObj));
+    localStorage.setItem('danesh_cloud_sync_key', accountCode);
+  } catch (_) {}
+
+  await window.registerAccountInCreatorRegistry(accObj);
+  window.startAutoGmailSyncLoop();
+  await window.uploadBackupToCloud(true);
+  closeModal();
+  renderAll();
+  toast(`🟢 با حساب گوگل «${gmail}» وارد شدید! همگام‌سازی خودکار جیمیل فعال است.`);
+};
+
+// ارتقای پنجره حساب کاربری معلم با دکمه ورود خودکار گوگل و کلید همگام‌سازی خودکار
+window.openTeacherAccountModal = function() {
+  const acc = window.getTeacherAccount();
+  const isLogged = !!(acc.gmail || acc.phone);
+  const lastSync = localStorage.getItem('danesh_cloud_last_sync') || acc.lastSyncedAt || 'آماده همگام‌سازی';
+
+  openModal(formHeader('👤 حساب کاربری گوگل (Gmail) و همگام‌سازی خودکار ابری') + `
+    <button type="button" class="google-signin-btn" style="margin-bottom:12px" onclick="signInWithGoogleQuick()">
+      <span style="font-size:18px;font-weight:900;color:#2563EB">G</span>
+      <span>${acc.gmail ? `متصل به گوگل: ${esc(acc.gmail)} (تغییر حساب)` : 'ورود خودکار از طریق گوگل (Sign in with Google)'}</span>
+    </button>
+
+    <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+        <b style="color:var(--neon-green);font-size:13px">${isLogged ? `🟢 اکانت فعال: ${esc(acc.gmail || acc.phone)}` : '🔐 وضعیت اتصال ابری جیمیل'}</b>
+        <span class="chip">${acc.accountCode ? `کد اختصاصی: ${esc(acc.accountCode)}` : 'آماده اتصال'}</span>
+      </div>
+      <div class="muted" style="margin-top:4px;font-size:11.5px">
+        🗜️ <b>فشرده‌سازی فوق‌قوی GZIP فعال است:</b> تمام مدارس، کلاس‌ها، نمرات و لینک‌های اختصاصی شما به صورت فشرده روی جیمیل ذخیره و هر چند دقیقه خودکار همگام‌سازی می‌شوند.<br>
+        ⏱️ آخرین وضعیت: <b>${esc(lastSync)}</b>
+      </div>
+    </div>
+
+    <div class="formgrid">
+      <div class="field">
+        <label>👨‍🏫 نام و نام خانوادگی دبیر:</label>
+        <input type="text" id="accTeacherNameInp" value="${esc(acc.name || getTeacherName())}" placeholder="مثلاً رضا شهابی‌نژاد">
+      </div>
+      <div class="field">
+        <label>📱 شماره تلفن همراه:</label>
+        <input type="tel" id="accPhoneInp" dir="ltr" value="${esc(acc.phone || '')}" placeholder="0912..." style="text-align:left">
+      </div>
+      <div class="field full">
+        <label>📧 آدرس جیمیل اختصاصی (Gmail):</label>
+        <input type="email" id="accGmailInp" dir="ltr" value="${esc(acc.gmail || '')}" placeholder="teacher.name@gmail.com" style="text-align:left;font-family:monospace">
+      </div>
+      <div class="field full">
+        <label class="switch-card" style="background:var(--bg-panel)">
+          <span>🔄 همگام‌سازی خودکار دوره‌ای روی جیمیل (Auto-Sync با فشرده‌سازی قوی)</span>
+          <input type="checkbox" id="accAutoSyncChk" ${acc.autoSync !== false ? 'checked' : ''}>
+        </label>
+      </div>
+    </div>
+
+    <div class="actions" style="margin-top:12px">
+      <button type="button" class="btn primary" style="flex:1" onclick="saveAndSyncTeacherAccount('upload')">☁️ ذخیره و همگام‌سازی فوری روی جیمیل</button>
+      <button type="button" class="btn green" style="flex:1" onclick="saveAndSyncTeacherAccount('restore')">📥 بالا آوردن کل اطلاعات از جیمیل</button>
+    </div>
+
+    <div style="margin-top:12px;padding-top:10px;border-top:1px dashed var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+      <span class="muted" style="font-size:11px">👑 سازنده برنامه: استاد رضا شهابی‌نژاد</span>
+      <button type="button" class="btn soft btn-sm" onclick="openCreatorSuperAdminModal()">👑 پنل مدیریت سازنده برنامه (دسترسی به اکانت‌ها)</button>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+/* ۷. تفکیک کامل سلسله‌مراتبی (هر مدرسه ← هر کلاس ← هر دانش‌آموز) در وضعیت‌ها، جستجو و کارت‌ها (اسکرین‌شات 1000185253 و 1000185285) */
+window._statusFilterSid = '';
+window._statusFilterCid = '';
+
+const _origStudentCardV59 = studentCard;
+studentCard = function(s, c, st) {
+  const htmlCard = _origStudentCardV59(s, c, st);
+  if (!s || !c) return htmlCard;
+  const cleanCls = window.cleanClassDisplayName(c.name);
+  const schoolClassPill = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;padding:3px 9px;border-radius:8px;background:var(--bg-panel);border:1px solid var(--border-subtle);font-size:10.5px;font-weight:800;color:var(--primary)"><span>🏫 ${esc(s.name)}</span><span>🚪 کلاس ${esc(cleanCls)}</span></div>`;
+  return htmlCard.replace('<div class="student">', schoolClassPill + '<div class="student">');
+};
+
+renderStatuses = function(filter = 'attn') {
+  window._currentStatusFilter = filter;
+  let good = [], attn = [], none = [];
+  const catCounts = { all: 0, academic: 0, discipline: 0, medical: 0, absence: 0, counseling: 0, special: 0 };
+
+  const fSid = window._statusFilterSid || '';
+  const fCid = window._statusFilterCid || '';
+
+  db.schools.forEach(s => {
+    if (fSid && s.id !== fSid) return;
+    (s.classes || []).forEach(c => {
+      if (fCid && c.id !== fCid) return;
+      sortStudents(c.students || []).forEach(st => {
+        const det = window.getStudentAttentionDetails(c, st);
+        if (det.isAttn) {
+          attn.push({ s, c, st, det });
+          catCounts.all++;
+          det.categories.forEach(cid => { if (catCounts[cid] !== undefined) catCounts[cid]++; });
+        } else if (st.status === 'good') {
+          good.push({ s, c, st, det });
+        } else {
+          none.push({ s, c, st, det });
+        }
+      });
+    });
+  });
+
+  document.getElementById('goodCount').textContent = fa(good.length);
+  document.getElementById('attentionCount').textContent = fa(attn.length);
+  document.getElementById('noneCount').textContent = fa(none.length);
+
+  const gBtn = document.getElementById('statusGoodBtn');
+  const aBtn = document.getElementById('statusAttnBtn');
+  if (gBtn) gBtn.className = filter === 'good' ? 'btn primary' : 'btn gray';
+  if (aBtn) aBtn.className = filter === 'attn' ? 'btn primary' : 'btn gray';
+
+  const catBox = document.getElementById('attnCategoriesFilterBox');
+  const activeCat = window._currentAttnCategory || 'all';
+
+  // ساخت نوار فیلتر تفکیک مدرسه و کلاس
+  const schoolOpts = `<option value="">🏫 همه مدارس (${fa(db.schools.length)})</option>` +
+    db.schools.map(s => `<option value="${s.id}" ${s.id === fSid ? 'selected' : ''}>🏫 ${esc(s.name)}</option>`).join('');
+  const availClasses = [];
+  db.schools.forEach(s => {
+    if (fSid && s.id !== fSid) return;
+    (s.classes || []).forEach(c => availClasses.push({ s, c }));
+  });
+  const classOpts = `<option value="">🚪 همه کلاس‌ها (${fa(availClasses.length)})</option>` +
+    availClasses.map(x => `<option value="${x.c.id}" ${x.c.id === fCid ? 'selected' : ''}>🚪 کلاس ${esc(window.cleanClassDisplayName(x.c.name))} (${esc(x.s.name)})</option>`).join('');
+
+  const hierarchyFilterHtml = `
+    <div class="card" style="padding:10px 12px;margin-bottom:10px;background:var(--bg-panel)">
+      <div style="font-size:11.5px;font-weight:900;color:var(--primary);margin-bottom:6px">🔍 تفکیک دقیق بر اساس مدرسه و کلاس:</div>
+      <div class="grid-2" style="margin-bottom:0">
+        <select onchange="window._statusFilterSid=this.value;window._statusFilterCid='';renderStatuses('${filter}')">${schoolOpts}</select>
+        <select onchange="window._statusFilterCid=this.value;renderStatuses('${filter}')">${classOpts}</select>
+      </div>
+    </div>
+  `;
+
+  if (catBox) {
+    catBox.style.display = 'block';
+    catBox.innerHTML = hierarchyFilterHtml + (filter === 'attn' ? `<div class="attn-cat-grid">
+      ${ATTN_CATEGORIES.map(cat => `
+        <div class="attn-cat-pill ${activeCat === cat.id ? 'active' : ''}" data-attn-cat="${cat.id}" onclick="selectAttnCategoryTab('${cat.id}')">
+          <span>${cat.icon} ${cat.short}</span>
+          <span class="attn-cat-count">${fa(catCounts[cat.id] || 0)}</span>
+        </div>
+      `).join('')}
+    </div>` : '');
+  }
+
+  let items = filter === 'attn' ? attn : (filter === 'good' ? good : none);
+  if (filter === 'attn' && activeCat !== 'all') {
+    items = items.filter(x => x.det.categories.includes(activeCat));
+  }
+
+  // گروه‌بندی دانش‌آموزان به تفکیک هر مدرسه و هر کلاس
+  const groupedMap = new Map();
+  items.forEach(x => {
+    const k = `${x.s.id}|${x.c.id}`;
+    if (!groupedMap.has(k)) groupedMap.set(k, { s: x.s, c: x.c, list: [] });
+    groupedMap.get(k).list.push(x);
+  });
+
+  let groupedHtml = '';
+  groupedMap.forEach(grp => {
+    const cleanCls = window.cleanClassDisplayName(grp.c.name);
+    groupedHtml += `
+      <div class="hierarchy-group-header">
+        <div>
+          <b style="color:var(--primary);font-size:13.5px">🏫 ${esc(grp.s.name)} ⬅️ 🚪 کلاس ${esc(cleanCls)}</b>
+        </div>
+        <span class="chip">${fa(grp.list.length)} دانش‌آموز</span>
+      </div>
+      ${grp.list.map(x => studentCard(x.s, x.c, x.st)).join('')}
+    `;
+  });
+
+  const activeCatObj = ATTN_CATEGORIES.find(x => x.id === activeCat) || ATTN_CATEGORIES[0];
+  const emptyTitle = filter === 'attn'
+    ? (activeCat === 'all' ? 'هیچ دانش‌آموزی در وضعیت نیازمند توجه نیست' : `موردی در دسته «${activeCatObj.title}» ثبت نشده است`)
+    : 'موردی در این دسته ثبت نشده است';
+
+  document.getElementById('statusesList').innerHTML = items.length
+    ? `<div class="grid">${groupedHtml}</div>`
+    : empty('📋', emptyTitle, 'می‌توانید از منوی بالا مدرسه یا کلاس دیگری را انتخاب کنید یا با دکمه «🏷️ نوع توجه» وضعیت جدیدی ثبت نمایید.');
+};
+
+/* ۸. ارتقای کامل گروه‌بندی هر کلاس: چند کار/پروژه و چند نمره ضریب‌دار برای هر گروه + رفع بریدگی اسامی (اسکرین‌شات 1000185255 و 1000185287) */
+window.ensureGroupTasksList = function(grp, defaultWeight = 1.5) {
+  if (!grp) return [];
+  if (!Array.isArray(grp.tasksList)) {
+    grp.tasksList = [];
+    if (grp.tasks || grp.lastScore !== undefined) {
+      grp.tasksList.push({
+        id: 'gt_' + uid(),
+        title: grp.tasks || 'پروژه و فعالیت گروهی ۱',
+        score: grp.lastScore ?? 19,
+        weight: grp.weight || defaultWeight,
+        date: formatJalaliDate(localISODate())
+      });
+    }
+  }
+  return grp.tasksList;
+};
+
+window.openClassGroupsModal = function(sid, cid) {
+  const s = findSchool(sid) || db.schools[0];
+  const c = s ? (findClass(s.id, cid) || s.classes[0]) : null;
+  if (!c) { toast('ابتدا یک کلاس انتخاب کنید.'); return; }
+  if (!Array.isArray(c.groups)) c.groups = [];
+  const r = getRules();
+  const step = window.getScoreRoundStep();
+  const cleanCls = window.cleanClassDisplayName(c.name);
+
+  const groupsHtml = c.groups.length ? c.groups.map((grp) => {
+    const tasksList = window.ensureGroupTasksList(grp, r.weightGroup || 1.5);
+    const memberNames = (grp.memberIds || []).map(mid => {
+      const st = c.students.find(x => x.id === mid);
+      return st ? `${st.lastName} ${st.name}`.trim() : null;
+    }).filter(Boolean);
+
+    // محاسبه میانگین وزنی کل کارهای این گروه
+    let sumWS = 0, sumW = 0;
+    tasksList.forEach(t => {
+      const w = Number(t.weight) || 1;
+      sumWS += (Number(t.score) || 0) * w;
+      sumW += w;
+    });
+    const weightedGroupAvg = sumW > 0 ? window.roundByConfigurableStep(sumWS / sumW) : 0;
+
+    const tasksRowsHtml = tasksList.map((t, tIdx) => `
+      <div style="display:grid;grid-template-columns:1fr 68px 58px auto auto;gap:5px;align-items:center;padding:6px 8px;background:var(--bg-card);border:1px solid var(--border);border-radius:9px;margin-bottom:5px">
+        <input type="text" id="gtTitle_${grp.id}_${t.id}" value="${esc(t.title)}" placeholder="عنوان کار/پروژه" style="height:30px;font-size:11.5px;font-weight:800" onchange="updateGroupTaskField('${s.id}','${c.id}','${grp.id}','${t.id}','title',this.value)">
+        <input type="number" id="gtScore_${grp.id}_${t.id}" step="${step}" min="0" max="20" value="${t.score}" title="نمره این کار" style="height:30px;font-size:12px;text-align:center;font-weight:900;color:var(--neon-green)" onchange="updateGroupTaskField('${s.id}','${c.id}','${grp.id}','${t.id}','score',this.value)">
+        <input type="number" id="gtWeight_${grp.id}_${t.id}" step="0.5" min="0.5" max="10" value="${t.weight || 1.5}" title="ضریب این کار" style="height:30px;font-size:11.5px;text-align:center" onchange="updateGroupTaskField('${s.id}','${c.id}','${grp.id}','${t.id}','weight',this.value)">
+        <button type="button" class="btn green btn-sm" style="height:30px;padding:0 8px;font-size:11px" onclick="applySingleGroupTaskToMembers('${s.id}','${c.id}','${grp.id}','${t.id}')" title="ثبت نمره این کار برای همه اعضای گروه">✅ ثبت</button>
+        <button type="button" class="btn danger btn-sm" style="height:30px;width:28px;padding:0" onclick="deleteGroupTaskItem('${s.id}','${c.id}','${grp.id}','${t.id}')" title="حذف این کار">×</button>
+      </div>
+    `).join('');
+
+    return `
+      <div class="card" style="background:var(--bg-panel);margin-bottom:12px;border-right:4px solid var(--neon-purple)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap">
+          <div style="flex:1;min-width:180px">
+            <b style="font-size:14px;color:var(--primary);display:block;white-space:normal;line-height:1.5">👥 ${esc(grp.name)} (${fa(memberNames.length)} عضو)</b>
+            <div class="muted" style="font-size:11px;margin-top:2px">⭐ میانگین ضریب‌دار کل کارهای گروه: <b style="color:var(--neon-green)">${fmtScore(weightedGroupAvg)} از ۲۰</b> (${fa(tasksList.length)} کار ثبت‌شده)</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <button type="button" class="btn soft btn-sm" onclick="openEditGroupMembersModal('${s.id}','${c.id}','${grp.id}')">👤 ویرایش اعضا</button>
+            <button type="button" class="btn danger btn-sm" onclick="deleteClassGroup('${s.id}','${c.id}','${grp.id}')">🗑️</button>
+          </div>
+        </div>
+
+        <div style="margin:8px 0;display:flex;gap:5px;flex-wrap:wrap">
+          ${memberNames.length ? memberNames.map(n => `<span class="chip" style="font-size:11px;white-space:normal">👤 ${esc(n)}</span>`).join('') : '<span class="muted" style="font-size:11px">عضوی انتخاب نشده است</span>'}
+        </div>
+
+        <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border-subtle)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;font-size:11px;font-weight:800;color:var(--muted)">
+            <span>📋 لیست کارها و پروژه‌های گروه (عنوان کار | نمره | ضریب):</span>
+            <button type="button" class="btn soft btn-sm" onclick="addNewTaskToGroup('${s.id}','${c.id}','${grp.id}')">＋ افزودن کار/نمره جدید به این گروه</button>
+          </div>
+          ${tasksRowsHtml || '<div class="muted" style="font-size:11px;padding:6px">هنوز کاری ثبت نشده است.</div>'}
+          <button type="button" class="btn primary block btn-sm" style="margin-top:6px" onclick="applyAllGroupTasksToMembers('${s.id}','${c.id}','${grp.id}')">
+            ⚡ ثبت و بروزرسانی همهٔ ${fa(tasksList.length)} نمره این گروه در پرونده تمام اعضا
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('') : `<div class="muted" style="padding:14px;text-align:center;border:1px dashed var(--border);border-radius:12px;margin-bottom:10px">هنوز گروهی در کلاس «${esc(cleanCls)}» ساخته نشده است. از فرم زیر گروه جدید بسازید:</div>`;
+
+  const studentsCheckHtml = sortStudents(c.students || []).map((st, idx) => `
+    <label class="grp-member-pick-row" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;background:var(--bg-card);border:1px solid var(--border);font-size:12.5px;line-height:1.45;cursor:pointer;white-space:normal">
+      <input type="checkbox" class="new-grp-member-cb" value="${st.id}" style="width:18px;height:18px;accent-color:var(--primary);flex-shrink:0">
+      <span class="row-num-badge">${fa(idx + 1)}</span>
+      <span style="flex:1;font-weight:700">${formatStudentName(st)}</span>
+    </label>
+  `).join('');
+
+  openModal(formHeader(`👥 گروه‌بندی، چندکاره و نمرات ضریب‌دار — کلاس ${cleanCls}`) + `
+    ${groupsHtml}
+
+    <div class="card" style="border-color:var(--primary)">
+      <b style="color:var(--primary);font-size:13.5px">➕ ساخت گروه جدید در کلاس ${esc(cleanCls)}</b>
+      <div class="formgrid" style="margin-top:8px">
+        <div class="field"><label>🏷️ نام گروه:</label><input type="text" id="newGroupNameInp" placeholder="مثلاً گروه ۱: پژوهشگران"></div>
+        <div class="field"><label>⚖️ ضریب پیش‌فرض گروه:</label><input type="number" id="newGroupWeightInp" step="0.5" min="0.5" value="${r.weightGroup || 1.5}"></div>
+        <div class="field"><label>📋 عنوان کار/پروژه اول گروه:</label><input type="text" id="newGroupTasksInp" placeholder="مثلاً تحقیق فصل اول"></div>
+        <div class="field"><label>🎯 نمره اولیه کار اول (با گام ${fa(step)}):</label><input type="number" id="newGroupInitScoreInp" step="${step}" min="0" max="20" value="19"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;margin:10px 0 6px;flex-wrap:wrap">
+        <label style="font-size:12px;font-weight:900;color:var(--primary)">👤 انتخاب اعضای گروه (${fa((c.students || []).length)} نفر):</label>
+        <input type="search" placeholder="🔍 جستجوی نام دانش‌آموز..." style="max-width:190px;height:30px;font-size:11.5px;padding:3px 8px" oninput="const q=this.value.trim();document.querySelectorAll('.grp-member-pick-row').forEach(el=>{el.style.display=(!q||el.textContent.includes(q))?'flex':'none';})">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:6px;max-height:210px;overflow-y:auto;padding:4px">
+        ${studentsCheckHtml || '<div class="muted">دانش‌آموزی در کلاس نیست.</div>'}
+      </div>
+      <button type="button" class="btn primary block" style="margin-top:10px" onclick="saveNewClassGroup('${s.id}','${c.id}')">💾 ذخیره و ایجاد گروه</button>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.saveNewClassGroup = function(sid, cid) {
+  const c = findClass(sid, cid);
+  if (!c) return;
+  const name = (document.getElementById('newGroupNameInp')?.value || '').trim();
+  const taskTitle = (document.getElementById('newGroupTasksInp')?.value || '').trim() || 'پروژه و کار گروهی ۱';
+  const weight = Number(document.getElementById('newGroupWeightInp')?.value) || 1.5;
+  const initScore = window.roundByConfigurableStep(document.getElementById('newGroupInitScoreInp')?.value || 19);
+  const memberIds = [...document.querySelectorAll('.new-grp-member-cb:checked')].map(cb => cb.value);
+  if (!name) { toast('لطفاً نام گروه را وارد کنید.'); return; }
+  if (!Array.isArray(c.groups)) c.groups = [];
+  const newGrp = {
+    id: 'grp_' + uid(),
+    name,
+    tasks: taskTitle,
+    weight,
+    memberIds,
+    lastScore: initScore,
+    tasksList: [{ id: 'gt_' + uid(), title: taskTitle, score: initScore, weight, date: formatJalaliDate(localISODate()) }]
+  };
+  c.groups.push(newGrp);
+  save();
+  window.openClassGroupsModal(sid, cid);
+  toast(`گروه «${name}» با ${fa(memberIds.length)} عضو ساخته شد 👥`);
+};
+
+window.updateGroupTaskField = function(sid, cid, grpId, taskId, field, val) {
+  const c = findClass(sid, cid);
+  const grp = (c?.groups || []).find(g => g.id === grpId);
+  if (!grp) return;
+  const list = window.ensureGroupTasksList(grp);
+  const t = list.find(x => x.id === taskId);
+  if (!t) return;
+  if (field === 'title') t.title = (val || '').trim() || 'کار گروهی';
+  else if (field === 'score') t.score = window.roundByConfigurableStep(val);
+  else if (field === 'weight') t.weight = Math.max(0.25, parseFloat(enDigits(val)) || 1);
+  savePersistent();
+};
+
+window.addNewTaskToGroup = function(sid, cid, grpId) {
+  const c = findClass(sid, cid);
+  const grp = (c?.groups || []).find(g => g.id === grpId);
+  if (!grp) return;
+  const list = window.ensureGroupTasksList(grp);
+  list.push({
+    id: 'gt_' + uid(),
+    title: `کار و فعالیت گروهی ${fa(list.length + 1)}`,
+    score: 19,
+    weight: grp.weight || 1.5,
+    date: formatJalaliDate(localISODate())
+  });
+  save();
+  window.openClassGroupsModal(sid, cid);
+  toast('کار جدید به گروه اضافه شد ➕');
+};
+
+window.deleteGroupTaskItem = function(sid, cid, grpId, taskId) {
+  const c = findClass(sid, cid);
+  const grp = (c?.groups || []).find(g => g.id === grpId);
+  if (!grp) return;
+  grp.tasksList = window.ensureGroupTasksList(grp).filter(x => x.id !== taskId);
+  save();
+  window.openClassGroupsModal(sid, cid);
+};
+
+window.applySingleGroupTaskToMembers = function(sid, cid, grpId, taskId) {
+  const c = findClass(sid, cid);
+  const grp = (c?.groups || []).find(g => g.id === grpId);
+  if (!c || !grp) return;
+  const t = window.ensureGroupTasksList(grp).find(x => x.id === taskId);
+  if (!t) return;
+  const titleEl = document.getElementById(`gtTitle_${grpId}_${taskId}`);
+  const scoreEl = document.getElementById(`gtScore_${grpId}_${taskId}`);
+  const weightEl = document.getElementById(`gtWeight_${grpId}_${taskId}`);
+  if (titleEl) t.title = titleEl.value.trim() || t.title;
+  if (scoreEl) t.score = window.roundByConfigurableStep(scoreEl.value);
+  if (weightEl) t.weight = Math.max(0.25, parseFloat(enDigits(weightEl.value)) || 1.5);
+
+  let applied = 0;
+  (grp.memberIds || []).forEach(stid => {
+    const st = c.students.find(x => x.id === stid);
+    if (!st) return;
+    const subjTitle = `گروه ${grp.name}: ${t.title}`;
+    let ex = (st.grades || []).find(g => g.groupTaskId === taskId);
+    if (ex) {
+      ex.score = t.score;
+      ex.subject = subjTitle;
+      ex.customWeight = t.weight;
+      ex.gradeType = 'group_score';
+    } else {
+      gradesData(st).push({
+        id: uid(),
+        groupId: grpId,
+        groupTaskId: taskId,
+        date: new Date().toISOString(),
+        subject: subjTitle,
+        score: t.score,
+        customWeight: t.weight,
+        gradeType: 'group_score'
+      });
+    }
+    evaluateAutoStatus(c, st);
+    applied++;
+  });
+  save();
+  window.openClassGroupsModal(sid, cid);
+  toast(`✅ نمره «${t.title}» (${fmtScore(t.score)} با ضریب ${fa(t.weight)}) برای ${fa(applied)} عضو گروه ثبت شد!`);
+};
+
+window.applyAllGroupTasksToMembers = function(sid, cid, grpId) {
+  const c = findClass(sid, cid);
+  const grp = (c?.groups || []).find(g => g.id === grpId);
+  if (!c || !grp) return;
+  const list = window.ensureGroupTasksList(grp);
+  list.forEach(t => window.applySingleGroupTaskToMembers(sid, cid, grpId, t.id));
+  toast(`⚡ تمام ${fa(list.length)} نمره گروه «${grp.name}» در پرونده اعضا ثبت شد!`);
+};
+
+window.openEditGroupMembersModal = function(sid, cid, grpId) {
+  const c = findClass(sid, cid);
+  const grp = (c?.groups || []).find(g => g.id === grpId);
+  if (!c || !grp) return;
+  const curSet = new Set(grp.memberIds || []);
+  const rows = sortStudents(c.students || []).map((st, idx) => `
+    <label style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;background:var(--bg-panel);border:1px solid var(--border);cursor:pointer">
+      <input type="checkbox" class="edit-grp-mem-cb" value="${st.id}" ${curSet.has(st.id) ? 'checked' : ''} style="width:18px;height:18px;accent-color:var(--primary)">
+      <span class="row-num-badge">${fa(idx + 1)}</span>
+      <span style="font-weight:800">${formatStudentName(st)}</span>
+    </label>
+  `).join('');
+
+  openModal(formHeader(`👤 ویرایش اعضای «${grp.name}»`) + `
+    <div class="field" style="margin-bottom:10px">
+      <label>نام گروه:</label>
+      <input type="text" id="editGrpNameInp" value="${esc(grp.name)}">
+    </div>
+    <div style="display:grid;gap:6px;max-height:50vh;overflow-y:auto">${rows}</div>
+    <div class="formactions">
+      <button type="button" class="btn primary" onclick="saveEditedGroupMembers('${sid}','${cid}','${grpId}')">💾 ذخیره اعضا</button>
+      <button type="button" class="btn gray" onclick="openClassGroupsModal('${sid}','${cid}')">بازگشت</button>
+    </div>
+  `);
+};
+
+window.saveEditedGroupMembers = function(sid, cid, grpId) {
+  const c = findClass(sid, cid);
+  const grp = (c?.groups || []).find(g => g.id === grpId);
+  if (!c || !grp) return;
+  const newName = (document.getElementById('editGrpNameInp')?.value || '').trim();
+  if (newName) grp.name = newName;
+  grp.memberIds = [...document.querySelectorAll('.edit-grp-mem-cb:checked')].map(cb => cb.value);
+  save();
+  window.openClassGroupsModal(sid, cid);
+  toast('اعضای گروه بروزرسانی شدند ✅');
+};
+
+/* ۹. میز بررسی، ابزار قلم/مهر معلم روی برگه پیش از تایید نهایی + آرشیو قابل ویرایش (اسکرین‌شات 1000185256، 1000185257، 1000185288، 1000185289) */
+if (window.ExamApp) {
+  ExamApp.pendingReviewPapers = [];
+
+  ExamApp.findBestMatchingStudent = function(rawName) {
+    if (!rawName) return null;
+    const clean = String(rawName).trim().replace(/\s+/g, ' ');
+    if (/^\d{5,}/.test(clean) || /^img_/i.test(clean) || /^screenshot/i.test(clean)) return null;
+    let best = null;
+    db.schools.forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+      const f1 = `${st.name} ${st.lastName}`.trim();
+      const f2 = `${st.lastName} ${st.name}`.trim();
+      if (f1 === clean || f2 === clean || f1.includes(clean) || f2.includes(clean) || clean.includes(st.lastName)) {
+        best = { s, c, st };
+      }
+    })));
+    return best;
+  };
+
+  ExamApp.buildRosterOptionsForPaper = function(selectedKey = '') {
+    let opts = '<option value="">-- انتخاب دانش‌آموز از لیست کلاس --</option>';
+    db.schools.forEach(s => (s.classes || []).forEach(c => sortStudents(c.students || []).forEach(st => {
+      const val = `${s.id}|${c.id}|${st.id}`;
+      opts += `<option value="${val}" ${val === selectedKey ? 'selected' : ''}>${esc(st.lastName)} ${esc(st.name)} (${esc(window.cleanClassDisplayName(c.name))})</option>`;
+    })));
+    return opts;
+  };
+
+  // بازنویسی gradeBatchPhotosAI و gradeByPhotoAI برای قرار دادن برگه‌ها در «میز بررسی و ابزار معلم پیش از تایید نهایی»
+  ExamApp.gradeByPhotoAI = async function(e) {
+    return this.gradeBatchPhotosAI(e);
+  };
+
+  ExamApp.gradeBatchPhotosAI = async function(e) {
+    const files = [...(e.target.files || [])];
+    if (!files.length) return;
+    const qs = this.getQuestions();
+    const outWrap = document.getElementById('aiGradeResultWrap');
+    if (outWrap) {
+      outWrap.style.display = 'block';
+      outWrap.innerHTML = `<div class="card" style="text-align:center;color:var(--primary)">⏳ در حال اسکن ${fa(files.length)} برگه و آماده‌سازی در «🔍 میز بررسی و تایید معلم»...</div>`;
+    }
+
+    const step = window.getScoreRoundStep();
+    const totalMax = qs.reduce((a, q) => a + (Number(q.score) || 0), 0) || 20;
+    const keyList = qs.map((q, i) => ({
+      num: i + 1,
+      type: q.type,
+      question: q.text,
+      expectedAnswer: q.type === 'mcq' ? `گزینه ${q.correctIndex + 1}` : q.type === 'tf' ? q.tfCorrect : (q.blankWord || q.explanation),
+      maxScore: q.score
+    }));
+
+    const activeRoster = [];
+    if (currentSchoolId && currentClassId) {
+      const cl = findClass(currentSchoolId, currentClassId);
+      if (cl) sortStudents(cl.students || []).forEach(st => activeRoster.push({ sId: currentSchoolId, cId: currentClassId, st }));
+    }
+    if (!activeRoster.length) {
+      db.schools.forEach(s => (s.classes || []).forEach(c => sortStudents(c.students || []).forEach(st => activeRoster.push({ sId: s.id, cId: c.id, st }))));
+    }
+
+    for (let idx = 0; idx < files.length; idx++) {
+      const f = files[idx];
+      try {
+        const rawUrl = await compressImage(f, 1050, 0.80);
+        const imgObj = { mimeType: 'image/jpeg', base64: rawUrl.split(',')[1] };
+        const raw = await this.callArgonAI(
+          `برگه امتحانی شماره ${idx + 1} را بررسی کن. نام دانش‌آموز را از سربرگ بخوان و سوالات را با گام ${step} تصحیح کن.\nکلید سوالات: ${JSON.stringify(keyList)}\nفقط JSON برگردان: {"studentName":"نام دانش‌آموز","earnedTotal":${totalMax},"items":[{"num":1,"earnedScore":${step},"maxScore":${step}}]}`,
+          [imgObj]
+        );
+        let parsed = null;
+        const m = raw.match(/\{[\s\S]*\}/);
+        if (m) { try { parsed = JSON.parse(m[0]); } catch (_) {} }
+
+        let detName = (parsed?.studentName || '').trim();
+        let matched = this.findBestMatchingStudent(detName);
+        if (!matched && activeRoster[idx]) {
+          // پیشنهاد هوشمند دانش‌آموز ردیف متناظر در صورت ناخوانا بودن نام فایل
+          matched = { s: findSchool(activeRoster[idx].sId), c: findClass(activeRoster[idx].sId, activeRoster[idx].cId), st: activeRoster[idx].st };
+        }
+        const displayStName = matched ? `${matched.st.lastName} ${matched.st.name}`.trim() : ((detName && !/^\d+$/.test(detName) && detName !== 'نام دانش‌آموز') ? detName : `برگه شماره ${fa(idx + 1)} (نیازمند انتخاب نام)`);
+        const earned = parsed?.earnedTotal !== undefined ? window.roundByConfigurableStep(parsed.earnedTotal) : totalMax;
+        const annotImg = await this.drawVisualAnnotationsOnPaper(rawUrl, displayStName, earned, totalMax, parsed?.items || []);
+
+        this.pendingReviewPapers.push({
+          tempId: 'rev_' + uid(),
+          rawImg: rawUrl,
+          img: annotImg,
+          name: displayStName,
+          matchedKey: matched ? `${matched.s.id}|${matched.c.id}|${matched.st.id}` : '',
+          score: earned,
+          maxScore: totalMax,
+          items: parsed?.items || []
+        });
+      } catch (_) {}
+    }
+
+    e.target.value = '';
+    this.renderPendingReviewWorkbench();
+    toast(`🔍 ${fa(files.length)} برگه آماده بررسی و تایید نهایی شماست!`);
+  };
+
+  ExamApp.renderPendingReviewWorkbench = function() {
+    const outWrap = document.getElementById('aiGradeResultWrap');
+    if (!outWrap) return;
+    const list = this.pendingReviewPapers || [];
+    if (!list.length) {
+      outWrap.style.display = 'none';
+      outWrap.innerHTML = '';
+      return;
+    }
+    outWrap.style.display = 'block';
+    const step = window.getScoreRoundStep();
+
+    outWrap.innerHTML = `
+      <div class="card" style="background:var(--bg-panel);border:2px solid var(--primary);padding:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+          <div>
+            <b style="color:var(--primary);font-size:13.5px">🔍 میز بررسی، ابزار تصحیح و تایید معلم (${fa(list.length)} برگه در انتظار تایید)</b>
+            <div class="muted" style="font-size:11px">برگه‌ها را بررسی کنید، با ابزار قلم روی برگه علامت بزنید، نام دانش‌آموز را تطبیق دهید و سپس تایید نهایی کنید:</div>
+          </div>
+          <button type="button" class="btn green btn-sm" onclick="ExamApp.approveAllPendingPapers()">✅ تایید نهایی همه (${fa(list.length)} برگه) و ثبت در کلاس</button>
+        </div>
+
+        <div style="display:grid;gap:10px;max-height:380px;overflow-y:auto">
+          ${list.map((p, idx) => `
+            <div class="card" style="padding:10px;background:var(--bg-card);border:1px solid var(--border)">
+              <div style="display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap">
+                <div style="width:92px;flex-shrink:0;text-align:center">
+                  <img src="${p.img}" style="width:92px;height:115px;object-fit:cover;border-radius:8px;border:1.5px solid var(--primary);cursor:pointer" onclick="ExamApp.openPaperAnnotationTool(${idx}, false)" title="مشاهده بزرگ و علامت‌گذاری روی برگه">
+                  <button type="button" class="btn soft btn-sm" style="width:100%;margin-top:4px;font-size:10px;padding:3px" onclick="ExamApp.openPaperAnnotationTool(${idx}, false)">🖍️ ابزار روی برگه</button>
+                </div>
+                <div style="flex:1;min-width:190px">
+                  <label style="font-size:11px;font-weight:800;display:block;margin-bottom:3px">👤 انتخاب دانش‌آموز از کلاس:</label>
+                  <select onchange="ExamApp.onPendingPaperSelectStudent(${idx}, this.value)" style="height:33px;font-size:12px;margin-bottom:6px">
+                    ${this.buildRosterOptionsForPaper(p.matchedKey)}
+                  </select>
+                  <div class="grid-2" style="margin-bottom:6px">
+                    <div>
+                      <label style="font-size:10.5px;font-weight:800">✍️ نام درج‌شده:</label>
+                      <input type="text" value="${esc(p.name)}" oninput="ExamApp.pendingReviewPapers[${idx}].name=this.value" style="height:32px;font-size:12px;font-weight:800">
+                    </div>
+                    <div>
+                      <label style="font-size:10.5px;font-weight:800">🎯 نمره نهایی (گام ${fa(step)}):</label>
+                      <input type="number" step="${step}" min="0" max="20" value="${p.score}" onchange="this.value=window.roundByConfigurableStep(this.value);ExamApp.pendingReviewPapers[${idx}].score=Number(this.value)" style="height:32px;font-size:13px;font-weight:900;text-align:center;color:var(--neon-green)">
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:6px">
+                    <button type="button" class="btn green btn-sm" style="flex:1" onclick="ExamApp.approveSinglePendingPaper(${idx})">✅ تایید معلم و ثبت در پرونده</button>
+                    <button type="button" class="btn danger btn-sm" onclick="ExamApp.pendingReviewPapers.splice(${idx},1);ExamApp.renderPendingReviewWorkbench()">🗑️ حذف</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  };
+
+  ExamApp.onPendingPaperSelectStudent = function(idx, val) {
+    const p = this.pendingReviewPapers[idx];
+    if (!p) return;
+    p.matchedKey = val;
+    if (val) {
+      const [sId, cId, stId] = val.split('|');
+      const st = findStudent(sId, cId, stId);
+      if (st) p.name = `${st.lastName} ${st.name}`.trim();
+    }
+    this.renderPendingReviewWorkbench();
+  };
+
+  ExamApp.approveSinglePendingPaper = function(idx) {
+    const p = this.pendingReviewPapers[idx];
+    if (!p) return;
+    const sc = window.roundByConfigurableStep(p.score);
+    const tType = document.getElementById('gradeTargetType')?.value || 'cont_exam';
+    const exTitle = `${this.state.header.subject} (${this.state.header.date})`;
+
+    let targetSt = null, targetC = null, targetS = null;
+    if (p.matchedKey) {
+      const [sId, cId, stId] = p.matchedKey.split('|');
+      targetS = findSchool(sId);
+      targetC = findClass(sId, cId);
+      targetSt = findStudent(sId, cId, stId);
+    } else {
+      const m = this.findBestMatchingStudent(p.name);
+      if (m) { targetS = m.s; targetC = m.c; targetSt = m.st; }
+    }
+
+    if (targetSt && targetC) {
+      if (tType === 'term_exam') targetC.termScores[targetSt.id] = sc;
+      else {
+        if (!targetC.contExamScores) targetC.contExamScores = {};
+        targetC.contExamScores[targetSt.id] = sc;
+        gradesData(targetSt).push({ id: uid(), date: new Date().toISOString(), subject: exTitle, score: sc, gradeType: tType });
+      }
+      if (p.img) targetSt.examPapers.unshift({ id: uid(), title: exTitle, score: sc, date: this.state.header.date, img: p.img });
+      evaluateAutoStatus(targetC, targetSt);
+    }
+
+    const finalName = targetSt ? `${targetSt.lastName} ${targetSt.name}`.trim() : (p.name || 'دانش‌آموز');
+    this.state.classGrades.unshift({
+      id: Date.now() + Math.floor(Math.random() * 9999),
+      name: finalName,
+      matchedKey: targetSt ? `${targetS.id}|${targetC.id}|${targetSt.id}` : '',
+      branch: this.currentBranch,
+      score: sc,
+      img: p.img || '',
+      approvedByTeacher: true
+    });
+
+    this.pendingReviewPapers.splice(idx, 1);
+    savePersistent();
+    this.save();
+    this.renderPendingReviewWorkbench();
+    this.renderClassGradesTable();
+    toast(`✅ برگه «${finalName}» با نمره ${fa(sc)} تایید و ثبت شد!`);
+  };
+
+  ExamApp.approveAllPendingPapers = function() {
+    while (this.pendingReviewPapers.length > 0) {
+      this.approveSinglePendingPaper(0);
+    }
+    toast('✅ تمام برگه‌های بررسی‌شده تایید و در پرونده دانش‌آموزان ثبت شدند!');
+  };
+
+  /* آرشیو برگه‌های تصحیح‌شده کاملاً قابل ویرایش (ویرایش نام، نمره، ثبت در کلاس، ابزار روی برگه و حذف) */
+  ExamApp.renderClassGradesTable = function() {
+    const w = document.getElementById('classGradesTableWrap');
+    if (!w) return;
+    const list = this.state.classGrades || [];
+    if (!list.length) {
+      w.innerHTML = '<p class="muted" style="text-align:center;padding:10px">هنوز برگه تاییدشده‌ای در آرشیو ثبت نشده است.</p>';
+      return;
+    }
+    w.innerHTML = `
+      <div style="overflow-x:auto">
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>نام دانش‌آموز</th>
+              <th>نمره</th>
+              <th>ابزار برگه و ویرایش</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map((g, i) => `
+              <tr>
+                <td>${this.toFa(i + 1)}</td>
+                <td>
+                  <b>${esc(g.name)}</b>
+                  ${g.matchedKey ? '<span style="color:var(--neon-green);font-size:10px;display:block">✓ متصل به پرونده کلاس</span>' : '<span style="color:#F59E0B;font-size:10px;display:block">⚠️ نیازمند اتصال به دانش‌آموز</span>'}
+                </td>
+                <td><b style="color:var(--primary);font-size:13px">${this.toFa(g.score)}</b></td>
+                <td>
+                  <div style="display:flex;gap:4px;flex-wrap:wrap">
+                    ${g.img ? `<button type="button" class="btn soft btn-sm" onclick="ExamApp.openPaperAnnotationTool(${i}, true)" title="مشاهده برگه و ابزار علامت‌گذاری معلم">👁️🖍️ برگه</button>` : ''}
+                    <button type="button" class="btn primary btn-sm" onclick="ExamApp.openEditArchiveGradeModal(${i})" title="ویرایش نام، نمره و ثبت در پرونده کلاس">✎ ویرایش</button>
+                    <button type="button" class="btn danger btn-sm" onclick="ExamApp.deleteArchiveGradeRow(${i})" title="حذف از آرشیو">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  };
+
+  ExamApp.deleteArchiveGradeRow = function(idx) {
+    if (!this.state.classGrades?.[idx]) return;
+    this.state.classGrades.splice(idx, 1);
+    this.save();
+    this.renderClassGradesTable();
+    toast('ردیف از آرشیو برگه‌ها حذف شد 🗑️');
+  };
+
+  ExamApp.openEditArchiveGradeModal = function(idx) {
+    const g = this.state.classGrades?.[idx];
+    if (!g) return;
+    const step = window.getScoreRoundStep();
+    openModal(formHeader(`✎ ویرایش برگه آرشیو و ثبت در کلاس — ردیف ${fa(idx + 1)}`) + `
+      <div class="formgrid">
+        <div class="field full">
+          <label>👤 انتخاب دانش‌آموز از لیست کلاس (برای اتصال به پرونده و رفع نام‌های عددی مثل 1000185254):</label>
+          <select id="editArchRosterSel" onchange="if(this.value){const [s,c,stId]=this.value.split('|');const st=findStudent(s,c,stId);if(st)document.getElementById('editArchNameInp').value=st.lastName+' '+st.name;}">
+            ${this.buildRosterOptionsForPaper(g.matchedKey || '')}
+          </select>
+        </div>
+        <div class="field">
+          <label>✍️ نام دانش‌آموز در آرشیو:</label>
+          <input type="text" id="editArchNameInp" value="${esc(g.name)}">
+        </div>
+        <div class="field">
+          <label>🎯 نمره (با گام ${fa(step)}):</label>
+          <input type="number" id="editArchScoreInp" step="${step}" min="0" max="20" value="${g.score}">
+        </div>
+      </div>
+      ${g.img ? `<div style="text-align:center;margin:10px 0"><img src="${g.img}" style="max-height:180px;border-radius:10px;border:1px solid var(--border)"></div>` : ''}
+      <div class="formactions">
+        <button type="button" class="btn green" onclick="ExamApp.saveEditedArchiveGrade(${idx})">✅ ذخیره و ثبت در پرونده دانش‌آموز</button>
+        <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+      </div>
+    `);
+  };
+
+  ExamApp.saveEditedArchiveGrade = function(idx) {
+    const g = this.state.classGrades?.[idx];
+    if (!g) return;
+    const newName = (document.getElementById('editArchNameInp')?.value || '').trim();
+    const newScore = window.roundByConfigurableStep(document.getElementById('editArchScoreInp')?.value || 0);
+    const rosterVal = document.getElementById('editArchRosterSel')?.value || '';
+    if (newName) g.name = newName;
+    g.score = newScore;
+    if (rosterVal) {
+      g.matchedKey = rosterVal;
+      const [sId, cId, stId] = rosterVal.split('|');
+      const c = findClass(sId, cId);
+      const st = findStudent(sId, cId, stId);
+      if (c && st) {
+        g.name = `${st.lastName} ${st.name}`.trim();
+        if (!c.contExamScores) c.contExamScores = {};
+        c.contExamScores[st.id] = newScore;
+        const exTitle = `${this.state.header.subject} (${this.state.header.date})`;
+        gradesData(st).push({ id: uid(), date: new Date().toISOString(), subject: exTitle, score: newScore, gradeType: 'cont_exam' });
+        if (g.img) st.examPapers.unshift({ id: uid(), title: exTitle, score: newScore, date: this.state.header.date, img: g.img });
+        evaluateAutoStatus(c, st);
+        savePersistent();
+      }
+    }
+    this.save();
+    closeModal();
+    this.renderClassGradesTable();
+    toast(`✅ برگه «${g.name}» با نمره ${fa(newScore)} ویرایش و در پرونده ثبت شد!`);
+  };
+
+  /* ابزار تعاملی قلم و مهر تصحیح معلم روی عکس برگه دانش‌آموز */
+  ExamApp._paperToolMode = 'stamp_ok';
+  ExamApp.openPaperAnnotationTool = function(idx, isFromArchive = true) {
+    const item = isFromArchive ? this.state.classGrades?.[idx] : this.pendingReviewPapers?.[idx];
+    if (!item || !item.img) { toast('تصویری برای این برگه ثبت نشده است.'); return; }
+    window._editingPaperObj = { idx, isFromArchive, item };
+
+    openModal(formHeader(`🖍️ میز بررسی و ابزار تصحیح روی برگه — ${item.name || 'دانش‌آموز'}`) + `
+      <div style="display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin-bottom:8px;padding:6px;background:var(--bg-panel);border-radius:10px">
+        <button type="button" class="btn green btn-sm" onclick="ExamApp._paperToolMode='stamp_ok';toast('مهر ✔ صحیح فعال شد؛ روی برگه بزنید')">✔ مهر صحیح</button>
+        <button type="button" class="btn danger btn-sm" onclick="ExamApp._paperToolMode='stamp_wrong';toast('مهر ✘ غلط فعال شد؛ روی برگه بزنید')">✘ مهر غلط</button>
+        <button type="button" class="btn soft btn-sm" onclick="ExamApp._paperToolMode='pen_red';toast('قلم قرمز تصحیح فعال شد')">🔴 قلم قرمز</button>
+        <button type="button" class="btn soft btn-sm" onclick="ExamApp._paperToolMode='pen_green';toast('قلم سبز فعال شد')">🟢 قلم سبز</button>
+        <button type="button" class="btn gray btn-sm" onclick="openPhotoViewer(document.getElementById('paperAnnotWorkCanvas').toDataURL('image/jpeg',0.85),'bargeh.jpg')">🔍 بزرگ‌نمایی</button>
+      </div>
+      <div style="text-align:center;max-height:58vh;overflow:auto;background:#0F172A;padding:8px;border-radius:12px;border:1px solid var(--border)">
+        <canvas id="paperAnnotWorkCanvas" dir="ltr" style="max-width:100%;height:auto;border-radius:8px;cursor:crosshair;touch-action:none"></canvas>
+      </div>
+      <div class="formactions">
+        <button type="button" class="btn primary" onclick="ExamApp.savePaperAnnotationWork()">💾 ذخیره علامت‌گذاری روی برگه</button>
+        <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+      </div>
+    `);
+
+    setTimeout(() => {
+      const canvas = document.getElementById('paperAnnotWorkCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = item.img;
+
+      let drawing = false;
+      const getPos = (ev) => {
+        const rect = canvas.getBoundingClientRect();
+        const cx = ev.touches?.[0]?.clientX ?? ev.clientX;
+        const cy = ev.touches?.[0]?.clientY ?? ev.clientY;
+        return {
+          x: (cx - rect.left) * (canvas.width / (rect.width || 1)),
+          y: (cy - rect.top) * (canvas.height / (rect.height || 1))
+        };
+      };
+      const onDown = (ev) => {
+        if (ev.cancelable) ev.preventDefault();
+        const pos = getPos(ev);
+        if (ExamApp._paperToolMode === 'stamp_ok' || ExamApp._paperToolMode === 'stamp_wrong') {
+          ctx.save();
+          ctx.font = 'bold 34px Tahoma';
+          ctx.fillStyle = ExamApp._paperToolMode === 'stamp_ok' ? '#16A34A' : '#DC2626';
+          ctx.fillText(ExamApp._paperToolMode === 'stamp_ok' ? '✔' : '✘', pos.x - 14, pos.y + 12);
+          ctx.restore();
+          return;
+        }
+        drawing = true;
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+      };
+      const onMove = (ev) => {
+        if (!drawing) return;
+        if (ev.cancelable) ev.preventDefault();
+        const pos = getPos(ev);
+        ctx.strokeStyle = ExamApp._paperToolMode === 'pen_green' ? '#16A34A' : '#DC2626';
+        ctx.lineWidth = 4;
+        ctx.lineCap = 'round';
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      };
+      const onUp = () => { drawing = false; };
+      canvas.addEventListener('mousedown', onDown);
+      canvas.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', onUp);
+      canvas.addEventListener('touchstart', onDown, { passive: false });
+      canvas.addEventListener('touchmove', onMove, { passive: false });
+      canvas.addEventListener('touchend', onUp);
+    }, 80);
+  };
+
+  ExamApp.savePaperAnnotationWork = function() {
+    const canvas = document.getElementById('paperAnnotWorkCanvas');
+    const editObj = window._editingPaperObj;
+    if (!canvas || !editObj) return;
+    const newUrl = canvas.toDataURL('image/jpeg', 0.80);
+    editObj.item.img = newUrl;
+    this.save();
+    closeModal();
+    if (editObj.isFromArchive) this.renderClassGradesTable();
+    else this.renderPendingReviewWorkbench();
+    toast('علامت‌گذاری معلم روی برگه ذخیره شد ✅');
+  };
+}
+
+/* ۱۰. ارتقای پنجره «🛠️ تعمیرکار هوشمند اسامی دانش‌آموزان» با دکمه افزودن مستقیم عکس و جابه‌جایی نام/نام خانوادگی */
+window.uploadRepairStudentPhoto = async function(idx, ev) {
+  const file = ev.target.files?.[0];
+  const issues = window._pendingStudentRepairs || [];
+  const it = issues[idx];
+  if (!file || !it) return;
+  try {
+    const dataUrl = await compressImage(file, 320, 0.75);
+    const st = findStudent(it.sid, it.cid, it.stid);
+    if (st) {
+      st.photo = dataUrl;
+      it.hasPhoto = true;
+      savePersistent();
+      const btn = document.getElementById(`repPhotoBtn_${idx}`);
+      if (btn) { btn.className = 'btn green btn-sm'; btn.innerHTML = '✅ عکس ثبت شد'; }
+      toast(`📸 عکس «${st.name} ${st.lastName}» ثبت شد!`);
+    }
+  } catch (_) {}
+};
+
+window.swapRepairFirstLast = function(idx) {
+  const fEl = document.getElementById(`repFirst_${idx}`);
+  const lEl = document.getElementById(`repLast_${idx}`);
+  if (fEl && lEl) {
+    const tmp = fEl.value;
+    fEl.value = lEl.value;
+    lEl.value = tmp;
+  }
+};
+
+const _origOpenSmartStudentRepairModalV59 = window.openSmartStudentRepairModal;
+window.openSmartStudentRepairModal = function(sid = null, cid = null) {
+  _origOpenSmartStudentRepairModalV59(sid, cid);
+  const issues = window._pendingStudentRepairs || [];
+  issues.forEach((it, idx) => {
+    const firstInp = document.getElementById(`repFirst_${idx}`);
+    const card = firstInp?.closest('.card');
+    if (card && !document.getElementById(`repExtraTools_${idx}`)) {
+      const bar = document.createElement('div');
+      bar.id = `repExtraTools_${idx}`;
+      bar.style.cssText = 'display:flex;gap:6px;margin-top:6px;flex-wrap:wrap';
+      bar.innerHTML = `
+        <button type="button" class="btn soft btn-sm" onclick="swapRepairFirstLast(${idx})">🔄 جابه‌جایی نام و فامیل</button>
+        <label id="repPhotoBtn_${idx}" class="btn ${it.hasPhoto ? 'green' : 'primary'} btn-sm" style="margin:0;cursor:pointer">
+          ${it.hasPhoto ? '✅ تغییر عکس' : '📷 افزودن عکس دانش‌آموز'}
+          <input type="file" accept="image/*" hidden onchange="uploadRepairStudentPhoto(${idx}, event)">
+        </label>
+      `;
+      card.appendChild(bar);
+    }
+  });
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    try {
+      const savedStep = window.getScoreRoundStep();
+      ['aiScoreRoundStep', 'noApiStepSel'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = String(savedStep);
+      });
+      window.startAutoGmailSyncLoop();
+      if (window.ExamApp) ExamApp.autoSyncToOnlineExam(true);
+    } catch (_) {}
+  }, 500);
+});
+
+
+
+if (window.ExamApp) {
+  ExamApp.renderSpeedGrader = function() {
+    const qs = this.getQuestions(), box = document.getElementById("speedGraderList");
+    if (!box) return;
+    if (!qs.length) { box.innerHTML = "سوالی نیست."; return; }
+    const step = window.getScoreRoundStep ? window.getScoreRoundStep() : 0.25;
+    const stepSel = document.getElementById("gradeModalStepSel");
+    if (stepSel) stepSel.value = String(step);
+    box.innerHTML = qs.map((q, idx) => {
+      const n = idx + 1;
+      if (q.type === "mcq") return `<div class="speed-key-row"><span><b>سوال ${this.toFa(n)}</b> (${this.toFa(q.score)})</span><div style="display:flex;gap:4px">${["۱","۲","۳","۴"].map((l, o) => `<button class="speed-opt-btn ${this.speedSelections[q.id] === o ? "selected" : ""}" onclick="ExamApp.selectSpeedAns(${q.id},${o})">${l}</button>`).join("")}</div></div>`;
+      if (q.type === "tf") return `<div class="speed-key-row"><span><b>سوال ${this.toFa(n)}</b> (${this.toFa(q.score)})</span><div style="display:flex;gap:4px">${["صحیح","غلط"].map(v => `<button class="speed-opt-btn ${this.speedSelections[q.id] === v ? "selected" : ""}" onclick="ExamApp.selectSpeedAns(${q.id},'${v}')">${v}</button>`).join("")}</div></div>`;
+      const cur = this.speedSelections[q.id] ?? 0, steps = [];
+      for (let stVal = 0; stVal <= Number(q.score) + 0.001; stVal = Math.round((stVal + step) * 100) / 100) {
+        steps.push(stVal);
+      }
+      if (!steps.includes(Number(q.score))) steps.push(Number(q.score));
+      return `<div class="speed-key-row" style="flex-wrap:wrap;gap:4px"><span><b>سوال ${this.toFa(n)}</b> (${this.toFa(q.score)})</span><div style="display:flex;gap:3px;flex-wrap:wrap">${steps.map(st => `<button class="speed-opt-btn ${cur === st ? "selected" : ""}" onclick="ExamApp.selectSpeedAns(${q.id},${st})">${this.toFa(st)}</button>`).join("")}</div></div>`;
+    }).join("");
+    this.calcSpeedScore();
+  };
+}
+
+avgGrade = function(st) {
+  const list = (st?.grades || []).filter(x => Number.isFinite(Number(x.score)));
+  if (!list.length) return null;
+  const r = getRules();
+  let sw = 0, wSum = 0;
+  list.forEach(g => {
+    const w = g.gradeType === "cont_exam"
+      ? r.weightCont
+      : (g.gradeType === "group_score" ? (Number(g.customWeight) || r.weightGroup || 1.5) : r.weightClass);
+    sw += Number(g.score) * w;
+    wSum += w;
+  });
+  return wSum > 0 ? window.roundByConfigurableStep(sw / wSum) : null;
+};
 
 </script>
 </body>
