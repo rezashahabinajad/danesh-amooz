@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#050914">
+<meta name="theme-color" content="#EA580C">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="6.0.0">
+<meta name="version" content="6.2.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -19,44 +19,44 @@
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 :root {
-  color-scheme: dark;
-  /* پالت رنگ مرکزی Cyber-JARVIS */
-  --bg-main: #050914;
-  --bg-card: #0B1424;
-  --bg-panel: #101D30;
-  --neon-cyan: #22D3EE;
-  --neon-blue: #38BDF8;
-  --neon-green: #4ADE80;
-  --neon-red: #F87171;
-  --neon-purple: #A78BFA;
-  --text-main: #F1F5F9;
-  --text-muted: #94A3B8;
-  --border-cyber: rgba(34, 211, 238, 0.24);
-  --border-subtle: rgba(56, 189, 248, 0.16);
+  color-scheme: light;
+  /* پالت پیش‌فرض نارنجی کلاسیک و سفید تمیز (Orange & White Default) */
+  --bg-main: #FFF9F2;
+  --bg-card: #FFFFFF;
+  --bg-panel: #FFF3E4;
+  --neon-cyan: #EA580C;
+  --neon-blue: #F97316;
+  --neon-green: #16A34A;
+  --neon-red: #DC2626;
+  --neon-purple: #D97706;
+  --text-main: #1E293B;
+  --text-muted: #64748B;
+  --border-cyber: #FED7AA;
+  --border-subtle: #FFEDD5;
 
-  /* نگاشت متغیرهای برنامه به پالت سایبری */
+  /* نگاشت متغیرهای برنامه به پالت نارنجی و سفید پیش‌فرض */
   --bg: var(--bg-main);
   --card: var(--bg-card);
   --panel: var(--bg-panel);
   --text: var(--text-main);
   --muted: var(--text-muted);
-  --primary: var(--neon-cyan);
-  --primary2: var(--neon-blue);
-  --primary-dark: #67E8F9;
-  --primary-light: rgba(34, 211, 238, 0.12);
-  --primary-border: rgba(34, 211, 238, 0.30);
-  --border: var(--border-cyber);
+  --primary: #EA580C;
+  --primary2: #F97316;
+  --primary-dark: #9A3412;
+  --primary-light: #FFF7ED;
+  --primary-border: #FDBA74;
+  --border: #FED7AA;
   --green: var(--neon-green);
   --success: var(--neon-green);
-  --success-bg: rgba(74, 222, 128, 0.14);
+  --success-bg: #DCFCE7;
   --red: var(--neon-red);
   --danger: var(--neon-red);
-  --danger-bg: rgba(248, 113, 113, 0.14);
+  --danger-bg: #FEE2E2;
   --purple: var(--neon-purple);
-  --purple-bg: rgba(167, 139, 250, 0.14);
-  --gray: #94A3B8;
-  --shadow: 0 10px 28px rgba(2, 6, 23, 0.72), 0 0 16px rgba(34, 211, 238, 0.07);
-  --glow-cyan: 0 0 16px rgba(34, 211, 238, 0.32);
+  --purple-bg: #FEF3C7;
+  --gray: #64748B;
+  --shadow: 0 6px 22px rgba(234, 88, 12, 0.09);
+  --glow-cyan: 0 4px 14px rgba(234, 88, 12, 0.24);
   --r: 18px;
 
   /* متغیرهای اختصاصی برگه چاپی A4 (بدون تغییر برای چاپ استاندارد) */
@@ -1655,6 +1655,51 @@ body.theme-classic-orange {
   --glow-cyan: 0 4px 14px rgba(234, 88, 12, 0.25);
   background: linear-gradient(180deg, #FFF7ED 0%, #FFF9F2 45%) !important;
 }
+
+/* لوگوی نارنجی و سفید تمیز در نوار بالا و صفحه ورود + استایل صفحه ورود در تم نارنجی پیش‌فرض */
+.logo {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
+  border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.25) !important;
+}
+.intro-logo-emblem {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
+  border: 2.5px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 10px 28px rgba(234, 88, 12, 0.45), inset 0 0 14px rgba(255, 255, 255, 0.25) !important;
+}
+body.theme-classic-orange #cyberIntroOverlay {
+  background: radial-gradient(circle at 50% 45%, #FFF7ED 0%, #FFEDD5 78%) !important;
+}
+body.theme-classic-orange .intro-grid-bg {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(234, 88, 12, 0.16) 1px, transparent 1px),
+    linear-gradient(to right, rgba(234, 88, 12, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(234, 88, 12, 0.06) 1px, transparent 1px) !important;
+}
+body.theme-classic-orange .intro-ring-1 {
+  border-color: rgba(234, 88, 12, 0.65) !important;
+  box-shadow: 0 0 24px rgba(234, 88, 12, 0.22) !important;
+}
+body.theme-classic-orange .intro-ring-2 {
+  border-color: rgba(249, 115, 22, 0.45) !important;
+  border-top-color: #EA580C !important;
+  border-bottom-color: #F59E0B !important;
+}
+body.theme-classic-orange .intro-title {
+  color: #9A3412 !important;
+  text-shadow: 0 2px 12px rgba(234, 88, 12, 0.18) !important;
+}
+body.theme-classic-orange .intro-subtitle {
+  color: #EA580C !important;
+}
+body.theme-classic-orange .intro-skip-btn {
+  background: #FFFFFF !important;
+  border-color: #FDBA74 !important;
+  color: #9A3412 !important;
+}
+
 body.theme-classic-orange .topbar {
   background: rgba(255, 250, 245, 0.94);
   box-shadow: 0 2px 12px rgba(234, 88, 12, 0.08);
@@ -3199,9 +3244,504 @@ body.theme-royal-galaxy .btn.primary {
   }
 }
 
+
+/* ==================== اصلاحات جامع بصری، هدر، لوگو (کلاه نارنجی روی پس‌زمینه سفید) و بهینه‌سازی نسخه v6.1.0 Pro ==================== */
+
+/* ۱. لوگوی کلاه فارغ‌التحصیلی نارنجی روی پس‌زمینه سفید تمیز و براق */
+.logo {
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFF7ED 100%) !important;
+  border: 2px solid #FDBA74 !important;
+  color: #EA580C !important;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.18), inset 0 0 0 1px #FFFFFF !important;
+}
+.intro-logo-emblem {
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFF7ED 100%) !important;
+  border: 2.5px solid #FB923C !important;
+  color: #EA580C !important;
+  box-shadow: 0 12px 30px rgba(234, 88, 12, 0.28), inset 0 0 14px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ۲. چیدمان استاندارد و بدون بریدگی عنوان و نسخه در نوار بالا (رفع کامل مشکل ...0 Pro در موبایل) */
+.brand-text-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+}
+.brand-text-wrap b {
+  font-size: 15.5px !important;
+  font-weight: 900 !important;
+  color: var(--text-main) !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  text-shadow: none !important;
+  line-height: 1.25 !important;
+}
+.brand-sub-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+  min-width: 0;
+}
+.brand-sub-row small {
+  font-size: 11px !important;
+  color: var(--text-muted) !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+.top-ver-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  font-size: 9.5px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+@media (max-width: 560px) {
+  .topbar { padding: 7px 9px !important; }
+  .toprow { gap: 4px !important; }
+  .brand { gap: 7px !important; }
+  .brand .logo { width: 36px !important; height: 36px !important; border-radius: 11px !important; }
+  .brand-text-wrap b { font-size: 14px !important; }
+  .brand-sub-row small { font-size: 10px !important; }
+  .top-ver-pill { font-size: 8.8px !important; padding: 0px 5px !important; }
+  .top-icons { gap: 3px !important; }
+  .iconbtn { width: 31px !important; height: 31px !important; border-radius: 9px !important; font-size: 13.5px !important; }
+}
+
+/* ۳. تعریف صریح تم سایبری تاریک (برای زمانی که کاربر در تنظیمات تم تیره را انتخاب می‌کند) */
+body.theme-cyber-dark {
+  color-scheme: dark;
+  --bg-main: #050914;
+  --bg-card: #0B1424;
+  --bg-panel: #101D30;
+  --neon-cyan: #22D3EE;
+  --neon-blue: #38BDF8;
+  --neon-green: #4ADE80;
+  --neon-red: #F87171;
+  --neon-purple: #A78BFA;
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --border-cyber: rgba(34, 211, 238, 0.24);
+  --border-subtle: rgba(56, 189, 248, 0.16);
+  --bg: #050914;
+  --card: #0B1424;
+  --panel: #101D30;
+  --text: #F1F5F9;
+  --muted: #94A3B8;
+  --primary: #22D3EE;
+  --primary2: #38BDF8;
+  --primary-dark: #67E8F9;
+  --primary-light: rgba(34, 211, 238, 0.12);
+  --primary-border: rgba(34, 211, 238, 0.30);
+  --border: rgba(34, 211, 238, 0.24);
+  --success-bg: rgba(74, 222, 128, 0.14);
+  --danger-bg: rgba(248, 113, 113, 0.14);
+  --purple-bg: rgba(167, 139, 250, 0.14);
+  --shadow: 0 10px 28px rgba(2, 6, 23, 0.72), 0 0 16px rgba(34, 211, 238, 0.07);
+  --glow-cyan: 0 0 16px rgba(34, 211, 238, 0.32);
+  background: radial-gradient(circle at 50% 0%, #0D1B32 0%, #050914 65%) !important;
+}
+
+/* ۴. هماهنگی کامل درخشش حلقه‌های JARVIS و دکمه شناور + با تم نارنجی پیش‌فرض */
+body.theme-classic-orange .jarvis-svg-rings {
+  filter: drop-shadow(0 0 8px rgba(234, 88, 12, 0.22));
+}
+body.theme-classic-orange .jarvis-core-value {
+  color: #9A3412 !important;
+  text-shadow: 0 2px 10px rgba(234, 88, 12, 0.16) !important;
+}
+body.theme-classic-orange .jarvis-live-pill {
+  background: #FFEDD5 !important;
+  border-color: #FDBA74 !important;
+  color: #C2410C !important;
+}
+body.theme-classic-orange .stat strong {
+  color: #EA580C !important;
+  text-shadow: none !important;
+}
+body.theme-classic-orange .chip {
+  background: #FFF7ED !important;
+  border-color: #FDBA74 !important;
+  color: #C2410C !important;
+}
+body.theme-classic-orange .nav button.active {
+  color: #EA580C !important;
+  background: #FFF7ED !important;
+  box-shadow: inset 0 0 0 1px #FDBA74 !important;
+}
+body.theme-classic-orange .toast {
+  background: #9A3412 !important;
+  border-color: #FDBA74 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.28) !important;
+}
+.fab {
+  background: linear-gradient(135deg, #F97316, #EA580C) !important;
+  color: #FFFFFF !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.35) !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 14px !important;
+  left: 12px !important;
+  bottom: 74px !important;
+  font-size: 22px !important;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease !important;
+}
+.fab.scroll-hide-fab {
+  transform: translateY(24px) scale(0.75) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+
+/* ==================== ترفندهای کشویی و ارتقای سراسری نسخه v6.2.0 Pro ==================== */
+
+/* ۱. کپسول کشویی هوشمند در نوار بالا (حفظ کامل فضای نام برنامه + باز شدن نرم ابزارها) */
+.brand-title-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.brand-text-wrap b {
+  font-size: 15.5px !important;
+  font-weight: 900 !important;
+  color: var(--text-main) !important;
+  white-space: nowrap !important;
+  letter-spacing: -0.2px;
+}
+.brand-text-wrap small {
+  display: block !important;
+  font-size: 11px !important;
+  color: var(--text-muted) !important;
+  font-weight: 700 !important;
+  margin-top: 1px !important;
+  white-space: nowrap !important;
+}
+.top-icons-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border-radius: 14px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(234, 88, 12, 0.08);
+  flex-shrink: 0;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.top-drawer-items {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  max-width: 260px;
+  opacity: 1;
+  transition: max-width 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.22s ease, margin 0.22s ease;
+}
+.drawer-toggle-btn {
+  display: none;
+  background: linear-gradient(135deg, #F97316, #EA580C) !important;
+  color: #FFFFFF !important;
+  border-color: #EA580C !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+}
+
+/* در صفحه‌های موبایل (زیر 640px) آیکون‌های فرعی داخل کشوی بازشونده قرار می‌گیرند تا هدر همیشه خلوت و شیک باشد */
+@media (max-width: 640px) {
+  .drawer-toggle-btn {
+    display: grid !important;
+  }
+  .top-icons-capsule:not(.drawer-open) .top-drawer-items {
+    max-width: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    margin: 0 !important;
+  }
+  /* وقتی کشوی ابزار باز می‌شود، به صورت یک نوار شناور شیشه‌ای شیک در زیر زنگوله باز می‌شود تا عنوان برنامه هرگز بریده نشود */
+  .top-icons-capsule.drawer-open .top-drawer-items {
+    position: absolute;
+    top: calc(100% + 7px);
+    left: 0;
+    z-index: 95;
+    max-width: 92vw !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: var(--bg-card);
+    border: 1.5px solid var(--primary-border);
+    border-radius: 14px;
+    padding: 6px;
+    gap: 6px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18), 0 4px 12px rgba(234, 88, 12, 0.15);
+    animation: topDrawerPop 0.22s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .top-icons-capsule .iconbtn {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+  }
+}
+@keyframes topDrawerPop {
+  from { opacity: 0; transform: translateY(-6px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ۲. نوار کشویی افقی دسترسی سریع در داشبورد (Dashboard Quick Strip) */
+.dash-quick-strip {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 7px;
+  padding: 2px 2px 12px;
+  margin-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+.dash-quick-strip::-webkit-scrollbar { display: none; }
+.dash-q-pill {
+  flex: 0 0 auto;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  color: var(--text-main);
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 3px 10px rgba(234, 88, 12, 0.06);
+  white-space: nowrap;
+  transition: transform 0.16s ease, border-color 0.18s ease, background 0.18s ease;
+}
+.dash-q-pill:hover, .dash-q-pill:active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* ۳. تبدیل تمام نوارهای تب چندردیفه (.settings-tabs-bar, .exam-subnav, .teach-workbench-tabs, .attn-cat-grid) به نوار کشویی افقی تک‌خطی در موبایل!
+   این ترفند حدود ۹۰ پیکسل از ارتفاع صفحه را آزاد می‌کند و مشکل پوشاندن آیتم‌های زیرین هنگام اسکرول را ۱۰۰٪ حل می‌کند */
+@media (max-width: 680px) {
+  .settings-tabs-bar,
+  #onlineClassView .settings-tabs-bar,
+  .exam-subnav,
+  .teach-workbench-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 6px !important;
+    padding: 6px 8px !important;
+    border-radius: 14px !important;
+    align-items: center !important;
+  }
+  .settings-tabs-bar::-webkit-scrollbar,
+  .exam-subnav::-webkit-scrollbar,
+  .teach-workbench-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .settings-tabs-bar .set-tab-btn,
+  #onlineClassView .settings-tabs-bar .set-tab-btn,
+  #onlineClassView .settings-tabs-bar .set-tab-btn:first-child,
+  .exam-subnav .ex-nav-btn,
+  .teach-workbench-tabs .teach-wb-tab {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: max-content !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    padding: 7px 12px !important;
+    min-height: 36px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    scroll-snap-align: start;
+    white-space: nowrap !important;
+  }
+  .settings-tabs-bar .set-tab-btn span:first-child,
+  .exam-subnav .ex-nav-btn span:first-child {
+    font-size: 14px !important;
+  }
+
+  /* دسته‌بندی‌های وضعیت نیازمند توجه نیز به صورت نوار کشویی افقی تک‌خطی در می‌آیند */
+  .attn-cat-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scrollbar-width: none;
+    gap: 7px !important;
+    padding: 4px 2px 8px !important;
+    margin-bottom: 10px !important;
+  }
+  .attn-cat-grid::-webkit-scrollbar { display: none; }
+  .attn-cat-grid .attn-cat-pill,
+  .attn-cat-grid .attn-cat-pill:first-child {
+    flex: 0 0 auto !important;
+    min-width: max-content !important;
+    border-radius: 999px !important;
+    padding: 7px 12px !important;
+    gap: 7px !important;
+  }
+
+  /* دکمه‌های ۶گانه شاخص‌های JARVIS در داشبورد هم به صورت نوار کشویی لمسی افقی */
+  .jarvis-metric-pills {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scrollbar-width: none;
+    gap: 6px !important;
+    padding: 2px 2px 6px !important;
+  }
+  .jarvis-metric-pills::-webkit-scrollbar { display: none; }
+  .jarvis-metric-btn {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    padding: 6px 12px !important;
+    border-radius: 999px !important;
+    min-height: 34px !important;
+  }
+}
+
+/* ۴. قابلیت تاشو (Collapsible) برای پنل فرماندهی JARVIS و نوار بالای آزمون‌ساز */
+.jarvis-collapse-btn, .exam-collapse-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--bg-card);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  display: inline-grid;
+  place-items: center;
+  font-size: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.exam-collapse-btn {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #FFFFFF;
+}
+.jarvis-command-deck.deck-collapsed {
+  grid-template-columns: 1fr !important;
+  padding: 10px 14px !important;
+  gap: 6px !important;
+}
+.jarvis-command-deck.deck-collapsed .jarvis-core-stage,
+.jarvis-command-deck.deck-collapsed .jarvis-collapsible-sub,
+.jarvis-command-deck.deck-collapsed .jarvis-hud-info .actions {
+  display: none !important;
+}
+.exam-top-actions.exam-tools-collapsed .exam-actions-grid {
+  display: none !important;
+}
+.exam-top-actions.exam-tools-collapsed .exam-top-header {
+  margin-bottom: 0 !important;
+}
+
+/* ۵. بهینه‌سازی نوار پایین (Bottom Nav) با اسکرول کشویی نرم در نمایشگرهای خیلی باریک */
+@media (max-width: 380px) {
+  .navin {
+    display: flex !important;
+    overflow-x: auto !important;
+    scrollbar-width: none;
+    gap: 2px;
+    padding: 3px 6px;
+  }
+  .navin::-webkit-scrollbar { display: none; }
+  .nav button {
+    flex: 1 0 48px;
+    min-width: 48px;
+  }
+}
+
+/* ۶. استایل آیتم‌های پالت فرماندهی هوشمند (Smart Command Palette) */
+.cmd-palette-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.14s ease, border-color 0.16s ease, background 0.16s ease;
+}
+.cmd-palette-item:hover, .cmd-palette-item:active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  transform: translateX(-2px);
+}
+
+
+/* فیکس صددرصدی عدم بیرون‌زدگی کارت فرماندهی JARVIS، نوار تب‌های افقی و ۷ دکمه نوار پایین در عرض 320px */
+.jarvis-hud-info {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+.jarvis-status-strip {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+.jarvis-status-strip .title {
+  white-space: normal !important;
+  line-height: 1.35 !important;
+}
+.jarvis-collapsible-sub {
+  white-space: normal !important;
+  line-height: 1.45 !important;
+}
+@media (max-width: 680px) {
+  .jarvis-hud-info .actions {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+}
+@media (max-width: 480px) {
+  .navin {
+    display: grid !important;
+    grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+    gap: 1px !important;
+    padding: 2px 3px !important;
+    overflow: hidden !important;
+  }
+  .nav button {
+    min-width: 0 !important;
+    font-size: 9.2px !important;
+    padding: 3px 1px !important;
+  }
+  .nav button b {
+    font-size: 14.5px !important;
+  }
+}
+
 </style>
 </head>
-<body>
+<body class="theme-classic-orange" data-theme-mode="classic-orange">
 <!-- انیمیشن شماره ۳: بوم شبکه سایبری زنده -->
 <div id="studentOnlinePortalOverlay" role="region" aria-label="پنل آنلاین دانش‌آموز"></div>
 <canvas id="cyberNetworkCanvas" aria-hidden="true"></canvas>
@@ -3213,7 +3753,22 @@ body.theme-royal-galaxy .btn.primary {
     <div class="intro-ring intro-ring-1"></div>
     <div class="intro-ring intro-ring-2"></div>
     <div class="intro-ring intro-ring-3"></div>
-    <div class="intro-logo-emblem">🎓</div>
+    <div class="intro-logo-emblem" aria-hidden="true">
+      <svg viewBox="0 0 64 64" width="56" height="56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="introCapGrad" x1="6" y1="10" x2="58" y2="46" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FB923C"/>
+            <stop offset="55%" stop-color="#F97316"/>
+            <stop offset="100%" stop-color="#EA580C"/>
+          </linearGradient>
+        </defs>
+        <path d="M32 9L5 21.5L32 34L59 21.5L32 9Z" fill="url(#introCapGrad)"/>
+        <path d="M15 28V39.5C15 43.8 22.6 47.5 32 47.5C41.4 47.5 49 43.8 49 39.5V28L32 36L15 28Z" fill="#EA580C"/>
+        <path d="M32 21.5L53 26V39" stroke="#F59E0B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="53" cy="41.5" r="3" fill="#F59E0B"/>
+        <path d="M11 53C17.5 49.8 25.2 49.8 32 53.5C38.8 49.8 46.5 49.8 53 53" stroke="#EA580C" stroke-width="3.6" stroke-linecap="round"/>
+      </svg>
+    </div>
   </div>
   <div class="intro-title">دانش‌آموز من</div>
   <div class="intro-subtitle">دفتر هوشمند معلم · سامانه فرماندهی Cyber-JARVIS</div>
@@ -3229,22 +3784,51 @@ body.theme-royal-galaxy .btn.primary {
 </div>
 
 <div class="app">
-<header class="topbar">
+<header class="topbar" id="mainTopbar">
   <div class="toprow">
     <div class="brand">
-      <div class="logo">🎓</div>
-      <div><b>دانش‌آموز من</b><small>دفتر هوشمند معلم · <span id="topVersion">v6.0.0 Pro</span></small></div>
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="topCapGrad" x1="5" y1="9" x2="59" y2="48" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FB923C"/>
+              <stop offset="50%" stop-color="#F97316"/>
+              <stop offset="100%" stop-color="#EA580C"/>
+            </linearGradient>
+          </defs>
+          <path d="M32 8.5L4.5 21.2L32 33.8L59.5 21.2L32 8.5Z" fill="url(#topCapGrad)"/>
+          <path d="M14.5 27.8V39.2C14.5 43.6 22.3 47.2 32 47.2C41.7 47.2 49.5 43.6 49.5 39.2V27.8L32 35.8L14.5 27.8Z" fill="#EA580C"/>
+          <path d="M32 21L53 25.5V38.5" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="53" cy="41.2" r="3.2" fill="#F59E0B"/>
+          <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-text-wrap">
+        <b>دانش‌آموز من</b>
+        <div class="brand-sub-row">
+          <small>دفتر هوشمند معلم</small>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v6.2</span>
+        </div>
+      </div>
     </div>
-    <div class="top-icons">
+
+    <!-- نوار کشویی هوشمند ابزارهای بالا (Collapsible Quick-Tools Capsule) -->
+    <div class="top-icons-capsule" id="topIconsCapsule">
       <div class="notif-bell-wrap">
-        <button class="iconbtn" id="topNotifBtn" onclick="openNotificationsCenterModal()" title="مرکز هوشمند اعلانات و یادآوری‌ها" aria-label="اعلانات">🔔</button>
+        <button type="button" class="iconbtn" id="topNotifBtn" onclick="openNotificationsCenterModal()" title="مرکز هوشمند اعلانات و یادآوری‌ها" aria-label="اعلانات">🔔</button>
         <span class="notif-badge-dot" id="topNotifBadge" style="display:none">۰</span>
       </div>
-      <button class="iconbtn" onclick="showView('onlineClassView')" title="کلاس آنلاین و لینک اختصاصی" aria-label="کلاس آنلاین">🌐</button>
-      <button class="iconbtn" onclick="openTeacherAccountModal()" title="حساب کاربری معلم (جیمیل و شماره همراه)" aria-label="حساب کاربری">👤</button>
-      <button class="iconbtn" onclick="showView('birthdays')" title="تولدها" aria-label="تولدها">🎂</button>
-      <button class="iconbtn" onclick="showView('search')" title="جستجو" aria-label="جستجو">🔍</button>
-      <button class="iconbtn" id="themeToggleBtn" onclick="toggleTheme()" title="تغییر پوسته" aria-label="تغییر پوسته">☀️</button>
+      <button type="button" class="iconbtn" onclick="openSmartCommandPalette()" title="جستجوی فرماندهی سراسری (Ctrl+K)" aria-label="جستجوی سریع">🔍</button>
+      <div class="top-drawer-items" id="topDrawerItems">
+        <button type="button" class="iconbtn" onclick="showView('onlineClassView')" title="کلاس آنلاین و لینک اختصاصی" aria-label="کلاس آنلاین">🌐</button>
+        <button type="button" class="iconbtn" onclick="openTeacherAccountModal()" title="حساب کاربری معلم (جیمیل و شماره همراه)" aria-label="حساب کاربری">👤</button>
+        <button type="button" class="iconbtn" onclick="showView('birthdays')" title="تقویم تولدها" aria-label="تولدها">🎂</button>
+        <button type="button" class="iconbtn" onclick="openExcelPasteImportModal()" title="ورود دسته‌جمعی اسامی از اکسل/شاد" aria-label="ورود دسته‌جمعی">📋</button>
+        <button type="button" class="iconbtn" id="themeToggleBtn" onclick="toggleTheme()" title="تغییر پوسته (نارنجی پیش‌فرض)" aria-label="تغییر پوسته">🍊</button>
+      </div>
+      <button type="button" class="iconbtn drawer-toggle-btn" id="topDrawerToggleBtn" onclick="toggleTopQuickDrawer(event)" title="باز و بسته کردن کشوی ابزارها" aria-expanded="false" aria-label="کشوی ابزارها">
+        <span id="topDrawerToggleIcon">⚡</span>
+      </button>
     </div>
   </div>
 </header>
@@ -3257,34 +3841,34 @@ body.theme-royal-galaxy .btn.primary {
       <svg class="jarvis-svg-rings" viewBox="0 0 200 200" aria-hidden="true">
         <defs>
           <linearGradient id="jarvisCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.9"/>
-            <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="#A78BFA" stop-opacity="0.85"/>
+            <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.92"/>
+            <stop offset="50%" stop-color="var(--primary2)" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="var(--neon-purple)" stop-opacity="0.88"/>
           </linearGradient>
           <radialGradient id="jarvisBeamGrad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0"/>
-            <stop offset="70%" stop-color="#22D3EE" stop-opacity="0.16"/>
-            <stop offset="100%" stop-color="#22D3EE" stop-opacity="0.42"/>
+            <stop offset="0%" stop-color="var(--primary)" stop-opacity="0"/>
+            <stop offset="70%" stop-color="var(--primary)" stop-opacity="0.14"/>
+            <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.36"/>
           </radialGradient>
         </defs>
         <!-- حلقه اول بیرونی مدرج -->
         <g class="jarvis-ring-outer">
-          <circle cx="100" cy="100" r="92" fill="none" stroke="url(#jarvisCyanGrad)" stroke-width="2" stroke-dasharray="18 8 4 8 42 10"/>
-          <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(34,211,238,0.28)" stroke-width="3" stroke-dasharray="2 8"/>
+          <circle cx="100" cy="100" r="92" fill="none" stroke="url(#jarvisCyanGrad)" stroke-width="2.2" stroke-dasharray="18 8 4 8 42 10"/>
+          <circle cx="100" cy="100" r="86" fill="none" stroke="var(--primary)" stroke-opacity="0.28" stroke-width="3" stroke-dasharray="2 8"/>
         </g>
         <!-- حلقه دوم میانی با چرخش معکوس -->
         <g class="jarvis-ring-mid">
-          <circle cx="100" cy="100" r="76" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-dasharray="36 16 10 16" stroke-opacity="0.72"/>
-          <circle cx="100" cy="100" r="70" fill="none" stroke="#A78BFA" stroke-width="1.4" stroke-dasharray="6 14" stroke-opacity="0.55"/>
+          <circle cx="100" cy="100" r="76" fill="none" stroke="var(--primary2)" stroke-width="2.2" stroke-dasharray="36 16 10 16" stroke-opacity="0.75"/>
+          <circle cx="100" cy="100" r="70" fill="none" stroke="var(--neon-purple)" stroke-width="1.5" stroke-dasharray="6 14" stroke-opacity="0.6"/>
         </g>
-        <!-- پرتو اسکن فیروزه‌ای -->
+        <!-- پرتو اسکن -->
         <g class="jarvis-scan-beam">
           <path d="M100,100 L100,14 A86,86 0 0,1 162,40 Z" fill="url(#jarvisBeamGrad)"/>
-          <line x1="100" y1="100" x2="100" y2="14" stroke="#22D3EE" stroke-width="1.5" stroke-opacity="0.75"/>
+          <line x1="100" y1="100" x2="100" y2="14" stroke="var(--primary)" stroke-width="1.6" stroke-opacity="0.78"/>
         </g>
         <!-- حلقه سوم داخلی -->
         <g class="jarvis-ring-inner">
-          <circle cx="100" cy="100" r="63" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-dasharray="14 10 3 10" stroke-opacity="0.65"/>
+          <circle cx="100" cy="100" r="63" fill="none" stroke="var(--neon-green)" stroke-width="1.6" stroke-dasharray="14 10 3 10" stroke-opacity="0.68"/>
         </g>
       </svg>
       <div class="jarvis-core-center" onclick="cycleJarvisCoreMetric()" role="button" tabindex="0" aria-label="هسته آماری JARVIS">
@@ -3295,11 +3879,16 @@ body.theme-royal-galaxy .btn.primary {
     </div>
     <div class="jarvis-hud-info">
       <div class="jarvis-status-strip">
-        <div>
-          <h1 class="title" style="margin:0">سلام استاد 👋 · اتاق فرمان آموزشی</h1>
-          <p class="subtitle" style="margin:3px 0 0">مدیریت هوشمند مدارس، حضور و غیاب، نمرات ضریب‌دار، آرشیو ترم و آزمون‌ساز</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:8px;flex-wrap:wrap">
+          <div>
+            <h1 class="title" style="margin:0;font-size:17px">سلام استاد 👋 · اتاق فرمان آموزشی</h1>
+            <p class="subtitle jarvis-collapsible-sub" style="margin:2px 0 0">مدیریت هوشمند مدارس، حضور و غیاب، نمرات ضریب‌دار و آزمون‌ساز</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span class="jarvis-live-pill"><span class="jarvis-live-dot"></span><span id="jarvisActiveTermBadge">ترم جاری</span></span>
+            <button type="button" class="jarvis-collapse-btn" id="jarvisCollapseBtn" onclick="toggleJarvisDeckCollapse()" title="جمع‌کردن یا بازکردن پنل فرماندهی">🔼</button>
+          </div>
         </div>
-        <span class="jarvis-live-pill"><span class="jarvis-live-dot"></span><span id="jarvisActiveTermBadge">ترم جاری</span></span>
       </div>
       <div class="jarvis-metric-pills" id="jarvisMetricPills">
         <button type="button" class="jarvis-metric-btn active" data-metric="students" onclick="setJarvisCoreMetric('students')">👨‍🎓 دانش‌آموزان</button>
@@ -3316,6 +3905,15 @@ body.theme-royal-galaxy .btn.primary {
     </div>
   </div>
 
+  <!-- نوار کشویی دسترسی سریع ۱کلیکی معلم در داشبورد -->
+  <div class="dash-quick-strip" id="dashQuickStrip">
+    <button type="button" class="dash-q-pill" onclick="openSmartCommandPalette()">⚡ فرمان و جستجوی سریع</button>
+    <button type="button" class="dash-q-pill" onclick="openQuickTodayClassJump()">📋 حاضری سریع امروز</button>
+    <button type="button" class="dash-q-pill" onclick="openExcelPasteImportModal()">📥 ورود فهرست از اکسل/شاد</button>
+    <button type="button" class="dash-q-pill" onclick="showView('examView')">💎 آزمون‌ساز و تصحیح</button>
+    <button type="button" class="dash-q-pill" onclick="showView('teachView')">📖 کتاب‌خوان و جزوه</button>
+    <button type="button" class="dash-q-pill" onclick="openQuickExportForTarget('all')">📊 کارنامه و خروجی رنگی</button>
+  </div>
   <div id="dashBirthdaysBox"></div>
   <div id="todayClassesBox"></div>
   <div class="stats">
@@ -3789,8 +4387,11 @@ body.theme-royal-galaxy .btn.primary {
 <section id="examView" class="view">
   <div class="exam-top-actions">
     <div class="exam-top-header">
-      <b style="font-size:15px">💎 آزمون‌ساز الماس و مصحح هوشمند</b>
-      <span id="topStatsText" style="background:rgba(255,255,255,0.2);padding:3px 10px;border-radius:99px;font-size:11.5px;font-weight:bold">شعبه الف | ۰ سوال | جمع: ۰ نمره</span>
+      <b style="font-size:14.5px">💎 آزمون‌ساز الماس و مصحح هوشمند</b>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span id="topStatsText" style="background:rgba(255,255,255,0.22);padding:3px 9px;border-radius:99px;font-size:11px;font-weight:bold">شعبه الف | ۰ سوال | جمع: ۰ نمره</span>
+        <button type="button" class="exam-collapse-btn" id="examTopCollapseBtn" onclick="toggleExamTopToolsCollapse()" title="جمع‌کردن یا بازکردن ابزارهای بالای آزمون">🔼</button>
+      </div>
     </div>
     <div class="exam-actions-grid">
       <button class="btn green btn-sm" onclick="ExamApp.approveAndArchiveCurrentExam()">✅ تایید و آرشیو</button>
@@ -4144,6 +4745,17 @@ body.theme-royal-galaxy .btn.primary {
       <b style="color:var(--primary);font-size:14.5px">🎨 انتخاب پوسته رنگی برنامه (قابل تعویض آنی)</b>
       <p class="muted" style="margin:4px 0 8px">می‌توانید بین تم سایبری فیروزه‌ای، تم نارنجی کلاسیک و گرم، سایبری نارنجی تیره یا تم روشن روز جابه‌جا شوید:</p>
       <div class="theme-cards-grid" id="themePickerCardsGrid">
+        <div class="theme-pick-card active-theme" data-theme-id="classic-orange" onclick="setCyberThemeMode('classic-orange')">
+          <div>
+            <b style="display:block;font-size:13.5px">🍊 نارنجی کلاسیک و گرم (پیش‌فرض)</b>
+            <span class="muted" style="font-size:11px">پوسته محبوب نارنجی و سفید تمیز</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#FFF9F2;border-color:#EA580C"></span>
+            <span style="background:#EA580C"></span>
+            <span style="background:#F97316"></span>
+          </div>
+        </div>
         <div class="theme-pick-card" data-theme-id="cyber-dark" onclick="setCyberThemeMode('cyber-dark')">
           <div>
             <b style="display:block;font-size:13.5px">🌌 سایبری تاریک (Cyber-JARVIS)</b>
@@ -4153,17 +4765,6 @@ body.theme-royal-galaxy .btn.primary {
             <span style="background:#050914"></span>
             <span style="background:#22D3EE"></span>
             <span style="background:#A78BFA"></span>
-          </div>
-        </div>
-        <div class="theme-pick-card" data-theme-id="classic-orange" onclick="setCyberThemeMode('classic-orange')">
-          <div>
-            <b style="display:block;font-size:13.5px">🍊 نارنجی کلاسیک و گرم</b>
-            <span class="muted" style="font-size:11px">پوسته محبوب کرم و نارنجی</span>
-          </div>
-          <div class="theme-swatch-dots">
-            <span style="background:#FFF9F2;border-color:#EA580C"></span>
-            <span style="background:#EA580C"></span>
-            <span style="background:#F97316"></span>
           </div>
         </div>
         <div class="theme-pick-card" data-theme-id="cyber-orange" onclick="setCyberThemeMode('cyber-orange')">
@@ -4549,8 +5150,8 @@ body.theme-royal-galaxy .btn.primary {
   <div class="card">
     <b style="color:var(--primary);display:block;margin-bottom:6px">🎨 انتخاب پوسته رنگی برنامه (۴ تم کامل)</b>
     <div class="actions" style="margin-top:6px">
-      <button type="button" class="btn primary" style="flex:1" onclick="setCyberThemeMode('cyber-dark')">🌌 سایبری فیروزه‌ای</button>
-      <button type="button" class="btn soft" style="flex:1" onclick="setCyberThemeMode('classic-orange')">🍊 نارنجی کلاسیک</button>
+      <button type="button" class="btn primary" style="flex:1" onclick="setCyberThemeMode('classic-orange')">🍊 نارنجی کلاسیک (پیش‌فرض)</button>
+      <button type="button" class="btn soft" style="flex:1" onclick="setCyberThemeMode('cyber-dark')">🌌 سایبری فیروزه‌ای</button>
       <button type="button" class="btn soft" style="flex:1" onclick="setCyberThemeMode('cyber-orange')">🔥 سایبری نارنجی تیره</button>
       <button type="button" class="btn gray" style="flex:1" onclick="setCyberThemeMode('light')">☀️ روشن روز</button>
     </div>
@@ -4590,7 +5191,7 @@ body.theme-royal-galaxy .btn.primary {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v6.0.0 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v6.2 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -4821,7 +5422,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '6.0.0 Pro';
+const APP_VERSION = '6.2.0 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -9011,8 +9612,8 @@ if ('serviceWorker' in navigator) {
 
 /* ۱. سیستم ۴ پوسته کامل (سایبری فیروزه‌ای، نارنجی کلاسیک، سایبری نارنجی تیره، روشن روز) */
 const THEME_MODES_V52 = [
-  { id: 'cyber-dark', title: '🌌 سایبری فیروزه‌ای (Cyber-JARVIS)', icon: '🌌', metaColor: '#050914' },
   { id: 'classic-orange', title: '🍊 نارنجی کلاسیک و گرم', icon: '🍊', metaColor: '#ea580c' },
+  { id: 'cyber-dark', title: '🌌 سایبری فیروزه‌ای (Cyber-JARVIS)', icon: '🌌', metaColor: '#050914' },
   { id: 'cyber-orange', title: '🔥 سایبری نارنجی تیره', icon: '🔥', metaColor: '#0c0907' },
   { id: 'light', title: '☀️ روشن روز', icon: '☀️', metaColor: '#0284c7' }
 ];
@@ -9020,7 +9621,7 @@ const THEME_MODES_V52 = [
 window.setCyberThemeMode = function(mode) {
   let norm = mode;
   if (norm === 'dark') norm = 'cyber-dark';
-  if (!['cyber-dark', 'classic-orange', 'cyber-orange', 'light'].includes(norm)) norm = 'cyber-dark';
+  if (!['cyber-dark', 'classic-orange', 'cyber-orange', 'light'].includes(norm)) norm = 'classic-orange';
 
   document.documentElement.setAttribute('data-theme-mode', norm);
   document.body.setAttribute('data-theme-mode', norm);
@@ -9066,7 +9667,7 @@ window.setCyberThemeMode = function(mode) {
 };
 
 toggleTheme = function() {
-  const cur = localStorage.getItem('danesh_theme_v5') || 'cyber-dark';
+  const cur = localStorage.getItem('danesh_theme_v5') || 'classic-orange';
   const ids = THEME_MODES_V52.map(x => x.id);
   const nextIdx = (ids.indexOf(cur) + 1) % ids.length;
   const next = THEME_MODES_V52[nextIdx];
@@ -9085,7 +9686,7 @@ window.openSettingsTab = function(tabId, btnEl) {
   });
   if (tabId === 'theme') {
     renderInlineAnimToggles();
-    const cur = localStorage.getItem('danesh_theme_v5') || 'cyber-dark';
+    const cur = localStorage.getItem('danesh_theme_v5') || 'classic-orange';
     document.querySelectorAll('#themePickerCardsGrid .theme-pick-card').forEach(card => {
       card.classList.toggle('active-theme', card.getAttribute('data-theme-id') === cur);
     });
@@ -10398,7 +10999,14 @@ window.printCategorizedAttentionReport = function() {
 
 window.addEventListener('DOMContentLoaded', async () => {
   ensureTermMigration(db);
-  const savedThemeV5 = localStorage.getItem('danesh_theme_v5') || 'dark';
+  if (!localStorage.getItem('danesh_default_orange_v6_migrated')) {
+    try {
+      localStorage.setItem('danesh_theme_v5', 'classic-orange');
+      localStorage.setItem('danesh_theme', 'light');
+      localStorage.setItem('danesh_default_orange_v6_migrated', '1');
+    } catch (e) {}
+  }
+  const savedThemeV5 = localStorage.getItem('danesh_theme_v5') || 'classic-orange';
   window.setCyberThemeMode(savedThemeV5);
   applyAnimationSetting();
   window.CyberNetwork.init();
@@ -13525,8 +14133,8 @@ window.resetBirthdayTemplateWithSignature = function() {
 
 /* ۲. ارتقای سیستم تم‌ها به ۶ پوسته کامل (شامل زمردی لوکس و بنفش کهکشانی) */
 const THEME_MODES_V59 = [
+  { id: 'classic-orange', title: '🍊 نارنجی کلاسیک و گرم (پیش‌فرض)', icon: '🍊', metaColor: '#ea580c' },
   { id: 'cyber-dark', title: '🌌 سایبری فیروزه‌ای (Cyber-JARVIS)', icon: '🌌', metaColor: '#050914' },
-  { id: 'classic-orange', title: '🍊 نارنجی کلاسیک و گرم', icon: '🍊', metaColor: '#ea580c' },
   { id: 'cyber-orange', title: '🔥 سایبری نارنجی تیره', icon: '🔥', metaColor: '#0c0907' },
   { id: 'emerald-luxury', title: '🌿 زمردی لوکس و طلایی', icon: '🌿', metaColor: '#03110e' },
   { id: 'royal-galaxy', title: '💜 بنفش کهکشانی لوکس', icon: '💜', metaColor: '#080514' },
@@ -13537,7 +14145,7 @@ window.setCyberThemeMode = function(mode) {
   let norm = mode;
   if (norm === 'dark') norm = 'cyber-dark';
   const validIds = THEME_MODES_V59.map(x => x.id);
-  if (!validIds.includes(norm)) norm = 'cyber-dark';
+  if (!validIds.includes(norm)) norm = 'classic-orange';
 
   document.documentElement.setAttribute('data-theme-mode', norm);
   document.body.setAttribute('data-theme-mode', norm);
@@ -13592,7 +14200,7 @@ window.setCyberThemeMode = function(mode) {
 };
 
 toggleTheme = function() {
-  const cur = localStorage.getItem('danesh_theme_v5') || 'cyber-dark';
+  const cur = localStorage.getItem('danesh_theme_v5') || 'classic-orange';
   const ids = THEME_MODES_V59.map(x => x.id);
   const nextIdx = (ids.indexOf(cur) + 1) % ids.length;
   const next = THEME_MODES_V59[nextIdx];
@@ -17545,6 +18153,510 @@ avgGrade = function(st) {
   });
   return wSum > 0 ? window.roundByConfigurableStep(sw / wSum) : null;
 };
+
+
+/* ==================== بهینه‌سازی‌های هوشمند نسخه v6.1.0 Pro ==================== */
+
+// ۱. اطمینان از اعمال کلاس theme-cyber-dark در صورت انتخاب تم سایبری تاریک و مهاجرت پیش‌فرض به تم نارنجی کلاسیک
+(function upgradeThemeAndCleanDataV61() {
+  const _origSetTheme = window.setCyberThemeMode;
+  window.setCyberThemeMode = function(mode) {
+    if (_origSetTheme) _origSetTheme(mode);
+    let norm = mode;
+    if (norm === 'dark') norm = 'cyber-dark';
+    document.body.classList.toggle('theme-cyber-dark', norm === 'cyber-dark');
+  };
+
+  if (!localStorage.getItem('danesh_default_orange_v61_migrated')) {
+    try {
+      localStorage.setItem('danesh_theme_v5', 'classic-orange');
+      localStorage.setItem('danesh_theme', 'light');
+      localStorage.setItem('danesh_default_orange_v61_migrated', '1');
+    } catch (_) {}
+  }
+  window.setCyberThemeMode(localStorage.getItem('danesh_theme_v5') || 'classic-orange');
+})();
+
+// ۲. پاک‌سازی خودکار عبارت «کپی» یا «-» اضافه در نام دانش‌آموزان و حذف موارد تکراری در تولدهای نزدیک
+(function enhanceBirthdaysAndCleanCopyNamesV61() {
+  const cleanCopyToken = (str) => {
+    if (!str) return '';
+    return String(str)
+      .replace(/^[\s\-_]*کپی[\s\-_]*/g, '')
+      .replace(/[\s\-_]*کپی[\s\-_]*$/g, '')
+      .replace(/^[\s\-_]+|[\s\-_]+$/g, '')
+      .trim();
+  };
+
+  const _origRunDiag = window.runSmartAppDiagnostics;
+  window.runSmartAppDiagnostics = function(showUiFeedback = false) {
+    if (db && Array.isArray(db.schools)) {
+      let cleanedNames = 0;
+      db.schools.forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+        const nf = cleanCopyToken(st.name);
+        const nl = cleanCopyToken(st.lastName);
+        if (nf !== (st.name || '') || nl !== (st.lastName || '')) {
+          if (nf) st.name = nf;
+          if (nl) st.lastName = nl;
+          cleanedNames++;
+        }
+      })));
+      if (cleanedNames > 0) savePersistent();
+    }
+    return _origRunDiag ? _origRunDiag(showUiFeedback) : null;
+  };
+
+  // بازنویسی renderDashBirthdays با حذف کامل رکوردهای تکراری (Deduplication)
+  window.renderDashBirthdays = function() {
+    const box = document.getElementById('dashBirthdaysBox');
+    if (!box) return;
+    if (!isFeatOn('feat_dash_birthdays')) { box.innerHTML = ''; return; }
+    const tp = jalaliPartsFromISO(localISODate());
+    if (!tp) return;
+    const todayDOY = getJalaliDayOfYear(tp.m, tp.d);
+    const upcomings = [];
+    const seenKeys = new Set();
+
+    (db.schools || []).forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+      if (!st.birth) return;
+      const m = enDigits(st.birth).match(/(\d{2,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+      if (m) {
+        let diff = getJalaliDayOfYear(+m[2], +m[3]) - todayDOY;
+        if (diff < 0) diff += 365;
+        if (diff <= 7) {
+          const normName = `${cleanCopyToken(st.lastName)}|${cleanCopyToken(st.name)}|${+m[2]}/${+m[3]}`.replace(/\s+/g, '');
+          if (!seenKeys.has(normName)) {
+            seenKeys.add(normName);
+            upcomings.push({ s, c, st, bDay: +m[3], bMonth: +m[2], diff });
+          }
+        }
+      }
+    })));
+
+    upcomings.sort((a, b) => a.diff - b.diff || (a.st.lastName || '').localeCompare(b.st.lastName || '', 'fa'));
+    box.innerHTML = upcomings.length ? `<div class="dash-b-card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><b style="color:var(--primary);font-size:14px">🎂 تولدهای نزدیک (${fa(upcomings.length)} نفر)</b><button class="link" style="font-size:11.5px" onclick="showView('birthdays')">همه تولدها ←</button></div>${upcomings.map(x => `<div class="dash-b-item"><div><b style="color:var(--primary-dark);font-size:13.5px;display:block">${formatStudentName(x.st)}</b><span class="muted">${esc(window.cleanClassDisplayName ? window.cleanClassDisplayName(x.c.name) : x.c.name)} · ${x.diff === 0 ? '🎉 امروز!' : `${fa(x.bDay)} / ${fa(x.bMonth)}`}</span></div><button class="btn soft btn-sm" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 پیام تبریک</button></div>`).join('')}</div>` : '';
+  };
+})();
+
+// ۳. گروه‌بندی هوشمند اعلان‌های زنگوله (🔔) بر اساس کلاس تا به جای عدد «۹۹» تعداد واقعی و کاربردی هشدارها نمایش داده شود
+window.collectActiveNotifications = function() {
+  const cfg = window.getNotifSettings();
+  const items = [];
+  const todayISO = localISODate();
+  const tp = jalaliPartsFromISO(todayISO);
+  const todayDOY = tp ? getJalaliDayOfYear(tp.m, tp.d) : 1;
+
+  // ۱. یادآوری‌های شخصی معلم
+  window.getTeacherReminders().filter(r => !r.done).forEach(r => {
+    items.push({
+      type: 'reminder',
+      icon: '⏰',
+      color: 'var(--neon-purple)',
+      title: `یادآوری شخصی: ${r.title}`,
+      sub: `تاریخ: ${r.dateJ}`,
+      actionHtml: `<button type="button" class="btn soft btn-sm" onclick="toggleTeacherReminderDone('${r.id}')">✓ انجام شد</button>`
+    });
+  });
+
+  // ۲. تولدهای امروز و نزدیک (حداکثر تا ۷ روز آینده، بدون تکرار)
+  if (cfg.notif_birthdays && tp) {
+    const seenB = new Set();
+    (db.schools || []).forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+      if (!st.birth) return;
+      const m = enDigits(st.birth).match(/(\d{2,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+      if (m) {
+        let diff = getJalaliDayOfYear(+m[2], +m[3]) - todayDOY;
+        if (diff < 0) diff += 365;
+        if (diff <= 7) {
+          const k = `${st.lastName}|${st.name}|${+m[2]}/${+m[3]}`;
+          if (!seenB.has(k)) {
+            seenB.add(k);
+            items.push({
+              type: 'birthday',
+              icon: '🎂',
+              color: 'var(--primary)',
+              title: `تولد ${st.name} ${st.lastName} (${diff === 0 ? '🎉 امروز!' : fa(diff) + ' روز دیگر'})`,
+              sub: `${s.name} · کلاس ${window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name}`,
+              actionHtml: `<button type="button" class="btn primary btn-sm" onclick="closeModal();openBirthdaySender('${st.id}','${c.id}','${s.id}')">💌 ارسال تبریک</button>`
+            });
+          }
+        }
+      }
+    })));
+  }
+
+  // ۳. برنامه کلاس‌های امروز
+  if (cfg.notif_schedule) {
+    (db.schools || []).forEach(s => (s.classes || []).forEach(c => {
+      if (attendanceDates(c).includes(todayISO)) {
+        items.push({
+          type: 'schedule',
+          icon: '🏫',
+          color: 'var(--neon-green)',
+          title: `برنامه امروز: کلاس ${window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name} (${s.name})`,
+          sub: `${fa((c.students || []).length)} دانش‌آموز`,
+          actionHtml: `<button type="button" class="btn soft btn-sm" onclick="closeModal();openClass('${s.id}','${c.id}');setTimeout(()=>openTodayList('${s.id}','${c.id}'),60)">📄 لیست امروز</button>`
+        });
+      }
+    }));
+  }
+
+  // ۴. هشدار غیبت‌های مکرر (گروه‌بندی‌شده به تفکیک هر کلاس تا زنگوله شلوغ نشود)
+  if (cfg.notif_absence) {
+    (db.schools || []).forEach(s => (s.classes || []).forEach(c => {
+      const absStudents = (c.students || []).filter(st => {
+        const cnt = Object.keys(c.attendance || {}).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+        return cnt >= 3;
+      });
+      if (absStudents.length > 0) {
+        const sampleNames = absStudents.slice(0, 3).map(st => `${st.lastName} ${st.name}`).join('، ') + (absStudents.length > 3 ? ' و ...' : '');
+        items.push({
+          type: 'absence',
+          icon: '📅',
+          color: '#D97706',
+          title: `غیبت مکرر در کلاس ${window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name} (${fa(absStudents.length)} نفر)`,
+          sub: `${s.name} — ${sampleNames}`,
+          actionHtml: `<button type="button" class="btn gray btn-sm" onclick="closeModal();window._statusFilterSid='${s.id}';window._statusFilterCid='${c.id}';showView('statuses');selectAttnCategoryTab('absence')">بررسی</button>`
+        });
+      }
+    }));
+  }
+
+  // ۵. دانش‌آموزان نیازمند توجه (گروه‌بندی‌شده به تفکیک هر کلاس برای نمایش تمیز و کاربردی)
+  if (cfg.notif_attn) {
+    (db.schools || []).forEach(s => (s.classes || []).forEach(c => {
+      const attnStudents = (c.students || []).filter(st => isAutoAttention(c, st));
+      if (attnStudents.length > 0) {
+        const sampleNames = attnStudents.slice(0, 3).map(st => `${st.lastName} ${st.name}`).join('، ') + (attnStudents.length > 3 ? ' و ...' : '');
+        items.push({
+          type: 'attn',
+          icon: '🚨',
+          color: 'var(--neon-red)',
+          title: `نیازمند توجه در کلاس ${window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name} (${fa(attnStudents.length)} نفر)`,
+          sub: `${s.name} — ${sampleNames}`,
+          actionHtml: `<button type="button" class="btn soft btn-sm" onclick="closeModal();window._statusFilterSid='${s.id}';window._statusFilterCid='${c.id}';showView('statuses');selectAttnCategoryTab('all')">مشاهده</button>`
+        });
+      }
+    }));
+  }
+
+  return items;
+};
+
+// ۴. مخفی شدن هوشمند دکمه شناور + هنگام اسکرول به پایین تا روی دکمه‌های «پیام تبریک» یا ردیف‌های پایین نیفتد
+(function setupSmartFabAutoHideV61() {
+  let lastScrollY = window.scrollY || 0;
+  window.addEventListener('scroll', () => {
+    const fab = document.getElementById('mainFabBtn');
+    if (!fab || fab.classList.contains('hidden-fab')) return;
+    const curY = window.scrollY || 0;
+    if (curY > lastScrollY + 18 && curY > 90) {
+      fab.classList.add('scroll-hide-fab');
+    } else if (curY < lastScrollY - 10 || curY < 50) {
+      fab.classList.remove('scroll-hide-fab');
+    }
+    lastScrollY = curY;
+  }, { passive: true });
+})();
+
+
+/* ==================== توابع کشویی، پالت فرماندهی و ورود دسته‌جمعی نسخه v6.2.0 Pro ==================== */
+
+// ۱. باز و بسته کردن کشوی ابزارهای نوار بالا (Topbar Quick-Tools Drawer)
+window.toggleTopQuickDrawer = function(ev) {
+  if (ev) ev.stopPropagation();
+  const cap = document.getElementById('topIconsCapsule');
+  const btn = document.getElementById('topDrawerToggleBtn');
+  const icon = document.getElementById('topDrawerToggleIcon');
+  if (!cap) return;
+  const isOpen = cap.classList.toggle('drawer-open');
+  if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  if (icon) icon.textContent = isOpen ? '✖' : '⚡';
+};
+
+// بستن خودکار کشوی بالا هنگام لمس بیرون از آن یا تغییر صفحه
+document.addEventListener('click', (ev) => {
+  const cap = document.getElementById('topIconsCapsule');
+  if (cap && cap.classList.contains('drawer-open') && !cap.contains(ev.target)) {
+    cap.classList.remove('drawer-open');
+    const icon = document.getElementById('topDrawerToggleIcon');
+    if (icon) icon.textContent = '⚡';
+  }
+});
+
+// ۲. جمع‌کردن یا بازکردن پنل فرماندهی JARVIS در داشبورد (ذخیره در حافظه)
+window.toggleJarvisDeckCollapse = function(forceState = null) {
+  const deck = document.getElementById('jarvisCommandDeck');
+  const btn = document.getElementById('jarvisCollapseBtn');
+  if (!deck) return;
+  const isCollapsed = forceState !== null ? forceState : !deck.classList.contains('deck-collapsed');
+  deck.classList.toggle('deck-collapsed', isCollapsed);
+  if (btn) {
+    btn.textContent = isCollapsed ? '🔽' : '🔼';
+    btn.title = isCollapsed ? 'بازکردن پنل کامل فرماندهی' : 'جمع‌کردن پنل فرماندهی برای فضای بیشتر';
+  }
+  try { localStorage.setItem('danesh_jarvis_collapsed', isCollapsed ? '1' : '0'); } catch (_) {}
+};
+
+// ۳. جمع‌کردن یا بازکردن دکمه‌های بالای آزمون‌ساز برای تمرکز روی سوالات
+window.toggleExamTopToolsCollapse = function(forceState = null) {
+  const box = document.querySelector('#examView .exam-top-actions');
+  const btn = document.getElementById('examTopCollapseBtn');
+  if (!box) return;
+  const isCollapsed = forceState !== null ? forceState : !box.classList.contains('exam-tools-collapsed');
+  box.classList.toggle('exam-tools-collapsed', isCollapsed);
+  if (btn) {
+    btn.textContent = isCollapsed ? '🔽' : '🔼';
+  }
+};
+
+// ۴. پرش ۱کلیکی به لیست حاضری امروز اولین کلاس فعال
+window.openQuickTodayClassJump = function() {
+  const s = findSchool(currentSchoolId) || db.schools?.[0];
+  const c = s ? (findClass(s.id, currentClassId) || s.classes?.[0]) : null;
+  if (!s || !c) {
+    showView('schools');
+    toast('ابتدا مدرسه و کلاس خود را انتخاب یا ایجاد کنید 🏫');
+    return;
+  }
+  openClass(s.id, c.id);
+  setTimeout(() => openTodayList(s.id, c.id), 60);
+};
+
+// ۵. پالت فرماندهی و جستجوی فوق‌سریع سراسری (Smart Command Palette — Ctrl+K / 🔍)
+window.openSmartCommandPalette = function() {
+  openModal(formHeader('⚡ پالت فرماندهی و جستجوی فوق‌سریع کل برنامه') + `
+    <div class="searchbox" style="margin:0 0 10px">
+      <span>🔍</span>
+      <input type="search" id="cmdPaletteSearchInp" placeholder="نام دانش‌آموز، کلاس، مدرسه یا دستور (مثلاً: آزمون، پشتیبان، گروه، تولد)..." oninput="renderSmartCommandPaletteResults(this.value)" autofocus>
+    </div>
+    <div id="cmdPaletteResultsBox" style="display:grid;gap:6px;max-height:56vh;overflow-y:auto"></div>
+    <div class="formactions">
+      <button type="button" class="btn soft" onclick="closeModal();showView('search')">🔍 صفحه جستجوی پیشرفته</button>
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+  window.renderSmartCommandPaletteResults('');
+  setTimeout(() => document.getElementById('cmdPaletteSearchInp')?.focus(), 60);
+};
+
+window.renderSmartCommandPaletteResults = function(query = '') {
+  const box = document.getElementById('cmdPaletteResultsBox');
+  if (!box) return;
+  const q = (query || '').trim().toLowerCase();
+  const results = [];
+
+  // دستورات سریع برنامه
+  const commands = [
+    { icon: '📋', title: 'لیست حضور و غیاب سریع امروز', sub: 'ثبت حاضری، نمره جلسه و مثبت/منفی امروز', act: "closeModal();openQuickTodayClassJump()" },
+    { icon: '📥', title: 'ورود دسته‌جمعی دانش‌آموزان از اکسل / شاد / متن', sub: 'افزودن ۳۰ دانش‌آموز به کلاس در چند ثانیه با کپی و پیست', act: "closeModal();openExcelPasteImportModal()" },
+    { icon: '🌐', title: 'ساخت لینک اختصاصی حضور و غیاب و آزمون آنلاین', sub: 'ارسال لینک در شاد و ایتا با ثبت خودکار سلفی و نمره', act: "closeModal();showView('onlineClassView')" },
+    { icon: '💎', title: 'طراحی برگه امتحانی A4 و تصحیح هوشمند با عکس', sub: 'آزمون‌ساز الماس با تراز بارم و ۴ شعبه', act: "closeModal();showView('examView')" },
+    { icon: '📖', title: 'کتاب‌خوان PDF و ساخت جزوه رنگی «بچه درس‌خون»', sub: 'استخراج سوالات درشت یا ریزبه‌ریز از صفحه کتاب', act: "closeModal();showView('teachView')" },
+    { icon: '🎨', title: 'دریافت خروجی اکسل و Word رنگی و زنده', sub: 'گزارش تفکیکی هر مدرسه، هر کلاس و کارنامه اولیا', act: "closeModal();openQuickExportForTarget('all')" },
+    { icon: '🛠️', title: 'تعمیرکار هوشمند اسامی و ادغام تکراری‌ها', sub: 'حذف عبارت کپی، اصلاح شماره‌ها و ادغام رکوردها', act: "closeModal();openSmartStudentRepairModal()" },
+    { icon: '☁️', title: 'پشتیبان‌گیری ابری جیمیل و گاوصندوق داخلی', sub: 'ذخیره امن با فشرده‌سازی GZIP', act: "closeModal();openTeacherAccountModal()" }
+  ];
+
+  commands.forEach(cmd => {
+    if (!q || cmd.title.toLowerCase().includes(q) || cmd.sub.toLowerCase().includes(q)) {
+      results.push(`
+        <div class="cmd-palette-item" onclick="${cmd.act}">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:20px">${cmd.icon}</span>
+            <div>
+              <b style="font-size:13px;display:block;color:var(--text-main)">${esc(cmd.title)}</b>
+              <span class="muted" style="font-size:11px">${esc(cmd.sub)}</span>
+            </div>
+          </div>
+          <span class="chip" style="font-size:10px">اجرا ↵</span>
+        </div>
+      `);
+    }
+  });
+
+  // جستجوی کلاس‌ها و دانش‌آموزان
+  (db.schools || []).forEach(s => {
+    (s.classes || []).forEach(c => {
+      const cNameClean = window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name;
+      if (q && (cNameClean.toLowerCase().includes(q) || s.name.toLowerCase().includes(q))) {
+        results.push(`
+          <div class="cmd-palette-item" onclick="closeModal();openClass('${s.id}','${c.id}')">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:20px">🚪</span>
+              <div>
+                <b style="font-size:13px;display:block;color:var(--primary)">کلاس ${esc(cNameClean)} (${esc(s.name)})</b>
+                <span class="muted" style="font-size:11px">${fa((c.students || []).length)} دانش‌آموز · ورود مستقیم به کلاس</span>
+              </div>
+            </div>
+            <span class="chip">کلاس</span>
+          </div>
+        `);
+      }
+      (c.students || []).forEach(st => {
+        const full = `${st.lastName || ''} ${st.name || ''} ${st.fatherName || ''}`.toLowerCase();
+        if (q && full.includes(q)) {
+          const fin = calculateFinalStudentScore(c, st);
+          results.push(`
+            <div class="cmd-palette-item" onclick="closeModal();openStudent('${s.id}','${c.id}','${st.id}')">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:20px">👨‍🎓</span>
+                <div>
+                  <b style="font-size:13px;display:block">${formatStudentName(st)}</b>
+                  <span class="muted" style="font-size:11px">${esc(s.name)} · کلاس ${esc(cNameClean)} · نمره نهایی: <b>${fmtScore(fin)}</b></span>
+                </div>
+              </div>
+              <span class="chip">پرونده</span>
+            </div>
+          `);
+        }
+      });
+    });
+  });
+
+  box.innerHTML = results.slice(0, 25).join('') || '<div class="muted" style="padding:18px;text-align:center">موردی یافت نشد.</div>';
+};
+
+// میانبر کیبورد Ctrl+K یا / برای باز شدن پالت فرماندهی
+document.addEventListener('keydown', (ev) => {
+  if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === 'k') {
+    ev.preventDefault();
+    window.openSmartCommandPalette();
+  }
+});
+
+// ۶. ورود دسته‌جمعی فوق‌سریع اسامی دانش‌آموزان از اکسل، شاد یا لیست متنی (Smart Bulk Roster Importer)
+window.openExcelPasteImportModal = function(preSid = null, preCid = null) {
+  let s = findSchool(preSid || currentSchoolId) || db.schools?.[0];
+  if (!s) {
+    s = { id: uid(), name: 'مدرسه من', year: '۱۴۰۵-۱۴۰۶', photos: [], classes: [] };
+    db.schools.push(s);
+  }
+  if (!s.classes?.length) {
+    s.classes.push({ id: uid(), name: 'هفتم الف', grade: 'هفتم', photos: [], students: [], attendance: {}, termScores: {}, contExamScores: {}, sessionNotes: {} });
+  }
+  const c = findClass(s.id, preCid || currentClassId) || s.classes[0];
+
+  const classOpts = [];
+  db.schools.forEach(sch => (sch.classes || []).forEach(cl => {
+    classOpts.push(`<option value="${sch.id}|${cl.id}" ${(sch.id === s.id && cl.id === c.id) ? 'selected' : ''}>🏫 ${esc(sch.name)} — 🚪 ${esc(window.cleanClassDisplayName ? window.cleanClassDisplayName(cl.name) : cl.name)} (${fa(cl.students.length)} نفر)</option>`);
+  }));
+
+  openModal(formHeader('📥 ورود دسته‌جمعی اسامی دانش‌آموزان (از اکسل / سیدا / شاد)') + `
+    <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
+      <b style="color:var(--primary);font-size:13px">⚡ ثبت ۳۰ دانش‌آموز در ۵ ثانیه (بدون تایپ تک‌به‌تک)</b>
+      <div class="muted" style="font-size:11.5px;margin-top:4px;line-height:1.65">
+        لیست اسامی دانش‌آموزان را از فایل اکسل (سیدا)، جدول Word یا پیام گروه شاد کپی کرده و در کادر زیر پیست کنید. هر سطر یک دانش‌آموز است (می‌تواند شامل <b>نام و نام خانوادگی</b>، و در صورت وجود با خط تیره یا تب: <b>نام پدر</b> و <b>تلفن</b> باشد).
+      </div>
+    </div>
+    <div class="field" style="margin-bottom:8px">
+      <label>🚪 افزودن به کدام کلاس؟</label>
+      <select id="bulkRosterClassSel">${classOpts.join('')}</select>
+    </div>
+    <div class="field">
+      <label>📋 لیست اسامی (هر خط یک دانش‌آموز):</label>
+      <textarea id="bulkRosterTextInp" rows="6" placeholder="مثال: علی رضایی - محمد - 09121112233 | امیرحسین محمدی | ۱. مهدی کریمی"></textarea>
+    </div>
+    <div class="formactions">
+      <button type="button" class="btn primary" onclick="executeBulkRosterImport()">🚀 استخراج و ثبت یکجای دانش‌آموزان</button>
+      <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+};
+
+window.executeBulkRosterImport = function() {
+  const selVal = document.getElementById('bulkRosterClassSel')?.value || '';
+  const [sid, cid] = selVal.split('|');
+  const c = findClass(sid, cid);
+  const raw = (document.getElementById('bulkRosterTextInp')?.value || '').trim();
+  if (!c || !raw) {
+    toast('لطفاً لیست اسامی را وارد کنید.');
+    return;
+  }
+  const lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  let added = 0;
+  pushUndo('ورود دسته‌جمعی دانش‌آموزان');
+
+  lines.forEach(line => {
+    // حذف شماره ردیف ابتدای خط (مثلاً "1." یا "۱۲-")
+    let cl = enDigits(line).replace(/^\d+[\.\-\)\s]+/, '').trim();
+    if (!cl) return;
+    const parts = cl.split(/[	\|\-،,]+/).map(p => p.trim()).filter(Boolean);
+    const fullName = parts[0] || '';
+    if (!fullName) return;
+    const nameTokens = fullName.split(/\s+/);
+    let firstName = fullName, lastName = '';
+    if (nameTokens.length >= 2) {
+      firstName = nameTokens[0];
+      lastName = nameTokens.slice(1).join(' ');
+    }
+    const fatherName = (parts[1] || '').replace(/^پدر[:\s]*/, '').trim();
+    const phone = (parts[2] || '').replace(/[^\d+]/g, '').trim();
+
+    const exists = (c.students || []).some(st => `${st.name} ${st.lastName}`.trim() === `${firstName} ${lastName}`.trim());
+    if (!exists) {
+      c.students.push({
+        id: uid(),
+        name: firstName,
+        lastName: lastName || firstName,
+        fatherName: fatherName,
+        phone: phone,
+        birth: '',
+        photo: '',
+        interests: '',
+        notes: '',
+        status: 'none',
+        behavior: { positives: [], negatives: [] },
+        grades: [],
+        examPapers: []
+      });
+      added++;
+    }
+  });
+
+  closeModal();
+  save();
+  openClass(sid, cid);
+  toast(`✅ تعداد ${fa(added)} دانش‌آموز با موفقیت به کلاس «${c.name}» اضافه شدند!`);
+};
+
+// ۷. اسکرول خودکار تب فعال به وسط نوار کشویی افقی (Auto-Center Active Tab Pill)
+window.centerActivePillInStrip = function(btnEl) {
+  if (!btnEl || !btnEl.parentElement) return;
+  try {
+    btnEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  } catch (_) {}
+};
+
+(function hookSmoothTabCarouselsV62() {
+  if (localStorage.getItem('danesh_jarvis_collapsed') === '1') {
+    setTimeout(() => window.toggleJarvisDeckCollapse(true), 50);
+  }
+
+  const _origOpenSetTab = window.openSettingsTab;
+  window.openSettingsTab = function(tabId, btnEl) {
+    if (_origOpenSetTab) _origOpenSetTab(tabId, btnEl);
+    const activeBtn = btnEl || document.querySelector(`#settingsTabsBar .set-tab-btn[data-stab="${tabId}"]`);
+    window.centerActivePillInStrip(activeBtn);
+  };
+
+  if (window.ExamApp && ExamApp.openTab) {
+    const _origExOpenTab = ExamApp.openTab.bind(ExamApp);
+    ExamApp.openTab = function(id, btn) {
+      _origExOpenTab(id, btn);
+      window.centerActivePillInStrip(btn);
+    };
+  }
+
+  if (window.TeachAssistant && TeachAssistant.openWorkbenchTab) {
+    const _origWbTab = TeachAssistant.openWorkbenchTab.bind(TeachAssistant);
+    TeachAssistant.openWorkbenchTab = function(tabId) {
+      _origWbTab(tabId);
+      const btn = document.getElementById('wbTabBtn-' + tabId);
+      window.centerActivePillInStrip(btn);
+    };
+  }
+})();
 
 </script>
 </body>
