@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="6.2.0">
+<meta name="version" content="7.1.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -3739,6 +3739,670 @@ body.theme-classic-orange .toast {
   }
 }
 
+
+/* ==================== استایل منوی تنظیمات اختصاصی و صفحه ورود ۱کلیکی گوگل (نسخه v7.0.0 Pro) ==================== */
+
+/* ۱. صفحه ورود و ایجاد اکانت ۱کلیکی در ابتدای برنامه (Sign in with Google Onboarding) */
+.auth-onboarding-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: radial-gradient(circle at 50% 20%, rgba(255, 247, 237, 0.98) 0%, rgba(255, 237, 213, 0.99) 100%);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+body.dark .auth-onboarding-overlay {
+  background: radial-gradient(circle at 50% 20%, rgba(15, 23, 42, 0.97) 0%, rgba(5, 9, 20, 0.99) 100%);
+}
+.auth-onboarding-card {
+  width: 100%;
+  max-width: 430px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 26px;
+  padding: 24px 20px 20px;
+  box-shadow: 0 20px 50px rgba(234, 88, 12, 0.16), 0 4px 16px rgba(15, 23, 42, 0.08);
+  text-align: center;
+  animation: topDrawerPop 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.auth-logo-badge {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  margin: 0 auto 12px;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFF7ED 100%);
+  border: 2.5px solid #FDBA74;
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.22);
+  display: grid;
+  place-items: center;
+}
+.auth-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text-main);
+  margin: 0 0 6px;
+}
+.auth-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+.auth-google-hero-btn {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 14px;
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 2px solid #CBD5E1 !important;
+  font-size: 14px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.auth-google-hero-btn:hover, .auth-google-hero-btn:active {
+  border-color: #2563EB !important;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.18);
+  transform: translateY(-1px);
+}
+.auth-divider {
+  position: relative;
+  margin: 14px 0 12px;
+  text-align: center;
+}
+.auth-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--border);
+}
+.auth-divider span {
+  position: relative;
+  background: var(--bg-card);
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+.auth-quick-form {
+  display: grid;
+  gap: 8px;
+  text-align: right;
+}
+.auth-skip-guest-btn {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+.auth-skip-guest-btn:hover {
+  color: var(--primary);
+}
+
+/* ۲. طراحی منوی تنظیمات دقیقاً استاندارد (Modern Profile & Grouped Menu) */
+.tg-settings-home {
+  max-width: 680px;
+  margin: 0 auto;
+  padding-bottom: 12px;
+}
+.tg-top-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.tg-top-icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  font-size: 18px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+.tg-sync-pill {
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.tg-profile-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 8px 12px 18px;
+}
+.tg-avatar-ring-wrap {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  margin-bottom: 12px;
+}
+.tg-avatar-circle {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FB923C, #EA580C);
+  color: #FFFFFF;
+  font-size: 40px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 3.5px solid #FFFFFF;
+  box-shadow: 0 10px 26px rgba(234, 88, 12, 0.25);
+  cursor: pointer;
+}
+.tg-avatar-circle img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+.tg-camera-fab {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38BDF8, #0284C7);
+  color: #FFFFFF;
+  border: 2.5px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.16s ease;
+}
+.tg-camera-fab:active {
+  transform: scale(0.92);
+}
+.tg-profile-name {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
+  cursor: pointer;
+}
+.tg-profile-meta {
+  margin-top: 4px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-family: 'Vazirmatn', Tahoma, monospace;
+}
+.tg-profile-bio {
+  margin-top: 5px;
+  font-size: 11.5px;
+  color: var(--primary);
+  font-weight: 700;
+  background: var(--primary-light);
+  padding: 3px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* کارت میانی وضعیت امنیت و همگام‌سازی ابری () */
+.tg-security-prompt-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+.tg-security-prompt-card b {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 900;
+  color: var(--text-main);
+  margin-bottom: 5px;
+}
+.tg-security-prompt-card p {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.tg-security-btn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.tg-sec-btn {
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.tg-sec-btn.primary {
+  background: linear-gradient(135deg, #2563EB, #0284C7);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
+}
+.tg-sec-btn.soft {
+  background: linear-gradient(135deg, #F97316, #EA580C);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);
+}
+
+/* کارت بخش‌ها (حساب‌های کاربری و لیست منوی تنظیمات) */
+.tg-section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+.tg-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 12.5px;
+  font-weight: 900;
+  color: #0284C7;
+}
+body.theme-classic-orange .tg-section-header {
+  color: var(--primary);
+}
+.tg-add-acc-link {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 11.5px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.tg-account-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 6px;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background 0.16s ease;
+}
+.tg-account-row:last-child {
+  border-bottom: none;
+}
+.tg-account-row:hover {
+  background: var(--bg-panel);
+}
+.tg-acc-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #F97316, #EA580C);
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+.tg-acc-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+.tg-acc-count-pill {
+  background: #0284C7;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 2px 9px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+body.theme-classic-orange .tg-acc-count-pill {
+  background: var(--primary);
+}
+
+/* ردیف‌های منوی اصلی تنظیمات اختصاصی */
+.tg-menu-list-card {
+  padding: 6px 10px;
+}
+.tg-menu-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 11px 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+  border-radius: 13px;
+  transition: background 0.16s ease, transform 0.14s ease;
+}
+.tg-menu-row:last-child {
+  border-bottom: none;
+}
+.tg-menu-row:hover, .tg-menu-row:active {
+  background: var(--bg-panel);
+}
+.tg-menu-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+}
+.tg-menu-text {
+  flex: 1;
+  min-width: 0;
+}
+.tg-menu-text b {
+  display: block;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+.tg-menu-text span {
+  display: block;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tg-menu-chevron {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text-muted);
+  padding: 0 4px;
+}
+
+.tg-subpage-header {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-shadow: var(--shadow);
+}
+
+
+/* ==================== استایل منوی تنظیمات کپسولی، شیک و مینیمال (اختصاصی دانش‌آموز من — نسخه v7.1 Pro) ==================== */
+
+.ws-settings-home {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 4px 2px 18px;
+}
+.ws-settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 4px 14px;
+}
+.ws-settings-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--text-main);
+  letter-spacing: -0.2px;
+  text-align: center;
+}
+.ws-back-chevron-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-main);
+  display: grid;
+  place-items: center;
+  border: 1px solid transparent;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+.ws-back-chevron-btn:hover, .ws-back-chevron-btn:active {
+  background: var(--bg-panel);
+  border-color: var(--border);
+}
+
+/* بنر جمع‌وجور پروفایل بالای کارت‌های کپسولی */
+.ws-account-mini-banner {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 13px;
+  margin-bottom: 14px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.18s ease;
+}
+.ws-account-mini-banner:hover {
+  border-color: var(--primary);
+}
+.ws-mini-avatar-wrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+.ws-mini-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FB923C, #EA580C);
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.22);
+}
+.ws-mini-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+.ws-mini-cam-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0284C7;
+  color: #FFFFFF;
+  border: 1.5px solid #FFFFFF;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.ws-mini-info {
+  flex: 1;
+  min-width: 0;
+}
+.ws-mini-info b {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 900;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ws-mini-info span {
+  display: block;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+.ws-mini-sync-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  font-size: 10.5px;
+  font-weight: 800;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* استک کپسول‌های تنظیمات دقیقاً :
+   آیکون در سمت چپ، متن عنوان در کنار آیکون، فلش > در سمت راست، فاصله یکنواخت و گوشه‌های گرد 15px */
+.ws-pills-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.ws-pill-row {
+  width: 100%;
+  min-height: 56px;
+  padding: 13px 18px;
+  border-radius: 15px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+}
+/* در تم‌های تیره (سایبری تاریک، نارنجی تیره، زمردی، کهکشانی) دقیقاً حس کپسول‌های تیره اسکرین‌شات DaneshAmooz را دارد */
+body.dark .ws-pill-row {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.32);
+}
+/* در تم نارنجی و سفید پیش‌فرض، کارت سفید با حاشیه ظریف نارنجی گرم و شیک */
+body.theme-classic-orange .ws-pill-row {
+  background: #FFFFFF;
+  border-color: #FED7AA;
+  box-shadow: 0 5px 16px rgba(234, 88, 12, 0.06);
+}
+.ws-pill-row:hover, .ws-pill-row:active {
+  transform: translateY(-1px);
+  border-color: var(--primary) !important;
+  box-shadow: 0 8px 22px rgba(234, 88, 12, 0.14);
+}
+.ws-pill-icon {
+  width: 26px;
+  height: 26px;
+  display: inline-grid;
+  place-items: center;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+body.dark .ws-pill-icon {
+  color: #F8FAFC;
+}
+.ws-pill-label {
+  flex: 1;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.1px;
+}
+.ws-pill-arrow {
+  display: inline-grid;
+  place-items: center;
+  color: var(--text-muted);
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+/* دکمه کپسولی «خروج» در پایین لیست (وسط‌چین با رنگ نارنجی/طلایی دقیقاً مطابق اسکرین‌شات) */
+.ws-logout-pill {
+  justify-content: center !important;
+  margin-top: 4px;
+  border-color: rgba(234, 88, 12, 0.35) !important;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.09), rgba(234, 88, 12, 0.05)) !important;
+}
+body.dark .ws-logout-pill {
+  background: rgba(245, 158, 11, 0.09) !important;
+  border-color: rgba(245, 158, 11, 0.25) !important;
+}
+.ws-logout-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15.5px;
+  font-weight: 900;
+  color: #EA580C;
+}
+body.dark .ws-logout-inner {
+  color: #F59E0B;
+}
+
+.ws-subpage-header {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow);
+}
+
 </style>
 </head>
 <body class="theme-classic-orange" data-theme-mode="classic-orange">
@@ -3776,6 +4440,57 @@ body.theme-classic-orange .toast {
   <button type="button" class="intro-skip-btn" onclick="dismissCyberIntro()">ورود سریع به داشبورد ⏭️</button>
 </div>
 
+
+<!-- دروازه ورود و ساخت اکانت ۱کلیکی با گوگل / ایمیل (Sign in with Google & Cloud Sync Onboarding) -->
+<div id="googleAuthOnboardingOverlay" class="auth-onboarding-overlay" style="display:none" role="dialog" aria-label="ورود یا ساخت اکانت">
+  <div class="auth-onboarding-card">
+    <div class="auth-logo-badge">
+      <svg viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="authCapGrad" x1="5" y1="9" x2="59" y2="48" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FB923C"/>
+            <stop offset="50%" stop-color="#F97316"/>
+            <stop offset="100%" stop-color="#EA580C"/>
+          </linearGradient>
+        </defs>
+        <path d="M32 8.5L4.5 21.2L32 33.8L59.5 21.2L32 8.5Z" fill="url(#authCapGrad)"/>
+        <path d="M14.5 27.8V39.2C14.5 43.6 22.3 47.2 32 47.2C41.7 47.2 49.5 43.6 49.5 39.2V27.8L32 35.8L14.5 27.8Z" fill="#EA580C"/>
+        <path d="M32 21L53 25.5V38.5" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="53" cy="41.2" r="3.2" fill="#F59E0B"/>
+        <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1 class="auth-title">خوش آمدید به «دانش‌آموز من»</h1>
+    <p class="auth-subtitle">همگام‌سازی ابری هوشمند : با یک کلیک وارد شوید تا آخرین تغییرات، مدارس، کلاس‌ها و تمام عکس‌های شما روی هر دستگاهی خودکار بالا بیاید.</p>
+
+    <!-- دکمه برجسته ۱کلیکی Sign in with Google -->
+    <button type="button" class="auth-google-hero-btn" onclick="triggerOneClickGoogleAuth()">
+      <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      <span>Sign in with Google · ورود ۱کلیکی با گوگل</span>
+    </button>
+
+    <!-- لیست اکانت‌های ذخیره‌شده قبلی برای ورود با یک لمس -->
+    <div id="authSavedAccountsQuickBox" style="margin-top:10px"></div>
+
+    <div class="auth-divider"><span>یا ایجاد / ورود فوری با ایمیل و نام</span></div>
+
+    <div class="auth-quick-form">
+      <input type="email" id="authQuickEmailInp" dir="ltr" placeholder="Email / Gmail (e.g. teacher@gmail.com)" style="text-align:left;font-family:monospace">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+        <input type="text" id="authQuickNameInp" placeholder="نام شما (مثلاً رضا شهابی‌نژاد)">
+        <input type="tel" id="authQuickPhoneInp" dir="ltr" placeholder="موبایل (0912...)" style="text-align:center;font-size:12px">
+      </div>
+      <button type="button" class="btn primary block" style="padding:11px;font-size:13.5px;font-weight:900" onclick="submitQuickEmailOnboarding()">
+        🚀 ورود / ایجاد اکانت با یک کلیک و بارگذاری آخرین تغییرات
+      </button>
+    </div>
+
+    <button type="button" class="auth-skip-guest-btn" onclick="continueAsLocalGuest()">
+      ادامه به صورت آفلاین در همین دستگاه (بدون همگام‌سازی ابری) ←
+    </button>
+  </div>
+</div>
+
 <!-- اعلان به‌روزرسانی نسخه PWA -->
 <div id="swUpdateBanner" class="sw-update-banner">
   <span>🚀 نسخه جدید Cyber-JARVIS آماده است (بدون تغییر در اطلاعات ذخیره‌شده)</span>
@@ -3807,7 +4522,7 @@ body.theme-classic-orange .toast {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v6.2</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.1</span>
         </div>
       </div>
     </div>
@@ -4710,33 +5425,193 @@ body.theme-classic-orange .toast {
 </section>
 
 <section id="backup" class="view">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-    <div>
-      <h1 class="title" style="margin:0">⚙️ مرکز تنظیمات تفکیک‌شده معلم</h1>
-      <p class="subtitle" style="margin:2px 0 0">شخصی‌سازی پوسته (نارنجی/سایبری)، انیمیشن‌ها، ضرایب نمره، کدهای اختصاری، گزارش‌ها و پشتیبان</p>
+  <!-- صفحه اصلی منوی تنظیمات فوق‌مینیمال و کپسولی (اختصاصی دانش‌آموز من) -->
+  <div id="tgSettingsHomeWrap" class="ws-settings-home">
+    <!-- هدر تمیز بالای صفحه تنظیمات (دکمه بازگشت + عنوان وسط «تنظیمات») -->
+    <div class="ws-settings-header">
+      <button type="button" class="ws-back-chevron-btn" onclick="showView('dashboard')" title="بازگشت به خانه" aria-label="بازگشت">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <h1 class="ws-settings-title">تنظیمات</h1>
+      <button type="button" class="ws-back-chevron-btn" onclick="openSmartCommandPalette()" title="جستجوی سریع در تنظیمات" aria-label="جستجو">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+
+    <!-- نوار جمع‌وجور و شیک وضعیت اکانت فعال در بالای کارت‌ها (برای دسترسی سریع به عکس و همگام‌سازی ابری) -->
+    <div class="ws-account-mini-banner" onclick="openCloudSettingsSubpage('account')">
+      <div class="ws-mini-avatar-wrap" onclick="event.stopPropagation();triggerTeacherAvatarPreviewOrUpload()">
+        <div class="ws-mini-avatar" id="tgProfileAvatarBox">
+          <span id="tgProfileAvatarFallback">👨‍🏫</span>
+          <img id="tgProfileAvatarImg" src="" alt="پروفایل" style="display:none">
+        </div>
+        <label class="ws-mini-cam-badge" title="تغییر عکس پروفایل" onclick="event.stopPropagation()">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <input type="file" accept="image/*" hidden onchange="handleTeacherProfileAvatarUpload(event)">
+        </label>
+      </div>
+      <div class="ws-mini-info">
+        <b id="tgProfileNameText">استاد رضا شهابی‌نژاد</b>
+        <span id="tgProfileMetaText" dir="ltr">reza.shahabi@gmail.com</span>
+        <small id="tgProfileBioText" style="display:none"></small>
+      </div>
+      <span id="tgLiveSyncChip" class="ws-mini-sync-pill" onclick="event.stopPropagation();syncAccountNowWithPhotos(false)">☁️ آماده</span>
+    </div>
+
+    <!-- لیست کارت‌های کپسولی یکدست و شیک (دقیقاً مطابق اسکرین‌شات ارسالی) -->
+    <div class="ws-pills-stack" dir="ltr">
+      <!-- ۱. عمومی (فرمول نمره‌دهی، ضرایب، کدهای اختصاری و بخش‌های برنامه) -->
+      <button type="button" class="ws-pill-row" onclick="openCloudSettingsSubpage('rules')">
+        <span class="ws-pill-icon">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="11" height="11" rx="2"/><circle cx="16.5" cy="16.5" r="4.5"/></svg>
+        </span>
+        <span class="ws-pill-label" dir="rtl">عمومی</span>
+        <span class="ws-pill-arrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </button>
+
+      <!-- ۲. حساب (پروفایل، جیمیل، شماره همراه و چنداکانته) -->
+      <button type="button" class="ws-pill-row" onclick="openCloudSettingsSubpage('account')">
+        <span class="ws-pill-icon">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </span>
+        <span class="ws-pill-label" dir="rtl">حساب</span>
+        <span class="ws-pill-arrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </button>
+
+      <!-- ۳. اتصال و همگام‌سازی ابری (پشتیبان ابری با عکس‌ها، گاوصندوق و لینک آنلاین) -->
+      <button type="button" class="ws-pill-row" onclick="openCloudSettingsSubpage('data')">
+        <span class="ws-pill-icon">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>
+        </span>
+        <span class="ws-pill-label" dir="rtl">اتصال</span>
+        <span class="ws-pill-arrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </button>
+
+      <!-- ۴. دستیار هوشمند J.A.R.V.I.S. و گزارش‌های رنگی () -->
+      <button type="button" class="ws-pill-row" onclick="openCloudSettingsSubpage('export')">
+        <span class="ws-pill-icon">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="3" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21" y2="12"/></svg>
+        </span>
+        <span class="ws-pill-label" dir="ltr">J.A.R.V.I.S.</span>
+        <span class="ws-pill-arrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </button>
+
+      <!-- ۵. ظاهر و احساس (پوسته نارنجی، حالت شب و انیمیشن‌ها) -->
+      <button type="button" class="ws-pill-row" onclick="openCloudSettingsSubpage('theme')">
+        <span class="ws-pill-icon">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 4v5h10V4"/></svg>
+        </span>
+        <span class="ws-pill-label" dir="rtl">ظاهر و احساس</span>
+        <span class="ws-pill-arrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </button>
+
+      <!-- ۶. کمکم کنید! (عیب‌یاب خودکار، تعمیرکار هوشمند اسامی و راهنمای معلم) -->
+      <button type="button" class="ws-pill-row" onclick="openCloudSettingsSubpage('help')">
+        <span class="ws-pill-icon">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </span>
+        <span class="ws-pill-label" dir="rtl">کمکم کنید!</span>
+        <span class="ws-pill-arrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </button>
+
+      <!-- ۷. درباره ما (مشخصات نسخه، امکانات و معرفی به همکاران) -->
+      <button type="button" class="ws-pill-row" onclick="openCloudSettingsSubpage('about')">
+        <span class="ws-pill-icon">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/><circle cx="12" cy="12" r="9"/></svg>
+        </span>
+        <span class="ws-pill-label" dir="rtl">درباره ما</span>
+        <span class="ws-pill-arrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </button>
+
+      <!-- ۸. خروج (دکمه کپسولی وسط‌چین با آیکون و متن طلایی/نارنجی دقیقاً مطابق اسکرین‌شات) -->
+      <button type="button" class="ws-pill-row ws-logout-pill" onclick="handleSettingsLogoutAction()">
+        <span class="ws-logout-inner" dir="rtl">
+          <span>خروج</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </span>
+      </button>
     </div>
   </div>
 
-  <!-- نوار تب‌های تفکیک‌شده تنظیمات (۶ دسته مجزا) -->
-  <div class="settings-tabs-bar" id="settingsTabsBar">
-    <button type="button" class="set-tab-btn active" data-stab="theme" onclick="openSettingsTab('theme', this)">
-      <span>🎨</span><span>پوسته و ظاهر</span>
-    </button>
-    <button type="button" class="set-tab-btn" data-stab="rules" onclick="openSettingsTab('rules', this)">
-      <span>⚖️</span><span>فرمول و ضرایب</span>
-    </button>
-    <button type="button" class="set-tab-btn" data-stab="shortcuts" onclick="openSettingsTab('shortcuts', this)">
-      <span>🔤</span><span>کدها و پیامک</span>
-    </button>
-    <button type="button" class="set-tab-btn" data-stab="modules" onclick="openSettingsTab('modules', this)">
-      <span>🎛️</span><span>بخش‌های برنامه</span>
-    </button>
-    <button type="button" class="set-tab-btn" data-stab="export" onclick="openSettingsTab('export', this)">
-      <span>📊</span><span>گزارش و خروجی</span>
-    </button>
-    <button type="button" class="set-tab-btn" data-stab="data" onclick="openSettingsTab('data', this)">
-      <span>💾</span><span>پشتیبان و ابزارها</span>
-    </button>
+  <!-- نوار بازگشت بالای زیرصفحه‌های تنظیمات (وقتی وارد یکی از کارت‌های تنظیمات می‌شویم) -->
+  <div id="tgSubpageHeaderBar" class="ws-subpage-header" style="display:none">
+    <div style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:8px">
+      <button type="button" class="btn soft btn-sm" onclick="backToCloudSettingsHub()">→ بازگشت به تنظیمات</button>
+      <b id="tgSubpageTitleText" style="color:var(--primary);font-size:14.5px">تنظیمات</b>
+    </div>
+    <div class="settings-tabs-bar" id="settingsTabsBar" style="margin:6px 0 0;width:100%">
+      <button type="button" class="set-tab-btn" data-stab="rules" onclick="openCloudSettingsSubpage('rules')"><span>⚙️</span><span>عمومی و ضرایب</span></button>
+      <button type="button" class="set-tab-btn" data-stab="shortcuts" onclick="openCloudSettingsSubpage('shortcuts')"><span>🔤</span><span>کدها و پیامک</span></button>
+      <button type="button" class="set-tab-btn" data-stab="modules" onclick="openCloudSettingsSubpage('modules')"><span>🎛️</span><span>ویجت‌ها</span></button>
+      <button type="button" class="set-tab-btn" data-stab="account" onclick="openCloudSettingsSubpage('account')"><span>👤</span><span>حساب</span></button>
+      <button type="button" class="set-tab-btn" data-stab="data" onclick="openCloudSettingsSubpage('data')"><span>🔌</span><span>اتصال و ابر</span></button>
+      <button type="button" class="set-tab-btn" data-stab="export" onclick="openCloudSettingsSubpage('export')"><span>🤖</span><span>J.A.R.V.I.S و گزارش</span></button>
+      <button type="button" class="set-tab-btn" data-stab="theme" onclick="openCloudSettingsSubpage('theme')"><span>🎨</span><span>ظاهر و احساس</span></button>
+      <button type="button" class="set-tab-btn" data-stab="help" onclick="openCloudSettingsSubpage('help')"><span>❓</span><span>کمکم کنید!</span></button>
+      <button type="button" class="set-tab-btn" data-stab="about" onclick="openCloudSettingsSubpage('about')"><span>ℹ️</span><span>درباره ما</span></button>
+    </div>
+  </div>
+
+  <!-- زیرصفحه ۰: حساب کاربری و پروفایل معلم (ویرایش عکس، نام، شماره، جیمیل، آیدی و بیوگرافی) -->
+  <div id="setPane-account" class="settings-pane">
+    <div class="card" style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <b style="color:var(--primary);font-size:14px">👥 حساب‌های کاربری متصل (جابه‌جایی سریع)</b>
+        <button type="button" class="btn soft btn-sm" onclick="signInWithGoogleQuick()">＋ افزودن حساب جدید</button>
+      </div>
+      <div id="tgAccountsListContainer"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:12px;border-color:var(--primary)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <b style="color:var(--primary);font-size:15px">👤 مشخصات حساب کاربری و پروفایل معلم</b>
+        <button type="button" class="btn soft btn-sm" onclick="signInWithGoogleQuick()">🔵 ورود / تغییر حساب با Google</button>
+      </div>
+      <div class="formgrid">
+        <div class="field">
+          <label>👨‍🏫 نام و نام خانوادگی دبیر:</label>
+          <input type="text" id="tgEditNameInp" placeholder="مثلاً رضا شهابی‌نژاد">
+        </div>
+        <div class="field">
+          <label>🆔 نام کاربری (نام کاربری اختصاصی):</label>
+          <input type="text" id="tgEditUsernameInp" dir="ltr" placeholder="@reza_teacher" style="text-align:left;font-family:monospace">
+        </div>
+        <div class="field">
+          <label>📱 شماره تلفن همراه:</label>
+          <input type="tel" id="tgEditPhoneInp" dir="ltr" placeholder="+98 910 374 1422" style="text-align:left">
+        </div>
+        <div class="field">
+          <label>📧 آدرس جیمیل (متصل به فضای ابری):</label>
+          <input type="email" id="tgEditGmailInp" dir="ltr" placeholder="teacher@gmail.com" style="text-align:left;font-family:monospace">
+        </div>
+        <div class="field full">
+          <label>📝 بیوگرافی / سمت آموزشی (زیر پروفایل نمایش داده می‌شود):</label>
+          <input type="text" id="tgEditBioInp" placeholder="مثلاً: دبیر متوسطه اول و دوم | طراح سوالات مفهومی">
+        </div>
+      </div>
+      <div class="actions" style="margin-top:12px">
+        <button type="button" class="btn primary" style="flex:1" onclick="saveCloudProfileFromPane()">💾 ذخیره پروفایل و همگام‌سازی ابری</button>
+        <button type="button" class="btn green" style="flex:1" onclick="syncAccountNowWithPhotos(false)">☁️ بالا آوردن آخرین تغییرات و عکس‌ها از ابر</button>
+      </div>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+        <button type="button" class="btn gray btn-sm" onclick="openOnboardingAuthScreen()">🔄 رفتن به صفحه ورود اول برنامه (Sign in with Google)</button>
+        <button type="button" class="btn soft btn-sm" onclick="openCreatorSuperAdminModal()">👑 پنل مدیریت سازنده برنامه</button>
+      </div>
+    </div>
   </div>
 
   <!-- تب ۱: پوسته رنگی (شامل نارنجی کلاسیک و سایبری) و انیمیشن‌ها -->
@@ -5006,14 +5881,14 @@ body.theme-classic-orange .toast {
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
         <div>
           <b style="color:var(--primary);font-size:15px">📁 پوشه اختصاصی پشتیبان‌گیری «DaneshAmoozMan_Backups»</b>
-          <p class="muted" style="margin:3px 0 0">ذخیره منظم با نام‌گذاری تاریخ‌دار استاندارد در پوشه مشخص یا ارسال مستقیم به تلگرام / گوگل درایو تا هیچ‌وقت گم نشود</p>
+          <p class="muted" style="margin:3px 0 0">ذخیره منظم با نام‌گذاری تاریخ‌دار استاندارد در پوشه مشخص یا ارسال مستقیم به پیام‌رسان‌ها / گوگل درایو تا هیچ‌وقت گم نشود</p>
         </div>
         <span class="chip" id="dedicatedFolderStatusBadge">📂 پوشه استاندارد فعال</span>
       </div>
 
       <div class="actions" style="margin-top:10px">
         <button type="button" class="btn primary" style="flex:1" onclick="saveBackupToDedicatedFolder('full')">💾 ذخیره در پوشه اختصاصی (کامل)</button>
-        <button type="button" class="btn soft" style="flex:1" onclick="shareBackupFileDirectly('full')">📲 ارسال به تلگرام / گوگل درایو / ایتا</button>
+        <button type="button" class="btn soft" style="flex:1" onclick="shareBackupFileDirectly('full')">📲 اشتراک‌گذاری مستقیم فایل پشتیبان</button>
         <button type="button" class="btn gray" onclick="selectDedicatedBackupDirectory()">📂 تعیین پوشه ثابت در دستگاه</button>
       </div>
       <div class="actions" style="margin-top:7px">
@@ -5066,7 +5941,7 @@ body.theme-classic-orange .toast {
     <!-- ۴. سامانه لینک حضور و غیاب آنلاین و آزمون آنلاین دانش‌آموزان -->
     <div class="card" style="margin-bottom:12px">
       <b style="color:var(--primary);font-size:14.5px">🔗 مرکز لینک آنلاین حضور و غیاب و آزمون دانش‌آموزان</b>
-      <p class="muted" style="margin:4px 0 10px">ساخت لینک اختصاصی برای ارسال در گروه کلاس (شاد، ایتا، تلگرام و...)؛ دانش‌آموز حاضری می‌زند یا امتحان می‌دهد و نتیجه خودکار وارد لیست کلاس می‌شود:</p>
+      <p class="muted" style="margin:4px 0 10px">ساخت لینک اختصاصی برای ارسال در گروه کلاس (شاد، ایتا، پیام‌رسان‌ها و...)؛ دانش‌آموز حاضری می‌زند یا امتحان می‌دهد و نتیجه خودکار وارد لیست کلاس می‌شود:</p>
       <div class="actions">
         <button type="button" class="btn primary" style="flex:1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'att')">📋 لینک اختصاصی حضور و غیاب</button>
         <button type="button" class="btn soft" style="flex:1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">📝 لینک اختصاصی آزمون آنلاین</button>
@@ -5104,6 +5979,65 @@ body.theme-classic-orange .toast {
       <button class="btn danger block" onclick="clearAll()">⚠️ پاک‌سازی کامل تمام اطلاعات برنامه</button>
     </div>
   </div>
+
+  <!-- زیرصفحه ۶: کمکم کنید! (عیب‌یاب هوشمند، تعمیرکار اسامی، راهنمای سریع و کلید هوش مصنوعی) -->
+  <div id="setPane-help" class="settings-pane">
+    <div class="card" style="margin-bottom:12px;border-color:var(--primary)">
+      <b style="color:var(--primary);font-size:15px">❓ مرکز راهنما، عیب‌یاب خودکار و پشتیبانی («کمکم کنید!»)</b>
+      <p class="muted" style="margin:4px 0 12px">اگر هر جا احساس کردید نامی تکراری شده، نمره‌ای نیاز به رُندسازی دارد یا می‌خواهید سلامت کل داده‌ها را بررسی کنید، از ابزارهای هوشمند زیر استفاده نمایید:</p>
+      <div class="grid-2" style="gap:8px">
+        <button type="button" class="btn primary" onclick="runSmartAppDiagnostics(true)">⚡ عیب‌یابی و تعمیر خودکار کل برنامه</button>
+        <button type="button" class="btn soft" onclick="openSmartStudentRepairModal()">🛠️ تعمیرکار هوشمند اسامی و عکس‌ها</button>
+        <button type="button" class="btn soft" onclick="openDuplicateStudentsInspector()">🔗 تشخیص و ادغام اسامی تکراری</button>
+        <button type="button" class="btn green" onclick="openExcelPasteImportModal()">📥 ورود ۳۰ دانش‌آموز از اکسل/شاد</button>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:12px">
+      <b style="color:var(--neon-cyan);font-size:14px">🤖 تنظیم یکپارچه کلید هوش مصنوعی J.A.R.V.I.S. (اختیاری)</b>
+      <p class="muted" style="margin:4px 0 8px">برنامه دارای موتور هوش مصنوعی رایگان سرخود است؛ اما اگر کلید اختصاصی Gemini / Groq / DeepSeek دارید می‌توانید یک بار در اینجا وارد کنید تا هم در «آموزش» و هم در «آزمون‌ساز» فعال شود:</p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <input type="password" id="globalUnifiedAiKeyInp" dir="ltr" placeholder="AIza... / gsk_... / sk-..." style="flex:1;min-width:190px;text-align:left;font-family:monospace" oninput="if(window.TeachAssistant)TeachAssistant.saveInlineApiKey(this.value)">
+        <button type="button" class="btn primary btn-sm" onclick="if(window.TeachAssistant){TeachAssistant.saveInlineApiKey(document.getElementById('globalUnifiedAiKeyInp').value);toast('کلید هوش مصنوعی در کل برنامه ذخیره شد ✅');}">💾 ذخیره کلید</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <b style="color:var(--primary);font-size:14px">💡 پاسخ به سوالات پرتکرار معلمان</b>
+      <div style="display:grid;gap:8px;margin-top:8px;font-size:12px;line-height:1.7">
+        <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۱. چطور اطلاعاتم روی گوشی جدید بالا بیاید؟</b><br>کافی است با همان جیمیل یا شماره همراه در صفحه ورود ۱کلیکی وارد شوید؛ تمام کلاس‌ها، نمرات و عکس‌ها خودکار بارگذاری می‌شوند.</div>
+        <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۲. اگر نمره امتحان را اشتباهی در ستون حضور و غیاب نوشتم چه کنم؟</b><br>در جدول جامع حضور و غیاب روی دکمه «🔄 انتقال نمره جلسه به کتبی مستمر» بزنید تا با یک کلیک منتقل شود.</div>
+        <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۳. چطور از دانش‌آموزان حاضری یا آزمون آنلاین با سلفی بگیرم؟</b><br>از بخش «🌐 کلاس آنلاین» لینک کوتاه فرم را بسازید و در گروه شاد/ایتا بفرستید.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- زیرصفحه ۷: درباره ما (معرفی سامانه، نسخه و سازنده) -->
+  <div id="setPane-about" class="settings-pane">
+    <div class="card" style="text-align:center;padding:22px 16px;border-color:var(--primary)">
+      <div class="logo" style="width:64px!important;height:64px!important;margin:0 auto 10px;border-radius:18px!important">
+        <svg viewBox="0 0 64 64" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 8.5L4.5 21.2L32 33.8L59.5 21.2L32 8.5Z" fill="#F97316"/>
+          <path d="M14.5 27.8V39.2C14.5 43.6 22.3 47.2 32 47.2C41.7 47.2 49.5 43.6 49.5 39.2V27.8L32 35.8L14.5 27.8Z" fill="#EA580C"/>
+          <path d="M32 21L53 25.5V38.5" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="53" cy="41.2" r="3.2" fill="#F59E0B"/>
+          <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.1 Pro</h2>
+      <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
+      <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
+        <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
+        <div>☁️ <b>معماری ابری:</b> همگام‌سازی هوشمند GZIP همراه با تصاویر و گاوصندوق امن آفلاین</div>
+        <div>🎨 <b>پوسته‌ها:</b> ۶ تم اختصاصی (نارنجی کلاسیک پیش‌فرض، سایبری تاریک، زمردی، کهکشانی و روز)</div>
+      </div>
+      <div class="actions" style="justify-content:center;max-width:420px;margin:12px auto 0">
+        <button type="button" class="btn primary" style="flex:1" onclick="shareAppPromoWithColleagues()">📤 معرفی برنامه به همکاران فرهنگی</button>
+        <button type="button" class="btn soft" onclick="openCreatorSuperAdminModal()">👑 پنل سازنده</button>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- بخش دهم: صفحه مستقل تنظیمات «ظاهر و انیمیشن‌ها» -->
@@ -5191,7 +6125,7 @@ body.theme-classic-orange .toast {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v6.2 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v7.1 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -5422,7 +6356,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '6.2.0 Pro';
+const APP_VERSION = '7.1.0 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -11527,7 +12461,7 @@ window.selectDedicatedBackupDirectory = async function() {
       if (e.name === 'AbortError') return;
     }
   }
-  alert('در مرورگر فعلی گوشی شما، فایل‌های پشتیبان با پیشوند ثابت «DaneshAmoozMan_Backups_...» ذخیره می‌شوند و همچنین در «گاوصندوق داخلی برنامه» و از طریق دکمه «ارسال به تلگرام / گوگل درایو» قابل نگهداری در پوشه اختصاصی هستند.');
+  alert('در مرورگر فعلی گوشی شما، فایل‌های پشتیبان با پیشوند ثابت «DaneshAmoozMan_Backups_...» ذخیره می‌شوند و همچنین در «گاوصندوق داخلی برنامه» و از طریق دکمه «اشتراک‌گذاری مستقیم فایل پشتیبان» قابل نگهداری در پوشه اختصاصی هستند.');
 };
 
 window.saveBackupToDedicatedFolder = async function(type = 'full') {
@@ -11592,7 +12526,7 @@ window.shareBackupFileDirectly = async function(type = 'full') {
     } catch (e) {}
   }
   downloadJson(payload, fileName);
-  toast('فایل پشتیبان آماده ذخیره در تلگرام / گوگل درایو شد ⬇️');
+  toast('فایل پشتیبان آماده ذخیره در فضای ابری یا پیام‌رسان‌ها شد ⬇️');
 };
 
 /* گاوصندوق پشتیبان داخلی برنامه (IndexedDB ASSET_STORE -> 'internal_backup_vault_v1') */
@@ -11785,7 +12719,7 @@ window.uploadBackupToCloud = async function() {
     if (bEl) bEl.textContent = `آخرین همگام‌سازی: ${nowLbl}`;
     toast('✅ پشتیبان شما با موفقیت در فضای ابری ذخیره شد!');
   } catch (err) {
-    alert('⚠️ ارتباط با سرور ابری برقرار نشد (احتمالاً اینترنت دستگاه قطع یا محدود است). نسخه پشتیبان در «گاوصندوق داخلی برنامه» ذخیره شد و می‌توانید از دکمه «📲 ارسال به تلگرام / گوگل درایو» نیز استفاده کنید.');
+    alert('⚠️ ارتباط با سرور ابری برقرار نشد (احتمالاً اینترنت دستگاه قطع یا محدود است). نسخه پشتیبان در «گاوصندوق داخلی برنامه» ذخیره شد و می‌توانید از دکمه «📲 اشتراک‌گذاری مستقیم فایل پشتیبان» نیز استفاده کنید.');
     await window.createInternalVaultSnapshot('پشتیبان خودکار (ذخیره آفلاین)', true);
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = '☁️ ذخیره آنلاین پشتیبان در ابر'; }
@@ -18657,6 +19591,650 @@ window.centerActivePillInStrip = function(btnEl) {
     };
   }
 })();
+
+
+/* ==================== سیستم جامع نسخه v7.0.0 Pro: تنظیمات استاندارد + ورود ۱کلیکی گوگل + همگام‌سازی ابری کامل با عکس‌ها هنگام ورود ==================== */
+
+// ۱. غیرفعال کردن تایمرهای مزاحم دوره‌ای (همگام‌سازی مثل پیام‌رسان‌ها فقط هنگام ورود/باز شدن برنامه و پس از تغییرات واقعی انجام می‌شود)
+window.startAutoGmailSyncLoop = function() {
+  clearInterval(window._autoSyncTimerId);
+  window._autoSyncTimerId = null;
+};
+
+// ۲. مدیریت کامل پروفایل اختصاصی معلم و چنداکانته بودن (Multi-Account Registry)
+const TG_ACCOUNTS_LIST_KEY = 'danesh_tg_accounts_list_v70';
+
+window.getSavedTeacherAccountsList = function() {
+  let list = [];
+  try { list = JSON.parse(localStorage.getItem(TG_ACCOUNTS_LIST_KEY) || '[]'); } catch (_) {}
+  const cur = window.getTeacherAccount();
+  if (cur && (cur.gmail || cur.phone || cur.name)) {
+    const c = counts();
+    const entry = {
+      accountCode: cur.accountCode || ('acc_' + (cur.gmail || cur.phone || 'main').replace(/[^a-z0-9]/gi, '').slice(0, 18)),
+      name: cur.name || getTeacherName() || 'استاد',
+      gmail: cur.gmail || '',
+      phone: cur.phone || '',
+      username: cur.username || (cur.gmail ? '@' + cur.gmail.split('@')[0] : '@teacher'),
+      bio: cur.bio || 'دبیر و مدیر آموزشی',
+      avatar: cur.avatar || '',
+      studentsCount: c.students,
+      classesCount: c.classes,
+      schoolsCount: c.schools
+    };
+    if (entry.gmail) { list = list.filter(x => x.accountCode !== "acc_main" && x.accountCode !== "acc_default"); }
+    const idx = list.findIndex(x => x.accountCode === entry.accountCode || (entry.gmail && x.gmail === entry.gmail));
+    if (idx >= 0) list[idx] = { ...list[idx], ...entry };
+    else list.unshift(entry);
+  }
+  return list;
+};
+
+window.saveTeacherAccountsList = function(list) {
+  try { localStorage.setItem(TG_ACCOUNTS_LIST_KEY, JSON.stringify((list || []).slice(0, 15))); } catch (_) {}
+};
+
+// ۳. رندر صفحه اصلی تنظیمات استاندارد (Cloud Settings Hub)
+window.renderCloudSettingsHub = function() {
+  const acc = window.getTeacherAccount();
+  const tName = acc.name || getTeacherName() || 'استاد گرامی';
+  const phoneStr = acc.phone ? (acc.phone.startsWith('0') ? '+98 ' + acc.phone.slice(1) : acc.phone) : '+98 --- --- ----';
+  const userStr = acc.username || (acc.gmail ? '@' + acc.gmail.split('@')[0] : '@danesh_teacher');
+  const bioStr = acc.bio || 'دبیر و مدیر آموزشی — برای ویرایش بیوگرافی یا مشخصات لمس کنید';
+
+  const nameEl = document.getElementById('tgProfileNameText');
+  if (nameEl) nameEl.textContent = tName;
+  const metaEl = document.getElementById('tgProfileMetaText');
+  if (metaEl) metaEl.textContent = `${phoneStr}  •  ${acc.gmail || userStr}`;
+  const bioEl = document.getElementById('tgProfileBioText');
+  if (bioEl) bioEl.textContent = bioStr;
+
+  const imgEl = document.getElementById('tgProfileAvatarImg');
+  const fbEl = document.getElementById('tgProfileAvatarFallback');
+  if (imgEl && fbEl) {
+    if (acc.avatar) {
+      imgEl.src = acc.avatar;
+      imgEl.style.display = 'block';
+      fbEl.style.display = 'none';
+    } else {
+      imgEl.style.display = 'none';
+      fbEl.style.display = 'block';
+      fbEl.textContent = (tName.trim()[0] || 'م');
+    }
+  }
+
+  // پر کردن فیلدهای زیرصفحه حساب کاربری
+  const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v || ''; };
+  setVal('tgEditNameInp', tName);
+  setVal('tgEditUsernameInp', userStr);
+  setVal('tgEditPhoneInp', acc.phone || '');
+  setVal('tgEditGmailInp', acc.gmail || '');
+  setVal('tgEditBioInp', acc.bio || '');
+
+  // وضعیت کارت همگام‌سازی ابری
+  const lastSync = localStorage.getItem('danesh_cloud_last_sync') || '';
+  const syncChip = document.getElementById('tgLiveSyncChip');
+  if (syncChip) {
+    syncChip.innerHTML = acc.gmail ? '🟢 متصل' : '☁️ آماده';
+  }
+
+  // رندر لیست حساب‌های کاربری (مشابه بخش «حساب‌های کاربری» در پیام‌رسان‌ها با نشانگر آبی تعداد دانش‌آموزان)
+  const accListBox = document.getElementById('tgAccountsListContainer');
+  if (accListBox) {
+    const accounts = window.getSavedTeacherAccountsList();
+    window.saveTeacherAccountsList(accounts);
+    accListBox.innerHTML = accounts.map(a => {
+      const isCurrent = (a.gmail && a.gmail === acc.gmail) || (a.accountCode && a.accountCode === acc.accountCode);
+      const avHtml = a.avatar
+        ? `<img src="${a.avatar}" alt="${esc(a.name)}">`
+        : `<span>${esc((a.name || 'م')[0])}</span>`;
+      return `
+        <div class="tg-account-row" onclick="switchActiveTeacherAccount('${esc(a.accountCode)}')">
+          <div style="display:flex;align-items:center;gap:10px;min-width:0">
+            <div class="tg-acc-avatar">${avHtml}</div>
+            <div style="min-width:0">
+              <b style="font-size:13.5px;display:block;color:var(--text-main);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                ${esc(a.name)} ${isCurrent ? '<span style="color:var(--neon-green);font-size:11px">● فعال</span>' : ''}
+              </b>
+              <span class="muted" style="font-size:11px;font-family:monospace" dir="ltr">${esc(a.gmail || a.phone || a.username || 'حساب محلی')}</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+            <span class="tg-acc-count-pill" title="تعداد دانش‌آموزان این حساب">${fa(a.studentsCount || 0)} 👨‍🎓</span>
+            <span style="color:var(--text-muted);font-weight:900;font-size:16px">‹</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+};
+
+// ۴. ناوبری بین صفحه اصلی تنظیمات اختصاصی و زیرصفحه‌ها
+window.openCloudSettingsSubpage = function(paneId) {
+  const home = document.getElementById('tgSettingsHomeWrap');
+  const subBar = document.getElementById('tgSubpageHeaderBar');
+  if (home) home.style.display = 'none';
+  if (subBar) subBar.style.display = 'flex';
+
+  const titles = {
+    account: '👤 حساب کاربری و پروفایل من',
+    theme: '🎨 پوسته، رنگ‌بندی و انیمیشن‌ها',
+    rules: '⚖️ فرمول نمره‌دهی و ضرایب ارزشیابی',
+    shortcuts: '🔤 کدهای اختصاری و پیامک اولیا',
+    export: '📊 گزارش‌ها و خروجی رنگی',
+    data: '☁️ داده‌ها، ذخیره‌سازی و پشتیبان ابری',
+    modules: '🎛️ ویجت‌ها و بخش‌های نمایشی برنامه'
+  };
+  const titleEl = document.getElementById('tgSubpageTitleText');
+  if (titleEl) titleEl.textContent = titles[paneId] || 'تنظیمات';
+
+  document.querySelectorAll('#backup .settings-pane').forEach(p => {
+    p.classList.toggle('active', p.id === 'setPane-' + paneId);
+  });
+  document.querySelectorAll('#settingsTabsBar .set-tab-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-stab') === paneId);
+  });
+
+  if (paneId === 'account') window.renderCloudSettingsHub();
+  else if (typeof _origOpenSettingsTabV54 === 'function') _origOpenSettingsTabV54(paneId);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+window.backToCloudSettingsHub = function() {
+  const home = document.getElementById('tgSettingsHomeWrap');
+  const subBar = document.getElementById('tgSubpageHeaderBar');
+  if (home) home.style.display = 'block';
+  if (subBar) subBar.style.display = 'none';
+  document.querySelectorAll('#backup .settings-pane').forEach(p => p.classList.remove('active'));
+  window.renderCloudSettingsHub();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// وقتی کاربر روی تب «⚙ تنظیمات» در نوار پایین می‌زند، همیشه ابتدا صفحه اصلی تنظیمات اختصاصی باز شود
+const _origOpenSettingsTabV70 = window.openSettingsTab;
+window.openSettingsTab = function(tabId, btnEl) {
+  if (btnEl) {
+    window.openCloudSettingsSubpage(tabId);
+    return;
+  }
+  window.backToCloudSettingsHub();
+};
+
+// ۵. آپلود و تغییر عکس پروفایل معلم با دکمه دوربین (📷)
+window.handleTeacherProfileAvatarUpload = async function(ev) {
+  const file = ev.target.files?.[0];
+  if (!file) return;
+  try {
+    const dataUrl = await compressImage(file, 360, 0.80);
+    const acc = window.getTeacherAccount();
+    acc.avatar = dataUrl;
+    localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(acc));
+    window.renderCloudSettingsHub();
+    toast('📸 عکس پروفایل شما بروزرسانی شد و در ابر ذخیره می‌گردد ✅');
+    window.syncAccountNowWithPhotos(true, 'upload_only');
+  } catch (e) {
+    toast('خطا در بارگذاری تصویر پروفایل');
+  }
+  ev.target.value = '';
+};
+
+window.triggerTeacherAvatarPreviewOrUpload = function() {
+  const acc = window.getTeacherAccount();
+  if (acc.avatar) {
+    openPhotoViewer(acc.avatar, 'teacher-profile.jpg');
+  } else {
+    document.querySelector('.tg-camera-fab input[type="file"]')?.click();
+  }
+};
+
+window.saveCloudProfileFromPane = async function() {
+  const acc = window.getTeacherAccount();
+  const name = (document.getElementById('tgEditNameInp')?.value || '').trim() || getTeacherName();
+  const username = (document.getElementById('tgEditUsernameInp')?.value || '').trim();
+  const phone = enDigits(document.getElementById('tgEditPhoneInp')?.value || '').trim();
+  const gmail = (document.getElementById('tgEditGmailInp')?.value || '').trim().toLowerCase();
+  const bio = (document.getElementById('tgEditBioInp')?.value || '').trim();
+
+  localStorage.setItem('teacher_name', name);
+  const seed = (gmail || phone || name).replace(/[^a-z0-9]/gi, '') || 'main';
+  acc.name = name;
+  acc.username = username.startsWith('@') ? username : (username ? '@' + username : '@teacher');
+  acc.phone = phone;
+  acc.gmail = gmail;
+  acc.bio = bio;
+  acc.accountCode = 'acc_' + seed.slice(0, 18);
+
+  localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(acc));
+  localStorage.setItem('danesh_cloud_sync_key', acc.accountCode);
+  window.renderCloudSettingsHub();
+  await window.syncAccountNowWithPhotos(false, 'upload_only');
+  window.backToCloudSettingsHub();
+};
+
+window.switchActiveTeacherAccount = async function(accountCode) {
+  const list = window.getSavedTeacherAccountsList();
+  const target = list.find(x => x.accountCode === accountCode);
+  if (!target) return;
+  localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(target));
+  localStorage.setItem('teacher_name', target.name || 'استاد');
+  localStorage.setItem('danesh_cloud_sync_key', target.accountCode);
+  window.renderCloudSettingsHub();
+  toast(`🔄 حساب «${target.name}» فعال شد؛ در حال دریافت آخرین اطلاعات و عکس‌ها...`);
+  await window.syncAccountNowWithPhotos(false, 'pull_first');
+};
+
+window.openAccountQrShareModal = function() {
+  const acc = window.getTeacherAccount();
+  const code = acc.accountCode || localStorage.getItem('danesh_cloud_sync_key') || 'dam_teacher';
+  openModal(formHeader('⊞ کارت اتصال و QR کد حساب کاربری شما') + `
+    <div style="text-align:center;padding:12px">
+      <div class="qr-canvas-box"><canvas id="tgAccountQrCanvas" width="160" height="160"></canvas></div>
+      <b style="font-size:15px;display:block;margin-top:8px;color:var(--primary)">${esc(acc.name || getTeacherName())}</b>
+      <div class="muted" style="font-family:monospace;margin-top:3px" dir="ltr">${esc(acc.gmail || acc.phone || code)}</div>
+      <p class="muted" style="font-size:11.5px;margin-top:8px">با وارد کردن این جیمیل یا کد در هر دستگاه دیگری، تمام کلاس‌ها، نمرات و عکس‌های شما بلافاصله بالا می‌آید.</p>
+    </div>
+    <div class="formactions">
+      <button type="button" class="btn primary" onclick="copyText('${esc(acc.gmail || code)}')">📋 کپی شناسه اکانت</button>
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+  setTimeout(() => drawRoomVisualCode(document.getElementById('tgAccountQrCanvas'), acc.gmail || code, code.slice(0, 8)), 50);
+};
+
+window.openSettingsMoreMenuModal = function() {
+  openModal(formHeader('⋮ منوی سریع حساب کاربری') + `
+    <div style="display:grid;gap:8px">
+      <button type="button" class="btn primary block" onclick="closeModal();openCloudSettingsSubpage('account')">✎ ویرایش نام، بیوگرافی و مشخصات من</button>
+      <button type="button" class="btn soft block" onclick="closeModal();syncAccountNowWithPhotos(false)">☁️ همگام‌سازی کامل با عکس‌ها همین الان</button>
+      <button type="button" class="btn soft block" onclick="closeModal();saveBackupToDedicatedFolder('full')">💾 دانلود فایل پشتیبان کامل (همراه با عکس‌ها)</button>
+      <button type="button" class="btn gray block" onclick="closeModal();openOnboardingAuthScreen()">🔄 تغییر اکانت / صفحه ورود با Google</button>
+    </div>
+  `);
+};
+
+// ۶. همگام‌سازی ابری کامل (همراه با عکس‌های پروفایل، مدارس، کلاس‌ها، دانش‌آموزان و سلفی‌ها) استاندارد:
+//    - هنگام ورود یا باز کردن برنامه (On-Login / On-Launch): ابتدا آخرین تغییرات و عکس‌ها را از ابر بالا می‌آورد.
+//    - هنگام ثبت تغییرات واقعی: بی‌صدا در پس‌زمینه (با تکهبندی خودکار برای حفظ عکس‌ها) ذخیره می‌کند.
+window.uploadBackupToCloud = async function(silent = true) {
+  return window.syncAccountNowWithPhotos(silent, 'upload_only');
+};
+
+window.restoreBackupFromCloud = async function(silent = false) {
+  return window.syncAccountNowWithPhotos(silent, 'pull_first');
+};
+
+window.syncAccountNowWithPhotos = async function(silent = false, direction = 'both') {
+  const acc = window.getTeacherAccount();
+  const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || '').trim();
+  if (!key || key.length < 3) {
+    if (!silent) window.openOnboardingAuthScreen();
+    return false;
+  }
+
+  const syncChip = document.getElementById('tgLiveSyncChip');
+  if (syncChip) syncChip.textContent = '⏳ در حال همگام‌سازی ابری (با عکس‌ها)...';
+
+  const topic = getCloudTopicHash(key);
+  const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+  const baseUrl = customEp || `https://ntfy.sh/${topic}`;
+
+  try {
+    // الف) اگر حالت ورود یا باز شدن برنامه است (pull_first یا both)، ابتدا آخرین نسخه ابری را بررسی کن
+    if (direction === 'pull_first' || direction === 'both') {
+      try {
+        const pollUrl = customEp ? customEp : `https://ntfy.sh/${topic}/json?poll=1&since=30d`;
+        const res = await fetch(pollUrl);
+        if (res.ok) {
+          const text = await res.text();
+          const lines = text.trim().split(/\r?\n/).filter(Boolean);
+          let latestPacket = null;
+          const chunksMap = {};
+
+          for (const line of lines) {
+            try {
+              const obj = JSON.parse(line);
+              const msg = obj.message ? JSON.parse(obj.message) : obj;
+              if (msg && (msg.type === 'DAM_CLOUD_FULL_V70' || msg.type === 'DAM_CLOUD_BACKUP_V60')) {
+                latestPacket = msg;
+              } else if (msg && (msg.type === 'DAM_CLOUD_CHUNK_V70' || msg.type === 'DAM_CLOUD_CHUNK_V60') && msg.batchId) {
+                if (!chunksMap[msg.batchId]) chunksMap[msg.batchId] = { total: msg.total, parts: {}, updatedAt: msg.updatedAt || 0, jalaliDate: msg.jalaliDate };
+                chunksMap[msg.batchId].parts[msg.idx] = msg.part;
+              }
+            } catch (_) {}
+          }
+
+          Object.values(chunksMap).forEach(b => {
+            if (Object.keys(b.parts).length === b.total) {
+              let joined = '';
+              for (let i = 0; i < b.total; i++) joined += (b.parts[i] || '');
+              latestPacket = { type: 'DAM_CLOUD_FULL_V70', updatedAt: b.updatedAt, jalaliDate: b.jalaliDate, zData: joined };
+            }
+          });
+
+          if (!latestPacket) {
+            try {
+              const localMirror = localStorage.getItem('dam_cloud_mirror_' + topic);
+              if (localMirror) latestPacket = JSON.parse(localMirror);
+            } catch (_) {}
+          }
+
+          if (latestPacket && latestPacket.zData) {
+            const jsonStr = await window.decompressStringGzipBase64(latestPacket.zData);
+            const cloudObj = JSON.parse(jsonStr);
+            const cloudTime = Number(cloudObj._updatedAt || latestPacket.updatedAt) || 0;
+            const localTime = Number(db._updatedAt) || 0;
+            const localSchoolCount = (db.schools || []).length;
+
+            // اگر دیتای ابری جدیدتر است یا دستگاه فعلی خالی است، تمام اطلاعات و عکس‌ها را بالا بیاور!
+            if (direction === 'pull_first' || localSchoolCount === 0 || cloudTime > localTime) {
+              if (cloudObj.teacherAccount) {
+                const mergedAcc = { ...window.getTeacherAccount(), ...cloudObj.teacherAccount };
+                localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(mergedAcc));
+                if (mergedAcc.name) localStorage.setItem('teacher_name', mergedAcc.name);
+              }
+              db = sanitizeDb(cloudObj);
+              try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (_) {}
+              renderAll();
+              window.renderCloudSettingsHub();
+              if (!silent) toast('☁️ آخرین تغییرات، کلاس‌ها و تمام عکس‌ها از اکانت شما بارگذاری شد ✅');
+              if (direction === 'pull_first') {
+                if (syncChip) syncChip.textContent = `🟢 بروزرسانی شد (${latestPacket.jalaliDate || 'امروز'})`;
+                return true;
+              }
+            }
+          }
+        }
+      } catch (_) {}
+    }
+
+    // ب) ذخیره آخرین تغییرات به همراه تمام عکس‌ها (پروفایل معلم، مدارس، کلاس‌ها، دانش‌آموزان، برگه‌ها) با فشرده‌سازی GZIP و تکهبندی خودکار
+    const fullSyncPayload = {
+      ...db,
+      _updatedAt: db._updatedAt || Date.now(),
+      teacherAccount: window.getTeacherAccount(),
+      cachedBook: {
+        name: db.cachedBook?.name || '',
+        pageCount: db.cachedBook?.pageCount || 0,
+        bookmarks: db.cachedBook?.bookmarks || [],
+        classPins: db.cachedBook?.classPins || {},
+        notes: db.cachedBook?.notes || {},
+        extractedBank: (db.cachedBook?.extractedBank || []).slice(0, 40),
+        pages: {}
+      }
+    };
+
+    const rawJson = JSON.stringify(fullSyncPayload);
+    const compressedData = await window.compressStringGzipBase64(rawJson);
+    const jDate = formatJalaliDate(localISODate());
+
+    const packet = {
+      type: 'DAM_CLOUD_FULL_V70',
+      updatedAt: fullSyncPayload._updatedAt,
+      jalaliDate: jDate,
+      gmail: acc.gmail || '',
+      zData: compressedData
+    };
+
+    try { localStorage.setItem('dam_cloud_mirror_' + topic, JSON.stringify(packet)); } catch (_) {}
+    await window.createInternalVaultSnapshot('پشتیبان کامل ابری (همراه با عکس‌ها)', true);
+
+    const bodyStr = JSON.stringify(packet);
+    if (bodyStr.length <= 42000) {
+      await fetch(baseUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: bodyStr
+      });
+    } else {
+      const chunkSize = 34000;
+      const totalChunks = Math.ceil(compressedData.length / chunkSize);
+      const batchId = 'b70_' + Date.now();
+      for (let i = 0; i < totalChunks; i++) {
+        await fetch(baseUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            type: 'DAM_CLOUD_CHUNK_V70',
+            batchId,
+            idx: i,
+            total: totalChunks,
+            updatedAt: fullSyncPayload._updatedAt,
+            jalaliDate: jDate,
+            part: compressedData.slice(i * chunkSize, (i + 1) * chunkSize)
+          })
+        });
+      }
+    }
+
+    const nowLbl = `${jDate} ساعت ${new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' })}`;
+    localStorage.setItem('danesh_cloud_last_sync', nowLbl);
+    if (syncChip) syncChip.textContent = '🟢 متصل';
+    if (!silent) toast('☁️ تمام تغییرات و عکس‌ها با موفقیت روی اکانت شما همگام‌سازی شد ✅');
+    return true;
+  } catch (err) {
+    if (syncChip) syncChip.textContent = '☁️ آماده';
+    if (!silent) toast('🛡️ تغییرات و عکس‌ها در گاوصندوق امن اکانت ذخیره شد ✅');
+    return false;
+  }
+};
+
+// ۷. صفحه ورود ۱کلیکی در ابتدای برنامه (Sign in with Google / Quick Email Onboarding)
+window.openOnboardingAuthScreen = function() {
+  const ov = document.getElementById('googleAuthOnboardingOverlay');
+  if (!ov) return;
+  const acc = window.getTeacherAccount();
+  const savedList = window.getSavedTeacherAccountsList();
+  const box = document.getElementById('authSavedAccountsQuickBox');
+  if (box) {
+    if (savedList.length > 0) {
+      box.innerHTML = `
+        <div style="text-align:right;font-size:11px;font-weight:800;color:var(--text-muted);margin-bottom:5px">حساب‌های آماده ورود با ۱ کلیک:</div>
+        <div style="display:grid;gap:6px">
+          ${savedList.slice(0, 3).map(a => `
+            <div onclick="oneTapLoginWithAccount('${esc(a.gmail || a.accountCode)}','${esc(a.name)}','${esc(a.phone || '')}')" style="display:flex;align-items:center;justify-content:space-between;padding:8px 11px;border-radius:12px;background:var(--bg-panel);border:1.5px solid var(--primary-border);cursor:pointer">
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="tg-acc-avatar" style="width:32px;height:32px;font-size:13px">${a.avatar ? `<img src="${a.avatar}">` : esc((a.name || 'م')[0])}</div>
+                <div style="text-align:right">
+                  <b style="font-size:12.5px;display:block;color:var(--text-main)">${esc(a.name)}</b>
+                  <span class="muted" style="font-size:10.5px;font-family:monospace" dir="ltr">${esc(a.gmail || a.phone || a.accountCode)}</span>
+                </div>
+              </div>
+              <span class="chip" style="font-size:10.5px">ورود ↵</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    } else {
+      box.innerHTML = '';
+    }
+  }
+  const emInp = document.getElementById('authQuickEmailInp');
+  const nmInp = document.getElementById('authQuickNameInp');
+  const phInp = document.getElementById('authQuickPhoneInp');
+  if (emInp && acc.gmail) emInp.value = acc.gmail;
+  if (nmInp && acc.name) nmInp.value = acc.name;
+  if (phInp && acc.phone) phInp.value = acc.phone;
+  ov.style.display = 'flex';
+};
+
+window.triggerOneClickGoogleAuth = function() {
+  const em = (document.getElementById('authQuickEmailInp')?.value || '').trim();
+  if (em && em.includes('@')) {
+    window.submitQuickEmailOnboarding();
+    return;
+  }
+  // باز کردن انتخابگر ۱کلیکی حساب گوگل
+  window.signInWithGoogleQuick();
+};
+
+window.oneTapLoginWithAccount = async function(gmailOrCode, name, phone) {
+  const isEmail = gmailOrCode.includes('@');
+  const seed = gmailOrCode.replace(/[^a-z0-9]/gi, '') || 'main';
+  const accountCode = gmailOrCode.startsWith('acc_') ? gmailOrCode : ('acc_' + seed.slice(0, 18));
+  const cur = window.getTeacherAccount();
+  const accObj = {
+    ...cur,
+    name: name || cur.name || getTeacherName(),
+    gmail: isEmail ? gmailOrCode.toLowerCase() : (cur.gmail || ''),
+    phone: phone || cur.phone || '',
+    accountCode,
+    autoSync: true,
+    googleVerified: true,
+    lastSyncedAt: formatJalaliDate(localISODate())
+  };
+  localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(accObj));
+  localStorage.setItem('danesh_cloud_sync_key', accountCode);
+  localStorage.setItem('danesh_onboarding_done_v70', '1');
+  if (accObj.name) localStorage.setItem('teacher_name', accObj.name);
+
+  document.getElementById('googleAuthOnboardingOverlay').style.display = 'none';
+  closeModal();
+  window.renderCloudSettingsHub();
+  toast(`👋 خوش آمدید ${accObj.name}! در حال دریافت آخرین تغییرات و عکس‌های اکانت شما...`);
+  await window.syncAccountNowWithPhotos(false, 'pull_first');
+};
+
+window.submitQuickEmailOnboarding = async function() {
+  const email = (document.getElementById('authQuickEmailInp')?.value || '').trim().toLowerCase();
+  const name = (document.getElementById('authQuickNameInp')?.value || '').trim() || getTeacherName() || 'استاد';
+  const phone = enDigits(document.getElementById('authQuickPhoneInp')?.value || '').trim();
+  if (!email && !phone) {
+    toast('لطفاً جیمیل یا شماره همراه خود را برای ساخت/ورود یک‌کلیکی وارد کنید.');
+    document.getElementById('authQuickEmailInp')?.focus();
+    return;
+  }
+  await window.oneTapLoginWithAccount(email || phone, name, phone);
+};
+
+window.continueAsLocalGuest = function() {
+  try { localStorage.setItem('danesh_onboarding_done_v70', '1'); } catch (_) {}
+  const ov = document.getElementById('googleAuthOnboardingOverlay');
+  if (ov) ov.style.display = 'none';
+  toast('ورود آفلاین انجام شد؛ هر زمان خواستید از بخش تنظیمات به گوگل متصل شوید.');
+};
+
+// اتصال completeGoogleAutoSignIn به سیستم جدید همگام‌سازی کامل با عکس‌ها
+const _origCompleteGoogleSignInV70 = window.completeGoogleAutoSignIn;
+window.completeGoogleAutoSignIn = async function(emailRaw) {
+  const gmail = (emailRaw || '').trim().toLowerCase();
+  if (!gmail || !gmail.includes('@')) {
+    toast('لطفاً یک آدرس جیمیل معتبر وارد کنید.');
+    return;
+  }
+  localStorage.setItem('danesh_onboarding_done_v70', '1');
+  const ov = document.getElementById('googleAuthOnboardingOverlay');
+  if (ov) ov.style.display = 'none';
+  await window.oneTapLoginWithAccount(gmail, getTeacherName(), window.getTeacherAccount().phone || '');
+};
+
+// ۸. هنگام باز شدن برنامه:
+//    - اگر کاربر هنوز وارد اکانت نشده (و در حالت پرتال دانش‌آموز نیست)، صفحه ورود ۱کلیکی گوگل را نشان بده
+//    - اگر قبلاً وارد شده، دقیقاً مثل پیام‌رسان‌ها در لحظه ورود آخرین تغییرات و عکس‌ها را بی‌صدا بالا بیاور!
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    try {
+      window.renderCloudSettingsHub();
+      const params = new URLSearchParams(window.location.search);
+      const isStudentLink = params.has('df') || params.has('cls') || params.has('f') || params.has('p') || params.has('dam_portal');
+      if (isStudentLink) return;
+
+      const acc = window.getTeacherAccount();
+      const onboardingDone = localStorage.getItem('danesh_onboarding_done_v70') === '1';
+
+      if (!acc.gmail && !acc.phone && !onboardingDone) {
+        setTimeout(() => {
+          const freshAcc = window.getTeacherAccount();
+          if (!freshAcc.gmail && !freshAcc.phone && localStorage.getItem("danesh_onboarding_done_v70") !== "1") {
+            window.openOnboardingAuthScreen();
+          }
+        }, 900);
+      } else if (acc.gmail || acc.phone || acc.accountCode) {
+        // مثل پیام‌رسان‌ها: به محض باز شدن برنامه، آخرین تغییرات و عکس‌ها را از ابر همگام‌سازی کن
+        window.syncAccountNowWithPhotos(true, 'both');
+      }
+    } catch (_) {}
+  }, 600);
+});
+
+
+/* ==================== منطق منوی تنظیمات کپسولی مینیمال نسخه v7.1.0 Pro ==================== */
+
+window.openCloudSettingsSubpage = function(paneId) {
+  const home = document.getElementById('tgSettingsHomeWrap');
+  const subBar = document.getElementById('tgSubpageHeaderBar');
+  if (home) home.style.display = 'none';
+  if (subBar) subBar.style.display = 'flex';
+
+  const titles = {
+    rules: '⚙️ عمومی (ضرایب نمرات، کدها و بخش‌ها)',
+    shortcuts: '🔤 کدهای اختصاری و پیامک اولیا',
+    modules: '🎛️ ویجت‌ها و بخش‌های نمایشی',
+    account: '👤 حساب کاربری و پروفایل',
+    data: '🔌 اتصال، ذخیره‌سازی و پشتیبان ابری',
+    export: '🤖 J.A.R.V.I.S. و گزارش‌های رنگی',
+    theme: '🎨 ظاهر و احساس (پوسته و انیمیشن‌ها)',
+    help: '❓ کمکم کنید! (عیب‌یاب و راهنما)',
+    about: 'ℹ️ درباره ما'
+  };
+  const titleEl = document.getElementById('tgSubpageTitleText');
+  if (titleEl) titleEl.textContent = titles[paneId] || 'تنظیمات';
+
+  document.querySelectorAll('#backup .settings-pane').forEach(p => {
+    // وقتی روی «عمومی» (rules) کلیک می‌شود، هم ضرایب، هم کدهای اختصاری و هم بخش‌های نمایشی در دسترس باشند
+    if (paneId === 'rules') {
+      p.classList.toggle('active', p.id === 'setPane-rules' || p.id === 'setPane-shortcuts' || p.id === 'setPane-modules');
+    } else {
+      p.classList.toggle('active', p.id === 'setPane-' + paneId);
+    }
+  });
+
+  document.querySelectorAll('#settingsTabsBar .set-tab-btn').forEach(b => {
+    const isAct = b.getAttribute('data-stab') === paneId;
+    b.classList.toggle('active', isAct);
+    if (isAct && window.centerActivePillInStrip) window.centerActivePillInStrip(b);
+  });
+
+  if (paneId === 'account') window.renderCloudSettingsHub();
+  else if (paneId === 'help') {
+    const kInp = document.getElementById('globalUnifiedAiKeyInp');
+    if (kInp) kInp.value = window.ExamApp?.state?.apiKey || '';
+  } else if (paneId === 'rules') {
+    updateLiveFormulaPreview();
+    renderShortcutSettingsUi();
+    renderFeatureToggles();
+    const tInp = document.getElementById('settingsTeacherNameInp');
+    if (tInp) tInp.value = getTeacherName();
+  } else if (typeof _origOpenSettingsTabV54 === 'function') {
+    _origOpenSettingsTabV54(paneId);
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+window.handleSettingsLogoutAction = function() {
+  const acc = window.getTeacherAccount();
+  openModal(formHeader('🚪 خروج یا تغییر حساب کاربری') + `
+    <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
+      <b style="color:var(--primary);font-size:13.5px">🛡️ اطلاعات شما در دستگاه و فضای ابری محفوظ است</b>
+      <p class="muted" style="margin:5px 0 0;font-size:12px;line-height:1.7">
+        با خروج از حساب فعلی (<b>${esc(acc.gmail || acc.name || 'حساب فعال')}</b>)، اطلاعات مدارس و کلاس‌های شما پاک نمی‌شود؛ بلکه به صفحه ورود اول برنامه (<code>Sign in with Google</code>) هدایت می‌شوید تا با حساب دیگری وارد شوید یا قبل از خروج یک نسخه پشتیبان ابری ذخیره کنید:
+      </p>
+    </div>
+    <div style="display:grid;gap:8px">
+      <button type="button" class="btn primary block" onclick="syncAccountNowWithPhotos(false, 'upload_only');closeModal();openOnboardingAuthScreen()">☁️ همگام‌سازی آخرین تغییرات و رفتن به صفحه ورود Google</button>
+      <button type="button" class="btn danger block" onclick="confirmLogoutAndShowOnboarding()">🚪 خروج از حساب فعلی و باز کردن صفحه ورود</button>
+      <button type="button" class="btn gray block" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+};
+
+window.confirmLogoutAndShowOnboarding = function() {
+  try {
+    localStorage.removeItem('danesh_onboarding_done_v70');
+  } catch (_) {}
+  closeModal();
+  window.openOnboardingAuthScreen();
+  toast('از حساب خارج شدید؛ می‌توانید با Google یا ایمیل جدید وارد شوید 👋');
+};
 
 </script>
 </body>
