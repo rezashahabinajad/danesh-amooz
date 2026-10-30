@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="7.1.0">
+<meta name="version" content="7.2.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -4403,6 +4403,189 @@ body.dark .ws-logout-inner {
   box-shadow: var(--shadow);
 }
 
+
+/* ==================== استایل‌های نسخه v7.2 Pro: تور راهنمای بازی‌گونه، کارنامه تحلیلی-گرافیکی آنلاین و همگام‌سازی تفاضلی ==================== */
+
+/* ۱. تور راهنمای تعاملی به سبک بازی‌های موبایل (Spotlight Coachmark Overlay) */
+.game-tour-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9800;
+  pointer-events: auto;
+  overflow: hidden;
+}
+.game-tour-hole {
+  position: fixed;
+  z-index: 9801;
+  border-radius: 16px;
+  border: 2.5px solid #F97316;
+  box-shadow: 0 0 0 9999px rgba(15, 23, 42, 0.78), 0 0 28px 6px rgba(249, 115, 22, 0.65);
+  pointer-events: none;
+  transition: all 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.game-tour-arrow {
+  position: fixed;
+  z-index: 9802;
+  font-size: 28px;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(234, 88, 12, 0.6));
+  animation: tourArrowBounce 1s ease-in-out infinite;
+  transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes tourArrowBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-7px) scale(1.08); }
+}
+.game-tour-card {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 390px);
+  z-index: 9803;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 2px solid #F97316;
+  border-radius: 22px;
+  padding: 16px 16px 14px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 24px rgba(234, 88, 12, 0.28);
+  transition: top 0.35s cubic-bezier(0.22, 1, 0.36, 1), bottom 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.game-tour-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.game-tour-mascot {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
+  border: 1.5px solid #FDBA74;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.game-tour-step-badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 900;
+  color: #EA580C;
+  background: #FFF7ED;
+  border: 1px solid #FDBA74;
+  padding: 1px 8px;
+  border-radius: 999px;
+  margin-bottom: 2px;
+}
+.game-tour-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--text-main);
+}
+.game-tour-skip-btn {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.game-tour-desc {
+  margin: 6px 0 12px;
+  font-size: 12.5px;
+  line-height: 1.68;
+  color: var(--text-main);
+}
+.game-tour-dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.game-tour-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 99px;
+  background: var(--border);
+  transition: all 0.22s ease;
+}
+.game-tour-dot.active {
+  width: 20px;
+  background: #EA580C;
+}
+.game-tour-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ۲. کارنامه گرافیکی، جذاب و تحلیلی آزمون برای دانش‌آموز در لینک نتایج */
+.analytics-result-hero {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+  border: 2px solid #FDBA74;
+  border-radius: 20px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 14px;
+  color: #0F172A;
+}
+.analytics-gauge-wrap {
+  position: relative;
+  width: 138px;
+  height: 138px;
+  margin: 8px auto 10px;
+  display: grid;
+  place-items: center;
+}
+.analytics-gauge-center {
+  position: absolute;
+  inset: 16px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.analytics-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+.analytics-kpi-box {
+  background: #FFFFFF;
+  border: 1px solid #FED7AA;
+  border-radius: 12px;
+  padding: 8px 6px;
+  text-align: center;
+}
+.analytics-kpi-box b {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 900;
+  color: #EA580C;
+}
+.analytics-kpi-box small {
+  font-size: 10.5px;
+  color: #64748B;
+  font-weight: 700;
+}
+.analytics-q-item {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 13px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  text-align: right;
+}
+
 </style>
 </head>
 <body class="theme-classic-orange" data-theme-mode="classic-orange">
@@ -4491,6 +4674,31 @@ body.dark .ws-logout-inner {
   </div>
 </div>
 
+
+<!-- تور راهنمای تعاملی اول برنامه به سبک بازی‌ها (Interactive Game-Style Spotlight Tutorial) -->
+<div id="gameSpotlightTourOverlay" class="game-tour-overlay" style="display:none" role="dialog" aria-label="تور راهنمای تعاملی">
+  <div id="gameTourSpotlightHole" class="game-tour-hole"></div>
+  <div id="gameTourPointerArrow" class="game-tour-arrow">👇</div>
+  <div id="gameTourCoachCard" class="game-tour-card">
+    <div class="game-tour-card-head">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="game-tour-mascot" id="gameTourStepIcon">🎓</span>
+        <div>
+          <span class="game-tour-step-badge" id="gameTourStepBadge">مرحله ۱ از ۶</span>
+          <h3 class="game-tour-title" id="gameTourTitle">خوش آمدید استاد!</h3>
+        </div>
+      </div>
+      <button type="button" class="game-tour-skip-btn" onclick="finishGameSpotlightTour()">رد کردن ⏭️</button>
+    </div>
+    <p class="game-tour-desc" id="gameTourDesc">توضیحات این بخش...</p>
+    <div class="game-tour-dots" id="gameTourDots"></div>
+    <div class="game-tour-actions">
+      <button type="button" class="btn gray btn-sm" id="gameTourPrevBtn" onclick="stepGameSpotlightTour(-1)">▶ قبلی</button>
+      <button type="button" class="btn primary btn-sm" id="gameTourNextBtn" style="flex:1" onclick="stepGameSpotlightTour(1)">مرحله بعدی ◀</button>
+    </div>
+  </div>
+</div>
+
 <!-- اعلان به‌روزرسانی نسخه PWA -->
 <div id="swUpdateBanner" class="sw-update-banner">
   <span>🚀 نسخه جدید Cyber-JARVIS آماده است (بدون تغییر در اطلاعات ذخیره‌شده)</span>
@@ -4522,7 +4730,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.1</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.2</span>
         </div>
       </div>
     </div>
@@ -4622,6 +4830,8 @@ body.dark .ws-logout-inner {
 
   <!-- نوار کشویی دسترسی سریع ۱کلیکی معلم در داشبورد -->
   <div class="dash-quick-strip" id="dashQuickStrip">
+    <button type="button" class="dash-q-pill" onclick="startGameSpotlightTour(true)" style="border-color:var(--primary);background:var(--primary-light);color:var(--primary-dark)">🎮 راهنمای تعاملی</button>
+    <button type="button" class="dash-q-pill" onclick="openTeacherExamResultsManagerModal()">📊 لینک نتایج و ویرایش نمرات آزمون</button>
     <button type="button" class="dash-q-pill" onclick="openSmartCommandPalette()">⚡ فرمان و جستجوی سریع</button>
     <button type="button" class="dash-q-pill" onclick="openQuickTodayClassJump()">📋 حاضری سریع امروز</button>
     <button type="button" class="dash-q-pill" onclick="openExcelPasteImportModal()">📥 ورود فهرست از اکسل/شاد</button>
@@ -5117,6 +5327,7 @@ body.dark .ws-logout-inner {
       <button class="btn gray btn-sm" onclick="ExamApp.printSheetNow()">🖨️ چاپ</button>
       <button class="btn primary btn-sm" style="grid-column:1 / -1" onclick="ExamApp.openImportFromTeachModal()">📥 دریافت سوالات و جزوه از بخش آموزش (کتاب‌خوان)</button>
       <button class="btn soft btn-sm" style="grid-column:1 / -1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">🌐 ارائه این آزمون در «لینک اختصاصی» / کلاس آنلاین</button>
+      <button class="btn green btn-sm" style="grid-column:1 / -1" onclick="openTeacherExamResultsManagerModal(currentSchoolId, currentClassId)">📊 لینک نتایج آزمون (مشاهده، ویرایش نمرات توسط معلم و کارنامه تحلیلی دانش‌آموز)</button>
     </div>
   </div>
 
@@ -5986,6 +6197,7 @@ body.dark .ws-logout-inner {
       <b style="color:var(--primary);font-size:15px">❓ مرکز راهنما، عیب‌یاب خودکار و پشتیبانی («کمکم کنید!»)</b>
       <p class="muted" style="margin:4px 0 12px">اگر هر جا احساس کردید نامی تکراری شده، نمره‌ای نیاز به رُندسازی دارد یا می‌خواهید سلامت کل داده‌ها را بررسی کنید، از ابزارهای هوشمند زیر استفاده نمایید:</p>
       <div class="grid-2" style="gap:8px">
+        <button type="button" class="btn primary" style="grid-column:1 / -1" onclick="startGameSpotlightTour(true)">🎮 اجرای مجدد تور راهنمای تعاملی (گام‌به‌گام روی صفحه)</button>
         <button type="button" class="btn primary" onclick="runSmartAppDiagnostics(true)">⚡ عیب‌یابی و تعمیر خودکار کل برنامه</button>
         <button type="button" class="btn soft" onclick="openSmartStudentRepairModal()">🛠️ تعمیرکار هوشمند اسامی و عکس‌ها</button>
         <button type="button" class="btn soft" onclick="openDuplicateStudentsInspector()">🔗 تشخیص و ادغام اسامی تکراری</button>
@@ -6024,7 +6236,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.1 Pro</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.2 Pro</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6125,7 +6337,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v7.1 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v7.2 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6356,7 +6568,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '7.1.0 Pro';
+const APP_VERSION = '7.2.0 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -17036,6 +17248,13 @@ window.renderOnlineClassHub = function(activeTab = null) {
             <button type="button" class="btn soft" style="background:#E0F2FE!important;color:#0369A1!important;border-color:#7DD3FC!important;font-weight:900" onclick="previewHubCleanForm('${s.id}','${c.id}','${tab}')">👁️ پیش نمایش</button>
             <button type="button" class="btn green" style="font-weight:900" onclick="publishAndCopyHubCleanForm('${s.id}','${c.id}','${tab}')">🔄 انتشار و کپی لینک</button>
           </div>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px dashed #CBD5E1">
+            <div style="font-size:11.5px;font-weight:900;color:#4F46E5;margin-bottom:5px">📊 لینک اختصاصی نتایج آزمون (تشخیص خودکار دانش‌آموز + ویرایش معلم):</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <button type="button" class="btn primary btn-sm" onclick="openTeacherExamResultsManagerModal('${s.id}','${c.id}')">✏️ مشاهده و ویرایش نتایج (معلم)</button>
+              <button type="button" class="btn soft btn-sm" onclick="copyStudentResultsPortalLink('${s.id}','${c.id}')">🔗 کپی لینک نتایج برای دانش‌آموزان</button>
+            </div>
+          </div>
         </div>
       </div>
     ` : ''}
@@ -20235,6 +20454,941 @@ window.confirmLogoutAndShowOnboarding = function() {
   window.openOnboardingAuthScreen();
   toast('از حساب خارج شدید؛ می‌توانید با Google یا ایمیل جدید وارد شوید 👋');
 };
+
+
+/* ==================== موتور جامع نسخه v7.2 Pro: تک‌ویبره لمسی، راهنمای تعاملی بازی‌گونه، همگام‌سازی تفاضلی کم‌مصرف و لینک نتایج تحلیلی آزمون ==================== */
+
+/* الف) موتور تک‌ویبره لمسی ظریف (Single Tactile Micro-Vibration) */
+window.isHapticVibrateEnabled = function() {
+  return localStorage.getItem('danesh_haptic_vibrate') !== 'false';
+};
+
+window.toggleHapticVibrateSetting = function(enabled) {
+  try { localStorage.setItem('danesh_haptic_vibrate', enabled ? 'true' : 'false'); } catch (_) {}
+  if (enabled) window.triggerHapticVibrate('success');
+  toast(enabled ? '📳 تک‌ویبره لمسی فعال شد' : '📴 ویبره لمسی خاموش شد');
+};
+
+window.triggerHapticVibrate = function(kind = 'tap') {
+  if (!window.isHapticVibrateEnabled()) return;
+  try {
+    if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+      // تک‌ویبره کوتاه و ظریف (۱۲ میلی‌ثانیه برای لمس عادی، ۱۸ میلی‌ثانیه برای ثبت موفق)
+      const ms = kind === 'success' ? 18 : (kind === 'warn' ? 25 : 12);
+      navigator.vibrate(ms);
+    }
+  } catch (_) {}
+};
+
+// اتصال تک‌ویبره ظریف به تمام دکمه‌ها، کپسول‌های تنظیمات، تب‌ها و کلیدهای حضور و غیاب/امتیاز
+document.addEventListener('pointerdown', (ev) => {
+  const interactive = ev.target.closest('button, .ws-pill-row, .dash-q-pill, .set-tab-btn, .att-cell, .qb, .chip, .clean-form-type-item');
+  if (interactive) {
+    window.triggerHapticVibrate('tap');
+  }
+}, { passive: true });
+
+// افزودن کلید روشن/خاموش «📳 تک‌ویبره لمسی» به زیرصفحه «ظاهر و احساس» (#setPane-theme)
+(function injectHapticToggleInThemePane() {
+  const themePane = document.getElementById('setPane-theme');
+  if (!themePane || document.getElementById('hapticVibrateToggleCard')) return;
+  const card = document.createElement('div');
+  card.id = 'hapticVibrateToggleCard';
+  card.className = 'card';
+  card.style.marginBottom = '12px';
+  card.innerHTML = `
+    <div class="toggle-row" style="padding:2px 0">
+      <div>
+        <b style="color:var(--primary);font-size:14px">📳 بازخورد لرزشی لمس (تک‌ویبره ظریف)</b>
+        <div class="muted" style="font-size:11.5px;margin-top:2px">ایجاد یک تک‌ویبره کوتاه و دلنشین هنگام لمس دکمه‌ها، ثبت حاضری و نمره</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="swHapticVibrate" ${window.isHapticVibrateEnabled() ? 'checked' : ''} onchange="toggleHapticVibrateSetting(this.checked)">
+        <span class="slider"></span>
+      </label>
+    </div>
+  `;
+  themePane.insertBefore(card, themePane.children[1] || null);
+})();
+
+
+/* ب) تور راهنمای تعاملی اول برنامه به سبک بازی‌ها (Interactive Game-Style Spotlight Onboarding) */
+const GAME_TOUR_STEPS = [
+  {
+    view: 'dashboard',
+    selector: '#topIconsCapsule',
+    icon: '⚡',
+    title: 'نوار کشویی زنگوله و ابزارهای سریع',
+    desc: 'از اینجا به اعلان‌های هوشمند (🔔)، پالت جستجوی سراسری (🔍) و کشوی بازشونده ابزارها (⚡ شامل کلاس آنلاین، حساب ابری و ورود فهرست از اکسل) دسترسی دارید.'
+  },
+  {
+    view: 'dashboard',
+    selector: '#dashQuickStrip',
+    icon: '🚀',
+    title: 'میانبرهای ۱کلیکی اتاق فرمان',
+    desc: 'مثل منوی سریع بازی‌ها، با یک لمس می‌توانید وارد حاضری امروز، ورود ۳۰ دانش‌آموز از اکسل/شاد، لینک نتایج آزمون یا کارنامه رنگی شوید.'
+  },
+  {
+    view: 'dashboard',
+    selector: '#mainFabBtn',
+    icon: '➕',
+    title: 'دکمه هوشمند افزودن سریع (＋)',
+    desc: 'در هر صفحه‌ای باشید، با زدن این دکمه نارنجی می‌توانید به سرعت مدرسه جدید، کلاس جدید یا دانش‌آموز جدید اضافه کنید.'
+  },
+  {
+    view: 'teachView',
+    selector: '#teacherStudyPdfCard',
+    icon: '📖',
+    title: 'استودیوی کتاب‌خوان و جزوه «بچه درس‌خون»',
+    desc: 'فایل PDF کتاب درسی را باز کنید، روی صفحه با قلم نوری بنویسید و با هوش مصنوعی دیداری، سوالات خط‌به‌خط یا جزوه رنگی بسازید.'
+  },
+  {
+    view: 'examView',
+    selector: '.exam-top-actions',
+    icon: '💎',
+    title: 'آزمون‌ساز الماس + لینک نتایج تحلیلی',
+    desc: 'آزمون ۴ شعبه‌ای A4 بسازید، با دوربین برگه تصحیح کنید، یا آزمون آنلاین برگزار کرده و لینک کارنامه تحلیلی-گرافیکی را به دانش‌آموزان بدهید.'
+  },
+  {
+    view: 'backup',
+    selector: '.ws-pills-stack',
+    icon: '⚙️',
+    title: 'تنظیمات کپسولی و همگام‌سازی کم‌مصرف',
+    desc: 'در این منوی شیک و خلوت، حساب گوگل، ضرایب نمره، پوسته‌ها و همگام‌سازی تفاضلی (که فقط آخرین تغییرات را بدون مصرف اینترنت ذخیره می‌کند) در اختیار شماست!'
+  }
+];
+
+window._gameTourIdx = 0;
+
+window.startGameSpotlightTour = function(manualTrigger = false) {
+  window._gameTourIdx = 0;
+  const ov = document.getElementById('gameSpotlightTourOverlay');
+  if (!ov) return;
+  ov.style.display = 'block';
+  window.triggerHapticVibrate('success');
+  window.renderCurrentGameTourStep();
+};
+
+window.stepGameSpotlightTour = function(delta) {
+  window.triggerHapticVibrate('tap');
+  const next = window._gameTourIdx + delta;
+  if (next < 0) return;
+  if (next >= GAME_TOUR_STEPS.length) {
+    window.finishGameSpotlightTour();
+    return;
+  }
+  window._gameTourIdx = next;
+  window.renderCurrentGameTourStep();
+};
+
+window.finishGameSpotlightTour = function() {
+  window.triggerHapticVibrate('success');
+  const ov = document.getElementById('gameSpotlightTourOverlay');
+  if (ov) ov.style.display = 'none';
+  try { localStorage.setItem('danesh_game_tour_seen_v72', '1'); } catch (_) {}
+  showView('dashboard');
+  toast('🎮 راهنمای تعاملی کامل شد! هر زمان خواستید از نوار بالای داشبورد قابل اجراست.');
+};
+
+window.renderCurrentGameTourStep = function() {
+  const step = GAME_TOUR_STEPS[window._gameTourIdx];
+  if (!step) return;
+  if (step.view && !document.getElementById(step.view)?.classList.contains('active')) {
+    showView(step.view);
+    if (step.view === 'backup' && window.backToTelegramSettingsHub) window.backToTelegramSettingsHub();
+  }
+
+  setTimeout(() => {
+    const targetEl = document.querySelector(step.selector);
+    const hole = document.getElementById('gameTourSpotlightHole');
+    const arrow = document.getElementById('gameTourPointerArrow');
+    const card = document.getElementById('gameTourCoachCard');
+
+    document.getElementById('gameTourStepIcon').textContent = step.icon;
+    document.getElementById('gameTourStepBadge').textContent = `مرحله ${fa(window._gameTourIdx + 1)} از ${fa(GAME_TOUR_STEPS.length)}`;
+    document.getElementById('gameTourTitle').textContent = step.title;
+    document.getElementById('gameTourDesc').textContent = step.desc;
+
+    const prevBtn = document.getElementById('gameTourPrevBtn');
+    const nextBtn = document.getElementById('gameTourNextBtn');
+    if (prevBtn) prevBtn.style.visibility = window._gameTourIdx === 0 ? 'hidden' : 'visible';
+    if (nextBtn) nextBtn.textContent = window._gameTourIdx === GAME_TOUR_STEPS.length - 1 ? 'شروع کار با برنامه 🚀' : 'مرحله بعدی ◀';
+
+    const dotsBox = document.getElementById('gameTourDots');
+    if (dotsBox) {
+      dotsBox.innerHTML = GAME_TOUR_STEPS.map((_, i) => `<span class="game-tour-dot ${i === window._gameTourIdx ? 'active' : ''}"></span>`).join('');
+    }
+
+    if (targetEl && hole && card && arrow) {
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => {
+        const rect = targetEl.getBoundingClientRect();
+        const pad = 6;
+        const top = Math.max(6, rect.top - pad);
+        const left = Math.max(6, rect.left - pad);
+        const width = Math.min(window.innerWidth - 12, rect.width + pad * 2);
+        const height = Math.min(window.innerHeight * 0.52, rect.height + pad * 2);
+
+        hole.style.top = top + 'px';
+        hole.style.left = left + 'px';
+        hole.style.width = width + 'px';
+        hole.style.height = height + 'px';
+
+        const spaceBelow = window.innerHeight - (top + height);
+        if (spaceBelow > 235) {
+          card.style.top = Math.min(window.innerHeight - 225, top + height + 26) + 'px';
+          card.style.bottom = 'auto';
+          arrow.textContent = '👆';
+          arrow.style.top = (top + height + 2) + 'px';
+        } else {
+          card.style.bottom = Math.max(16, window.innerHeight - top + 24) + 'px';
+          card.style.top = 'auto';
+          arrow.textContent = '👇';
+          arrow.style.top = Math.max(4, top - 30) + 'px';
+        }
+        arrow.style.left = Math.min(window.innerWidth - 40, Math.max(20, left + width / 2 - 14)) + 'px';
+      }, 120);
+    }
+  }, 60);
+};
+
+
+/* ج) همگام‌سازی ابری تفاضلی و فوق‌کم‌مصرف (Smart Delta Cloud Sync — بدون ارسال تکراری کل اکانت و عکس‌ها) */
+function computeFastStringHash(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0).toString(36);
+}
+
+const _origSyncWithPhotosV70 = window.syncAccountNowWithPhotos;
+window.syncAccountNowWithPhotos = async function(silent = false, direction = 'both') {
+  const acc = window.getTeacherAccount();
+  const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || '').trim();
+  if (!key || key.length < 3) {
+    if (!silent) window.openOnboardingAuthScreen();
+    return false;
+  }
+
+  const topic = getCloudTopicHash(key);
+  const deltaStateKey = 'dam_delta_hashes_v72_' + topic;
+  let lastHashes = {};
+  try { lastHashes = JSON.parse(localStorage.getItem(deltaStateKey) || '{}'); } catch (_) {}
+
+  // اگر فقط در حال آپلود پس‌زمینه هستیم (upload_only)، بررسی کن آیا واقعاً تغییری نسبت به آخرین وضعیت رخ داده؟
+  if (direction === 'upload_only') {
+    const changedClasses = [];
+    const newPhotos = {};
+    const curHashes = { ...lastHashes };
+
+    // بررسی تغییر پروفایل معلم
+    const accHash = computeFastStringHash(JSON.stringify({ n: acc.name, g: acc.gmail, p: acc.phone, b: acc.bio, avLen: (acc.avatar || '').length }));
+    let hasChanges = false;
+    if (accHash !== lastHashes._acc) {
+      curHashes._acc = accHash;
+      hasChanges = true;
+    }
+
+    (db.schools || []).forEach(s => {
+      (s.classes || []).forEach(c => {
+        // ساخت نسخه سبک کلاس بدون عکس‌های سنگین تکراری؛ عکس‌ها فقط اگر جدید یا تغییرکرده باشند ارسال می‌شوند
+        const lightStudents = (c.students || []).map(st => {
+          const pKey = 'st_ph_' + st.id;
+          const pHash = st.photo ? computeFastStringHash(st.photo) : '';
+          if (st.photo && pHash !== lastHashes[pKey]) {
+            newPhotos[st.id] = st.photo;
+            curHashes[pKey] = pHash;
+          }
+          return { ...st, photo: '' };
+        });
+        const classDataObj = {
+          sid: s.id, sName: s.name, sYear: s.year,
+          cid: c.id, name: c.name, grade: c.grade,
+          currentTermName: c.currentTermName,
+          attendance: c.attendance,
+          termScores: c.termScores,
+          contExamScores: c.contExamScores,
+          gradeColumns: c.gradeColumns,
+          groups: c.groups,
+          onlineExamResults: c.onlineExamResults || {},
+          students: lightStudents
+        };
+        const cStr = JSON.stringify(classDataObj);
+        const cHash = computeFastStringHash(cStr);
+        if (cHash !== lastHashes['cls_' + c.id]) {
+          changedClasses.push(classDataObj);
+          curHashes['cls_' + c.id] = cHash;
+          hasChanges = true;
+        }
+      });
+    });
+
+    // اگر هیچ کلاسی یا پروفایلی تغییر نکرده، اصلاً اینترنت مصرف نکن!
+    if (!hasChanges && !changedClasses.length && !Object.keys(newPhotos).length) {
+      const syncChip = document.getElementById('tgLiveSyncChip');
+      if (syncChip) syncChip.textContent = '🟢 به‌روز (بدون مصرف اینترنت)';
+      if (!silent) toast('⚡ تمام اطلاعات شما از قبل در ابر به‌روز است (۰ کیلوبایت مصرف اینترنت)');
+      return true;
+    }
+
+    // ارسال بسته تفاضلی بسیار سبک (Delta Packet) که فقط شامل تغییرات جدید است
+    try {
+      const deltaPacket = {
+        type: 'DAM_CLOUD_DELTA_V72',
+        updatedAt: Date.now(),
+        jalaliDate: formatJalaliDate(localISODate()),
+        teacherAccount: { ...acc, avatar: accHash !== lastHashes._acc ? (acc.avatar || '') : undefined },
+        changedClasses,
+        newPhotos
+      };
+      const zDelta = await window.compressStringGzipBase64(JSON.stringify(deltaPacket));
+      localStorage.setItem(deltaStateKey, JSON.stringify(curHashes));
+      localStorage.setItem('dam_last_delta_pkt_' + topic, JSON.stringify({ type: 'DAM_CLOUD_DELTA_V72', zDelta, updatedAt: deltaPacket.updatedAt }));
+
+      const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+      const baseUrl = customEp || `https://ntfy.sh/${topic}`;
+      await fetch(baseUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ type: 'DAM_CLOUD_DELTA_V72', updatedAt: deltaPacket.updatedAt, jalaliDate: deltaPacket.jalaliDate, zDelta })
+      });
+
+      const kbSize = Math.max(1, Math.round(zDelta.length / 1024));
+      const syncChip = document.getElementById('tgLiveSyncChip');
+      if (syncChip) syncChip.textContent = '🟢 متصل';
+      if (!silent) toast(`⚡ فقط آخرین تغییرات همگام‌سازی شد (حجم مصرفی: فقط ${fa(kbSize)} کیلوبایت!) ✅`);
+      return true;
+    } catch (_) {}
+  }
+
+  // برای بارگذاری اولیه هنگام ورود به اکانت (pull_first یا both)، ابتدا بسته‌های تفاضلی جدید را نیز اعمال کن
+  const res = await _origSyncWithPhotosV70(silent, direction);
+  await window.applyIncomingDeltaPacketsFromCloud(topic);
+  return res;
+};
+
+window.applyIncomingDeltaPacketsFromCloud = async function(topic) {
+  try {
+    const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+    const pollUrl = customEp ? customEp : `https://ntfy.sh/${topic}/json?poll=1&since=30d`;
+    const res = await fetch(pollUrl);
+    if (!res.ok) return;
+    const lines = (await res.text()).trim().split('\n').map(l => l.trim()).filter(Boolean);
+    let appliedAny = false;
+    for (const line of lines) {
+      try {
+        const obj = JSON.parse(line);
+        const msg = obj.message ? JSON.parse(obj.message) : obj;
+        if (msg && msg.type === 'DAM_CLOUD_DELTA_V72' && msg.zDelta) {
+          const decStr = await window.decompressStringGzipBase64(msg.zDelta);
+          const delta = JSON.parse(decStr);
+          if (delta.changedClasses) {
+            delta.changedClasses.forEach(cSnap => {
+              let s = findSchool(cSnap.sid) || db.schools.find(x => x.name === cSnap.sName);
+              if (!s) {
+                s = { id: cSnap.sid || uid(), name: cSnap.sName || 'مدرسه', year: cSnap.sYear || '۱۴۰۵-۱۴۰۶', photos: [], classes: [] };
+                db.schools.push(s);
+              }
+              let c = s.classes.find(x => x.id === cSnap.cid || x.name === cSnap.name);
+              const existingPhotosMap = {};
+              if (c) (c.students || []).forEach(st => { if (st.photo) existingPhotosMap[st.id] = st.photo; });
+              const mergedStudents = (cSnap.students || []).map(st => ({
+                ...st,
+                photo: (delta.newPhotos && delta.newPhotos[st.id]) || existingPhotosMap[st.id] || st.photo || ''
+              }));
+              if (!c) {
+                s.classes.push({ ...cSnap, id: cSnap.cid, students: mergedStudents });
+              } else {
+                Object.assign(c, { ...cSnap, id: c.id, students: mergedStudents });
+              }
+              appliedAny = true;
+            });
+          }
+        }
+      } catch (_) {}
+    }
+    if (appliedAny) {
+      savePersistent();
+      renderAll();
+    }
+  } catch (_) {}
+};
+
+
+/* د) سامانه «📊 لینک نتایج آزمون»:
+   ۱. پنل معلم برای مشاهده و ویرایش زنده نمرات و پاسخ‌های دانش‌آموزان در لینک
+   ۲. پرتال دانش‌آموز با تشخیص خودکار (Auto-Detect بدون کد پیگیری و رمز) + امکان جستجو با نام و نام خانوادگی و نام پدر / کد ملی
+   ۳. کارنامه گرافیکی، جذاب و تحلیلی (نمودار دایره‌ای، درصد، مقایسه با میانگین کلاس، تحلیل مبحثی و ریز سوالات)
+*/
+
+window.getExamResultsUrlForClass = function(sid, cid) {
+  const s = findSchool(sid) || db.schools?.[0];
+  const c = s ? (findClass(s.id, cid) || s.classes?.[0]) : null;
+  const shortCode = c ? getShortRoomCode(s.id, c.id) : 'exam';
+  const baseUrl = window.location.href.split('?')[0].split('#')[0];
+  return `${baseUrl}?res=${shortCode}`;
+};
+
+window.copyStudentResultsPortalLink = function(sid = null, cid = null) {
+  const s = findSchool(sid || currentSchoolId) || db.schools?.[0];
+  const c = s ? (findClass(s.id, cid || currentClassId) || s.classes?.[0]) : null;
+  if (!s || !c) { toast('ابتدا کلاس را انتخاب کنید.'); return; }
+  window.publishExamResultsManifestToCloud(s.id, c.id);
+  const url = window.getExamResultsUrlForClass(s.id, c.id);
+  copyText(url);
+  window.triggerHapticVibrate('success');
+  toast('🔗 لینک کارنامه و نتایج تحلیلی آزمون کپی شد!');
+};
+
+// تجمیع تمام نتایج آزمون یک کلاس (چه از آزمون آنلاین، چه از تصحیح برگه و چه از ستون کتبی مستمر)
+window.collectClassExamResultsList = function(sid, cid) {
+  const s = findSchool(sid) || db.schools?.[0];
+  const c = s ? (findClass(s.id, cid) || s.classes?.[0]) : null;
+  if (!c) return [];
+  if (!c.onlineExamResults || typeof c.onlineExamResults !== 'object') c.onlineExamResults = {};
+
+  const qs = window.ExamApp ? (ExamApp.getQuestions() || []) : [];
+  const maxTotal = qs.reduce((acc, q) => acc + (Number(q.score) || 0), 0) || 20;
+  const subjTitle = window.ExamApp?.state?.header?.subject || c.grade || 'آزمون کلاسی';
+
+  const results = [];
+  sortStudents(c.students || []).forEach(st => {
+    const rec = c.onlineExamResults[st.id] || {};
+    const contScore = c.contExamScores?.[st.id];
+    const latestExamGrade = (st.grades || []).slice().reverse().find(g => g.gradeType === 'cont_exam' || g.source === 'online_portal');
+    const finalExamScore = rec.score !== undefined ? Number(rec.score) : (contScore !== undefined && contScore !== '' ? Number(contScore) : (latestExamGrade ? Number(latestExamGrade.score) : null));
+
+    results.push({
+      stid: st.id,
+      name: st.name || '',
+      lastName: st.lastName || '',
+      fullName: `${st.lastName || ''} ${st.name || ''}`.trim(),
+      fatherName: st.fatherName || rec.fatherName || '',
+      nationalId: st.nationalId || rec.nationalId || '',
+      photo: st.photo || '',
+      score: finalExamScore,
+      maxScore: rec.maxScore || maxTotal,
+      subject: rec.subject || subjTitle,
+      teacherFeedback: rec.teacherFeedback || '',
+      details: Array.isArray(rec.details) ? rec.details : [],
+      updatedAt: rec.updatedAt || ''
+    });
+  });
+  return results;
+};
+
+// انتشار لیست نتایج آزمون روی کانال ابری لینک نتایج تا دانش‌آموزان در لحظه ببینند
+window.publishExamResultsManifestToCloud = async function(sid, cid) {
+  const s = findSchool(sid) || db.schools?.[0];
+  const c = s ? (findClass(s.id, cid) || s.classes?.[0]) : null;
+  if (!s || !c) return;
+  const shortCode = getShortRoomCode(s.id, c.id);
+  const resultsList = window.collectClassExamResultsList(s.id, c.id);
+  const qs = window.ExamApp ? (ExamApp.getQuestions() || []).map((q, i) => ({
+    n: i + 1,
+    tp: q.type || 'desc',
+    tx: q.text || '',
+    sc: Number(q.score) || 1,
+    keyAns: q.type === 'mcq' ? (q.options?.[q.correctIndex] || `گزینه ${Number(q.correctIndex) + 1}`) : (q.tfCorrect || q.blankWord || q.explanation || 'تشریحی')
+  })) : [];
+
+  const payload = {
+    tp: 'DAM_EXAM_RESULTS_V72',
+    sc: shortCode,
+    sid: s.id,
+    cid: c.id,
+    schoolName: s.name,
+    className: window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name,
+    teacherName: getTeacherName(),
+    subject: window.ExamApp?.state?.header?.subject || c.grade || 'آزمون کلاسی',
+    dateFa: formatJalaliDate(localISODate()),
+    questionsKey: qs,
+    results: resultsList
+  };
+
+  try { localStorage.setItem('dam_exam_res_' + shortCode, JSON.stringify(payload)); } catch (_) {}
+  try {
+    await fetch(`https://ntfy.sh/dam_res_${shortCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+  } catch (_) {}
+  return payload;
+};
+
+// ۱. پنجره مدیریت، مشاهده و ویرایش زنده نتایج آزمون توسط معلم
+window.openTeacherExamResultsManagerModal = function(preSid = null, preCid = null) {
+  let s = findSchool(preSid || currentSchoolId) || db.schools?.[0];
+  if (!s) { toast('ابتدا یک مدرسه و کلاس بسازید.'); return; }
+  let c = findClass(s.id, preCid || currentClassId) || s.classes?.[0];
+  if (!c) { toast('ابتدا یک کلاس در مدرسه بسازید.'); return; }
+
+  const classOpts = [];
+  db.schools.forEach(sch => (sch.classes || []).forEach(cl => {
+    classOpts.push(`<option value="${sch.id}|${cl.id}" ${(sch.id === s.id && cl.id === c.id) ? 'selected' : ''}>🏫 ${esc(sch.name)} — 🚪 کلاس ${esc(window.cleanClassDisplayName ? window.cleanClassDisplayName(cl.name) : cl.name)}</option>`);
+  }));
+
+  const resUrl = window.getExamResultsUrlForClass(s.id, c.id);
+  const results = window.collectClassExamResultsList(s.id, c.id);
+  const step = window.getScoreRoundStep ? window.getScoreRoundStep() : 0.25;
+
+  const scoredItems = results.filter(r => r.score !== null && r.score !== undefined);
+  const classAvg = scoredItems.length ? (scoredItems.reduce((a, b) => a + Number(b.score), 0) / scoredItems.length) : 0;
+
+  const rowsHtml = results.length ? results.map((r, idx) => `
+    <div style="padding:10px 12px;border-radius:13px;background:var(--bg-panel);border:1px solid var(--border);margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap">
+        <div style="min-width:0;flex:1">
+          <b style="font-size:13.5px;display:block;color:var(--text-main)">${fa(idx + 1)}. ${esc(r.fullName)}</b>
+          <span class="muted" style="font-size:11px">کد پیگیری دانش‌آموز: <b>${esc(r.fullName)}${r.fatherName ? ' - ' + esc(r.fatherName) : ''}</b>${r.nationalId ? ` · کدملی: ${fa(r.nationalId)}` : ''}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;flex-shrink:0">
+          <input type="number" id="tResScore_${r.stid}" step="${step}" min="0" max="20" value="${r.score !== null && r.score !== undefined ? r.score : ''}" placeholder="نمره" style="width:72px;height:34px;text-align:center;font-weight:900;font-size:13.5px;color:var(--primary);background:var(--bg-card)" onchange="saveTeacherEditedExamResult('${s.id}','${c.id}','${r.stid}')">
+          <button type="button" class="btn soft btn-sm" style="height:34px;padding:0 10px" onclick="previewStudentAnalyticalResultCard('${s.id}','${c.id}','${r.stid}')" title="مشاهده کارنامه گرافیکی این دانش‌آموز">📊 کارنامه</button>
+        </div>
+      </div>
+      <input type="text" id="tResFb_${r.stid}" value="${esc(r.teacherFeedback || '')}" placeholder="✍️ یادداشت یا پیام تحلیلی معلم در کارنامه این دانش‌آموز..." style="width:100%;height:33px;font-size:11.5px;background:var(--bg-card)" onchange="saveTeacherEditedExamResult('${s.id}','${c.id}','${r.stid}')">
+    </div>
+  `).join('') : '<div class="muted" style="padding:16px;text-align:center">هنوز دانش‌آموزی در این کلاس ثبت نشده است.</div>';
+
+  openModal(formHeader('📊 مدیریت، ویرایش و لینک نتایج تحلیلی آزمون') + `
+    <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+        <select onchange="const [sId,cId]=this.value.split('|');openTeacherExamResultsManagerModal(sId,cId)" style="flex:1;min-width:190px;font-weight:800">
+          ${classOpts.join('')}
+        </select>
+        <span class="chip">⭐ میانگین آزمون کلاس: ${fmtScore(classAvg)}</span>
+      </div>
+      <label style="font-size:11.5px;font-weight:900;color:var(--primary);display:block;margin-bottom:4px">🔗 لینک اختصاصی نتایج آزمون (تشخیص خودکار دانش‌آموز + ورود با نام و نام پدر/کدملی):</label>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <input type="text" readonly dir="ltr" value="${esc(resUrl)}" style="flex:1;min-width:180px;font-family:monospace;font-size:12px;font-weight:800;text-align:left;background:var(--bg-card)">
+        <button type="button" class="btn primary btn-sm" onclick="copyStudentResultsPortalLink('${s.id}','${c.id}')">🔗 کپی لینک نتایج</button>
+        <button type="button" class="btn green btn-sm" onclick="previewStudentAnalyticalResultCard('${s.id}','${c.id}',null)">👁️ پیش‌نمایش دید دانش‌آموز</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px">
+        <b style="color:var(--primary);font-size:13.5px">✏️ جدول مشاهده و ویرایش زنده نمرات آزمون توسط معلم</b>
+        <button type="button" class="btn green btn-sm" onclick="publishExamResultsManifestToCloud('${s.id}','${c.id}');toast('✅ تمام نمرات و ویرایش‌ها در لینک نتایج دانش‌آموزان بروزرسانی شد!')">☁️ انتشار تغییرات در لینک نتایج</button>
+      </div>
+      <div style="max-height:46vh;overflow-y:auto">
+        ${rowsHtml}
+      </div>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.saveTeacherEditedExamResult = function(sid, cid, stid) {
+  const c = findClass(sid, cid);
+  const st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  if (!c.onlineExamResults || typeof c.onlineExamResults !== 'object') c.onlineExamResults = {};
+  if (!c.contExamScores || typeof c.contExamScores !== 'object') c.contExamScores = {};
+
+  const scRaw = document.getElementById('tResScore_' + stid)?.value ?? '';
+  const fbVal = (document.getElementById('tResFb_' + stid)?.value || '').trim();
+  const prevRec = c.onlineExamResults[stid] || {};
+
+  if (scRaw === '') {
+    delete c.contExamScores[stid];
+    c.onlineExamResults[stid] = { ...prevRec, score: null, teacherFeedback: fbVal, updatedAt: formatJalaliDate(localISODate()) };
+  } else {
+    const sc = window.roundByConfigurableStep ? window.roundByConfigurableStep(scRaw) : roundQuarter(scRaw);
+    c.contExamScores[stid] = sc;
+    c.onlineExamResults[stid] = {
+      ...prevRec,
+      score: sc,
+      teacherFeedback: fbVal,
+      updatedAt: formatJalaliDate(localISODate())
+    };
+    let ex = (st.grades || []).find(g => g.source === 'direct_cont_col' || g.source === 'online_portal');
+    if (ex) ex.score = sc;
+    else gradesData(st).push({ id: uid(), date: new Date().toISOString(), subject: 'آزمون کلاسی', score: sc, source: 'direct_cont_col', gradeType: 'cont_exam' });
+  }
+  evaluateAutoStatus(c, st);
+  savePersistent();
+  window.triggerHapticVibrate('success');
+  toast(`✅ نمره و بازخورد «${st.name} ${st.lastName}» ذخیره شد`);
+};
+
+window.previewStudentAnalyticalResultCard = async function(sid, cid, preStid = null) {
+  const payload = await window.publishExamResultsManifestToCloud(sid, cid);
+  if (!payload) return;
+  closeModal();
+  if (preStid) {
+    const st = findStudent(sid, cid, preStid);
+    if (st) {
+      try {
+        localStorage.setItem('dam_stu_identity_' + payload.sc, JSON.stringify({
+          stid: st.id,
+          fullName: `${st.lastName} ${st.name}`.trim(),
+          fatherName: st.fatherName || ''
+        }));
+      } catch (_) {}
+    }
+  }
+  window.renderStudentExamResultsPortal(payload, true, preStid);
+};
+
+// ذخیره خودکار هویت دانش‌آموز در مرورگر خودش هنگام شرکت در آزمون آنلاین (برای تشخیص خودکار ۱۰۰٪ بدون کد پیگیری در لینک نتایج!)
+const _origSubmitPortalV71 = window.submitStudentOnlinePortalForm;
+window.submitStudentOnlinePortalForm = async function() {
+  const p = window._activeStudentPortalPayload;
+  await _origSubmitPortalV71();
+  if (!p) return;
+  try {
+    const selEl = document.getElementById('portalStudentSelect');
+    const typedName = (document.getElementById('portalStudentTypedName')?.value || '').trim();
+    const typedFather = (document.getElementById('portalStudentTypedFather')?.value || '').trim();
+    let stid = '', stName = typedName;
+    if (selEl && selEl.value) {
+      [stid, stName] = selEl.value.split('|');
+    }
+    if (stName && p.sc) {
+      localStorage.setItem('dam_stu_identity_' + p.sc, JSON.stringify({
+        stid,
+        fullName: stName.trim(),
+        fatherName: typedFather
+      }));
+    }
+    // اضافه کردن دکمه مستقیم «📊 مشاهده کارنامه گرافیکی و تحلیلی من» در رسید پایان آزمون
+    const resBox = document.getElementById('portalResultBox');
+    if (resBox && p.m === 'exam') {
+      const btnWrap = document.createElement('div');
+      btnWrap.style.marginTop = '10px';
+      btnWrap.innerHTML = `<button type="button" class="btn primary block" style="padding:11px;font-weight:900" onclick="openMyGraphicalExamResultAfterSubmit('${esc(p.sc)}')">📊 مشاهده کارنامه گرافیکی و تحلیلی آزمون من</button>`;
+      resBox.firstElementChild?.appendChild(btnWrap);
+    }
+  } catch (_) {}
+};
+
+window.openMyGraphicalExamResultAfterSubmit = async function(shortCode) {
+  const p = window._activeStudentPortalPayload;
+  let resPayload = null;
+  if (p && p.s && p.c) {
+    resPayload = await window.publishExamResultsManifestToCloud(p.s, p.c);
+  }
+  if (!resPayload) {
+    try { resPayload = JSON.parse(localStorage.getItem('dam_exam_res_' + shortCode) || 'null'); } catch (_) {}
+  }
+  if (resPayload) {
+    window.renderStudentExamResultsPortal(resPayload, false, null);
+  }
+};
+
+// ۲. رندر پرتال کارنامه تحلیلی و گرافیکی دانش‌آموز (با تشخیص خودکار + جستجو با نام و نام خانوادگی و نام پدر / کد ملی)
+window.renderStudentExamResultsPortal = function(payload, isTeacherPreview = false, forcedStid = null) {
+  const ov = document.getElementById('studentOnlinePortalOverlay');
+  if (!ov || !payload) return;
+  window._activeExamResultsPayload = payload;
+  ov.style.display = 'block';
+
+  // ۱. تشخیص خودکار دانش‌آموز از حافظه مرورگر بدون نیاز به هیچ کد پیگیری یا رمز!
+  let matchedStudent = null;
+  const results = payload.results || [];
+
+  if (forcedStid) {
+    matchedStudent = results.find(r => r.stid === forcedStid);
+  }
+  if (!matchedStudent) {
+    try {
+      const savedId = JSON.parse(localStorage.getItem('dam_stu_identity_' + payload.sc) || 'null');
+      if (savedId) {
+        matchedStudent = results.find(r =>
+          (savedId.stid && r.stid === savedId.stid) ||
+          (savedId.fullName && (r.fullName === savedId.fullName || `${r.name} ${r.lastName}`.trim() === savedId.fullName))
+        );
+      }
+    } catch (_) {}
+  }
+
+  ov.innerHTML = `
+    <div class="digiform-wrapper student-portal-box">
+      ${isTeacherPreview ? `
+        <div style="background:#1E293B;border:1.5px solid #F97316;color:#FFFFFF;padding:10px 14px;border-radius:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+          <b style="font-size:12.5px">👁️ پیش‌نمایش لینک نتایج تحلیلی آزمون (دید دانش‌آموز)</b>
+          <div style="display:flex;gap:6px">
+            <button type="button" class="btn primary btn-sm" onclick="document.getElementById('studentOnlinePortalOverlay').style.display='none';openTeacherExamResultsManagerModal('${payload.sid || ''}','${payload.cid || ''}')">✏️ ویرایش نمرات (معلم)</button>
+            <button type="button" class="btn gray btn-sm" onclick="document.getElementById('studentOnlinePortalOverlay').style.display='none'">بستن ✖</button>
+          </div>
+        </div>
+      ` : ''}
+
+      <div class="digiform-card">
+        <div class="digiform-top-banner exam-banner" style="background:linear-gradient(135deg, #EA580C 0%, #D97706 100%)">
+          <div class="digiform-badge-row">
+            <span class="digiform-status-pill">📊 کارنامه تحلیلی و هوشمند آزمون</span>
+            <span>📅 ${esc(payload.dateFa || '')}</span>
+          </div>
+          <h1 class="digiform-title">نتایج آزمون: ${esc(payload.subject || 'آزمون کلاسی')}</h1>
+          <div class="digiform-meta-strip">
+            <span class="digiform-meta-chip">🏫 ${esc(payload.schoolName || '')}</span>
+            <span class="digiform-meta-chip">🚪 کلاس ${esc(payload.className || '')}</span>
+            <span class="digiform-meta-chip">👨‍🏫 دبیر: ${esc(payload.teacherName || '')}</span>
+          </div>
+        </div>
+
+        <div class="digiform-body">
+          <!-- کادر تشخیص خودکار یا ورود با کد پیگیری طبیعی (نام و نام خانوادگی + نام پدر یا کد ملی) -->
+          <div class="digiform-field-box" style="background:#FFF7ED;border-color:#FDBA74">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
+              <b style="font-size:12.5px;color:#9A3412">
+                ${matchedStudent ? `🟢 تشخیص خودکار انجام شد: کارنامه «${esc(matchedStudent.fullName)}»` : '🔍 مشاهده کارنامه با نام و نام خانوادگی (کد پیگیری شما)'}
+              </b>
+              ${matchedStudent ? `<button type="button" class="btn soft btn-sm" style="font-size:10.5px;padding:2px 8px" onclick="document.getElementById('stuResultLookupFormWrap').style.display='block'">جستجوی دانش‌آموز دیگر</button>` : ''}
+            </div>
+            <div id="stuResultLookupFormWrap" style="display:${matchedStudent ? 'none' : 'block'}">
+              <div style="font-size:11.5px;color:#475569;margin-bottom:8px">
+                نیازی به رمز یا کد پیچیده نیست! کافی است <b>نام و نام خانوادگی</b> خود (و در صورت ثبت، <b>نام پدر یا کد ملی</b>) را وارد کنید:
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+                <input type="text" id="resLookupNameInp" class="digiform-input" style="flex:1 1 180px" list="resLookupRosterDatalist" placeholder="نام و نام خانوادگی (مثلاً علی رضایی)" value="${esc(matchedStudent?.fullName || '')}">
+                <datalist id="resLookupRosterDatalist">
+                  ${results.map(r => `<option value="${esc(r.fullName)}">${r.fatherName ? `فرزند ${esc(r.fatherName)}` : ''}</option>`).join('')}
+                </datalist>
+                <input type="text" id="resLookupFatherOrNidInp" class="digiform-input" style="flex:1 1 130px" placeholder="نام پدر یا کد ملی (اختیاری)" value="${esc(matchedStudent?.fatherName || matchedStudent?.nationalId || '')}">
+                <button type="button" class="btn primary" style="height:40px;padding:0 12px" onclick="lookupStudentAnalyticalResult()">مشاهده</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- محل نمایش کارنامه گرافیکی و تحلیلی دانش‌آموز -->
+          <div id="studentAnalyticalReportContainer"></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  if (matchedStudent) {
+    window.renderSingleStudentAnalyticalCard(matchedStudent, payload);
+  } else if (results.length > 0 && isTeacherPreview) {
+    window.renderSingleStudentAnalyticalCard(results[0], payload);
+  }
+};
+
+window.lookupStudentAnalyticalResult = function() {
+  const payload = window._activeExamResultsPayload;
+  if (!payload) return;
+  const qName = (document.getElementById('resLookupNameInp')?.value || '').trim().replace(/\s+/g, ' ');
+  const qSub = enDigits(document.getElementById('resLookupFatherOrNidInp')?.value || '').trim();
+  if (!qName && !qSub) {
+    toast('لطفاً نام و نام خانوادگی خود را بنویسید.');
+    return;
+  }
+  const results = payload.results || [];
+  let found = results.find(r => {
+    const f1 = r.fullName.replace(/\s+/g, ' ');
+    const f2 = `${r.name} ${r.lastName}`.trim().replace(/\s+/g, ' ');
+    const nameMatch = !qName || f1 === qName || f2 === qName || f1.includes(qName) || f2.includes(qName);
+    const subMatch = !qSub || (r.fatherName && r.fatherName.includes(qSub)) || (r.nationalId && enDigits(r.nationalId).includes(qSub));
+    return nameMatch && subMatch;
+  });
+
+  if (!found && qName) {
+    found = results.find(r => r.fullName.includes(qName) || `${r.name} ${r.lastName}`.includes(qName));
+  }
+
+  if (!found) {
+    const box = document.getElementById('studentAnalyticalReportContainer');
+    if (box) {
+      box.innerHTML = `<div class="card" style="background:#FEF2F2;border:1.5px solid #F87171;color:#991B1B;text-align:center;padding:14px">⚠️ دانش‌آموزی با این مشخصات در لیست نتایج یافت نشد؛ نام خود را از فهرست پیشنهادی انتخاب کنید.</div>`;
+    }
+    return;
+  }
+
+  try {
+    localStorage.setItem('dam_stu_identity_' + payload.sc, JSON.stringify({
+      stid: found.stid,
+      fullName: found.fullName,
+      fatherName: found.fatherName || ''
+    }));
+  } catch (_) {}
+
+  window.triggerHapticVibrate('success');
+  window.renderSingleStudentAnalyticalCard(found, payload);
+};
+
+window.renderSingleStudentAnalyticalCard = function(stu, payload) {
+  const box = document.getElementById('studentAnalyticalReportContainer');
+  if (!box || !stu) return;
+
+  const allScored = (payload.results || []).filter(r => r.score !== null && r.score !== undefined).map(r => Number(r.score)).sort((a, b) => b - a);
+  const classAvg = allScored.length ? (allScored.reduce((a, b) => a + b, 0) / allScored.length) : 0;
+  const maxPossible = Number(stu.maxScore) || 20;
+  const myScore = stu.score !== null && stu.score !== undefined ? Number(stu.score) : 0;
+  const hasScore = stu.score !== null && stu.score !== undefined;
+  const pct = hasScore ? Math.min(100, Math.max(0, Math.round((myScore / maxPossible) * 100))) : 0;
+  const rank = hasScore && allScored.length ? (allScored.findIndex(s => s <= myScore) + 1) : null;
+
+  // رنگ و پیام انگیزشی-تحلیلی بر اساس درصد موفقیت
+  let badgeColor = '#16A34A', statusLabel = '🌟 عملکرد عالی و درخشان!', adviceText = 'تسلط شما بر مفاهیم این آزمون فوق‌العاده است؛ همین روند عالی را ادامه دهید.';
+  if (!hasScore) {
+    badgeColor = '#64748B'; statusLabel = '⏳ در انتظار ثبت نهایی نمره توسط دبیر'; adviceText = 'نمره شما پس از بررسی نهایی دبیر در همین لینک قابل مشاهده خواهد بود.';
+  } else if (pct < 50) {
+    badgeColor = '#DC2626'; statusLabel = '⚠️ نیازمند مرور و تمرین بیشتر'; adviceText = 'پیشنهاد می‌شود سوالات کلیدی پایین صفحه و نکات جزوه درس را یک بار دیگر با دقت مرور کنید.';
+  } else if (pct < 75) {
+    badgeColor = '#D97706'; statusLabel = '👍 عملکرد خوب (قابل ارتقا به عالی)'; adviceText = 'پایه درسی خوبی دارید؛ با بررسی پاسخ‌های کلیدی زیر می‌توانید در آزمون بعدی نمره کامل بگیرید.';
+  } else if (pct < 90) {
+    badgeColor = '#0284C7'; statusLabel = '👏 عملکرد بسیار خوب و تحسین‌برانگیز'; adviceText = 'فقط با کمی دقت بیشتر در جزئیات، به نمره کامل ۲۰ خواهید رسید.';
+  }
+
+  // نمودار دایره‌ای SVG (Circular Gauge)
+  const radius = 56;
+  const circum = 2 * Math.PI * radius;
+  const dashOffset = circum - (pct / 100) * circum;
+
+  const diffFromAvg = hasScore ? Math.round((myScore - classAvg) * 100) / 100 : 0;
+
+  // جدول تحلیل سوال‌به‌سوال و کلید پاسخنامه آزمون
+  const qsKey = payload.questionsKey || [];
+  const qBreakdownHtml = qsKey.length ? `
+    <div style="margin-top:14px;text-align:right">
+      <b style="font-size:13.5px;color:#0F172A;display:block;margin-bottom:8px">📋 تحلیل سوال‌به‌سوال و پاسخنامه کلیدی آزمون:</b>
+      ${qsKey.map((qk, i) => {
+        const stuDet = (stu.details || []).find(d => d.n === qk.n) || {};
+        const qEarned = stuDet.e !== undefined ? Number(stuDet.e) : null;
+        const isFull = qEarned !== null && qEarned >= qk.sc;
+        return `
+          <div class="analytics-q-item" style="border-right:4px solid ${isFull ? '#16A34A' : (qEarned > 0 ? '#F59E0B' : '#0284C7')}">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px">
+              <b style="font-size:12.5px;color:#0F172A">سوال ${fa(qk.n)}: ${esc(qk.tx)}</b>
+              <span style="background:#FFF7ED;color:#EA580C;border:1px solid #FDBA74;padding:2px 8px;border-radius:99px;font-size:10.5px;font-weight:900;white-space:nowrap">
+                ${qEarned !== null ? `${fa(qEarned)} از ${fa(qk.sc)}` : `${fa(qk.sc)} نمره`}
+              </span>
+            </div>
+            <div style="margin-top:5px;font-size:11.5px;color:#15803D;font-weight:800">✅ پاسخ کلیدی صحیح: ${esc(qk.keyAns)}</div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  ` : '';
+
+  box.innerHTML = `
+    <div class="analytics-result-hero">
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px">
+        <div class="avatar" style="width:48px!important;height:48px!important;border-radius:50%;background:#FFFFFF;border:2px solid #EA580C">
+          ${stu.photo ? `<img src="${stu.photo}">` : '👨‍🎓'}
+        </div>
+        <div style="text-align:right">
+          <h2 style="margin:0;font-size:17px;color:#0F172A;font-weight:900">${esc(stu.fullName)}</h2>
+          <div style="font-size:11.5px;color:#64748B;font-weight:700">
+            ${stu.fatherName ? `فرزند ${esc(stu.fatherName)} · ` : ''}کد پیگیری: <b>${esc(stu.fullName)}${stu.fatherName ? ' - ' + esc(stu.fatherName) : ''}</b>
+          </div>
+        </div>
+      </div>
+
+      <!-- نمودار دایره‌ای گرافیکی نمره و درصد پیشرفت -->
+      <div class="analytics-gauge-wrap">
+        <svg width="138" height="138" viewBox="0 0 138 138" style="transform:rotate(-90deg)">
+          <circle cx="69" cy="69" r="${radius}" fill="none" stroke="#FED7AA" stroke-width="11"/>
+          <circle cx="69" cy="69" r="${radius}" fill="none" stroke="${badgeColor}" stroke-width="11" stroke-linecap="round" stroke-dasharray="${circum.toFixed(1)}" stroke-dashoffset="${dashOffset.toFixed(1)}" style="transition:stroke-dashoffset 0.8s cubic-bezier(0.22,1,0.36,1)"/>
+        </svg>
+        <div class="analytics-gauge-center">
+          <strong style="font-size:23px;font-weight:900;color:${badgeColor};line-height:1.1">${hasScore ? fmtScore(myScore) : '—'}</strong>
+          <span style="font-size:10.5px;color:#64748B;font-weight:800">از ${fa(maxPossible)} نمره</span>
+          <span style="font-size:11px;font-weight:900;color:#0F172A;margin-top:2px">${fa(pct)}٪</span>
+        </div>
+      </div>
+
+      <div style="display:inline-block;padding:4px 12px;border-radius:999px;background:#FFFFFF;border:1.5px solid ${badgeColor};color:${badgeColor};font-size:12px;font-weight:900;margin-bottom:6px">
+        ${statusLabel}
+      </div>
+      <div style="font-size:12px;color:#334155;line-height:1.6;max-width:420px;margin:0 auto">
+        ${esc(stu.teacherFeedback || adviceText)}
+      </div>
+
+      <!-- ۳ شاخص تحلیلی مقایسه با کلاس -->
+      <div class="analytics-kpi-grid">
+        <div class="analytics-kpi-box">
+          <b>${rank ? `رتبه ${fa(rank)}` : '—'}</b>
+          <small>در بین ${fa(allScored.length || 1)} نفر</small>
+        </div>
+        <div class="analytics-kpi-box">
+          <b>${fmtScore(classAvg)}</b>
+          <small>میانگین کل کلاس</small>
+        </div>
+        <div class="analytics-kpi-box">
+          <b style="color:${diffFromAvg >= 0 ? '#16A34A' : '#DC2626'}" dir="ltr">${diffFromAvg >= 0 ? '+' : ''}${fmtScore(diffFromAvg)}</b>
+          <small>تراز نسبت به کلاس</small>
+        </div>
+      </div>
+
+      <!-- نوار مقایسه بصری نمره دانش‌آموز با میانگین کلاس -->
+      <div style="margin-top:12px;background:#FFFFFF;border:1px solid #FED7AA;border-radius:12px;padding:10px;text-align:right">
+        <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:800;color:#0F172A;margin-bottom:4px">
+          <span>🎯 نمره شما (${hasScore ? fmtScore(myScore) : '—'})</span>
+          <span>${fa(pct)}٪ تسلط</span>
+        </div>
+        <div style="height:9px;background:#F1F5F9;border-radius:99px;overflow:hidden;margin-bottom:8px">
+          <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#F97316,${badgeColor});border-radius:99px"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:800;color:#64748B;margin-bottom:4px">
+          <span>📊 میانگین کلاس (${fmtScore(classAvg)})</span>
+          <span>${fa(Math.min(100, Math.round((classAvg / maxPossible) * 100)))}٪</span>
+        </div>
+        <div style="height:7px;background:#F1F5F9;border-radius:99px;overflow:hidden">
+          <div style="height:100%;width:${Math.min(100, Math.round((classAvg / maxPossible) * 100))}%;background:#94A3B8;border-radius:99px"></div>
+        </div>
+      </div>
+    </div>
+
+    ${qBreakdownHtml}
+  `;
+};
+
+// بررسی پارامتر لینک نتایج آزمون (?res=xxxx) هنگام باز شدن برنامه
+window.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const resCode = params.get('res');
+    if (resCode) {
+      let payload = null;
+      try { payload = JSON.parse(localStorage.getItem('dam_exam_res_' + resCode) || 'null'); } catch (_) {}
+      try {
+        const r = await fetch(`https://ntfy.sh/dam_res_${resCode}/json?poll=1&since=30d`);
+        if (r.ok) {
+          const lines = (await r.text()).trim().split('\n').filter(Boolean);
+          for (const l of lines) {
+            const obj = JSON.parse(l);
+            const msg = obj.message ? JSON.parse(obj.message) : obj;
+            if (msg && msg.tp === 'DAM_EXAM_RESULTS_V72') payload = msg;
+          }
+        }
+      } catch (_) {}
+      if (!payload) {
+        // ساخت از دیتابیس محلی در صورت تطابق کد کوتاه
+        db.schools.forEach(s => (s.classes || []).forEach(c => {
+          if (getShortRoomCode(s.id, c.id) === resCode) {
+            payload = {
+              tp: 'DAM_EXAM_RESULTS_V72',
+              sc: resCode,
+              sid: s.id,
+              cid: c.id,
+              schoolName: s.name,
+              className: window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name,
+              teacherName: getTeacherName(),
+              subject: window.ExamApp?.state?.header?.subject || c.grade || 'آزمون کلاسی',
+              dateFa: formatJalaliDate(localISODate()),
+              questionsKey: [],
+              results: window.collectClassExamResultsList(s.id, c.id)
+            };
+          }
+        }));
+      }
+      if (payload) {
+        setTimeout(() => window.renderStudentExamResultsPortal(payload, false, null), 150);
+      }
+    }
+  } catch (_) {}
+});
 
 </script>
 </body>
