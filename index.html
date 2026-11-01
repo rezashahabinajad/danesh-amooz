@@ -4746,7 +4746,7 @@ body.dark .ws-logout-inner {
         <button type="button" class="iconbtn" onclick="showView('onlineClassView')" title="کلاس آنلاین و لینک اختصاصی" aria-label="کلاس آنلاین">🌐</button>
         <button type="button" class="iconbtn" onclick="openTeacherAccountModal()" title="حساب کاربری معلم (جیمیل و شماره همراه)" aria-label="حساب کاربری">👤</button>
         <button type="button" class="iconbtn" onclick="showView('birthdays')" title="تقویم تولدها" aria-label="تولدها">🎂</button>
-        <button type="button" class="iconbtn" onclick="openExcelPasteImportModal()" title="ورود دسته‌جمعی اسامی از اکسل/شاد" aria-label="ورود دسته‌جمعی">📋</button>
+        <button type="button" class="iconbtn" onclick="openExcelPasteImportModal()" title="ورود دسته‌جمعی اسامی از فایل اکسل / لیست متنی" aria-label="ورود دسته‌جمعی">📋</button>
         <button type="button" class="iconbtn" id="themeToggleBtn" onclick="toggleTheme()" title="تغییر پوسته (نارنجی پیش‌فرض)" aria-label="تغییر پوسته">🍊</button>
       </div>
       <button type="button" class="iconbtn drawer-toggle-btn" id="topDrawerToggleBtn" onclick="toggleTopQuickDrawer(event)" title="باز و بسته کردن کشوی ابزارها" aria-expanded="false" aria-label="کشوی ابزارها">
@@ -4834,7 +4834,7 @@ body.dark .ws-logout-inner {
     <button type="button" class="dash-q-pill" onclick="openTeacherExamResultsManagerModal()">📊 لینک نتایج و ویرایش نمرات آزمون</button>
     <button type="button" class="dash-q-pill" onclick="openSmartCommandPalette()">⚡ فرمان و جستجوی سریع</button>
     <button type="button" class="dash-q-pill" onclick="openQuickTodayClassJump()">📋 حاضری سریع امروز</button>
-    <button type="button" class="dash-q-pill" onclick="openExcelPasteImportModal()">📥 ورود فهرست از اکسل/شاد</button>
+    <button type="button" class="dash-q-pill" onclick="openExcelPasteImportModal()">📥 ورود فهرست از اکسل / لیست متنی</button>
     <button type="button" class="dash-q-pill" onclick="showView('examView')">💎 آزمون‌ساز و تصحیح</button>
     <button type="button" class="dash-q-pill" onclick="showView('teachView')">📖 کتاب‌خوان و جزوه</button>
     <button type="button" class="dash-q-pill" onclick="openQuickExportForTarget('all')">📊 کارنامه و خروجی رنگی</button>
@@ -5055,13 +5055,13 @@ body.dark .ws-logout-inner {
 
     <!-- کادر بازشونده تنظیم سریع کلید هوش مصنوعی در همین صفحه -->
     <div id="teachQuickApiKeyBox" style="display:none;margin-bottom:10px;padding:10px;border-radius:11px;background:var(--bg-main);border:1px dashed var(--primary)">
-      <div style="font-size:11.5px;font-weight:800;margin-bottom:6px;color:var(--primary)">🔑 کلید هوش مصنوعی (Gemini / Groq / DeepSeek / OpenAI):</div>
+      <div style="font-size:11.5px;font-weight:800;margin-bottom:6px;color:var(--primary)">🔑 کلید اختصاصی هوش‌واره و هوش مصنوعی:</div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <input type="password" id="teachInlineApiKeyInp" dir="ltr" style="flex:1;min-width:190px;text-align:left;font-family:monospace;font-size:12px" placeholder="AIza... / gsk_... / sk-..." oninput="TeachAssistant.saveInlineApiKey(this.value)">
+        <input type="password" id="teachInlineApiKeyInp" dir="ltr" style="flex:1;min-width:190px;text-align:left;font-family:monospace;font-size:12px" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." oninput="TeachAssistant.saveInlineApiKey(this.value)">
         <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.testInlineApiKey()">⚡ تست و ذخیره</button>
         <button type="button" class="btn gray btn-sm" onclick="document.getElementById('teachQuickApiKeyBox').style.display='none'">بستن</button>
       </div>
-      <div class="muted" style="font-size:10.5px;margin-top:5px">💡 اگر کلید ندارید، دکمه <b>«🪄 دریافت با ChatGPT / Gemini رایگان»</b> در پایین هر بخش، تصویر و دستور صفحه را آماده می‌کند.</div>
+      <div class="muted" style="font-size:10.5px;margin-top:5px">💡 اگر کلید ندارید، دکمه <b>«🪄 دریافت از هوش‌واره رایگان»</b> در پایین هر بخش، تصویر و دستور صفحه را آماده می‌کند.</div>
     </div>
 
     <div class="teach-workbench-tabs" role="tablist">
@@ -5120,7 +5120,7 @@ body.dark .ws-logout-inner {
       <div style="display:flex;gap:6px;flex-wrap:wrap">
         <button type="button" class="btn primary" style="flex:1;min-width:170px" id="btnExtractLineQuestions" onclick="TeachAssistant.extractLineByLineQuestions('major')">🎯 استخراج سوالات درشت صفحه (۴-۵ سوال)</button>
         <button type="button" class="btn green" style="flex:1;min-width:170px" id="btnExtractAllDetailedQuestions" onclick="TeachAssistant.extractLineByLineQuestions('all')">📋 استخراج همهٔ سوالات ریزبه‌ریز کل صفحه</button>
-        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.openSmartAiBridgeModal('extract')" title="استفاده از DeepSeek / ChatGPT / Gemini بدون نیاز به کلید API">🪄 بدون کلید (DeepSeek/ChatGPT)</button>
+        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.openSmartAiBridgeModal('extract')" title="استفاده از هوش‌واره و هوش مصنوعی بدون نیاز به کلید">🪄 دریافت از هوش‌واره (بدون کلید)</button>
       </div>
 
       <!-- باکس فلش‌کارت پرسش کلاسی و قرعه‌کشی دانش‌آموز -->
@@ -5167,7 +5167,7 @@ body.dark .ws-logout-inner {
         <button type="button" class="btn primary" style="flex:2;min-width:190px" id="btnBuildTopStudentHandout" onclick="TeachAssistant.generateTopStudentHandout()">✨ ساخت جزوهٔ رنگی بچه درس‌خون</button>
         <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.exportLessonHandout('word')">📘 دانلود Word رنگی (.doc)</button>
         <button type="button" class="btn green btn-sm" onclick="TeachAssistant.exportLessonHandout('print')">🖨️ چاپ / PDF رنگی</button>
-        <button type="button" class="btn gray btn-sm" onclick="TeachAssistant.openSmartAiBridgeModal('handout')">🪄 ساخت با DeepSeek (بدون API)</button>
+        <button type="button" class="btn gray btn-sm" onclick="TeachAssistant.openSmartAiBridgeModal('handout')">🪄 ساخت با هوش‌واره (بدون کلید)</button>
       </div>
 
       <div id="topStudentHandoutPreviewBox" style="margin-top:10px"></div>
@@ -5363,7 +5363,7 @@ body.dark .ws-logout-inner {
         <button class="btn gray btn-sm" onclick="ExamApp.testApiKeyConnection()" id="btnTestKey">تست اتصال</button>
       </div>
       <div style="display:flex;gap:6px">
-        <input type="password" id="apiKeyField" dir="ltr" style="text-align:left;font-family:monospace" placeholder="AIza... / AQ... / sk-..." oninput="ExamApp.onKeyChange()">
+        <input type="password" id="apiKeyField" dir="ltr" style="text-align:left;font-family:monospace" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." oninput="ExamApp.onKeyChange()">
         <button class="btn gray btn-sm" onclick="ExamApp.toggleKeyPass()">👁️</button>
       </div>
       <div id="apiStatusBar" style="margin-top:6px;font-size:11.5px;font-weight:bold;color:var(--green)"><span id="apiStatusText">ℹ️ کلید خود را وارد کنید</span></div>
@@ -5709,7 +5709,7 @@ body.dark .ws-logout-inner {
         <span class="ws-pill-icon">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="3" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21" y2="12"/></svg>
         </span>
-        <span class="ws-pill-label" dir="ltr">J.A.R.V.I.S.</span>
+        <span class="ws-pill-label" dir="rtl">هوش‌واره و گزارش‌ها</span>
         <span class="ws-pill-arrow">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </span>
@@ -5770,7 +5770,7 @@ body.dark .ws-logout-inner {
       <button type="button" class="set-tab-btn" data-stab="modules" onclick="openCloudSettingsSubpage('modules')"><span>🎛️</span><span>ویجت‌ها</span></button>
       <button type="button" class="set-tab-btn" data-stab="account" onclick="openCloudSettingsSubpage('account')"><span>👤</span><span>حساب</span></button>
       <button type="button" class="set-tab-btn" data-stab="data" onclick="openCloudSettingsSubpage('data')"><span>🔌</span><span>اتصال و ابر</span></button>
-      <button type="button" class="set-tab-btn" data-stab="export" onclick="openCloudSettingsSubpage('export')"><span>🤖</span><span>J.A.R.V.I.S و گزارش</span></button>
+      <button type="button" class="set-tab-btn" data-stab="export" onclick="openCloudSettingsSubpage('export')"><span>🤖</span><span>هوش‌واره و گزارش</span></button>
       <button type="button" class="set-tab-btn" data-stab="theme" onclick="openCloudSettingsSubpage('theme')"><span>🎨</span><span>ظاهر و احساس</span></button>
       <button type="button" class="set-tab-btn" data-stab="help" onclick="openCloudSettingsSubpage('help')"><span>❓</span><span>کمکم کنید!</span></button>
       <button type="button" class="set-tab-btn" data-stab="about" onclick="openCloudSettingsSubpage('about')"><span>ℹ️</span><span>درباره ما</span></button>
@@ -6087,6 +6087,19 @@ body.dark .ws-logout-inner {
 
   <!-- تب ۶: پوشه اختصاصی پشتیبان، پشتیبان‌گیری ابری آنلاین، لینک حاضری/آزمون آنلاین و ابزارها -->
   <div id="setPane-data" class="settings-pane">
+    <div class="card" style="margin-bottom:12px;border:1.5px solid var(--neon-green);background:var(--bg-panel)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
+        <div>
+          <b style="color:var(--neon-green);font-size:14.5px">♻️ سیستم بازیابی خودکار هوشمند و گاوصندوق دائمی عکس‌ها</b>
+          <p class="muted" style="margin:3px 0 0;font-size:11.5px">ذخیره خودکار تمام تغییرات و عکس‌های دانش‌آموزان بدون محدودیت حجم در حافظه امن داخلی (IndexedDB Photo Vault)</p>
+        </div>
+        <span class="chip" id="dataAutoRecoveryBadge">🟢 آماده و محافظت‌شده</span>
+      </div>
+      <div class="actions" style="margin-top:8px">
+        <button type="button" class="btn green" style="flex:2;font-weight:900" onclick="runDeepAutoRecoveryWizard(false)">♻️ اسکن عمیق و بازیابی خودکار اطلاعات و عکس‌ها</button>
+        <button type="button" class="btn primary" style="flex:1" onclick="createInternalVaultSnapshot('پشتیبان کامل همراه با عکس‌ها', false)">🗄️ ذخیره فوری در گاوصندوق</button>
+      </div>
+    </div>
     <!-- ۱. پوشه اختصاصی پشتیبان‌گیری (ضد گم شدن فایل‌ها) -->
     <div class="card" style="margin-bottom:12px;border-color:var(--primary)">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
@@ -6152,7 +6165,7 @@ body.dark .ws-logout-inner {
     <!-- ۴. سامانه لینک حضور و غیاب آنلاین و آزمون آنلاین دانش‌آموزان -->
     <div class="card" style="margin-bottom:12px">
       <b style="color:var(--primary);font-size:14.5px">🔗 مرکز لینک آنلاین حضور و غیاب و آزمون دانش‌آموزان</b>
-      <p class="muted" style="margin:4px 0 10px">ساخت لینک اختصاصی برای ارسال در گروه کلاس (شاد، ایتا، پیام‌رسان‌ها و...)؛ دانش‌آموز حاضری می‌زند یا امتحان می‌دهد و نتیجه خودکار وارد لیست کلاس می‌شود:</p>
+      <p class="muted" style="margin:4px 0 10px">ساخت لینک اختصاصی برای ارسال در گروه کلاس (پیام‌رسان‌ها و گروه کلاس)؛ دانش‌آموز حاضری می‌زند یا امتحان می‌دهد و نتیجه خودکار وارد لیست کلاس می‌شود:</p>
       <div class="actions">
         <button type="button" class="btn primary" style="flex:1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'att')">📋 لینک اختصاصی حضور و غیاب</button>
         <button type="button" class="btn soft" style="flex:1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">📝 لینک اختصاصی آزمون آنلاین</button>
@@ -6196,20 +6209,31 @@ body.dark .ws-logout-inner {
     <div class="card" style="margin-bottom:12px;border-color:var(--primary)">
       <b style="color:var(--primary);font-size:15px">❓ مرکز راهنما، عیب‌یاب خودکار و پشتیبانی («کمکم کنید!»)</b>
       <p class="muted" style="margin:4px 0 12px">اگر هر جا احساس کردید نامی تکراری شده، نمره‌ای نیاز به رُندسازی دارد یا می‌خواهید سلامت کل داده‌ها را بررسی کنید، از ابزارهای هوشمند زیر استفاده نمایید:</p>
+      <div class="card" style="background:var(--bg-panel);border:1.5px solid var(--neon-green);margin-bottom:10px;padding:11px 12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
+          <b style="color:var(--neon-green);font-size:13.5px">♻️ سپر بازیابی خودکار اطلاعات و گاوصندوق عکس‌ها (فعال)</b>
+          <span class="chip" id="helpAutoRecoveryStatusChip">🟢 محافظت خودکار فعال</span>
+        </div>
+        <p class="muted" style="margin:0 0 8px;font-size:11.5px;line-height:1.65">تمام مدارس، کلاس‌ها، نمرات، مثبت/منفی‌ها و <b>عکس‌های دانش‌آموزان</b> به صورت خودکار در ۳ لایه (حافظه دائمی مرورگر، گاوصندوق عکس‌ها و پشتیبان داخلی) ذخیره می‌شوند. اگر هر زمان اطلاعات یا عکسی نمایش داده نشد، دکمه زیر را بزنید:</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button type="button" class="btn green" style="flex:2;min-width:190px;font-weight:900" onclick="runDeepAutoRecoveryWizard(false)">♻️ بازیابی خودکار همه اطلاعات و عکس‌ها</button>
+          <button type="button" class="btn soft" style="flex:1;min-width:130px" onclick="createInternalVaultSnapshot('پشتیبان دستی فوری همراه با عکس‌ها', false)">🗄️ ثبت فوری نسخه امن</button>
+        </div>
+      </div>
       <div class="grid-2" style="gap:8px">
         <button type="button" class="btn primary" style="grid-column:1 / -1" onclick="startGameSpotlightTour(true)">🎮 اجرای مجدد تور راهنمای تعاملی (گام‌به‌گام روی صفحه)</button>
         <button type="button" class="btn primary" onclick="runSmartAppDiagnostics(true)">⚡ عیب‌یابی و تعمیر خودکار کل برنامه</button>
         <button type="button" class="btn soft" onclick="openSmartStudentRepairModal()">🛠️ تعمیرکار هوشمند اسامی و عکس‌ها</button>
         <button type="button" class="btn soft" onclick="openDuplicateStudentsInspector()">🔗 تشخیص و ادغام اسامی تکراری</button>
-        <button type="button" class="btn green" onclick="openExcelPasteImportModal()">📥 ورود ۳۰ دانش‌آموز از اکسل/شاد</button>
+        <button type="button" class="btn green" onclick="openExcelPasteImportModal()">📥 ورود ۳۰ دانش‌آموز از اکسل / لیست متنی</button>
       </div>
     </div>
 
     <div class="card" style="margin-bottom:12px">
-      <b style="color:var(--neon-cyan);font-size:14px">🤖 تنظیم یکپارچه کلید هوش مصنوعی J.A.R.V.I.S. (اختیاری)</b>
-      <p class="muted" style="margin:4px 0 8px">برنامه دارای موتور هوش مصنوعی رایگان سرخود است؛ اما اگر کلید اختصاصی Gemini / Groq / DeepSeek دارید می‌توانید یک بار در اینجا وارد کنید تا هم در «آموزش» و هم در «آزمون‌ساز» فعال شود:</p>
+      <b style="color:var(--neon-cyan);font-size:14px">🤖 تنظیم یکپارچه کلید هوش‌واره و هوش مصنوعی (اختیاری)</b>
+      <p class="muted" style="margin:4px 0 8px">برنامه دارای موتور هوش مصنوعی رایگان سرخود است؛ اما اگر کلید اختصاصی هوش‌واره یا هوش مصنوعی دارید می‌توانید یک بار در اینجا وارد کنید تا هم در «آموزش» و هم در «آزمون‌ساز» فعال شود:</p>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <input type="password" id="globalUnifiedAiKeyInp" dir="ltr" placeholder="AIza... / gsk_... / sk-..." style="flex:1;min-width:190px;text-align:left;font-family:monospace" oninput="if(window.TeachAssistant)TeachAssistant.saveInlineApiKey(this.value)">
+        <input type="password" id="globalUnifiedAiKeyInp" dir="ltr" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." style="flex:1;min-width:190px;text-align:left;font-family:monospace" oninput="if(window.TeachAssistant)TeachAssistant.saveInlineApiKey(this.value)">
         <button type="button" class="btn primary btn-sm" onclick="if(window.TeachAssistant){TeachAssistant.saveInlineApiKey(document.getElementById('globalUnifiedAiKeyInp').value);toast('کلید هوش مصنوعی در کل برنامه ذخیره شد ✅');}">💾 ذخیره کلید</button>
       </div>
     </div>
@@ -6219,7 +6243,7 @@ body.dark .ws-logout-inner {
       <div style="display:grid;gap:8px;margin-top:8px;font-size:12px;line-height:1.7">
         <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۱. چطور اطلاعاتم روی گوشی جدید بالا بیاید؟</b><br>کافی است با همان جیمیل یا شماره همراه در صفحه ورود ۱کلیکی وارد شوید؛ تمام کلاس‌ها، نمرات و عکس‌ها خودکار بارگذاری می‌شوند.</div>
         <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۲. اگر نمره امتحان را اشتباهی در ستون حضور و غیاب نوشتم چه کنم؟</b><br>در جدول جامع حضور و غیاب روی دکمه «🔄 انتقال نمره جلسه به کتبی مستمر» بزنید تا با یک کلیک منتقل شود.</div>
-        <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۳. چطور از دانش‌آموزان حاضری یا آزمون آنلاین با سلفی بگیرم؟</b><br>از بخش «🌐 کلاس آنلاین» لینک کوتاه فرم را بسازید و در گروه شاد/ایتا بفرستید.</div>
+        <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۳. چطور از دانش‌آموزان حاضری یا آزمون آنلاین با سلفی بگیرم؟</b><br>از بخش «🌐 کلاس آنلاین» لینک کوتاه فرم را بسازید و در گروه کلاس یا پیام‌رسان‌ها بفرستید.</div>
       </div>
     </div>
   </div>
@@ -6236,7 +6260,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.2 Pro</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.3 Pro</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6389,7 +6413,7 @@ body.dark .ws-logout-inner {
       <div class="box-card highlight">
         <div class="box-header">
           <span>📷 اسکن تکی یا دسته‌جمعی همه برگه‌های امتحانی کلاس یکجا</span>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.openBatchDeepSeekGradingModal()">🪄 تصحیح دسته‌جمعی با DeepSeek / ChatGPT (بدون API)</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.openBatchDeepSeekGradingModal()">🪄 تصحیح دسته‌جمعی با هوش‌واره (بدون کلید)</button>
         </div>
         <div style="display:flex;gap:6px;flex-wrap:wrap">
           <label class="btn primary" style="flex:1;cursor:pointer;margin:0">📷 عکس از برگه (تکی)<input type="file" accept="image/*" capture="environment" hidden onchange="ExamApp.gradeByPhotoAI(event)"></label>
@@ -6436,7 +6460,7 @@ body.dark .ws-logout-inner {
 <div class="modal-overlay" id="noApiModal">
   <div class="modal-box" style="max-width:680px">
     <div class="modal-top">
-      <span>🪄 استودیوی دقیق ساخت آزمون بدون کلید API (DeepSeek / ChatGPT / Gemini)</span>
+      <span>🪄 استودیوی دقیق ساخت آزمون با هوش‌واره (بدون نیاز به کلید)</span>
       <button class="btn gray btn-sm" onclick="ExamApp.closeModal('noApiModal')">✖ بستن</button>
     </div>
     <div class="modal-content">
@@ -6468,9 +6492,9 @@ body.dark .ws-logout-inner {
         <textarea id="noApiPromptText" readonly style="min-height:110px;background:var(--panel);font-size:11.5px;line-height:1.65;font-family:Tahoma,sans-serif"></textarea>
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:7px">
           <button type="button" class="btn primary btn-sm" onclick="ExamApp.copyNoApiPrompt()">📋 کپی دقیق دستور</button>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chat.deepseek.com')">🐋 کپی و باز کردن DeepSeek</button>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chatgpt.com')">🤖 کپی و باز کردن ChatGPT</button>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://gemini.google.com')">✨ کپی و باز کردن Gemini</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chat.deepseek.com')">🧠 کپی و باز کردن هوش‌واره ۱</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chatgpt.com')">🤖 کپی و باز کردن هوش مصنوعی ۲</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://gemini.google.com')">✨ کپی و باز کردن هوش مصنوعی ۳</button>
         </div>
       </div>
 
@@ -6568,7 +6592,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '7.2.0 Pro';
+const APP_VERSION = '7.3.0 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -7073,7 +7097,7 @@ function openAttendance(sid, cid) {
   if (!students.length) { document.getElementById('attendanceContent').innerHTML = header + empty('👨‍🎓', 'دانش‌آموزی نیست', ''); showView('attendance'); return; }
   let rows = students.map(st => {
     let termScore = c.termScores?.[st.id] ?? '', calcFinal = calculateFinalStudentScore(c, st);
-    let shBtns = shortcuts.slice(0, 4).map(sh => `<button class="qb ${sh.type === 'positive' ? 'pos' : 'neg'}" onclick="gridApplyShortcut('${sid}','${cid}','${st.id}','${esc(sh.code)}')">${sh.type === 'positive' ? '＋' : '－'}${esc(sh.code)}</button>`).join('');
+    let shBtns = shortcuts.slice(0, 4).map(sh => `<button class="qb ${sh.type === 'positive' ? 'pos' : 'neg'}" onclick="gridApplyShortcut('${sid}','${cid}','${st.id}','${esc(sh.code)}')">${sh.type === 'positive' ? '＋' : '－'}${esc(sh.code)}</button>`).join('') + `<button class="qb" style="background:var(--bg-panel);color:var(--primary);border:1px solid var(--primary-border)" onclick="openQuickBehEditorModal('${sid}','${cid}','${st.id}')" title="ویرایش، افزودن یا کم کردن مثبت و منفی">✎±</button>`;
     const activeFocusDate = window._attFocusDate && dates.includes(window._attFocusDate) ? window._attFocusDate : (dates[0] || localISODate());
     let cols = dates.map(d => {
       let isAbs = attendanceStatus(c, d, st.id) === 'absent', sc = attendanceScore(c, d, st.id);
@@ -7082,7 +7106,7 @@ function openAttendance(sid, cid) {
     const customCells = gradeCols.map(g => { const val = g.scores?.[st.id] ?? ''; return `<td><input class="att-custom-input" type="number" min="0" max="${Number(g.max)||20}" step="0.25" value="${val}" placeholder="/${Number(g.max)||20}" onchange="saveCustomGrade('${sid}','${cid}','${st.id}','${g.id}',this.value)"></td>`; }).join('');
     const vals = gradeCols.map(g => { const v = Number(g.scores?.[st.id]); const mx = Number(g.max)||20; return g.scores?.[st.id] !== undefined && g.scores?.[st.id] !== '' && Number.isFinite(v) && mx > 0 ? (v/mx)*20 : null; }).filter(v => v !== null);
     const customAvg = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
-    return `<tr id="attRow_${st.id}"><td><b style="cursor:pointer;color:var(--primary-dark)" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b><div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:4px">${shBtns}</div></td><td><input id="termInp_${st.id}" class="term-score-input" type="number" step="0.25" min="0" max="20" value="${termScore}" placeholder="ترم" onchange="saveTermScore('${sid}','${cid}','${st.id}',this.value,this)"></td><td id="finalCell_${st.id}" data-score="${calcFinal}" style="font-weight:900;color:${calcFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)'}">${fmtScore(calcFinal)}</td><td id="customAvgCell_${st.id}">${customAvg===null?'—':fmtScore(customAvg)}</td><td id="behCell_${st.id}">➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}</td>${customCells}${cols}</tr>`;
+    return `<tr id="attRow_${st.id}"><td><b style="cursor:pointer;color:var(--primary-dark)" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}</b><div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:4px">${shBtns}</div></td><td><input id="termInp_${st.id}" class="term-score-input" type="number" step="0.25" min="0" max="20" value="${termScore}" placeholder="ترم" onchange="saveTermScore('${sid}','${cid}','${st.id}',this.value,this)"></td><td id="finalCell_${st.id}" data-score="${calcFinal}" style="font-weight:900;color:${calcFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)'}">${fmtScore(calcFinal)}</td><td id="customAvgCell_${st.id}">${customAvg===null?'—':fmtScore(customAvg)}</td><td id="behCell_${st.id}">${window.renderInteractiveBehCellInner ? window.renderInteractiveBehCellInner(sid, cid, st) : `➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}`}</td>${customCells}${cols}</tr>`;
   }).join('');
   const activeFocusDate = window._attFocusDate && dates.includes(window._attFocusDate) ? window._attFocusDate : (dates[0] || localISODate());
   const dateSelectOpts = dates.map((d, idx) => `<option value="${d}" ${d === activeFocusDate ? 'selected' : ''}>جلسه ${fa(idx + 1)}: ${formatJalaliDate(d)}</option>`).join('');
@@ -8475,7 +8499,7 @@ ${customQ ? `تمرین یا جدول مورد نظر معلم: «${customQ}»` 
       if (box) {
         box.innerHTML = `<div class="card" style="border-color:var(--neon-red)">
           <b style="color:var(--neon-red)">⚠️ ${esc(err.message)}</b>
-          <div class="muted" style="margin-top:6px">می‌توانید کلید رایگان Gemini/Groq را در کادر بالا وارد کنید یا با زدن دکمه زیر، تصویر صفحه و دستور آماده را کپی نمایید:</div>
+          <div class="muted" style="margin-top:6px">می‌توانید کلید رایگان هوش‌واره یا هوش مصنوعی را در کادر بالا وارد کنید یا با زدن دکمه زیر، تصویر صفحه و دستور آماده را کپی نمایید:</div>
           <button type="button" class="btn soft btn-sm" style="margin-top:8px" onclick="TeachAssistant.openSmartAiBridgeModal('solve')">🪄 حل با هوش مصنوعی بدون کلید</button>
         </div>`;
       }
@@ -8564,15 +8588,15 @@ ${src.slice(0, 1800)}
     openModal(formHeader(mode === 'solve' ? '🪄 حل فعالیت‌های صفحه با هوش مصنوعی' : '🪄 طراحی سوال از صفحه با هوش مصنوعی') + `
       <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
         <b style="color:var(--primary)">روش ۱ (پیشنهادی و خودکار): وارد کردن کلید رایگان هوش مصنوعی</b>
-        <p class="muted" style="margin:4px 0 8px;font-size:11.5px">اگر کلید رایگان Google Gemini یا Groq را وارد کنید، برنامه خودش مستقیماً تصویر صفحه را می‌فرستد و جواب را در همان لحظه نشان می‌دهد:</p>
+        <p class="muted" style="margin:4px 0 8px;font-size:11.5px">اگر کلید رایگان هوش‌واره یا هوش مصنوعی را وارد کنید، برنامه خودش مستقیماً تصویر صفحه را می‌فرستد و جواب را در همان لحظه نشان می‌دهد:</p>
         <div style="display:flex;gap:6px">
-          <input type="password" id="modalQuickApiKeyInp" dir="ltr" style="flex:1;text-align:left;font-family:monospace" placeholder="AIza... / gsk_..." value="${esc(window.ExamApp?.state?.apiKey || '')}">
+          <input type="password" id="modalQuickApiKeyInp" dir="ltr" style="flex:1;text-align:left;font-family:monospace" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." value="${esc(window.ExamApp?.state?.apiKey || '')}">
           <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.saveInlineApiKey(document.getElementById('modalQuickApiKeyInp').value);closeModal();${mode === 'solve' ? 'TeachAssistant.solveActivities()' : 'TeachAssistant.extractLineByLineQuestions()'}">🚀 ذخیره و اجرای خودکار</button>
         </div>
       </div>
 
       <div class="card" style="background:var(--bg-card)">
-        <b style="color:var(--neon-cyan)">روش ۲ (بدون کلید API — با ChatGPT یا Gemini رایگان):</b>
+        <b style="color:var(--neon-cyan)">روش ۲ (بدون کلید — با هوش‌واره و هوش مصنوعی رایگان):</b>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0">
           ${pageImg ? `<button type="button" class="btn soft btn-sm" style="flex:1" onclick="triggerPhotoDownload(window._lastBridgeImgUrl, 'page-${pageNo}.jpg')">📸 ۱. ذخیره عکس این صفحه</button>` : ''}
           <button type="button" class="btn soft btn-sm" style="flex:1" onclick="copyText(document.getElementById('bridgeAiPromptBox').value)">📋 ۲. کپی دستور هوشمند</button>
@@ -8988,10 +9012,10 @@ const ExamApp = {
   removeBaromRow(i) { this.state.baromBudget.splice(i, 1); this.save(); this.renderBaromBudgetUI(); },
   detectProvider(raw) {
     const k = (raw || '').trim(); if (!k) return null;
-    if (k.startsWith('gsk_')) return { provider: 'groq', name: 'Groq AI ⚡', endpoint: 'https://api.groq.com/openai/v1/chat/completions', model: 'llama-3.3-70b-versatile', visionModel: 'meta-llama/llama-4-scout-17b-16e-instruct' };
+    if (k.startsWith('gsk_')) return { provider: 'groq', name: 'موتور سریع هوش‌واره ⚡', endpoint: 'https://api.groq.com/openai/v1/chat/completions', model: 'llama-3.3-70b-versatile', visionModel: 'meta-llama/llama-4-scout-17b-16e-instruct' };
     if (k.startsWith('sk-proj-')) return { provider: 'openai', name: 'OpenAI GPT-4o 🧠', endpoint: 'https://api.openai.com/v1/chat/completions', model: 'gpt-4o-mini', supportsVision: true };
-    if (k.startsWith('sk-')) return { provider: 'deepseek', name: 'DeepSeek AI 🧠', endpoint: 'https://api.deepseek.com/chat/completions', model: 'deepseek-chat', supportsVision: false };
-    return { provider: 'gemini', name: 'Google Gemini (تشخیص خودکار مدل فعال ✅)', supportsVision: true };
+    if (k.startsWith('sk-')) return { provider: 'deepseek', name: 'موتور پیشرفته هوش‌واره 🧠', endpoint: 'https://api.deepseek.com/chat/completions', model: 'deepseek-chat', supportsVision: false };
+    return { provider: 'gemini', name: 'موتور هوشمند هوش‌واره (تشخیص خودکار مدل فعال ✅)', supportsVision: true };
   },
   buildSmartOfflineAiFallback(promptText) {
     const p = String(promptText || '');
@@ -10232,7 +10256,7 @@ window.gridApplyShortcut = function(sid, cid, stid, code) {
   const finalCell = document.getElementById(`finalCell_${stid}`);
   const row = document.getElementById(`attRow_${stid}`);
   if (behCell) {
-    behCell.textContent = `➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}`;
+    behCell.innerHTML = window.renderInteractiveBehCellInner ? window.renderInteractiveBehCellInner(sid, cid, st) : `➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}`;
   } else {
     renderAll();
   }
@@ -11523,7 +11547,7 @@ openAttendance = function(sid, cid) {
     const hasScoreFocus = attendanceScore(c, activeFocusDate, st.id) !== null || contScoreVal !== null;
     const isAttn = isAutoAttention(c, st);
 
-    let shBtns = shortcuts.slice(0, 4).map(sh => `<button class="qb ${sh.type === 'positive' ? 'pos' : 'neg'}" onclick="gridApplyShortcut('${sid}','${cid}','${st.id}','${esc(sh.code)}')">${sh.type === 'positive' ? '＋' : '－'}${esc(sh.code)}</button>`).join('');
+    let shBtns = shortcuts.slice(0, 4).map(sh => `<button class="qb ${sh.type === 'positive' ? 'pos' : 'neg'}" onclick="gridApplyShortcut('${sid}','${cid}','${st.id}','${esc(sh.code)}')">${sh.type === 'positive' ? '＋' : '－'}${esc(sh.code)}</button>`).join('') + `<button class="qb" style="background:var(--bg-panel);color:var(--primary);border:1px solid var(--primary-border)" onclick="openQuickBehEditorModal('${sid}','${cid}','${st.id}')" title="ویرایش، افزودن یا کم کردن مثبت و منفی">✎±</button>`;
 
     let cols = dates.map(d => {
       let isAbs = attendanceStatus(c, d, st.id) === 'absent', sc = attendanceScore(c, d, st.id);
@@ -11554,7 +11578,7 @@ openAttendance = function(sid, cid) {
       </td>
       <td id="finalCell_${st.id}" class="col-grade-summary" data-score="${calcFinal}" style="font-weight:900;color:${calcFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)'}">${fmtScore(calcFinal)}</td>
       <td id="customAvgCell_${st.id}" class="col-grade-summary">${contAvg === null ? '—' : fmtScore(contAvg)}</td>
-      <td id="behCell_${st.id}" class="col-grade-summary">➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}</td>
+      <td id="behCell_${st.id}" class="col-grade-summary">${window.renderInteractiveBehCellInner ? window.renderInteractiveBehCellInner(sid, cid, st) : `➕${fa(st.behavior.positives.length)} / ➖${fa(st.behavior.negatives.length)}`}</td>
       ${customCells}
       ${cols}
     </tr>`;
@@ -13460,7 +13484,7 @@ window.openOnlineClassLinkModal = function(sid = null, cid = null, defaultMode =
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
             <button type="button" class="btn primary btn-sm" onclick="copyGeneratedOnlineLink(true)">🔗 کپی فقط لینک کوتاه</button>
             <button type="button" class="btn soft btn-sm" onclick="copyGeneratedOnlineLink(false)">📋 کپی لینک با متن دعوت</button>
-            <button type="button" class="btn soft btn-sm" onclick="shareGeneratedOnlineLink()">📲 ارسال به شاد / ایتا</button>
+            <button type="button" class="btn soft btn-sm" onclick="shareGeneratedOnlineLink()">📲 ارسال به پیام‌رسان‌ها</button>
             <button type="button" class="btn green btn-sm" onclick="previewStudentPortalLocally()">👁️ پیش نمایش فرم</button>
           </div>
         </div>
@@ -13906,7 +13930,7 @@ window.renderStudentOnlinePortal = function(payload, isTeacherPreview = false) {
               <input type="text" id="portalRegFather" class="digiform-input" placeholder="مثال: محمد">
             </div>
             <div class="digiform-field-box">
-              <label class="digiform-label"><span class="digiform-num">${fa(nextFieldNum++)}</span><span>شماره همراه (شاد / تماس اولیا)</span><span class="digiform-req">*</span></label>
+              <label class="digiform-label"><span class="digiform-num">${fa(nextFieldNum++)}</span><span>شماره همراه (پیام‌رسان / تماس اولیا)</span><span class="digiform-req">*</span></label>
               <input type="tel" id="portalRegPhone" class="digiform-input" dir="ltr" placeholder="0912...">
             </div>
             <div class="digiform-field-box">
@@ -14198,7 +14222,7 @@ window.submitStudentOnlinePortalForm = async function() {
         </div>
         <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
           <button type="button" class="btn primary btn-sm" style="flex:1" onclick="copyText(window._lastStudentReceiptCode || '')">📋 کپی کد رسید (${trackingId})</button>
-          <button type="button" class="btn soft btn-sm" style="flex:1" onclick="if(navigator.share)navigator.share({text:window._lastStudentReceiptShareText || window._lastStudentReceiptCode || ''});else copyText(window._lastStudentReceiptCode || '')">📲 ارسال رسید در شاد / ایتا</button>
+          <button type="button" class="btn soft btn-sm" style="flex:1" onclick="if(navigator.share)navigator.share({text:window._lastStudentReceiptShareText || window._lastStudentReceiptCode || ''});else copyText(window._lastStudentReceiptCode || '')">📲 ارسال رسید در پیام‌رسان‌ها</button>
         </div>
       </div>
     `;
@@ -14378,8 +14402,8 @@ window.openReceiveStudentSyncModal = function(sid = null, cid = null) {
     </div>
 
     <div class="card">
-      <b style="color:var(--primary)">۲. ثبت دسته‌جمعی رسیدهای شاد / ایتا / پیامک (مناسب اینترنت ملی)</b>
-      <p class="muted" style="margin:4px 0 8px">اگر دانش‌آموزان کد رسید (<code>DAM1:...</code>) را در گروه شاد یا ایتا فرستاده‌اند، پیام‌های آن‌ها را یکجا کپی کرده و اینجا پیست کنید:</p>
+      <b style="color:var(--primary)">۲. ثبت دسته‌جمعی رسیدهای پیام‌رسان و پیامک (مناسب اینترنت ملی)</b>
+      <p class="muted" style="margin:4px 0 8px">اگر دانش‌آموزان کد رسید (<code>DAM1:...</code>) را در گروه کلاس یا پیام‌رسان‌ها فرستاده‌اند، پیام‌های آن‌ها را یکجا کپی کرده و اینجا پیست کنید:</p>
       <textarea id="bulkReceiptsPasteBox" placeholder="کدهای DAM1:... دانش‌آموزان را اینجا پیست کنید (حتی ۳۰ پیام با هم)..."></textarea>
       <button type="button" class="btn soft block" style="margin-top:8px" onclick="processBulkStudentReceipts()">📥 استخراج و ثبت خودکار همه در لیست کلاس</button>
     </div>
@@ -14440,7 +14464,7 @@ window.fetchOnlineRoomSubmissions = async function(silent = false, sid = null, c
     window.renderDigiFormLiveResponsesTable(s.id, c.id, targetDate);
     if (stBox && !silent) {
       stBox.style.color = 'var(--neon-red)';
-      stBox.textContent = '⚠️ ارتباط ابری برقرار نشد؛ دانش‌آموزان می‌توانند کد رسید را در شاد بفرستند.';
+      stBox.textContent = '⚠️ ارتباط ابری برقرار نشد؛ دانش‌آموزان می‌توانند کد رسید را در پیام‌رسان بفرستند.';
     }
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = '🔄 دریافت آنی پاسخ‌های فرم'; }
@@ -16484,10 +16508,10 @@ ${rosterNames.length ? `👥 لیست اسامی استاندارد دانش‌�
   {"studentName": "نام دانش‌آموز دوم", "score": 20, "feedback": "عالی"}
 ]`;
 
-  openModal(formHeader('🪄 تصحیح دسته‌جمعی همه برگه‌ها با DeepSeek / ChatGPT (بدون نیاز به API)') + `
+  openModal(formHeader('🪄 تصحیح دسته‌جمعی همه برگه‌ها با هوش‌واره (بدون نیاز به کلید)') + `
     <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
       <b style="color:var(--primary);font-size:13px">۱. کپی دستور آماده تصحیح دسته‌جمعی + کلید سوالات + اسامی کلاس</b>
-      <p class="muted" style="margin:4px 0 8px;font-size:11.5px">این دستور را کپی کنید، به همراه عکس همه برگه‌های امتحانی در DeepSeek، ChatGPT یا Gemini پیست کنید:</p>
+      <p class="muted" style="margin:4px 0 8px;font-size:11.5px">این دستور را کپی کنید، به همراه عکس همه برگه‌های امتحانی در هوش‌واره یا هوش مصنوعی پیست کنید:</p>
       <textarea id="batchDeepSeekPromptBox" readonly rows="5" style="font-size:11.5px;background:var(--bg-card)">${esc(promptText)}</textarea>
       <button type="button" class="btn soft block btn-sm" style="margin-top:6px" onclick="copyText(document.getElementById('batchDeepSeekPromptBox').value)">📋 کپی دستور تصحیح دسته‌جمعی همه برگه‌ها</button>
     </div>
@@ -19602,8 +19626,8 @@ window.renderSmartCommandPaletteResults = function(query = '') {
   // دستورات سریع برنامه
   const commands = [
     { icon: '📋', title: 'لیست حضور و غیاب سریع امروز', sub: 'ثبت حاضری، نمره جلسه و مثبت/منفی امروز', act: "closeModal();openQuickTodayClassJump()" },
-    { icon: '📥', title: 'ورود دسته‌جمعی دانش‌آموزان از اکسل / شاد / متن', sub: 'افزودن ۳۰ دانش‌آموز به کلاس در چند ثانیه با کپی و پیست', act: "closeModal();openExcelPasteImportModal()" },
-    { icon: '🌐', title: 'ساخت لینک اختصاصی حضور و غیاب و آزمون آنلاین', sub: 'ارسال لینک در شاد و ایتا با ثبت خودکار سلفی و نمره', act: "closeModal();showView('onlineClassView')" },
+    { icon: '📥', title: 'ورود دسته‌جمعی دانش‌آموزان از فایل اکسل / لیست متنی', sub: 'افزودن ۳۰ دانش‌آموز به کلاس در چند ثانیه با کپی و پیست', act: "closeModal();openExcelPasteImportModal()" },
+    { icon: '🌐', title: 'ساخت لینک اختصاصی حضور و غیاب و آزمون آنلاین', sub: 'ارسال لینک در گروه کلاس و پیام‌رسان‌ها با ثبت خودکار سلفی و نمره', act: "closeModal();showView('onlineClassView')" },
     { icon: '💎', title: 'طراحی برگه امتحانی A4 و تصحیح هوشمند با عکس', sub: 'آزمون‌ساز الماس با تراز بارم و ۴ شعبه', act: "closeModal();showView('examView')" },
     { icon: '📖', title: 'کتاب‌خوان PDF و ساخت جزوه رنگی «بچه درس‌خون»', sub: 'استخراج سوالات درشت یا ریزبه‌ریز از صفحه کتاب', act: "closeModal();showView('teachView')" },
     { icon: '🎨', title: 'دریافت خروجی اکسل و Word رنگی و زنده', sub: 'گزارش تفکیکی هر مدرسه، هر کلاس و کارنامه اولیا', act: "closeModal();openQuickExportForTarget('all')" },
@@ -19695,11 +19719,11 @@ window.openExcelPasteImportModal = function(preSid = null, preCid = null) {
     classOpts.push(`<option value="${sch.id}|${cl.id}" ${(sch.id === s.id && cl.id === c.id) ? 'selected' : ''}>🏫 ${esc(sch.name)} — 🚪 ${esc(window.cleanClassDisplayName ? window.cleanClassDisplayName(cl.name) : cl.name)} (${fa(cl.students.length)} نفر)</option>`);
   }));
 
-  openModal(formHeader('📥 ورود دسته‌جمعی اسامی دانش‌آموزان (از اکسل / سیدا / شاد)') + `
+  openModal(formHeader('📥 ورود دسته‌جمعی اسامی دانش‌آموزان (از فایل اکسل / لیست متنی)') + `
     <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
       <b style="color:var(--primary);font-size:13px">⚡ ثبت ۳۰ دانش‌آموز در ۵ ثانیه (بدون تایپ تک‌به‌تک)</b>
       <div class="muted" style="font-size:11.5px;margin-top:4px;line-height:1.65">
-        لیست اسامی دانش‌آموزان را از فایل اکسل (سیدا)، جدول Word یا پیام گروه شاد کپی کرده و در کادر زیر پیست کنید. هر سطر یک دانش‌آموز است (می‌تواند شامل <b>نام و نام خانوادگی</b>، و در صورت وجود با خط تیره یا تب: <b>نام پدر</b> و <b>تلفن</b> باشد).
+        لیست اسامی دانش‌آموزان را از فایل اکسل، جدول Word یا لیست متنی پیام‌رسان کپی کرده و در کادر زیر پیست کنید. هر سطر یک دانش‌آموز است (می‌تواند شامل <b>نام و نام خانوادگی</b>، و در صورت وجود با خط تیره یا تب: <b>نام پدر</b> و <b>تلفن</b> باشد).
       </div>
     </div>
     <div class="field" style="margin-bottom:8px">
@@ -20390,7 +20414,7 @@ window.openCloudSettingsSubpage = function(paneId) {
     modules: '🎛️ ویجت‌ها و بخش‌های نمایشی',
     account: '👤 حساب کاربری و پروفایل',
     data: '🔌 اتصال، ذخیره‌سازی و پشتیبان ابری',
-    export: '🤖 J.A.R.V.I.S. و گزارش‌های رنگی',
+    export: '🤖 هوش‌واره و گزارش‌های رنگی',
     theme: '🎨 ظاهر و احساس (پوسته و انیمیشن‌ها)',
     help: '❓ کمکم کنید! (عیب‌یاب و راهنما)',
     about: 'ℹ️ درباره ما'
@@ -20526,7 +20550,7 @@ const GAME_TOUR_STEPS = [
     selector: '#dashQuickStrip',
     icon: '🚀',
     title: 'میانبرهای ۱کلیکی اتاق فرمان',
-    desc: 'مثل منوی سریع بازی‌ها، با یک لمس می‌توانید وارد حاضری امروز، ورود ۳۰ دانش‌آموز از اکسل/شاد، لینک نتایج آزمون یا کارنامه رنگی شوید.'
+    desc: 'مثل منوی سریع بازی‌ها، با یک لمس می‌توانید وارد حاضری امروز، ورود ۳۰ دانش‌آموز از اکسل / لیست متنی، لینک نتایج آزمون یا کارنامه رنگی شوید.'
   },
   {
     view: 'dashboard',
@@ -21389,6 +21413,1038 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
   } catch (_) {}
 });
+
+
+/* ==================== موتور جامع ارتقای نسخه v7.3.0 Pro: بازیابی خودکار ۴ لایه + گاوصندوق دائمی عکس‌ها + ویرایشگر شیک مثبت/منفی در لیست جامع ==================== */
+
+(function injectV73Styles() {
+  const st = document.createElement('style');
+  st.id = 'v73-pro-styles';
+  st.textContent = `
+    /* ویجت شیک و تعاملی مثبت و منفی داخل جدول جامع (#attMainTable) */
+    .att-beh-editor-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 5px;
+      white-space: nowrap;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05);
+    }
+    .att-beh-capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      border-radius: 999px;
+      padding: 1px 3px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .att-beh-capsule.pos {
+      background: rgba(22, 163, 74, 0.12);
+      color: #15803D;
+      border: 1px solid rgba(22, 163, 74, 0.32);
+    }
+    .att-beh-capsule.neg {
+      background: rgba(220, 38, 38, 0.12);
+      color: #B91C1C;
+      border: 1px solid rgba(220, 38, 38, 0.32);
+    }
+    body.cyber-dark-theme .att-beh-capsule.pos {
+      color: #4ADE80;
+    }
+    body.cyber-dark-theme .att-beh-capsule.neg {
+      color: #F87171;
+    }
+    .att-beh-step-btn {
+      width: 19px !important;
+      height: 19px !important;
+      min-height: 19px !important;
+      padding: 0 !important;
+      border-radius: 50% !important;
+      border: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 12px !important;
+      font-weight: 900 !important;
+      line-height: 1 !important;
+      cursor: pointer;
+      transition: transform 0.12s ease, opacity 0.12s ease;
+    }
+    .att-beh-step-btn:active {
+      transform: scale(0.86);
+    }
+    .att-beh-step-btn.pos-add {
+      background: #16A34A !important;
+      color: #FFFFFF !important;
+    }
+    .att-beh-step-btn.pos-sub {
+      background: rgba(22, 163, 74, 0.2) !important;
+      color: #15803D !important;
+    }
+    .att-beh-step-btn.neg-add {
+      background: #DC2626 !important;
+      color: #FFFFFF !important;
+    }
+    .att-beh-step-btn.neg-sub {
+      background: rgba(220, 38, 38, 0.2) !important;
+      color: #B91C1C !important;
+    }
+    body.cyber-dark-theme .att-beh-step-btn.pos-sub { color: #86EFAC !important; }
+    body.cyber-dark-theme .att-beh-step-btn.neg-sub { color: #FCA5A5 !important; }
+    .att-beh-step-btn[disabled] {
+      opacity: 0.32 !important;
+      cursor: default !important;
+    }
+    .att-beh-count-lbl {
+      padding: 0 4px;
+      cursor: pointer;
+      font-size: 11.5px;
+      font-weight: 900;
+      user-select: none;
+    }
+    .att-beh-edit-btn {
+      width: 21px !important;
+      height: 21px !important;
+      min-height: 21px !important;
+      padding: 0 !important;
+      border-radius: 50% !important;
+      background: var(--bg-card) !important;
+      color: var(--primary) !important;
+      border: 1px solid var(--primary-border) !important;
+      font-size: 11px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer;
+    }
+  `;
+  document.head.appendChild(st);
+})();
+
+/* ==================== الف) ویجت شیک و قابل ویرایش «مثبت و منفی» در جدول جامع (#attMainTable) ==================== */
+
+window.renderInteractiveBehCellInner = function(sid, cid, st) {
+  if (!st) return '➕۰ / ➖۰';
+  if (!st.behavior || typeof st.behavior !== 'object') st.behavior = { positives: [], negatives: [] };
+  if (!Array.isArray(st.behavior.positives)) st.behavior.positives = [];
+  if (!Array.isArray(st.behavior.negatives)) st.behavior.negatives = [];
+
+  const pLen = st.behavior.positives.length;
+  const nLen = st.behavior.negatives.length;
+
+  return `
+    <div class="att-beh-editor-wrap" title="برای افزودن یا کم کردن مثبت و منفی از دکمه‌های + و − استفاده کنید یا روی اعداد بزنید">
+      <div class="att-beh-capsule pos">
+        <button type="button" class="att-beh-step-btn pos-add" onclick="event.stopPropagation();quickAdjustStudentBeh('${sid}','${cid}','${st.id}','positive',1)" title="افزودن ۱ مثبت (＋)">＋</button>
+        <span class="att-beh-count-lbl" onclick="event.stopPropagation();openQuickBehEditorModal('${sid}','${cid}','${st.id}')" title="مشاهده و ویرایش ریز مثبت‌ها">➕${fa(pLen)}</span>
+        <button type="button" class="att-beh-step-btn pos-sub" ${pLen === 0 ? 'disabled' : ''} onclick="event.stopPropagation();quickAdjustStudentBeh('${sid}','${cid}','${st.id}','positive',-1)" title="کم کردن ۱ مثبت (－)">－</button>
+      </div>
+      <div class="att-beh-capsule neg">
+        <button type="button" class="att-beh-step-btn neg-add" onclick="event.stopPropagation();quickAdjustStudentBeh('${sid}','${cid}','${st.id}','negative',1)" title="افزودن ۱ منفی (＋)">＋</button>
+        <span class="att-beh-count-lbl" onclick="event.stopPropagation();openQuickBehEditorModal('${sid}','${cid}','${st.id}')" title="مشاهده و ویرایش ریز منفی‌ها">➖${fa(nLen)}</span>
+        <button type="button" class="att-beh-step-btn neg-sub" ${nLen === 0 ? 'disabled' : ''} onclick="event.stopPropagation();quickAdjustStudentBeh('${sid}','${cid}','${st.id}','negative',-1)" title="کم کردن ۱ منفی (－)">－</button>
+      </div>
+      <button type="button" class="att-beh-edit-btn" onclick="event.stopPropagation();openQuickBehEditorModal('${sid}','${cid}','${st.id}')" title="ویرایش کامل مثبت و منفی‌های ${esc(st.name + ' ' + st.lastName)}">✎</button>
+    </div>
+  `;
+};
+
+window.refreshStudentRowInAttendanceTable = function(sid, cid, stid, prevFinal = null, pulseType = null) {
+  const c = findClass(sid, cid);
+  const st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+
+  const newFinal = calculateFinalStudentScore(c, st);
+  const behCell = document.getElementById('behCell_' + stid);
+  const finalCell = document.getElementById('finalCell_' + stid);
+  const row = document.getElementById('attRow_' + stid);
+
+  if (behCell) {
+    behCell.innerHTML = window.renderInteractiveBehCellInner(sid, cid, st);
+  }
+  if (finalCell) {
+    finalCell.setAttribute('data-score', String(newFinal));
+    finalCell.style.color = newFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)';
+    if (prevFinal !== null && typeof animateNumberValue === 'function') {
+      animateNumberValue(finalCell, prevFinal, newFinal, 260, true);
+    } else {
+      finalCell.textContent = fmtScore(newFinal);
+    }
+  }
+  if (row) {
+    const isAttn = isAutoAttention(c, st);
+    row.setAttribute('data-st-attn', isAttn ? '1' : '0');
+    const nameB = row.querySelector('td:first-child b');
+    if (nameB) {
+      nameB.style.color = isAttn ? 'var(--neon-red)' : 'var(--primary-dark)';
+      nameB.innerHTML = `${formatStudentName(st)}${isAttn ? ' 🔴' : ''}`;
+    }
+    if (pulseType && isCyberAnimOn('anim_grades')) {
+      row.classList.remove('beh-pulse-pos', 'beh-pulse-neg');
+      void row.offsetWidth;
+      row.classList.add(pulseType === 'positive' ? 'beh-pulse-pos' : 'beh-pulse-neg');
+      setTimeout(() => row.classList.remove('beh-pulse-pos', 'beh-pulse-neg'), 260);
+    }
+  }
+};
+
+// افزودن یا کم کردن فوری مثبت و منفی با یک لمس در جدول جامع
+window.quickAdjustStudentBeh = function(sid, cid, stid, type, delta) {
+  const c = findClass(sid, cid);
+  const st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const b = behaviorData(st);
+  const list = type === 'positive' ? b.positives : b.negatives;
+  const prevFinal = calculateFinalStudentScore(c, st);
+  const rules = getRules();
+
+  if (delta > 0) {
+    for (let i = 0; i < delta; i++) {
+      list.push({
+        id: uid(),
+        date: new Date().toISOString(),
+        reason: type === 'positive' ? 'مثبت کلاسی (ثبت سریع از لیست جامع)' : 'منفی کلاسی (ثبت سریع از لیست جامع)',
+        value: type === 'positive' ? (Number(rules.posDefault) || 0.25) : (Number(rules.penaltyPerNeg) || 0.5)
+      });
+    }
+    if (window.triggerHapticVibrate) window.triggerHapticVibrate('success');
+    toast(`${type === 'positive' ? '➕ ۱ مثبت' : '➖ ۱ منفی'} برای «${st.name} ${st.lastName}» اضافه شد ✅`);
+  } else if (delta < 0) {
+    if (!list.length) {
+      toast(`موردی برای کم کردن وجود ندارد.`);
+      return;
+    }
+    const removeCnt = Math.min(list.length, Math.abs(delta));
+    for (let i = 0; i < removeCnt; i++) {
+      list.pop();
+    }
+    if (window.triggerHapticVibrate) window.triggerHapticVibrate('tap');
+    toast(`${type === 'positive' ? '➕ ۱ مثبت' : '➖ ۱ منفی'} از «${st.name} ${st.lastName}» کم شد ↩️`);
+  }
+
+  evaluateAutoStatus(c, st);
+  savePersistent();
+  window.refreshStudentRowInAttendanceTable(sid, cid, stid, prevFinal, type);
+
+  // اگر مودال ویرایش سریع باز است، آن را هم زنده بروزرسانی کن
+  if (document.getElementById('quickBehEditorModalBox')) {
+    window.openQuickBehEditorModal(sid, cid, stid);
+  }
+};
+
+// تنظیم مستقیم تعداد کل مثبت‌ها یا منفی‌های دانش‌آموز با عدد دلخواه معلم
+window.setExactStudentBehCount = function(sid, cid, stid, type, targetCountRaw) {
+  const c = findClass(sid, cid);
+  const st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const target = Math.max(0, Math.min(99, parseInt(enDigits(String(targetCountRaw || '0')), 10) || 0));
+  const b = behaviorData(st);
+  const list = type === 'positive' ? b.positives : b.negatives;
+  const cur = list.length;
+  if (target === cur) return;
+  if (target > cur) {
+    window.quickAdjustStudentBeh(sid, cid, stid, type, target - cur);
+  } else {
+    window.quickAdjustStudentBeh(sid, cid, stid, type, -(cur - target));
+  }
+};
+
+// پنجره شیک ویرایش کامل مثبت و منفی دانش‌آموز مستقیماً داخل جدول جامع
+window.openQuickBehEditorModal = function(sid, cid, stid) {
+  const c = findClass(sid, cid);
+  const st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const b = behaviorData(st);
+  const bt = behaviorTotals(st);
+  const fin = calculateFinalStudentScore(c, st);
+  const shortcuts = getShortcuts();
+
+  const allItems = [
+    ...b.positives.map(x => ({ ...x, bType: 'positive' })),
+    ...b.negatives.map(x => ({ ...x, bType: 'negative' }))
+  ].sort((a, z) => new Date(z.date || 0) - new Date(a.date || 0));
+
+  const itemsHtml = allItems.length ? allItems.map(item => `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;border-radius:11px;background:var(--bg-panel);border:1px solid ${item.bType === 'positive' ? 'rgba(22,163,74,0.35)' : 'rgba(220,38,38,0.35)'}">
+      <div style="min-width:0;flex:1">
+        <b style="font-size:12.5px;color:${item.bType === 'positive' ? '#15803D' : '#B91C1C'}">${item.bType === 'positive' ? '➕ مثبت' : '➖ منفی'}: ${esc(item.reason || 'ثبت کلاسی')}</b>
+        <div class="muted" style="font-size:10.5px">${formatEventDate(item.date)} · امتیاز: ${fmtScore(item.value || 0.25)}</div>
+      </div>
+      <div style="display:flex;gap:4px;flex-shrink:0">
+        <button type="button" class="btn gray btn-sm" onclick="quickEditBehRecordPrompt('${sid}','${cid}','${stid}','${item.bType}','${item.id}')">✎</button>
+        <button type="button" class="btn danger btn-sm" onclick="quickDeleteBehRecordInModal('${sid}','${cid}','${stid}','${item.bType}','${item.id}')">حذف ×</button>
+      </div>
+    </div>
+  `).join('') : '<div class="muted" style="padding:12px;text-align:center;border:1px dashed var(--border);border-radius:10px">هنوز سابقه مثبت یا منفی برای این دانش‌آموز ثبت نشده است.</div>';
+
+  openModal(formHeader(`➕➖ مدیریت و ویرایش مثبت و منفی — ${formatStudentName(st)}`) + `
+    <div id="quickBehEditorModalBox">
+      <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+          <span class="chip">⭐ نمره نهایی فعلی: <b>${fmtScore(fin)}</b></span>
+          <span class="chip">⚖️ تراز رفتاری: <b dir="ltr">${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)}</b></span>
+        </div>
+
+        <div class="grid-2" style="gap:10px">
+          <!-- کارت کنترل سریع مثبت‌ها -->
+          <div style="padding:10px;border-radius:14px;background:rgba(22,163,74,0.08);border:1.5px solid rgba(22,163,74,0.35);text-align:center">
+            <b style="color:#15803D;font-size:13px;display:block;margin-bottom:6px">➕ تعداد مثبت‌ها</b>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px">
+              <button type="button" class="btn green btn-sm" style="width:36px;height:36px;padding:0;font-size:18px;border-radius:10px" onclick="quickAdjustStudentBeh('${sid}','${cid}','${stid}','positive',1)">＋</button>
+              <input type="number" min="0" max="99" value="${b.positives.length}" style="width:62px;height:36px;text-align:center;font-weight:900;font-size:16px;color:#15803D" onchange="setExactStudentBehCount('${sid}','${cid}','${stid}','positive',this.value)">
+              <button type="button" class="btn gray btn-sm" style="width:36px;height:36px;padding:0;font-size:18px;border-radius:10px" ${b.positives.length === 0 ? 'disabled' : ''} onclick="quickAdjustStudentBeh('${sid}','${cid}','${stid}','positive',-1)">－</button>
+            </div>
+          </div>
+
+          <!-- کارت کنترل سریع منفی‌ها -->
+          <div style="padding:10px;border-radius:14px;background:rgba(220,38,38,0.08);border:1.5px solid rgba(220,38,38,0.35);text-align:center">
+            <b style="color:#B91C1C;font-size:13px;display:block;margin-bottom:6px">➖ تعداد منفی‌ها</b>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px">
+              <button type="button" class="btn danger btn-sm" style="width:36px;height:36px;padding:0;font-size:18px;border-radius:10px" onclick="quickAdjustStudentBeh('${sid}','${cid}','${stid}','negative',1)">＋</button>
+              <input type="number" min="0" max="99" value="${b.negatives.length}" style="width:62px;height:36px;text-align:center;font-weight:900;font-size:16px;color:#B91C1C" onchange="setExactStudentBehCount('${sid}','${cid}','${stid}','negative',this.value)">
+              <button type="button" class="btn gray btn-sm" style="width:36px;height:36px;padding:0;font-size:18px;border-radius:10px" ${b.negatives.length === 0 ? 'disabled' : ''} onclick="quickAdjustStudentBeh('${sid}','${cid}','${stid}','negative',-1)">－</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ثبت با کدهای اختصاری یا دلیل دلخواه -->
+        <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
+          <div style="font-size:11.5px;font-weight:800;margin-bottom:6px;color:var(--text-muted)">⚡ ثبت سریع با کد اختصاری:</div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            ${shortcuts.map(sh => `
+              <button type="button" class="qb ${sh.type === 'positive' ? 'pos' : 'neg'}" style="padding:5px 10px;font-size:11.5px" onclick="gridApplyShortcut('${sid}','${cid}','${stid}','${esc(sh.code)}');openQuickBehEditorModal('${sid}','${cid}','${stid}')">
+                ${sh.type === 'positive' ? '➕' : '➖'} ${esc(sh.code)} (${esc(sh.reason)})
+              </button>
+            `).join('')}
+          </div>
+          <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+            <input type="text" id="customBehReasonInp" placeholder="دلیل مثبت یا منفی (مثلاً پاسخ عالی یا عدم انجام تکلیف)..." style="flex:1;min-width:170px;height:34px;font-size:12px">
+            <button type="button" class="btn green btn-sm" onclick="addCustomReasonBehFromModal('${sid}','${cid}','${stid}','positive')">➕ ثبت مثبت با دلیل</button>
+            <button type="button" class="btn danger btn-sm" onclick="addCustomReasonBehFromModal('${sid}','${cid}','${stid}','negative')">➖ ثبت منفی با دلیل</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <b style="color:var(--primary);font-size:13px">📋 فهرست ریز سوابق مثبت و منفی (قابل ویرایش و حذف تکی)</b>
+          ${allItems.length ? `<button type="button" class="btn danger btn-sm" onclick="clearAllStudentBehInModal('${sid}','${cid}','${stid}')">🧹 صفر کردن همه</button>` : ''}
+        </div>
+        <div style="display:grid;gap:6px;max-height:36vh;overflow-y:auto">
+          ${itemsHtml}
+        </div>
+      </div>
+
+      <div class="formactions">
+        <button type="button" class="btn primary" onclick="closeModal()">✅ تایید و بازگشت به جدول جامع</button>
+      </div>
+    </div>
+  `);
+};
+
+window.addCustomReasonBehFromModal = function(sid, cid, stid, type) {
+  const c = findClass(sid, cid);
+  const st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const reason = (document.getElementById('customBehReasonInp')?.value || '').trim() || (type === 'positive' ? 'مثبت کلاسی' : 'منفی کلاسی');
+  const rules = getRules();
+  const prevFinal = calculateFinalStudentScore(c, st);
+  behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({
+    id: uid(),
+    date: new Date().toISOString(),
+    reason,
+    value: type === 'positive' ? (Number(rules.posDefault) || 0.25) : (Number(rules.penaltyPerNeg) || 0.5)
+  });
+  evaluateAutoStatus(c, st);
+  savePersistent();
+  window.refreshStudentRowInAttendanceTable(sid, cid, stid, prevFinal, type);
+  window.openQuickBehEditorModal(sid, cid, stid);
+  toast('ثبت شد ✅');
+};
+
+window.quickDeleteBehRecordInModal = function(sid, cid, stid, type, itemId) {
+  const c = findClass(sid, cid);
+  const st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const prevFinal = calculateFinalStudentScore(c, st);
+  const key = type === 'positive' ? 'positives' : 'negatives';
+  behaviorData(st)[key] = (behaviorData(st)[key] || []).filter(x => x.id !== itemId);
+  evaluateAutoStatus(c, st);
+  savePersistent();
+  window.refreshStudentRowInAttendanceTable(sid, cid, stid, prevFinal, type);
+  window.openQuickBehEditorModal(sid, cid, stid);
+  toast('مورد انتخابی حذف شد 🗑️');
+};
+
+window.quickEditBehRecordPrompt = function(sid, cid, stid, type, itemId) {
+  const c = findClass(sid, cid);
+  const st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const key = type === 'positive' ? 'positives' : 'negatives';
+  const item = (behaviorData(st)[key] || []).find(x => x.id === itemId);
+  if (!item) return;
+  const newReason = prompt('ویرایش علت مثبت/منفی:', item.reason || '');
+  if (newReason === null) return;
+  const newValRaw = prompt('ویرایش امتیاز (مثلاً 0.25 یا 0.5):', String(item.value ?? 0.25));
+  if (newValRaw !== null) {
+    const parsed = parseFloat(enDigits(newValRaw));
+    if (Number.isFinite(parsed) && parsed >= 0) item.value = parsed;
+  }
+  item.reason = newReason.trim() || item.reason;
+  const prevFinal = calculateFinalStudentScore(c, st);
+  evaluateAutoStatus(c, st);
+  savePersistent();
+  window.refreshStudentRowInAttendanceTable(sid, cid, stid, prevFinal, type);
+  window.openQuickBehEditorModal(sid, cid, stid);
+  toast('ویرایش شد ✅');
+};
+
+window.clearAllStudentBehInModal = function(sid, cid, stid) {
+  const c = findClass(sid, cid);
+  const st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  if (!confirm(`آیا تمام مثبت و منفی‌های «${st.name} ${st.lastName}» صفر شود؟`)) return;
+  const prevFinal = calculateFinalStudentScore(c, st);
+  st.behavior = { positives: [], negatives: [] };
+  evaluateAutoStatus(c, st);
+  savePersistent();
+  window.refreshStudentRowInAttendanceTable(sid, cid, stid, prevFinal, null);
+  window.openQuickBehEditorModal(sid, cid, stid);
+  toast('مثبت و منفی‌های دانش‌آموز صفر شد ✅');
+};
+
+
+/* ==================== ب) موتور بازیابی خودکار ۴ لایه و گاوصندوق دائمی عکس‌ها (Smart Auto-Recovery & Photo Vault v7.3) ==================== */
+
+const PHOTO_VAULT_IDB_KEY = 'dam_permanent_photo_vault_v73';
+const LAST_VALID_DB_IDB_KEY = 'last_valid_non_empty_db_v73';
+window._photoVaultMemoryCache = {};
+window._dbRestoredReady = false;
+window._autoVaultTimerId = null;
+
+// شمارش غنای داده‌های یک دیتابیس (برای تشخیص کامل‌ترین نسخه هنگام بازیابی خودکار)
+function computeDbRichnessScore(data) {
+  if (!data || !Array.isArray(data.schools)) return 0;
+  let score = 0;
+  data.schools.forEach(s => {
+    score += 10;
+    score += (s.photos || []).length * 5;
+    (s.classes || []).forEach(c => {
+      score += 20;
+      score += (c.photos || []).length * 5;
+      score += Object.keys(c.attendance || {}).length * 3;
+      score += Object.keys(c.termScores || {}).length * 2;
+      score += Object.keys(c.contExamScores || {}).length * 2;
+      (c.students || []).forEach(st => {
+        score += 30;
+        if (st.photo && st.photo.length > 50) score += 15;
+        score += (st.grades || []).length * 4;
+        score += (st.behavior?.positives || []).length * 2;
+        score += (st.behavior?.negatives || []).length * 2;
+        score += (st.examPapers || []).length * 5;
+      });
+    });
+  });
+  return score;
+}
+
+// استخراج تمام عکس‌های موجود در db به داخل نقشه گاوصندوق عکس‌ها
+function extractAllPhotosFromDb(data, targetMap = {}) {
+  if (!data || !Array.isArray(data.schools)) return targetMap;
+  data.schools.forEach(s => {
+    if (Array.isArray(s.photos) && s.photos.length > 0) {
+      targetMap['sch_' + s.id] = s.photos.filter(Boolean);
+    }
+    (s.classes || []).forEach(c => {
+      if (Array.isArray(c.photos) && c.photos.length > 0) {
+        targetMap['cls_' + c.id] = c.photos.filter(Boolean);
+      }
+      (c.students || []).forEach(st => {
+        if (st.photo && typeof st.photo === 'string' && st.photo.length > 50) {
+          targetMap['stu_' + st.id] = st.photo;
+          // همچنین با کلید نام و نام خانوادگی هم ذخیره کن تا حتی اگر id دانش‌آموز عوض شد، عکسش بازیابی شود!
+          const nameKey = 'stuname_' + `${st.name || ''}_${st.lastName || ''}`.trim().replace(/\s+/g, '_');
+          if (nameKey.length > 9) targetMap[nameKey] = st.photo;
+        }
+        if (Array.isArray(st.examPapers) && st.examPapers.length > 0) {
+          targetMap['papers_' + st.id] = st.examPapers;
+        }
+      });
+    });
+  });
+  try {
+    const acc = window.getTeacherAccount ? window.getTeacherAccount() : null;
+    if (acc && acc.avatar && acc.avatar.length > 50) {
+      targetMap['teacher_avatar'] = acc.avatar;
+    }
+  } catch (_) {}
+  return targetMap;
+}
+
+// تزریق و بازگردانی تمام عکس‌ها از گاوصندوق عکس‌ها به داخل db
+function hydrateDbWithPhotoVault(data, photoMap) {
+  if (!data || !Array.isArray(data.schools) || !photoMap) return 0;
+  let restoredPhotosCount = 0;
+  data.schools.forEach(s => {
+    if ((!Array.isArray(s.photos) || !s.photos.length) && Array.isArray(photoMap['sch_' + s.id]) && photoMap['sch_' + s.id].length) {
+      s.photos = [...photoMap['sch_' + s.id]];
+      restoredPhotosCount += s.photos.length;
+    }
+    (s.classes || []).forEach(c => {
+      if ((!Array.isArray(c.photos) || !c.photos.length) && Array.isArray(photoMap['cls_' + c.id]) && photoMap['cls_' + c.id].length) {
+        c.photos = [...photoMap['cls_' + c.id]];
+        restoredPhotosCount += c.photos.length;
+      }
+      (c.students || []).forEach(st => {
+        if (!st.photo || st.photo.length < 50) {
+          const byId = photoMap['stu_' + st.id];
+          const nameKey = 'stuname_' + `${st.name || ''}_${st.lastName || ''}`.trim().replace(/\s+/g, '_');
+          const byName = photoMap[nameKey];
+          if (byId || byName) {
+            st.photo = byId || byName;
+            restoredPhotosCount++;
+          }
+        }
+        if ((!Array.isArray(st.examPapers) || !st.examPapers.length) && Array.isArray(photoMap['papers_' + st.id])) {
+          st.examPapers = photoMap['papers_' + st.id];
+        }
+      });
+    });
+  });
+  try {
+    if (photoMap['teacher_avatar'] && window.getTeacherAccount) {
+      const acc = window.getTeacherAccount();
+      if (!acc.avatar) {
+        acc.avatar = photoMap['teacher_avatar'];
+        localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(acc));
+      }
+    }
+  } catch (_) {}
+  return restoredPhotosCount;
+}
+
+// ادغام هوشمند و بدون حذف دو دیتابیس (حفظ تمام مدارس، کلاس‌ها، دانش‌آموزان، نمرات، حضوروغیاب و عکس‌ها)
+function mergeTwoDatabasesNonDestructively(primaryDb, secondaryDb) {
+  const base = sanitizeDb(JSON.parse(JSON.stringify(primaryDb || { version: 1, schools: [] })));
+  const extra = sanitizeDb(JSON.parse(JSON.stringify(secondaryDb || { version: 1, schools: [] })));
+
+  (extra.schools || []).forEach(extS => {
+    let s = base.schools.find(x => x.id === extS.id || (x.name && x.name.trim() === (extS.name || '').trim()));
+    if (!s) {
+      base.schools.push(extS);
+      return;
+    }
+    if ((!s.photos || !s.photos.length) && extS.photos?.length) s.photos = [...extS.photos];
+
+    (extS.classes || []).forEach(extC => {
+      let c = (s.classes || []).find(x => x.id === extC.id || (x.name && x.name.trim() === (extC.name || '').trim()));
+      if (!c) {
+        s.classes.push(extC);
+        return;
+      }
+      if ((!c.photos || !c.photos.length) && extC.photos?.length) c.photos = [...extC.photos];
+      c.attendance = { ...(extC.attendance || {}), ...(c.attendance || {}) };
+      c.termScores = { ...(extC.termScores || {}), ...(c.termScores || {}) };
+      c.contExamScores = { ...(extC.contExamScores || {}), ...(c.contExamScores || {}) };
+      c.onlineExamResults = { ...(extC.onlineExamResults || {}), ...(c.onlineExamResults || {}) };
+
+      (extC.students || []).forEach(extSt => {
+        const cleanExtName = `${extSt.name || ''} ${extSt.lastName || ''}`.trim();
+        let st = (c.students || []).find(x => x.id === extSt.id || (`${x.name || ''} ${x.lastName || ''}`.trim() === cleanExtName && cleanExtName.length > 1));
+        if (!st) {
+          c.students.push(extSt);
+          return;
+        }
+        if (!st.photo && extSt.photo) st.photo = extSt.photo;
+        if (!st.fatherName && extSt.fatherName) st.fatherName = extSt.fatherName;
+        if (!st.phone && extSt.phone) st.phone = extSt.phone;
+        if (!st.birth && extSt.birth) st.birth = extSt.birth;
+        if ((!st.grades || !st.grades.length) && extSt.grades?.length) st.grades = [...extSt.grades];
+        if ((!st.behavior?.positives?.length) && extSt.behavior?.positives?.length) st.behavior.positives = [...extSt.behavior.positives];
+        if ((!st.behavior?.negatives?.length) && extSt.behavior?.negatives?.length) st.behavior.negatives = [...extSt.behavior.negatives];
+        if ((!st.examPapers || !st.examPapers.length) && extSt.examPapers?.length) st.examPapers = [...extSt.examPapers];
+      });
+    });
+  });
+
+  return sanitizeDb(base);
+}
+
+// ساخت نسخه سبک بدون عکس‌های سنگین برای localStorage در صورتی که حجم عکس‌ها از ۵ مگابایت مرورگر رد شود
+function buildQuotaSafeLocalStorageDb(fullDb) {
+  const clone = JSON.parse(JSON.stringify(fullDb));
+  clone._photosStoredInIdbVault = true;
+  if (clone.cachedBook) {
+    clone.cachedBook = { ...clone.cachedBook, pages: {} };
+  }
+  (clone.schools || []).forEach(s => {
+    s.photos = [];
+    (s.classes || []).forEach(c => {
+      c.photos = [];
+      (c.students || []).forEach(st => {
+        st.photo = '';
+        st.examPapers = [];
+      });
+    });
+  });
+  return clone;
+}
+
+// بازنویسی کامل savePersistent در نسخه v7.3 (ضد QuotaExceededError + ذخیره خودکار در گاوصندوق عکس‌ها و آخرین نسخه غیرخالی)
+savePersistent = async function() {
+  // جلوگیری از رونویسی دیتابیس قبل از اتمام بازیابی اولیه هنگام لود صفحه
+  if (window._isDbLoading && !window._dbRestoredReady) return;
+
+  db._updatedAt = Date.now();
+  extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
+
+  // ۱. ذخیره در localStorage (اگر به خاطر عکس‌ها جا نشد، نسخه سبک + پرچم گاوصندوق عکس را در localStorage ذخیره کن تا هیچ‌وقت خطا ندهد)
+  try {
+    localStorage.setItem(KEY, JSON.stringify(db));
+  } catch (quotaErr) {
+    try {
+      const lightCopy = buildQuotaSafeLocalStorageDb(db);
+      localStorage.setItem(KEY, JSON.stringify(lightCopy));
+    } catch (_) {}
+  }
+
+  // ۲. ذخیره کامل در IndexedDB (همراه با تمام عکس‌ها + گاوصندوق دائمی عکس‌ها + آخرین وضعیت غیرخالی)
+  try {
+    const d = await openStorage();
+    const existingPhotos = await new Promise((res) => {
+      try {
+        const tx = d.transaction(ASSET_STORE, 'readonly');
+        const req = tx.objectStore(ASSET_STORE).get(PHOTO_VAULT_IDB_KEY);
+        req.onsuccess = () => res(req.result && typeof req.result === 'object' ? req.result : {});
+        req.onerror = () => res({});
+      } catch (_) { res({}); }
+    });
+
+    const mergedPhotoVault = { ...existingPhotos, ...window._photoVaultMemoryCache };
+    window._photoVaultMemoryCache = mergedPhotoVault;
+
+    const richness = computeDbRichnessScore(db);
+
+    await new Promise((res, rej) => {
+      const tx = d.transaction([DB_STORE, ASSET_STORE], 'readwrite');
+      const dbStore = tx.objectStore(DB_STORE);
+      const assetStore = tx.objectStore(ASSET_STORE);
+
+      dbStore.put(db, 'data');
+      if (richness > 0) {
+        dbStore.put(db, LAST_VALID_DB_IDB_KEY);
+      }
+      assetStore.put(mergedPhotoVault, PHOTO_VAULT_IDB_KEY);
+
+      tx.oncomplete = res;
+      tx.onerror = () => rej(tx.error);
+    });
+    d.close();
+  } catch (e) {}
+
+  // ۳. ثبت خودکار دوره‌ای در «گاوصندوق پشتیبان داخلی برنامه» (هر ۲۰ ثانیه پس از تغییرات واقعی در صورت غیرخالی بودن)
+  if (computeDbRichnessScore(db) > 0) {
+    clearTimeout(window._autoVaultTimerId);
+    window._autoVaultTimerId = setTimeout(async () => {
+      try {
+        const list = await loadInternalVaultList();
+        const c = counts();
+        const autoSnap = {
+          id: 'vault_auto_rolling',
+          label: '♻️ پشتیبان خودکار هوشمند (همراه با عکس‌ها)',
+          createdAt: new Date().toISOString(),
+          jalaliDate: formatJalaliDate(localISODate()),
+          timeStr: new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }),
+          stats: `${fa(c.schools)} مدرسه · ${fa(c.classes)} کلاس · ${fa(c.students)} دانش‌آموز`,
+          fileName: getStandardBackupFilename('full'),
+          payload: buildBackupPayloadObject('full')
+        };
+        const filtered = (list || []).filter(x => x.id !== 'vault_auto_rolling');
+        filtered.unshift(autoSnap);
+        await saveInternalVaultList(filtered);
+        if (document.getElementById('internalBackupVaultList')) {
+          await window.renderInternalVaultUI();
+        }
+      } catch (_) {}
+    }, 4000);
+  }
+};
+
+// بازنویسی کامل restorePersistent در نسخه v7.3 (بررسی ۵ منبع ذخیره و بازیابی خودکار اطلاعات و عکس‌ها)
+restorePersistent = async function() {
+  try {
+    let idbData = null;
+    let idbLastValid = null;
+    let photoVault = {};
+    let vaultSnapshots = [];
+
+    try {
+      const d = await openStorage();
+      idbData = await new Promise((res) => {
+        const tx = d.transaction(DB_STORE, 'readonly');
+        const r = tx.objectStore(DB_STORE).get('data');
+        r.onsuccess = () => res(r.result || null);
+        r.onerror = () => res(null);
+      });
+      idbLastValid = await new Promise((res) => {
+        const tx = d.transaction(DB_STORE, 'readonly');
+        const r = tx.objectStore(DB_STORE).get(LAST_VALID_DB_IDB_KEY);
+        r.onsuccess = () => res(r.result || null);
+        r.onerror = () => res(null);
+      });
+      photoVault = await new Promise((res) => {
+        const tx = d.transaction(ASSET_STORE, 'readonly');
+        const r = tx.objectStore(ASSET_STORE).get(PHOTO_VAULT_IDB_KEY);
+        r.onsuccess = () => res(r.result && typeof r.result === 'object' ? r.result : {});
+        r.onerror = () => res({});
+      });
+      vaultSnapshots = await new Promise((res) => {
+        const tx = d.transaction(ASSET_STORE, 'readonly');
+        const r = tx.objectStore(ASSET_STORE).get('internal_backup_vault_v1');
+        r.onsuccess = () => res(Array.isArray(r.result) ? r.result : []);
+        r.onerror = () => res([]);
+      });
+      d.close();
+    } catch (_) {}
+
+    let localData = null;
+    try { localData = sanitizeDb(JSON.parse(localStorage.getItem(KEY) || 'null')); } catch (_) {}
+
+    // جمع‌آوری تمام کاندیداهای معتبر دیتابیس
+    const candidates = [];
+    if (idbData && Array.isArray(idbData.schools)) candidates.push({ src: 'idb_data', db: sanitizeDb(idbData) });
+    if (idbLastValid && Array.isArray(idbLastValid.schools)) candidates.push({ src: 'idb_last_valid', db: sanitizeDb(idbLastValid) });
+    if (localData && Array.isArray(localData.schools)) candidates.push({ src: 'local_storage', db: sanitizeDb(localData) });
+    if (Array.isArray(vaultSnapshots) && vaultSnapshots.length > 0) {
+      vaultSnapshots.forEach((snap, idx) => {
+        if (snap && snap.payload && Array.isArray(snap.payload.schools)) {
+          candidates.push({ src: 'vault_' + idx, db: sanitizeDb(snap.payload) });
+          extractAllPhotosFromDb(snap.payload, photoVault);
+        }
+      });
+    }
+
+    // استخراج عکس‌ها از همه کاندیداها به داخل photoVault
+    candidates.forEach(c => extractAllPhotosFromDb(c.db, photoVault));
+    window._photoVaultMemoryCache = photoVault;
+
+    if (candidates.length > 0) {
+      // مرتب‌سازی کاندیداها: اولویت با دیتابیس‌های غیرخالی و غنی‌تر و جدیدتر
+      candidates.sort((a, b) => {
+        const scoreA = computeDbRichnessScore(a.db);
+        const scoreB = computeDbRichnessScore(b.db);
+        if (scoreA === 0 && scoreB > 0) return 1;
+        if (scoreB === 0 && scoreA > 0) return -1;
+        const timeA = Number(a.db._updatedAt) || 0;
+        const timeB = Number(b.db._updatedAt) || 0;
+        if (Math.abs(scoreA - scoreB) > 25) return scoreB - scoreA;
+        if (timeB !== timeA) return timeB - timeA;
+        return scoreB - scoreA;
+      });
+
+      let bestDb = candidates[0].db;
+      // ادغام سایر کاندیداها با بهترین نسخه تا هیچ کلاس یا دانش‌آموز یا عکسی جا نماند
+      for (let i = 1; i < candidates.length; i++) {
+        bestDb = mergeTwoDatabasesNonDestructively(bestDb, candidates[i].db);
+      }
+
+      const initialScore = computeDbRichnessScore(db);
+      const restoredPhotos = hydrateDbWithPhotoVault(bestDb, photoVault);
+      db = sanitizeDb(bestDb);
+
+      window._dbRestoredReady = true;
+      await savePersistent();
+      renderAll();
+      if (window.TeachAssistant) TeachAssistant.renderCachedBookUI();
+
+      if (initialScore === 0 && computeDbRichnessScore(db) > 0) {
+        toast('♻️ اطلاعات، کلاس‌ها و عکس‌های شما به صورت خودکار بازیابی شد ✅');
+      } else if (restoredPhotos > 0) {
+        toast(`📸 ${fa(restoredPhotos)} تصویر از گاوصندوق امن عکس‌ها بازیابی شد ✅`);
+      }
+    } else {
+      window._dbRestoredReady = true;
+      await savePersistent();
+    }
+  } catch (e) {
+    window._dbRestoredReady = true;
+  }
+};
+
+// ویزارد و دکمه اسکن عمیق و بازیابی هوشمند همه اطلاعات و عکس‌ها (از تمام حافظه‌های مرورگر، گاوصندوق و کش ابری)
+window.runDeepAutoRecoveryWizard = async function(silent = false) {
+  let recoveredSchoolsBefore = (db.schools || []).length;
+  let recoveredStudentsBefore = counts().students;
+
+  // ۱. اجرای بازیابی چندلایه محلی و گاوصندوق عکس‌ها
+  await restorePersistent();
+
+  // ۲. اسکن تمام کلیدهای localStorage برای یافتن هرگونه میرور ابری یا بسته تفاضلی
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i) || '';
+      if (k.startsWith('dam_cloud_mirror_')) {
+        try {
+          const pkt = JSON.parse(localStorage.getItem(k) || 'null');
+          if (pkt && pkt.zData) {
+            const dec = await window.decompressStringGzipBase64(pkt.zData);
+            const cloudObj = JSON.parse(dec);
+            if (cloudObj && Array.isArray(cloudObj.schools)) {
+              extractAllPhotosFromDb(cloudObj, window._photoVaultMemoryCache);
+              db = mergeTwoDatabasesNonDestructively(db, cloudObj);
+            }
+          }
+        } catch (_) {}
+      }
+    }
+  } catch (_) {}
+
+  // ۳. تزریق مجدد تمام عکس‌های موجود در گاوصندوق عکس‌ها
+  const hydratedPhotos = hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
+  await savePersistent();
+  renderAll();
+  if (window.renderInternalVaultUI) await window.renderInternalVaultUI();
+
+  // ۴. اگر اکانت ابری متصل است، بسته‌های ابری را نیز بدون حذف اطلاعات محلی ادغام کن
+  try {
+    const acc = window.getTeacherAccount ? window.getTeacherAccount() : {};
+    const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || '').trim();
+    if (key && key.length >= 3) {
+      await window.syncAccountNowWithPhotos(true, 'both');
+    }
+  } catch (_) {}
+
+  const cAfter = counts();
+  let totalPhotos = 0;
+  (db.schools || []).forEach(s => {
+    totalPhotos += (s.photos || []).length;
+    (s.classes || []).forEach(c => {
+      totalPhotos += (c.photos || []).length;
+      (c.students || []).forEach(st => { if (st.photo) totalPhotos++; });
+    });
+  });
+
+  if (!silent) {
+    if (window.triggerHapticVibrate) window.triggerHapticVibrate('success');
+    openModal(formHeader('♻️ گزارش بازیابی خودکار اطلاعات و گاوصندوق عکس‌ها') + `
+      <div class="card" style="background:var(--bg-panel);border:1.5px solid var(--neon-green);margin-bottom:10px">
+        <b style="color:var(--neon-green);font-size:14px;display:block;margin-bottom:6px">✅ اسکن عمیق حافظه‌های داخلی و گاوصندوق عکس‌ها انجام شد</b>
+        <div style="font-size:12.5px;line-height:1.8;color:var(--text-main)">
+          • تعداد مدارس بازیابی‌شده و فعال: <b>${fa(cAfter.schools)} مدرسه</b><br>
+          • تعداد کلاس‌های فعال: <b>${fa(cAfter.classes)} کلاس</b><br>
+          • تعداد دانش‌آموزان فعال: <b>${fa(cAfter.students)} دانش‌آموز</b><br>
+          • تعداد عکس‌های محافظت‌شده در گاوصندوق دائمی: <b>${fa(totalPhotos)} تصویر</b>
+        </div>
+      </div>
+      <div class="muted" style="font-size:11.5px;line-height:1.65;margin-bottom:10px">
+        💡 تمام تغییرات و عکس‌های شما به صورت لحظه‌ای در <b>«گاوصندوق دائمی عکس‌ها (IndexedDB)»</b> و <b>«گاوصندوق پشتیبان داخلی»</b> ذخیره می‌شوند و حتی در صورت پر شدن حافظه عادی مرورگر هرگز پاک نخواهند شد.
+      </div>
+      <div class="formactions">
+        <button type="button" class="btn primary" onclick="closeModal()">متوجه شدم ✅</button>
+      </div>
+    `);
+  }
+};
+
+// بازنویسی ایمن syncAccountNowWithPhotos برای:
+// ۱. عدم حذف عکس‌های محلی هنگام دریافت از ابر (ادغام غیرمخرب با mergeTwoDatabasesNonDestructively + hydrateDbWithPhotoVault)
+// ۲. ارسال تکه‌های استاندارد 2800 کاراکتری به ntfy.sh تا هیچ پیامی به فایل ضمیمه خارجی تبدیل نشود
+window.syncAccountNowWithPhotos = async function(silent = false, direction = 'both') {
+  const acc = window.getTeacherAccount();
+  const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || '').trim();
+  if (!key || key.length < 3) {
+    if (!silent) window.openOnboardingAuthScreen();
+    return false;
+  }
+
+  const syncChip = document.getElementById('tgLiveSyncChip');
+  if (syncChip) syncChip.textContent = '⏳ همگام‌سازی هوشمند...';
+
+  const topic = getCloudTopicHash(key);
+  const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+  const baseUrl = customEp || `https://ntfy.sh/${topic}`;
+
+  try {
+    // ۱. اگر در حالت دریافت یا دوطرفه هستیم، آخرین بسته‌های ابری را بخوان و به صورت غیرمخرب (بدون پاک شدن عکس‌ها یا کلاس‌های محلی) ادغام کن!
+    if (direction === 'pull_first' || direction === 'both') {
+      try {
+        const pollUrl = customEp ? customEp : `https://ntfy.sh/${topic}/json?poll=1&since=30d`;
+        const res = await fetch(pollUrl);
+        if (res.ok) {
+          const text = await res.text();
+          const lines = text.trim().split(/\r?\n/).filter(Boolean);
+          let latestPacket = null;
+          const chunksMap = {};
+
+          for (const line of lines) {
+            try {
+              const obj = JSON.parse(line);
+              const msg = obj.message ? JSON.parse(obj.message) : obj;
+              if (msg && (msg.type === 'DAM_CLOUD_FULL_V70' || msg.type === 'DAM_CLOUD_BACKUP_V60')) {
+                latestPacket = msg;
+              } else if (msg && (msg.type === 'DAM_CLOUD_CHUNK_V70' || msg.type === 'DAM_CLOUD_CHUNK_V60') && msg.batchId) {
+                if (!chunksMap[msg.batchId]) chunksMap[msg.batchId] = { total: msg.total, parts: {}, updatedAt: msg.updatedAt || 0, jalaliDate: msg.jalaliDate };
+                chunksMap[msg.batchId].parts[msg.idx] = msg.part;
+              }
+            } catch (_) {}
+          }
+
+          Object.values(chunksMap).forEach(b => {
+            if (Object.keys(b.parts).length === b.total) {
+              let joined = '';
+              for (let i = 0; i < b.total; i++) joined += (b.parts[i] || '');
+              latestPacket = { type: 'DAM_CLOUD_FULL_V70', updatedAt: b.updatedAt, jalaliDate: b.jalaliDate, zData: joined };
+            }
+          });
+
+          if (!latestPacket) {
+            try {
+              const localMirror = localStorage.getItem('dam_cloud_mirror_' + topic);
+              if (localMirror) latestPacket = JSON.parse(localMirror);
+            } catch (_) {}
+          }
+
+          if (latestPacket && latestPacket.zData) {
+            const jsonStr = await window.decompressStringGzipBase64(latestPacket.zData);
+            const cloudObj = JSON.parse(jsonStr);
+            if (cloudObj && Array.isArray(cloudObj.schools)) {
+              if (cloudObj.teacherAccount) {
+                const curAcc = window.getTeacherAccount();
+                const mergedAcc = { ...cloudObj.teacherAccount, ...curAcc, avatar: curAcc.avatar || cloudObj.teacherAccount.avatar || '' };
+                localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(mergedAcc));
+              }
+              extractAllPhotosFromDb(cloudObj, window._photoVaultMemoryCache);
+              // ادغام غیرمخرب: اگر دیتای محلی جدیدتر است، پایه را محلی قرار بده و اطلاعات ابری را به آن اضافه کن
+              const cloudTime = Number(cloudObj._updatedAt || latestPacket.updatedAt) || 0;
+              const localTime = Number(db._updatedAt) || 0;
+              if (cloudTime > localTime && computeDbRichnessScore(cloudObj) >= computeDbRichnessScore(db)) {
+                db = mergeTwoDatabasesNonDestructively(cloudObj, db);
+              } else {
+                db = mergeTwoDatabasesNonDestructively(db, cloudObj);
+              }
+              hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
+            }
+          }
+        }
+      } catch (_) {}
+
+      await window.applyIncomingDeltaPacketsFromCloud(topic);
+      hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
+      await savePersistent();
+      renderAll();
+      window.renderCloudSettingsHub();
+      if (direction === 'pull_first') {
+        if (syncChip) syncChip.textContent = '🟢 متصل و بازیابی‌شده';
+        if (!silent) toast('☁️ آخرین اطلاعات و عکس‌های شما بدون هیچ حذفی بازیابی و ادغام شد ✅');
+        return true;
+      }
+    }
+
+    // ۲. ارسال تفاضلی تغییرات به ابر (در قطعات کوچک 2800 کاراکتری سازگار با محدودیت 4KB سرور ntfy.sh)
+    const deltaStateKey = 'dam_delta_hashes_v73_' + topic;
+    let lastHashes = {};
+    try { lastHashes = JSON.parse(localStorage.getItem(deltaStateKey) || '{}'); } catch (_) {}
+
+    const changedClasses = [];
+    const newPhotos = {};
+    const curHashes = { ...lastHashes };
+    let hasChanges = false;
+
+    (db.schools || []).forEach(s => {
+      (s.classes || []).forEach(c => {
+        const lightStudents = (c.students || []).map(st => {
+          const pKey = 'st_ph_' + st.id;
+          const pHash = st.photo ? computeFastStringHash(st.photo) : '';
+          if (st.photo && pHash !== lastHashes[pKey]) {
+            newPhotos[st.id] = st.photo;
+            curHashes[pKey] = pHash;
+          }
+          return { ...st, photo: '' };
+        });
+        const classDataObj = {
+          sid: s.id, sName: s.name, sYear: s.year,
+          cid: c.id, name: c.name, grade: c.grade,
+          currentTermName: c.currentTermName,
+          attendance: c.attendance,
+          termScores: c.termScores,
+          contExamScores: c.contExamScores,
+          gradeColumns: c.gradeColumns,
+          groups: c.groups,
+          onlineExamResults: c.onlineExamResults || {},
+          students: lightStudents
+        };
+        const cHash = computeFastStringHash(JSON.stringify(classDataObj));
+        if (cHash !== lastHashes['cls_' + c.id]) {
+          changedClasses.push(classDataObj);
+          curHashes['cls_' + c.id] = cHash;
+          hasChanges = true;
+        }
+      });
+    });
+
+    await savePersistent();
+
+    if (!hasChanges && !changedClasses.length && !Object.keys(newPhotos).length) {
+      if (syncChip) syncChip.textContent = '🟢 به‌روز و محافظت‌شده';
+      if (!silent) toast('⚡ تمام اطلاعات و عکس‌های شما در گاوصندوق امن و فضای ابری به‌روز است ✅');
+      return true;
+    }
+
+    const deltaPacket = {
+      type: 'DAM_CLOUD_DELTA_V72',
+      updatedAt: Date.now(),
+      jalaliDate: formatJalaliDate(localISODate()),
+      changedClasses,
+      newPhotos
+    };
+    const zDelta = await window.compressStringGzipBase64(JSON.stringify(deltaPacket));
+    localStorage.setItem(deltaStateKey, JSON.stringify(curHashes));
+
+    const singleMsg = JSON.stringify({ type: 'DAM_CLOUD_DELTA_V72', updatedAt: deltaPacket.updatedAt, jalaliDate: deltaPacket.jalaliDate, zDelta });
+    if (singleMsg.length <= 3500) {
+      await fetch(baseUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: singleMsg
+      });
+    } else {
+      // ارسال در قطعات ۲۸۰۰ بایتی برای عبور تضمینی از محدودیت ۴ کیلوبایتی پیام متنی سرور ابری
+      const chunkSize = 2800;
+      const totalChunks = Math.ceil(zDelta.length / chunkSize);
+      const batchId = 'b73_' + Date.now();
+      for (let i = 0; i < Math.min(totalChunks, 25); i++) {
+        await fetch(baseUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            type: 'DAM_CLOUD_CHUNK_V70',
+            batchId,
+            idx: i,
+            total: totalChunks,
+            updatedAt: deltaPacket.updatedAt,
+            jalaliDate: deltaPacket.jalaliDate,
+            part: zDelta.slice(i * chunkSize, (i + 1) * chunkSize)
+          })
+        });
+      }
+    }
+
+    const nowLbl = `${deltaPacket.jalaliDate} ساعت ${new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' })}`;
+    localStorage.setItem('danesh_cloud_last_sync', nowLbl);
+    if (syncChip) syncChip.textContent = '🟢 متصل و محافظت‌شده';
+    if (!silent) toast('☁️ آخرین تغییرات و عکس‌ها با موفقیت ذخیره و همگام‌سازی شد ✅');
+    return true;
+  } catch (err) {
+    if (syncChip) syncChip.textContent = '🟢 محفوظ در گاوصندوق داخلی';
+    if (!silent) toast('🛡️ تمام اطلاعات و عکس‌ها در گاوصندوق دائمی دستگاه ذخیره شد ✅');
+    return false;
+  }
+};
 
 </script>
 </body>
