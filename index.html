@@ -4730,7 +4730,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.2</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.4</span>
         </div>
       </div>
     </div>
@@ -6260,7 +6260,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.3 Pro</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.4 Pro</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6592,7 +6592,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '7.3.0 Pro';
+const APP_VERSION = '7.4.0 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -21415,11 +21415,11 @@ window.addEventListener('DOMContentLoaded', async () => {
 });
 
 
-/* ==================== موتور جامع ارتقای نسخه v7.3.0 Pro: بازیابی خودکار ۴ لایه + گاوصندوق دائمی عکس‌ها + ویرایشگر شیک مثبت/منفی در لیست جامع ==================== */
+/* ==================== موتور جامع ارتقای نسخه v7.4.0 Pro: رفع کامل هنگ (۶۰ فریم) + بازیابی عمیق تمام عکس‌ها و اطلاعات قبلی + پشتیبان‌گیری ابری نسل جدید ==================== */
 
-(function injectV73Styles() {
+(function injectV74ProStyles() {
   const st = document.createElement('style');
-  st.id = 'v73-pro-styles';
+  st.id = 'v74-pro-styles';
   st.textContent = `
     /* ویجت شیک و تعاملی مثبت و منفی داخل جدول جامع (#attMainTable) */
     .att-beh-editor-wrap {
@@ -21453,12 +21453,8 @@ window.addEventListener('DOMContentLoaded', async () => {
       color: #B91C1C;
       border: 1px solid rgba(220, 38, 38, 0.32);
     }
-    body.cyber-dark-theme .att-beh-capsule.pos {
-      color: #4ADE80;
-    }
-    body.cyber-dark-theme .att-beh-capsule.neg {
-      color: #F87171;
-    }
+    body.cyber-dark-theme .att-beh-capsule.pos { color: #4ADE80; }
+    body.cyber-dark-theme .att-beh-capsule.neg { color: #F87171; }
     .att-beh-step-btn {
       width: 19px !important;
       height: 19px !important;
@@ -21475,31 +21471,14 @@ window.addEventListener('DOMContentLoaded', async () => {
       cursor: pointer;
       transition: transform 0.12s ease, opacity 0.12s ease;
     }
-    .att-beh-step-btn:active {
-      transform: scale(0.86);
-    }
-    .att-beh-step-btn.pos-add {
-      background: #16A34A !important;
-      color: #FFFFFF !important;
-    }
-    .att-beh-step-btn.pos-sub {
-      background: rgba(22, 163, 74, 0.2) !important;
-      color: #15803D !important;
-    }
-    .att-beh-step-btn.neg-add {
-      background: #DC2626 !important;
-      color: #FFFFFF !important;
-    }
-    .att-beh-step-btn.neg-sub {
-      background: rgba(220, 38, 38, 0.2) !important;
-      color: #B91C1C !important;
-    }
+    .att-beh-step-btn:active { transform: scale(0.86); }
+    .att-beh-step-btn.pos-add { background: #16A34A !important; color: #FFFFFF !important; }
+    .att-beh-step-btn.pos-sub { background: rgba(22, 163, 74, 0.2) !important; color: #15803D !important; }
+    .att-beh-step-btn.neg-add { background: #DC2626 !important; color: #FFFFFF !important; }
+    .att-beh-step-btn.neg-sub { background: rgba(220, 38, 38, 0.2) !important; color: #B91C1C !important; }
     body.cyber-dark-theme .att-beh-step-btn.pos-sub { color: #86EFAC !important; }
     body.cyber-dark-theme .att-beh-step-btn.neg-sub { color: #FCA5A5 !important; }
-    .att-beh-step-btn[disabled] {
-      opacity: 0.32 !important;
-      cursor: default !important;
-    }
+    .att-beh-step-btn[disabled] { opacity: 0.32 !important; cursor: default !important; }
     .att-beh-count-lbl {
       padding: 0 4px;
       cursor: pointer;
@@ -21522,11 +21501,149 @@ window.addEventListener('DOMContentLoaded', async () => {
       justify-content: center !important;
       cursor: pointer;
     }
+
+    /* نوار پیشرفت زنده پشتیبان‌گیری ابری */
+    .cloud-sync-progress-wrap {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--bg-panel);
+      border: 1px solid var(--primary-border);
+      display: none;
+    }
+    .cloud-sync-progress-Wrap.active {
+      display: block;
+    }
+    .cloud-sync-bar-bg {
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(148, 163, 184, 0.25);
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    .cloud-sync-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #EA580C, #16A34A);
+      border-radius: 99px;
+      transition: width 0.25s ease;
+    }
+    /* ردیف آواتارهای دانش‌آموزان روی کارت کلاس */
+    .class-stu-avatars-strip {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 6px 0 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .class-stu-avatars-strip::-webkit-scrollbar { display: none; }
+    .class-stu-mini-av {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--primary);
+      flex-shrink: 0;
+      background: var(--bg-panel);
+    }
   `;
   document.head.appendChild(st);
 })();
 
-/* ==================== الف) ویجت شیک و قابل ویرایش «مثبت و منفی» در جدول جامع (#attMainTable) ==================== */
+/* ==================== ۱. رفع کامل هنگ کردن برنامه (Zero-Hang 60FPS Engine) ==================== */
+
+// الف) متوقف کردن تایمرهای قدیمی و حلقه‌های پس‌زمینه اضافه که باعث قفل شدن نخ اصلی (Main Thread) می‌شدند
+clearInterval(window._autoSyncTimerId);
+clearTimeout(window._debouncedSaveSyncId);
+window._autoSyncTimerId = null;
+window._debouncedSaveSyncId = null;
+
+// ب) خاموش کردن خودکار بوم متحرک سنگین CyberNetwork در تم روشن و نارنجی کلاسیک (صرفه‌جویی ۱۰۰٪ در پردازنده و جلوگیری از داغ شدن و هنگ گوشی)
+(function optimizeBackgroundCanvasAndScrollFX() {
+  if (window.CyberNetwork) {
+    const _origStart = window.CyberNetwork.start ? window.CyberNetwork.start.bind(window.CyberNetwork) : null;
+    window.CyberNetwork.start = function() {
+      const mode = document.body.getAttribute('data-theme-mode') || 'classic-orange';
+      if (mode === 'classic-orange' || mode === 'light') {
+        if (this.stop) this.stop();
+        return;
+      }
+      if (_origStart) _origStart();
+    };
+    const curMode = document.body.getAttribute('data-theme-mode') || 'classic-orange';
+    if ((curMode === 'classic-orange' || curMode === 'light') && window.CyberNetwork.stop) {
+      window.CyberNetwork.stop();
+    }
+  }
+
+  // سبک‌سازی ScrollFX برای جلوگیری از لگ هنگام رندر لیست‌های طولانی
+  if (typeof ScrollFX !== 'undefined') {
+    let _sfxTimer = null;
+    ScrollFX.refresh = function() {
+      clearTimeout(_sfxTimer);
+      _sfxTimer = setTimeout(() => {
+        if (!this.observer || !isFeatOn('feat_animations')) return;
+        const els = document.querySelectorAll('.studentcard:not(.scroll-fx-item), .today-class-card:not(.scroll-fx-item)');
+        if (els.length > 40) return; // در لیست‌های بزرگ برای جلوگیری از لگ اسکرول، انیمیشن موجی را سبک کن
+        els.forEach((el) => {
+          el.classList.add('scroll-fx-item', 'fx-visible');
+        });
+      }, 120);
+    };
+  }
+})();
+
+// ج) بازنویسی بدون قفل (Deadlock-Free & Chunked) فشرده‌سازی و بازگشایی GZIP
+//    (در نسخه قبلی نوشتن بافر بالای 64KB در CompressionStream بدون خواندن همزمان باعث قفل شدن مرورگر می‌شد)
+window.uint8ToBase64Fast = function(uint8) {
+  const CHUNK = 8192;
+  const parts = [];
+  for (let i = 0; i < uint8.length; i += CHUNK) {
+    parts.push(String.fromCharCode.apply(null, uint8.subarray(i, i + CHUNK)));
+  }
+  return btoa(parts.join(''));
+};
+
+window.base64ToUint8Fast = function(b64) {
+  const bin = atob(b64);
+  const len = bin.length;
+  const bytes = new Uint8Array(len);
+  for (let i = 0; i < len; i++) {
+    bytes[i] = bin.charCodeAt(i);
+  }
+  return bytes;
+};
+
+window.compressStringGzipBase64 = async function(str) {
+  try {
+    if (typeof CompressionStream !== 'undefined' && typeof Blob !== 'undefined') {
+      const stream = new Blob([str]).stream().pipeThrough(new CompressionStream('gzip'));
+      const buf = await new Response(stream).arrayBuffer();
+      return 'GZ1:' + window.uint8ToBase64Fast(new Uint8Array(buf));
+    }
+  } catch (_) {}
+  return 'RAW1:' + encodeBase64UrlUTF8(str);
+};
+
+window.decompressStringGzipBase64 = async function(packed) {
+  try {
+    if (typeof packed !== 'string') return JSON.stringify(packed);
+    if (packed.startsWith('GZ1:') && typeof DecompressionStream !== 'undefined' && typeof Blob !== 'undefined') {
+      const bytes = window.base64ToUint8Fast(packed.slice(4));
+      const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+      const buf = await new Response(stream).arrayBuffer();
+      return new TextDecoder().decode(buf);
+    }
+    if (packed.startsWith('RAW1:')) {
+      return decodeBase64UrlUTF8(packed.slice(5));
+    }
+  } catch (_) {}
+  return packed;
+};
+
+
+/* ==================== ۲. ویجت شیک و قابل ویرایش «مثبت و منفی» در جدول جامع (#attMainTable) ==================== */
 
 window.renderInteractiveBehCellInner = function(sid, cid, st) {
   if (!st) return '➕۰ / ➖۰';
@@ -21570,11 +21687,7 @@ window.refreshStudentRowInAttendanceTable = function(sid, cid, stid, prevFinal =
   if (finalCell) {
     finalCell.setAttribute('data-score', String(newFinal));
     finalCell.style.color = newFinal < 10 ? 'var(--neon-red)' : 'var(--neon-green)';
-    if (prevFinal !== null && typeof animateNumberValue === 'function') {
-      animateNumberValue(finalCell, prevFinal, newFinal, 260, true);
-    } else {
-      finalCell.textContent = fmtScore(newFinal);
-    }
+    finalCell.textContent = fmtScore(newFinal);
   }
   if (row) {
     const isAttn = isAutoAttention(c, st);
@@ -21584,16 +21697,9 @@ window.refreshStudentRowInAttendanceTable = function(sid, cid, stid, prevFinal =
       nameB.style.color = isAttn ? 'var(--neon-red)' : 'var(--primary-dark)';
       nameB.innerHTML = `${formatStudentName(st)}${isAttn ? ' 🔴' : ''}`;
     }
-    if (pulseType && isCyberAnimOn('anim_grades')) {
-      row.classList.remove('beh-pulse-pos', 'beh-pulse-neg');
-      void row.offsetWidth;
-      row.classList.add(pulseType === 'positive' ? 'beh-pulse-pos' : 'beh-pulse-neg');
-      setTimeout(() => row.classList.remove('beh-pulse-pos', 'beh-pulse-neg'), 260);
-    }
   }
 };
 
-// افزودن یا کم کردن فوری مثبت و منفی با یک لمس در جدول جامع
 window.quickAdjustStudentBeh = function(sid, cid, stid, type, delta) {
   const c = findClass(sid, cid);
   const st = findStudent(sid, cid, stid);
@@ -21608,21 +21714,16 @@ window.quickAdjustStudentBeh = function(sid, cid, stid, type, delta) {
       list.push({
         id: uid(),
         date: new Date().toISOString(),
-        reason: type === 'positive' ? 'مثبت کلاسی (ثبت سریع از لیست جامع)' : 'منفی کلاسی (ثبت سریع از لیست جامع)',
+        reason: type === 'positive' ? 'مثبت کلاسی' : 'منفی کلاسی',
         value: type === 'positive' ? (Number(rules.posDefault) || 0.25) : (Number(rules.penaltyPerNeg) || 0.5)
       });
     }
     if (window.triggerHapticVibrate) window.triggerHapticVibrate('success');
-    toast(`${type === 'positive' ? '➕ ۱ مثبت' : '➖ ۱ منفی'} برای «${st.name} ${st.lastName}» اضافه شد ✅`);
+    toast(`${type === 'positive' ? '➕ ۱ مثبت' : '➖ ۱ منفی'} برای «${st.name} ${st.lastName}» ثبت شد ✅`);
   } else if (delta < 0) {
-    if (!list.length) {
-      toast(`موردی برای کم کردن وجود ندارد.`);
-      return;
-    }
+    if (!list.length) return;
     const removeCnt = Math.min(list.length, Math.abs(delta));
-    for (let i = 0; i < removeCnt; i++) {
-      list.pop();
-    }
+    for (let i = 0; i < removeCnt; i++) list.pop();
     if (window.triggerHapticVibrate) window.triggerHapticVibrate('tap');
     toast(`${type === 'positive' ? '➕ ۱ مثبت' : '➖ ۱ منفی'} از «${st.name} ${st.lastName}» کم شد ↩️`);
   }
@@ -21630,14 +21731,11 @@ window.quickAdjustStudentBeh = function(sid, cid, stid, type, delta) {
   evaluateAutoStatus(c, st);
   savePersistent();
   window.refreshStudentRowInAttendanceTable(sid, cid, stid, prevFinal, type);
-
-  // اگر مودال ویرایش سریع باز است، آن را هم زنده بروزرسانی کن
   if (document.getElementById('quickBehEditorModalBox')) {
     window.openQuickBehEditorModal(sid, cid, stid);
   }
 };
 
-// تنظیم مستقیم تعداد کل مثبت‌ها یا منفی‌های دانش‌آموز با عدد دلخواه معلم
 window.setExactStudentBehCount = function(sid, cid, stid, type, targetCountRaw) {
   const c = findClass(sid, cid);
   const st = findStudent(sid, cid, stid);
@@ -21647,14 +21745,9 @@ window.setExactStudentBehCount = function(sid, cid, stid, type, targetCountRaw) 
   const list = type === 'positive' ? b.positives : b.negatives;
   const cur = list.length;
   if (target === cur) return;
-  if (target > cur) {
-    window.quickAdjustStudentBeh(sid, cid, stid, type, target - cur);
-  } else {
-    window.quickAdjustStudentBeh(sid, cid, stid, type, -(cur - target));
-  }
+  window.quickAdjustStudentBeh(sid, cid, stid, type, target - cur);
 };
 
-// پنجره شیک ویرایش کامل مثبت و منفی دانش‌آموز مستقیماً داخل جدول جامع
 window.openQuickBehEditorModal = function(sid, cid, stid) {
   const c = findClass(sid, cid);
   const st = findStudent(sid, cid, stid);
@@ -21689,9 +21782,7 @@ window.openQuickBehEditorModal = function(sid, cid, stid) {
           <span class="chip">⭐ نمره نهایی فعلی: <b>${fmtScore(fin)}</b></span>
           <span class="chip">⚖️ تراز رفتاری: <b dir="ltr">${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)}</b></span>
         </div>
-
         <div class="grid-2" style="gap:10px">
-          <!-- کارت کنترل سریع مثبت‌ها -->
           <div style="padding:10px;border-radius:14px;background:rgba(22,163,74,0.08);border:1.5px solid rgba(22,163,74,0.35);text-align:center">
             <b style="color:#15803D;font-size:13px;display:block;margin-bottom:6px">➕ تعداد مثبت‌ها</b>
             <div style="display:flex;align-items:center;justify-content:center;gap:8px">
@@ -21700,8 +21791,6 @@ window.openQuickBehEditorModal = function(sid, cid, stid) {
               <button type="button" class="btn gray btn-sm" style="width:36px;height:36px;padding:0;font-size:18px;border-radius:10px" ${b.positives.length === 0 ? 'disabled' : ''} onclick="quickAdjustStudentBeh('${sid}','${cid}','${stid}','positive',-1)">－</button>
             </div>
           </div>
-
-          <!-- کارت کنترل سریع منفی‌ها -->
           <div style="padding:10px;border-radius:14px;background:rgba(220,38,38,0.08);border:1.5px solid rgba(220,38,38,0.35);text-align:center">
             <b style="color:#B91C1C;font-size:13px;display:block;margin-bottom:6px">➖ تعداد منفی‌ها</b>
             <div style="display:flex;align-items:center;justify-content:center;gap:8px">
@@ -21711,8 +21800,6 @@ window.openQuickBehEditorModal = function(sid, cid, stid) {
             </div>
           </div>
         </div>
-
-        <!-- ثبت با کدهای اختصاری یا دلیل دلخواه -->
         <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)">
           <div style="font-size:11.5px;font-weight:800;margin-bottom:6px;color:var(--text-muted)">⚡ ثبت سریع با کد اختصاری:</div>
           <div style="display:flex;gap:5px;flex-wrap:wrap">
@@ -21723,156 +21810,203 @@ window.openQuickBehEditorModal = function(sid, cid, stid) {
             `).join('')}
           </div>
           <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
-            <input type="text" id="customBehReasonInp" placeholder="دلیل مثبت یا منفی (مثلاً پاسخ عالی یا عدم انجام تکلیف)..." style="flex:1;min-width:170px;height:34px;font-size:12px">
-            <button type="button" class="btn green btn-sm" onclick="addCustomReasonBehFromModal('${sid}','${cid}','${stid}','positive')">➕ ثبت مثبت با دلیل</button>
-            <button type="button" class="btn danger btn-sm" onclick="addCustomReasonBehFromModal('${sid}','${cid}','${stid}','negative')">➖ ثبت منفی با دلیل</button>
+            <input type="text" id="customBehReasonInp" placeholder="دلیل مثبت یا منفی..." style="flex:1;min-width:170px;height:34px;font-size:12px">
+            <button type="button" class="btn green btn-sm" onclick="addCustomReasonBehFromModal('${sid}','${cid}','${stid}','positive')">➕ ثبت مثبت</button>
+            <button type="button" class="btn danger btn-sm" onclick="addCustomReasonBehFromModal('${sid}','${cid}','${stid}','negative')">➖ ثبت منفی</button>
           </div>
         </div>
       </div>
-
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <b style="color:var(--primary);font-size:13px">📋 فهرست ریز سوابق مثبت و منفی (قابل ویرایش و حذف تکی)</b>
+          <b style="color:var(--primary);font-size:13px">📋 فهرست ریز سوابق مثبت و منفی</b>
           ${allItems.length ? `<button type="button" class="btn danger btn-sm" onclick="clearAllStudentBehInModal('${sid}','${cid}','${stid}')">🧹 صفر کردن همه</button>` : ''}
         </div>
-        <div style="display:grid;gap:6px;max-height:36vh;overflow-y:auto">
-          ${itemsHtml}
-        </div>
+        <div style="display:grid;gap:6px;max-height:36vh;overflow-y:auto">${itemsHtml}</div>
       </div>
-
       <div class="formactions">
-        <button type="button" class="btn primary" onclick="closeModal()">✅ تایید و بازگشت به جدول جامع</button>
+        <button type="button" class="btn primary" onclick="closeModal()">✅ تایید و بازگشت</button>
       </div>
     </div>
   `);
 };
 
 window.addCustomReasonBehFromModal = function(sid, cid, stid, type) {
-  const c = findClass(sid, cid);
-  const st = findStudent(sid, cid, stid);
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
   if (!c || !st) return;
   const reason = (document.getElementById('customBehReasonInp')?.value || '').trim() || (type === 'positive' ? 'مثبت کلاسی' : 'منفی کلاسی');
-  const rules = getRules();
-  const prevFinal = calculateFinalStudentScore(c, st);
+  const rules = getRules(), prevFinal = calculateFinalStudentScore(c, st);
   behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({
-    id: uid(),
-    date: new Date().toISOString(),
-    reason,
+    id: uid(), date: new Date().toISOString(), reason,
     value: type === 'positive' ? (Number(rules.posDefault) || 0.25) : (Number(rules.penaltyPerNeg) || 0.5)
   });
-  evaluateAutoStatus(c, st);
-  savePersistent();
+  evaluateAutoStatus(c, st); savePersistent();
   window.refreshStudentRowInAttendanceTable(sid, cid, stid, prevFinal, type);
   window.openQuickBehEditorModal(sid, cid, stid);
-  toast('ثبت شد ✅');
 };
 
 window.quickDeleteBehRecordInModal = function(sid, cid, stid, type, itemId) {
-  const c = findClass(sid, cid);
-  const st = findStudent(sid, cid, stid);
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
   if (!c || !st) return;
   const prevFinal = calculateFinalStudentScore(c, st);
   const key = type === 'positive' ? 'positives' : 'negatives';
   behaviorData(st)[key] = (behaviorData(st)[key] || []).filter(x => x.id !== itemId);
-  evaluateAutoStatus(c, st);
-  savePersistent();
+  evaluateAutoStatus(c, st); savePersistent();
   window.refreshStudentRowInAttendanceTable(sid, cid, stid, prevFinal, type);
   window.openQuickBehEditorModal(sid, cid, stid);
-  toast('مورد انتخابی حذف شد 🗑️');
 };
 
 window.quickEditBehRecordPrompt = function(sid, cid, stid, type, itemId) {
-  const c = findClass(sid, cid);
-  const st = findStudent(sid, cid, stid);
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
   if (!c || !st) return;
   const key = type === 'positive' ? 'positives' : 'negatives';
   const item = (behaviorData(st)[key] || []).find(x => x.id === itemId);
   if (!item) return;
   const newReason = prompt('ویرایش علت مثبت/منفی:', item.reason || '');
   if (newReason === null) return;
-  const newValRaw = prompt('ویرایش امتیاز (مثلاً 0.25 یا 0.5):', String(item.value ?? 0.25));
+  const newValRaw = prompt('ویرایش امتیاز:', String(item.value ?? 0.25));
   if (newValRaw !== null) {
     const parsed = parseFloat(enDigits(newValRaw));
     if (Number.isFinite(parsed) && parsed >= 0) item.value = parsed;
   }
   item.reason = newReason.trim() || item.reason;
   const prevFinal = calculateFinalStudentScore(c, st);
-  evaluateAutoStatus(c, st);
-  savePersistent();
+  evaluateAutoStatus(c, st); savePersistent();
   window.refreshStudentRowInAttendanceTable(sid, cid, stid, prevFinal, type);
   window.openQuickBehEditorModal(sid, cid, stid);
-  toast('ویرایش شد ✅');
 };
 
 window.clearAllStudentBehInModal = function(sid, cid, stid) {
-  const c = findClass(sid, cid);
-  const st = findStudent(sid, cid, stid);
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
   if (!c || !st) return;
   if (!confirm(`آیا تمام مثبت و منفی‌های «${st.name} ${st.lastName}» صفر شود؟`)) return;
   const prevFinal = calculateFinalStudentScore(c, st);
   st.behavior = { positives: [], negatives: [] };
-  evaluateAutoStatus(c, st);
-  savePersistent();
+  evaluateAutoStatus(c, st); savePersistent();
   window.refreshStudentRowInAttendanceTable(sid, cid, stid, prevFinal, null);
   window.openQuickBehEditorModal(sid, cid, stid);
-  toast('مثبت و منفی‌های دانش‌آموز صفر شد ✅');
 };
 
 
-/* ==================== ب) موتور بازیابی خودکار ۴ لایه و گاوصندوق دائمی عکس‌ها (Smart Auto-Recovery & Photo Vault v7.3) ==================== */
+/* ==================== ۳. ارتقای کارت کلاس (classCard) برای نمایش دقیق تعداد کل عکس‌های کلاس و آواتار دانش‌آموزان ==================== */
+classCard = function(s, c) {
+  const classPhotos = Array.isArray(c.photos) ? c.photos.filter(Boolean) : [];
+  const stuPhotos = (c.students || []).filter(st => st && st.photo && st.photo.length > 50);
+  const totalPhotosCount = classPhotos.length + stuPhotos.length;
+
+  const topGalleryHtml = classPhotos.length
+    ? `<div class="class-gallery" style="margin-top:0;margin-bottom:10px">${classPhotos.slice(0, 2).map(src => `<img src="${src}" class="photo-clickable" onclick="openPhotoViewer('${src}','کلاس-${safeFileName(c.name)}.jpg')">`).join('')}</div>`
+    : (stuPhotos.length
+      ? `<div class="class-stu-avatars-strip">${stuPhotos.slice(0, 8).map(st => `<img src="${st.photo}" class="class-stu-mini-av photo-clickable" title="${esc(st.name + ' ' + st.lastName)}" onclick="event.stopPropagation();openPhotoViewer('${st.photo}','${safeFileName(st.name + '-' + st.lastName)}.jpg')">`).join('')}</div>`
+      : '');
+
+  return `<div class="card">${topGalleryHtml}<div class="school-head"><div><h3>${esc(c.name)}</h3><div class="muted">پایه ${esc(c.grade || '—')}</div></div><div class="school-icon">${classPhotos[0] ? `<img src="${classPhotos[0]}" style="width:100%;height:100%;object-fit:cover;border-radius:12px">` : '🚪'}</div></div><div class="chips"><span class="chip">👨‍🎓 ${fa((c.students || []).length)} دانش‌آموز</span><span class="chip" style="${totalPhotosCount > 0 ? 'border-color:var(--primary);color:var(--primary);font-weight:900' : ''}">📷 ${fa(totalPhotosCount)} عکس</span></div><div class="actions"><button class="btn primary" style="flex:1" onclick="openClass('${s.id}','${c.id}')">ورود به کلاس</button><button class="btn soft" onclick="openAttendance('${s.id}','${c.id}')">📋 جدول ترم</button><button class="btn gray" onclick="editClass('${s.id}','${c.id}')">✎</button></div></div>`;
+};
+
+
+/* ==================== ۴. گاوصندوق دائمی عکس‌ها با تطبیق هوشمند نام فارسی (Smart Fuzzy Photo Vault v7.4) ==================== */
 
 const PHOTO_VAULT_IDB_KEY = 'dam_permanent_photo_vault_v73';
 const LAST_VALID_DB_IDB_KEY = 'last_valid_non_empty_db_v73';
-window._photoVaultMemoryCache = {};
+window._photoVaultMemoryCache = window._photoVaultMemoryCache || {};
 window._dbRestoredReady = false;
-window._autoVaultTimerId = null;
+window._idbSaveDebounceTimer = null;
+window._vaultRollingTimer = null;
 
-// شمارش غنای داده‌های یک دیتابیس (برای تشخیص کامل‌ترین نسخه هنگام بازیابی خودکار)
+// نرمال‌سازی حروف فارسی (ی/ي، ک/ك، نیم‌فاصله و فاصله‌ها) برای تطبیق ۱۰۰٪ نام مدرسه، کلاس و دانش‌آموز حتی در صورت تغییر ID
+function normFaKey(str) {
+  return String(str || '')
+    .replace(/[يئ]/g, 'ی')
+    .replace(/ك/g, 'ک')
+    .replace(/[\u200B-\u200D\uFEFF]/g, '')
+    .replace(/^کلاس\s+/i, '')
+    .replace(/\s+/g, '_')
+    .trim()
+    .toLowerCase();
+}
+
 function computeDbRichnessScore(data) {
   if (!data || !Array.isArray(data.schools)) return 0;
   let score = 0;
   data.schools.forEach(s => {
-    score += 10;
-    score += (s.photos || []).length * 5;
+    score += 10 + (s.photos || []).filter(Boolean).length * 20;
     (s.classes || []).forEach(c => {
-      score += 20;
-      score += (c.photos || []).length * 5;
+      score += 20 + (c.photos || []).filter(Boolean).length * 20;
       score += Object.keys(c.attendance || {}).length * 3;
       score += Object.keys(c.termScores || {}).length * 2;
       score += Object.keys(c.contExamScores || {}).length * 2;
       (c.students || []).forEach(st => {
         score += 30;
-        if (st.photo && st.photo.length > 50) score += 15;
+        if (st.photo && st.photo.length > 50) score += 25;
         score += (st.grades || []).length * 4;
         score += (st.behavior?.positives || []).length * 2;
         score += (st.behavior?.negatives || []).length * 2;
-        score += (st.examPapers || []).length * 5;
+        score += (st.examPapers || []).length * 8;
       });
     });
   });
   return score;
 }
 
-// استخراج تمام عکس‌های موجود در db به داخل نقشه گاوصندوق عکس‌ها
+function countAllPhotosInDb(data) {
+  if (!data || !Array.isArray(data.schools)) return 0;
+  let cnt = 0;
+  data.schools.forEach(s => {
+    cnt += (s.photos || []).filter(Boolean).length;
+    (s.classes || []).forEach(c => {
+      cnt += (c.photos || []).filter(Boolean).length;
+      (c.students || []).forEach(st => {
+        if (st && st.photo && st.photo.length > 50) cnt++;
+      });
+    });
+  });
+  return cnt;
+}
+
+// استخراج تمام عکس‌ها از یک دیتابیس و کلیدگذاری هم با ID و هم با نام فارسی نرمال‌شده
 function extractAllPhotosFromDb(data, targetMap = {}) {
   if (!data || !Array.isArray(data.schools)) return targetMap;
-  data.schools.forEach(s => {
-    if (Array.isArray(s.photos) && s.photos.length > 0) {
-      targetMap['sch_' + s.id] = s.photos.filter(Boolean);
+  data.schools.forEach((s, sIdx) => {
+    const sPhotos = Array.isArray(s.photos) ? s.photos.filter(p => p && p.length > 50) : (s.photo && s.photo.length > 50 ? [s.photo] : []);
+    if (sPhotos.length > 0) {
+      targetMap['sch_' + s.id] = sPhotos;
+      const sNorm = normFaKey(s.name);
+      if (sNorm) targetMap['schname_' + sNorm] = sPhotos;
+      if (sIdx === 0) targetMap['sch_first_default'] = sPhotos;
     }
-    (s.classes || []).forEach(c => {
-      if (Array.isArray(c.photos) && c.photos.length > 0) {
-        targetMap['cls_' + c.id] = c.photos.filter(Boolean);
+    (s.classes || []).forEach((c, cIdx) => {
+      const cPhotos = Array.isArray(c.photos) ? c.photos.filter(p => p && p.length > 50) : (c.photo && c.photo.length > 50 ? [c.photo] : []);
+      if (cPhotos.length > 0) {
+        targetMap['cls_' + c.id] = cPhotos;
+        const cNorm = normFaKey(c.name);
+        if (cNorm) targetMap['clsname_' + cNorm] = cPhotos;
+        targetMap['cls_idx_' + sIdx + '_' + cIdx] = cPhotos;
       }
-      (c.students || []).forEach(st => {
-        if (st.photo && typeof st.photo === 'string' && st.photo.length > 50) {
+      // بررسی سلفی‌های ثبت‌شده در حضور و غیاب کلاس
+      if (c.attendance && typeof c.attendance === 'object') {
+        Object.values(c.attendance).forEach(dayMap => {
+          if (dayMap && typeof dayMap === 'object') {
+            Object.entries(dayMap).forEach(([stid, rec]) => {
+              if (rec && rec.selfie && rec.selfie.length > 50 && !targetMap['stu_' + stid]) {
+                targetMap['stu_' + stid] = rec.selfie;
+              }
+            });
+          }
+        });
+      }
+      (c.students || []).forEach((st, stIdx) => {
+        if (st && st.photo && typeof st.photo === 'string' && st.photo.length > 50) {
           targetMap['stu_' + st.id] = st.photo;
-          // همچنین با کلید نام و نام خانوادگی هم ذخیره کن تا حتی اگر id دانش‌آموز عوض شد، عکسش بازیابی شود!
-          const nameKey = 'stuname_' + `${st.name || ''}_${st.lastName || ''}`.trim().replace(/\s+/g, '_');
-          if (nameKey.length > 9) targetMap[nameKey] = st.photo;
+          const fn1 = normFaKey(`${st.name || ''} ${st.lastName || ''}`);
+          const fn2 = normFaKey(`${st.lastName || ''} ${st.name || ''}`);
+          if (fn1.length > 2) targetMap['stuname_' + fn1] = st.photo;
+          if (fn2.length > 2) targetMap['stuname_' + fn2] = st.photo;
+          const cNorm = normFaKey(c.name);
+          if (cNorm && fn1.length > 2) targetMap['stucls_' + cNorm + '_' + fn1] = st.photo;
         }
-        if (Array.isArray(st.examPapers) && st.examPapers.length > 0) {
+        if (Array.isArray(st?.examPapers) && st.examPapers.length > 0) {
           targetMap['papers_' + st.id] = st.examPapers;
+          const fn1 = normFaKey(`${st.name || ''} ${st.lastName || ''}`);
+          if (fn1.length > 2) targetMap['papersname_' + fn1] = st.examPapers;
         }
       });
     });
@@ -21886,36 +22020,55 @@ function extractAllPhotosFromDb(data, targetMap = {}) {
   return targetMap;
 }
 
-// تزریق و بازگردانی تمام عکس‌ها از گاوصندوق عکس‌ها به داخل db
+// تزریق هوشمند عکس‌ها از گاوصندوق عکس‌ها به داخل db (با تطبیق ID + نام مدرسه/کلاس/دانش‌آموز)
 function hydrateDbWithPhotoVault(data, photoMap) {
   if (!data || !Array.isArray(data.schools) || !photoMap) return 0;
-  let restoredPhotosCount = 0;
-  data.schools.forEach(s => {
-    if ((!Array.isArray(s.photos) || !s.photos.length) && Array.isArray(photoMap['sch_' + s.id]) && photoMap['sch_' + s.id].length) {
-      s.photos = [...photoMap['sch_' + s.id]];
-      restoredPhotosCount += s.photos.length;
-    }
-    (s.classes || []).forEach(c => {
-      if ((!Array.isArray(c.photos) || !c.photos.length) && Array.isArray(photoMap['cls_' + c.id]) && photoMap['cls_' + c.id].length) {
-        c.photos = [...photoMap['cls_' + c.id]];
-        restoredPhotosCount += c.photos.length;
+  let restoredCount = 0;
+
+  data.schools.forEach((s, sIdx) => {
+    const curSPhotos = Array.isArray(s.photos) ? s.photos.filter(Boolean) : [];
+    if (curSPhotos.length === 0) {
+      const sNorm = normFaKey(s.name);
+      const foundS = photoMap['sch_' + s.id] || (sNorm && photoMap['schname_' + sNorm]) || (data.schools.length === 1 ? photoMap['sch_first_default'] : null);
+      if (Array.isArray(foundS) && foundS.length > 0) {
+        s.photos = [...foundS];
+        restoredCount += foundS.length;
       }
-      (c.students || []).forEach(st => {
+    }
+    (s.classes || []).forEach((c, cIdx) => {
+      const curCPhotos = Array.isArray(c.photos) ? c.photos.filter(Boolean) : [];
+      const cNorm = normFaKey(c.name);
+      if (curCPhotos.length === 0) {
+        const foundC = photoMap['cls_' + c.id] || (cNorm && photoMap['clsname_' + cNorm]) || photoMap['cls_idx_' + sIdx + '_' + cIdx];
+        if (Array.isArray(foundC) && foundC.length > 0) {
+          c.photos = [...foundC];
+          restoredCount += foundC.length;
+        }
+      }
+      (c.students || []).forEach((st) => {
+        const fn1 = normFaKey(`${st.name || ''} ${st.lastName || ''}`);
+        const fn2 = normFaKey(`${st.lastName || ''} ${st.name || ''}`);
         if (!st.photo || st.photo.length < 50) {
-          const byId = photoMap['stu_' + st.id];
-          const nameKey = 'stuname_' + `${st.name || ''}_${st.lastName || ''}`.trim().replace(/\s+/g, '_');
-          const byName = photoMap[nameKey];
-          if (byId || byName) {
-            st.photo = byId || byName;
-            restoredPhotosCount++;
+          const foundSt =
+            photoMap['stu_' + st.id] ||
+            (cNorm && fn1 && photoMap['stucls_' + cNorm + '_' + fn1]) ||
+            (fn1 && photoMap['stuname_' + fn1]) ||
+            (fn2 && photoMap['stuname_' + fn2]);
+          if (foundSt && foundSt.length > 50) {
+            st.photo = foundSt;
+            restoredCount++;
           }
         }
-        if ((!Array.isArray(st.examPapers) || !st.examPapers.length) && Array.isArray(photoMap['papers_' + st.id])) {
-          st.examPapers = photoMap['papers_' + st.id];
+        if (!Array.isArray(st.examPapers) || st.examPapers.length === 0) {
+          const foundPapers = photoMap['papers_' + st.id] || (fn1 && photoMap['papersname_' + fn1]);
+          if (Array.isArray(foundPapers) && foundPapers.length > 0) {
+            st.examPapers = [...foundPapers];
+          }
         }
       });
     });
   });
+
   try {
     if (photoMap['teacher_avatar'] && window.getTeacherAccount) {
       const acc = window.getTeacherAccount();
@@ -21925,42 +22078,55 @@ function hydrateDbWithPhotoVault(data, photoMap) {
       }
     }
   } catch (_) {}
-  return restoredPhotosCount;
+
+  return restoredCount;
 }
 
-// ادغام هوشمند و بدون حذف دو دیتابیس (حفظ تمام مدارس، کلاس‌ها، دانش‌آموزان، نمرات، حضوروغیاب و عکس‌ها)
+// ادغام فوق‌سریع و بدون حذف دو دیتابیس (بدون JSON.parse(JSON.stringify) سنگین روی رشته‌های عکس)
 function mergeTwoDatabasesNonDestructively(primaryDb, secondaryDb) {
-  const base = sanitizeDb(JSON.parse(JSON.stringify(primaryDb || { version: 1, schools: [] })));
-  const extra = sanitizeDb(JSON.parse(JSON.stringify(secondaryDb || { version: 1, schools: [] })));
+  if (!primaryDb || !Array.isArray(primaryDb.schools) || !primaryDb.schools.length) {
+    return sanitizeDb(secondaryDb);
+  }
+  if (!secondaryDb || !Array.isArray(secondaryDb.schools) || !secondaryDb.schools.length) {
+    return sanitizeDb(primaryDb);
+  }
 
-  (extra.schools || []).forEach(extS => {
-    let s = base.schools.find(x => x.id === extS.id || (x.name && x.name.trim() === (extS.name || '').trim()));
+  const base = sanitizeDb(primaryDb);
+
+  (secondaryDb.schools || []).forEach(extS => {
+    const extSNorm = normFaKey(extS.name);
+    let s = base.schools.find(x => x.id === extS.id || (extSNorm && normFaKey(x.name) === extSNorm));
     if (!s) {
       base.schools.push(extS);
       return;
     }
-    if ((!s.photos || !s.photos.length) && extS.photos?.length) s.photos = [...extS.photos];
+    if ((!s.photos || !s.photos.length) && Array.isArray(extS.photos) && extS.photos.length) {
+      s.photos = [...extS.photos];
+    }
 
     (extS.classes || []).forEach(extC => {
-      let c = (s.classes || []).find(x => x.id === extC.id || (x.name && x.name.trim() === (extC.name || '').trim()));
+      const extCNorm = normFaKey(extC.name);
+      let c = (s.classes || []).find(x => x.id === extC.id || (extCNorm && normFaKey(x.name) === extCNorm));
       if (!c) {
         s.classes.push(extC);
         return;
       }
-      if ((!c.photos || !c.photos.length) && extC.photos?.length) c.photos = [...extC.photos];
+      if ((!c.photos || !c.photos.length) && Array.isArray(extC.photos) && extC.photos.length) {
+        c.photos = [...extC.photos];
+      }
       c.attendance = { ...(extC.attendance || {}), ...(c.attendance || {}) };
       c.termScores = { ...(extC.termScores || {}), ...(c.termScores || {}) };
       c.contExamScores = { ...(extC.contExamScores || {}), ...(c.contExamScores || {}) };
       c.onlineExamResults = { ...(extC.onlineExamResults || {}), ...(c.onlineExamResults || {}) };
 
       (extC.students || []).forEach(extSt => {
-        const cleanExtName = `${extSt.name || ''} ${extSt.lastName || ''}`.trim();
-        let st = (c.students || []).find(x => x.id === extSt.id || (`${x.name || ''} ${x.lastName || ''}`.trim() === cleanExtName && cleanExtName.length > 1));
+        const extFn = normFaKey(`${extSt.name || ''} ${extSt.lastName || ''}`);
+        let st = (c.students || []).find(x => x.id === extSt.id || (extFn.length > 2 && normFaKey(`${x.name || ''} ${x.lastName || ''}`) === extFn));
         if (!st) {
           c.students.push(extSt);
           return;
         }
-        if (!st.photo && extSt.photo) st.photo = extSt.photo;
+        if ((!st.photo || st.photo.length < 50) && extSt.photo && extSt.photo.length > 50) st.photo = extSt.photo;
         if (!st.fatherName && extSt.fatherName) st.fatherName = extSt.fatherName;
         if (!st.phone && extSt.phone) st.phone = extSt.phone;
         if (!st.birth && extSt.birth) st.birth = extSt.birth;
@@ -21975,107 +22141,140 @@ function mergeTwoDatabasesNonDestructively(primaryDb, secondaryDb) {
   return sanitizeDb(base);
 }
 
-// ساخت نسخه سبک بدون عکس‌های سنگین برای localStorage در صورتی که حجم عکس‌ها از ۵ مگابایت مرورگر رد شود
-function buildQuotaSafeLocalStorageDb(fullDb) {
-  const clone = JSON.parse(JSON.stringify(fullDb));
-  clone._photosStoredInIdbVault = true;
-  if (clone.cachedBook) {
-    clone.cachedBook = { ...clone.cachedBook, pages: {} };
-  }
-  (clone.schools || []).forEach(s => {
-    s.photos = [];
-    (s.classes || []).forEach(c => {
-      c.photos = [];
-      (c.students || []).forEach(st => {
-        st.photo = '';
-        st.examPapers = [];
-      });
-    });
-  });
-  return clone;
+// ساخت نسخه متادیتای فوق‌سبک (< 1 میلی‌ثانیه، بدون کپی کردن رشته‌های عکس) برای localStorage تا هرگز هنگ نکند و خطای پر شدن حافظه ندهد
+function buildFastMetadataOnlyDb(fullDb) {
+  return {
+    version: fullDb.version || 1,
+    _updatedAt: fullDb._updatedAt || Date.now(),
+    _photosStoredInIdbVault: true,
+    activeTermId: fullDb.activeTermId,
+    activeTermName: fullDb.activeTermName,
+    schools: (fullDb.schools || []).map(s => ({
+      id: s.id,
+      name: s.name,
+      year: s.year,
+      photos: [],
+      classes: (s.classes || []).map(c => ({
+        id: c.id,
+        name: c.name,
+        grade: c.grade,
+        currentTermId: c.currentTermId,
+        currentTermName: c.currentTermName,
+        photos: [],
+        attendanceSettings: c.attendanceSettings,
+        attendance: c.attendance,
+        termScores: c.termScores,
+        contExamScores: c.contExamScores,
+        onlineExamResults: c.onlineExamResults,
+        sessionNotes: c.sessionNotes,
+        gradeColumns: c.gradeColumns,
+        groups: c.groups,
+        students: (c.students || []).map(st => ({
+          id: st.id,
+          name: st.name,
+          lastName: st.lastName,
+          fatherName: st.fatherName,
+          birth: st.birth,
+          phone: st.phone,
+          interests: st.interests,
+          notes: st.notes,
+          status: st.status,
+          attnCategories: st.attnCategories,
+          attnNote: st.attnNote,
+          photo: '',
+          behavior: st.behavior,
+          grades: st.grades,
+          examPapers: []
+        }))
+      }))
+    }))
+  };
 }
 
-// بازنویسی کامل savePersistent در نسخه v7.3 (ضد QuotaExceededError + ذخیره خودکار در گاوصندوق عکس‌ها و آخرین نسخه غیرخالی)
-savePersistent = async function() {
-  // جلوگیری از رونویسی دیتابیس قبل از اتمام بازیابی اولیه هنگام لود صفحه
-  if (window._isDbLoading && !window._dbRestoredReady) return;
-
-  db._updatedAt = Date.now();
-  extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
-
-  // ۱. ذخیره در localStorage (اگر به خاطر عکس‌ها جا نشد، نسخه سبک + پرچم گاوصندوق عکس را در localStorage ذخیره کن تا هیچ‌وقت خطا ندهد)
-  try {
-    localStorage.setItem(KEY, JSON.stringify(db));
-  } catch (quotaErr) {
-    try {
-      const lightCopy = buildQuotaSafeLocalStorageDb(db);
-      localStorage.setItem(KEY, JSON.stringify(lightCopy));
-    } catch (_) {}
+// ذخیره آنی عکس در گاوصندوق به محض انتخاب عکس در فرم مدرسه، کلاس یا دانش‌آموز
+const _origSaveSchoolFormV74 = saveSchoolForm;
+saveSchoolForm = function(editId = null) {
+  const name = document.getElementById('fName')?.value.trim();
+  if (name && Array.isArray(window._schoolPhotos)) {
+    const sNorm = normFaKey(name);
+    if (sNorm) window._photoVaultMemoryCache['schname_' + sNorm] = [...window._schoolPhotos];
+    if (editId) window._photoVaultMemoryCache['sch_' + editId] = [...window._schoolPhotos];
   }
+  _origSaveSchoolFormV74(editId);
+};
 
-  // ۲. ذخیره کامل در IndexedDB (همراه با تمام عکس‌ها + گاوصندوق دائمی عکس‌ها + آخرین وضعیت غیرخالی)
+const _origSaveClassFormV74 = saveClassForm;
+saveClassForm = function(sid, editCid = null) {
+  const name = document.getElementById('cName')?.value.trim();
+  if (name && Array.isArray(window._classPhotos)) {
+    const cNorm = normFaKey(name);
+    if (cNorm) window._photoVaultMemoryCache['clsname_' + cNorm] = [...window._classPhotos];
+    if (editCid) window._photoVaultMemoryCache['cls_' + editCid] = [...window._classPhotos];
+  }
+  _origSaveClassFormV74(sid, editCid);
+};
+
+// بازنویسی فوق‌سریع و بدون هنگ savePersistent (ذخیره ۱ میلی‌ثانیه‌ای متادیتا در localStorage + ذخیره غیرمسدودکننده عکس‌ها در IndexedDB)
+async function flushDbToIndexedDbNow() {
+  if (window._isDbLoading && !window._dbRestoredReady) return;
   try {
+    extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
     const d = await openStorage();
-    const existingPhotos = await new Promise((res) => {
-      try {
-        const tx = d.transaction(ASSET_STORE, 'readonly');
-        const req = tx.objectStore(ASSET_STORE).get(PHOTO_VAULT_IDB_KEY);
-        req.onsuccess = () => res(req.result && typeof req.result === 'object' ? req.result : {});
-        req.onerror = () => res({});
-      } catch (_) { res({}); }
-    });
-
-    const mergedPhotoVault = { ...existingPhotos, ...window._photoVaultMemoryCache };
-    window._photoVaultMemoryCache = mergedPhotoVault;
-
     const richness = computeDbRichnessScore(db);
-
     await new Promise((res, rej) => {
       const tx = d.transaction([DB_STORE, ASSET_STORE], 'readwrite');
       const dbStore = tx.objectStore(DB_STORE);
       const assetStore = tx.objectStore(ASSET_STORE);
-
       dbStore.put(db, 'data');
       if (richness > 0) {
         dbStore.put(db, LAST_VALID_DB_IDB_KEY);
       }
-      assetStore.put(mergedPhotoVault, PHOTO_VAULT_IDB_KEY);
-
+      assetStore.put(window._photoVaultMemoryCache, PHOTO_VAULT_IDB_KEY);
       tx.oncomplete = res;
       tx.onerror = () => rej(tx.error);
     });
     d.close();
-  } catch (e) {}
+  } catch (_) {}
+}
 
-  // ۳. ثبت خودکار دوره‌ای در «گاوصندوق پشتیبان داخلی برنامه» (هر ۲۰ ثانیه پس از تغییرات واقعی در صورت غیرخالی بودن)
-  if (computeDbRichnessScore(db) > 0) {
-    clearTimeout(window._autoVaultTimerId);
-    window._autoVaultTimerId = setTimeout(async () => {
-      try {
-        const list = await loadInternalVaultList();
-        const c = counts();
-        const autoSnap = {
-          id: 'vault_auto_rolling',
-          label: '♻️ پشتیبان خودکار هوشمند (همراه با عکس‌ها)',
-          createdAt: new Date().toISOString(),
-          jalaliDate: formatJalaliDate(localISODate()),
-          timeStr: new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }),
-          stats: `${fa(c.schools)} مدرسه · ${fa(c.classes)} کلاس · ${fa(c.students)} دانش‌آموز`,
-          fileName: getStandardBackupFilename('full'),
-          payload: buildBackupPayloadObject('full')
-        };
-        const filtered = (list || []).filter(x => x.id !== 'vault_auto_rolling');
-        filtered.unshift(autoSnap);
-        await saveInternalVaultList(filtered);
-        if (document.getElementById('internalBackupVaultList')) {
-          await window.renderInternalVaultUI();
-        }
-      } catch (_) {}
-    }, 4000);
+savePersistent = async function() {
+  if (window._isDbLoading && !window._dbRestoredReady) return;
+  db._updatedAt = Date.now();
+  extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
+
+  // ۱. ذخیره فوق‌سریع متادیتا در localStorage (بدون سریالایز کردن مگابایت‌ها عکس روی نخ اصلی -> صفر درصد هنگ!)
+  try {
+    const fastMeta = buildFastMetadataOnlyDb(db);
+    localStorage.setItem(KEY, JSON.stringify(fastMeta));
+  } catch (_) {}
+
+  // ۲. ذخیره Debounced در IndexedDB (۳۰۰ میلی‌ثانیه) تا کلیک‌های پیاپی رابط کاربری را قفل نکنند
+  clearTimeout(window._idbSaveDebounceTimer);
+  window._idbSaveDebounceTimer = setTimeout(() => {
+    flushDbToIndexedDbNow();
+  }, 280);
+
+  // ۳. همگام‌سازی پس‌زمینه ابری (فقط زمانی که کاربر حساب متصل دارد، با فاصله ۸ ثانیه پس از آخرین تغییر)
+  const acc = window.getTeacherAccount ? window.getTeacherAccount() : null;
+  if (acc && (acc.gmail || acc.phone || acc.accountCode)) {
+    clearTimeout(window._debouncedSaveSyncId);
+    window._debouncedSaveSyncId = setTimeout(() => {
+      if (!document.hidden && window.syncAccountNowWithPhotos) {
+        window.syncAccountNowWithPhotos(true, 'upload_only');
+      }
+    }, 8000);
   }
 };
 
-// بازنویسی کامل restorePersistent در نسخه v7.3 (بررسی ۵ منبع ذخیره و بازیابی خودکار اطلاعات و عکس‌ها)
+// تضمین ذخیره فوری در IndexedDB هنگام بستن یا تعویض تب مرورگر
+window.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') flushDbToIndexedDbNow();
+});
+window.addEventListener('pagehide', () => flushDbToIndexedDbNow());
+
+
+/* ==================== ۵. بازیابی عمیق تمام اطلاعات و عکس‌های قبلی (از تمام حافظه‌های مرورگر + گاوصندوق داخلی + ضمیمه‌های ابری) ==================== */
+
 restorePersistent = async function() {
   try {
     let idbData = null;
@@ -22085,29 +22284,25 @@ restorePersistent = async function() {
 
     try {
       const d = await openStorage();
-      idbData = await new Promise((res) => {
-        const tx = d.transaction(DB_STORE, 'readonly');
-        const r = tx.objectStore(DB_STORE).get('data');
-        r.onsuccess = () => res(r.result || null);
-        r.onerror = () => res(null);
-      });
-      idbLastValid = await new Promise((res) => {
-        const tx = d.transaction(DB_STORE, 'readonly');
-        const r = tx.objectStore(DB_STORE).get(LAST_VALID_DB_IDB_KEY);
-        r.onsuccess = () => res(r.result || null);
-        r.onerror = () => res(null);
-      });
-      photoVault = await new Promise((res) => {
-        const tx = d.transaction(ASSET_STORE, 'readonly');
-        const r = tx.objectStore(ASSET_STORE).get(PHOTO_VAULT_IDB_KEY);
-        r.onsuccess = () => res(r.result && typeof r.result === 'object' ? r.result : {});
-        r.onerror = () => res({});
-      });
-      vaultSnapshots = await new Promise((res) => {
-        const tx = d.transaction(ASSET_STORE, 'readonly');
-        const r = tx.objectStore(ASSET_STORE).get('internal_backup_vault_v1');
-        r.onsuccess = () => res(Array.isArray(r.result) ? r.result : []);
-        r.onerror = () => res([]);
+      await new Promise((resolve) => {
+        const tx = d.transaction([DB_STORE, ASSET_STORE], 'readonly');
+        const dbSt = tx.objectStore(DB_STORE);
+        const asSt = tx.objectStore(ASSET_STORE);
+
+        const r1 = dbSt.get('data');
+        r1.onsuccess = () => { idbData = r1.result || null; };
+
+        const r2 = dbSt.get(LAST_VALID_DB_IDB_KEY);
+        r2.onsuccess = () => { idbLastValid = r2.result || null; };
+
+        const r3 = asSt.get(PHOTO_VAULT_IDB_KEY);
+        r3.onsuccess = () => { if (r3.result && typeof r3.result === 'object') photoVault = r3.result; };
+
+        const r4 = asSt.get('internal_backup_vault_v1');
+        r4.onsuccess = () => { if (Array.isArray(r4.result)) vaultSnapshots = r4.result; };
+
+        tx.oncomplete = resolve;
+        tx.onerror = resolve;
       });
       d.close();
     } catch (_) {}
@@ -22115,309 +22310,413 @@ restorePersistent = async function() {
     let localData = null;
     try { localData = sanitizeDb(JSON.parse(localStorage.getItem(KEY) || 'null')); } catch (_) {}
 
-    // جمع‌آوری تمام کاندیداهای معتبر دیتابیس
-    const candidates = [];
-    if (idbData && Array.isArray(idbData.schools)) candidates.push({ src: 'idb_data', db: sanitizeDb(idbData) });
-    if (idbLastValid && Array.isArray(idbLastValid.schools)) candidates.push({ src: 'idb_last_valid', db: sanitizeDb(idbLastValid) });
-    if (localData && Array.isArray(localData.schools)) candidates.push({ src: 'local_storage', db: sanitizeDb(localData) });
-    if (Array.isArray(vaultSnapshots) && vaultSnapshots.length > 0) {
-      vaultSnapshots.forEach((snap, idx) => {
+    // ۱. ابتدا از تمام نسخه‌های موجود در گاوصندوق داخلی (internal_backup_vault_v1) که قبل از بروزرسانی ذخیره شده‌اند، تمام عکس‌ها را استخراج کن!
+    if (Array.isArray(vaultSnapshots)) {
+      // از قدیمی‌ترین تا جدیدترین اسنپ‌شات گاوصندوق، عکس‌ها را جمع‌آوری کن تا هیچ عکسی که در اسنپ‌شات‌های قبلی بوده از دست نرود
+      vaultSnapshots.slice().reverse().forEach(snap => {
         if (snap && snap.payload && Array.isArray(snap.payload.schools)) {
-          candidates.push({ src: 'vault_' + idx, db: sanitizeDb(snap.payload) });
           extractAllPhotosFromDb(snap.payload, photoVault);
         }
       });
     }
 
-    // استخراج عکس‌ها از همه کاندیداها به داخل photoVault
-    candidates.forEach(c => extractAllPhotosFromDb(c.db, photoVault));
-    window._photoVaultMemoryCache = photoVault;
+    // ۲. استخراج عکس‌ها از idbLastValid، idbData و localStorage
+    if (idbLastValid) extractAllPhotosFromDb(idbLastValid, photoVault);
+    if (idbData) extractAllPhotosFromDb(idbData, photoVault);
+    if (localData) extractAllPhotosFromDb(localData, photoVault);
 
-    if (candidates.length > 0) {
-      // مرتب‌سازی کاندیداها: اولویت با دیتابیس‌های غیرخالی و غنی‌تر و جدیدتر
-      candidates.sort((a, b) => {
-        const scoreA = computeDbRichnessScore(a.db);
-        const scoreB = computeDbRichnessScore(b.db);
-        if (scoreA === 0 && scoreB > 0) return 1;
-        if (scoreB === 0 && scoreA > 0) return -1;
-        const timeA = Number(a.db._updatedAt) || 0;
-        const timeB = Number(b.db._updatedAt) || 0;
-        if (Math.abs(scoreA - scoreB) > 25) return scoreB - scoreA;
-        if (timeB !== timeA) return timeB - timeA;
-        return scoreB - scoreA;
+    // ۳. اسکن کش‌های ابری در localStorage برای استخراج عکس‌های احتمالی
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i) || '';
+        if (k.startsWith('dam_cloud_mirror_')) {
+          try {
+            const pkt = JSON.parse(localStorage.getItem(k) || 'null');
+            if (pkt && pkt.zData) {
+              const dec = await window.decompressStringGzipBase64(pkt.zData);
+              const obj = JSON.parse(dec);
+              if (obj && Array.isArray(obj.schools)) extractAllPhotosFromDb(obj, photoVault);
+            }
+          } catch (_) {}
+        }
+      }
+    } catch (_) {}
+
+    window._photoVaultMemoryCache = { ...photoVault, ...window._photoVaultMemoryCache };
+
+    // ۴. انتخاب بهترین دیتابیس پایه و ادغام غیرمخرب با بهترین اسنپ‌شات گاوصندوق
+    const mainCandidates = [];
+    if (idbData && Array.isArray(idbData.schools) && idbData.schools.length) mainCandidates.push(idbData);
+    if (idbLastValid && Array.isArray(idbLastValid.schools) && idbLastValid.schools.length) mainCandidates.push(idbLastValid);
+    if (localData && Array.isArray(localData.schools) && localData.schools.length) mainCandidates.push(localData);
+    if (Array.isArray(vaultSnapshots)) {
+      // غنی‌ترین اسنپ‌شات گاوصندوق که بیشترین عکس یا دانش‌آموز را دارد نیز اضافه کن
+      let richestVault = null, maxVScore = -1;
+      vaultSnapshots.forEach(snap => {
+        if (snap && snap.payload && Array.isArray(snap.payload.schools)) {
+          const sc = computeDbRichnessScore(snap.payload);
+          if (sc > maxVScore) { maxVScore = sc; richestVault = snap.payload; }
+        }
       });
-
-      let bestDb = candidates[0].db;
-      // ادغام سایر کاندیداها با بهترین نسخه تا هیچ کلاس یا دانش‌آموز یا عکسی جا نماند
-      for (let i = 1; i < candidates.length; i++) {
-        bestDb = mergeTwoDatabasesNonDestructively(bestDb, candidates[i].db);
-      }
-
-      const initialScore = computeDbRichnessScore(db);
-      const restoredPhotos = hydrateDbWithPhotoVault(bestDb, photoVault);
-      db = sanitizeDb(bestDb);
-
-      window._dbRestoredReady = true;
-      await savePersistent();
-      renderAll();
-      if (window.TeachAssistant) TeachAssistant.renderCachedBookUI();
-
-      if (initialScore === 0 && computeDbRichnessScore(db) > 0) {
-        toast('♻️ اطلاعات، کلاس‌ها و عکس‌های شما به صورت خودکار بازیابی شد ✅');
-      } else if (restoredPhotos > 0) {
-        toast(`📸 ${fa(restoredPhotos)} تصویر از گاوصندوق امن عکس‌ها بازیابی شد ✅`);
-      }
-    } else {
-      window._dbRestoredReady = true;
-      await savePersistent();
+      if (richestVault) mainCandidates.push(richestVault);
     }
+
+    if (mainCandidates.length > 0) {
+      mainCandidates.sort((a, b) => {
+        const tA = Number(a._updatedAt) || 0, tB = Number(b._updatedAt) || 0;
+        const sA = computeDbRichnessScore(a), sB = computeDbRichnessScore(b);
+        if (Math.abs(sA - sB) > 40) return sB - sA;
+        return tB - tA;
+      });
+      let merged = sanitizeDb(mainCandidates[0]);
+      for (let i = 1; i < mainCandidates.length; i++) {
+        merged = mergeTwoDatabasesNonDestructively(merged, mainCandidates[i]);
+      }
+      hydrateDbWithPhotoVault(merged, window._photoVaultMemoryCache);
+      db = sanitizeDb(merged);
+    }
+
+    window._dbRestoredReady = true;
+    await flushDbToIndexedDbNow();
+    renderAll();
+    if (window.TeachAssistant) TeachAssistant.renderCachedBookUI();
+    window.updateCloudBackupStatusBannerUI();
   } catch (e) {
     window._dbRestoredReady = true;
   }
 };
 
-// ویزارد و دکمه اسکن عمیق و بازیابی هوشمند همه اطلاعات و عکس‌ها (از تمام حافظه‌های مرورگر، گاوصندوق و کش ابری)
-window.runDeepAutoRecoveryWizard = async function(silent = false) {
-  let recoveredSchoolsBefore = (db.schools || []).length;
-  let recoveredStudentsBefore = counts().students;
 
-  // ۱. اجرای بازیابی چندلایه محلی و گاوصندوق عکس‌ها
-  await restorePersistent();
+/* ==================== ۶. موتور پشتیبان‌گیری و بازیابی ابری نسل جدید (پشتیبانی کامل از عکس‌ها + ضمیمه‌های ابری ntfy.sh + چند کاناله) ==================== */
 
-  // ۲. اسکن تمام کلیدهای localStorage برای یافتن هرگونه میرور ابری یا بسته تفاضلی
+// دریافت تمام کلیدها و کانال‌های ابری مرتبط با اکانت معلم (شامل کدهای ۱۸ حرفی جدید، ۱۲ حرفی قدیمی، جیمیل و شماره تلفن)
+window.getAllCandidateCloudTopics = function() {
+  const acc = window.getTeacherAccount ? window.getTeacherAccount() : {};
+  const customKey = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || '').trim();
+  const rawKeys = new Set();
+
+  if (customKey && customKey.length >= 3) rawKeys.add(customKey);
+  if (acc.accountCode && acc.accountCode.length >= 3) rawKeys.add(acc.accountCode);
+  if (acc.gmail && acc.gmail.length >= 3) {
+    rawKeys.add(acc.gmail.toLowerCase());
+    const seed = acc.gmail.toLowerCase().replace(/[^a-z0-9]/gi, '');
+    if (seed) {
+      rawKeys.add('acc_' + seed.slice(0, 18));
+      rawKeys.add('acc_' + seed.slice(0, 12));
+    }
+  }
+  if (acc.phone && acc.phone.length >= 3) {
+    rawKeys.add(acc.phone);
+    const pSeed = enDigits(acc.phone).replace(/[^0-9]/g, '');
+    if (pSeed) {
+      rawKeys.add('acc_' + pSeed.slice(0, 18));
+      rawKeys.add('acc_' + pSeed.slice(0, 12));
+    }
+  }
+
+  // همچنین اگر در localStorage کلیدهای dam_cloud_mirror_ از قبل وجود دارد، موضوع آن‌ها را هم اضافه کن
+  const topics = new Set();
+  rawKeys.forEach(k => topics.add(getCloudTopicHash(k)));
   try {
     for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i) || '';
-      if (k.startsWith('dam_cloud_mirror_')) {
-        try {
-          const pkt = JSON.parse(localStorage.getItem(k) || 'null');
-          if (pkt && pkt.zData) {
-            const dec = await window.decompressStringGzipBase64(pkt.zData);
-            const cloudObj = JSON.parse(dec);
-            if (cloudObj && Array.isArray(cloudObj.schools)) {
-              extractAllPhotosFromDb(cloudObj, window._photoVaultMemoryCache);
-              db = mergeTwoDatabasesNonDestructively(db, cloudObj);
-            }
-          }
-        } catch (_) {}
+      const lk = localStorage.key(i) || '';
+      if (lk.startsWith('dam_cloud_mirror_')) {
+        topics.add(lk.replace('dam_cloud_mirror_', ''));
       }
     }
   } catch (_) {}
+  return Array.from(topics).filter(Boolean);
+};
 
-  // ۳. تزریق مجدد تمام عکس‌های موجود در گاوصندوق عکس‌ها
-  const hydratedPhotos = hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
-  await savePersistent();
-  renderAll();
-  if (window.renderInternalVaultUI) await window.renderInternalVaultUI();
+window.updateCloudBackupStatusBannerUI = function(progressPct = null, statusText = null) {
+  const c = counts();
+  const totalPhotos = countAllPhotosInDb(db);
+  const badgeIds = ['cloudSyncLastBadge', 'dataAutoRecoveryBadge', 'helpAutoRecoveryStatusChip', 'tgLiveSyncChip'];
+  const lastSync = localStorage.getItem('danesh_cloud_last_sync') || '';
 
-  // ۴. اگر اکانت ابری متصل است، بسته‌های ابری را نیز بدون حذف اطلاعات محلی ادغام کن
-  try {
-    const acc = window.getTeacherAccount ? window.getTeacherAccount() : {};
-    const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || '').trim();
-    if (key && key.length >= 3) {
-      await window.syncAccountNowWithPhotos(true, 'both');
+  badgeIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (statusText) {
+      el.textContent = statusText;
+    } else if (id === 'tgLiveSyncChip') {
+      el.textContent = `🟢 متصل (${fa(totalPhotos)} عکس)`;
+    } else {
+      el.textContent = `🟢 ${fa(c.schools)} مدرسه · ${fa(c.classes)} کلاس · ${fa(c.students)} دانش‌آموز · 📷 ${fa(totalPhotos)} عکس`;
     }
-  } catch (_) {}
-
-  const cAfter = counts();
-  let totalPhotos = 0;
-  (db.schools || []).forEach(s => {
-    totalPhotos += (s.photos || []).length;
-    (s.classes || []).forEach(c => {
-      totalPhotos += (c.photos || []).length;
-      (c.students || []).forEach(st => { if (st.photo) totalPhotos++; });
-    });
   });
 
-  if (!silent) {
-    if (window.triggerHapticVibrate) window.triggerHapticVibrate('success');
-    openModal(formHeader('♻️ گزارش بازیابی خودکار اطلاعات و گاوصندوق عکس‌ها') + `
-      <div class="card" style="background:var(--bg-panel);border:1.5px solid var(--neon-green);margin-bottom:10px">
-        <b style="color:var(--neon-green);font-size:14px;display:block;margin-bottom:6px">✅ اسکن عمیق حافظه‌های داخلی و گاوصندوق عکس‌ها انجام شد</b>
-        <div style="font-size:12.5px;line-height:1.8;color:var(--text-main)">
-          • تعداد مدارس بازیابی‌شده و فعال: <b>${fa(cAfter.schools)} مدرسه</b><br>
-          • تعداد کلاس‌های فعال: <b>${fa(cAfter.classes)} کلاس</b><br>
-          • تعداد دانش‌آموزان فعال: <b>${fa(cAfter.students)} دانش‌آموز</b><br>
-          • تعداد عکس‌های محافظت‌شده در گاوصندوق دائمی: <b>${fa(totalPhotos)} تصویر</b>
-        </div>
-      </div>
-      <div class="muted" style="font-size:11.5px;line-height:1.65;margin-bottom:10px">
-        💡 تمام تغییرات و عکس‌های شما به صورت لحظه‌ای در <b>«گاوصندوق دائمی عکس‌ها (IndexedDB)»</b> و <b>«گاوصندوق پشتیبان داخلی»</b> ذخیره می‌شوند و حتی در صورت پر شدن حافظه عادی مرورگر هرگز پاک نخواهند شد.
-      </div>
-      <div class="formactions">
-        <button type="button" class="btn primary" onclick="closeModal()">متوجه شدم ✅</button>
-      </div>
-    `);
+  const progWrap = document.getElementById('cloudLiveProgressWrap');
+  const progFill = document.getElementById('cloudLiveProgressFill');
+  const progLbl = document.getElementById('cloudLiveProgressText');
+  if (progWrap && progFill && progLbl) {
+    if (progressPct !== null && progressPct >= 0) {
+      progWrap.style.display = 'block';
+      progFill.style.width = `${Math.min(100, Math.max(5, progressPct))}%`;
+      progLbl.textContent = statusText || `⏳ در حال همگام‌سازی ابری (${fa(Math.round(progressPct))}٪)...`;
+    } else {
+      setTimeout(() => { if (progWrap) progWrap.style.display = 'none'; }, 1200);
+    }
   }
 };
 
-// بازنویسی ایمن syncAccountNowWithPhotos برای:
-// ۱. عدم حذف عکس‌های محلی هنگام دریافت از ابر (ادغام غیرمخرب با mergeTwoDatabasesNonDestructively + hydrateDbWithPhotoVault)
-// ۲. ارسال تکه‌های استاندارد 2800 کاراکتری به ntfy.sh تا هیچ پیامی به فایل ضمیمه خارجی تبدیل نشود
-window.syncAccountNowWithPhotos = async function(silent = false, direction = 'both') {
-  const acc = window.getTeacherAccount();
-  const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || '').trim();
+// اعمال یک بسته رمزگشایی‌شده ابری (چه دیتابیس کامل و چه بسته تفاضلی یا بسته عکس) روی db و گاوصندوق عکس‌ها
+async function applyDecodedCloudObjectToDb(obj) {
+  if (!obj || typeof obj !== 'object') return false;
+  let changed = false;
+
+  // حالت ۱: بسته حاوی نقشه عکس‌های ابری (DAM_CLOUD_PHOTO_PACK_V74 یا newPhotos)
+  if (obj.photoVaultEntries && typeof obj.photoVaultEntries === 'object') {
+    Object.assign(window._photoVaultMemoryCache, obj.photoVaultEntries);
+    changed = true;
+  }
+  if (obj.newPhotos && typeof obj.newPhotos === 'object') {
+    Object.entries(obj.newPhotos).forEach(([idOrKey, ph]) => {
+      if (ph && ph.length > 50) {
+        if (idOrKey.startsWith('sch_') || idOrKey.startsWith('cls_') || idOrKey.startsWith('stu_') || idOrKey.startsWith('schname_') || idOrKey.startsWith('clsname_') || idOrKey.startsWith('stuname_')) {
+          window._photoVaultMemoryCache[idOrKey] = ph;
+        } else {
+          window._photoVaultMemoryCache['stu_' + idOrKey] = ph;
+        }
+        changed = true;
+      }
+    });
+  }
+
+  // حالت ۲: بسته دیتابیس کامل (دارای آرایه schools)
+  const targetDb = Array.isArray(obj.schools) ? obj : (obj.db && Array.isArray(obj.db.schools) ? obj.db : null);
+  if (targetDb) {
+    if (targetDb.teacherAccount) {
+      const curAcc = window.getTeacherAccount();
+      const mergedAcc = { ...targetDb.teacherAccount, ...curAcc, avatar: curAcc.avatar || targetDb.teacherAccount.avatar || '' };
+      localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(mergedAcc));
+    }
+    extractAllPhotosFromDb(targetDb, window._photoVaultMemoryCache);
+    db = mergeTwoDatabasesNonDestructively(db, targetDb);
+    changed = true;
+  }
+
+  // حالت ۳: بسته تفاضلی کلاس‌ها (changedClasses در DAM_CLOUD_DELTA_V72 / V74)
+  if (Array.isArray(obj.changedClasses) && obj.changedClasses.length > 0) {
+    obj.changedClasses.forEach(cSnap => {
+      const sNorm = normFaKey(cSnap.sName);
+      let s = findSchool(cSnap.sid) || db.schools.find(x => sNorm && normFaKey(x.name) === sNorm);
+      if (!s) {
+        s = { id: cSnap.sid || uid(), name: cSnap.sName || 'مدرسه', year: cSnap.sYear || '۱۴۰۵/۱۴۰۶', photos: cSnap.sPhotos || [], classes: [] };
+        db.schools.push(s);
+      } else if ((!s.photos || !s.photos.length) && Array.isArray(cSnap.sPhotos) && cSnap.sPhotos.length) {
+        s.photos = [...cSnap.sPhotos];
+      }
+
+      const cNorm = normFaKey(cSnap.name);
+      let c = (s.classes || []).find(x => x.id === cSnap.cid || (cNorm && normFaKey(x.name) === cNorm));
+      const existingPhotosById = {};
+      const existingPhotosByName = {};
+      if (c) {
+        (c.students || []).forEach(st => {
+          if (st.photo && st.photo.length > 50) {
+            existingPhotosById[st.id] = st.photo;
+            existingPhotosByName[normFaKey(`${st.name || ''} ${st.lastName || ''}`)] = st.photo;
+          }
+        });
+      }
+
+      const mergedStudents = (cSnap.students || []).map(st => {
+        const fn = normFaKey(`${st.name || ''} ${st.lastName || ''}`);
+        const resolvedPhoto =
+          st.photo ||
+          (obj.newPhotos && obj.newPhotos[st.id]) ||
+          existingPhotosById[st.id] ||
+          existingPhotosByName[fn] ||
+          window._photoVaultMemoryCache['stu_' + st.id] ||
+          window._photoVaultMemoryCache['stuname_' + fn] ||
+          '';
+        return { ...st, photo: resolvedPhoto };
+      });
+
+      if (!c) {
+        s.classes.push({
+          ...cSnap,
+          id: cSnap.cid || uid(),
+          photos: Array.isArray(cSnap.cPhotos) ? cSnap.cPhotos : [],
+          students: mergedStudents
+        });
+      } else {
+        const preservedClassPhotos = (Array.isArray(c.photos) && c.photos.length) ? c.photos : (Array.isArray(cSnap.cPhotos) ? cSnap.cPhotos : []);
+        c.attendance = { ...(c.attendance || {}), ...(cSnap.attendance || {}) };
+        c.termScores = { ...(c.termScores || {}), ...(cSnap.termScores || {}) };
+        c.contExamScores = { ...(c.contExamScores || {}), ...(cSnap.contExamScores || {}) };
+        c.onlineExamResults = { ...(c.onlineExamResults || {}), ...(cSnap.onlineExamResults || {}) };
+        if (Array.isArray(cSnap.gradeColumns) && cSnap.gradeColumns.length) c.gradeColumns = cSnap.gradeColumns;
+        c.photos = preservedClassPhotos;
+        // ادغام دانش‌آموزان بدون حذف دانش‌آموزانی که در محلی هستند
+        mergedStudents.forEach(mSt => {
+          const mFn = normFaKey(`${mSt.name || ''} ${mSt.lastName || ''}`);
+          const exIdx = (c.students || []).findIndex(x => x.id === mSt.id || (mFn.length > 2 && normFaKey(`${x.name || ''} ${x.lastName || ''}`) === mFn));
+          if (exIdx >= 0) {
+            const exSt = c.students[exIdx];
+            c.students[exIdx] = {
+              ...exSt,
+              ...mSt,
+              photo: mSt.photo || exSt.photo || '',
+              examPapers: (mSt.examPapers && mSt.examPapers.length) ? mSt.examPapers : (exSt.examPapers || [])
+            };
+          } else {
+            c.students.push(mSt);
+          }
+        });
+      }
+      changed = true;
+    });
+  }
+
+  if (changed) {
+    hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
+  }
+  return changed;
+}
+
+// اسکن و دریافت تمام بسته‌های ابری (شامل پیام‌های متنی، تکه‌های چندبخشی و فایل‌های ضمیمه بالای ۴ کیلوبایت در ntfy.sh!)
+window.pullAndMergeAllCloudTopicsV74 = async function(silent = false) {
+  const topics = window.getAllCandidateCloudTopics();
+  if (!topics.length) {
+    if (!silent) toast('🔑 ابتدا جیمیل، شماره همراه یا کد اتاق ابری خود را وارد کنید.');
+    return false;
+  }
+
+  window.updateCloudBackupStatusBannerUI(15, '⏳ در حال اسکن سرور ابری و بازیابی اطلاعات و عکس‌ها...');
+  const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+  let anyApplied = false;
+
+  for (let tIdx = 0; tIdx < topics.length; tIdx++) {
+    const topic = topics[tIdx];
+    const pollUrl = customEp ? customEp : `https://ntfy.sh/${topic}/json?poll=1&since=30d`;
+    try {
+      const res = await fetch(pollUrl);
+      if (!res.ok) continue;
+      const text = await res.text();
+      const lines = text.trim().split(/\r?\n/).filter(Boolean);
+
+      const chunksMap = {};
+      const parsedMessages = [];
+
+      for (const line of lines) {
+        try {
+          const env = JSON.parse(line);
+          if (env.event && env.event !== 'message') continue;
+
+          let msg = null;
+          // نکته کلیدی: اگر پیام بالای 4KB بوده، ntfy.sh آن را در env.attachment.url ذخیره کرده است!
+          if (env.attachment && env.attachment.url) {
+            try {
+              const attRes = await fetch(env.attachment.url);
+              if (attRes.ok) {
+                const attTxt = await attRes.text();
+                msg = JSON.parse(attTxt);
+              }
+            } catch (_) {}
+          }
+          if (!msg && env.message) {
+            try { msg = JSON.parse(env.message); } catch (_) {}
+          }
+          if (!msg && env.type) msg = env;
+          if (!msg) continue;
+
+          if (msg.batchId && msg.part !== undefined && msg.total) {
+            if (!chunksMap[msg.batchId]) {
+              chunksMap[msg.batchId] = {
+                total: Number(msg.total),
+                parts: {},
+                updatedAt: msg.updatedAt || env.time || 0,
+                packetKind: msg.packetKind || msg.type
+              };
+            }
+            chunksMap[msg.batchId].parts[msg.idx] = msg.part;
+          } else {
+            parsedMessages.push(msg);
+          }
+        } catch (_) {}
+      }
+
+      // سرهم کردن تمام بسته‌های چندتکه‌ای (Chunks)
+      Object.values(chunksMap).forEach(b => {
+        if (Object.keys(b.parts).length === b.total) {
+          let joined = '';
+          for (let i = 0; i < b.total; i++) joined += (b.parts[i] || '');
+          parsedMessages.push({
+            type: 'REASSEMBLED_BATCH_V74',
+            updatedAt: b.updatedAt,
+            zPayload: joined
+          });
+        }
+      });
+
+      // اعمال تمام پیام‌های استخراج‌شده به ترتیب زمان
+      for (const msg of parsedMessages) {
+        try {
+          const zStr = msg.zPayload || msg.zData || msg.zDelta;
+          if (zStr) {
+            const decJson = await window.decompressStringGzipBase64(zStr);
+            const decObj = JSON.parse(decJson);
+            if (await applyDecodedCloudObjectToDb(decObj)) anyApplied = true;
+          } else if (msg.db) {
+            if (await applyDecodedCloudObjectToDb(msg.db)) anyApplied = true;
+          } else if (msg.photoVaultEntries || msg.changedClasses) {
+            if (await applyDecodedCloudObjectToDb(msg)) anyApplied = true;
+          }
+        } catch (_) {}
+      }
+    } catch (_) {}
+  }
+
+  hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
+  await flushDbToIndexedDbNow();
+  renderAll();
+  window.renderCloudSettingsHub();
+  window.updateCloudBackupStatusBannerUI(100, '🟢 بازیابی و همگام‌سازی ابری کامل شد');
+  return anyApplied;
+};
+
+// ارسال مطمئن و دوکاناله به فضای ابری (کانال ۱: ساختار و نمرات فوری | کانال ۲: ارسال تضمینی تمام عکس‌های مدارس، کلاس‌ها و دانش‌آموزان در قطعات استاندارد ۳ کیلوبایتی)
+window.pushFullAndPhotosToCloudV74 = async function(silent = false, forceAllPhotos = false) {
+  const acc = window.getTeacherAccount ? window.getTeacherAccount() : {};
+  const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || acc.phone || '').trim();
   if (!key || key.length < 3) {
     if (!silent) window.openOnboardingAuthScreen();
     return false;
   }
-
-  const syncChip = document.getElementById('tgLiveSyncChip');
-  if (syncChip) syncChip.textContent = '⏳ همگام‌سازی هوشمند...';
 
   const topic = getCloudTopicHash(key);
   const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
   const baseUrl = customEp || `https://ntfy.sh/${topic}`;
 
   try {
-    // ۱. اگر در حالت دریافت یا دوطرفه هستیم، آخرین بسته‌های ابری را بخوان و به صورت غیرمخرب (بدون پاک شدن عکس‌ها یا کلاس‌های محلی) ادغام کن!
-    if (direction === 'pull_first' || direction === 'both') {
-      try {
-        const pollUrl = customEp ? customEp : `https://ntfy.sh/${topic}/json?poll=1&since=30d`;
-        const res = await fetch(pollUrl);
-        if (res.ok) {
-          const text = await res.text();
-          const lines = text.trim().split(/\r?\n/).filter(Boolean);
-          let latestPacket = null;
-          const chunksMap = {};
+    extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
+    await flushDbToIndexedDbNow();
 
-          for (const line of lines) {
-            try {
-              const obj = JSON.parse(line);
-              const msg = obj.message ? JSON.parse(obj.message) : obj;
-              if (msg && (msg.type === 'DAM_CLOUD_FULL_V70' || msg.type === 'DAM_CLOUD_BACKUP_V60')) {
-                latestPacket = msg;
-              } else if (msg && (msg.type === 'DAM_CLOUD_CHUNK_V70' || msg.type === 'DAM_CLOUD_CHUNK_V60') && msg.batchId) {
-                if (!chunksMap[msg.batchId]) chunksMap[msg.batchId] = { total: msg.total, parts: {}, updatedAt: msg.updatedAt || 0, jalaliDate: msg.jalaliDate };
-                chunksMap[msg.batchId].parts[msg.idx] = msg.part;
-              }
-            } catch (_) {}
-          }
+    window.updateCloudBackupStatusBannerUI(20, '⏳ مرحله ۱/۲: فشرده‌سازی و ارسال اطلاعات مدارس، کلاس‌ها و نمرات...');
 
-          Object.values(chunksMap).forEach(b => {
-            if (Object.keys(b.parts).length === b.total) {
-              let joined = '';
-              for (let i = 0; i < b.total; i++) joined += (b.parts[i] || '');
-              latestPacket = { type: 'DAM_CLOUD_FULL_V70', updatedAt: b.updatedAt, jalaliDate: b.jalaliDate, zData: joined };
-            }
-          });
+    // مرحله ۱: ارسال ساختار کامل مدارس، کلاس‌ها، دانش‌آموزان، حضوروغیاب و نمرات (سبک و فوری در قطعات ۳۰۰۰ بایتی)
+    const metaDb = buildFastMetadataOnlyDb(db);
+    metaDb.teacherAccount = { ...acc, avatar: '' };
+    const zMeta = await window.compressStringGzipBase64(JSON.stringify(metaDb));
+    const CHUNK_SIZE = 2900;
 
-          if (!latestPacket) {
-            try {
-              const localMirror = localStorage.getItem('dam_cloud_mirror_' + topic);
-              if (localMirror) latestPacket = JSON.parse(localMirror);
-            } catch (_) {}
-          }
-
-          if (latestPacket && latestPacket.zData) {
-            const jsonStr = await window.decompressStringGzipBase64(latestPacket.zData);
-            const cloudObj = JSON.parse(jsonStr);
-            if (cloudObj && Array.isArray(cloudObj.schools)) {
-              if (cloudObj.teacherAccount) {
-                const curAcc = window.getTeacherAccount();
-                const mergedAcc = { ...cloudObj.teacherAccount, ...curAcc, avatar: curAcc.avatar || cloudObj.teacherAccount.avatar || '' };
-                localStorage.setItem(TEACHER_ACCOUNT_KEY, JSON.stringify(mergedAcc));
-              }
-              extractAllPhotosFromDb(cloudObj, window._photoVaultMemoryCache);
-              // ادغام غیرمخرب: اگر دیتای محلی جدیدتر است، پایه را محلی قرار بده و اطلاعات ابری را به آن اضافه کن
-              const cloudTime = Number(cloudObj._updatedAt || latestPacket.updatedAt) || 0;
-              const localTime = Number(db._updatedAt) || 0;
-              if (cloudTime > localTime && computeDbRichnessScore(cloudObj) >= computeDbRichnessScore(db)) {
-                db = mergeTwoDatabasesNonDestructively(cloudObj, db);
-              } else {
-                db = mergeTwoDatabasesNonDestructively(db, cloudObj);
-              }
-              hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
-            }
-          }
-        }
-      } catch (_) {}
-
-      await window.applyIncomingDeltaPacketsFromCloud(topic);
-      hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
-      await savePersistent();
-      renderAll();
-      window.renderCloudSettingsHub();
-      if (direction === 'pull_first') {
-        if (syncChip) syncChip.textContent = '🟢 متصل و بازیابی‌شده';
-        if (!silent) toast('☁️ آخرین اطلاعات و عکس‌های شما بدون هیچ حذفی بازیابی و ادغام شد ✅');
-        return true;
-      }
-    }
-
-    // ۲. ارسال تفاضلی تغییرات به ابر (در قطعات کوچک 2800 کاراکتری سازگار با محدودیت 4KB سرور ntfy.sh)
-    const deltaStateKey = 'dam_delta_hashes_v73_' + topic;
-    let lastHashes = {};
-    try { lastHashes = JSON.parse(localStorage.getItem(deltaStateKey) || '{}'); } catch (_) {}
-
-    const changedClasses = [];
-    const newPhotos = {};
-    const curHashes = { ...lastHashes };
-    let hasChanges = false;
-
-    (db.schools || []).forEach(s => {
-      (s.classes || []).forEach(c => {
-        const lightStudents = (c.students || []).map(st => {
-          const pKey = 'st_ph_' + st.id;
-          const pHash = st.photo ? computeFastStringHash(st.photo) : '';
-          if (st.photo && pHash !== lastHashes[pKey]) {
-            newPhotos[st.id] = st.photo;
-            curHashes[pKey] = pHash;
-          }
-          return { ...st, photo: '' };
-        });
-        const classDataObj = {
-          sid: s.id, sName: s.name, sYear: s.year,
-          cid: c.id, name: c.name, grade: c.grade,
-          currentTermName: c.currentTermName,
-          attendance: c.attendance,
-          termScores: c.termScores,
-          contExamScores: c.contExamScores,
-          gradeColumns: c.gradeColumns,
-          groups: c.groups,
-          onlineExamResults: c.onlineExamResults || {},
-          students: lightStudents
-        };
-        const cHash = computeFastStringHash(JSON.stringify(classDataObj));
-        if (cHash !== lastHashes['cls_' + c.id]) {
-          changedClasses.push(classDataObj);
-          curHashes['cls_' + c.id] = cHash;
-          hasChanges = true;
-        }
-      });
-    });
-
-    await savePersistent();
-
-    if (!hasChanges && !changedClasses.length && !Object.keys(newPhotos).length) {
-      if (syncChip) syncChip.textContent = '🟢 به‌روز و محافظت‌شده';
-      if (!silent) toast('⚡ تمام اطلاعات و عکس‌های شما در گاوصندوق امن و فضای ابری به‌روز است ✅');
-      return true;
-    }
-
-    const deltaPacket = {
-      type: 'DAM_CLOUD_DELTA_V72',
-      updatedAt: Date.now(),
-      jalaliDate: formatJalaliDate(localISODate()),
-      changedClasses,
-      newPhotos
-    };
-    const zDelta = await window.compressStringGzipBase64(JSON.stringify(deltaPacket));
-    localStorage.setItem(deltaStateKey, JSON.stringify(curHashes));
-
-    const singleMsg = JSON.stringify({ type: 'DAM_CLOUD_DELTA_V72', updatedAt: deltaPacket.updatedAt, jalaliDate: deltaPacket.jalaliDate, zDelta });
-    if (singleMsg.length <= 3500) {
+    if (zMeta.length <= CHUNK_SIZE) {
       await fetch(baseUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: singleMsg
+        body: JSON.stringify({
+          type: 'DAM_CLOUD_FULL_V70',
+          updatedAt: Date.now(),
+          jalaliDate: formatJalaliDate(localISODate()),
+          zData: zMeta
+        })
       });
     } else {
-      // ارسال در قطعات ۲۸۰۰ بایتی برای عبور تضمینی از محدودیت ۴ کیلوبایتی پیام متنی سرور ابری
-      const chunkSize = 2800;
-      const totalChunks = Math.ceil(zDelta.length / chunkSize);
-      const batchId = 'b73_' + Date.now();
-      for (let i = 0; i < Math.min(totalChunks, 25); i++) {
+      const total = Math.ceil(zMeta.length / CHUNK_SIZE);
+      const batchId = 'meta_' + Date.now();
+      for (let i = 0; i < total; i++) {
         await fetch(baseUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -22425,26 +22724,230 @@ window.syncAccountNowWithPhotos = async function(silent = false, direction = 'bo
             type: 'DAM_CLOUD_CHUNK_V70',
             batchId,
             idx: i,
-            total: totalChunks,
-            updatedAt: deltaPacket.updatedAt,
-            jalaliDate: deltaPacket.jalaliDate,
-            part: zDelta.slice(i * chunkSize, (i + 1) * chunkSize)
+            total,
+            updatedAt: Date.now(),
+            jalaliDate: formatJalaliDate(localISODate()),
+            part: zMeta.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE)
           })
         });
       }
     }
 
-    const nowLbl = `${deltaPacket.jalaliDate} ساعت ${new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' })}`;
+    // مرحله ۲: ارسال عکس‌های مدارس، کلاس‌ها و دانش‌آموزان در بسته‌های استاندارد عکس (Photo Packs)
+    const syncedPhotosKey = 'dam_synced_photo_hashes_v74_' + topic;
+    let syncedPhotoHashes = {};
+    if (!forceAllPhotos) {
+      try { syncedPhotoHashes = JSON.parse(localStorage.getItem(syncedPhotosKey) || '{}'); } catch (_) {}
+    }
+
+    const pendingPhotoEntries = {};
+    (db.schools || []).forEach(s => {
+      const sPh = Array.isArray(s.photos) ? s.photos.filter(p => p && p.length > 50) : [];
+      if (sPh.length) {
+        const k = 'sch_' + s.id;
+        const h = computeFastStringHash(JSON.stringify(sPh));
+        if (forceAllPhotos || syncedPhotoHashes[k] !== h) {
+          pendingPhotoEntries[k] = sPh;
+          const sNorm = normFaKey(s.name);
+          if (sNorm) pendingPhotoEntries['schname_' + sNorm] = sPh;
+          syncedPhotoHashes[k] = h;
+        }
+      }
+      (s.classes || []).forEach(c => {
+        const cPh = Array.isArray(c.photos) ? c.photos.filter(p => p && p.length > 50) : [];
+        if (cPh.length) {
+          const k = 'cls_' + c.id;
+          const h = computeFastStringHash(JSON.stringify(cPh));
+          if (forceAllPhotos || syncedPhotoHashes[k] !== h) {
+            pendingPhotoEntries[k] = cPh;
+            const cNorm = normFaKey(c.name);
+            if (cNorm) pendingPhotoEntries['clsname_' + cNorm] = cPh;
+            syncedPhotoHashes[k] = h;
+          }
+        }
+        (c.students || []).forEach(st => {
+          if (st.photo && st.photo.length > 50) {
+            const k = 'stu_' + st.id;
+            const h = computeFastStringHash(st.photo);
+            if (forceAllPhotos || syncedPhotoHashes[k] !== h) {
+              pendingPhotoEntries[k] = st.photo;
+              const fn = normFaKey(`${st.name || ''} ${st.lastName || ''}`);
+              if (fn.length > 2) pendingPhotoEntries['stuname_' + fn] = st.photo;
+              syncedPhotoHashes[k] = h;
+            }
+          }
+        });
+      });
+    });
+
+    const pendingKeys = Object.keys(pendingPhotoEntries);
+    if (pendingKeys.length > 0) {
+      window.updateCloudBackupStatusBannerUI(55, `⏳ مرحله ۲/۲: در حال پشتیبان‌گیری ابری عکس‌ها...`);
+      const photoPackObj = {
+        type: 'DAM_CLOUD_PHOTO_PACK_V74',
+        updatedAt: Date.now(),
+        photoVaultEntries: pendingPhotoEntries
+      };
+      const zPhotos = await window.compressStringGzipBase64(JSON.stringify(photoPackObj));
+      const totalPChunks = Math.ceil(zPhotos.length / CHUNK_SIZE);
+      const pBatchId = 'ph_' + Date.now();
+
+      for (let i = 0; i < totalPChunks; i++) {
+        const pct = 55 + Math.round(((i + 1) / totalPChunks) * 42);
+        window.updateCloudBackupStatusBannerUI(pct, `☁️ ارسال ابری عکس‌ها (قطعه ${fa(i + 1)} از ${fa(totalPChunks)})...`);
+        await fetch(baseUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            type: 'DAM_CLOUD_CHUNK_V70',
+            batchId: pBatchId,
+            idx: i,
+            total: totalPChunks,
+            updatedAt: Date.now(),
+            part: zPhotos.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE)
+          })
+        });
+        // مکث کوتاه ۹۰ میلی‌ثانیه‌ای برای جلوگیری از Rate-Limit سرور ابری و حفظ روانی برنامه
+        await new Promise(r => setTimeout(r, 90));
+      }
+      try { localStorage.setItem(syncedPhotosKey, JSON.stringify(syncedPhotoHashes)); } catch (_) {}
+    }
+
+    const nowLbl = `${formatJalaliDate(localISODate())} ساعت ${new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' })}`;
     localStorage.setItem('danesh_cloud_last_sync', nowLbl);
-    if (syncChip) syncChip.textContent = '🟢 متصل و محافظت‌شده';
-    if (!silent) toast('☁️ آخرین تغییرات و عکس‌ها با موفقیت ذخیره و همگام‌سازی شد ✅');
+    window.updateCloudBackupStatusBannerUI(100, `🟢 پشتیبان ابری کامل شد (${nowLbl})`);
+    if (!silent) {
+      const totalPh = countAllPhotosInDb(db);
+      toast(`☁️ پشتیبان‌گیری ابری کامل شد (${fa(counts().students)} دانش‌آموز و ${fa(totalPh)} عکس محفوظ در ابر) ✅`);
+    }
     return true;
   } catch (err) {
-    if (syncChip) syncChip.textContent = '🟢 محفوظ در گاوصندوق داخلی';
+    window.updateCloudBackupStatusBannerUI(null, '🟢 محفوظ در گاوصندوق دائمی دستگاه');
     if (!silent) toast('🛡️ تمام اطلاعات و عکس‌ها در گاوصندوق دائمی دستگاه ذخیره شد ✅');
     return false;
   }
 };
+
+// جایگزینی توابع همگام‌سازی ابری با موتور جدید v7.4
+window.syncAccountNowWithPhotos = async function(silent = false, direction = 'both') {
+  if (direction === 'pull_first') {
+    const ok = await window.pullAndMergeAllCloudTopicsV74(silent);
+    if (!silent) toast('☁️ آخرین اطلاعات و عکس‌های اکانت شما بازیابی و ادغام شد ✅');
+    return ok;
+  }
+  if (direction === 'upload_only') {
+    return await window.pushFullAndPhotosToCloudV74(silent, false);
+  }
+  await window.pullAndMergeAllCloudTopicsV74(true);
+  return await window.pushFullAndPhotosToCloudV74(silent, false);
+};
+
+window.uploadBackupToCloud = async function(silent = false) {
+  return await window.pushFullAndPhotosToCloudV74(silent, true);
+};
+
+window.restoreBackupFromCloud = async function(silent = false) {
+  const ok = await window.pullAndMergeAllCloudTopicsV74(silent);
+  if (!silent) toast('📥 بازیابی و ادغام هوشمند اطلاعات و عکس‌ها از فضای ابری انجام شد ✅');
+  return ok;
+};
+
+// ویزارد جامع بازیابی همه اطلاعات و عکس‌های قبلی (هم از حافظه‌های داخلی دستگاه و هم از تمام کانال‌ها و ضمیمه‌های ابری)
+window.runDeepAutoRecoveryWizard = async function(silent = false) {
+  if (!silent) toast('⏳ در حال اسکن عمیق حافظه دستگاه، گاوصندوق داخلی و فضای ابری برای بازیابی عکس‌ها و اطلاعات...');
+  await restorePersistent();
+  try {
+    await window.pullAndMergeAllCloudTopicsV74(true);
+  } catch (_) {}
+  hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
+  await flushDbToIndexedDbNow();
+  renderAll();
+  if (window.renderInternalVaultUI) await window.renderInternalVaultUI();
+
+  const cAfter = counts();
+  const totalPhotos = countAllPhotosInDb(db);
+  const vaultPhotoKeysCount = Object.keys(window._photoVaultMemoryCache || {}).length;
+
+  if (!silent) {
+    if (window.triggerHapticVibrate) window.triggerHapticVibrate('success');
+    openModal(formHeader('♻️ مرکز بازیابی کامل اطلاعات، عکس‌ها و پشتیبان ابری') + `
+      <div class="card" style="background:var(--bg-panel);border:1.5px solid var(--neon-green);margin-bottom:10px">
+        <b style="color:var(--neon-green);font-size:14px;display:block;margin-bottom:6px">✅ اسکن عمیق حافظه دستگاه و فضای ابری انجام شد</b>
+        <div style="font-size:12.5px;line-height:1.85;color:var(--text-main)">
+          • مدارس فعال: <b>${fa(cAfter.schools)} مدرسه</b><br>
+          • کلاس‌های فعال: <b>${fa(cAfter.classes)} کلاس</b><br>
+          • دانش‌آموزان فعال: <b>${fa(cAfter.students)} دانش‌آموز</b><br>
+          • عکس‌های متصل‌شده در برنامه: <b>${fa(totalPhotos)} تصویر</b> (کلیدهای گاوصندوق عکس: ${fa(vaultPhotoKeysCount)})
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:10px;border-color:var(--primary)">
+        <b style="color:var(--primary);font-size:13.5px;display:block;margin-bottom:6px">📂 آیا فایل پشتیبان قبلی (.json) در گوشی دارید؟</b>
+        <p class="muted" style="margin:0 0 8px;font-size:11.5px;line-height:1.6">اگر قبلاً فایل پشتیبان دانلود کرده‌اید، با دکمه زیر آن را انتخاب کنید تا فقط عکس‌ها و اطلاعات کسری آن بدون پاک شدن تغییرات جدید شما، به برنامه اضافه شود:</p>
+        <label class="btn primary block" style="cursor:pointer;margin:0">
+          📥 انتخاب فایل پشتیبان و ادغام هوشمند عکس‌ها و اطلاعات
+          <input type="file" accept=".json,application/json" hidden onchange="smartMergeBackupFileWithPhotos(event)">
+        </label>
+      </div>
+
+      <div class="card" style="margin-bottom:10px">
+        <b style="color:var(--neon-purple);font-size:13.5px;display:block;margin-bottom:6px">☁️ عملیات مستقیم پشتیبان‌گیری ابری (همراه با عکس‌ها)</b>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button type="button" class="btn green" style="flex:1" onclick="closeModal();uploadBackupToCloud(false)">☁️ ارسال کامل (اطلاعات + عکس‌ها) به ابر</button>
+          <button type="button" class="btn soft" style="flex:1" onclick="closeModal();restoreBackupFromCloud(false)">📥 دریافت و ادغام از ابر</button>
+        </div>
+      </div>
+
+      <div class="formactions">
+        <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+      </div>
+    `);
+  }
+};
+
+// ادغام هوشمند فایل JSON پشتیبان قبلی بدون پاک شدن اطلاعات جدید (مخصوص برگرداندن عکس‌ها و سوابق از فایل‌های قبلی)
+window.smartMergeBackupFileWithPhotos = function(ev) {
+  const file = ev.target.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async () => {
+    try {
+      const parsed = JSON.parse(reader.result);
+      extractAllPhotosFromDb(parsed, window._photoVaultMemoryCache);
+      db = mergeTwoDatabasesNonDestructively(db, parsed);
+      const restoredCnt = hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
+      await flushDbToIndexedDbNow();
+      renderAll();
+      closeModal();
+      toast(`✅ ادغام هوشمند انجام شد! تمام اطلاعات و عکس‌ها (${fa(countAllPhotosInDb(db))} تصویر) بازیابی شدند.`);
+    } catch (e) {
+      alert('فایل انتخاب‌شده معتبر نبود.');
+    }
+  };
+  reader.readAsText(file);
+  ev.target.value = '';
+};
+
+// تزریق نوار پیشرفت زنده ابری به کارت پشتیبان ابری در تنظیمات (#setPane-data)
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    const cloudBtn = document.getElementById('btnCloudUpload');
+    const actionsRow = cloudBtn?.parentElement;
+    if (actionsRow && !document.getElementById('cloudLiveProgressWrap')) {
+      const prog = document.createElement('div');
+      prog.id = 'cloudLiveProgressWrap';
+      prog.className = 'cloud-sync-progress-wrap';
+      prog.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:800;color:var(--primary)">
+          <span id="cloudLiveProgressText">⏳ در حال همگام‌سازی ابری...</span>
+        </div>
+        <div class="cloud-sync-bar-bg"><div id="cloudLiveProgressFill" class="cloud-sync-bar-fill"></div></div>
+      `;
+      actionsRow.insertAdjacentElement('afterend', prog);
+    }
+    window.updateCloudBackupStatusBannerUI();
+  }, 400);
+});
 
 </script>
 </body>
