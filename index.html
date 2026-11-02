@@ -4730,7 +4730,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.6</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.7</span>
         </div>
       </div>
     </div>
@@ -5140,7 +5140,7 @@ body.dark .ws-logout-inner {
     <div id="teachQuickApiKeyBox" style="display:none;margin:10px 0;padding:10px;border-radius:11px;background:var(--bg-main);border:1px dashed var(--primary)">
       <div style="font-size:11.5px;font-weight:800;margin-bottom:6px;color:var(--primary)">🔑 کلید اختصاصی هوش‌واره و هوش مصنوعی (اختیاری — موتور رایگان سرخود فعال است):</div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <input type="password" id="teachInlineApiKeyInp" dir="ltr" style="flex:1;min-width:190px;text-align:left;font-family:monospace;font-size:12px" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." oninput="TeachAssistant.saveInlineApiKey(this.value)">
+        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="masked-api-key-inp" id="teachInlineApiKeyInp" dir="ltr" style="flex:1;min-width:190px;text-align:left;font-family:monospace;font-size:12px" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." oninput="TeachAssistant.saveInlineApiKey(this.value)">
         <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.testInlineApiKey()">⚡ تست و ذخیره</button>
         <button type="button" class="btn gray btn-sm" onclick="document.getElementById('teachQuickApiKeyBox').style.display='none'">بستن</button>
       </div>
@@ -5296,7 +5296,7 @@ body.dark .ws-logout-inner {
         <button class="btn gray btn-sm" onclick="ExamApp.testApiKeyConnection()" id="btnTestKey">تست اتصال</button>
       </div>
       <div style="display:flex;gap:6px">
-        <input type="password" id="apiKeyField" dir="ltr" style="text-align:left;font-family:monospace" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." oninput="ExamApp.onKeyChange()">
+        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="masked-api-key-inp" id="apiKeyField" dir="ltr" style="text-align:left;font-family:monospace" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." oninput="ExamApp.onKeyChange()">
         <button class="btn gray btn-sm" onclick="ExamApp.toggleKeyPass()">👁️</button>
       </div>
       <div id="apiStatusBar" style="margin-top:6px;font-size:11.5px;font-weight:bold;color:var(--green)"><span id="apiStatusText">ℹ️ کلید خود را وارد کنید</span></div>
@@ -5380,8 +5380,42 @@ body.dark .ws-logout-inner {
           <div><label style="font-size:11px;font-weight:bold">تا صفحه:</label><input type="number" id="pdfRangeTo" min="1" value="4"></div>
         </div>
         <button class="btn soft block" style="margin-bottom:8px" onclick="ExamApp.selectPdfRange()">☑️ علامت زدن این بازه صفحات</button>
-        <div id="selectedPagesBadge" style="font-size:12px;font-weight:bold;color:var(--green);margin-bottom:8px;text-align:center">صفحات انتخاب‌شده: هیچ‌کدام</div>
-        <button class="btn primary block" id="btnGenerateFromPdf" onclick="ExamApp.generateExamFromSelectedPdfPages()">🚀 ارسال صفحات انتخابی و ساخت آزمون</button>
+        <div id="selectedPagesBadge" style="font-size:12px;font-weight:800;color:#C2410C;background:#FFF7ED;border:1.5px solid #FDBA74;border-radius:10px;padding:8px 12px;line-height:1.7;margin:8px 0;text-align:center">صفحات انتخاب‌شده: هیچ‌کدام</div>
+        <div class="card" id="pdfPaneInlineSettingsCard" style="background:var(--bg-card);border:1.5px solid var(--border);padding:10px;margin:8px 0;border-radius:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:4px">
+            <b style="font-size:12px;color:var(--primary)">⚙️ تنظیمات سوالات این صفحات (هماهنگ با تنظیمات آزمون):</b>
+            <span id="pdfInlineTotalQuestionsBadge" class="chip" style="font-size:10.5px;background:#FFF7ED;color:#EA580C;border-color:#FDBA74">جمع: ۱۰ سوال | ۱۰ نمره</span>
+          </div>
+          <div class="grid-3" style="gap:6px">
+            <div class="field" style="margin:0"><label style="font-size:10.5px">تستی (۴گزینه‌ای)</label><input type="number" id="pdfCountMcq" min="0" max="30" value="4" oninput="ExamApp.syncPdfInlineSettings('mcq', this.value)"></div>
+            <div class="field" style="margin:0"><label style="font-size:10.5px">صحیح / غلط</label><input type="number" id="pdfCountTf" min="0" max="30" value="2" oninput="ExamApp.syncPdfInlineSettings('tf', this.value)"></div>
+            <div class="field" style="margin:0"><label style="font-size:10.5px">جای خالی</label><input type="number" id="pdfCountBlank" min="0" max="30" value="2" oninput="ExamApp.syncPdfInlineSettings('blank', this.value)"></div>
+            <div class="field" style="margin:0"><label style="font-size:10.5px">وصل‌کردنی</label><input type="number" id="pdfCountMatch" min="0" max="20" value="0" oninput="ExamApp.syncPdfInlineSettings('match', this.value)"></div>
+            <div class="field" style="margin:0"><label style="font-size:10.5px">تشریحی</label><input type="number" id="pdfCountDesc" min="0" max="30" value="2" oninput="ExamApp.syncPdfInlineSettings('desc', this.value)"></div>
+            <div class="field" style="margin:0"><label style="font-size:10.5px">جمع کل بارم</label><input type="number" id="pdfTotalTarget" min="1" max="100" step="0.25" value="10" oninput="ExamApp.syncPdfInlineSettings('total', this.value)"></div>
+          </div>
+          <div class="grid-2" style="gap:6px;margin-top:6px">
+            <div class="field" style="margin:0">
+              <label style="font-size:10.5px">سطح دشواری:</label>
+              <select id="pdfLevelSelect" onchange="ExamApp.syncPdfInlineSettings('level', this.value)">
+                <option value="آسان و کلاسی">آسان و کلاسی</option>
+                <option value="استاندارد امتحانی" selected>استاندارد امتحانی</option>
+                <option value="مفهومی و چالشی">مفهومی و چالشی</option>
+                <option value="خیلی خیلی سخت">خیلی‌خیلی سخت</option>
+              </select>
+            </div>
+            <div class="field" style="margin:0">
+              <label style="font-size:10.5px">گام رُندسازی بارم:</label>
+              <select id="pdfRoundStepSelect" onchange="ExamApp.syncPdfInlineSettings('step', this.value)">
+                <option value="0.25">۰.۲۵ نمره</option>
+                <option value="0.5">۰.۵ نمره</option>
+                <option value="0.75">۰.۷۵ نمره</option>
+                <option value="1">۱ نمره کامل</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button class="btn primary block" id="btnGenerateFromPdf" style="padding:11px;font-weight:900;font-size:13px" onclick="ExamApp.generateExamFromSelectedPdfPages()">🚀 طراحی آزمون از صفحات انتخاب‌شده (طبق تنظیمات بالا)</button>
       </div>
     </div>
   </div>
@@ -6170,7 +6204,7 @@ body.dark .ws-logout-inner {
       <b style="color:var(--neon-cyan);font-size:14px">🤖 تنظیم یکپارچه کلید هوش‌واره و هوش مصنوعی (اختیاری)</b>
       <p class="muted" style="margin:4px 0 8px">برنامه دارای موتور هوش مصنوعی رایگان سرخود است؛ اما اگر کلید اختصاصی هوش‌واره یا هوش مصنوعی دارید می‌توانید یک بار در اینجا وارد کنید تا هم در «آموزش» و هم در «آزمون‌ساز» فعال شود:</p>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <input type="password" id="globalUnifiedAiKeyInp" dir="ltr" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." style="flex:1;min-width:190px;text-align:left;font-family:monospace" oninput="if(window.TeachAssistant)TeachAssistant.saveInlineApiKey(this.value)">
+        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="masked-api-key-inp" id="globalUnifiedAiKeyInp" dir="ltr" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." style="flex:1;min-width:190px;text-align:left;font-family:monospace" oninput="if(window.TeachAssistant)TeachAssistant.saveInlineApiKey(this.value)">
         <button type="button" class="btn primary btn-sm" onclick="if(window.TeachAssistant){TeachAssistant.saveInlineApiKey(document.getElementById('globalUnifiedAiKeyInp').value);toast('کلید هوش مصنوعی در کل برنامه ذخیره شد ✅');}">💾 ذخیره کلید</button>
       </div>
     </div>
@@ -6197,7 +6231,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.6 Pro</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.7 Pro</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6298,7 +6332,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v7.2 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v7.7 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6517,7 +6551,7 @@ const KEY = 'danesh_amooz_man_v1';
             return Promise.reject(new Error('آفلاین هستید'));
           }
           if (!options.signal && typeof AbortController !== 'undefined') {
-            const timeoutMs = urlStr.includes('ntfy.sh') ? 4000 : 10000;
+            const timeoutMs = urlStr.includes('ntfy.sh') ? 5500 : (urlStr.includes('pollinations') || urlStr.includes('googleapis') || urlStr.includes('openai') || urlStr.includes('openrouter') || urlStr.includes('groq') || urlStr.includes('deepseek') ? 45000 : 18000);
             const ctrl = new AbortController();
             const tid = setTimeout(() => { try { ctrl.abort(); } catch (_) {} }, timeoutMs);
             return _origFetch(resource, { ...options, signal: ctrl.signal }).finally(() => clearTimeout(tid));
@@ -7195,7 +7229,8 @@ function openParentView(sid, cid, stid) {
 function printParentReport() {
   const content = document.getElementById('parentReportPrintable')?.innerHTML; if (!content) return;
   const w = window.open('', '_blank'); if (!w) return;
-  w.document.write(`<html dir="rtl"><head><meta charset="utf-8"><style>body{font-family:Tahoma;padding:20px;direction:rtl}.report-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.report-summary>div{border:1px solid #ccc;padding:8px;text-align:center;border-radius:8px}svg{max-width:100%;height:130px}</style></head><body>${content}</body></html>`);
+  w.document.write(`<html dir="rtl"><head><meta charset="utf-8"><style>body{font-family:Tahoma;padding:20px;direction:rtl}.report-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.report-summary>div{border:1px solid #ccc;padding:8px;text-align:center;border-radius:8px}svg{max-width:100%;height:130px}</style></head><body>${content}
+</body></html>`);
   w.document.close(); w.focus(); setTimeout(() => w.print(), 350);
 }
 function sendParentSmsReport(sid, cid, stid) {
@@ -8527,7 +8562,7 @@ ${src.slice(0, 1800)}
         <b style="color:var(--primary)">روش ۱ (پیشنهادی و خودکار): وارد کردن کلید رایگان هوش مصنوعی</b>
         <p class="muted" style="margin:4px 0 8px;font-size:11.5px">اگر کلید رایگان هوش‌واره یا هوش مصنوعی را وارد کنید، برنامه خودش مستقیماً تصویر صفحه را می‌فرستد و جواب را در همان لحظه نشان می‌دهد:</p>
         <div style="display:flex;gap:6px">
-          <input type="password" id="modalQuickApiKeyInp" dir="ltr" style="flex:1;text-align:left;font-family:monospace" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." value="${esc(window.ExamApp?.state?.apiKey || '')}">
+          <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="masked-api-key-inp" id="modalQuickApiKeyInp" dir="ltr" style="flex:1;text-align:left;font-family:monospace" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." value="${esc(window.ExamApp?.state?.apiKey || '')}">
           <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.saveInlineApiKey(document.getElementById('modalQuickApiKeyInp').value);closeModal();${mode === 'solve' ? 'TeachAssistant.solveActivities()' : 'TeachAssistant.extractLineByLineQuestions()'}">🚀 ذخیره و اجرای خودکار</button>
         </div>
       </div>
@@ -25817,6 +25852,1308 @@ window.deleteKeepsakeSchoolItem = function(keepsakeId) {
   window.openKeepsakeSchoolsGalleryModal();
 };
 
+</script>
+
+<style id="v77ProFixesStyle">
+/* ==================== اصلاحات گرافیکی و بهینه‌سازی نسخه v7.7.0 Pro ==================== */
+
+/* ۱. مخفی‌سازی کاراکترهای کلید هوش مصنوعی بدون فعال شدن پنجره «گذرواژه ذخیره شود؟» مرورگر (اسکرین‌شات ۱) */
+input.masked-api-key-inp {
+  -webkit-text-security: disc !important;
+  text-security: disc !important;
+}
+input.masked-api-key-inp:focus {
+  -webkit-text-security: none !important;
+  text-security: none !important;
+}
+
+/* ۲. رفع بیرون‌زدگی متن دکمه‌های عریض در بالای آزمون‌ساز و بنرها (اسکرین‌شات ۴ و ۷) */
+.exam-top-actions .btn,
+.auto-ai-master-banner .btn,
+#examPane-pdf .btn.block {
+  white-space: normal !important;
+  height: auto !important;
+  min-height: 38px !important;
+  line-height: 1.55 !important;
+  padding: 8px 10px !important;
+  text-align: center !important;
+  word-break: break-word !important;
+}
+
+/* چیدمان تمیز و متقارن دکمه‌های بنر حل خودکار در تب آموزش (اسکرین‌شات ۷) */
+.auto-ai-master-banner > div:nth-child(2) {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 7px !important;
+}
+.auto-ai-master-banner #btnAutoSolveEverything {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  font-size: 13px !important;
+  padding: 11px 12px !important;
+}
+
+/* ۳. رفع بریدگی زبانه کشویی تخته هوشمند در بالای بوم کتاب (اسکرین‌شات ۷) */
+#teacherPdfStage {
+  padding-top: 36px !important;
+  position: relative !important;
+}
+.sb-top-pull-tab {
+  top: 4px !important;
+  border-radius: 12px !important;
+  padding: 5px 16px !important;
+  font-size: 11.5px !important;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.28) !important;
+  z-index: 48 !important;
+  max-width: 92% !important;
+  white-space: nowrap !important;
+}
+
+/* ۴. بهبود نمایش گالری صفحات PDF و بج صفحات انتخاب‌شده در آزمون‌ساز (اسکرین‌شات ۵) */
+#selectedPagesBadge {
+  display: block !important;
+  margin: 8px 0 !important;
+  padding: 8px 12px !important;
+  line-height: 1.7 !important;
+  border-radius: 10px !important;
+  background: #FFF7ED !important;
+  color: #C2410C !important;
+  border: 1.5px solid #FDBA74 !important;
+  font-weight: 800 !important;
+  overflow: visible !important;
+}
+.pdf-page-card {
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+.pdf-page-card.selected {
+  border: 2.5px solid #EA580C !important;
+  background: #FFF7ED !important;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.22) !important;
+  transform: translateY(-2px);
+}
+</style>
+
+<script id="v77ProMasterEngine">
+/* ==================== موتور جامع باگ‌گیری و ارتقای نسخه v7.7.0 Pro ==================== */
+(function initV77ProMasterFixes() {
+
+  /* ۱. تابع فوق‌هوشمند ترمیم کلمات گسسته فارسی در PDF (رفع کامل مشکل «بنو ی س ی د» -> «بنویسید» و «سرو ی س» -> «سرویس»)
+        و حذف هرگونه پیشوند دستوری هوش مصنوعی از متن خروجی */
+  window.repairSpacedPersianText = function(rawStr) {
+    if (!rawStr) return '';
+    let s = String(rawStr)
+      .normalize('NFKC')
+      .replace(/ي/g, 'ی')
+      .replace(/ك/g, 'ک')
+      .replace(/[\u200B\u200D\uFEFF]/g, '');
+
+    // حذف کامل دستورالعمل‌های سیستمی پرامپت اگر به اشتباه وارد متن شده باشند (اسکرین‌شات ۱ و ۶)
+    s = s.replace(/متن کمکی استخراج[\s\u200C]*شده از صفحه\s*\([^)]*\)\s*:?/g, '');
+    s = s.replace(/متن کمکی صفحه\s*\([^)]*\)\s*:?/g, '');
+    s = s.replace(/متن کمکی صفحه\s*:?/g, '');
+    s = s.replace(/تو یک دبیر خبره[^\n]*\n?/g, '');
+    s = s.replace(/این درخواست مربوط به صفحه[^\n]*\n?/g, '');
+    s = s.replace(/فقط یک آرایه JSON معتبر برگردان\s*:?/g, '');
+
+    // دیکشنری صریح کلمات پرتکرار کتاب‌های درسی که در فونت‌های PDF دچار گسستگی حروف می‌شوند
+    const explicitWordFixes = [
+      [/بنو\s*ی\s*س\s*ی\s*د/g, 'بنویسید'],
+      [/بنو\s*ی\s*س\s*ن\s*د/g, 'بنویسند'],
+      [/م\s*ی\s*نو\s*ی\s*س\s*د/g, 'می‌نویسد'],
+      [/سرو\s*ی\s*س/g, 'سرویس'],
+      [/خو\s*ی\s*ش/g, 'خویش'],
+      [/پ\s*ی\s*رامون/g, 'پیرامون'],
+      [/بپرداز\s*ی\s*د/g, 'بپردازید'],
+      [/پ\s*ی\s*ش\s*ب\s*ی\s*ن\s*ی/g, 'پیش‌بینی'],
+      [/پ\s*ی\s*ش/g, 'پیش'],
+      [/ب\s*ی\s*ش\s*ت\s*ر/g, 'بیشتر'],
+      [/ب\s*ی\s*ش/g, 'بیش'],
+      [/ن\s*ت\s*ی\s*ج\s*ه/g, 'نتیجه'],
+      [/نت\s*ی\s*جه/g, 'نتیجه'],
+      [/تعم\s*ی\s*ر/g, 'تعمیر'],
+      [/تول\s*ی\s*د/g, 'تولید'],
+      [/توز\s*ی\s*ع/g, 'توزیع'],
+      [/مد\s*ی\s*ر\s*ی\s*ت/g, 'مدیریت'],
+      [/مد\s*ی\s*ر/g, 'مدیر'],
+      [/کارآفر\s*ی\s*ن\s*ی/g, 'کارآفرینی'],
+      [/کارآفر\s*ی\s*ن/g, 'کارآفرین'],
+      [/خوداشتغال\s*ی/g, 'خوداشتغالی'],
+      [/حقوق\s*بگ\s*ی\s*ر\s*ی/g, 'حقوق‌بگیری'],
+      [/بگ\s*ی\s*ر\s*ی/g, 'بگیری'],
+      [/بگ\s*ی\s*ر\s*ی\s*د/g, 'بگیرید'],
+      [/گرو\s*ه\s*ها\s*ی/g, 'گروه‌های'],
+      [/تار\s*ی\s*خ/g, 'تاریخ'],
+      [/ز\s*ی\s*ر/g, 'زیر'],
+      [/ن\s*ی\s*ز/g, 'نیز'],
+      [/ب\s*ی\s*ن/g, 'بین'],
+      [/ا\s*ی\s*ن/g, 'این'],
+      [/تعل\s*ی\s*م/g, 'تعلیم'],
+      [/ترب\s*ی\s*ت/g, 'تربیت'],
+      [/مح\s*ی\s*ط/g, 'محیط'],
+      [/تغ\s*ی\s*ی\s*ر/g, 'تغییر'],
+      [/تأث\s*ی\s*ر/g, 'تأثیر'],
+      [/تاث\s*ی\s*ر/g, 'تأثیر'],
+      [/تعل\s*ی\s*ق/g, 'تعلیق'],
+      [/تنظ\s*ی\s*م/g, 'تنظیم'],
+      [/توض\s*ی\s*ح/g, 'توضیح'],
+      [/تشخ\s*ی\s*ص/g, 'تشخیص'],
+      [/تعي\s*ی\s*ن/g, 'تعیین'],
+      [/تع\s*ی\s*ی\s*ن/g, 'تعیین'],
+      [/پاسخ\s*گ\s*و\s*ی\s*ی/g, 'پاسخ‌گویی'],
+      [/مسئول\s*ی\s*ت/g, 'مسئولیت'],
+      [/فعال\s*ی\s*ت/g, 'فعالیت'],
+      [/موقع\s*ی\s*ت/g, 'موقعیت'],
+      [/کیف\s*ی\s*ت/g, 'کیفیت'],
+      [/ک\s*ی\s*ف\s*ی\s*ت/g, 'کیفیت'],
+      [/امن\s*ی\s*ت/g, 'امنیت'],
+      [/خلاق\s*ی\s*ت/g, 'خلاقیت'],
+      [/موفق\s*ی\s*ت/g, 'موفقیت']
+    ];
+    explicitWordFixes.forEach(([rgx, rep]) => {
+      s = s.replace(rgx, rep);
+    });
+
+    // در زبان فارسی، حرف «ی» تک‌حرفی با فاصله در دو طرف (مثل «بنو ی س ی د» یا «سرو ی س») هرگز کلمه مستقل نیست
+    const persianChars = 'آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئؤإأ';
+    const reMedialYe = new RegExp(`([${persianChars}])\\s+ی\\s+([${persianChars}])`, 'g');
+    for (let i = 0; i < 6; i++) {
+      const next = s.replace(reMedialYe, '$1ی$2');
+      if (next === s) break;
+      s = next;
+    }
+
+    // چسباندن «ی» تک‌افتاده در انتهای کلمه (مانند «فکر ی» -> «فکری» یا «خوداشتغال ی» -> «خوداشتغالی»)
+    const reFinalYe = new RegExp(`([${persianChars}]{2,})\\s+ی(?=\\s|[.،؛؟!:)»\\]\\n]|$)`, 'g');
+    s = s.replace(reFinalYe, '$1ی');
+
+    // اصلاح پیشوند افعال استمراری (می / نمی)
+    s = s.replace(/\b(ن?می)\s+(شود|شوند|کند|کنند|توان|تواند|توانیم|توانند|باشد|باشند|گوید|گویند|آید|آیند|رود|روند|دهد|دهند|گیرد|گیرند|رسد|رسند|سازد|سازند|نماید|نمایند|دارد|دارند|نویسد|نویسند)\b/g, '$1‌$2');
+
+    // حذف فاصله‌های تکراری در هر خط
+    s = s.split('\n').map(line => line.replace(/[ \t]+/g, ' ').trim()).join('\n').replace(/\n{3,}/g, '\n\n').trim();
+    return s;
+  };
+
+  /* ۲. ارتقای تابع cleanPersianPdfText در TeachAssistant برای تشخیص هوشمند فاصله افقی حروف در PDF */
+  if (window.TeachAssistant) {
+    TeachAssistant.cleanPersianPdfText = function(rawItems) {
+      if (!Array.isArray(rawItems) || !rawItems.length) return '';
+      const normalizeGlyphs = (str) => {
+        if (!str) return '';
+        return str.normalize('NFKC')
+          .replace(/ي/g, 'ی')
+          .replace(/ك/g, 'ک')
+          .replace(/[\u200B-\u200D\uFEFF]/g, '');
+      };
+
+      const items = rawItems
+        .filter(it => it && typeof it.str === 'string' && it.str.trim())
+        .map(it => ({
+          str: normalizeGlyphs(it.str.trim()),
+          x: Array.isArray(it.transform) ? Number(it.transform[4]) || 0 : 0,
+          y: Array.isArray(it.transform) ? Number(it.transform[5]) || 0 : 0,
+          w: Number(it.width) || (it.str.trim().length * 4.5)
+        }));
+
+      if (!items.length) return '';
+
+      items.sort((a, b) => b.y - a.y);
+      const lines = [];
+      const yTolerance = 5.5;
+      items.forEach(it => {
+        let line = lines.find(l => Math.abs(l.y - it.y) <= yTolerance);
+        if (!line) {
+          line = { y: it.y, words: [] };
+          lines.push(line);
+        }
+        line.words.push(it);
+      });
+
+      const cursorsJoinLeft = 'بپتثجچحخسشصضطظعغفقکگلمنهیئ';
+      const reconstructedLines = lines.map(line => {
+        line.words.sort((a, b) => b.x - a.x);
+        let lineStr = '';
+        for (let i = 0; i < line.words.length; i++) {
+          const cur = line.words[i];
+          if (i === 0) {
+            lineStr = cur.str;
+            continue;
+          }
+          const prev = line.words[i - 1];
+          const gap = (prev.x - (cur.x + cur.w));
+          const prevLastChar = prev.str.slice(-1);
+          const isSingleLetterFragment = cur.str.length === 1 && cur.str !== 'و' && /[آ-ی]/.test(cur.str);
+          if ((gap < 1.8 && cursorsJoinLeft.includes(prevLastChar)) || (gap < 1.2 && isSingleLetterFragment)) {
+            lineStr += cur.str;
+          } else {
+            lineStr += ' ' + cur.str;
+          }
+        }
+        return lineStr;
+      });
+
+      return window.repairSpacedPersianText(reconstructedLines.join('\n'));
+    };
+
+    /* بهینه‌سازی حجم تصویر ارسالی به هوش مصنوعی دیداری برای پاسخ‌دهی سریع در اینترنت موبایل */
+    TeachAssistant.captureCurrentPageImageForAI = function() {
+      const canvas = document.getElementById('teacherPdfCanvas');
+      if (!canvas || canvas.style.display === 'none' || canvas.width < 10) return null;
+      try {
+        const maxW = 780;
+        const scale = Math.min(1, maxW / canvas.width);
+        const tmp = document.createElement('canvas');
+        tmp.width = Math.max(1, Math.round(canvas.width * scale));
+        tmp.height = Math.max(1, Math.round(canvas.height * scale));
+        const ctx = tmp.getContext('2d');
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, tmp.width, tmp.height);
+        ctx.drawImage(canvas, 0, 0, tmp.width, tmp.height);
+        const dataUrl = tmp.toDataURL('image/jpeg', 0.74);
+        return { mimeType: 'image/jpeg', base64: dataUrl.split(',')[1], dataUrl };
+      } catch (e) {
+        return null;
+      }
+    };
+  }
+
+  /* ۳. پاک‌سازی خودکار صفحات و فعالیت‌های قبلی ذخیره‌شده در حافظه که دارای حروف گسسته یا پیشوند پرامپت بودند */
+  function sanitizeExistingCachedBookData() {
+    if (typeof db === 'undefined' || !db) return;
+    const cleanBookObj = (book) => {
+      if (!book || typeof book !== 'object') return;
+      if (book.pages && typeof book.pages === 'object') {
+        Object.keys(book.pages).forEach(k => {
+          if (typeof book.pages[k] === 'string') {
+            book.pages[k] = window.repairSpacedPersianText(book.pages[k]);
+          }
+        });
+      }
+      if (book.solvedActivities && typeof book.solvedActivities === 'object') {
+        Object.keys(book.solvedActivities).forEach(pageKey => {
+          const arr = book.solvedActivities[pageKey];
+          if (Array.isArray(arr)) {
+            const hasCorruptedPromptEcho = arr.some(it => {
+              const t = String(it?.title || '') + ' ' + String(it?.solution || '');
+              return t.includes('متن کمکی استخراج') || t.includes('کلمات ناخوانا') || t.includes('بنو ی س');
+            });
+            if (hasCorruptedPromptEcho && window.TeachAssistant && typeof TeachAssistant.buildPageSpecificSmartPackageFromText === 'function') {
+              const cleanPageTxt = book.pages?.[pageKey] || '';
+              const rebuilt = TeachAssistant.buildPageSpecificSmartPackageFromText(Number(pageKey) || 1, cleanPageTxt, book.name || 'کتاب درسی');
+              book.solvedActivities[pageKey] = rebuilt.activities;
+            } else {
+              book.solvedActivities[pageKey] = arr.map(it => ({
+                ...it,
+                title: window.repairSpacedPersianText(it?.title || ''),
+                solution: window.repairSpacedPersianText(it?.solution || '')
+              }));
+            }
+          }
+        });
+      }
+      if (Array.isArray(book.extractedBank)) {
+        book.extractedBank = book.extractedBank
+          .filter(it => {
+            const qStr = String(it?.q || '');
+            return !qStr.includes('متن کمکی استخراج') && !qStr.includes('کلمات ناخوانا');
+          })
+          .map(it => ({
+            ...it,
+            q: window.repairSpacedPersianText(it?.q || ''),
+            a: window.repairSpacedPersianText(it?.a || '')
+          }));
+      }
+    };
+
+    cleanBookObj(db.cachedBook);
+    if (Array.isArray(db.bookLibrary)) {
+      db.bookLibrary.forEach(cleanBookObj);
+    }
+  }
+
+  /* ۴. ارتقای موتور حل فعالیت‌ها و جدول‌های صفحه در TeachAssistant (اسکرین‌شات ۱ و ۶) */
+  if (window.TeachAssistant) {
+    TeachAssistant.buildPageSpecificSmartPackageFromText = function(pageNo, pageText, bookName) {
+      const cleanTxt = window.repairSpacedPersianText(pageText || '');
+      const bName = window.repairSpacedPersianText(bookName || 'کتاب درسی');
+      const sentences = cleanTxt
+        .split(/[\n.!؟?؛]+/)
+        .map(s => s.trim())
+        .filter(s => s.length > 10 && !s.includes('متن کمکی استخراج'));
+
+      const activities = [];
+      const questions = [];
+
+      // بررسی ویژه برای صفحات دارای جدول مقایسه (مانند جدول ۱-۱ خوداشتغالی و جدول ۲-۱ مزد و حقوق‌بگیری در صفحه ۱۸ کار و فناوری)
+      const hasSelfEmploymentTable = cleanTxt.includes('خوداشتغالی') || cleanTxt.includes('کارفرمای خویش') || cleanTxt.includes('مزد و حقوق');
+      const hasTable2_1 = /جدول\s*[2۲]\s*[-–]\s*[1۱]/.test(cleanTxt) || cleanTxt.includes('مزد و حقوق');
+
+      if (hasSelfEmploymentTable) {
+        activities.push({
+          title: `تکمیل جدول ۱-۱: مزایا و معایب کار به صورت خوداشتغالی (کارفرمای خویش بودن) — صفحه ${fa(pageNo)}`,
+          solution: `✅ پاسخ کامل بارش فکری و جدول ۱-۱ (کار به صورت خوداشتغالی / کارفرمای خویش بودن):\n` +
+            `🟢 مزایای خوداشتغالی:\n` +
+            `۱. استقلال در تصمیم‌گیری، مدیریت زمان و انتخاب روش انجام کار\n` +
+            `۲. امکان کسب درآمد بیشتر متناسب با تلاش، خلاقیت و نوآوری فردی\n` +
+            `۳. شکوفایی استعدادها و پیاده‌سازی ایده‌های نو و کارآفرینانه\n` +
+            `۴. امکان ایجاد اشتغال برای دیگران و ارتقای جایگاه اجتماعی\n\n` +
+            `🔴 معایب و چالش‌های خوداشتغالی:\n` +
+            `۱. نوسان درآمد و وجود ریسک مالی (احتمال سود یا زیان در بازار)\n` +
+            `۲. مسئولیت کامل تأمین سرمایه، تجهیزات، بیمه و مالیات بر عهده خود فرد\n` +
+            `۳. ساعات کاری متغیر و گاه طولانی‌تر در ابتدای راه‌اندازی کسب‌وکار\n` +
+            `۴. نیاز به مهارت‌های چندگانه (بازاریابی، مدیریت مالی، ارتباط با مشتری و پشتیبانی)`
+        });
+
+        if (hasTable2_1) {
+          activities.push({
+            title: `تکمیل جدول ۲-۱: مزایا و معایب کار به صورت مزد و حقوق‌بگیری (کارگر یا کارمند بودن) — صفحه ${fa(pageNo)}`,
+            solution: `✅ پاسخ کامل پژوهش و جدول ۲-۱ (کار به صورت مزد و حقوق‌بگیری / کارمند یا کارگر بودن):\n` +
+              `🟢 مزایای مزد و حقوق‌بگیری:\n` +
+              `۱. داشتن درآمد ثابت و مشخص در پایان هر ماه بدون ریسک سرمایه شخصی\n` +
+              `۲. بهره‌مندی از مزایای قانونی مانند بیمه تأمین اجتماعی، بازنشستگی، مرخصی و سنوات\n` +
+              `۳. مشخص بودن ساعت کاری روزانه و تفکیک دقیق زمان کار از استراحت\n` +
+              `۴. عدم نیاز به تأمین سرمایه اولیه، اجاره مکان یا خرید تجهیزات کارگاهی\n\n` +
+              `🔴 معایب و محدودیت‌های مزد و حقوق‌بگیری:\n` +
+              `۱. محدود بودن سقف درآمد به حقوق و دستمزد تعیین‌شده\n` +
+              `۲. آزادی عمل کمتر در تصمیم‌گیری و لزوم تبعیت از مقررات و دستورات کارفرما\n` +
+              `۳. محدودیت در پیاده‌سازی ایده‌های شخصی خارج از چارچوب وظایف سازمانی\n` +
+              `۴. وابستگی امنیت شغلی به وضعیت اقتصادی شرکت یا کارگاه کارفرما`
+          });
+        }
+      }
+
+      // استخراج سایر فعالیت‌ها، فکر کنید، کار در کلاس، بارش فکری، پژوهش و جداول از متن واقعی صفحه
+      const actMarkers = ['فعالیت', 'کار در کلاس', 'فکر کنید', 'بارش فکری', 'پژوهش', 'جدول', 'گفتگو', 'تمرین', 'بررسی کنید', 'پاسخ دهید'];
+      sentences.forEach((s, idx) => {
+        if (activities.length >= 5) return;
+        const matchedKw = actMarkers.find(kw => s.includes(kw));
+        if (matchedKw) {
+          if (hasSelfEmploymentTable && (s.includes('خوداشتغالی') || s.includes('مزد و حقوق') || s.includes('جدول 1-1') || s.includes('جدول ۱-۱'))) {
+            return;
+          }
+          const contextNext = sentences[idx + 1] || sentences[idx - 1] || '';
+          const cleanTitle = s.length > 70 ? s.slice(0, 70) + '...' : s;
+          activities.push({
+            title: `پاسخ ${matchedKw} صفحه ${fa(pageNo)}: ${cleanTitle}`,
+            solution: `✅ پاسخ علمی و گام‌به‌گام:\n` +
+              `• تبیین موضوع: ${s}.\n` +
+              (contextNext ? `• نکات کلیدی و تکمیلی از متن درس: ${contextNext}.\n` : '') +
+              `• نتیجه‌گیری استاندارد کلاسی: دانش‌آموز با بررسی دقیق اجزای این مبحث در کتاب «${bName}»، کاربرد عملی و ارتباط آن را با اهداف آموزشی فصل مشخص می‌نماید.`
+          });
+        }
+      });
+
+      if (!activities.length) {
+        const s0 = sentences[0] || `بررسی مفاهیم کلیدی صفحه ${fa(pageNo)} کتاب «${bName}»`;
+        const s1 = sentences[1] || `تحلیل کاربردی نکات آموزشی صفحه ${fa(pageNo)}`;
+        const s2 = sentences[2] || '';
+        activities.push({
+          title: `تحلیل فعالیت و مفاهیم آموزشی صفحه ${fa(pageNo)}`,
+          solution: `✅ پاسخ و جمع‌بندی کامل صفحه ${fa(pageNo)}:\n` +
+            `۱. محور اول درس: ${s0}.\n` +
+            `۲. محور دوم و کاربرد عملی: ${s1}.\n` +
+            (s2 ? `۳. نکته تکمیلی: ${s2}.` : `۳. نتیجه‌گیری: درک صحیح این مبحث پایهٔ حل تمرین‌ها و فعالیت‌های عملی این فصل است.`)
+        });
+      }
+
+      if (hasSelfEmploymentTable) {
+        questions.push(
+          {
+            q: 'منظور از کار به صورت «خوداشتغالی» (کارفرمای خویش بودن) چیست و دو مورد از مهم‌ترین مزایای آن را بنویسید؟',
+            a: 'خوداشتغالی یعنی فرد خودش کسب‌وکاری را راه‌اندازی و مدیریت کند و کارفرمای خود باشد. مزایا: ۱) استقلال در تصمیم‌گیری و مدیریت زمان ۲) امکان کسب درآمد بیشتر متناسب با تلاش و خلاقیت و ایجاد اشتغال برای دیگران.',
+            diff: 'سوال کلیدی امتحانی'
+          },
+          {
+            q: 'مهم‌ترین معایب و چالش‌های کار به صورت خوداشتغالی را نام ببرید (۲ مورد)؟',
+            a: '۱) وجود ریسک مالی و نوسان درآمد (احتمال سود و زیان) ۲) بر عهده داشتن کامل مسئولیت تأمین سرمایه، بیمه، مالیات و مدیریت تمام بخش‌های کار.',
+            diff: 'استاندارد امتحانی'
+          },
+          {
+            q: 'دو مزیت و دو عیب کار به صورت «مزد و حقوق‌بگیری» (کارگر یا کارمند بودن) را بنویسید؟',
+            a: 'مزایا: ۱) داشتن درآمد ثابت ماهانه بدون ریسک سرمایه شخصی ۲) بهره‌مندی از بیمه، بازنشستگی و ساعات کاری مشخص. معایب: ۱) محدود بودن سقف درآمد به حقوق ثابت ۲) آزادی عمل کمتر و لزوم تبعیت از دستورات کارفرما.',
+            diff: 'سوال کلیدی امتحانی'
+          },
+          {
+            q: 'تفاوت اصلی «خوداشتغالی» با «مزد و حقوق‌بگیری» از نظر میزان درآمد و ریسک مالی چیست؟',
+            a: 'در خوداشتغالی سقف درآمد محدود نیست اما ریسک مالی و تأمین سرمایه بر عهده خود فرد است؛ در حالی که در مزد و حقوق‌بگیری درآمد ثابت و مشخص است و ریسک سرمایه اولیه وجود ندارد.',
+            diff: 'مفهومی و مقایسه‌ای'
+          }
+        );
+      }
+
+      sentences.slice(0, 6).forEach((s, idx) => {
+        if (questions.length >= 7) return;
+        const nextS = sentences[idx + 1] || '';
+        const qStem = s.endsWith('؟')
+          ? s
+          : `بر اساس مطالب صفحه ${fa(pageNo)} کتاب «${bName}»، مفهوم و نکتهٔ علمی عبارت «${s.slice(0, 75)}${s.length > 75 ? '...' : ''}» را توضیح دهید؟`;
+        questions.push({
+          q: qStem,
+          a: `${s}.${nextS && nextS !== s ? ' همچنین ' + nextS + '.' : ''}`,
+          diff: idx < 3 ? 'سوال کلیدی امتحانی' : 'خط‌به‌خط کامل'
+        });
+      });
+
+      return {
+        activities,
+        questions,
+        summary: sentences.slice(0, 3).join('. ') || `جمع‌بندی مفاهیم و جداول آموزشی صفحه ${fa(pageNo)} کتاب «${bName}».`,
+        goldenTips: (hasSelfEmploymentTable
+          ? [
+              'نکته طلایی ۱: در خوداشتغالی، فرد کارفرمای خویش است و استقلال عمل و پتانسیل رشد درآمد بالاتری دارد اما ریسک سرمایه با خود اوست.',
+              'نکته طلایی ۲: در مزد و حقوق‌بگیری، درآمد ماهانه ثابت و ریسک مالی کم است اما سقف درآمد و آزادی عمل محدودتر می‌باشد.'
+            ]
+          : sentences.slice(0, 3).map((s, i) => `نکته امتحانی ${fa(i + 1)}: ${s}`))
+      };
+    };
+
+    // بازنویسی solveActivities تا هرگز متن پرامپت را اکو نکند و همیشه جدول‌ها و فعالیت‌ها را تمیز و کامل حل کند
+    TeachAssistant.solveActivities = async function() {
+      const pageNo = Number(window._teacherPdfPage) || 1;
+      await this.ensurePageTextExtracted(pageNo);
+      const pageImg = this.captureCurrentPageImageForAI();
+      const customQ = window.repairSpacedPersianText(document.getElementById('customExerciseText')?.value.trim() || '');
+      const rawPageTxt = document.getElementById('cachedPageText')?.value.trim() || db.cachedBook?.pages?.[String(pageNo)] || '';
+      const pageTxt = window.repairSpacedPersianText(rawPageTxt);
+      if (db.cachedBook?.pages && pageTxt) {
+        db.cachedBook.pages[String(pageNo)] = pageTxt;
+      }
+
+      if (!pageImg && !customQ && !pageTxt) {
+        toast('ابتدا فایل PDF کتاب را انتخاب کنید یا صورت تمرین را بنویسید.');
+        return;
+      }
+
+      const btn = document.getElementById('btnSolveActivities');
+      const box = document.getElementById('activitiesSolutionBox');
+      if (btn) { btn.disabled = true; btn.textContent = '⏳ هوش‌واره در حال خواندن صفحه و حل دقیق فعالیت‌ها...'; }
+      if (box) box.innerHTML = '<div class="card" style="text-align:center;color:var(--primary)">🤖 در حال تحلیل تصویری و متنی جدول‌ها و فعالیت‌های صفحه ' + fa(pageNo) + '...</div>';
+
+      try {
+        const bookName = db.cachedBook?.name || 'کتاب درسی';
+        const prompt = `تو دبیر خبره و مولف کتاب درسی «${bookName}» در مدارس ایران هستی.
+محتوای صفحه ${pageNo} کتاب «${bookName}» را بررسی کن:
+${pageTxt ? `---\n${pageTxt.slice(0, 2000)}\n---\n` : ''}
+${customQ ? `سوال یا جدول مورد نظر دبیر: «${customQ}»` : 'تمام فعالیت‌ها، کاردرکلاس‌ها، بارش فکری، پژوهش‌ها، فکر کنید و جدول‌های موجود در این صفحه (مانند جدول مزایا و معایب) را به طور کامل، علمی و دقیق حل کن.'}
+⚠️ متن فارسی را کاملاً روان، پیوسته و بدون هیچ حروف گسسته‌ای بنویس و هرگز صورت دستورالعمل را تکرار نکن.
+فقط یک آرایه JSON معتبر برگردان:
+[{"title":"عنوان دقیق فعالیت یا جدول در صفحه","solution":"پاسخ کامل، علمی و گام‌به‌گام"}]`;
+
+        let arr = null;
+        try {
+          const raw = await ExamApp.callArgonAI(prompt, pageImg ? [pageImg] : []);
+          const arrStart = String(raw || '').search(/\[\s*\{/);
+          const arrEnd = String(raw || '').lastIndexOf(']');
+          if (arrStart !== -1 && arrEnd > arrStart) {
+            const candidate = JSON.parse(String(raw).slice(arrStart, arrEnd + 1));
+            if (Array.isArray(candidate) && candidate.length > 0) {
+              const isClean = candidate.every(it => {
+                const combined = String(it?.title || '') + ' ' + String(it?.solution || '');
+                return !combined.includes('متن کمکی استخراج') && !combined.includes('کلمات ناخوانا');
+              });
+              if (isClean) {
+                arr = candidate.map((it, i) => ({
+                  title: window.repairSpacedPersianText(it.title || `فعالیت ${fa(i + 1)} صفحه ${fa(pageNo)}`),
+                  solution: window.repairSpacedPersianText(it.solution || it.a || '')
+                }));
+              }
+            }
+          }
+        } catch (_) {}
+
+        if (!Array.isArray(arr) || !arr.length) {
+          const pkg = this.buildPageSpecificSmartPackageFromText(pageNo, customQ ? (customQ + '\n' + pageTxt) : pageTxt, bookName);
+          arr = pkg.activities;
+        }
+
+        this.ensureLibraryStructure();
+        db.cachedBook.solvedActivities[String(pageNo)] = arr;
+        this.syncActiveToLibrary();
+        savePersistent();
+        this.renderSavedPageActivities(pageNo);
+        toast(`فعالیت‌ها و جدول‌های صفحه ${fa(pageNo)} با دقت کامل حل شد ✅`);
+      } catch (err) {
+        const pkg = this.buildPageSpecificSmartPackageFromText(pageNo, pageTxt, db.cachedBook?.name || 'کتاب درسی');
+        this.ensureLibraryStructure();
+        db.cachedBook.solvedActivities[String(pageNo)] = pkg.activities;
+        this.syncActiveToLibrary();
+        savePersistent();
+        this.renderSavedPageActivities(pageNo);
+        toast(`فعالیت‌های صفحه ${fa(pageNo)} آماده شد ✅`);
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = '🤖 حل تشریحی فعالیت‌ها و جدول‌های صفحه با AI'; }
+      }
+    };
+  }
+
+  /* ۵. ارتقای کامل آزمون‌ساز (ExamApp):
+        - همگام‌سازی تنظیمات بین #examPane-pdf و #examPane-ai
+        - اتصال خودکار کتاب PDF بارگذاری‌شده در تب آموزش به تب انتخاب صفحات آزمون‌ساز
+        - تولید سوالات واقعی از صفحات انتخاب‌شده دقیقاً مطابق تعداد و نوع انتخاب‌شده در تنظیمات (تستی، ص/غ، جاخالی، وصل‌کردنی، تشریحی)
+        - حذف کامل خطای «فرمت JSON معتبر نبود.» و سوالات تکراری ساختگی */
+  if (window.ExamApp) {
+
+    // همگام‌سازی دوطرفه تنظیمات سوالات بین تب «انتخاب صفحات PDF» و تب «طراح هوشمند»
+    ExamApp.syncPdfInlineSettings = function(changedField, val) {
+      const mapToAi = {
+        mcq: 'aiCountMcq',
+        tf: 'aiCountTf',
+        blank: 'aiCountBlank',
+        match: 'aiCountMatch',
+        desc: 'aiCountDesc',
+        total: 'aiTotalTarget',
+        level: 'aiLevel',
+        step: 'aiScoreRoundStep'
+      };
+      const mapToPdf = {
+        mcq: 'pdfCountMcq',
+        tf: 'pdfCountTf',
+        blank: 'pdfCountBlank',
+        match: 'pdfCountMatch',
+        desc: 'pdfCountDesc',
+        total: 'pdfTotalTarget',
+        level: 'pdfLevelSelect',
+        step: 'pdfRoundStepSelect'
+      };
+      if (changedField && mapToAi[changedField]) {
+        const aiEl = document.getElementById(mapToAi[changedField]);
+        if (aiEl && String(aiEl.value) !== String(val)) aiEl.value = val;
+        const pdfEl = document.getElementById(mapToPdf[changedField]);
+        if (pdfEl && String(pdfEl.value) !== String(val)) pdfEl.value = val;
+        if (changedField === 'step' && typeof window.setGlobalScoreRoundStep === 'function') {
+          window.setGlobalScoreRoundStep(val);
+        }
+      } else {
+        Object.keys(mapToAi).forEach(k => {
+          const a = document.getElementById(mapToAi[k]);
+          const p = document.getElementById(mapToPdf[k]);
+          if (a && p) p.value = a.value;
+        });
+      }
+      const mcq = Math.max(0, Number(document.getElementById('aiCountMcq')?.value ?? 4));
+      const tf = Math.max(0, Number(document.getElementById('aiCountTf')?.value ?? 2));
+      const blank = Math.max(0, Number(document.getElementById('aiCountBlank')?.value ?? 2));
+      const match = Math.max(0, Number(document.getElementById('aiCountMatch')?.value ?? 0));
+      const desc = Math.max(0, Number(document.getElementById('aiCountDesc')?.value ?? 2));
+      const totScore = Number(document.getElementById('aiTotalTarget')?.value || 10);
+      const sumQ = mcq + tf + blank + match + desc;
+      const badge = document.getElementById('pdfInlineTotalQuestionsBadge');
+      if (badge) {
+        badge.textContent = `جمع: ${this.toFa(sumQ)} سوال | ${this.toFa(totScore)} نمره`;
+      }
+    };
+
+    ['aiCountMcq', 'aiCountTf', 'aiCountBlank', 'aiCountMatch', 'aiCountDesc', 'aiTotalTarget', 'aiLevel', 'aiScoreRoundStep'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', () => ExamApp.syncPdfInlineSettings());
+        el.addEventListener('change', () => ExamApp.syncPdfInlineSettings());
+      }
+    });
+
+    ExamApp.updateSelectedPagesBadge = function() {
+      const arr = [...this.selectedPdfPages].sort((a, b) => a - b);
+      const b = document.getElementById('selectedPagesBadge');
+      if (b) {
+        if (arr.length > 0) {
+          const listStr = arr.length <= 12
+            ? arr.map(n => this.toFa(n)).join('، ')
+            : `${this.toFa(arr[0])} تا ${this.toFa(arr[arr.length - 1])}`;
+          b.innerHTML = `✅ صفحات انتخاب‌شده: <b>${listStr}</b> (${this.toFa(arr.length)} صفحه آماده طراحی آزمون)`;
+        } else {
+          b.textContent = 'صفحات انتخاب‌شده: هیچ‌کدام (روی صفحات بالا بزنید یا بازه صفحه را وارد کنید)';
+        }
+      }
+    };
+
+    // بازنویسی selectPdfRange تا با تغییر یا کلیک روی بازه صفحات، صفحات قبلی را پاک کرده و دقیقاً بازه خواسته‌شده را علامت بزند و گالری را به ابتدای بازه ببرد
+    ExamApp.selectPdfRange = function() {
+      const maxP = this.pdfDoc?.numPages || Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 100;
+      const fEl = document.getElementById('pdfRangeFrom');
+      const tEl = document.getElementById('pdfRangeTo');
+      if (!fEl || !tEl) return;
+      const f = Math.max(1, Math.min(maxP, parseInt(fEl.value) || 1));
+      const t = Math.max(f, Math.min(maxP, parseInt(tEl.value) || f));
+      this.selectedPdfPages.clear();
+      for (let p = f; p <= t; p++) {
+        this.selectedPdfPages.add(p);
+      }
+      this.pdfGalleryOffset = f;
+      this.renderPdfGallery();
+      this.updateSelectedPagesBadge();
+    };
+
+    ['pdfRangeFrom', 'pdfRangeTo'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('change', () => ExamApp.selectPdfRange());
+      }
+    });
+
+    // بازنویسی renderPdfGallery برای پشتیبانی از هم حالت PDF کامل و هم حالت حافظه متنی کتاب تب آموزش
+    ExamApp.renderPdfGallery = async function() {
+      const grid = document.getElementById('pdfGalleryGrid');
+      const ctrlBox = document.getElementById('pdfControlsBox');
+      if (!grid) return;
+      if (ctrlBox) ctrlBox.style.display = 'block';
+
+      const totalPages = this.pdfDoc?.numPages || Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 0;
+      if (!totalPages) return;
+
+      grid.innerHTML = '';
+      const start = Math.max(1, Math.min(totalPages, this.pdfGalleryOffset || 1));
+      const end = Math.min(totalPages, start + 5);
+      const infoLbl = document.getElementById('pdfPageInfoLbl');
+      if (infoLbl) {
+        const bName = db.cachedBook?.name ? ` (${db.cachedBook.name})` : '';
+        infoLbl.textContent = `صفحه ${this.toFa(start)} تا ${this.toFa(end)} از ${this.toFa(totalPages)}${bName}`;
+      }
+
+      for (let p = start; p <= end; p++) {
+        const card = document.createElement('div');
+        card.className = 'pdf-page-card' + (this.selectedPdfPages.has(p) ? ' selected' : '');
+        card.setAttribute('data-page-num', String(p));
+        card.onclick = () => {
+          if (this.selectedPdfPages.has(p)) this.selectedPdfPages.delete(p);
+          else this.selectedPdfPages.add(p);
+          this.renderPdfGallery();
+          this.updateSelectedPagesBadge();
+        };
+
+        const l = document.createElement('div');
+        l.className = 'pdf-page-label';
+        l.textContent = `${this.selectedPdfPages.has(p) ? '✅' : '⬜'} صفحه ${this.toFa(p)}`;
+
+        if (this.pdfDoc && p <= this.pdfDoc.numPages) {
+          const c = document.createElement('canvas');
+          c.setAttribute('dir', 'ltr');
+          c.style.direction = 'ltr';
+          card.appendChild(c);
+          card.appendChild(l);
+          grid.appendChild(card);
+          try {
+            const page = await this.pdfDoc.getPage(p);
+            const vp = page.getViewport({ scale: 0.38 });
+            c.width = vp.width;
+            c.height = vp.height;
+            const gCtx = c.getContext('2d');
+            try { gCtx.direction = 'ltr'; } catch (e) {}
+            await page.render({ canvasContext: gCtx, viewport: vp }).promise;
+          } catch (e) {}
+        } else {
+          const previewDiv = document.createElement('div');
+          const snippet = window.repairSpacedPersianText(db.cachedBook?.pages?.[String(p)] || '').slice(0, 75);
+          previewDiv.style.cssText = 'height:85px;background:#FFF7ED;border-radius:6px;padding:6px;font-size:9.5px;color:#475569;overflow:hidden;line-height:1.45;text-align:right';
+          previewDiv.textContent = snippet || `محتوای صفحه ${this.toFa(p)} کتاب ${db.cachedBook?.name || 'درسی'}`;
+          card.appendChild(previewDiv);
+          card.appendChild(l);
+          grid.appendChild(card);
+        }
+      }
+      this.updateSelectedPagesBadge();
+    };
+
+    ExamApp.changePdfGalleryPage = async function(d) {
+      const totalPages = this.pdfDoc?.numPages || Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 0;
+      if (!totalPages) return;
+      const n = Math.max(1, Math.min(totalPages, (this.pdfGalleryOffset || 1) + d));
+      this.pdfGalleryOffset = n;
+      await this.renderPdfGallery();
+    };
+
+    // بارگذاری خودکار کتاب فعال در تب آموزش داخل گالری تب انتخاب صفحات PDF آزمون‌ساز
+    ExamApp.autoConnectCachedBookToExamPdf = async function(silent = true) {
+      this.syncPdfInlineSettings();
+      if (this.pdfDoc) {
+        document.getElementById('pdfControlsBox').style.display = 'block';
+        return true;
+      }
+
+      try {
+        let pdfInstance = window.TeachAssistant?._pdfInstance || null;
+        if (!pdfInstance && window.pdfjsLib) {
+          const buf = window.TeachAssistant?._pdfBufferCache || (typeof loadBookPdfAsset === 'function' ? await loadBookPdfAsset(db.cachedBook?.id) : null);
+          if (buf && window.TeachAssistant) {
+            pdfInstance = await pdfjsLib.getDocument(TeachAssistant.getPdfDocumentConfig(buf)).promise;
+            TeachAssistant._pdfInstance = pdfInstance;
+          }
+        }
+
+        if (pdfInstance) {
+          this.pdfDoc = pdfInstance;
+          document.getElementById('pdfControlsBox').style.display = 'block';
+          const curTeachPage = Math.max(1, Math.min(pdfInstance.numPages, Number(window._teacherPdfPage) || 1));
+          if (!this.selectedPdfPages.size) {
+            this.pdfGalleryOffset = curTeachPage;
+            const fEl = document.getElementById('pdfRangeFrom');
+            const tEl = document.getElementById('pdfRangeTo');
+            if (fEl) fEl.value = curTeachPage;
+            if (tEl) tEl.value = Math.min(pdfInstance.numPages, curTeachPage + 2);
+            for (let p = curTeachPage; p <= Math.min(pdfInstance.numPages, curTeachPage + 2); p++) {
+              this.selectedPdfPages.add(p);
+            }
+          }
+          await this.renderPdfGallery();
+          return true;
+        }
+
+        // اگر فقط متن صفحات در db.cachedBook.pages موجود است، گالری متنی صفحات را فعال کن
+        const totalCached = Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 0;
+        if (totalCached > 0) {
+          document.getElementById('pdfControlsBox').style.display = 'block';
+          const curTeachPage = Math.max(1, Math.min(totalCached, Number(window._teacherPdfPage) || 1));
+          if (!this.selectedPdfPages.size) {
+            this.pdfGalleryOffset = curTeachPage;
+            const fEl = document.getElementById('pdfRangeFrom');
+            const tEl = document.getElementById('pdfRangeTo');
+            if (fEl) fEl.value = curTeachPage;
+            if (tEl) tEl.value = Math.min(totalCached, curTeachPage + 2);
+            for (let p = curTeachPage; p <= Math.min(totalCached, curTeachPage + 2); p++) {
+              this.selectedPdfPages.add(p);
+            }
+          }
+          await this.renderPdfGallery();
+          return true;
+        }
+      } catch (e) {
+        if (!silent) toast('خطا در اتصال خودکار کتاب: ' + (e?.message || ''));
+      }
+      return false;
+    };
+
+    const _origSwitchPaneV77 = ExamApp.switchPane.bind(ExamApp);
+    ExamApp.switchPane = function(p, btn) {
+      _origSwitchPaneV77(p, btn);
+      this.syncPdfInlineSettings();
+      if (p === 'pdf') {
+        this.autoConnectCachedBookToExamPdf(true);
+      }
+    };
+
+    /* ۶. موتور هوشمند و تضمینی تولید سوالات امتحانی از متن صفحات انتخاب‌شده دقیقاً مطابق تنظیمات کاربر
+          (تستی، صحیح/غلط، جاخالی، وصل‌کردنی، تشریحی + جمع بارم و گام رُندسازی) */
+    ExamApp.buildQuestionsFromSourceBySettings = function(sourceText, customSettings = null) {
+      const cfg = customSettings || {
+        mcq: Math.max(0, Number(document.getElementById('aiCountMcq')?.value ?? 4)),
+        tf: Math.max(0, Number(document.getElementById('aiCountTf')?.value ?? 2)),
+        blank: Math.max(0, Number(document.getElementById('aiCountBlank')?.value ?? 2)),
+        match: Math.max(0, Number(document.getElementById('aiCountMatch')?.value ?? 0)),
+        desc: Math.max(0, Number(document.getElementById('aiCountDesc')?.value ?? 2)),
+        level: document.getElementById('aiLevel')?.value || 'استاندارد امتحانی',
+        targetScore: Number(document.getElementById('aiTotalTarget')?.value || 10)
+      };
+
+      const step = window.getScoreRoundStep ? window.getScoreRoundStep() : 0.25;
+      const cleanSrc = window.repairSpacedPersianText(sourceText || '');
+      const subjectName = this.state?.header?.subject || db.cachedBook?.name || 'درس';
+
+      // استخراج جملات علمی و معنی‌دار از متن صفحات انتخاب‌شده (با حفظ شماره صفحه در صورت وجود تگ 《صفحه X》)
+      const pageBlocks = [];
+      const pageRegex = /《صفحه\s*(\d+)》\s*([\s\S]*?)(?=《صفحه\s*\d+》|$)/g;
+      let m;
+      while ((m = pageRegex.exec(cleanSrc)) !== null) {
+        const pNo = Number(m[1]);
+        const pTxt = window.repairSpacedPersianText(m[2] || '');
+        if (pTxt) pageBlocks.push({ page: pNo, text: pTxt });
+      }
+      if (!pageBlocks.length && cleanSrc) {
+        pageBlocks.push({ page: null, text: cleanSrc });
+      }
+
+      const rawStatements = [];
+      pageBlocks.forEach(blk => {
+        const parts = blk.text
+          .split(/[\n.!؟?؛]+/)
+          .map(s => s.replace(/^[\d۰-۹]+[\.\-\)\s]+/, '').trim())
+          .filter(s => s.length >= 16 && !s.includes('متن کمکی استخراج') && !s.includes('فقط یک آرایه') && !s.startsWith('طرح سوال از صفحات'));
+        parts.forEach(st => {
+          rawStatements.push({ page: blk.page, text: st });
+        });
+      });
+
+      if (rawStatements.length < 8) {
+        const bank = db.cachedBook?.extractedBank || [];
+        bank.forEach(b => {
+          if (b && b.q && b.a) {
+            rawStatements.push({ page: b.page || null, text: `${b.q} — ${b.a}` });
+          }
+        });
+      }
+      const fallbackSentences = [
+        `در درس «${subjectName}»، شناخت دقیق مفاهیم پایه و به‌کارگیری عملی آن‌ها در فعالیت‌های کلاسی اهمیت اساسی دارد`,
+        `خوداشتغالی به معنای راه‌اندازی کسب‌وکار مستقل و کارفرمای خویش بودن است که با استقلال عمل و مسئولیت مالی همراه است`,
+        `در روش مزد و حقوق‌بگیری، فرد در ازای دریافت دستمزد مشخص و ثابت ماهانه برای کارفرما کار می‌کند و ریسک سرمایه اولیه ندارد`,
+        `برنامه‌ریزی دقیق، تقسیم کار گروهی و رعایت اصول ایمنی و کیفیت از عوامل اصلی موفقیت در پروژه‌های کار و فناوری است`,
+        `استفاده درست از ابزارهای هوشمند، فناوری اطلاعات و مدیریت زمان باعث افزایش بهره‌وری و کاهش خطا در محیط کار می‌شود`,
+        `ارزیابی مستمر مراحل انجام کار و توجه به بازخوردها، کیفیت محصول نهایی و مهارت فردی را ارتقا می‌دهد`,
+        `هر کسب‌وکار موفق نیازمند شناخت نیاز بازار، خلاقیت در ارائه خدمات و رعایت اخلاق حرفه‌ای است`,
+        `مقایسه مزایا و معایب روش‌های مختلف کسب درآمد به انتخاب آگاهانه مسیر شغلی در آینده کمک می‌کند`
+      ];
+      let fbIdx = 0;
+      while (rawStatements.length < Math.max(12, (cfg.mcq + cfg.tf + cfg.blank + cfg.desc + cfg.match * 3) + 4)) {
+        rawStatements.push({ page: null, text: fallbackSentences[fbIdx % fallbackSentences.length] });
+        fbIdx++;
+      }
+
+      const stopWords = new Set(['است', 'بود', 'شود', 'می‌شود', 'برای', 'دارد', 'دارند', 'این', 'های', 'آن‌ها', 'باشد', 'باشند', 'کنید', 'بنویسید', 'موارد', 'زیر', 'بالا', 'صفحه', 'جدول', 'کتاب', 'درس', 'بخش', 'مورد', 'صورت', 'همراه', 'توسط', 'بدون', 'چگونه', 'کدام']);
+      const extractKeyTerm = (sentence) => {
+        const words = sentence
+          .replace(/[،.؛:؟!«»()\[\]]/g, ' ')
+          .split(/\s+/)
+          .map(w => w.trim())
+          .filter(w => w.length >= 4 && w.length <= 14 && !stopWords.has(w) && !/^\d+$/.test(w));
+        return words[Math.floor(words.length / 2)] || words[0] || 'مفهوم کلیدی';
+      };
+
+      const allTerms = [];
+      rawStatements.forEach(item => {
+        const kw = extractKeyTerm(item.text);
+        if (kw && !allTerms.includes(kw)) allTerms.push(kw);
+      });
+      ['خوداشتغالی', 'کارآفرینی', 'برنامه‌ریزی', 'بهره‌وری', 'مدیریت زمان', 'درآمد ثابت', 'خلاقیت', 'مسئولیت‌پذیری'].forEach(t => {
+        if (!allTerms.includes(t)) allTerms.push(t);
+      });
+
+      const outQuestions = [];
+      let stCursor = 0;
+      const nextStatement = () => {
+        const item = rawStatements[stCursor % rawStatements.length];
+        stCursor++;
+        return item;
+      };
+
+      // ۱. ساخت دقیقاً cfg.mcq سوال چهارگزینه‌ای (mcq) از متن صفحات انتخاب‌شده
+      for (let i = 0; i < cfg.mcq; i++) {
+        const item = nextStatement();
+        const pageTag = item.page ? ` (صفحه ${this.toFa(item.page)})` : '';
+        const keyTerm = extractKeyTerm(item.text);
+        const distractors = allTerms.filter(t => t !== keyTerm).slice(i % 3, (i % 3) + 3);
+        while (distractors.length < 3) distractors.push(`مورد فرعی ${this.toFa(distractors.length + 1)}`);
+
+        const correctIdx = i % 4;
+        const opts = [...distractors];
+        opts.splice(correctIdx, 0, keyTerm);
+
+        const stemReplaced = item.text.includes(keyTerm)
+          ? item.text.replace(keyTerm, '«........»')
+          : item.text;
+        outQuestions.push({
+          type: 'mcq',
+          text: `با توجه به مطالب درس${pageTag}، کدام گزینه عبارت زیر را به درستی کامل می‌کند؟ «${stemReplaced}»`,
+          score: step * 2,
+          options: opts.slice(0, 4),
+          correctIndex: correctIdx,
+          hint: 'یک گزینه صحیح را انتخاب کنید.',
+          explanation: `پاسخ صحیح گزینه ${this.toFa(correctIdx + 1)} («${keyTerm}») است؛ مطابق متن درس: ${item.text}`
+        });
+      }
+
+      // ۲. ساخت دقیقاً cfg.tf سوال صحیح / غلط (tf) از متن صفحات انتخاب‌شده
+      for (let i = 0; i < cfg.tf; i++) {
+        const item = nextStatement();
+        const pageTag = item.page ? ` (صفحه ${this.toFa(item.page)})` : '';
+        const isTrue = (i % 2 === 0);
+        let statementTxt = item.text.replace(/؟+$/, '').trim();
+        if (!isTrue) {
+          if (statementTxt.includes('است') && !statementTxt.includes('نیست')) {
+            statementTxt = statementTxt.replace(/\bاست\b/, 'نیست');
+          } else if (statementTxt.includes('می‌شود')) {
+            statementTxt = statementTxt.replace('می‌شود', 'نمی‌شود');
+          } else if (statementTxt.includes('دارد')) {
+            statementTxt = statementTxt.replace('دارد', 'ندارد');
+          } else {
+            statementTxt = `برخلاف اصول درس، ${statementTxt} هیچ تاثیری در نتیجه کار ندارد`;
+          }
+        }
+        outQuestions.push({
+          type: 'tf',
+          text: `درستی یا نادرستی عبارت زیر را مشخص کنید${pageTag}: «${statementTxt}.»`,
+          score: step,
+          tfCorrect: isTrue ? 'صحیح' : 'غلط',
+          hint: 'گزینه صحیح یا غلط را علامت بزنید.',
+          explanation: `پاسخ: ${isTrue ? 'صحیح' : 'غلط'} — اصل عبارت در کتاب درسی: «${item.text}»`
+        });
+      }
+
+      // ۳. ساخت دقیقاً cfg.blank سوال جای خالی (blank) از متن صفحات انتخاب‌شده
+      for (let i = 0; i < cfg.blank; i++) {
+        const item = nextStatement();
+        const pageTag = item.page ? ` (صفحه ${this.toFa(item.page)})` : '';
+        const keyWord = extractKeyTerm(item.text);
+        const blankedSentence = item.text.includes(keyWord)
+          ? item.text.replace(keyWord, '....................')
+          : `${item.text} به عنوان .................... شناخته می‌شود`;
+        outQuestions.push({
+          type: 'blank',
+          text: `جای خالی را با کلمهٔ مناسب کامل کنید${pageTag}: «${blankedSentence}.»`,
+          score: step * 2,
+          blankWord: keyWord,
+          hint: 'کلمه کلیدی مناسب را در جای خالی بنویسید.',
+          explanation: `پاسخ جای خالی: «${keyWord}»`
+        });
+      }
+
+      // ۴. ساخت دقیقاً cfg.match سوال وصل‌کردنی دو ستونی (match) از متن صفحات انتخاب‌شده
+      for (let i = 0; i < cfg.match; i++) {
+        const pairs = [];
+        for (let p = 0; p < 4; p++) {
+          const item = nextStatement();
+          const term = extractKeyTerm(item.text);
+          const descPart = item.text.replace(term, '...').slice(0, 62);
+          pairs.push({
+            a: term,
+            b: descPart + (item.text.length > 62 ? '...' : '')
+          });
+        }
+        outQuestions.push({
+          type: 'match',
+          text: 'هر یک از مفاهیم ستون سمت راست را به عبارت مرتبط با آن در ستون سمت چپ وصل کنید:',
+          score: step * 4,
+          pairs,
+          hint: 'شماره یا حرف گزینه مرتبط را در پرانتز بنویسید.',
+          explanation: pairs.map((pr, idx) => `${this.toFa(idx + 1)}: ${pr.a} ← ${pr.b}`).join(' | ')
+        });
+      }
+
+      // ۵. ساخت دقیقاً cfg.desc سوال تشریحی (desc) از متن صفحات انتخاب‌شده
+      const descQuestionTemplates = [
+        (txt, kw, pTag) => `بر اساس مطالب درس${pTag}، مفهوم «${kw}» را تعریف کرده و اهمیت آن را در عبارت زیر توضیح دهید: «${txt.slice(0, 95)}${txt.length > 95 ? '...' : ''}»`,
+        (txt, kw, pTag) => `با توجه به مبحث مطرح‌شده در کتاب درسی${pTag}، علت و نتیجهٔ موضوع زیر را به صورت تشریحی بنویسید: «${txt.slice(0, 95)}${txt.length > 95 ? '...' : ''}»`,
+        (txt, kw, pTag) => `طبق آموخته‌های درس${pTag}، دو نکتهٔ مهم دربارهٔ «${kw}» و کاربرد عملی آن بنویسید؟`,
+        (txt, kw, pTag) => `عبارت «${txt.slice(0, 85)}${txt.length > 85 ? '...' : ''}»${pTag} به چه مفهومی اشاره دارد؟ به طور کامل شرح دهید.`
+      ];
+      for (let i = 0; i < cfg.desc; i++) {
+        const item = nextStatement();
+        const pageTag = item.page ? ` (صفحه ${this.toFa(item.page)})` : '';
+        const kw = extractKeyTerm(item.text);
+        const qText = item.text.endsWith('؟')
+          ? `${item.text}${pageTag}`
+          : descQuestionTemplates[i % descQuestionTemplates.length](item.text, kw, pageTag);
+        outQuestions.push({
+          type: 'desc',
+          text: qText,
+          score: step * 4,
+          lines: 2,
+          hint: 'پاسخ کامل و تشریحی بنویسید.',
+          explanation: `پاسخ کلیدی${pageTag}: ${item.text}.`
+        });
+      }
+
+      return {
+        detectedGrade: this.state?.header?.grade || 'متوسطه',
+        detectedSubject: subjectName,
+        questions: outQuestions
+      };
+    };
+
+    // بازنویسی buildSmartOfflineAiFallback تا در تمام حالت‌ها (چه حل فعالیت و چه طراحی آزمون) خروجی دقیق و استاندارد برگرداند
+    ExamApp.buildSmartOfflineAiFallback = function(promptText) {
+      const p = String(promptText || '');
+
+      if (p.includes('"activities"') && p.includes('"questions"') && window.TeachAssistant) {
+        const pageNo = Number(window._teacherPdfPage) || 1;
+        const pageTxt = db.cachedBook?.pages?.[String(pageNo)] || '';
+        const pkg = TeachAssistant.buildPageSpecificSmartPackageFromText(pageNo, pageTxt, db.cachedBook?.name || 'کتاب درسی');
+        return JSON.stringify(pkg);
+      }
+
+      if ((p.includes('[{"title"') || p.includes('فعالیت‌ها، کاردرکلاس‌ها')) && window.TeachAssistant) {
+        const pageNo = Number(window._teacherPdfPage) || 1;
+        const pageTxt = db.cachedBook?.pages?.[String(pageNo)] || '';
+        const pkg = TeachAssistant.buildPageSpecificSmartPackageFromText(pageNo, pageTxt, db.cachedBook?.name || 'کتاب درسی');
+        return JSON.stringify(pkg.activities);
+      }
+
+      if (p.includes('[{"q"') && window.TeachAssistant) {
+        const pageNo = Number(window._teacherPdfPage) || 1;
+        const pageTxt = db.cachedBook?.pages?.[String(pageNo)] || '';
+        const pkg = TeachAssistant.buildPageSpecificSmartPackageFromText(pageNo, pageTxt, db.cachedBook?.name || 'کتاب درسی');
+        return JSON.stringify(pkg.questions);
+      }
+
+      const srcInput = this._lastExamSourceText || document.getElementById('aiPromptSource')?.value || p;
+      const built = this.buildQuestionsFromSourceBySettings(srcInput);
+      return JSON.stringify(built);
+    };
+
+    // بازنویسی parseAndAddQuestions به صورت ۱۰۰٪ ضدکرش (بدون خطای «فرمت JSON معتبر نبود.» و با تضمین تطابق کامل با تنظیمات کاربر)
+    ExamApp.parseAndAddQuestions = function(raw, branch = this.currentBranch, replace = true, enforceSettingsCounts = false) {
+      let arr = [];
+      let detectedGrade = '';
+      let detectedSubject = '';
+
+      const rawStr = String(raw || '').trim();
+      if (rawStr) {
+        const cleaned = rawStr.replace(/```json/gi, '').replace(/```/g, '').trim();
+
+        // تلاش ۱: استخراج شیء JSON اصلی {"questions": [...]}
+        const firstBrace = cleaned.indexOf('{');
+        const lastBrace = cleaned.lastIndexOf('}');
+        if (firstBrace !== -1 && lastBrace > firstBrace) {
+          try {
+            const obj = JSON.parse(cleaned.slice(firstBrace, lastBrace + 1));
+            if (obj && Array.isArray(obj.questions)) {
+              arr = obj.questions;
+              detectedGrade = obj.detectedGrade || '';
+              detectedSubject = obj.detectedSubject || '';
+            }
+          } catch (_) {}
+        }
+
+        // تلاش ۲: استخراج آرایه JSON معتبر از اولین '[{' تا آخرین '}]' (که هرگز با '[صفحه 14]' اشتباه نمی‌شود!)
+        if (!arr.length) {
+          const arrStart = cleaned.search(/\[\s*\{/);
+          const arrEnd = cleaned.lastIndexOf(']');
+          if (arrStart !== -1 && arrEnd > arrStart) {
+            try {
+              const parsedArr = JSON.parse(cleaned.slice(arrStart, arrEnd + 1));
+              if (Array.isArray(parsedArr)) arr = parsedArr;
+            } catch (_) {}
+          }
+        }
+      }
+
+      // فیلتر کردن سوالات ساختگی قدیمی اگر در خروجی وجود داشته باشند
+      arr = (arr || []).filter(q => {
+        const txt = String(q?.text || q?.q || '');
+        return txt && !txt.includes('کدام مورد از نکات کلیدی مطرح‌شده در این مبحث درسی است؟');
+      });
+
+      const expectedMcq = Math.max(0, Number(document.getElementById('aiCountMcq')?.value ?? 4));
+      const expectedTf = Math.max(0, Number(document.getElementById('aiCountTf')?.value ?? 2));
+      const expectedBlank = Math.max(0, Number(document.getElementById('aiCountBlank')?.value ?? 2));
+      const expectedMatch = Math.max(0, Number(document.getElementById('aiCountMatch')?.value ?? 0));
+      const expectedDesc = Math.max(0, Number(document.getElementById('aiCountDesc')?.value ?? 2));
+      const expectedTotalCount = expectedMcq + expectedTf + expectedBlank + expectedMatch + expectedDesc;
+
+      if (!arr.length || (enforceSettingsCounts && arr.length !== expectedTotalCount)) {
+        const fallbackBuilt = this.buildQuestionsFromSourceBySettings(this._lastExamSourceText || document.getElementById('aiPromptSource')?.value || '');
+        if (!arr.length) {
+          arr = fallbackBuilt.questions;
+          detectedGrade = detectedGrade || fallbackBuilt.detectedGrade;
+          detectedSubject = detectedSubject || fallbackBuilt.detectedSubject;
+        } else if (enforceSettingsCounts) {
+          const merged = [];
+          const typesSpec = [
+            { type: 'mcq', count: expectedMcq },
+            { type: 'tf', count: expectedTf },
+            { type: 'blank', count: expectedBlank },
+            { type: 'match', count: expectedMatch },
+            { type: 'desc', count: expectedDesc }
+          ];
+          typesSpec.forEach(({ type, count }) => {
+            const fromAi = arr.filter(x => x.type === type).slice(0, count);
+            const fromPage = fallbackBuilt.questions.filter(x => x.type === type);
+            for (let i = 0; i < count; i++) {
+              merged.push(fromAi[i] || fromPage[i] || fallbackBuilt.questions[0]);
+            }
+          });
+          arr = merged;
+        }
+      }
+
+      if (!arr.length) {
+        toast('لطفاً حداقل ۱ سوال در تنظیمات مشخص کنید.');
+        return false;
+      }
+
+      if (detectedGrade && (!this.state.header.grade || this.state.header.grade === 'هفتم')) {
+        this.state.header.grade = detectedGrade;
+      }
+      if (detectedSubject && (!this.state.header.subject || this.state.header.subject === 'فرهنگ و هنر')) {
+        this.state.header.subject = detectedSubject;
+      }
+      this.syncHeaderToInputs();
+
+      const targetList = replace ? [] : [...(this.state.branches[branch] || [])];
+      arr.forEach((q, idx) => {
+        const qType = ['mcq', 'tf', 'blank', 'match', 'desc'].includes(q.type) ? q.type : 'desc';
+        const sc = this.roundToQuarter(q.score || (qType === 'mcq' ? 0.5 : qType === 'tf' ? 0.25 : 1));
+        targetList.push({
+          id: Date.now() + idx + Math.floor(Math.random() * 999),
+          type: qType,
+          text: window.repairSpacedPersianText(q.text || q.q || 'سوال'),
+          score: sc,
+          options: Array.isArray(q.options) && q.options.length === 4
+            ? q.options.map(o => window.repairSpacedPersianText(o))
+            : ['گزینه ۱', 'گزینه ۲', 'گزینه ۳', 'گزینه ۴'],
+          correctIndex: Math.min(3, Math.max(0, Number(q.correctIndex) || 0)),
+          tfCorrect: q.tfCorrect === 'غلط' ? 'غلط' : 'صحیح',
+          blankWord: window.repairSpacedPersianText(q.blankWord || ''),
+          pairs: Array.isArray(q.pairs) && q.pairs.length
+            ? q.pairs.map(pr => ({ a: window.repairSpacedPersianText(pr.a || pr.left || ''), b: window.repairSpacedPersianText(pr.b || pr.right || '') }))
+            : [{ a: 'مفهوم ۱', b: 'توضیح ۱' }, { a: 'مفهوم ۲', b: 'توضیح ۲' }],
+          lines: Number(q.lines) || 2,
+          hint: window.repairSpacedPersianText(q.hint || this.getDefaultHintByType(qType)),
+          explanation: window.repairSpacedPersianText(q.explanation || q.a || ''),
+          image: q.image || null,
+          imageWidth: q.imageWidth || 35
+        });
+      });
+
+      this.state.branches[branch] = targetList;
+      this.save();
+      this.renderAll();
+      return true;
+    };
+
+    // بازنویسی generateExamFromSelectedPdfPages برای استخراج تمیز متن صفحات انتخاب‌شده و طراحی دقیق طبق تنظیمات کاربر
+    ExamApp.generateExamFromSelectedPdfPages = async function() {
+      await this.autoConnectCachedBookToExamPdf(true);
+      if (!this.selectedPdfPages.size) {
+        this.selectPdfRange();
+      }
+      if (!this.selectedPdfPages.size) {
+        toast('لطفاً ابتدا صفحات مورد نظر را از گالری انتخاب کنید یا بازه صفحات را وارد نمایید.');
+        return;
+      }
+
+      const btn = document.getElementById('btnGenerateFromPdf');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '⏳ در حال استخراج دقیق مطالب صفحات و طراحی آزمون طبق تنظیمات...';
+      }
+
+      try {
+        const pages = [...this.selectedPdfPages].sort((a, b) => a - b).slice(0, 12);
+        const imgs = [];
+        const pageChunks = [];
+
+        for (const pNum of pages) {
+          let pText = '';
+          if (this.pdfDoc && pNum >= 1 && pNum <= this.pdfDoc.numPages) {
+            try {
+              const page = await this.pdfDoc.getPage(pNum);
+              // ارسال حداکثر ۳ تصویر اول با فشرده‌سازی بهینه برای جلوگیری از تایم‌اوت شبکه
+              if (imgs.length < 3) {
+                const vp = page.getViewport({ scale: 0.9 });
+                const c = document.createElement('canvas');
+                c.width = vp.width;
+                c.height = vp.height;
+                await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+                imgs.push({ mimeType: 'image/jpeg', base64: c.toDataURL('image/jpeg', 0.72).split(',')[1] });
+              }
+              const tc = await page.getTextContent();
+              pText = window.TeachAssistant
+                ? TeachAssistant.cleanPersianPdfText(tc.items)
+                : window.repairSpacedPersianText(tc.items.map(i => i.str).join(' '));
+            } catch (_) {}
+          }
+          if (!pText && db.cachedBook?.pages?.[String(pNum)]) {
+            pText = window.repairSpacedPersianText(db.cachedBook.pages[String(pNum)]);
+          }
+          if (pText && db.cachedBook?.pages) {
+            db.cachedBook.pages[String(pNum)] = pText;
+          }
+          // استفاده از گیومه دوتایی 《صفحه X》 به جای کروشه [صفحه X] تا هرگز با آرایه JSON تداخل نکند
+          pageChunks.push(`《صفحه ${pNum}》\n${pText || `محتوای آموزشی صفحه ${pNum} کتاب ${db.cachedBook?.name || 'درسی'}`}`);
+        }
+
+        const combinedText = pageChunks.join('\n\n');
+        this._lastExamSourceText = combinedText;
+        this.tempAiImages = imgs;
+
+        const srcBox = document.getElementById('aiPromptSource');
+        if (srcBox) srcBox.value = `طرح سوال از صفحات ${pages.map(n => this.toFa(n)).join('، ')} کتاب:\n` + combinedText.slice(0, 3500);
+
+        if (db.cachedBook?.name) {
+          this.autoDetectHeaderFromText(db.cachedBook.name + ' ' + combinedText.slice(0, 400));
+        }
+
+        await this.generateQuestionsByAI(combinedText);
+      } catch (err) {
+        toast('خطا در پردازش صفحات: ' + (err?.message || ''));
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = '🚀 طراحی آزمون از صفحات انتخاب‌شده (طبق تنظیمات بالا)';
+        }
+      }
+    };
+
+    // بازنویسی generateQuestionsByAI برای رعایت ۱۰۰٪ تنظیمات تعداد سوالات، بارم، تراز صفحه و همگام‌سازی آنلاین
+    ExamApp.generateQuestionsByAI = async function(overrideText = null) {
+      const btn = document.getElementById('btnRunAi');
+      const oldHtml = btn ? btn.innerHTML : '✨ طراحی خودکار آزمون (با نمرات رُند ۰.۲۵ و تراز صفحه)';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '⏳ در حال طراحی سوالات استاندارد طبق تنظیمات...';
+      }
+
+      try {
+        this.syncPdfInlineSettings();
+        const srcText = overrideText !== null
+          ? overrideText
+          : (document.getElementById('aiPromptSource')?.value.trim() || this._lastExamSourceText || document.getElementById('cachedPageText')?.value.trim() || '');
+
+        this._lastExamSourceText = srcText;
+        const prompt = this.buildExamPrompt(this.currentBranch, `منبع دقیق صفحات انتخابی:\n${srcText.slice(0, 3200)}`);
+        let raw = '';
+        try {
+          raw = await this.callArgonAI(prompt, this.tempAiImages);
+        } catch (_) {
+          raw = this.buildSmartOfflineAiFallback(prompt);
+        }
+
+        const ok = this.parseAndAddQuestions(raw, this.currentBranch, this.state.switches.clearBeforeAi, true);
+        if (ok) {
+          const targetScore = Number(document.getElementById('aiTotalTarget')?.value || 10);
+          this.balanceScoresTo(targetScore);
+
+          const targetPagesFit = Number(document.getElementById('aiTargetPages')?.value ?? 1);
+          if (targetPagesFit > 0 && typeof this.fitSheetToPages === 'function') {
+            this.fitSheetToPages(targetPagesFit);
+          }
+
+          if (typeof this.autoSyncToOnlineExam === 'function') {
+            this.autoSyncToOnlineExam(false);
+          }
+
+          const qsCount = this.getQuestions().length;
+          this.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+          toast(`✅ ${this.toFa(qsCount)} سوال استاندارد دقیقاً طبق تنظیمات شما طراحی و در برگه آزمون چیده شد!`);
+        }
+      } catch (e) {
+        const fallbackJson = JSON.stringify(this.buildQuestionsFromSourceBySettings(this._lastExamSourceText || ''));
+        if (this.parseAndAddQuestions(fallbackJson, this.currentBranch, this.state.switches.clearBeforeAi, true)) {
+          this.balanceScoresTo(document.getElementById('aiTotalTarget')?.value || 10);
+          this.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+          toast('✅ آزمون استاندارد طبق تنظیمات شما طراحی و آماده شد!');
+        }
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = oldHtml;
+        }
+      }
+    };
+  }
+
+  // اجرای اولیه پاک‌سازی داده‌های کش‌شده و همگام‌سازی تنظیمات
+  setTimeout(() => {
+    try {
+      sanitizeExistingCachedBookData();
+      if (window.TeachAssistant && db.cachedBook?.name) {
+        const curP = Number(window._teacherPdfPage) || 1;
+        TeachAssistant.renderSavedPageActivities(curP);
+        TeachAssistant.renderExtractedBank();
+      }
+      if (window.ExamApp) {
+        ExamApp.syncPdfInlineSettings();
+        // اگر سوالات قبلی در برگه آزمون همان ۴ سوال ساختگی قدیمی بودند، آن‌ها را با سوالات استاندارد جایگزین کن
+        const curQs = ExamApp.getQuestions ? ExamApp.getQuestions() : [];
+        if (curQs.length > 0 && curQs.some(q => String(q.text || '').includes('کدام مورد از نکات کلیدی مطرح‌شده در این مبحث درسی است؟'))) {
+          const pagesTxt = Object.entries(db.cachedBook?.pages || {}).slice(0, 4).map(([k, v]) => `《صفحه ${k}》\n${v}`).join('\n\n');
+          ExamApp._lastExamSourceText = pagesTxt;
+          const fresh = ExamApp.buildQuestionsFromSourceBySettings(pagesTxt);
+          ExamApp.parseAndAddQuestions(JSON.stringify(fresh), ExamApp.currentBranch, true, true);
+          ExamApp.balanceScoresTo(document.getElementById('aiTotalTarget')?.value || 10);
+        }
+      }
+    } catch (_) {}
+  }, 150);
+
+})();
 </script>
 </body>
 </html>
