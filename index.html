@@ -4730,7 +4730,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.5</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.6</span>
         </div>
       </div>
     </div>
@@ -4741,6 +4741,7 @@ body.dark .ws-logout-inner {
         <button type="button" class="iconbtn" id="topNotifBtn" onclick="openNotificationsCenterModal()" title="مرکز هوشمند اعلانات و یادآوری‌ها" aria-label="اعلانات">🔔</button>
         <span class="notif-badge-dot" id="topNotifBadge" style="display:none">۰</span>
       </div>
+      <button type="button" class="iconbtn" onclick="openTeacherProToolkitModal()" title="جعبه ابزار حرفه‌ای معلم (ماشین‌حساب، تایمر، قرعه‌کشی)" aria-label="ابزار معلم">🧰</button>
       <button type="button" class="iconbtn" onclick="openSmartCommandPalette()" title="جستجوی فرماندهی سراسری (Ctrl+K)" aria-label="جستجوی سریع">🔍</button>
       <div class="top-drawer-items" id="topDrawerItems">
         <button type="button" class="iconbtn" onclick="showView('onlineClassView')" title="کلاس آنلاین و لینک اختصاصی" aria-label="کلاس آنلاین">🌐</button>
@@ -4831,6 +4832,8 @@ body.dark .ws-logout-inner {
   <!-- نوار کشویی دسترسی سریع ۱کلیکی معلم در داشبورد -->
   <div class="dash-quick-strip" id="dashQuickStrip">
     <button type="button" class="dash-q-pill" onclick="startGameSpotlightTour(true)" style="border-color:var(--primary);background:var(--primary-light);color:var(--primary-dark)">🎮 راهنمای تعاملی</button>
+    <button type="button" class="dash-q-pill" onclick="openTeacherProToolkitModal()" style="border-color:var(--primary);font-weight:900">🧰 جعبه ابزار معلم (ماشین‌حساب/تایمر)</button>
+    <button type="button" class="dash-q-pill" onclick="openKeepsakeSchoolsGalleryModal()">🏛️ گنجینه یادگاری مدارس</button>
     <button type="button" class="dash-q-pill" onclick="openTeacherExamResultsManagerModal()">📊 لینک نتایج و ویرایش نمرات آزمون</button>
     <button type="button" class="dash-q-pill" onclick="openSmartCommandPalette()">⚡ فرمان و جستجوی سریع</button>
     <button type="button" class="dash-q-pill" onclick="openQuickTodayClassJump()">📋 حاضری سریع امروز</button>
@@ -4852,9 +4855,13 @@ body.dark .ws-logout-inner {
 </section>
 
 <section id="schools" class="view">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-    <div><h1 class="title">مدارس</h1><p class="subtitle" style="margin:0">مدارس و سال‌های تحصیلی شما</p></div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn green" onclick="openLinkClassBuilderModal()">🔗 کلاس‌سازی آنلاین با لینک</button><button class="btn primary" onclick="addSchool()">＋ مدرسه جدید</button></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px">
+    <div><h1 class="title">🏫 مدارس و گنجینه یادگاری</h1><p class="subtitle" style="margin:0">مدارس فعال و بایگانی همیشگی خاطرات سال‌های تحصیلی</p></div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button class="btn soft" style="border-color:#F59E0B;font-weight:900" onclick="openKeepsakeSchoolsGalleryModal()">🏛️ گنجینه یادگاری مدارس <span id="keepsakeSchoolsCountBadge"></span></button>
+      <button class="btn green" onclick="openLinkClassBuilderModal()">🔗 کلاس‌سازی با لینک</button>
+      <button class="btn primary" onclick="addSchool()">＋ مدرسه جدید</button>
+    </div>
   </div>
   <div id="schoolsGrid" class="grid"></div>
 </section>
@@ -4990,76 +4997,92 @@ body.dark .ws-logout-inner {
       <div class="teach-tool-group">
         <button type="button" class="teach-icon-btn smartboard-main-toggle" id="btnToggleAnnotate" onclick="TeachAssistant.toggleSmartBoardDock()" style="background:linear-gradient(135deg,#EA580C,#D97706);color:#fff;border:none;padding:0 11px;font-weight:900">🖍️ تخته هوشمند</button>
         <button type="button" class="teach-icon-btn" id="btnSwitchBoardSurface" onclick="TeachAssistant.cycleSmartBoardSurface()" title="تغییر زمینه: کتاب / تخته سفید / تخته سبز / شطرنجی">📋 بوم تخته</button>
+        <button type="button" class="teach-icon-btn" onclick="openTeacherProToolkitModal()" title="ماشین‌حساب، تایمر، قرعه‌کشی و ابزارهای سر کلاس" style="border-color:var(--primary-border);color:var(--primary);font-weight:900">🧰 ابزار معلم</button>
         <button type="button" class="teach-icon-btn" id="btnToggleBookmark" onclick="TeachAssistant.togglePageBookmark()">🔖 نشانک</button>
         <button type="button" class="teach-icon-btn" id="btnPinClassProgress" onclick="TeachAssistant.pinClassProgressHere()" title="ثبت اینکه تا این صفحه تدریس شده">📍 تا اینجا</button>
         <button type="button" class="teach-icon-btn" id="btnFullscreenBoard" style="padding:0 8px" onclick="TeachAssistant.toggleFullscreenBoard()">⛶ تمام‌صفحه</button>
       </div>
     </div>
 
-    <!-- نوار ابزار حرفه‌ای و شیک «تخته هوشمند کلاسی» (هماهنگ با تم نارنجی/سفید برنامه) -->
-    <div class="teach-annot-bar smartboard-dock" id="teacherAnnotToolbar">
-      <!-- ردیف ۱: ابزارهای نوشتاری، لیزر، اشکال هندسی و درج متن -->
-      <div class="sb-dock-row">
-        <div class="sb-tool-pills">
-          <button type="button" class="sb-tool-btn active" data-sbtool="pen" onclick="TeachAssistant.setSmartBoardTool('pen', this)" title="قلم روان تدریس">🖊️ قلم</button>
-          <button type="button" class="sb-tool-btn" data-sbtool="highlight" onclick="TeachAssistant.setSmartBoardTool('highlight', this)" title="ماژیک هایلایت روی متن">🖍️ هایلایت</button>
-          <button type="button" class="sb-tool-btn" data-sbtool="laser" onclick="TeachAssistant.setSmartBoardTool('laser', this)" title="نشانگر لیزری موقت برای توضیح سر کلاس">🔴 لیزر</button>
-          <button type="button" class="sb-tool-btn" data-sbtool="line" onclick="TeachAssistant.setSmartBoardTool('line', this)" title="خط‌کش و فلش صاف">📏 خط/فلش</button>
-          <button type="button" class="sb-tool-btn" data-sbtool="rect" onclick="TeachAssistant.setSmartBoardTool('rect', this)" title="کادر مستطیلی دور نکات مهم">⬜ کادر</button>
-          <button type="button" class="sb-tool-btn" data-sbtool="circle" onclick="TeachAssistant.setSmartBoardTool('circle', this)" title="دایره دور کلیدواژه‌ها">⭕ دایره</button>
-          <button type="button" class="sb-tool-btn" data-sbtool="text" onclick="TeachAssistant.setSmartBoardTool('text', this)" title="نوشتن متن تایپی روی تخته">🔤 متن</button>
-          <button type="button" class="sb-tool-btn" data-sbtool="eraser" onclick="TeachAssistant.setSmartBoardTool('eraser', this)" title="پاک‌کن موضعی">🧽 پاک‌کن</button>
-        </div>
-      </div>
-
-      <!-- ردیف ۲: پالت رنگ، ضخامت قلم، نوع بوم تخته و دکمه‌های عملیاتی -->
-      <div class="sb-dock-row sb-dock-subrow">
-        <!-- رنگ‌های استاندارد و هماهنگ با برنامه -->
-        <div class="sb-color-dots" id="sbColorDotsWrap">
-          <button type="button" class="sb-color-dot active" data-color="#EA580C" style="background:#EA580C" onclick="TeachAssistant.setSmartBoardColor('#EA580C', this)" title="نارنجی"></button>
-          <button type="button" class="sb-color-dot" data-color="#DC2626" style="background:#DC2626" onclick="TeachAssistant.setSmartBoardColor('#DC2626', this)" title="قرمز"></button>
-          <button type="button" class="sb-color-dot" data-color="#0284C7" style="background:#0284C7" onclick="TeachAssistant.setSmartBoardColor('#0284C7', this)" title="آبی"></button>
-          <button type="button" class="sb-color-dot" data-color="#16A34A" style="background:#16A34A" onclick="TeachAssistant.setSmartBoardColor('#16A34A', this)" title="سبز"></button>
-          <button type="button" class="sb-color-dot" data-color="#7C3AED" style="background:#7C3AED" onclick="TeachAssistant.setSmartBoardColor('#7C3AED', this)" title="بنفش"></button>
-          <button type="button" class="sb-color-dot" data-color="#0F172A" style="background:#0F172A" onclick="TeachAssistant.setSmartBoardColor('#0F172A', this)" title="مشکی"></button>
-          <button type="button" class="sb-color-dot" data-color="#FFFFFF" style="background:#FFFFFF;border:1.5px solid #94A3B8" onclick="TeachAssistant.setSmartBoardColor('#FFFFFF', this)" title="سفید (مناسب تخته سبز/تیره)"></button>
-        </div>
-
-        <!-- ضخامت قلم -->
-        <div class="sb-size-pills" id="sbSizePillsWrap">
-          <button type="button" class="sb-size-btn" onclick="TeachAssistant.setSmartBoardWidth(2.5, this)" title="قلم ظریف">ظریف</button>
-          <button type="button" class="sb-size-btn active" onclick="TeachAssistant.setSmartBoardWidth(4.5, this)" title="قلم متوسط">متوسط</button>
-          <button type="button" class="sb-size-btn" onclick="TeachAssistant.setSmartBoardWidth(8, this)" title="قلم درشت">درشت</button>
-        </div>
-
-        <!-- تغییر پس‌زمینه تخته هوشمند -->
-        <select id="sbSurfaceSelect" onchange="TeachAssistant.setSmartBoardSurface(this.value)" style="width:auto;height:28px;font-size:11px;font-weight:800;padding:0 6px;border-radius:8px">
-          <option value="book">📖 روی صفحه کتاب</option>
-          <option value="white">⬜ تخته سفید کلاسی</option>
-          <option value="chalk">🟩 تخته سبز گچی</option>
-          <option value="grid">📐 تخته شطرنجی ریاضی</option>
-          <option value="lined">📝 دفتر خط‌دار آموزشی</option>
-        </select>
-
-        <!-- عملیات تخته -->
-        <div style="display:flex;align-items:center;gap:4px;margin-right:auto">
-          <button type="button" class="btn gray btn-sm" style="height:28px;padding:0 8px" onclick="TeachAssistant.undoAnnotation()" title="واگرد آخرین خط">↩️</button>
-          <button type="button" class="btn gray btn-sm" style="height:28px;padding:0 8px" onclick="TeachAssistant.redoAnnotation()" title="بازگردانی خط">↪️</button>
-          <button type="button" class="btn soft btn-sm" style="height:28px;padding:0 8px" onclick="TeachAssistant.downloadSmartBoardSnapshot()" title="ذخیره تصویر تخته هوشمند همراه با دست‌خط معلم">📸 عکس تخته</button>
-          <button type="button" class="btn danger btn-sm" style="height:28px;padding:0 8px" onclick="TeachAssistant.clearPageAnnotations()" title="پاک کردن کل نوشته‌های این صفحه">🧹 پاک</button>
-          <button type="button" class="btn gray btn-sm" style="height:28px;padding:0 7px" onclick="TeachAssistant.toggleSmartBoardDock()" title="بستن نوار قلم">✖</button>
-        </div>
-      </div>
-    </div>
-
     <!-- نوار نشانک‌ها و پین کلاس‌ها -->
     <div id="teacherBookmarksStrip" class="teach-bookmarks-strip" style="display:none"></div>
 
-    <!-- قاب نمایش صفحه کتاب و بوم تخته هوشمند -->
-    <div class="teach-canvas-stage" id="teacherPdfStage">
+    <!-- قاب نمایش صفحه کتاب و بوم تخته هوشمند (همراه با کشوی کرکره‌ای از بالا به پایین بدون تکان خوردن صفحه + ورق‌زدن با دست) -->
+    <div class="teach-canvas-stage" id="teacherPdfStage" style="position:relative;overflow:hidden">
+      <!-- زبانه کشویی بالای صفحه (با لمس یا کشیدن به پایین، جعبه ابزار تخته هوشمند مثل پرده از بالا باز می‌شود بدون اینکه صفحه پایین برود) -->
+      <div id="sbTopPullTab" class="sb-top-pull-tab" onclick="TeachAssistant.toggleSmartBoardPullDrawer()" title="برای باز و بسته شدن کشوی ابزار تخته هوشمند لمس کنید یا به پایین بکشید">
+        <span id="sbTopPullTabLabel">🖍️ کشوی ابزار تخته هوشمند ▾</span>
+      </div>
+
+      <!-- کشوی کرکره‌ای ابزارهای تخته هوشمند (از بالا به پایین، شناور روی بالای قاب بدون هل دادن صفحه به پایین) -->
+      <div class="teach-annot-bar smartboard-dock sb-top-overlay-drawer" id="teacherAnnotToolbar" dir="rtl">
+        <!-- ردیف ۱: ابزارهای کاربردی تخته هوشمند -->
+        <div class="sb-dock-row">
+          <div class="sb-tool-pills">
+            <button type="button" class="sb-tool-btn active" data-sbtool="pen" onclick="TeachAssistant.setSmartBoardTool('pen', this)" title="قلم روان تدریس">🖊️ قلم</button>
+            <button type="button" class="sb-tool-btn" data-sbtool="highlight" onclick="TeachAssistant.setSmartBoardTool('highlight', this)" title="ماژیک هایلایت روی متن">🖍️ هایلایت</button>
+            <button type="button" class="sb-tool-btn" data-sbtool="laser" onclick="TeachAssistant.setSmartBoardTool('laser', this)" title="نشانگر لیزری موقت">🔴 لیزر</button>
+            <button type="button" class="sb-tool-btn" data-sbtool="line" onclick="TeachAssistant.setSmartBoardTool('line', this)" title="خط‌کش و پیکان صاف">📏 خط/فلش</button>
+            <button type="button" class="sb-tool-btn" data-sbtool="rect" onclick="TeachAssistant.setSmartBoardTool('rect', this)" title="کادر مستطیلی دور نکات مهم">⬜ کادر</button>
+            <button type="button" class="sb-tool-btn" data-sbtool="circle" onclick="TeachAssistant.setSmartBoardTool('circle', this)" title="دایره دور کلیدواژه‌ها">⭕ دایره</button>
+            <button type="button" class="sb-tool-btn" data-sbtool="text" onclick="TeachAssistant.setSmartBoardTool('text', this)" title="درج متن تایپی روی تخته">🔤 متن</button>
+            <button type="button" class="sb-tool-btn" data-sbtool="stamp" onclick="TeachAssistant.setSmartBoardTool('stamp', this)" title="مهر آماده معلم (⭐ مهم امتحانی / ✅ آفرین / ❓ سوال)">📌 مهر معلم</button>
+            <button type="button" class="sb-tool-btn" data-sbtool="ruler" onclick="TeachAssistant.toggleSmartReadingRuler()" title="خط‌بر نورانی روخوانی و تمرکز سطر">🔦 خط‌بر</button>
+            <button type="button" class="sb-tool-btn" data-sbtool="eraser" onclick="TeachAssistant.setSmartBoardTool('eraser', this)" title="پاک‌کن موضعی">🧽 پاک‌کن</button>
+          </div>
+        </div>
+
+        <!-- نوار انتخاب نوع مهر معلم (فقط وقتی ابزار مهر انتخاب شود نمایش داده می‌شود) -->
+        <div id="sbStampPickerRow" style="display:none;gap:5px;flex-wrap:wrap;padding-top:4px;border-top:1px dashed var(--border)">
+          <span class="muted" style="font-size:10.5px;font-weight:800">انتخاب مهر (روی صفحه بزنید):</span>
+          <button type="button" class="chip" onclick="TeachAssistant.selectSmartStamp('⭐ مهم امتحانی!')">⭐ مهم امتحانی!</button>
+          <button type="button" class="chip" onclick="TeachAssistant.selectSmartStamp('✅ آفرین عالی')">✅ آفرین عالی</button>
+          <button type="button" class="chip" onclick="TeachAssistant.selectSmartStamp('❓ سوال پرتکرار')">❓ سوال پرتکرار</button>
+          <button type="button" class="chip" onclick="TeachAssistant.selectSmartStamp('⚠️ دقت کنید!')">⚠️ دقت کنید!</button>
+          <button type="button" class="chip" onclick="TeachAssistant.selectSmartStamp('📌 حفظ شود')">📌 حفظ شود</button>
+        </div>
+
+        <!-- ردیف ۲: پالت رنگ، ضخامت قلم، نوع بوم تخته و دکمه‌های عملیاتی -->
+        <div class="sb-dock-row sb-dock-subrow">
+          <div class="sb-color-dots" id="sbColorDotsWrap">
+            <button type="button" class="sb-color-dot active" data-color="#EA580C" style="background:#EA580C" onclick="TeachAssistant.setSmartBoardColor('#EA580C', this)" title="نارنجی"></button>
+            <button type="button" class="sb-color-dot" data-color="#DC2626" style="background:#DC2626" onclick="TeachAssistant.setSmartBoardColor('#DC2626', this)" title="قرمز"></button>
+            <button type="button" class="sb-color-dot" data-color="#0284C7" style="background:#0284C7" onclick="TeachAssistant.setSmartBoardColor('#0284C7', this)" title="آبی"></button>
+            <button type="button" class="sb-color-dot" data-color="#16A34A" style="background:#16A34A" onclick="TeachAssistant.setSmartBoardColor('#16A34A', this)" title="سبز"></button>
+            <button type="button" class="sb-color-dot" data-color="#7C3AED" style="background:#7C3AED" onclick="TeachAssistant.setSmartBoardColor('#7C3AED', this)" title="بنفش"></button>
+            <button type="button" class="sb-color-dot" data-color="#0F172A" style="background:#0F172A" onclick="TeachAssistant.setSmartBoardColor('#0F172A', this)" title="مشکی"></button>
+            <button type="button" class="sb-color-dot" data-color="#FFFFFF" style="background:#FFFFFF;border:1.5px solid #94A3B8" onclick="TeachAssistant.setSmartBoardColor('#FFFFFF', this)" title="سفید (مناسب تخته سبز/تیره)"></button>
+          </div>
+
+          <div class="sb-size-pills" id="sbSizePillsWrap">
+            <button type="button" class="sb-size-btn" onclick="TeachAssistant.setSmartBoardWidth(2.5, this)">ظریف</button>
+            <button type="button" class="sb-size-btn active" onclick="TeachAssistant.setSmartBoardWidth(4.5, this)">متوسط</button>
+            <button type="button" class="sb-size-btn" onclick="TeachAssistant.setSmartBoardWidth(8, this)">درشت</button>
+          </div>
+
+          <select id="sbSurfaceSelect" onchange="TeachAssistant.setSmartBoardSurface(this.value)" style="width:auto;height:28px;font-size:11px;font-weight:800;padding:0 6px;border-radius:8px">
+            <option value="book">📖 روی صفحه کتاب</option>
+            <option value="white">⬜ تخته سفید کلاسی</option>
+            <option value="chalk">🟩 تخته سبز گچی</option>
+            <option value="grid">📐 تخته شطرنجی ریاضی</option>
+            <option value="lined">📝 دفتر خط‌دار آموزشی</option>
+          </select>
+
+          <div style="display:flex;align-items:center;gap:4px;margin-right:auto">
+            <button type="button" class="btn gray btn-sm" style="height:28px;padding:0 8px" onclick="TeachAssistant.undoAnnotation()" title="واگرد آخرین خط">↩️</button>
+            <button type="button" class="btn gray btn-sm" style="height:28px;padding:0 8px" onclick="TeachAssistant.redoAnnotation()" title="بازگردانی خط">↪️</button>
+            <button type="button" class="btn soft btn-sm" style="height:28px;padding:0 8px" onclick="TeachAssistant.downloadSmartBoardSnapshot()" title="ذخیره تصویر تخته">📸 عکس</button>
+            <button type="button" class="btn danger btn-sm" style="height:28px;padding:0 8px" onclick="TeachAssistant.clearPageAnnotations()" title="پاک کردن صفحه">🧹 پاک</button>
+            <button type="button" class="btn primary btn-sm" style="height:28px;padding:0 8px" onclick="TeachAssistant.collapseSmartBoardDrawerOnly()" title="جمع‌کردن کشو به بالا (قلم روشن می‌ماند)">▴ جمع</button>
+            <button type="button" class="btn gray btn-sm" style="height:28px;padding:0 7px" onclick="TeachAssistant.toggleSmartBoardDock(false)" title="خاموش کردن قلم و ورق‌زدن با دست">✋ ورق‌زدن</button>
+          </div>
+        </div>
+      </div>
+
       <div class="teach-canvas-inner" id="teacherCanvasInner" dir="ltr" style="direction:ltr">
         <canvas id="teacherPdfCanvas" dir="ltr" style="direction:ltr" aria-label="صفحه کتاب"></canvas>
         <div id="smartBoardSurfaceOverlay" class="sb-surface-overlay" style="display:none"></div>
+        <div id="readingSpotlightRuler" class="reading-spotlight-ruler" title="خط‌بر نورانی روخوانی (با انگشت بالا و پایین بکشید)"></div>
         <!-- کارت شناور نمایش سوال/فعالیت حل‌شده روی تخته هوشمند -->
         <div id="smartBoardPinnedCard" class="sb-pinned-solution-card" style="display:none" dir="rtl"></div>
         <canvas id="teacherAnnotCanvas" dir="ltr" style="direction:ltr" aria-label="لایه قلم تخته هوشمند"></canvas>
@@ -6174,7 +6197,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.5 Pro</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.6 Pro</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6506,7 +6529,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '7.5.0 Pro';
+const APP_VERSION = '7.6.0 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -23992,6 +24015,1807 @@ ${raw.slice(0, 3000)}
     }
   };
 }
+
+/* ==================== موتور جامع ارتقای نسخه v7.6.0 Pro:
+   ۱. حالت کتابی لیست سریع + عکس قابل تشخیص با دکمه فعال/غیرفعال‌سازی در لیست سریع و لیست جامع
+   ۲. ورق‌زدن صفحات با کشیدن دست (Touch Swipe) در کتاب‌خوان و حالت کتابی لیست سریع
+   ۳. کشوی کرکره‌ای از بالا به پایین برای تخته هوشمند (بدون پایین رفتن صفحه) + ابزارهای کاربردی‌تر (مهر معلم، خط‌بر، اشکال)
+   ۴. جعبه ابزار حرفه‌ای، شیک و جمع‌وجور معلم (ماشین‌حساب علمی و تبدیل بارم، تایمر زنگ‌دار، قرعه‌کشی و گروه‌بندی، تلفظ و یادداشت)
+   ۵. خروجی کامل از جواب فرم‌های آنلاین (Excel رنگی، Word، چاپ/PDF و کپی)
+   ۶. گنجینه یادگاری و بایگانی همیشگی مدارس (با حفظ دائمی عکس‌ها، کلاس‌ها و خاطرات معلم)
+   ۷. سامانه ثبت و پیگیری «تکالیف و کار عملی فردی» در لیست سریع، جدول جامع و پرونده دانش‌آموز
+==================== */
+
+(function injectV76ProStyles() {
+  const st = document.createElement('style');
+  st.id = 'v76-pro-styles';
+  st.textContent = `
+    /* ۱. کشوی کرکره‌ای از بالا به پایین روی قاب تخته هوشمند (بدون جابه‌جایی صفحه) */
+    .sb-top-pull-tab {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 32;
+      background: linear-gradient(135deg, #EA580C, #D97706);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 3px 14px 4px;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.32);
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .sb-top-pull-tab:active {
+      transform: translateX(-50%) scale(0.95);
+    }
+    .sb-top-overlay-drawer {
+      position: absolute !important;
+      top: 26px !important;
+      left: 6px !important;
+      right: 6px !important;
+      z-index: 31 !important;
+      margin: 0 !important;
+      background: rgba(255, 251, 245, 0.96) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1.5px solid #F97316 !important;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.22) !important;
+      transform: translateY(-135%);
+      opacity: 0;
+      pointer-events: none;
+      display: flex !important;
+      transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.22s ease !important;
+    }
+    body.cyber-dark-theme .sb-top-overlay-drawer {
+      background: rgba(15, 23, 42, 0.95) !important;
+    }
+    .sb-top-overlay-drawer.drawer-open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .sb-top-overlay-drawer.drawing-fade {
+      opacity: 0.18 !important;
+      pointer-events: none !important;
+    }
+
+    /* ۲. عکس قابل تشخیص دانش‌آموز در لیست سریع و لیست جامع */
+    .list-stu-thumb {
+      width: 42px !important;
+      height: 42px !important;
+      border-radius: 13px !important;
+      object-fit: cover !important;
+      border: 2px solid var(--primary) !important;
+      background: var(--bg-panel);
+      flex-shrink: 0;
+      cursor: zoom-in;
+      box-shadow: 0 2px 6px rgba(234, 88, 12, 0.15);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 14px;
+      color: var(--primary);
+      overflow: hidden;
+    }
+    .list-stu-thumb img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+    }
+    .att-stu-thumb {
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 11px !important;
+      border: 1.5px solid var(--primary) !important;
+      background: var(--bg-panel);
+      flex-shrink: 0;
+      cursor: zoom-in;
+      display: inline-grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 12.5px;
+      color: var(--primary);
+      overflow: hidden;
+      margin-left: 5px;
+    }
+    .att-stu-thumb img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+    }
+
+    /* ۳. حالت کتابی لیست سریع (Book / Flip Roster Mode) */
+    .td-book-stage {
+      padding: 12px;
+      background: linear-gradient(135deg, var(--bg-panel), var(--bg-card));
+      border-radius: 16px;
+      position: relative;
+      user-select: none;
+      touch-action: pan-y;
+    }
+    .td-book-spread {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 12px;
+      transition: transform 0.24s ease, opacity 0.24s ease;
+    }
+    .td-book-page-card {
+      background: var(--bg-card);
+      border: 2px solid var(--primary-border);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.07);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .td-book-big-photo {
+      width: 96px !important;
+      height: 96px !important;
+      border-radius: 24px !important;
+      border: 3px solid var(--primary) !important;
+      background: var(--bg-panel);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--primary);
+      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.20);
+      margin-bottom: 8px;
+      cursor: zoom-in;
+      position: relative;
+    }
+    .td-book-big-photo img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+    .td-book-cam-mini {
+      position: absolute;
+      bottom: 2px;
+      left: 2px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 13px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+
+    /* ۴. کپسول وضعیت تکلیف و کار عملی فردی */
+    .hw-status-pill {
+      height: 30px !important;
+      min-height: 30px !important;
+      padding: 0 8px !important;
+      border-radius: 9px !important;
+      font-size: 11px !important;
+      font-weight: 900 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 3px !important;
+      cursor: pointer;
+      border: 1px solid var(--border) !important;
+      background: var(--bg-panel) !important;
+      color: var(--text-muted) !important;
+      white-space: nowrap;
+    }
+    .hw-status-pill.hw-done {
+      background: #DCFCE7 !important;
+      color: #15803D !important;
+      border-color: #86EFAC !important;
+    }
+    .hw-status-pill.hw-partial {
+      background: #FEF3C7 !important;
+      color: #B45309 !important;
+      border-color: #FCD34D !important;
+    }
+    .hw-status-pill.hw-missed {
+      background: #FEE2E2 !important;
+      color: #B91C1C !important;
+      border-color: #FCA5A5 !important;
+    }
+
+    /* ۵. استایل ماشین‌حساب و جعبه ابزار حرفه‌ای معلم */
+    .pro-calc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .pro-calc-btn {
+      height: 42px !important;
+      border-radius: 12px !important;
+      font-size: 15px !important;
+      font-weight: 900 !important;
+      background: var(--bg-panel) !important;
+      color: var(--text-main) !important;
+      border: 1px solid var(--border) !important;
+      cursor: pointer;
+    }
+    .pro-calc-btn.op {
+      background: rgba(234, 88, 12, 0.14) !important;
+      color: var(--primary) !important;
+      border-color: var(--primary-border) !important;
+    }
+    .pro-calc-btn.eq {
+      background: linear-gradient(135deg, #EA580C, #D97706) !important;
+      color: #FFFFFF !important;
+      border: none !important;
+    }
+
+    /* ۶. کارت‌های گنجینه یادگاری مدارس */
+    .keepsake-school-card {
+      border: 2px solid #F59E0B !important;
+      background: linear-gradient(135deg, rgba(255, 251, 235, 0.9), var(--bg-card)) !important;
+      border-radius: 18px !important;
+      padding: 14px !important;
+      position: relative;
+    }
+    body.cyber-dark-theme .keepsake-school-card {
+      background: linear-gradient(135deg, rgba(120, 53, 15, 0.22), var(--bg-card)) !important;
+    }
+    /* انیمیشن ورق‌زدن صفحه با دست */
+    @keyframes pageSwipeNextAnim {
+      0% { opacity: 0.55; transform: translateX(-18px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pageSwipePrevAnim {
+      0% { opacity: 0.55; transform: translateX(18px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    .swipe-anim-next { animation: pageSwipeNextAnim 0.22s ease-out; }
+    .swipe-anim-prev { animation: pageSwipePrevAnim 0.22s ease-out; }
+  `;
+  document.head.appendChild(st);
+})();
+
+
+/* ==================== ۱. کشوی کرکره‌ای از بالا به پایین برای تخته هوشمند + ورق‌زدن صفحه کتاب با کشیدن دست ==================== */
+
+TeachAssistant._drawerOpen = false;
+TeachAssistant._selectedStampText = '⭐ مهم امتحانی!';
+
+TeachAssistant.toggleSmartBoardPullDrawer = function(forceOpen = null) {
+  const dock = document.getElementById('teacherAnnotToolbar');
+  const lbl = document.getElementById('sbTopPullTabLabel');
+  if (!dock) return;
+  this._drawerOpen = forceOpen !== null ? !!forceOpen : !this._drawerOpen;
+  dock.classList.toggle('drawer-open', this._drawerOpen);
+  dock.classList.remove('drawing-fade');
+
+  if (this._drawerOpen && !this._annotMode) {
+    this._annotMode = true;
+    document.getElementById('btnToggleAnnotate')?.classList.add('active');
+    document.getElementById('teacherAnnotCanvas')?.classList.add('drawing-active');
+  }
+  if (lbl) {
+    lbl.textContent = this._drawerOpen
+      ? '▴ بستن کشوی ابزار تخته (قلم فعال)'
+      : (this._annotMode ? '🖍️ قلم تخته فعال است (باز کردن کشو ▾)' : '🖍️ کشوی ابزار تخته هوشمند ▾');
+  }
+};
+
+TeachAssistant.collapseSmartBoardDrawerOnly = function() {
+  this.toggleSmartBoardPullDrawer(false);
+  toast('کشو جمع شد؛ می‌توانید روی تمام صفحه بنویسید 🖊️');
+};
+
+TeachAssistant.toggleSmartBoardDock = function(forceState = null) {
+  const nextState = forceState !== null ? !!forceState : !this._annotMode;
+  this._annotMode = nextState;
+  const btn = document.getElementById('btnToggleAnnotate');
+  const ac = document.getElementById('teacherAnnotCanvas');
+  if (btn) btn.classList.toggle('active', this._annotMode);
+
+  const pdfCanvas = document.getElementById('teacherPdfCanvas');
+  if (this._annotMode && (!pdfCanvas || pdfCanvas.style.display === 'none') && this._sbSurface === 'book') {
+    this.openStandaloneSmartBoard('white');
+    return;
+  }
+
+  if (ac) ac.classList.toggle('drawing-active', this._annotMode);
+  this.toggleSmartBoardPullDrawer(this._annotMode);
+
+  if (!this._annotMode) {
+    toast('✋ قلم خاموش شد — اکنون می‌توانید با کشیدن دست روی صفحه ورق بزنید');
+  }
+};
+
+const _origSetSbToolV75 = TeachAssistant.setSmartBoardTool.bind(TeachAssistant);
+TeachAssistant.setSmartBoardTool = function(tool, btnEl) {
+  _origSetSbToolV75(tool, btnEl);
+  const stampRow = document.getElementById('sbStampPickerRow');
+  if (stampRow) stampRow.style.display = tool === 'stamp' ? 'flex' : 'none';
+};
+
+TeachAssistant.selectSmartStamp = function(txt) {
+  this._selectedStampText = txt;
+  this.setSmartBoardTool('stamp', document.querySelector('#teacherAnnotToolbar .sb-tool-btn[data-sbtool="stamp"]'));
+  toast(`مهر «${txt}» آماده است؛ هر جای صفحه لمس کنید ثبت می‌شود 📌`);
+};
+
+TeachAssistant.toggleSmartReadingRuler = function() {
+  const r = document.getElementById('readingSpotlightRuler');
+  if (!r) return;
+  const show = r.classList.toggle('show');
+  if (show && !r.style.top) r.style.top = '110px';
+  toast(show ? '🔦 خط‌بر نورانی تمرکز سطر فعال شد (با دست جابه‌جا کنید)' : 'خط‌بر نورانی غیرفعال شد');
+};
+
+// پشتیبانی از ابزار مهر معلم (stamp) و محو شدن خودکار کشوی بالا هنگام کشیدن خط روی تخته
+const _origSetupAnnotV75 = TeachAssistant.setupAnnotationLayer.bind(TeachAssistant);
+TeachAssistant.setupAnnotationLayer = function(cssW, cssH) {
+  _origSetupAnnotV75(cssW, cssH);
+  const ac = document.getElementById('teacherAnnotCanvas');
+  if (!ac || ac._boundV76Enhancements) return;
+  ac._boundV76Enhancements = true;
+
+  ac.addEventListener('pointerdown', (ev) => {
+    if (!this._annotMode) return;
+    if (this._drawerOpen) {
+      document.getElementById('teacherAnnotToolbar')?.classList.add('drawing-fade');
+    }
+    if (this._sbTool === 'stamp') {
+      const rect = ac.getBoundingClientRect();
+      const pt = {
+        x: Math.max(0.05, Math.min(0.95, Math.round(((ev.clientX - rect.left) / (rect.width || 1)) * 1000) / 1000)),
+        y: Math.max(0.05, Math.min(0.95, Math.round(((ev.clientY - rect.top) / (rect.height || 1)) * 1000) / 1000))
+      };
+      this.ensureLibraryStructure();
+      const pKey = String(Number(window._teacherPdfPage) || 1);
+      if (!Array.isArray(db.cachedBook.annotations[pKey])) db.cachedBook.annotations[pKey] = [];
+      db.cachedBook.annotations[pKey].push({
+        tool: 'text',
+        text: this._selectedStampText || '⭐ مهم امتحانی!',
+        color: this._sbColor || '#EA580C',
+        width: 5.5,
+        pts: [pt]
+      });
+      this._isDrawing = false;
+      this._currentStroke = null;
+      this.syncActiveToLibrary();
+      savePersistent();
+      this.redrawPageAnnotations();
+      if (window.triggerHapticVibrate) window.triggerHapticVibrate('tap');
+    }
+  });
+
+  window.addEventListener('pointerup', () => {
+    document.getElementById('teacherAnnotToolbar')?.classList.remove('drawing-fade');
+  });
+};
+
+// قابلیت ورق‌زدن صفحه کتاب با کشیدن دست (Touch Swipe Left/Right) + کشیدن زبانه بالای تخته هوشمند به پایین
+(function bindBookSwipeAndPullDrawerGestures() {
+  window.addEventListener('DOMContentLoaded', () => {
+    const stage = document.getElementById('teacherPdfStage');
+    const pullTab = document.getElementById('sbTopPullTab');
+    const ruler = document.getElementById('readingSpotlightRuler');
+
+    // الف) کشیدن خط‌بر نورانی با انگشت
+    if (ruler) {
+      let draggingRuler = false;
+      ruler.addEventListener('pointerdown', (ev) => {
+        draggingRuler = true;
+        ruler.setPointerCapture?.(ev.pointerId);
+        ev.stopPropagation();
+      });
+      ruler.addEventListener('pointermove', (ev) => {
+        if (!draggingRuler || !stage) return;
+        const rect = stage.getBoundingClientRect();
+        const y = Math.max(10, Math.min(rect.height - 28, ev.clientY - rect.top - 12));
+        ruler.style.top = y + 'px';
+      });
+      ruler.addEventListener('pointerup', () => { draggingRuler = false; });
+    }
+
+    // ب) کشیدن زبانه بالای تخته هوشمند به پایین برای باز شدن کشو
+    if (pullTab) {
+      let startY = null;
+      pullTab.addEventListener('touchstart', (e) => {
+        startY = e.touches?.[0]?.clientY ?? null;
+      }, { passive: true });
+      pullTab.addEventListener('touchend', (e) => {
+        if (startY === null) return;
+        const endY = e.changedTouches?.[0]?.clientY ?? startY;
+        if (endY - startY > 22) {
+          TeachAssistant.toggleSmartBoardPullDrawer(true);
+        } else if (startY - endY > 22) {
+          TeachAssistant.toggleSmartBoardPullDrawer(false);
+        }
+        startY = null;
+      }, { passive: true });
+    }
+
+    // ج) ورق‌زدن صفحه کتاب با کشیدن دست چپ و راست (زمانی که قلم تخته خاموش است)
+    if (stage) {
+      let touchStartX = null, touchStartY = null, touchStartTime = 0;
+      stage.addEventListener('touchstart', (ev) => {
+        if (TeachAssistant._annotMode) return;
+        if (ev.touches.length !== 1) return;
+        touchStartX = ev.touches[0].clientX;
+        touchStartY = ev.touches[0].clientY;
+        touchStartTime = Date.now();
+      }, { passive: true });
+
+      stage.addEventListener('touchend', (ev) => {
+        if (TeachAssistant._annotMode || touchStartX === null) return;
+        const dx = (ev.changedTouches?.[0]?.clientX ?? touchStartX) - touchStartX;
+        const dy = (ev.changedTouches?.[0]?.clientY ?? touchStartY) - touchStartY;
+        const dt = Date.now() - touchStartTime;
+        touchStartX = null;
+
+        // اگر حرکت افقی انگشت واضح است (بیش از ۵۲ پیکسل و افقی‌تر از عمودی)
+        if (dt < 750 && Math.abs(dx) > 52 && Math.abs(dx) > Math.abs(dy) * 1.35) {
+          const inner = document.getElementById('teacherCanvasInner');
+          if (dx > 0) {
+            // در کتاب فارسی (RTL)، کشیدن به راست یعنی رفتن به صفحه بعد (یا قبل بسته به عادت؛ استاندارد ورق زدن کتاب فارسی: کشیدن به راست = صفحه بعد)
+            if (inner) { inner.classList.remove('swipe-anim-next', 'swipe-anim-prev'); void inner.offsetWidth; inner.classList.add('swipe-anim-next'); }
+            TeachAssistant.changeStudyPage(1);
+            if (window.triggerHapticVibrate) window.triggerHapticVibrate('tap');
+          } else {
+            if (inner) { inner.classList.remove('swipe-anim-next', 'swipe-anim-prev'); void inner.offsetWidth; inner.classList.add('swipe-anim-prev'); }
+            TeachAssistant.changeStudyPage(-1);
+            if (window.triggerHapticVibrate) window.triggerHapticVibrate('tap');
+          }
+        }
+      }, { passive: true });
+    }
+  });
+})();
+
+
+/* ==================== ۲. سامانه «📓 انجام تکالیف و کار عملی فردی» در کل برنامه ==================== */
+
+window.ensureStudentHomeworkArray = function(st) {
+  if (!st) return [];
+  if (!Array.isArray(st.homeworks)) st.homeworks = [];
+  return st.homeworks;
+};
+
+window.getStudentHomeworkStats = function(st, dateISO = null) {
+  const list = window.ensureStudentHomeworkArray(st);
+  const doneCnt = list.filter(x => x.status === 'done').length;
+  const partialCnt = list.filter(x => x.status === 'partial').length;
+  const missedCnt = list.filter(x => x.status === 'missed').length;
+  const scored = list.filter(x => x.score !== null && x.score !== undefined && x.score !== '' && Number.isFinite(Number(x.score)));
+  const avgSc = scored.length ? (scored.reduce((a, b) => a + Number(b.score), 0) / scored.length) : null;
+  const todayRec = dateISO ? list.find(x => x.dateISO === dateISO) : null;
+  return { list, doneCnt, partialCnt, missedCnt, avgSc, todayRec };
+};
+
+// تغییر سریع وضعیت تکلیف/کار عملی امروز دانش‌آموز با ۱ لمس در لیست سریع
+window.inlToggleHomeworkStatus = function(sid, cid, stid, dateISO = null) {
+  const c = findClass(sid, cid);
+  const st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const d = dateISO || window.currentListDate || localISODate();
+  const list = window.ensureStudentHomeworkArray(st);
+  let rec = list.find(x => x.dateISO === d);
+
+  const order = ['none', 'done', 'partial', 'missed'];
+  const cur = rec ? rec.status : 'none';
+  const next = order[(order.indexOf(cur) + 1) % order.length];
+
+  if (next === 'none') {
+    st.homeworks = list.filter(x => x.dateISO !== d);
+  } else if (!rec) {
+    list.unshift({
+      id: uid(),
+      dateISO: d,
+      dateFa: formatJalaliDate(d),
+      type: 'homework',
+      title: `تکلیف / فعالیت کلاسی (${formatAttendanceDate(d)})`,
+      status: next,
+      score: next === 'done' ? 20 : (next === 'partial' ? 14 : 0),
+      note: ''
+    });
+  } else {
+    rec.status = next;
+    if (next === 'done' && !rec.score) rec.score = 20;
+    else if (next === 'missed') rec.score = 0;
+  }
+
+  savePersistent();
+  if (window.triggerHapticVibrate) window.triggerHapticVibrate('tap');
+
+  // بروزرسانی دکمه در لیست سریع یا حالت کتابی یا جدول جامع
+  const btn = document.getElementById(`tdHwBtn_${stid}`);
+  if (btn) {
+    const meta = window.getHwStatusButtonMeta(next);
+    btn.className = `hw-status-pill ${meta.cls}`;
+    btn.innerHTML = meta.html;
+  }
+  const cell = document.getElementById(`hwCell_${stid}`);
+  if (cell) {
+    cell.innerHTML = window.renderInteractiveHwCellInner(sid, cid, st);
+  }
+};
+
+window.getHwStatusButtonMeta = function(status) {
+  if (status === 'done') return { cls: 'hw-done', html: '📓 تکلیف: ✅ کامل' };
+  if (status === 'partial') return { cls: 'hw-partial', html: '📓 تکلیف: 🟡 ناقص' };
+  if (status === 'missed') return { cls: 'hw-missed', html: '📓 تکلیف: ❌ نداده' };
+  return { cls: '', html: '📓 تکلیف/عملی' };
+};
+
+window.renderInteractiveHwCellInner = function(sid, cid, st) {
+  const stats = window.getStudentHomeworkStats(st, window.currentListDate || localISODate());
+  return `
+    <div class="att-beh-editor-wrap" style="gap:3px">
+      <button type="button" class="att-beh-step-btn pos-add" onclick="event.stopPropagation();quickAddStudentHomeworkDone('${sid}','${cid}','${st.id}')" title="ثبت سریع انجام تکلیف/کار عملی کامل (＋)">＋</button>
+      <span class="att-beh-count-lbl" onclick="event.stopPropagation();openStudentHomeworkPracticalModal('${sid}','${cid}','${st.id}')" title="مشاهده و مدیریت تکالیف و کارهای عملی فردی">
+        ✅${fa(stats.doneCnt)} / ❌${fa(stats.missedCnt)}${stats.avgSc !== null ? ` (${fmtScore(stats.avgSc)})` : ''}
+      </span>
+      <button type="button" class="att-beh-edit-btn" onclick="event.stopPropagation();openStudentHomeworkPracticalModal('${sid}','${cid}','${st.id}')" title="ثبت یا ویرایش کار عملی و تکلیف فردی">📓</button>
+    </div>
+  `;
+};
+
+window.quickAddStudentHomeworkDone = function(sid, cid, stid) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const d = window.currentListDate || localISODate();
+  window.ensureStudentHomeworkArray(st).unshift({
+    id: uid(),
+    dateISO: d,
+    dateFa: formatJalaliDate(d),
+    type: 'practical',
+    title: `تکلیف و کار عملی (${formatAttendanceDate(d)})`,
+    status: 'done',
+    score: 20,
+    note: ''
+  });
+  savePersistent();
+  const cell = document.getElementById(`hwCell_${stid}`);
+  if (cell) cell.innerHTML = window.renderInteractiveHwCellInner(sid, cid, st);
+  if (window.triggerHapticVibrate) window.triggerHapticVibrate('success');
+  toast(`📓 تکلیف/کار عملی کامل برای «${st.name} ${st.lastName}» ثبت شد ✅`);
+};
+
+// پنجره جامع مدیریت «تکالیف و کار عملی فردی» دانش‌آموز
+window.openStudentHomeworkPracticalModal = function(sid, cid, stid) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const stats = window.getStudentHomeworkStats(st);
+  const step = window.getScoreRoundStep ? window.getScoreRoundStep() : 0.25;
+
+  const itemsHtml = stats.list.length ? stats.list.map(item => {
+    const badge = item.status === 'done' ? '<span style="color:#15803D;font-weight:900">✅ کامل</span>' : (item.status === 'partial' ? '<span style="color:#B45309;font-weight:900">🟡 ناقص</span>' : '<span style="color:#B91C1C;font-weight:900">❌ انجام نداده</span>');
+    const typeLbl = item.type === 'practical' ? '🛠️ کار عملی فردی' : (item.type === 'project' ? '🔬 پروژه/تحقیق' : '📝 تکلیف درسی');
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 11px;border-radius:12px;background:var(--bg-panel);border:1px solid var(--border)">
+        <div style="min-width:0;flex:1">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span class="chip" style="font-size:10px">${typeLbl}</span>
+            <b style="font-size:12.5px;color:var(--text-main)">${esc(item.title || 'تکلیف')}</b>
+            ${badge}
+          </div>
+          <div class="muted" style="font-size:11px;margin-top:3px">
+            📅 ${esc(item.dateFa || '')} ${item.score !== undefined && item.score !== null && item.score !== '' ? `· ⭐ نمره: <b>${fmtScore(item.score)}</b>` : ''} ${item.note ? `· 💬 ${esc(item.note)}` : ''}
+          </div>
+        </div>
+        <button type="button" class="btn danger btn-sm" onclick="deleteStudentHomeworkItem('${sid}','${cid}','${stid}','${item.id}')">حذف ×</button>
+      </div>
+    `;
+  }).join('') : '<div class="muted" style="padding:14px;text-align:center;border:1px dashed var(--border);border-radius:12px">هنوز تکلیف یا کار عملی فردی برای این دانش‌آموز ثبت نشده است.</div>';
+
+  openModal(formHeader(`📓 تکالیف و کار عملی فردی — ${formatStudentName(st)}`) + `
+    <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--primary)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+        <span class="chip">✅ تکمیل‌شده: <b>${fa(stats.doneCnt)}</b></span>
+        <span class="chip">🟡 ناقص: <b>${fa(stats.partialCnt)}</b></span>
+        <span class="chip">❌ انجام‌نشده: <b>${fa(stats.missedCnt)}</b></span>
+        <span class="chip">⭐ میانگین کار عملی: <b>${stats.avgSc !== null ? fmtScore(stats.avgSc) : '—'}</b></span>
+      </div>
+
+      <div class="formgrid">
+        <div class="field">
+          <label>📌 نوع فعالیت فردی:</label>
+          <select id="hwTypeSel">
+            <option value="homework">📝 تکلیف درسی و تمرین کتاب</option>
+            <option value="practical">🛠️ کار عملی و مهارت فردی</option>
+            <option value="project">🔬 پروژه، تحقیق یا کاردستی</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>📊 وضعیت انجام:</label>
+          <select id="hwStatusSel">
+            <option value="done">✅ کامل و عالی انجام داده</option>
+            <option value="partial">🟡 ناقص / نیازمند اصلاح</option>
+            <option value="missed">❌ انجام نداده</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>📖 عنوان تکلیف یا کار عملی:</label>
+          <input type="text" id="hwTitleInp" placeholder="مثلاً: حل تمرین صفحه ۲۴ / ساخت مدار الکتریکی...">
+        </div>
+        <div class="field">
+          <label>⭐ نمره (از ۲۰ — اختیاری):</label>
+          <input type="number" id="hwScoreInp" step="${step}" min="0" max="20" value="20" placeholder="مثلاً 20">
+        </div>
+        <div class="field full">
+          <label>💬 توضیحات معلم (اختیاری):</label>
+          <input type="text" id="hwNoteInp" placeholder="نکته مثبت یا علت کسر نمره...">
+        </div>
+      </div>
+      <label class="switch-card" style="margin-top:8px;background:var(--bg-card)">
+        <span>📈 ثبت همزمان نمره این کار عملی در لیست نمرات مستمر دانش‌آموز</span>
+        <input type="checkbox" id="hwSyncToGradesCb" checked>
+      </label>
+      <button type="button" class="btn primary block" style="margin-top:8px" onclick="saveNewStudentHomeworkItem('${sid}','${cid}','${stid}')">➕ ثبت در پرونده تکالیف و کار عملی</button>
+    </div>
+
+    <div class="card">
+      <b style="color:var(--primary);font-size:13px;display:block;margin-bottom:8px">📋 سوابق تکالیف و کارهای عملی ثبت‌شده (${fa(stats.list.length)})</b>
+      <div style="display:grid;gap:6px;max-height:34vh;overflow-y:auto">${itemsHtml}</div>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.saveNewStudentHomeworkItem = function(sid, cid, stid) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  const type = document.getElementById('hwTypeSel')?.value || 'homework';
+  const status = document.getElementById('hwStatusSel')?.value || 'done';
+  const typeDefaultTitle = type === 'practical' ? 'کار عملی فردی' : (type === 'project' ? 'پروژه و تحقیق فردی' : 'تکلیف درسی');
+  const title = (document.getElementById('hwTitleInp')?.value || '').trim() || `${typeDefaultTitle} (${formatJalaliDate(localISODate())})`;
+  const scRaw = document.getElementById('hwScoreInp')?.value ?? '';
+  const score = scRaw !== '' ? (window.roundByConfigurableStep ? window.roundByConfigurableStep(scRaw) : roundQuarter(scRaw)) : null;
+  const note = (document.getElementById('hwNoteInp')?.value || '').trim();
+  const syncToGrades = document.getElementById('hwSyncToGradesCb')?.checked;
+
+  window.ensureStudentHomeworkArray(st).unshift({
+    id: uid(),
+    dateISO: window.currentListDate || localISODate(),
+    dateFa: formatJalaliDate(window.currentListDate || localISODate()),
+    type,
+    title,
+    status,
+    score,
+    note
+  });
+
+  if (syncToGrades && score !== null) {
+    gradesData(st).push({
+      id: uid(),
+      date: new Date().toISOString(),
+      subject: `📓 ${title}`,
+      score,
+      gradeType: 'class_score'
+    });
+  }
+
+  evaluateAutoStatus(c, st);
+  savePersistent();
+  renderAll();
+  window.openStudentHomeworkPracticalModal(sid, cid, stid);
+  toast('📓 تکلیف / کار عملی فردی با موفقیت ثبت شد ✅');
+};
+
+window.deleteStudentHomeworkItem = function(sid, cid, stid, itemId) {
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  if (!c || !st) return;
+  st.homeworks = window.ensureStudentHomeworkArray(st).filter(x => x.id !== itemId);
+  savePersistent();
+  renderAll();
+  window.openStudentHomeworkPracticalModal(sid, cid, stid);
+};
+
+
+/* ==================== ۳. حالت کتابی لیست سریع (Book Mode) + عکس قابل تشخیص با دکمه فعال/غیرفعال‌سازی در لیست سریع و لیست جامع ==================== */
+
+window.isListStudentPhotosEnabled = function() {
+  return localStorage.getItem('danesh_show_list_photos') !== '0';
+};
+
+window.toggleListStudentPhotos = function() {
+  const next = !window.isListStudentPhotosEnabled();
+  try { localStorage.setItem('danesh_show_list_photos', next ? '1' : '0'); } catch (_) {}
+  if (document.getElementById('attendance')?.classList.contains('active')) {
+    openAttendance(currentSchoolId, currentClassId);
+  } else if (document.getElementById('classTodayListContainer')?.style.display !== 'none') {
+    renderTodayListInner(currentSchoolId, currentClassId);
+  } else {
+    renderAll();
+  }
+  toast(next ? '🖼️ نمایش عکس قابل تشخیص دانش‌آموزان در لیست فعال شد ✅' : 'نمایش عکس کوچک دانش‌آموزان در لیست مخفی شد');
+};
+
+window._quickListBookMode = false;
+window._quickListBookPageIdx = 0;
+
+window.setQuickListDisplayMode = function(isBookMode, sid, cid) {
+  window._quickListBookMode = !!isBookMode;
+  window._quickListBookPageIdx = 0;
+  renderTodayListInner(sid || currentSchoolId, cid || currentClassId);
+};
+
+window.stepQuickListBookPage = function(delta, sid, cid) {
+  const c = findClass(sid || currentSchoolId, cid || currentClassId);
+  if (!c) return;
+  const perPage = window.innerWidth >= 640 ? 2 : 1;
+  const totalPages = Math.max(1, Math.ceil((c.students || []).length / perPage));
+  window._quickListBookPageIdx = Math.max(0, Math.min(totalPages - 1, (window._quickListBookPageIdx || 0) + delta));
+  renderTodayListInner(sid || currentSchoolId, cid || currentClassId);
+  const spread = document.getElementById('tdBookSpreadBox');
+  if (spread) {
+    spread.classList.remove('swipe-anim-next', 'swipe-anim-prev');
+    void spread.offsetWidth;
+    spread.classList.add(delta > 0 ? 'swipe-anim-next' : 'swipe-anim-prev');
+  }
+  if (window.triggerHapticVibrate) window.triggerHapticVibrate('tap');
+};
+
+// آپلود سریع عکس دانش‌آموز مستقیماً از داخل لیست سریع یا لیست جامع
+window.quickUploadStudentPhotoInline = function(sid, cid, stid, ev) {
+  const file = ev.target.files?.[0];
+  if (!file) return;
+  const st = findStudent(sid, cid, stid);
+  if (!st) return;
+  compressImage(file, 380, 0.78).then(dataUrl => {
+    st.photo = dataUrl;
+    if (window._photoVaultMemoryCache) {
+      window._photoVaultMemoryCache['stu_' + st.id] = dataUrl;
+    }
+    savePersistent();
+    if (document.getElementById('attendance')?.classList.contains('active')) {
+      openAttendance(sid, cid);
+    } else {
+      renderTodayListInner(sid, cid);
+    }
+    toast(`📸 عکس «${st.name} ${st.lastName}» ذخیره شد ✅`);
+  }).catch(() => {});
+  ev.target.value = '';
+};
+
+// بازنویسی کامل renderTodayListInner با:
+// ۱. دکمه روشن/خاموش کردن عکس قابل تشخیص دانش‌آموزان (🖼️ عکس‌ها)
+// ۲. سوییچ «📋 حالت لیستی» و «📖 حالت کتابی (ورق‌زدن با دست)»
+// ۳. دکمه وضعیت تکلیف و کار عملی فردی (📓 تکلیف/عملی)
+renderTodayListInner = function(sid, cid) {
+  const c = findClass(sid, cid);
+  if (!c) return;
+  const dateISO = window.currentListDate || localISODate();
+  if (!c.attendance) c.attendance = {};
+  if (!c.attendance[dateISO]) c.attendance[dateISO] = {};
+  if (!c.sessionNotes) c.sessionNotes = {};
+  const noteVal = c.sessionNotes[dateISO] || '';
+  const allDates = attendanceDates(c);
+  const scoredTodayCount = (c.students || []).filter(st => attendanceScore(c, dateISO, st.id) !== null).length;
+  const showPhotos = window.isListStudentPhotosEnabled();
+  const isBook = !!window._quickListBookMode;
+  const sortedStudents = sortStudents(c.students || []);
+
+  let bodyContentHtml = '';
+
+  if (isBook && sortedStudents.length > 0) {
+    const perPage = window.innerWidth >= 640 ? 2 : 1;
+    const totalPages = Math.max(1, Math.ceil(sortedStudents.length / perPage));
+    window._quickListBookPageIdx = Math.max(0, Math.min(totalPages - 1, window._quickListBookPageIdx || 0));
+    const startIdx = window._quickListBookPageIdx * perPage;
+    const pageStudents = sortedStudents.slice(startIdx, startIdx + perPage);
+
+    const cardsHtml = pageStudents.map((st, localI) => {
+      const idx = startIdx + localI;
+      const isAbs = attendanceStatus(c, dateISO, st.id) === 'absent';
+      const sc = attendanceScore(c, dateISO, st.id);
+      const b = behaviorData(st);
+      const autoAttn = isAutoAttention(c, st);
+      const hwStats = window.getStudentHomeworkStats(st, dateISO);
+      const hwStatus = hwStats.todayRec ? hwStats.todayRec.status : 'none';
+      const hwMeta = window.getHwStatusButtonMeta(hwStatus);
+
+      return `
+        <div class="td-book-page-card" style="${autoAttn ? 'border-color:var(--neon-red)' : ''}">
+          <span class="chip" style="position:absolute;top:10px;right:10px;font-size:10.5px">نفر ${fa(idx + 1)} از ${fa(sortedStudents.length)}</span>
+          <button type="button" class="btn soft btn-sm" style="position:absolute;top:10px;left:10px;height:26px;padding:0 8px;font-size:10.5px" onclick="openStudent('${sid}','${cid}','${st.id}')">پرونده ↗️</button>
+
+          <div class="td-book-big-photo" ${st.photo ? `onclick="openPhotoViewer('${st.photo}','${safeFileName(st.name + '-' + st.lastName)}.jpg')"` : ''}>
+            ${st.photo ? `<img src="${st.photo}" alt="${esc(st.name)}">` : esc((st.name || '?')[0])}
+            <label class="td-book-cam-mini" onclick="event.stopPropagation()" title="افزودن یا تغییر عکس دانش‌آموز">
+              📷<input type="file" accept="image/*" hidden onchange="quickUploadStudentPhotoInline('${sid}','${cid}','${st.id}',event)">
+            </label>
+          </div>
+
+          <h3 style="margin:2px 0;font-size:16px;font-weight:900;color:${autoAttn ? 'var(--neon-red)' : 'var(--text-main)'}">${formatStudentName(st)}${autoAttn ? ' 🔴' : ''}</h3>
+          <div class="muted" style="font-size:11.5px;margin-bottom:10px">
+            ${st.fatherName ? `فرزند ${esc(st.fatherName)} · ` : ''}مستمر: <b>${avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—'}</b> · ➕${fa(b.positives.length)} / ➖${fa(b.negatives.length)}
+          </div>
+
+          <!-- ردیف ۱ کنترل‌های سریع کارت کتابی: حاضری + نمره جلسه + مثبت و منفی -->
+          <div style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;flex-wrap:wrap;margin-bottom:8px">
+            <button id="tdAttBtn_${st.id}" class="btn ${isAbs ? 'danger' : 'green'}" style="min-width:95px;height:38px;font-weight:900" onclick="inlAtt('${sid}','${cid}','${st.id}');setTimeout(()=>renderTodayListInner('${sid}','${cid}'),40)">
+              ${isAbs ? '✖ غایب' : '✓ حاضر'}
+            </button>
+            <input id="tdScore_${st.id}" type="number" step="0.25" min="0" max="20" class="td-score-inp ${getScoreColorClass(sc)}" style="width:74px;height:38px;font-size:14px" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${dateISO}',this.value,this)">
+            <button class="td-btn-plus" style="width:38px;height:38px;font-size:16px" onclick="inlScore('${sid}','${cid}','${st.id}','positive');setTimeout(()=>renderTodayListInner('${sid}','${cid}'),40)" title="افزودن مثبت">＋</button>
+            <button class="td-btn-minus" style="width:38px;height:38px;font-size:16px" onclick="inlScore('${sid}','${cid}','${st.id}','negative');setTimeout(()=>renderTodayListInner('${sid}','${cid}'),40)" title="ثبت منفی">－</button>
+          </div>
+
+          <!-- ردیف ۲: وضعیت انجام تکلیف و کار عملی فردی -->
+          <div style="display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding-top:8px;border-top:1px dashed var(--border)">
+            <button type="button" id="tdHwBtn_${st.id}" class="hw-status-pill ${hwMeta.cls}" onclick="inlToggleHomeworkStatus('${sid}','${cid}','${st.id}','${dateISO}')">${hwMeta.html}</button>
+            <button type="button" class="btn soft btn-sm" style="height:30px;padding:0 9px;font-size:11px" onclick="openStudentHomeworkPracticalModal('${sid}','${cid}','${st.id}')">🛠️ ثبت کار عملی فردی</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    bodyContentHtml = `
+      <div class="td-book-stage" id="tdBookSwipeStage" data-sid="${sid}" data-cid="${cid}">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px">
+          <button type="button" class="btn soft btn-sm" ${window._quickListBookPageIdx === 0 ? 'disabled' : ''} onclick="stepQuickListBookPage(-1,'${sid}','${cid}')">◀ قبلی</button>
+          <div style="text-align:center">
+            <b style="font-size:12.5px;color:var(--primary)">📖 دفتر چهره‌شناس کلاس — صفحه ${fa(window._quickListBookPageIdx + 1)} از ${fa(totalPages)}</b>
+            <div class="muted" style="font-size:10.5px">👆 با کشیدن دست به چپ و راست ورق بزنید</div>
+          </div>
+          <button type="button" class="btn primary btn-sm" ${window._quickListBookPageIdx >= totalPages - 1 ? 'disabled' : ''} onclick="stepQuickListBookPage(1,'${sid}','${cid}')">بعدی ▶</button>
+        </div>
+        <div class="td-book-spread" id="tdBookSpreadBox">${cardsHtml}</div>
+      </div>
+    `;
+  } else {
+    const rows = sortedStudents.map((st, idx) => {
+      const isAbs = attendanceStatus(c, dateISO, st.id) === 'absent';
+      const sc = attendanceScore(c, dateISO, st.id);
+      const b = behaviorData(st);
+      const autoAttn = isAutoAttention(c, st);
+      const hwStats = window.getStudentHomeworkStats(st, dateISO);
+      const hwStatus = hwStats.todayRec ? hwStats.todayRec.status : 'none';
+      const hwMeta = window.getHwStatusButtonMeta(hwStatus);
+
+      const avatarHtml = showPhotos ? `
+        <div class="list-stu-thumb" ${st.photo ? `onclick="event.stopPropagation();openPhotoViewer('${st.photo}','${safeFileName(st.name + '-' + st.lastName)}.jpg')"` : ''} title="${st.photo ? 'بزرگ‌نمایی عکس دانش‌آموز' : 'افزودن عکس'}">
+          ${st.photo ? `<img src="${st.photo}" alt="${esc(st.name)}">` : `
+            <label style="cursor:pointer;width:100%;height:100%;display:grid;place-items:center;margin:0" onclick="event.stopPropagation()" title="افزودن عکس دانش‌آموز">
+              📷<input type="file" accept="image/*" hidden onchange="quickUploadStudentPhotoInline('${sid}','${cid}','${st.id}',event)">
+            </label>
+          `}
+        </div>
+      ` : '';
+
+      return `<div class="td-row" id="tdRow_${st.id}" style="${autoAttn ? 'background:rgba(248,113,113,0.10)' : ''}">
+        <div style="display:flex;align-items:center;gap:7px;flex:1;min-width:0">
+          <button id="tdAttBtn_${st.id}" class="att-cell ${isAbs ? 'absent' : 'present'}" style="width:38px;height:38px" onclick="inlAtt('${sid}','${cid}','${st.id}')" title="${isAbs ? 'غایب' : 'حاضر'}">${isAbs ? '✖' : '✓'}</button>
+          ${avatarHtml}
+          <div style="min-width:0;overflow:hidden;flex:1">
+            <div style="display:flex;align-items:center;gap:4px">
+              <span class="row-num-badge">${fa(idx + 1)}</span>
+              <b style="font-size:13.2px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;color:${autoAttn ? 'var(--neon-red)' : 'var(--text-main)'}" onclick="openStudent('${sid}','${cid}','${st.id}')">${formatStudentName(st)}${autoAttn ? ' 🔴' : ''}</b>
+            </div>
+            <div class="muted" style="font-size:10.8px;margin-top:2px;display:flex;align-items:center;gap:5px;flex-wrap:wrap">
+              <span>➕<span id="tdPos_${st.id}">${fa(b.positives.length)}</span> ➖<span id="tdNeg_${st.id}">${fa(b.negatives.length)}</span></span>
+              <span>· مستمر: <b id="tdAvg_${st.id}">${avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—'}</b></span>
+              <button type="button" id="tdHwBtn_${st.id}" class="hw-status-pill ${hwMeta.cls}" style="height:22px!important;min-height:22px!important;padding:0 6px!important;font-size:10px!important" onclick="inlToggleHomeworkStatus('${sid}','${cid}','${st.id}','${dateISO}')">${hwMeta.html}</button>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+          <input id="tdScore_${st.id}" type="number" step="0.25" min="0" max="20" class="td-score-inp ${getScoreColorClass(sc)}" value="${sc === null ? '' : sc}" placeholder="نمره" onchange="saveAttendanceGrade('${sid}','${cid}','${st.id}','${dateISO}',this.value,this)">
+          <button class="td-btn-plus" onclick="inlScore('${sid}','${cid}','${st.id}','positive')" title="امتیاز مثبت">＋</button>
+          <button class="td-btn-minus" onclick="inlScore('${sid}','${cid}','${st.id}','negative')" title="امتیاز منفی">－</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    bodyContentHtml = `<div class="td-scroll-body" id="tdScrollBody">${rows || '<div class="muted" style="padding:20px;text-align:center">دانش‌آموزی ثبت نشده است.</div>'}</div>`;
+  }
+
+  const dateOptions = allDates.map(d => `<option value="${d}" ${d === dateISO ? 'selected' : ''}>${formatJalaliDate(d)}</option>`).join('');
+  document.getElementById('classTodayListContainer').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:6px;flex-wrap:wrap">
+      <button class="btn gray btn-sm" onclick="closeTodayList()">← بازگشت به کلاس</button>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
+        <!-- سوییچ حالت لیستی / حالت کتابی چهره‌شناس -->
+        <div class="pill-switch">
+          <button type="button" class="pill-btn ${!isBook ? 'active' : ''}" onclick="setQuickListDisplayMode(false,'${sid}','${cid}')">📋 حالت لیستی</button>
+          <button type="button" class="pill-btn ${isBook ? 'active' : ''}" onclick="setQuickListDisplayMode(true,'${sid}','${cid}')">📖 حالت کتابی</button>
+        </div>
+        <!-- دکمه روشن/خاموش کردن عکس کوچک قابل تشخیص -->
+        <button type="button" class="btn ${showPhotos ? 'primary' : 'gray'} btn-sm" onclick="toggleListStudentPhotos()" title="فعال یا غیرفعال کردن نمایش عکس دانش‌آموزان برای شناسایی سریع چهره">
+          🖼️ عکس‌ها: ${showPhotos ? 'روشن' : 'خاموش'}
+        </button>
+        <button class="btn soft btn-sm" onclick="openColumnTransferModal('${sid}','${cid}','${dateISO}')">🔄 به مستمر ${scoredTodayCount ? `(${fa(scoredTodayCount)})` : ''}</button>
+        <button class="btn soft btn-sm" onclick="openAttendance('${sid}','${cid}')">📋 جدول جامع</button>
+      </div>
+    </div>
+    <div class="td-list-card" id="todayListCardBox">
+      <div class="td-sticky-header-group">
+        <div class="td-list-head">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <b>📅 تاریخ جلسه:</b>
+            <input id="todayDateJalaliInput" type="text" value="${formatJalaliDate(dateISO)}" onchange="changeListDate('${sid}','${cid}',this.value)" style="width:108px;padding:5px 8px;font-weight:bold;text-align:center;font-size:12.5px" title="ویرایش تاریخ شمسی">
+            ${allDates.length ? `<select onchange="selectListDateISO('${sid}','${cid}',this.value)" style="width:auto;padding:4px 8px;font-size:11.5px"><option value="${dateISO}">انتخاب جلسه...</option>${dateOptions}</select>` : ''}
+          </div>
+          <button class="btn soft btn-sm" onclick="inlAllPresent('${sid}','${cid}')">✓ همه حاضر</button>
+        </div>
+        <div style="padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--border-subtle)">
+          <input type="text" value="${esc(noteVal)}" placeholder="📝 یادداشت، مبحث تدریس‌شده یا تکلیف جلسه ${formatJalaliDate(dateISO)}..." onchange="saveSessionNote('${sid}','${cid}','${dateISO}',this.value)" style="font-size:12px;padding:6px 10px">
+        </div>
+        ${!isBook ? `
+          <div class="td-col-headers">
+            <span>ردیف، حضور، عکس و نام (${fa((c.students || []).length)} نفر)</span>
+            <span>نمره · امتیاز (+ / −)</span>
+          </div>
+        ` : ''}
+      </div>
+      ${bodyContentHtml}
+    </div>`;
+
+  // اتصال ورق‌زدن با کشیدن دست (Swipe) روی حالت کتابی لیست سریع
+  const swipeBox = document.getElementById('tdBookSwipeStage');
+  if (swipeBox && !swipeBox._boundBookSwipe) {
+    swipeBox._boundBookSwipe = true;
+    let sx = null, sy = null;
+    swipeBox.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }
+    }, { passive: true });
+    swipeBox.addEventListener('touchend', (e) => {
+      if (sx === null) return;
+      const dx = (e.changedTouches?.[0]?.clientX ?? sx) - sx;
+      const dy = (e.changedTouches?.[0]?.clientY ?? sy) - sy;
+      sx = null;
+      if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+        window.stepQuickListBookPage(dx > 0 ? 1 : -1, sid, cid);
+      }
+    }, { passive: true });
+  }
+};
+
+// ارتقای جدول جامع (openAttendance) برای:
+// ۱. نمایش عکس کوچک قابل تشخیص دانش‌آموزان (با دکمه روشن/خاموش 🖼️ عکس‌ها)
+// ۲. افزودن ستون تعاملی «📓 تکالیف و کار عملی فردی» در کنار ستون مثبت/منفی
+const _origOpenAttendanceV75 = openAttendance;
+openAttendance = function(sid, cid) {
+  _origOpenAttendanceV75(sid, cid);
+  const c = findClass(sid, cid);
+  if (!c) return;
+  const showPhotos = window.isListStudentPhotosEnabled();
+
+  // ۱. افزودن دکمه روشن/خاموش عکس‌ها در نوار بالای جدول جامع
+  const topBar = document.querySelector('#attTopStickyBar > div:first-child > div:last-child');
+  if (topBar && !document.getElementById('btnAttTogglePhotos')) {
+    const pBtn = document.createElement('button');
+    pBtn.type = 'button';
+    pBtn.id = 'btnAttTogglePhotos';
+    pBtn.className = `btn ${showPhotos ? 'primary' : 'gray'} btn-sm`;
+    pBtn.innerHTML = `🖼️ عکس‌ها: ${showPhotos ? 'روشن' : 'خاموش'}`;
+    pBtn.onclick = () => window.toggleListStudentPhotos();
+    topBar.prepend(pBtn);
+  }
+
+  // ۲. افزودن ستون «📓 تکالیف و کار عملی» در هدر جدول جامع و ردیف‌ها + تزریق عکس قابل تشخیص کنار نام دانش‌آموز
+  const tbl = document.getElementById('attMainTable');
+  if (!tbl) return;
+  const headRow = tbl.querySelector('thead tr');
+  if (headRow && !headRow.querySelector('.th-hw-col')) {
+    const behTh = headRow.children[5]; // ستون مثبت/منفی
+    const hwTh = document.createElement('th');
+    hwTh.className = 'col-grade-summary th-hw-col';
+    hwTh.innerHTML = '📓 تکالیف و کار عملی';
+    if (behTh && behTh.nextSibling) headRow.insertBefore(hwTh, behTh.nextSibling);
+    else headRow.appendChild(hwTh);
+  }
+
+  sortStudents(c.students || []).forEach(st => {
+    const row = document.getElementById('attRow_' + st.id);
+    if (!row) return;
+
+    // تزریق عکس قابل تشخیص در ستون اول
+    const firstTdDiv = row.querySelector('td:first-child > div:first-child');
+    if (firstTdDiv && showPhotos && !firstTdDiv.querySelector('.att-stu-thumb')) {
+      const av = document.createElement('div');
+      av.className = 'att-stu-thumb';
+      if (st.photo) {
+        av.innerHTML = `<img src="${st.photo}" alt="${esc(st.name)}">`;
+        av.onclick = (ev) => { ev.stopPropagation(); openPhotoViewer(st.photo, `${safeFileName(st.name + '-' + st.lastName)}.jpg`); };
+      } else {
+        av.innerHTML = `<label style="cursor:pointer;width:100%;height:100%;display:grid;place-items:center;margin:0" onclick="event.stopPropagation()" title="افزودن عکس">📷<input type="file" accept="image/*" hidden onchange="quickUploadStudentPhotoInline('${sid}','${cid}','${st.id}',event)"></label>`;
+      }
+      const badge = firstTdDiv.querySelector('.row-num-badge');
+      if (badge && badge.nextSibling) firstTdDiv.insertBefore(av, badge.nextSibling);
+      else firstTdDiv.prepend(av);
+    }
+
+    // تزریق سلول تعاملی تکالیف و کار عملی فردی بعد از سلول مثبت/منفی
+    const behTd = document.getElementById('behCell_' + st.id);
+    if (behTd && !document.getElementById('hwCell_' + st.id)) {
+      const hwTd = document.createElement('td');
+      hwTd.id = 'hwCell_' + st.id;
+      hwTd.className = 'col-grade-summary';
+      hwTd.innerHTML = window.renderInteractiveHwCellInner(sid, cid, st);
+      if (behTd.nextSibling) row.insertBefore(hwTd, behTd.nextSibling);
+      else row.appendChild(hwTd);
+    }
+  });
+};
+
+// افزودن کارت «📓 تکالیف و کار عملی فردی» در صفحه پرونده دانش‌آموز (openStudent) و دکمه در صفحه کلاس
+const _origOpenStudentV75 = openStudent;
+openStudent = function(sid, cid, stid) {
+  _origOpenStudentV75(sid, cid, stid);
+  const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+  const box = document.getElementById('studentDetailContent');
+  if (!c || !st || !box || document.getElementById('stuHomeworkProfileCard')) return;
+
+  const stats = window.getStudentHomeworkStats(st);
+  const card = document.createElement('div');
+  card.id = 'stuHomeworkProfileCard';
+  card.className = 'card';
+  card.style.marginTop = '12px';
+  card.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+      <b>📓 تکالیف و کار عملی فردی (${fa(stats.doneCnt)} کامل · ${fa(stats.missedCnt)} ناقص/نداده)</b>
+      <button type="button" class="btn primary btn-sm" onclick="openStudentHomeworkPracticalModal('${sid}','${cid}','${stid}')">＋ ثبت تکلیف / کار عملی</button>
+    </div>
+    <div style="margin-top:8px;display:grid;gap:6px">
+      ${stats.list.slice(0, 5).map(it => `
+        <div style="padding:7px 10px;border-radius:10px;background:var(--panel);border:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px">
+          <span><b>${esc(it.title)}</b> <small class="muted">(${esc(it.dateFa || '')})</small></span>
+          <span>${it.status === 'done' ? '✅ کامل' : (it.status === 'partial' ? '🟡 ناقص' : '❌ نداده')}${it.score !== null && it.score !== undefined ? ` · <b>${fmtScore(it.score)}</b>` : ''}</span>
+        </div>
+      `).join('') || '<div class="muted" style="font-size:12px">موردی ثبت نشده است.</div>'}
+    </div>
+  `;
+  box.appendChild(card);
+};
+
+
+/* ==================== ۴. جعبه ابزار حرفه‌ای، شیک و جمع‌وجور معلم (Teacher Pro Toolkit Studio) ==================== */
+
+window._proCalcExpr = '';
+window._proTimerSec = 0;
+window._proTimerTotal = 0;
+window._proTimerInterval = null;
+
+window.openTeacherProToolkitModal = function(activeTab = 'calc') {
+  const scratchVal = localStorage.getItem('danesh_teacher_desk_scratchpad') || '';
+
+  openModal(formHeader('🧰 جعبه ابزار حرفه‌ای و جمع‌وجور معلم') + `
+    <div class="pill-switch" id="proToolkitTabsBar" style="width:100%;justify-content:space-between;margin-bottom:10px;overflow-x:auto">
+      <button type="button" class="pill-btn ${activeTab === 'calc' ? 'active' : ''}" onclick="switchProToolkitTab('calc', this)">🧮 ماشین‌حساب و بارم</button>
+      <button type="button" class="pill-btn ${activeTab === 'timer' ? 'active' : ''}" onclick="switchProToolkitTab('timer', this)">⏱️ تایمر و زنگ کلاس</button>
+      <button type="button" class="pill-btn ${activeTab === 'group' ? 'active' : ''}" onclick="switchProToolkitTab('group', this)">🎲 قرعه‌کشی و گروه‌بندی</button>
+      <button type="button" class="pill-btn ${activeTab === 'voice' ? 'active' : ''}" onclick="switchProToolkitTab('voice', this)">🔊 تلفظ و یادداشت میز</button>
+    </div>
+
+    <!-- تب ۱: ماشین‌حساب علمی + تبدیل‌کننده سریع بارم امتحان به نمره از ۲۰ -->
+    <div id="proToolPane-calc" class="pro-tool-pane" style="display:${activeTab === 'calc' ? 'block' : 'none'}">
+      <div class="card" style="padding:12px;margin-bottom:10px">
+        <input type="text" id="proCalcDisplayInp" dir="ltr" value="${esc(window._proCalcExpr || '0')}" style="width:100%;height:46px;font-size:21px;font-weight:900;text-align:right;font-family:monospace;background:var(--bg-panel);border:1.5px solid var(--primary-border);border-radius:12px;padding:0 12px" oninput="window._proCalcExpr=this.value">
+        <div class="pro-calc-grid">
+          <button type="button" class="pro-calc-btn op" onclick="proCalcTap('C')">C</button>
+          <button type="button" class="pro-calc-btn op" onclick="proCalcTap('(')">(</button>
+          <button type="button" class="pro-calc-btn op" onclick="proCalcTap(')')">)</button>
+          <button type="button" class="pro-calc-btn op" onclick="proCalcTap('/')">÷</button>
+
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('7')">۷</button>
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('8')">۸</button>
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('9')">۹</button>
+          <button type="button" class="pro-calc-btn op" onclick="proCalcTap('*')">×</button>
+
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('4')">۴</button>
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('5')">۵</button>
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('6')">۶</button>
+          <button type="button" class="pro-calc-btn op" onclick="proCalcTap('-')">−</button>
+
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('1')">۱</button>
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('2')">۲</button>
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('3')">۳</button>
+          <button type="button" class="pro-calc-btn op" onclick="proCalcTap('+')">＋</button>
+
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('0')">۰</button>
+          <button type="button" class="pro-calc-btn" onclick="proCalcTap('.')">.</button>
+          <button type="button" class="pro-calc-btn op" onclick="proCalcTap('round25')">رُند ۰.۲۵</button>
+          <button type="button" class="pro-calc-btn eq" onclick="proCalcTap('=')">＝</button>
+        </div>
+      </div>
+
+      <!-- تبدیل‌کننده سریع نمره (مثلاً از ۱۲ یا ۱۵ یا ۳۰ به از ۲۰ با رُند ۰.۲۵) -->
+      <div class="card" style="background:var(--bg-panel);padding:11px;border-color:var(--primary)">
+        <b style="color:var(--primary);font-size:12.5px;display:block;margin-bottom:6px">⚖️ تبدیل سریع بارم امتحان یا پرسش به نمره از ۲۰ (با رُند ۰.۲۵):</b>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <input type="number" id="convEarnedInp" step="0.25" placeholder="نمره کسب‌شده (مثلاً 11.5)" style="flex:1;min-width:110px;height:36px;text-align:center;font-weight:800" oninput="calcQuickScoreScale20()">
+          <span style="font-weight:900">از</span>
+          <input type="number" id="convMaxInp" step="0.5" value="15" placeholder="بارم کل (مثلاً 15)" style="width:82px;height:36px;text-align:center;font-weight:800" oninput="calcQuickScoreScale20()">
+          <span class="chip" id="convResult20Badge" style="font-size:13px;font-weight:900;background:#DCFCE7;color:#15803D;border-color:#86EFAC">＝ ۲۰: —</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- تب ۲: تایمر شمارش معکوس کوییز و امتحان کلاسی همراه با زنگ پایان -->
+    <div id="proToolPane-timer" class="pro-tool-pane" style="display:${activeTab === 'timer' ? 'block' : 'none'}">
+      <div class="card" style="text-align:center;padding:16px">
+        <div id="proTimerBigClock" style="font-size:38px;font-weight:900;font-family:monospace;color:var(--primary);letter-spacing:2px;margin-bottom:8px">۰۰:۰۰</div>
+        <div style="display:flex;justify-content:center;gap:5px;flex-wrap:wrap;margin-bottom:10px">
+          <button type="button" class="chip" onclick="startProClassTimer(2)">۲ دقیقه</button>
+          <button type="button" class="chip" onclick="startProClassTimer(5)">۵ دقیقه</button>
+          <button type="button" class="chip" onclick="startProClassTimer(10)">۱۰ دقیقه</button>
+          <button type="button" class="chip" onclick="startProClassTimer(15)">۱۵ دقیقه</button>
+          <button type="button" class="chip" onclick="startProClassTimer(20)">۲۰ دقیقه</button>
+          <button type="button" class="chip" onclick="startProClassTimer(45)">۴۵ دقیقه</button>
+        </div>
+        <div style="display:flex;justify-content:center;gap:8px">
+          <button type="button" class="btn primary" onclick="startProClassTimer(10)">▶ شروع ۱۰ دقیقه</button>
+          <button type="button" class="btn gray" onclick="stopProClassTimer()">⏹ توقف / صفر</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- تب ۳: قرعه‌کشی چندنفره و گروه‌بندی خودکار دانش‌آموزان کلاس -->
+    <div id="proToolPane-group" class="pro-tool-pane" style="display:${activeTab === 'group' ? 'block' : 'none'}">
+      <div class="card" style="padding:12px">
+        <b style="color:var(--primary);font-size:13px;display:block;margin-bottom:8px">🎲 قرعه‌کشی پرسش کلاسی و گروه‌بندی کار عملی</b>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+          <button type="button" class="btn primary btn-sm" style="flex:1" onclick="runProRandomPick(1)">🙋 قرعه‌کشی ۱ نفر</button>
+          <button type="button" class="btn soft btn-sm" style="flex:1" onclick="runProRandomPick(2)">👥 قرعه‌کشی ۲ نفر</button>
+          <button type="button" class="btn soft btn-sm" style="flex:1" onclick="runProRandomPick(3)">👨‍👩‍👦 قرعه‌کشی ۳ نفر</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-top:8px;border-top:1px dashed var(--border)">
+          <span style="font-size:12px;font-weight:800">👥 تقسیم خودکار کلاس به گروه‌های:</span>
+          <select id="proGroupSizeSel" style="width:auto;height:32px;font-size:12px;font-weight:800">
+            <option value="2">۲ نفره</option>
+            <option value="3" selected>۳ نفره</option>
+            <option value="4">۴ نفره</option>
+            <option value="5">۵ نفره</option>
+          </select>
+          <button type="button" class="btn green btn-sm" onclick="runProAutoGroupGenerator()">✨ ساخت گروه‌های کلاسی</button>
+        </div>
+        <div id="proGroupPickResultBox" style="margin-top:10px;display:grid;gap:6px;max-height:36vh;overflow-y:auto"></div>
+      </div>
+    </div>
+
+    <!-- تب ۴: تلفظ صوتی هوشمند و دفترچه یادداشت فوری روی میز معلم -->
+    <div id="proToolPane-voice" class="pro-tool-pane" style="display:${activeTab === 'voice' ? 'block' : 'none'}">
+      <div class="card" style="padding:11px;margin-bottom:10px">
+        <b style="color:var(--primary);font-size:12.5px;display:block;margin-bottom:6px">🔊 تلفظ صوتی کلمات و جملات (انگلیسی / عربی / فارسی):</b>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <input type="text" id="proTtsInput" dir="auto" placeholder="کلمه یا جمله را بنویسید..." style="flex:1;min-width:160px;height:36px">
+          <button type="button" class="btn primary btn-sm" onclick="speakProToolkitText()">🔊 پخش صوتی</button>
+        </div>
+      </div>
+      <div class="card" style="padding:11px">
+        <b style="color:var(--primary);font-size:12.5px;display:block;margin-bottom:5px">📋 تخته یادداشت فوری روی میز معلم (ذخیره خودکار):</b>
+        <textarea id="proDeskScratchpadInp" rows="4" placeholder="هر نکته فوری، شماره صفحه یا یادداشت سر کلاس را اینجا بنویسید (خودکار ذخیره می‌ماند)..." oninput="localStorage.setItem('danesh_teacher_desk_scratchpad', this.value)">${esc(scratchVal)}</textarea>
+      </div>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.switchProToolkitTab = function(tabId, btnEl) {
+  ['calc', 'timer', 'group', 'voice'].forEach(id => {
+    const el = document.getElementById('proToolPane-' + id);
+    if (el) el.style.display = id === tabId ? 'block' : 'none';
+  });
+  if (btnEl) {
+    document.querySelectorAll('#proToolkitTabsBar .pill-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+};
+
+window.proCalcTap = function(token) {
+  const inp = document.getElementById('proCalcDisplayInp');
+  let cur = enDigits(String(window._proCalcExpr || '')).trim();
+  if (token === 'C') {
+    window._proCalcExpr = '';
+    if (inp) inp.value = '0';
+    return;
+  }
+  if (token === '=' || token === 'round25') {
+    try {
+      const safe = cur.replace(/[^0-9+\-*/().]/g, '');
+      const val = Function('"use strict";return (' + (safe || '0') + ')')();
+      const finalVal = token === 'round25' ? (Math.round(Number(val) * 4) / 4) : (Math.round(Number(val) * 10000) / 10000);
+      window._proCalcExpr = String(finalVal);
+      if (inp) inp.value = fa(finalVal);
+    } catch (_) {
+      if (inp) inp.value = 'خطا';
+    }
+    return;
+  }
+  if (cur === '0') cur = '';
+  window._proCalcExpr = cur + token;
+  if (inp) inp.value = fa(window._proCalcExpr);
+};
+
+window.calcQuickScoreScale20 = function() {
+  const earned = parseFloat(enDigits(document.getElementById('convEarnedInp')?.value || ''));
+  const max = parseFloat(enDigits(document.getElementById('convMaxInp')?.value || '20'));
+  const badge = document.getElementById('convResult20Badge');
+  if (!badge) return;
+  if (!Number.isFinite(earned) || !Number.isFinite(max) || max <= 0) {
+    badge.textContent = '＝ ۲۰: —';
+    return;
+  }
+  const scaled = (earned / max) * 20;
+  const rounded = Math.round(scaled * 4) / 4;
+  badge.textContent = `＝ از ۲۰: ${fa(rounded)}`;
+};
+
+window.startProClassTimer = function(minutes) {
+  clearInterval(window._proTimerInterval);
+  window._proTimerSec = Math.max(10, Math.round(Number(minutes) * 60));
+  const renderClk = () => {
+    const m = String(Math.floor(window._proTimerSec / 60)).padStart(2, '0');
+    const s = String(window._proTimerSec % 60).padStart(2, '0');
+    const el = document.getElementById('proTimerBigClock');
+    if (el) el.textContent = `${fa(m)}:${fa(s)}`;
+  };
+  renderClk();
+  window._proTimerInterval = setInterval(() => {
+    window._proTimerSec--;
+    renderClk();
+    if (window._proTimerSec <= 0) {
+      clearInterval(window._proTimerInterval);
+      if (window.triggerHapticVibrate) window.triggerHapticVibrate('success');
+      toast('🔔 زمان تعیین‌شده به پایان رسید!');
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        osc.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.45);
+      } catch (_) {}
+    }
+  }, 1000);
+};
+
+window.stopProClassTimer = function() {
+  clearInterval(window._proTimerInterval);
+  window._proTimerSec = 0;
+  const el = document.getElementById('proTimerBigClock');
+  if (el) el.textContent = '۰۰:۰۰';
+};
+
+window.getActiveClassPoolForToolkit = function() {
+  let c = (currentSchoolId && currentClassId) ? findClass(currentSchoolId, currentClassId) : null;
+  if (!c) {
+    for (const s of (db.schools || [])) {
+      if (s.classes?.length) { c = s.classes[0]; break; }
+    }
+  }
+  return c ? (c.students || []) : [];
+};
+
+window.runProRandomPick = function(count = 1) {
+  const pool = [...window.getActiveClassPoolForToolkit()];
+  const box = document.getElementById('proGroupPickResultBox');
+  if (!box) return;
+  if (!pool.length) {
+    box.innerHTML = '<div class="muted" style="text-align:center;padding:10px">دانش‌آموزی در کلاس ثبت نشده است.</div>';
+    return;
+  }
+  pool.sort(() => Math.random() - 0.5);
+  const picked = pool.slice(0, Math.min(count, pool.length));
+  if (window.triggerHapticVibrate) window.triggerHapticVibrate('success');
+  box.innerHTML = picked.map((st, i) => `
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:12px;background:var(--bg-panel);border:1.5px solid var(--primary)">
+      <div class="list-stu-thumb" style="width:38px!important;height:38px!important">${st.photo ? `<img src="${st.photo}">` : esc((st.name || '?')[0])}</div>
+      <div>
+        <b style="font-size:13.5px;color:var(--primary)">🎯 انتخاب ${fa(i + 1)}: ${formatStudentName(st)}</b>
+        <div class="muted" style="font-size:11px">میانگین مستمر: ${avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—'}</div>
+      </div>
+    </div>
+  `).join('');
+};
+
+window.runProAutoGroupGenerator = function() {
+  const pool = [...window.getActiveClassPoolForToolkit()];
+  const box = document.getElementById('proGroupPickResultBox');
+  if (!box) return;
+  if (!pool.length) {
+    box.innerHTML = '<div class="muted" style="text-align:center;padding:10px">دانش‌آموزی در کلاس ثبت نشده است.</div>';
+    return;
+  }
+  const gSize = Math.max(2, Number(document.getElementById('proGroupSizeSel')?.value) || 3);
+  pool.sort(() => Math.random() - 0.5);
+  const groups = [];
+  for (let i = 0; i < pool.length; i += gSize) {
+    groups.push(pool.slice(i, i + gSize));
+  }
+  box.innerHTML = groups.map((grp, gIdx) => `
+    <div style="padding:8px 11px;border-radius:11px;background:var(--bg-panel);border:1px solid var(--border)">
+      <b style="color:var(--primary);font-size:12px;display:block;margin-bottom:4px">👥 گروه ${fa(gIdx + 1)} (${fa(grp.length)} نفر):</b>
+      <div style="font-size:12px;font-weight:700">${grp.map(st => formatStudentName(st)).join(' ، ')}</div>
+    </div>
+  `).join('');
+};
+
+window.speakProToolkitText = function() {
+  const txt = (document.getElementById('proTtsInput')?.value || '').trim();
+  if (!txt) { toast('متن را وارد کنید.'); return; }
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(txt);
+    u.lang = /[a-zA-Z]/.test(txt) ? 'en-US' : 'fa-IR';
+    u.rate = 0.9;
+    window.speechSynthesis.speak(u);
+  } else {
+    toast('مرورگر از پخش صوتی پشتیبانی نمی‌کند.');
+  }
+};
+
+
+/* ==================== ۵. خروجی کامل از جواب فرم‌های آنلاین (Excel رنگی، Word، چاپ/PDF و کپی) ==================== */
+
+window.collectOnlineFormResponsesData = function(sid = null, cid = null, dateISO = null) {
+  const s = findSchool(sid || currentSchoolId) || db.schools?.[0];
+  const c = s ? (findClass(s.id, cid || currentClassId) || s.classes?.[0]) : null;
+  if (!s || !c) return { schoolName: '—', className: '—', dateFa: formatJalaliDate(localISODate()), rows: [] };
+  const d = dateISO || window.currentListDate || localISODate();
+  const attDay = c.attendance?.[d] || {};
+  const examResMap = c.onlineExamResults || {};
+  const rows = [];
+
+  sortStudents(c.students || []).forEach((st, idx) => {
+    const rec = attDay[st.id];
+    const exRec = examResMap[st.id];
+    const contSc = c.contExamScores?.[st.id];
+    const scoreVal = exRec?.score !== undefined && exRec?.score !== null
+      ? exRec.score
+      : (rec?.score !== undefined && rec?.score !== null ? rec.score : (contSc !== undefined && contSc !== '' ? contSc : null));
+
+    const statusStr = rec?.status === 'absent'
+      ? 'غایب / مرخصی'
+      : (rec?.late ? 'حاضر (با تأخیر)' : (rec ? 'حاضر' : (st.registeredOnline ? 'ثبت‌نام آنلاین' : 'ثبت در کلاس')));
+
+    rows.push({
+      idx: idx + 1,
+      fullName: `${st.lastName || ''} ${st.name || ''}`.trim(),
+      fatherName: st.fatherName || '',
+      phone: st.phone || '',
+      status: statusStr,
+      time: rec?.onlineTime || exRec?.updatedAt || (st.registeredOnline ? 'آنلاین' : formatJalaliDate(d)),
+      score: scoreVal !== null ? fmtScore(scoreVal) : '—',
+      note: rec?.note || exRec?.teacherFeedback || st.interests || ''
+    });
+  });
+
+  return {
+    sid: s.id,
+    cid: c.id,
+    schoolName: s.name,
+    className: window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name,
+    dateISO: d,
+    dateFa: formatJalaliDate(d),
+    rows
+  };
+};
+
+window.exportOnlineFormResponses = function(format = 'excel', sid = null, cid = null, dateISO = null) {
+  const data = window.collectOnlineFormResponsesData(sid, cid, dateISO);
+  if (!data.rows.length) {
+    toast('هنوز پاسخی یا دانش‌آموزی در این کلاس ثبت نشده است.');
+    return;
+  }
+
+  if (format === 'copy') {
+    const lines = [
+      `📊 گزارش پاسخ‌های فرم آنلاین — کلاس ${data.className} (${data.schoolName})`,
+      `📅 تاریخ: ${data.dateFa}`,
+      `────────────────────`,
+      ...data.rows.map(r => `${fa(r.idx)}. ${r.fullName}${r.fatherName ? ` (${r.fatherName})` : ''} | ${r.status}${r.score !== '—' ? ` | نمره: ${r.score}` : ''}`)
+    ];
+    copyText(lines.join('\n'));
+    toast('📋 لیست کامل جواب فرم‌ها در حافظه کپی شد!');
+    return;
+  }
+
+  const tableHtml = `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8">
+    <title>پاسخ‌های فرم آنلاین کلاس ${esc(data.className)}</title>
+    <style>
+      body { font-family: 'Vazirmatn', Tahoma, sans-serif; direction: rtl; padding: 20px; color: #0F172A; }
+      .hdr { background: linear-gradient(135deg, #EA580C, #D97706); color: #fff; padding: 14px 18px; border-radius: 14px; margin-bottom: 14px; }
+      table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+      th { background: #FFEDD5; color: #9A3412; border: 1px solid #FDBA74; padding: 8px; text-align: right; font-weight: bold; }
+      td { border: 1px solid #CBD5E1; padding: 7px 8px; }
+      tr:nth-child(even) { background: #FFFBF5; }
+    </style></head><body>
+    <div class="hdr">
+      <h2 style="margin:0 0 4px">📊 جدول رسمی پاسخ‌های فرم آنلاین (حضور و غیاب، ثبت‌نام و آزمون)</h2>
+      <div>🏫 مدرسه: ${esc(data.schoolName)} | 🚪 کلاس: ${esc(data.className)} | 📅 تاریخ: ${esc(data.dateFa)} | 👨‍🏫 دبیر: ${esc(getTeacherName())}</div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ردیف</th>
+          <th>نام خانوادگی و نام</th>
+          <th>نام پدر</th>
+          <th>تلفن تماس</th>
+          <th>وضعیت حضور / فرم</th>
+          <th>نمره آزمون</th>
+          <th>ساعت ثبت / توضیحات</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${data.rows.map(r => `
+          <tr>
+            <td style="text-align:center;font-weight:bold">${fa(r.idx)}</td>
+            <td style="font-weight:bold">${esc(r.fullName)}</td>
+            <td>${esc(r.fatherName || '—')}</td>
+            <td>${fa(r.phone || '—')}</td>
+            <td style="font-weight:bold;color:${r.status.includes('غایب') ? '#B91C1C' : '#15803D'}">${esc(r.status)}</td>
+            <td style="text-align:center;font-weight:bold;color:#0284C7">${esc(r.score)}</td>
+            <td>${esc(r.time)}${r.note ? ' — ' + esc(r.note) : ''}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  </body></html>`;
+
+  if (format === 'print') {
+    const w = window.open('', '_blank');
+    if (w) { w.document.write(tableHtml); w.document.close(); setTimeout(() => w.print(), 300); }
+    return;
+  }
+
+  const mime = format === 'word' ? 'application/msword;charset=utf-8' : 'application/vnd.ms-excel;charset=utf-8';
+  const ext = format === 'word' ? 'doc' : 'xls';
+  const blob = new Blob(['\ufeff' + tableHtml], { type: mime });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `جواب-فرم-آنلاین-${safeFileName(data.className)}-${data.dateISO}.${ext}`;
+  a.click();
+  toast(`✅ فایل ${ext.toUpperCase()} جواب فرم‌ها دانلود شد!`);
+};
+
+// افزودن نوار دکمه‌های «📤 خروجی جواب فرم‌ها» به جدول پاسخ‌های زنده و صفحه کلاس آنلاین
+const _origRenderDigiFormTableV75 = window.renderDigiFormLiveResponsesTable;
+window.renderDigiFormLiveResponsesTable = function(sid, cid, dateISO) {
+  _origRenderDigiFormTableV75(sid, cid, dateISO);
+  const box = document.getElementById('digiFormLiveResponsesBox');
+  if (!box) return;
+  const exportBar = document.createElement('div');
+  exportBar.style.cssText = 'display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px dashed var(--border)';
+  exportBar.innerHTML = `
+    <span style="font-size:11px;font-weight:900;color:var(--primary);align-self:center">📤 خروجی از جواب فرم‌ها:</span>
+    <button type="button" class="btn primary btn-sm" onclick="exportOnlineFormResponses('excel','${sid || ''}','${cid || ''}','${dateISO || ''}')">📊 اکسل رنگی (.xls)</button>
+    <button type="button" class="btn soft btn-sm" onclick="exportOnlineFormResponses('word','${sid || ''}','${cid || ''}','${dateISO || ''}')">📘 Word (.doc)</button>
+    <button type="button" class="btn green btn-sm" onclick="exportOnlineFormResponses('print','${sid || ''}','${cid || ''}','${dateISO || ''}')">🖨️ چاپ / PDF</button>
+    <button type="button" class="btn gray btn-sm" onclick="exportOnlineFormResponses('copy','${sid || ''}','${cid || ''}','${dateISO || ''}')">📋 کپی متنی</button>
+  `;
+  box.appendChild(exportBar);
+};
+
+// تزریق کارت پاسخ‌های دریافتی و خروجی مستقیم در پایین صفحه #onlineClassView
+const _origRenderOnlineClassHubV75 = window.renderOnlineClassHub;
+window.renderOnlineClassHub = function(activeTab = null) {
+  _origRenderOnlineClassHubV75(activeTab);
+  const root = document.getElementById('onlineClassHubRoot');
+  if (!root || document.getElementById('hubResponsesExportCard')) return;
+  const selVal = document.getElementById('hubClassSelector')?.value || '';
+  const [sid, cid] = selVal.includes('|') ? selVal.split('|') : [currentSchoolId, currentClassId];
+  const dateISO = window.currentListDate || localISODate();
+
+  const card = document.createElement('div');
+  card.id = 'hubResponsesExportCard';
+  card.className = 'card';
+  card.style.marginTop = '12px';
+  card.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+      <b style="color:var(--primary);font-size:14px">📥 جدول پاسخ‌های دریافت‌شده فرم‌ها و خروجی مستقیم</b>
+      <button type="button" class="btn soft btn-sm" onclick="fetchOnlineRoomSubmissions(false,'${sid || ''}','${cid || ''}','${dateISO}')">🔄 دریافت آخرین پاسخ‌ها از سرور</button>
+    </div>
+    <div id="digiFormLiveResponsesBox"></div>
+  `;
+  root.appendChild(card);
+  window.renderDigiFormLiveResponsesTable(sid, cid, dateISO);
+};
+
+
+/* ==================== ۶. گنجینه یادگاری و بایگانی همیشگی مدارس (Permanent Keepsake Schools Archive) ==================== */
+
+window.ensureKeepsakeSchoolsArray = function() {
+  if (!Array.isArray(db.keepsakeSchoolsArchive)) db.keepsakeSchoolsArchive = [];
+  return db.keepsakeSchoolsArchive;
+};
+
+// حفاظت از عکس‌های گنجینه یادگاری مدارس در گاوصندوق دائمی عکس‌ها
+const _origExtractPhotosV75 = extractAllPhotosFromDb;
+extractAllPhotosFromDb = function(data, targetMap = {}) {
+  _origExtractPhotosV75(data, targetMap);
+  if (data && Array.isArray(data.keepsakeSchoolsArchive)) {
+    data.keepsakeSchoolsArchive.forEach(item => {
+      if (item && item.schoolSnapshot) {
+        _origExtractPhotosV75({ schools: [item.schoolSnapshot] }, targetMap);
+      }
+    });
+  }
+  return targetMap;
+};
+
+const _origHydratePhotosV75 = hydrateDbWithPhotoVault;
+hydrateDbWithPhotoVault = function(data, photoMap) {
+  let cnt = _origHydratePhotosV75(data, photoMap);
+  if (data && Array.isArray(data.keepsakeSchoolsArchive)) {
+    data.keepsakeSchoolsArchive.forEach(item => {
+      if (item && item.schoolSnapshot) {
+        cnt += _origHydratePhotosV75({ schools: [item.schoolSnapshot] }, photoMap);
+      }
+    });
+  }
+  return cnt;
+};
+
+// افزودن دکمه «🏛️ ثبت در گنجینه یادگاری» به صفحه مدرسه (openSchool) و کارت مدارس
+const _origOpenSchoolV75 = openSchool;
+openSchool = function(id) {
+  _origOpenSchoolV75(id);
+  const box = document.querySelector('#schoolDetailContent .detailhead .actions');
+  if (box && !box.querySelector('.btn-keepsake-school')) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn soft btn-keepsake-school';
+    btn.style.borderColor = '#F59E0B';
+    btn.style.fontWeight = '900';
+    btn.innerHTML = '🏛️ بایگانی در گنجینه یادگاری';
+    btn.onclick = () => window.openArchiveSchoolForKeepsakeModal(id);
+    box.appendChild(btn);
+  }
+};
+
+const _origRenderSchoolsV75 = renderSchools;
+renderSchools = function() {
+  _origRenderSchoolsV75();
+  const ksList = window.ensureKeepsakeSchoolsArray();
+  const badge = document.getElementById('keepsakeSchoolsCountBadge');
+  if (badge) badge.textContent = ksList.length ? `(${fa(ksList.length)})` : '';
+};
+
+window.openArchiveSchoolForKeepsakeModal = function(sid) {
+  const s = findSchool(sid);
+  if (!s) return;
+  const totalStudents = (s.classes || []).reduce((a, c) => a + (c.students || []).length, 0);
+
+  openModal(formHeader(`🏛️ ثبت «${s.name}» در گنجینه یادگاری همیشگی مدارس`) + `
+    <div class="card keepsake-school-card" style="margin-bottom:10px">
+      <b style="color:#B45309;font-size:13.5px;display:block;margin-bottom:4px">🌟 ثبت خاطرات و آلبوم همیشگی مدرسه و دانش‌آموزان</b>
+      <p class="muted" style="margin:0;font-size:11.5px;line-height:1.65">
+        با ثبت این مدرسه در <b>«گنجینه یادگاری همیشگی»</b>، تمام ${fa((s.classes || []).length)} کلاس، ${fa(totalStudents)} دانش‌آموز، عکس‌های مدرسه، کلاس‌ها، چهره دانش‌آموزان و نمرات این سال تحصیلی (${esc(s.year || 'جاری')}) برای همیشه به عنوان یادگاری محفوظ می‌ماند.
+      </p>
+    </div>
+
+    <div class="field" style="margin-bottom:10px">
+      <label>📝 دل‌نوشته یا خاطره یادگاری شما از این مدرسه و سال تحصیلی:</label>
+      <textarea id="keepsakeMemoryNoteInp" rows="3" placeholder="مثلاً: سال تحصیلی بسیار شیرین در کنار دانش‌آموزان بااخلاق و پرتلاش ${esc(s.name)}..."></textarea>
+    </div>
+
+    <div class="field" style="margin-bottom:12px">
+      <label>📦 نحوه بایگانی در گنجینه یادگاری:</label>
+      <select id="keepsakeArchiveModeSel">
+        <option value="copy" selected>📌 ثبت نسخه یادگاری در گنجینه (مدرسه در لیست فعال هم باقی بماند)</option>
+        <option value="move">🏛️ انتقال کامل به گنجینه یادگاری (بستن پرونده سال تحصیلی این مدرسه)</option>
+      </select>
+    </div>
+
+    <div class="formactions">
+      <button type="button" class="btn primary" onclick="confirmArchiveSchoolForKeepsake('${s.id}')">🏛️ ثبت همیشگی در گنجینه یادگاری</button>
+      <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+    </div>
+  `);
+};
+
+window.confirmArchiveSchoolForKeepsake = async function(sid) {
+  const s = findSchool(sid);
+  if (!s) return;
+  const note = (document.getElementById('keepsakeMemoryNoteInp')?.value || '').trim();
+  const mode = document.getElementById('keepsakeArchiveModeSel')?.value || 'copy';
+  const ksList = window.ensureKeepsakeSchoolsArray();
+
+  const snapshot = JSON.parse(JSON.stringify(s));
+  const totalStudents = (snapshot.classes || []).reduce((a, c) => a + (c.students || []).length, 0);
+  let totalPhotos = (snapshot.photos || []).length;
+  (snapshot.classes || []).forEach(c => {
+    totalPhotos += (c.photos || []).length;
+    (c.students || []).forEach(st => { if (st.photo) totalPhotos++; });
+  });
+
+  ksList.unshift({
+    keepsakeId: 'ks_' + uid(),
+    archivedAtFa: formatJalaliDate(localISODate()),
+    schoolName: s.name,
+    schoolYear: s.year || '۱۴۰۵/۱۴۰۶',
+    teacherName: getTeacherName(),
+    memoryNote: note || `یادگاری سال تحصیلی ${s.year || ''} — ${s.name}`,
+    classesCount: (snapshot.classes || []).length,
+    studentsCount: totalStudents,
+    photosCount: totalPhotos,
+    schoolSnapshot: snapshot
+  });
+
+  if (mode === 'move') {
+    db.schools = db.schools.filter(x => x.id !== sid);
+  }
+
+  await flushDbToIndexedDbNow();
+  savePersistent();
+  closeModal();
+  if (mode === 'move') showView('schools');
+  else renderAll();
+  if (window.triggerHapticVibrate) window.triggerHapticVibrate('success');
+  toast(`🏛️ مدرسه «${s.name}» برای همیشه در گنجینه یادگاری ثبت شد ✅`);
+  setTimeout(() => window.openKeepsakeSchoolsGalleryModal(), 220);
+};
+
+// گالری و آلبوم «🏛️ گنجینه یادگاری همیشگی مدارس»
+window.openKeepsakeSchoolsGalleryModal = function() {
+  const ksList = window.ensureKeepsakeSchoolsArray();
+
+  const itemsHtml = ksList.length ? ksList.map(item => {
+    const snap = item.schoolSnapshot || {};
+    const coverPhoto = snap.photos?.[0] || '';
+    const stuPhotos = [];
+    (snap.classes || []).forEach(c => {
+      (c.students || []).forEach(st => {
+        if (st.photo && stuPhotos.length < 10) stuPhotos.push({ src: st.photo, name: `${st.name} ${st.lastName}` });
+      });
+    });
+
+    return `
+      <div class="card keepsake-school-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px;min-width:0">
+            <div class="school-icon" style="width:52px;height:52px;border-radius:14px;overflow:hidden;border:2px solid #F59E0B;flex-shrink:0">
+              ${coverPhoto ? `<img src="${coverPhoto}" style="width:100%;height:100%;object-fit:cover">` : '🏛️'}
+            </div>
+            <div style="min-width:0">
+              <b style="font-size:15px;color:var(--primary);display:block">${esc(item.schoolName)}</b>
+              <div class="muted" style="font-size:11.5px">سال تحصیلی ${esc(item.schoolYear)} · بایگانی‌شده در ${esc(item.archivedAtFa)}</div>
+            </div>
+          </div>
+          <span class="chip" style="background:#FEF3C7;color:#92400E;border-color:#F59E0B">🌟 یادگاری همیشگی</span>
+        </div>
+
+        <div style="margin:8px 0;padding:8px 11px;border-radius:10px;background:rgba(245,158,11,0.10);border-right:3px solid #F59E0B;font-size:12px;line-height:1.65">
+          💬 <b>خاطره معلم:</b> ${esc(item.memoryNote)}
+        </div>
+
+        <div class="chips" style="margin-bottom:8px">
+          <span class="chip">🚪 ${fa(item.classesCount)} کلاس</span>
+          <span class="chip">👨‍🎓 ${fa(item.studentsCount)} دانش‌آموز</span>
+          <span class="chip">📷 ${fa(item.photosCount)} عکس یادگاری</span>
+        </div>
+
+        ${stuPhotos.length ? `
+          <div class="class-stu-avatars-strip" style="margin-bottom:8px">
+            ${stuPhotos.map(p => `<img src="${p.src}" class="class-stu-mini-av photo-clickable" title="${esc(p.name)}" onclick="openPhotoViewer('${p.src}','${safeFileName(p.name)}.jpg')">`).join('')}
+          </div>
+        ` : ''}
+
+        <div class="actions">
+          <button type="button" class="btn primary btn-sm" style="flex:1" onclick="inspectKeepsakeSchoolAlbum('${item.keepsakeId}')">📖 ورق‌زدن آلبوم کلاس‌ها و دانش‌آموزان</button>
+          <button type="button" class="btn green btn-sm" onclick="restoreSchoolFromKeepsakeArchive('${item.keepsakeId}')">♻️ بازگردانی به مدارس فعال</button>
+          <button type="button" class="btn danger btn-sm" onclick="deleteKeepsakeSchoolItem('${item.keepsakeId}')" title="حذف از گنجینه">×</button>
+        </div>
+      </div>
+    `;
+  }).join('') : `
+    <div class="muted" style="padding:22px 14px;text-align:center;border:1.5px dashed var(--border);border-radius:14px">
+      <div style="font-size:32px;margin-bottom:6px">🏛️</div>
+      <b>گنجینه یادگاری مدارس شما هنوز خالی است.</b>
+      <div style="font-size:11.5px;margin-top:4px">از صفحهٔ هر مدرسه می‌توانید روی دکمه <b>«🏛️ بایگانی در گنجینه یادگاری»</b> بزنید تا آن مدرسه با تمام عکس‌ها، دانش‌آموزان و خاطراتش برای همیشه در این آلبوم یادگاری بماند.</div>
+    </div>
+  `;
+
+  openModal(formHeader('🏛️ گنجینه یادگاری و بایگانی همیشگی مدارس') + `
+    <div style="display:grid;gap:10px;max-height:68vh;overflow-y:auto">${itemsHtml}</div>
+    <div class="formactions">
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.inspectKeepsakeSchoolAlbum = function(keepsakeId) {
+  const item = window.ensureKeepsakeSchoolsArray().find(x => x.keepsakeId === keepsakeId);
+  if (!item || !item.schoolSnapshot) return;
+  const s = item.schoolSnapshot;
+
+  const classesHtml = (s.classes || []).map(c => `
+    <div class="card" style="margin-bottom:10px;background:var(--bg-panel)">
+      <b style="color:var(--primary);font-size:14px;display:block;margin-bottom:6px">🚪 کلاس ${esc(c.name)} (پایه ${esc(c.grade || '—')} · ${fa((c.students || []).length)} دانش‌آموز)</b>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:8px">
+        ${sortStudents(c.students || []).map(st => `
+          <div style="padding:8px;border-radius:12px;background:var(--bg-card);border:1px solid var(--border);text-align:center">
+            <div class="list-stu-thumb" style="margin:0 auto 5px;width:54px!important;height:54px!important;border-radius:16px!important" ${st.photo ? `onclick="openPhotoViewer('${st.photo}','${safeFileName(st.name + '-' + st.lastName)}.jpg')"` : ''}>
+              ${st.photo ? `<img src="${st.photo}">` : esc((st.name || '?')[0])}
+            </div>
+            <b style="font-size:12px;display:block">${formatStudentName(st)}</b>
+            <small class="muted" style="font-size:10.5px">${st.fatherName ? `فرزند ${esc(st.fatherName)}` : ''}</small>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  openModal(formHeader(`📖 آلبوم یادگاری: ${item.schoolName} (${item.schoolYear})`) + `
+    <div style="margin-bottom:10px;padding:9px 12px;border-radius:11px;background:#FEF3C7;color:#92400E;font-size:12px;font-weight:800">
+      💬 خاطره معلم: ${esc(item.memoryNote)}
+    </div>
+    <div style="max-height:60vh;overflow-y:auto">${classesHtml}</div>
+    <div class="formactions">
+      <button type="button" class="btn soft" onclick="openKeepsakeSchoolsGalleryModal()">← بازگشت به گنجینه</button>
+      <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+    </div>
+  `);
+};
+
+window.restoreSchoolFromKeepsakeArchive = function(keepsakeId) {
+  const item = window.ensureKeepsakeSchoolsArray().find(x => x.keepsakeId === keepsakeId);
+  if (!item || !item.schoolSnapshot) return;
+  const copy = JSON.parse(JSON.stringify(item.schoolSnapshot));
+  if (db.schools.some(x => x.id === copy.id)) {
+    copy.id = uid();
+    copy.name = `${copy.name} (یادگاری ${item.schoolYear})`;
+  }
+  db.schools.push(copy);
+  savePersistent();
+  renderAll();
+  closeModal();
+  showView('schools');
+  toast(`✅ مدرسه «${copy.name}» به لیست مدارس فعال بازگردانی شد!`);
+};
+
+
+// تضمین حفظ کامل تکالیف/کار عملی فردی (st.homeworks) و گنجینه یادگاری مدارس (db.keepsakeSchoolsArchive) در sanitizeDb و متادیتا
+const _origSanitizeDbV75 = sanitizeDb;
+sanitizeDb = function(data) {
+  const res = _origSanitizeDbV75(data);
+  if (!Array.isArray(res.keepsakeSchoolsArchive)) res.keepsakeSchoolsArchive = Array.isArray(data?.keepsakeSchoolsArchive) ? data.keepsakeSchoolsArchive : [];
+  (res.schools || []).forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+    if (!Array.isArray(st.homeworks)) st.homeworks = [];
+  })));
+  return res;
+};
+
+const _origBuildFastMetaV75 = buildFastMetadataOnlyDb;
+buildFastMetadataOnlyDb = function(fullDb) {
+  const meta = _origBuildFastMetaV75(fullDb);
+  (meta.schools || []).forEach((ms, sIdx) => {
+    const origS = fullDb.schools?.[sIdx];
+    (ms.classes || []).forEach((mc, cIdx) => {
+      const origC = origS?.classes?.[cIdx];
+      (mc.students || []).forEach((mst, stIdx) => {
+        const origSt = origC?.students?.[stIdx];
+        if (origSt && Array.isArray(origSt.homeworks)) {
+          mst.homeworks = origSt.homeworks;
+        }
+      });
+    });
+  });
+  return meta;
+};
+
+window.deleteKeepsakeSchoolItem = function(keepsakeId) {
+  if (!confirm('آیا این مدرسه از گنجینه یادگاری حذف شود؟')) return;
+  db.keepsakeSchoolsArchive = window.ensureKeepsakeSchoolsArray().filter(x => x.keepsakeId !== keepsakeId);
+  savePersistent();
+  renderAll();
+  window.openKeepsakeSchoolsGalleryModal();
+};
 
 </script>
 </body>
