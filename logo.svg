@@ -1,0 +1,48 @@
+<svg viewBox="0 0 512 512" width="512" height="512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgSlimeGrad" cx="30%" cy="24%" r="76%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="20%" stop-color="#FFF7ED"/>
+      <stop offset="48%" stop-color="#FED7AA"/>
+      <stop offset="78%" stop-color="#FB923C"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </radialGradient>
+    <radialGradient id="spinnerBladeGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFF7ED"/>
+      <stop offset="42%" stop-color="#FDBA74"/>
+      <stop offset="82%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#C2410C"/>
+    </radialGradient>
+    <radialGradient id="lobeRingGrad" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#FFEDD5"/>
+      <stop offset="100%" stop-color="#FB923C"/>
+    </radialGradient>
+    <radialGradient id="centerCapGrad" cx="32%" cy="28%" r="72%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#FED7AA"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </radialGradient>
+  </defs>
+  <!-- Creamy Slime Cushion Base -->
+  <path d="M256 24 C368 20, 488 92, 488 248 C488 396, 384 488, 252 488 C118 488, 24 388, 24 256 C24 114, 144 28, 256 24 Z" fill="url(#bgSlimeGrad)" stroke="#FFEDD5" stroke-width="14"/>
+  <!-- Glossy Cream Specular Highlight -->
+  <ellipse cx="164" cy="108" rx="68" ry="32" transform="rotate(-24 164 108)" fill="#FFFFFF" fill-opacity="0.78"/>
+  <!-- 3-Lobe Fidget Spinner Body -->
+  <g transform="translate(0, 0)">
+    <path d="M256 48 C312 48, 328 128, 312 184 C360 216, 440 208, 456 264 C472 320, 400 368, 344 344 C312 384, 312 456, 256 456 C200 456, 200 384, 168 344 C112 368, 40 320, 56 264 C72 208, 152 216, 200 184 C184 128, 200 48, 256 48 Z" fill="url(#spinnerBladeGrad)" stroke="#FFF7ED" stroke-width="12"/>
+    <!-- Lobe 1 Bearing -->
+    <circle cx="256" cy="112" r="50" fill="url(#lobeRingGrad)" stroke="#EA580C" stroke-width="12"/>
+    <circle cx="256" cy="112" r="21" fill="#EA580C"/>
+    <!-- Lobe 2 Bearing -->
+    <circle cx="381" cy="328" r="50" fill="url(#lobeRingGrad)" stroke="#EA580C" stroke-width="12"/>
+    <circle cx="381" cy="328" r="21" fill="#EA580C"/>
+    <!-- Lobe 3 Bearing -->
+    <circle cx="131" cy="328" r="50" fill="url(#lobeRingGrad)" stroke="#EA580C" stroke-width="12"/>
+    <circle cx="131" cy="328" r="21" fill="#EA580C"/>
+  </g>
+  <!-- Center Cap Bearing with Smart Graduation Cap -->
+  <circle cx="256" cy="256" r="78" fill="url(#centerCapGrad)" stroke="#FFFFFF" stroke-width="14"/>
+  <path d="M256 208L194 238L256 268L318 238L256 208Z" fill="#9A3412"/>
+  <path d="M216 254V282C216 294 234 302 256 302C278 302 296 294 296 282V254L256 272L216 254Z" fill="#C2410C"/>
+</svg>
