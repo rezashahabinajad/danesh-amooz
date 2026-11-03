@@ -4730,7 +4730,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.8</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v7.9</span>
         </div>
       </div>
     </div>
@@ -6231,7 +6231,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.8 Pro</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v7.9 Pro</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6332,7 +6332,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v7.8 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v7.9 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6563,7 +6563,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '7.8.0 Pro';
+const APP_VERSION = '7.9.0 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -28143,6 +28143,1395 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       }
     } catch (_) {}
   }, 150);
+
+})();
+</script>
+
+<style id="v79ProFixesStyle">
+/* ==================== استایل‌های ارتقای نسخه v7.9.0 Pro ==================== */
+
+/* ۱. لوگوی تعاملی آرام‌بخش با حس اسلایم خامه‌ای و چرخش نرم اسپینر (Fidget Spinner + Creamy Slime Logo) */
+.brand-logo {
+  position: relative !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 38% 62% 54% 46% / 46% 44% 56% 54% !important;
+  background: radial-gradient(circle at 28% 24%, #FFFDF9 0%, #FFEDD5 24%, #FDBA74 52%, #F97316 82%, #EA580C 100%) !important;
+  box-shadow:
+    inset 0 4px 8px rgba(255, 255, 255, 0.92),
+    inset 0 -5px 10px rgba(194, 65, 12, 0.38),
+    0 6px 18px rgba(249, 115, 22, 0.34),
+    0 0 0 3px rgba(255, 237, 213, 0.85) !important;
+  border: none !important;
+  cursor: grab !important;
+  user-select: none !important;
+  touch-action: none !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: visible !important;
+  animation: creamySlimeBreathe 5.5s ease-in-out infinite !important;
+  transition: box-shadow 0.25s ease, filter 0.25s ease !important;
+  will-change: transform, border-radius;
+  z-index: 25;
+}
+.brand-logo:active {
+  cursor: grabbing !important;
+}
+.brand-logo.slime-squishing {
+  animation: none !important;
+  box-shadow:
+    inset 0 6px 12px rgba(255, 255, 255, 0.98),
+    inset 0 -6px 12px rgba(234, 88, 12, 0.55),
+    0 10px 26px rgba(249, 115, 22, 0.50),
+    0 0 0 5px rgba(254, 215, 170, 0.92) !important;
+}
+.brand-logo::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  width: 15px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.78);
+  transform: rotate(-24deg);
+  pointer-events: none;
+  filter: blur(0.4px);
+}
+.brand-logo svg {
+  width: 30px !important;
+  height: 30px !important;
+  transform-origin: 50% 50% !important;
+  will-change: transform;
+  filter: drop-shadow(0 2px 4px rgba(154, 52, 18, 0.25));
+  pointer-events: none;
+}
+@keyframes creamySlimeBreathe {
+  0%, 100% {
+    border-radius: 40% 60% 54% 46% / 48% 44% 56% 52%;
+  }
+  33% {
+    border-radius: 54% 46% 42% 58% / 52% 58% 42% 48%;
+  }
+  66% {
+    border-radius: 44% 56% 60% 40% / 42% 50% 50% 58%;
+  }
+}
+.slime-bubble-particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #FFFFFF, #FED7AA 45%, #FB923C 100%);
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), 0 3px 8px rgba(249, 115, 22, 0.35);
+  z-index: 9999;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+}
+
+/* ۲. قاب کتاب در تب آموزش: پشتیبانی کامل از زوم دو انگشتی و اسکرول نرم در حالت ورق‌زدن */
+#teacherPdfStage {
+  padding-top: 36px !important;
+  position: relative !important;
+  overflow: auto !important;
+  touch-action: pan-x pan-y pinch-zoom !important;
+}
+.teach-floating-zoom-bar {
+  position: sticky;
+  bottom: 8px;
+  left: 8px;
+  z-index: 44;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 247, 237, 0.95);
+  border: 1.5px solid #FDBA74;
+  border-radius: 99px;
+  padding: 4px 8px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.14);
+  margin-top: 6px;
+}
+.teach-floating-zoom-bar button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #FDBA74;
+  background: #FFFFFF;
+  color: #C2410C;
+  font-weight: 900;
+  font-size: 14px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+/* ۳. گالری اسکرول پیوسته (Infinite Vertical Scroll) صفحات PDF در تب یکپارچه «طراح هوشمند و کتاب PDF» */
+.unified-pdf-scroll-viewport {
+  max-height: 430px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  border-radius: 14px;
+  background: #FFFBF5;
+  border: 2px solid #FED7AA;
+  box-shadow: inset 0 2px 8px rgba(249, 115, 22, 0.06);
+  scroll-behavior: smooth;
+}
+#pdfGalleryGrid {
+  display: grid !important;
+  gap: 10px !important;
+}
+#pdfGalleryGrid.zoom-sm {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+#pdfGalleryGrid.zoom-md {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+#pdfGalleryGrid.zoom-lg {
+  grid-template-columns: 1fr !important;
+}
+@media (max-width: 420px) {
+  #pdfGalleryGrid.zoom-sm {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+.pdf-page-card {
+  position: relative !important;
+  border-radius: 12px !important;
+  border: 2px solid #E2E8F0 !important;
+  background: #FFFFFF !important;
+  padding: 6px !important;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pdf-page-card canvas {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 8px;
+  background: #fff;
+  display: block;
+}
+.pdf-page-card.selected {
+  border: 3px solid #EA580C !important;
+  background: #FFF7ED !important;
+  box-shadow: 0 6px 16px rgba(234, 88, 12, 0.24) !important;
+}
+.pdf-page-zoom-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid #FDBA74;
+  background: rgba(255, 255, 255, 0.94);
+  color: #C2410C;
+  font-size: 14px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 5;
+}
+</style>
+
+<script id="v79ProMasterEngine">
+/* ==================== موتور ارتقای نسخه v7.9.0 Pro ==================== */
+(function initV79ProUpgrades() {
+
+  /* ۱. لوگوی تعاملی اسلایم خامه‌ای و اسپینر آرام‌بخش (Fidget Spinner + Creamy Slime Physics Logo) */
+  function initCreamySlimeSpinnerLogo() {
+    const logo = document.querySelector('.brand-logo');
+    if (!logo || logo._boundSlimeSpinner) return;
+    logo._boundSlimeSpinner = true;
+    const svg = logo.querySelector('svg');
+    logo.addEventListener('click', (e) => e.stopPropagation());
+
+    let angle = 0;
+    let omega = 0;
+    let scaleX = 1, scaleY = 1;
+    let targetScaleX = 1, targetScaleY = 1;
+    let velX = 0, velY = 0;
+    let animId = null;
+    let isPointerDown = false;
+    let lastClientX = 0, lastClientY = 0;
+
+    const spawnCreamyBubbles = (cx, cy, count = 5) => {
+      if (typeof document === 'undefined' || !document.body) return;
+      for (let i = 0; i < count; i++) {
+        const b = document.createElement('div');
+        b.className = 'slime-bubble-particle';
+        const sz = 7 + Math.random() * 9;
+        b.style.width = sz + 'px';
+        b.style.height = sz + 'px';
+        b.style.left = (cx - sz / 2) + 'px';
+        b.style.top = (cy - sz / 2) + 'px';
+        document.body.appendChild(b);
+        const rad = (Math.PI * 2 * i) / count + (Math.random() * 0.5);
+        const dist = 22 + Math.random() * 26;
+        requestAnimationFrame(() => {
+          b.style.transform = `translate(${Math.cos(rad) * dist}px, ${Math.sin(rad) * dist}px) scale(0.2)`;
+          b.style.opacity = '0';
+        });
+        setTimeout(() => b.remove(), 680);
+      }
+    };
+
+    const stepPhysics = () => {
+      angle = (angle + omega) % 360;
+      omega *= 0.972;
+
+      const k = 0.22;
+      const damp = 0.74;
+      velX = (velX + (targetScaleX - scaleX) * k) * damp;
+      velY = (velY + (targetScaleY - scaleY) * k) * damp;
+      scaleX += velX;
+      scaleY += velY;
+
+      const deform = Math.min(18, Math.abs(omega) * 0.45 + Math.abs(1 - scaleX) * 40);
+      const r1 = Math.round(42 + Math.sin(angle * Math.PI / 90) * deform);
+      const r2 = 100 - r1;
+      const r3 = Math.round(48 + Math.cos(angle * Math.PI / 90) * deform);
+      const r4 = 100 - r3;
+
+      logo.style.borderRadius = `${r1}% ${r2}% ${r3}% ${r4}% / ${r3}% ${r1}% ${r2}% ${r4}%`;
+      logo.style.transform = `scale(${scaleX.toFixed(3)}, ${scaleY.toFixed(3)})`;
+      if (svg) {
+        svg.style.transform = `rotate(${angle.toFixed(1)}deg)`;
+      }
+
+      const stillMoving = isPointerDown || Math.abs(omega) > 0.15 || Math.abs(velX) > 0.002 || Math.abs(velY) > 0.002 || Math.abs(1 - scaleX) > 0.003;
+      if (stillMoving) {
+        animId = requestAnimationFrame(stepPhysics);
+      } else {
+        scaleX = 1; scaleY = 1; omega = 0;
+        logo.style.transform = '';
+        logo.style.borderRadius = '';
+        logo.classList.remove('slime-squishing');
+        animId = null;
+      }
+    };
+
+    const ensureLoop = () => {
+      if (!animId) animId = requestAnimationFrame(stepPhysics);
+    };
+
+    logo.addEventListener('pointerdown', (ev) => {
+      ev.stopPropagation();
+      isPointerDown = true;
+      lastClientX = ev.clientX;
+      lastClientY = ev.clientY;
+      logo.setPointerCapture?.(ev.pointerId);
+      logo.classList.add('slime-squishing');
+
+      targetScaleX = 1.18;
+      targetScaleY = 0.82;
+      omega += (omega >= 0 ? 18 : -18);
+      if (Math.abs(omega) > 52) omega = Math.sign(omega) * 52;
+
+      spawnCreamyBubbles(ev.clientX, ev.clientY, 5);
+      if (navigator.vibrate) {
+        try { navigator.vibrate(10); } catch (_) {}
+      }
+      ensureLoop();
+    });
+
+    logo.addEventListener('pointermove', (ev) => {
+      if (!isPointerDown) return;
+      const dx = ev.clientX - lastClientX;
+      const dy = ev.clientY - lastClientY;
+      lastClientX = ev.clientX;
+      lastClientY = ev.clientY;
+
+      omega += (dx - dy * 0.5) * 1.35;
+      if (Math.abs(omega) > 65) omega = Math.sign(omega) * 65;
+      targetScaleX = Math.max(0.78, Math.min(1.26, 1 + Math.abs(dx) * 0.012 - Math.abs(dy) * 0.008));
+      targetScaleY = Math.max(0.78, Math.min(1.26, 1 + Math.abs(dy) * 0.012 - Math.abs(dx) * 0.008));
+      ensureLoop();
+    });
+
+    const releaseSlime = () => {
+      if (!isPointerDown) return;
+      isPointerDown = false;
+      targetScaleX = 1;
+      targetScaleY = 1;
+      velX += -0.09;
+      velY += 0.09;
+      if (navigator.vibrate) {
+        try { navigator.vibrate([6, 18, 8]); } catch (_) {}
+      }
+      ensureLoop();
+    };
+
+    logo.addEventListener('pointerup', releaseSlime);
+    logo.addEventListener('pointercancel', releaseSlime);
+  }
+
+  /* ۲. ادغام یکپارچه تب «📚 کتاب PDF» و «🤖 طراح هوشمند» در یک تب واحد + اسکرول پیوسته صفحات (بدون دکمه ۶ صفحه بعد) + زوم روی صفحات */
+  function unifyPdfAndSmartDesignerTabs() {
+    const subnav = document.querySelector('#examView .exam-subnav');
+    const aiPane = document.getElementById('examPane-ai');
+    const pdfPane = document.getElementById('examPane-pdf');
+    if (!aiPane || !pdfPane) return;
+
+    if (subnav) {
+      const buttons = subnav.querySelectorAll('.ex-nav-btn');
+      buttons.forEach(btn => {
+        const oc = btn.getAttribute('onclick') || '';
+        if (oc.includes("'ai'")) {
+          btn.innerHTML = '<span>🤖📚</span><span>طراح هوشمند و کتاب PDF</span>';
+        } else if (oc.includes("'pdf'")) {
+          btn.style.display = 'none';
+        }
+      });
+    }
+
+    const pdfBoxCard = pdfPane.querySelector('.box-card');
+    if (pdfBoxCard && !pdfBoxCard._unifiedIntoAiPane) {
+      pdfBoxCard._unifiedIntoAiPane = true;
+      pdfBoxCard.innerHTML = `
+        <div class="box-header" style="flex-wrap:wrap;gap:6px">
+          <span>📚 انتخاب صفحات از کتاب PDF (اسکرول پیوسته + بزرگ‌نمایی صفحات)</span>
+          <span id="pdfPageInfoLbl" class="chip" style="font-size:11px;background:#FFF7ED;color:#EA580C;border-color:#FDBA74">آماده اتصال به کتاب</span>
+        </div>
+
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+          <label class="btn primary btn-sm" style="flex:1;min-width:165px;cursor:pointer;margin:0">
+            📂 انتخاب فایل PDF کتاب درسی
+            <input type="file" id="pdfFileInput" accept="application/pdf" hidden onchange="ExamApp.loadPdfBook(event)">
+          </label>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.autoConnectCachedBookToExamPdf(false)" title="بارگذاری خودکار کتابی که در بخش آموزش باز کرده‌اید">
+            🔄 اتصال به کتاب بخش آموزش
+          </button>
+        </div>
+
+        <div id="pdfControlsBox" style="display:none;margin-top:8px">
+          <div style="display:flex;align-items:flex-end;gap:6px;flex-wrap:wrap;background:var(--bg-panel);padding:8px 10px;border-radius:12px;border:1px solid var(--border);margin-bottom:8px">
+            <div style="flex:1;min-width:85px">
+              <label style="font-size:11px;font-weight:800;display:block;margin-bottom:3px">انتخاب از صفحه:</label>
+              <input type="number" id="pdfRangeFrom" min="1" value="1" oninput="ExamApp.selectPdfRange(true)" style="height:36px;text-align:center;font-weight:900">
+            </div>
+            <div style="flex:1;min-width:85px">
+              <label style="font-size:11px;font-weight:800;display:block;margin-bottom:3px">تا صفحه:</label>
+              <input type="number" id="pdfRangeTo" min="1" value="3" oninput="ExamApp.selectPdfRange(true)" style="height:36px;text-align:center;font-weight:900">
+            </div>
+            <button type="button" class="btn soft btn-sm" style="height:36px;padding:0 10px" onclick="ExamApp.selectPdfRange(true)">☑️ اعمال بازه</button>
+            <button type="button" class="btn gray btn-sm" style="height:36px;padding:0 10px" onclick="ExamApp.clearSelectedPdfPages()">پاک‌کردن انتخاب</button>
+          </div>
+
+          <div id="selectedPagesBadge">صفحات انتخاب‌شده: هیچ‌کدام</div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0 6px">
+            <span class="muted" style="font-size:11px;font-weight:800">👇 اسکرول کنید تا بقیه صفحات کتاب خودکار بیایند (برای انتخاب روی صفحه بزنید):</span>
+            <div class="pill-switch" id="pdfGalleryZoomSwitch">
+              <button type="button" class="pill-btn" onclick="ExamApp.setPdfGalleryZoom('sm', this)">کوچک</button>
+              <button type="button" class="pill-btn active" onclick="ExamApp.setPdfGalleryZoom('md', this)">متوسط</button>
+              <button type="button" class="pill-btn" onclick="ExamApp.setPdfGalleryZoom('lg', this)">🔍 بزرگ (زوم)</button>
+            </div>
+          </div>
+
+          <div class="unified-pdf-scroll-viewport" id="pdfInfiniteScrollViewport">
+            <div class="pdf-gallery-grid zoom-md" id="pdfGalleryGrid"></div>
+            <div id="pdfInfiniteScrollSentinel" style="text-align:center;padding:10px;font-size:11.5px;color:var(--primary);font-weight:800"></div>
+          </div>
+        </div>
+      `;
+
+      const cardsInAi = aiPane.querySelectorAll('.box-card');
+      const settingsCard = cardsInAi[cardsInAi.length - 1];
+      if (settingsCard) {
+        aiPane.insertBefore(pdfBoxCard, settingsCard);
+      } else {
+        aiPane.appendChild(pdfBoxCard);
+      }
+    }
+  }
+
+  /* ۳. ارتقای repairSpacedPersianText برای جداسازی کلمات چسبیده‌ای مثل «تنهنباشید»، «اینماهنمرات»، «کهکسیشما»، «پاسخدهید» */
+  window.repairSpacedPersianText = function(rawStr) {
+    if (!rawStr) return '';
+    let s = String(rawStr)
+      .normalize('NFKC')
+      .replace(/ي/g, 'ی')
+      .replace(/ك/g, 'ک')
+      .replace(/[\u200B\u200D\uFEFF]/g, '');
+
+    s = s.replace(/متن کمکی استخراج[\s\u200C]*شده از صفحه\s*\([^)]*\)\s*:?/g, '');
+    s = s.replace(/متن کمکی صفحه\s*\([^)]*\)\s*:?/g, '');
+    s = s.replace(/متن کمکی صفحه\s*:?/g, '');
+    s = s.replace(/تو یک دبیر خبره[^\n]*\n?/g, '');
+    s = s.replace(/این درخواست مربوط به صفحه[^\n]*\n?/g, '');
+    s = s.replace(/فقط یک آرایه JSON معتبر برگردان\s*:?/g, '');
+
+    // الف) جداسازی کلمات چسبیده در PDF
+    const gluedFixes = [
+      [/تنهنباشید/g, 'تنها نباشید'],
+      [/تنهانباشید/g, 'تنها نباشید'],
+      [/باهمکمکنباشید/g, 'با هم کمک نباشید'],
+      [/باهمکمک/g, 'با هم کمک'],
+      [/باهم/g, 'با هم'],
+      [/اینماهنمراتونمرهشفاهیندارد/g, 'این ماه نمرات و نمره شفاهی ندارد'],
+      [/اینماهنمرات/g, 'این ماه نمرات'],
+      [/نمرهشفاهیندارد/g, 'نمره شفاهی ندارد'],
+      [/نمرهشفاهی/g, 'نمره شفاهی'],
+      [/شفاهیندارد/g, 'شفاهی ندارد'],
+      [/کهکسیشما/g, 'که کسی شما'],
+      [/کهکسی/g, 'که کسی'],
+      [/کسیشما/g, 'کسی شما'],
+      [/تمامشدهمن/g, 'تمام شده من'],
+      [/تمامشده/g, 'تمام شده'],
+      [/پاسخدهید/g, 'پاسخ دهید'],
+      [/انجامدهید/g, 'انجام دهید'],
+      [/توضیحدهید/g, 'توضیح دهید'],
+      [/نشاندهید/g, 'نشان دهید'],
+      [/مشخصکنید/g, 'مشخص کنید'],
+      [/کاملکنید/g, 'کامل کنید'],
+      [/بررسیکنید/g, 'بررسی کنید'],
+      [/گفتگوکنید/g, 'گفتگو کنید'],
+      [/بیانکنید/g, 'بیان کنید'],
+      [/نامببرید/g, 'نام ببرید'],
+      [/اینپاکت/g, 'این پاکت'],
+      [/پاکتها/g, 'پاکت‌ها'],
+      [/بچهها/g, 'بچه‌ها'],
+      [/([آ-ی]{3,})(ندارد|ندارند|نباشید|نباشند|نمی‌شود|نمی‌کند|دهید|کنید|ببرید|نمایید)\b/g, '$1 $2'],
+      [/\b(که|این|آن)(کسی|شما|ما|ماه|روز|کار|درس|صفحه|سوال|جا|پاکت|نمره)\b/g, '$1 $2']
+    ];
+    gluedFixes.forEach(([rgx, rep]) => {
+      s = s.replace(rgx, rep);
+    });
+
+    // ب) چسباندن کلمات گسسته دارای «ی» جداافتاده
+    const explicitWordFixes = [
+      [/بنو\s*ی\s*س\s*ی\s*د/g, 'بنویسید'],
+      [/بنو\s*ی\s*س\s*ن\s*د/g, 'بنویسند'],
+      [/م\s*ی\s*نو\s*ی\s*س\s*د/g, 'می‌نویسد'],
+      [/سرو\s*ی\s*س/g, 'سرویس'],
+      [/خو\s*ی\s*ش/g, 'خویش'],
+      [/پ\s*ی\s*رامون/g, 'پیرامون'],
+      [/بپرداز\s*ی\s*د/g, 'بپردازید'],
+      [/پ\s*ی\s*ش\s*ب\s*ی\s*ن\s*ی/g, 'پیش‌بینی'],
+      [/پ\s*ی\s*ش/g, 'پیش'],
+      [/ب\s*ی\s*ش\s*ت\s*ر/g, 'بیشتر'],
+      [/ن\s*ت\s*ی\s*ج\s*ه/g, 'نتیجه'],
+      [/نت\s*ی\s*جه/g, 'نتیجه'],
+      [/تعم\s*ی\s*ر/g, 'تعمیر'],
+      [/تول\s*ی\s*د/g, 'تولید'],
+      [/توز\s*ی\s*ع/g, 'توزیع'],
+      [/مد\s*ی\s*ر\s*ی\s*ت/g, 'مدیریت'],
+      [/کارآفر\s*ی\s*ن\s*ی/g, 'کارآفرینی'],
+      [/خوداشتغال\s*ی/g, 'خوداشتغالی'],
+      [/حقوق\s*بگ\s*ی\s*ر\s*ی/g, 'حقوق‌بگیری'],
+      [/بگ\s*ی\s*ر\s*ی\s*د/g, 'بگیرید'],
+      [/گرو\s*ه\s*ها\s*ی/g, 'گروه‌های'],
+      [/ز\s*ی\s*ر/g, 'زیر'],
+      [/ن\s*ی\s*ز/g, 'نیز'],
+      [/ب\s*ی\s*ن/g, 'بین'],
+      [/ا\s*ی\s*ن/g, 'این'],
+      [/تعل\s*ی\s*م/g, 'تعلیم'],
+      [/ترب\s*ی\s*ت/g, 'تربیت'],
+      [/مح\s*ی\s*ط/g, 'محیط'],
+      [/تغ\s*ی\s*ی\s*ر/g, 'تغییر'],
+      [/تأث\s*ی\s*ر/g, 'تأثیر'],
+      [/تنظ\s*ی\s*م/g, 'تنظیم'],
+      [/توض\s*ی\s*ح/g, 'توضیح'],
+      [/تشخ\s*ی\s*ص/g, 'تشخیص'],
+      [/تع\s*ی\s*ی\s*ن/g, 'تعیین'],
+      [/مسئول\s*ی\s*ت/g, 'مسئولیت'],
+      [/فعال\s*ی\s*ت/g, 'فعالیت'],
+      [/موقع\s*ی\s*ت/g, 'موقعیت'],
+      [/ک\s*ی\s*ف\s*ی\s*ت/g, 'کیفیت'],
+      [/امن\s*ی\s*ت/g, 'امنیت'],
+      [/خلاق\s*ی\s*ت/g, 'خلاقیت'],
+      [/موفق\s*ی\s*ت/g, 'موفقیت']
+    ];
+    explicitWordFixes.forEach(([rgx, rep]) => {
+      s = s.replace(rgx, rep);
+    });
+
+    const persianChars = 'آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئؤإأ';
+    const reMedialYe = new RegExp(`([${persianChars}])\\s+ی\\s+([${persianChars}])`, 'g');
+    for (let i = 0; i < 6; i++) {
+      const next = s.replace(reMedialYe, '$1ی$2');
+      if (next === s) break;
+      s = next;
+    }
+
+    const reFinalYe = new RegExp(`([${persianChars}]{2,})\\s+ی(?=\\s|[.،؛؟!:)»\\]\\n]|$)`, 'g');
+    s = s.replace(reFinalYe, '$1ی');
+
+    s = s.replace(/\b(ن?می)\s+(شود|شوند|کند|کنند|توان|تواند|توانیم|توانند|باشد|باشند|گوید|گویند|آید|آیند|رود|روند|دهد|دهند|گیرد|گیرند|رسد|رسند|سازد|سازند|نماید|نمایند|دارد|دارند|نویسد|نویسند|بیند|بینند)\b/g, '$1‌$2');
+
+    s = s.split('\n').map(line => line.replace(/[ \t]+/g, ' ').trim()).join('\n').replace(/\n{3,}/g, '\n\n').trim();
+    return s;
+  };
+
+  /* ۴. اصلاح cleanPersianPdfText (عدم چسباندن کلمات مجزا) + فعال‌سازی زوم دو انگشتی روی کتاب در حالت ورق‌زدن */
+  if (window.TeachAssistant) {
+    TeachAssistant.cleanPersianPdfText = function(rawItems) {
+      if (!Array.isArray(rawItems) || !rawItems.length) return '';
+      const normalizeGlyphs = (str) => {
+        if (!str) return '';
+        return str.normalize('NFKC')
+          .replace(/ي/g, 'ی')
+          .replace(/ك/g, 'ک')
+          .replace(/[\u200B\u200D\uFEFF]/g, '');
+      };
+
+      const items = rawItems
+        .filter(it => it && typeof it.str === 'string' && it.str.trim())
+        .map(it => ({
+          str: normalizeGlyphs(it.str.trim()),
+          x: Array.isArray(it.transform) ? Number(it.transform[4]) || 0 : 0,
+          y: Array.isArray(it.transform) ? Number(it.transform[5]) || 0 : 0,
+          w: Number(it.width) || (it.str.trim().length * 4.2)
+        }));
+
+      if (!items.length) return '';
+
+      items.sort((a, b) => b.y - a.y);
+      const lines = [];
+      const yTolerance = 5.5;
+      items.forEach(it => {
+        let line = lines.find(l => Math.abs(l.y - it.y) <= yTolerance);
+        if (!line) {
+          line = { y: it.y, words: [] };
+          lines.push(line);
+        }
+        line.words.push(it);
+      });
+
+      const reconstructedLines = lines.map(line => {
+        line.words.sort((a, b) => b.x - a.x);
+        let lineStr = '';
+        for (let i = 0; i < line.words.length; i++) {
+          const cur = line.words[i];
+          if (i === 0) {
+            lineStr = cur.str;
+            continue;
+          }
+          const prev = line.words[i - 1];
+          const gap = (prev.x - (cur.x + cur.w));
+          if (gap > 55) {
+            lineStr += ' | ' + cur.str;
+          } else {
+            lineStr += ' ' + cur.str;
+          }
+        }
+        return lineStr;
+      });
+
+      return window.repairSpacedPersianText(reconstructedLines.join('\n'));
+    };
+
+    TeachAssistant.initBookStageZoomAndSwipe = function() {
+      const stage = document.getElementById('teacherPdfStage');
+      if (!stage || stage._boundPinchZoomV79) return;
+      stage._boundPinchZoomV79 = true;
+
+      if (!document.getElementById('teachFloatingZoomBar')) {
+        const zBar = document.createElement('div');
+        zBar.id = 'teachFloatingZoomBar';
+        zBar.className = 'teach-floating-zoom-bar';
+        zBar.dir = 'rtl';
+        zBar.innerHTML = `
+          <button type="button" onclick="TeachAssistant.zoomStudyPdf(0.25)" title="بزرگ‌نمایی صفحه کتاب">➕</button>
+          <span id="teachFloatingZoomLbl" style="font-size:11px;font-weight:900;color:#C2410C;padding:0 4px;cursor:pointer" onclick="TeachAssistant.resetStudyZoom()" title="بازگشت به اندازه متناسب">🔍 متناسب</span>
+          <button type="button" onclick="TeachAssistant.zoomStudyPdf(-0.25)" title="کوچک‌نمایی صفحه کتاب">➖</button>
+        `;
+        stage.appendChild(zBar);
+      }
+
+      let initialPinchDist = null;
+      let startZoomVal = 1;
+      let lastTapTime = 0;
+      let multiTouchActive = false;
+
+      stage.addEventListener('touchstart', (ev) => {
+        if (this._annotMode) return;
+        if (ev.touches.length === 2) {
+          multiTouchActive = true;
+          const dx = ev.touches[0].clientX - ev.touches[1].clientX;
+          const dy = ev.touches[0].clientY - ev.touches[1].clientY;
+          initialPinchDist = Math.hypot(dx, dy);
+          startZoomVal = Number(window._teacherPdfZoom) || 1;
+        } else if (ev.touches.length === 1) {
+          const now = Date.now();
+          if (now - lastTapTime < 280 && !multiTouchActive) {
+            const curZ = Number(window._teacherPdfZoom) || 0;
+            window._teacherPdfZoom = curZ > 1.1 ? 0 : 1.65;
+            this.renderStudyPdf();
+            toast(window._teacherPdfZoom > 1 ? '🔍 بزرگ‌نمایی صفحه فعال شد (با انگشت جابه‌جا شوید)' : '📐 اندازه صفحه متناسب شد');
+            lastTapTime = 0;
+          } else {
+            lastTapTime = now;
+          }
+        }
+      }, { passive: true });
+
+      stage.addEventListener('touchmove', (ev) => {
+        if (this._annotMode) return;
+        if (ev.touches.length === 2 && initialPinchDist > 15) {
+          const dx = ev.touches[0].clientX - ev.touches[1].clientX;
+          const dy = ev.touches[0].clientY - ev.touches[1].clientY;
+          const dist = Math.hypot(dx, dy);
+          const ratio = dist / initialPinchDist;
+          const nextZoom = Math.min(2.6, Math.max(0.75, Math.round(startZoomVal * ratio * 20) / 20));
+          const canvas = document.getElementById('teacherPdfCanvas');
+          if (canvas) {
+            canvas.style.transformOrigin = 'center top';
+            canvas.style.transform = `scale(${(nextZoom / (Number(window._teacherPdfZoom) || 1)).toFixed(2)})`;
+          }
+          this._pendingPinchZoom = nextZoom;
+        }
+      }, { passive: true });
+
+      stage.addEventListener('touchend', (ev) => {
+        if (this._pendingPinchZoom) {
+          const canvas = document.getElementById('teacherPdfCanvas');
+          if (canvas) canvas.style.transform = '';
+          window._teacherPdfZoom = this._pendingPinchZoom <= 1.05 ? 0 : this._pendingPinchZoom;
+          this._pendingPinchZoom = null;
+          initialPinchDist = null;
+          this.renderStudyPdf();
+        }
+        if (!ev.touches || ev.touches.length === 0) {
+          setTimeout(() => { multiTouchActive = false; }, 120);
+        }
+      }, { passive: true });
+    };
+
+    if (typeof TeachAssistant.renderStudyPdf === 'function') {
+      const _origRenderStudyPdfV78 = TeachAssistant.renderStudyPdf.bind(TeachAssistant);
+      TeachAssistant.renderStudyPdf = async function() {
+        await _origRenderStudyPdfV78();
+        const zLbl = document.getElementById('teachFloatingZoomLbl');
+        const uZoom = Number(window._teacherPdfZoom) || 0;
+        if (zLbl) {
+          zLbl.textContent = uZoom > 0 ? `🔍 ${fa(Math.round(uZoom * 100))}٪` : '🔍 متناسب';
+        }
+        this.initBookStageZoomAndSwipe();
+      };
+    }
+  }
+
+  /* ۵. ارتقای ExamApp در نسخه v7.9 (گالری اسکرول پیوسته، زوم روی صفحات و طراحی هوشمند مفهومی از صفحات داستانی و علمی) */
+  if (window.ExamApp) {
+
+    ExamApp.syncPdfInlineSettings = function() {};
+
+    ExamApp.detectSubjectFromContext = function(rawText = '') {
+      const explicitBookOrHeader = `${db.cachedBook?.name || ''} ${this.state?.header?.subject || ''} ${document.getElementById('hdrSubject')?.value || ''} ${document.getElementById('aiPromptSource')?.value || ''}`;
+      const combined = `${explicitBookOrHeader} ${rawText || ''}`.trim();
+
+      const subjectRules = [
+        { key: 'dini', label: 'پیام‌های آسمان (دینی)', keywords: ['دینی', 'پیام‌های آسمان', 'پیام های آسمان', 'هدیه‌های آسمان', 'هدیه های آسمان', 'دین و زندگی', 'معارف اسلامی', 'توحید', 'معاد', 'نبوت', 'امامت', 'نماز', 'روزه', 'مرجعیت', 'ولایت', 'احکام', 'پاکت مسابقه', 'کسی شما را نبیند', 'خداوند در همه جا'] },
+        { key: 'quran', label: 'آموزش قرآن', keywords: ['آموزش قرآن', 'روان‌خوانی قرآن', 'تجوید قرآن'] },
+        { key: 'arabic', label: 'عربی (زبان قرآن)', keywords: ['عربی', 'زبان قرآن', 'فعل ماضی', 'فعل مضارع', 'ترجمه عربی', 'مفرد و جمع'] },
+        { key: 'science', label: 'علوم تجربی', keywords: ['علوم تجربی', 'علوم', 'فیزیک', 'شیمی', 'زیست', 'زمین‌شناسی', 'اتم', 'مولکول', 'سلول', 'نیرو', 'انرژی', 'ماده'] },
+        { key: 'math', label: 'ریاضی', keywords: ['ریاضی', 'هندسه', 'معادله', 'عبارت جبری', 'مجموعه', 'اعداد صحیح', 'اعداد گویا', 'توان و جذر', 'احتمال'] },
+        { key: 'persian', label: 'فارسی و نگارش', keywords: ['فارسی', 'ادبیات', 'نگارش', 'املا', 'آرایه', 'تشبیه', 'کنایه', 'نهاد و گزاره', 'معنی شعر', 'معنی واژه'] },
+        { key: 'social', label: 'مطالعات اجتماعی', keywords: ['مطالعات اجتماعی', 'مطالعات', 'تاریخ', 'جغرافیا', 'مدنی', 'شهروندی', 'آب و هوا', 'قاره'] },
+        { key: 'english', label: 'زبان انگلیسی', keywords: ['زبان انگلیسی', 'انگلیسی', 'english', 'prospect', 'grammar', 'vocabulary'] },
+        { key: 'tafakkur', label: 'تفکر و سبک زندگی', keywords: ['تفکر و سبک زندگی', 'تفکر', 'سبک زندگی', 'مهارت‌های زندگی'] },
+        { key: 'art', label: 'فرهنگ و هنر', keywords: ['فرهنگ و هنر', 'هنر', 'خوشنویسی', 'نقاشی', 'صنایع دستی'] },
+        { key: 'tech', label: 'کار و فناوری', keywords: ['کار و فناوری', 'فناوری', 'خوداشتغالی', 'کارآفرینی', 'پروژه عملی', 'کسب‌وکار'] }
+      ];
+
+      for (const rule of subjectRules) {
+        if (rule.keywords.some(kw => explicitBookOrHeader.toLowerCase().includes(kw.toLowerCase()))) {
+          return rule;
+        }
+      }
+      for (const rule of subjectRules) {
+        if (rule.keywords.some(kw => combined.toLowerCase().includes(kw.toLowerCase()))) {
+          return rule;
+        }
+      }
+      return { key: 'general', label: this.state?.header?.subject || 'درس', keywords: [] };
+    };
+
+    ExamApp.setPdfGalleryZoom = function(mode, btnEl) {
+      this._pdfGalleryZoomMode = mode;
+      const grid = document.getElementById('pdfGalleryGrid');
+      if (grid) {
+        grid.classList.remove('zoom-sm', 'zoom-md', 'zoom-lg');
+        grid.classList.add('zoom-' + (mode || 'md'));
+      }
+      if (btnEl) {
+        document.querySelectorAll('#pdfGalleryZoomSwitch .pill-btn').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+    };
+
+    ExamApp.openSinglePdfPageZoomModal = async function(pageNo, ev) {
+      if (ev) ev.stopPropagation();
+      const p = Number(pageNo) || 1;
+      if (typeof openModal !== 'function') return;
+
+      openModal(formHeader(`🔍 بزرگ‌نمایی و مطالعه صفحه ${this.toFa(p)} کتاب`) + `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px;flex-wrap:wrap">
+          <div style="display:flex;gap:5px">
+            <button type="button" class="btn soft btn-sm" onclick="ExamApp.zoomModalCanvasBy(0.25)">➕ زوم بیشتر</button>
+            <button type="button" class="btn soft btn-sm" onclick="ExamApp.zoomModalCanvasBy(-0.25)">➖ زوم کمتر</button>
+          </div>
+          <button type="button" class="btn ${this.selectedPdfPages.has(p) ? 'green' : 'primary'} btn-sm" id="btnModalToggleSelectPage" onclick="ExamApp.togglePageSelectionFromZoomModal(${p})">
+            ${this.selectedPdfPages.has(p) ? '✅ این صفحه برای آزمون انتخاب شده' : '➕ انتخاب این صفحه برای آزمون'}
+          </button>
+        </div>
+        <div style="max-height:70vh;overflow:auto;border:2px solid #FDBA74;border-radius:12px;background:#FFFBF5;text-align:center;padding:8px;touch-action:pan-x pan-y pinch-zoom">
+          <canvas id="pdfZoomModalCanvas" dir="ltr" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.12)"></canvas>
+          <div id="pdfZoomModalTextFallback" style="display:none;text-align:right;padding:12px;line-height:1.9;font-size:13.5px"></div>
+        </div>
+        <div class="formactions">
+          <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+        </div>
+      `);
+
+      this._modalZoomScale = 1.45;
+      await this.renderZoomModalPageCanvas(p);
+    };
+
+    ExamApp.zoomModalCanvasBy = function(delta) {
+      this._modalZoomScale = Math.min(3.0, Math.max(0.8, (this._modalZoomScale || 1.45) + delta));
+      const cv = document.getElementById('pdfZoomModalCanvas');
+      if (cv) {
+        cv.style.maxWidth = this._modalZoomScale > 1.5 ? 'none' : '100%';
+        cv.style.width = Math.round(this._modalZoomScale * 68) + '%';
+      }
+    };
+
+    ExamApp.togglePageSelectionFromZoomModal = function(p) {
+      if (this.selectedPdfPages.has(p)) this.selectedPdfPages.delete(p);
+      else this.selectedPdfPages.add(p);
+      this.updateSelectedPagesBadge();
+      const btn = document.getElementById('btnModalToggleSelectPage');
+      if (btn) {
+        const sel = this.selectedPdfPages.has(p);
+        btn.className = `btn ${sel ? 'green' : 'primary'} btn-sm`;
+        btn.textContent = sel ? '✅ این صفحه برای آزمون انتخاب شده' : '➕ انتخاب این صفحه برای آزمون';
+      }
+    };
+
+    ExamApp.renderZoomModalPageCanvas = async function(p) {
+      const cv = document.getElementById('pdfZoomModalCanvas');
+      const fb = document.getElementById('pdfZoomModalTextFallback');
+      if (!cv) return;
+      if (this.pdfDoc && p >= 1 && p <= this.pdfDoc.numPages) {
+        try {
+          const page = await this.pdfDoc.getPage(p);
+          const vp = page.getViewport({ scale: 1.5 });
+          cv.width = Math.floor(vp.width);
+          cv.height = Math.floor(vp.height);
+          const ctx = cv.getContext('2d');
+          try { ctx.direction = 'ltr'; } catch (_) {}
+          await page.render({ canvasContext: ctx, viewport: vp }).promise;
+          return;
+        } catch (_) {}
+      }
+      cv.style.display = 'none';
+      if (fb) {
+        fb.style.display = 'block';
+        fb.textContent = window.repairSpacedPersianText(db.cachedBook?.pages?.[String(p)] || `صفحه ${this.toFa(p)}`);
+      }
+    };
+
+    ExamApp.clearSelectedPdfPages = function() {
+      this.selectedPdfPages.clear();
+      this.updateSelectedPagesBadge();
+    };
+
+    ExamApp.updateSelectedPagesBadge = function() {
+      const arr = [...this.selectedPdfPages].sort((a, b) => a - b);
+      const b = document.getElementById('selectedPagesBadge');
+      if (b) {
+        if (arr.length > 0) {
+          const listStr = arr.length <= 15
+            ? arr.map(n => this.toFa(n)).join('، ')
+            : `${this.toFa(arr[0])} تا ${this.toFa(arr[arr.length - 1])}`;
+          b.innerHTML = `✅ صفحات انتخاب‌شده برای آزمون: <b>${listStr}</b> (${this.toFa(arr.length)} صفحه آماده طراحی)`;
+        } else {
+          b.textContent = 'صفحات انتخاب‌شده: هیچ‌کدام (روی صفحات زیر بزنید یا بازه صفحه را در کادر بالا بنویسید)';
+        }
+      }
+      document.querySelectorAll('#pdfGalleryGrid .pdf-page-card').forEach(card => {
+        const pNum = Number(card.getAttribute('data-page-num'));
+        if (!pNum) return;
+        const isSel = this.selectedPdfPages.has(pNum);
+        card.classList.toggle('selected', isSel);
+        const lbl = card.querySelector('.pdf-page-label');
+        if (lbl) lbl.textContent = `${isSel ? '✅' : '⬜'} صفحه ${this.toFa(pNum)}`;
+      });
+    };
+
+    ExamApp.selectPdfRange = function(autoScroll = false) {
+      const maxP = this.pdfDoc?.numPages || Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 200;
+      const fEl = document.getElementById('pdfRangeFrom');
+      const tEl = document.getElementById('pdfRangeTo');
+      if (!fEl || !tEl) return;
+      const rawF = parseInt(typeof enDigits === 'function' ? enDigits(fEl.value) : fEl.value);
+      const rawT = parseInt(typeof enDigits === 'function' ? enDigits(tEl.value) : tEl.value);
+      if (!Number.isFinite(rawF) && !Number.isFinite(rawT)) return;
+      const f = Math.max(1, Math.min(maxP, Number.isFinite(rawF) ? rawF : 1));
+      const t = Math.max(f, Math.min(maxP, Number.isFinite(rawT) ? rawT : f));
+
+      this.selectedPdfPages.clear();
+      for (let p = f; p <= t; p++) {
+        this.selectedPdfPages.add(p);
+      }
+
+      if (this._loadedPdfGalleryCount && t > this._loadedPdfGalleryCount) {
+        this.appendMorePdfGalleryPages(t + 4);
+      }
+      this.updateSelectedPagesBadge();
+
+      if (autoScroll) {
+        const targetCard = document.querySelector(`#pdfGalleryGrid .pdf-page-card[data-page-num="${f}"]`);
+        const vp = document.getElementById('pdfInfiniteScrollViewport');
+        if (targetCard && vp) {
+          vp.scrollTop = Math.max(0, targetCard.offsetTop - 12);
+        }
+      }
+    };
+
+    ExamApp.renderPdfGallery = async function() {
+      const grid = document.getElementById('pdfGalleryGrid');
+      const ctrlBox = document.getElementById('pdfControlsBox');
+      const vp = document.getElementById('pdfInfiniteScrollViewport');
+      if (!grid) return;
+      if (ctrlBox) ctrlBox.style.display = 'block';
+
+      const totalPages = this.pdfDoc?.numPages || Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 0;
+      if (!totalPages) return;
+
+      const infoLbl = document.getElementById('pdfPageInfoLbl');
+      if (infoLbl) {
+        const bName = db.cachedBook?.name ? `📚 ${db.cachedBook.name}` : '📚 کتاب فعال';
+        infoLbl.textContent = `${bName} (${this.toFa(totalPages)} صفحه)`;
+      }
+
+      grid.innerHTML = '';
+      this._loadedPdfGalleryCount = 0;
+      this._totalPdfGalleryPages = totalPages;
+
+      if (this._pdfCardObserver) {
+        try { this._pdfCardObserver.disconnect(); } catch (_) {}
+      }
+      if ('IntersectionObserver' in window && this.pdfDoc) {
+        this._pdfCardObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const card = entry.target;
+              const pNo = Number(card.getAttribute('data-page-num'));
+              if (pNo && !card._renderedCanvas) {
+                card._renderedCanvas = true;
+                this.renderSingleGalleryCardCanvas(card, pNo);
+              }
+            }
+          });
+        }, { root: vp || null, rootMargin: '180px 0px 180px 0px', threshold: 0.01 });
+      }
+
+      const maxSelected = this.selectedPdfPages.size ? Math.max(...this.selectedPdfPages) : 12;
+      this.appendMorePdfGalleryPages(Math.min(totalPages, Math.max(12, maxSelected + 4)));
+
+      if (vp && !vp._boundInfiniteScroll) {
+        vp._boundInfiniteScroll = true;
+        vp.addEventListener('scroll', () => {
+          if (vp.scrollTop + vp.clientHeight >= vp.scrollHeight - 220) {
+            if (this._loadedPdfGalleryCount < this._totalPdfGalleryPages) {
+              this.appendMorePdfGalleryPages(this._loadedPdfGalleryCount + 10);
+            }
+          }
+        }, { passive: true });
+      }
+    };
+
+    ExamApp.appendMorePdfGalleryPages = function(targetMaxPage) {
+      const grid = document.getElementById('pdfGalleryGrid');
+      const sentinel = document.getElementById('pdfInfiniteScrollSentinel');
+      if (!grid) return;
+      const totalPages = this._totalPdfGalleryPages || this.pdfDoc?.numPages || Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 0;
+      const startP = (this._loadedPdfGalleryCount || 0) + 1;
+      const endP = Math.min(totalPages, targetMaxPage);
+      if (startP > endP) return;
+
+      for (let p = startP; p <= endP; p++) {
+        const card = document.createElement('div');
+        card.className = 'pdf-page-card' + (this.selectedPdfPages.has(p) ? ' selected' : '');
+        card.setAttribute('data-page-num', String(p));
+        card.onclick = () => {
+          if (this.selectedPdfPages.has(p)) this.selectedPdfPages.delete(p);
+          else this.selectedPdfPages.add(p);
+          this.updateSelectedPagesBadge();
+        };
+
+        const zoomBtn = document.createElement('button');
+        zoomBtn.type = 'button';
+        zoomBtn.className = 'pdf-page-zoom-btn';
+        zoomBtn.innerHTML = '🔍';
+        zoomBtn.title = `بزرگ‌نمایی صفحه ${this.toFa(p)}`;
+        zoomBtn.onclick = (ev) => this.openSinglePdfPageZoomModal(p, ev);
+        card.appendChild(zoomBtn);
+
+        const l = document.createElement('div');
+        l.className = 'pdf-page-label';
+        l.style.marginTop = '5px';
+        l.textContent = `${this.selectedPdfPages.has(p) ? '✅' : '⬜'} صفحه ${this.toFa(p)}`;
+
+        if (this.pdfDoc && p <= this.pdfDoc.numPages) {
+          const c = document.createElement('canvas');
+          c.width = 180;
+          c.height = 245;
+          c.setAttribute('dir', 'ltr');
+          c.style.direction = 'ltr';
+          card.appendChild(c);
+          card.appendChild(l);
+          grid.appendChild(card);
+          if (this._pdfCardObserver) {
+            this._pdfCardObserver.observe(card);
+          } else {
+            this.renderSingleGalleryCardCanvas(card, p);
+          }
+        } else {
+          const previewDiv = document.createElement('div');
+          const snippet = window.repairSpacedPersianText(db.cachedBook?.pages?.[String(p)] || '').slice(0, 90);
+          previewDiv.style.cssText = 'width:100%;min-height:95px;background:#FFF7ED;border-radius:8px;padding:8px;font-size:10px;color:#475569;overflow:hidden;line-height:1.5;text-align:right';
+          previewDiv.textContent = snippet || `صفحه ${this.toFa(p)} کتاب ${db.cachedBook?.name || 'درسی'}`;
+          card.appendChild(previewDiv);
+          card.appendChild(l);
+          grid.appendChild(card);
+        }
+      }
+
+      this._loadedPdfGalleryCount = endP;
+      if (sentinel) {
+        sentinel.textContent = endP < totalPages
+          ? `⬇️ صفحه ${this.toFa(1)} تا ${this.toFa(endP)} نمایش داده شد — برای مشاهده بقیه صفحات (${this.toFa(totalPages)} صفحه) به پایین اسکرول کنید...`
+          : `✅ تمام ${this.toFa(totalPages)} صفحه کتاب بارگذاری شد`;
+      }
+      this.updateSelectedPagesBadge();
+    };
+
+    ExamApp.renderSingleGalleryCardCanvas = async function(card, pNo) {
+      if (!this.pdfDoc || pNo < 1 || pNo > this.pdfDoc.numPages) return;
+      const cv = card.querySelector('canvas');
+      if (!cv) return;
+      try {
+        const page = await this.pdfDoc.getPage(pNo);
+        const vp = page.getViewport({ scale: 0.42 });
+        cv.width = Math.floor(vp.width);
+        cv.height = Math.floor(vp.height);
+        const gCtx = cv.getContext('2d');
+        try { gCtx.direction = 'ltr'; } catch (_) {}
+        await page.render({ canvasContext: gCtx, viewport: vp }).promise;
+      } catch (_) {}
+    };
+
+    ExamApp.loadPdfBook = async function(e) {
+      const f = e?.target?.files?.[0];
+      if (!f) return;
+      this.autoDetectHeaderFromText(f.name);
+      try {
+        const buf = await f.arrayBuffer();
+        const cfg = (window.TeachAssistant && TeachAssistant.getPdfDocumentConfig)
+          ? TeachAssistant.getPdfDocumentConfig(buf)
+          : { data: new Uint8Array(buf), disableFontFace: true, useSystemFonts: false, isEvalSupported: true };
+        this.pdfDoc = await pdfjsLib.getDocument(cfg).promise;
+        this.selectedPdfPages.clear();
+        const fEl = document.getElementById('pdfRangeFrom');
+        const tEl = document.getElementById('pdfRangeTo');
+        if (fEl) fEl.value = 1;
+        if (tEl) tEl.value = Math.min(this.pdfDoc.numPages, 3);
+        for (let p = 1; p <= Math.min(this.pdfDoc.numPages, 3); p++) this.selectedPdfPages.add(p);
+        await this.renderPdfGallery();
+        toast(`کتاب PDF با ${this.toFa(this.pdfDoc.numPages)} صفحه آماده انتخاب و اسکرول پیوسته است 📚`);
+      } catch (err) {
+        toast('خطا در باز کردن PDF: ' + (err?.message || ''));
+      }
+    };
+
+    ExamApp.buildQuestionsFromSourceBySettings = function(sourceText, customSettings = null) {
+      const cfg = customSettings || {
+        mcq: Math.max(0, Number(document.getElementById('aiCountMcq')?.value ?? 4)),
+        tf: Math.max(0, Number(document.getElementById('aiCountTf')?.value ?? 2)),
+        blank: Math.max(0, Number(document.getElementById('aiCountBlank')?.value ?? 2)),
+        match: Math.max(0, Number(document.getElementById('aiCountMatch')?.value ?? 0)),
+        desc: Math.max(0, Number(document.getElementById('aiCountDesc')?.value ?? 2)),
+        level: document.getElementById('aiLevel')?.value || 'استاندارد امتحانی',
+        targetScore: Number(document.getElementById('aiTotalTarget')?.value || 10)
+      };
+
+      const step = window.getScoreRoundStep ? window.getScoreRoundStep() : 0.25;
+      const cleanSrc = window.repairSpacedPersianText(sourceText || '');
+
+      const detectedSubjInfo = this.detectSubjectFromContext(cleanSrc);
+      const subjectName = detectedSubjInfo.key !== 'general'
+        ? detectedSubjInfo.label
+        : (this.state?.header?.subject || db.cachedBook?.name || 'پیام‌های آسمان (دینی)');
+
+      const pageBlocks = [];
+      const pageRegex = /《صفحه\s*(\d+)》\s*([\s\S]*?)(?=《صفحه\s*\d+》|$)/g;
+      let m;
+      while ((m = pageRegex.exec(cleanSrc)) !== null) {
+        const pNo = Number(m[1]);
+        const pTxt = window.repairSpacedPersianText(m[2] || '');
+        if (pTxt) pageBlocks.push({ page: pNo, text: pTxt });
+      }
+      if (!pageBlocks.length && cleanSrc) {
+        pageBlocks.push({ page: null, text: cleanSrc });
+      }
+
+      const rawStatements = [];
+
+      // تشخیص داستان‌های آموزشی کتاب درسی (مانند داستان صفحه ۱۵ هدیه‌های آسمان/پیام‌های آسمان: خانم فهیمی و پاکت‌های مسابقه «در جایی باز کنید که کسی شما را نبیند»)
+      const hasEnvelopeGodSeesStory = cleanSrc.includes('فهیمی') || (cleanSrc.includes('پاکت') && (cleanSrc.includes('نبیند') || cleanSrc.includes('مسابقه')));
+      if (hasEnvelopeGodSeesStory) {
+        const storyPage = pageBlocks[0]?.page || 15;
+        rawStatements.push(
+          { page: storyPage, keyTerm: 'حضور خداوند', text: 'هدف اصلی داستان «پاکت‌های مسابقه در کلاس» و شرط باز کردن پاکت در جایی که کسی ما را نبیند، آموزش حضور خداوند و آگاهی همیشگی او در همه جا است' },
+          { page: storyPage, keyTerm: 'بینا و دانا', text: 'دانش‌آموز آگاه در داستان پاکت مسابقه متوجه شد که در هیچ مکانی از نگاه پروردگار پنهان نیست، زیرا خداوند در همه جا حاضر و بر همه چیز بینا و دانا است' },
+          { page: storyPage, keyTerm: 'نظارت الهی', text: 'ایمان به نظارت الهی و اینکه خداوند متعال در خلوت و آشکار اعمال ما را می‌بیند، باعث می‌شود انسان در همه حال از گناه دوری کرده و کار نیک انجام دهد' },
+          { page: storyPage, keyTerm: 'مسئولیت‌پذیری', text: 'در ماجرای پاکت‌های مسابقه، پیام اصلی این است که انسان مؤمن حتی در تنهایی نیز خود را در محضر خداوند می‌بیند و مسئولیت‌پذیری پیشه می‌کند' },
+          { page: storyPage, keyTerm: 'تقوا', text: 'یاد خداوند در تنهایی و خلوت، نشانهٔ تقوا و صداقت درونی انسان است که او را به سوی سعادت و آرامش هدایت می‌کند' },
+          { page: storyPage, keyTerm: 'محضر خدا', text: 'تمام جهان آفرینش محضر خدا است و هیچ کار کوچک یا بزرگی از علم و آگاهی پروردگار مهربان پوشیده نمی‌ماند' }
+        );
+      }
+
+      const isInvalidOrIncompleteSentence = (line) => {
+        if (/سوال\s*طرح\s*کن|طرح\s*سوال|طراحی\s*(کن|آزمون|سوال)|امتحان\s*بگیر|آزمون\s*بساز|^از\s*(درس|فصل|صفحه)\s*[\d۰-۹]/i.test(line)) return true;
+        if (/\s+(به|در|از|با|تا|برای|که|را|و|یا|اما|چون|اگر)$/i.test(line)) return true;
+        if (/^(سپس گفت|گفت|پرسید|جواب داد|آن روز تا زنگ|دقایق آخر کلاس)/i.test(line)) return true;
+        return false;
+      };
+
+      const forbiddenKeyWords = new Set([
+        'است', 'بود', 'بودم', 'بودیم', 'بودند', 'باشم', 'باشید', 'باشند', 'باشد', 'شود', 'می‌شود', 'نمی‌شود',
+        'کند', 'می‌کند', 'نمی‌کند', 'کنید', 'کنند', 'دارد', 'دارند', 'ندارد', 'ندارند', 'دهد', 'دهید', 'دهند',
+        'گفت', 'گوید', 'داد', 'داشته', 'ببندد', 'نبیند', 'بیند', 'بنویسید', 'بخوانید', 'بدانید', 'بتوان', 'باید',
+        'این', 'آن', 'آن‌ها', 'آنها', 'ایشان', 'شما', 'ما', 'من', 'تو', 'او', 'خود', 'خویش', 'کسی', 'هرکس', 'همه',
+        'برای', 'همراه', 'توسط', 'بدون', 'چگونه', 'کدام', 'وقتی', 'هنگام', 'بلافاصله', 'همواره', 'بنابراین', 'باعث',
+        'دقایق', 'بیرون', 'داخل', 'امروز', 'دیروز', 'فردا', 'زنگ', 'آخر', 'ابتدا', 'کلاس', 'بچه‌ها', 'پاکت', 'پاکت‌ها',
+        'فهیمی', 'خانم', 'آقای', 'نماینده', 'نامه', 'سوال', 'سؤال', 'پاسخ', 'جواب', 'صفحه', 'جدول', 'کتاب', 'درس', 'بخش',
+        'موارد', 'مورد', 'صورت', 'زیر', 'بالا', 'بسیار', 'مختلف', 'گوناگون', 'انسان', 'افراد', 'تلاش', 'کوشش', 'نتیجه', 'برابر', 'دیگران'
+      ]);
+
+      const subjectKB = this.getSubjectSpecificKnowledgeBase(detectedSubjInfo.key, subjectName);
+
+      const extractSmartKeyTerm = (sentence, presetKey = null) => {
+        if (presetKey) return presetKey;
+        for (const t of subjectKB.terms) {
+          const cleanT = t.trim();
+          if (cleanT.length >= 3 && sentence.includes(cleanT)) return cleanT;
+          const firstWord = cleanT.split(/\s+/)[0];
+          if (firstWord.length >= 4 && !forbiddenKeyWords.has(firstWord) && sentence.includes(firstWord)) return firstWord;
+        }
+        const words = sentence
+          .replace(/[،.؛:؟!«»()\[\]]/g, ' ')
+          .split(/\s+/)
+          .map(w => w.trim())
+          .filter(w => {
+            if (w.length < 4 || w.length > 14) return false;
+            if (forbiddenKeyWords.has(w)) return false;
+            if (/^\d+$/.test(w)) return false;
+            if (/^(می‌|نمی‌|برمی‌|درمی‌)/.test(w)) return false;
+            if (/(ید|ند|یم|دم|دی|شدم|شدند|کردم|کردند|گفتم|گفتند)$/.test(w)) return false;
+            return true;
+          });
+        return words[0] || words[1] || subjectKB.terms[0] || 'مفهوم اصلی درس';
+      };
+
+      pageBlocks.forEach(blk => {
+        const parts = blk.text
+          .split(/[\n.!؟?؛]+/)
+          .map(s => s.replace(/\|/g, ' ').replace(/^[\d۰-۹]+[\.\-\)\s]+/, '').trim())
+          .filter(s => s.length >= 26 && s.length <= 220 && !isInvalidOrIncompleteSentence(s) && !s.includes('متن کمکی استخراج') && !s.includes('فقط یک آرایه') && !s.startsWith('طرح سوال از صفحات') && !s.startsWith('طراحی آزمون') && !s.startsWith('محتوای آموزشی صفحه'));
+        parts.forEach(st => {
+          if (hasEnvelopeGodSeesStory && (st.includes('فهیمی') || st.includes('پاکت') || st.includes('زنگ آخر') || st.includes('مسابقه') || st.includes('نباشید'))) {
+            return;
+          }
+          rawStatements.push({ page: blk.page, text: st, keyTerm: null });
+        });
+      });
+
+      const neededCount = Math.max(12, (cfg.mcq + cfg.tf + cfg.blank + cfg.desc + cfg.match * 3) + 4);
+      let kbIdx = 0;
+      while (rawStatements.length < neededCount) {
+        const kbStmt = subjectKB.statements[kbIdx % subjectKB.statements.length];
+        rawStatements.push({ page: pageBlocks[0]?.page || null, text: kbStmt, keyTerm: null });
+        kbIdx++;
+      }
+
+      const allTerms = [...subjectKB.terms];
+      rawStatements.forEach(item => {
+        const kw = extractSmartKeyTerm(item.text, item.keyTerm);
+        item.keyTerm = kw;
+        if (kw && !allTerms.includes(kw)) allTerms.push(kw);
+      });
+
+      const outQuestions = [];
+      let stCursor = 0;
+      const nextStatement = () => {
+        const item = rawStatements[stCursor % rawStatements.length];
+        stCursor++;
+        return item;
+      };
+
+      for (let i = 0; i < cfg.mcq; i++) {
+        const item = nextStatement();
+        const pageTag = item.page ? ` (صفحه ${this.toFa(item.page)})` : '';
+        const keyTerm = item.keyTerm || extractSmartKeyTerm(item.text);
+        const distractors = [];
+        for (let k = 0; k < allTerms.length && distractors.length < 3; k++) {
+          const cand = allTerms[(i * 3 + k) % allTerms.length];
+          if (cand && cand !== keyTerm && !distractors.includes(cand)) {
+            distractors.push(cand);
+          }
+        }
+        while (distractors.length < 3) {
+          distractors.push(`مورد ${this.toFa(distractors.length + 1)}`);
+        }
+
+        const correctIdx = i % 4;
+        const opts = [...distractors.slice(0, 3)];
+        opts.splice(correctIdx, 0, keyTerm);
+
+        const stemReplaced = item.text.includes(keyTerm)
+          ? item.text.replace(keyTerm, '«........»')
+          : `${item.text} (مرتبط با کدام مفهوم زیر است؟)`;
+        outQuestions.push({
+          type: 'mcq',
+          text: `با توجه به آموخته‌های درس «${subjectName}»${pageTag}، کدام گزینه عبارت زیر را به درستی کامل می‌کند؟\n«${stemReplaced}»`,
+          score: step * 2,
+          options: opts.slice(0, 4),
+          correctIndex: correctIdx,
+          hint: 'یک گزینه صحیح را انتخاب کنید.',
+          explanation: `پاسخ صحیح گزینه ${this.toFa(correctIdx + 1)} («${keyTerm}») است.`
+        });
+      }
+
+      for (let i = 0; i < cfg.tf; i++) {
+        const item = nextStatement();
+        const pageTag = item.page ? ` (صفحه ${this.toFa(item.page)})` : '';
+        const isTrue = (i % 2 === 0);
+        let statementTxt = item.text.replace(/؟+$/, '').trim();
+        if (!isTrue) {
+          if (statementTxt.includes('است') && !statementTxt.includes('نیست')) {
+            statementTxt = statementTxt.replace(/\bاست\b/, 'نیست');
+          } else if (statementTxt.includes('می‌شود')) {
+            statementTxt = statementTxt.replace('می‌شود', 'نمی‌شود');
+          } else if (statementTxt.includes('دارد')) {
+            statementTxt = statementTxt.replace('دارد', 'ندارد');
+          } else if (statementTxt.includes('می‌کند')) {
+            statementTxt = statementTxt.replace('می‌کند', 'نمی‌کند');
+          } else {
+            statementTxt = `برخلاف آموزه‌های درس، ${statementTxt} هیچ ضرورتی ندارد`;
+          }
+        }
+        outQuestions.push({
+          type: 'tf',
+          text: `درستی یا نادرستی عبارت زیر را مشخص کنید${pageTag}:\n«${statementTxt}.»`,
+          score: step,
+          tfCorrect: isTrue ? 'صحیح' : 'غلط',
+          hint: 'گزینه صحیح یا غلط را علامت بزنید.',
+          explanation: `پاسخ: ${isTrue ? 'صحیح' : 'غلط'} — اصل گزاره: «${item.text}»`
+        });
+      }
+
+      for (let i = 0; i < cfg.blank; i++) {
+        const item = nextStatement();
+        const pageTag = item.page ? ` (صفحه ${this.toFa(item.page)})` : '';
+        const keyWord = item.keyTerm || extractSmartKeyTerm(item.text);
+        const blankedSentence = item.text.includes(keyWord)
+          ? item.text.replace(keyWord, '....................')
+          : `${item.text} بیانگر مفهوم .................... در این درس است`;
+        outQuestions.push({
+          type: 'blank',
+          text: `جای خالی را با کلمهٔ مناسب کامل کنید${pageTag}:\n«${blankedSentence}.»`,
+          score: step * 2,
+          blankWord: keyWord,
+          hint: 'کلمه کلیدی مناسب را در جای خالی بنویسید.',
+          explanation: `پاسخ جای خالی: «${keyWord}»`
+        });
+      }
+
+      for (let i = 0; i < cfg.match; i++) {
+        const pairs = [];
+        for (let p = 0; p < 4; p++) {
+          const item = nextStatement();
+          const term = item.keyTerm || extractSmartKeyTerm(item.text);
+          const descPart = item.text.replace(term, '...').slice(0, 65);
+          pairs.push({
+            a: term,
+            b: descPart + (item.text.length > 65 ? '...' : '')
+          });
+        }
+        outQuestions.push({
+          type: 'match',
+          text: `در جدول زیر، هر یک از مفاهیم درس «${subjectName}» در ستون سمت راست را به عبارت مرتبط با آن در ستون سمت چپ وصل کنید:`,
+          score: step * 4,
+          pairs,
+          hint: 'شماره یا حرف گزینه مرتبط را در پرانتز بنویسید.',
+          explanation: pairs.map((pr, idx) => `${this.toFa(idx + 1)}: ${pr.a} ← ${pr.b}`).join(' | ')
+        });
+      }
+
+      const descQuestionTemplates = [
+        (txt, kw, pTag) => `بر اساس آموخته‌های درس «${subjectName}»${pTag}، پیام آموزشی و مفهوم اصلی گزارهٔ زیر را به طور کامل توضیح دهید:\n«${txt}»`,
+        (txt, kw, pTag) => `با توجه به مطالب درس${pTag}، دربارهٔ اهمیت «${kw}» و نتیجهٔ عملی آن در موضوع زیر توضیح دهید:\n«${txt}»`,
+        (txt, kw, pTag) => `طبق مباحث درس «${subjectName}»${pTag}، چرا موضوع زیر از نکات مهم این درس به شمار می‌رود؟ شرح دهید:\n«${txt}»`,
+        (txt, kw, pTag) => `با توجه به درس «${subjectName}»${pTag}، مفهوم کلیدی «${kw}» را تعریف کرده و ارتباط آن را با عبارت زیر بنویسید:\n«${txt}»`
+      ];
+      for (let i = 0; i < cfg.desc; i++) {
+        const item = nextStatement();
+        const pageTag = item.page ? ` (صفحه ${this.toFa(item.page)})` : '';
+        const kw = item.keyTerm || extractSmartKeyTerm(item.text);
+        const qText = item.text.endsWith('؟')
+          ? `${item.text}${pageTag}`
+          : descQuestionTemplates[i % descQuestionTemplates.length](item.text, kw, pageTag);
+        outQuestions.push({
+          type: 'desc',
+          text: qText,
+          score: step * 4,
+          lines: 2,
+          hint: 'پاسخ کامل و تشریحی بنویسید.',
+          explanation: `پاسخ کلیدی${pageTag}: ${item.text}.`
+        });
+      }
+
+      return {
+        detectedGrade: this.state?.header?.grade || 'متوسطه',
+        detectedSubject: subjectName,
+        questions: outQuestions
+      };
+    };
+
+    ExamApp.generateQuestionsByAI = async function(overrideText = null) {
+      const btn = document.getElementById('btnRunAi');
+      const oldHtml = btn ? btn.innerHTML : '✨ طراحی خودکار آزمون (با نمرات رُند ۰.۲۵ و تراز صفحه)';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '⏳ در حال خواندن دقیق صفحات و طراحی سوالات استاندارد...';
+      }
+
+      try {
+        let srcText = overrideText !== null ? overrideText : '';
+
+        if (!srcText && this.selectedPdfPages && this.selectedPdfPages.size > 0) {
+          const pages = [...this.selectedPdfPages].sort((a, b) => a - b).slice(0, 15);
+          const pageChunks = [];
+          for (const pNum of pages) {
+            let pText = '';
+            if (this.pdfDoc && pNum >= 1 && pNum <= this.pdfDoc.numPages) {
+              try {
+                const page = await this.pdfDoc.getPage(pNum);
+                const tc = await page.getTextContent();
+                pText = window.TeachAssistant
+                  ? TeachAssistant.cleanPersianPdfText(tc.items)
+                  : window.repairSpacedPersianText(tc.items.map(i => i.str).join(' '));
+              } catch (_) {}
+            }
+            if (!pText && db.cachedBook?.pages?.[String(pNum)]) {
+              pText = window.repairSpacedPersianText(db.cachedBook.pages[String(pNum)]);
+            }
+            if (pText && db.cachedBook?.pages) {
+              db.cachedBook.pages[String(pNum)] = pText;
+            }
+            if (pText) {
+              pageChunks.push(`《صفحه ${pNum}》\n${pText}`);
+            }
+          }
+          if (pageChunks.length > 0) {
+            srcText = pageChunks.join('\n\n');
+          }
+        }
+
+        const promptInputVal = document.getElementById('aiPromptSource')?.value.trim() || '';
+        if (promptInputVal) {
+          this.autoDetectHeaderFromText(promptInputVal);
+          if (!srcText) srcText = promptInputVal;
+          else if (!promptInputVal.startsWith('طرح سوال از صفحات')) srcText = promptInputVal + '\n\n' + srcText;
+        }
+
+        if (!srcText) {
+          srcText = this.state?.header?.subject || 'پیام‌های آسمان (دینی)';
+        }
+
+        this._lastExamSourceText = srcText;
+        const subj = this.state?.header?.subject || 'درس';
+        const prompt = this.buildExamPrompt(this.currentBranch, `درس: «${subj}».\nمفاهیم کلیدی و اهداف آموزشی صفحات انتخاب‌شده را استخراج کن و سوالات مفهومی و استاندارد امتحانی (نه جملات بریده‌شده داستانی) طرح کن:\n${srcText.slice(0, 2600)}`);
+
+        let raw = '';
+        try {
+          raw = await this.callArgonAI(prompt, this.tempAiImages);
+        } catch (_) {
+          raw = this.buildSmartOfflineAiFallback(prompt);
+        }
+
+        const ok = this.parseAndAddQuestions(raw, this.currentBranch, this.state.switches.clearBeforeAi, true);
+        if (ok) {
+          const targetScore = Number(document.getElementById('aiTotalTarget')?.value || 10);
+          this.balanceScoresTo(targetScore);
+
+          const targetPagesFit = Number(document.getElementById('aiTargetPages')?.value ?? 1);
+          if (targetPagesFit > 0 && typeof this.fitSheetToPages === 'function') {
+            this.fitSheetToPages(targetPagesFit);
+          }
+
+          if (typeof this.autoSyncToOnlineExam === 'function') {
+            this.autoSyncToOnlineExam(false);
+          }
+
+          const qsCount = this.getQuestions().length;
+          this.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+          toast(`✅ ${this.toFa(qsCount)} سوال استاندارد درس «${this.state.header.subject}» طبق تنظیمات شما در برگه چیده شد!`);
+        }
+      } catch (e) {
+        const fallbackJson = JSON.stringify(this.buildQuestionsFromSourceBySettings(this._lastExamSourceText || ''));
+        if (this.parseAndAddQuestions(fallbackJson, this.currentBranch, this.state.switches.clearBeforeAi, true)) {
+          this.balanceScoresTo(document.getElementById('aiTotalTarget')?.value || 10);
+          this.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+          toast('✅ آزمون استاندارد طبق تنظیمات شما طراحی و آماده شد!');
+        }
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = oldHtml;
+        }
+      }
+    };
+
+    ExamApp.generateExamFromSelectedPdfPages = async function() {
+      return this.generateQuestionsByAI();
+    };
+  }
+
+  const bootV79 = () => {
+    try {
+      initCreamySlimeSpinnerLogo();
+      unifyPdfAndSmartDesignerTabs();
+      if (window.TeachAssistant) {
+        TeachAssistant.initBookStageZoomAndSwipe();
+      }
+      if (typeof db !== 'undefined' && db?.cachedBook?.pages) {
+        Object.keys(db.cachedBook.pages).forEach(k => {
+          db.cachedBook.pages[k] = window.repairSpacedPersianText(db.cachedBook.pages[k]);
+        });
+      }
+      if (window.ExamApp) {
+        ExamApp.autoConnectCachedBookToExamPdf(true);
+      }
+    } catch (e) {
+      console.warn('v7.9 init warning:', e);
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV79, 80));
+  } else {
+    setTimeout(bootV79, 80);
+  }
 
 })();
 </script>
