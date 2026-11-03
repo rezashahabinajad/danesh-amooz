@@ -1,48 +1,20 @@
-<svg viewBox="0 0 512 512" width="512" height="512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 64 64" width="512" height="512" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <radialGradient id="bgSlimeGrad" cx="30%" cy="24%" r="76%">
+    <linearGradient id="bgCardGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="20%" stop-color="#FFF7ED"/>
-      <stop offset="48%" stop-color="#FED7AA"/>
-      <stop offset="78%" stop-color="#FB923C"/>
+      <stop offset="65%" stop-color="#FFF7ED"/>
+      <stop offset="100%" stop-color="#FFEDD5"/>
+    </linearGradient>
+    <linearGradient id="topCapGrad" x1="5" y1="9" x2="59" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="50%" stop-color="#F97316"/>
       <stop offset="100%" stop-color="#EA580C"/>
-    </radialGradient>
-    <radialGradient id="spinnerBladeGrad" cx="35%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#FFF7ED"/>
-      <stop offset="42%" stop-color="#FDBA74"/>
-      <stop offset="82%" stop-color="#F97316"/>
-      <stop offset="100%" stop-color="#C2410C"/>
-    </radialGradient>
-    <radialGradient id="lobeRingGrad" cx="30%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="55%" stop-color="#FFEDD5"/>
-      <stop offset="100%" stop-color="#FB923C"/>
-    </radialGradient>
-    <radialGradient id="centerCapGrad" cx="32%" cy="28%" r="72%">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="50%" stop-color="#FED7AA"/>
-      <stop offset="100%" stop-color="#EA580C"/>
-    </radialGradient>
+    </linearGradient>
   </defs>
-  <!-- Creamy Slime Cushion Base -->
-  <path d="M256 24 C368 20, 488 92, 488 248 C488 396, 384 488, 252 488 C118 488, 24 388, 24 256 C24 114, 144 28, 256 24 Z" fill="url(#bgSlimeGrad)" stroke="#FFEDD5" stroke-width="14"/>
-  <!-- Glossy Cream Specular Highlight -->
-  <ellipse cx="164" cy="108" rx="68" ry="32" transform="rotate(-24 164 108)" fill="#FFFFFF" fill-opacity="0.78"/>
-  <!-- 3-Lobe Fidget Spinner Body -->
-  <g transform="translate(0, 0)">
-    <path d="M256 48 C312 48, 328 128, 312 184 C360 216, 440 208, 456 264 C472 320, 400 368, 344 344 C312 384, 312 456, 256 456 C200 456, 200 384, 168 344 C112 368, 40 320, 56 264 C72 208, 152 216, 200 184 C184 128, 200 48, 256 48 Z" fill="url(#spinnerBladeGrad)" stroke="#FFF7ED" stroke-width="12"/>
-    <!-- Lobe 1 Bearing -->
-    <circle cx="256" cy="112" r="50" fill="url(#lobeRingGrad)" stroke="#EA580C" stroke-width="12"/>
-    <circle cx="256" cy="112" r="21" fill="#EA580C"/>
-    <!-- Lobe 2 Bearing -->
-    <circle cx="381" cy="328" r="50" fill="url(#lobeRingGrad)" stroke="#EA580C" stroke-width="12"/>
-    <circle cx="381" cy="328" r="21" fill="#EA580C"/>
-    <!-- Lobe 3 Bearing -->
-    <circle cx="131" cy="328" r="50" fill="url(#lobeRingGrad)" stroke="#EA580C" stroke-width="12"/>
-    <circle cx="131" cy="328" r="21" fill="#EA580C"/>
-  </g>
-  <!-- Center Cap Bearing with Smart Graduation Cap -->
-  <circle cx="256" cy="256" r="78" fill="url(#centerCapGrad)" stroke="#FFFFFF" stroke-width="14"/>
-  <path d="M256 208L194 238L256 268L318 238L256 208Z" fill="#9A3412"/>
-  <path d="M216 254V282C216 294 234 302 256 302C278 302 296 294 296 282V254L256 272L216 254Z" fill="#C2410C"/>
+  <rect x="3" y="3" width="58" height="58" rx="18" fill="url(#bgCardGrad)" stroke="#FDBA74" stroke-width="3"/>
+  <path d="M32 11.5L8.5 22.5L32 33.5L55.5 22.5L32 11.5Z" fill="url(#topCapGrad)"/>
+  <path d="M16.5 28.5V38.5C16.5 42.4 23.4 45.6 32 45.6C40.6 45.6 47.5 42.4 47.5 38.5V28.5L32 35.6L16.5 28.5Z" fill="#EA580C"/>
+  <path d="M32 22.5L50.5 26.5V38" stroke="#F59E0B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="50.5" cy="40.5" r="2.8" fill="#F59E0B"/>
+  <path d="M13 51C18.8 48.2 25.8 48.2 32 51.5C38.2 48.2 45.2 48.2 51 51" stroke="#EA580C" stroke-width="3.5" stroke-linecap="round"/>
 </svg>

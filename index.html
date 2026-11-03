@@ -4710,47 +4710,27 @@ body.dark .ws-logout-inner {
 <header class="topbar" id="mainTopbar">
   <div class="toprow">
     <div class="brand">
-      <div class="logo" id="mainSlimeSpinnerLogo" aria-hidden="true" title="اسپینر و اسلایم آرام‌بخش — با انگشت بچرخانید یا فشار دهید!">
-        <svg viewBox="0 0 64 64" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="logo" id="mainSlimeLogo" aria-hidden="true" title="لوگوی دانش‌آموز من (با لمس و فشار انگشت، حس نرم اسلایم دارد)">
+        <svg viewBox="0 0 64 64" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="slimeSpinBodyGrad" cx="35%" cy="30%" r="70%">
-              <stop offset="0%" stop-color="#FFF7ED"/>
-              <stop offset="40%" stop-color="#FDBA74"/>
-              <stop offset="80%" stop-color="#F97316"/>
-              <stop offset="100%" stop-color="#C2410C"/>
-            </radialGradient>
-            <radialGradient id="slimeLobeRingGrad" cx="30%" cy="30%" r="70%">
-              <stop offset="0%" stop-color="#FFFFFF"/>
-              <stop offset="55%" stop-color="#FFEDD5"/>
-              <stop offset="100%" stop-color="#FB923C"/>
-            </radialGradient>
-            <radialGradient id="slimeCenterCapGrad" cx="32%" cy="28%" r="72%">
-              <stop offset="0%" stop-color="#FFFFFF"/>
-              <stop offset="50%" stop-color="#FED7AA"/>
+            <linearGradient id="topCapGrad" x1="5" y1="9" x2="59" y2="48" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FB923C"/>
+              <stop offset="50%" stop-color="#F97316"/>
               <stop offset="100%" stop-color="#EA580C"/>
-            </radialGradient>
+            </linearGradient>
           </defs>
-          <g id="creamySpinnerRotor">
-            <path d="M32 6 C39 6, 41 16, 39 23 C45 27, 55 26, 57 33 C59 40, 50 46, 43 43 C39 48, 39 57, 32 57 C25 57, 25 48, 21 43 C14 46, 5 40, 7 33 C9 26, 19 27, 25 23 C23 16, 25 6, 32 6 Z" fill="url(#slimeSpinBodyGrad)" stroke="#FFF7ED" stroke-width="1.5"/>
-            <circle cx="32" cy="14" r="6.2" fill="url(#slimeLobeRingGrad)" stroke="#EA580C" stroke-width="1.6"/>
-            <circle cx="32" cy="14" r="2.6" fill="#EA580C"/>
-            <circle cx="47.6" cy="41" r="6.2" fill="url(#slimeLobeRingGrad)" stroke="#EA580C" stroke-width="1.6"/>
-            <circle cx="47.6" cy="41" r="2.6" fill="#EA580C"/>
-            <circle cx="16.4" cy="41" r="6.2" fill="url(#slimeLobeRingGrad)" stroke="#EA580C" stroke-width="1.6"/>
-            <circle cx="16.4" cy="41" r="2.6" fill="#EA580C"/>
-          </g>
-          <g id="creamySpinnerCenterCap">
-            <circle cx="32" cy="32" r="9.5" fill="url(#slimeCenterCapGrad)" stroke="#FFFFFF" stroke-width="1.8"/>
-            <path d="M32 26.2L24.5 29.8L32 33.4L39.5 29.8L32 26.2Z" fill="#9A3412"/>
-            <path d="M27.2 31.8V35.2C27.2 36.6 29.4 37.6 32 37.6C34.6 37.6 36.8 36.6 36.8 35.2V31.8L32 34L27.2 31.8Z" fill="#C2410C"/>
-          </g>
+          <path d="M32 8.5L4.5 21.2L32 33.8L59.5 21.2L32 8.5Z" fill="url(#topCapGrad)"/>
+          <path d="M14.5 27.8V39.2C14.5 43.6 22.3 47.2 32 47.2C41.7 47.2 49.5 43.6 49.5 39.2V27.8L32 35.8L14.5 27.8Z" fill="#EA580C"/>
+          <path d="M32 21L53 25.5V38.5" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="53" cy="41.2" r="3.2" fill="#F59E0B"/>
+          <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="brand-text-wrap">
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.0</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.1</span>
         </div>
       </div>
     </div>
@@ -6251,7 +6231,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.0 Pro</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.1 Pro</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6352,7 +6332,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v8.0 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v8.1 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6583,7 +6563,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '8.0.0 Pro';
+const APP_VERSION = '8.1.0 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -28167,137 +28147,168 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 })();
 </script>
 
-<style id="v79ProFixesStyle">
-/* ==================== استایل‌های ارتقای نسخه v7.9.0 Pro ==================== */
+<style id="v81ProFixesStyle">
+/* ==================== استایل‌های جامع و دقیق نسخه v8.1.0 Pro ==================== */
 
-/* ۱. لوگوی تعاملی آرام‌بخش با حس اسلایم خامه‌ای و چرخش نرم اسپینر (Fidget Spinner + Creamy Slime Logo) */
-.brand-logo {
+/* ۱. لوگوی سفید-نارنجی کلاسیک با حس فشردن نرم و براق اسلایم (Slime Squeeze & Jelly Feel) */
+.brand .logo {
   position: relative !important;
-  width: 48px !important;
-  height: 48px !important;
-  border-radius: 38% 62% 54% 46% / 46% 44% 56% 54% !important;
-  background: radial-gradient(circle at 28% 24%, #FFFDF9 0%, #FFEDD5 24%, #FDBA74 52%, #F97316 82%, #EA580C 100%) !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 14px !important;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF9 55%, #FFF7ED 100%) !important;
+  border: 2px solid #FDBA74 !important;
   box-shadow:
-    inset 0 4px 8px rgba(255, 255, 255, 0.92),
-    inset 0 -5px 10px rgba(194, 65, 12, 0.38),
-    0 6px 18px rgba(249, 115, 22, 0.34),
-    0 0 0 3px rgba(255, 237, 213, 0.85) !important;
-  border: none !important;
-  cursor: grab !important;
+    inset 0 2px 5px rgba(255, 255, 255, 0.95),
+    inset 0 -3px 6px rgba(251, 146, 60, 0.18),
+    0 4px 12px rgba(249, 115, 22, 0.18) !important;
+  cursor: pointer !important;
   user-select: none !important;
   touch-action: none !important;
   display: grid !important;
   place-items: center !important;
   overflow: visible !important;
-  animation: creamySlimeBreathe 5.5s ease-in-out infinite !important;
-  transition: box-shadow 0.25s ease, filter 0.25s ease !important;
-  will-change: transform, border-radius;
-  z-index: 25;
+  will-change: transform, border-radius, box-shadow;
+  transition: box-shadow 0.2s ease !important;
+  z-index: 30;
 }
-.brand-logo:active {
-  cursor: grabbing !important;
-}
-.brand-logo.slime-squishing {
-  animation: none !important;
+.brand .logo.slime-squeezing {
   box-shadow:
-    inset 0 6px 12px rgba(255, 255, 255, 0.98),
-    inset 0 -6px 12px rgba(234, 88, 12, 0.55),
-    0 10px 26px rgba(249, 115, 22, 0.50),
-    0 0 0 5px rgba(254, 215, 170, 0.92) !important;
+    inset 0 4px 10px rgba(255, 255, 255, 1),
+    inset 0 -5px 12px rgba(249, 115, 22, 0.35),
+    0 8px 22px rgba(249, 115, 22, 0.35),
+    0 0 0 4px rgba(254, 215, 170, 0.75) !important;
 }
-.brand-logo::before {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 8px;
-  width: 15px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.78);
-  transform: rotate(-24deg);
-  pointer-events: none;
-  filter: blur(0.4px);
-}
-.brand-logo svg {
+.brand .logo svg {
   width: 30px !important;
   height: 30px !important;
-  transform-origin: 50% 50% !important;
-  will-change: transform;
-  filter: drop-shadow(0 2px 4px rgba(154, 52, 18, 0.25));
   pointer-events: none;
-}
-@keyframes creamySlimeBreathe {
-  0%, 100% {
-    border-radius: 40% 60% 54% 46% / 48% 44% 56% 52%;
-  }
-  33% {
-    border-radius: 54% 46% 42% 58% / 52% 58% 42% 48%;
-  }
-  66% {
-    border-radius: 44% 56% 60% 40% / 42% 50% 50% 58%;
-  }
+  will-change: transform;
 }
 .slime-bubble-particle {
   position: fixed;
   pointer-events: none;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #FFFFFF, #FED7AA 45%, #FB923C 100%);
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), 0 3px 8px rgba(249, 115, 22, 0.35);
+  background: radial-gradient(circle at 30% 30%, #FFFFFF, #FFEDD5 50%, #FB923C 100%);
+  box-shadow: inset 0 1px 3px rgba(255,255,255,0.9), 0 2px 6px rgba(249, 115, 22, 0.30);
   z-index: 9999;
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
 }
 
-/* ۲. قاب کتاب در تب آموزش: پشتیبانی کامل از زوم دو انگشتی و اسکرول نرم در حالت ورق‌زدن */
+/* ۲. رفع کامل بریدگی سمت راست صفحه کتاب در بخش آموزش (اسکرین‌شات ۱) و باز کردن قفل max-width برای زوم دو انگشتی */
+#teachView {
+  padding-top: 6px !important;
+}
+.teach-canvas-stage,
 #teacherPdfStage {
-  padding-top: 36px !important;
-  position: relative !important;
+  display: block !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 36px 8px 12px 8px !important;
   overflow: auto !important;
-  touch-action: pan-x pan-y pinch-zoom !important;
+  -webkit-overflow-scrolling: touch !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  touch-action: pan-x pan-y !important;
 }
-.teach-floating-zoom-bar {
-  position: sticky;
-  bottom: 8px;
-  left: 8px;
-  z-index: 44;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: rgba(255, 247, 237, 0.95);
-  border: 1.5px solid #FDBA74;
-  border-radius: 99px;
-  padding: 4px 8px;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.14);
-  margin-top: 6px;
+.teach-canvas-inner,
+#teacherCanvasInner {
+  display: inline-block !important;
+  position: relative !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+  vertical-align: top !important;
 }
-.teach-floating-zoom-bar button {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid #FDBA74;
-  background: #FFFFFF;
-  color: #C2410C;
-  font-weight: 900;
-  font-size: 14px;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
+#teacherPdfCanvas {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+}
+#teacherAnnotCanvas {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
 }
 
-/* ۳. گالری اسکرول پیوسته (Infinite Vertical Scroll) صفحات PDF در تب یکپارچه «طراح هوشمند و کتاب PDF» */
-.unified-pdf-scroll-viewport {
-  max-height: 430px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 10px;
-  border-radius: 14px;
+/* ۳. نمایش کامل اسامی دانش‌آموزان در لیست سریع حتی در حالت روشن بودن عکس‌ها */
+.td-row b,
+.td-row .stu-full-name-lbl {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-break: break-word !important;
+  line-height: 1.45 !important;
+  font-size: 13.2px !important;
+  display: inline-block !important;
+}
+
+/* ۴. پنل جمع‌وجور کتاب PDF در بالای لیست سریع امروز */
+.ql-top-pdf-panel {
+  background: var(--bg-card);
+  border: 2px solid #F97316;
+  border-radius: 16px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.14);
+}
+.ql-top-pdf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--border);
+  margin-bottom: 6px;
+}
+.ql-top-pdf-viewport {
+  width: 100%;
+  height: 265px;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
   background: #FFFBF5;
-  border: 2px solid #FED7AA;
-  box-shadow: inset 0 2px 8px rgba(249, 115, 22, 0.06);
-  scroll-behavior: smooth;
+  border: 1.5px solid #FED7AA;
+  border-radius: 12px;
+  position: relative;
+  text-align: center;
+  padding: 6px;
+  touch-action: pan-x pan-y !important;
+}
+.ql-top-pdf-viewport.tall-mode {
+  height: 390px;
+}
+#quickListPdfCanvas {
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+  background: #fff;
+  max-width: none !important;
+}
+
+/* ۵. گالری اسکرول پیوسته کامل و زوم دو انگشتی با قابلیت جابه‌جایی چهارطرفه روی صفحات PDF آزمون‌ساز */
+.unified-pdf-scroll-viewport {
+  max-height: 460px !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 10px !important;
+  border-radius: 14px !important;
+  background: #FFFBF5 !important;
+  border: 2px solid #FED7AA !important;
+  touch-action: pan-x pan-y !important;
+  position: relative !important;
 }
 #pdfGalleryGrid {
   display: grid !important;
   gap: 10px !important;
+  transform-origin: top right !important;
+  min-width: 100%;
 }
 #pdfGalleryGrid.zoom-sm {
   grid-template-columns: repeat(3, 1fr) !important;
@@ -28329,6 +28340,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 .pdf-page-card canvas {
   width: 100% !important;
   height: auto !important;
+  max-width: none !important;
   border-radius: 8px;
   background: #fff;
   display: block;
@@ -28357,101 +28369,135 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 }
 </style>
 
-<script id="v79ProMasterEngine">
-/* ==================== موتور ارتقای نسخه v7.9.0 Pro ==================== */
-(function initV79ProUpgrades() {
+<script id="v81ProMasterEngine">
+/* ==================== موتور جامع و حرفه‌ای نسخه v8.1.0 Pro ==================== */
+(function initV81ProMasterEngine() {
 
-  /* ۱. لوگوی تعاملی اسلایم خامه‌ای و اسپینر آرام‌بخش (Fidget Spinner + Creamy Slime Physics Logo) */
-  function initCreamySlimeSpinnerLogo() {
-    const logo = document.querySelector('.brand-logo');
-    if (!logo || logo._boundSlimeSpinner) return;
-    logo._boundSlimeSpinner = true;
+  /* ۱. حس اسلایم نرم و آرام‌بخش روی همان لوگوی سفید-نارنجی اصلی برنامه (بدون تغییر شکل ظاهری کلاه در حالت عادی!) */
+  function initWhiteOrangeSlimeLogoFeel() {
+    const logo = document.querySelector('.brand .logo') || document.getElementById('mainSlimeLogo');
+    if (!logo || logo._boundV81SlimeFeel) return;
+    logo._boundV81SlimeFeel = true;
+
     const svg = logo.querySelector('svg');
     logo.addEventListener('click', (e) => e.stopPropagation());
 
-    let angle = 0;
-    let omega = 0;
     let scaleX = 1, scaleY = 1;
     let targetScaleX = 1, targetScaleY = 1;
     let velX = 0, velY = 0;
+    let skewX = 0, skewY = 0;
+    let targetSkewX = 0, targetSkewY = 0;
+    let blobPhase = 0;
+    let blobAmplitude = 0;
+    let isPressed = false;
+    let startX = 0, startY = 0;
     let animId = null;
-    let isPointerDown = false;
-    let lastClientX = 0, lastClientY = 0;
 
-    const spawnCreamyBubbles = (cx, cy, count = 5) => {
+    const playSlimeSquishAudio = (freqStart = 210, freqEnd = 340) => {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        if (!window._slimeAudioCtx) window._slimeAudioCtx = new AudioCtx();
+        const ctx = window._slimeAudioCtx;
+        if (ctx.state === 'suspended') ctx.resume();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freqStart, now);
+        osc.frequency.exponentialRampToValueAtTime(freqEnd, now + 0.09);
+        gain.gain.setValueAtTime(0.03, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.10);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.11);
+      } catch (_) {}
+    };
+
+    const spawnSlimeMicroBubbles = (cx, cy, count = 4) => {
       if (typeof document === 'undefined' || !document.body) return;
       for (let i = 0; i < count; i++) {
         const b = document.createElement('div');
         b.className = 'slime-bubble-particle';
-        const sz = 7 + Math.random() * 9;
+        const sz = 6 + Math.random() * 8;
         b.style.width = sz + 'px';
         b.style.height = sz + 'px';
         b.style.left = (cx - sz / 2) + 'px';
         b.style.top = (cy - sz / 2) + 'px';
         document.body.appendChild(b);
-        const rad = (Math.PI * 2 * i) / count + (Math.random() * 0.5);
-        const dist = 22 + Math.random() * 26;
+        const rad = (Math.PI * 2 * i) / count + (Math.random() * 0.6);
+        const dist = 18 + Math.random() * 22;
         requestAnimationFrame(() => {
           b.style.transform = `translate(${Math.cos(rad) * dist}px, ${Math.sin(rad) * dist}px) scale(0.2)`;
           b.style.opacity = '0';
         });
-        setTimeout(() => b.remove(), 680);
+        setTimeout(() => b.remove(), 620);
       }
     };
 
-    const stepPhysics = () => {
-      angle = (angle + omega) % 360;
-      omega *= 0.972;
-
-      const k = 0.22;
-      const damp = 0.74;
+    const stepSlimePhysics = () => {
+      const k = 0.18;
+      const damp = 0.75;
       velX = (velX + (targetScaleX - scaleX) * k) * damp;
       velY = (velY + (targetScaleY - scaleY) * k) * damp;
       scaleX += velX;
       scaleY += velY;
 
-      const deform = Math.min(18, Math.abs(omega) * 0.45 + Math.abs(1 - scaleX) * 40);
-      const r1 = Math.round(42 + Math.sin(angle * Math.PI / 90) * deform);
-      const r2 = 100 - r1;
-      const r3 = Math.round(48 + Math.cos(angle * Math.PI / 90) * deform);
-      const r4 = 100 - r3;
+      skewX += (targetSkewX - skewX) * 0.25;
+      skewY += (targetSkewY - skewY) * 0.25;
 
-      logo.style.borderRadius = `${r1}% ${r2}% ${r3}% ${r4}% / ${r3}% ${r1}% ${r2}% ${r4}%`;
-      logo.style.transform = `scale(${scaleX.toFixed(3)}, ${scaleY.toFixed(3)})`;
-      if (svg) {
-        svg.style.transform = `rotate(${angle.toFixed(1)}deg)`;
+      blobPhase += 0.22;
+      if (!isPressed) {
+        blobAmplitude *= 0.88;
       }
 
-      const stillMoving = isPointerDown || Math.abs(omega) > 0.15 || Math.abs(velX) > 0.002 || Math.abs(velY) > 0.002 || Math.abs(1 - scaleX) > 0.003;
-      if (stillMoving) {
-        animId = requestAnimationFrame(stepPhysics);
+      if (blobAmplitude > 0.8) {
+        const b1 = Math.round(32 + Math.sin(blobPhase) * blobAmplitude);
+        const b2 = Math.round(32 + Math.cos(blobPhase * 1.1) * blobAmplitude);
+        const b3 = Math.round(32 - Math.sin(blobPhase * 0.9) * blobAmplitude);
+        const b4 = Math.round(32 - Math.cos(blobPhase) * blobAmplitude);
+        logo.style.borderRadius = `${b1}% ${b2}% ${b3}% ${b4}% / ${b4}% ${b1}% ${b2}% ${b3}%`;
       } else {
-        scaleX = 1; scaleY = 1; omega = 0;
+        logo.style.borderRadius = '14px';
+      }
+
+      logo.style.transform = `scale(${scaleX.toFixed(3)}, ${scaleY.toFixed(3)}) skew(${skewX.toFixed(1)}deg, ${skewY.toFixed(1)}deg)`;
+      if (svg) {
+        svg.style.transform = `scale(${(1 / Math.sqrt(scaleX)).toFixed(3)}, ${(1 / Math.sqrt(scaleY)).toFixed(3)}) rotate(${(skewX * 0.8).toFixed(1)}deg)`;
+      }
+
+      const active = isPressed || blobAmplitude > 0.5 || Math.abs(velX) > 0.002 || Math.abs(velY) > 0.002 || Math.abs(1 - scaleX) > 0.003 || Math.abs(skewX) > 0.2;
+      if (active) {
+        animId = requestAnimationFrame(stepSlimePhysics);
+      } else {
+        scaleX = 1; scaleY = 1; skewX = 0; skewY = 0;
         logo.style.transform = '';
-        logo.style.borderRadius = '';
-        logo.classList.remove('slime-squishing');
+        logo.style.borderRadius = '14px';
+        if (svg) svg.style.transform = '';
+        logo.classList.remove('slime-squeezing');
         animId = null;
       }
     };
 
     const ensureLoop = () => {
-      if (!animId) animId = requestAnimationFrame(stepPhysics);
+      if (!animId) animId = requestAnimationFrame(stepSlimePhysics);
     };
 
     logo.addEventListener('pointerdown', (ev) => {
       ev.stopPropagation();
-      isPointerDown = true;
-      lastClientX = ev.clientX;
-      lastClientY = ev.clientY;
+      isPressed = true;
+      startX = ev.clientX;
+      startY = ev.clientY;
       logo.setPointerCapture?.(ev.pointerId);
-      logo.classList.add('slime-squishing');
+      logo.classList.add('slime-squeezing');
 
-      targetScaleX = 1.18;
-      targetScaleY = 0.82;
-      omega += (omega >= 0 ? 18 : -18);
-      if (Math.abs(omega) > 52) omega = Math.sign(omega) * 52;
-
-      spawnCreamyBubbles(ev.clientX, ev.clientY, 5);
+      // حس فرورفتن نرم و غلیظ اسلایم زیر انگشت
+      targetScaleX = 1.24;
+      targetScaleY = 0.78;
+      blobAmplitude = 18;
+      spawnSlimeMicroBubbles(ev.clientX, ev.clientY, 4);
+      playSlimeSquishAudio(190, 310);
       if (navigator.vibrate) {
         try { navigator.vibrate(10); } catch (_) {}
       }
@@ -28459,28 +28505,31 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     });
 
     logo.addEventListener('pointermove', (ev) => {
-      if (!isPointerDown) return;
-      const dx = ev.clientX - lastClientX;
-      const dy = ev.clientY - lastClientY;
-      lastClientX = ev.clientX;
-      lastClientY = ev.clientY;
-
-      omega += (dx - dy * 0.5) * 1.35;
-      if (Math.abs(omega) > 65) omega = Math.sign(omega) * 65;
-      targetScaleX = Math.max(0.78, Math.min(1.26, 1 + Math.abs(dx) * 0.012 - Math.abs(dy) * 0.008));
-      targetScaleY = Math.max(0.78, Math.min(1.26, 1 + Math.abs(dy) * 0.012 - Math.abs(dx) * 0.008));
+      if (!isPressed) return;
+      const dx = Math.max(-35, Math.min(35, ev.clientX - startX));
+      const dy = Math.max(-35, Math.min(35, ev.clientY - startY));
+      // کش آمدن نرم اسلایم به هر طرفی که انگشت کشیده می‌شود
+      targetSkewX = dx * 0.45;
+      targetSkewY = dy * 0.45;
+      targetScaleX = Math.max(0.75, Math.min(1.32, 1.12 + (Math.abs(dx) - Math.abs(dy)) * 0.006));
+      targetScaleY = Math.max(0.75, Math.min(1.32, 0.88 + (Math.abs(dy) - Math.abs(dx)) * 0.006));
+      blobAmplitude = 22;
       ensureLoop();
     });
 
     const releaseSlime = () => {
-      if (!isPointerDown) return;
-      isPointerDown = false;
+      if (!isPressed) return;
+      isPressed = false;
       targetScaleX = 1;
       targetScaleY = 1;
-      velX += -0.09;
-      velY += 0.09;
+      targetSkewX = 0;
+      targetSkewY = 0;
+      // موج ژله‌ای نرم هنگام رها کردن اسلایم
+      velX += -0.12;
+      velY += 0.12;
+      playSlimeSquishAudio(290, 210);
       if (navigator.vibrate) {
-        try { navigator.vibrate([6, 18, 8]); } catch (_) {}
+        try { navigator.vibrate([6, 16, 8]); } catch (_) {}
       }
       ensureLoop();
     };
@@ -28489,85 +28538,113 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     logo.addEventListener('pointercancel', releaseSlime);
   }
 
-  /* ۲. ادغام یکپارچه تب «📚 کتاب PDF» و «🤖 طراح هوشمند» در یک تب واحد + اسکرول پیوسته صفحات (بدون دکمه ۶ صفحه بعد) + زوم روی صفحات */
-  function unifyPdfAndSmartDesignerTabs() {
-    const subnav = document.querySelector('#examView .exam-subnav');
-    const aiPane = document.getElementById('examPane-ai');
-    const pdfPane = document.getElementById('examPane-pdf');
-    if (!aiPane || !pdfPane) return;
+  /* ۲. موتور حرفه‌ای «زوم دو انگشتی (Pinch-to-Zoom) + جابه‌جایی آزادانه در همه جهات (Pan)»
+        با جلوگیری از زوم شدن کل صفحه مرورگر ({ passive: false }) و حفظ نقطه زیر انگشتان */
+  window.attachProPinchZoomAndPan = function(viewportEl, targetEl, options = {}) {
+    if (!viewportEl || !targetEl || viewportEl._boundProPinchV81) return;
+    viewportEl._boundProPinchV81 = true;
 
-    if (subnav) {
-      const buttons = subnav.querySelectorAll('.ex-nav-btn');
-      buttons.forEach(btn => {
-        const oc = btn.getAttribute('onclick') || '';
-        if (oc.includes("'ai'")) {
-          btn.innerHTML = '<span>🤖📚</span><span>طراح هوشمند و کتاب PDF</span>';
-        } else if (oc.includes("'pdf'")) {
-          btn.style.display = 'none';
-        }
-      });
-    }
+    let currentScale = options.initialScale || 1;
+    const minScale = options.minScale || 1.0;
+    const maxScale = options.maxScale || 3.5;
 
-    const pdfBoxCard = pdfPane.querySelector('.box-card');
-    if (pdfBoxCard && !pdfBoxCard._unifiedIntoAiPane) {
-      pdfBoxCard._unifiedIntoAiPane = true;
-      pdfBoxCard.innerHTML = `
-        <div class="box-header" style="flex-wrap:wrap;gap:6px">
-          <span>📚 انتخاب صفحات از کتاب PDF (اسکرول پیوسته + بزرگ‌نمایی صفحات)</span>
-          <span id="pdfPageInfoLbl" class="chip" style="font-size:11px;background:#FFF7ED;color:#EA580C;border-color:#FDBA74">آماده اتصال به کتاب</span>
-        </div>
+    let isPinching = false;
+    let startDist = 0;
+    let startScale = 1;
+    let midX = 0, midY = 0;
+    let startScrollLeft = 0, startScrollTop = 0;
 
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
-          <label class="btn primary btn-sm" style="flex:1;min-width:165px;cursor:pointer;margin:0">
-            📂 انتخاب فایل PDF کتاب درسی
-            <input type="file" id="pdfFileInput" accept="application/pdf" hidden onchange="ExamApp.loadPdfBook(event)">
-          </label>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.autoConnectCachedBookToExamPdf(false)" title="بارگذاری خودکار کتابی که در بخش آموزش باز کرده‌اید">
-            🔄 اتصال به کتاب بخش آموزش
-          </button>
-        </div>
+    // متغیرهای جابه‌جایی تک‌انگشتی (Drag-to-Pan) وقتی زوم بیشتر از ۱ است
+    let isPanning = false;
+    let panStartX = 0, panStartY = 0;
+    let panScrollLeft = 0, panScrollTop = 0;
 
-        <div id="pdfControlsBox" style="display:none;margin-top:8px">
-          <div style="display:flex;align-items:flex-end;gap:6px;flex-wrap:wrap;background:var(--bg-panel);padding:8px 10px;border-radius:12px;border:1px solid var(--border);margin-bottom:8px">
-            <div style="flex:1;min-width:85px">
-              <label style="font-size:11px;font-weight:800;display:block;margin-bottom:3px">انتخاب از صفحه:</label>
-              <input type="number" id="pdfRangeFrom" min="1" value="1" oninput="ExamApp.selectPdfRange(true)" style="height:36px;text-align:center;font-weight:900">
-            </div>
-            <div style="flex:1;min-width:85px">
-              <label style="font-size:11px;font-weight:800;display:block;margin-bottom:3px">تا صفحه:</label>
-              <input type="number" id="pdfRangeTo" min="1" value="3" oninput="ExamApp.selectPdfRange(true)" style="height:36px;text-align:center;font-weight:900">
-            </div>
-            <button type="button" class="btn soft btn-sm" style="height:36px;padding:0 10px" onclick="ExamApp.selectPdfRange(true)">☑️ اعمال بازه</button>
-            <button type="button" class="btn gray btn-sm" style="height:36px;padding:0 10px" onclick="ExamApp.clearSelectedPdfPages()">پاک‌کردن انتخاب</button>
-          </div>
-
-          <div id="selectedPagesBadge">صفحات انتخاب‌شده: هیچ‌کدام</div>
-
-          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0 6px">
-            <span class="muted" style="font-size:11px;font-weight:800">👇 اسکرول کنید تا بقیه صفحات کتاب خودکار بیایند (برای انتخاب روی صفحه بزنید):</span>
-            <div class="pill-switch" id="pdfGalleryZoomSwitch">
-              <button type="button" class="pill-btn" onclick="ExamApp.setPdfGalleryZoom('sm', this)">کوچک</button>
-              <button type="button" class="pill-btn active" onclick="ExamApp.setPdfGalleryZoom('md', this)">متوسط</button>
-              <button type="button" class="pill-btn" onclick="ExamApp.setPdfGalleryZoom('lg', this)">🔍 بزرگ (زوم)</button>
-            </div>
-          </div>
-
-          <div class="unified-pdf-scroll-viewport" id="pdfInfiniteScrollViewport">
-            <div class="pdf-gallery-grid zoom-md" id="pdfGalleryGrid"></div>
-            <div id="pdfInfiniteScrollSentinel" style="text-align:center;padding:10px;font-size:11.5px;color:var(--primary);font-weight:800"></div>
-          </div>
-        </div>
-      `;
-
-      const cardsInAi = aiPane.querySelectorAll('.box-card');
-      const settingsCard = cardsInAi[cardsInAi.length - 1];
-      if (settingsCard) {
-        aiPane.insertBefore(pdfBoxCard, settingsCard);
-      } else {
-        aiPane.appendChild(pdfBoxCard);
+    const getBaseWidth = () => {
+      if (options.mode === 'grid-width') return 100;
+      const vpW = Math.max(250, (viewportEl.clientWidth || 340) - 16);
+      if (!targetEl._baseCssWidth || targetEl._baseCssWidth < 100) {
+        targetEl._baseCssWidth = vpW;
       }
-    }
-  }
+      return targetEl._baseCssWidth;
+    };
+
+    const applyScale = (nextScale, focalX = null, focalY = null) => {
+      const prevScale = currentScale;
+      currentScale = Math.min(maxScale, Math.max(minScale, Math.round(nextScale * 100) / 100));
+      viewportEl._currentZoomScale = currentScale;
+
+      if (options.mode === 'grid-width') {
+        targetEl.style.width = Math.round(currentScale * 100) + '%';
+      } else {
+        const bw = getBaseWidth();
+        targetEl.style.width = Math.round(bw * currentScale) + 'px';
+      }
+
+      if (focalX !== null && focalY !== null && prevScale > 0) {
+        const ratio = currentScale / prevScale;
+        viewportEl.scrollLeft = Math.max(0, (startScrollLeft + focalX) * ratio - focalX);
+        viewportEl.scrollTop = Math.max(0, (startScrollTop + focalY) * ratio - focalY);
+      }
+
+      if (typeof options.onZoomChange === 'function') {
+        options.onZoomChange(currentScale);
+      }
+    };
+
+    viewportEl._setZoomScale = (sc) => applyScale(sc);
+    viewportEl._getZoomScale = () => currentScale;
+
+    viewportEl.addEventListener('touchstart', (ev) => {
+      if (options.shouldIgnore && options.shouldIgnore()) return;
+      if (ev.touches.length === 2) {
+        isPinching = true;
+        isPanning = false;
+        const dx = ev.touches[0].clientX - ev.touches[1].clientX;
+        const dy = ev.touches[0].clientY - ev.touches[1].clientY;
+        startDist = Math.hypot(dx, dy);
+        startScale = currentScale || 1;
+        const rect = viewportEl.getBoundingClientRect();
+        midX = ((ev.touches[0].clientX + ev.touches[1].clientX) / 2) - rect.left;
+        midY = ((ev.touches[0].clientY + ev.touches[1].clientY) / 2) - rect.top;
+        startScrollLeft = viewportEl.scrollLeft;
+        startScrollTop = viewportEl.scrollTop;
+      } else if (ev.touches.length === 1 && currentScale > 1.04) {
+        // وقتی صفحه زوم شده است، با یک انگشت بتوان به نرمی در هر ۴ جهت (چپ، راست، بالا، پایین) جابه‌جا شد
+        isPanning = true;
+        panStartX = ev.touches[0].clientX;
+        panStartY = ev.touches[0].clientY;
+        panScrollLeft = viewportEl.scrollLeft;
+        panScrollTop = viewportEl.scrollTop;
+      }
+    }, { passive: true });
+
+    viewportEl.addEventListener('touchmove', (ev) => {
+      if (options.shouldIgnore && options.shouldIgnore()) return;
+      if (ev.touches.length === 2 && isPinching && startDist > 12) {
+        // جلوگیری از زوم شدن کل رابط برنامه توسط مرورگر؛ فقط خود کتاب زوم می‌شود!
+        if (ev.cancelable) ev.preventDefault();
+        const dx = ev.touches[0].clientX - ev.touches[1].clientX;
+        const dy = ev.touches[0].clientY - ev.touches[1].clientY;
+        const dist = Math.hypot(dx, dy);
+        const nextScale = startScale * (dist / startDist);
+        applyScale(nextScale, midX, midY);
+      } else if (ev.touches.length === 1 && isPanning && currentScale > 1.04) {
+        const dx = ev.touches[0].clientX - panStartX;
+        const dy = ev.touches[0].clientY - panStartY;
+        viewportEl.scrollLeft = panScrollLeft - dx;
+        viewportEl.scrollTop = panScrollTop - dy;
+      }
+    }, { passive: false });
+
+    viewportEl.addEventListener('touchend', (ev) => {
+      if (ev.touches.length < 2) {
+        isPinching = false;
+      }
+      if (ev.touches.length === 0) {
+        isPanning = false;
+      }
+    }, { passive: true });
+  };
 
   /* ۳. ارتقای repairSpacedPersianText برای جداسازی کلمات چسبیده‌ای مثل «تنهنباشید»، «اینماهنمرات»، «کهکسیشما»، «پاسخدهید» */
   window.repairSpacedPersianText = function(rawStr) {
@@ -28687,8 +28764,10 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     return s;
   };
 
-  /* ۴. اصلاح cleanPersianPdfText (عدم چسباندن کلمات مجزا) + فعال‌سازی زوم دو انگشتی روی کتاب در حالت ورق‌زدن */
+
+  /* ۳. اصلاح کامل نمایش کتاب و زوم دو انگشتی در تب آموزش (#teachView — رفع بریدگی سمت راست در اسکرین‌شات ۱) */
   if (window.TeachAssistant) {
+
     TeachAssistant.cleanPersianPdfText = function(rawItems) {
       if (!Array.isArray(rawItems) || !rawItems.length) return '';
       const normalizeGlyphs = (str) => {
@@ -28745,98 +28824,400 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       return window.repairSpacedPersianText(reconstructedLines.join('\n'));
     };
 
-    TeachAssistant.initBookStageZoomAndSwipe = function() {
+    const _origRenderStudyPdfBase = TeachAssistant.renderStudyPdf.bind(TeachAssistant);
+    TeachAssistant.renderStudyPdf = async function() {
+      // حذف هرگونه نوار زوم شناور اضافی که در نسخه قبل باعث هل دادن کتاب به راست شده بود
+      document.getElementById('teachFloatingZoomBar')?.remove();
+
+      await _origRenderStudyPdfBase();
+
       const stage = document.getElementById('teacherPdfStage');
-      if (!stage || stage._boundPinchZoomV79) return;
-      stage._boundPinchZoomV79 = true;
+      const inner = document.getElementById('teacherCanvasInner');
+      const canvas = document.getElementById('teacherPdfCanvas');
+      const zoomLbl = document.getElementById('teacherPdfZoomLabel');
+      if (!stage || !inner || !canvas) return;
 
-      if (!document.getElementById('teachFloatingZoomBar')) {
-        const zBar = document.createElement('div');
-        zBar.id = 'teachFloatingZoomBar';
-        zBar.className = 'teach-floating-zoom-bar';
-        zBar.dir = 'rtl';
-        zBar.innerHTML = `
-          <button type="button" onclick="TeachAssistant.zoomStudyPdf(0.25)" title="بزرگ‌نمایی صفحه کتاب">➕</button>
-          <span id="teachFloatingZoomLbl" style="font-size:11px;font-weight:900;color:#C2410C;padding:0 4px;cursor:pointer" onclick="TeachAssistant.resetStudyZoom()" title="بازگشت به اندازه متناسب">🔍 متناسب</span>
-          <button type="button" onclick="TeachAssistant.zoomStudyPdf(-0.25)" title="کوچک‌نمایی صفحه کتاب">➖</button>
-        `;
-        stage.appendChild(zBar);
-      }
+      const isFs = document.getElementById('teacherStudyPdfCard')?.classList.contains('fullscreen-board');
+      const baseW = Math.max(260, Math.min((stage.clientWidth || 350) - 16, isFs ? 720 : 350));
+      inner._baseCssWidth = baseW;
 
-      let initialPinchDist = null;
-      let startZoomVal = 1;
-      let lastTapTime = 0;
-      let multiTouchActive = false;
+      const uZoom = Number(window._teacherPdfZoom) || 1;
+      inner.style.width = Math.round(baseW * uZoom) + 'px';
+      canvas.style.width = '100%';
+      canvas.style.height = 'auto';
 
-      stage.addEventListener('touchstart', (ev) => {
-        if (this._annotMode) return;
-        if (ev.touches.length === 2) {
-          multiTouchActive = true;
-          const dx = ev.touches[0].clientX - ev.touches[1].clientX;
-          const dy = ev.touches[0].clientY - ev.touches[1].clientY;
-          initialPinchDist = Math.hypot(dx, dy);
-          startZoomVal = Number(window._teacherPdfZoom) || 1;
-        } else if (ev.touches.length === 1) {
-          const now = Date.now();
-          if (now - lastTapTime < 280 && !multiTouchActive) {
-            const curZ = Number(window._teacherPdfZoom) || 0;
-            window._teacherPdfZoom = curZ > 1.1 ? 0 : 1.65;
-            this.renderStudyPdf();
-            toast(window._teacherPdfZoom > 1 ? '🔍 بزرگ‌نمایی صفحه فعال شد (با انگشت جابه‌جا شوید)' : '📐 اندازه صفحه متناسب شد');
-            lastTapTime = 0;
-          } else {
-            lastTapTime = now;
+      window.attachProPinchZoomAndPan(stage, inner, {
+        mode: 'canvas-width',
+        initialScale: uZoom,
+        minScale: 1.0,
+        maxScale: 3.5,
+        shouldIgnore: () => !!this._annotMode,
+        onZoomChange: (sc) => {
+          window._teacherPdfZoom = sc <= 1.04 ? 0 : sc;
+          if (zoomLbl) {
+            zoomLbl.textContent = sc > 1.04 ? (fa(Math.round(sc * 100)) + '٪') : '📐 متناسب';
           }
         }
-      }, { passive: true });
-
-      stage.addEventListener('touchmove', (ev) => {
-        if (this._annotMode) return;
-        if (ev.touches.length === 2 && initialPinchDist > 15) {
-          const dx = ev.touches[0].clientX - ev.touches[1].clientX;
-          const dy = ev.touches[0].clientY - ev.touches[1].clientY;
-          const dist = Math.hypot(dx, dy);
-          const ratio = dist / initialPinchDist;
-          const nextZoom = Math.min(2.6, Math.max(0.75, Math.round(startZoomVal * ratio * 20) / 20));
-          const canvas = document.getElementById('teacherPdfCanvas');
-          if (canvas) {
-            canvas.style.transformOrigin = 'center top';
-            canvas.style.transform = `scale(${(nextZoom / (Number(window._teacherPdfZoom) || 1)).toFixed(2)})`;
-          }
-          this._pendingPinchZoom = nextZoom;
-        }
-      }, { passive: true });
-
-      stage.addEventListener('touchend', (ev) => {
-        if (this._pendingPinchZoom) {
-          const canvas = document.getElementById('teacherPdfCanvas');
-          if (canvas) canvas.style.transform = '';
-          window._teacherPdfZoom = this._pendingPinchZoom <= 1.05 ? 0 : this._pendingPinchZoom;
-          this._pendingPinchZoom = null;
-          initialPinchDist = null;
-          this.renderStudyPdf();
-        }
-        if (!ev.touches || ev.touches.length === 0) {
-          setTimeout(() => { multiTouchActive = false; }, 120);
-        }
-      }, { passive: true });
+      });
     };
 
-    if (typeof TeachAssistant.renderStudyPdf === 'function') {
-      const _origRenderStudyPdfV78 = TeachAssistant.renderStudyPdf.bind(TeachAssistant);
-      TeachAssistant.renderStudyPdf = async function() {
-        await _origRenderStudyPdfV78();
-        const zLbl = document.getElementById('teachFloatingZoomLbl');
-        const uZoom = Number(window._teacherPdfZoom) || 0;
-        if (zLbl) {
-          zLbl.textContent = uZoom > 0 ? `🔍 ${fa(Math.round(uZoom * 100))}٪` : '🔍 متناسب';
+    TeachAssistant.zoomStudyPdf = function(delta) {
+      const stage = document.getElementById('teacherPdfStage');
+      const inner = document.getElementById('teacherCanvasInner');
+      const zoomLbl = document.getElementById('teacherPdfZoomLabel');
+      const cur = (stage && stage._getZoomScale) ? stage._getZoomScale() : (Number(window._teacherPdfZoom) || 1);
+      const next = Math.min(3.5, Math.max(1.0, Math.round((cur + delta) * 100) / 100));
+      window._teacherPdfZoom = next <= 1.04 ? 0 : next;
+      if (stage && typeof stage._setZoomScale === 'function') {
+        stage._setZoomScale(next);
+      } else if (inner) {
+        const bw = inner._baseCssWidth || 320;
+        inner.style.width = Math.round(bw * next) + 'px';
+      }
+      if (zoomLbl) {
+        zoomLbl.textContent = next > 1.04 ? (fa(Math.round(next * 100)) + '٪') : '📐 متناسب';
+      }
+    };
+
+    TeachAssistant.resetStudyZoom = function() {
+      window._teacherPdfZoom = 0;
+      const stage = document.getElementById('teacherPdfStage');
+      if (stage && typeof stage._setZoomScale === 'function') {
+        stage._setZoomScale(1.0);
+        stage.scrollLeft = 0;
+        stage.scrollTop = 0;
+      }
+      const zoomLbl = document.getElementById('teacherPdfZoomLabel');
+      if (zoomLbl) zoomLbl.textContent = '📐 متناسب';
+      toast('اندازه صفحه متناسب با نمایشگر تنظیم شد 📐');
+    };
+  }
+
+  /* ۴. افزودن «مثبت جمعی» و «منفی جمعی» به پنجره «⚡ نمره‌دهی جمعی / ارفاق به کل کلاس» (اسکرین‌شات ۲) */
+  window.onBatchActionTypeChange = function(val) {
+    const lbl = document.getElementById('batchValueLabel');
+    const inp = document.getElementById('batchScoreValue');
+    const colWrap = document.getElementById('batchTargetColFieldWrap');
+    const noteWrap = document.getElementById('batchReasonFieldWrap');
+    if (!lbl || !inp) return;
+
+    const isPosNeg = val.startsWith('bulk_pos') || val.startsWith('bulk_neg');
+    const isHw = val === 'bulk_hw_done';
+
+    if (colWrap) colWrap.style.display = (isPosNeg || isHw) ? 'none' : 'block';
+    if (noteWrap) noteWrap.style.display = isPosNeg ? 'block' : 'none';
+
+    if (isPosNeg) {
+      lbl.textContent = val.startsWith('bulk_pos') ? 'تعداد امتیاز مثبت (➕) برای هر دانش‌آموز:' : 'تعداد امتیاز منفی (➖) برای هر دانش‌آموز:';
+      inp.step = '1';
+      inp.min = '1';
+      inp.max = '10';
+      inp.value = '1';
+      inp.parentElement.style.display = 'block';
+    } else if (isHw) {
+      inp.parentElement.style.display = 'none';
+    } else {
+      inp.parentElement.style.display = 'block';
+      lbl.textContent = (val === 'add_curve' || val === 'sub_curve') ? 'مقدار نمره ارفاق / کسر (مثلاً ۱ یا ۰.۵):' : 'مقدار نمره ثابت (از ۲۰):';
+      inp.step = '0.25';
+      inp.min = '0.25';
+      inp.max = '20';
+      inp.value = (val === 'add_curve' || val === 'sub_curve') ? '1' : '20';
+    }
+  };
+
+  window.openBatchScoreModal = function(sid, cid, defaultAction = 'set_empty') {
+    const c = findClass(sid, cid);
+    if (!c) return;
+    const dates = attendanceDates(c);
+    const focusD = window._attFocusDate && dates.includes(window._attFocusDate) ? window._attFocusDate : (window.currentListDate || dates[0] || localISODate());
+
+    openModal(formHeader('⚡ نمره‌دهی، مثبت و منفی جمعی به کل کلاس') + `
+      <div class="formgrid">
+        <div class="field full">
+          <label>نوع عملیات جمعی روی کلاس:</label>
+          <select id="batchActionType" onchange="window.onBatchActionTypeChange(this.value)">
+            <option value="bulk_pos_present" ${defaultAction === 'bulk_pos_present' ? 'selected' : ''}>➕ ثبت امتیاز مثبت جمعی برای حاضرین امروز</option>
+            <option value="bulk_pos_all" ${defaultAction === 'bulk_pos_all' ? 'selected' : ''}>➕ ثبت امتیاز مثبت جمعی برای کل کلاس (همه)</option>
+            <option value="bulk_neg_present" ${defaultAction === 'bulk_neg_present' ? 'selected' : ''}>➖ ثبت امتیاز منفی جمعی برای حاضرین امروز</option>
+            <option value="bulk_neg_all" ${defaultAction === 'bulk_neg_all' ? 'selected' : ''}>➖ ثبت امتیاز منفی جمعی برای کل کلاس (همه)</option>
+            <option value="set_empty" ${defaultAction === 'set_empty' ? 'selected' : ''}>📝 ثبت نمره ثابت برای افراد بدون نمره (حاضرین)</option>
+            <option value="set_all" ${defaultAction === 'set_all' ? 'selected' : ''}>📝 ثبت نمره ثابت برای کل دانش‌آموزان کلاس</option>
+            <option value="add_curve" ${defaultAction === 'add_curve' ? 'selected' : ''}>📈 افزودن نمره ارفاق (+ مثلاً ۱ نمره) به نمرات موجود</option>
+            <option value="sub_curve" ${defaultAction === 'sub_curve' ? 'selected' : ''}>📉 کسر نمره (- مثلاً ۰.۵ نمره) از نمرات موجود</option>
+            <option value="bulk_hw_done" ${defaultAction === 'bulk_hw_done' ? 'selected' : ''}>📓 ثبت «✓ تکلیف کامل» برای تمام حاضرین امروز</option>
+          </select>
+        </div>
+
+        <div class="field full" id="batchTargetColFieldWrap">
+          <label>کدام ستون نمره را می‌خواهید تغییر دهید؟</label>
+          <select id="batchTargetColSelect">
+            ${dates.map(d => `<option value="date:${d}" ${d === focusD ? 'selected' : ''}>📅 جلسه ${formatJalaliDate(d)}</option>`).join('')}
+            <option value="cont_exam">📝 ستون «امتحان کتبی مستمر»</option>
+            <option value="term_exam">🎓 ستون «نمره پایانی ترم»</option>
+            ${(c.gradeColumns || []).map(g => `<option value="custom:${g.id}">📊 ستون سفارشی «${esc(g.title)}»</option>`).join('')}
+          </select>
+        </div>
+
+        <div class="field full">
+          <label id="batchValueLabel">مقدار نمره:</label>
+          <input type="number" id="batchScoreValue" step="0.25" value="20" min="0.25" max="20">
+        </div>
+
+        <div class="field full" id="batchReasonFieldWrap" style="display:none">
+          <label>علت یا توضیح مثبت/منفی جمعی (اختیاری):</label>
+          <input type="text" id="batchReasonInp" placeholder="مثلاً: مشارکت عالی در درس امروز / نظم کلاسی...">
+        </div>
+      </div>
+      <div class="formactions">
+        <button type="button" class="btn primary" onclick="executeBatchScoreAction('${sid}','${cid}')">✅ اعمال روی کلاس</button>
+        <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+      </div>
+    `);
+
+    setTimeout(() => window.onBatchActionTypeChange(defaultAction), 20);
+  };
+
+  window.executeBatchScoreAction = function(sid, cid) {
+    const c = findClass(sid, cid);
+    if (!c) return;
+    const mode = document.getElementById('batchActionType')?.value || 'set_empty';
+    const target = document.getElementById('batchTargetColSelect')?.value || 'cont_exam';
+    const rawVal = parseFloat(typeof enDigits === 'function' ? enDigits(document.getElementById('batchScoreValue')?.value || '1') : (document.getElementById('batchScoreValue')?.value || '1'));
+    const reasonTxt = (document.getElementById('batchReasonInp')?.value || '').trim();
+    const todayISO = window.currentListDate || localISODate();
+
+    pushUndo('عملیات جمعی کلاس');
+    let affected = 0;
+
+    // الف) عملیات مثبت جمعی یا منفی جمعی
+    if (mode.startsWith('bulk_pos') || mode.startsWith('bulk_neg')) {
+      const isPos = mode.startsWith('bulk_pos');
+      const onlyPresent = mode.endsWith('_present');
+      const countPerStudent = Math.max(1, Math.min(10, Math.round(rawVal || 1)));
+      const noteLabel = reasonTxt || (isPos ? 'مثبت جمعی کلاسی' : 'منفی جمعی کلاسی');
+
+      (c.students || []).forEach(st => {
+        if (onlyPresent && attendanceStatus(c, todayISO, st.id) === 'absent') return;
+        const b = behaviorData(st);
+        const targetArr = isPos ? b.positives : b.negatives;
+        for (let k = 0; k < countPerStudent; k++) {
+          targetArr.push({
+            id: uid(),
+            date: new Date().toISOString(),
+            note: noteLabel
+          });
         }
-        this.initBookStageZoomAndSwipe();
-      };
+        evaluateAutoStatus(c, st);
+        affected++;
+      });
+
+      closeModal();
+      savePersistent();
+      if (document.getElementById('attendance')?.classList.contains('active')) {
+        openAttendance(sid, cid);
+      } else if (document.getElementById('classTodayListContainer')?.style.display !== 'none') {
+        renderTodayListInner(sid, cid);
+      } else {
+        renderAll();
+      }
+      toast(`${isPos ? '➕' : '➖'} برای ${fa(affected)} دانش‌آموز، هر نفر ${fa(countPerStudent)} امتیاز ${isPos ? 'مثبت' : 'منفی'} جمعی ثبت شد ✅`);
+      return;
+    }
+
+    // ب) عملیات ثبت تکلیف کامل جمعی برای حاضرین
+    if (mode === 'bulk_hw_done') {
+      (c.students || []).forEach(st => {
+        if (attendanceStatus(c, todayISO, st.id) === 'absent') return;
+        const list = window.ensureStudentHomeworkArray(st);
+        const existing = list.find(x => x.dateISO === todayISO);
+        if (existing) existing.status = 'done';
+        else list.unshift({ id: uid(), dateISO: todayISO, dateJalali: formatJalaliDate(todayISO), type: 'homework', title: 'تکلیف کلاسی', status: 'done', score: null, note: '' });
+        affected++;
+      });
+      closeModal();
+      savePersistent();
+      if (document.getElementById('attendance')?.classList.contains('active')) openAttendance(sid, cid);
+      else if (document.getElementById('classTodayListContainer')?.style.display !== 'none') renderTodayListInner(sid, cid);
+      toast(`📓 تکلیف کامل برای ${fa(affected)} دانش‌آموز حاضر ثبت شد ✅`);
+      return;
+    }
+
+    // ج) عملیات نمره‌دهی جمعی و ارفاق / کسر نمره
+    const val = roundQuarter(rawVal);
+    if (!val) return;
+    if (!c.contExamScores) c.contExamScores = {};
+    if (!c.termScores) c.termScores = {};
+
+    (c.students || []).forEach(st => {
+      if (target === 'cont_exam') {
+        const cur = getStudentWrittenContScore(c, st);
+        if (mode === 'set_empty' && cur === null) {
+          window.saveContExamScore(sid, cid, st.id, val);
+          affected++;
+        } else if (mode === 'set_all') {
+          window.saveContExamScore(sid, cid, st.id, val);
+          affected++;
+        } else if (mode === 'add_curve' && cur !== null) {
+          window.saveContExamScore(sid, cid, st.id, Math.min(20, cur + val));
+          affected++;
+        } else if (mode === 'sub_curve' && cur !== null) {
+          window.saveContExamScore(sid, cid, st.id, Math.max(0, cur - val));
+          affected++;
+        }
+      } else if (target === 'term_exam') {
+        const cur = c.termScores[st.id] !== undefined && c.termScores[st.id] !== '' ? Number(c.termScores[st.id]) : null;
+        if (mode === 'set_empty' && cur === null) {
+          c.termScores[st.id] = val;
+          affected++;
+        } else if (mode === 'set_all') {
+          c.termScores[st.id] = val;
+          affected++;
+        } else if (mode === 'add_curve' && cur !== null) {
+          c.termScores[st.id] = Math.min(20, roundQuarter(cur + val));
+          affected++;
+        } else if (mode === 'sub_curve' && cur !== null) {
+          c.termScores[st.id] = Math.max(0, roundQuarter(cur - val));
+          affected++;
+        }
+      } else if (target.startsWith('date:')) {
+        const dISO = target.replace('date:', '');
+        const isAbs = attendanceStatus(c, dISO, st.id) === 'absent';
+        const cur = attendanceScore(c, dISO, st.id);
+        if (mode === 'set_empty' && !isAbs && cur === null) {
+          saveAttendanceGrade(sid, cid, st.id, dISO, val);
+          affected++;
+        } else if (mode === 'set_all' && !isAbs) {
+          saveAttendanceGrade(sid, cid, st.id, dISO, val);
+          affected++;
+        } else if (mode === 'add_curve' && cur !== null) {
+          saveAttendanceGrade(sid, cid, st.id, dISO, Math.min(20, roundQuarter(cur + val)));
+          affected++;
+        } else if (mode === 'sub_curve' && cur !== null) {
+          saveAttendanceGrade(sid, cid, st.id, dISO, Math.max(0, roundQuarter(cur - val)));
+          affected++;
+        }
+      } else if (target.startsWith('custom:')) {
+        const colId = target.replace('custom:', '');
+        const col = (c.gradeColumns || []).find(g => g.id === colId);
+        if (col) {
+          if (!col.scores) col.scores = {};
+          const cur = col.scores[st.id] !== undefined && col.scores[st.id] !== '' ? Number(col.scores[st.id]) : null;
+          if (mode === 'set_empty' && cur === null) {
+            col.scores[st.id] = val;
+            affected++;
+          } else if (mode === 'set_all') {
+            col.scores[st.id] = val;
+            affected++;
+          } else if (mode === 'add_curve' && cur !== null) {
+            col.scores[st.id] = Math.min(20, roundQuarter(cur + val));
+            affected++;
+          } else if (mode === 'sub_curve' && cur !== null) {
+            col.scores[st.id] = Math.max(0, roundQuarter(cur - val));
+            affected++;
+          }
+        }
+      }
+      evaluateAutoStatus(c, st);
+    });
+
+    closeModal();
+    savePersistent();
+    if (document.getElementById('attendance')?.classList.contains('active')) {
+      openAttendance(sid, cid);
+    } else if (document.getElementById('classTodayListContainer')?.style.display !== 'none') {
+      renderTodayListInner(sid, cid);
+    } else {
+      renderAll();
+    }
+    toast(`✅ عملیات جمعی روی ${fa(affected)} دانش‌آموز اعمال شد!`);
+  };
+
+  /* ۵. ادغام یکپارچه تب «📚 کتاب PDF» و «🤖 طراح هوشمند» + اسکرول پیوسته کامل از صفحه ۱ تا پایان کتاب + زوم دو انگشتی */
+  function unifyPdfAndSmartDesignerTabs() {
+    const subnav = document.querySelector('#examView .exam-subnav');
+    const aiPane = document.getElementById('examPane-ai');
+    const pdfPane = document.getElementById('examPane-pdf');
+    if (!aiPane || !pdfPane) return;
+
+    if (subnav) {
+      subnav.querySelectorAll('.ex-nav-btn').forEach(btn => {
+        const oc = btn.getAttribute('onclick') || '';
+        if (oc.includes("'ai'")) {
+          btn.innerHTML = '<span>🤖📚</span><span>طراح هوشمند و کتاب PDF</span>';
+        } else if (oc.includes("'pdf'")) {
+          btn.style.display = 'none';
+        }
+      });
+    }
+
+    const pdfBoxCard = pdfPane.querySelector('.box-card');
+    if (pdfBoxCard && !pdfBoxCard._unifiedIntoAiPaneV81) {
+      pdfBoxCard._unifiedIntoAiPaneV81 = true;
+      pdfBoxCard.innerHTML = `
+        <div class="box-header" style="flex-wrap:wrap;gap:6px">
+          <span>📚 انتخاب صفحات از کتاب PDF (اسکرول پیوسته + زوم دو انگشتی)</span>
+          <span id="pdfPageInfoLbl" class="chip" style="font-size:11px;background:#FFF7ED;color:#EA580C;border-color:#FDBA74">آماده اتصال به کتاب</span>
+        </div>
+
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+          <label class="btn primary btn-sm" style="flex:1;min-width:165px;cursor:pointer;margin:0">
+            📂 انتخاب فایل PDF کتاب درسی
+            <input type="file" id="pdfFileInput" accept="application/pdf" hidden onchange="ExamApp.loadPdfBook(event)">
+          </label>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.autoConnectCachedBookToExamPdf(false)">
+            🔄 اتصال به کتاب بخش آموزش
+          </button>
+        </div>
+
+        <div id="pdfControlsBox" style="display:none;margin-top:8px">
+          <div style="display:flex;align-items:flex-end;gap:6px;flex-wrap:wrap;background:var(--bg-panel);padding:8px 10px;border-radius:12px;border:1px solid var(--border);margin-bottom:8px">
+            <div style="flex:1;min-width:85px">
+              <label style="font-size:11px;font-weight:800;display:block;margin-bottom:3px">انتخاب از صفحه:</label>
+              <input type="number" id="pdfRangeFrom" min="1" value="1" oninput="ExamApp.selectPdfRange(true)" style="height:36px;text-align:center;font-weight:900">
+            </div>
+            <div style="flex:1;min-width:85px">
+              <label style="font-size:11px;font-weight:800;display:block;margin-bottom:3px">تا صفحه:</label>
+              <input type="number" id="pdfRangeTo" min="1" value="3" oninput="ExamApp.selectPdfRange(true)" style="height:36px;text-align:center;font-weight:900">
+            </div>
+            <button type="button" class="btn soft btn-sm" style="height:36px;padding:0 10px" onclick="ExamApp.selectPdfRange(true)">☑️ اعمال بازه</button>
+            <button type="button" class="btn gray btn-sm" style="height:36px;padding:0 10px" onclick="ExamApp.clearSelectedPdfPages()">پاک‌کردن</button>
+          </div>
+
+          <div id="selectedPagesBadge">صفحات انتخاب‌شده: هیچ‌کدام</div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0 6px">
+            <span class="muted" style="font-size:11px;font-weight:800">🤏 با دو انگشت روی صفحات زوم کنید و در همه جهات حرکت کنید:</span>
+            <div style="display:flex;align-items:center;gap:4px">
+              <button type="button" class="btn soft btn-sm" style="height:26px;padding:0 8px" onclick="ExamApp.stepGalleryFreeZoom(0.25)">➕ زوم</button>
+              <span id="pdfFreeZoomPctLbl" style="min-width:42px;text-align:center;font-weight:900;font-size:11px;color:#C2410C;cursor:pointer" onclick="ExamApp.stepGalleryFreeZoom(0)">۱۰۰٪</span>
+              <button type="button" class="btn soft btn-sm" style="height:26px;padding:0 8px" onclick="ExamApp.stepGalleryFreeZoom(-0.25)">➖</button>
+              <div class="pill-switch" id="pdfGalleryZoomSwitch">
+                <button type="button" class="pill-btn" onclick="ExamApp.setPdfGalleryZoom('sm', this)">۳ستون</button>
+                <button type="button" class="pill-btn active" onclick="ExamApp.setPdfGalleryZoom('md', this)">۲ستون</button>
+                <button type="button" class="pill-btn" onclick="ExamApp.setPdfGalleryZoom('lg', this)">۱ستون</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="unified-pdf-scroll-viewport" id="pdfInfiniteScrollViewport">
+            <div class="pdf-gallery-grid zoom-md" id="pdfGalleryGrid"></div>
+            <div id="pdfInfiniteScrollSentinel" style="text-align:center;padding:10px;font-size:11.5px;color:var(--primary);font-weight:800"></div>
+          </div>
+        </div>
+      `;
+
+      const cardsInAi = aiPane.querySelectorAll('.box-card');
+      const settingsCard = cardsInAi[cardsInAi.length - 1];
+      if (settingsCard) {
+        aiPane.insertBefore(pdfBoxCard, settingsCard);
+      } else {
+        aiPane.appendChild(pdfBoxCard);
+      }
     }
   }
 
-  /* ۵. ارتقای ExamApp در نسخه v7.9 (گالری اسکرول پیوسته، زوم روی صفحات و طراحی هوشمند مفهومی از صفحات داستانی و علمی) */
+  /* ۶. ارتقای کامل گالری اسکرول پیوسته در ExamApp (رندر تمام صفحات کتاب از ۱ تا آخر، بدون توقف در صفحه ۱۲!) */
   if (window.ExamApp) {
 
     ExamApp.syncPdfInlineSettings = function() {};
@@ -28872,8 +29253,9 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       return { key: 'general', label: this.state?.header?.subject || 'درس', keywords: [] };
     };
 
+
+
     ExamApp.setPdfGalleryZoom = function(mode, btnEl) {
-      this._pdfGalleryZoomMode = mode;
       const grid = document.getElementById('pdfGalleryGrid');
       if (grid) {
         grid.classList.remove('zoom-sm', 'zoom-md', 'zoom-lg');
@@ -28885,76 +29267,20 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       }
     };
 
-    ExamApp.openSinglePdfPageZoomModal = async function(pageNo, ev) {
-      if (ev) ev.stopPropagation();
-      const p = Number(pageNo) || 1;
-      if (typeof openModal !== 'function') return;
-
-      openModal(formHeader(`🔍 بزرگ‌نمایی و مطالعه صفحه ${this.toFa(p)} کتاب`) + `
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px;flex-wrap:wrap">
-          <div style="display:flex;gap:5px">
-            <button type="button" class="btn soft btn-sm" onclick="ExamApp.zoomModalCanvasBy(0.25)">➕ زوم بیشتر</button>
-            <button type="button" class="btn soft btn-sm" onclick="ExamApp.zoomModalCanvasBy(-0.25)">➖ زوم کمتر</button>
-          </div>
-          <button type="button" class="btn ${this.selectedPdfPages.has(p) ? 'green' : 'primary'} btn-sm" id="btnModalToggleSelectPage" onclick="ExamApp.togglePageSelectionFromZoomModal(${p})">
-            ${this.selectedPdfPages.has(p) ? '✅ این صفحه برای آزمون انتخاب شده' : '➕ انتخاب این صفحه برای آزمون'}
-          </button>
-        </div>
-        <div style="max-height:70vh;overflow:auto;border:2px solid #FDBA74;border-radius:12px;background:#FFFBF5;text-align:center;padding:8px;touch-action:pan-x pan-y pinch-zoom">
-          <canvas id="pdfZoomModalCanvas" dir="ltr" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.12)"></canvas>
-          <div id="pdfZoomModalTextFallback" style="display:none;text-align:right;padding:12px;line-height:1.9;font-size:13.5px"></div>
-        </div>
-        <div class="formactions">
-          <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
-        </div>
-      `);
-
-      this._modalZoomScale = 1.45;
-      await this.renderZoomModalPageCanvas(p);
-    };
-
-    ExamApp.zoomModalCanvasBy = function(delta) {
-      this._modalZoomScale = Math.min(3.0, Math.max(0.8, (this._modalZoomScale || 1.45) + delta));
-      const cv = document.getElementById('pdfZoomModalCanvas');
-      if (cv) {
-        cv.style.maxWidth = this._modalZoomScale > 1.5 ? 'none' : '100%';
-        cv.style.width = Math.round(this._modalZoomScale * 68) + '%';
+    ExamApp.stepGalleryFreeZoom = function(delta) {
+      const vp = document.getElementById('pdfInfiniteScrollViewport');
+      const grid = document.getElementById('pdfGalleryGrid');
+      if (!vp || !grid) return;
+      const cur = (vp._getZoomScale ? vp._getZoomScale() : vp._currentZoomScale) || 1;
+      const next = delta === 0 ? 1 : Math.min(3.2, Math.max(1.0, Math.round((cur + delta) * 100) / 100));
+      if (typeof vp._setZoomScale === 'function') {
+        vp._setZoomScale(next);
+      } else {
+        vp._currentZoomScale = next;
+        grid.style.width = Math.round(next * 100) + '%';
       }
-    };
-
-    ExamApp.togglePageSelectionFromZoomModal = function(p) {
-      if (this.selectedPdfPages.has(p)) this.selectedPdfPages.delete(p);
-      else this.selectedPdfPages.add(p);
-      this.updateSelectedPagesBadge();
-      const btn = document.getElementById('btnModalToggleSelectPage');
-      if (btn) {
-        const sel = this.selectedPdfPages.has(p);
-        btn.className = `btn ${sel ? 'green' : 'primary'} btn-sm`;
-        btn.textContent = sel ? '✅ این صفحه برای آزمون انتخاب شده' : '➕ انتخاب این صفحه برای آزمون';
-      }
-    };
-
-    ExamApp.renderZoomModalPageCanvas = async function(p) {
-      const cv = document.getElementById('pdfZoomModalCanvas');
-      const fb = document.getElementById('pdfZoomModalTextFallback');
-      if (!cv) return;
-      if (this.pdfDoc && p >= 1 && p <= this.pdfDoc.numPages) {
-        try {
-          const page = await this.pdfDoc.getPage(p);
-          const vp = page.getViewport({ scale: 1.5 });
-          cv.width = Math.floor(vp.width);
-          cv.height = Math.floor(vp.height);
-          const ctx = cv.getContext('2d');
-          try { ctx.direction = 'ltr'; } catch (_) {}
-          await page.render({ canvasContext: ctx, viewport: vp }).promise;
-          return;
-        } catch (_) {}
-      }
-      cv.style.display = 'none';
-      if (fb) {
-        fb.style.display = 'block';
-        fb.textContent = window.repairSpacedPersianText(db.cachedBook?.pages?.[String(p)] || `صفحه ${this.toFa(p)}`);
-      }
+      const lbl = document.getElementById('pdfFreeZoomPctLbl');
+      if (lbl) lbl.textContent = this.toFa(Math.round(next * 100)) + '٪';
     };
 
     ExamApp.clearSelectedPdfPages = function() {
@@ -29000,10 +29326,6 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       for (let p = f; p <= t; p++) {
         this.selectedPdfPages.add(p);
       }
-
-      if (this._loadedPdfGalleryCount && t > this._loadedPdfGalleryCount) {
-        this.appendMorePdfGalleryPages(t + 4);
-      }
       this.updateSelectedPagesBadge();
 
       if (autoScroll) {
@@ -29019,6 +29341,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       const grid = document.getElementById('pdfGalleryGrid');
       const ctrlBox = document.getElementById('pdfControlsBox');
       const vp = document.getElementById('pdfInfiniteScrollViewport');
+      const sentinel = document.getElementById('pdfInfiniteScrollSentinel');
       if (!grid) return;
       if (ctrlBox) ctrlBox.style.display = 'block';
 
@@ -29032,12 +29355,12 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       }
 
       grid.innerHTML = '';
-      this._loadedPdfGalleryCount = 0;
       this._totalPdfGalleryPages = totalPages;
 
       if (this._pdfCardObserver) {
         try { this._pdfCardObserver.disconnect(); } catch (_) {}
       }
+
       if ('IntersectionObserver' in window && this.pdfDoc) {
         this._pdfCardObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -29050,34 +29373,11 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
               }
             }
           });
-        }, { root: vp || null, rootMargin: '180px 0px 180px 0px', threshold: 0.01 });
+        }, { root: null, rootMargin: '550px 0px 550px 0px', threshold: 0.01 });
       }
 
-      const maxSelected = this.selectedPdfPages.size ? Math.max(...this.selectedPdfPages) : 12;
-      this.appendMorePdfGalleryPages(Math.min(totalPages, Math.max(12, maxSelected + 4)));
-
-      if (vp && !vp._boundInfiniteScroll) {
-        vp._boundInfiniteScroll = true;
-        vp.addEventListener('scroll', () => {
-          if (vp.scrollTop + vp.clientHeight >= vp.scrollHeight - 220) {
-            if (this._loadedPdfGalleryCount < this._totalPdfGalleryPages) {
-              this.appendMorePdfGalleryPages(this._loadedPdfGalleryCount + 10);
-            }
-          }
-        }, { passive: true });
-      }
-    };
-
-    ExamApp.appendMorePdfGalleryPages = function(targetMaxPage) {
-      const grid = document.getElementById('pdfGalleryGrid');
-      const sentinel = document.getElementById('pdfInfiniteScrollSentinel');
-      if (!grid) return;
-      const totalPages = this._totalPdfGalleryPages || this.pdfDoc?.numPages || Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 0;
-      const startP = (this._loadedPdfGalleryCount || 0) + 1;
-      const endP = Math.min(totalPages, targetMaxPage);
-      if (startP > endP) return;
-
-      for (let p = startP; p <= endP; p++) {
+      const frag = document.createDocumentFragment ? document.createDocumentFragment() : grid;
+      for (let p = 1; p <= totalPages; p++) {
         const card = document.createElement('div');
         card.className = 'pdf-page-card' + (this.selectedPdfPages.has(p) ? ' selected' : '');
         card.setAttribute('data-page-num', String(p));
@@ -29091,7 +29391,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
         zoomBtn.type = 'button';
         zoomBtn.className = 'pdf-page-zoom-btn';
         zoomBtn.innerHTML = '🔍';
-        zoomBtn.title = `بزرگ‌نمایی صفحه ${this.toFa(p)}`;
+        zoomBtn.title = `بزرگ‌نمایی و جابه‌جایی روی صفحه ${this.toFa(p)}`;
         zoomBtn.onclick = (ev) => this.openSinglePdfPageZoomModal(p, ev);
         card.appendChild(zoomBtn);
 
@@ -29102,16 +29402,17 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 
         if (this.pdfDoc && p <= this.pdfDoc.numPages) {
           const c = document.createElement('canvas');
-          c.width = 180;
-          c.height = 245;
+          c.width = 210;
+          c.height = 285;
           c.setAttribute('dir', 'ltr');
           c.style.direction = 'ltr';
           card.appendChild(c);
           card.appendChild(l);
-          grid.appendChild(card);
+          frag.appendChild(card);
           if (this._pdfCardObserver) {
             this._pdfCardObserver.observe(card);
-          } else {
+          } else if (p <= 8) {
+            card._renderedCanvas = true;
             this.renderSingleGalleryCardCanvas(card, p);
           }
         } else {
@@ -29121,16 +29422,48 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
           previewDiv.textContent = snippet || `صفحه ${this.toFa(p)} کتاب ${db.cachedBook?.name || 'درسی'}`;
           card.appendChild(previewDiv);
           card.appendChild(l);
-          grid.appendChild(card);
+          frag.appendChild(card);
         }
       }
 
-      this._loadedPdfGalleryCount = endP;
+      if (frag !== grid) grid.appendChild(frag);
+      this._loadedPdfGalleryCount = totalPages;
+
       if (sentinel) {
-        sentinel.textContent = endP < totalPages
-          ? `⬇️ صفحه ${this.toFa(1)} تا ${this.toFa(endP)} نمایش داده شد — برای مشاهده بقیه صفحات (${this.toFa(totalPages)} صفحه) به پایین اسکرول کنید...`
-          : `✅ تمام ${this.toFa(totalPages)} صفحه کتاب بارگذاری شد`;
+        sentinel.textContent = `✅ تمام ${this.toFa(totalPages)} صفحه کتاب آماده اسکرول است (از صفحه ۱ تا ${this.toFa(totalPages)})`;
       }
+
+      if (vp) {
+        window.attachProPinchZoomAndPan(vp, grid, {
+          mode: 'grid-width',
+          minScale: 1.0,
+          maxScale: 3.2,
+          onZoomChange: (sc) => {
+            const lbl = document.getElementById('pdfFreeZoomPctLbl');
+            if (lbl) lbl.textContent = this.toFa(Math.round(sc * 100)) + '٪';
+          }
+        });
+
+        if (!vp._boundLazyRenderScrollV81) {
+          vp._boundLazyRenderScrollV81 = true;
+          vp.addEventListener('scroll', () => {
+            if (!this.pdfDoc) return;
+            const vpRect = vp.getBoundingClientRect();
+            grid.querySelectorAll('.pdf-page-card').forEach(card => {
+              if (card._renderedCanvas) return;
+              const r = card.getBoundingClientRect();
+              if (r.bottom >= vpRect.top - 350 && r.top <= vpRect.bottom + 350) {
+                const pNo = Number(card.getAttribute('data-page-num'));
+                if (pNo) {
+                  card._renderedCanvas = true;
+                  this.renderSingleGalleryCardCanvas(card, pNo);
+                }
+              }
+            });
+          }, { passive: true });
+        }
+      }
+
       this.updateSelectedPagesBadge();
     };
 
@@ -29140,13 +29473,96 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       if (!cv) return;
       try {
         const page = await this.pdfDoc.getPage(pNo);
-        const vp = page.getViewport({ scale: 0.42 });
+        const vp = page.getViewport({ scale: 0.55 });
         cv.width = Math.floor(vp.width);
         cv.height = Math.floor(vp.height);
         const gCtx = cv.getContext('2d');
         try { gCtx.direction = 'ltr'; } catch (_) {}
         await page.render({ canvasContext: gCtx, viewport: vp }).promise;
       } catch (_) {}
+    };
+
+    ExamApp.openSinglePdfPageZoomModal = async function(pageNo, ev) {
+      if (ev) ev.stopPropagation();
+      const p = Number(pageNo) || 1;
+      if (typeof openModal !== 'function') return;
+
+      openModal(formHeader(`🔍 بزرگ‌نمایی و جابه‌جایی روی صفحه ${this.toFa(p)} کتاب`) + `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px;flex-wrap:wrap">
+          <div style="display:flex;gap:5px;align-items:center">
+            <button type="button" class="btn soft btn-sm" onclick="ExamApp.zoomModalCanvasBy(0.3)">➕ زوم بیشتر</button>
+            <span id="modalZoomPctBadge" class="chip" style="font-size:11px">۱۰۰٪</span>
+            <button type="button" class="btn soft btn-sm" onclick="ExamApp.zoomModalCanvasBy(-0.3)">➖ زوم کمتر</button>
+          </div>
+          <button type="button" class="btn ${this.selectedPdfPages.has(p) ? 'green' : 'primary'} btn-sm" id="btnModalToggleSelectPage" onclick="ExamApp.togglePageSelectionFromZoomModal(${p})">
+            ${this.selectedPdfPages.has(p) ? '✅ انتخاب‌شده برای آزمون' : '➕ انتخاب این صفحه'}
+          </button>
+        </div>
+        <div id="pdfZoomModalViewport" style="max-height:72vh;overflow:auto;-webkit-overflow-scrolling:touch;border:2px solid #FDBA74;border-radius:12px;background:#FFFBF5;padding:8px;touch-action:pan-x pan-y">
+          <canvas id="pdfZoomModalCanvas" dir="ltr" style="display:block;margin:0 auto;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.12);max-width:none"></canvas>
+          <div id="pdfZoomModalTextFallback" style="display:none;text-align:right;padding:12px;line-height:1.9;font-size:13.5px"></div>
+        </div>
+        <div class="muted" style="text-align:center;font-size:11px;margin-top:5px">🤏 با دو انگشت زوم کنید و با یک انگشت در تمام جهات صفحه جابه‌جا شوید</div>
+        <div class="formactions">
+          <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+        </div>
+      `);
+
+      this._modalZoomScale = 1.0;
+      await this.renderZoomModalPageCanvas(p);
+      const mVp = document.getElementById('pdfZoomModalViewport');
+      const mCv = document.getElementById('pdfZoomModalCanvas');
+      if (mVp && mCv) {
+        mCv._baseCssWidth = Math.max(260, (mVp.clientWidth || 320) - 16);
+        mCv.style.width = mCv._baseCssWidth + 'px';
+        window.attachProPinchZoomAndPan(mVp, mCv, {
+          mode: 'canvas-width',
+          minScale: 1.0,
+          maxScale: 3.5,
+          onZoomChange: (sc) => {
+            this._modalZoomScale = sc;
+            const b = document.getElementById('modalZoomPctBadge');
+            if (b) b.textContent = this.toFa(Math.round(sc * 100)) + '٪';
+          }
+        });
+      }
+    };
+
+    ExamApp.zoomModalCanvasBy = function(delta) {
+      const mVp = document.getElementById('pdfZoomModalViewport');
+      const mCv = document.getElementById('pdfZoomModalCanvas');
+      if (!mVp || !mCv) return;
+      const next = Math.min(3.5, Math.max(1.0, (this._modalZoomScale || 1.0) + delta));
+      this._modalZoomScale = next;
+      if (typeof mVp._setZoomScale === 'function') {
+        mVp._setZoomScale(next);
+      } else {
+        const baseW = mCv._baseCssWidth || (mVp.clientWidth - 20) || 300;
+        mCv.style.width = Math.round(baseW * next) + 'px';
+      }
+    };
+
+    ExamApp.renderZoomModalPageCanvas = async function(p) {
+      const cv = document.getElementById('pdfZoomModalCanvas');
+      const fb = document.getElementById('pdfZoomModalTextFallback');
+      if (!cv) return;
+      if (this.pdfDoc && p >= 1 && p <= this.pdfDoc.numPages) {
+        try {
+          const page = await this.pdfDoc.getPage(p);
+          const vp = page.getViewport({ scale: 1.6 });
+          cv.width = Math.floor(vp.width);
+          cv.height = Math.floor(vp.height);
+          const ctx = cv.getContext('2d');
+          try { ctx.direction = 'ltr'; } catch (_) {}
+          await page.render({ canvasContext: ctx, viewport: vp }).promise;
+          return;
+        } catch (_) {}
+      }
+      cv.style.display = 'none';
+      if (fb) {
+        fb.style.display = 'block';
+        fb.textContent = window.repairSpacedPersianText(db.cachedBook?.pages?.[String(p)] || `صفحه ${this.toFa(p)}`);
+      }
     };
 
     ExamApp.loadPdfBook = async function(e) {
@@ -29527,759 +29943,13 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     };
   }
 
-  const bootV79 = () => {
-    try {
-      initCreamySlimeSpinnerLogo();
-      unifyPdfAndSmartDesignerTabs();
-      if (window.TeachAssistant) {
-        TeachAssistant.initBookStageZoomAndSwipe();
-      }
-      if (typeof db !== 'undefined' && db?.cachedBook?.pages) {
-        Object.keys(db.cachedBook.pages).forEach(k => {
-          db.cachedBook.pages[k] = window.repairSpacedPersianText(db.cachedBook.pages[k]);
-        });
-      }
-      if (window.ExamApp) {
-        ExamApp.autoConnectCachedBookToExamPdf(true);
-      }
-    } catch (e) {
-      console.warn('v7.9 init warning:', e);
-    }
-  };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV79, 80));
-  } else {
-    setTimeout(bootV79, 80);
-  }
-
-})();
-</script>
-
-
-<style id="v80ProFixesStyle">
-/* ==================== استایل‌های دقیق نسخه v8.0.0 Pro ==================== */
-
-/* ۱. لوگوی تعاملی آرام‌بخش «اسلایم خامه‌ای + اسپینر ۳ پره» روی عنصر واقعی `.brand .logo` */
-.brand .logo {
-  position: relative !important;
-  width: 50px !important;
-  height: 50px !important;
-  border-radius: 42% 58% 54% 46% / 48% 44% 56% 52% !important;
-  background: radial-gradient(circle at 28% 24%, #FFFFFF 0%, #FFF7ED 22%, #FED7AA 46%, #FB923C 76%, #EA580C 100%) !important;
-  box-shadow:
-    inset 0 4px 8px rgba(255, 255, 255, 0.96),
-    inset 0 -5px 10px rgba(194, 65, 12, 0.42),
-    0 6px 18px rgba(249, 115, 22, 0.38),
-    0 0 0 3px rgba(255, 237, 213, 0.92) !important;
-  border: none !important;
-  cursor: grab !important;
-  user-select: none !important;
-  touch-action: none !important;
-  display: grid !important;
-  place-items: center !important;
-  overflow: visible !important;
-  animation: creamySlimeBreatheV80 4.8s ease-in-out infinite !important;
-  transition: box-shadow 0.2s ease !important;
-  will-change: transform, border-radius;
-  z-index: 35;
-  flex-shrink: 0;
-}
-.brand .logo:active {
-  cursor: grabbing !important;
-}
-.brand .logo.slime-active {
-  animation: none !important;
-  box-shadow:
-    inset 0 6px 12px rgba(255, 255, 255, 1),
-    inset 0 -6px 12px rgba(234, 88, 12, 0.58),
-    0 10px 26px rgba(249, 115, 22, 0.52),
-    0 0 0 5px rgba(254, 215, 170, 0.96) !important;
-}
-/* درخشش خامه‌ای-شیشه‌ای بالای اسلایم */
-.brand .logo::before {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 9px;
-  width: 16px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  transform: rotate(-22deg);
-  pointer-events: none;
-  filter: blur(0.3px);
-  z-index: 3;
-}
-.brand .logo svg {
-  width: 42px !important;
-  height: 42px !important;
-  overflow: visible !important;
-  pointer-events: none;
-  z-index: 2;
-}
-#creamySpinnerRotor {
-  transform-origin: 32px 32px !important;
-  will-change: transform;
-}
-@keyframes creamySlimeBreatheV80 {
-  0%, 100% {
-    border-radius: 42% 58% 54% 46% / 48% 44% 56% 52%;
-    transform: scale(1, 1);
-  }
-  33% {
-    border-radius: 55% 45% 42% 58% / 53% 58% 42% 47%;
-    transform: scale(1.03, 0.97);
-  }
-  66% {
-    border-radius: 44% 56% 60% 40% / 42% 51% 49% 58%;
-    transform: scale(0.97, 1.03);
-  }
-}
-
-/* ۲. نمایش کامل اسامی دانش‌آموزان در لیست سریع حتی در حالت روشن بودن عکس‌ها (بدون بریدگی یا ...) */
-.td-row b,
-.td-row .stu-full-name-lbl {
-  white-space: normal !important;
-  overflow: visible !important;
-  text-overflow: clip !important;
-  word-break: break-word !important;
-  line-height: 1.45 !important;
-  font-size: 13.2px !important;
-  display: inline-block !important;
-}
-
-/* ۳. پنل جمع‌وجور کتاب PDF در بالای لیست سریع امروز (برای تدریس هم‌زمان و ثبت مثبت/منفی) */
-.ql-top-pdf-panel {
-  background: var(--bg-card);
-  border: 2px solid #F97316;
-  border-radius: 16px;
-  padding: 8px 10px;
-  margin-bottom: 10px;
-  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.14);
-}
-.ql-top-pdf-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  padding-bottom: 6px;
-  border-bottom: 1px dashed var(--border);
-  margin-bottom: 6px;
-}
-.ql-top-pdf-viewport {
-  width: 100%;
-  height: 265px;
-  overflow: auto !important;
-  -webkit-overflow-scrolling: touch;
-  background: #FFFBF5;
-  border: 1.5px solid #FED7AA;
-  border-radius: 12px;
-  position: relative;
-  text-align: center;
-  padding: 6px;
-  touch-action: pan-x pan-y !important;
-}
-.ql-top-pdf-viewport.tall-mode {
-  height: 390px;
-}
-#quickListPdfCanvas {
-  display: block;
-  margin: 0 auto;
-  border-radius: 6px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.10);
-  background: #fff;
-  max-width: none !important;
-}
-
-/* ۴. اسکرول پیوسته کامل و زوم دو انگشتی با قابلیت جابه‌جایی چهارطرفه (Pan) روی صفحات PDF آزمون‌ساز */
-.unified-pdf-scroll-viewport {
-  max-height: 460px !important;
-  overflow: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  padding: 10px !important;
-  border-radius: 14px !important;
-  background: #FFFBF5 !important;
-  border: 2px solid #FED7AA !important;
-  touch-action: pan-x pan-y !important;
-  position: relative !important;
-}
-#pdfGalleryGrid {
-  display: grid !important;
-  gap: 10px !important;
-  transform-origin: top right !important;
-  min-width: 100%;
-}
-.pdf-page-card canvas {
-  width: 100% !important;
-  height: auto !important;
-  max-width: none !important;
-}
-
-/* ۵. قابلیت جابه‌جایی آزادانه (Pan) در تمام جهات پس از زوم روی کتاب در تب آموزش و مودال زوم */
-#teacherPdfStage {
-  overflow: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  touch-action: pan-x pan-y !important;
-}
-#teacherCanvasInner {
-  margin: 0 auto;
-}
-#teacherPdfCanvas {
-  max-width: none !important;
-}
-</style>
-
-<script id="v80ProMasterEngine">
-/* ==================== موتور دقیق نسخه v8.0.0 Pro ==================== */
-(function initV80ProFixes() {
-
-  /* ۱. طراحی و فعال‌سازی لوگوی تعاملی «اسلایم خامه‌ای + اسپینر ۳ پره آرام‌بخش» روی عنصر واقعی `.brand .logo` */
-  function initRealBrandLogoSlimeSpinner() {
-    const logo = document.querySelector('.brand .logo') || document.querySelector('.logo');
-    if (!logo || logo._boundV80SlimeSpinner) return;
-    logo._boundV80SlimeSpinner = true;
-    logo.title = 'اسپینر و اسلایم آرام‌بخش — با انگشت بچرخانید یا فشار دهید!';
-
-    // جایگزینی SVG داخل لوگو با طراحی اسپینر ۳ پره خامه‌ای-نارنجی + مرکز کلاه آموزشی
-    logo.innerHTML = `
-      <svg viewBox="0 0 64 64" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="slimeSpinBodyGrad" cx="35%" cy="30%" r="70%">
-            <stop offset="0%" stop-color="#FFF7ED"/>
-            <stop offset="40%" stop-color="#FDBA74"/>
-            <stop offset="80%" stop-color="#F97316"/>
-            <stop offset="100%" stop-color="#C2410C"/>
-          </radialGradient>
-          <radialGradient id="slimeLobeRingGrad" cx="30%" cy="30%" r="70%">
-            <stop offset="0%" stop-color="#FFFFFF"/>
-            <stop offset="55%" stop-color="#FFEDD5"/>
-            <stop offset="100%" stop-color="#FB923C"/>
-          </radialGradient>
-          <radialGradient id="slimeCenterCapGrad" cx="32%" cy="28%" r="72%">
-            <stop offset="0%" stop-color="#FFFFFF"/>
-            <stop offset="50%" stop-color="#FED7AA"/>
-            <stop offset="100%" stop-color="#EA580C"/>
-          </radialGradient>
-        </defs>
-
-        <!-- پره‌های چرخان اسپینر (۳ پره متقارن ۱۲۰ درجه با وزنه‌های خامه‌ای-نارنجی) -->
-        <g id="creamySpinnerRotor">
-          <!-- بدنه سه‌پره منحنی نرم -->
-          <path d="M32 6 C39 6, 41 16, 39 23 C45 27, 55 26, 57 33 C59 40, 50 46, 43 43 C39 48, 39 57, 32 57 C25 57, 25 48, 21 43 C14 46, 5 40, 7 33 C9 26, 19 27, 25 23 C23 16, 25 6, 32 6 Z" fill="url(#slimeSpinBodyGrad)" stroke="#FFF7ED" stroke-width="1.5"/>
-          <!-- وزنه پره ۱ (بالا) -->
-          <circle cx="32" cy="14" r="6.2" fill="url(#slimeLobeRingGrad)" stroke="#EA580C" stroke-width="1.6"/>
-          <circle cx="32" cy="14" r="2.6" fill="#EA580C"/>
-          <!-- وزنه پره ۲ (پایین راست) -->
-          <circle cx="47.6" cy="41" r="6.2" fill="url(#slimeLobeRingGrad)" stroke="#EA580C" stroke-width="1.6"/>
-          <circle cx="47.6" cy="41" r="2.6" fill="#EA580C"/>
-          <!-- وزنه پره ۳ (پایین چپ) -->
-          <circle cx="16.4" cy="41" r="6.2" fill="url(#slimeLobeRingGrad)" stroke="#EA580C" stroke-width="1.6"/>
-          <circle cx="16.4" cy="41" r="2.6" fill="#EA580C"/>
-        </g>
-
-        <!-- دکمه بلبرینگ مرکزی با نماد کلاه دانش‌آموز من -->
-        <g id="creamySpinnerCenterCap">
-          <circle cx="32" cy="32" r="9.5" fill="url(#slimeCenterCapGrad)" stroke="#FFFFFF" stroke-width="1.8"/>
-          <path d="M32 26.2L24.5 29.8L32 33.4L39.5 29.8L32 26.2Z" fill="#9A3412"/>
-          <path d="M27.2 31.8V35.2C27.2 36.6 29.4 37.6 32 37.6C34.6 37.6 36.8 36.6 36.8 35.2V31.8L32 34L27.2 31.8Z" fill="#C2410C"/>
-        </g>
-      </svg>
-    `;
-
-    const rotor = logo.querySelector('#creamySpinnerRotor');
-    logo.addEventListener('click', (e) => e.stopPropagation());
-
-    let angle = 0;
-    let omega = 14; // یک چرخش نرم خوش‌آمدگویی اولیه هنگام باز شدن برنامه تا کاربر حرکت اسپینر را ببیند!
-    let scaleX = 1, scaleY = 1;
-    let targetScaleX = 1, targetScaleY = 1;
-    let velX = 0, velY = 0;
-    let skewX = 0, skewY = 0;
-    let animId = null;
-    let isPointerDown = false;
-    let lastClientX = 0, lastClientY = 0;
-
-    // صدای بسیار لطیف و آرام‌بخش حباب خامه‌ای هنگام لمس اسلایم (WebAudio API بدون نیاز به فایل خارجی)
-    const playSoftSlimeSquishSound = (intensity = 1) => {
-      try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (!AudioCtx) return;
-        if (!window._slimeAudioCtx) window._slimeAudioCtx = new AudioCtx();
-        const ctx = window._slimeAudioCtx;
-        if (ctx.state === 'suspended') ctx.resume();
-        const now = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        const baseFreq = 220 + Math.min(180, intensity * 12);
-        osc.frequency.setValueAtTime(baseFreq, now);
-        osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.65, now + 0.085);
-        gain.gain.setValueAtTime(0.035, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.095);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.1);
-      } catch (_) {}
-    };
-
-    const spawnCreamyBubbles = (cx, cy, count = 6) => {
-      if (typeof document === 'undefined' || !document.body) return;
-      for (let i = 0; i < count; i++) {
-        const b = document.createElement('div');
-        b.className = 'slime-bubble-particle';
-        const sz = 6 + Math.random() * 10;
-        b.style.width = sz + 'px';
-        b.style.height = sz + 'px';
-        b.style.left = (cx - sz / 2) + 'px';
-        b.style.top = (cy - sz / 2) + 'px';
-        document.body.appendChild(b);
-        const rad = (Math.PI * 2 * i) / count + (Math.random() * 0.5);
-        const dist = 24 + Math.random() * 28;
-        requestAnimationFrame(() => {
-          b.style.transform = `translate(${Math.cos(rad) * dist}px, ${Math.sin(rad) * dist}px) scale(0.15)`;
-          b.style.opacity = '0';
-        });
-        setTimeout(() => b.remove(), 680);
-      }
-    };
-
-    const stepPhysics = () => {
-      // چرخش نرم بلبرینگی اسپینر با اصطکاک خیلی کم (حس واقعی اسپینر)
-      angle = (angle + omega) % 360;
-      omega *= 0.982;
-
-      // فیزیک فنری اسلایم خامه‌ای (Spring-Damper Jelly)
-      const k = 0.20;
-      const damp = 0.76;
-      velX = (velX + (targetScaleX - scaleX) * k) * damp;
-      velY = (velY + (targetScaleY - scaleY) * k) * damp;
-      scaleX += velX;
-      scaleY += velY;
-      skewX *= 0.82;
-      skewY *= 0.82;
-
-      // تغییر شکل مایع و خامه‌ای لبه‌های اسلایم هنگام چرخش و لمس
-      const deform = Math.min(22, Math.abs(omega) * 0.48 + Math.abs(1 - scaleX) * 45);
-      const r1 = Math.round(44 + Math.sin(angle * Math.PI / 90) * deform);
-      const r2 = 100 - r1;
-      const r3 = Math.round(48 + Math.cos(angle * Math.PI / 90) * deform);
-      const r4 = 100 - r3;
-
-      logo.style.borderRadius = `${r1}% ${r2}% ${r3}% ${r4}% / ${r3}% ${r1}% ${r2}% ${r4}%`;
-      logo.style.transform = `scale(${scaleX.toFixed(3)}, ${scaleY.toFixed(3)}) skew(${skewX.toFixed(1)}deg, ${skewY.toFixed(1)}deg)`;
-      if (rotor) {
-        rotor.style.transform = `rotate(${angle.toFixed(1)}deg)`;
-      }
-
-      const stillMoving = isPointerDown || Math.abs(omega) > 0.12 || Math.abs(velX) > 0.002 || Math.abs(velY) > 0.002 || Math.abs(1 - scaleX) > 0.003;
-      if (stillMoving) {
-        animId = requestAnimationFrame(stepPhysics);
-      } else {
-        scaleX = 1; scaleY = 1; omega = 0;
-        logo.style.transform = '';
-        logo.style.borderRadius = '';
-        logo.classList.remove('slime-active');
-        animId = null;
-      }
-    };
-
-    const ensureLoop = () => {
-      if (!animId) animId = requestAnimationFrame(stepPhysics);
-    };
-
-    // اجرای چرخش نرم اولیه هنگام لود
-    ensureLoop();
-
-    logo.addEventListener('pointerdown', (ev) => {
-      ev.stopPropagation();
-      isPointerDown = true;
-      lastClientX = ev.clientX;
-      lastClientY = ev.clientY;
-      logo.setPointerCapture?.(ev.pointerId);
-      logo.classList.add('slime-active');
-
-      // فرورفتگی نرم خامه‌ای و شتاب گرفتن اسپینر با هر بار لمس
-      targetScaleX = 1.22;
-      targetScaleY = 0.78;
-      omega += (omega >= 0 ? 22 : -22);
-      if (Math.abs(omega) > 58) omega = Math.sign(omega) * 58;
-
-      spawnCreamyBubbles(ev.clientX, ev.clientY, 6);
-      playSoftSlimeSquishSound(Math.abs(omega) * 0.25);
-      if (navigator.vibrate) {
-        try { navigator.vibrate(12); } catch (_) {}
-      }
-      ensureLoop();
-    });
-
-    logo.addEventListener('pointermove', (ev) => {
-      if (!isPointerDown) return;
-      const dx = ev.clientX - lastClientX;
-      const dy = ev.clientY - lastClientY;
-      lastClientX = ev.clientX;
-      lastClientY = ev.clientY;
-
-      // چرخش سریع اسپینر و کشیده شدن اسلایم خامه‌ای همراه با حرکت انگشت
-      omega += (dx - dy * 0.6) * 1.45;
-      if (Math.abs(omega) > 68) omega = Math.sign(omega) * 68;
-      skewX = Math.max(-16, Math.min(16, dx * 0.65));
-      skewY = Math.max(-16, Math.min(16, dy * 0.65));
-      targetScaleX = Math.max(0.76, Math.min(1.28, 1 + Math.abs(dx) * 0.014 - Math.abs(dy) * 0.009));
-      targetScaleY = Math.max(0.76, Math.min(1.28, 1 + Math.abs(dy) * 0.014 - Math.abs(dx) * 0.009));
-      ensureLoop();
-    });
-
-    const releaseSlime = () => {
-      if (!isPointerDown) return;
-      isPointerDown = false;
-      targetScaleX = 1;
-      targetScaleY = 1;
-      velX += -0.11;
-      velY += 0.11;
-      playSoftSlimeSquishSound(0.6);
-      if (navigator.vibrate) {
-        try { navigator.vibrate([7, 20, 9]); } catch (_) {}
-      }
-      ensureLoop();
-    };
-
-    logo.addEventListener('pointerup', releaseSlime);
-    logo.addEventListener('pointercancel', releaseSlime);
-  }
-
-  /* ۲. تابع کمکی افزودن «زوم دو انگشتی (Pinch-to-Zoom) + جابه‌جایی آزادانه در همه جهات پس از زوم (Pan)» */
-  window.attachPinchZoomAndPanToViewport = function(viewportEl, targetEl, options = {}) {
-    if (!viewportEl || !targetEl || viewportEl._boundPinchPanV80) return;
-    viewportEl._boundPinchPanV80 = true;
-
-    let currentScale = options.initialScale || 1;
-    const minScale = options.minScale || 0.75;
-    const maxScale = options.maxScale || 3.2;
-    let startDist = null;
-    let startScale = 1;
-    let pinchCenterY = 0;
-    let startScrollTop = 0;
-
-    const applyScale = (newScale) => {
-      currentScale = Math.min(maxScale, Math.max(minScale, Math.round(newScale * 100) / 100));
-      viewportEl._currentZoomScale = currentScale;
-      if (options.mode === 'grid-width') {
-        targetEl.style.width = Math.round(currentScale * 100) + '%';
-      } else {
-        const baseW = targetEl._baseCssWidth || targetEl.clientWidth || 300;
-        if (!targetEl._baseCssWidth && baseW > 50) targetEl._baseCssWidth = baseW;
-        targetEl.style.width = Math.round((targetEl._baseCssWidth || 300) * currentScale) + 'px';
-        targetEl.style.height = 'auto';
-      }
-      if (typeof options.onZoomChange === 'function') {
-        options.onZoomChange(currentScale);
-      }
-    };
-
-    viewportEl._setZoomScale = applyScale;
-
-    viewportEl.addEventListener('touchstart', (ev) => {
-      if (ev.touches.length === 2) {
-        const dx = ev.touches[0].clientX - ev.touches[1].clientX;
-        const dy = ev.touches[0].clientY - ev.touches[1].clientY;
-        startDist = Math.hypot(dx, dy);
-        startScale = viewportEl._currentZoomScale || 1;
-        const rect = viewportEl.getBoundingClientRect();
-        pinchCenterY = ((ev.touches[0].clientY + ev.touches[1].clientY) / 2) - rect.top;
-        startScrollTop = viewportEl.scrollTop;
-      }
-    }, { passive: true });
-
-    viewportEl.addEventListener('touchmove', (ev) => {
-      if (ev.touches.length === 2 && startDist && startDist > 15) {
-        const dx = ev.touches[0].clientX - ev.touches[1].clientX;
-        const dy = ev.touches[0].clientY - ev.touches[1].clientY;
-        const dist = Math.hypot(dx, dy);
-        const ratio = dist / startDist;
-        const nextScale = Math.min(maxScale, Math.max(minScale, startScale * ratio));
-        applyScale(nextScale);
-        const scaleRatio = nextScale / startScale;
-        viewportEl.scrollTop = Math.max(0, (startScrollTop + pinchCenterY) * scaleRatio - pinchCenterY);
-      }
-    }, { passive: true });
-
-    viewportEl.addEventListener('touchend', (ev) => {
-      if (ev.touches.length < 2) {
-        startDist = null;
-      }
-    }, { passive: true });
-  };
-
-  /* ۳. رفع کامل توقف اسکرول کتاب در صفحه ۱۲ در بخش آزمون‌ساز + افزودن زوم انگشتی و جابه‌جایی روی صفحات PDF امتحان */
-  if (window.ExamApp) {
-
-    ExamApp.stepGalleryFreeZoom = function(delta) {
-      const vp = document.getElementById('pdfInfiniteScrollViewport');
-      const grid = document.getElementById('pdfGalleryGrid');
-      if (!vp || !grid) return;
-      const cur = vp._currentZoomScale || 1;
-      const next = delta === 0 ? 1 : Math.min(3.0, Math.max(0.8, Math.round((cur + delta) * 100) / 100));
-      vp._currentZoomScale = next;
-      grid.style.width = Math.round(next * 100) + '%';
-      const lbl = document.getElementById('pdfFreeZoomPctLbl');
-      if (lbl) lbl.textContent = this.toFa(Math.round(next * 100)) + '٪';
-    };
-
-    ExamApp.renderPdfGallery = async function() {
-      const grid = document.getElementById('pdfGalleryGrid');
-      const ctrlBox = document.getElementById('pdfControlsBox');
-      const vp = document.getElementById('pdfInfiniteScrollViewport');
-      const sentinel = document.getElementById('pdfInfiniteScrollSentinel');
-      if (!grid) return;
-      if (ctrlBox) ctrlBox.style.display = 'block';
-
-      const totalPages = this.pdfDoc?.numPages || Number(db.cachedBook?.pageCount) || Object.keys(db.cachedBook?.pages || {}).length || 0;
-      if (!totalPages) return;
-
-      const infoLbl = document.getElementById('pdfPageInfoLbl');
-      if (infoLbl) {
-        const bName = db.cachedBook?.name ? `📚 ${db.cachedBook.name}` : '📚 کتاب فعال';
-        infoLbl.textContent = `${bName} (${this.toFa(totalPages)} صفحه)`;
-      }
-
-      if (vp && vp.parentNode && !document.getElementById('pdfPinchZoomHintBar')) {
-        const zHint = document.createElement('div');
-        zHint.id = 'pdfPinchZoomHintBar';
-        zHint.style.cssText = 'display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;background:#FFF7ED;border:1px solid #FDBA74;border-radius:10px;padding:5px 10px;margin-bottom:6px;font-size:11px;color:#C2410C;font-weight:800';
-        zHint.innerHTML = `
-          <span>🤏 با دو انگشت روی صفحات زوم کنید و در همه جهات جابه‌جا شوید:</span>
-          <div style="display:flex;align-items:center;gap:4px">
-            <button type="button" class="btn soft btn-sm" style="height:26px;padding:0 8px" onclick="ExamApp.stepGalleryFreeZoom(0.25)">➕ زوم</button>
-            <span id="pdfFreeZoomPctLbl" style="min-width:42px;text-align:center;font-weight:900;cursor:pointer" onclick="ExamApp.stepGalleryFreeZoom(0)" title="بازگشت به ۱۰۰٪">۱۰۰٪</span>
-            <button type="button" class="btn soft btn-sm" style="height:26px;padding:0 8px" onclick="ExamApp.stepGalleryFreeZoom(-0.25)">➖</button>
-          </div>
-        `;
-        vp.parentNode.insertBefore(zHint, vp);
-      }
-
-      grid.innerHTML = '';
-      this._totalPdfGalleryPages = totalPages;
-
-      if (this._pdfCardObserver) {
-        try { this._pdfCardObserver.disconnect(); } catch (_) {}
-      }
-
-      if ('IntersectionObserver' in window && this.pdfDoc) {
-        this._pdfCardObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const card = entry.target;
-              const pNo = Number(card.getAttribute('data-page-num'));
-              if (pNo && !card._renderedCanvas) {
-                card._renderedCanvas = true;
-                this.renderSingleGalleryCardCanvas(card, pNo);
-              }
-            }
-          });
-        }, { root: null, rootMargin: '500px 0px 500px 0px', threshold: 0.01 });
-      }
-
-      // ساخت یکجای کارت‌های تمام صفحات کتاب (از صفحه ۱ تا آخرین صفحه کتاب!) تا اسکرول هرگز در صفحه ۱۲ متوقف نشود!
-      const frag = document.createDocumentFragment ? document.createDocumentFragment() : grid;
-      for (let p = 1; p <= totalPages; p++) {
-        const card = document.createElement('div');
-        card.className = 'pdf-page-card' + (this.selectedPdfPages.has(p) ? ' selected' : '');
-        card.setAttribute('data-page-num', String(p));
-        card.onclick = () => {
-          if (this.selectedPdfPages.has(p)) this.selectedPdfPages.delete(p);
-          else this.selectedPdfPages.add(p);
-          this.updateSelectedPagesBadge();
-        };
-
-        const zoomBtn = document.createElement('button');
-        zoomBtn.type = 'button';
-        zoomBtn.className = 'pdf-page-zoom-btn';
-        zoomBtn.innerHTML = '🔍';
-        zoomBtn.title = `بزرگ‌نمایی و جابه‌جایی روی صفحه ${this.toFa(p)}`;
-        zoomBtn.onclick = (ev) => this.openSinglePdfPageZoomModal(p, ev);
-        card.appendChild(zoomBtn);
-
-        const l = document.createElement('div');
-        l.className = 'pdf-page-label';
-        l.style.marginTop = '5px';
-        l.textContent = `${this.selectedPdfPages.has(p) ? '✅' : '⬜'} صفحه ${this.toFa(p)}`;
-
-        if (this.pdfDoc && p <= this.pdfDoc.numPages) {
-          const c = document.createElement('canvas');
-          c.width = 210;
-          c.height = 285;
-          c.setAttribute('dir', 'ltr');
-          c.style.direction = 'ltr';
-          card.appendChild(c);
-          card.appendChild(l);
-          frag.appendChild(card);
-          if (this._pdfCardObserver) {
-            this._pdfCardObserver.observe(card);
-          } else if (p <= 8) {
-            card._renderedCanvas = true;
-            this.renderSingleGalleryCardCanvas(card, p);
-          }
-        } else {
-          const previewDiv = document.createElement('div');
-          const snippet = window.repairSpacedPersianText(db.cachedBook?.pages?.[String(p)] || '').slice(0, 90);
-          previewDiv.style.cssText = 'width:100%;min-height:95px;background:#FFF7ED;border-radius:8px;padding:8px;font-size:10px;color:#475569;overflow:hidden;line-height:1.5;text-align:right';
-          previewDiv.textContent = snippet || `صفحه ${this.toFa(p)} کتاب ${db.cachedBook?.name || 'درسی'}`;
-          card.appendChild(previewDiv);
-          card.appendChild(l);
-          frag.appendChild(card);
-        }
-      }
-
-      if (frag !== grid) grid.appendChild(frag);
-      this._loadedPdfGalleryCount = totalPages;
-
-      if (sentinel) {
-        sentinel.textContent = `✅ تمام ${this.toFa(totalPages)} صفحه کتاب در لیست آماده اسکرول است (از صفحه ۱ تا ${this.toFa(totalPages)})`;
-      }
-
-      if (vp) {
-        window.attachPinchZoomAndPanToViewport(vp, grid, {
-          mode: 'grid-width',
-          minScale: 0.8,
-          maxScale: 3.0,
-          onZoomChange: (sc) => {
-            const lbl = document.getElementById('pdfFreeZoomPctLbl');
-            if (lbl) lbl.textContent = this.toFa(Math.round(sc * 100)) + '٪';
-          }
-        });
-
-        if (!vp._boundLazyRenderScrollV80) {
-          vp._boundLazyRenderScrollV80 = true;
-          vp.addEventListener('scroll', () => {
-            if (!this.pdfDoc) return;
-            const vpRect = vp.getBoundingClientRect();
-            grid.querySelectorAll('.pdf-page-card').forEach(card => {
-              if (card._renderedCanvas) return;
-              const r = card.getBoundingClientRect();
-              if (r.bottom >= vpRect.top - 350 && r.top <= vpRect.bottom + 350) {
-                const pNo = Number(card.getAttribute('data-page-num'));
-                if (pNo) {
-                  card._renderedCanvas = true;
-                  this.renderSingleGalleryCardCanvas(card, pNo);
-                }
-              }
-            });
-          }, { passive: true });
-        }
-      }
-
-      this.updateSelectedPagesBadge();
-    };
-
-    ExamApp.renderSingleGalleryCardCanvas = async function(card, pNo) {
-      if (!this.pdfDoc || pNo < 1 || pNo > this.pdfDoc.numPages) return;
-      const cv = card.querySelector('canvas');
-      if (!cv) return;
-      try {
-        const page = await this.pdfDoc.getPage(pNo);
-        const vp = page.getViewport({ scale: 0.55 });
-        cv.width = Math.floor(vp.width);
-        cv.height = Math.floor(vp.height);
-        const gCtx = cv.getContext('2d');
-        try { gCtx.direction = 'ltr'; } catch (_) {}
-        await page.render({ canvasContext: gCtx, viewport: vp }).promise;
-      } catch (_) {}
-    };
-
-    ExamApp.openSinglePdfPageZoomModal = async function(pageNo, ev) {
-      if (ev) ev.stopPropagation();
-      const p = Number(pageNo) || 1;
-      if (typeof openModal !== 'function') return;
-
-      openModal(formHeader(`🔍 بزرگ‌نمایی و جابه‌جایی روی صفحه ${this.toFa(p)} کتاب`) + `
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px;flex-wrap:wrap">
-          <div style="display:flex;gap:5px;align-items:center">
-            <button type="button" class="btn soft btn-sm" onclick="ExamApp.zoomModalCanvasBy(0.3)">➕ زوم بیشتر</button>
-            <span id="modalZoomPctBadge" class="chip" style="font-size:11px">۱۰۰٪</span>
-            <button type="button" class="btn soft btn-sm" onclick="ExamApp.zoomModalCanvasBy(-0.3)">➖ زوم کمتر</button>
-          </div>
-          <button type="button" class="btn ${this.selectedPdfPages.has(p) ? 'green' : 'primary'} btn-sm" id="btnModalToggleSelectPage" onclick="ExamApp.togglePageSelectionFromZoomModal(${p})">
-            ${this.selectedPdfPages.has(p) ? '✅ انتخاب‌شده برای آزمون' : '➕ انتخاب این صفحه'}
-          </button>
-        </div>
-        <div id="pdfZoomModalViewport" style="max-height:72vh;overflow:auto;-webkit-overflow-scrolling:touch;border:2px solid #FDBA74;border-radius:12px;background:#FFFBF5;padding:8px;touch-action:pan-x pan-y">
-          <canvas id="pdfZoomModalCanvas" dir="ltr" style="display:block;margin:0 auto;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.12);max-width:none"></canvas>
-          <div id="pdfZoomModalTextFallback" style="display:none;text-align:right;padding:12px;line-height:1.9;font-size:13.5px"></div>
-        </div>
-        <div class="muted" style="text-align:center;font-size:11px;margin-top:5px">🤏 با دو انگشت زوم کنید و با یک انگشت در تمام جهات صفحه جابه‌جا شوید</div>
-        <div class="formactions">
-          <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
-        </div>
-      `);
-
-      this._modalZoomScale = 1.0;
-      await this.renderZoomModalPageCanvas(p);
-      const mVp = document.getElementById('pdfZoomModalViewport');
-      const mCv = document.getElementById('pdfZoomModalCanvas');
-      if (mVp && mCv) {
-        mCv._baseCssWidth = mVp.clientWidth - 20;
-        mCv.style.width = mCv._baseCssWidth + 'px';
-        window.attachPinchZoomAndPanToViewport(mVp, mCv, {
-          mode: 'canvas-width',
-          minScale: 0.8,
-          maxScale: 3.5,
-          onZoomChange: (sc) => {
-            this._modalZoomScale = sc;
-            const b = document.getElementById('modalZoomPctBadge');
-            if (b) b.textContent = this.toFa(Math.round(sc * 100)) + '٪';
-          }
-        });
-      }
-    };
-
-    ExamApp.zoomModalCanvasBy = function(delta) {
-      const mVp = document.getElementById('pdfZoomModalViewport');
-      const mCv = document.getElementById('pdfZoomModalCanvas');
-      if (!mVp || !mCv) return;
-      const next = Math.min(3.5, Math.max(0.8, (this._modalZoomScale || 1.0) + delta));
-      this._modalZoomScale = next;
-      if (typeof mVp._setZoomScale === 'function') {
-        mVp._setZoomScale(next);
-      } else {
-        const baseW = mCv._baseCssWidth || (mVp.clientWidth - 20) || 300;
-        mCv.style.width = Math.round(baseW * next) + 'px';
-      }
-    };
-  }
-
-  /* ۴. ارتقای زوم و جابه‌جایی آزادانه در همه جهات روی صفحه کتاب در تب آموزش (#teacherPdfStage) */
-  if (window.TeachAssistant && typeof TeachAssistant.renderStudyPdf === 'function') {
-    const _origRenderStudyPdfV80 = TeachAssistant.renderStudyPdf.bind(TeachAssistant);
-    TeachAssistant.renderStudyPdf = async function() {
-      await _origRenderStudyPdfV80();
-      const stage = document.getElementById('teacherPdfStage');
-      const canvas = document.getElementById('teacherPdfCanvas');
-      if (stage && canvas) {
-        canvas._baseCssWidth = Math.max(260, (stage.clientWidth || 340) - 20);
-        window.attachPinchZoomAndPanToViewport(stage, canvas, {
-          mode: 'canvas-width',
-          minScale: 0.8,
-          maxScale: 3.2,
-          onZoomChange: (sc) => {
-            window._teacherPdfZoom = sc <= 1.04 ? 0 : sc;
-            const zLbl = document.getElementById('teachFloatingZoomLbl');
-            if (zLbl) zLbl.textContent = sc > 1.04 ? `🔍 ${fa(Math.round(sc * 100))}٪` : '🔍 متناسب';
-            const topZ = document.getElementById('teacherPdfZoomLabel');
-            if (topZ) topZ.textContent = sc > 1.04 ? (fa(Math.round(sc * 100)) + '٪') : '📐 متناسب';
-          }
-        });
-      }
-    };
-  }
-
-  /* ۵. بازنویسی دقیق لیست سریع امروز (renderTodayListInner):
+  /* ۷. لیست سریع امروز (renderTodayListInner):
         - حذف کامل «حالت کتابی / دفتر چهره‌شناس کلاس»
         - بازگرداندن دکمه «🎲 قرعه‌کشی»
-        - نمایش کامل اسامی دانش‌آموزان در حالت با عکس (بدون بریدگی نام)
-        - افزودن «📖 کتاب درس بالای لیست» (جمع‌وجور و قابل فعال‌سازی تا معلم هم‌زمان با درس، مثبت و منفی و نمره بدهد!) */
+        - دکمه «⚡ +/− و نمره جمعی» برای ثبت سریع مثبت/منفی جمعی
+        - نمایش کامل اسامی دانش‌آموزان در حالت با عکس
+        - پنل «📖 کتاب درس ▾» بالای لیست با زوم دو انگشتی و جابه‌جایی */
 
   window._quickListTopBookOpen = false;
   window._quickListTopBookTall = false;
@@ -30321,7 +29991,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     const vp = document.getElementById('quickListTopPdfViewport');
     const cv = document.getElementById('quickListPdfCanvas');
     if (!vp || !cv) return;
-    const next = delta === 0 ? 1.0 : Math.min(3.0, Math.max(0.75, Math.round(((window._quickListTopBookZoom || 1.0) + delta) * 100) / 100));
+    const next = delta === 0 ? 1.0 : Math.min(3.2, Math.max(1.0, Math.round(((window._quickListTopBookZoom || 1.0) + delta) * 100) / 100));
     window._quickListTopBookZoom = next;
     if (typeof vp._setZoomScale === 'function') {
       vp._setZoomScale(next);
@@ -30383,7 +30053,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       cv._baseCssWidth = targetCssW;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2.2);
-      const renderScale = (targetCssW / (baseVp.width || 595)) * dpr * 1.25;
+      const renderScale = (targetCssW / (baseVp.width || 595)) * dpr * 1.3;
       const renderVp = page.getViewport({ scale: renderScale });
 
       cv.width = Math.floor(renderVp.width);
@@ -30396,11 +30066,11 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       try { ctx.direction = 'ltr'; } catch (_) {}
       await page.render({ canvasContext: ctx, viewport: renderVp }).promise;
 
-      window.attachPinchZoomAndPanToViewport(vp, cv, {
+      window.attachProPinchZoomAndPan(vp, cv, {
         mode: 'canvas-width',
         initialScale: curZ,
-        minScale: 0.75,
-        maxScale: 3.0,
+        minScale: 1.0,
+        maxScale: 3.2,
         onZoomChange: (sc) => {
           window._quickListTopBookZoom = sc;
           const zLbl = document.getElementById('qlTopBookZoomLbl');
@@ -30412,7 +30082,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
         vp._boundQuickBookSwipe = true;
         let sx = null, sy = null;
         vp.addEventListener('touchstart', (e) => {
-          if (e.touches.length === 1 && (window._quickListTopBookZoom || 1) <= 1.05) {
+          if (e.touches.length === 1 && (window._quickListTopBookZoom || 1) <= 1.04) {
             sx = e.touches[0].clientX;
             sy = e.touches[0].clientY;
           } else {
@@ -30534,13 +30204,14 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:6px;flex-wrap:wrap">
         <button class="btn gray btn-sm" onclick="closeTodayList()">← بازگشت به کلاس</button>
         <div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
-          <button type="button" class="btn ${isTopBookOpen ? 'primary' : 'soft'} btn-sm" onclick="toggleQuickListTopBook('${sid}','${cid}')" title="نمایش جمع‌وجور کتاب PDF در بالای لیست دانش‌آموزان برای تدریس و ثبت هم‌زمان مثبت و منفی">
+          <button type="button" class="btn ${isTopBookOpen ? 'primary' : 'soft'} btn-sm" onclick="toggleQuickListTopBook('${sid}','${cid}')" title="نمایش جمع‌وجور کتاب PDF در بالای لیست دانش‌آموزان">
             📖 کتاب درس ${isTopBookOpen ? '▴' : '▾'}
           </button>
-          <button type="button" class="btn ${showPhotos ? 'primary' : 'gray'} btn-sm" onclick="toggleListStudentPhotos()" title="فعال یا غیرفعال کردن نمایش عکس دانش‌آموزان">
+          <button type="button" class="btn ${showPhotos ? 'primary' : 'gray'} btn-sm" onclick="toggleListStudentPhotos()">
             🖼️ عکس‌ها: ${showPhotos ? 'روشن' : 'خاموش'}
           </button>
           <button type="button" class="btn soft btn-sm" onclick="pickRandomStudent('${sid}','${cid}')">🎲 قرعه‌کشی</button>
+          <button type="button" class="btn soft btn-sm" onclick="openBatchScoreModal('${sid}','${cid}','bulk_pos_present')" title="نمره‌دهی، مثبت یا منفی جمعی به کل کلاس">⚡ +/− و نمره جمعی</button>
           <button type="button" class="btn soft btn-sm" onclick="openColumnTransferModal('${sid}','${cid}','${dateISO}')">🔄 به مستمر ${scoredTodayCount ? `(${fa(scoredTodayCount)})` : ''}</button>
           <button type="button" class="btn soft btn-sm" onclick="openAttendance('${sid}','${cid}')">📋 جدول جامع</button>
         </div>
@@ -30554,7 +30225,11 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
               <input id="todayDateJalaliInput" type="text" value="${formatJalaliDate(dateISO)}" onchange="changeListDate('${sid}','${cid}',this.value)" style="width:108px;padding:5px 8px;font-weight:bold;text-align:center;font-size:12.5px" title="ویرایش تاریخ شمسی">
               ${allDates.length ? `<select onchange="selectListDateISO('${sid}','${cid}',this.value)" style="width:auto;padding:4px 8px;font-size:11.5px"><option value="${dateISO}">انتخاب جلسه...</option>${dateOptions}</select>` : ''}
             </div>
-            <button class="btn soft btn-sm" onclick="inlAllPresent('${sid}','${cid}')">✓ همه حاضر</button>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <button class="btn soft btn-sm" onclick="openBatchScoreModal('${sid}','${cid}','bulk_pos_present')" title="ثبت مثبت جمعی برای حاضرین">➕ مثبت جمعی</button>
+              <button class="btn soft btn-sm" onclick="openBatchScoreModal('${sid}','${cid}','bulk_neg_present')" title="ثبت منفی جمعی">➖ منفی جمعی</button>
+              <button class="btn soft btn-sm" onclick="inlAllPresent('${sid}','${cid}')">✓ همه حاضر</button>
+            </div>
           </div>
           <div style="padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--border-subtle)">
             <input type="text" value="${esc(noteVal)}" placeholder="📝 یادداشت، مبحث تدریس‌شده یا تکلیف جلسه ${formatJalaliDate(dateISO)}..." onchange="saveSessionNote('${sid}','${cid}','${dateISO}',this.value)" style="font-size:12px;padding:6px 10px">
@@ -30572,22 +30247,29 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     }
   };
 
-  /* ۶. اجرای اولیه در هنگام بارگذاری */
-  const bootV80 = () => {
+  /* ۸. راه‌اندازی اولیه */
+  const bootV81 = () => {
     try {
-      initRealBrandLogoSlimeSpinner();
-      if (window.ExamApp && ExamApp.pdfDoc) {
-        ExamApp.renderPdfGallery();
+      document.getElementById('teachFloatingZoomBar')?.remove();
+      initWhiteOrangeSlimeLogoFeel();
+      unifyPdfAndSmartDesignerTabs();
+      if (typeof db !== 'undefined' && db?.cachedBook?.pages) {
+        Object.keys(db.cachedBook.pages).forEach(k => {
+          db.cachedBook.pages[k] = window.repairSpacedPersianText(db.cachedBook.pages[k]);
+        });
+      }
+      if (window.ExamApp) {
+        ExamApp.autoConnectCachedBookToExamPdf(true);
       }
     } catch (e) {
-      console.warn('v8.0 init warning:', e);
+      console.warn('v8.1 init warning:', e);
     }
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV80, 90));
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV81, 80));
   } else {
-    setTimeout(bootV80, 90);
+    setTimeout(bootV81, 80);
   }
 
 })();
