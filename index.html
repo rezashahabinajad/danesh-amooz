@@ -9,8 +9,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="7.2.0">
+<meta name="version" content="8.2.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -5283,7 +5284,7 @@ body.dark .ws-logout-inner {
   <div class="exam-subnav">
     <button class="ex-nav-btn active" onclick="ExamApp.openTab('ai', this)"><span>🤖</span><span>طراح هوشمند</span></button>
     <button class="ex-nav-btn" onclick="ExamApp.openTab('pdf', this)"><span>📚</span><span>کتاب PDF</span></button>
-    <button class="ex-nav-btn" onclick="ExamApp.openTab('manual', this)"><span>⚡</span><span>تبدیل خودکار متن</span></button>
+    <button class="ex-nav-btn" onclick="ExamApp.openTab('manual', this)"><span>⚡</span><span>آزمون دسته‌متن خودکار</span></button>
     <button class="ex-nav-btn" onclick="ExamApp.openTab('archive', this)"><span>🗄️</span><span>آرشیو تاییدشده</span></button>
     <button class="ex-nav-btn" onclick="ExamApp.openTab('settings', this)"><span>🎛️</span><span>سربرگ و خطاطی</span></button>
     <button class="ex-nav-btn" id="mobPreviewTabBtn" onclick="ExamApp.openTab('preview', this)"><span>📄</span><span>برگه A4 و تراز</span></button>
@@ -28319,11 +28320,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 #pdfGalleryGrid.zoom-lg {
   grid-template-columns: 1fr !important;
 }
-@media (max-width: 420px) {
-  #pdfGalleryGrid.zoom-sm {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
+/* v8.2: 3-column mode enabled on all mobile screens */
 .pdf-page-card {
   position: relative !important;
   border-radius: 12px !important;
@@ -30270,6 +30267,1959 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     document.addEventListener('DOMContentLoaded', () => setTimeout(bootV81, 80));
   } else {
     setTimeout(bootV81, 80);
+  }
+
+})();
+</script>
+
+<style id="v82ProFixesStyle">
+/* ==================== استایل‌های جامع و دقیق نسخه v8.2.0 Pro (۳ مرحله کامل) ==================== */
+
+/* مرحله ۱: زوم انگشتی نرم مشابه گوگل درایو روی برگه آزمون A4 (#a4ZoomViewport) */
+.a4-zoom-viewport,
+#a4ZoomViewport {
+  display: block !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-height: 78vh !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 12px 6px 24px 6px !important;
+  background: #F8FAFC !important;
+  border: 2px solid #FED7AA !important;
+  border-radius: 16px !important;
+  touch-action: pan-x pan-y !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+.a4-scale-box,
+#a4ScaleBox {
+  display: inline-block !important;
+  position: relative !important;
+  margin: 0 auto !important;
+  vertical-align: top !important;
+  text-align: right !important;
+}
+.a4-sheet,
+#a4Sheet {
+  transform-origin: top right !important;
+}
+
+/* مرحله ۱: رفع قطعی باگ دکمه «۳ستون» در گالری PDF روی همه ابعاد موبایل و تبلت */
+#pdfGalleryGrid.zoom-sm {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+}
+#pdfGalleryGrid.zoom-md {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+}
+#pdfGalleryGrid.zoom-lg {
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+}
+#pdfGalleryGrid.zoom-sm .pdf-page-card {
+  padding: 4px !important;
+  border-radius: 9px !important;
+}
+#pdfGalleryGrid.zoom-sm .pdf-page-label {
+  font-size: 10px !important;
+  padding: 2px 3px !important;
+}
+#pdfGalleryGrid.zoom-sm .pdf-page-zoom-btn {
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 11px !important;
+  top: 6px !important;
+  left: 6px !important;
+}
+.pdf-page-card {
+  min-width: 0 !important;
+}
+
+/* مرحله ۱: نوار شعبه‌های پویا (قابلیت افزودن و حذف شعبه) */
+.branch-pills-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  width: 100% !important;
+}
+.branch-pills-row .branch-pill {
+  flex: 1 1 68px !important;
+  min-width: 64px !important;
+}
+.branch-add-remove-btn {
+  padding: 6px 10px !important;
+  border-radius: 9px !important;
+  font-size: 11.5px !important;
+  font-weight: 900 !important;
+  border: 1.5px dashed #F97316 !important;
+  background: #FFF7ED !important;
+  color: #C2410C !important;
+  cursor: pointer !important;
+  transition: 0.15s ease !important;
+}
+.branch-add-remove-btn:hover {
+  background: #FFEDD5 !important;
+}
+
+/* مرحله ۳: دکمه یادآور اول کلاس با چراغ گردان ظریف و آرام (Subtle Rotating Beacon Reminder Button) */
+@keyframes subtleBeaconRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes subtleBeaconPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.25), 0 2px 8px rgba(234, 88, 12, 0.18); }
+  50% { box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.15), 0 3px 12px rgba(234, 88, 12, 0.28); }
+}
+.class-beacon-reminder-btn {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 5px 11px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%) !important;
+  color: #9A3412 !important;
+  border: 1.5px solid #FB923C !important;
+  font-size: 11.5px !important;
+  font-weight: 900 !important;
+  cursor: pointer !important;
+  animation: subtleBeaconPulse 3.2s infinite ease-in-out !important;
+  overflow: hidden !important;
+  z-index: 1;
+}
+.class-beacon-lamp {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF7ED 15%, #F97316 70%, #DC2626 100%);
+  display: inline-grid;
+  place-items: center;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.45);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.class-beacon-lamp::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 255, 255, 0.92) 55deg, rgba(251, 146, 60, 0.85) 110deg, transparent 170deg, rgba(239, 68, 68, 0.65) 260deg, transparent 360deg);
+  animation: subtleBeaconRotate 2.2s linear infinite;
+}
+.class-beacon-lamp-core {
+  position: relative;
+  z-index: 2;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 4px #F97316;
+}
+
+/* مرحله ۳: کادر توصیه علمی و روانشناختی ۲-۳ خطی در کارت وضعیت دانش‌آموزان */
+.dignity-psych-advice-box {
+  margin-top: 8px;
+  padding: 9px 11px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FFFBEB 0%, #FFF7ED 100%);
+  border: 1.5px solid #FDBA74;
+  border-right: 4px solid #EA580C;
+  font-size: 11.8px;
+  line-height: 1.72;
+  color: #1E293B;
+}
+.dignity-charter-banner {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+  border: 1.5px solid #FDBA74;
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+</style>
+
+<script id="v82ProMasterEngine">
+/* ==================== موتور جامع و حرفه‌ای نسخه v8.2.0 Pro (اجرای کامل هر ۳ مرحله) ==================== */
+(function initV82ProMasterEngine() {
+
+  /* ==========================================================================================
+     بخش ۰: جلوگیری کامل از پرش ناگهانی صفحه (Scroll Lock & Smooth In-Place DOM Update)
+     ========================================================================================== */
+  window.withPreservedScroll = function(fn) {
+    const winX = window.scrollX || 0;
+    const winY = window.scrollY || 0;
+    const appEl = document.querySelector('.app');
+    const appTop = appEl ? appEl.scrollTop : 0;
+    const tdBody = document.getElementById('tdScrollBody');
+    const tdTop = tdBody ? tdBody.scrollTop : null;
+    const attWrap = document.querySelector('.att-table-wrap');
+    const attTop = attWrap ? attWrap.scrollTop : null;
+    const attLeft = attWrap ? attWrap.scrollLeft : null;
+
+    const res = fn();
+
+    const restore = () => {
+      try {
+        if (Math.abs((window.scrollY || 0) - winY) > 4) {
+          window.scrollTo(winX, winY);
+        }
+        if (appEl && Math.abs(appEl.scrollTop - appTop) > 4) {
+          appEl.scrollTop = appTop;
+        }
+        const newTdBody = document.getElementById('tdScrollBody');
+        if (newTdBody && tdTop !== null) {
+          newTdBody.scrollTop = tdTop;
+        }
+        const newAttWrap = document.querySelector('.att-table-wrap');
+        if (newAttWrap && attTop !== null) {
+          newAttWrap.scrollTop = attTop;
+          if (attLeft !== null) newAttWrap.scrollLeft = attLeft;
+        }
+      } catch (_) {}
+    };
+    restore();
+    requestAnimationFrame(restore);
+    return res;
+  };
+
+  if (window.ScrollFX && typeof window.ScrollFX.refresh === 'function') {
+    window.ScrollFX.refresh = function() {
+      document.querySelectorAll('.card, .stat, .school-card, .student').forEach(el => {
+        el.classList.add('in-view');
+      });
+    };
+  }
+
+
+  /* ==========================================================================================
+     مرحله ۱:
+     ۱-۱. بازطراحی موتور آزمون‌ساز بر مبنای فایل مرجع کاربر (`gemini-code-1792066709047.html`)
+     ۱-۲. تغییر نام تب دوم به «⚡ آزمون دسته‌متن خودکار» و شعبه‌های پویا (➕ / ➖)
+     ۱-۳. رفع باگ دکمه «۳ستون» در گالری PDF
+     ۱-۴. زوم دو انگشتی نرم مشابه گوگل درایو روی تمام PDFها و روی برگه آزمون A4
+     ========================================================================================== */
+
+  /* ۱-۴. موتور زوم دو انگشتی با نقطه کانونی دقیق زیر انگشتان (Google Drive-Style Pinch-to-Zoom + Pan + Double-Tap) */
+  window.attachProPinchZoomAndPan = function(viewportEl, targetEl, options = {}) {
+    if (!viewportEl || !targetEl) return;
+    if (viewportEl._boundProPinchV82) {
+      viewportEl._pinchOptions = options;
+      return;
+    }
+    viewportEl._boundProPinchV82 = true;
+    viewportEl._pinchOptions = options;
+
+    let currentScale = options.initialScale || 1;
+    const getMinScale = () => (viewportEl._pinchOptions?.minScale) || 1.0;
+    const getMaxScale = () => (viewportEl._pinchOptions?.maxScale) || 3.5;
+
+    let isPinching = false;
+    let startDist = 0;
+    let startScale = 1;
+    let focalOffsetX = 0, focalOffsetY = 0;
+    let startContentX = 0, startContentY = 0;
+
+    let isPanning = false;
+    let panStartX = 0, panStartY = 0;
+    let panScrollLeft = 0, panScrollTop = 0;
+    let lastTapTime = 0;
+
+    const getBaseWidth = () => {
+      const opts = viewportEl._pinchOptions || {};
+      if (opts.mode === 'grid-width') return 100;
+      if (opts.mode === 'a4-sheet') return 794;
+      const vpW = Math.max(250, (viewportEl.clientWidth || 340) - 16);
+      if (!targetEl._baseCssWidth || targetEl._baseCssWidth < 100) {
+        targetEl._baseCssWidth = vpW;
+      }
+      return targetEl._baseCssWidth;
+    };
+
+    const applyScale = (nextScale, clientFocalX = null, clientFocalY = null) => {
+      const opts = viewportEl._pinchOptions || {};
+      const minS = getMinScale();
+      const maxS = getMaxScale();
+      const prevScale = currentScale || minS;
+      currentScale = Math.min(maxS, Math.max(minS, Math.round(nextScale * 1000) / 1000));
+      viewportEl._currentZoomScale = currentScale;
+
+      if (opts.mode === 'grid-width') {
+        targetEl.style.width = Math.round(currentScale * 100) + '%';
+      } else if (opts.mode === 'a4-sheet') {
+        const sheetEl = opts.sheetEl || document.getElementById('a4Sheet');
+        if (sheetEl) {
+          sheetEl.style.transform = `scale(${currentScale})`;
+          targetEl.style.width = `${Math.ceil(794 * currentScale)}px`;
+          targetEl.style.height = `${Math.ceil((sheetEl.offsetHeight || 1123) * currentScale)}px`;
+        }
+      } else {
+        const bw = getBaseWidth();
+        targetEl.style.width = Math.round(bw * currentScale) + 'px';
+      }
+
+      if (clientFocalX !== null && clientFocalY !== null && prevScale > 0) {
+        const scaleRatio = currentScale / prevScale;
+        const rect = viewportEl.getBoundingClientRect();
+        const vx = clientFocalX - rect.left;
+        const vy = clientFocalY - rect.top;
+        viewportEl.scrollLeft = Math.max(0, (viewportEl.scrollLeft + vx) * scaleRatio - vx);
+        viewportEl.scrollTop = Math.max(0, (viewportEl.scrollTop + vy) * scaleRatio - vy);
+      }
+
+      if (typeof opts.onZoomChange === 'function') {
+        opts.onZoomChange(currentScale);
+      }
+    };
+
+    viewportEl._setZoomScale = (sc, fx = null, fy = null) => applyScale(sc, fx, fy);
+    viewportEl._getZoomScale = () => currentScale;
+
+    viewportEl.addEventListener('touchstart', (ev) => {
+      const opts = viewportEl._pinchOptions || {};
+      if (opts.shouldIgnore && opts.shouldIgnore()) return;
+
+      if (ev.touches.length === 2) {
+        isPinching = true;
+        isPanning = false;
+        const dx = ev.touches[0].clientX - ev.touches[1].clientX;
+        const dy = ev.touches[0].clientY - ev.touches[1].clientY;
+        startDist = Math.hypot(dx, dy);
+        startScale = currentScale || getMinScale();
+        const rect = viewportEl.getBoundingClientRect();
+        focalOffsetX = ((ev.touches[0].clientX + ev.touches[1].clientX) / 2) - rect.left;
+        focalOffsetY = ((ev.touches[0].clientY + ev.touches[1].clientY) / 2) - rect.top;
+        startContentX = (viewportEl.scrollLeft + focalOffsetX) / startScale;
+        startContentY = (viewportEl.scrollTop + focalOffsetY) / startScale;
+      } else if (ev.touches.length === 1) {
+        const minS = getMinScale();
+        const now = Date.now();
+        if (now - lastTapTime < 280 && !['INPUT', 'TEXTAREA', 'BUTTON', 'SELECT'].includes(ev.target?.tagName)) {
+          const targetZ = currentScale > minS * 1.15 ? minS : Math.min(getMaxScale(), minS * 1.85);
+          applyScale(targetZ, ev.touches[0].clientX, ev.touches[0].clientY);
+          lastTapTime = 0;
+          return;
+        }
+        lastTapTime = now;
+
+        if (currentScale > minS * 1.03) {
+          isPanning = true;
+          panStartX = ev.touches[0].clientX;
+          panStartY = ev.touches[0].clientY;
+          panScrollLeft = viewportEl.scrollLeft;
+          panScrollTop = viewportEl.scrollTop;
+        }
+      }
+    }, { passive: true });
+
+    viewportEl.addEventListener('touchmove', (ev) => {
+      const opts = viewportEl._pinchOptions || {};
+      if (opts.shouldIgnore && opts.shouldIgnore()) return;
+
+      if (ev.touches.length === 2 && isPinching && startDist > 10) {
+        if (ev.cancelable) ev.preventDefault();
+        const dx = ev.touches[0].clientX - ev.touches[1].clientX;
+        const dy = ev.touches[0].clientY - ev.touches[1].clientY;
+        const dist = Math.hypot(dx, dy);
+        const nextScale = startScale * (dist / startDist);
+        const rect = viewportEl.getBoundingClientRect();
+        const curMidX = ((ev.touches[0].clientX + ev.touches[1].clientX) / 2) - rect.left;
+        const curMidY = ((ev.touches[0].clientY + ev.touches[1].clientY) / 2) - rect.top;
+
+        applyScale(nextScale, null, null);
+        viewportEl.scrollLeft = Math.max(0, startContentX * currentScale - curMidX);
+        viewportEl.scrollTop = Math.max(0, startContentY * currentScale - curMidY);
+      } else if (ev.touches.length === 1 && isPanning && currentScale > getMinScale() * 1.03) {
+        const dx = ev.touches[0].clientX - panStartX;
+        const dy = ev.touches[0].clientY - panStartY;
+        viewportEl.scrollLeft = panScrollLeft - dx;
+        viewportEl.scrollTop = panScrollTop - dy;
+      }
+    }, { passive: false });
+
+    viewportEl.addEventListener('touchend', (ev) => {
+      if (ev.touches.length < 2) isPinching = false;
+      if (ev.touches.length === 0) isPanning = false;
+    }, { passive: true });
+  };
+
+
+  /* ۱-۱ و ۱-۲. بازطراحی کامل ExamApp بر مبنای فایل مرجع کاربر (`gemini-code-1792066709047.html`) + شعبه‌های پویا + زوم انگشتی برگه A4 */
+  if (window.ExamApp) {
+
+    const ALL_PERSIAN_BRANCH_LABELS = ['الف', 'ب', 'ج', 'د', 'هـ', 'و', 'ز', 'ح', 'ط', 'ی'];
+
+    ExamApp.getBranchList = function() {
+      if (!Array.isArray(this.state.branchOrder) || !this.state.branchOrder.length) {
+        const existingKeys = Object.keys(this.state.branches || {}).filter(Boolean);
+        this.state.branchOrder = existingKeys.length >= 1 ? existingKeys : ['الف', 'ب', 'ج', 'د'];
+      }
+      this.state.branchOrder.forEach(br => {
+        if (!Array.isArray(this.state.branches[br])) {
+          this.state.branches[br] = [];
+        }
+      });
+      return this.state.branchOrder;
+    };
+
+    ExamApp.renderDynamicBranchesBar = function() {
+      const branches = this.getBranchList();
+      if (!branches.includes(this.currentBranch)) {
+        this.currentBranch = branches[0] || 'الف';
+      }
+      const pillsRow = document.querySelector('#examView .branch-pills-row');
+      if (pillsRow) {
+        pillsRow.innerHTML = branches.map(br => {
+          const cnt = (this.state.branches[br] || []).length;
+          const isAct = br === this.currentBranch;
+          return `<button type="button" class="branch-pill ${isAct ? 'active' : ''}" onclick="ExamApp.switchBranch('${br}', this)">شعبه ${br}${cnt ? ` (${this.toFa(cnt)})` : ''}</button>`;
+        }).join('') + `
+          <button type="button" class="branch-add-remove-btn" onclick="ExamApp.addExamBranch()" title="افزودن شعبه جدید">➕ شعبه</button>
+          ${branches.length > 1 ? `<button type="button" class="branch-add-remove-btn" onclick="ExamApp.removeLastExamBranch()" title="حذف آخرین شعبه">➖ حذف</button>` : ''}
+        `;
+      }
+
+      const toolsRow = document.querySelector('#examView .branch-tools-row');
+      if (toolsRow) {
+        const shufBtn = toolsRow.querySelector('button[onclick*="shuffleToOtherBranches"]');
+        if (shufBtn) shufBtn.innerHTML = `🔀 بُر زدن ${this.toFa(branches.length)} شعبه`;
+        const aiAllBtn = toolsRow.querySelector('button[onclick*="generateAllBranchesByAI"]');
+        if (aiAllBtn) aiAllBtn.innerHTML = `⚡ ${this.toFa(branches.length)} شعبه با AI`;
+      }
+    };
+
+    ExamApp.addExamBranch = function() {
+      const branches = this.getBranchList();
+      const nextLbl = ALL_PERSIAN_BRANCH_LABELS.find(l => !branches.includes(l)) || `شعبه ${this.toFa(branches.length + 1)}`;
+      branches.push(nextLbl);
+      if (!Array.isArray(this.state.branches[nextLbl])) {
+        this.state.branches[nextLbl] = [];
+      }
+      this.currentBranch = nextLbl;
+      this.save();
+      this.renderDynamicBranchesBar();
+      this.renderAll();
+      toast(`➕ «شعبه ${nextLbl}» اضافه شد (جمع شعبه‌ها: ${this.toFa(branches.length)} شعبه)`);
+    };
+
+    ExamApp.removeLastExamBranch = function() {
+      const branches = this.getBranchList();
+      if (branches.length <= 1) {
+        toast('حداقل ۱ شعبه (شعبه الف) باید در آزمون فعال باشد.');
+        return;
+      }
+      const removed = branches.pop();
+      if (this.currentBranch === removed) {
+        this.currentBranch = branches[branches.length - 1] || 'الف';
+      }
+      this.save();
+      this.renderDynamicBranchesBar();
+      this.renderAll();
+      toast(`➖ «شعبه ${removed}» حذف شد (شعبه‌های فعال: ${this.toFa(branches.length)} شعبه)`);
+    };
+
+    ExamApp.switchBranch = function(br, btn) {
+      this.currentBranch = br;
+      const b1 = document.getElementById('activeBranchBadge');
+      if (b1) b1.textContent = br;
+      const b2 = document.getElementById('projBranchLbl');
+      if (b2) b2.textContent = br;
+      this.renderDynamicBranchesBar();
+      this.renderAll();
+    };
+
+    ExamApp.shuffleToOtherBranches = function() {
+      const branches = this.getBranchList();
+      const baseBr = branches[0] || 'الف';
+      const base = this.getQuestions(baseBr);
+      if (!base.length) {
+        alert(`ابتدا سوالات «شعبه ${baseBr}» را طراحی یا وارد کنید.`);
+        return;
+      }
+      const targetBranches = branches.slice(1);
+      if (!targetBranches.length) {
+        toast('ابتدا با دکمه «➕ شعبه» یک شعبه جدید اضافه کنید.');
+        return;
+      }
+      targetBranches.forEach(br => {
+        const cl = JSON.parse(JSON.stringify(base)).sort(() => Math.random() - 0.5);
+        cl.forEach(q => {
+          q.id = Date.now() + Math.floor(Math.random() * 99999);
+          if (q.type === 'mcq' && Array.isArray(q.options)) {
+            const ans = q.options[q.correctIndex];
+            q.options.sort(() => Math.random() - 0.5);
+            q.correctIndex = Math.max(0, q.options.indexOf(ans));
+          }
+        });
+        this.state.branches[br] = cl;
+      });
+      this.save();
+      this.renderDynamicBranchesBar();
+      this.renderAll();
+      toast(`🔀 سوالات برای هر ${this.toFa(branches.length)} شعبه (${branches.join('، ')}) بُر زده شد!`);
+    };
+
+    ExamApp.generateAllBranchesByAI = async function() {
+      const branches = this.getBranchList();
+      for (const br of branches) {
+        toast(`⏳ در حال طراحی سوالات اختصاصی «شعبه ${br}»...`);
+        const raw = await this.callArgonAI(this.buildExamPrompt(br, `سوالات این شعبه کاملاً متفاوت و هم‌سطح با سایر شعبه‌ها باشد.`), this.tempAiImages);
+        this.parseAndAddQuestions(raw, br, true);
+        this.currentBranch = br;
+        this.balanceScoresTo();
+      }
+      this.currentBranch = branches[0] || 'الف';
+      this.renderDynamicBranchesBar();
+      this.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+      toast(`✅ تمام ${this.toFa(branches.length)} شعبه (${branches.join('، ')}) با هوش مصنوعی طراحی شد!`);
+    };
+
+    ExamApp.fetchAvailableGeminiModels = async function(apiKey) {
+      try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`);
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error?.message || 'خطا در کلید هوش مصنوعی');
+        const valid = (data.models || [])
+          .filter(m => (m.supportedGenerationMethods || []).includes('generateContent'))
+          .map(m => m.name.replace('models/', ''))
+          .filter(n => n.startsWith('gemini') && !n.includes('embedding') && !n.includes('aqa'));
+        valid.sort((a, b) => {
+          const score = (x) => (x.includes('3') && x.includes('flash') ? 5 : x.includes('2.5-flash') ? 4 : x.includes('2.0-flash') ? 3 : x.includes('1.5-flash') ? 2 : 1);
+          return score(b) - score(a);
+        });
+        return valid.length ? valid : ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+      } catch (e) {
+        return ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+      }
+    };
+
+    ExamApp.callArgonAI = async function(promptText, imagesArray = []) {
+      const key = (typeof this.getActiveApiKey === 'function' ? this.getActiveApiKey() : (this.state.apiKey || '')).trim();
+      const info = this.detectProvider(key);
+      const validImages = (Array.isArray(imagesArray) ? imagesArray : []).filter(img => img && img.base64 && img.base64.length > 30);
+
+      if (info && key) {
+        try {
+          if (info.provider === 'gemini') {
+            const models = this.discoveredGeminiModel
+              ? [this.discoveredGeminiModel, ...(await this.fetchAvailableGeminiModels(key)).filter(m => m !== this.discoveredGeminiModel)]
+              : await this.fetchAvailableGeminiModels(key);
+            for (const m of models) {
+              try {
+                const parts = [{ text: promptText }];
+                validImages.forEach(img => {
+                  parts.push({ inline_data: { mime_type: img.mimeType || 'image/jpeg', data: img.base64 } });
+                });
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${encodeURIComponent(key)}`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ contents: [{ parts }], generationConfig: { temperature: 0.25 } })
+                });
+                const d = await res.json();
+                if (res.ok && d.candidates?.[0]?.content?.parts?.[0]?.text) {
+                  this.discoveredGeminiModel = m;
+                  return d.candidates[0].content.parts[0].text;
+                }
+              } catch (_) {}
+            }
+          } else if (info.provider === 'compatible_sk' && Array.isArray(info.endpoints)) {
+            for (const ep of info.endpoints) {
+              try {
+                const useVision = ep.vision && validImages.length > 0;
+                const msgContent = useVision
+                  ? [
+                      { type: 'text', text: promptText },
+                      ...validImages.map(img => ({ type: 'image_url', image_url: { url: `data:${img.mimeType || 'image/jpeg'};base64,${img.base64}` } }))
+                    ]
+                  : promptText;
+                const res = await fetch(ep.url, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+                  body: JSON.stringify({ model: ep.model, messages: [{ role: 'user', content: msgContent }], temperature: 0.25 })
+                });
+                if (res.ok) {
+                  const d = await res.json();
+                  if (d.choices?.[0]?.message?.content) return d.choices[0].message.content;
+                }
+              } catch (_) {}
+            }
+          } else if (info.endpoint) {
+            const hasImg = validImages.length > 0;
+            if (hasImg && (info.provider === 'groq' || info.supportsVision)) {
+              try {
+                const vModel = info.visionModel || info.model;
+                const vContent = [
+                  { type: 'text', text: promptText },
+                  ...validImages.map(img => ({ type: 'image_url', image_url: { url: `data:${img.mimeType || 'image/jpeg'};base64,${img.base64}` } }))
+                ];
+                const vRes = await fetch(info.endpoint, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+                  body: JSON.stringify({ model: vModel, messages: [{ role: 'user', content: vContent }], temperature: 0.25 })
+                });
+                const vData = await vRes.json();
+                if (vRes.ok && vData.choices?.[0]?.message?.content) return vData.choices[0].message.content;
+              } catch (_) {}
+            }
+            const res = await fetch(info.endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+              body: JSON.stringify({ model: info.model, messages: [{ role: 'user', content: promptText }], temperature: 0.25 })
+            });
+            const d = await res.json();
+            if (res.ok && d.choices?.[0]?.message?.content) return d.choices[0].message.content;
+          }
+        } catch (customKeyErr) {
+          console.warn('Custom AI key failed, trying built-in free AI engine...', customKeyErr);
+        }
+      }
+
+      try {
+        const contentParts = [{ type: 'text', text: promptText }];
+        validImages.slice(0, 4).forEach(img => {
+          contentParts.push({
+            type: 'image_url',
+            image_url: { url: `data:${img.mimeType || 'image/jpeg'};base64,${img.base64}` }
+          });
+        });
+        const freeRes = await fetch('https://text.pollinations.ai/openai', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'openai',
+            messages: [
+              { role: 'system', content: 'تو یک دبیر خبره و طراح ارشد سوالات امتحانی مدارس ایران هستی. همیشه بر پایه کرامت انسانی و استانداردهای آموزش و پرورش به زبان فارسی کاملاً روان، علمی و دقیق پاسخ بده.' },
+              { role: 'user', content: contentParts }
+            ],
+            temperature: 0.25
+          })
+        });
+        if (freeRes.ok) {
+          const freeData = await freeRes.json();
+          const txt = freeData?.choices?.[0]?.message?.content || '';
+          if (txt.trim()) return txt.trim();
+        }
+      } catch (_) {}
+
+      try {
+        const fallbackRes = await fetch('https://text.pollinations.ai/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: [
+              { role: 'system', content: 'تو یک دبیر خبره مدارس ایران هستی. پاسخ را دقیق و به فارسی روان بنویس.' },
+              { role: 'user', content: promptText }
+            ],
+            model: 'openai'
+          })
+        });
+        if (fallbackRes.ok) {
+          const fallbackTxt = await fallbackRes.text();
+          if (fallbackTxt && fallbackTxt.trim()) return fallbackTxt.trim();
+        }
+      } catch (_) {}
+
+      if (String(promptText || '').trim() === 'Say OK') {
+        throw new Error('عدم دسترسی به سرور آنلاین هوش مصنوعی؛ لطفاً اتصال اینترنت یا کلید API را بررسی کنید.');
+      }
+      return this.buildSmartOfflineAiFallback(promptText);
+    };
+
+    ExamApp.buildExamPrompt = function(br = this.currentBranch, note = '') {
+      const src = document.getElementById('aiPromptSource')?.value.trim() || document.getElementById('cachedPageText')?.value.trim() || this._lastExamSourceText || 'محتوای درس';
+      const mcq = Number(document.getElementById('aiCountMcq')?.value) || 0;
+      const tf = Number(document.getElementById('aiCountTf')?.value) || 0;
+      const blank = Number(document.getElementById('aiCountBlank')?.value) || 0;
+      const match = Number(document.getElementById('aiCountMatch')?.value) || 0;
+      const desc = Number(document.getElementById('aiCountDesc')?.value) || 0;
+      const lvl = document.getElementById('aiLevel')?.value || 'استاندارد امتحانی';
+      const target = this.roundToQuarter(document.getElementById('aiTotalTarget')?.value || 10);
+      const dur = Number(document.getElementById('aiExamDuration')?.value) || 20;
+
+      let budgetNote = '';
+      if (this.state.switches?.useBaromBudget && Array.isArray(this.state.baromBudget) && this.state.baromBudget.length) {
+        const activeRows = this.state.baromBudget.filter(r => r && r.title && Number(r.score) > 0);
+        if (activeRows.length) {
+          budgetNote = `\nبودجه‌بندی بارم فصول: ${activeRows.map(r => `${r.title} (${r.score} نمره)`).join('، ')}.`;
+        }
+      }
+
+      return `یک آزمون استاندارد و مفهومی برای «شعبه ${br}» با سطح «${lvl}» و زمان «${dur} دقیقه» طراحی کن که جمع بارم آن دقیقاً ${target} نمره شود. ${budgetNote} ${note}
+قوانین:
+۱. نمره هر سوال فقط مضرب رند 0.25 باشد.
+۲. گزینه‌های تستی کوتاه، علمی و منظم برای چیدمان ۲×۲ باشند.
+۳. راهنمای محترمانه و آرامش‌بخش پاسخ‌دهی در فیلد hint نوشته شود و پاسخ تشریحی دقیق در explanation بیاید.
+۴. پایه و نام درس را از روی متن و تصاویر تشخیص بده.
+۵. سوالات کاملاً مفهومی و امتحانی باشند (از بریدن جملات ناقص خودداری کن).
+تعداد دقیق سوالات: تستی(${mcq})، صحیح/غلط(${tf})، جاخالی(${blank})، وصل‌کردنی(${match})، تشریحی(${desc}).
+منبع درس:
+"${src.slice(0, 3200)}"
+فقط آبجکت JSON معتبر برگردان:
+{"detectedGrade":"پایه هشتم","detectedSubject":"پیام‌های آسمان","questions":[{"type":"mcq","text":"...","score":0.5,"options":["۱","۲","۳","۴"],"correctIndex":0,"hint":"...","explanation":"..."}]}`;
+    };
+
+    ExamApp.parseAndAddQuestions = function(raw, branch = this.currentBranch, replace = true) {
+      try {
+        let obj = null;
+        if (typeof window.extractValidJsonFromAiText === 'function') {
+          obj = window.extractValidJsonFromAiText(raw, 'any');
+        }
+        if (!obj && typeof raw === 'string') {
+          const om = raw.match(/\{[\s\S]*\}/);
+          const am = raw.match(/\[[\s\S]*\]/);
+          if (om) { try { obj = JSON.parse(om[0]); } catch (_) {} }
+          if (!obj && am) { try { obj = { questions: JSON.parse(am[0]) }; } catch (_) {} }
+        }
+        if (!obj) throw new Error('JSON نامعتبر');
+
+        if (obj.detectedGrade) this.state.header.grade = String(obj.detectedGrade).trim();
+        if (obj.detectedSubject) this.state.header.subject = String(obj.detectedSubject).trim();
+        this.syncHeaderToInputs();
+
+        const arr = Array.isArray(obj.questions) ? obj.questions : (Array.isArray(obj) ? obj : []);
+        if (!arr.length) throw new Error('سوالی یافت نشد');
+
+        if (replace) this.state.branches[branch] = [];
+        arr.forEach((it, i) => {
+          const t = ['mcq', 'tf', 'blank', 'match', 'desc'].includes(it.type) ? it.type : 'desc';
+          const defS = t === 'tf' ? 0.25 : (t === 'mcq' || t === 'blank') ? 0.5 : 1.5;
+          const q = {
+            id: Date.now() + i + Math.floor(Math.random() * 9999),
+            type: t,
+            text: window.repairSpacedPersianText(it.text || it.q || 'سوال'),
+            score: this.roundToQuarter(it.score || defS),
+            options: Array.isArray(it.options) && it.options.length >= 2
+              ? it.options.slice(0, 4).map(o => window.repairSpacedPersianText(String(o)))
+              : ['گزینه ۱', 'گزینه ۲', 'گزینه ۳', 'گزینه ۴'],
+            correctIndex: Math.min(3, Math.max(0, Number(it.correctIndex) || 0)),
+            tfCorrect: it.tfCorrect === 'غلط' ? 'غلط' : 'صحیح',
+            blankWord: window.repairSpacedPersianText(it.blankWord || ''),
+            pairs: Array.isArray(it.pairs) && it.pairs.length
+              ? it.pairs.map(pr => ({ a: window.repairSpacedPersianText(pr.a || pr.left || '۱'), b: window.repairSpacedPersianText(pr.b || pr.right || 'الف') }))
+              : [{ a: '۱', b: 'الف' }, { a: '۲', b: 'ب' }],
+            lines: Number(it.lines) || 2,
+            hint: window.repairSpacedPersianText(it.hint || ''),
+            explanation: window.repairSpacedPersianText(it.explanation || it.a || ''),
+            image: it.image || null,
+            imageWidth: it.imageWidth || 35
+          };
+          this.getQuestions(branch).push(q);
+          this.state.backupPool.unshift({ ...q });
+        });
+
+        this.save();
+        this.renderDynamicBranchesBar();
+        this.renderAll();
+        return true;
+      } catch (e) {
+        return false;
+      }
+    };
+
+    ExamApp.generateExamFromSelectedPdfPages = async function() {
+      await this.autoConnectCachedBookToExamPdf(true);
+      if (!this.selectedPdfPages.size) {
+        this.selectPdfRange(false);
+      }
+      if (!this.selectedPdfPages.size) {
+        alert('لطفاً ابتدا صفحات مورد نظر را از گالری انتخاب کنید.');
+        return;
+      }
+      const pages = [...this.selectedPdfPages].sort((a, b) => a - b).slice(0, 8);
+      const btn = document.getElementById('btnGenerateFromPdf') || document.getElementById('btnRunAi');
+      const oldHtml = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '⏳ در حال اسکن تصویری و متنی صفحات انتخابی...';
+      }
+      try {
+        const imgs = [];
+        let txt = '';
+        for (const p of pages) {
+          if (this.pdfDoc && p >= 1 && p <= this.pdfDoc.numPages) {
+            try {
+              const page = await this.pdfDoc.getPage(p);
+              const vp = page.getViewport({ scale: 1.25 });
+              const c = document.createElement('canvas');
+              c.width = Math.floor(vp.width);
+              c.height = Math.floor(vp.height);
+              const ctx = c.getContext('2d');
+              try { ctx.direction = 'ltr'; } catch (_) {}
+              await page.render({ canvasContext: ctx, viewport: vp }).promise;
+              imgs.push({ mimeType: 'image/jpeg', base64: c.toDataURL('image/jpeg', 0.82).split(',')[1] });
+              const tc = await page.getTextContent();
+              const cleanP = window.TeachAssistant
+                ? TeachAssistant.cleanPersianPdfText(tc.items)
+                : window.repairSpacedPersianText(tc.items.map(i => i.str).join(' '));
+              txt += `《صفحه ${p}》:\n${cleanP}\n\n`;
+              if (db.cachedBook?.pages && cleanP) db.cachedBook.pages[String(p)] = cleanP;
+            } catch (_) {}
+          } else if (db.cachedBook?.pages?.[String(p)]) {
+            txt += `《صفحه ${p}》:\n${window.repairSpacedPersianText(db.cachedBook.pages[String(p)])}\n\n`;
+          }
+        }
+        this.tempAiImages = imgs;
+        this._lastExamSourceText = txt;
+        const promptInp = document.getElementById('aiPromptSource');
+        if (promptInp) {
+          promptInp.value = `طرح سوال استاندارد از صفحات ${pages.map(n => this.toFa(n)).join('، ')} کتاب.\n` + txt.slice(0, 2800);
+        }
+        await this.generateQuestionsByAI();
+      } catch (e) {
+        alert('⚠️ ' + (e?.message || e));
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = oldHtml || '✨ طراحی خودکار آزمون';
+        }
+      }
+    };
+
+    ExamApp.generateQuestionsByAI = async function() {
+      const btn = document.getElementById('btnRunAi');
+      const old = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '⏳ در حال طراحی سوالات استاندارد آزمون...';
+      }
+      try {
+        if (this.selectedPdfPages && this.selectedPdfPages.size > 0 && (!this.tempAiImages || !this.tempAiImages.length)) {
+          const pages = [...this.selectedPdfPages].sort((a, b) => a - b).slice(0, 8);
+          const imgs = [];
+          let txt = '';
+          for (const p of pages) {
+            if (this.pdfDoc && p >= 1 && p <= this.pdfDoc.numPages) {
+              try {
+                const page = await this.pdfDoc.getPage(p);
+                const vp = page.getViewport({ scale: 1.25 });
+                const c = document.createElement('canvas');
+                c.width = Math.floor(vp.width);
+                c.height = Math.floor(vp.height);
+                await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+                imgs.push({ mimeType: 'image/jpeg', base64: c.toDataURL('image/jpeg', 0.82).split(',')[1] });
+                const tc = await page.getTextContent();
+                const cleanP = window.TeachAssistant
+                  ? TeachAssistant.cleanPersianPdfText(tc.items)
+                  : window.repairSpacedPersianText(tc.items.map(i => i.str).join(' '));
+                txt += `《صفحه ${p}》:\n${cleanP}\n\n`;
+              } catch (_) {}
+            } else if (db.cachedBook?.pages?.[String(p)]) {
+              txt += `《صفحه ${p}》:\n${window.repairSpacedPersianText(db.cachedBook.pages[String(p)])}\n\n`;
+            }
+          }
+          if (imgs.length) this.tempAiImages = imgs;
+          if (txt.trim()) {
+            this._lastExamSourceText = txt;
+            const promptInp = document.getElementById('aiPromptSource');
+            if (promptInp && !promptInp.value.trim()) {
+              promptInp.value = `طرح سوال از صفحات ${pages.map(n => this.toFa(n)).join('، ')} کتاب.\n` + txt.slice(0, 2800);
+            }
+          }
+        }
+
+        const raw = await this.callArgonAI(this.buildExamPrompt(this.currentBranch), this.tempAiImages);
+        if (this.parseAndAddQuestions(raw, this.currentBranch, this.state.switches.clearBeforeAi)) {
+          this.balanceScoresTo();
+          const targetPagesFit = Number(document.getElementById('aiTargetPages')?.value ?? 1);
+          if (targetPagesFit > 0 && typeof this.fitSheetToPages === 'function') {
+            this.fitSheetToPages(targetPagesFit);
+          }
+          if (typeof this.autoSyncToOnlineExam === 'function') {
+            this.autoSyncToOnlineExam(false);
+          }
+          this.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+          toast('آزمون استاندارد طراحی و در برگه A4 چیده شد ✨');
+        }
+      } catch (e) {
+        alert('⚠️ ' + (e?.message || e));
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = old;
+        }
+      }
+    };
+
+    ExamApp.replaceQuestionSmart = async function(qId) {
+      const list = this.getQuestions();
+      const idx = list.findIndex(x => x.id === qId);
+      if (idx === -1) return;
+      const oldQ = list[idx];
+      const cand = (this.state.backupPool || []).find(b => b.type === oldQ.type && b.text !== oldQ.text);
+      if (cand) {
+        list[idx] = { ...cand, id: Date.now(), score: oldQ.score };
+        this.save();
+        this.renderAll();
+        toast('با سوال هم‌بارم از بانک ذخیره جایگزین شد 🔄');
+        return;
+      }
+      try {
+        toast('⏳ در حال طراحی سوال جایگزین جدید با هوش مصنوعی...');
+        const singlePrompt = `یک سوال امتحانی استاندارد از نوع «${oldQ.type}» با بارم «${oldQ.score}» برای درس «${this.state.header.subject || 'درس'}» طراحی کن که متفاوت از سوال زیر باشد:\n«${oldQ.text}»\nفقط آبجکت JSON برگردان: {"questions":[{"type":"${oldQ.type}","text":"...","score":${oldQ.score},"options":["۱","۲","۳","۴"],"correctIndex":0,"hint":"...","explanation":"..."}]}`;
+        const raw = await this.callArgonAI(singlePrompt, (this.tempAiImages || []).slice(0, 2));
+        const parsed = typeof window.extractValidJsonFromAiText === 'function' ? window.extractValidJsonFromAiText(raw, 'any') : null;
+        const newQ = parsed?.questions?.[0] || (Array.isArray(parsed) ? parsed[0] : null);
+        if (newQ && newQ.text) {
+          list[idx] = {
+            ...oldQ,
+            id: Date.now(),
+            text: window.repairSpacedPersianText(newQ.text),
+            options: Array.isArray(newQ.options) ? newQ.options.slice(0, 4) : oldQ.options,
+            correctIndex: Number(newQ.correctIndex) || 0,
+            hint: newQ.hint || oldQ.hint,
+            explanation: newQ.explanation || oldQ.explanation
+          };
+          this.save();
+          this.renderAll();
+          toast('سوال جدید جایگزین شد ✨');
+          return;
+        }
+      } catch (_) {}
+      list[idx] = { ...oldQ, id: Date.now(), text: 'سوال جایگزین جدید (لمس کنید و ویرایش نمایید)...' };
+      this.save();
+      this.renderAll();
+      toast('با سوال هم‌بارم جایگزین شد 🔄');
+    };
+
+    ExamApp.handleQuestionDelete = async function(qId, force = false) {
+      if (!force && this.state.switches.autoReplaceDelete) {
+        return this.replaceQuestionSmart(qId);
+      }
+      this.state.branches[this.currentBranch] = this.getQuestions().filter(q => q.id !== qId);
+      if (this.state.switches.autoBalance) this.balanceScoresTo();
+      else {
+        this.save();
+        this.renderDynamicBranchesBar();
+        this.renderAll();
+      }
+    };
+
+    ExamApp.applyZoomScale = function(customScale = null) {
+      const vp = document.getElementById('a4ZoomViewport');
+      const sb = document.getElementById('a4ScaleBox');
+      const sh = document.getElementById('a4Sheet');
+      if (!vp || !sb || !sh || vp.clientWidth === 0) return;
+
+      const fitScale = Math.min(1, Math.max(0.34, (vp.clientWidth - 18) / 794));
+      let sc = fitScale;
+      if (customScale !== null && Number.isFinite(customScale)) {
+        sc = Math.min(2.5, Math.max(fitScale * 0.85, customScale));
+      } else if (this.zoomMode === 'auto') {
+        sc = fitScale;
+      } else {
+        sc = parseFloat(this.zoomMode) || fitScale;
+      }
+
+      sh.style.transform = `scale(${sc})`;
+      sb.style.width = `${Math.ceil(794 * sc)}px`;
+      sb.style.height = `${Math.ceil((sh.offsetHeight || 1123) * sc)}px`;
+
+      let zBadge = document.getElementById('a4PinchZoomBadge');
+      const zSel = document.getElementById('zoomSelect');
+      if (!zBadge && zSel && zSel.parentElement) {
+        zBadge = document.createElement('span');
+        zBadge.id = 'a4PinchZoomBadge';
+        zBadge.className = 'page-status-chip';
+        zBadge.style.cssText = 'cursor:pointer;background:#FFF7ED;color:#C2410C;border:1px solid #FDBA74';
+        zBadge.title = 'برای بازگشت به اندازه متناسب صفحه لمس کنید (با دو انگشت روی برگه زوم کنید)';
+        zBadge.onclick = () => {
+          this.zoomMode = 'auto';
+          if (zSel) zSel.value = 'auto';
+          this.applyZoomScale();
+          vp.scrollLeft = 0;
+          vp.scrollTop = 0;
+        };
+        zSel.parentElement.insertBefore(zBadge, zSel.nextSibling);
+      }
+      if (zBadge) {
+        zBadge.textContent = `🤏 زوم: ${this.toFa(Math.round(sc * 100))}٪`;
+      }
+
+      window.attachProPinchZoomAndPan(vp, sb, {
+        mode: 'a4-sheet',
+        sheetEl: sh,
+        initialScale: sc,
+        minScale: Math.max(0.32, fitScale * 0.9),
+        maxScale: 2.5,
+        onZoomChange: (newSc) => {
+          this.zoomMode = String(Math.round(newSc * 100) / 100);
+          if (zBadge) zBadge.textContent = `🤏 زوم: ${this.toFa(Math.round(newSc * 100))}٪`;
+        }
+      });
+      vp._currentZoomScale = sc;
+    };
+  }
+
+
+  /* ==========================================================================================
+     مرحله ۲:
+     ۲-۱. افزودن فیلد «📚 نام درس» در ایجاد و ویرایش کلاس + نمایش در کارت کلاس و سربرگ آزمون
+     ۲-۲. ارتقای گزارش‌ها («📊 گزارش‌های شفاف کلاسی ۴سطحی») شبیه لیست کلاسی برای:
+          ۱) یک دانش‌آموز، ۲) یک کلاس، ۳) یک مدرسه، ۴) همه مدارس
+     ========================================================================================== */
+
+  const COMMON_SUBJECT_PRESETS = [
+    'پیام‌های آسمان', 'ریاضی', 'علوم تجربی', 'فارسی و نگارش',
+    'عربی', 'آموزش قرآن', 'مطالعات اجتماعی', 'زبان انگلیسی',
+    'تفکر و سبک زندگی', 'کار و فناوری', 'فرهنگ و هنر'
+  ];
+
+  window.pickQuickClassSubject = function(subj) {
+    const inp = document.getElementById('cSubject');
+    if (inp) {
+      inp.value = subj;
+      inp.focus();
+    }
+  };
+
+  window.addClass = function(sid) {
+    window._classPhotos = [];
+    const chipsHtml = COMMON_SUBJECT_PRESETS.map(sp =>
+      `<button type="button" class="chip" style="cursor:pointer;border:1px solid #FDBA74;background:#FFF7ED;color:#C2410C;font-size:10.5px;padding:3px 8px" onclick="pickQuickClassSubject('${sp}')">${sp}</button>`
+    ).join('');
+
+    openModal(formHeader('🚪 افزودن کلاس و درس جدید') + `
+      <div style="margin-bottom:10px;padding:9px 11px;border-radius:11px;background:var(--bg-panel);border:1px dashed var(--primary);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+        <span style="font-size:11.5px;font-weight:800;color:var(--primary)">🌐 کلاس از اول آنلاین است؟ با لینک ثبت‌نام بسازید:</span>
+        <button type="button" class="btn green btn-sm" onclick="closeModal();openLinkClassBuilderModal('${sid}')">🔗 ساخت کلاس با لینک</button>
+      </div>
+      <div class="formgrid">
+        <div class="field">
+          <label>🚪 نام کلاس</label>
+          <input id="cName" required placeholder="مثلاً هفتم الف">
+        </div>
+        <div class="field">
+          <label>🎓 پایه تحصیلی</label>
+          <input id="cGrade" placeholder="مثلاً هفتم">
+        </div>
+        <div class="field full">
+          <label>📚 نام درس (در کارنامه، لیست کلاسی و سربرگ آزمون درج می‌شود)</label>
+          <input id="cSubject" placeholder="مثلاً پیام‌های آسمان، ریاضی، علوم تجربی...">
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">${chipsHtml}</div>
+        </div>
+        <div class="field full">
+          <label>📷 عکس کلاس (اختیاری)</label>
+          <div class="actions" style="margin-top:4px">
+            <label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="addClassPhotoFile(event)"></label>
+            <label class="btn soft">🖼️ گالری<input type="file" accept="image/*" multiple hidden onchange="addClassPhotoFile(event)"></label>
+          </div>
+          <div id="classPhotoPrev" class="photo-grid"></div>
+        </div>
+      </div>
+      <div class="formactions">
+        <button class="btn primary" onclick="saveClassForm('${sid}')">💾 ذخیره کلاس و درس</button>
+        <button class="btn gray" onclick="closeModal()">انصراف</button>
+      </div>
+    `);
+  };
+
+  window.editClass = function(sid, cid) {
+    const c = findClass(sid, cid);
+    if (!c) return;
+    window._classPhotos = Array.isArray(c.photos) ? [...c.photos] : [];
+    const chipsHtml = COMMON_SUBJECT_PRESETS.map(sp =>
+      `<button type="button" class="chip" style="cursor:pointer;border:1px solid #FDBA74;background:#FFF7ED;color:#C2410C;font-size:10.5px;padding:3px 8px" onclick="pickQuickClassSubject('${sp}')">${sp}</button>`
+    ).join('');
+
+    openModal(formHeader('✎ ویرایش کلاس، نام درس و عکس‌ها') + `
+      <div class="formgrid">
+        <div class="field">
+          <label>🚪 نام کلاس</label>
+          <input id="cName" value="${esc(c.name)}">
+        </div>
+        <div class="field">
+          <label>🎓 پایه تحصیلی</label>
+          <input id="cGrade" value="${esc(c.grade || '')}">
+        </div>
+        <div class="field full">
+          <label>📚 نام درس</label>
+          <input id="cSubject" value="${esc(c.subject || '')}" placeholder="مثلاً پیام‌های آسمان، ریاضی، علوم...">
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">${chipsHtml}</div>
+        </div>
+        <div class="field full">
+          <label>📷 عکس‌های کلاس</label>
+          <div class="actions" style="margin-top:4px">
+            <label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="addClassPhotoFile(event)"></label>
+            <label class="btn soft">🖼️ گالری<input type="file" accept="image/*" multiple hidden onchange="addClassPhotoFile(event)"></label>
+          </div>
+          <div id="classPhotoPrev" class="photo-grid"></div>
+        </div>
+      </div>
+      <div class="formactions">
+        <button class="btn primary" onclick="saveClassForm('${sid}','${cid}')">💾 ذخیره تغییرات</button>
+        <button class="btn gray" onclick="closeModal()">انصراف</button>
+      </div>
+    `);
+    renderClassPhotoPrevs();
+  };
+
+  window.saveClassForm = function(sid, editCid = null) {
+    const s = findSchool(sid);
+    if (!s) return;
+    const name = document.getElementById('cName')?.value.trim();
+    const grade = document.getElementById('cGrade')?.value.trim() || '';
+    const subject = document.getElementById('cSubject')?.value.trim() || '';
+    if (!name) {
+      alert('لطفاً نام کلاس را وارد کنید.');
+      return;
+    }
+    if (Array.isArray(window._classPhotos) && typeof normFaKey === 'function') {
+      const cNorm = normFaKey(name);
+      if (cNorm && window._photoVaultMemoryCache) {
+        window._photoVaultMemoryCache['clsname_' + cNorm] = [...window._classPhotos];
+      }
+      if (editCid && window._photoVaultMemoryCache) {
+        window._photoVaultMemoryCache['cls_' + editCid] = [...window._classPhotos];
+      }
+    }
+    if (editCid) {
+      const c = findClass(sid, editCid);
+      if (c) {
+        c.name = name;
+        c.grade = grade;
+        c.subject = subject;
+        c.photos = window._classPhotos || [];
+      }
+    } else {
+      s.classes.push({
+        id: uid(),
+        name,
+        grade,
+        subject,
+        photos: window._classPhotos || [],
+        students: [],
+        attendance: {},
+        termScores: {},
+        sessionNotes: {}
+      });
+    }
+    closeModal();
+    save();
+    if (currentSchoolId === sid && document.getElementById('schoolDetail')?.classList.contains('active')) {
+      openSchool(sid);
+    }
+    if (currentClassId === editCid && document.getElementById('classDetail')?.classList.contains('active')) {
+      openClass(sid, editCid);
+    }
+    toast(`✅ کلاس «${name}»${subject ? ` (درس ${subject})` : ''} ذخیره شد!`);
+  };
+
+  window.classCard = function(s, c) {
+    const photos = Array.isArray(c.photos) ? c.photos : [];
+    const cleanName = typeof window.cleanClassDisplayName === 'function' ? window.cleanClassDisplayName(c.name) : c.name;
+    const subjBadge = c.subject
+      ? `<span class="chip" style="background:#FFF7ED;color:#C2410C;border:1px solid #FDBA74;font-weight:900">📚 درس: ${esc(c.subject)}</span>`
+      : `<span class="chip" style="cursor:pointer" onclick="event.stopPropagation();editClass('${s.id}','${c.id}')">➕ ثبت نام درس</span>`;
+
+    return `<div class="card in-view">
+      ${photos.length ? `<div class="class-gallery" style="margin-top:0;margin-bottom:10px">${photos.slice(0, 2).map(src => `<img src="${src}" class="photo-clickable" onclick="openPhotoViewer('${src}','کلاس-${safeFileName(c.name)}.jpg')">`).join('')}</div>` : ''}
+      <div class="school-head">
+        <div>
+          <h3>🚪 کلاس ${esc(cleanName)}</h3>
+          <div class="muted">پایه ${esc(c.grade || '—')}${c.subject ? ` · 📚 درس ${esc(c.subject)}` : ''}</div>
+        </div>
+        <div class="school-icon">🚪</div>
+      </div>
+      <div class="chips" style="margin-top:6px">
+        ${subjBadge}
+        <span class="chip">👨‍🎓 ${fa((c.students || []).length)} دانش‌آموز</span>
+        <span class="chip">📷 ${fa(photos.length)} عکس</span>
+      </div>
+      <div class="actions">
+        <button class="btn primary" style="flex:1" onclick="openClass('${s.id}','${c.id}')">ورود به کلاس</button>
+        <button class="btn soft" onclick="openAttendance('${s.id}','${c.id}')">📋 جدول ترم</button>
+        <button class="btn soft" onclick="openTransparentReportModal('class','${s.id}','${c.id}')" title="گزارش شفاف این کلاس">📊 گزارش</button>
+        <button class="btn gray" onclick="editClass('${s.id}','${c.id}')">✎</button>
+      </div>
+    </div>`;
+  };
+
+  window.buildVibrantReportHTML = function(res, forExcel = false) {
+    const themeKey = document.getElementById('expColorTheme')?.value || 'orange';
+    const pal = (typeof EXPORT_COLOR_PALETTES !== 'undefined' && EXPORT_COLOR_PALETTES[themeKey])
+      ? EXPORT_COLOR_PALETTES[themeKey]
+      : { primary: '#EA580C', primaryDark: '#9A3412', lightBg: '#FFF7ED', border: '#FDBA74', thBg: '#EA580C', thText: '#FFFFFF', zebra: '#FFFBF5', gradStart: '#EA580C', gradEnd: '#F97316' };
+
+    const splitMode = document.getElementById('expClassSplitMode')?.value || 'separate_sections';
+    const colMeta = document.getElementById('expColMeta') ? document.getElementById('expColMeta').checked : true;
+    const colAtt = document.getElementById('expColAtt') ? document.getElementById('expColAtt').checked : true;
+    const colCont = document.getElementById('expColContGrades') ? document.getElementById('expColContGrades').checked : true;
+    const colBeh = document.getElementById('expColBeh') ? document.getElementById('expColBeh').checked : true;
+    const colTerm = document.getElementById('expColTerm') ? document.getElementById('expColTerm').checked : true;
+    const colAttn = document.getElementById('expColAttn') ? document.getElementById('expColAttn').checked : true;
+
+    let totalSt = 0, sumFinal = 0, cntFinal = 0, attnCount = 0, topCount = 0, totalPos = 0, totalNeg = 0, totalAbs = 0;
+    res.sections.forEach(sec => {
+      sec.items.forEach(it => {
+        totalSt++;
+        if (Number.isFinite(Number(it.finalSc))) {
+          sumFinal += Number(it.finalSc);
+          cntFinal++;
+          if (Number(it.finalSc) >= 17) topCount++;
+        }
+        if (it.det?.isAttn) attnCount++;
+        totalPos += (it.st?.behavior?.positives?.length || 0);
+        totalNeg += (it.st?.behavior?.negatives?.length || 0);
+        totalAbs += (Number(it.absCnt) || 0);
+      });
+    });
+    const overallAvg = cntFinal ? (sumFinal / cntFinal) : 0;
+
+    const scopeLabels = {
+      student: '👨‍🎓 گزارش فردی دانش‌آموز',
+      class: '🚪 گزارش اختصاصی کلاس',
+      school: '🏫 گزارش جامع مدرسه',
+      all: '🌐 گزارش جامع همه مدارس'
+    };
+    const scopeTitle = scopeLabels[res.scope] || '📊 گزارش آموزشی';
+
+    const kpiCardsHtml = `
+      <div style="background:linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%);border:2px solid #FDBA74;border-radius:14px;padding:10px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div>
+          <b style="font-size:14.5px;color:#9A3412">${scopeTitle} · بر پایه کرامت انسانی و شفافیت آموزشی</b>
+          <div style="font-size:11.5px;color:#475569;margin-top:2px">👨‍🏫 دبیر: ${esc(getTeacherName())} | 📅 تاریخ گزارش: ${formatJalaliDate(localISODate())}</div>
+        </div>
+        <span style="background:#EA580C;color:#fff;padding:4px 10px;border-radius:99px;font-size:11.5px;font-weight:900">📊 ${fa(res.sections.length)} کلاس · ${fa(totalSt)} دانش‌آموز</span>
+      </div>
+      <table border="0" style="width:100%;border-collapse:separate;border-spacing:6px;margin-bottom:12px">
+        <tr>
+          <td style="width:20%;background:#F0F9FF;border:1.5px solid #7DD3FC;border-radius:12px;padding:8px;text-align:center">
+            <div style="font-size:10.5px;color:#0369A1;font-weight:bold">👨‍🎓 دانش‌آموزان</div>
+            <div style="font-size:16px;font-weight:900;color:#0C4A6E;margin-top:2px">${fa(totalSt)} نفر</div>
+          </td>
+          <td style="width:20%;background:${pal.lightBg};border:1.5px solid ${pal.border};border-radius:12px;padding:8px;text-align:center">
+            <div style="font-size:10.5px;color:${pal.primaryDark};font-weight:bold">⭐ میانگین کل</div>
+            <div style="font-size:16px;font-weight:900;color:${pal.primary};margin-top:2px">${fmtScore(overallAvg)}</div>
+          </td>
+          <td style="width:20%;background:#DCFCE7;border:1.5px solid #86EFAC;border-radius:12px;padding:8px;text-align:center">
+            <div style="font-size:10.5px;color:#15803D;font-weight:bold">➕/➖ مثبت و منفی</div>
+            <div style="font-size:14px;font-weight:900;color:#166534;margin-top:2px">+${fa(totalPos)} / -${fa(totalNeg)}</div>
+          </td>
+          <td style="width:20%;background:#FEF3C7;border:1.5px solid #FDE68A;border-radius:12px;padding:8px;text-align:center">
+            <div style="font-size:10.5px;color:#B45309;font-weight:bold">📅 کل غیبت‌ها</div>
+            <div style="font-size:16px;font-weight:900;color:#92400E;margin-top:2px">${fa(totalAbs)}</div>
+          </td>
+          <td style="width:20%;background:#FFE4E6;border:1.5px solid #FDA4AF;border-radius:12px;padding:8px;text-align:center">
+            <div style="font-size:10.5px;color:#BE123C;font-weight:bold">🚨 نیازمند توجه</div>
+            <div style="font-size:16px;font-weight:900;color:#9F1239;margin-top:2px">${fa(attnCount)} نفر</div>
+          </td>
+        </tr>
+      </table>
+    `;
+
+    const renderColorScoreCell = (val, isFinal = false) => {
+      const c = getScoreBadgeColors(val);
+      if (forExcel) {
+        return `<td style="background-color:${c.bg};color:${c.text};font-weight:${isFinal ? '900' : 'bold'};text-align:center;border:1px solid #94A3B8;padding:6px">${esc(c.icon + c.label)}</td>`;
+      }
+      const pct = Number.isFinite(Number(val)) ? Math.min(100, Math.max(6, Math.round((Number(val) / 20) * 100))) : 0;
+      return `<td style="text-align:center;background:${isFinal ? c.bg : 'transparent'};padding:6px">
+        <span style="display:inline-block;padding:3px 9px;border-radius:99px;background:${c.bg};color:${c.text};border:1px solid ${c.border};font-weight:${isFinal ? '900' : '800'};font-size:${isFinal ? '12.5px' : '11.5px'}">${esc(c.icon + c.label)}</span>
+        ${isFinal && pct > 0 ? `<div style="height:5px;background:#E2E8F0;border-radius:4px;overflow:hidden;margin-top:3px;width:68px;margin-left:auto;margin-right:auto"><div style="height:100%;width:${pct}%;background:${c.text}"></div></div>` : ''}
+      </td>`;
+    };
+
+    const renderStatusCell = (st, det) => {
+      if (!det.isAttn) {
+        if (st.status === 'good') {
+          return `<td style="background:${forExcel ? '#DCFCE7' : 'transparent'};color:#166534;font-weight:bold;text-align:center"><span style="background:#DCFCE7;color:#166534;border:1px solid #86EFAC;padding:2px 8px;border-radius:99px;font-size:11px">🟢 خوب و برتر</span></td>`;
+        }
+        return `<td style="color:#64748B;text-align:center"><span style="background:#F1F5F9;color:#475569;padding:2px 8px;border-radius:99px;font-size:10.5px">⚪ عادی</span></td>`;
+      }
+      const badgesHtml = det.badges.map(b => {
+        const stObj = getAttnCategoryExportStyle(b.catId);
+        return `<span style="display:inline-block;margin:1px;padding:2px 7px;border-radius:99px;background:${stObj.bg};color:${stObj.text};border:1px solid ${stObj.border};font-size:10.5px;font-weight:bold">${esc(b.label)}</span>`;
+      }).join(' ');
+      const firstStyle = getAttnCategoryExportStyle(det.categories[0]);
+      return `<td style="background:${forExcel ? firstStyle.bg : 'transparent'};color:${firstStyle.text};font-weight:bold">${badgesHtml || '🔴 نیازمند توجه'}</td>`;
+    };
+
+    const buildSectionTable = (sec, sIdx, includeSchoolCol) => {
+      const classAvg = sec.items.length ? (sec.items.reduce((a, b) => a + (Number(b.finalSc) || 0), 0) / sec.items.length) : 0;
+      const subjTxt = sec.cls.subject ? ` · 📚 درس: ${esc(sec.cls.subject)}` : '';
+      const gradeTxt = sec.cls.grade ? ` · پایه ${esc(sec.cls.grade)}` : '';
+
+      const headers = ['ردیف'];
+      if (includeSchoolCol) headers.push('مدرسه', 'کلاس / درس');
+      headers.push('دانش‌آموز (مشابه لیست کلاسی)');
+      if (colMeta) headers.push('نام پدر', 'تلفن');
+      if (colAtt) headers.push('حضور و غیاب');
+      if (colCont) headers.push('📝 کتبی مستمر', 'میانگین مستمر');
+      if (colBeh) headers.push('➕ مثبت / ➖ منفی', 'تراز رفتاری');
+      if (colTerm) headers.push('🎓 پایانی ترم', '⭐ نمره نهایی (از ۲۰)');
+      if (colAttn) headers.push('وضعیت و توصیه تربیتی');
+
+      const rowsHtml = sec.items.map((it, idx) => {
+        const { st, det, absCnt, contSc, avgSc, termSc, finalSc, bt } = it;
+        const rowBg = det.isAttn ? '#FFF5F5' : (idx % 2 === 1 ? pal.zebra : '#FFFFFF');
+        const absStyle = absCnt >= 3 ? 'background:#FEE2E2;color:#991B1B;font-weight:900' : (absCnt > 0 ? 'color:#B45309;font-weight:bold' : 'color:#15803D;font-weight:bold');
+        const behNetStyle = bt.net > 0 ? 'background:#DCFCE7;color:#166534;font-weight:bold' : (bt.net < 0 ? 'background:#FEE2E2;color:#991B1B;font-weight:bold' : 'color:#64748B');
+        const fullName = `${st.lastName || ''} ${st.name || ''}`.trim();
+        const initials = (st.lastName || st.name || 'د').slice(0, 1);
+        const avatarCellHtml = !forExcel
+          ? `<div style="display:flex;align-items:center;gap:7px">
+               <span style="width:28px;height:28px;border-radius:50%;border:1.5px solid #FDBA74;background:#FFF7ED;color:#C2410C;display:inline-grid;place-items:center;font-size:11px;font-weight:900;overflow:hidden;flex-shrink:0">
+                 ${st.photo ? `<img src="${st.photo}" style="width:100%;height:100%;object-fit:cover">` : esc(initials)}
+               </span>
+               <div>
+                 <b style="font-size:12.5px;color:#0F172A">${esc(fullName)}${det.isAttn ? ' 🔴' : (finalSc >= 18 ? ' 🌟' : '')}</b>
+               </div>
+             </div>`
+          : `<b>${esc(fullName)}</b>`;
+
+        const psychShort = window.generateStudentDignityAdvice(sec.cls, st, det).slice(0, 115) + '...';
+
+        return `<tr style="background-color:${rowBg}">
+          <td style="text-align:center;font-weight:900;color:${pal.primaryDark};background:${pal.lightBg}">${fa(idx + 1)}</td>
+          ${includeSchoolCol ? `<td>${esc(it._s?.name || sec.school.name)}</td><td><b>${esc(it._c?.name || sec.cls.name)}</b>${(it._c?.subject || sec.cls.subject) ? `<br><small style="color:#C2410C">📚 ${esc(it._c?.subject || sec.cls.subject)}</small>` : ''}</td>` : ''}
+          <td style="padding:6px 8px">${avatarCellHtml}</td>
+          ${colMeta ? `<td>${esc(st.fatherName || '—')}</td><td dir="ltr" style="text-align:center">${st.phone ? fa(st.phone) : '—'}</td>` : ''}
+          ${colAtt ? `<td style="text-align:center;${absStyle}">${absCnt === 0 ? '✓ حاضر کامل' : `${fa(absCnt)} جلسه غیبت`}</td>` : ''}
+          ${colCont ? `${renderColorScoreCell(contSc, false)}${renderColorScoreCell(avgSc, false)}` : ''}
+          ${colBeh ? `<td style="text-align:center"><span style="background:#DCFCE7;color:#15803D;padding:2px 6px;border-radius:6px;font-weight:900">+${fa(st.behavior.positives.length)}</span> <span style="background:#FEE2E2;color:#B91C1C;padding:2px 6px;border-radius:6px;font-weight:900">-${fa(st.behavior.negatives.length)}</span></td><td style="text-align:center;${behNetStyle}">${bt.net >= 0 ? '+' : ''}${fmtScore(bt.net)}</td>` : ''}
+          ${colTerm ? `${renderColorScoreCell(termSc, false)}${renderColorScoreCell(finalSc, true)}` : ''}
+          ${colAttn ? `${renderStatusCell(st, det).replace('</td>', `<div style="font-size:10px;color:#475569;margin-top:3px;font-weight:normal">${esc(psychShort)}</div></td>`)}` : ''}
+        </tr>`;
+      }).join('');
+
+      const pageBreak = (splitMode === 'separate_sections' && sIdx > 0 && !forExcel) ? 'page-break-before:always;break-before:page;margin-top:20px;' : 'margin-top:16px;';
+
+      return `<div style="${sIdx > 0 ? pageBreak : ''}">
+        <div style="background:linear-gradient(135deg, ${pal.gradStart}, ${pal.gradEnd});background-color:${pal.primary};color:#FFFFFF;border-radius:12px;padding:10px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div>
+            <b style="font-size:14px">🏫 ${esc(sec.school.name)} — 🚪 کلاس ${esc(sec.cls.name)}${gradeTxt}${subjTxt}</b>
+            <div style="font-size:11px;opacity:0.95;margin-top:2px">👨‍🎓 تعداد: ${fa(sec.items.length)} دانش‌آموز | ⭐ میانگین کلاس: ${fmtScore(classAvg)} از ۲۰ | 👨‍🏫 دبیر: ${esc(getTeacherName())}</div>
+          </div>
+          <span style="background:rgba(255,255,255,0.2);padding:3px 9px;border-radius:99px;font-size:11px;font-weight:bold">${esc(sec.cls.currentTermName || 'ترم جاری')}</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table border="1" style="width:100%;border-collapse:collapse;font-size:11.5px;border:1.5px solid ${pal.border}">
+            <thead>
+              <tr style="background-color:${pal.thBg};color:${pal.thText}">
+                ${headers.map(h => `<th style="padding:7px 6px;border:1px solid ${pal.border};font-weight:900;text-align:center">${esc(h)}</th>`).join('')}
+              </tr>
+            </thead>
+            <tbody>${rowsHtml}</tbody>
+          </table>
+        </div>
+      </div>`;
+    };
+
+    let bodyTables = '';
+    if (splitMode === 'separate_sections') {
+      bodyTables = res.sections.map((sec, idx) => buildSectionTable(sec, idx, false)).join('');
+    } else {
+      const mergedItems = [];
+      res.sections.forEach(sec => sec.items.forEach(it => mergedItems.push({ ...it, _s: sec.school, _c: sec.cls })));
+      const fakeSec = {
+        school: { name: 'گزارش تجمیعی مدارس' },
+        cls: { name: 'همه کلاس‌های انتخابی', currentTermName: db.activeTermName || 'ترم جاری' },
+        items: mergedItems
+      };
+      bodyTables = buildSectionTable(fakeSec, 0, true);
+    }
+
+    return `
+      <div style="font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;color:#0F172A">
+        ${kpiCardsHtml}
+        ${bodyTables}
+      </div>
+    `;
+  };
+
+  window.openTransparentReportModal = function(initialScope = 'class', sid = null, cid = null, stid = null) {
+    const targetSid = sid || currentSchoolId || db.schools?.[0]?.id || '';
+    const targetSchool = findSchool(targetSid) || db.schools?.[0] || null;
+    const targetCid = cid || currentClassId || targetSchool?.classes?.[0]?.id || '';
+    const targetClass = targetSchool ? (findClass(targetSchool.id, targetCid) || targetSchool.classes?.[0]) : null;
+    const targetStid = stid || targetClass?.students?.[0]?.id || '';
+
+    openModal(formHeader('📊 مرکز گزارش‌های شفاف کلاسی (۴ سطحی: دانش‌آموز / کلاس / مدرسه / همه مدارس)') + `
+      <div class="card" style="background:var(--bg-panel);padding:10px 12px;margin-bottom:10px;border:1.5px solid var(--primary)">
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-bottom:10px" id="repModalScopeTabs">
+          <button type="button" class="btn ${initialScope === 'student' ? 'primary' : 'soft'} btn-sm" data-rscope="student" onclick="switchTransparentReportScope('student')">👨‍🎓 ۱ دانش‌آموز</button>
+          <button type="button" class="btn ${initialScope === 'class' ? 'primary' : 'soft'} btn-sm" data-rscope="class" onclick="switchTransparentReportScope('class')">🚪 ۱ کلاس</button>
+          <button type="button" class="btn ${initialScope === 'school' ? 'primary' : 'soft'} btn-sm" data-rscope="school" onclick="switchTransparentReportScope('school')">🏫 ۱ مدرسه</button>
+          <button type="button" class="btn ${initialScope === 'all' ? 'primary' : 'soft'} btn-sm" data-rscope="all" onclick="switchTransparentReportScope('all')">🌐 همه مدارس</button>
+        </div>
+
+        <div class="formgrid" style="margin-bottom:8px">
+          <div class="field" id="repModSchoolField">
+            <label>🏫 انتخاب مدرسه:</label>
+            <select id="repModSchoolSel" onchange="onRepModSchoolChange()"></select>
+          </div>
+          <div class="field" id="repModClassField">
+            <label>🚪 انتخاب کلاس:</label>
+            <select id="repModClassSel" onchange="onRepModClassChange()"></select>
+          </div>
+          <div class="field full" id="repModStudentField" style="display:none">
+            <label>👨‍🎓 انتخاب دانش‌آموز:</label>
+            <select id="repModStudentSel" onchange="refreshTransparentReportModalPreview()"></select>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button type="button" class="btn green btn-sm" style="flex:1" onclick="runTransparentReportExport('print')">🖨️ چاپ / PDF رنگی</button>
+          <button type="button" class="btn primary btn-sm" style="flex:1" onclick="runTransparentReportExport('excel_color')">🎨 اکسل رنگی (.xls)</button>
+          <button type="button" class="btn soft btn-sm" style="flex:1" onclick="runTransparentReportExport('word')">📘 فایل Word (.doc)</button>
+        </div>
+      </div>
+
+      <div id="repModalLivePreviewWrap" class="live-report-preview-frame" style="max-height:58vh;padding:10px"></div>
+
+      <div class="formactions">
+        <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+      </div>
+    `);
+
+    window._repModCurrentScope = initialScope;
+    const sSel = document.getElementById('repModSchoolSel');
+    if (sSel) {
+      sSel.innerHTML = (db.schools || []).map(s => `<option value="${s.id}" ${s.id === targetSid ? 'selected' : ''}>🏫 ${esc(s.name)}</option>`).join('');
+    }
+    window.onRepModSchoolChange(targetCid, targetStid);
+    window.switchTransparentReportScope(initialScope);
+  };
+
+  window.onRepModSchoolChange = function(prefCid = null, prefStid = null) {
+    const sid = document.getElementById('repModSchoolSel')?.value || '';
+    const s = findSchool(sid) || db.schools?.[0];
+    const cSel = document.getElementById('repModClassSel');
+    if (cSel && s) {
+      cSel.innerHTML = (s.classes || []).map(c => `<option value="${c.id}" ${c.id === prefCid ? 'selected' : ''}>🚪 ${esc(c.name)}${c.subject ? ` (${esc(c.subject)})` : ''}</option>`).join('');
+    }
+    window.onRepModClassChange(prefStid);
+  };
+
+  window.onRepModClassChange = function(prefStid = null) {
+    const sid = document.getElementById('repModSchoolSel')?.value || '';
+    const cid = document.getElementById('repModClassSel')?.value || '';
+    const c = findClass(sid, cid);
+    const stSel = document.getElementById('repModStudentSel');
+    if (stSel && c) {
+      const sorted = sortStudents(c.students || []);
+      stSel.innerHTML = sorted.map((st, idx) => `<option value="${st.id}" ${st.id === prefStid ? 'selected' : ''}>${fa(idx + 1)}. ${esc(formatStudentName(st))}</option>`).join('');
+    }
+    window.refreshTransparentReportModalPreview();
+  };
+
+  window.switchTransparentReportScope = function(scope) {
+    window._repModCurrentScope = scope;
+    document.querySelectorAll('#repModalScopeTabs button').forEach(b => {
+      const isAct = b.getAttribute('data-rscope') === scope;
+      b.className = `btn ${isAct ? 'primary' : 'soft'} btn-sm`;
+    });
+    const sf = document.getElementById('repModSchoolField');
+    const cf = document.getElementById('repModClassField');
+    const stf = document.getElementById('repModStudentField');
+    if (sf) sf.style.display = scope === 'all' ? 'none' : 'block';
+    if (cf) cf.style.display = (scope === 'class' || scope === 'student') ? 'block' : 'none';
+    if (stf) stf.style.display = scope === 'student' ? 'block' : 'none';
+    window.refreshTransparentReportModalPreview();
+  };
+
+  window.syncRepModalToGlobalExportControls = function() {
+    const scope = window._repModCurrentScope || 'class';
+    const sid = document.getElementById('repModSchoolSel')?.value || '';
+    const cid = document.getElementById('repModClassSel')?.value || '';
+    const stid = document.getElementById('repModStudentSel')?.value || '';
+
+    const gScope = document.getElementById('expScopeType');
+    if (gScope) {
+      gScope.value = scope;
+      if (typeof window.onExportScopeChange === 'function') window.onExportScopeChange();
+    }
+    const gSid = document.getElementById('expSchoolSel');
+    if (gSid && sid) {
+      gSid.value = sid;
+      if (typeof window.onExportSchoolChange === 'function') window.onExportSchoolChange();
+    }
+    const gCid = document.getElementById('expClassSel');
+    if (gCid && cid) {
+      gCid.value = cid;
+      if (typeof window.onExportClassChange === 'function') window.onExportClassChange();
+    }
+    const gStid = document.getElementById('expStudentSel');
+    if (gStid && stid) {
+      gStid.value = stid;
+    }
+  };
+
+  window.refreshTransparentReportModalPreview = function() {
+    const box = document.getElementById('repModalLivePreviewWrap');
+    if (!box) return;
+    window.syncRepModalToGlobalExportControls();
+    const res = window.collectFilteredExportData();
+    if (!res || !res.totalStudents) {
+      box.innerHTML = `<div style="padding:24px;text-align:center;color:var(--text-muted)">هیچ دانش‌آموزی در این بخش ثبت نشده است.</div>`;
+      return;
+    }
+    if (res.scope === 'student' && res.totalStudents === 1) {
+      box.innerHTML = window.buildSingleStudentVibrantHTML(res.sections[0].school, res.sections[0].cls, res.sections[0].items[0], false);
+    } else {
+      box.innerHTML = window.buildVibrantReportHTML(res, false);
+    }
+  };
+
+  window.runTransparentReportExport = function(kind) {
+    window.syncRepModalToGlobalExportControls();
+    window.exportCustomReport(kind);
+  };
+
+
+  /* ==========================================================================================
+     مرحله ۳:
+     ۳-۱. رویکرد کرامت انسانی + توصیه علمی و روانشناختی ۲-۳ خطی اختصاصی در بخش «وضعیت‌ها»
+     ۳-۲. بخش «🧭 راهنمای هوشمند کلاس‌داری و برخورد تربیتی» (کلاس‌های خوب، شلوغ، خسته، ناهنجار)
+     ۳-۳. دکمه یادآور اول کلاس با چراغ گردان ظریف و بدون مزاحمت (`🚨 یادآور کلاس‌داری`)
+     ========================================================================================== */
+
+  window.generateStudentDignityAdvice = function(c, st, det = null) {
+    if (!st) return '';
+    if (st.aiPsychAdvice && String(st.aiPsychAdvice).trim()) {
+      return String(st.aiPsychAdvice).trim();
+    }
+    const d = det || (typeof window.getStudentAttentionDetails === 'function' ? window.getStudentAttentionDetails(c, st) : { isAttn: false, categories: [] });
+    const cats = d.categories || [];
+    const b = behaviorData(st);
+    const absCnt = attendanceCount(c, st.id, 'absent');
+    const avg = avgGrade(st);
+    const firstName = st.name || 'این دانش‌آموز';
+
+    if (cats.includes('medical')) {
+      return `۱. حفظ آرامش و امنیت روانی: بدون اشاره مستقیم به بیماری در جمع کلاس، فضای امن و بدون استرسی برای «${firstName}» فراهم کنید تا احساس تفاوت یا کمبود نکند.\n۲. انعطاف‌پذیری محترمانه: تکالیف و پرسش‌ها را متناسب با توان جسمی او به بخش‌های کوتاه‌تر تقسیم کرده و هر گام کوچک پیشرفتش را با احترام تحسین نمایید.`;
+    }
+    if (cats.includes('counseling')) {
+      return `۱. خوب گوش دادن و همدلی: در یک فرصت کوتاه و خصوصی ۲ دقیقه‌ای، بدون قضاوت یا نصیحت مستقیم، صرفاً شنوندهٔ دغدغه‌های «${firstName}» باشید تا حس ارزشمندی و امنیت پیدا کند.\n۲. تقویت خودباوری: یک مسئولیت کوچک و مثبت در کلاس به او بسپارید تا پیوند عاطفی و انگیزهٔ حضورش در جمع تقویت شود.`;
+    }
+    if (cats.includes('discipline') || b.negatives.length >= 2) {
+      return `۱. اصل کرامت انسانی و پرهیز از تذکر جمعی: رفتار چالشی را از شخصیت ارزشمند «${firstName}» جدا بدانید؛ به جای تذکر در برابر هم‌کلاسی‌ها، با ارتباط چشمی آرام و گفت‌وگوی محترمانهٔ فردی علت رفتار را جویا شوید.\n۲. تبدیل انرژی به مسئولیت: انرژی بالای او را با واگذاری نقش دستیار معلم یا مسئول گروه در مسیر مثبت هدایت کنید و اولین رفتار مثبتش را فوراً تشویق نمایید.`;
+    }
+    if (cats.includes('absence') || absCnt >= 3) {
+      return `۱. استقبال گرم و بدون سرزنش: هنگام حضور «${firstName}»، ابتدا از دیدن او ابراز خوشحالی کنید («جایت در کلاس خالی بود») تا اضطراب بازگشت به کلاس از بین برود.\n۲. جبران پله‌ای همراه با همیار: یکی از دانش‌آموزان صبور را به عنوان همیار درسی او قرار دهید و پیگیری غیبت را با لحنی محترمانه و حمایتی با اولیا در میان بگذارید.`;
+    }
+    if (cats.includes('academic') || (avg !== null && avg < 12)) {
+      return `۱. ایجاد تجربهٔ موفقیت تدریجی: در کلاس ابتدا سوالات ساده‌تر و هم‌سطح آمادگی «${firstName}» بپرسید تا طعم موفقیت را در جمع تجربه کند و ترس از اشتباه در او بریزد.\n۲. بازخورد مقایسه‌ای با خود: پیشرفت او را فقط با گذشتهٔ خودش مقایسه کنید (نه با دیگران) و تلاشش را بیش از نمرهٔ خام ارج بنهید.`;
+    }
+    if (st.status === 'good' || (avg !== null && avg >= 17)) {
+      return `۱. قدردانی هدفمند و رشددهنده: ضمن تحسین تلاش و نظم «${firstName}»، از برچسب‌های مقایسه‌گر پرهیز کنید و روحیهٔ فروتنی و کمک محترمانه به هم‌کلاسی‌ها را در او تقویت نمایید.\n۲. غنی‌سازی یادگیری: سوالات خلاقانه‌تر یا نقش سرگروه علمی را به او بسپارید تا انگیزهٔ درونی‌اش پویا بماند.`;
+    }
+    return `۱. توجه فردی و ارتباط محترمانه: نامبردن محترمانه از «${firstName}» و دیدن تلاش‌های آرام او در کلاس، حس دیده شدن و امنیت روانی را در او تقویت می‌کند.\n۲. مشارکت گام‌به‌گام: با پرسش‌های کوتاه و تشویق کلامی، مشارکت فعال‌تر او را در مباحث درسی برانگیزید.`;
+  };
+
+  window.requestCustomAiPsychAdviceForStudent = async function(sid, cid, stid, btnEl = null) {
+    const c = findClass(sid, cid);
+    const st = c ? (c.students || []).find(x => x.id === stid) : null;
+    if (!c || !st) return;
+    const det = typeof window.getStudentAttentionDetails === 'function' ? window.getStudentAttentionDetails(c, st) : { categories: [], attnNote: '' };
+    const b = behaviorData(st);
+    const absCnt = attendanceCount(c, st.id, 'absent');
+    const avg = avgGrade(st);
+
+    const oldTxt = btnEl ? btnEl.innerHTML : '';
+    if (btnEl) {
+      btnEl.disabled = true;
+      btnEl.innerHTML = '⏳ در حال تحلیل روانشناختی...';
+    }
+
+    try {
+      const prompt = `تو یک متخصص روانشناسی تربیتی و مشاور ارشد مدارس ایران هستی که بر اساس «کرامت انسانی، احترام متقابل، توجه، خوب گوش دادن، امنیت روانی و آرامش» مشاوره می‌دهی.
+مشخصات دانش‌آموز:
+- نام: ${st.name} ${st.lastName} (کلاس ${c.name}${c.subject ? ` - درس ${c.subject}` : ''})
+- میانگین نمره مستمر: ${avg !== null ? avg : 'ثبت نشده'} از ۲۰
+- تعداد غیبت: ${absCnt} جلسه
+- امتیاز مثبت: ${b.positives.length} | منفی: ${b.negatives.length}
+- دسته‌های نیازمند توجه: ${(det.categories || []).join('، ') || 'عادی/برتر'}
+- یادداشت معلم: ${det.attnNote || st.notes || 'ندارد'}
+
+دقیقاً در ۲ تا ۳ خط کوتاه، علمی، کاربردی و بسیار محترمانه به معلم توصیه کن که در کلاس و در تعامل فردی با این دانش‌آموز چه راهکار عملی انجام دهد. فقط متن ۲ تا ۳ خطی توصیه را بنویس:`;
+
+      const raw = await ExamApp.callArgonAI(prompt, []);
+      const cleanAdvice = window.repairSpacedPersianText(String(raw || '').replace(/[\*\#\`]/g, '').trim());
+      if (cleanAdvice && cleanAdvice.length > 25 && !cleanAdvice.startsWith('{')) {
+        st.aiPsychAdvice = cleanAdvice.slice(0, 420);
+        savePersistent();
+        if (document.getElementById('statuses')?.classList.contains('active')) {
+          renderStatuses(window._currentStatusFilter || 'attn');
+        }
+        toast(`✨ راهکار روانشناختی اختصاصی برای «${st.name} ${st.lastName}» بروزرسانی شد!`);
+      }
+    } catch (_) {
+      toast('⚡ راهکار استاندارد روانشناختی آماده نمایش است.');
+    } finally {
+      if (btnEl) {
+        btnEl.disabled = false;
+        btnEl.innerHTML = oldTxt || '✨ راهکار هوشمند جدید';
+      }
+    }
+  };
+
+  const _origStudentCardV82 = window.studentCard;
+  window.studentCard = function(s, c, st) {
+    let baseHtml = _origStudentCardV82(s, c, st);
+    const det = typeof window.getStudentAttentionDetails === 'function' ? window.getStudentAttentionDetails(c, st) : { isAttn: false, categories: [] };
+    const adviceTxt = window.generateStudentDignityAdvice(c, st, det);
+    const subjPill = c.subject ? `<span class="chip" style="background:#FFF7ED;color:#C2410C;border:1px solid #FDBA74;font-size:10px">📚 ${esc(c.subject)}</span>` : '';
+
+    const adviceBlockHtml = `
+      <div class="dignity-psych-advice-box" onclick="event.stopPropagation()">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px">
+          <b style="color:#9A3412;font-size:11.5px">🧠 راهکار علمی و روانشناختی معلم (بر پایه کرامت انسانی):</b>
+          <div style="display:flex;gap:4px;align-items:center">
+            ${subjPill}
+            <button type="button" class="btn soft btn-sm" style="height:22px;padding:0 7px;font-size:10px" onclick="event.stopPropagation();requestCustomAiPsychAdviceForStudent('${s.id}','${c.id}','${st.id}',this)" title="دریافت توصیه اختصاصی جدید با هوش مصنوعی">✨ هوش مصنوعی</button>
+          </div>
+        </div>
+        <div style="white-space:pre-line;font-size:11.5px;color:#334155">${esc(adviceTxt)}</div>
+      </div>
+    `;
+
+    const lastDivIdx = baseHtml.lastIndexOf('</div>');
+    if (lastDivIdx !== -1) {
+      baseHtml = baseHtml.slice(0, lastDivIdx) + adviceBlockHtml + baseHtml.slice(lastDivIdx);
+    }
+    return baseHtml;
+  };
+
+  const CLASSROOM_GUIDANCE_PRESETS = {
+    good: {
+      title: '🌟 کلاس‌های خوب، باانگیزه و پرانرژی',
+      badge: 'حفظ شکوفایی و احترام متقابل',
+      principles: [
+        '۱. سپردن نقش راهبری علمی: در کلاس‌های خوب، به جای تدریس یک‌طرفه، دانش‌آموزان را در قالب گروه‌های کوچک و «معلم‌یار» مشارکت دهید تا حس ارزشمندی و خودباوری آن‌ها تقویت شود.',
+        '۲. قدردانی توصیفی بر پایه تلاش (نه برچسب‌زنی): به جای مقایسهٔ افراد با یکدیگر، نظم، احترام متقابل و خوب گوش دادن کل کلاس را تحسین کنید تا امنیت روانی همه حفظ شود.',
+        '۳. چالش‌های تفکر خلاق: یک سوال باز و کاربردی در ابتدای درس مطرح کنید و با آرامش به تک‌تک ایده‌ها گوش دهید.'
+      ],
+      firstMinuteTip: '«سلام گرم + اشاره به یک ویژگی مثبت جلسه قبل کلاس + طرح یک پرسش کنجکاوی‌برانگیز» بهترین شروع برای این کلاس است.'
+    },
+    noisy: {
+      title: '📢 کلاس‌های شلوغ، پرحرف و پرجنب‌وجوش',
+      badge: 'تنظیم آرامش بدون تنش و فریاد',
+      principles: [
+        '۱. تکنیک مکث آرام و حضور محترمانه: هرگز صدای خود را بالاتر از همهمهٔ کلاس نبرید؛ با ایستادن در نقطهٔ کانونی، لبخند آرام و سکوت ۳ ثانیه‌ای، توجه کلاس را بدون تحقیر جلب کنید.',
+        '۲. شکستن تدریس به گام‌های ۱۰ دقیقه‌ای: انرژی بالای کلاس را با فعالیت‌های کوتاه نوشتاری، حل یک مثال روی تخته یا پرسش دوگزینه‌ای سریع در جریان درس تخلیه کنید.',
+        '۳. قانون «خوب گوش دادن = احترام به کرامت هم‌کلاسی»: در ابتدای کلاس یادآوری کنید که وقتی یک نفر صحبت می‌کند، همه با احترام به او گوش می‌دهیم تا امنیت روانی برقرار باشد.'
+      ],
+      firstMinuteTip: 'در ۳۰ ثانیه اول، با صدای آرام‌تر از معمول شروع کنید و یک سؤال کوتاه روی تخته بنویسید تا چشم‌ها و ذهن‌ها متمرکز شوند.'
+    },
+    tired: {
+      title: '😴 کلاس‌های خسته، کم‌انگیزه و بی‌حوصله',
+      badge: 'احیای امید، امنیت روانی و نشاط',
+      principles: [
+        '۱. شروع با احوال‌پرسی انسانی و همدلانه: پیش از باز کردن کتاب، ۱ دقیقه با روی گشاده حال دانش‌آموزان را بپرسید؛ وقتی دانش‌آموز ببیند معلم خستگی او را درک می‌کند، مقاومت ذهنی‌اش فرو می‌ریزد.',
+        '۲. ایجاد موفقیت‌های فوری و کوچک: سوالاتی بپرسید که همه بتوانند پاسخ دهند و بلافاصله امتیاز مثبت جمعی یا تشویق کلامی ثبت کنید تا حس توانمندی در کلاس زنده شود.',
+        '۳. پیوند درس با زندگی واقعی: مبحث امروز را با یک داستان کوتاه ملموس یا مثال روزمره آغاز کنید.'
+      ],
+      firstMinuteTip: 'یک نفس عمیق بکشید، با لبخند وارد شوید و بگویید: «امروز می‌خواهیم مبحث را خیلی خلاصه، شیرین و با مشارکت خودتان پیش ببریم.»'
+    },
+    challenging: {
+      title: '⚡ کلاس‌های ناهنجار، چالشی و دارای تنش رفتاری',
+      badge: 'اقتدار آرام، حفظ کرامت و گفت‌وگوی فردی',
+      principles: [
+        '۱. اصل طلایی «تصحیح در خلوت، تشویق در جمع»: هرگز دانش‌آموز چالشی را در برابر جمع کلاس سرزنش یا وارد جدل لفظی نکنید؛ با جمله‌ای کوتاه و محترمانه («عزیزم، آخر زنگ ۲ دقیقه با هم صحبت می‌کنیم») کرامت او و اقتدار خودتان را حفظ کنید.',
+        '۲. شناسایی لیدرهای کلاس و واگذاری مسئولیت: به دانش‌آموزانی که بیشترین نفوذ را در کلاس دارند، مسئولیت‌های مثبت (مانند توزیع برگه‌ها، نوشتن سرخط درس یا مدیریت زمان گروه) بدهید.',
+        '۳. ثبات، آرامش و پیش‌بینی‌پذیری: قوانین کلاس را کوتاه، شفاف و منصفانه نگه دارید و کوچک‌ترین تغییر مثبت رفتاری را دیده و ارج بنهید.'
+      ],
+      firstMinuteTip: 'با آرامش کامل، ارتباط چشمی محترمانه با لیدرهای کلاس برقرار کنید و بدون اشاره به تنش‌های گذشته، جلسه را با یک توافق مثبت و کوتاه آغاز نمایید.'
+    }
+  };
+
+  window.getBeaconButtonHTML = function(sid = null, cid = null, compact = false) {
+    const sArg = sid ? `'${sid}'` : 'currentSchoolId';
+    const cArg = cid ? `'${cid}'` : 'currentClassId';
+    return `
+      <button type="button" class="class-beacon-reminder-btn" onclick="openClassroomGuidanceModal(${sArg}, ${cArg})" title="یادآور اول کلاس و راهنمای هوشمند کلاس‌داری (بر پایه کرامت انسانی)">
+        <span class="class-beacon-lamp" aria-hidden="true"><span class="class-beacon-lamp-core"></span></span>
+        <span>${compact ? '🧭 یادآور کلاس‌داری' : '🧭 یادآور اول کلاس و راهنمای برخورد (کرامت انسانی)'}</span>
+      </button>
+    `;
+  };
+
+  window.openClassroomGuidanceModal = function(sid = null, cid = null, initialTab = 'auto') {
+    const s = findSchool(sid || currentSchoolId) || db.schools?.[0] || null;
+    const c = s ? (findClass(s.id, cid || currentClassId) || s.classes?.[0] || null) : null;
+
+    let detectedType = 'good';
+    let classStatsSummary = 'کلاس عمومی';
+    if (c && Array.isArray(c.students) && c.students.length > 0) {
+      let posSum = 0, negSum = 0, attnCnt = 0, scoreSum = 0, scoreCnt = 0;
+      c.students.forEach(st => {
+        const b = behaviorData(st);
+        posSum += b.positives.length;
+        negSum += b.negatives.length;
+        if (isAutoAttention(c, st)) attnCnt++;
+        const ag = avgGrade(st);
+        if (ag !== null) { scoreSum += ag; scoreCnt++; }
+      });
+      const avg = scoreCnt ? (scoreSum / scoreCnt) : 16;
+      if (negSum >= c.students.length * 0.8 || attnCnt >= Math.max(4, c.students.length * 0.35)) {
+        detectedType = 'challenging';
+      } else if (negSum >= 4) {
+        detectedType = 'noisy';
+      } else if (avg < 13.5 && posSum < 3) {
+        detectedType = 'tired';
+      } else {
+        detectedType = 'good';
+      }
+      classStatsSummary = `🚪 کلاس ${c.name}${c.subject ? ` (📚 درس ${c.subject})` : ''} · 👨‍🎓 ${fa(c.students.length)} نفر · ⭐ میانگین: ${fmtScore(avg)} · ➕${fa(posSum)} / ➖${fa(negSum)} · 🚨 نیازمند توجه: ${fa(attnCnt)} نفر`;
+    }
+
+    const activeKey = (initialTab === 'auto' || !CLASSROOM_GUIDANCE_PRESETS[initialTab]) ? detectedType : initialTab;
+    window._activeClassGuidanceTab = activeKey;
+    window._guidanceModalSid = s?.id || '';
+    window._guidanceModalCid = c?.id || '';
+
+    openModal(formHeader('🧭 راهنمای هوشمند کلاس‌داری و یادآور اول کلاس (بر پایه کرامت انسانی)') + `
+      <div class="dignity-charter-banner">
+        <div>
+          <b style="color:#9A3412;font-size:13px">🌿 منشور تدریس کرامت‌محور در تمام کلاس‌ها:</b>
+          <div style="font-size:11.5px;color:#334155;margin-top:3px">
+            <b>۱. احترام متقابل</b> · <b>۲. توجه فردی</b> · <b>۳. خوب گوش دادن</b> · <b>۴. امنیت روانی</b> · <b>۵. آرامش و اقتدار مهربانانه</b>
+          </div>
+        </div>
+        <span class="chip" style="background:#EA580C;color:#fff;font-size:10.5px">${esc(classStatsSummary)}</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:10px" id="classGuidanceTabsBar">
+        <button type="button" class="btn ${activeKey === 'good' ? 'primary' : 'soft'} btn-sm" data-gtab="good" onclick="switchClassroomGuidanceTab('good')">🌟 کلاس خوب و پرانرژی</button>
+        <button type="button" class="btn ${activeKey === 'noisy' ? 'primary' : 'soft'} btn-sm" data-gtab="noisy" onclick="switchClassroomGuidanceTab('noisy')">📢 کلاس شلوغ و پرحرف</button>
+        <button type="button" class="btn ${activeKey === 'tired' ? 'primary' : 'soft'} btn-sm" data-gtab="tired" onclick="switchClassroomGuidanceTab('tired')">😴 کلاس خسته و کم‌انگیزه</button>
+        <button type="button" class="btn ${activeKey === 'challenging' ? 'primary' : 'soft'} btn-sm" data-gtab="challenging" onclick="switchClassroomGuidanceTab('challenging')">⚡ کلاس ناهنجار و چالشی</button>
+      </div>
+
+      <div id="classGuidancePresetBody"></div>
+
+      <div class="card" style="margin-top:10px;background:var(--bg-panel);border:1.5px solid #FDBA74">
+        <b style="color:var(--primary);font-size:12.5px;display:block;margin-bottom:6px">🤖 مشاوره اختصاصی هوش مصنوعی برای چالش لحظه‌ای کلاس شما:</b>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <input id="customClassChallengeInp" placeholder="مثلاً: دو نفر در ردیف آخر مدام صحبت می‌کنند / کلاس بعد از زنگ ورزش بی‌قرار است..." style="flex:1;min-width:190px;font-size:12px">
+          <button type="button" class="btn primary btn-sm" id="btnAskAiClassGuidance" onclick="askAiForClassroomGuidance()">✨ دریافت راهکار فوری</button>
+        </div>
+        <div id="aiCustomClassGuidanceBox" class="dignity-psych-advice-box" style="display:none;margin-top:8px"></div>
+      </div>
+
+      <div class="formactions">
+        <button type="button" class="btn primary" onclick="closeModal()">✅ مرور شد، شروع کلاس با آرامش</button>
+      </div>
+    `);
+
+    window.switchClassroomGuidanceTab(activeKey);
+  };
+
+  window.switchClassroomGuidanceTab = function(tabKey) {
+    window._activeClassGuidanceTab = tabKey;
+    document.querySelectorAll('#classGuidanceTabsBar button').forEach(b => {
+      const isAct = b.getAttribute('data-gtab') === tabKey;
+      b.className = `btn ${isAct ? 'primary' : 'soft'} btn-sm`;
+    });
+    const preset = CLASSROOM_GUIDANCE_PRESETS[tabKey] || CLASSROOM_GUIDANCE_PRESETS.good;
+    const body = document.getElementById('classGuidancePresetBody');
+    if (!body) return;
+    body.innerHTML = `
+      <div class="card" style="border:2px solid #F97316;background:#FFFBF5">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+          <b style="font-size:14px;color:#9A3412">${preset.title}</b>
+          <span class="chip" style="background:#FFEDD5;color:#C2410C;border-color:#FDBA74">${preset.badge}</span>
+        </div>
+        <div style="background:#DCFCE7;border:1.5px solid #86EFAC;color:#14532D;padding:8px 11px;border-radius:10px;font-size:12px;font-weight:800;margin-bottom:8px">
+          💡 یادآور ۳۰ ثانیه اول ورود به کلاس: ${preset.firstMinuteTip}
+        </div>
+        <div style="display:grid;gap:6px">
+          ${preset.principles.map(p => `<div style="padding:8px 10px;background:#FFFFFF;border:1px solid #FED7AA;border-radius:10px;font-size:12px;line-height:1.75;color:#1E293B">${p}</div>`).join('')}
+        </div>
+      </div>
+    `;
+  };
+
+  window.askAiForClassroomGuidance = async function() {
+    const inp = document.getElementById('customClassChallengeInp');
+    const outBox = document.getElementById('aiCustomClassGuidanceBox');
+    const btn = document.getElementById('btnAskAiClassGuidance');
+    const c = findClass(window._guidanceModalSid, window._guidanceModalCid);
+    const challenge = (inp?.value || '').trim() || `نحوه برخورد تربیتی و آرامش‌بخش با ${CLASSROOM_GUIDANCE_PRESETS[window._activeClassGuidanceTab]?.title || 'کلاس'}`;
+
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '⏳ در حال تدوین راهکار...';
+    }
+    if (outBox) {
+      outBox.style.display = 'block';
+      outBox.innerHTML = '⏳ در حال تحلیل موقعیت کلاس بر پایه روانشناسی تربیتی و کرامت انسانی...';
+    }
+
+    try {
+      const prompt = `تو یک استاد برجسته روانشناسی تربیتی و مدیریت کلاس در مدارس ایران هستی.
+اصل بنیادین تو «کرامت انسانی، احترام متقابل، توجه، خوب گوش دادن، امنیت روانی و آرامش» است.
+کلاس: ${c ? `${c.name} (پایه ${c.grade || 'متوسطه'} - درس ${c.subject || 'عمومی'})` : 'کلاس درسی'}
+موضوع یا چالش مطرح‌شده توسط معلم: «${challenge}»
+
+در ۳ گام کوتاه، عملی، محترمانه و دقیق بگو معلم همین الان در کلاس چه جمله‌ای بگوید و چه رفتاری انجام دهد تا بدون تنش و با حفظ کامل کرامت دانش‌آموزان، آرامش و تمرکز به کلاس بازگردد:`;
+
+      const raw = await ExamApp.callArgonAI(prompt, []);
+      const clean = window.repairSpacedPersianText(String(raw || '').replace(/[\*\#\`]/g, '').trim());
+      if (outBox) {
+        outBox.innerHTML = `<b style="color:#9A3412;display:block;margin-bottom:4px">✨ راهکار اختصاصی هوش مصنوعی برای شما:</b><div style="white-space:pre-line">${esc(clean)}</div>`;
+      }
+    } catch (_) {
+      if (outBox) {
+        outBox.innerHTML = `<b style="color:#9A3412;display:block;margin-bottom:4px">✨ راهکار عملی کرامت‌محور:</b>۱. ابتدا با مکث آرام و لحن محترمانه توجه را جلب کنید و از هرگونه تذکر جمعی پرهیز نمایید.\n۲. با یک پرسش کوتاه مشارکتی یا تغییر ریتم تدریس، انرژی کلاس را به سمت فعالیت هدایت کنید.\n۳. پس از کلاس، در گفت‌وگوی ۲ دقیقه‌ای خصوصی، با خوب گوش دادن به دانش‌آموز، توافق مثبتی برای جلسه بعد بسازید.`;
+      }
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '✨ دریافت راهکار فوری';
+      }
+    }
+  };
+
+
+  /* ==========================================================================================
+     بخش ۴: ارتقای نمای کلاس (`openClass`) و لیست سریع (`renderTodayListInner`)
+     ========================================================================================== */
+  const _origOpenClassV82 = window.openClass;
+  window.openClass = function(sid, cid) {
+    window.withPreservedScroll(() => {
+      _origOpenClassV82(sid, cid);
+      const s = findSchool(sid);
+      const c = findClass(sid, cid);
+      if (!s || !c) return;
+
+      if (window.ExamApp && ExamApp.state?.header) {
+        if (s.name) ExamApp.state.header.school = s.name;
+        if (c.grade) ExamApp.state.header.grade = c.grade;
+        if (c.subject) ExamApp.state.header.subject = c.subject;
+        ExamApp.syncHeaderToInputs?.();
+      }
+
+      const subEl = document.querySelector('#classMainView .detailhead .school-head .muted');
+      if (subEl) {
+        subEl.innerHTML = `${esc(s.name)} · پایه ${esc(c.grade || '—')}${c.subject ? ` · <b style="color:#C2410C">📚 درس: ${esc(c.subject)}</b>` : ''}`;
+      }
+
+      const detailHead = document.querySelector('#classMainView .detailhead');
+      if (detailHead && !detailHead.querySelector('.v82-class-top-strip')) {
+        const strip = document.createElement('div');
+        strip.className = 'v82-class-top-strip';
+        strip.style.cssText = 'display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin:8px 0;padding:7px 10px;border-radius:12px;background:#FFF7ED;border:1px solid #FDBA74';
+        strip.innerHTML = `
+          ${window.getBeaconButtonHTML(sid, cid, false)}
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <button type="button" class="btn soft btn-sm" onclick="openTransparentReportModal('class','${sid}','${cid}')">📊 گزارش شفاف این کلاس</button>
+            <button type="button" class="btn gray btn-sm" onclick="editClass('${sid}','${cid}')">📚 نام درس / ویرایش</button>
+          </div>
+        `;
+        const firstActions = detailHead.querySelector('.actions');
+        if (firstActions) {
+          detailHead.insertBefore(strip, firstActions);
+        } else {
+          detailHead.appendChild(strip);
+        }
+      }
+    });
+  };
+
+  const _origRenderTodayListInnerV82 = window.renderTodayListInner;
+  window.renderTodayListInner = function(sid, cid) {
+    return window.withPreservedScroll(() => {
+      _origRenderTodayListInnerV82(sid, cid);
+      const c = findClass(sid, cid);
+      const container = document.getElementById('classTodayListContainer');
+      if (!container || !c) return;
+
+      const topBar = container.firstElementChild;
+      if (topBar && !topBar.querySelector('.class-beacon-reminder-btn')) {
+        const beaconWrap = document.createElement('div');
+        beaconWrap.style.cssText = 'width:100%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:6px 10px;border-radius:12px;background:#FFF7ED;border:1px solid #FDBA74;margin-bottom:6px';
+        beaconWrap.innerHTML = `
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            ${window.getBeaconButtonHTML(sid, cid, true)}
+            <span style="font-size:11.5px;font-weight:800;color:#9A3412">🚪 ${esc(c.name)}${c.subject ? ` · 📚 درس ${esc(c.subject)}` : ''}</span>
+          </div>
+          <button type="button" class="btn soft btn-sm" style="height:28px;padding:0 9px;font-size:11px" onclick="openTransparentReportModal('class','${sid}','${cid}')">📊 گزارش شفاف کلاس</button>
+        `;
+        container.insertBefore(beaconWrap, topBar);
+      }
+    });
+  };
+
+  ['inlAtt', 'inlScore', 'saveAttendanceGrade', 'inlToggleHomeworkStatus'].forEach(fnName => {
+    if (typeof window[fnName] === 'function') {
+      const _origFn = window[fnName];
+      window[fnName] = function(...args) {
+        return window.withPreservedScroll(() => _origFn.apply(this, args));
+      };
+    }
+  });
+
+
+  /* ==========================================================================================
+     بخش ۵: راه‌اندازی یکپارچه نسخه v8.2.0 Pro
+     ========================================================================================== */
+  const bootV82 = () => {
+    try {
+      const dashStrip = document.getElementById('dashQuickStrip');
+      if (dashStrip && !dashStrip.querySelector('#dashBeaconGuidancePill')) {
+        const beaconPill = document.createElement('button');
+        beaconPill.type = 'button';
+        beaconPill.id = 'dashBeaconGuidancePill';
+        beaconPill.className = 'class-beacon-reminder-btn';
+        beaconPill.onclick = () => window.openClassroomGuidanceModal();
+        beaconPill.innerHTML = `<span class="class-beacon-lamp"><span class="class-beacon-lamp-core"></span></span><span>🧭 راهنمای هوشمند کلاس‌داری (کرامت انسانی)</span>`;
+        dashStrip.prepend(beaconPill);
+
+        const repPill = document.createElement('button');
+        repPill.type = 'button';
+        repPill.className = 'dash-q-pill';
+        repPill.style.cssText = 'border-color:#EA580C;background:#FFF7ED;color:#C2410C;font-weight:900';
+        repPill.onclick = () => window.openTransparentReportModal('all');
+        repPill.innerHTML = '📊 گزارش‌های شفاف ۴سطحی (دانش‌آموز/کلاس/مدرسه/کل)';
+        dashStrip.insertBefore(repPill, beaconPill.nextSibling);
+      }
+
+      const stSec = document.getElementById('statuses');
+      if (stSec && !stSec.querySelector('#statusesDignityBanner')) {
+        const banner = document.createElement('div');
+        banner.id = 'statusesDignityBanner';
+        banner.className = 'dignity-charter-banner';
+        banner.innerHTML = `
+          <div>
+            <b style="color:#9A3412;font-size:12.5px">🌿 پایش وضعیت و مشاوره تربیتی بر پایه کرامت انسانی</b>
+            <div style="font-size:11px;color:#475569;margin-top:2px">برای هر دانش‌آموز، راهکار اختصاصی ۲ تا ۳ خطی علمی و روانشناختی (مبتنی بر احترام، توجه، خوب گوش دادن، امنیت و آرامش) زیر کارت او درج شده است.</div>
+          </div>
+          ${window.getBeaconButtonHTML(null, null, true)}
+        `;
+        const statsEl = stSec.querySelector('.stats');
+        if (statsEl) stSec.insertBefore(banner, statsEl);
+      }
+
+      const subnav = document.querySelector('#examView .exam-subnav');
+      if (subnav) {
+        subnav.querySelectorAll('.ex-nav-btn').forEach(btn => {
+          const oc = btn.getAttribute('onclick') || '';
+          if (oc.includes("'manual'")) {
+            btn.innerHTML = '<span>⚡</span><span>آزمون دسته‌متن خودکار</span>';
+          }
+        });
+      }
+
+      if (window.ExamApp) {
+        ExamApp.renderDynamicBranchesBar();
+        ExamApp.applyZoomScale();
+      }
+    } catch (e) {
+      console.warn('v8.2 init warning:', e);
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV82, 140));
+  } else {
+    setTimeout(bootV82, 140);
   }
 
 })();
