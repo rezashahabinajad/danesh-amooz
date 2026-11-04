@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.3</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.4</span>
         </div>
       </div>
     </div>
@@ -6234,7 +6234,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.3 Pro</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.4 Pro</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -33037,6 +33037,2184 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2600)}\n---\n` : ''}
 
 })();
 </script>
+
+<!-- ==================== START V8.4.0 PRO MASTER UPGRADE ==================== -->
+<style id="v84MasterProStyle">
+/* ۱. اصلاح قطعی دکمه بستن (×) در تمام مودال‌ها تا هرگز بیضی عمودی یا کشیده نشود */
+#sheet .sheethead,
+.modal .sheethead,
+.sheethead {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  margin-bottom: 12px !important;
+}
+#sheet .sheethead h2,
+.sheethead h2 {
+  flex: 1 1 auto !important;
+  margin: 0 !important;
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  font-weight: 900 !important;
+}
+#sheet .sheethead .close,
+.sheethead .close,
+button.close {
+  flex: 0 0 36px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  max-width: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  line-height: 1 !important;
+  font-size: 20px !important;
+  font-weight: 900 !important;
+  cursor: pointer !important;
+}
+
+/* ۲. رفع کامل بیرون‌زدگی بج هوش مصنوعی و بریده‌شدن تب‌های بخش آموزش (#teachView) */
+#teachView .auto-ai-master-banner > div:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 8px !important;
+}
+#teachView .auto-ai-master-banner > div:first-child > div:last-child {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 6px !important;
+  width: 100% !important;
+}
+#teachAiStatusBadge {
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  line-height: 1.35 !important;
+  font-size: 11px !important;
+  padding: 4px 10px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+#teachView .teach-workbench-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  overflow: visible !important;
+  padding: 6px !important;
+  border-radius: 14px !important;
+  background: #FFF7ED !important;
+  border: 1.5px solid #FED7AA !important;
+}
+#teachView .teach-workbench-tabs .teach-wb-tab {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 8px 6px !important;
+  font-size: 11.5px !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-align: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+}
+#teachView .teach-workbench-tabs #wbTabBtn-solve {
+  grid-column: 1 / -1 !important;
+  font-size: 12.5px !important;
+  font-weight: 900 !important;
+}
+@media (min-width: 640px) {
+  #teachView .teach-workbench-tabs {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+  #teachView .teach-workbench-tabs #wbTabBtn-solve {
+    grid-column: auto !important;
+  }
+}
+#teachView .teach-wb-pane > div:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 8px !important;
+}
+#teachView .teach-wb-pane > div:first-child > div {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  width: 100% !important;
+}
+#teachView .teach-wb-pane > div:first-child > div > .btn {
+  flex: 1 1 140px !important;
+  justify-content: center !important;
+}
+#teacherPdfStage {
+  background: #FFFBF5 !important;
+  border: 1.5px solid #FED7AA !important;
+  border-radius: 14px !important;
+}
+
+/* ۳. رفع بریده‌شدن دسته‌بندی‌های وضعیت در نمای #statuses */
+#statuses .attn-cat-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  overflow: visible !important;
+  padding-bottom: 4px !important;
+}
+#statuses .attn-cat-pill {
+  width: 100% !important;
+  min-width: 0 !important;
+  justify-content: space-between !important;
+  padding: 7px 8px !important;
+  font-size: 11px !important;
+  white-space: nowrap !important;
+}
+
+/* ۴. استایل شیک، جمع‌وجور و شبیه لیست کلاسی برای مرکز گزارش‌های ۴سطحی (ReportApp) */
+.rep-v84-scope-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 5px !important;
+  margin-bottom: 10px !important;
+}
+.rep-v84-scope-btn {
+  padding: 7px 4px !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  border-radius: 10px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-align: center !important;
+  border: 1.5px solid #FED7AA !important;
+  background: #FFFFFF !important;
+  color: #9A3412 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+.rep-v84-scope-btn.active {
+  background: linear-gradient(135deg, #EA580C, #F97316) !important;
+  color: #FFFFFF !important;
+  border-color: #C2410C !important;
+  box-shadow: 0 3px 10px rgba(234, 88, 12, 0.25) !important;
+}
+.rep-v84-col-toggles {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 5px !important;
+  margin: 8px 0 10px !important;
+  padding: 8px !important;
+  background: #FFFBF5 !important;
+  border: 1px dashed #FDBA74 !important;
+  border-radius: 12px !important;
+}
+@media (max-width: 390px) {
+  .rep-v84-col-toggles {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+.rep-v84-col-chip {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  color: #334155 !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 8px !important;
+  padding: 5px 6px !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.rep-v84-col-chip input[type="checkbox"] {
+  width: 14px !important;
+  height: 14px !important;
+  margin: 0 !important;
+  accent-color: #EA580C !important;
+  flex-shrink: 0 !important;
+}
+.rep-v84-col-chip.checked {
+  border-color: #F97316 !important;
+  background: #FFF7ED !important;
+  color: #9A3412 !important;
+}
+/* حذف اسکرول تودرتو در پنجره گزارش تا لیست کلاسی بلافاصله و کامل دیده شود */
+#repModalLivePreviewWrap {
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 4px 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.rep-classlist-card {
+  background: #FFFFFF;
+  border: 1.5px solid #FED7AA;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+}
+.rep-classlist-head {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+  border-bottom: 1.5px solid #FED7AA;
+  padding: 8px 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rep-classlist-kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+.rep-kpi-mini {
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 1px solid #FDBA74;
+  color: #9A3412;
+  white-space: nowrap;
+}
+.rep-clean-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.rep-clean-table th {
+  background: #EA580C;
+  color: #FFFFFF;
+  font-weight: 900;
+  padding: 6px 5px;
+  border: 1px solid #FB923C;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 10.5px;
+}
+.rep-clean-table td {
+  padding: 5px 5px;
+  border: 1px solid #E2E8F0;
+  vertical-align: middle;
+  font-size: 11px;
+}
+
+/* ۵. استایل دقیق و پیکسلی ساعت و هشدار شیائومی (Xiaomi MIUI / HyperOS Clock & Alarm) */
+.xm-clock-modal-shell {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border-radius: 26px !important;
+  padding: 18px 16px 14px !important;
+  font-family: 'Vazirmatn', Tahoma, sans-serif !important;
+  direction: rtl !important;
+  position: relative !important;
+  min-height: 540px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75) !important;
+  border: 1px solid #222224 !important;
+}
+.xm-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 4px 8px;
+}
+.xm-top-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin: 0;
+}
+.xm-top-dots-btn {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 22px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.xm-hero-countdown {
+  text-align: center;
+  margin: 22px 0 26px;
+  padding: 0 10px;
+}
+.xm-hero-countdown-text {
+  font-size: 24px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.45;
+  letter-spacing: -0.2px;
+}
+.xm-sec-label {
+  font-size: 13px;
+  color: #8A8A8E;
+  margin: 10px 6px 8px;
+  font-weight: 500;
+}
+.xm-alarm-card {
+  background: #1C1C1E;
+  border-radius: 24px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.xm-alarm-card:active {
+  transform: scale(0.985);
+  background: #262629;
+}
+.xm-alarm-time {
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #787880;
+  letter-spacing: 0.5px;
+}
+.xm-alarm-card.active-alarm .xm-alarm-time {
+  color: #FFFFFF;
+}
+.xm-alarm-sub {
+  font-size: 13px;
+  color: #787880;
+  margin-top: 5px;
+  font-weight: 400;
+}
+.xm-alarm-card.active-alarm .xm-alarm-sub {
+  color: #A1A1AA;
+}
+/* کلید کپسولی شیائومی در سمت چپ کارت */
+.xm-switch {
+  width: 52px;
+  height: 28px;
+  border-radius: 999px;
+  background: #3A3A3C;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.22s ease;
+  flex-shrink: 0;
+  border: none;
+  padding: 0;
+}
+.xm-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+.xm-switch.on {
+  background: #3B82F6;
+}
+.xm-switch.on::after {
+  transform: translateX(-24px);
+}
+/* دکمه شناور + آبی در پایین سمت چپ */
+.xm-fab-plus {
+  position: sticky;
+  bottom: 66px;
+  float: left;
+  margin-left: 8px;
+  margin-top: -64px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #2C2C2E;
+  color: #4C8DF6;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 34px;
+  font-weight: 300;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+  z-index: 15;
+  line-height: 1;
+}
+.xm-fab-plus:active {
+  transform: scale(0.93);
+}
+/* نوار ۴ تب پایین شیائومی */
+.xm-bottom-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  padding-top: 12px;
+  margin-top: 14px;
+  border-top: 1px solid #1C1C1E;
+  background: #000000;
+}
+.xm-nav-item {
+  background: transparent;
+  border: none;
+  color: #787880;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 6px 2px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.xm-nav-item svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+.xm-nav-item span {
+  font-size: 11px;
+  font-weight: 500;
+}
+.xm-nav-item.active {
+  color: #FFFFFF;
+}
+</style>
+
+<script id="v84MasterProScript">
+(function() {
+  'use strict';
+
+  /* ==========================================================================================
+     بخش ۱: اصلاح نام معلم (حذف خودکار عبارت اضافه «معلم شما» از نام دبیر) و اصلاح برچسب هوش‌واره
+     ========================================================================================== */
+  const _cleanTeacherNameStr = function(raw) {
+    let s = String(raw || '').replace(/\s*معلم شما\s*/g, ' ').replace(/\s+/g, ' ').trim();
+    return s || 'رضا شهابی نژاد';
+  };
+
+  try {
+    const savedTName = localStorage.getItem('teacher_name');
+    if (savedTName && savedTName.includes('معلم شما')) {
+      localStorage.setItem('teacher_name', _cleanTeacherNameStr(savedTName));
+    }
+  } catch (_) {}
+
+  window.getTeacherName = function() {
+    const raw = localStorage.getItem('teacher_name');
+    return _cleanTeacherNameStr(raw);
+  };
+
+  if (window.TeachAssistant) {
+    TeachAssistant.updateTeachAiStatusUI = function() {
+      const badge = document.getElementById('teachAiStatusBadge');
+      const hint = document.getElementById('teachAiStatusHint');
+      const inp = document.getElementById('teachInlineApiKeyInp');
+      const key = (window.ExamApp?.state?.apiKey || '').trim();
+      if (inp && inp.value !== key) inp.value = key;
+      const info = window.ExamApp ? ExamApp.detectProvider(key) : null;
+      if (badge) {
+        badge.innerHTML = info
+          ? `🟢 هوش‌واره اختصاصی متصل`
+          : `🟢 موتور هوشمند دیداری فعال`;
+        badge.style.color = 'var(--neon-green)';
+      }
+      if (hint) {
+        hint.textContent = 'الگوریتم دیداری و متنی آزمون‌ساز روی صفحه کتاب فعال است — حل تمرین‌ها، سوالات خط‌به‌خط و جزوه با ۱ کلیک';
+      }
+    };
+  }
+
+
+  /* ==========================================================================================
+     بخش ۲: موتور یکپارچه گزارش‌گیری و کارنامه ۴سطحی به سبک آزمون‌ساز (ReportApp)
+     - ادغام گزارش وضعیت‌ها (#statuses)، گزارش کلاس، مدرسه، دانش‌آموز و کل مدارس
+     - امکان تیک‌زدن/برداشتن تیک هر ستون (تلفن، وضعیت، نام پدر، غیبت، مستمر، مثبت/منفی، پایانی، توصیه)
+     - طراحی شیک، تمیز و جمع‌وجور شبیه لیست کلاسی (بدون باکس‌های بزرگ و زمخت)
+     ========================================================================================== */
+  window.ReportApp = {
+    storageKey: 'danesh_report_app_state_v84',
+    state: {
+      scope: 'class',       // 'student' | 'class' | 'school' | 'all'
+      sid: '',
+      cid: '',
+      stid: '',
+      statusFilter: 'all',  // 'all' | 'good' | 'attn_all' | 'attn_academic' | 'attn_discipline' | 'attn_medical' | 'attn_absence' | 'attn_counseling'
+      splitMode: 'separate_sections',
+      theme: 'orange',
+      cols: {
+        photo: true,
+        father: true,
+        phone: false,
+        att: true,
+        cont: true,
+        beh: true,
+        term: true,
+        status: true,
+        advice: false
+      }
+    },
+
+    loadState() {
+      try {
+        const raw = localStorage.getItem(this.storageKey);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === 'object') {
+            this.state = {
+              ...this.state,
+              ...parsed,
+              cols: { ...this.state.cols, ...(parsed.cols || {}) }
+            };
+          }
+        }
+      } catch (_) {}
+    },
+
+    saveState() {
+      try {
+        localStorage.setItem(this.storageKey, JSON.stringify(this.state));
+      } catch (_) {}
+      this.syncToLegacyCheckboxes();
+    },
+
+    syncToLegacyCheckboxes() {
+      const c = this.state.cols;
+      const map = {
+        expColMeta: Boolean(c.father || c.phone),
+        expColAtt: Boolean(c.att),
+        expColContGrades: Boolean(c.cont),
+        expColBeh: Boolean(c.beh),
+        expColTerm: Boolean(c.term),
+        expColAttn: Boolean(c.status || c.advice)
+      };
+      Object.keys(map).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.checked = map[id];
+      });
+    },
+
+    ensureValidTargets(prefScope = null, prefSid = null, prefCid = null, prefStid = null, prefStatusFilter = null) {
+      if (prefScope) this.state.scope = prefScope;
+      if (prefStatusFilter) this.state.statusFilter = prefStatusFilter;
+
+      const schools = db.schools || [];
+      let sid = prefSid || this.state.sid || currentSchoolId || schools[0]?.id || '';
+      if (!schools.some(s => s.id === sid)) sid = schools[0]?.id || '';
+      this.state.sid = sid;
+
+      const sObj = findSchool(sid) || schools[0] || null;
+      const classes = sObj?.classes || [];
+      let cid = prefCid || this.state.cid || currentClassId || classes[0]?.id || '';
+      if (!classes.some(c => c.id === cid)) cid = classes[0]?.id || '';
+      this.state.cid = cid;
+
+      const cObj = sObj ? (findClass(sObj.id, cid) || classes[0] || null) : null;
+      const students = sortStudents(cObj?.students || []);
+      let stid = prefStid || this.state.stid || currentStudentId || students[0]?.id || '';
+      if (!students.some(st => st.id === stid)) stid = students[0]?.id || '';
+      this.state.stid = stid;
+    },
+
+    collectData(overrideOpts = null) {
+      const scope = overrideOpts?.scope || this.state.scope || 'class';
+      const schools = db.schools || [];
+      let sid = overrideOpts?.sid !== undefined ? overrideOpts.sid : this.state.sid;
+      if (!sid || !schools.some(s => s.id === sid)) sid = currentSchoolId || schools[0]?.id || '';
+
+      const sForCid = findSchool(sid) || schools[0] || null;
+      let cid = overrideOpts?.cid !== undefined ? overrideOpts.cid : this.state.cid;
+      if (!cid || !(sForCid?.classes || []).some(c => c.id === cid)) {
+        cid = currentClassId || sForCid?.classes?.[0]?.id || '';
+      }
+
+      const cForStid = sForCid ? (findClass(sForCid.id, cid) || sForCid.classes?.[0] || null) : null;
+      let stid = overrideOpts?.stid !== undefined ? overrideOpts.stid : this.state.stid;
+      if (!stid || !(cForStid?.students || []).some(st => st.id === stid)) {
+        stid = currentStudentId || sortStudents(cForStid?.students || [])[0]?.id || '';
+      }
+
+      const statusFilter = overrideOpts?.statusFilter || this.state.statusFilter || 'all';
+      const sections = [];
+      let totalStudents = 0;
+
+      schools.forEach(s => {
+        if ((scope === 'school' || scope === 'class' || scope === 'student') && s.id !== sid) return;
+        (s.classes || []).forEach(c => {
+          if ((scope === 'class' || scope === 'student') && c.id !== cid) return;
+          const matchedStudents = [];
+          sortStudents(c.students || []).forEach(st => {
+            if (scope === 'student' && st.id !== stid) return;
+            const det = window.getStudentAttentionDetails
+              ? window.getStudentAttentionDetails(c, st)
+              : { isAttn: isAutoAttention(c, st), categories: [], badges: [], attnNote: '' };
+
+            if (statusFilter === 'good' && (det.isAttn || st.status !== 'good')) return;
+            if (statusFilter === 'none' && (det.isAttn || st.status === 'good')) return;
+            if (statusFilter === 'attn_all' && !det.isAttn) return;
+            if (statusFilter.startsWith('attn_') && statusFilter !== 'attn_all') {
+              const reqCat = statusFilter.replace('attn_', '');
+              if (!(det.categories || []).includes(reqCat)) return;
+            }
+
+            const absCnt = attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+            const contSc = typeof getStudentWrittenContScore === 'function' ? getStudentWrittenContScore(c, st) : null;
+            const avgSc = avgGrade(st);
+            const termSc = (c.termScores?.[st.id] !== undefined && c.termScores[st.id] !== '') ? Number(c.termScores[st.id]) : null;
+            const finalSc = calculateFinalStudentScore(c, st);
+            const bt = behaviorTotals(st);
+
+            matchedStudents.push({ st, det, absCnt, contSc, avgSc, termSc, finalSc, bt });
+            totalStudents++;
+          });
+
+          if (matchedStudents.length) {
+            sections.push({ school: s, cls: c, items: matchedStudents });
+          }
+        });
+      });
+
+      return { scope, sid, cid, stid, statusFilter, sections, totalStudents };
+    },
+
+    buildClassListStyleHTML(res, forExcel = false) {
+      const cols = this.state.cols;
+      const themeKey = this.state.theme || document.getElementById('expColorTheme')?.value || 'orange';
+      const pal = (typeof EXPORT_COLOR_PALETTES !== 'undefined' && EXPORT_COLOR_PALETTES[themeKey])
+        ? EXPORT_COLOR_PALETTES[themeKey]
+        : { primary: '#EA580C', primaryDark: '#9A3412', lightBg: '#FFF7ED', border: '#FDBA74', thBg: '#EA580C', thText: '#FFFFFF', zebra: '#FFFBF5', gradStart: '#EA580C', gradEnd: '#F97316' };
+
+      if (res.scope === 'student' && res.totalStudents === 1 && typeof window.buildSingleStudentVibrantHTML === 'function') {
+        return window.buildSingleStudentVibrantHTML(res.sections[0].school, res.sections[0].cls, res.sections[0].items[0], forExcel);
+      }
+
+      const statusFilterLabels = {
+        all: 'همه دانش‌آموزان',
+        good: '🟢 وضعیت خوب و برتر',
+        none: '⚪ وضعیت عادی',
+        attn_all: '🔴 نیازمند توجه (همه دسته‌ها)',
+        attn_academic: '📉 نیازمند توجه: درسی و آموزشی',
+        attn_discipline: '⚠️ نیازمند توجه: انضباطی و رفتاری',
+        attn_medical: '🏥 نیازمند توجه: بیماری و سلامت',
+        attn_absence: '📅 نیازمند توجه: غیبت مکرر',
+        attn_counseling: '💜 نیازمند توجه: روحی و مشاوره'
+      };
+      const filterLabel = statusFilterLabels[res.statusFilter] || 'همه دانش‌آموزان';
+
+      const buildSectionCard = (sec, sIdx, includeSchoolCol) => {
+        const items = sec.items || [];
+        let sumFinal = 0, cntFinal = 0, attnCnt = 0, posCnt = 0, negCnt = 0, absTotal = 0;
+        items.forEach(it => {
+          if (Number.isFinite(Number(it.finalSc))) { sumFinal += Number(it.finalSc); cntFinal++; }
+          if (it.det?.isAttn) attnCnt++;
+          posCnt += (it.st?.behavior?.positives?.length || 0);
+          negCnt += (it.st?.behavior?.negatives?.length || 0);
+          absTotal += (Number(it.absCnt) || 0);
+        });
+        const classAvg = cntFinal ? (sumFinal / cntFinal) : 0;
+        const cleanClsName = window.cleanClassDisplayName ? window.cleanClassDisplayName(sec.cls.name) : sec.cls.name;
+        const subjTxt = sec.cls.subject ? ` · 📚 درس: ${esc(sec.cls.subject)}` : '';
+        const gradeTxt = sec.cls.grade ? ` (${esc(sec.cls.grade)})` : '';
+
+        const headers = ['ردیف'];
+        if (includeSchoolCol) headers.push('مدرسه / کلاس');
+        headers.push('دانش‌آموز');
+        if (cols.father) headers.push('نام پدر');
+        if (cols.phone) headers.push('تلفن تماس');
+        if (cols.att) headers.push('غیبت');
+        if (cols.cont) headers.push('مستمر');
+        if (cols.beh) headers.push('مثبت / منفی');
+        if (cols.term) headers.push('پایانی', 'نمره نهایی');
+        if (cols.status) headers.push('وضعیت');
+        if (cols.advice) headers.push('توصیه تربیتی');
+
+        const rowsHtml = items.map((it, idx) => {
+          const { st, det, absCnt, contSc, avgSc, termSc, finalSc, bt } = it;
+          const rowBg = det.isAttn ? '#FFF5F5' : (idx % 2 === 1 ? pal.zebra : '#FFFFFF');
+          const fullName = `${st.lastName || ''} ${st.name || ''}`.trim();
+          const initials = (st.lastName || st.name || 'د').slice(0, 1);
+
+          const studentCellHtml = (!forExcel && cols.photo)
+            ? `<div style="display:flex;align-items:center;gap:6px">
+                 <span style="width:24px;height:24px;border-radius:50%;border:1px solid #FDBA74;background:#FFF7ED;color:#C2410C;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;overflow:hidden;flex-shrink:0">
+                   ${st.photo ? `<img src="${st.photo}" style="width:100%;height:100%;object-fit:cover">` : esc(initials)}
+                 </span>
+                 <b style="font-size:11.5px;color:#0F172A;white-space:nowrap">${esc(fullName)}</b>
+               </div>`
+            : `<b style="font-size:11.5px;color:#0F172A">${esc(fullName)}</b>`;
+
+          const effCont = avgSc !== null ? avgSc : contSc;
+          const finalColor = Number(finalSc) >= 17 ? '#15803D' : (Number(finalSc) < 12 ? '#B91C1C' : '#0F172A');
+          const finalBg = Number(finalSc) >= 17 ? '#DCFCE7' : (Number(finalSc) < 12 ? '#FEE2E2' : '#FFF7ED');
+
+          let statusBadgeHtml = '';
+          if (det.isAttn) {
+            const labels = (det.badges || []).map(b => b.label).join('، ') || 'نیازمند توجه';
+            statusBadgeHtml = `<span style="display:inline-block;padding:2px 6px;border-radius:99px;background:#FFE4E6;color:#BE123C;border:1px solid #FDA4AF;font-size:9.5px;font-weight:800">${esc(labels)}</span>`;
+          } else if (st.status === 'good') {
+            statusBadgeHtml = `<span style="display:inline-block;padding:2px 6px;border-radius:99px;background:#DCFCE7;color:#15803D;border:1px solid #86EFAC;font-size:9.5px;font-weight:800">🟢 خوب</span>`;
+          } else {
+            statusBadgeHtml = `<span style="color:#64748B;font-size:10px">عادی</span>`;
+          }
+
+          const adviceTxt = cols.advice ? window.generateStudentDignityAdvice(it._c || sec.cls, st, det) : '';
+
+          return `<tr style="background-color:${rowBg}">
+            <td style="text-align:center;font-weight:900;color:${pal.primaryDark};background:${pal.lightBg};width:28px">${fa(idx + 1)}</td>
+            ${includeSchoolCol ? `<td style="font-size:10px"><b>${esc(it._c ? (window.cleanClassDisplayName ? window.cleanClassDisplayName(it._c.name) : it._c.name) : cleanClsName)}</b><br><span style="color:#64748B">${esc(it._s?.name || sec.school.name)}</span></td>` : ''}
+            <td style="padding:5px 7px">${studentCellHtml}</td>
+            ${cols.father ? `<td style="text-align:center;color:#334155">${esc(st.fatherName || '—')}</td>` : ''}
+            ${cols.phone ? `<td dir="ltr" style="text-align:center;font-family:monospace;font-size:10.5px">${st.phone ? fa(st.phone) : '—'}</td>` : ''}
+            ${cols.att ? `<td style="text-align:center;font-weight:800;color:${absCnt >= 3 ? '#B91C1C' : (absCnt > 0 ? '#B45309' : '#15803D')}">${absCnt === 0 ? '۰' : fa(absCnt)}</td>` : ''}
+            ${cols.cont ? `<td style="text-align:center;font-weight:800">${effCont !== null ? fmtScore(effCont) : '—'}</td>` : ''}
+            ${cols.beh ? `<td style="text-align:center;white-space:nowrap"><span style="color:#15803D;font-weight:900">+${fa(st.behavior?.positives?.length || 0)}</span> / <span style="color:#B91C1C;font-weight:900">-${fa(st.behavior?.negatives?.length || 0)}</span></td>` : ''}
+            ${cols.term ? `<td style="text-align:center;font-weight:700">${termSc !== null ? fmtScore(termSc) : '—'}</td><td style="text-align:center;font-weight:900;color:${finalColor};background:${finalBg}">${fmtScore(finalSc)}</td>` : ''}
+            ${cols.status ? `<td style="text-align:center">${statusBadgeHtml}</td>` : ''}
+            ${cols.advice ? `<td style="font-size:10px;line-height:1.45;color:#334155;max-width:200px">${esc(adviceTxt)}</td>` : ''}
+          </tr>`;
+        }).join('');
+
+        const pageBreak = (sIdx > 0 && !forExcel) ? 'page-break-before:always;break-before:page;' : '';
+
+        return `<div class="rep-classlist-card" style="${pageBreak}">
+          <div class="rep-classlist-head">
+            <div>
+              <b style="font-size:12.5px;color:#9A3412">🏫 ${esc(sec.school.name)} — 🚪 کلاس ${esc(cleanClsName)}${gradeTxt}${subjTxt}</b>
+              <div style="font-size:10.5px;color:#475569;margin-top:2px">👨‍🏫 دبیر: ${esc(getTeacherName())} · 📅 ${formatJalaliDate(localISODate())} · فیلتر: ${esc(filterLabel)}</div>
+            </div>
+            <div class="rep-classlist-kpis">
+              <span class="rep-kpi-mini">👨‍🎓 ${fa(items.length)} نفر</span>
+              <span class="rep-kpi-mini">⭐ میانگین: ${fmtScore(classAvg)}</span>
+              <span class="rep-kpi-mini" style="color:#15803D;border-color:#86EFAC">➕${fa(posCnt)} / <span style="color:#B91C1C">➖${fa(negCnt)}</span></span>
+              <span class="rep-kpi-mini">📅 غیبت: ${fa(absTotal)}</span>
+              ${attnCnt > 0 ? `<span class="rep-kpi-mini" style="background:#FFE4E6;color:#BE123C;border-color:#FDA4AF">🚨 توجه: ${fa(attnCnt)}</span>` : ''}
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table border="1" class="rep-clean-table" style="border-color:${pal.border}">
+              <thead>
+                <tr style="background-color:${pal.thBg};color:#FFFFFF">
+                  ${headers.map(h => `<th>${esc(h)}</th>`).join('')}
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}</tbody>
+            </table>
+          </div>
+        </div>`;
+      };
+
+      const splitMode = this.state.splitMode || 'separate_sections';
+      let bodyHtml = '';
+      if (splitMode === 'separate_sections' || res.sections.length <= 1) {
+        bodyHtml = res.sections.map((sec, idx) => buildSectionCard(sec, idx, false)).join('');
+      } else {
+        const merged = [];
+        res.sections.forEach(sec => sec.items.forEach(it => merged.push({ ...it, _s: sec.school, _c: sec.cls })));
+        bodyHtml = buildSectionCard({
+          school: { name: res.scope === 'school' ? (res.sections[0]?.school?.name || 'مدرسه') : 'همه مدارس' },
+          cls: { name: `${fa(res.sections.length)} کلاس ادغام‌شده`, grade: '', subject: '' },
+          items: merged
+        }, 0, true);
+      }
+
+      return `<div style="font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;color:#0F172A">${bodyHtml}</div>`;
+    },
+
+    openModal(initialScope = 'class', sid = null, cid = null, stid = null, statusFilter = null) {
+      this.loadState();
+      this.ensureValidTargets(
+        initialScope || this.state.scope || 'class',
+        sid,
+        cid,
+        stid,
+        statusFilter || 'all'
+      );
+
+      const colDefs = [
+        { key: 'photo', label: '🖼️ عکس/آواتار' },
+        { key: 'father', label: '👨 نام پدر' },
+        { key: 'phone', label: '📞 تلفن تماس' },
+        { key: 'att', label: '📅 غیبت‌ها' },
+        { key: 'cont', label: '📝 نمره مستمر' },
+        { key: 'beh', label: '➕/➖ مثبت و منفی' },
+        { key: 'term', label: '🎓 پایانی و نهایی' },
+        { key: 'status', label: '🚦 وضعیت توجه' },
+        { key: 'advice', label: '🌿 توصیه تربیتی' }
+      ];
+
+      const colChecksHtml = colDefs.map(cd => {
+        const isChecked = Boolean(this.state.cols[cd.key]);
+        return `<label class="rep-v84-col-chip ${isChecked ? 'checked' : ''}" id="repColLbl_${cd.key}">
+          <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="ReportApp.toggleCol('${cd.key}', this.checked)">
+          <span>${cd.label}</span>
+        </label>`;
+      }).join('');
+
+      openModal(formHeader('📊 استودیو یکپارچه گزارش و کارنامه (الگوی آزمون‌ساز)') + `
+        <div class="card" style="background:var(--bg-panel);padding:10px;margin-bottom:10px;border:1.5px solid var(--primary)">
+          <!-- ۱. انتخاب سطح گزارش (۴ سطحی) -->
+          <div class="rep-v84-scope-grid" id="repModalScopeTabs">
+            <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'student' ? 'active' : ''}" data-rscope="student" onclick="ReportApp.setScope('student')">👨‍🎓 ۱ دانش‌آموز</button>
+            <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'class' ? 'active' : ''}" data-rscope="class" onclick="ReportApp.setScope('class')">🚪 ۱ کلاس</button>
+            <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'school' ? 'active' : ''}" data-rscope="school" onclick="ReportApp.setScope('school')">🏫 ۱ مدرسه</button>
+            <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'all' ? 'active' : ''}" data-rscope="all" onclick="ReportApp.setScope('all')">🌐 همه مدارس</button>
+          </div>
+
+          <!-- ۲. انتخابگرهای تفکیکی مدرسه / کلاس / دانش‌آموز / وضعیت -->
+          <div class="formgrid" style="margin-bottom:6px;gap:6px">
+            <div class="field" id="repModSchoolField">
+              <label style="font-size:11px">🏫 مدرسه:</label>
+              <select id="repModSchoolSel" onchange="ReportApp.onSchoolChange()" style="height:36px;font-size:12px"></select>
+            </div>
+            <div class="field" id="repModClassField">
+              <label style="font-size:11px">🚪 کلاس (گزارش تک‌کلاس):</label>
+              <select id="repModClassSel" onchange="ReportApp.onClassChange()" style="height:36px;font-size:12px"></select>
+            </div>
+            <div class="field full" id="repModStudentField" style="display:none">
+              <label style="font-size:11px">👨‍🎓 دانش‌آموز:</label>
+              <select id="repModStudentSel" onchange="ReportApp.onStudentChange()" style="height:36px;font-size:12px"></select>
+            </div>
+            <div class="field full">
+              <label style="font-size:11px">🚦 فیلتر وضعیت دانش‌آموزان در گزارش:</label>
+              <select id="repModStatusFilterSel" onchange="ReportApp.onStatusFilterChange(this.value)" style="height:36px;font-size:12px">
+                <option value="all">📋 همه دانش‌آموزان کلاس</option>
+                <option value="good">🟢 فقط دانش‌آموزان خوب و برتر</option>
+                <option value="attn_all">🔴 همه دانش‌آموزان نیازمند توجه</option>
+                <option value="attn_academic">📉 نیازمند توجه: درسی و آموزشی</option>
+                <option value="attn_discipline">⚠️ نیازمند توجه: انضباطی و رفتاری</option>
+                <option value="attn_medical">🏥 نیازمند توجه: بیماری و پزشکی</option>
+                <option value="attn_absence">📅 نیازمند توجه: غیبت مکرر</option>
+                <option value="attn_counseling">💜 نیازمند توجه: روحی و مشاوره</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- ۳. تیک انتخاب ستون‌های دلخواه معلم (تلفن، وضعیت، نام پدر و...) -->
+          <div style="font-size:11px;font-weight:900;color:#9A3412;margin-top:4px">☑️ چه اطلاعاتی در جدول گزارش باشد؟ (با برداشتن تیک، آن ستون حذف می‌شود):</div>
+          <div class="rep-v84-col-toggles" id="repV84ColTogglesBox">
+            ${colChecksHtml}
+          </div>
+
+          <!-- ۴. دکمه‌های خروجی فوری برای همین انتخاب -->
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px">
+            <button type="button" class="btn green btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('print')">🖨️ چاپ / PDF</button>
+            <button type="button" class="btn primary btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('excel_color')">🎨 اکسل (.xls)</button>
+            <button type="button" class="btn soft btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('word')">📘 فایل Word</button>
+          </div>
+        </div>
+
+        <!-- ۵. پیش‌نمایش زنده و تمیز دقیقاً شبیه لیست کلاسی -->
+        <div id="repModalLivePreviewWrap"></div>
+
+        <div class="formactions">
+          <button type="button" class="btn gray" onclick="closeModal()">بستن</button>
+        </div>
+      `);
+
+      const sSel = document.getElementById('repModSchoolSel');
+      if (sSel) {
+        sSel.innerHTML = (db.schools || []).map(s => `<option value="${s.id}" ${s.id === this.state.sid ? 'selected' : ''}>🏫 ${esc(s.name)}</option>`).join('');
+      }
+      const stFilterSel = document.getElementById('repModStatusFilterSel');
+      if (stFilterSel) stFilterSel.value = this.state.statusFilter || 'all';
+
+      this.populateClassesDropdown(this.state.cid, this.state.stid);
+      this.setScope(this.state.scope);
+    },
+
+    populateClassesDropdown(prefCid = null, prefStid = null) {
+      const s = findSchool(this.state.sid) || db.schools?.[0];
+      const cSel = document.getElementById('repModClassSel');
+      if (cSel && s) {
+        const classes = s.classes || [];
+        if (prefCid && classes.some(c => c.id === prefCid)) this.state.cid = prefCid;
+        else if (!classes.some(c => c.id === this.state.cid)) this.state.cid = classes[0]?.id || '';
+        cSel.innerHTML = classes.map(c => {
+          const cleanName = window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name;
+          return `<option value="${c.id}" ${c.id === this.state.cid ? 'selected' : ''}>🚪 ${esc(cleanName)}${c.subject ? ` (${esc(c.subject)})` : ''} — ${fa((c.students || []).length)} نفر</option>`;
+        }).join('');
+      }
+      this.populateStudentsDropdown(prefStid);
+    },
+
+    populateStudentsDropdown(prefStid = null) {
+      const c = findClass(this.state.sid, this.state.cid);
+      const stSel = document.getElementById('repModStudentSel');
+      if (stSel && c) {
+        const sorted = sortStudents(c.students || []);
+        if (prefStid && sorted.some(st => st.id === prefStid)) this.state.stid = prefStid;
+        else if (!sorted.some(st => st.id === this.state.stid)) this.state.stid = sorted[0]?.id || '';
+        stSel.innerHTML = sorted.map((st, idx) => `<option value="${st.id}" ${st.id === this.state.stid ? 'selected' : ''}>${fa(idx + 1)}. ${esc(formatStudentName(st))}</option>`).join('');
+      }
+    },
+
+    onSchoolChange() {
+      this.state.sid = document.getElementById('repModSchoolSel')?.value || '';
+      this.populateClassesDropdown();
+      this.saveState();
+      this.refreshPreview();
+    },
+
+    onClassChange() {
+      this.state.cid = document.getElementById('repModClassSel')?.value || '';
+      this.populateStudentsDropdown();
+      this.saveState();
+      this.refreshPreview();
+    },
+
+    onStudentChange() {
+      this.state.stid = document.getElementById('repModStudentSel')?.value || '';
+      this.saveState();
+      this.refreshPreview();
+    },
+
+    onStatusFilterChange(val) {
+      this.state.statusFilter = val || 'all';
+      this.saveState();
+      this.refreshPreview();
+    },
+
+    toggleCol(key, checked) {
+      this.state.cols[key] = Boolean(checked);
+      const lbl = document.getElementById('repColLbl_' + key);
+      if (lbl) lbl.classList.toggle('checked', Boolean(checked));
+      this.saveState();
+      this.refreshPreview();
+    },
+
+    setScope(scope) {
+      this.state.scope = scope;
+      document.querySelectorAll('#repModalScopeTabs button').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-rscope') === scope);
+      });
+      const sf = document.getElementById('repModSchoolField');
+      const cf = document.getElementById('repModClassField');
+      const stf = document.getElementById('repModStudentField');
+      if (sf) sf.style.display = scope === 'all' ? 'none' : 'block';
+      if (cf) cf.style.display = (scope === 'class' || scope === 'student') ? 'block' : 'none';
+      if (stf) stf.style.display = scope === 'student' ? 'block' : 'none';
+      this.saveState();
+      this.refreshPreview();
+    },
+
+    refreshPreview() {
+      const box = document.getElementById('repModalLivePreviewWrap');
+      if (!box) return;
+      const res = this.collectData();
+      if (!res || !res.totalStudents) {
+        box.innerHTML = `<div style="padding:20px;text-align:center;color:var(--text-muted);background:#FFF;border-radius:12px;border:1px dashed #FDBA74">هیچ دانش‌آموزی با این فیلتر در این بخش یافت نشد.</div>`;
+        return;
+      }
+      box.innerHTML = this.buildClassListStyleHTML(res, false);
+    },
+
+    exportCurrent(kind, customOpts = null) {
+      const res = this.collectData(customOpts);
+      if (!res || !res.totalStudents) {
+        window.smartAlert('هیچ دانش‌آموزی با فیلتر انتخاب‌شده یافت نشد.');
+        return;
+      }
+
+      let fileScopeLabel = 'کل-مدارس';
+      if (res.scope === 'school' && res.sections[0]) fileScopeLabel = safeFileName(res.sections[0].school.name);
+      if (res.scope === 'class' && res.sections[0]) fileScopeLabel = safeFileName(`${res.sections[0].school.name}-${res.sections[0].cls.name}`);
+      if (res.scope === 'student' && res.sections[0]?.items[0]) {
+        const st = res.sections[0].items[0].st;
+        fileScopeLabel = safeFileName(`${st.lastName || ''}-${st.name || ''}`);
+      }
+
+      const isExcelColor = (kind === 'excel_color' || kind === 'excel');
+      const bodyContent = this.buildClassListStyleHTML(res, isExcelColor);
+
+      const fullDoc = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" dir="rtl" lang="fa">
+        <head>
+          <meta charset="utf-8">
+          <title>گزارش کلاسی — ${esc(fileScopeLabel)}</title>
+          <style>
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }
+            body { font-family: 'Vazirmatn', Tahoma, sans-serif; padding: 12px; direction: rtl; background: #FFFFFF; color: #0F172A; margin: 0; }
+            .rep-classlist-card { border: 1.5px solid #FED7AA; border-radius: 12px; overflow: hidden; margin-bottom: 14px; }
+            .rep-classlist-head { background: #FFF7ED; border-bottom: 1.5px solid #FED7AA; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+            .rep-classlist-kpis { display: flex; gap: 5px; flex-wrap: wrap; }
+            .rep-kpi-mini { font-size: 10.5px; font-weight: bold; padding: 2px 7px; border-radius: 99px; background: #FFFFFF; border: 1px solid #FDBA74; color: #9A3412; }
+            table { width: 100%; border-collapse: collapse; font-size: 11px; }
+            th { background: #EA580C; color: #FFFFFF; font-weight: bold; padding: 6px 5px; border: 1px solid #FB923C; text-align: center; }
+            td { padding: 5px 6px; border: 1px solid #CBD5E1; text-align: right; }
+            @media print { @page { size: A4 portrait; margin: 8mm; } body { padding: 0; } }
+          </style>
+        </head>
+        <body>${bodyContent}</body>
+      </html>`;
+
+      if (kind === 'excel_color' || kind === 'excel') {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob(['\ufeff' + fullDoc], { type: 'application/vnd.ms-excel;charset=utf-8' }));
+        a.download = `گزارش-${fileScopeLabel}-${localISODate()}.xls`;
+        a.click();
+        toast(`✅ فایل اکسل «${fileScopeLabel}» دانلود شد!`);
+      } else if (kind === 'word') {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob(['\ufeff' + fullDoc], { type: 'application/msword;charset=utf-8' }));
+        a.download = `گزارش-${fileScopeLabel}-${localISODate()}.doc`;
+        a.click();
+        toast(`✅ فایل Word «${fileScopeLabel}» دانلود شد!`);
+      } else {
+        const w = window.open('', '_blank');
+        if (w) {
+          w.document.write(fullDoc);
+          w.document.close();
+          setTimeout(() => w.print(), 350);
+        } else {
+          const iframe = document.createElement('iframe');
+          iframe.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0';
+          document.body.appendChild(iframe);
+          iframe.contentDocument.open();
+          iframe.contentDocument.write(fullDoc);
+          iframe.contentDocument.close();
+          setTimeout(() => {
+            iframe.contentWindow.focus();
+            iframe.contentWindow.print();
+            setTimeout(() => iframe.remove(), 2000);
+          }, 300);
+        }
+      }
+    }
+  };
+
+  // اتصال تمام توابع گزارش‌گیری برنامه به موتور یکپارچه ReportApp
+  window.openTransparentReportModal = function(initialScope = 'class', sid = null, cid = null, stid = null, statusFilter = null) {
+    ReportApp.openModal(initialScope, sid, cid, stid, statusFilter);
+  };
+  window.switchTransparentReportScope = function(scope) { ReportApp.setScope(scope); };
+  window.onRepModSchoolChange = function() { ReportApp.onSchoolChange(); };
+  window.onRepModClassChange = function() { ReportApp.onClassChange(); };
+  window.refreshTransparentReportModalPreview = function() { ReportApp.refreshPreview(); };
+  window.runTransparentReportExport = function(kind) { ReportApp.exportCurrent(kind); };
+  window.collectFilteredExportData = function(overrideOpts = null) {
+    if (!overrideOpts && document.getElementById('expScopeType')) {
+      const scope = document.getElementById('expScopeType')?.value || 'all';
+      const sid = document.getElementById('expSchoolSel')?.value || currentSchoolId;
+      const cid = document.getElementById('expClassSel')?.value || currentClassId;
+      const stid = document.getElementById('expStudentSel')?.value || currentStudentId;
+      const statusFilter = document.getElementById('expStatusFilter')?.value || 'all';
+      return ReportApp.collectData({ scope, sid, cid, stid, statusFilter });
+    }
+    return ReportApp.collectData(overrideOpts);
+  };
+  window.buildVibrantReportHTML = function(res, forExcel = false) {
+    return ReportApp.buildClassListStyleHTML(res, forExcel);
+  };
+  window.exportCustomReport = function(kind, overrideOpts = null) {
+    if (!overrideOpts && document.getElementById('expScopeType')) {
+      const scope = document.getElementById('expScopeType')?.value || 'all';
+      const sid = document.getElementById('expSchoolSel')?.value || currentSchoolId;
+      const cid = document.getElementById('expClassSel')?.value || currentClassId;
+      const stid = document.getElementById('expStudentSel')?.value || currentStudentId;
+      const statusFilter = document.getElementById('expStatusFilter')?.value || 'all';
+      return ReportApp.exportCurrent(kind, { scope, sid, cid, stid, statusFilter });
+    }
+    return ReportApp.exportCurrent(kind, overrideOpts);
+  };
+  window.openQuickExportForTarget = function(scope, sid = null, cid = null, stid = null) {
+    ReportApp.openModal(scope || 'class', sid, cid, stid, 'all');
+  };
+
+  // ادغام دکمه «🖨️ چاپ گزارش تفکیکی» در بخش وضعیت‌ها (#statuses) با استودیو یکپارچه ReportApp
+  window.printCategorizedAttentionReport = function() {
+    const fSid = window._statusFilterSid || '';
+    const fCid = window._statusFilterCid || '';
+    const curFilter = window._currentStatusFilter || 'attn';
+    const curCat = window._currentAttnCategory || 'all';
+
+    let targetScope = 'all';
+    if (fCid) targetScope = 'class';
+    else if (fSid) targetScope = 'school';
+
+    let statusFilter = 'attn_all';
+    if (curFilter === 'good') statusFilter = 'good';
+    else if (curFilter === 'none') statusFilter = 'none';
+    else if (curCat && curCat !== 'all') statusFilter = 'attn_' + curCat;
+
+    ReportApp.openModal(targetScope, fSid || null, fCid || null, null, statusFilter);
+  };
+
+
+  /* ==========================================================================================
+     بخش ۳: اسکنر هوشمند لیست کلاسی و سامانه سیدا با الگوریتم دیداری آزمون‌ساز (RosterScannerApp)
+     - عکس‌برداری با دوربین، انتخاب اسکرین‌شات سیدا یا عکس اسکن‌شده لیست
+     - استخراج هوشمند نام، نام خانوادگی، نام پدر، تلفن و مشخصات کلاس با موتور هوش مصنوعی آزمون‌ساز
+     - جدول پیش‌نمایش قابل ویرایش و تایید نهایی معلم برای ایجاد کلاس جدید یا افزودن به کلاس
+     ========================================================================================== */
+  window.RosterScannerApp = {
+    mode: 'new_class', // 'new_class' | 'existing_class'
+    pendingStudents: [],
+    detectedMeta: { schoolName: '', className: '', grade: '', subject: '' },
+
+    compressImageFile(file, maxDim = 1400, quality = 0.84) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onerror = reject;
+        reader.onload = () => {
+          const img = new Image();
+          img.onerror = reject;
+          img.onload = () => {
+            let w = img.width, h = img.height;
+            if (w > maxDim || h > maxDim) {
+              if (w > h) { h = Math.round((h * maxDim) / w); w = maxDim; }
+              else { w = Math.round((w * maxDim) / h); h = maxDim; }
+            }
+            const cv = document.createElement('canvas');
+            cv.width = w;
+            cv.height = h;
+            const ctx = cv.getContext('2d');
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, w, h);
+            ctx.drawImage(img, 0, 0, w, h);
+            resolve(cv.toDataURL('image/jpeg', quality));
+          };
+          img.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    },
+
+    openModal(preSid = null, preCid = null) {
+      let s = findSchool(preSid || currentSchoolId) || db.schools?.[0];
+      if (!s) {
+        s = { id: uid(), name: 'مدرسه من', year: '۱۴۰۵-۱۴۰۶', photos: [], classes: [] };
+        db.schools.push(s);
+      }
+      if (!s.classes?.length) {
+        s.classes.push({ id: uid(), name: 'هفتم الف', grade: 'هفتم', subject: '', photos: [], students: [], attendance: {}, termScores: {}, contExamScores: {}, sessionNotes: {} });
+      }
+      const c = findClass(s.id, preCid || currentClassId) || s.classes[0];
+
+      this.mode = (preSid && preCid) ? 'existing_class' : 'new_class';
+      this.pendingStudents = [];
+
+      const schoolOpts = (db.schools || []).map(sch =>
+        `<option value="${sch.id}" ${sch.id === s.id ? 'selected' : ''}>🏫 ${esc(sch.name)}</option>`
+      ).join('');
+
+      const classOpts = [];
+      (db.schools || []).forEach(sch => (sch.classes || []).forEach(cl => {
+        const cleanN = window.cleanClassDisplayName ? window.cleanClassDisplayName(cl.name) : cl.name;
+        classOpts.push(`<option value="${sch.id}|${cl.id}" ${(sch.id === s.id && cl.id === c.id) ? 'selected' : ''}>🏫 ${esc(sch.name)} — 🚪 ${esc(cleanN)} (${fa((cl.students || []).length)} نفر)</option>`);
+      }));
+
+      const subjectChips = ['پیام‌های آسمان', 'ریاضی', 'علوم تجربی', 'فارسی', 'عربی', 'قرآن', 'مطالعات', 'زبان انگلیسی'].map(sp =>
+        `<button type="button" class="chip" style="cursor:pointer;font-size:10px;padding:2px 7px;background:#FFF7ED;color:#C2410C;border:1px solid #FDBA74" onclick="const el=document.getElementById('sidaNewClassSubj');if(el)el.value='${sp}'">${sp}</button>`
+      ).join('');
+
+      openModal(formHeader('📸 ورود دسته‌جمعی از عکس سیدا، لیست اسکن‌شده یا اکسل') + `
+        <!-- ۱. انتخاب هدف: ساخت کلاس جدید پس از تایید معلم یا افزودن به کلاس موجود -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px">
+          <button type="button" id="rosterModeBtnNew" class="btn ${this.mode === 'new_class' ? 'primary' : 'soft'} btn-sm" style="justify-content:center" onclick="RosterScannerApp.setMode('new_class')">➕ ساخت کلاس جدید با این لیست</button>
+          <button type="button" id="rosterModeBtnExist" class="btn ${this.mode === 'existing_class' ? 'primary' : 'soft'} btn-sm" style="justify-content:center" onclick="RosterScannerApp.setMode('existing_class')">🚪 افزودن به کلاس موجود</button>
+        </div>
+
+        <!-- پنل مشخصات کلاس جدید -->
+        <div id="rosterNewClassFields" class="card" style="display:${this.mode === 'new_class' ? 'block' : 'none'};padding:10px;margin-bottom:10px;background:#FFFBF5;border:1.5px solid #FDBA74">
+          <b style="color:#9A3412;font-size:12px;display:block;margin-bottom:6px">🏫 مشخصات کلاس جدید (پس از تایید لیست ایجاد می‌شود):</b>
+          <div class="formgrid" style="gap:6px">
+            <div class="field">
+              <label style="font-size:11px">مدرسه:</label>
+              <select id="sidaTargetSchoolSel" style="height:35px;font-size:12px">${schoolOpts}</select>
+            </div>
+            <div class="field">
+              <label style="font-size:11px">🚪 نام کلاس جدید:</label>
+              <input id="sidaNewClassName" placeholder="مثلاً هفتم ب" style="height:35px;font-size:12px">
+            </div>
+            <div class="field">
+              <label style="font-size:11px">🎓 پایه تحصیلی:</label>
+              <input id="sidaNewClassGrade" placeholder="مثلاً هفتم" style="height:35px;font-size:12px">
+            </div>
+            <div class="field">
+              <label style="font-size:11px">📚 نام درس:</label>
+              <input id="sidaNewClassSubj" placeholder="مثلاً پیام‌های آسمان" style="height:35px;font-size:12px">
+            </div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">${subjectChips}</div>
+        </div>
+
+        <!-- پنل انتخاب کلاس موجود -->
+        <div id="rosterExistClassFields" class="field" style="display:${this.mode === 'existing_class' ? 'block' : 'none'};margin-bottom:10px">
+          <label>🚪 افزودن دانش‌آموزان به کدام کلاس؟</label>
+          <select id="bulkRosterClassSel">${classOpts.join('')}</select>
+        </div>
+
+        <!-- ۲. باکس اسکن دیداری عکس، اسکرین‌شات سیدا یا برگه اسکن‌شده (با الگوریتم آزمون‌ساز) -->
+        <div class="card" style="background:linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%);border:2px dashed #EA580C;padding:11px;margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px">
+            <div>
+              <b style="color:#9A3412;font-size:13px">📸 اسکن هوشمند لیست از عکس، برگه یا اسکرین‌شات سیدا</b>
+              <div style="font-size:11px;color:#475569;margin-top:2px">از لیست کلاسی یا صفحه سامانه سیدا عکس بگیرید؛ هوش مصنوعی با الگوریتم آزمون‌ساز اسامی، نام پدر و اطلاعات را استخراج می‌کند.</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px">
+            <label class="btn primary" style="justify-content:center;cursor:pointer;padding:10px 6px;font-size:12px;margin:0">
+              📷 عکس با دوربین
+              <input type="file" accept="image/*" capture="environment" hidden onchange="RosterScannerApp.handleImageFiles(this.files)">
+            </label>
+            <label class="btn green" style="justify-content:center;cursor:pointer;padding:10px 6px;font-size:12px;margin:0">
+              🖼️ اسکرین‌شات سیدا / گالری
+              <input type="file" accept="image/*" multiple hidden onchange="RosterScannerApp.handleImageFiles(this.files)">
+            </label>
+          </div>
+          <div id="sidaScanStatusBox" style="display:none;margin-top:8px;padding:8px 10px;border-radius:10px;background:#FFFFFF;border:1px solid #FDBA74;font-size:11.5px;font-weight:800;color:#C2410C"></div>
+          <div id="sidaScanThumbsRow" style="display:flex;gap:6px;overflow-x:auto;margin-top:6px"></div>
+        </div>
+
+        <!-- ۳. کادر متن / اکسل (اختیاری یا مکمل) -->
+        <div class="field" style="margin-bottom:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <label style="margin:0;font-size:11.5px">📋 یا پیست لیست متنی / اکسل (هر خط یک دانش‌آموز):</label>
+            <button type="button" class="btn soft btn-sm" style="padding:3px 8px;font-size:10.5px" onclick="RosterScannerApp.parseTextInputToPreview()">🔍 تبدیل متن به جدول پیش‌نمایش</button>
+          </div>
+          <textarea id="bulkRosterTextInp" rows="3" placeholder="مثال: علی رضایی - محمد - 09121112233 | امیرحسین محمدی" style="font-size:11.5px"></textarea>
+        </div>
+
+        <!-- ۴. جدول پیش‌نمایش و تایید نهایی معلم قبل از ایجاد کلاس -->
+        <div id="sidaPreviewConfirmSection" style="display:none;margin-top:10px;border:2px solid #16A34A;border-radius:14px;padding:10px;background:#F0FDF4">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+            <b style="color:#15803D;font-size:12.5px">✅ پیش‌نمایش اسامی استخراج‌شده (قابل ویرایش قبل از تایید معلم)</b>
+            <button type="button" class="btn soft btn-sm" style="padding:3px 8px;font-size:10.5px" onclick="RosterScannerApp.addBlankRow()">➕ افزودن ردیف</button>
+          </div>
+          <div id="sidaPreviewTableWrap" style="max-height:240px;overflow-y:auto;background:#FFFFFF;border-radius:10px;border:1px solid #BBF7D0"></div>
+        </div>
+
+        <div class="formactions" style="margin-top:12px">
+          <button type="button" class="btn green" id="btnConfirmCreateSidaClass" style="flex:2;justify-content:center;font-weight:900" onclick="RosterScannerApp.confirmAndSave()">✅ تایید معلم و ثبت نهایی کلاس و دانش‌آموزان</button>
+          <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+        </div>
+      `);
+    },
+
+    setMode(mode) {
+      this.mode = mode;
+      const bNew = document.getElementById('rosterModeBtnNew');
+      const bEx = document.getElementById('rosterModeBtnExist');
+      if (bNew) bNew.className = `btn ${mode === 'new_class' ? 'primary' : 'soft'} btn-sm`;
+      if (bEx) bEx.className = `btn ${mode === 'existing_class' ? 'primary' : 'soft'} btn-sm`;
+      const fNew = document.getElementById('rosterNewClassFields');
+      const fEx = document.getElementById('rosterExistClassFields');
+      if (fNew) fNew.style.display = mode === 'new_class' ? 'block' : 'none';
+      if (fEx) fEx.style.display = mode === 'existing_class' ? 'block' : 'none';
+    },
+
+    async handleImageFiles(fileList) {
+      if (!fileList || !fileList.length) return;
+      const statusBox = document.getElementById('sidaScanStatusBox');
+      const thumbsRow = document.getElementById('sidaScanThumbsRow');
+      if (statusBox) {
+        statusBox.style.display = 'block';
+        statusBox.innerHTML = '⏳ در حال فشرده‌سازی و اسکن تصویر لیست/سیدا با الگوریتم دیداری آزمون‌ساز...';
+      }
+
+      try {
+        const files = Array.from(fileList).slice(0, 4);
+        const dataUrls = [];
+        if (thumbsRow) thumbsRow.innerHTML = '';
+
+        for (const f of files) {
+          const dUrl = await this.compressImageFile(f, 1400, 0.84);
+          dataUrls.push(dUrl);
+          if (thumbsRow) {
+            const img = document.createElement('img');
+            img.src = dUrl;
+            img.style.cssText = 'width:58px;height:58px;object-fit:cover;border-radius:8px;border:1.5px solid #EA580C;flex-shrink:0';
+            thumbsRow.appendChild(img);
+          }
+        }
+
+        const prompt = `تصویر(های) پیوست‌شده، لیست دانش‌آموزان یک کلاس از «سامانه سیدا» (SIDA)، فایل اکسل یا برگه لیست کلاسی است.
+لطفاً تمام اسامی دانش‌آموزان و اطلاعات قابل مشاهده در جدول را با دقت ۱۰۰٪ استخراج کن و فقط یک JSON معتبر با ساختار زیر برگردان:
+{
+  "schoolName": "نام مدرسه در صورت وجود در سربرگ",
+  "className": "نام کلاس در صورت وجود (مثلاً هفتم ب)",
+  "grade": "پایه تحصیلی در صورت وجود (مثلاً هفتم)",
+  "subject": "نام درس در صورت وجود",
+  "students": [
+    {
+      "firstName": "نام کوچک دانش‌آموز",
+      "lastName": "نام خانوادگی دانش‌آموز",
+      "fatherName": "نام پدر (در صورت وجود در ستون‌ها)",
+      "phone": "شماره تماس یا کد ملی (در صورت وجود)"
+    }
+  ]
+}
+نکات مهم:
+- در جداول سیدا معمولاً ستون «نام» و «نام خانوادگی» و «نام پدر» و «کد ملی» جدا هستند؛ آن‌ها را دقیق در فیلدهای مربوطه قرار بده.
+- اگر نام و نام خانوادگی در یک ستون بود، بخش اول را در firstName و نام خانوادگی را در lastName بگذار.
+- هیچ دانش‌آموزی را جا نینداز و فقط JSON خالص برگردان.`;
+
+        let parsed = null;
+        if (window.ExamApp && typeof ExamApp.callArgonAI === 'function') {
+          const rawAi = await ExamApp.callArgonAI(prompt, {
+            isJson: true,
+            images: dataUrls,
+            temperature: 0.15
+          });
+          if (typeof window.extractValidJsonFromAiText === 'function') {
+            parsed = window.extractValidJsonFromAiText(rawAi);
+          } else {
+            parsed = JSON.parse(rawAi);
+          }
+        }
+
+        let extractedList = [];
+        if (parsed && typeof parsed === 'object') {
+          if (Array.isArray(parsed.students)) extractedList = parsed.students;
+          else if (Array.isArray(parsed)) extractedList = parsed;
+
+          if (parsed.className && document.getElementById('sidaNewClassName') && !document.getElementById('sidaNewClassName').value) {
+            document.getElementById('sidaNewClassName').value = String(parsed.className).trim();
+          }
+          if (parsed.grade && document.getElementById('sidaNewClassGrade') && !document.getElementById('sidaNewClassGrade').value) {
+            document.getElementById('sidaNewClassGrade').value = String(parsed.grade).trim();
+          }
+          if (parsed.subject && document.getElementById('sidaNewClassSubj') && !document.getElementById('sidaNewClassSubj').value) {
+            document.getElementById('sidaNewClassSubj').value = String(parsed.subject).trim();
+          }
+        }
+
+        if (!extractedList.length) {
+          throw new Error('اسامی در پاسخ یافت نشد.');
+        }
+
+        extractedList.forEach(item => {
+          let fn = String(item.firstName || item.name || '').trim();
+          let ln = String(item.lastName || item.family || '').trim();
+          if (fn && !ln && fn.includes(' ')) {
+            const parts = fn.split(/\s+/);
+            fn = parts[0];
+            ln = parts.slice(1).join(' ');
+          }
+          if (!fn && !ln) return;
+          this.pendingStudents.push({
+            checked: true,
+            firstName: fn,
+            lastName: ln,
+            fatherName: String(item.fatherName || item.father || '').trim(),
+            phone: enDigits(String(item.phone || item.nationalId || item.code || '')).replace(/[^\d+]/g, '').trim()
+          });
+        });
+
+        this.renderPreviewTable();
+        this.syncPreviewToTextarea();
+
+        if (statusBox) {
+          statusBox.style.color = '#15803D';
+          statusBox.style.borderColor = '#86EFAC';
+          statusBox.innerHTML = `✅ ${fa(this.pendingStudents.length)} دانش‌آموز با موفقیت از تصویر استخراج شد! جدول زیر را بررسی و تایید فرمایید.`;
+        }
+        toast(`✅ ${fa(this.pendingStudents.length)} دانش‌آموز از عکس استخراج شد!`);
+      } catch (err) {
+        if (statusBox) {
+          statusBox.style.color = '#B91C1C';
+          statusBox.innerHTML = `⚠️ اسکن آنلاین تصویر نیازمند اینترنت یا کلید هوش‌واره است (${esc(err.message || 'خطا')}). می‌توانید اسامی را در کادر متنی زیر نیز وارد یا ویرایش کنید.`;
+        }
+        if (!this.pendingStudents.length) {
+          this.addBlankRow();
+          this.renderPreviewTable();
+        }
+      }
+    },
+
+    parseTextInputToPreview() {
+      const raw = (document.getElementById('bulkRosterTextInp')?.value || '').trim();
+      if (!raw) {
+        toast('ابتدا متن اسامی را در کادر وارد کنید یا عکس سیدا را انتخاب نمایید.');
+        return;
+      }
+      const lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      const list = [];
+      lines.forEach(line => {
+        let cl = enDigits(line).replace(/^\d+[\.\-\)\s]+/, '').trim();
+        if (!cl) return;
+        const parts = cl.split(/[\t\|\-،,]+/).map(p => p.trim()).filter(Boolean);
+        const fullName = parts[0] || '';
+        if (!fullName) return;
+        const tokens = fullName.split(/\s+/);
+        let firstName = fullName, lastName = '';
+        if (tokens.length >= 2) {
+          firstName = tokens[0];
+          lastName = tokens.slice(1).join(' ');
+        }
+        const fatherName = (parts[1] || '').replace(/^پدر[:\s]*/, '').trim();
+        const phone = (parts[2] || '').replace(/[^\d+]/g, '').trim();
+        list.push({ checked: true, firstName, lastName, fatherName, phone });
+      });
+      this.pendingStudents = list;
+      this.renderPreviewTable();
+      toast(`✅ ${fa(list.length)} دانش‌آموز به جدول پیش‌نمایش منتقل شد.`);
+    },
+
+    syncPreviewToTextarea() {
+      const ta = document.getElementById('bulkRosterTextInp');
+      if (!ta) return;
+      ta.value = this.pendingStudents
+        .filter(x => x.checked)
+        .map(x => {
+          const base = `${x.firstName} ${x.lastName}`.trim();
+          const f = x.fatherName ? ` - ${x.fatherName}` : '';
+          const p = x.phone ? ` - ${x.phone}` : '';
+          return base + f + p;
+        })
+        .join('\n');
+    },
+
+    addBlankRow() {
+      this.pendingStudents.push({ checked: true, firstName: '', lastName: '', fatherName: '', phone: '' });
+      this.renderPreviewTable();
+    },
+
+    updateRowField(idx, field, val) {
+      if (!this.pendingStudents[idx]) return;
+      this.pendingStudents[idx][field] = val;
+      this.syncPreviewToTextarea();
+    },
+
+    removeRow(idx) {
+      this.pendingStudents.splice(idx, 1);
+      this.renderPreviewTable();
+      this.syncPreviewToTextarea();
+    },
+
+    renderPreviewTable() {
+      const sec = document.getElementById('sidaPreviewConfirmSection');
+      const wrap = document.getElementById('sidaPreviewTableWrap');
+      const btn = document.getElementById('btnConfirmCreateSidaClass');
+      if (!sec || !wrap) return;
+      sec.style.display = 'block';
+
+      const rowsHtml = this.pendingStudents.map((st, idx) => `
+        <tr>
+          <td style="text-align:center;width:28px">
+            <input type="checkbox" ${st.checked ? 'checked' : ''} onchange="RosterScannerApp.updateRowField(${idx},'checked',this.checked)">
+          </td>
+          <td style="text-align:center;font-weight:bold;width:26px">${fa(idx + 1)}</td>
+          <td><input type="text" value="${esc(st.firstName)}" placeholder="نام" style="height:28px;font-size:11px;padding:2px 5px" oninput="RosterScannerApp.updateRowField(${idx},'firstName',this.value)"></td>
+          <td><input type="text" value="${esc(st.lastName)}" placeholder="نام خانوادگی" style="height:28px;font-size:11px;padding:2px 5px" oninput="RosterScannerApp.updateRowField(${idx},'lastName',this.value)"></td>
+          <td><input type="text" value="${esc(st.fatherName)}" placeholder="نام پدر" style="height:28px;font-size:11px;padding:2px 5px" oninput="RosterScannerApp.updateRowField(${idx},'fatherName',this.value)"></td>
+          <td><input type="text" dir="ltr" value="${esc(st.phone)}" placeholder="تلفن/کد" style="height:28px;font-size:11px;padding:2px 5px" oninput="RosterScannerApp.updateRowField(${idx},'phone',this.value)"></td>
+          <td style="text-align:center;width:28px"><button type="button" style="background:none;border:none;color:#DC2626;cursor:pointer;font-size:13px" onclick="RosterScannerApp.removeRow(${idx})">🗑️</button></td>
+        </tr>
+      `).join('');
+
+      wrap.innerHTML = `
+        <table class="rep-clean-table" style="width:100%;border-collapse:collapse">
+          <thead>
+            <tr style="background:#16A34A;color:#FFFFFF">
+              <th>✓</th>
+              <th>#</th>
+              <th>نام</th>
+              <th>نام خانوادگی</th>
+              <th>نام پدر</th>
+              <th>تلفن / کد</th>
+              <th>×</th>
+            </tr>
+          </thead>
+          <tbody>${rowsHtml || '<tr><td colspan="7" style="text-align:center;padding:12px">موردی ثبت نشده است</td></tr>'}</tbody>
+        </table>
+      `;
+
+      const activeCount = this.pendingStudents.filter(x => x.checked && (x.firstName || x.lastName)).length;
+      if (btn) {
+        btn.textContent = `✅ تایید معلم و ثبت نهایی (${fa(activeCount)} دانش‌آموز)`;
+      }
+    },
+
+    confirmAndSave() {
+      // اگر معلم متن را پیست کرده اما 아직 دکمه پیش‌نمایش را نزده، خودکار پارس کن
+      if (!this.pendingStudents.length) {
+        const rawText = (document.getElementById('bulkRosterTextInp')?.value || '').trim();
+        if (rawText) this.parseTextInputToPreview();
+      }
+
+      const validRows = this.pendingStudents.filter(x => x.checked && (String(x.firstName || '').trim() || String(x.lastName || '').trim()));
+      if (!validRows.length) {
+        toast('لطفاً ابتدا عکس لیست سیدا را اسکن کنید یا اسامی دانش‌آموزان را وارد نمایید.');
+        return;
+      }
+
+      pushUndo('ورود دسته‌جمعی دانش‌آموزان');
+      let targetSchool = null;
+      let targetClass = null;
+
+      if (this.mode === 'new_class') {
+        const sid = document.getElementById('sidaTargetSchoolSel')?.value || currentSchoolId || db.schools?.[0]?.id;
+        targetSchool = findSchool(sid) || db.schools?.[0];
+        if (!targetSchool) {
+          targetSchool = { id: uid(), name: 'مدرسه من', year: '۱۴۰۵-۱۴۰۶', photos: [], classes: [] };
+          db.schools.push(targetSchool);
+        }
+        const cName = (document.getElementById('sidaNewClassName')?.value || '').trim() || `کلاس جدید ${fa((targetSchool.classes || []).length + 1)}`;
+        const cGrade = (document.getElementById('sidaNewClassGrade')?.value || '').trim() || '';
+        const cSubj = (document.getElementById('sidaNewClassSubj')?.value || '').trim() || '';
+
+        targetClass = {
+          id: uid(),
+          name: cName,
+          grade: cGrade,
+          subject: cSubj,
+          photos: [],
+          students: [],
+          attendance: {},
+          termScores: {},
+          contExamScores: {},
+          sessionNotes: {}
+        };
+        targetSchool.classes.push(targetClass);
+      } else {
+        const selVal = document.getElementById('bulkRosterClassSel')?.value || '';
+        const [sid, cid] = selVal.split('|');
+        targetSchool = findSchool(sid) || db.schools?.[0];
+        targetClass = targetSchool ? findClass(targetSchool.id, cid) : null;
+        if (!targetClass && targetSchool) targetClass = targetSchool.classes?.[0];
+      }
+
+      if (!targetClass) {
+        toast('کلاس مقصد یافت نشد.');
+        return;
+      }
+
+      let added = 0;
+      validRows.forEach(row => {
+        let fn = String(row.firstName || '').trim();
+        let ln = String(row.lastName || '').trim();
+        if (fn && !ln && fn.includes(' ')) {
+          const toks = fn.split(/\s+/);
+          fn = toks[0];
+          ln = toks.slice(1).join(' ');
+        }
+        const exists = (targetClass.students || []).some(st =>
+          `${st.name || ''} ${st.lastName || ''}`.trim() === `${fn} ${ln}`.trim()
+        );
+        if (!exists) {
+          targetClass.students.push({
+            id: uid(),
+            name: fn || ln,
+            lastName: ln,
+            fatherName: String(row.fatherName || '').trim(),
+            birth: '',
+            phone: String(row.phone || '').trim(),
+            interests: '',
+            photo: '',
+            status: 'none',
+            attentionCategories: [],
+            medicalNote: '',
+            grades: [],
+            behavior: { positives: [], negatives: [] },
+            notes: ''
+          });
+          added++;
+        }
+      });
+
+      currentSchoolId = targetSchool.id;
+      currentClassId = targetClass.id;
+      save();
+      closeModal();
+      openClass(targetSchool.id, targetClass.id);
+      toast(`🎉 کلاس «${targetClass.name}» با ${fa(added)} دانش‌آموز با موفقیت ایجاد و ثبت شد!`);
+    }
+  };
+
+  window.openExcelPasteImportModal = function(preSid = null, preCid = null) {
+    RosterScannerApp.openModal(preSid, preCid);
+  };
+  window.executeBulkRosterImport = function() {
+    RosterScannerApp.confirmAndSave();
+  };
+
+
+  /* ==========================================================================================
+     بخش ۴: ابزار ساعت، هشدار، کرونومتر و تایمر دقیقاً به شکل گوشی شیائومی (XiaomiClockApp)
+     - منطبق با اسکرین‌شات ارسالی کاربر (تم مشکی AMOLED، کارت‌های خاکستری تیره، سوئیچ کپسولی، دکمه + آبی و ۴ تب پایین)
+     ========================================================================================== */
+  window.XiaomiClockApp = {
+    storageKey: 'danesh_xiaomi_alarms_v84',
+    activeTab: 'alarm', // 'alarm' | 'world' | 'stopwatch' | 'timer'
+    bedtime: { time: '06:00', repeat: 'روزانه', enabled: true },
+    alarms: [],
+    lastFiredMinuteKey: '',
+    swRunning: false,
+    swStartMs: 0,
+    swElapsedMs: 0,
+    swLaps: [],
+    swInterval: null,
+    tmRunning: false,
+    tmRemainSec: 600,
+    tmTotalSec: 600,
+    tmInterval: null,
+
+    init() {
+      this.load();
+      setInterval(() => this.checkAlarmsTick(), 1000);
+    },
+
+    load() {
+      try {
+        const raw = localStorage.getItem(this.storageKey);
+        if (raw) {
+          const p = JSON.parse(raw);
+          if (Array.isArray(p.alarms) && p.alarms.length) this.alarms = p.alarms;
+          if (p.bedtime) this.bedtime = p.bedtime;
+        }
+      } catch (_) {}
+
+      if (!this.alarms || !this.alarms.length) {
+        this.alarms = [
+          { id: 'xm_1', time: '00:00', repeat: 'یک‌بار', label: '', enabled: false },
+          { id: 'xm_2', time: '00:20', repeat: 'یک‌بار', label: 'فوزیدیک بخر', enabled: false },
+          { id: 'xm_3', time: '03:00', repeat: 'یک‌بار', label: '', enabled: false },
+          { id: 'xm_4', time: '07:45', repeat: 'روزانه', label: 'زنگ شروع کلاس اول', enabled: true }
+        ];
+        this.save();
+      }
+    },
+
+    save() {
+      try {
+        localStorage.setItem(this.storageKey, JSON.stringify({
+          bedtime: this.bedtime,
+          alarms: this.alarms
+        }));
+      } catch (_) {}
+    },
+
+    toFaTime(hhmm) {
+      return fa(String(hhmm || '00:00'));
+    },
+
+    computeNextCountdownText() {
+      const now = new Date();
+      const nowMin = now.getHours() * 60 + now.getMinutes();
+      let minDiff = Infinity;
+
+      const activeList = this.alarms.filter(a => a.enabled);
+      if (this.bedtime?.enabled && this.bedtime?.time) {
+        activeList.push(this.bedtime);
+      }
+      if (!activeList.length) {
+        return 'همه هشدارها خاموش است';
+      }
+
+      activeList.forEach(a => {
+        const parts = String(a.time || '00:00').split(':');
+        const h = parseInt(parts[0], 10) || 0;
+        const m = parseInt(parts[1], 10) || 0;
+        const targetMin = h * 60 + m;
+        let diff = targetMin - nowMin;
+        if (diff <= 0) diff += 24 * 60;
+        if (diff < minDiff) minDiff = diff;
+      });
+
+      const hours = Math.floor(minDiff / 60);
+      const mins = minDiff % 60;
+      if (hours === 0) {
+        return `هشدار تا ${fa(mins)} دقیقه دیگر`;
+      }
+      return `هشدار تا ${fa(hours)} ساعت و ${fa(mins)} دقیقه دیگر`;
+    },
+
+    playAlarmSound() {
+      try {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return;
+        const ctx = new Ctx();
+        const notes = [523.25, 659.25, 783.99, 1046.5, 783.99, 1046.5];
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(0.001, ctx.currentTime + idx * 0.22);
+          gain.gain.exponentialRampToValueAtTime(0.25, ctx.currentTime + idx * 0.22 + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (idx + 1) * 0.22);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + idx * 0.22);
+          osc.stop(ctx.currentTime + (idx + 1) * 0.22);
+        });
+      } catch (_) {}
+    },
+
+    checkAlarmsTick() {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const curHHMM = `${hh}:${mm}`;
+      const minuteKey = `${now.toDateString()}_${curHHMM}`;
+
+      if (this.lastFiredMinuteKey !== minuteKey) {
+        let triggered = null;
+        this.alarms.forEach(a => {
+          if (a.enabled && a.time === curHHMM) {
+            triggered = a;
+            if (a.repeat === 'یک‌بار') a.enabled = false;
+          }
+        });
+        if (triggered) {
+          this.lastFiredMinuteKey = minuteKey;
+          this.save();
+          this.playAlarmSound();
+          toast(`⏰ هشدار ساعت ${this.toFaTime(triggered.time)}${triggered.label ? ` — ${triggered.label}` : ''}`);
+          this.refreshUI();
+        }
+      }
+
+      const heroEl = document.getElementById('xmHeroCountdownText');
+      if (heroEl && this.activeTab === 'alarm') {
+        heroEl.textContent = this.computeNextCountdownText();
+      }
+    },
+
+    toggleAlarm(id, ev) {
+      if (ev) ev.stopPropagation();
+      const a = this.alarms.find(x => x.id === id);
+      if (!a) return;
+      a.enabled = !a.enabled;
+      this.save();
+      this.refreshUI();
+      if (a.enabled) {
+        toast(`⏰ هشدار ${this.toFaTime(a.time)} فعال شد (${this.computeNextCountdownText()})`);
+      }
+    },
+
+    openEditAlarmSheet(alarmId = null, isBedtime = false) {
+      const existing = isBedtime
+        ? this.bedtime
+        : (alarmId ? this.alarms.find(x => x.id === alarmId) : null);
+      const timeVal = existing?.time || '07:30';
+      const repeatVal = existing?.repeat || 'یک‌بار';
+      const labelVal = existing?.label || '';
+
+      const box = document.getElementById('xmInlineEditorDrawer');
+      if (!box) return;
+      box.style.display = 'block';
+      box.innerHTML = `
+        <div style="background:#2C2C2E;border-radius:22px;padding:16px;margin-bottom:14px;border:1px solid #3A3A3C;color:#FFFFFF">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <b style="font-size:15px;color:#FFFFFF">${isBedtime ? '🛏️ تنظیم ساعت وقت خواب / بیداری' : (existing ? '⏰ ویرایش هشدار' : '➕ افزودن هشدار جدید')}</b>
+            ${(!isBedtime && existing) ? `<button type="button" style="background:#EF4444;color:#FFF;border:none;border-radius:10px;padding:4px 10px;font-size:11.5px;cursor:pointer" onclick="XiaomiClockApp.deleteAlarm('${existing.id}')">🗑️ حذف</button>` : ''}
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+            <div>
+              <label style="font-size:11px;color:#A1A1AA;display:block;margin-bottom:4px">ساعت و دقیقه:</label>
+              <input type="time" id="xmEditTimeInp" value="${esc(timeVal)}" style="width:100%;height:42px;background:#1C1C1E;color:#FFFFFF;border:1px solid #4C8DF6;border-radius:12px;text-align:center;font-size:18px;font-weight:bold">
+            </div>
+            <div>
+              <label style="font-size:11px;color:#A1A1AA;display:block;margin-bottom:4px">تکرار:</label>
+              <select id="xmEditRepeatSel" style="width:100%;height:42px;background:#1C1C1E;color:#FFFFFF;border:1px solid #3A3A3C;border-radius:12px;padding:0 10px;font-size:13px">
+                <option value="یک‌بار" ${repeatVal === 'یک‌بار' ? 'selected' : ''}>یک‌بار</option>
+                <option value="روزانه" ${repeatVal === 'روزانه' ? 'selected' : ''}>روزانه</option>
+                <option value="شنبه تا چهارشنبه" ${repeatVal === 'شنبه تا چهارشنبه' ? 'selected' : ''}>شنبه تا چهارشنبه (ایام مدرسه)</option>
+              </select>
+            </div>
+          </div>
+          ${!isBedtime ? `
+          <div style="margin-bottom:12px">
+            <label style="font-size:11px;color:#A1A1AA;display:block;margin-bottom:4px">برچسب / یادداشت هشدار (اختیاری):</label>
+            <input type="text" id="xmEditLabelInp" value="${esc(labelVal)}" placeholder="مثلاً فوزیدیک بخر، زنگ تفریح، امتحان ریاضی..." style="width:100%;height:40px;background:#1C1C1E;color:#FFFFFF;border:1px solid #3A3A3C;border-radius:12px;padding:0 12px;font-size:13px">
+          </div>` : ''}
+          <div style="display:flex;gap:8px">
+            <button type="button" style="flex:2;height:40px;border-radius:999px;background:#3B82F6;color:#FFFFFF;border:none;font-weight:bold;font-size:13.5px;cursor:pointer" onclick="XiaomiClockApp.saveEditedAlarm('${alarmId || ''}', ${isBedtime})">✓ ذخیره هشدار</button>
+            <button type="button" style="flex:1;height:40px;border-radius:999px;background:#3A3A3C;color:#FFFFFF;border:none;font-size:13px;cursor:pointer" onclick="document.getElementById('xmInlineEditorDrawer').style.display='none'">انصراف</button>
+          </div>
+        </div>
+      `;
+    },
+
+    saveEditedAlarm(alarmId, isBedtime) {
+      const t = document.getElementById('xmEditTimeInp')?.value || '07:30';
+      const rep = document.getElementById('xmEditRepeatSel')?.value || 'یک‌بار';
+      const lbl = (document.getElementById('xmEditLabelInp')?.value || '').trim();
+
+      if (isBedtime) {
+        this.bedtime = { time: t, repeat: rep, enabled: true };
+      } else if (alarmId) {
+        const a = this.alarms.find(x => x.id === alarmId);
+        if (a) {
+          a.time = t;
+          a.repeat = rep;
+          a.label = lbl;
+          a.enabled = true;
+        }
+      } else {
+        this.alarms.push({
+          id: 'xm_' + Date.now(),
+          time: t,
+          repeat: rep,
+          label: lbl,
+          enabled: true
+        });
+      }
+      this.alarms.sort((a, b) => String(a.time).localeCompare(String(b.time)));
+      this.save();
+      const box = document.getElementById('xmInlineEditorDrawer');
+      if (box) box.style.display = 'none';
+      this.refreshUI();
+      toast('⏰ هشدار ذخیره و فعال شد!');
+    },
+
+    deleteAlarm(id) {
+      this.alarms = this.alarms.filter(x => x.id !== id);
+      this.save();
+      const box = document.getElementById('xmInlineEditorDrawer');
+      if (box) box.style.display = 'none';
+      this.refreshUI();
+      toast('هشدار حذف شد.');
+    },
+
+    switchTab(tab) {
+      this.activeTab = tab;
+      this.refreshUI();
+    },
+
+    // کرونومتر
+    toggleStopwatch() {
+      if (this.swRunning) {
+        this.swRunning = false;
+        clearInterval(this.swInterval);
+      } else {
+        this.swRunning = true;
+        this.swStartMs = Date.now() - this.swElapsedMs;
+        this.swInterval = setInterval(() => {
+          this.swElapsedMs = Date.now() - this.swStartMs;
+          const el = document.getElementById('xmSwDisplay');
+          if (el) el.textContent = this.formatSwTime(this.swElapsedMs);
+        }, 45);
+      }
+      this.refreshUI();
+    },
+    lapStopwatch() {
+      if (!this.swElapsedMs) return;
+      this.swLaps.unshift(this.formatSwTime(this.swElapsedMs));
+      this.refreshUI();
+    },
+    resetStopwatch() {
+      this.swRunning = false;
+      clearInterval(this.swInterval);
+      this.swElapsedMs = 0;
+      this.swLaps = [];
+      this.refreshUI();
+    },
+    formatSwTime(ms) {
+      const totalSec = Math.floor(ms / 1000);
+      const mins = String(Math.floor(totalSec / 60)).padStart(2, '0');
+      const secs = String(totalSec % 60).padStart(2, '0');
+      const cs = String(Math.floor((ms % 1000) / 10)).padStart(2, '0');
+      return fa(`${mins}:${secs}.${cs}`);
+    },
+
+    // تایمر شمارش معکوس
+    setTimerMinutes(mins) {
+      this.tmRunning = false;
+      clearInterval(this.tmInterval);
+      this.tmTotalSec = Math.max(10, Math.round(Number(mins) * 60));
+      this.tmRemainSec = this.tmTotalSec;
+      this.refreshUI();
+    },
+    toggleTimer() {
+      if (this.tmRunning) {
+        this.tmRunning = false;
+        clearInterval(this.tmInterval);
+      } else {
+        if (this.tmRemainSec <= 0) this.tmRemainSec = this.tmTotalSec || 600;
+        this.tmRunning = true;
+        this.tmInterval = setInterval(() => {
+          this.tmRemainSec = Math.max(0, this.tmRemainSec - 1);
+          const el = document.getElementById('xmTmDisplay');
+          if (el) el.textContent = this.formatTimerSec(this.tmRemainSec);
+          if (this.tmRemainSec <= 0) {
+            this.tmRunning = false;
+            clearInterval(this.tmInterval);
+            this.playAlarmSound();
+            toast('⏳ زمان تایمر به پایان رسید!');
+            this.refreshUI();
+          }
+        }, 1000);
+      }
+      this.refreshUI();
+    },
+    resetTimer() {
+      this.tmRunning = false;
+      clearInterval(this.tmInterval);
+      this.tmRemainSec = this.tmTotalSec || 600;
+      this.refreshUI();
+    },
+    formatTimerSec(sec) {
+      const h = Math.floor(sec / 3600);
+      const m = String(Math.floor((sec % 3600) / 60)).padStart(2, '0');
+      const s = String(sec % 60).padStart(2, '0');
+      return fa(h > 0 ? `${String(h).padStart(2, '0')}:${m}:${s}` : `${m}:${s}`);
+    },
+
+    buildInnerHTML(showCloseBtn = true) {
+      const tabTitles = {
+        alarm: 'هشدار',
+        world: 'ساعت جهانی',
+        stopwatch: 'کرونومتر',
+        timer: 'تایمر'
+      };
+
+      let bodyHtml = '';
+      if (this.activeTab === 'alarm') {
+        const alarmCardsHtml = this.alarms.map(a => {
+          const subText = a.label ? `${a.repeat} | ${a.label}` : a.repeat;
+          return `
+            <div class="xm-alarm-card ${a.enabled ? 'active-alarm' : ''}" onclick="XiaomiClockApp.openEditAlarmSheet('${a.id}', false)">
+              <div>
+                <div class="xm-alarm-time">${this.toFaTime(a.time)}</div>
+                <div class="xm-alarm-sub">${esc(subText)}</div>
+              </div>
+              <button type="button" class="xm-switch ${a.enabled ? 'on' : ''}" onclick="XiaomiClockApp.toggleAlarm('${a.id}', event)" aria-label="تغییر وضعیت هشدار"></button>
+            </div>
+          `;
+        }).join('');
+
+        bodyHtml = `
+          <div class="xm-hero-countdown">
+            <div class="xm-hero-countdown-text" id="xmHeroCountdownText">${esc(this.computeNextCountdownText())}</div>
+          </div>
+
+          <div id="xmInlineEditorDrawer" style="display:none"></div>
+
+          <div class="xm-sec-label">وقت خواب</div>
+          <div class="xm-alarm-card active-alarm" onclick="XiaomiClockApp.openEditAlarmSheet(null, true)">
+            <div>
+              <div class="xm-alarm-time">${this.toFaTime(this.bedtime.time)}</div>
+              <div class="xm-alarm-sub">${esc(this.bedtime.repeat || 'روزانه')}</div>
+            </div>
+            <span style="color:#8A8A8E;font-size:20px;font-weight:300;padding-left:4px">‹</span>
+          </div>
+
+          <div class="xm-sec-label" style="margin-top:14px">هشدار</div>
+          <div style="padding-bottom:28px">
+            ${alarmCardsHtml}
+          </div>
+
+          <button type="button" class="xm-fab-plus" onclick="XiaomiClockApp.openEditAlarmSheet(null, false)" title="افزودن هشدار جدید">+</button>
+        `;
+      } else if (this.activeTab === 'world') {
+        const now = new Date();
+        const cities = [
+          { name: 'تهران', tz: 'Asia/Tehran', diff: 'امروز' },
+          { name: 'مکه', tz: 'Asia/Riyadh', diff: ' ۳۰ دقیقه-' },
+          { name: 'استانبول', tz: 'Europe/Istanbul', diff: ' ۳۰ دقیقه-' },
+          { name: 'لندن', tz: 'Europe/London', diff: ' ۳ ساعت و ۳۰ دقیقه-' },
+          { name: 'توکیو', tz: 'Asia/Tokyo', diff: ' ۵ ساعت و ۳۰ دقیقه+' }
+        ];
+        const cityCards = cities.map(ct => {
+          let tStr = '۰۰:۰۰';
+          try {
+            tStr = new Intl.DateTimeFormat('fa-IR', { timeZone: ct.tz, hour: '2-digit', minute: '2-digit', hour12: false }).format(now);
+          } catch (_) {
+            tStr = fa(`${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`);
+          }
+          return `
+            <div class="xm-alarm-card active-alarm" style="cursor:default">
+              <div>
+                <div style="font-size:18px;font-weight:500;color:#FFFFFF">${esc(ct.name)}</div>
+                <div class="xm-alarm-sub">${esc(ct.diff)}</div>
+              </div>
+              <div class="xm-alarm-time" style="font-size:30px">${tStr}</div>
+            </div>
+          `;
+        }).join('');
+        bodyHtml = `
+          <div class="xm-hero-countdown" style="margin:14px 0 18px">
+            <div class="xm-hero-countdown-text" style="font-size:36px">${new Intl.DateTimeFormat('fa-IR', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).format(now)}</div>
+            <div style="color:#8A8A8E;font-size:13px;margin-top:4px">ساعت رسمی ایران · ${formatJalaliDate(localISODate())}</div>
+          </div>
+          <div>${cityCards}</div>
+        `;
+      } else if (this.activeTab === 'stopwatch') {
+        bodyHtml = `
+          <div style="text-align:center;margin:36px 0 24px">
+            <div id="xmSwDisplay" style="font-size:48px;font-weight:300;letter-spacing:1.5px;color:#FFFFFF;font-variant-numeric:tabular-nums">${this.formatSwTime(this.swElapsedMs)}</div>
+            <div style="font-size:12px;color:#8A8A8E;margin-top:6px">کرونومتر دقیق فعالیت‌های کلاسی و مسابقات</div>
+          </div>
+          <div style="display:flex;justify-content:center;gap:14px;margin-bottom:20px">
+            <button type="button" style="height:46px;padding:0 26px;border-radius:999px;background:${this.swRunning ? '#EF4444' : '#3B82F6'};color:#FFFFFF;border:none;font-size:15px;font-weight:bold;cursor:pointer" onclick="XiaomiClockApp.toggleStopwatch()">${this.swRunning ? '⏸ توقف' : '▶ شروع'}</button>
+            <button type="button" style="height:46px;padding:0 20px;border-radius:999px;background:#2C2C2E;color:#FFFFFF;border:none;font-size:14px;cursor:pointer" onclick="XiaomiClockApp.lapStopwatch()">🚩 ثبت دور</button>
+            <button type="button" style="height:46px;padding:0 20px;border-radius:999px;background:#1C1C1E;color:#A1A1AA;border:1px solid #3A3A3C;font-size:14px;cursor:pointer" onclick="XiaomiClockApp.resetStopwatch()">↺ صفر</button>
+          </div>
+          <div style="max-height:190px;overflow-y:auto">
+            ${this.swLaps.map((l, idx) => `<div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid #1C1C1E;color:#A1A1AA;font-size:13px"><span>دور ${fa(this.swLaps.length - idx)}</span><b style="color:#FFFFFF">${l}</b></div>`).join('')}
+          </div>
+        `;
+      } else {
+        const presets = [
+          { m: 2, label: '۲ دقیقه' },
+          { m: 5, label: '۵ دقیقه' },
+          { m: 10, label: '۱۰ دقیقه' },
+          { m: 15, label: '۱۵ دقیقه' },
+          { m: 20, label: '۲۰ دقیقه' },
+          { m: 45, label: '۴۵ دقیقه (زنگ کلاس)' }
+        ];
+        bodyHtml = `
+          <div style="text-align:center;margin:28px 0 20px">
+            <div id="xmTmDisplay" style="font-size:50px;font-weight:300;letter-spacing:1.5px;color:#FFFFFF">${this.formatTimerSec(this.tmRemainSec)}</div>
+            <div style="font-size:12.5px;color:#8A8A8E;margin-top:6px">تایمر آزمون، کوییز و زنگ کلاس</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:20px">
+            ${presets.map(p => `<button type="button" style="padding:10px 6px;border-radius:16px;background:${this.tmTotalSec === p.m * 60 ? '#3B82F6' : '#1C1C1E'};color:#FFFFFF;border:1px solid #2C2C2E;font-size:12px;cursor:pointer" onclick="XiaomiClockApp.setTimerMinutes(${p.m})">${p.label}</button>`).join('')}
+          </div>
+          <div style="display:flex;justify-content:center;gap:14px">
+            <button type="button" style="height:46px;padding:0 28px;border-radius:999px;background:${this.tmRunning ? '#EF4444' : '#3B82F6'};color:#FFFFFF;border:none;font-size:15px;font-weight:bold;cursor:pointer" onclick="XiaomiClockApp.toggleTimer()">${this.tmRunning ? '⏸ مکث' : '▶ شروع تایمر'}</button>
+            <button type="button" style="height:46px;padding:0 22px;border-radius:999px;background:#2C2C2E;color:#FFFFFF;border:none;font-size:14px;cursor:pointer" onclick="XiaomiClockApp.resetTimer()">↺ بازنشانی</button>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="xm-clock-modal-shell" id="xmClockRootContainer">
+          <div>
+            <div class="xm-top-bar">
+              <h2 class="xm-top-title">${tabTitles[this.activeTab] || 'هشدار'}</h2>
+              <div style="display:flex;align-items:center;gap:4px">
+                <button type="button" class="xm-top-dots-btn" onclick="XiaomiClockApp.openEditAlarmSheet(null, false)" title="افزودن هشدار">⋮</button>
+                ${showCloseBtn ? `<button type="button" class="xm-top-dots-btn" onclick="closeModal()" title="بستن" style="font-size:20px;background:#1C1C1E">×</button>` : ''}
+              </div>
+            </div>
+            ${bodyHtml}
+          </div>
+
+          <!-- نوار ۴ تب پایین دقیقاً مطابق تصویر گوشی شیائومی -->
+          <div class="xm-bottom-nav">
+            <button type="button" class="xm-nav-item ${this.activeTab === 'alarm' ? 'active' : ''}" onclick="XiaomiClockApp.switchTab('alarm')">
+              <svg viewBox="0 0 24 24"><path d="M12 4a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm0 16a7 7 0 1 1 7-7 7 7 0 0 1-7 7zm1-11h-2v5l4.2 2.5.8-1.2-3-1.8V9zM5.6 2.3 2.3 5.6l1.4 1.4 3.3-3.3-1.4-1.4zm12.8 0-1.4 1.4 3.3 3.3 1.4-1.4-3.3-3.3z"/></svg>
+              <span>هشدار</span>
+            </button>
+            <button type="button" class="xm-nav-item ${this.activeTab === 'world' ? 'active' : ''}" onclick="XiaomiClockApp.switchTab('world')">
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 11H8v-2h3V6h2v7z"/></svg>
+              <span>ساعت جهانی</span>
+            </button>
+            <button type="button" class="xm-nav-item ${this.activeTab === 'stopwatch' ? 'active' : ''}" onclick="XiaomiClockApp.switchTab('stopwatch')">
+              <svg viewBox="0 0 24 24"><path d="M9 1h6v2H9V1zm3 5a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm1 9h-2V9h2v6z"/></svg>
+              <span>کرونومتر</span>
+            </button>
+            <button type="button" class="xm-nav-item ${this.activeTab === 'timer' ? 'active' : ''}" onclick="XiaomiClockApp.switchTab('timer')">
+              <svg viewBox="0 0 24 24"><path d="M6 2h12v4l-4 4 4 4v4H6v-4l4-4-4-4V2zm2 2v1.2L11.2 8h1.6L16 5.2V4H8zm8 16v-1.2L12.8 16h-1.6L8 18.8V20h8z"/></svg>
+              <span>تایمر</span>
+            </button>
+          </div>
+        </div>
+      `;
+    },
+
+    refreshUI() {
+      const root = document.getElementById('xmClockRootContainer');
+      if (!root) return;
+      const isInsideToolkit = Boolean(root.closest('#proToolPane-timer'));
+      root.outerHTML = this.buildInnerHTML(!isInsideToolkit);
+    },
+
+    openModal(initialTab = 'alarm') {
+      this.activeTab = initialTab;
+      openModal(this.buildInnerHTML(true));
+    }
+  };
+
+  XiaomiClockApp.init();
+
+  // اتصال جعبه ابزار معلم (تب تایمر و زنگ کلاس) و مرکز اعلانات به ساعت و هشدار شیائومی
+  const _origOpenTeacherProToolkitModalV84 = window.openTeacherProToolkitModal;
+  window.openTeacherProToolkitModal = function(activeTab = 'calc') {
+    if (typeof _origOpenTeacherProToolkitModalV84 === 'function') {
+      _origOpenTeacherProToolkitModalV84(activeTab);
+    }
+    const timerPane = document.getElementById('proToolPane-timer');
+    if (timerPane) {
+      XiaomiClockApp.activeTab = 'alarm';
+      timerPane.innerHTML = XiaomiClockApp.buildInnerHTML(false);
+    }
+  };
+
+  const _origOpenNotificationsCenterModalV84 = window.openNotificationsCenterModal;
+  window.openNotificationsCenterModal = function() {
+    if (typeof _origOpenNotificationsCenterModalV84 === 'function') {
+      _origOpenNotificationsCenterModalV84();
+    }
+    const sheet = document.getElementById('sheet');
+    if (sheet && !sheet.querySelector('#xmAlarmQuickLaunchBanner')) {
+      const banner = document.createElement('div');
+      banner.id = 'xmAlarmQuickLaunchBanner';
+      banner.style.cssText = 'background:#000000;color:#FFFFFF;border-radius:16px;padding:10px 14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid #2C2C2E';
+      banner.innerHTML = `
+        <div>
+          <b style="font-size:13px;color:#FFFFFF">⏰ ساعت و هشدار هوشمند شیائومی</b>
+          <div style="font-size:11px;color:#A1A1AA;margin-top:2px">${esc(XiaomiClockApp.computeNextCountdownText())}</div>
+        </div>
+        <button type="button" style="background:#3B82F6;color:#FFFFFF;border:none;border-radius:999px;padding:7px 14px;font-size:12px;font-weight:bold;cursor:pointer" onclick="XiaomiClockApp.openModal('alarm')">باز کردن هشدار ›</button>
+      `;
+      const head = sheet.querySelector('.sheethead');
+      if (head && head.nextSibling) {
+        sheet.insertBefore(banner, head.nextSibling);
+      } else {
+        sheet.appendChild(banner);
+      }
+    }
+  };
+
+  // افزودن دکمه مستقیم «⏰ هشدار شیائومی» به نوار ابزار سریع داشبورد
+  const injectV84QuickButtons = () => {
+    try {
+      if (window.TeachAssistant && typeof TeachAssistant.updateTeachAiStatusUI === 'function') {
+        TeachAssistant.updateTeachAiStatusUI();
+      }
+      const dashStrip = document.getElementById('dashQuickStrip');
+      if (dashStrip && !document.getElementById('dashXiaomiAlarmPill')) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = 'dashXiaomiAlarmPill';
+        btn.className = 'dash-q-pill';
+        btn.style.cssText = 'background:#18181B;color:#FFFFFF;border-color:#3F3F46;font-weight:900';
+        btn.innerHTML = '⏰ هشدار و تایمر شیائومی';
+        btn.onclick = () => XiaomiClockApp.openModal('alarm');
+        dashStrip.insertBefore(btn, dashStrip.firstElementChild);
+      }
+    } catch (_) {}
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(injectV84QuickButtons, 180));
+  } else {
+    setTimeout(injectV84QuickButtons, 180);
+  }
+})();
+</script>
+<!-- ==================== END V8.4.0 PRO MASTER UPGRADE ==================== -->
 
 </body>
 </html>
