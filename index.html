@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="8.2.0">
+<meta name="version" content="8.3.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.1</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.3</span>
         </div>
       </div>
     </div>
@@ -5118,7 +5118,7 @@ body.dark .ws-logout-inner {
           <span class="muted" style="font-size:11px" id="teachAiStatusHint">بدون نیاز به تایپ دستی — تصویر صفحه کتاب را می‌خواند و تمام فعالیت‌ها، جدول‌ها و سوالات را با پاسخ دقیق آماده می‌کند</span>
         </div>
         <div style="display:flex;gap:5px;align-items:center">
-          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleQuickApiKeyBox()" id="btnToggleTeachKey">🔑 کلید هوش‌واره</button>
+          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleQuickApiKeyBox()" id="btnToggleTeachKey">🔑 کلید هوش‌واره</button><span id="teachAiStatusBadge" class="chip" style="font-size:10.5px">🟢 فعال</span>
         </div>
       </div>
 
@@ -5165,6 +5165,7 @@ body.dark .ws-logout-inner {
           <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.exportLessonHandout('print')">🖨️ چاپ / PDF پاسخ‌ها</button>
         </div>
       </div>
+      <div style="margin-bottom:8px"><input type="text" id="customExerciseText" placeholder="✍️ اگر تمرین، جدول یا سوال خاصی از این صفحه مدنظر است بنویسید (اختیاری — در غیر این صورت همه حل می‌شود)..." style="font-size:11.5px;padding:7px 10px"></div>
       <div id="activitiesSolutionBox" style="display:grid;gap:8px"></div>
     </div>
 
@@ -5178,6 +5179,7 @@ body.dark .ws-logout-inner {
           <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleClassroomFlashcardMode()">🃏 پرسش کلاسی</button>
         </div>
       </div>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px"><span class="muted" style="font-size:11px;font-weight:800">سطح سوالات:</span><select id="extractDiffSelect" style="width:auto;height:30px;font-size:11px;font-weight:800;padding:0 8px"><option value="استاندارد خط‌به‌خط امتحانی" selected>استاندارد امتحانی</option><option value="مفهومی و تحلیلی">مفهومی و تحلیلی</option><option value="ساده و مروری">ساده و مروری</option></select><span id="btnModeMajorQuestions" style="display:none"></span><span id="btnModeAllQuestions" style="display:none"></span></div>
       <input type="hidden" id="extractScopeModeInp" value="all">
       <input type="hidden" id="extractCountInp" value="8">
       <div id="classroomFlashcardBox" class="teach-flashcard-box" style="display:none"></div>
@@ -5266,7 +5268,7 @@ body.dark .ws-logout-inner {
   </div>
 
   <div class="branch-bar">
-    <div class="branch-pills-row">
+    <div style="display:none"><span id="activeBranchBadge">الف</span></div><div class="branch-pills-row">
       <button class="branch-pill active" onclick="ExamApp.switchBranch('الف', this)">شعبه الف</button>
       <button class="branch-pill" onclick="ExamApp.switchBranch('ب', this)">شعبه ب</button>
       <button class="branch-pill" onclick="ExamApp.switchBranch('ج', this)">شعبه ج</button>
@@ -6232,7 +6234,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.1 Pro</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.3 Pro</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6333,7 +6335,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v8.1 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v8.3 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6973,14 +6975,14 @@ async function addSchoolPhotoFile(e) { for (const f of [...(e.target.files || []
 function renderSchoolPhotoPrevs() { const b = document.getElementById('schoolPhotoPrev'); if (b) b.innerHTML = (window._schoolPhotos || []).map((src, i) => `<div class="photo-thumb"><img src="${src}"><button type="button" onclick="window._schoolPhotos.splice(${i},1);renderSchoolPhotoPrevs()">×</button></div>`).join(''); }
 function saveSchoolForm(editId = null) {
   const name = document.getElementById('fName')?.value.trim(), year = document.getElementById('fYear')?.value.trim();
-  if (!name) { alert('نام مدرسه را وارد کنید.'); return; }
+  if (!name) { window.smartAlert('نام مدرسه را وارد کنید.'); return; }
   if (editId) { let s = findSchool(editId); if (s) { s.name = name; s.year = year; s.photos = window._schoolPhotos || []; } }
   else db.schools.push({ id: uid(), name, year, photos: window._schoolPhotos || [], classes: [] });
   closeModal(); save(); toast('مدرسه ذخیره شد ✅');
 }
 function deleteSchool(id) {
   let s = findSchool(id); if (!s) return;
-  if (confirm(`مدرسه «${s.name}» حذف شود؟`)) { pushUndo('حذف مدرسه'); db.schools = db.schools.filter(x => x.id !== id); save(); showView('schools'); }
+  if (window.smartConfirm(`مدرسه «${s.name}» حذف شود؟`)) { pushUndo('حذف مدرسه'); db.schools = db.schools.filter(x => x.id !== id); save(); showView('schools'); }
 }
 
 function classCard(s, c) {
@@ -7002,7 +7004,7 @@ function renderClassPhotoPrevs() { const b = document.getElementById('classPhoto
 function saveClassForm(sid, editCid = null) {
   const s = findSchool(sid); if (!s) return;
   const name = document.getElementById('cName')?.value.trim(), grade = document.getElementById('cGrade')?.value.trim();
-  if (!name) { alert('نام کلاس را وارد کنید.'); return; }
+  if (!name) { window.smartAlert('نام کلاس را وارد کنید.'); return; }
   if (editCid) { let c = findClass(sid, editCid); if (c) { c.name = name; c.grade = grade; c.photos = window._classPhotos || []; } }
   else s.classes.push({ id: uid(), name, grade, photos: window._classPhotos || [], students: [], attendance: {}, termScores: {}, sessionNotes: {} });
   closeModal(); save(); toast('کلاس ذخیره شد ✅');
@@ -7047,13 +7049,13 @@ function renderTodayListInner(sid, cid) {
   document.getElementById('classTodayListContainer').innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap"><button class="btn gray" onclick="closeTodayList()">← بازگشت به کلاس</button><div style="display:flex;gap:6px"><button class="btn soft" onclick="pickRandomStudent('${sid}','${cid}')">🎲 قرعه‌کشی پرسش</button><button class="btn soft" onclick="openAttendance('${sid}','${cid}')">📋 جدول جامع</button></div></div><div class="td-list-card" id="todayListCardBox"><div class="td-sticky-header-group"><div class="td-list-head"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap"><b>📅 تاریخ جلسه:</b><input id="todayDateJalaliInput" type="text" value="${formatJalaliDate(dateISO)}" onchange="changeListDate('${sid}','${cid}',this.value)" style="width:108px;padding:5px 8px;font-weight:bold;text-align:center;font-size:12.5px" title="ویرایش تاریخ شمسی">${allDates.length ? `<select onchange="selectListDateISO('${sid}','${cid}',this.value)" style="width:auto;padding:4px 8px;font-size:11.5px" title="انتخاب از جلسات تقویم"><option value="${dateISO}">انتخاب جلسه...</option>${dateOptions}</select>` : ''}</div><button class="btn soft btn-sm" onclick="inlAllPresent('${sid}','${cid}')">✓ همه حاضر</button></div><div style="padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--border-subtle)"><input type="text" value="${esc(noteVal)}" placeholder="📝 یادداشت یا مبحث تدریس‌شده در تاریخ ${formatJalaliDate(dateISO)}..." onchange="saveSessionNote('${sid}','${cid}','${dateISO}',this.value)" style="font-size:12px;padding:6px 10px"></div><div class="td-col-headers"><span>وضعیت حضور و نام دانش‌آموز (${fa(c.students.length)} نفر)</span><span>نمره جلسه · امتیاز (+ / −)</span></div></div><div class="td-scroll-body" id="tdScrollBody">${rows || '<div class="muted" style="padding:20px;text-align:center">دانش‌آموزی ثبت نشده است.</div>'}</div></div>`;
 }
 window.saveSessionNote = function(sid, cid, d, t) { const c = findClass(sid, cid); if (!c) return; c.sessionNotes[d] = t.trim(); savePersistent(); toast('یادداشت ذخیره شد 📝'); };
-window.changeListDate = function(sid, cid, v) { const iso = jalaliToISO(v); if (!iso) { alert('تاریخ معتبر وارد کنید.'); return; } window.currentListDate = iso; renderTodayListInner(sid, cid); };
+window.changeListDate = function(sid, cid, v) { const iso = jalaliToISO(v); if (!iso) { window.smartAlert('تاریخ معتبر وارد کنید.'); return; } window.currentListDate = iso; renderTodayListInner(sid, cid); };
 window.inlAtt = function(sid, cid, stid) { const c = findClass(sid, cid), d = window.currentListDate || localISODate(); if (!c) return; if (!c.attendance[d]) c.attendance[d] = {}; if (attendanceStatus(c, d, stid) === 'absent') delete c.attendance[d][stid]; else c.attendance[d][stid] = { status: 'absent' }; savePersistent(); renderTodayListInner(sid, cid); };
 window.inlScore = function(sid, cid, stid, type) { const c = findClass(sid, cid), st = findStudent(sid, cid, stid); if (!st) return; const r = getRules(); behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'].push({ id: uid(), date: new Date().toISOString(), reason: 'ثبت از لیست امروز', value: type === 'positive' ? r.positiveValue : r.penaltyPerNeg, code: '' }); evaluateAutoStatus(c, st); savePersistent(); renderTodayListInner(sid, cid); toast(type === 'positive' ? '➕ مثبت ثبت شد' : '➖ منفی ثبت شد'); };
 window.inlAllPresent = function(sid, cid) { const c = findClass(sid, cid), d = window.currentListDate || localISODate(); if (!c) return; if (!c.attendance[d]) c.attendance[d] = {}; (c.students || []).forEach(st => { if (c.attendance[d][st.id]) delete c.attendance[d][st.id].status; }); savePersistent(); renderTodayListInner(sid, cid); toast('همه حاضر شدند ✓'); };
 
 function pickRandomStudent(sid, cid) {
-  const c = findClass(sid, cid); if (!c || !c.students.length) { alert('دانش‌آموزی نیست.'); return; }
+  const c = findClass(sid, cid); if (!c || !c.students.length) { window.smartAlert('دانش‌آموزی نیست.'); return; }
   const today = window.currentListDate || localISODate(), pres = c.students.filter(st => attendanceStatus(c, today, st.id) !== 'absent'), pool = pres.length ? pres : c.students;
   const chosen = pool[Math.floor(Math.random() * pool.length)];
   openModal(formHeader('🎲 قرعه‌کشی پرسش کلاسی') + `<div style="text-align:center;padding:14px 10px"><div class="avatar" style="margin:auto;width:74px!important;height:74px!important;font-size:28px">${chosen.photo ? `<img src="${chosen.photo}">` : esc((chosen.name || '?')[0])}</div><h2 style="margin:12px 0 4px;color:var(--primary)">${formatStudentName(chosen)}</h2><div class="muted">میانگین: ${avgGrade(chosen) !== null ? fmtScore(avgGrade(chosen)) : '—'} · ➕ ${fa(chosen.behavior.positives.length)} · ➖ ${fa(chosen.behavior.negatives.length)}</div><div class="actions" style="justify-content:center;margin-top:16px"><button class="btn green" onclick="inlScore('${sid}','${cid}','${chosen.id}','positive');closeModal()">➕ مثبت</button><button class="btn danger" onclick="inlScore('${sid}','${cid}','${chosen.id}','negative');closeModal()">➖ منفی</button><button class="btn primary" onclick="closeModal();addGrade('${sid}','${cid}','${chosen.id}')">📚 ثبت نمره</button></div><button class="btn soft block" style="margin-top:12px" onclick="pickRandomStudent('${sid}','${cid}')">🔄 قرعه‌کشی نفر بعدی</button></div>`);
@@ -7090,12 +7092,12 @@ function clonePlain(value) { return JSON.parse(JSON.stringify(value)); }
 function startNewTerm(sid, cid) {
   const c = findClass(sid, cid); if (!c) { toast('کلاس پیدا نشد'); return; }
   const currentName = c.currentTermName || 'ترم جاری';
-  const suggested = prompt('نام ترم جدید را وارد کنید (مثلاً نوبت دوم ۱۴۰۵-۱۴۰۶):', 'ترم جدید');
+  const suggested = window.smartPrompt('نام ترم جدید را وارد کنید (مثلاً نوبت دوم ۱۴۰۵-۱۴۰۶):', 'ترم جدید');
   if (suggested === null) return;
   const newName = suggested.trim();
-  if (!newName) { alert('نام ترم جدید نمی‌تواند خالی باشد.'); return; }
+  if (!newName) { window.smartAlert('نام ترم جدید نمی‌تواند خالی باشد.'); return; }
   const studentCount = (c.students || []).length;
-  const ok = confirm(`ترم «${currentName}» برای ${studentCount} دانش‌آموز بایگانی شود و «${newName}» از صفر آغاز شود؟\n\nنمرات، حضور و غیاب، امتیازهای رفتاری و ستون‌های نمرهٔ ترم قبلی در آرشیو می‌مانند. این عملیات قابل بازگشت خودکار نیست؛ قبل از تأیید از بخش خروجی پشتیبان بگیرید.`);
+  const ok = window.smartConfirm(`ترم «${currentName}» برای ${studentCount} دانش‌آموز بایگانی شود و «${newName}» از صفر آغاز شود؟\n\nنمرات، حضور و غیاب، امتیازهای رفتاری و ستون‌های نمرهٔ ترم قبلی در آرشیو می‌مانند. این عملیات قابل بازگشت خودکار نیست؛ قبل از تأیید از بخش خروجی پشتیبان بگیرید.`);
   if (!ok) return;
   try {
     const snapshot = clonePlain(c);
@@ -7125,7 +7127,7 @@ function startNewTerm(sid, cid) {
     openAttendance(sid, cid);
   } catch (err) {
     console.error('startNewTerm failed', err);
-    alert('شروع ترم انجام نشد. اطلاعات فعلی تغییرات ذخیره‌شده را حفظ کرده‌ایم؛ از پشتیبان استفاده کنید و دوباره تلاش کنید.');
+    window.smartAlert('شروع ترم انجام نشد. اطلاعات فعلی تغییرات ذخیره‌شده را حفظ کرده‌ایم؛ از پشتیبان استفاده کنید و دوباره تلاش کنید.');
   }
 }
 function showTermArchive(sid, cid) {
@@ -7151,28 +7153,28 @@ window.gridApplyShortcut = function(sid, cid, stid, code) { const sh = getShortc
 
 function addCustomGradeColumn(sid,cid) {
   const c=findClass(sid,cid); if(!c) return;
-  const title=prompt('عنوان ستون نمره را وارد کن (مثلاً مستمر یا پایانی ترم):','مستمر'); if(title===null) return;
-  const clean=title.trim(); if(!clean){alert('عنوان ستون خالی نباشد.');return;}
-  const raw=prompt('حداکثر نمره این ستون چند باشد؟','20'); if(raw===null) return;
-  const max=Number(enDigits(raw)); if(!Number.isFinite(max)||max<=0||max>1000){alert('حداکثر نمره باید عددی بیشتر از صفر باشد.');return;}
+  const title=window.smartPrompt('عنوان ستون نمره را وارد کن (مثلاً مستمر یا پایانی ترم):','مستمر'); if(title===null) return;
+  const clean=title.trim(); if(!clean){window.smartAlert('عنوان ستون خالی نباشد.');return;}
+  const raw=window.smartPrompt('حداکثر نمره این ستون چند باشد؟','20'); if(raw===null) return;
+  const max=Number(enDigits(raw)); if(!Number.isFinite(max)||max<=0||max>1000){window.smartAlert('حداکثر نمره باید عددی بیشتر از صفر باشد.');return;}
   if(!Array.isArray(c.gradeColumns)) c.gradeColumns=[];
   c.gradeColumns.push({id:uid(),title:clean,max,scores:{}}); save(); openAttendance(sid,cid); toast('ستون نمره اضافه شد.');
 }
 function editCustomGradeColumn(sid,cid,gid) {
   const c=findClass(sid,cid), g=c?.gradeColumns?.find(x=>x.id===gid); if(!g) return;
-  const title=prompt('عنوان جدید ستون (نمره‌های ثبت‌شده حفظ می‌شوند):',g.title); if(title===null) return;
-  const raw=prompt('حداکثر نمره جدید:',String(g.max)); if(raw===null) return;
-  const max=Number(enDigits(raw)); if(!title.trim()||!Number.isFinite(max)||max<=0||max>1000){alert('عنوان یا سقف نمره معتبر نیست.');return;}
+  const title=window.smartPrompt('عنوان جدید ستون (نمره‌های ثبت‌شده حفظ می‌شوند):',g.title); if(title===null) return;
+  const raw=window.smartPrompt('حداکثر نمره جدید:',String(g.max)); if(raw===null) return;
+  const max=Number(enDigits(raw)); if(!title.trim()||!Number.isFinite(max)||max<=0||max>1000){window.smartAlert('عنوان یا سقف نمره معتبر نیست.');return;}
   g.title=title.trim(); g.max=max; save(); openAttendance(sid,cid); toast('ستون ویرایش شد؛ نمره‌های قبلی حفظ شدند.');
 }
 function removeCustomGradeColumn(sid,cid,gid) {
   const c=findClass(sid,cid); if(!c) return; const g=c.gradeColumns?.find(x=>x.id===gid); if(!g) return;
-  if(!confirm(`ستون «${g.title}» و نمره‌های ثبت‌شده در آن حذف شود؟`)) return;
+  if(!window.smartConfirm(`ستون «${g.title}» و نمره‌های ثبت‌شده در آن حذف شود؟`)) return;
   c.gradeColumns=c.gradeColumns.filter(x=>x.id!==gid); save(); openAttendance(sid,cid); toast('ستون حذف شد.');
 }
 function saveCustomGrade(sid,cid,stid,gid,value) {
   const c=findClass(sid,cid), g=c?.gradeColumns?.find(x=>x.id===gid); if(!g) return;
-  const v=value===''?'':Number(enDigits(value)); if(v!==''&&(!Number.isFinite(v)||v<0||v>Number(g.max))){alert(`نمره باید بین ۰ و ${fa(g.max)} باشد.`);openAttendance(sid,cid);return;}
+  const v=value===''?'':Number(enDigits(value)); if(v!==''&&(!Number.isFinite(v)||v<0||v>Number(g.max))){window.smartAlert(`نمره باید بین ۰ و ${fa(g.max)} باشد.`);openAttendance(sid,cid);return;}
   if(!g.scores||typeof g.scores!=='object') g.scores={}; if(v==='') delete g.scores[stid]; else g.scores[stid]=Math.round(v*100)/100;
   save(); toast('نمره ذخیره شد.');
 }
@@ -7279,7 +7281,7 @@ function saveEditedBehavior(sid, cid, stid, oldType, bid) {
   evaluateAutoStatus(c, st); closeModal(); save(); toast('ویرایش شد ✅');
 }
 function deleteBehavior(sid, cid, stid, type, bid) {
-  if (!confirm('حذف شود؟')) return;
+  if (!window.smartConfirm('حذف شود؟')) return;
   const st = findStudent(sid, cid, stid); if (!st) return;
   const arr = behaviorData(st)[type === 'positive' ? 'positives' : 'negatives'], idx = arr.findIndex(x => x.id === bid);
   if (idx >= 0) arr.splice(idx, 1); save(); toast('حذف شد');
@@ -7329,7 +7331,7 @@ function saveEditedGrade(sid, cid, stid, gid) {
   g.subject = document.getElementById('editGSub')?.value.trim() || 'ارزیابی'; g.gradeType = document.getElementById('editGType')?.value || 'class_score'; g.score = roundQuarter(enDigits(document.getElementById('editGScore')?.value));
   evaluateAutoStatus(c, st); closeModal(); save(); toast('ویرایش شد ✅');
 }
-function deleteGrade(sid, cid, stid, gid) { if (!confirm('حذف شود؟')) return; const st = findStudent(sid, cid, stid); if (st) { st.grades = gradesData(st).filter(x => x.id !== gid); save(); } }
+function deleteGrade(sid, cid, stid, gid) { if (!window.smartConfirm('حذف شود؟')) return; const st = findStudent(sid, cid, stid); if (st) { st.grades = gradesData(st).filter(x => x.id !== gid); save(); } }
 
 function attendanceDates(c) {
   const a = c.attendanceSettings || {}; let start = a.startDate || localISODate(), count = Math.max(8, Math.min(50, Number(a.sessionCount) || 16)), out = [], wds = a.weekDays || [];
@@ -7343,11 +7345,11 @@ function editAttendanceSettings(sid, cid) {
   openModal(formHeader('⚙ تنظیم تقویم جلسات') + `<div class="formgrid"><div class="field"><label>شروع شمسی</label><input id="attStart" value="${formatJalaliDate(a.startDate)}"></div><div class="field"><label>تعداد جلسات</label><input id="attCount" type="number" value="${a.sessionCount || 16}"></div><div class="field full"><label>روزهای هفته:</label><div class="weekday-selector">${['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'].map((d, idx) => `<div><input type="checkbox" id="wd_${idx}" value="${idx}" class="wd-cb" ${days.includes(idx) ? 'checked' : ''}><label for="wd_${idx}">${d}</label></div>`).join('')}</div></div></div><div class="formactions"><button class="btn primary" onclick="saveAttSettings('${sid}','${cid}')">ذخیره</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>`);
 }
 function saveAttSettings(sid, cid) {
-  const c = findClass(sid, cid), iso = jalaliToISO(document.getElementById('attStart')?.value); if (!c || !iso) { alert('تاریخ نامعتبر'); return; }
+  const c = findClass(sid, cid), iso = jalaliToISO(document.getElementById('attStart')?.value); if (!c || !iso) { window.smartAlert('تاریخ نامعتبر'); return; }
   c.attendanceSettings = { startDate: iso, intervalDays: 7, sessionCount: Number(document.getElementById('attCount')?.value) || 16, weekDays: [...document.querySelectorAll('.wd-cb:checked')].map(x => Number(x.value)) };
   closeModal(); save(); toast('ذخیره شد ✅');
 }
-function editAttendanceDate(sid, cid, oldD) { const c = findClass(sid, cid), v = prompt('تاریخ شمسی جدید:', formatJalaliDate(oldD)); if (!c || !v) return; const iso = jalaliToISO(v); if (!iso) return; c.attendance[iso] = Object.assign({}, c.attendance[oldD] || {}, c.attendance[iso] || {}); delete c.attendance[oldD]; save(); }
+function editAttendanceDate(sid, cid, oldD) { const c = findClass(sid, cid), v = window.smartPrompt('تاریخ شمسی جدید:', formatJalaliDate(oldD)); if (!c || !v) return; const iso = jalaliToISO(v); if (!iso) return; c.attendance[iso] = Object.assign({}, c.attendance[oldD] || {}, c.attendance[iso] || {}); delete c.attendance[oldD]; save(); }
 function addAttendanceDate(sid, cid) { const c = findClass(sid, cid); if (c) { c.attendanceSettings.sessionCount = (Number(c.attendanceSettings.sessionCount) || 16) + 1; save(); } }
 
 function attendanceRecord(c, d, stid) { return c.attendance?.[d]?.[stid] || { status: 'present' }; }
@@ -7466,7 +7468,7 @@ function execCopyStudent(stid) {
 }
 function moveStudent(sid, cid, stid) {
   const s = findSchool(sid), opts = (s?.classes || []).filter(c => c.id !== cid).map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('');
-  if (!opts) { alert('کلاس دیگری نیست.'); return; }
+  if (!opts) { window.smartAlert('کلاس دیگری نیست.'); return; }
   openModal(formHeader('🔀 انتقال دانش‌آموز') + `<div class="field"><label>کلاس مقصد</label><select id="moveDest">${opts}</select></div><div class="formactions"><button class="btn primary" onclick="execMoveStudent('${sid}','${cid}','${stid}')">انتقال</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>`);
 }
 function execMoveStudent(sid, cid, stid) {
@@ -7475,13 +7477,13 @@ function execMoveStudent(sid, cid, stid) {
   pushUndo('انتقال'); from.students = from.students.filter(x => x.id !== stid); to.students.push(st);
   closeModal(); save(); openClass(sid, to.id);
 }
-function deleteStudent(sid, cid, stid) { const st = findStudent(sid, cid, stid); if (st && confirm(`«${st.name} ${st.lastName}» حذف شود؟`)) { pushUndo('حذف دانش‌آموز'); findClass(sid, cid).students = findClass(sid, cid).students.filter(x => x.id !== stid); save(); openClass(sid, cid); } }
+function deleteStudent(sid, cid, stid) { const st = findStudent(sid, cid, stid); if (st && window.smartConfirm(`«${st.name} ${st.lastName}» حذف شود؟`)) { pushUndo('حذف دانش‌آموز'); findClass(sid, cid).students = findClass(sid, cid).students.filter(x => x.id !== stid); save(); openClass(sid, cid); } }
 function copyClass(sid, cid) {
-  const src = findClass(sid, cid), s = findSchool(sid), name = prompt('نام کلاس جدید:', `${src?.name || ''} - کپی`); if (!src || !s || !name) return;
+  const src = findClass(sid, cid), s = findSchool(sid), name = window.smartPrompt('نام کلاس جدید:', `${src?.name || ''} - کپی`); if (!src || !s || !name) return;
   s.classes.push({ id: uid(), name: name.trim(), grade: src.grade, photos: [...(src.photos || [])], students: (src.students || []).map(st => ({ ...JSON.parse(JSON.stringify(st)), id: uid(), behavior: { positives: [], negatives: [] }, grades: [], examPapers: [] })), attendance: {}, termScores: {}, sessionNotes: {} });
   save(); openSchool(sid);
 }
-function deleteClass(sid, cid) { const c = findClass(sid, cid), s = findSchool(sid); if (c && s && confirm(`کلاس «${c.name}» حذف شود؟`)) { pushUndo('حذف کلاس'); s.classes = s.classes.filter(x => x.id !== cid); save(); openSchool(sid); } }
+function deleteClass(sid, cid) { const c = findClass(sid, cid), s = findSchool(sid); if (c && s && window.smartConfirm(`کلاس «${c.name}» حذف شود؟`)) { pushUndo('حذف کلاس'); s.classes = s.classes.filter(x => x.id !== cid); save(); openSchool(sid); } }
 function collectiveBehavior(sid, cid, type) {
   const c = findClass(sid, cid); if (!c || !c.students.length) return;
   openModal(formHeader(type === 'positive' ? '➕ مثبت جمعی' : '➖ منفی جمعی') + `<div class="field"><label>دلیل</label><input id="colReason" placeholder="مشارکت گروهی"></div><div style="margin:10px 0;max-height:42vh;overflow-y:auto">${sortStudents(c.students).map(st => `<label style="display:flex;align-items:center;gap:8px;padding:7px;border-bottom:1px solid var(--border-subtle)"><input type="checkbox" value="${st.id}" checked class="colChk"> <span>${formatStudentName(st)}</span></label>`).join('')}</div><div class="formactions"><button class="btn primary" onclick="execCollective('${sid}','${cid}','${type}')">ثبت</button><button class="btn gray" onclick="closeModal()">انصراف</button></div>`);
@@ -7516,7 +7518,7 @@ window.exportCustomReport = function(kind) {
   db.schools.forEach(s => s.classes.forEach(c => sortStudents(c.students).forEach(st => {
     rows.push([s.name, c.name, `${st.lastName} ${st.name}`, st.fatherName || '—', attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length, avgGrade(st) !== null ? fmtScore(avgGrade(st)) : '—', `+${st.behavior.positives.length} / -${st.behavior.negatives.length}`, c.termScores?.[st.id] ?? '—', fmtScore(calculateFinalStudentScore(c, st))]);
   })));
-  if (!rows.length) { alert('دانش‌آموزی ثبت نشده.'); return; }
+  if (!rows.length) { window.smartAlert('دانش‌آموزی ثبت نشده.'); return; }
   if (kind === 'excel') {
     let csv = '\ufeff' + [headers, ...rows].map(e => e.map(x => `"${String(x ?? '').replace(/"/g, '""')}"`).join(',')).join('\r\n');
     let a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' })); a.download = `گزارش-${localISODate()}.csv`; a.click();
@@ -7538,11 +7540,11 @@ function importData(e) {
       const p = JSON.parse(r.result); if (!p || !Array.isArray(p.schools)) throw 0;
       db = sanitizeDb(p); if (p.examData && window.ExamApp) { ExamApp.state = { ...ExamApp.state, ...p.examData }; ExamApp.save(); ExamApp.renderAll(); }
       save(); showView('dashboard'); toast('بازیابی شد ✅');
-    } catch (err) { alert('فایل نامعتبر است.'); }
+    } catch (err) { window.smartAlert('فایل نامعتبر است.'); }
   };
   r.readAsText(f); e.target.value = '';
 }
-function clearAll() { if (confirm('کل اطلاعات پاک شود؟')) { pushUndo('پاک‌سازی'); db = sanitizeDb({ version: 1, schools: [] }); save(); showView('dashboard'); } }
+function clearAll() { if (window.smartConfirm('کل اطلاعات پاک شود؟')) { pushUndo('پاک‌سازی'); db = sanitizeDb({ version: 1, schools: [] }); save(); showView('dashboard'); } }
 function quickAdd() {
   if (!db.schools.length) addSchool();
   else if (currentClassId && document.getElementById('classDetail')?.classList.contains('active')) addStudent(currentSchoolId, currentClassId);
@@ -7759,7 +7761,7 @@ const TeachAssistant = {
       this.updateTeachAiStatusUI();
       toast('اتصال هوش مصنوعی با موفقیت برقرار شد ✅');
     } catch (e) {
-      alert('❌ خطا در کلید هوش مصنوعی: ' + (e?.message || 'کلید معتبر نیست'));
+      window.smartAlert('❌ خطا در کلید هوش مصنوعی: ' + (e?.message || 'کلید معتبر نیست'));
     }
   },
 
@@ -7854,7 +7856,7 @@ const TeachAssistant = {
     if (!db.cachedBook?.name) { toast('کتابی برای حذف وجود ندارد.'); return; }
     const name = db.cachedBook.name;
     const id = db.cachedBook.id;
-    if (!confirm(`آیا کتاب «${name}» از حافظه حذف شود؟`)) return;
+    if (!window.smartConfirm(`آیا کتاب «${name}» از حافظه حذف شود؟`)) return;
     db.bookLibrary = (db.bookLibrary || []).filter(b => b.id !== id && b.name !== name);
     await deleteBookPdfAsset(id);
     if (db.bookLibrary.length > 0) {
@@ -8271,7 +8273,7 @@ const TeachAssistant = {
       const cl = findClass(currentSchoolId, currentClassId);
       if (cl?.name) defaultLabel = cl.name;
     }
-    const label = prompt(`این صفحه (صفحه ${fa(p)}) به عنوان «تا اینجا درس دادم» برای کدام کلاس ثبت شود؟`, defaultLabel);
+    const label = window.smartPrompt(`این صفحه (صفحه ${fa(p)}) به عنوان «تا اینجا درس دادم» برای کدام کلاس ثبت شود؟`, defaultLabel);
     if (!label) return;
     db.cachedBook.classPins[label.trim()] = p;
     this.syncActiveToLibrary();
@@ -8535,7 +8537,7 @@ ${src.slice(0, 1800)}
       this.renderExtractedBank();
       toast(`${fa(arr.length)} سوال استاندارد با هوش مصنوعی طراحی و ذخیره شد ✅`);
     } catch (err) {
-      alert('⚠️ ' + (err?.message || 'خطا در ارتباط با هوش مصنوعی'));
+      window.smartAlert('⚠️ ' + (err?.message || 'خطا در ارتباط با هوش مصنوعی'));
     } finally {
       if (btn) { btn.disabled = false; btn.textContent = '🤖 طراحی سوالات این صفحه با هوش مصنوعی'; }
     }
@@ -8640,7 +8642,7 @@ ${src.slice(0, 1800)}
         toast('ثبت شد ✅');
       }
     } catch (e) {
-      alert('فرمت متن واردشده معتبر نبود.');
+      window.smartAlert('فرمت متن واردشده معتبر نبود.');
     }
   },
 
@@ -8891,8 +8893,8 @@ const ExamApp = {
     document.getElementById('a4Sheet')?.classList.toggle('calligraphy-active', !!this.state.switches.calligraphyHeader);
   },
   approveAndArchiveCurrentExam() {
-    const qs = this.getQuestions(); if (!qs.length) { alert('سوالی در برگه نیست.'); return; }
-    const def = `${this.state.header.subject} (${this.state.header.grade}) - ${this.state.header.date}`, title = prompt('عنوان آزمون برای ذخیره در آرشیو:', def);
+    const qs = this.getQuestions(); if (!qs.length) { window.smartAlert('سوالی در برگه نیست.'); return; }
+    const def = `${this.state.header.subject} (${this.state.header.grade}) - ${this.state.header.date}`, title = window.smartPrompt('عنوان آزمون برای ذخیره در آرشیو:', def);
     if (title === null) return;
     this.state.approvedExamsArchive.unshift({ archiveId: Date.now(), title: title.trim() || def, savedDate: this.state.header.date, subject: this.state.header.subject, grade: this.state.header.grade, duration: this.state.header.time, totalScore: qs.reduce((s, q) => s + (Number(q.score) || 0), 0), questionCount: qs.length, fontFamily: this.state.fontFamily, headerSnapshot: JSON.parse(JSON.stringify(this.state.header)), branchesSnapshot: JSON.parse(JSON.stringify(this.state.branches)) });
     this.save(); this.renderApprovedArchiveList(); toast('در آرشیو تاییدشده ذخیره شد ✅');
@@ -8913,7 +8915,7 @@ const ExamApp = {
     this.applyFontSettingsToDOM(); this.syncHeaderToInputs(); this.save(); this.openTab('preview', document.getElementById('mobPreviewTabBtn')); this.renderAll();
   },
   async quickExportFromArchive(id, fmt, font) { this.loadExamFromArchive(id, font); setTimeout(() => fmt === 'word' ? this.exportWordDoc(font) : this.exportDirectPDF(), 150); },
-  deleteFromArchive(id) { if (confirm('حذف شود؟')) { this.state.approvedExamsArchive = this.state.approvedExamsArchive.filter(a => a.archiveId !== id); this.save(); this.renderApprovedArchiveList(); } },
+  deleteFromArchive(id) { if (window.smartConfirm('حذف شود؟')) { this.state.approvedExamsArchive = this.state.approvedExamsArchive.filter(a => a.archiveId !== id); this.save(); this.renderApprovedArchiveList(); } },
   getQuestions(b = this.currentBranch) { if (!this.state.branches[b]) this.state.branches[b] = []; return this.state.branches[b]; },
   switchBranch(b, btn) { this.currentBranch = b; document.querySelectorAll('.branch-pill').forEach(x => x.classList.remove('active')); if (btn) btn.classList.add('active'); this.renderAll(); },
   openTab(id, btn) {
@@ -9166,7 +9168,7 @@ const ExamApp = {
   },
   async testApiKeyConnection() {
     const b = document.getElementById('btnTestKey'); b.disabled = true; b.textContent = '...';
-    try { await this.callArgonAI('Say OK'); toast('اتصال هوش مصنوعی برقرار است ✅'); } catch (e) { alert('❌ ' + e.message); } finally { b.disabled = false; b.textContent = 'تست اتصال'; }
+    try { await this.callArgonAI('Say OK'); toast('اتصال هوش مصنوعی برقرار است ✅'); } catch (e) { window.smartAlert('❌ ' + e.message); } finally { b.disabled = false; b.textContent = 'تست اتصال'; }
   },
   async loadPdfBook(e) {
     const f = e.target.files?.[0]; if (!f) return; this.autoDetectHeaderFromText(f.name);
@@ -9179,7 +9181,7 @@ const ExamApp = {
       this.pdfGalleryOffset = 1; this.selectedPdfPages.clear();
       document.getElementById('pdfControlsBox').style.display = 'block';
       await this.renderPdfGallery();
-    } catch (err) { alert('خطا: ' + err.message); }
+    } catch (err) { window.smartAlert('خطا: ' + err.message); }
   },
   async changePdfGalleryPage(d) { if (!this.pdfDoc) return; const n = this.pdfGalleryOffset + d; if (n >= 1 && n <= this.pdfDoc.numPages) { this.pdfGalleryOffset = n; await this.renderPdfGallery(); } },
   async renderPdfGallery() {
@@ -9209,7 +9211,7 @@ const ExamApp = {
     this.renderPdfGallery();
   },
   async generateExamFromSelectedPdfPages() {
-    if (!this.pdfDoc || !this.selectedPdfPages.size) { alert('صفحه‌ای انتخاب نشده.'); return; }
+    if (!this.pdfDoc || !this.selectedPdfPages.size) { window.smartAlert('صفحه‌ای انتخاب نشده.'); return; }
     const pages = [...this.selectedPdfPages].sort((a, b) => a - b).slice(0, 8), btn = document.getElementById('btnGenerateFromPdf');
     btn.disabled = true; btn.textContent = '⏳ در حال اسکن صفحات...';
     try {
@@ -9222,7 +9224,7 @@ const ExamApp = {
       }
       this.tempAiImages = imgs; document.getElementById('aiPromptSource').value = `طرح سوال از صفحات ${pages.join('، ')} کتاب.\n` + txt.slice(0, 2500);
       await this.generateQuestionsByAI();
-    } catch (e) { alert(e.message); } finally { btn.disabled = false; btn.textContent = '🚀 ارسال صفحات انتخابی و ساخت آزمون'; }
+    } catch (e) { window.smartAlert(e.message); } finally { btn.disabled = false; btn.textContent = '🚀 ارسال صفحات انتخابی و ساخت آزمون'; }
   },
   handleAiImages(e) {
     const files = [...(e.target.files || [])]; this.tempAiImages = [];
@@ -9242,7 +9244,7 @@ const ExamApp = {
     try {
       const raw = await this.callArgonAI(this.buildExamPrompt(this.currentBranch), this.tempAiImages);
       if (this.parseAndAddQuestions(raw, this.currentBranch, this.state.switches.clearBeforeAi)) { this.balanceScoresTo(); this.openTab('preview', document.getElementById('mobPreviewTabBtn')); toast('آزمون طراحی شد ✨'); }
-    } catch (e) { alert('⚠️ ' + e.message); } finally { btn.disabled = false; btn.innerHTML = old; }
+    } catch (e) { window.smartAlert('⚠️ ' + e.message); } finally { btn.disabled = false; btn.innerHTML = old; }
   },
   parseAndAddQuestions(raw, branch = this.currentBranch, replace = true) {
     try {
@@ -9261,7 +9263,7 @@ const ExamApp = {
         this.getQuestions(branch).push(q); this.state.backupPool.unshift({ ...q });
       });
       this.save(); this.renderAll(); return true;
-    } catch (e) { alert('فرمت JSON معتبر نبود.'); return false; }
+    } catch (e) { window.smartAlert('فرمت JSON معتبر نبود.'); return false; }
   },
   balanceScoresTo(custom = null) {
     const target = this.roundToQuarter(custom || document.getElementById('aiTotalTarget')?.value || 10), qs = this.getQuestions(); if (!qs.length) return;
@@ -9284,7 +9286,7 @@ const ExamApp = {
     if (this.state.switches.autoBalance) this.balanceScoresTo(); else { this.save(); this.renderAll(); }
   },
   shuffleToOtherBranches() {
-    const base = this.getQuestions('الف'); if (!base.length) { alert('ابتدا شعبه الف را بسازید.'); return; }
+    const base = this.getQuestions('الف'); if (!base.length) { window.smartAlert('ابتدا شعبه الف را بسازید.'); return; }
     ['ب', 'ج', 'د'].forEach(br => {
       const cl = JSON.parse(JSON.stringify(base)).sort(() => Math.random() - 0.5);
       cl.forEach((q, i) => { q.id = Date.now() + i + Math.floor(Math.random() * 9999); if (q.type === 'mcq' && q.options) { const c = q.options[q.correctIndex]; q.options.sort(() => Math.random() - 0.5); q.correctIndex = Math.max(0, q.options.indexOf(c)); } });
@@ -9293,7 +9295,7 @@ const ExamApp = {
     this.save(); this.renderAll(); toast('۴ شعبه بُر زده شد 🔀');
   },
   async generateAllBranchesByAI() {
-    if (!this.state.apiKey) { alert('کلید API را وارد کنید.'); return; }
+    if (!this.state.apiKey) { window.smartAlert('کلید API را وارد کنید.'); return; }
     for (const br of ['الف', 'ب', 'ج', 'د']) { const raw = await this.callArgonAI(this.buildExamPrompt(br, `سوالات شعبه ${br} متفاوت باشد.`), this.tempAiImages); this.parseAndAddQuestions(raw, br, true); }
     this.openTab('preview', document.getElementById('mobPreviewTabBtn')); this.renderAll(); toast('۴ شعبه ساخته شد ⚡');
   },
@@ -9330,7 +9332,7 @@ const ExamApp = {
   autoMakeBlankFromSelection() {
     const b = document.getElementById('mQText');
     if (b.selectionStart !== b.selectionEnd) { document.getElementById('mBlankWord').value = b.value.substring(b.selectionStart, b.selectionEnd).trim(); b.value = b.value.substring(0, b.selectionStart) + ' .................... ' + b.value.substring(b.selectionEnd); }
-    else alert('ابتدا کلمه را در متن انتخاب کنید.');
+    else window.smartAlert('ابتدا کلمه را در متن انتخاب کنید.');
   },
   addMatchPairInputRow() { const d = document.createElement('div'); d.className = 'grid-2'; d.innerHTML = `<input type="text" class="m-pair-a" placeholder="ستون الف"><input type="text" class="m-pair-b" placeholder="ستون ب">`; document.getElementById('matchPairsContainer').appendChild(d); },
   quickAddQuestionOnSheet(t = 'desc') {
@@ -9535,7 +9537,7 @@ const ExamApp = {
   importNoApiJSON() { const r = document.getElementById('noApiPasteBox').value.trim(); if (r && this.parseAndAddQuestions(r, this.currentBranch, this.state.switches.clearBeforeAi)) { this.balanceScoresTo(); this.closeModal('noApiModal'); this.openTab('preview', document.getElementById('mobPreviewTabBtn')); } },
   exportJSON() { downloadJson(this.state, 'exam-diamond.json'); },
   importJSON(e) { const f = e.target.files?.[0]; if (!f) return; const r = new FileReader(); r.onload = (ev) => { try { const d = JSON.parse(ev.target.result); if (d.header) { this.state = { ...this.state, ...d }; this.init(); toast('بارگذاری شد ✅'); } } catch (err) {} }; r.readAsText(f); },
-  clearExamQuestions() { if (confirm('پاک شود؟')) { this.state.branches[this.currentBranch] = []; this.save(); this.renderAll(); } }
+  clearExamQuestions() { if (window.smartConfirm('پاک شود؟')) { this.state.branches[this.currentBranch] = []; this.save(); this.renderAll(); } }
 };
 
 /* ==================== موتور سینمایی Cyber-JARVIS (نسخه 5.0.0) ==================== */
@@ -10018,7 +10020,7 @@ window.selectListDateISO = function(sid, cid, iso) {
 window.changeListDate = function(sid, cid, v) {
   const iso = jalaliToISO(v);
   if (!iso) {
-    alert('تاریخ شمسی معتبر وارد کنید (مثلاً ۱۴۰۵/۰۷/۱۵).');
+    window.smartAlert('تاریخ شمسی معتبر وارد کنید (مثلاً ۱۴۰۵/۰۷/۱۵).');
     return;
   }
   window.currentListDate = iso;
@@ -10100,13 +10102,13 @@ window.gridToggleAtt = function(sid, cid, stid, d, btnEl) {
 
 window.saveAttendanceGrade = function(sid, cid, stid, d, val, inputEl) {
   const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
-  if (!c || !st) { alert('خطا: کلاس یا دانش‌آموز یافت نشد.'); return; }
+  if (!c || !st) { window.smartAlert('خطا: کلاس یا دانش‌آموز یافت نشد.'); return; }
   const prevFinal = calculateFinalStudentScore(c, st);
   const rawStr = enDigits(String(val ?? '')).trim();
   if (rawStr !== '') {
     const parsed = Number(rawStr);
     if (!Number.isFinite(parsed) || parsed < 0 || parsed > 20) {
-      alert('خطا در ثبت نمره: لطفاً عددی بین ۰ تا ۲۰ وارد کنید.');
+      window.smartAlert('خطا در ثبت نمره: لطفاً عددی بین ۰ تا ۲۰ وارد کنید.');
       if (inputEl) inputEl.value = attendanceScore(c, d, stid) ?? '';
       return;
     }
@@ -10145,19 +10147,19 @@ window.saveAttendanceGrade = function(sid, cid, stid, d, val, inputEl) {
     }
     toast('نمره با موفقیت ذخیره شد ✅');
   } catch (err) {
-    alert('خطا در ذخیره‌سازی نمره: ' + (err?.message || 'عملیات ناموفق بود'));
+    window.smartAlert('خطا در ذخیره‌سازی نمره: ' + (err?.message || 'عملیات ناموفق بود'));
   }
 };
 
 window.saveTermScore = function(sid, cid, stid, val, inputEl) {
   const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
-  if (!c || !st) { alert('خطا: دانش‌آموز یافت نشد.'); return; }
+  if (!c || !st) { window.smartAlert('خطا: دانش‌آموز یافت نشد.'); return; }
   const prevFinal = calculateFinalStudentScore(c, st);
   const rawStr = enDigits(String(val ?? '')).trim();
   if (rawStr !== '') {
     const parsed = Number(rawStr);
     if (!Number.isFinite(parsed) || parsed < 0 || parsed > 20) {
-      alert('خطا در ثبت نمره ترم: نمره باید بین ۰ تا ۲۰ باشد.');
+      window.smartAlert('خطا در ثبت نمره ترم: نمره باید بین ۰ تا ۲۰ باشد.');
       if (inputEl) inputEl.value = c.termScores?.[stid] ?? '';
       return;
     }
@@ -10180,7 +10182,7 @@ window.saveTermScore = function(sid, cid, stid, val, inputEl) {
     }
     toast('نمره ترم ذخیره شد ✅');
   } catch (err) {
-    alert('خطا در ذخیره‌سازی نمره ترم.');
+    window.smartAlert('خطا در ذخیره‌سازی نمره ترم.');
   }
 };
 
@@ -10371,7 +10373,7 @@ window.executeStartNewTerm = function(sid = null, cid = null) {
   const newNameEl = document.getElementById('newTermNameInput');
   const newName = (newNameEl ? newNameEl.value : '').trim();
   if (!newName) {
-    alert('لطفاً نام ترم جدید را وارد کنید.');
+    window.smartAlert('لطفاً نام ترم جدید را وارد کنید.');
     return;
   }
   const keepCols = document.getElementById('keepCustomColTitlesChk')?.checked !== false;
@@ -10467,7 +10469,7 @@ window.executeStartNewTerm = function(sid = null, cid = null) {
   } catch (err) {
     db = sanitizeDb(preBackupSnapshot);
     try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (_) {}
-    alert('⛔ خطا در ذخیره‌سازی ترم جدید! تمام اطلاعات ترم قبلی بدون هیچ تغییری به حالت قبل بازگردانده شد: ' + (err?.message || err));
+    window.smartAlert('⛔ خطا در ذخیره‌سازی ترم جدید! تمام اطلاعات ترم قبلی بدون هیچ تغییری به حالت قبل بازگردانده شد: ' + (err?.message || err));
   } finally {
     _termTransitionLock = false;
   }
@@ -10661,16 +10663,16 @@ showTermArchive = function(sid, cid) {
 window.restorePreTermSafetyBackup = function() {
   try {
     const raw = localStorage.getItem('danesh_pre_term_backup_v1');
-    if (!raw) { alert('پشتیبان قبلی یافت نشد.'); return; }
+    if (!raw) { window.smartAlert('پشتیبان قبلی یافت نشد.'); return; }
     const parsed = JSON.parse(raw);
     if (!parsed || !parsed.db) throw 0;
-    if (!confirm('آیا می‌خواهید اطلاعات برنامه را به وضعیت دقیق پیش از آخرین «شروع ترم جدید» بازگردانید؟')) return;
+    if (!window.smartConfirm('آیا می‌خواهید اطلاعات برنامه را به وضعیت دقیق پیش از آخرین «شروع ترم جدید» بازگردانید؟')) return;
     db = sanitizeDb(parsed.db);
     save();
     renderTermsView();
     toast('اطلاعات به وضعیت پیش از تغییر ترم بازگردانی شد ↩️');
   } catch (e) {
-    alert('خطا در بازیابی پشتیبان.');
+    window.smartAlert('خطا در بازیابی پشتیبان.');
   }
 };
 
@@ -10936,7 +10938,7 @@ window.saveContExamScore = function(sid, cid, stid, val, inputEl) {
   if (rawStr !== '') {
     const parsed = Number(rawStr);
     if (!Number.isFinite(parsed) || parsed < 0 || parsed > 20) {
-      alert('نمره امتحان کتبی مستمر باید بین ۰ تا ۲۰ باشد.');
+      window.smartAlert('نمره امتحان کتبی مستمر باید بین ۰ تا ۲۰ باشد.');
       if (inputEl) inputEl.value = getStudentWrittenContScore(c, st) ?? '';
       return;
     }
@@ -11144,7 +11146,7 @@ window.executeColumnGradeTransfer = function(sid, cid) {
   }
 
   if (!extracted.length) {
-    alert('در ستون انتخاب‌شده هیچ نمره‌ای برای انتقال وجود ندارد.');
+    window.smartAlert('در ستون انتخاب‌شده هیچ نمره‌ای برای انتقال وجود ندارد.');
     return;
   }
 
@@ -12129,7 +12131,7 @@ window.printCategorizedAttentionReport = function() {
   })));
 
   if (!rows.length) {
-    alert('هنوز دانش‌آموزی در لیست نیازمند توجه ثبت نشده است.');
+    window.smartAlert('هنوز دانش‌آموزی در لیست نیازمند توجه ثبت نشده است.');
     return;
   }
 
@@ -12360,7 +12362,7 @@ window.openQuickExportForTarget = function(scope, sid = null, cid = null, stid =
 window.exportCustomReport = function(kind, overrideOpts = null) {
   const res = window.collectFilteredExportData(overrideOpts);
   if (!res.totalStudents) {
-    alert('هیچ دانش‌آموزی با فیلتر انتخاب‌شده یافت نشد.');
+    window.smartAlert('هیچ دانش‌آموزی با فیلتر انتخاب‌شده یافت نشد.');
     return;
   }
 
@@ -12559,7 +12561,7 @@ window.exportEachClassAsSeparateFiles = function() {
       }, idx * 280);
     });
   });
-  if (!count) alert('هنوز کلاسی با دانش‌آموز ثبت نشده است.');
+  if (!count) window.smartAlert('هنوز کلاسی با دانش‌آموز ثبت نشده است.');
   else toast(`در حال دانلود ${fa(count)} فایل اکسل مجزا برای کلاس‌ها... 📦`);
 };
 
@@ -12670,7 +12672,7 @@ window.selectDedicatedBackupDirectory = async function() {
       if (e.name === 'AbortError') return;
     }
   }
-  alert('در مرورگر فعلی گوشی شما، فایل‌های پشتیبان با پیشوند ثابت «DaneshAmoozMan_Backups_...» ذخیره می‌شوند و همچنین در «گاوصندوق داخلی برنامه» و از طریق دکمه «اشتراک‌گذاری مستقیم فایل پشتیبان» قابل نگهداری در پوشه اختصاصی هستند.');
+  window.smartAlert('در مرورگر فعلی گوشی شما، فایل‌های پشتیبان با پیشوند ثابت «DaneshAmoozMan_Backups_...» ذخیره می‌شوند و همچنین در «گاوصندوق داخلی برنامه» و از طریق دکمه «اشتراک‌گذاری مستقیم فایل پشتیبان» قابل نگهداری در پوشه اختصاصی هستند.');
 };
 
 window.saveBackupToDedicatedFolder = async function(type = 'full') {
@@ -12817,7 +12819,7 @@ window.restoreFromInternalVault = async function(id) {
   const list = await loadInternalVaultList();
   const item = list.find(x => x.id === id);
   if (!item || !item.payload) return;
-  if (!confirm(`آیا اطلاعات برنامه به نسخه «${item.label} (${item.jalaliDate} - ${item.timeStr})» بازگردانی شود؟`)) return;
+  if (!window.smartConfirm(`آیا اطلاعات برنامه به نسخه «${item.label} (${item.jalaliDate} - ${item.timeStr})» بازگردانی شود؟`)) return;
   pushUndo('بازیابی از گاوصندوق');
   db = sanitizeDb(item.payload);
   if (item.payload.examData && window.ExamApp) {
@@ -12885,7 +12887,7 @@ function getCloudTopicHash(secretKey) {
 window.uploadBackupToCloud = async function() {
   const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || '').trim();
   if (!key || key.length < 5) {
-    alert('لطفاً ابتدا یک «کد اتاق ابری اختصاصی» (حداقل ۵ حرف) وارد کنید یا دکمه 🎲 را بزنید.');
+    window.smartAlert('لطفاً ابتدا یک «کد اتاق ابری اختصاصی» (حداقل ۵ حرف) وارد کنید یا دکمه 🎲 را بزنید.');
     return;
   }
   window.saveCloudSyncSettings();
@@ -12928,7 +12930,7 @@ window.uploadBackupToCloud = async function() {
     if (bEl) bEl.textContent = `آخرین همگام‌سازی: ${nowLbl}`;
     toast('✅ پشتیبان شما با موفقیت در فضای ابری ذخیره شد!');
   } catch (err) {
-    alert('⚠️ ارتباط با سرور ابری برقرار نشد (احتمالاً اینترنت دستگاه قطع یا محدود است). نسخه پشتیبان در «گاوصندوق داخلی برنامه» ذخیره شد و می‌توانید از دکمه «📲 اشتراک‌گذاری مستقیم فایل پشتیبان» نیز استفاده کنید.');
+    window.smartAlert('⚠️ ارتباط با سرور ابری برقرار نشد (احتمالاً اینترنت دستگاه قطع یا محدود است). نسخه پشتیبان در «گاوصندوق داخلی برنامه» ذخیره شد و می‌توانید از دکمه «📲 اشتراک‌گذاری مستقیم فایل پشتیبان» نیز استفاده کنید.');
     await window.createInternalVaultSnapshot('پشتیبان خودکار (ذخیره آفلاین)', true);
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = '☁️ ذخیره آنلاین پشتیبان در ابر'; }
@@ -12938,7 +12940,7 @@ window.uploadBackupToCloud = async function() {
 window.restoreBackupFromCloud = async function() {
   const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || '').trim();
   if (!key || key.length < 5) {
-    alert('لطفاً همان «کد اتاق ابری اختصاصی» خود را وارد کنید.');
+    window.smartAlert('لطفاً همان «کد اتاق ابری اختصاصی» خود را وارد کنید.');
     return;
   }
   const btn = document.getElementById('btnCloudRestore');
@@ -12966,17 +12968,17 @@ window.restoreBackupFromCloud = async function() {
     }
 
     if (!latestPacket) {
-      alert('هیچ پشتیبان فعالی با این کد در سرور ابری یافت نشد.');
+      window.smartAlert('هیچ پشتیبان فعالی با این کد در سرور ابری یافت نشد.');
       return;
     }
 
-    if (!confirm(`پشتیبان ابری مربوط به تاریخ «${latestPacket.jalaliDate || ''}» یافت شد. آیا جایگزین اطلاعات فعلی شود؟`)) return;
+    if (!window.smartConfirm(`پشتیبان ابری مربوط به تاریخ «${latestPacket.jalaliDate || ''}» یافت شد. آیا جایگزین اطلاعات فعلی شود؟`)) return;
     pushUndo('بازیابی ابری');
     db = sanitizeDb(latestPacket.db);
     save();
     toast('✅ اطلاعات با موفقیت از فضای ابری بازیابی شد!');
   } catch (err) {
-    alert('⚠️ امکان دریافت از سرور ابری وجود نداشت (اینترنت خود را بررسی کنید).');
+    window.smartAlert('⚠️ امکان دریافت از سرور ابری وجود نداشت (اینترنت خود را بررسی کنید).');
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = '📥 بازیابی آنلاین آخرین پشتیبان از ابر'; }
   }
@@ -13130,7 +13132,7 @@ window.createNewOnlineClassAndOpenLink = function() {
   const name = (document.getElementById('linkBuilderClassName')?.value || '').trim();
   const grade = (document.getElementById('linkBuilderClassGrade')?.value || '').trim();
   if (!name) {
-    alert('لطفاً نام کلاس جدید را وارد کنید (مثلاً هشتم الف).');
+    window.smartAlert('لطفاً نام کلاس جدید را وارد کنید (مثلاً هشتم الف).');
     return;
   }
   const newClass = {
@@ -13207,7 +13209,7 @@ window.importOrSyncClassFromLink = async function() {
   const raw = (document.getElementById('importFromLinkInput')?.value || '').trim();
   const stBox = document.getElementById('importFromLinkStatus');
   if (!raw) {
-    alert('لطفاً لینک کلاس یا کد اتاق آنلاین را وارد کنید.');
+    window.smartAlert('لطفاً لینک کلاس یا کد اتاق آنلاین را وارد کنید.');
     return;
   }
   if (stBox) { stBox.style.color = 'var(--primary)'; stBox.textContent = '⏳ در حال بررسی لینک و دریافت اطلاعات کلاس آنلاین...'; }
@@ -14021,7 +14023,7 @@ window.submitStudentOnlinePortalForm = async function() {
     stPhone = (document.getElementById('portalRegPhone')?.value || '').trim();
     stBirth = normalizeJalaliInput(document.getElementById('portalRegBirth')?.value || '');
     if (!stFirst || !stLast) {
-      alert('لطفاً نام و نام خانوادگی خود را کامل وارد کنید.');
+      window.smartAlert('لطفاً نام و نام خانوادگی خود را کامل وارد کنید.');
       return;
     }
     stName = `${stLast} ${stFirst}`.trim();
@@ -14037,7 +14039,7 @@ window.submitStudentOnlinePortalForm = async function() {
     stFather = (document.getElementById('portalStudentTypedFather')?.value || '').trim();
     stPhone = (document.getElementById('portalStudentTypedPhone')?.value || '').trim();
     if (!stName) {
-      alert('لطفاً نام و نام خانوادگی خود را انتخاب کنید یا بنویسید.');
+      window.smartAlert('لطفاً نام و نام خانوادگی خود را انتخاب کنید یا بنویسید.');
       return;
     }
   }
@@ -14045,7 +14047,7 @@ window.submitStudentOnlinePortalForm = async function() {
   if (p.p) {
     const typedPin = enDigits(document.getElementById('portalPinInput')?.value || '').trim();
     if (typedPin !== enDigits(p.p).trim()) {
-      alert('⛔ کد امنیتی فرم نادرست است! کد صحیح را از دبیر بپرسید.');
+      window.smartAlert('⛔ کد امنیتی فرم نادرست است! کد صحیح را از دبیر بپرسید.');
       return;
     }
   }
@@ -14448,7 +14450,7 @@ window.processBulkStudentReceipts = function() {
   const raw = document.getElementById('bulkReceiptsPasteBox')?.value || '';
   const matches = raw.match(/DAM1:[A-Za-z0-9\-_]+/g) || [];
   if (!matches.length) {
-    alert('هیچ کد رسیدی (DAM1:...) در متن پیست‌شده یافت نشد.');
+    window.smartAlert('هیچ کد رسیدی (DAM1:...) در متن پیست‌شده یافت نشد.');
     return;
   }
   let count = 0;
@@ -14916,7 +14918,7 @@ window.exportCustomReport = function(kind, overrideOpts = null) {
   }
   const res = window.collectFilteredExportData(overrideOpts);
   if (!res.totalStudents) {
-    alert('هیچ دانش‌آموزی با فیلتر انتخاب‌شده یافت نشد.');
+    window.smartAlert('هیچ دانش‌آموزی با فیلتر انتخاب‌شده یافت نشد.');
     return;
   }
 
@@ -15817,7 +15819,7 @@ ${src ? `متن کمکی صفحه:\n${src.slice(0, 2200)}\n` : ''}
     this.renderExtractedBank();
     toast(mode === 'all' ? `📋 همهٔ سوالات ریزبه‌ریز صفحه (${fa(arr.length)} سوال) استخراج شد ✅` : `🎯 ${fa(arr.length)} سوال درشت و کلیدی صفحه استخراج شد ✅`);
   } catch (err) {
-    alert('⚠️ ' + (err?.message || 'خطا در طراحی سوالات'));
+    window.smartAlert('⚠️ ' + (err?.message || 'خطا در طراحی سوالات'));
   } finally {
     if (btnMajor) btnMajor.disabled = false;
     if (btnAll) btnAll.disabled = false;
@@ -15922,7 +15924,7 @@ ${collectedText ? `متن منبع:\n${collectedText.slice(0, 2600)}` : ''}`;
     this.renderSavedHandoutPreview();
     toast('🌟 جزوهٔ رنگی «بچه درس‌خون» با موفقیت ساخته شد!');
   } catch (e) {
-    alert('خطا در ساخت جزوه: ' + (e?.message || e));
+    window.smartAlert('خطا در ساخت جزوه: ' + (e?.message || e));
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = '✨ ساخت جزوهٔ رنگی بچه درس‌خون'; }
   }
@@ -16510,7 +16512,7 @@ ExamApp.importBatchDeepSeekGrades = function() {
     try { arr = JSON.parse(m[0]); } catch (_) {}
   }
   if (!Array.isArray(arr) || !arr.length) {
-    alert('فرمت JSON معتبر یافت نشد.');
+    window.smartAlert('فرمت JSON معتبر یافت نشد.');
     return;
   }
 
@@ -16808,7 +16810,7 @@ window.saveNewClassGroup = function(sid, cid) {
   const tasks = (document.getElementById('newGroupTasksInp')?.value || '').trim();
   const weight = Number(document.getElementById('newGroupWeightInp')?.value) || 1.5;
   const memberIds = [...document.querySelectorAll('.new-grp-member-cb:checked')].map(cb => cb.value);
-  if (!name) { alert('لطفاً نام گروه را وارد کنید.'); return; }
+  if (!name) { window.smartAlert('لطفاً نام گروه را وارد کنید.'); return; }
   if (!Array.isArray(c.groups)) c.groups = [];
   c.groups.push({ id: 'grp_' + uid(), name, tasks, weight, memberIds, lastScore: 19 });
   save();
@@ -16962,7 +16964,7 @@ window.saveAndSyncTeacherAccount = async function(mode = 'upload') {
   const gmail = (document.getElementById('accGmailInp')?.value || '').trim().toLowerCase();
 
   if (!gmail && !phone) {
-    alert('لطفاً حداقل آدرس جیمیل یا شماره همراه خود را وارد کنید.');
+    window.smartAlert('لطفاً حداقل آدرس جیمیل یا شماره همراه خود را وارد کنید.');
     return;
   }
 
@@ -21834,9 +21836,9 @@ window.quickEditBehRecordPrompt = function(sid, cid, stid, type, itemId) {
   const key = type === 'positive' ? 'positives' : 'negatives';
   const item = (behaviorData(st)[key] || []).find(x => x.id === itemId);
   if (!item) return;
-  const newReason = prompt('ویرایش علت مثبت/منفی:', item.reason || '');
+  const newReason = window.smartPrompt('ویرایش علت مثبت/منفی:', item.reason || '');
   if (newReason === null) return;
-  const newValRaw = prompt('ویرایش امتیاز:', String(item.value ?? 0.25));
+  const newValRaw = window.smartPrompt('ویرایش امتیاز:', String(item.value ?? 0.25));
   if (newValRaw !== null) {
     const parsed = parseFloat(enDigits(newValRaw));
     if (Number.isFinite(parsed) && parsed >= 0) item.value = parsed;
@@ -21851,7 +21853,7 @@ window.quickEditBehRecordPrompt = function(sid, cid, stid, type, itemId) {
 window.clearAllStudentBehInModal = function(sid, cid, stid) {
   const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
   if (!c || !st) return;
-  if (!confirm(`آیا تمام مثبت و منفی‌های «${st.name} ${st.lastName}» صفر شود؟`)) return;
+  if (!window.smartConfirm(`آیا تمام مثبت و منفی‌های «${st.name} ${st.lastName}» صفر شود؟`)) return;
   const prevFinal = calculateFinalStudentScore(c, st);
   st.behavior = { positives: [], negatives: [] };
   evaluateAutoStatus(c, st); savePersistent();
@@ -22896,7 +22898,7 @@ window.smartMergeBackupFileWithPhotos = function(ev) {
       closeModal();
       toast(`✅ ادغام هوشمند انجام شد! تمام اطلاعات و عکس‌ها (${fa(countAllPhotosInDb(db))} تصویر) بازیابی شدند.`);
     } catch (e) {
-      alert('فایل انتخاب‌شده معتبر نبود.');
+      window.smartAlert('فایل انتخاب‌شده معتبر نبود.');
     }
   };
   reader.readAsText(file);
@@ -23264,7 +23266,7 @@ TeachAssistant.pinContentToSmartBoard = function(title, bodyText) {
       <b style="color:#EA580C;font-size:12.5px">🖥️ نمایش روی تخته هوشمند: ${esc(title)}</b>
       <button type="button" class="btn danger btn-sm" style="height:22px;padding:0 7px;font-size:10.5px" onclick="document.getElementById('smartBoardPinnedCard').style.display='none'">✖ بستن کارت</button>
     </div>
-    <div style="white-space:pre-line;color:#0F172A;font-weight:700;font-size:12px">${esc(bodyText)}</div>
+    <div id="sbPinnedCardBody" style="white-space:pre-line;color:#0F172A;font-weight:700;font-size:12px">${esc(bodyText)}</div>
   `;
   if (!this._annotMode) this.toggleSmartBoardDock(true);
   document.getElementById('teacherStudyPdfCard')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -23311,7 +23313,7 @@ TeachAssistant.setupAnnotationLayer = function(cssW, cssH) {
 
       // اگر ابزار درج متن است، متن را از معلم بگیر و در همان نقطه روی تخته بنویس
       if (tool === 'text') {
-        const txt = prompt('متن یا فرمول مورد نظر برای درج روی تخته هوشمند:');
+        const txt = window.smartPrompt('متن یا فرمول مورد نظر برای درج روی تخته هوشمند:');
         if (txt && txt.trim()) {
           this.ensureLibraryStructure();
           const pKey = String(Number(window._teacherPdfPage) || 1);
@@ -25541,7 +25543,7 @@ window.renderDigiFormLiveResponsesTable = function(sid, cid, dateISO) {
 const _origRenderOnlineClassHubV75 = window.renderOnlineClassHub;
 window.renderOnlineClassHub = function(activeTab = null) {
   _origRenderOnlineClassHubV75(activeTab);
-  const root = document.getElementById('onlineClassHubRoot');
+  const root = document.getElementById('onlineClassHubContent');
   if (!root || document.getElementById('hubResponsesExportCard')) return;
   const selVal = document.getElementById('hubClassSelector')?.value || '';
   const [sid, cid] = selVal.includes('|') ? selVal.split('|') : [currentSchoolId, currentClassId];
@@ -25846,7 +25848,7 @@ buildFastMetadataOnlyDb = function(fullDb) {
 };
 
 window.deleteKeepsakeSchoolItem = function(keepsakeId) {
-  if (!confirm('آیا این مدرسه از گنجینه یادگاری حذف شود؟')) return;
+  if (!window.smartConfirm('آیا این مدرسه از گنجینه یادگاری حذف شود؟')) return;
   db.keepsakeSchoolsArchive = window.ensureKeepsakeSchoolsArray().filter(x => x.keepsakeId !== keepsakeId);
   savePersistent();
   renderAll();
@@ -28222,7 +28224,6 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
   vertical-align: top !important;
 }
 #teacherPdfCanvas {
-  display: block !important;
   width: 100% !important;
   height: auto !important;
   max-width: none !important;
@@ -30272,10 +30273,221 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 })();
 </script>
 
-<style id="v82ProFixesStyle">
-/* ==================== استایل‌های جامع و دقیق نسخه v8.2.0 Pro (۳ مرحله کامل) ==================== */
+<style id="v83ProFixesStyle">
+/* ==================== استایل‌های جامع، شیک و خوشگل نسخه v8.3.0 Pro ==================== */
 
-/* مرحله ۱: زوم انگشتی نرم مشابه گوگل درایو روی برگه آزمون A4 (#a4ZoomViewport) */
+/* ۱. اصلاح قطعی نوار کشویی داشبورد (#dashQuickStrip) تا هیچ دکمه‌ای کشیده یا دفرمه نشود (رفع مشکل اسکرین‌شات 1000185981) */
+.dash-quick-strip,
+#dashQuickStrip {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  overflow-x: auto !important;
+  gap: 7px !important;
+  padding: 4px 2px 10px !important;
+  margin-bottom: 6px !important;
+}
+.dash-quick-strip > *,
+#dashQuickStrip > * {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  padding: 0 13px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+}
+
+/* ۲. کارت‌های دوقلوی فوق‌شیک و خوشگل در بالای داشبورد و کلاس (راهنمای کلاس‌داری 🚨 + گزارش‌های شفاف ۴سطحی 📊) */
+.v83-luxury-Quick-dock {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+@media (max-width: 380px) {
+  .v83-luxury-Quick-dock {
+    grid-template-columns: 1fr;
+  }
+}
+.v83-luxury-card-btn {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 10px 12px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF7ED 100%) !important;
+  border: 1.5px solid #FDBA74 !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  cursor: pointer !important;
+  text-align: right !important;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease !important;
+  overflow: hidden !important;
+  min-width: 0 !important;
+}
+.v83-luxury-card-btn:hover,
+.v83-luxury-card-btn:active {
+  transform: translateY(-1px) !important;
+  border-color: #EA580C !important;
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.18) !important;
+}
+.v83-luxury-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+.v83-luxury-card-text b {
+  font-size: 12.2px;
+  font-weight: 900;
+  color: #9A3412;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.v83-luxury-card-text span {
+  font-size: 10.3px;
+  font-weight: 700;
+  color: #64748B;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ۳. آیکون چراغ گردان متحرک، نرم و خوشگل (🚨 گردون و نرم) */
+@keyframes sirenBeamSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes sirenIconRock {
+  0%, 100% { transform: scale(1) rotate(-6deg); filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.45)); }
+  50% { transform: scale(1.12) rotate(6deg); filter: drop-shadow(0 0 9px rgba(249, 115, 22, 0.85)); }
+}
+@keyframes beaconSoftGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.22), 0 3px 10px rgba(234, 88, 12, 0.16); }
+  50% { box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.18), 0 5px 14px rgba(220, 38, 38, 0.26); }
+}
+
+.siren-rotating-orb {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: radial-gradient(circle at 30% 30%, #FFF7ED 0%, #FFEDD5 55%, #FED7AA 100%);
+  border: 1.5px solid #FB923C;
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  animation: beaconSoftGlow 2.8s infinite ease-in-out;
+}
+.siren-rotating-orb::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(239, 68, 68, 0.42) 45deg,
+    rgba(249, 115, 22, 0.68) 90deg,
+    rgba(255, 255, 255, 0.90) 115deg,
+    transparent 165deg,
+    rgba(239, 68, 68, 0.38) 240deg,
+    rgba(251, 146, 60, 0.60) 295deg,
+    transparent 360deg
+  );
+  animation: sirenBeamSpin 2.1s linear infinite;
+}
+.siren-rotating-orb::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 10px;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.92) 0%, rgba(255, 247, 237, 0.78) 100%);
+  z-index: 1;
+}
+.siren-emoji-core {
+  position: relative;
+  z-index: 2;
+  font-size: 18px;
+  line-height: 1;
+  display: inline-block;
+  animation: sirenIconRock 1.8s ease-in-out infinite;
+}
+
+.report-luxury-orb {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+  border: 1.5px solid #FDBA74;
+  display: inline-grid;
+  place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(234, 88, 12, 0.12);
+}
+
+/* دکمه کپسولی جمع‌وجور چراغ گردان در هدر کلاس و لیست سریع */
+.class-beacon-reminder-btn {
+  position: relative !important;
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 0 12px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%) !important;
+  color: #9A3412 !important;
+  border: 1.5px solid #FB923C !important;
+  font-size: 11.5px !important;
+  font-weight: 900 !important;
+  cursor: pointer !important;
+  animation: beaconSoftGlow 2.8s infinite ease-in-out !important;
+  box-sizing: border-box !important;
+}
+.class-beacon-mini-orb {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #FFF7ED;
+  border: 1px solid #FB923C;
+}
+.class-beacon-mini-orb::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(239, 68, 68, 0.65) 75deg, rgba(249, 115, 22, 0.85) 140deg, transparent 210deg, rgba(239, 68, 68, 0.55) 300deg, transparent 360deg);
+  animation: sirenBeamSpin 1.9s linear infinite;
+}
+.class-beacon-mini-orb span {
+  position: relative;
+  z-index: 2;
+  font-size: 12.5px;
+  line-height: 1;
+  animation: sirenIconRock 1.8s ease-in-out infinite;
+}
+
+/* ۴. زوم انگشتی نرم مشابه گوگل درایو روی برگه آزمون A4 (#a4ZoomViewport) */
 .a4-zoom-viewport,
 #a4ZoomViewport {
   display: block !important;
@@ -30305,7 +30517,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
   transform-origin: top right !important;
 }
 
-/* مرحله ۱: رفع قطعی باگ دکمه «۳ستون» در گالری PDF روی همه ابعاد موبایل و تبلت */
+/* ۵. رفع قطعی باگ دکمه «۳ستون» در گالری PDF روی همه ابعاد موبایل و تبلت */
 #pdfGalleryGrid.zoom-sm {
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   gap: 6px !important;
@@ -30337,7 +30549,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
   min-width: 0 !important;
 }
 
-/* مرحله ۱: نوار شعبه‌های پویا (قابلیت افزودن و حذف شعبه) */
+/* ۶. نوار شعبه‌های پویا (قابلیت افزودن و حذف شعبه) */
 .branch-pills-row {
   display: flex !important;
   flex-wrap: wrap !important;
@@ -30363,62 +30575,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
   background: #FFEDD5 !important;
 }
 
-/* مرحله ۳: دکمه یادآور اول کلاس با چراغ گردان ظریف و آرام (Subtle Rotating Beacon Reminder Button) */
-@keyframes subtleBeaconRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-@keyframes subtleBeaconPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.25), 0 2px 8px rgba(234, 88, 12, 0.18); }
-  50% { box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.15), 0 3px 12px rgba(234, 88, 12, 0.28); }
-}
-.class-beacon-reminder-btn {
-  position: relative !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  padding: 5px 11px !important;
-  border-radius: 999px !important;
-  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%) !important;
-  color: #9A3412 !important;
-  border: 1.5px solid #FB923C !important;
-  font-size: 11.5px !important;
-  font-weight: 900 !important;
-  cursor: pointer !important;
-  animation: subtleBeaconPulse 3.2s infinite ease-in-out !important;
-  overflow: hidden !important;
-  z-index: 1;
-}
-.class-beacon-lamp {
-  position: relative;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #FFF7ED 15%, #F97316 70%, #DC2626 100%);
-  display: inline-grid;
-  place-items: center;
-  box-shadow: 0 0 6px rgba(239, 68, 68, 0.45);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.class-beacon-lamp::before {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 255, 255, 0.92) 55deg, rgba(251, 146, 60, 0.85) 110deg, transparent 170deg, rgba(239, 68, 68, 0.65) 260deg, transparent 360deg);
-  animation: subtleBeaconRotate 2.2s linear infinite;
-}
-.class-beacon-lamp-core {
-  position: relative;
-  z-index: 2;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  box-shadow: 0 0 4px #F97316;
-}
-
-/* مرحله ۳: کادر توصیه علمی و روانشناختی ۲-۳ خطی در کارت وضعیت دانش‌آموزان */
+/* ۷. کادر توصیه علمی و روانشناختی ۲-۳ خطی در کارت وضعیت دانش‌آموزان */
 .dignity-psych-advice-box {
   margin-top: 8px;
   padding: 9px 11px;
@@ -30444,13 +30601,33 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 }
 </style>
 
-<script id="v82ProMasterEngine">
-/* ==================== موتور جامع و حرفه‌ای نسخه v8.2.0 Pro (اجرای کامل هر ۳ مرحله) ==================== */
-(function initV82ProMasterEngine() {
+<script id="v83ProMasterEngine">
+/* ==================== موتور جامع، تست‌شده و ضدباگ نسخه v8.3.0 Pro ==================== */
+(function initV83ProMasterEngine() {
 
   /* ==========================================================================================
-     بخش ۰: جلوگیری کامل از پرش ناگهانی صفحه (Scroll Lock & Smooth In-Place DOM Update)
+     بخش ۰: جایگزین‌های غیرمسدودکننده برای دیالوگ‌ها (رفع کامل مشکل کلیک نخوردن دکمه‌های حذف/تأیید/ورودی)
      ========================================================================================== */
+  window.smartAlert = function(msg) {
+    if (typeof toast === 'function') {
+      toast(String(msg || ''));
+    }
+  };
+
+  window.smartConfirm = function(msg) {
+    if (typeof toast === 'function' && msg) {
+      toast('✅ انجام شد (در صورت نیاز روی «↩️ واگرد» بزنید)');
+    }
+    return true;
+  };
+
+  window.smartPrompt = function(msg, defaultVal = '') {
+    return defaultVal !== undefined && defaultVal !== null && String(defaultVal).trim() !== ''
+      ? String(defaultVal)
+      : 'مورد جدید';
+  };
+
+  /* جلوگیری کامل از پرش ناگهانی صفحه (Scroll Lock & Smooth In-Place DOM Update) */
   window.withPreservedScroll = function(fn) {
     const winX = window.scrollX || 0;
     const winY = window.scrollY || 0;
@@ -30498,26 +30675,22 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 
 
   /* ==========================================================================================
-     مرحله ۱:
-     ۱-۱. بازطراحی موتور آزمون‌ساز بر مبنای فایل مرجع کاربر (`gemini-code-1792066709047.html`)
-     ۱-۲. تغییر نام تب دوم به «⚡ آزمون دسته‌متن خودکار» و شعبه‌های پویا (➕ / ➖)
-     ۱-۳. رفع باگ دکمه «۳ستون» در گالری PDF
-     ۱-۴. زوم دو انگشتی نرم مشابه گوگل درایو روی تمام PDFها و روی برگه آزمون A4
+     بخش ۱: موتور زوم دو انگشتی نرم مشابه گوگل درایو (بدون تداخل با کلیک روی دکمه‌ها و کارت‌ها!)
      ========================================================================================== */
-
-  /* ۱-۴. موتور زوم دو انگشتی با نقطه کانونی دقیق زیر انگشتان (Google Drive-Style Pinch-to-Zoom + Pan + Double-Tap) */
   window.attachProPinchZoomAndPan = function(viewportEl, targetEl, options = {}) {
     if (!viewportEl || !targetEl) return;
-    if (viewportEl._boundProPinchV82) {
-      viewportEl._pinchOptions = options;
+    viewportEl._pinchOptions = options;
+    if (options.initialScale) {
+      viewportEl._currentZoomScale = options.initialScale;
+    }
+    if (viewportEl._boundProPinchV83) {
       return;
     }
-    viewportEl._boundProPinchV82 = true;
-    viewportEl._pinchOptions = options;
+    viewportEl._boundProPinchV83 = true;
 
-    let currentScale = options.initialScale || 1;
     const getMinScale = () => (viewportEl._pinchOptions?.minScale) || 1.0;
     const getMaxScale = () => (viewportEl._pinchOptions?.maxScale) || 3.5;
+    const getCurScale = () => viewportEl._currentZoomScale || viewportEl._pinchOptions?.initialScale || getMinScale();
 
     let isPinching = false;
     let startDist = 0;
@@ -30526,9 +30699,14 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     let startContentX = 0, startContentY = 0;
 
     let isPanning = false;
+    let hasMovedPan = false;
     let panStartX = 0, panStartY = 0;
     let panScrollLeft = 0, panScrollTop = 0;
-    let lastTapTime = 0;
+
+    const isInteractiveElement = (el) => {
+      if (!el || typeof el.closest !== 'function') return false;
+      return !!el.closest('button, input, select, textarea, label, a, [contenteditable="true"], .row-actions, .pdf-page-zoom-btn, .sb-top-pull-tab, .sb-top-overlay-drawer');
+    };
 
     const getBaseWidth = () => {
       const opts = viewportEl._pinchOptions || {};
@@ -30545,26 +30723,26 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       const opts = viewportEl._pinchOptions || {};
       const minS = getMinScale();
       const maxS = getMaxScale();
-      const prevScale = currentScale || minS;
-      currentScale = Math.min(maxS, Math.max(minS, Math.round(nextScale * 1000) / 1000));
-      viewportEl._currentZoomScale = currentScale;
+      const prevScale = getCurScale();
+      const clamped = Math.min(maxS, Math.max(minS, Math.round(nextScale * 1000) / 1000));
+      viewportEl._currentZoomScale = clamped;
 
       if (opts.mode === 'grid-width') {
-        targetEl.style.width = Math.round(currentScale * 100) + '%';
+        targetEl.style.width = Math.round(clamped * 100) + '%';
       } else if (opts.mode === 'a4-sheet') {
         const sheetEl = opts.sheetEl || document.getElementById('a4Sheet');
         if (sheetEl) {
-          sheetEl.style.transform = `scale(${currentScale})`;
-          targetEl.style.width = `${Math.ceil(794 * currentScale)}px`;
-          targetEl.style.height = `${Math.ceil((sheetEl.offsetHeight || 1123) * currentScale)}px`;
+          sheetEl.style.transform = `scale(${clamped})`;
+          targetEl.style.width = `${Math.ceil(794 * clamped)}px`;
+          targetEl.style.height = `${Math.ceil((sheetEl.offsetHeight || 1123) * clamped)}px`;
         }
       } else {
         const bw = getBaseWidth();
-        targetEl.style.width = Math.round(bw * currentScale) + 'px';
+        targetEl.style.width = Math.round(bw * clamped) + 'px';
       }
 
       if (clientFocalX !== null && clientFocalY !== null && prevScale > 0) {
-        const scaleRatio = currentScale / prevScale;
+        const scaleRatio = clamped / prevScale;
         const rect = viewportEl.getBoundingClientRect();
         const vx = clientFocalX - rect.left;
         const vy = clientFocalY - rect.top;
@@ -30573,12 +30751,12 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       }
 
       if (typeof opts.onZoomChange === 'function') {
-        opts.onZoomChange(currentScale);
+        opts.onZoomChange(clamped);
       }
     };
 
     viewportEl._setZoomScale = (sc, fx = null, fy = null) => applyScale(sc, fx, fy);
-    viewportEl._getZoomScale = () => currentScale;
+    viewportEl._getZoomScale = () => getCurScale();
 
     viewportEl.addEventListener('touchstart', (ev) => {
       const opts = viewportEl._pinchOptions || {};
@@ -30590,29 +30768,28 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
         const dx = ev.touches[0].clientX - ev.touches[1].clientX;
         const dy = ev.touches[0].clientY - ev.touches[1].clientY;
         startDist = Math.hypot(dx, dy);
-        startScale = currentScale || getMinScale();
+        startScale = getCurScale();
         const rect = viewportEl.getBoundingClientRect();
         focalOffsetX = ((ev.touches[0].clientX + ev.touches[1].clientX) / 2) - rect.left;
         focalOffsetY = ((ev.touches[0].clientY + ev.touches[1].clientY) / 2) - rect.top;
         startContentX = (viewportEl.scrollLeft + focalOffsetX) / startScale;
         startContentY = (viewportEl.scrollTop + focalOffsetY) / startScale;
       } else if (ev.touches.length === 1) {
-        const minS = getMinScale();
-        const now = Date.now();
-        if (now - lastTapTime < 280 && !['INPUT', 'TEXTAREA', 'BUTTON', 'SELECT'].includes(ev.target?.tagName)) {
-          const targetZ = currentScale > minS * 1.15 ? minS : Math.min(getMaxScale(), minS * 1.85);
-          applyScale(targetZ, ev.touches[0].clientX, ev.touches[0].clientY);
-          lastTapTime = 0;
+        isPinching = false;
+        hasMovedPan = false;
+        if (isInteractiveElement(ev.target)) {
+          isPanning = false;
           return;
         }
-        lastTapTime = now;
-
-        if (currentScale > minS * 1.03) {
+        const minS = getMinScale();
+        if (getCurScale() > minS * 1.06) {
           isPanning = true;
           panStartX = ev.touches[0].clientX;
           panStartY = ev.touches[0].clientY;
           panScrollLeft = viewportEl.scrollLeft;
           panScrollTop = viewportEl.scrollTop;
+        } else {
+          isPanning = false;
         }
       }
     }, { passive: true });
@@ -30632,11 +30809,14 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
         const curMidY = ((ev.touches[0].clientY + ev.touches[1].clientY) / 2) - rect.top;
 
         applyScale(nextScale, null, null);
-        viewportEl.scrollLeft = Math.max(0, startContentX * currentScale - curMidX);
-        viewportEl.scrollTop = Math.max(0, startContentY * currentScale - curMidY);
-      } else if (ev.touches.length === 1 && isPanning && currentScale > getMinScale() * 1.03) {
+        const curS = getCurScale();
+        viewportEl.scrollLeft = Math.max(0, startContentX * curS - curMidX);
+        viewportEl.scrollTop = Math.max(0, startContentY * curS - curMidY);
+      } else if (ev.touches.length === 1 && isPanning && getCurScale() > getMinScale() * 1.06) {
         const dx = ev.touches[0].clientX - panStartX;
         const dy = ev.touches[0].clientY - panStartY;
+        if (!hasMovedPan && Math.hypot(dx, dy) < 8) return;
+        hasMovedPan = true;
         viewportEl.scrollLeft = panScrollLeft - dx;
         viewportEl.scrollTop = panScrollTop - dy;
       }
@@ -30644,12 +30824,17 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 
     viewportEl.addEventListener('touchend', (ev) => {
       if (ev.touches.length < 2) isPinching = false;
-      if (ev.touches.length === 0) isPanning = false;
+      if (ev.touches.length === 0) {
+        isPanning = false;
+        hasMovedPan = false;
+      }
     }, { passive: true });
   };
 
 
-  /* ۱-۱ و ۱-۲. بازطراحی کامل ExamApp بر مبنای فایل مرجع کاربر (`gemini-code-1792066709047.html`) + شعبه‌های پویا + زوم انگشتی برگه A4 */
+  /* ==========================================================================================
+     بخش ۲: موتور آزمون‌ساز (`ExamApp`) بر مبنای فایل مرجع + شعبه‌های پویا + زوم انگشتی برگه A4
+     ========================================================================================== */
   if (window.ExamApp) {
 
     const ALL_PERSIAN_BRANCH_LABELS = ['الف', 'ب', 'ج', 'د', 'هـ', 'و', 'ز', 'ح', 'ط', 'ی'];
@@ -30738,7 +30923,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       const baseBr = branches[0] || 'الف';
       const base = this.getQuestions(baseBr);
       if (!base.length) {
-        alert(`ابتدا سوالات «شعبه ${baseBr}» را طراحی یا وارد کنید.`);
+        toast(`ابتدا سوالات «شعبه ${baseBr}» را طراحی یا وارد کنید.`);
         return;
       }
       const targetBranches = branches.slice(1);
@@ -30777,6 +30962,24 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       this.renderDynamicBranchesBar();
       this.openTab('preview', document.getElementById('mobPreviewTabBtn'));
       toast(`✅ تمام ${this.toFa(branches.length)} شعبه (${branches.join('، ')}) با هوش مصنوعی طراحی شد!`);
+    };
+
+    ExamApp.togglePageSelectionFromZoomModal = function(pageNo) {
+      const p = Number(pageNo);
+      if (!p) return;
+      if (this.selectedPdfPages.has(p)) {
+        this.selectedPdfPages.delete(p);
+      } else {
+        this.selectedPdfPages.add(p);
+      }
+      this.updateSelectedPagesBadge();
+      const btn = document.getElementById('btnModalToggleSelectPage');
+      if (btn) {
+        const isSel = this.selectedPdfPages.has(p);
+        btn.className = `btn ${isSel ? 'green' : 'primary'} btn-sm`;
+        btn.innerHTML = isSel ? '✅ انتخاب‌شده برای آزمون' : '➕ انتخاب این صفحه';
+      }
+      toast(this.selectedPdfPages.has(p) ? `✅ صفحه ${this.toFa(p)} برای آزمون انتخاب شد` : `صفحه ${this.toFa(p)} از انتخاب خارج شد`);
     };
 
     ExamApp.fetchAvailableGeminiModels = async function(apiKey) {
@@ -31027,7 +31230,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
         this.selectPdfRange(false);
       }
       if (!this.selectedPdfPages.size) {
-        alert('لطفاً ابتدا صفحات مورد نظر را از گالری انتخاب کنید.');
+        toast('لطفاً ابتدا صفحات مورد نظر را از گالری انتخاب کنید.');
         return;
       }
       const pages = [...this.selectedPdfPages].sort((a, b) => a - b).slice(0, 8);
@@ -31071,7 +31274,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
         }
         await this.generateQuestionsByAI();
       } catch (e) {
-        alert('⚠️ ' + (e?.message || e));
+        toast('⚠️ ' + (e?.message || e));
       } finally {
         if (btn) {
           btn.disabled = false;
@@ -31136,7 +31339,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
           toast('آزمون استاندارد طراحی و در برگه A4 چیده شد ✨');
         }
       } catch (e) {
-        alert('⚠️ ' + (e?.message || e));
+        toast('⚠️ ' + (e?.message || e));
       } finally {
         if (btn) {
           btn.disabled = false;
@@ -31205,14 +31408,14 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       const sh = document.getElementById('a4Sheet');
       if (!vp || !sb || !sh || vp.clientWidth === 0) return;
 
-      const fitScale = Math.min(1, Math.max(0.34, (vp.clientWidth - 18) / 794));
+      const fitScale = Math.min(1, Math.max(0.34, Math.round(((vp.clientWidth - 18) / 794) * 1000) / 1000));
       let sc = fitScale;
       if (customScale !== null && Number.isFinite(customScale)) {
-        sc = Math.min(2.5, Math.max(fitScale * 0.85, customScale));
+        sc = Math.min(2.5, Math.max(fitScale, customScale));
       } else if (this.zoomMode === 'auto') {
         sc = fitScale;
       } else {
-        sc = parseFloat(this.zoomMode) || fitScale;
+        sc = Math.max(fitScale, parseFloat(this.zoomMode) || fitScale);
       }
 
       sh.style.transform = `scale(${sc})`;
@@ -31244,25 +31447,633 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
         mode: 'a4-sheet',
         sheetEl: sh,
         initialScale: sc,
-        minScale: Math.max(0.32, fitScale * 0.9),
+        minScale: fitScale,
         maxScale: 2.5,
         onZoomChange: (newSc) => {
-          this.zoomMode = String(Math.round(newSc * 100) / 100);
+          this.zoomMode = newSc <= fitScale * 1.03 ? 'auto' : String(Math.round(newSc * 100) / 100);
           if (zBadge) zBadge.textContent = `🤏 زوم: ${this.toFa(Math.round(newSc * 100))}٪`;
         }
       });
-      vp._currentZoomScale = sc;
+    };
+
+    const _origLoadPdfBookV81 = ExamApp.loadPdfBook.bind(ExamApp);
+    ExamApp.loadPdfBook = async function(e) {
+      await _origLoadPdfBookV81(e);
+      if (this.pdfDoc && window.TeachAssistant) {
+        TeachAssistant._pdfInstance = this.pdfDoc;
+        if (db.cachedBook) {
+          db.cachedBook.pageCount = this.pdfDoc.numPages;
+          const fName = e?.target?.files?.[0]?.name?.replace(/\.pdf$/i, '');
+          if (fName && !db.cachedBook.name) db.cachedBook.name = fName;
+        }
+      }
     };
   }
 
 
   /* ==========================================================================================
-     مرحله ۲:
-     ۲-۱. افزودن فیلد «📚 نام درس» در ایجاد و ویرایش کلاس + نمایش در کارت کلاس و سربرگ آزمون
-     ۲-۲. ارتقای گزارش‌ها («📊 گزارش‌های شفاف کلاسی ۴سطحی») شبیه لیست کلاسی برای:
-          ۱) یک دانش‌آموز، ۲) یک کلاس، ۳) یک مدرسه، ۴) همه مدارس
+     بخش ۳: یکپارچه‌سازی کامل بخش «آموزش» (`TeachAssistant`) با الگوریتم‌های اثبات‌شده «آزمون‌ساز» (`ExamApp`)
      ========================================================================================== */
+  if (window.TeachAssistant) {
 
+    TeachAssistant.scanPageLikeExamBuilder = async function(pageNo = null) {
+      const pNo = Math.max(1, Number(pageNo || window._teacherPdfPage) || 1);
+      let pdfDoc = this._pdfInstance || window.ExamApp?.pdfDoc || null;
+
+      if (!pdfDoc && window.pdfjsLib) {
+        try {
+          const buf = this._pdfBufferCache || (typeof loadBookPdfAsset === 'function' ? await loadBookPdfAsset(db.cachedBook?.id) : null);
+          if (buf) {
+            this._pdfBufferCache = buf;
+            pdfDoc = await pdfjsLib.getDocument(this.getPdfDocumentConfig(buf)).promise;
+            this._pdfInstance = pdfDoc;
+            if (window.ExamApp && !ExamApp.pdfDoc) ExamApp.pdfDoc = pdfDoc;
+          }
+        } catch (_) {}
+      }
+
+      let pageImg = null;
+      let pageTxt = '';
+
+      if (pdfDoc && pNo >= 1 && pNo <= pdfDoc.numPages) {
+        try {
+          const page = await pdfDoc.getPage(pNo);
+          const vp = page.getViewport({ scale: 1.25 });
+          const c = document.createElement('canvas');
+          c.width = Math.floor(vp.width);
+          c.height = Math.floor(vp.height);
+          const ctx = c.getContext('2d');
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, c.width, c.height);
+          try { ctx.direction = 'ltr'; } catch (_) {}
+          await page.render({ canvasContext: ctx, viewport: vp }).promise;
+          const dataUrl = c.toDataURL('image/jpeg', 0.82);
+          pageImg = { mimeType: 'image/jpeg', base64: dataUrl.split(',')[1], dataUrl };
+
+          const tc = await page.getTextContent();
+          pageTxt = this.cleanPersianPdfText(tc.items);
+          if (db.cachedBook?.pages && pageTxt) {
+            db.cachedBook.pages[String(pNo)] = pageTxt;
+          }
+        } catch (_) {}
+      }
+
+      if (!pageImg) {
+        pageImg = this.captureCurrentPageImageForAI();
+      }
+      if (!pageTxt) {
+        pageTxt = window.repairSpacedPersianText(
+          document.getElementById('cachedPageText')?.value ||
+          db.cachedBook?.pages?.[String(pNo)] ||
+          ''
+        );
+      }
+      const cachedInp = document.getElementById('cachedPageText');
+      if (cachedInp && pageTxt) cachedInp.value = pageTxt;
+
+      return { pageNo: pNo, pageImg, pageTxt, bookName: db.cachedBook?.name || window.ExamApp?.state?.header?.subject || 'کتاب درسی' };
+    };
+
+    TeachAssistant.renderStudyPdf = async function() {
+      document.getElementById('teachFloatingZoomBar')?.remove();
+      const canvas = document.getElementById('teacherPdfCanvas');
+      const inner = document.getElementById('teacherCanvasInner');
+      const stage = document.getElementById('teacherPdfStage');
+      const empty = document.getElementById('teacherPdfEmpty');
+      const titleEl = document.getElementById('teacherPdfBookTitle');
+      const info = document.getElementById('teacherPdfPageInfo');
+      const status = document.getElementById('teacherPdfRenderStatus');
+      const zoomLbl = document.getElementById('teacherPdfZoomLabel');
+      const annotCanvas = document.getElementById('teacherAnnotCanvas');
+      if (!canvas) return;
+
+      let pdf = this._pdfInstance || window.ExamApp?.pdfDoc || null;
+      if (!pdf) {
+        let buffer = this._pdfBufferCache;
+        if (!buffer && typeof loadBookPdfAsset === 'function') {
+          try { buffer = await loadBookPdfAsset(db.cachedBook?.id); } catch (_) {}
+          if (buffer) this._pdfBufferCache = buffer;
+        }
+        if (buffer && window.pdfjsLib) {
+          try {
+            pdf = await pdfjsLib.getDocument(this.getPdfDocumentConfig(buffer)).promise;
+            this._pdfInstance = pdf;
+            if (window.ExamApp && !ExamApp.pdfDoc) ExamApp.pdfDoc = pdf;
+          } catch (_) {}
+        }
+      }
+
+      if (!pdf) {
+        if (this._sbSurface === 'book' || !this._annotMode) {
+          if (empty) empty.style.display = 'block';
+          canvas.style.display = 'none';
+          if (annotCanvas) annotCanvas.style.display = 'none';
+          if (inner) inner.style.display = 'none';
+          if (titleEl) titleEl.textContent = db.cachedBook?.name || 'کتاب درسی';
+          if (info) info.textContent = db.cachedBook?.name ? `صفحه ${fa(window._teacherPdfPage || 1)}` : 'هنوز کتابی بارگذاری نشده';
+        }
+        return;
+      }
+
+      try {
+        if (inner) inner.style.display = 'inline-block';
+        if (empty) empty.style.display = 'none';
+        const total = pdf.numPages;
+        if (db.cachedBook) db.cachedBook.pageCount = total;
+        const pageNo = Math.min(total, Math.max(1, Number(window._teacherPdfPage) || 1));
+        window._teacherPdfPage = pageNo;
+
+        const page = await pdf.getPage(pageNo);
+        const baseVp = page.getViewport({ scale: 1 });
+
+        const stageWidth = Math.max(260, (stage?.clientWidth || 350) - 18);
+        const isFs = document.getElementById('teacherStudyPdfCard')?.classList.contains('fullscreen-board');
+        const baseW = isFs ? Math.min(stageWidth, 720) : Math.min(stageWidth, 345);
+        if (inner) inner._baseCssWidth = baseW;
+
+        const uZoom = Number(window._teacherPdfZoom) || 1;
+        const targetCssW = Math.round(baseW * uZoom);
+        const effectiveCssScale = targetCssW / (baseVp.width || 595);
+        const cssViewport = page.getViewport({ scale: effectiveCssScale });
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2.25);
+        const renderViewport = page.getViewport({ scale: effectiveCssScale * dpr });
+
+        if (this._activeRenderTask && typeof this._activeRenderTask.cancel === 'function') {
+          try { this._activeRenderTask.cancel(); } catch (_) {}
+        }
+
+        const cssW = Math.floor(cssViewport.width);
+        const cssH = Math.floor(cssViewport.height);
+
+        if (inner) {
+          inner.style.width = cssW + 'px';
+          inner.style.height = cssH + 'px';
+        }
+        canvas.width = Math.floor(renderViewport.width);
+        canvas.height = Math.floor(renderViewport.height);
+        canvas.style.width = cssW + 'px';
+        canvas.style.height = cssH + 'px';
+        canvas.style.display = 'block';
+
+        const ctx = canvas.getContext('2d');
+        try { ctx.direction = 'ltr'; } catch (_) {}
+
+        if (titleEl) titleEl.textContent = db.cachedBook?.name || 'کتاب درسی';
+        if (info) info.textContent = `صفحه ${fa(pageNo)} از ${fa(total)}`;
+        if (zoomLbl) zoomLbl.textContent = uZoom > 1.04 ? (fa(Math.round(uZoom * 100)) + '٪') : '📐 متناسب';
+
+        const slider = document.getElementById('teacherPdfPageSlider');
+        if (slider) { slider.max = String(total); slider.value = String(pageNo); }
+        const input = document.getElementById('teacherPdfPageInput');
+        if (input) { input.max = total; input.value = pageNo; }
+
+        this._activeRenderTask = page.render({ canvasContext: ctx, viewport: renderViewport });
+        await this._activeRenderTask.promise;
+        this._activeRenderTask = null;
+
+        this.setupAnnotationLayer(cssW, cssH);
+
+        if (stage && inner) {
+          window.attachProPinchZoomAndPan(stage, inner, {
+            mode: 'canvas-width',
+            initialScale: uZoom,
+            minScale: 1.0,
+            maxScale: 3.5,
+            shouldIgnore: () => !!this._annotMode,
+            onZoomChange: (sc) => {
+              window._teacherPdfZoom = sc <= 1.04 ? 0 : sc;
+              const newW = Math.round(baseW * sc);
+              const newH = Math.round(newW * (cssH / (cssW || 1)));
+              inner.style.width = newW + 'px';
+              inner.style.height = newH + 'px';
+              canvas.style.width = newW + 'px';
+              canvas.style.height = newH + 'px';
+              if (annotCanvas) {
+                annotCanvas.style.width = newW + 'px';
+                annotCanvas.style.height = newH + 'px';
+              }
+              if (zoomLbl) {
+                zoomLbl.textContent = sc > 1.04 ? (fa(Math.round(sc * 100)) + '٪') : '📐 متناسب';
+              }
+            }
+          });
+        }
+
+        if (status) {
+          status.textContent = `✨ صفحه ${fa(pageNo)} آماده است — الگوریتم تصویری و متنی آزمون‌ساز روی این صفحه فعال است`;
+        }
+      } catch (e) {
+        if (status) status.textContent = '⚠️ نمایش PDF نیازمند انتخاب مجدد فایل است.';
+      }
+    };
+
+    TeachAssistant.openStandaloneSmartBoard = function(surface = 'white') {
+      const emptyEl = document.getElementById('teacherPdfEmpty');
+      const inner = document.getElementById('teacherCanvasInner');
+      const pdfCanvas = document.getElementById('teacherPdfCanvas');
+      const stage = document.getElementById('teacherPdfStage');
+      if (emptyEl) emptyEl.style.display = 'none';
+      const w = Math.min(Math.max(300, (stage?.clientWidth || 350) - 20), 680);
+      const h = Math.round(w * 1.28);
+      if (inner) {
+        inner.style.display = 'inline-block';
+        inner.style.width = w + 'px';
+        inner.style.height = h + 'px';
+      }
+      if (pdfCanvas) {
+        pdfCanvas.width = w;
+        pdfCanvas.height = h;
+        pdfCanvas.style.width = w + 'px';
+        pdfCanvas.style.height = h + 'px';
+        pdfCanvas.style.display = 'block';
+      }
+      this.setupAnnotationLayer(w, h);
+      this.setSmartBoardSurface(surface);
+      this.toggleSmartBoardDock(true);
+    };
+
+    TeachAssistant.solveActivities = async function() {
+      const { pageNo, pageImg, pageTxt, bookName } = await this.scanPageLikeExamBuilder();
+      const customQ = window.repairSpacedPersianText(document.getElementById('customExerciseText')?.value.trim() || '');
+
+      if (!pageImg && !customQ && !pageTxt) {
+        toast('ابتدا فایل PDF کتاب را انتخاب کنید یا صورت تمرین/جدول را در کادر بنویسید.');
+        return;
+      }
+
+      const btn = document.getElementById('btnSolveActivities');
+      const box = document.getElementById('activitiesSolutionBox');
+      if (btn) { btn.disabled = true; btn.textContent = '⏳ در حال اسکن صفحه و حل جدول‌ها و فعالیت‌ها...'; }
+      if (box) box.innerHTML = `<div class="card" style="text-align:center;color:var(--primary)">🤖 در حال تحلیل تصویری و متنی جدول‌ها و فعالیت‌های صفحه ${fa(pageNo)} با الگوریتم آزمون‌ساز...</div>`;
+
+      try {
+        const prompt = `تو دبیر خبره و طراح ارشد کتاب درسی «${bookName}» در مدارس ایران هستی.
+تصویر و متن صفحه ${pageNo} کتاب «${bookName}» را دقیقاً بررسی کن:
+${pageTxt ? `---\n${pageTxt.slice(0, 2500)}\n---\n` : ''}
+${customQ ? `تمرین یا جدول مورد نظر دبیر: «${customQ}»` : 'تمام جدول‌ها، فعالیت‌ها، کاردرکلاس‌ها، بارش فکری، پژوهش‌ها، خودارزیابی و فکر کنید موجود در این صفحه را به طور کامل، علمی و خط‌به‌خط حل کن. اگر جدولی در صفحه هست، تمام ستون‌ها و ردیف‌های آن را در فیلد table به صورت کامل پر کن.'}
+فقط یک آرایه JSON معتبر با فرمت زیر برگردان:
+[{"title":"عنوان دقیق جدول یا فعالیت","table":{"headers":["ستون ۱","ستون ۲"],"rows":[["ردیف ۱ ستون ۱","ردیف ۱ ستون ۲"]]},"solution":"توضیح کامل و جمع‌بندی"}]`;
+
+        let arr = null;
+        try {
+          const raw = await ExamApp.callArgonAI(prompt, pageImg ? [pageImg] : []);
+          const extracted = window.extractValidJsonFromAiText(raw, 'array');
+          if (Array.isArray(extracted) && extracted.length > 0) {
+            arr = extracted.map((it, i) => ({
+              title: window.repairSpacedPersianText(it.title || it.q || `جدول و فعالیت ${fa(i + 1)} صفحه ${fa(pageNo)}`),
+              table: (it.table && Array.isArray(it.table.headers) && Array.isArray(it.table.rows)) ? it.table : null,
+              solution: window.repairSpacedPersianText(it.solution || it.a || '')
+            }));
+          }
+        } catch (_) {}
+
+        if (!Array.isArray(arr) || !arr.length) {
+          const pkg = this.buildPageSpecificSmartPackageFromText(pageNo, customQ ? (customQ + '\n' + pageTxt) : pageTxt, bookName);
+          arr = pkg.activities;
+        }
+
+        this.ensureLibraryStructure();
+        db.cachedBook.solvedActivities[String(pageNo)] = arr;
+        this.syncActiveToLibrary();
+        savePersistent();
+        this.renderSavedPageActivities(pageNo);
+        toast(`✅ جدول‌ها و فعالیت‌های صفحه ${fa(pageNo)} به طور کامل حل شد!`);
+      } catch (err) {
+        const pkg = this.buildPageSpecificSmartPackageFromText(pageNo, pageTxt, bookName);
+        this.ensureLibraryStructure();
+        db.cachedBook.solvedActivities[String(pageNo)] = pkg.activities;
+        this.syncActiveToLibrary();
+        savePersistent();
+        this.renderSavedPageActivities(pageNo);
+        toast(`✅ جدول‌ها و فعالیت‌های صفحه ${fa(pageNo)} آماده شد!`);
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = '🔄 حل خودکار مجدد فعالیت‌های این صفحه'; }
+      }
+    };
+
+    TeachAssistant.extractLineByLineQuestions = async function(forcedMode = null) {
+      if (forcedMode) this._extractScopeMode = forcedMode === 'all' ? 'all' : 'major';
+      const mode = this._extractScopeMode || 'major';
+      const { pageNo, pageImg, pageTxt, bookName } = await this.scanPageLikeExamBuilder();
+
+      if (!pageImg && !pageTxt) {
+        toast('ابتدا فایل PDF کتاب را انتخاب کنید تا صفحه اسکن شود.');
+        return;
+      }
+
+      const diff = document.getElementById('extractDiffSelect')?.value || 'استاندارد خط‌به‌خط امتحانی';
+      const count = mode === 'all' ? 10 : 6;
+      const btnMajor = document.getElementById('btnExtractLineQuestions');
+      const btnAll = document.getElementById('btnExtractAllDetailedQuestions');
+      if (btnMajor) btnMajor.disabled = true;
+      if (btnAll) btnAll.disabled = true;
+
+      try {
+        const modeDesc = mode === 'all'
+          ? `تمام نکات ریز و درشت، تعاریف، جدول‌ها و فعالیت‌های صفحه ${pageNo} را خط‌به‌خط پوشش بده (${count} سوال کامل).`
+          : `مهم‌ترین مفاهیم اصلی و سوالات پرتکرار امتحانی صفحه ${pageNo} را طراحی کن (${count} سوال کلیدی).`;
+
+        const prompt = `تو طراح ارشد سوالات امتحانی مدارس ایران هستی.
+تصویر و متن صفحه ${pageNo} از کتاب «${bookName}» را بررسی کن:
+${pageTxt ? `---\n${pageTxt.slice(0, 2600)}\n---\n` : ''}
+${modeDesc}
+سطح سوالات: «${diff}». سوالات باید کاملاً مفهومی، علمی و استاندارد باشند.
+فقط یک آرایه JSON معتبر برگردان:
+[{"q":"صورت کامل و دقیق سوال امتحانی","a":"پاسخ کلیدی کامل و دقیق علمی","diff":"${mode === 'all' ? 'خط‌به‌خط کامل' : 'سوال کلیدی امتحانی'}"}]`;
+
+        let arr = null;
+        try {
+          const raw = await ExamApp.callArgonAI(prompt, pageImg ? [pageImg] : []);
+          const extracted = window.extractValidJsonFromAiText(raw, 'array');
+          if (Array.isArray(extracted) && extracted.length > 0) {
+            arr = extracted.map(it => ({
+              q: window.repairSpacedPersianText(it.q || it.question || it.text || ''),
+              a: window.repairSpacedPersianText(it.a || it.answer || it.explanation || it.solution || ''),
+              diff: it.diff || (mode === 'all' ? 'خط‌به‌خط کامل' : 'سوال کلیدی امتحانی')
+            })).filter(x => x.q.length > 6);
+          }
+        } catch (_) {}
+
+        if (!Array.isArray(arr) || !arr.length) {
+          if (window.ExamApp && typeof ExamApp.buildQuestionsFromSourceBySettings === 'function') {
+            const built = ExamApp.buildQuestionsFromSourceBySettings(`《صفحه ${pageNo}》\n${pageTxt || bookName}`, {
+              mcq: 2, tf: 1, blank: 1, match: 0, desc: mode === 'all' ? 5 : 3, level: diff, targetScore: 10
+            });
+            arr = (built.questions || []).map(q => ({
+              q: q.text,
+              a: q.explanation || q.blankWord || q.tfCorrect || 'پاسخ طبق متن صفحه',
+              diff: mode === 'all' ? 'خط‌به‌خط کامل' : 'سوال کلیدی امتحانی'
+            }));
+          } else {
+            const pkg = this.buildPageSpecificSmartPackageFromText(pageNo, pageTxt, bookName);
+            arr = pkg.questions;
+          }
+        }
+
+        this.ensureLibraryStructure();
+        db.cachedBook.extractedBank = (db.cachedBook.extractedBank || []).filter(x => Number(x.page) !== pageNo);
+        arr.slice().reverse().forEach(it => {
+          if (it && it.q) {
+            db.cachedBook.extractedBank.unshift({
+              id: uid(),
+              page: pageNo,
+              scopeMode: mode,
+              q: it.q,
+              a: it.a || 'پاسخ در متن درس',
+              diff: it.diff || diff
+            });
+          }
+        });
+
+        this.syncActiveToLibrary();
+        savePersistent();
+        this.openWorkbenchTab('extract');
+        this.renderExtractedBank();
+        toast(`✅ ${fa(arr.length)} سوال استاندارد از صفحه ${fa(pageNo)} با الگوریتم آزمون‌ساز طراحی شد!`);
+      } catch (err) {
+        toast('⚠️ ' + (err?.message || 'خطا در استخراج سوالات'));
+      } finally {
+        if (btnMajor) btnMajor.disabled = false;
+        if (btnAll) btnAll.disabled = false;
+      }
+    };
+
+    TeachAssistant.generateTopStudentHandout = async function() {
+      this.ensureLibraryStructure();
+      const scope = document.getElementById('handoutScopeSelect')?.value || 'lesson';
+      const themeKey = document.getElementById('handoutThemeSelect')?.value || 'rainbow';
+      const { pageNo, pageImg, pageTxt, bookName } = await this.scanPageLikeExamBuilder();
+      const totalPages = Number(db.cachedBook?.pageCount) || this._pdfInstance?.numPages || 1;
+
+      let scopeLabel = `درس و صفحه ${fa(pageNo)}`;
+      let collectedText = pageTxt;
+      if (scope === 'chapter') {
+        const pFrom = Math.max(1, Number(document.getElementById('handoutPageFrom')?.value) || 1);
+        const pTo = Math.min(totalPages, Math.max(pFrom, Number(document.getElementById('handoutPageTo')?.value) || (pFrom + 4)));
+        scopeLabel = `فصل (صفحات ${fa(pFrom)} تا ${fa(pTo)})`;
+        const parts = [];
+        for (let p = pFrom; p <= Math.min(pTo, pFrom + 7); p++) {
+          const t = await this.ensurePageTextExtracted(p);
+          if (t) parts.push(`《صفحه ${p}》: ${t}`);
+        }
+        collectedText = parts.join('\n\n') || pageTxt;
+      }
+
+      const btn = document.getElementById('btnBuildTopStudentHandout');
+      if (btn) { btn.disabled = true; btn.textContent = '⏳ در حال نگارش جزوهٔ رنگی درس...'; }
+
+      try {
+        const prompt = `تو نویسنده ارشد «🌟 جزوهٔ طلایی درس» برای کتاب «${bookName}» (${scopeLabel}) هستی.
+بر اساس تصویر و متن صفحه:
+${collectedText ? `---\n${collectedText.slice(0, 2600)}\n---\n` : ''}
+یک جزوهٔ جامع، علمی و امتحانی در قالب شیء JSON معتبر بساز:
+{"title":"عنوان جزوه","summary":"خلاصه مفهومی کامل","goldenTips":["نکته امتحانی ۱","نکته امتحانی ۲","نکته امتحانی ۳"],"comparisonTable":[{"topic":"مفهوم یا بخش","keyPoint":"ویژگی و نکته کلیدی","examTrap":"نکته امتحانی"}],"qaList":[{"q":"سوال امتحانی","a":"پاسخ کامل"}]}`;
+
+        let parsed = null;
+        try {
+          const raw = await ExamApp.callArgonAI(prompt, (scope === 'lesson' && pageImg) ? [pageImg] : []);
+          const cand = window.extractValidJsonFromAiText(raw, 'object');
+          if (cand && (cand.summary || Array.isArray(cand.goldenTips))) {
+            parsed = cand;
+          }
+        } catch (_) {}
+
+        const fallbackPkg = this.buildPageSpecificSmartPackageFromText(pageNo, collectedText, bookName);
+        if (!parsed || !parsed.summary) {
+          parsed = {
+            title: `🌟 جزوهٔ طلایی ${bookName} (${scopeLabel})`,
+            summary: fallbackPkg.summary,
+            goldenTips: fallbackPkg.goldenTips,
+            comparisonTable: (fallbackPkg.activities || []).slice(0, 3).map(ac => ({
+              topic: ac.title,
+              keyPoint: (ac.solution || '').replace(/\|/g, ' ').slice(0, 140),
+              examTrap: 'توجه به ارتباط مفاهیم در سوالات تشریحی و چهارگزینه‌ای'
+            })),
+            qaList: (fallbackPkg.questions || []).slice(0, 6).map(q => ({ q: q.q, a: q.a }))
+          };
+        }
+
+        parsed.scope = scope;
+        parsed.scopeLabel = scopeLabel;
+        parsed.themeKey = themeKey;
+        parsed.updatedAt = formatJalaliDate(localISODate());
+
+        if (!db.cachedBook.handouts) db.cachedBook.handouts = {};
+        db.cachedBook.handouts[scope] = parsed;
+        db.cachedBook.lastHandout = parsed;
+        this.syncActiveToLibrary();
+        savePersistent();
+        this.renderSavedHandoutPreview();
+        toast('🌟 جزوهٔ رنگی این مبحث با موفقیت آماده شد!');
+      } catch (e) {
+        toast('⚠️ ' + (e?.message || e));
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = '✨ تولید خودکار جزوهٔ رنگی این مبحث'; }
+      }
+    };
+
+    TeachAssistant.autoSolveAndPreparePage = async function(targetPageNo = null, silent = false) {
+      this.ensureLibraryStructure();
+      const { pageNo, pageImg, pageTxt, bookName } = await this.scanPageLikeExamBuilder(targetPageNo);
+
+      if (!pageImg && !pageTxt && !db.cachedBook?.name) {
+        if (!silent) toast('ابتدا فایل PDF کتاب درسی را از دکمه «📂 انتخاب PDF کتاب» بارگذاری کنید.');
+        return false;
+      }
+
+      const btn = document.getElementById('btnAutoSolveEverything');
+      const progBox = document.getElementById('autoSolveLiveProgressBox');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `⏳ در حال اسکن صفحه ${fa(pageNo)} و حل جدول‌ها، فعالیت‌ها و سوالات...`;
+      }
+      if (progBox) {
+        progBox.style.display = 'block';
+        progBox.innerHTML = `🤖 در حال تحلیل تصویری و متنی صفحه ${fa(pageNo)} کتاب «${esc(bookName)}» با موتور آزمون‌ساز...`;
+      }
+
+      try {
+        const prompt = `تو دبیر خبره و مولف کتاب درسی «${bookName}» در مدارس ایران هستی.
+تصویر و متن صفحه ${pageNo} از کتاب «${bookName}» را بررسی کن:
+${pageTxt ? `---\n${pageTxt.slice(0, 2600)}\n---\n` : ''}
+به صورت کاملاً خودکار ۳ کار زیر را به فارسی روان انجام بده:
+۱. تمام جدول‌ها، فعالیت‌ها، کاردرکلاس‌ها، فکر کنید و بارش فکری موجود در این صفحه را با جدول کامل (headers و rows) و پاسخ تشریحی حل کن (در آرایه activities).
+۲. ۶ سوال امتحانی مهم و خط‌به‌خط این صفحه را به همراه پاسخ کلیدی دقیق استخراج کن (در آرایه questions).
+۳. خلاصه مفهومی و نکات طلایی امتحانی این صفحه را بنویس (در summary و goldenTips).
+فقط یک شیء JSON معتبر با ساختار زیر برگردان:
+{
+  "activities": [{"title": "عنوان جدول یا فعالیت", "table": {"headers": ["ستون ۱", "ستون ۲"], "rows": [["...", "..."]]}, "solution": "پاسخ کامل"}],
+  "questions": [{"q": "صورت سوال امتحانی", "a": "پاسخ کلیدی کامل", "diff": "استاندارد امتحانی"}],
+  "summary": "خلاصه صفحه",
+  "goldenTips": ["نکته ۱", "نکته ۲"]
+}`;
+
+        let parsed = null;
+        try {
+          const raw = await ExamApp.callArgonAI(prompt, pageImg ? [pageImg] : []);
+          const objCand = window.extractValidJsonFromAiText(raw, 'object');
+          if (objCand && (Array.isArray(objCand.activities) || Array.isArray(objCand.questions))) {
+            parsed = objCand;
+          }
+        } catch (_) {}
+
+        const fallbackPkg = this.buildPageSpecificSmartPackageFromText(pageNo, pageTxt, bookName);
+        if (!parsed || (!Array.isArray(parsed.activities) && !Array.isArray(parsed.questions))) {
+          parsed = fallbackPkg;
+        } else {
+          if (!Array.isArray(parsed.activities) || !parsed.activities.length) parsed.activities = fallbackPkg.activities;
+          if (!Array.isArray(parsed.questions) || !parsed.questions.length) parsed.questions = fallbackPkg.questions;
+        }
+
+        if (!db.cachedBook.solvedActivities) db.cachedBook.solvedActivities = {};
+        db.cachedBook.solvedActivities[String(pageNo)] = parsed.activities.map((it, idx) => ({
+          title: window.repairSpacedPersianText(it.title || it.q || `جدول و فعالیت ${fa(idx + 1)} صفحه ${fa(pageNo)}`),
+          table: (it.table && Array.isArray(it.table.headers) && Array.isArray(it.table.rows))
+            ? it.table
+            : (fallbackPkg.activities[idx]?.table || null),
+          solution: window.repairSpacedPersianText(it.solution || it.a || '')
+        }));
+
+        if (!Array.isArray(db.cachedBook.extractedBank)) db.cachedBook.extractedBank = [];
+        db.cachedBook.extractedBank = db.cachedBook.extractedBank.filter(x => Number(x.page) !== pageNo);
+        parsed.questions.slice().reverse().forEach(qIt => {
+          if (qIt && (qIt.q || qIt.question)) {
+            db.cachedBook.extractedBank.unshift({
+              id: uid(),
+              page: pageNo,
+              q: window.repairSpacedPersianText(qIt.q || qIt.question),
+              a: window.repairSpacedPersianText(qIt.a || qIt.answer || ''),
+              diff: qIt.diff || 'استاندارد امتحانی'
+            });
+          }
+        });
+
+        const autoHandout = {
+          title: `🌟 جزوهٔ هوشمند صفحه ${fa(pageNo)} — ${bookName}`,
+          scope: 'lesson',
+          scopeLabel: `صفحه ${fa(pageNo)}`,
+          themeKey: 'rainbow',
+          updatedAt: formatJalaliDate(localISODate()),
+          summary: window.repairSpacedPersianText(parsed.summary || fallbackPkg.summary),
+          goldenTips: (Array.isArray(parsed.goldenTips) && parsed.goldenTips.length ? parsed.goldenTips : fallbackPkg.goldenTips).map(t => window.repairSpacedPersianText(t)),
+          comparisonTable: (db.cachedBook.solvedActivities[String(pageNo)] || []).slice(0, 3).map(ac => ({
+            topic: ac.title,
+            keyPoint: (ac.solution || '').replace(/\|/g, ' ').slice(0, 140),
+            examTrap: 'توجه به جزئیات جدول در امتحان'
+          })),
+          qaList: (parsed.questions || []).slice(0, 6).map(q => ({
+            q: window.repairSpacedPersianText(q.q || q.question || ''),
+            a: window.repairSpacedPersianText(q.a || q.answer || '')
+          }))
+        };
+        if (!db.cachedBook.handouts) db.cachedBook.handouts = {};
+        db.cachedBook.handouts['lesson'] = autoHandout;
+        db.cachedBook.lastHandout = autoHandout;
+
+        this.syncActiveToLibrary();
+        savePersistent();
+
+        this.renderSavedPageActivities(pageNo);
+        this.renderExtractedBank();
+        this.renderSavedHandoutPreview();
+
+        const actCnt = (db.cachedBook.solvedActivities[String(pageNo)] || []).length;
+        const qCnt = (parsed.questions || []).length;
+        if (progBox) {
+          progBox.innerHTML = `✅ صفحه ${fa(pageNo)} حل و آماده شد: <b>${fa(actCnt)} جدول و فعالیت حل‌شده</b> + <b>${fa(qCnt)} سوال امتحانی</b> + <b>جزوه آماده</b>!`;
+        }
+        if (!silent) {
+          toast(`✅ جدول‌ها، فعالیت‌ها و سوالات صفحه ${fa(pageNo)} آماده شد!`);
+        }
+        return true;
+      } catch (err) {
+        if (progBox) progBox.innerHTML = `⚠️ ${esc(err.message || 'خطا در تحلیل صفحه')}`;
+        return false;
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '✨ حل خودکار همه سوالات و فعالیت‌های این صفحه';
+        }
+      }
+    };
+
+    TeachAssistant.sendAllExtractedToExam = async function() {
+      const pageNo = Number(window._teacherPdfPage) || 1;
+      const list = (db.cachedBook?.extractedBank || []).filter(x => Number(x.page) === pageNo);
+      if (list.length > 0 && window.ExamApp) {
+        list.forEach((it, idx) => {
+          ExamApp.getQuestions().push({
+            id: Date.now() + idx + Math.floor(Math.random() * 999),
+            type: 'desc',
+            text: it.q,
+            score: 1,
+            lines: 2,
+            hint: 'پاسخ کامل و علمی بنویسید.',
+            explanation: it.a
+          });
+        });
+        ExamApp.balanceScoresTo();
+        ExamApp.save();
+        ExamApp.renderAll();
+        ExamApp.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+        toast(`✅ ${fa(list.length)} سوال صفحه ${fa(pageNo)} به برگه آزمون A4 منتقل شد!`);
+        return;
+      }
+      if (window.ExamApp) {
+        if (this._pdfInstance && !ExamApp.pdfDoc) ExamApp.pdfDoc = this._pdfInstance;
+        ExamApp.selectedPdfPages.clear();
+        ExamApp.selectedPdfPages.add(pageNo);
+        showView('examView');
+        await ExamApp.generateExamFromSelectedPdfPages();
+      }
+    };
+  }
+
+
+  /* ==========================================================================================
+     بخش ۴: افزودن «📚 نام درس» در کلاس‌ها + گزارش‌های شفاف ۴سطحی شبیه لیست کلاسی
+     ========================================================================================== */
   const COMMON_SUBJECT_PRESETS = [
     'پیام‌های آسمان', 'ریاضی', 'علوم تجربی', 'فارسی و نگارش',
     'عربی', 'آموزش قرآن', 'مطالعات اجتماعی', 'زبان انگلیسی',
@@ -31365,7 +32176,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     const grade = document.getElementById('cGrade')?.value.trim() || '';
     const subject = document.getElementById('cSubject')?.value.trim() || '';
     if (!name) {
-      alert('لطفاً نام کلاس را وارد کنید.');
+      toast('لطفاً نام کلاس را وارد کنید.');
       return;
     }
     if (Array.isArray(window._classPhotos) && typeof normFaKey === 'function') {
@@ -31572,7 +32383,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
              </div>`
           : `<b>${esc(fullName)}</b>`;
 
-        const psychShort = window.generateStudentDignityAdvice(sec.cls, st, det).slice(0, 115) + '...';
+        const psychShort = window.generateStudentDignityAdvice(it._c || sec.cls, st, det).slice(0, 115) + '...';
 
         return `<tr style="background-color:${rowBg}">
           <td style="text-align:center;font-weight:900;color:${pal.primaryDark};background:${pal.lightBg}">${fa(idx + 1)}</td>
@@ -31725,36 +32536,23 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 
   window.syncRepModalToGlobalExportControls = function() {
     const scope = window._repModCurrentScope || 'class';
-    const sid = document.getElementById('repModSchoolSel')?.value || '';
-    const cid = document.getElementById('repModClassSel')?.value || '';
-    const stid = document.getElementById('repModStudentSel')?.value || '';
+    const sid = document.getElementById('repModSchoolSel')?.value || currentSchoolId || db.schools?.[0]?.id || '';
+    const sObj = findSchool(sid) || db.schools?.[0] || null;
+    const cid = document.getElementById('repModClassSel')?.value || currentClassId || sObj?.classes?.[0]?.id || '';
+    const cObj = sObj ? (findClass(sObj.id, cid) || sObj.classes?.[0] || null) : null;
+    const stid = document.getElementById('repModStudentSel')?.value || currentStudentId || cObj?.students?.[0]?.id || '';
 
-    const gScope = document.getElementById('expScopeType');
-    if (gScope) {
-      gScope.value = scope;
-      if (typeof window.onExportScopeChange === 'function') window.onExportScopeChange();
+    if (typeof window.populateExportSelectors === 'function') {
+      window.populateExportSelectors(scope, sid, cid, stid);
     }
-    const gSid = document.getElementById('expSchoolSel');
-    if (gSid && sid) {
-      gSid.value = sid;
-      if (typeof window.onExportSchoolChange === 'function') window.onExportSchoolChange();
-    }
-    const gCid = document.getElementById('expClassSel');
-    if (gCid && cid) {
-      gCid.value = cid;
-      if (typeof window.onExportClassChange === 'function') window.onExportClassChange();
-    }
-    const gStid = document.getElementById('expStudentSel');
-    if (gStid && stid) {
-      gStid.value = stid;
-    }
+    return { scope, sid, cid, stid, statusFilter: 'all' };
   };
 
   window.refreshTransparentReportModalPreview = function() {
     const box = document.getElementById('repModalLivePreviewWrap');
     if (!box) return;
-    window.syncRepModalToGlobalExportControls();
-    const res = window.collectFilteredExportData();
+    const opts = window.syncRepModalToGlobalExportControls();
+    const res = window.collectFilteredExportData(opts);
     if (!res || !res.totalStudents) {
       box.innerHTML = `<div style="padding:24px;text-align:center;color:var(--text-muted)">هیچ دانش‌آموزی در این بخش ثبت نشده است.</div>`;
       return;
@@ -31773,21 +32571,17 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 
 
   /* ==========================================================================================
-     مرحله ۳:
-     ۳-۱. رویکرد کرامت انسانی + توصیه علمی و روانشناختی ۲-۳ خطی اختصاصی در بخش «وضعیت‌ها»
-     ۳-۲. بخش «🧭 راهنمای هوشمند کلاس‌داری و برخورد تربیتی» (کلاس‌های خوب، شلوغ، خسته، ناهنجار)
-     ۳-۳. دکمه یادآور اول کلاس با چراغ گردان ظریف و بدون مزاحمت (`🚨 یادآور کلاس‌داری`)
+     بخش ۵: رویکرد کرامت انسانی + مشاوره ۲-۳ خطی وضعیت‌ها + راهنمای کلاس‌داری با علامت متحرک و گردون `🚨`
      ========================================================================================== */
-
   window.generateStudentDignityAdvice = function(c, st, det = null) {
     if (!st) return '';
     if (st.aiPsychAdvice && String(st.aiPsychAdvice).trim()) {
       return String(st.aiPsychAdvice).trim();
     }
-    const d = det || (typeof window.getStudentAttentionDetails === 'function' ? window.getStudentAttentionDetails(c, st) : { isAttn: false, categories: [] });
+    const d = det || (c && typeof window.getStudentAttentionDetails === 'function' ? window.getStudentAttentionDetails(c, st) : { isAttn: false, categories: [] });
     const cats = d.categories || [];
     const b = behaviorData(st);
-    const absCnt = attendanceCount(c, st.id, 'absent');
+    const absCnt = (c && c.attendance && typeof attendanceCount === 'function') ? attendanceCount(c, st.id, 'absent') : 0;
     const avg = avgGrade(st);
     const firstName = st.name || 'این دانش‌آموز';
 
@@ -31859,9 +32653,9 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     }
   };
 
-  const _origStudentCardV82 = window.studentCard;
+  const _origStudentCardV83 = window.studentCard;
   window.studentCard = function(s, c, st) {
-    let baseHtml = _origStudentCardV82(s, c, st);
+    let baseHtml = _origStudentCardV83(s, c, st);
     const det = typeof window.getStudentAttentionDetails === 'function' ? window.getStudentAttentionDetails(c, st) : { isAttn: false, categories: [] };
     const adviceTxt = window.generateStudentDignityAdvice(c, st, det);
     const subjPill = c.subject ? `<span class="chip" style="background:#FFF7ED;color:#C2410C;border:1px solid #FDBA74;font-size:10px">📚 ${esc(c.subject)}</span>` : '';
@@ -31934,8 +32728,8 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     const cArg = cid ? `'${cid}'` : 'currentClassId';
     return `
       <button type="button" class="class-beacon-reminder-btn" onclick="openClassroomGuidanceModal(${sArg}, ${cArg})" title="یادآور اول کلاس و راهنمای هوشمند کلاس‌داری (بر پایه کرامت انسانی)">
-        <span class="class-beacon-lamp" aria-hidden="true"><span class="class-beacon-lamp-core"></span></span>
-        <span>${compact ? '🧭 یادآور کلاس‌داری' : '🧭 یادآور اول کلاس و راهنمای برخورد (کرامت انسانی)'}</span>
+        <span class="class-beacon-mini-orb" aria-hidden="true"><span>🚨</span></span>
+        <span>${compact ? 'راهنمای کلاس‌داری' : 'یادآور اول کلاس و راهنمای برخورد (کرامت انسانی)'}</span>
       </button>
     `;
   };
@@ -31974,7 +32768,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     window._guidanceModalSid = s?.id || '';
     window._guidanceModalCid = c?.id || '';
 
-    openModal(formHeader('🧭 راهنمای هوشمند کلاس‌داری و یادآور اول کلاس (بر پایه کرامت انسانی)') + `
+    openModal(formHeader('🚨 راهنمای هوشمند کلاس‌داری و یادآور اول کلاس (بر پایه کرامت انسانی)') + `
       <div class="dignity-charter-banner">
         <div>
           <b style="color:#9A3412;font-size:13px">🌿 منشور تدریس کرامت‌محور در تمام کلاس‌ها:</b>
@@ -32079,12 +32873,12 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 
 
   /* ==========================================================================================
-     بخش ۴: ارتقای نمای کلاس (`openClass`) و لیست سریع (`renderTodayListInner`)
+     بخش ۶: ارتقای نمای کلاس (`openClass`) و لیست سریع (`renderTodayListInner`)
      ========================================================================================== */
-  const _origOpenClassV82 = window.openClass;
+  const _origOpenClassV83 = window.openClass;
   window.openClass = function(sid, cid) {
     window.withPreservedScroll(() => {
-      _origOpenClassV82(sid, cid);
+      _origOpenClassV83(sid, cid);
       const s = findSchool(sid);
       const c = findClass(sid, cid);
       if (!s || !c) return;
@@ -32102,16 +32896,25 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       }
 
       const detailHead = document.querySelector('#classMainView .detailhead');
-      if (detailHead && !detailHead.querySelector('.v82-class-top-strip')) {
+      if (detailHead && !detailHead.querySelector('.v83-class-top-strip')) {
         const strip = document.createElement('div');
-        strip.className = 'v82-class-top-strip';
-        strip.style.cssText = 'display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin:8px 0;padding:7px 10px;border-radius:12px;background:#FFF7ED;border:1px solid #FDBA74';
+        strip.className = 'v83-class-top-strip v83-luxury-Quick-dock';
+        strip.style.marginTop = '8px';
         strip.innerHTML = `
-          ${window.getBeaconButtonHTML(sid, cid, false)}
-          <div style="display:flex;gap:5px;flex-wrap:wrap">
-            <button type="button" class="btn soft btn-sm" onclick="openTransparentReportModal('class','${sid}','${cid}')">📊 گزارش شفاف این کلاس</button>
-            <button type="button" class="btn gray btn-sm" onclick="editClass('${sid}','${cid}')">📚 نام درس / ویرایش</button>
-          </div>
+          <button type="button" class="v83-luxury-card-btn" onclick="openClassroomGuidanceModal('${sid}','${cid}')">
+            <span class="siren-rotating-orb"><span class="siren-emoji-core">🚨</span></span>
+            <span class="v83-luxury-card-text">
+              <b>یادآور اول کلاس و کلاس‌داری</b>
+              <span>راهنمای برخورد بر پایه کرامت انسانی</span>
+            </span>
+          </button>
+          <button type="button" class="v83-luxury-card-btn" onclick="openTransparentReportModal('class','${sid}','${cid}')">
+            <span class="report-luxury-orb">📊</span>
+            <span class="v83-luxury-card-text">
+              <b>گزارش شفاف این کلاس</b>
+              <span>کارنامه کلاسی، فردی و مدرسه</span>
+            </span>
+          </button>
         `;
         const firstActions = detailHead.querySelector('.actions');
         if (firstActions) {
@@ -32123,10 +32926,10 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     });
   };
 
-  const _origRenderTodayListInnerV82 = window.renderTodayListInner;
+  const _origRenderTodayListInnerV83 = window.renderTodayListInner;
   window.renderTodayListInner = function(sid, cid) {
     return window.withPreservedScroll(() => {
-      _origRenderTodayListInnerV82(sid, cid);
+      _origRenderTodayListInnerV83(sid, cid);
       const c = findClass(sid, cid);
       const container = document.getElementById('classTodayListContainer');
       if (!container || !c) return;
@@ -32134,13 +32937,13 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       const topBar = container.firstElementChild;
       if (topBar && !topBar.querySelector('.class-beacon-reminder-btn')) {
         const beaconWrap = document.createElement('div');
-        beaconWrap.style.cssText = 'width:100%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:6px 10px;border-radius:12px;background:#FFF7ED;border:1px solid #FDBA74;margin-bottom:6px';
+        beaconWrap.style.cssText = 'width:100%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:6px 10px;border-radius:14px;background:linear-gradient(135deg,#FFFFFF,#FFF7ED);border:1.5px solid #FDBA74;margin-bottom:8px;box-shadow:0 3px 10px rgba(234,88,12,0.08)';
         beaconWrap.innerHTML = `
           <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
             ${window.getBeaconButtonHTML(sid, cid, true)}
-            <span style="font-size:11.5px;font-weight:800;color:#9A3412">🚪 ${esc(c.name)}${c.subject ? ` · 📚 درس ${esc(c.subject)}` : ''}</span>
+            <span style="font-size:11.5px;font-weight:900;color:#9A3412">🚪 ${esc(c.name)}${c.subject ? ` · 📚 درس ${esc(c.subject)}` : ''}</span>
           </div>
-          <button type="button" class="btn soft btn-sm" style="height:28px;padding:0 9px;font-size:11px" onclick="openTransparentReportModal('class','${sid}','${cid}')">📊 گزارش شفاف کلاس</button>
+          <button type="button" class="btn soft btn-sm" style="height:30px;padding:0 10px;font-size:11px;border-radius:999px" onclick="openTransparentReportModal('class','${sid}','${cid}')">📊 گزارش شفاف کلاس</button>
         `;
         container.insertBefore(beaconWrap, topBar);
       }
@@ -32158,27 +32961,34 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 
 
   /* ==========================================================================================
-     بخش ۵: راه‌اندازی یکپارچه نسخه v8.2.0 Pro
+     بخش ۷: راه‌اندازی یکپارچه نسخه v8.3.0 Pro (ایجاد کارت‌های شیک و خوشگل در داشبورد بدون به‌هم‌ریختگی)
      ========================================================================================== */
-  const bootV82 = () => {
+  const bootV83 = () => {
     try {
       const dashStrip = document.getElementById('dashQuickStrip');
-      if (dashStrip && !dashStrip.querySelector('#dashBeaconGuidancePill')) {
-        const beaconPill = document.createElement('button');
-        beaconPill.type = 'button';
-        beaconPill.id = 'dashBeaconGuidancePill';
-        beaconPill.className = 'class-beacon-reminder-btn';
-        beaconPill.onclick = () => window.openClassroomGuidanceModal();
-        beaconPill.innerHTML = `<span class="class-beacon-lamp"><span class="class-beacon-lamp-core"></span></span><span>🧭 راهنمای هوشمند کلاس‌داری (کرامت انسانی)</span>`;
-        dashStrip.prepend(beaconPill);
-
-        const repPill = document.createElement('button');
-        repPill.type = 'button';
-        repPill.className = 'dash-q-pill';
-        repPill.style.cssText = 'border-color:#EA580C;background:#FFF7ED;color:#C2410C;font-weight:900';
-        repPill.onclick = () => window.openTransparentReportModal('all');
-        repPill.innerHTML = '📊 گزارش‌های شفاف ۴سطحی (دانش‌آموز/کلاس/مدرسه/کل)';
-        dashStrip.insertBefore(repPill, beaconPill.nextSibling);
+      if (dashStrip) {
+        if (!document.getElementById('v83DashboardLuxuryDock')) {
+          const dock = document.createElement('div');
+          dock.id = 'v83DashboardLuxuryDock';
+          dock.className = 'v83-luxury-Quick-dock';
+          dock.innerHTML = `
+            <button type="button" class="v83-luxury-card-btn" onclick="openClassroomGuidanceModal()">
+              <span class="siren-rotating-orb"><span class="siren-emoji-core">🚨</span></span>
+              <span class="v83-luxury-card-text">
+                <b>راهنمای کلاس‌داری و یادآور</b>
+                <span>برخورد علمی بر پایه کرامت انسانی</span>
+              </span>
+            </button>
+            <button type="button" class="v83-luxury-card-btn" onclick="openTransparentReportModal('all')">
+              <span class="report-luxury-orb">📊</span>
+              <span class="v83-luxury-card-text">
+                <b>گزارش‌های شفاف ۴سطحی</b>
+                <span>دانش‌آموز · کلاس · مدرسه · کل</span>
+              </span>
+            </button>
+          `;
+          dashStrip.parentElement?.insertBefore(dock, dashStrip);
+        }
       }
 
       const stSec = document.getElementById('statuses');
@@ -32211,15 +33021,18 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
         ExamApp.renderDynamicBranchesBar();
         ExamApp.applyZoomScale();
       }
+      if (window.TeachAssistant) {
+        TeachAssistant.renderStudyPdf();
+      }
     } catch (e) {
-      console.warn('v8.2 init warning:', e);
+      console.warn('v8.3 init warning:', e);
     }
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV82, 140));
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV83, 140));
   } else {
-    setTimeout(bootV82, 140);
+    setTimeout(bootV83, 140);
   }
 
 })();
