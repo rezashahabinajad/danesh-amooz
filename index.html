@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.7</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.8</span>
         </div>
       </div>
     </div>
@@ -35559,7 +35559,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v8.7</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v8.8</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -36772,6 +36772,391 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 })();
 </script>
 <!-- ==================== END V8.7.0 COUNSELOR PRO ==================== -->
+
+<!-- ==================== START V8.8.0 ANIMATED BORDERS PRO ==================== -->
+<style id="v88AnimatedBordersAllStyle">
+/* ==========================================================================================
+   ۱. موتور چرخش ۳۶۰ درجه حاشیه نوری دور تمام آیتم‌های برنامه (۶۰ فریم بر ثانیه و کاملاً نرم)
+   ========================================================================================== */
+@property --dam-orbit-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: true;
+}
+
+@keyframes damGlobalOrbitSpin360 {
+  0% { --dam-orbit-angle: 0deg; }
+  100% { --dam-orbit-angle: 360deg; }
+}
+
+@keyframes damBorderShimmerPulse {
+  0%, 100% {
+    box-shadow: 0 3px 12px rgba(234, 88, 12, 0.14), 0 0 0 1px rgba(251, 146, 60, 0.28);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.22), 0 0 0 1.5px rgba(249, 115, 22, 0.55);
+  }
+}
+
+:root,
+body {
+  animation: damGlobalOrbitSpin360 2.6s linear infinite !important;
+}
+
+/* ==========================================================================================
+   ۲. حاشیه متحرک و گردون دور تمام کارت‌ها، باکس‌ها، پنل‌ها و کانتینرها در کل برنامه
+   ========================================================================================== */
+.card,
+.box-card,
+.box-card.highlight,
+.stat,
+.stu-card,
+.branch-bar,
+.exam-subnav,
+#teachView .teach-workbench-tabs,
+.jarvis-command-deck,
+.dignity-charter-banner,
+.auto-ai-master-banner,
+.dam-settings-island,
+.dam-bento-card,
+.rep-classlist-card,
+.counselor-ai-result-card,
+.counselor-ai-sec-item,
+.switch-card,
+.theme-pick-card,
+.cmd-palette-item,
+.pdf-page-card,
+.q-item-card,
+.top-icons-capsule,
+.counselor-mode-tabs,
+.rep-v84-col-toggles,
+#teacherPdfStage {
+  border: 2px solid transparent !important;
+  background-image:
+    linear-gradient(180deg, #FFFFFF 0%, #FFFBF5 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #FFEDD5 0deg,
+      #FB923C 65deg,
+      #EA580C 130deg,
+      #EF4444 190deg,
+      #F59E0B 255deg,
+      #FED7AA 315deg,
+      #FFEDD5 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  animation: damGlobalOrbitSpin360 2.6s linear infinite, damBorderShimmerPulse 2.8s ease-in-out infinite !important;
+}
+
+/* ==========================================================================================
+   ۳. حاشیه متحرک و گردون دور تمام دکمه‌های روشن/نرم، کپسول‌ها، تب‌ها، چیپ‌ها و شعبه‌ها
+   ========================================================================================== */
+.btn:not(.primary):not(.green):not(.danger):not(.red),
+.btn.soft,
+.btn.gray,
+.dash-q-pill,
+.chip,
+.branch-pill:not(.active),
+.ex-nav-btn:not(.active),
+.teach-wb-tab:not(.active),
+.set-tab-btn:not(.active),
+.counselor-mode-tab:not(.active),
+.rep-v84-scope-btn:not(.active),
+.rep-v84-col-chip,
+.attn-cat-pill:not(.active),
+.jarvis-metric-btn:not(.active),
+.teach-icon-btn,
+.sb-tool-btn:not(.active),
+.class-side-counselor-btn,
+.class-beacon-reminder-btn,
+.bottomnav button.active,
+.pill-btn:not(.active),
+.speed-opt-btn:not(.selected) {
+  border: 2px solid transparent !important;
+  background-image:
+    linear-gradient(180deg, #FFFFFF 0%, #FFF7ED 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #FED7AA 0deg,
+      #EA580C 75deg,
+      #EF4444 145deg,
+      #F59E0B 215deg,
+      #FB923C 285deg,
+      #FED7AA 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #9A3412 !important;
+  animation: damGlobalOrbitSpin360 2.4s linear infinite !important;
+}
+
+/* ==========================================================================================
+   ۴. حاشیه متحرک طلایی-نقره‌ای دور دکمه‌های نارنجی پررنگ (.btn.primary) و تب‌های فعال (.active)
+   ========================================================================================== */
+.btn.primary,
+.branch-pill.active,
+.ex-nav-btn.active,
+.teach-wb-tab.active,
+.set-tab-btn.active,
+.counselor-mode-tab.active,
+.rep-v84-scope-btn.active,
+.attn-cat-pill.active,
+.jarvis-metric-btn.active,
+.sb-tool-btn.active,
+.pill-btn.active,
+.speed-opt-btn.selected {
+  border: 2.2px solid transparent !important;
+  background-image:
+    linear-gradient(135deg, #EA580C 0%, #F97316 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #9A3412 0deg,
+      #FDE047 80deg,
+      #FFFFFF 150deg,
+      #FDBA74 230deg,
+      #EF4444 300deg,
+      #9A3412 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.28) !important;
+  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
+}
+
+/* ==========================================================================================
+   ۵. حاشیه متحرک دور دکمه‌های سبز (.btn.green) و دکمه‌های قرمز (.btn.danger) و باکس نارنجی بالای آزمون‌ساز
+   ========================================================================================== */
+.btn.green {
+  border: 2.2px solid transparent !important;
+  background-image:
+    linear-gradient(135deg, #059669 0%, #10B981 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #064E3B 0deg,
+      #A7F3D0 80deg,
+      #FFFFFF 150deg,
+      #FDE047 230deg,
+      #34D399 300deg,
+      #064E3B 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.26) !important;
+  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
+}
+
+.btn.danger,
+.btn.red {
+  border: 2.2px solid transparent !important;
+  background-image:
+    linear-gradient(135deg, #DC2626 0%, #EF4444 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #7F1D1D 0deg,
+      #FECACA 85deg,
+      #FFFFFF 155deg,
+      #FDE047 235deg,
+      #7F1D1D 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #FFFFFF !important;
+  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
+}
+
+.exam-top-actions {
+  border: 2.5px solid transparent !important;
+  background-image:
+    linear-gradient(135deg, #C2410C 0%, #EA580C 52%, #F97316 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #7C2D12 0deg,
+      #FDE047 75deg,
+      #FFFFFF 145deg,
+      #FDBA74 225deg,
+      #EF4444 295deg,
+      #7C2D12 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.25) !important;
+  animation: damGlobalOrbitSpin360 2.6s linear infinite !important;
+}
+
+.exam-collapse-btn,
+#topStatsText {
+  border: 1.8px solid transparent !important;
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 237, 213, 0.28)),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      rgba(255,255,255,0.2) 0deg,
+      #FDE047 90deg,
+      #FFFFFF 180deg,
+      #FED7AA 270deg,
+      rgba(255,255,255,0.2) 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================================
+   ۶. حاشیه متحرک دور تمام کادرهای ورودی، انتخابگرها، جعبه‌های جستجو و آیکون‌های هدر
+   ========================================================================================== */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+select,
+textarea,
+.searchbox,
+.dam-settings-search {
+  border: 1.8px solid transparent !important;
+  background-image:
+    linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #FED7AA 0deg,
+      #F97316 80deg,
+      #EA580C 160deg,
+      #F59E0B 240deg,
+      #FED7AA 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  animation: damGlobalOrbitSpin360 2.8s linear infinite !important;
+}
+
+.topbar .logo,
+.topbar .iconbtn,
+.topbar .top-ver-pill {
+  border: 2px solid transparent !important;
+  background-image:
+    radial-gradient(circle at 30% 25%, #FFFFFF 0%, #FFF7ED 55%, #FFEDD5 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #FED7AA 0deg,
+      #EA580C 75deg,
+      #EF4444 150deg,
+      #F59E0B 230deg,
+      #FED7AA 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
+}
+
+/* ==========================================================================================
+   ۷. تطبیق کامل حاشیه‌های متحرک در حالت شب مشکی خالص (amoled-black)
+   ========================================================================================== */
+body[data-theme-mode="amoled-black"] .card,
+body[data-theme-mode="amoled-black"] .box-card,
+body[data-theme-mode="amoled-black"] .stat,
+body[data-theme-mode="amoled-black"] .stu-card,
+body[data-theme-mode="amoled-black"] .branch-bar,
+body[data-theme-mode="amoled-black"] .exam-subnav,
+body[data-theme-mode="amoled-black"] #teachView .teach-workbench-tabs,
+body[data-theme-mode="amoled-black"] .jarvis-command-deck,
+body[data-theme-mode="amoled-black"] .dignity-charter-banner,
+body[data-theme-mode="amoled-black"] .auto-ai-master-banner,
+body[data-theme-mode="amoled-black"] .dam-settings-island,
+body[data-theme-mode="amoled-black"] .dam-bento-card,
+body[data-theme-mode="amoled-black"] .switch-card,
+body[data-theme-mode="amoled-black"] .theme-pick-card,
+body[data-theme-mode="amoled-black"] .top-icons-capsule,
+body[data-theme-mode="amoled-black"] #teacherPdfStage {
+  background-image:
+    linear-gradient(180deg, #161618 0%, #1C1C1F 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #27272A 0deg,
+      #F97316 75deg,
+      #EF4444 150deg,
+      #F59E0B 230deg,
+      #27272A 360deg
+    ) !important;
+  color: #FFFFFF !important;
+}
+
+body[data-theme-mode="amoled-black"] .btn:not(.primary):not(.green):not(.danger):not(.red),
+body[data-theme-mode="amoled-black"] .btn.soft,
+body[data-theme-mode="amoled-black"] .btn.gray,
+body[data-theme-mode="amoled-black"] .dash-q-pill,
+body[data-theme-mode="amoled-black"] .chip,
+body[data-theme-mode="amoled-black"] .branch-pill:not(.active),
+body[data-theme-mode="amoled-black"] .ex-nav-btn:not(.active),
+body[data-theme-mode="amoled-black"] .teach-wb-tab:not(.active),
+body[data-theme-mode="amoled-black"] .class-side-counselor-btn,
+body[data-theme-mode="amoled-black"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+body[data-theme-mode="amoled-black"] select,
+body[data-theme-mode="amoled-black"] textarea,
+body[data-theme-mode="amoled-black"] .searchbox,
+body[data-theme-mode="amoled-black"] .dam-settings-search {
+  background-image:
+    linear-gradient(180deg, #222226 0%, #18181B 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #3F3F46 0deg,
+      #F97316 80deg,
+      #EF4444 160deg,
+      #FBBF24 240deg,
+      #3F3F46 360deg
+    ) !important;
+  color: #FDBA74 !important;
+}
+
+/* ==========================================================================================
+   ۸. رفع بریدگی نوار تب‌های آزمون‌ساز (.exam-subnav) و چیدمان منظم دکمه‌های شعبه (1000186078_8c858a.jpg)
+   ========================================================================================== */
+#examView .exam-subnav {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  overflow: visible !important;
+  padding: 7px !important;
+  border-radius: 16px !important;
+}
+#examView .exam-subnav .ex-nav-btn {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 8px 6px !important;
+  font-size: 11.5px !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  border-radius: 11px !important;
+}
+#examView .exam-subnav .ex-nav-btn:first-child {
+  grid-column: 1 / -1 !important;
+  font-size: 12.5px !important;
+}
+@media (min-width: 680px) {
+  #examView .exam-subnav {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+  #examView .exam-subnav .ex-nav-btn:first-child {
+    grid-column: auto !important;
+  }
+}
+
+#examView .branch-pills-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 5px !important;
+  justify-content: center !important;
+}
+#examView .branch-pills-row .branch-pill {
+  padding: 6px 9px !important;
+  font-size: 11px !important;
+  flex: 1 1 auto !important;
+  text-align: center !important;
+  justify-content: center !important;
+}
+</style>
+<!-- ==================== END V8.8.0 ANIMATED BORDERS PRO ==================== -->
 
 </body>
 </html>
