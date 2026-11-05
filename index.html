@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.6</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.7</span>
         </div>
       </div>
     </div>
@@ -35559,7 +35559,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v8.6</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v8.7</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -35827,6 +35827,951 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
 })();
 </script>
 <!-- ==================== END V8.6.0 ORIGINAL PRO ==================== -->
+
+<!-- ==================== START V8.7.0 COUNSELOR PRO ==================== -->
+<style id="v87CounselorProStyle">
+/* ==========================================================================================
+   ۱. افکت گردون و چرخش نرم ۳۶۰ درجه در تمام بخش‌های برنامه (مشابه آیکون دورخط‌کشیده‌شده در تصویر)
+   ========================================================================================== */
+@keyframes damOrbBeamRotate360 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes damOrbCorePulseRock {
+  0%, 100% { transform: scale(1) rotate(-6deg); }
+  50% { transform: scale(1.12) rotate(6deg); }
+}
+
+/* اعمال هاله گردون چرخان روی تمام گوی‌های ۳بعدی، آیکون‌های مدارس/کلاس‌ها و نشانگرهای بخش‌ها */
+.siren-rotating-orb,
+.class-beacon-mini-orb,
+.dam-3d-orb,
+.school-icon {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 13px !important;
+  background: radial-gradient(circle at 30% 25%, #FFFFFF 0%, #FFF7ED 42%, #FFEDD5 78%, #FED7AA 100%) !important;
+  border: 1.5px solid #FB923C !important;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.95) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 1 !important;
+}
+
+.siren-rotating-orb::before,
+.class-beacon-mini-orb::before,
+.dam-3d-orb::before,
+.school-icon::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: -45% !important;
+  background: conic-gradient(
+    from 0deg,
+    rgba(239, 68, 68, 0) 0deg,
+    rgba(239, 68, 68, 0.38) 70deg,
+    rgba(249, 115, 22, 0.52) 145deg,
+    rgba(251, 191, 36, 0.35) 210deg,
+    rgba(239, 68, 68, 0) 280deg
+  ) !important;
+  animation: damOrbBeamRotate360 2.4s linear infinite !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.siren-rotating-orb::after,
+.class-beacon-mini-orb::after,
+.dam-3d-orb::after,
+.school-icon::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 2.5px !important;
+  border-radius: 10px !important;
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.96) 0%, rgba(255, 247, 237, 0.88) 70%, rgba(255, 237, 213, 0.82) 100%) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+body[data-theme-mode="amoled-black"] .siren-rotating-orb::after,
+body[data-theme-mode="amoled-black"] .class-beacon-mini-orb::after,
+body[data-theme-mode="amoled-black"] .dam-3d-orb::after,
+body[data-theme-mode="amoled-black"] .school-icon::after {
+  background: radial-gradient(circle at 30% 25%, #27272A 0%, #18181B 85%) !important;
+}
+
+.siren-rotating-orb > *,
+.class-beacon-mini-orb > *,
+.dam-3d-orb > *,
+.school-icon > * {
+  position: relative !important;
+  z-index: 2 !important;
+  display: inline-block !important;
+  animation: damOrbCorePulseRock 2s ease-in-out infinite !important;
+}
+
+/* دکمه شیک و خوش‌فرم «راهنمای کلاس‌داری و مشاور هوشمند» دقیقاً در کنار نام کلاس هنگام ورود به کلاس */
+.class-title-with-counselor-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+.class-side-counselor-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 11px 6px 8px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF7ED 55%, #FFEDD5 100%) !important;
+  border: 1.5px solid #FB923C !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.14), inset 0 1.5px 2px #FFFFFF !important;
+  cursor: pointer !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+  text-align: right !important;
+  flex-shrink: 0 !important;
+}
+.class-side-counselor-btn:active {
+  transform: scale(0.96) !important;
+}
+.class-side-counselor-btn .siren-rotating-orb {
+  width: 34px !important;
+  height: 34px !important;
+  flex: 0 0 34px !important;
+  border-radius: 11px !important;
+}
+.class-side-counselor-text {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1px !important;
+}
+.class-side-counselor-text b {
+  font-size: 11.5px !important;
+  font-weight: 900 !important;
+  color: #9A3412 !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+}
+.class-side-counselor-text span {
+  font-size: 9.5px !important;
+  font-weight: 700 !important;
+  color: #C2410C !important;
+  white-space: nowrap !important;
+}
+
+body[data-theme-mode="amoled-black"] .class-side-counselor-btn {
+  background: linear-gradient(135deg, #27272A 0%, #18181B 100%) !important;
+  border-color: #F97316 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+}
+body[data-theme-mode="amoled-black"] .class-side-counselor-text b {
+  color: #FFFFFF !important;
+}
+body[data-theme-mode="amoled-black"] .class-side-counselor-text span {
+  color: #FDBA74 !important;
+}
+
+/* مخفی‌سازی داک قبلی از صفحه خانه و حذف دکمه‌های گزارش پراکنده از صفحه خانه */
+#v83DashboardLuxuryDock,
+.v83-class-top-strip,
+#dashQuickStrip button[onclick*="openQuickExportForTarget"] {
+  display: none !important;
+}
+
+/* استایل تب‌های ۳گانه پنجره مشاور هوشمند کلاس (مشاوره جمعی / مشاوره تکی / راهنمای کلاس‌داری) */
+.counselor-mode-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  margin-bottom: 10px !important;
+  padding: 5px !important;
+  background: #FFF7ED !important;
+  border: 1.5px solid #FED7AA !important;
+  border-radius: 14px !important;
+}
+.counselor-mode-tab {
+  padding: 8px 4px !important;
+  border-radius: 10px !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: #9A3412 !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  transition: all 0.15s ease !important;
+}
+.counselor-mode-tab.active {
+  background: linear-gradient(135deg, #EA580C, #F97316) !important;
+  color: #FFFFFF !important;
+  font-weight: 900 !important;
+  box-shadow: 0 3px 10px rgba(234, 88, 12, 0.25) !important;
+}
+.counselor-ai-result-card {
+  background: #FFFFFF;
+  border: 1.5px solid #FED7AA;
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.75;
+  color: #1E293B;
+}
+.counselor-ai-sec-item {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #FFFBF5;
+  border: 1px solid #FFEDD5;
+  margin-bottom: 6px;
+}
+.counselor-ai-sec-item b {
+  color: #9A3412;
+  display: block;
+  margin-bottom: 2px;
+  font-size: 12px;
+}
+</style>
+
+<script id="v87CounselorProScript">
+(function() {
+  'use strict';
+
+  /* ==========================================================================================
+     بخش ۱: موتور مشاور تخصصی دانش‌آموزان کلاس (تکی و جمعی) با الگوریتم هوش مصنوعی آزمون‌ساز
+     + حفظ کامل قابلیت‌های راهنمای کلاس‌داری و کرامت انسانی
+     ========================================================================================== */
+  window.ClassCounselorApp = {
+    sid: '',
+    cid: '',
+    activeMode: 'collective', // 'collective' | 'individual' | 'guidance'
+    selectedStid: '',
+    climateTab: 'good',
+
+    getActiveClassObj() {
+      const s = findSchool(this.sid || currentSchoolId) || db.schools?.[0] || null;
+      const c = s ? (findClass(s.id, this.cid || currentClassId) || s.classes?.[0] || null) : null;
+      if (s) this.sid = s.id;
+      if (c) this.cid = c.id;
+      return { s, c };
+    },
+
+    analyzeClassStats(c) {
+      const students = sortStudents(c?.students || []);
+      let posSum = 0, negSum = 0, attnCnt = 0, scoreSum = 0, scoreCnt = 0, absTotal = 0;
+      const attnStudents = [];
+      const lowScoreStudents = [];
+      const highAbsStudents = [];
+      const topStudents = [];
+
+      students.forEach(st => {
+        const b = behaviorData(st);
+        posSum += b.positives.length;
+        negSum += b.negatives.length;
+        const det = window.getStudentAttentionDetails
+          ? window.getStudentAttentionDetails(c, st)
+          : { isAttn: isAutoAttention(c, st), categories: [], badges: [], attnNote: '' };
+        if (det.isAttn) attnStudents.push({ st, det });
+        if (det.isAttn) attnCnt++;
+
+        const fin = calculateFinalStudentScore(c, st);
+        if (Number.isFinite(Number(fin))) {
+          scoreSum += Number(fin);
+          scoreCnt++;
+          if (Number(fin) < 12) lowScoreStudents.push({ st, fin });
+          if (Number(fin) >= 18) topStudents.push({ st, fin });
+        }
+        const abs = attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+        absTotal += abs;
+        if (abs >= 3) highAbsStudents.push({ st, abs });
+      });
+
+      const avg = scoreCnt ? (scoreSum / scoreCnt) : 16;
+      let detectedClimate = 'good';
+      if (negSum >= students.length * 0.8 || attnCnt >= Math.max(4, students.length * 0.35)) {
+        detectedClimate = 'challenging';
+      } else if (negSum >= 4) {
+        detectedClimate = 'noisy';
+      } else if (avg < 13.5 && posSum < 3) {
+        detectedClimate = 'tired';
+      }
+
+      return {
+        total: students.length,
+        avg,
+        posSum,
+        negSum,
+        attnCnt,
+        absTotal,
+        attnStudents,
+        lowScoreStudents,
+        highAbsStudents,
+        topStudents,
+        detectedClimate
+      };
+    },
+
+    buildInstantCollectiveAdvice(s, c, stats) {
+      if (!c || !stats.total) {
+        return `<div class="muted" style="padding:10px;text-align:center">هنوز دانش‌آموزی در این کلاس ثبت نشده است.</div>`;
+      }
+      if (c.aiCollectiveCounseling && String(c.aiCollectiveCounseling).trim()) {
+        return c.aiCollectiveCounseling;
+      }
+
+      const lowNames = stats.lowScoreStudents.slice(0, 4).map(x => `${x.st.name || ''} ${x.st.lastName || ''}`.trim()).join('، ');
+      const topNames = stats.topStudents.slice(0, 4).map(x => `${x.st.name || ''} ${x.st.lastName || ''}`.trim()).join('، ');
+      const attnNames = stats.attnStudents.slice(0, 4).map(x => `${x.st.name || ''} ${x.st.lastName || ''}`.trim()).join('، ');
+
+      return `
+        <div class="counselor-ai-sec-item">
+          <b>🔍 ۱. تحلیل روانشناختی و وضعیت جمعی کلاس «${esc(c.name)}»:</b>
+          میانگین فعلی کلاس <b>${fmtScore(stats.avg)} از ۲۰</b> با تراز رفتاری <b>+${fa(stats.posSum)} مثبت</b> و <b>-${fa(stats.negSum)} منفی</b> است.
+          ${stats.attnCnt > 0 ? `تعداد <b>${fa(stats.attnCnt)} دانش‌آموز</b> نیازمند توجه ویژه هستند (${esc(attnNames)}).` : 'جو عمومی کلاس متعادل و بدون موارد بحرانی است.'}
+        </div>
+        <div class="counselor-ai-sec-item">
+          <b>🤝 ۲. راهکار جمعی مبتنی بر کرامت انسانی و یادگیری همیارانه:</b>
+          ${stats.lowScoreStudents.length > 0 && stats.topStudents.length > 0
+            ? `پیشنهاد می‌شود از ظرفیت دانش‌آموزان پیشرو (${esc(topNames)}) به عنوان «همیار آموزشی محترمانه» در کنار دانش‌آموزانی که نیاز به تقویت درسی دارند (${esc(lowNames)}) در فعالیت‌های دونفره استفاده کنید تا بدون ایجاد حس مقایسه یا سرزنش، اعتمادبه‌نفس جمعی کلاس بالا برود.`
+            : `برای حفظ پویایی جمعی، در هر جلسه یک چالش کوتاه ۵ دقیقه‌ای گروهی مطرح کنید و مشارکت محترمانه همه ردیف‌ها را با امتیاز مثبت تشویق نمایید.`}
+        </div>
+        <div class="counselor-ai-sec-item">
+          <b>🌱 ۳. اقدام پیشنهادی برای شروع جلسه امروز:</b>
+          در ۳ دقیقه اول کلاس، پیش از شروع تدریس رسمی، با روی گشاده حال عمومی دانش‌آموزان را بپرسید و یک هدف کوتاه و دست‌یافتنی برای درس امروز مشخص کنید تا امنیت روانی و تمرکز جمعی شکل بگیرد.
+        </div>
+      `;
+    },
+
+    buildIndividualStudentDossierAndAdvice(s, c, st) {
+      if (!c || !st) {
+        return `<div class="muted" style="padding:12px;text-align:center">دانش‌آموزی انتخاب نشده است.</div>`;
+      }
+      const det = window.getStudentAttentionDetails
+        ? window.getStudentAttentionDetails(c, st)
+        : { isAttn: isAutoAttention(c, st), categories: [], badges: [], attnNote: '' };
+      const absCnt = attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+      const avgSc = avgGrade(st);
+      const contSc = typeof getStudentWrittenContScore === 'function' ? getStudentWrittenContScore(c, st) : null;
+      const finalSc = calculateFinalStudentScore(c, st);
+      const b = behaviorData(st);
+      const fullName = formatStudentName(st);
+      const baseAdvice = window.generateStudentDignityAdvice ? window.generateStudentDignityAdvice(c, st, det) : '';
+
+      const badgesHtml = (det.badges || []).map(bd =>
+        `<span class="chip" style="background:#FFE4E6;color:#BE123C;border-color:#FDA4AF;font-size:10.5px">${esc(bd.label)}</span>`
+      ).join(' ') || (st.status === 'good'
+        ? `<span class="chip" style="background:#DCFCE7;color:#15803D;border-color:#86EFAC;font-size:10.5px">🟢 وضعیت خوب و برتر</span>`
+        : `<span class="chip" style="font-size:10.5px">⚪ وضعیت عادی</span>`);
+
+      return `
+        <div class="card" style="padding:10px 12px;margin-bottom:8px;background:#FFFBF5;border:1.5px solid #FDBA74">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
+            <b style="font-size:13.5px;color:#9A3412">👨‍🎓 ${esc(fullName)}${st.fatherName ? ` <small style="color:#64748B">(فرزند ${esc(st.fatherName)})</small>` : ''}</b>
+            <div>${badgesHtml}</div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;font-size:11px">
+            <span class="rep-kpi-mini">⭐ نمره نهایی: <b>${fmtScore(finalSc)}</b></span>
+            <span class="rep-kpi-mini">📝 مستمر: <b>${avgSc !== null ? fmtScore(avgSc) : (contSc !== null ? fmtScore(contSc) : '—')}</b></span>
+            <span class="rep-kpi-mini" style="color:#15803D">➕ مثبت: <b>${fa(b.positives.length)}</b></span>
+            <span class="rep-kpi-mini" style="color:#B91C1C">➖ منفی: <b>${fa(b.negatives.length)}</b></span>
+            <span class="rep-kpi-mini">📅 غیبت: <b>${fa(absCnt)} جلسه</b></span>
+          </div>
+          ${(det.attnNote || st.notes) ? `<div style="margin-top:6px;font-size:11px;color:#475569;background:#FFFFFF;padding:5px 8px;border-radius:8px;border:1px dashed #CBD5E1">📌 ملاحظات ثبت‌شده: ${esc(det.attnNote || st.notes)}</div>` : ''}
+        </div>
+
+        <div class="counselor-ai-result-card" id="individualStudentAiAdviceBox">
+          <b style="color:#9A3412;font-size:12.5px;display:block;margin-bottom:6px">🌿 راهکار تخصصی فردی و روانشناختی برای «${esc(fullName)}» (مبتنی بر کرامت انسانی):</b>
+          <div style="white-space:pre-line;font-size:12px;line-height:1.8;color:#1E293B">${esc(baseAdvice)}</div>
+        </div>
+      `;
+    },
+
+    async askCollectiveAi() {
+      const { s, c } = this.getActiveClassObj();
+      if (!c) return;
+      const stats = this.analyzeClassStats(c);
+      const inp = document.getElementById('collectiveCounselorTopicInp');
+      const btn = document.getElementById('btnRunCollectiveAiCounsel');
+      const box = document.getElementById('collectiveAiAdviceResultBox');
+      const customTopic = (inp?.value || '').trim();
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '⏳ در حال تحلیل تخصصی کلاس با الگوریتم هوش مصنوعی آزمون‌ساز...';
+      }
+      if (box) {
+        box.innerHTML = '<div style="padding:12px;text-align:center;color:#C2410C;font-weight:800">⏳ در حال بررسی وضعیت تک‌تک دانش‌آموزان کلاس و تدوین برنامه مشاوره جمعی...</div>';
+      }
+
+      const attnSummary = stats.attnStudents.slice(0, 8).map(x =>
+        `${x.st.name} ${x.st.lastName} (${(x.det.badges || []).map(b => b.label).join('، ') || 'نیازمند توجه'})`
+      ).join(' | ');
+
+      const prompt = `تو یک مشاور خبره روانشناسی تربیتی و متخصص مدیریت کلاس بر پایه «کرامت انسانی» (احترام، توجه، خوب گوش دادن، امنیت روانی و آرامش) هستی.
+مشخصات کلاس فعلی:
+- مدرسه: ${s?.name || 'مدرسه'} | کلاس: ${c.name} | پایه: ${c.grade || 'متوسطه'} | درس: ${c.subject || 'عمومی'}
+- تعداد کل دانش‌آموزان: ${stats.total} نفر | میانگین نمرات: ${fmtScore(stats.avg)} از 20
+- مجموع امتیازات مثبت: ${stats.posSum} | مجموع منفی‌ها: ${stats.negSum} | مجموع غیبت‌ها: ${stats.absTotal}
+- تعداد دانش‌آموزان نیازمند توجه: ${stats.attnCnt} نفر (${attnSummary || 'ندارد'})
+- تعداد دانش‌آموزان دارای افت تحصیلی (زیر ۱۲): ${stats.lowScoreStudents.length} نفر | دانش‌آموزان برتر (بالای ۱۸): ${stats.topStudents.length} نفر
+${customTopic ? `- دغدغه یا سوال اختصاصی معلم درباره این کلاس: «${customTopic}»` : ''}
+
+لطفاً یک مشاوره تخصصی جمعی برای این کلاس در قالب JSON معتبر با ساختار زیر برگردان:
+{
+  "analysis": "تحلیل علمی و روانشناختی جو این کلاس در ۲ خط",
+  "collectiveAction": "راهکار عملی جمعی و کار گروهی بر پایه کرامت انسانی و احترام متقابل در ۲ تا ۳ خط",
+  "supportPlan": "نحوه ارتباط دادن دانش‌آموزان برتر با دانش‌آموزان نیازمند توجه بدون ایجاد حس سرزنش",
+  "todayTip": "یک اقدام طلایی و آرامش‌بخش برای شروع جلسه امروز"
+}
+فقط JSON خالص برگردان.`;
+
+      try {
+        let parsed = null;
+        if (window.ExamApp && typeof ExamApp.callArgonAI === 'function') {
+          const raw = await ExamApp.callArgonAI(prompt, { isJson: true, temperature: 0.35 });
+          parsed = typeof window.extractValidJsonFromAiText === 'function'
+            ? window.extractValidJsonFromAiText(raw)
+            : JSON.parse(raw);
+        }
+        if (parsed && (parsed.analysis || parsed.collectiveAction)) {
+          const htmlRes = `
+            <div class="counselor-ai-sec-item"><b>🔍 ۱. تحلیل روانشناختی جو کلاس:</b>${esc(parsed.analysis || '')}</div>
+            <div class="counselor-ai-sec-item"><b>🤝 ۲. راهکار تخصصی جمعی (کرامت انسانی):</b>${esc(parsed.collectiveAction || '')}</div>
+            <div class="counselor-ai-sec-item"><b>🎯 ۳. برنامه حمایت از دانش‌آموزان نیازمند توجه:</b>${esc(parsed.supportPlan || '')}</div>
+            <div class="counselor-ai-sec-item"><b>🌱 ۴. اقدام پیشنهادی جلسه امروز:</b>${esc(parsed.todayTip || '')}</div>
+          `;
+          c.aiCollectiveCounseling = htmlRes;
+          save();
+          if (box) box.innerHTML = htmlRes;
+          toast('✅ مشاوره تخصصی جمعی کلاس با هوش مصنوعی آماده و ذخیره شد!');
+        } else {
+          throw new Error('پاسخ ساختاریافته دریافت نشد');
+        }
+      } catch (_) {
+        const fallbackHtml = `
+          <div class="counselor-ai-sec-item">
+            <b>🔍 ۱. تحلیل روانشناختی جو کلاس «${esc(c.name)}»:</b>
+            با توجه به میانگین <b>${fmtScore(stats.avg)}</b> و حضور <b>${fa(stats.attnCnt)} دانش‌آموز نیازمند توجه</b>${customTopic ? ` و محوریت «${esc(customTopic)}»` : ''}، این کلاس نیازمند ترکیب «امنیت روانی» و «هدف‌گذاری کوتاه‌مدت» است.
+          </div>
+          <div class="counselor-ai-sec-item">
+            <b>🤝 ۲. راهکار تخصصی جمعی (بر پایه کرامت انسانی):</b>
+            ۱. به جای تذکر مستقیم جمعی، قانون «خوب گوش دادن و نوبت‌دهی محترمانه» را در ابتدای درس با توافق خود دانش‌آموزان یادآوری کنید.<br>
+            ۲. کلاس را به گروه‌های ۳ نفره متوازن تقسیم کنید تا دانش‌آموزان قوی‌تر در فضایی دوستانه به همکلاسی‌های خود کمک کنند.
+          </div>
+          <div class="counselor-ai-sec-item">
+            <b>🌱 ۳. اقدام طلایی برای امروز:</b>
+            در پایان هر بخش ۱۰ دقیقه‌ای از تدریس، ۲ دقیقه فرصت پرسش و تحسین پیشرفت‌های کوچک بدهید تا انگیزه و آرامش جمعی تثبیت شود.
+          </div>
+        `;
+        c.aiCollectiveCounseling = fallbackHtml;
+        save();
+        if (box) box.innerHTML = fallbackHtml;
+        toast('✅ مشاوره تخصصی جمعی کلاس تدوین شد!');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '✨ دریافت مشاوره تخصصی جمعی با هوش مصنوعی (الگوریتم آزمون‌ساز)';
+        }
+      }
+    },
+
+    async askIndividualAi() {
+      const { s, c } = this.getActiveClassObj();
+      if (!c) return;
+      const st = findStudent(s.id, c.id, this.selectedStid) || (c.students || [])[0];
+      if (!st) return;
+
+      const inp = document.getElementById('individualCounselorObsInp');
+      const btn = document.getElementById('btnRunIndividualAiCounsel');
+      const box = document.getElementById('individualStudentAiAdviceBox');
+      const obs = (inp?.value || '').trim();
+      const fullName = formatStudentName(st);
+      const det = window.getStudentAttentionDetails
+        ? window.getStudentAttentionDetails(c, st)
+        : { isAttn: isAutoAttention(c, st), categories: [], badges: [], attnNote: '' };
+      const absCnt = attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+      const finalSc = calculateFinalStudentScore(c, st);
+      const b = behaviorData(st);
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '⏳ در حال تدوین مشاوره فردی با هوش مصنوعی آزمون‌ساز...';
+      }
+
+      const prompt = `تو یک مشاور متخصص روانشناسی تربیتی و آموزشی بر پایه «کرامت انسانی» (احترام، توجه، خوب گوش دادن، امنیت روانی و آرامش) هستی.
+مشخصات دانش‌آموز:
+- نام: ${fullName} | کلاس: ${c.name} (${c.subject || 'درس'})
+- نمره نهایی فعلی: ${fmtScore(finalSc)} از 20 | تعداد غیبت: ${absCnt} جلسه
+- امتیازات مثبت: ${b.positives.length} | منفی‌ها: ${b.negatives.length}
+- وضعیت و دسته‌بندی توجه: ${(det.badges || []).map(x => x.label).join('، ') || (st.status === 'good' ? 'خوب و برتر' : 'عادی')}
+- ملاحظات ثبت‌شده: ${det.attnNote || st.notes || 'ندارد'}
+${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره این دانش‌آموز: «${obs}»` : ''}
+
+لطفاً یک برنامه مشاوره فردی دقیق و عملی در قالب JSON معتبر با ساختار زیر برگردان:
+{
+  "rootCause": "ریشه‌یابی علمی و روانشناختی وضعیت این دانش‌آموز در ۱ تا ۲ خط",
+  "dialogue": "نحوه گفت‌وگوی خصوصی ۲ دقیقه‌ای و همدلانه معلم با او بر پایه خوب گوش دادن و احترام",
+  "classroomStep": "اقدام عملی در کلاس (نحوه پرسش، مسئولیت‌دهی یا تقویت اعتمادبه‌نفس)",
+  "parentTip": "نحوه اطلاع‌رسانی یا تعامل محترمانه و آرامش‌بخش با اولیا"
+}
+فقط JSON خالص برگردان.`;
+
+      try {
+        let parsed = null;
+        if (window.ExamApp && typeof ExamApp.callArgonAI === 'function') {
+          const raw = await ExamApp.callArgonAI(prompt, { isJson: true, temperature: 0.3 });
+          parsed = typeof window.extractValidJsonFromAiText === 'function'
+            ? window.extractValidJsonFromAiText(raw)
+            : JSON.parse(raw);
+        }
+        if (parsed && (parsed.rootCause || parsed.dialogue || parsed.classroomStep)) {
+          const combinedText = [
+            `🧠 ریشه‌یابی علمی: ${parsed.rootCause || ''}`,
+            `💬 گفت‌وگوی همدلانه (خوب گوش دادن): ${parsed.dialogue || ''}`,
+            `🏫 اقدام عملی در کلاس: ${parsed.classroomStep || ''}`,
+            parsed.parentTip ? `👨‍👩‍👦 تعامل با اولیا: ${parsed.parentTip}` : ''
+          ].filter(Boolean).join('\n');
+
+          st.aiPsychAdvice = combinedText;
+          save();
+          if (box) {
+            box.innerHTML = `
+              <b style="color:#9A3412;font-size:12.5px;display:block;margin-bottom:6px">✨ مشاوره تخصصی هوش مصنوعی برای «${esc(fullName)}» (ذخیره‌شده در پرونده):</b>
+              <div style="white-space:pre-line;font-size:12px;line-height:1.8;color:#1E293B">${esc(combinedText)}</div>
+            `;
+          }
+          toast(`✅ مشاوره تخصصی فردی «${fullName}» آماده و در پرونده او ذخیره شد!`);
+        } else {
+          throw new Error('پاسخ ساختاریافته دریافت نشد');
+        }
+      } catch (_) {
+        const baseFallback = window.generateStudentDignityAdvice ? window.generateStudentDignityAdvice(c, st, det) : '';
+        const extraLine = obs
+          ? `\n۳. راهکار اختصاصی برای «${obs}»: در یک گفت‌وگوی کوتاه و خصوصی ۲ دقیقه‌ای، ابتدا بدون قضاوت به حرف‌های «${st.name}» خوب گوش دهید تا حس امنیت روانی پیدا کند، سپس یک گام کوچک و مشخص برای جلسه آینده با او توافق نمایید.`
+          : `\n۳. پیگیری مستمر: هر پیشرفت کوچک «${st.name}» را به صورت محترمانه دیده و بازخورد مثبت بدهید تا پیوند عاطفی و خودباوری او تقویت شود.`;
+        const finalAdvice = baseFallback + extraLine;
+        st.aiPsychAdvice = finalAdvice;
+        save();
+        if (box) {
+          box.innerHTML = `
+            <b style="color:#9A3412;font-size:12.5px;display:block;margin-bottom:6px">✨ مشاوره تخصصی فردی برای «${esc(fullName)}» (ذخیره‌شده در پرونده):</b>
+            <div style="white-space:pre-line;font-size:12px;line-height:1.8;color:#1E293B">${esc(finalAdvice)}</div>
+          `;
+        }
+        toast(`✅ مشاوره تخصصی فردی «${fullName}» بهروزرسانی و ذخیره شد!`);
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '✨ دریافت مشاوره تخصصی فردی با هوش مصنوعی (الگوریتم آزمون‌ساز)';
+        }
+      }
+    },
+
+    switchClassInModal(val) {
+      const [sid, cid] = String(val || '').split('|');
+      if (sid && cid) {
+        this.sid = sid;
+        this.cid = cid;
+        const { c } = this.getActiveClassObj();
+        const sorted = sortStudents(c?.students || []);
+        this.selectedStid = sorted[0]?.id || '';
+        this.renderModalBody();
+      }
+    },
+
+    switchMode(mode) {
+      this.activeMode = mode;
+      document.querySelectorAll('#counselorModeTabsBar .counselor-mode-tab').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-cmode') === mode);
+      });
+      this.renderModalBody();
+    },
+
+    selectStudent(stid) {
+      this.selectedStid = stid;
+      this.renderModalBody();
+    },
+
+    renderModalBody() {
+      const container = document.getElementById('counselorModalDynamicBody');
+      if (!container) return;
+      const { s, c } = this.getActiveClassObj();
+      if (!c) {
+        container.innerHTML = `<div class="muted" style="padding:18px;text-align:center">ابتدا یک کلاس ایجاد کنید.</div>`;
+        return;
+      }
+
+      const stats = this.analyzeClassStats(c);
+      const students = sortStudents(c.students || []);
+      if (!this.selectedStid || !students.some(x => x.id === this.selectedStid)) {
+        this.selectedStid = (stats.attnStudents[0]?.st?.id) || (students[0]?.id) || '';
+      }
+
+      // به‌روزرسانی خلاصه وضعیت کلاس در بنر بالا
+      const summaryChip = document.getElementById('counselorClassSummaryChip');
+      if (summaryChip) {
+        const cleanN = window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name;
+        summaryChip.textContent = `🚪 ${cleanN}${c.subject ? ` (${c.subject})` : ''} · 👨‍🎓 ${fa(stats.total)} نفر · ⭐ میانگین: ${fmtScore(stats.avg)} · 🚨 نیازمند توجه: ${fa(stats.attnCnt)} نفر`;
+      }
+
+      if (this.activeMode === 'collective') {
+        const attnPills = stats.attnStudents.map(x => {
+          const fn = formatStudentName(x.st);
+          const lbl = (x.det.badges || []).map(b => b.label).join('، ') || 'توجه';
+          return `<button type="button" class="chip" style="cursor:pointer;background:#FFE4E6;color:#BE123C;border:1px solid #FDA4AF;font-size:10.5px" onclick="ClassCounselorApp.selectedStid='${x.st.id}';ClassCounselorApp.switchMode('individual')">🔴 ${esc(fn)} (${esc(lbl)})</button>`;
+        }).join(' ');
+
+        container.innerHTML = `
+          <div class="card" style="padding:11px;border:1.5px solid #FB923C;background:#FFFBF5;margin-bottom:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
+              <b style="color:#9A3412;font-size:13px">👥 مشاوره تخصصی جمعی برای دانش‌آموزان کلاس «${esc(c.name)}»</b>
+              <span class="chip" style="background:#DCFCE7;color:#15803D;font-size:10px">🟢 متصل به موتور هوش مصنوعی آزمون‌ساز</span>
+            </div>
+
+            ${stats.attnStudents.length ? `
+              <div style="margin-bottom:8px">
+                <div style="font-size:11px;font-weight:800;color:#BE123C;margin-bottom:4px">🚨 دانش‌آموزان نیازمند توجه در این کلاس (برای مشاوره تکی روی نام هر دانش‌آموز بزنید):</div>
+                <div style="display:flex;flex-wrap:wrap;gap:4px">${attnPills}</div>
+              </div>
+            ` : `<div style="font-size:11px;color:#15803D;font-weight:800;margin-bottom:6px">🌟 در حال حاضر مورد بحرانی در این کلاس ثبت نشده است.</div>`}
+
+            <div class="field" style="margin-bottom:8px">
+              <label style="font-size:11px">✍️ موضوع یا چالش جمعی خاص این کلاس (اختیاری):</label>
+              <input type="text" id="collectiveCounselorTopicInp" placeholder="مثلاً: افت تمرکز در ساعت آخر، استرس امتحان، پرحرفی چند نفر یا رقابت منفی..." style="font-size:11.5px;height:36px">
+            </div>
+
+            <button type="button" class="btn primary block" id="btnRunCollectiveAiCounsel" style="justify-content:center;font-weight:900" onclick="ClassCounselorApp.askCollectiveAi()">
+              ✨ دریافت مشاوره تخصصی جمعی با هوش مصنوعی (الگوریتم آزمون‌ساز)
+            </button>
+
+            <div id="collectiveAiAdviceResultBox" class="counselor-ai-result-card">
+              ${this.buildInstantCollectiveAdvice(s, c, stats)}
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      if (this.activeMode === 'individual') {
+        const activeSt = findStudent(s.id, c.id, this.selectedStid) || students[0];
+        const stOptions = students.map((st, idx) => {
+          const det = window.getStudentAttentionDetails ? window.getStudentAttentionDetails(c, st) : { isAttn: false };
+          const flag = det.isAttn ? '🔴 ' : (st.status === 'good' ? '🟢 ' : '⚪ ');
+          return `<option value="${st.id}" ${st.id === activeSt?.id ? 'selected' : ''}>${fa(idx + 1)}. ${flag}${esc(formatStudentName(st))}</option>`;
+        }).join('');
+
+        container.innerHTML = `
+          <div class="card" style="padding:11px;border:1.5px solid #FB923C;background:#FFFBF5">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+              <b style="color:#9A3412;font-size:13px">👨‍🎓 مشاوره تخصصی فردی و روانشناختی دانش‌آموز</b>
+              <span class="chip" style="background:#DCFCE7;color:#15803D;font-size:10px">🟢 الگوریتم هوش مصنوعی آزمون‌ساز</span>
+            </div>
+
+            <div class="field" style="margin-bottom:8px">
+              <label style="font-size:11px">انتخاب دانش‌آموز از کلاس «${esc(c.name)}»:</label>
+              <select id="counselorSingleStudentSel" style="height:37px;font-size:12px;font-weight:800" onchange="ClassCounselorApp.selectStudent(this.value)">
+                ${stOptions}
+              </select>
+            </div>
+
+            ${this.buildIndividualStudentDossierAndAdvice(s, c, activeSt)}
+
+            <div class="field" style="margin-top:8px;margin-bottom:8px">
+              <label style="font-size:11px">✍️ مشاهده یا نکته جدید شما درباره «${esc(activeSt ? formatStudentName(activeSt) : 'دانش‌آموز')}» (اختیاری):</label>
+              <input type="text" id="individualCounselorObsInp" placeholder="مثلاً: از پاسخ دادن پای تخته استرس می‌گیرد / در کار گروهی منزوی است..." style="font-size:11.5px;height:36px">
+            </div>
+
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <button type="button" class="btn primary" id="btnRunIndividualAiCounsel" style="flex:2;justify-content:center;font-weight:900" onclick="ClassCounselorApp.askIndividualAi()">
+                ✨ دریافت مشاوره تخصصی فردی با هوش مصنوعی (الگوریتم آزمون‌ساز)
+              </button>
+              ${activeSt ? `<button type="button" class="btn soft btn-sm" onclick="closeModal();openStudent('${s.id}','${c.id}','${activeSt.id}')">📂 پرونده کامل</button>` : ''}
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // حالت ۳: راهنمای کلاس‌داری و تیپ‌های ۴گانه کلاس + چالش لحظه‌ای (همین قابلیت‌های محبوب قبلی)
+      const activeKey = this.climateTab || stats.detectedClimate || 'good';
+      window._activeClassGuidanceTab = activeKey;
+      window._guidanceModalSid = s.id;
+      window._guidanceModalCid = c.id;
+
+      container.innerHTML = `
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:10px" id="classGuidanceTabsBar">
+          <button type="button" class="btn ${activeKey === 'good' ? 'primary' : 'soft'} btn-sm" data-gtab="good" onclick="ClassCounselorApp.climateTab='good';switchClassroomGuidanceTab('good')">🌟 کلاس خوب و پرانرژی</button>
+          <button type="button" class="btn ${activeKey === 'noisy' ? 'primary' : 'soft'} btn-sm" data-gtab="noisy" onclick="ClassCounselorApp.climateTab='noisy';switchClassroomGuidanceTab('noisy')">📢 کلاس شلوغ و پرحرف</button>
+          <button type="button" class="btn ${activeKey === 'tired' ? 'primary' : 'soft'} btn-sm" data-gtab="tired" onclick="ClassCounselorApp.climateTab='tired';switchClassroomGuidanceTab('tired')">😴 کلاس خسته و کم‌انگیزه</button>
+          <button type="button" class="btn ${activeKey === 'challenging' ? 'primary' : 'soft'} btn-sm" data-gtab="challenging" onclick="ClassCounselorApp.climateTab='challenging';switchClassroomGuidanceTab('challenging')">⚡ کلاس ناهنجار و چالشی</button>
+        </div>
+
+        <div id="classGuidancePresetBody"></div>
+
+        <div class="card" style="margin-top:10px;background:var(--bg-panel);border:1.5px solid #FDBA74">
+          <b style="color:var(--primary);font-size:12.5px;display:block;margin-bottom:6px">🤖 مشاوره هوش مصنوعی برای چالش لحظه‌ای کلاس:</b>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <input id="customClassChallengeInp" placeholder="مثلاً: دو نفر در ردیف آخر مدام صحبت می‌کنند / کلاس بعد از زنگ ورزش بی‌قرار است..." style="flex:1;min-width:190px;font-size:12px">
+            <button type="button" class="btn primary btn-sm" id="btnAskAiClassGuidance" onclick="askAiForClassroomGuidance()">✨ دریافت راهکار فوری</button>
+          </div>
+          <div id="aiCustomClassGuidanceBox" class="dignity-psych-advice-box" style="display:none;margin-top:8px"></div>
+        </div>
+      `;
+      if (typeof window.switchClassroomGuidanceTab === 'function') {
+        window.switchClassroomGuidanceTab(activeKey);
+      }
+    }
+  };
+
+  // بازنویسی openClassroomGuidanceModal برای باز شدن پنجره یکپارچه مشاور تخصصی جمعی، تکی و راهنمای کلاس‌داری
+  window.openClassroomGuidanceModal = function(sid = null, cid = null, initialTab = 'auto') {
+    const s = findSchool(sid || currentSchoolId) || db.schools?.[0] || null;
+    const c = s ? (findClass(s.id, cid || currentClassId) || s.classes?.[0] || null) : null;
+
+    ClassCounselorApp.sid = s?.id || '';
+    ClassCounselorApp.cid = c?.id || '';
+    const stats = c ? ClassCounselorApp.analyzeClassStats(c) : { detectedClimate: 'good' };
+
+    if (initialTab && ['good', 'noisy', 'tired', 'challenging'].includes(initialTab)) {
+      ClassCounselorApp.climateTab = initialTab;
+      ClassCounselorApp.activeMode = 'guidance';
+    } else if (initialTab === 'individual') {
+      ClassCounselorApp.activeMode = 'individual';
+    } else {
+      ClassCounselorApp.climateTab = stats.detectedClimate || 'good';
+      ClassCounselorApp.activeMode = 'collective';
+    }
+
+    const allClassOpts = [];
+    (db.schools || []).forEach(sch => (sch.classes || []).forEach(cl => {
+      const cleanN = window.cleanClassDisplayName ? window.cleanClassDisplayName(cl.name) : cl.name;
+      allClassOpts.push(`<option value="${sch.id}|${cl.id}" ${(sch.id === s?.id && cl.id === c?.id) ? 'selected' : ''}>🏫 ${esc(sch.name)} — 🚪 کلاس ${esc(cleanN)} (${fa((cl.students || []).length)} نفر)</option>`);
+    }));
+
+    openModal(formHeader('🚨 راهنمای کلاس‌داری و مشاور هوشمند دانش‌آموزان (کرامت انسانی)') + `
+      <div class="dignity-charter-banner" style="margin-bottom:8px">
+        <div style="width:100%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+          <div>
+            <b style="color:#9A3412;font-size:12.5px">🌿 منشور کرامت انسانی: ۱. احترام · ۲. توجه · ۳. خوب گوش دادن · ۴. امنیت · ۵. آرامش</b>
+          </div>
+          <span class="chip" id="counselorClassSummaryChip" style="background:#EA580C;color:#fff;font-size:10.5px">در حال بارگذاری...</span>
+        </div>
+        ${allClassOpts.length > 1 ? `
+          <div style="width:100%;margin-top:6px">
+            <select style="height:34px;font-size:11.5px;font-weight:800" onchange="ClassCounselorApp.switchClassInModal(this.value)">
+              ${allClassOpts.join('')}
+            </select>
+          </div>
+        ` : ''}
+      </div>
+
+      <!-- ۳ تب اصلی: مشاوره تخصصی جمعی / مشاوره تخصصی تکی / راهنمای ۴ تیپ کلاس -->
+      <div class="counselor-mode-tabs" id="counselorModeTabsBar">
+        <button type="button" class="counselor-mode-tab ${ClassCounselorApp.activeMode === 'collective' ? 'active' : ''}" data-cmode="collective" onclick="ClassCounselorApp.switchMode('collective')">👥 مشاوره جمعی کلاس</button>
+        <button type="button" class="counselor-mode-tab ${ClassCounselorApp.activeMode === 'individual' ? 'active' : ''}" data-cmode="individual" onclick="ClassCounselorApp.switchMode('individual')">👨‍🎓 مشاوره تکی دانش‌آموز</button>
+        <button type="button" class="counselor-mode-tab ${ClassCounselorApp.activeMode === 'guidance' ? 'active' : ''}" data-cmode="guidance" onclick="ClassCounselorApp.switchMode('guidance')">🌿 راهنمای کلاس‌داری</button>
+      </div>
+
+      <div id="counselorModalDynamicBody"></div>
+
+      <div class="formactions">
+        <button type="button" class="btn primary" onclick="closeModal()">✅ مرور شد، ادامه کلاس با آرامش</button>
+      </div>
+    `);
+
+    ClassCounselorApp.renderModalBody();
+  };
+
+
+  /* ==========================================================================================
+     بخش ۲: قرار دادن دکمه گردون «🚨 راهنمای کلاس‌داری و مشاور هوشمند» دقیقاً کنار نام کلاس هنگام ورود به کلاس
+     و حذف دکمه‌های گزارش از هدر کلاس و داشبورد (انتقال گزارش‌ها به تنظیمات و خروجی‌ها)
+     ========================================================================================== */
+  window.buildClassSideCounselorBtnHTML = function(sid, cid) {
+    return `
+      <button type="button" class="class-side-counselor-btn" onclick="event.stopPropagation();openClassroomGuidanceModal('${sid}','${cid}')" title="مشاوره تخصصی جمعی و تکی دانش‌آموزان این کلاس + راهنمای کلاس‌داری">
+        <span class="siren-rotating-orb"><span class="siren-emoji-core">🚨</span></span>
+        <span class="class-side-counselor-text">
+          <b>مشاور هوشمند و کلاس‌داری</b>
+          <span>مشاوره جمعی و تکی دانش‌آموزان</span>
+        </span>
+      </button>
+    `;
+  };
+
+  const _origOpenClassV86 = window.openClass;
+  window.openClass = function(sid, cid) {
+    if (typeof _origOpenClassV86 === 'function') {
+      _origOpenClassV86(sid, cid);
+    }
+    const s = findSchool(sid);
+    const c = findClass(sid, cid);
+    if (!s || !c) return;
+
+    // ۱. حذف نوار اضافی قبلی و دکمه گزارش از بالای کلاس (چون گزارشات به تنظیمات و خروجی‌ها منتقل شد)
+    document.querySelectorAll('#classMainView .v83-class-top-strip').forEach(el => el.remove());
+    document.querySelectorAll('#classMainView .detailhead .actions button').forEach(btn => {
+      if ((btn.textContent || '').includes('خروجی این کلاس')) btn.remove();
+    });
+
+    // ۲. قرار دادن دکمه گردون «🚨 مشاور هوشمند و کلاس‌داری» دقیقاً کنار نام کلاس در هدر ورود به کلاس
+    const titleEl = document.querySelector('#classMainView .detailhead .school-head h1.title');
+    if (titleEl && !titleEl.parentElement.querySelector('.class-side-counselor-btn')) {
+      const cleanName = window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name;
+      const rowWrap = document.createElement('div');
+      rowWrap.className = 'class-title-with-counselor-row';
+      rowWrap.innerHTML = `
+        <h1 class="title" style="margin:0">${esc(cleanName)}</h1>
+        ${window.buildClassSideCounselorBtnHTML(sid, cid)}
+      `;
+      titleEl.replaceWith(rowWrap);
+    }
+  };
+
+  // قرار دادن دکمه گردون کنار نام کلاس در کارت کلاس‌ها (بدون دکمه گزارش)
+  window.classCard = function(s, c) {
+    const photos = Array.isArray(c.photos) ? c.photos : [];
+    const cleanName = typeof window.cleanClassDisplayName === 'function' ? window.cleanClassDisplayName(c.name) : c.name;
+    const subjBadge = c.subject
+      ? `<span class="chip" style="background:#FFF7ED;color:#C2410C;border:1px solid #FDBA74;font-weight:900">📚 درس: ${esc(c.subject)}</span>`
+      : `<span class="chip" style="cursor:pointer" onclick="event.stopPropagation();editClass('${s.id}','${c.id}')">➕ ثبت نام درس</span>`;
+
+    return `<div class="card in-view">
+      ${photos.length ? `<div class="class-gallery" style="margin-top:0;margin-bottom:10px">${photos.slice(0, 2).map(src => `<img src="${src}" class="photo-clickable" onclick="openPhotoViewer('${src}','کلاس-${safeFileName(c.name)}.jpg')">`).join('')}</div>` : ''}
+      <div class="school-head" style="align-items:flex-start;gap:8px">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
+            <h3 style="margin:0">🚪 کلاس ${esc(cleanName)}</h3>
+            <button type="button" class="class-beacon-reminder-btn" style="padding:3px 9px;font-size:10.5px" onclick="event.stopPropagation();openClassroomGuidanceModal('${s.id}','${c.id}')">
+              <span class="class-beacon-mini-orb"><span>🚨</span></span>
+              <span>مشاور کلاس</span>
+            </button>
+          </div>
+          <div class="muted" style="margin-top:4px">پایه ${esc(c.grade || '—')}${c.subject ? ` · 📚 درس ${esc(c.subject)}` : ''}</div>
+        </div>
+        <div class="school-icon"><span>🚪</span></div>
+      </div>
+      <div class="chips" style="margin-top:6px">
+        ${subjBadge}
+        <span class="chip">👨‍🎓 ${fa((c.students || []).length)} دانش‌آموز</span>
+        <span class="chip">📷 ${fa(photos.length)} عکس</span>
+      </div>
+      <div class="actions">
+        <button class="btn primary" style="flex:1" onclick="openClass('${s.id}','${c.id}')">ورود به کلاس</button>
+        <button class="btn soft" onclick="openAttendance('${s.id}','${c.id}')">📋 جدول ترم</button>
+        <button class="btn gray" onclick="editClass('${s.id}','${c.id}')">✎</button>
+      </div>
+    </div>`;
+  };
+
+  // اصلاح نوار بالای «لیست امروز» هنگام ورود به لیست سریع کلاس (حذف دکمه گزارش از آن و نمایش دکمه مشاور کلاس)
+  const _origRenderTodayListInnerV86 = window.renderTodayListInner;
+  window.renderTodayListInner = function(sid, cid) {
+    if (typeof _origRenderTodayListInnerV86 === 'function') {
+      _origRenderTodayListInnerV86(sid, cid);
+    }
+    const container = document.getElementById('classTodayListContainer');
+    if (!container) return;
+    container.querySelectorAll('button[onclick*="openTransparentReportModal"]').forEach(btn => btn.remove());
+  };
+
+
+  /* ==========================================================================================
+     بخش ۳: انتقال کامل «گزارشات ۴سطحی» به داخل «تنظیمات و خروجی‌ها» (#backup -> setPane-export)
+     ========================================================================================== */
+  const _origOpenCloudSettingsSubpageV87 = window.openCloudSettingsSubpage;
+  window.openCloudSettingsSubpage = function(paneId) {
+    if (typeof _origOpenCloudSettingsSubpageV87 === 'function') {
+      _origOpenCloudSettingsSubpageV87(paneId);
+    }
+    if (paneId === 'export') {
+      const exportPane = document.getElementById('setPane-export');
+      if (exportPane && !exportPane.querySelector('#embeddedSettingsReportStudioBtn')) {
+        const studioCard = document.createElement('div');
+        studioCard.className = 'card';
+        studioCard.style.cssText = 'margin-bottom:12px;border:2px solid #EA580C;background:linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)';
+        studioCard.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span class="dam-3d-orb"><span>📊</span></span>
+              <div>
+                <b style="font-size:14px;color:#9A3412;display:block">استودیو گزارش‌های شفاف ۴سطحی و خروجی‌ها</b>
+                <span style="font-size:11.5px;color:#475569">گزارش تفکیکی ۱ دانش‌آموز، ۱ کلاس، ۱ مدرسه یا کل مدارس + تیک انتخاب ستون‌ها (تلفن، وضعیت، نام پدر و...)</span>
+              </div>
+            </div>
+            <button type="button" id="embeddedSettingsReportStudioBtn" class="btn primary" onclick="ReportApp.openModal('class')">📊 باز کردن استودیو گزارش‌گیری و چاپ</button>
+          </div>
+        `;
+        exportPane.insertBefore(studioCard, exportPane.firstElementChild);
+      }
+      if (typeof window.initGranularExportSelectors === 'function') {
+        window.initGranularExportSelectors();
+      }
+    }
+  };
+
+
+  /* ==========================================================================================
+     بخش ۴: فعال‌سازی چرخش و افکت گردون روی آیکون‌های هدر تمام بخش‌های برنامه
+     ========================================================================================== */
+  const upgradeAllSectionIconsToSpinningOrbs = function() {
+    // ۱. حذف کامل داک قبلی از صفحه خانه
+    document.getElementById('v83DashboardLuxuryDock')?.remove();
+    document.querySelectorAll('#dashQuickStrip button[onclick*="openQuickExportForTarget"]').forEach(el => el.remove());
+
+    // ۲. قرار دادن محتوای آیکون‌های مدارس درون <span> تا انیمیشن نرم روی آیکون داخلی اجرا شود
+    document.querySelectorAll('.school-icon').forEach(ico => {
+      if (!ico.querySelector('span')) {
+        ico.innerHTML = `<span>${ico.textContent || '🏫'}</span>`;
+      }
+    });
+    document.querySelectorAll('.dam-3d-orb').forEach(orb => {
+      if (!orb.querySelector('span')) {
+        orb.innerHTML = `<span>${orb.textContent || '✨'}</span>`;
+      }
+    });
+
+    // ۳. به‌روزرسانی ردیف گزارش در صفحه اصلی تنظیمات تا مستقیماً به زیرصفحه «تنظیمات و خروجی‌ها» برود
+    document.querySelectorAll('#tgSettingsHomeWrap .dam-settings-row').forEach(row => {
+      const oc = row.getAttribute('onclick') || '';
+      if (oc.includes("ReportApp.openModal")) {
+        row.setAttribute('onclick', "openCloudSettingsSubpage('export')");
+        const bEl = row.querySelector('.dam-settings-row-texts b');
+        const sEl = row.querySelector('.dam-settings-row-texts span');
+        if (bEl) bEl.textContent = 'گزارشات ۴سطحی و خروجی‌ها (PDF / اکسل / Word)';
+        if (sEl) sEl.textContent = 'گزارش تک‌کلاس، دانش‌آموز، مدرسه و انتخاب ستون‌های کارنامه';
+      }
+    });
+  };
+
+  const _origRenderSchoolsV87 = window.renderSchools;
+  if (typeof _origRenderSchoolsV87 === 'function') {
+    window.renderSchools = function() {
+      _origRenderSchoolsV87();
+      upgradeAllSectionIconsToSpinningOrbs();
+    };
+  }
+
+  const _origRenderDashboardV87 = window.renderDashboard;
+  if (typeof _origRenderDashboardV87 === 'function') {
+    window.renderDashboard = function() {
+      _origRenderDashboardV87();
+      upgradeAllSectionIconsToSpinningOrbs();
+    };
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(upgradeAllSectionIconsToSpinningOrbs, 260));
+  } else {
+    setTimeout(upgradeAllSectionIconsToSpinningOrbs, 260);
+  }
+})();
+</script>
+<!-- ==================== END V8.7.0 COUNSELOR PRO ==================== -->
 
 </body>
 </html>
