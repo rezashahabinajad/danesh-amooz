@@ -635,7 +635,7 @@ body.anim-charts .cyber-progress-fill {
   animation: chartBarGrow 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* کارت‌ها، آمار و المان‌های رابط کاربری در تم Cyber-JARVIS */
+/* کارت‌ها، آمار و المان‌های رابط کاربری در تم هوشمند تاریک */
 .studentcard, .td-row, .b-card, .dash-b-item, .leader-item {
   transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -4594,7 +4594,7 @@ body.dark .ws-logout-inner {
 <div id="studentOnlinePortalOverlay" role="region" aria-label="پنل آنلاین دانش‌آموز"></div>
 <canvas id="cyberNetworkCanvas" aria-hidden="true"></canvas>
 
-<!-- انیمیشن شماره ۱: ورود سینمایی Cyber-JARVIS -->
+<!-- انیمیشن شماره ۱: ورود سینمایی هوشمند تاریک -->
 <div id="cyberIntroOverlay" role="dialog" aria-label="ورود به دانش‌آموز من">
   <div class="intro-grid-bg"></div>
   <div class="intro-core-wrap">
@@ -4619,13 +4619,13 @@ body.dark .ws-logout-inner {
     </div>
   </div>
   <div class="intro-title">دانش‌آموز من</div>
-  <div class="intro-subtitle">دفتر هوشمند معلم · سامانه فرماندهی Cyber-JARVIS</div>
+  <div class="intro-subtitle">دفتر هوشمند معلم · سامانه فرماندهی هوشمند تاریک</div>
   <div class="intro-scan-bar"></div>
   <button type="button" class="intro-skip-btn" onclick="dismissCyberIntro()">ورود سریع به داشبورد ⏭️</button>
 </div>
 
 
-<!-- دروازه ورود و ساخت اکانت ۱کلیکی با گوگل / ایمیل (Sign in with Google & Cloud Sync Onboarding) -->
+<!-- دروازه ورود و ساخت اکانت ۱کلیکی با حساب ابری / ایمیل (Sign in with Google & Cloud Sync Onboarding) -->
 <div id="googleAuthOnboardingOverlay" class="auth-onboarding-overlay" style="display:none" role="dialog" aria-label="ورود یا ساخت اکانت">
   <div class="auth-onboarding-card">
     <div class="auth-logo-badge">
@@ -4650,7 +4650,7 @@ body.dark .ws-logout-inner {
     <!-- دکمه برجسته ۱کلیکی Sign in with Google -->
     <button type="button" class="auth-google-hero-btn" onclick="triggerOneClickGoogleAuth()">
       <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-      <span>Sign in with Google · ورود ۱کلیکی با گوگل</span>
+      <span>Sign in with Google · ورود ۱کلیکی با حساب ابری</span>
     </button>
 
     <!-- لیست اکانت‌های ذخیره‌شده قبلی برای ورود با یک لمس -->
@@ -4702,7 +4702,7 @@ body.dark .ws-logout-inner {
 
 <!-- اعلان به‌روزرسانی نسخه PWA -->
 <div id="swUpdateBanner" class="sw-update-banner">
-  <span>🚀 نسخه جدید Cyber-JARVIS آماده است (بدون تغییر در اطلاعات ذخیره‌شده)</span>
+  <span>🚀 نسخه جدید هوشمند تاریک آماده است (بدون تغییر در اطلاعات ذخیره‌شده)</span>
   <button type="button" class="btn primary btn-sm" onclick="applyPendingSwUpdate()">به‌روزرسانی</button>
   <button type="button" class="btn gray btn-sm" onclick="document.getElementById('swUpdateBanner').classList.remove('show')">بعداً</button>
 </div>
@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.4</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.6</span>
         </div>
       </div>
     </div>
@@ -4796,8 +4796,8 @@ body.dark .ws-logout-inner {
           <circle cx="100" cy="100" r="63" fill="none" stroke="var(--neon-green)" stroke-width="1.6" stroke-dasharray="14 10 3 10" stroke-opacity="0.68"/>
         </g>
       </svg>
-      <div class="jarvis-core-center" onclick="cycleJarvisCoreMetric()" role="button" tabindex="0" aria-label="هسته آماری JARVIS">
-        <span class="jarvis-core-tag" id="jarvisCoreTag">JARVIS CORE</span>
+      <div class="jarvis-core-center" onclick="cycleJarvisCoreMetric()" role="button" tabindex="0" aria-label="هسته آماری هوشمند">
+        <span class="jarvis-core-tag" id="jarvisCoreTag">هسته هوشمند</span>
         <strong class="jarvis-core-value" id="jarvisCoreValue">۰</strong>
         <span class="jarvis-core-label" id="jarvisCoreLabel">دانش‌آموزان</span>
       </div>
@@ -5678,7 +5678,7 @@ body.dark .ws-logout-inner {
         </span>
       </button>
 
-      <!-- ۴. دستیار هوشمند J.A.R.V.I.S. و گزارش‌های رنگی () -->
+      <!-- ۴. دستیار هوشمند هوش‌واره و گزارش‌های رنگی () -->
       <button type="button" class="ws-pill-row" onclick="openCloudSettingsSubpage('export')">
         <span class="ws-pill-icon">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="3" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21" y2="12"/></svg>
@@ -5764,7 +5764,7 @@ body.dark .ws-logout-inner {
     <div class="card" style="margin-bottom:12px;border-color:var(--primary)">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
         <b style="color:var(--primary);font-size:15px">👤 مشخصات حساب کاربری و پروفایل معلم</b>
-        <button type="button" class="btn soft btn-sm" onclick="signInWithGoogleQuick()">🔵 ورود / تغییر حساب با Google</button>
+        <button type="button" class="btn soft btn-sm" onclick="signInWithGoogleQuick()">🔵 ورود / تغییر حساب با حساب ابری</button>
       </div>
       <div class="formgrid">
         <div class="field">
@@ -5780,7 +5780,7 @@ body.dark .ws-logout-inner {
           <input type="tel" id="tgEditPhoneInp" dir="ltr" placeholder="+98 910 374 1422" style="text-align:left">
         </div>
         <div class="field">
-          <label>📧 آدرس جیمیل (متصل به فضای ابری):</label>
+          <label>📧 آدرس ایمیل ابری (متصل به فضای ابری):</label>
           <input type="email" id="tgEditGmailInp" dir="ltr" placeholder="teacher@gmail.com" style="text-align:left;font-family:monospace">
         </div>
         <div class="field full">
@@ -5818,7 +5818,7 @@ body.dark .ws-logout-inner {
         </div>
         <div class="theme-pick-card" data-theme-id="cyber-dark" onclick="setCyberThemeMode('cyber-dark')">
           <div>
-            <b style="display:block;font-size:13.5px">🌌 سایبری تاریک (Cyber-JARVIS)</b>
+            <b style="display:block;font-size:13.5px">🌌 سایبری تاریک (هوشمند تاریک)</b>
             <span class="muted" style="font-size:11px">سرمه‌ای تیره و نئون فیروزه‌ای</span>
           </div>
           <div class="theme-swatch-dots">
@@ -6032,7 +6032,7 @@ body.dark .ws-logout-inner {
           <label>۵. 🎨 تم رنگی و گرافیکی خروجی‌ها:</label>
           <select id="expColorTheme" onchange="if(document.getElementById('liveExportPreviewBox')?.style.display==='block')renderLiveColorfulExportPreview()">
             <option value="orange" selected>🍊 نارنجی و طلایی زنده (پرانرژی و گرم)</option>
-            <option value="cyan">💎 فیروزه‌ای و آبی مدرن (Cyber-JARVIS)</option>
+            <option value="cyan">💎 فیروزه‌ای و آبی مدرن (هوشمند تاریک)</option>
             <option value="emerald">🌿 سبز زمردی و فیروزه‌ای (رسمی و آموزشی)</option>
             <option value="purple">💜 بنفش و یاسی سلطنتی (ویژه و متمایز)</option>
           </select>
@@ -6215,7 +6215,7 @@ body.dark .ws-logout-inner {
     <div class="card">
       <b style="color:var(--primary);font-size:14px">💡 پاسخ به سوالات پرتکرار معلمان</b>
       <div style="display:grid;gap:8px;margin-top:8px;font-size:12px;line-height:1.7">
-        <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۱. چطور اطلاعاتم روی گوشی جدید بالا بیاید؟</b><br>کافی است با همان جیمیل یا شماره همراه در صفحه ورود ۱کلیکی وارد شوید؛ تمام کلاس‌ها، نمرات و عکس‌ها خودکار بارگذاری می‌شوند.</div>
+        <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۱. چطور اطلاعاتم روی گوشی جدید بالا بیاید؟</b><br>کافی است با همان ایمیل یا شماره همراه در صفحه ورود ۱کلیکی وارد شوید؛ تمام کلاس‌ها، نمرات و عکس‌ها خودکار بارگذاری می‌شوند.</div>
         <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۲. اگر نمره امتحان را اشتباهی در ستون حضور و غیاب نوشتم چه کنم؟</b><br>در جدول جامع حضور و غیاب روی دکمه «🔄 انتقال نمره جلسه به کتبی مستمر» بزنید تا با یک کلیک منتقل شود.</div>
         <div style="padding:9px 11px;border-radius:10px;background:var(--bg-panel)"><b>۳. چطور از دانش‌آموزان حاضری یا آزمون آنلاین با سلفی بگیرم؟</b><br>از بخش «🌐 کلاس آنلاین» لینک کوتاه فرم را بسازید و در گروه کلاس یا پیام‌رسان‌ها بفرستید.</div>
       </div>
@@ -6234,7 +6234,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.4 Pro</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.5 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6287,7 +6287,7 @@ body.dark .ws-logout-inner {
   </div>
 
   <div class="card" style="margin-bottom:12px">
-    <b style="color:var(--neon-cyan);display:block;margin-bottom:6px">🎛️ کلیدهای مستقل ۱۰ انیمیشن Cyber-JARVIS</b>
+    <b style="color:var(--neon-cyan);display:block;margin-bottom:6px">🎛️ کلیدهای مستقل ۱۰ انیمیشن هوشمند تاریک</b>
     <div id="cyberAnimTogglesList"></div>
   </div>
 
@@ -9540,7 +9540,7 @@ const ExamApp = {
   clearExamQuestions() { if (window.smartConfirm('پاک شود؟')) { this.state.branches[this.currentBranch] = []; this.save(); this.renderAll(); } }
 };
 
-/* ==================== موتور سینمایی Cyber-JARVIS (نسخه 5.0.0) ==================== */
+/* ==================== موتور سینمایی هوشمند تاریک (نسخه 5.0.0) ==================== */
 const CYBER_ANIM_KEY = 'cyber_anim_settings_v1';
 const CYBER_ANIM_DEFS = [
   { key: 'anim_intro', legacy: 'fx_entry', title: '۱. انیمیشن سینمایی ورود', desc: 'نمایش صفحه خوش‌آمدگویی هولوگرافیک هنگام باز شدن اولیه برنامه (۱۲۰۰ تا ۱۸۰۰ میلی‌ثانیه)' },
@@ -10676,7 +10676,7 @@ window.restorePreTermSafetyBackup = function() {
   }
 };
 
-/* مدیریت پوسته Cyber-JARVIS (تاریک پیش‌فرض + روشن اختیاری) */
+/* مدیریت پوسته هوشمند تاریک (تاریک پیش‌فرض + روشن اختیاری) */
 window.setCyberThemeMode = function(mode) {
   const isLight = mode === 'light';
   document.body.classList.toggle('light-mode', isLight);
@@ -10696,7 +10696,7 @@ applyTheme = function(mode) {
 toggleTheme = function() {
   const next = document.body.classList.contains('light-mode') ? 'dark' : 'light';
   window.setCyberThemeMode(next);
-  toast(next === 'dark' ? 'تم سایبری Cyber-JARVIS فعال شد 🌌' : 'تم روشن فعال شد ☀️');
+  toast(next === 'dark' ? 'تم سایبری هوشمند تاریک فعال شد 🌌' : 'تم روشن فعال شد ☀️');
 };
 
 const _origShowView = showView;
@@ -10758,7 +10758,7 @@ if ('serviceWorker' in navigator) {
 /* ۱. سیستم ۴ پوسته کامل (سایبری فیروزه‌ای، نارنجی کلاسیک، سایبری نارنجی تیره، روشن روز) */
 const THEME_MODES_V52 = [
   { id: 'classic-orange', title: '🍊 نارنجی کلاسیک و گرم', icon: '🍊', metaColor: '#ea580c' },
-  { id: 'cyber-dark', title: '🌌 سایبری فیروزه‌ای (Cyber-JARVIS)', icon: '🌌', metaColor: '#050914' },
+  { id: 'cyber-dark', title: '🌌 سایبری فیروزه‌ای (هوشمند تاریک)', icon: '🌌', metaColor: '#050914' },
   { id: 'cyber-orange', title: '🔥 سایبری نارنجی تیره', icon: '🔥', metaColor: '#0c0907' },
   { id: 'light', title: '☀️ روشن روز', icon: '☀️', metaColor: '#0284c7' }
 ];
@@ -15279,7 +15279,7 @@ window.resetBirthdayTemplateWithSignature = function() {
 /* ۲. ارتقای سیستم تم‌ها به ۶ پوسته کامل (شامل زمردی لوکس و بنفش کهکشانی) */
 const THEME_MODES_V59 = [
   { id: 'classic-orange', title: '🍊 نارنجی کلاسیک و گرم (پیش‌فرض)', icon: '🍊', metaColor: '#ea580c' },
-  { id: 'cyber-dark', title: '🌌 سایبری فیروزه‌ای (Cyber-JARVIS)', icon: '🌌', metaColor: '#050914' },
+  { id: 'cyber-dark', title: '🌌 سایبری فیروزه‌ای (هوشمند تاریک)', icon: '🌌', metaColor: '#050914' },
   { id: 'cyber-orange', title: '🔥 سایبری نارنجی تیره', icon: '🔥', metaColor: '#0c0907' },
   { id: 'emerald-luxury', title: '🌿 زمردی لوکس و طلایی', icon: '🌿', metaColor: '#03110e' },
   { id: 'royal-galaxy', title: '💜 بنفش کهکشانی لوکس', icon: '💜', metaColor: '#080514' },
@@ -15353,7 +15353,7 @@ toggleTheme = function() {
   toast(`پوسته «${next.title}» فعال شد`);
 };
 
-/* ۳. جایگزینی «حاضرین امروز» با «🔴 غایبین امروز» در هسته JARVIS داشبورد */
+/* ۳. جایگزینی «حاضرین امروز» با «🔴 غایبین امروز» در هسته آماری داشبورد */
 const _origUpdateJarvisCoreV58 = window.updateJarvisCoreDisplay;
 window.updateJarvisCoreDisplay = function(animate = false) {
   if (window._jarvisMetricMode === 'present') window._jarvisMetricMode = 'absent';
@@ -16937,7 +16937,7 @@ window.openTeacherAccountModal = function() {
         <input type="tel" id="accPhoneInp" dir="ltr" value="${esc(acc.phone || '')}" placeholder="0912..." style="text-align:left">
       </div>
       <div class="field full">
-        <label>📧 آدرس جیمیل اختصاصی (Google / Gmail Account):</label>
+        <label>📧 آدرس ایمیل ابری اختصاصی (Google / Gmail Account):</label>
         <input type="email" id="accGmailInp" dir="ltr" value="${esc(acc.gmail || '')}" placeholder="teacher.name@gmail.com" style="text-align:left;font-family:monospace">
       </div>
     </div>
@@ -16964,7 +16964,7 @@ window.saveAndSyncTeacherAccount = async function(mode = 'upload') {
   const gmail = (document.getElementById('accGmailInp')?.value || '').trim().toLowerCase();
 
   if (!gmail && !phone) {
-    window.smartAlert('لطفاً حداقل آدرس جیمیل یا شماره همراه خود را وارد کنید.');
+    window.smartAlert('لطفاً حداقل آدرس ایمیل یا شماره همراه خود را وارد کنید.');
     return;
   }
 
@@ -17057,7 +17057,7 @@ window.openCreatorSuperAdminModal = function() {
     <div class="card" style="background:var(--bg-panel);margin-bottom:10px;border-color:var(--neon-purple)">
       <b style="color:var(--neon-purple);font-size:13.5px">👑 دسترسی جامع سازنده برنامه به اکانت‌های متصل (جیمیل و شماره همراه)</b>
       <div class="muted" style="font-size:11.5px;margin-top:3px">
-        در این پنل فهرست تمامی اکانت‌های معلمان، آدرس جیمیل، شماره همراه، تعداد مدارس/دانش‌آموزان و کلید همگام‌سازی ابری آن‌ها قابل مشاهده و مدیریت است:
+        در این پنل فهرست تمامی اکانت‌های معلمان، آدرس ایمیل ابری، شماره همراه، تعداد مدارس/دانش‌آموزان و کلید همگام‌سازی ابری آن‌ها قابل مشاهده و مدیریت است:
       </div>
     </div>
 
@@ -17984,7 +17984,7 @@ window.applyStudentSyncPacketToDb = function(pkt) {
   return res;
 };
 
-/* ۶. ورود خودکار با گوگل (Sign in with Google) + فشرده‌سازی فوق‌قوی GZIP + همگام‌سازی خودکار دوره‌ای + پنل سازنده برنامه */
+/* ۶. ورود خودکار با حساب ابری (Sign in with Google) + فشرده‌سازی فوق‌قوی GZIP + همگام‌سازی خودکار دوره‌ای + پنل سازنده برنامه */
 window.compressStringGzipBase64 = async function(str) {
   try {
     if (typeof CompressionStream !== 'undefined') {
@@ -18030,7 +18030,7 @@ window.uploadBackupToCloud = async function(silent = false) {
   const acc = window.getTeacherAccount();
   const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || '').trim();
   if (!key || key.length < 4) {
-    if (!silent) toast('🔑 لطفاً ابتدا جیمیل یا کد اتاق ابری خود را وارد کنید.');
+    if (!silent) toast('🔑 لطفاً ابتدا ایمیل یا کد اتاق ابری خود را وارد کنید.');
     return false;
   }
   window.saveCloudSyncSettings();
@@ -18128,7 +18128,7 @@ window.restoreBackupFromCloud = async function(silent = false) {
   const acc = window.getTeacherAccount();
   const key = (document.getElementById('cloudSyncSecretKey')?.value || localStorage.getItem('danesh_cloud_sync_key') || acc.accountCode || acc.gmail || '').trim();
   if (!key || key.length < 4) {
-    if (!silent) toast('🔑 لطفاً ابتدا جیمیل یا کد اتاق ابری خود را وارد کنید.');
+    if (!silent) toast('🔑 لطفاً ابتدا ایمیل یا کد اتاق ابری خود را وارد کنید.');
     return false;
   }
   const btn = document.getElementById('btnCloudRestore');
@@ -18241,7 +18241,7 @@ window.signInWithGoogleQuick = function() {
   if (curAcc.gmail && !savedAccounts.includes(curAcc.gmail)) savedAccounts.unshift(curAcc.gmail);
   if (!savedAccounts.length) savedAccounts.push('reza.shahabinejad@gmail.com');
 
-  openModal(formHeader('🔵 ورود خودکار از طریق حساب گوگل (Google Sign-In)') + `
+  openModal(formHeader('🔵 ورود خودکار از طریق حساب ابری (Google Sign-In)') + `
     <div class="card" style="background:#FFFFFF;color:#0F172A;border:1.5px solid #CBD5E1;text-align:center;padding:18px 14px">
       <div style="font-size:28px;font-weight:900;letter-spacing:-1px;margin-bottom:4px">
         <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
@@ -18281,7 +18281,7 @@ window.signInWithGoogleQuick = function() {
 window.completeGoogleAutoSignIn = async function(emailRaw) {
   const gmail = (emailRaw || '').trim().toLowerCase();
   if (!gmail || !gmail.includes('@')) {
-    toast('لطفاً یک آدرس جیمیل معتبر وارد کنید.');
+    toast('لطفاً یک آدرس ایمیل ابری معتبر وارد کنید.');
     return;
   }
   const curAcc = window.getTeacherAccount();
@@ -18306,7 +18306,7 @@ window.completeGoogleAutoSignIn = async function(emailRaw) {
   await window.uploadBackupToCloud(true);
   closeModal();
   renderAll();
-  toast(`🟢 با حساب گوگل «${gmail}» وارد شدید! همگام‌سازی خودکار جیمیل فعال است.`);
+  toast(`🟢 با حساب ابری «${gmail}» وارد شدید! همگام‌سازی خودکار جیمیل فعال است.`);
 };
 
 // ارتقای پنجره حساب کاربری معلم با دکمه ورود خودکار گوگل و کلید همگام‌سازی خودکار
@@ -18342,7 +18342,7 @@ window.openTeacherAccountModal = function() {
         <input type="tel" id="accPhoneInp" dir="ltr" value="${esc(acc.phone || '')}" placeholder="0912..." style="text-align:left">
       </div>
       <div class="field full">
-        <label>📧 آدرس جیمیل اختصاصی (Gmail):</label>
+        <label>📧 آدرس ایمیل ابری اختصاصی (Gmail):</label>
         <input type="email" id="accGmailInp" dir="ltr" value="${esc(acc.gmail || '')}" placeholder="teacher.name@gmail.com" style="text-align:left;font-family:monospace">
       </div>
       <div class="field full">
@@ -20049,7 +20049,7 @@ window.openAccountQrShareModal = function() {
       <div class="qr-canvas-box"><canvas id="tgAccountQrCanvas" width="160" height="160"></canvas></div>
       <b style="font-size:15px;display:block;margin-top:8px;color:var(--primary)">${esc(acc.name || getTeacherName())}</b>
       <div class="muted" style="font-family:monospace;margin-top:3px" dir="ltr">${esc(acc.gmail || acc.phone || code)}</div>
-      <p class="muted" style="font-size:11.5px;margin-top:8px">با وارد کردن این جیمیل یا کد در هر دستگاه دیگری، تمام کلاس‌ها، نمرات و عکس‌های شما بلافاصله بالا می‌آید.</p>
+      <p class="muted" style="font-size:11.5px;margin-top:8px">با وارد کردن این ایمیل یا کد در هر دستگاه دیگری، تمام کلاس‌ها، نمرات و عکس‌های شما بلافاصله بالا می‌آید.</p>
     </div>
     <div class="formactions">
       <button type="button" class="btn primary" onclick="copyText('${esc(acc.gmail || code)}')">📋 کپی شناسه اکانت</button>
@@ -20065,7 +20065,7 @@ window.openSettingsMoreMenuModal = function() {
       <button type="button" class="btn primary block" onclick="closeModal();openCloudSettingsSubpage('account')">✎ ویرایش نام، بیوگرافی و مشخصات من</button>
       <button type="button" class="btn soft block" onclick="closeModal();syncAccountNowWithPhotos(false)">☁️ همگام‌سازی کامل با عکس‌ها همین الان</button>
       <button type="button" class="btn soft block" onclick="closeModal();saveBackupToDedicatedFolder('full')">💾 دانلود فایل پشتیبان کامل (همراه با عکس‌ها)</button>
-      <button type="button" class="btn gray block" onclick="closeModal();openOnboardingAuthScreen()">🔄 تغییر اکانت / صفحه ورود با Google</button>
+      <button type="button" class="btn gray block" onclick="closeModal();openOnboardingAuthScreen()">🔄 تغییر اکانت / صفحه ورود با حساب ابری</button>
     </div>
   `);
 };
@@ -20281,7 +20281,7 @@ window.triggerOneClickGoogleAuth = function() {
     window.submitQuickEmailOnboarding();
     return;
   }
-  // باز کردن انتخابگر ۱کلیکی حساب گوگل
+  // باز کردن انتخابگر ۱کلیکی حساب ابری
   window.signInWithGoogleQuick();
 };
 
@@ -20317,7 +20317,7 @@ window.submitQuickEmailOnboarding = async function() {
   const name = (document.getElementById('authQuickNameInp')?.value || '').trim() || getTeacherName() || 'استاد';
   const phone = enDigits(document.getElementById('authQuickPhoneInp')?.value || '').trim();
   if (!email && !phone) {
-    toast('لطفاً جیمیل یا شماره همراه خود را برای ساخت/ورود یک‌کلیکی وارد کنید.');
+    toast('لطفاً ایمیل یا شماره همراه خود را برای ساخت/ورود یک‌کلیکی وارد کنید.');
     document.getElementById('authQuickEmailInp')?.focus();
     return;
   }
@@ -20336,7 +20336,7 @@ const _origCompleteGoogleSignInV70 = window.completeGoogleAutoSignIn;
 window.completeGoogleAutoSignIn = async function(emailRaw) {
   const gmail = (emailRaw || '').trim().toLowerCase();
   if (!gmail || !gmail.includes('@')) {
-    toast('لطفاً یک آدرس جیمیل معتبر وارد کنید.');
+    toast('لطفاً یک آدرس ایمیل ابری معتبر وارد کنید.');
     return;
   }
   localStorage.setItem('danesh_onboarding_done_v70', '1');
@@ -20451,7 +20451,7 @@ window.confirmLogoutAndShowOnboarding = function() {
   } catch (_) {}
   closeModal();
   window.openOnboardingAuthScreen();
-  toast('از حساب خارج شدید؛ می‌توانید با Google یا ایمیل جدید وارد شوید 👋');
+  toast('از حساب خارج شدید؛ می‌توانید با حساب ابری یا ایمیل جدید وارد شوید 👋');
 };
 
 
@@ -20553,7 +20553,7 @@ const GAME_TOUR_STEPS = [
     selector: '.ws-pills-stack',
     icon: '⚙️',
     title: 'تنظیمات کپسولی و همگام‌سازی کم‌مصرف',
-    desc: 'در این منوی شیک و خلوت، حساب گوگل، ضرایب نمره، پوسته‌ها و همگام‌سازی تفاضلی (که فقط آخرین تغییرات را بدون مصرف اینترنت ذخیره می‌کند) در اختیار شماست!'
+    desc: 'در این منوی شیک و خلوت، حساب ابری، ضرایب نمره، پوسته‌ها و همگام‌سازی تفاضلی (که فقط آخرین تغییرات را بدون مصرف اینترنت ذخیره می‌کند) در اختیار شماست!'
   }
 ];
 
@@ -33320,7 +33320,7 @@ button.close {
   font-size: 11px;
 }
 
-/* ۵. استایل دقیق و پیکسلی ساعت و هشدار شیائومی (Xiaomi MIUI / HyperOS Clock & Alarm) */
+/* ۵. استایل دقیق و پیکسلی ساعت و هشدار اختصاصی (Xiaomi Pro / Pro Clock & Alarm) */
 .xm-clock-modal-shell {
   background: #000000 !important;
   color: #FFFFFF !important;
@@ -33414,7 +33414,7 @@ button.close {
 .xm-alarm-card.active-alarm .xm-alarm-sub {
   color: #A1A1AA;
 }
-/* کلید کپسولی شیائومی در سمت چپ کارت */
+/* کلید کپسولی اختصاصی در سمت چپ کارت */
 .xm-switch {
   width: 52px;
   height: 28px;
@@ -33471,7 +33471,7 @@ button.close {
 .xm-fab-plus:active {
   transform: scale(0.93);
 }
-/* نوار ۴ تب پایین شیائومی */
+/* نوار ۴ تب پایین اختصاصی */
 .xm-bottom-nav {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -34167,8 +34167,8 @@ button.close {
 
 
   /* ==========================================================================================
-     بخش ۳: اسکنر هوشمند لیست کلاسی و سامانه سیدا با الگوریتم دیداری آزمون‌ساز (RosterScannerApp)
-     - عکس‌برداری با دوربین، انتخاب اسکرین‌شات سیدا یا عکس اسکن‌شده لیست
+     بخش ۳: اسکنر هوشمند لیست کلاسی و سامانه مدرسه با الگوریتم دیداری آزمون‌ساز (RosterScannerApp)
+     - عکس‌برداری با دوربین، انتخاب اسکرین‌شات لیست یا عکس اسکن‌شده لیست
      - استخراج هوشمند نام، نام خانوادگی، نام پدر، تلفن و مشخصات کلاس با موتور هوش مصنوعی آزمون‌ساز
      - جدول پیش‌نمایش قابل ویرایش و تایید نهایی معلم برای ایجاد کلاس جدید یا افزودن به کلاس
      ========================================================================================== */
@@ -34233,7 +34233,7 @@ button.close {
         `<button type="button" class="chip" style="cursor:pointer;font-size:10px;padding:2px 7px;background:#FFF7ED;color:#C2410C;border:1px solid #FDBA74" onclick="const el=document.getElementById('sidaNewClassSubj');if(el)el.value='${sp}'">${sp}</button>`
       ).join('');
 
-      openModal(formHeader('📸 ورود دسته‌جمعی از عکس سیدا، لیست اسکن‌شده یا اکسل') + `
+      openModal(formHeader('📸 ورود دسته‌جمعی از عکس لیست کلاسی، لیست اسکن‌شده یا اکسل') + `
         <!-- ۱. انتخاب هدف: ساخت کلاس جدید پس از تایید معلم یا افزودن به کلاس موجود -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px">
           <button type="button" id="rosterModeBtnNew" class="btn ${this.mode === 'new_class' ? 'primary' : 'soft'} btn-sm" style="justify-content:center" onclick="RosterScannerApp.setMode('new_class')">➕ ساخت کلاس جدید با این لیست</button>
@@ -34270,12 +34270,12 @@ button.close {
           <select id="bulkRosterClassSel">${classOpts.join('')}</select>
         </div>
 
-        <!-- ۲. باکس اسکن دیداری عکس، اسکرین‌شات سیدا یا برگه اسکن‌شده (با الگوریتم آزمون‌ساز) -->
+        <!-- ۲. باکس اسکن دیداری عکس، اسکرین‌شات لیست یا برگه اسکن‌شده (با الگوریتم آزمون‌ساز) -->
         <div class="card" style="background:linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%);border:2px dashed #EA580C;padding:11px;margin-bottom:10px">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px">
             <div>
-              <b style="color:#9A3412;font-size:13px">📸 اسکن هوشمند لیست از عکس، برگه یا اسکرین‌شات سیدا</b>
-              <div style="font-size:11px;color:#475569;margin-top:2px">از لیست کلاسی یا صفحه سامانه سیدا عکس بگیرید؛ هوش مصنوعی با الگوریتم آزمون‌ساز اسامی، نام پدر و اطلاعات را استخراج می‌کند.</div>
+              <b style="color:#9A3412;font-size:13px">📸 اسکن هوشمند لیست از عکس، برگه یا اسکرین‌شات لیست</b>
+              <div style="font-size:11px;color:#475569;margin-top:2px">از لیست کلاسی یا صفحه سامانه مدرسه عکس بگیرید؛ هوش مصنوعی با الگوریتم آزمون‌ساز اسامی، نام پدر و اطلاعات را استخراج می‌کند.</div>
             </div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px">
@@ -34284,7 +34284,7 @@ button.close {
               <input type="file" accept="image/*" capture="environment" hidden onchange="RosterScannerApp.handleImageFiles(this.files)">
             </label>
             <label class="btn green" style="justify-content:center;cursor:pointer;padding:10px 6px;font-size:12px;margin:0">
-              🖼️ اسکرین‌شات سیدا / گالری
+              🖼️ اسکرین‌شات لیست / گالری
               <input type="file" accept="image/*" multiple hidden onchange="RosterScannerApp.handleImageFiles(this.files)">
             </label>
           </div>
@@ -34354,7 +34354,7 @@ button.close {
           }
         }
 
-        const prompt = `تصویر(های) پیوست‌شده، لیست دانش‌آموزان یک کلاس از «سامانه سیدا» (SIDA)، فایل اکسل یا برگه لیست کلاسی است.
+        const prompt = `تصویر(های) پیوست‌شده، لیست دانش‌آموزان یک کلاس از «سامانه مدرسه» (SIDA)، فایل اکسل یا برگه لیست کلاسی است.
 لطفاً تمام اسامی دانش‌آموزان و اطلاعات قابل مشاهده در جدول را با دقت ۱۰۰٪ استخراج کن و فقط یک JSON معتبر با ساختار زیر برگردان:
 {
   "schoolName": "نام مدرسه در صورت وجود در سربرگ",
@@ -34451,7 +34451,7 @@ button.close {
     parseTextInputToPreview() {
       const raw = (document.getElementById('bulkRosterTextInp')?.value || '').trim();
       if (!raw) {
-        toast('ابتدا متن اسامی را در کادر وارد کنید یا عکس سیدا را انتخاب نمایید.');
+        toast('ابتدا متن اسامی را در کادر وارد کنید یا عکس لیست کلاسی را انتخاب نمایید.');
         return;
       }
       const lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
@@ -34656,565 +34656,1177 @@ button.close {
   };
 
 
-  /* ==========================================================================================
-     بخش ۴: ابزار ساعت، هشدار، کرونومتر و تایمر دقیقاً به شکل گوشی شیائومی (XiaomiClockApp)
-     - منطبق با اسکرین‌شات ارسالی کاربر (تم مشکی AMOLED، کارت‌های خاکستری تیره، سوئیچ کپسولی، دکمه + آبی و ۴ تب پایین)
-     ========================================================================================== */
-  window.XiaomiClockApp = {
-    storageKey: 'danesh_xiaomi_alarms_v84',
-    activeTab: 'alarm', // 'alarm' | 'world' | 'stopwatch' | 'timer'
-    bedtime: { time: '06:00', repeat: 'روزانه', enabled: true },
-    alarms: [],
-    lastFiredMinuteKey: '',
-    swRunning: false,
-    swStartMs: 0,
-    swElapsedMs: 0,
-    swLaps: [],
-    swInterval: null,
-    tmRunning: false,
-    tmRemainSec: 600,
-    tmTotalSec: 600,
-    tmInterval: null,
-
-    init() {
-      this.load();
-      setInterval(() => this.checkAlarmsTick(), 1000);
-    },
-
-    load() {
-      try {
-        const raw = localStorage.getItem(this.storageKey);
-        if (raw) {
-          const p = JSON.parse(raw);
-          if (Array.isArray(p.alarms) && p.alarms.length) this.alarms = p.alarms;
-          if (p.bedtime) this.bedtime = p.bedtime;
-        }
-      } catch (_) {}
-
-      if (!this.alarms || !this.alarms.length) {
-        this.alarms = [
-          { id: 'xm_1', time: '00:00', repeat: 'یک‌بار', label: '', enabled: false },
-          { id: 'xm_2', time: '00:20', repeat: 'یک‌بار', label: 'فوزیدیک بخر', enabled: false },
-          { id: 'xm_3', time: '03:00', repeat: 'یک‌بار', label: '', enabled: false },
-          { id: 'xm_4', time: '07:45', repeat: 'روزانه', label: 'زنگ شروع کلاس اول', enabled: true }
-        ];
-        this.save();
-      }
-    },
-
-    save() {
-      try {
-        localStorage.setItem(this.storageKey, JSON.stringify({
-          bedtime: this.bedtime,
-          alarms: this.alarms
-        }));
-      } catch (_) {}
-    },
-
-    toFaTime(hhmm) {
-      return fa(String(hhmm || '00:00'));
-    },
-
-    computeNextCountdownText() {
-      const now = new Date();
-      const nowMin = now.getHours() * 60 + now.getMinutes();
-      let minDiff = Infinity;
-
-      const activeList = this.alarms.filter(a => a.enabled);
-      if (this.bedtime?.enabled && this.bedtime?.time) {
-        activeList.push(this.bedtime);
-      }
-      if (!activeList.length) {
-        return 'همه هشدارها خاموش است';
-      }
-
-      activeList.forEach(a => {
-        const parts = String(a.time || '00:00').split(':');
-        const h = parseInt(parts[0], 10) || 0;
-        const m = parseInt(parts[1], 10) || 0;
-        const targetMin = h * 60 + m;
-        let diff = targetMin - nowMin;
-        if (diff <= 0) diff += 24 * 60;
-        if (diff < minDiff) minDiff = diff;
-      });
-
-      const hours = Math.floor(minDiff / 60);
-      const mins = minDiff % 60;
-      if (hours === 0) {
-        return `هشدار تا ${fa(mins)} دقیقه دیگر`;
-      }
-      return `هشدار تا ${fa(hours)} ساعت و ${fa(mins)} دقیقه دیگر`;
-    },
-
-    playAlarmSound() {
-      try {
-        const Ctx = window.AudioContext || window.webkitAudioContext;
-        if (!Ctx) return;
-        const ctx = new Ctx();
-        const notes = [523.25, 659.25, 783.99, 1046.5, 783.99, 1046.5];
-        notes.forEach((freq, idx) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = 'sine';
-          osc.frequency.value = freq;
-          gain.gain.setValueAtTime(0.001, ctx.currentTime + idx * 0.22);
-          gain.gain.exponentialRampToValueAtTime(0.25, ctx.currentTime + idx * 0.22 + 0.04);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (idx + 1) * 0.22);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(ctx.currentTime + idx * 0.22);
-          osc.stop(ctx.currentTime + (idx + 1) * 0.22);
-        });
-      } catch (_) {}
-    },
-
-    checkAlarmsTick() {
-      const now = new Date();
-      const hh = String(now.getHours()).padStart(2, '0');
-      const mm = String(now.getMinutes()).padStart(2, '0');
-      const curHHMM = `${hh}:${mm}`;
-      const minuteKey = `${now.toDateString()}_${curHHMM}`;
-
-      if (this.lastFiredMinuteKey !== minuteKey) {
-        let triggered = null;
-        this.alarms.forEach(a => {
-          if (a.enabled && a.time === curHHMM) {
-            triggered = a;
-            if (a.repeat === 'یک‌بار') a.enabled = false;
-          }
-        });
-        if (triggered) {
-          this.lastFiredMinuteKey = minuteKey;
-          this.save();
-          this.playAlarmSound();
-          toast(`⏰ هشدار ساعت ${this.toFaTime(triggered.time)}${triggered.label ? ` — ${triggered.label}` : ''}`);
-          this.refreshUI();
-        }
-      }
-
-      const heroEl = document.getElementById('xmHeroCountdownText');
-      if (heroEl && this.activeTab === 'alarm') {
-        heroEl.textContent = this.computeNextCountdownText();
-      }
-    },
-
-    toggleAlarm(id, ev) {
-      if (ev) ev.stopPropagation();
-      const a = this.alarms.find(x => x.id === id);
-      if (!a) return;
-      a.enabled = !a.enabled;
-      this.save();
-      this.refreshUI();
-      if (a.enabled) {
-        toast(`⏰ هشدار ${this.toFaTime(a.time)} فعال شد (${this.computeNextCountdownText()})`);
-      }
-    },
-
-    openEditAlarmSheet(alarmId = null, isBedtime = false) {
-      const existing = isBedtime
-        ? this.bedtime
-        : (alarmId ? this.alarms.find(x => x.id === alarmId) : null);
-      const timeVal = existing?.time || '07:30';
-      const repeatVal = existing?.repeat || 'یک‌بار';
-      const labelVal = existing?.label || '';
-
-      const box = document.getElementById('xmInlineEditorDrawer');
-      if (!box) return;
-      box.style.display = 'block';
-      box.innerHTML = `
-        <div style="background:#2C2C2E;border-radius:22px;padding:16px;margin-bottom:14px;border:1px solid #3A3A3C;color:#FFFFFF">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-            <b style="font-size:15px;color:#FFFFFF">${isBedtime ? '🛏️ تنظیم ساعت وقت خواب / بیداری' : (existing ? '⏰ ویرایش هشدار' : '➕ افزودن هشدار جدید')}</b>
-            ${(!isBedtime && existing) ? `<button type="button" style="background:#EF4444;color:#FFF;border:none;border-radius:10px;padding:4px 10px;font-size:11.5px;cursor:pointer" onclick="XiaomiClockApp.deleteAlarm('${existing.id}')">🗑️ حذف</button>` : ''}
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
-            <div>
-              <label style="font-size:11px;color:#A1A1AA;display:block;margin-bottom:4px">ساعت و دقیقه:</label>
-              <input type="time" id="xmEditTimeInp" value="${esc(timeVal)}" style="width:100%;height:42px;background:#1C1C1E;color:#FFFFFF;border:1px solid #4C8DF6;border-radius:12px;text-align:center;font-size:18px;font-weight:bold">
-            </div>
-            <div>
-              <label style="font-size:11px;color:#A1A1AA;display:block;margin-bottom:4px">تکرار:</label>
-              <select id="xmEditRepeatSel" style="width:100%;height:42px;background:#1C1C1E;color:#FFFFFF;border:1px solid #3A3A3C;border-radius:12px;padding:0 10px;font-size:13px">
-                <option value="یک‌بار" ${repeatVal === 'یک‌بار' ? 'selected' : ''}>یک‌بار</option>
-                <option value="روزانه" ${repeatVal === 'روزانه' ? 'selected' : ''}>روزانه</option>
-                <option value="شنبه تا چهارشنبه" ${repeatVal === 'شنبه تا چهارشنبه' ? 'selected' : ''}>شنبه تا چهارشنبه (ایام مدرسه)</option>
-              </select>
-            </div>
-          </div>
-          ${!isBedtime ? `
-          <div style="margin-bottom:12px">
-            <label style="font-size:11px;color:#A1A1AA;display:block;margin-bottom:4px">برچسب / یادداشت هشدار (اختیاری):</label>
-            <input type="text" id="xmEditLabelInp" value="${esc(labelVal)}" placeholder="مثلاً فوزیدیک بخر، زنگ تفریح، امتحان ریاضی..." style="width:100%;height:40px;background:#1C1C1E;color:#FFFFFF;border:1px solid #3A3A3C;border-radius:12px;padding:0 12px;font-size:13px">
-          </div>` : ''}
-          <div style="display:flex;gap:8px">
-            <button type="button" style="flex:2;height:40px;border-radius:999px;background:#3B82F6;color:#FFFFFF;border:none;font-weight:bold;font-size:13.5px;cursor:pointer" onclick="XiaomiClockApp.saveEditedAlarm('${alarmId || ''}', ${isBedtime})">✓ ذخیره هشدار</button>
-            <button type="button" style="flex:1;height:40px;border-radius:999px;background:#3A3A3C;color:#FFFFFF;border:none;font-size:13px;cursor:pointer" onclick="document.getElementById('xmInlineEditorDrawer').style.display='none'">انصراف</button>
-          </div>
-        </div>
-      `;
-    },
-
-    saveEditedAlarm(alarmId, isBedtime) {
-      const t = document.getElementById('xmEditTimeInp')?.value || '07:30';
-      const rep = document.getElementById('xmEditRepeatSel')?.value || 'یک‌بار';
-      const lbl = (document.getElementById('xmEditLabelInp')?.value || '').trim();
-
-      if (isBedtime) {
-        this.bedtime = { time: t, repeat: rep, enabled: true };
-      } else if (alarmId) {
-        const a = this.alarms.find(x => x.id === alarmId);
-        if (a) {
-          a.time = t;
-          a.repeat = rep;
-          a.label = lbl;
-          a.enabled = true;
-        }
-      } else {
-        this.alarms.push({
-          id: 'xm_' + Date.now(),
-          time: t,
-          repeat: rep,
-          label: lbl,
-          enabled: true
-        });
-      }
-      this.alarms.sort((a, b) => String(a.time).localeCompare(String(b.time)));
-      this.save();
-      const box = document.getElementById('xmInlineEditorDrawer');
-      if (box) box.style.display = 'none';
-      this.refreshUI();
-      toast('⏰ هشدار ذخیره و فعال شد!');
-    },
-
-    deleteAlarm(id) {
-      this.alarms = this.alarms.filter(x => x.id !== id);
-      this.save();
-      const box = document.getElementById('xmInlineEditorDrawer');
-      if (box) box.style.display = 'none';
-      this.refreshUI();
-      toast('هشدار حذف شد.');
-    },
-
-    switchTab(tab) {
-      this.activeTab = tab;
-      this.refreshUI();
-    },
-
-    // کرونومتر
-    toggleStopwatch() {
-      if (this.swRunning) {
-        this.swRunning = false;
-        clearInterval(this.swInterval);
-      } else {
-        this.swRunning = true;
-        this.swStartMs = Date.now() - this.swElapsedMs;
-        this.swInterval = setInterval(() => {
-          this.swElapsedMs = Date.now() - this.swStartMs;
-          const el = document.getElementById('xmSwDisplay');
-          if (el) el.textContent = this.formatSwTime(this.swElapsedMs);
-        }, 45);
-      }
-      this.refreshUI();
-    },
-    lapStopwatch() {
-      if (!this.swElapsedMs) return;
-      this.swLaps.unshift(this.formatSwTime(this.swElapsedMs));
-      this.refreshUI();
-    },
-    resetStopwatch() {
-      this.swRunning = false;
-      clearInterval(this.swInterval);
-      this.swElapsedMs = 0;
-      this.swLaps = [];
-      this.refreshUI();
-    },
-    formatSwTime(ms) {
-      const totalSec = Math.floor(ms / 1000);
-      const mins = String(Math.floor(totalSec / 60)).padStart(2, '0');
-      const secs = String(totalSec % 60).padStart(2, '0');
-      const cs = String(Math.floor((ms % 1000) / 10)).padStart(2, '0');
-      return fa(`${mins}:${secs}.${cs}`);
-    },
-
-    // تایمر شمارش معکوس
-    setTimerMinutes(mins) {
-      this.tmRunning = false;
-      clearInterval(this.tmInterval);
-      this.tmTotalSec = Math.max(10, Math.round(Number(mins) * 60));
-      this.tmRemainSec = this.tmTotalSec;
-      this.refreshUI();
-    },
-    toggleTimer() {
-      if (this.tmRunning) {
-        this.tmRunning = false;
-        clearInterval(this.tmInterval);
-      } else {
-        if (this.tmRemainSec <= 0) this.tmRemainSec = this.tmTotalSec || 600;
-        this.tmRunning = true;
-        this.tmInterval = setInterval(() => {
-          this.tmRemainSec = Math.max(0, this.tmRemainSec - 1);
-          const el = document.getElementById('xmTmDisplay');
-          if (el) el.textContent = this.formatTimerSec(this.tmRemainSec);
-          if (this.tmRemainSec <= 0) {
-            this.tmRunning = false;
-            clearInterval(this.tmInterval);
-            this.playAlarmSound();
-            toast('⏳ زمان تایمر به پایان رسید!');
-            this.refreshUI();
-          }
-        }, 1000);
-      }
-      this.refreshUI();
-    },
-    resetTimer() {
-      this.tmRunning = false;
-      clearInterval(this.tmInterval);
-      this.tmRemainSec = this.tmTotalSec || 600;
-      this.refreshUI();
-    },
-    formatTimerSec(sec) {
-      const h = Math.floor(sec / 3600);
-      const m = String(Math.floor((sec % 3600) / 60)).padStart(2, '0');
-      const s = String(sec % 60).padStart(2, '0');
-      return fa(h > 0 ? `${String(h).padStart(2, '0')}:${m}:${s}` : `${m}:${s}`);
-    },
-
-    buildInnerHTML(showCloseBtn = true) {
-      const tabTitles = {
-        alarm: 'هشدار',
-        world: 'ساعت جهانی',
-        stopwatch: 'کرونومتر',
-        timer: 'تایمر'
-      };
-
-      let bodyHtml = '';
-      if (this.activeTab === 'alarm') {
-        const alarmCardsHtml = this.alarms.map(a => {
-          const subText = a.label ? `${a.repeat} | ${a.label}` : a.repeat;
-          return `
-            <div class="xm-alarm-card ${a.enabled ? 'active-alarm' : ''}" onclick="XiaomiClockApp.openEditAlarmSheet('${a.id}', false)">
-              <div>
-                <div class="xm-alarm-time">${this.toFaTime(a.time)}</div>
-                <div class="xm-alarm-sub">${esc(subText)}</div>
-              </div>
-              <button type="button" class="xm-switch ${a.enabled ? 'on' : ''}" onclick="XiaomiClockApp.toggleAlarm('${a.id}', event)" aria-label="تغییر وضعیت هشدار"></button>
-            </div>
-          `;
-        }).join('');
-
-        bodyHtml = `
-          <div class="xm-hero-countdown">
-            <div class="xm-hero-countdown-text" id="xmHeroCountdownText">${esc(this.computeNextCountdownText())}</div>
-          </div>
-
-          <div id="xmInlineEditorDrawer" style="display:none"></div>
-
-          <div class="xm-sec-label">وقت خواب</div>
-          <div class="xm-alarm-card active-alarm" onclick="XiaomiClockApp.openEditAlarmSheet(null, true)">
-            <div>
-              <div class="xm-alarm-time">${this.toFaTime(this.bedtime.time)}</div>
-              <div class="xm-alarm-sub">${esc(this.bedtime.repeat || 'روزانه')}</div>
-            </div>
-            <span style="color:#8A8A8E;font-size:20px;font-weight:300;padding-left:4px">‹</span>
-          </div>
-
-          <div class="xm-sec-label" style="margin-top:14px">هشدار</div>
-          <div style="padding-bottom:28px">
-            ${alarmCardsHtml}
-          </div>
-
-          <button type="button" class="xm-fab-plus" onclick="XiaomiClockApp.openEditAlarmSheet(null, false)" title="افزودن هشدار جدید">+</button>
-        `;
-      } else if (this.activeTab === 'world') {
-        const now = new Date();
-        const cities = [
-          { name: 'تهران', tz: 'Asia/Tehran', diff: 'امروز' },
-          { name: 'مکه', tz: 'Asia/Riyadh', diff: ' ۳۰ دقیقه-' },
-          { name: 'استانبول', tz: 'Europe/Istanbul', diff: ' ۳۰ دقیقه-' },
-          { name: 'لندن', tz: 'Europe/London', diff: ' ۳ ساعت و ۳۰ دقیقه-' },
-          { name: 'توکیو', tz: 'Asia/Tokyo', diff: ' ۵ ساعت و ۳۰ دقیقه+' }
-        ];
-        const cityCards = cities.map(ct => {
-          let tStr = '۰۰:۰۰';
-          try {
-            tStr = new Intl.DateTimeFormat('fa-IR', { timeZone: ct.tz, hour: '2-digit', minute: '2-digit', hour12: false }).format(now);
-          } catch (_) {
-            tStr = fa(`${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`);
-          }
-          return `
-            <div class="xm-alarm-card active-alarm" style="cursor:default">
-              <div>
-                <div style="font-size:18px;font-weight:500;color:#FFFFFF">${esc(ct.name)}</div>
-                <div class="xm-alarm-sub">${esc(ct.diff)}</div>
-              </div>
-              <div class="xm-alarm-time" style="font-size:30px">${tStr}</div>
-            </div>
-          `;
-        }).join('');
-        bodyHtml = `
-          <div class="xm-hero-countdown" style="margin:14px 0 18px">
-            <div class="xm-hero-countdown-text" style="font-size:36px">${new Intl.DateTimeFormat('fa-IR', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).format(now)}</div>
-            <div style="color:#8A8A8E;font-size:13px;margin-top:4px">ساعت رسمی ایران · ${formatJalaliDate(localISODate())}</div>
-          </div>
-          <div>${cityCards}</div>
-        `;
-      } else if (this.activeTab === 'stopwatch') {
-        bodyHtml = `
-          <div style="text-align:center;margin:36px 0 24px">
-            <div id="xmSwDisplay" style="font-size:48px;font-weight:300;letter-spacing:1.5px;color:#FFFFFF;font-variant-numeric:tabular-nums">${this.formatSwTime(this.swElapsedMs)}</div>
-            <div style="font-size:12px;color:#8A8A8E;margin-top:6px">کرونومتر دقیق فعالیت‌های کلاسی و مسابقات</div>
-          </div>
-          <div style="display:flex;justify-content:center;gap:14px;margin-bottom:20px">
-            <button type="button" style="height:46px;padding:0 26px;border-radius:999px;background:${this.swRunning ? '#EF4444' : '#3B82F6'};color:#FFFFFF;border:none;font-size:15px;font-weight:bold;cursor:pointer" onclick="XiaomiClockApp.toggleStopwatch()">${this.swRunning ? '⏸ توقف' : '▶ شروع'}</button>
-            <button type="button" style="height:46px;padding:0 20px;border-radius:999px;background:#2C2C2E;color:#FFFFFF;border:none;font-size:14px;cursor:pointer" onclick="XiaomiClockApp.lapStopwatch()">🚩 ثبت دور</button>
-            <button type="button" style="height:46px;padding:0 20px;border-radius:999px;background:#1C1C1E;color:#A1A1AA;border:1px solid #3A3A3C;font-size:14px;cursor:pointer" onclick="XiaomiClockApp.resetStopwatch()">↺ صفر</button>
-          </div>
-          <div style="max-height:190px;overflow-y:auto">
-            ${this.swLaps.map((l, idx) => `<div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid #1C1C1E;color:#A1A1AA;font-size:13px"><span>دور ${fa(this.swLaps.length - idx)}</span><b style="color:#FFFFFF">${l}</b></div>`).join('')}
-          </div>
-        `;
-      } else {
-        const presets = [
-          { m: 2, label: '۲ دقیقه' },
-          { m: 5, label: '۵ دقیقه' },
-          { m: 10, label: '۱۰ دقیقه' },
-          { m: 15, label: '۱۵ دقیقه' },
-          { m: 20, label: '۲۰ دقیقه' },
-          { m: 45, label: '۴۵ دقیقه (زنگ کلاس)' }
-        ];
-        bodyHtml = `
-          <div style="text-align:center;margin:28px 0 20px">
-            <div id="xmTmDisplay" style="font-size:50px;font-weight:300;letter-spacing:1.5px;color:#FFFFFF">${this.formatTimerSec(this.tmRemainSec)}</div>
-            <div style="font-size:12.5px;color:#8A8A8E;margin-top:6px">تایمر آزمون، کوییز و زنگ کلاس</div>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:20px">
-            ${presets.map(p => `<button type="button" style="padding:10px 6px;border-radius:16px;background:${this.tmTotalSec === p.m * 60 ? '#3B82F6' : '#1C1C1E'};color:#FFFFFF;border:1px solid #2C2C2E;font-size:12px;cursor:pointer" onclick="XiaomiClockApp.setTimerMinutes(${p.m})">${p.label}</button>`).join('')}
-          </div>
-          <div style="display:flex;justify-content:center;gap:14px">
-            <button type="button" style="height:46px;padding:0 28px;border-radius:999px;background:${this.tmRunning ? '#EF4444' : '#3B82F6'};color:#FFFFFF;border:none;font-size:15px;font-weight:bold;cursor:pointer" onclick="XiaomiClockApp.toggleTimer()">${this.tmRunning ? '⏸ مکث' : '▶ شروع تایمر'}</button>
-            <button type="button" style="height:46px;padding:0 22px;border-radius:999px;background:#2C2C2E;color:#FFFFFF;border:none;font-size:14px;cursor:pointer" onclick="XiaomiClockApp.resetTimer()">↺ بازنشانی</button>
-          </div>
-        `;
-      }
-
-      return `
-        <div class="xm-clock-modal-shell" id="xmClockRootContainer">
-          <div>
-            <div class="xm-top-bar">
-              <h2 class="xm-top-title">${tabTitles[this.activeTab] || 'هشدار'}</h2>
-              <div style="display:flex;align-items:center;gap:4px">
-                <button type="button" class="xm-top-dots-btn" onclick="XiaomiClockApp.openEditAlarmSheet(null, false)" title="افزودن هشدار">⋮</button>
-                ${showCloseBtn ? `<button type="button" class="xm-top-dots-btn" onclick="closeModal()" title="بستن" style="font-size:20px;background:#1C1C1E">×</button>` : ''}
-              </div>
-            </div>
-            ${bodyHtml}
-          </div>
-
-          <!-- نوار ۴ تب پایین دقیقاً مطابق تصویر گوشی شیائومی -->
-          <div class="xm-bottom-nav">
-            <button type="button" class="xm-nav-item ${this.activeTab === 'alarm' ? 'active' : ''}" onclick="XiaomiClockApp.switchTab('alarm')">
-              <svg viewBox="0 0 24 24"><path d="M12 4a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm0 16a7 7 0 1 1 7-7 7 7 0 0 1-7 7zm1-11h-2v5l4.2 2.5.8-1.2-3-1.8V9zM5.6 2.3 2.3 5.6l1.4 1.4 3.3-3.3-1.4-1.4zm12.8 0-1.4 1.4 3.3 3.3 1.4-1.4-3.3-3.3z"/></svg>
-              <span>هشدار</span>
-            </button>
-            <button type="button" class="xm-nav-item ${this.activeTab === 'world' ? 'active' : ''}" onclick="XiaomiClockApp.switchTab('world')">
-              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 11H8v-2h3V6h2v7z"/></svg>
-              <span>ساعت جهانی</span>
-            </button>
-            <button type="button" class="xm-nav-item ${this.activeTab === 'stopwatch' ? 'active' : ''}" onclick="XiaomiClockApp.switchTab('stopwatch')">
-              <svg viewBox="0 0 24 24"><path d="M9 1h6v2H9V1zm3 5a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm1 9h-2V9h2v6z"/></svg>
-              <span>کرونومتر</span>
-            </button>
-            <button type="button" class="xm-nav-item ${this.activeTab === 'timer' ? 'active' : ''}" onclick="XiaomiClockApp.switchTab('timer')">
-              <svg viewBox="0 0 24 24"><path d="M6 2h12v4l-4 4 4 4v4H6v-4l4-4-4-4V2zm2 2v1.2L11.2 8h1.6L16 5.2V4H8zm8 16v-1.2L12.8 16h-1.6L8 18.8V20h8z"/></svg>
-              <span>تایمر</span>
-            </button>
-          </div>
-        </div>
-      `;
-    },
-
-    refreshUI() {
-      const root = document.getElementById('xmClockRootContainer');
-      if (!root) return;
-      const isInsideToolkit = Boolean(root.closest('#proToolPane-timer'));
-      root.outerHTML = this.buildInnerHTML(!isInsideToolkit);
-    },
-
-    openModal(initialTab = 'alarm') {
-      this.activeTab = initialTab;
-      openModal(this.buildInnerHTML(true));
-    }
-  };
-
-  XiaomiClockApp.init();
-
-  // اتصال جعبه ابزار معلم (تب تایمر و زنگ کلاس) و مرکز اعلانات به ساعت و هشدار شیائومی
-  const _origOpenTeacherProToolkitModalV84 = window.openTeacherProToolkitModal;
-  window.openTeacherProToolkitModal = function(activeTab = 'calc') {
-    if (typeof _origOpenTeacherProToolkitModalV84 === 'function') {
-      _origOpenTeacherProToolkitModalV84(activeTab);
-    }
-    const timerPane = document.getElementById('proToolPane-timer');
-    if (timerPane) {
-      XiaomiClockApp.activeTab = 'alarm';
-      timerPane.innerHTML = XiaomiClockApp.buildInnerHTML(false);
-    }
-  };
-
-  const _origOpenNotificationsCenterModalV84 = window.openNotificationsCenterModal;
-  window.openNotificationsCenterModal = function() {
-    if (typeof _origOpenNotificationsCenterModalV84 === 'function') {
-      _origOpenNotificationsCenterModalV84();
-    }
-    const sheet = document.getElementById('sheet');
-    if (sheet && !sheet.querySelector('#xmAlarmQuickLaunchBanner')) {
-      const banner = document.createElement('div');
-      banner.id = 'xmAlarmQuickLaunchBanner';
-      banner.style.cssText = 'background:#000000;color:#FFFFFF;border-radius:16px;padding:10px 14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid #2C2C2E';
-      banner.innerHTML = `
-        <div>
-          <b style="font-size:13px;color:#FFFFFF">⏰ ساعت و هشدار هوشمند شیائومی</b>
-          <div style="font-size:11px;color:#A1A1AA;margin-top:2px">${esc(XiaomiClockApp.computeNextCountdownText())}</div>
-        </div>
-        <button type="button" style="background:#3B82F6;color:#FFFFFF;border:none;border-radius:999px;padding:7px 14px;font-size:12px;font-weight:bold;cursor:pointer" onclick="XiaomiClockApp.openModal('alarm')">باز کردن هشدار ›</button>
-      `;
-      const head = sheet.querySelector('.sheethead');
-      if (head && head.nextSibling) {
-        sheet.insertBefore(banner, head.nextSibling);
-      } else {
-        sheet.appendChild(banner);
-      }
-    }
-  };
-
-  // افزودن دکمه مستقیم «⏰ هشدار شیائومی» به نوار ابزار سریع داشبورد
-  const injectV84QuickButtons = () => {
-    try {
-      if (window.TeachAssistant && typeof TeachAssistant.updateTeachAiStatusUI === 'function') {
-        TeachAssistant.updateTeachAiStatusUI();
-      }
-      const dashStrip = document.getElementById('dashQuickStrip');
-      if (dashStrip && !document.getElementById('dashXiaomiAlarmPill')) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.id = 'dashXiaomiAlarmPill';
-        btn.className = 'dash-q-pill';
-        btn.style.cssText = 'background:#18181B;color:#FFFFFF;border-color:#3F3F46;font-weight:900';
-        btn.innerHTML = '⏰ هشدار و تایمر شیائومی';
-        btn.onclick = () => XiaomiClockApp.openModal('alarm');
-        dashStrip.insertBefore(btn, dashStrip.firstElementChild);
-      }
-    } catch (_) {}
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(injectV84QuickButtons, 180));
-  } else {
-    setTimeout(injectV84QuickButtons, 180);
-  }
+  if (window.TeachAssistant && typeof TeachAssistant.updateTeachAiStatusUI === 'function') { setTimeout(() => TeachAssistant.updateTeachAiStatusUI(), 180); }
 })();
 </script>
 <!-- ==================== END V8.4.0 PRO MASTER UPGRADE ==================== -->
+
+<!-- ==================== START V8.6.0 ORIGINAL PRO ==================== -->
+<style id="v86OriginalProStyle">
+/* ==========================================================================================
+   ۱. زبان بصری اورجینال «دانش‌آموز من» با الهام از گوی ۳بعدی براق (Squircle Orb)
+   دقیقاً مطابق شکل دورخط‌کشیده‌شده توسط کاربر در تصویر ارسالی (IMG_20261105_120936_892.jpg)
+   ========================================================================================== */
+:root {
+  --orb-grad-orange: radial-gradient(circle at 30% 24%, #FFFFFF 0%, #FFF7ED 40%, #FFEDD5 76%, #FED7AA 100%);
+  --orb-grad-emerald: radial-gradient(circle at 30% 24%, #FFFFFF 0%, #ECFDF5 40%, #D1FAE5 76%, #A7F3D0 100%);
+  --orb-grad-blue: radial-gradient(circle at 30% 24%, #FFFFFF 0%, #EFF6FF 40%, #DBEAFE 76%, #BFDBFE 100%);
+  --orb-grad-purple: radial-gradient(circle at 30% 24%, #FFFFFF 0%, #FAF5FF 40%, #F3E8FF 76%, #E9D5FF 100%);
+  --orb-grad-rose: radial-gradient(circle at 30% 24%, #FFFFFF 0%, #FFF1F2 40%, #FFE4E6 76%, #FECDD3 100%);
+  --orb-shadow-orange: 0 4px 12px rgba(234, 88, 12, 0.18), inset 0 2px 4px rgba(255, 255, 255, 0.95), inset 0 -2px 4px rgba(234, 88, 12, 0.12);
+}
+
+/* آیکون‌های ۳بعدی براق در هدر بالا، کارت‌های مدارس/کلاس‌ها، داشبورد و تنظیمات */
+.topbar .iconbtn,
+.school-icon,
+.siren-rotating-orb,
+.report-luxury-orb,
+.dam-3d-orb {
+  border-radius: 13px !important;
+  background: var(--orb-grad-orange) !important;
+  border: 1.5px solid #FDBA74 !important;
+  box-shadow: var(--orb-shadow-orange) !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.16s ease !important;
+}
+.topbar .iconbtn:active,
+.dam-3d-orb:active {
+  transform: scale(0.92) !important;
+}
+
+.dam-3d-orb {
+  width: 40px !important;
+  height: 40px !important;
+  flex: 0 0 40px !important;
+  font-size: 19px !important;
+}
+.dam-3d-orb.orb-emerald {
+  background: var(--orb-grad-emerald) !important;
+  border-color: #6EE7B7 !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.18), inset 0 2px 4px rgba(255, 255, 255, 0.95) !important;
+}
+.dam-3d-orb.orb-blue {
+  background: var(--orb-grad-blue) !important;
+  border-color: #93C5FD !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.18), inset 0 2px 4px rgba(255, 255, 255, 0.95) !important;
+}
+.dam-3d-orb.orb-purple {
+  background: var(--orb-grad-purple) !important;
+  border-color: #D8B4FE !important;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.18), inset 0 2px 4px rgba(255, 255, 255, 0.95) !important;
+}
+.dam-3d-orb.orb-rose {
+  background: var(--orb-grad-rose) !important;
+  border-color: #FDA4AF !important;
+  box-shadow: 0 4px 12px rgba(244, 63, 94, 0.18), inset 0 2px 4px rgba(255, 255, 255, 0.95) !important;
+}
+
+/* اصلاح متن دو کارت بالای داشبورد تا هرگز با ... بریده نشود (IMG_20261105_120936_892.jpg) */
+.v83-luxury-Quick-dock {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  margin-bottom: 10px !important;
+}
+.v83-luxury-card-btn {
+  padding: 9px 10px !important;
+  gap: 8px !important;
+  border-radius: 18px !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF7ED 100%) !important;
+  border: 1.5px solid #FED7AA !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.08), inset 0 2px 3px #FFFFFF !important;
+}
+.v83-luxury-card-text {
+  overflow: visible !important;
+  min-width: 0 !important;
+}
+.v83-luxury-card-text b {
+  font-size: 11.5px !important;
+  font-weight: 900 !important;
+  color: #9A3412 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 1.35 !important;
+}
+.v83-luxury-card-text span {
+  font-size: 9.8px !important;
+  color: #64748B !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* دکمه‌های کپسولی نوار سریع داشبورد با حس ۳بعدی براق */
+#dashQuickStrip .dash-q-pill {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF7ED 100%) !important;
+  border: 1.5px solid #FDBA74 !important;
+  color: #9A3412 !important;
+  box-shadow: 0 3px 9px rgba(234, 88, 12, 0.09), inset 0 1.5px 2px #FFFFFF !important;
+  font-weight: 800 !important;
+}
+
+/* مخفی‌سازی کامل تمام دکمه‌های جعبه ابزار موقت در سراسر برنامه (تا بعداً جدا طراحی شود) */
+button[onclick*="openTeacherProToolkitModal"],
+#dashXiaomiAlarmPill,
+#xmAlarmQuickLaunchBanner,
+#miHyperQuickSwitcherBar {
+  display: none !important;
+}
+
+/* ==========================================================================================
+   ۲. پوسته شب مشکی خالص AMOLED (data-theme-mode="amoled-black") و پوسته روز مرواریدی (data-theme-mode="pearl-light")
+   ========================================================================================== */
+body[data-theme-mode="amoled-black"] {
+  --bg: #000000 !important;
+  --bg-main: #000000 !important;
+  --bg-card: #161618 !important;
+  --card: #161618 !important;
+  --bg-panel: #222226 !important;
+  --panel: #222226 !important;
+  --text: #FFFFFF !important;
+  --text-main: #FFFFFF !important;
+  --muted: #9CA3AF !important;
+  --text-muted: #9CA3AF !important;
+  --primary: #F97316 !important;
+  --primary2: #FB923C !important;
+  --primary-dark: #FDBA74 !important;
+  --primary-light: rgba(249, 115, 22, 0.16) !important;
+  --primary-border: rgba(249, 115, 22, 0.38) !important;
+  --border: #27272A !important;
+  --shadow: 0 8px 26px rgba(0, 0, 0, 0.75) !important;
+  background: #000000 !important;
+  background-image: none !important;
+  color: #FFFFFF !important;
+}
+body[data-theme-mode="amoled-black"] #cyberParticleCanvas {
+  display: none !important;
+}
+body[data-theme-mode="amoled-black"] .topbar {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border-bottom: 1px solid #222226 !important;
+  box-shadow: none !important;
+}
+body[data-theme-mode="amoled-black"] .bottomnav {
+  background: rgba(10, 10, 12, 0.96) !important;
+  border-top: 1px solid #222226 !important;
+}
+body[data-theme-mode="amoled-black"] .bottomnav button {
+  color: #9CA3AF !important;
+}
+body[data-theme-mode="amoled-black"] .bottomnav button.active {
+  color: #FB923C !important;
+  background: #222226 !important;
+  border-color: #3F3F46 !important;
+}
+body[data-theme-mode="amoled-black"] .card,
+body[data-theme-mode="amoled-black"] .stat,
+body[data-theme-mode="amoled-black"] .stu-card,
+body[data-theme-mode="amoled-black"] .v83-luxury-card-btn,
+body[data-theme-mode="amoled-black"] .dignity-charter-banner,
+body[data-theme-mode="amoled-black"] .auto-ai-master-banner,
+body[data-theme-mode="amoled-black"] #teachView .teach-workbench-tabs,
+body[data-theme-mode="amoled-black"] #teacherPdfStage,
+body[data-theme-mode="amoled-black"] .jarvis-command-deck,
+body[data-theme-mode="amoled-black"] .dam-settings-island {
+  background: #161618 !important;
+  border: 1px solid #27272A !important;
+  box-shadow: none !important;
+  color: #FFFFFF !important;
+}
+body[data-theme-mode="amoled-black"] .v83-luxury-card-text b,
+body[data-theme-mode="amoled-black"] .stu-card b,
+body[data-theme-mode="amoled-black"] .stat strong,
+body[data-theme-mode="amoled-black"] .brand b,
+body[data-theme-mode="amoled-black"] h1,
+body[data-theme-mode="amoled-black"] h2,
+body[data-theme-mode="amoled-black"] h3 {
+  color: #FFFFFF !important;
+}
+body[data-theme-mode="amoled-black"] .v83-luxury-card-text span,
+body[data-theme-mode="amoled-black"] .stat span,
+body[data-theme-mode="amoled-black"] .muted,
+body[data-theme-mode="amoled-black"] .subtitle {
+  color: #9CA3AF !important;
+}
+body[data-theme-mode="amoled-black"] #dashQuickStrip .dash-q-pill,
+body[data-theme-mode="amoled-black"] .chip {
+  background: #1E1E22 !important;
+  border-color: #3F3F46 !important;
+  color: #FDBA74 !important;
+  box-shadow: none !important;
+}
+body[data-theme-mode="amoled-black"] .topbar .iconbtn,
+body[data-theme-mode="amoled-black"] .school-icon,
+body[data-theme-mode="amoled-black"] .siren-rotating-orb,
+body[data-theme-mode="amoled-black"] .report-luxury-orb,
+body[data-theme-mode="amoled-black"] .dam-3d-orb {
+  background: radial-gradient(circle at 30% 24%, #3F3F46 0%, #27272A 55%, #18181B 100%) !important;
+  border-color: #F97316 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), inset 0 1.5px 3px rgba(255, 255, 255, 0.22) !important;
+}
+body[data-theme-mode="amoled-black"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+body[data-theme-mode="amoled-black"] select,
+body[data-theme-mode="amoled-black"] textarea,
+body[data-theme-mode="amoled-black"] .searchbox {
+  background: #222226 !important;
+  border: 1px solid #3F3F46 !important;
+  color: #FFFFFF !important;
+}
+body[data-theme-mode="amoled-black"] #modal #sheet {
+  background: #141417 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #27272A !important;
+}
+
+/* ==========================================================================================
+   ۳. تنظیمات یکپارچه تمام بخش‌های برنامه (به سبک تنظیمات گوشی با آیکون‌های ۳بعدی براق)
+   ========================================================================================== */
+.dam-settings-wrap {
+  padding: 4px 2px 24px;
+  direction: rtl;
+}
+.dam-settings-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 4px 12px;
+}
+.dam-settings-main-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--text);
+  margin: 0;
+}
+.dam-settings-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--primary-border);
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.dam-settings-search input {
+  border: none !important;
+  background: transparent !important;
+  width: 100%;
+  height: 100%;
+  font-size: 13px;
+  color: var(--text) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.dam-settings-bento {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.dam-bento-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--primary-border);
+  border-radius: 20px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.dam-settings-sec-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 12px 6px 6px;
+}
+.dam-settings-island {
+  background: var(--bg-card);
+  border: 1.5px solid var(--primary-border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+.dam-settings-row {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 11px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--text);
+  font-family: inherit;
+  text-align: right;
+}
+.dam-settings-row + .dam-settings-row {
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+.dam-settings-row-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.dam-settings-row-texts b {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--text);
+}
+.dam-settings-row-texts span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.dam-settings-row-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+/* کلید کپسولی نرم (به سبک تنظیمات گوشی) */
+.dam-capsule-switch {
+  width: 48px;
+  height: 26px;
+  border-radius: 999px;
+  background: #CBD5E1;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border: none;
+  padding: 0;
+  flex-shrink: 0;
+}
+.dam-capsule-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.dam-capsule-switch.on {
+  background: #EA580C;
+}
+.dam-capsule-switch.on::after {
+  transform: translateX(-22px);
+}
+
+/* ==========================================================================================
+   ۴. اصلاح فیزیک اسکرول و زوم نرم بخش آموزش (#teacherPdfStage) دقیقاً مشابه آزمون‌ساز
+   ========================================================================================== */
+#teacherPdfStage {
+  direction: ltr !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+  position: relative !important;
+  text-align: center !important;
+}
+#teacherCanvasInner {
+  direction: ltr !important;
+  display: inline-block !important;
+  position: relative !important;
+  transform-origin: 0 0 !important;
+  will-change: width, height !important;
+}
+</style>
+
+<script id="v86OriginalProScript">
+(function() {
+  'use strict';
+
+  /* ==========================================================================================
+     بخش ۱: مدیریت پوسته‌های اورجینال «دانش‌آموز من» (نارنجی اصیل پیش‌فرض + شب مشکی خالص AMOLED + روز روشن)
+     ========================================================================================== */
+  const ORIGINAL_THEMES_V86 = [
+    { id: 'classic-orange', title: '🍊 نارنجی اصیل و گرم (پیش‌فرض)', icon: '🍊', metaColor: '#EA580C' },
+    { id: 'amoled-black', title: '🌑 حالت شب مشکی خالص (AMOLED)', icon: '🌑', metaColor: '#000000' },
+    { id: 'light', title: '☀️ روشن روز (مرواریدی)', icon: '☀️', metaColor: '#F5F6F8' },
+    { id: 'cyber-dark', title: '🌌 سرمه‌ای تیره', icon: '🌌', metaColor: '#050914' },
+    { id: 'cyber-orange', title: '🔥 نارنجی تیره', icon: '🔥', metaColor: '#0C0907' },
+    { id: 'emerald-luxury', title: '🌿 زمردی لوکس', icon: '🌿', metaColor: '#03110E' }
+  ];
+
+  window.setCyberThemeMode = function(mode) {
+    let norm = mode;
+    if (norm === 'dark' || norm === 'hyperos-black') norm = 'amoled-black';
+    if (norm === 'hyperos-light') norm = 'classic-orange';
+    const validIds = ORIGINAL_THEMES_V86.map(x => x.id);
+    if (!validIds.includes(norm)) norm = 'classic-orange';
+
+    document.documentElement.setAttribute('data-theme-mode', norm);
+    document.body.setAttribute('data-theme-mode', norm);
+    document.body.classList.remove(
+      'dark',
+      'light-mode',
+      'theme-classic-orange',
+      'theme-cyber-orange',
+      'theme-emerald-luxury',
+      'theme-royal-galaxy',
+      'theme-cyber-dark',
+      'theme-amoled-black'
+    );
+
+    const isLight = (norm === 'classic-orange' || norm === 'light');
+    if (norm === 'classic-orange') {
+      document.body.classList.add('theme-classic-orange');
+    } else if (norm === 'amoled-black') {
+      document.body.classList.add('dark', 'theme-amoled-black');
+    } else if (norm === 'light') {
+      document.body.classList.add('light-mode');
+    } else if (norm === 'cyber-dark') {
+      document.body.classList.add('dark', 'theme-cyber-dark');
+    } else if (norm === 'cyber-orange') {
+      document.body.classList.add('dark', 'theme-cyber-orange');
+    } else if (norm === 'emerald-luxury') {
+      document.body.classList.add('dark', 'theme-emerald-luxury');
+    }
+
+    try {
+      localStorage.setItem('danesh_theme_v5', norm);
+      localStorage.setItem('danesh_theme', isLight ? 'light' : 'dark');
+    } catch (_) {}
+
+    const tMeta = document.querySelector('meta[name="theme-color"]');
+    const info = ORIGINAL_THEMES_V86.find(x => x.id === norm) || ORIGINAL_THEMES_V86[0];
+    if (tMeta) tMeta.setAttribute('content', info.metaColor);
+
+    const btn = document.getElementById('themeToggleBtn');
+    if (btn) {
+      btn.textContent = info.icon;
+      btn.title = `پوسته فعلی: ${info.title} (برای تغییر بین نارنجی، شب مشکی و روز لمس کنید)`;
+    }
+
+    document.querySelectorAll('#themePickerCardsGrid .theme-pick-card').forEach(card => {
+      card.classList.toggle('active-theme', card.getAttribute('data-theme-id') === norm);
+    });
+    const nightSwitch = document.getElementById('damNightBlackToggleBtn');
+    if (nightSwitch) {
+      nightSwitch.classList.toggle('on', norm === 'amoled-black');
+    }
+  };
+
+  window.toggleTheme = function() {
+    const cur = localStorage.getItem('danesh_theme_v5') || 'classic-orange';
+    const order = ['classic-orange', 'amoled-black', 'light'];
+    const idx = order.indexOf(cur);
+    const nextId = order[(idx + 1) % order.length];
+    const info = ORIGINAL_THEMES_V86.find(x => x.id === nextId) || ORIGINAL_THEMES_V86[0];
+    window.setCyberThemeMode(nextId);
+    toast(`پوسته «${info.title}» فعال شد ✨`);
+  };
+
+
+  /* ==========================================================================================
+     بخش ۲: رفع قطعی مشکل ورق‌خوردن صفحه در حالت زوم بخش آموزش (#teachView) + زوم نرم به سبک آزمون‌ساز
+     - وقتی کاربر ۲انگشتی زوم می‌کند یا وقتی صفحه بزرگ‌نمایی شده است (scale > 1.02)، کشیدن دست فقط صفحه را نرم جابه‌جا می‌کند و هرگز به صفحه بعد یا قبل نمی‌رود!
+     ========================================================================================== */
+  window._pdfPinchOrZoomActiveUntil = 0;
+  window._ignoreStageSwipeTurn = false;
+
+  const isTeachPdfZoomedIn = function() {
+    const stage = document.getElementById('teacherPdfStage');
+    const sc = (stage && typeof stage._getZoomScale === 'function')
+      ? stage._getZoomScale()
+      : (Number(window._teacherPdfZoom) || 1);
+    if (sc > 1.02) return true;
+    if (stage && stage.scrollWidth > stage.clientWidth + 14) return true;
+    return false;
+  };
+
+  const installTeachPdfZoomAndSwipeGuard = function() {
+    const stage = document.getElementById('teacherPdfStage');
+    if (!stage || stage._boundV86ZoomSwipeGuard) return;
+    stage._boundV86ZoomSwipeGuard = true;
+
+    let gestureHadMultiTouch = false;
+
+    // رویدادهای فاز Capture روی #teacherPdfStage قبل از هر شنونده دیگری اجرا می‌شوند
+    stage.addEventListener('touchstart', (ev) => {
+      if (ev.touches.length >= 2) {
+        gestureHadMultiTouch = true;
+        window._pdfPinchOrZoomActiveUntil = Date.now() + 900;
+        window._ignoreStageSwipeTurn = true;
+      } else if (isTeachPdfZoomedIn()) {
+        window._ignoreStageSwipeTurn = true;
+      }
+    }, { capture: true, passive: true });
+
+    stage.addEventListener('touchmove', (ev) => {
+      if (ev.touches.length >= 2) {
+        gestureHadMultiTouch = true;
+        window._pdfPinchOrZoomActiveUntil = Date.now() + 900;
+        window._ignoreStageSwipeTurn = true;
+      } else if (gestureHadMultiTouch || isTeachPdfZoomedIn()) {
+        window._ignoreStageSwipeTurn = true;
+      }
+    }, { capture: true, passive: true });
+
+    stage.addEventListener('touchend', (ev) => {
+      const lockSwipe = window.getSectionPref ? window.getSectionPref('teach_lock_swipe_on_zoom', true) : true;
+      if (
+        gestureHadMultiTouch ||
+        Date.now() < window._pdfPinchOrZoomActiveUntil ||
+        (lockSwipe && isTeachPdfZoomedIn())
+      ) {
+        window._ignoreStageSwipeTurn = true;
+        // متوقف کردن شنونده ورق‌زدن در فاز حبابی تا صفحه عوض نشود
+        ev.stopImmediatePropagation();
+      }
+      if (!ev.touches || ev.touches.length === 0) {
+        setTimeout(() => {
+          gestureHadMultiTouch = false;
+          window._ignoreStageSwipeTurn = false;
+        }, 120);
+      }
+    }, { capture: true, passive: true });
+  };
+
+  if (window.TeachAssistant) {
+    const _origChangeStudyPageV86 = TeachAssistant.changeStudyPage.bind(TeachAssistant);
+    TeachAssistant.changeStudyPage = function(delta) {
+      if (window._ignoreStageSwipeTurn || Date.now() < window._pdfPinchOrZoomActiveUntil) {
+        return;
+      }
+      return _origChangeStudyPageV86(delta);
+    };
+
+    // بازنویسی زوم کتاب در بخش آموزش با الگوریتم نرم و روان آزمون‌ساز (ExamApp)
+    TeachAssistant.attachSmoothExamStyleZoom = function(stage, inner, canvas, annotCanvas, baseW, cssW, cssH, zoomLbl) {
+      if (!stage || !inner || !canvas) return;
+      const ratioHW = (cssH && cssW) ? (cssH / cssW) : 1.35;
+      let rafId = null;
+
+      window.attachProPinchZoomAndPan(stage, inner, {
+        mode: 'canvas-width',
+        initialScale: Number(window._teacherPdfZoom) || 1.0,
+        minScale: 1.0,
+        maxScale: 3.5,
+        shouldIgnore: () => !!this._annotMode,
+        onZoomChange: (sc) => {
+          window._teacherPdfZoom = sc <= 1.02 ? 0 : sc;
+          if (sc > 1.02) {
+            window._pdfPinchOrZoomActiveUntil = Date.now() + 600;
+          }
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(() => {
+            const newW = Math.round(baseW * sc);
+            const newH = Math.round(newW * ratioHW);
+            inner.style.width = newW + 'px';
+            inner.style.height = newH + 'px';
+            canvas.style.width = newW + 'px';
+            canvas.style.height = newH + 'px';
+            if (annotCanvas) {
+              annotCanvas.style.width = newW + 'px';
+              annotCanvas.style.height = newH + 'px';
+            }
+            if (zoomLbl) {
+              zoomLbl.textContent = sc > 1.02 ? (fa(Math.round(sc * 100)) + '٪') : '📐 متناسب';
+            }
+          });
+        }
+      });
+    };
+
+    const _origRenderStudyPdfV86 = TeachAssistant.renderStudyPdf.bind(TeachAssistant);
+    TeachAssistant.renderStudyPdf = async function() {
+      await _origRenderStudyPdfV86();
+      installTeachPdfZoomAndSwipeGuard();
+      const stage = document.getElementById('teacherPdfStage');
+      const inner = document.getElementById('teacherCanvasInner');
+      const canvas = document.getElementById('teacherPdfCanvas');
+      const annotCanvas = document.getElementById('teacherAnnotCanvas');
+      const zoomLbl = document.getElementById('teacherPdfZoomLabel');
+      if (stage && inner && canvas) {
+        const baseW = inner._baseCssWidth || Math.max(260, Math.min((stage.clientWidth || 350) - 18, 345));
+        const cssW = parseInt(canvas.style.width, 10) || baseW;
+        const cssH = parseInt(canvas.style.height, 10) || Math.round(baseW * 1.35);
+        this.attachSmoothExamStyleZoom(stage, inner, canvas, annotCanvas, baseW, cssW, cssH, zoomLbl);
+      }
+    };
+  }
+
+
+  /* ==========================================================================================
+     بخش ۳: مرکز تنظیمات جامع و تفکیک‌شده برای تمام بخش‌های برنامه (شبیه تنظیمات گوشی با آیکون‌های ۳بعدی براق)
+     ========================================================================================== */
+  const SEC_PREFS_KEY = 'danesh_section_prefs_v86';
+  const DEFAULT_SEC_PREFS = {
+    schools_show_photos: true,
+    schools_show_birthdays_home: true,
+    schools_show_absences_home: true,
+    schools_show_beacon_guide: true,
+    teach_auto_solve_page_turn: false,
+    teach_lock_swipe_on_zoom: true,
+    teach_hd_pdf_render: true,
+    exam_default_cols: 2,
+    exam_default_score: 20,
+    exam_show_header_logo: true,
+    statuses_show_psych_advice: true,
+    statuses_auto_attn_abs_limit: 3
+  };
+
+  window.getSectionPrefsAll = function() {
+    try {
+      const raw = localStorage.getItem(SEC_PREFS_KEY);
+      if (raw) return { ...DEFAULT_SEC_PREFS, ...JSON.parse(raw) };
+    } catch (_) {}
+    return { ...DEFAULT_SEC_PREFS };
+  };
+
+  window.getSectionPref = function(key, fallback = true) {
+    const all = window.getSectionPrefsAll();
+    return all[key] !== undefined ? all[key] : fallback;
+  };
+
+  window.toggleSectionPref = function(key, btnEl = null) {
+    const all = window.getSectionPrefsAll();
+    all[key] = !all[key];
+    try { localStorage.setItem(SEC_PREFS_KEY, JSON.stringify(all)); } catch (_) {}
+    if (btnEl) btnEl.classList.toggle('on', Boolean(all[key]));
+
+    // اعمال آنی تنظیمات روی بخش مربوطه
+    if (key === 'schools_show_photos' && typeof window.toggleListStudentPhotos === 'function') {
+      try { localStorage.setItem('danesh_hide_list_photos', all[key] ? '0' : '1'); } catch (_) {}
+    }
+    if (key === 'teach_auto_solve_page_turn' && window.TeachAssistant) {
+      TeachAssistant.toggleAutoSolveOnPageTurn(Boolean(all[key]));
+    }
+    if (key === 'exam_default_cols' && window.ExamApp) {
+      ExamApp.setColumns(Number(all[key]) || 2);
+    }
+    toast('تنظیمات ذخیره و اعمال شد ✅');
+  };
+
+  window.setSectionPrefValue = function(key, val) {
+    const all = window.getSectionPrefsAll();
+    all[key] = val;
+    try { localStorage.setItem(SEC_PREFS_KEY, JSON.stringify(all)); } catch (_) {}
+    if (key === 'exam_default_cols' && window.ExamApp) {
+      ExamApp.setColumns(Number(val) || 2);
+    }
+    if (key === 'exam_default_score' && window.ExamApp) {
+      ExamApp.state.targetScore = Number(val) || 20;
+      ExamApp.save();
+    }
+    toast('تنظیمات ذخیره شد ✅');
+  };
+
+  window.openSectionSettingsModal = function(sectionId) {
+    const prefs = window.getSectionPrefsAll();
+
+    if (sectionId === 'schools') {
+      openModal(formHeader('🏫 تنظیمات مدارس، کلاس‌ها و صفحه خانه') + `
+        <div class="dam-settings-island">
+          <div class="dam-settings-row" onclick="toggleSectionPref('schools_show_photos', this.querySelector('.dam-capsule-switch'))">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb">🖼️</span>
+              <div class="dam-settings-row-texts">
+                <b>نمایش عکس دانش‌آموزان در لیست کلاسی</b>
+                <span>نمایش آواتار و تصویر دانش‌آموز در ردیف‌های لیست سریع</span>
+              </div>
+            </div>
+            <button type="button" class="dam-capsule-switch ${prefs.schools_show_photos ? 'on' : ''}"></button>
+          </div>
+
+          <div class="dam-settings-row" onclick="toggleSectionPref('schools_show_beacon_guide', this.querySelector('.dam-capsule-switch'))">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-rose">🚨</span>
+              <div class="dam-settings-row-texts">
+                <b>نشانگر گردون راهنمای کلاس‌داری</b>
+                <span>نمایش دکمه یادآور کرامت انسانی در بالای لیست هر کلاس</span>
+              </div>
+            </div>
+            <button type="button" class="dam-capsule-switch ${prefs.schools_show_beacon_guide ? 'on' : ''}"></button>
+          </div>
+
+          <div class="dam-settings-row" onclick="toggleSectionPref('schools_show_birthdays_home', this.querySelector('.dam-capsule-switch'))">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-purple">🎂</span>
+              <div class="dam-settings-row-texts">
+                <b>نمایش تولدهای نزدیک در صفحه خانه</b>
+                <span>یادآوری خودکار تولد دانش‌آموزان در داشبورد</span>
+              </div>
+            </div>
+            <button type="button" class="dam-capsule-switch ${prefs.schools_show_birthdays_home ? 'on' : ''}"></button>
+          </div>
+
+          <div class="dam-settings-row" onclick="closeModal();openExcelPasteImportModal()">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-emerald">📸</span>
+              <div class="dam-settings-row-texts">
+                <b>ورود دسته‌جمعی اسامی با عکس یا لیست متنی</b>
+                <span>اسکن لیست کلاسی با هوش مصنوعی و ایجاد خودکار کلاس</span>
+              </div>
+            </div>
+            <span class="dam-settings-row-left">باز کردن ‹</span>
+          </div>
+
+          <div class="dam-settings-row" onclick="closeModal();openKeepsakeSchoolsGalleryModal()">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb">🏛️</span>
+              <div class="dam-settings-row-texts">
+                <b>گنجینه یادگاری مدارس و سال‌های تحصیلی</b>
+                <span>آرشیو خاطرات و کلاس‌های سال‌های گذشته</span>
+              </div>
+            </div>
+            <span class="dam-settings-row-left">مشاهده ‹</span>
+          </div>
+        </div>
+        <div class="formactions"><button type="button" class="btn gray" onclick="closeModal()">بستن</button></div>
+      `);
+      return;
+    }
+
+    if (sectionId === 'teach') {
+      const curKey = window.ExamApp?.state?.apiKey || '';
+      openModal(formHeader('📖 تنظیمات بخش آموزش، کتاب‌خوان و تخته هوشمند') + `
+        <div class="dam-settings-island">
+          <div class="dam-settings-row" onclick="toggleSectionPref('teach_lock_swipe_on_zoom', this.querySelector('.dam-capsule-switch'))">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-blue">🔍</span>
+              <div class="dam-settings-row-texts">
+                <b>جلوگیری از ورق‌خوردن ناخواسته در حالت زوم</b>
+                <span>وقتی روی صفحه کتاب زوم کرده‌اید، حرکت انگشت فقط صفحه را نرم جابه‌جا می‌کند و صفحه عوض نمی‌شود</span>
+              </div>
+            </div>
+            <button type="button" class="dam-capsule-switch ${prefs.teach_lock_swipe_on_zoom ? 'on' : ''}"></button>
+          </div>
+
+          <div class="dam-settings-row" onclick="toggleSectionPref('teach_auto_solve_page_turn', this.querySelector('.dam-capsule-switch'))">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb">⚡</span>
+              <div class="dam-settings-row-texts">
+                <b>حل خودکار فعالیت‌ها به محض ورق‌زدن صفحه</b>
+                <span>آماده‌سازی خودکار پاسخ تمرین‌ها و سوالات هنگام تغییر صفحه کتاب</span>
+              </div>
+            </div>
+            <button type="button" class="dam-capsule-switch ${prefs.teach_auto_solve_page_turn ? 'on' : ''}"></button>
+          </div>
+
+          <div class="dam-settings-row" onclick="toggleSectionPref('teach_hd_pdf_render', this.querySelector('.dam-capsule-switch'))">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-emerald">✨</span>
+              <div class="dam-settings-row-texts">
+                <b>رندر با وضوح بالا (HD) مشابه آزمون‌ساز</b>
+                <span>شفافیت کامل متون فارسی کتاب درسی در بزرگ‌نمایی‌های بالا</span>
+              </div>
+            </div>
+            <button type="button" class="dam-capsule-switch ${prefs.teach_hd_pdf_render ? 'on' : ''}"></button>
+          </div>
+        </div>
+
+        <div class="card" style="padding:12px">
+          <b style="color:var(--primary);font-size:13px;display:block;margin-bottom:6px">🔑 کلید هوش‌واره مشترک آموزش و آزمون‌ساز:</b>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <input type="text" dir="ltr" id="secTeachApiKeyInp" value="${esc(curKey)}" placeholder="کلید اختصاصی هوش‌واره (اختیاری)..." style="flex:1;font-family:monospace;font-size:12px">
+            <button type="button" class="btn primary btn-sm" onclick="if(window.TeachAssistant)TeachAssistant.saveInlineApiKey(document.getElementById('secTeachApiKeyInp').value);toast('کلید هوش‌واره ذخیره شد ✅')">ذخیره</button>
+          </div>
+        </div>
+        <div class="formactions"><button type="button" class="btn gray" onclick="closeModal()">بستن</button></div>
+      `);
+      return;
+    }
+
+    if (sectionId === 'exam') {
+      openModal(formHeader('💎 تنظیمات آزمون‌ساز، بارم‌بندی و برگه A4') + `
+        <div class="dam-settings-island">
+          <div class="dam-settings-row" style="cursor:default">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb">📐</span>
+              <div class="dam-settings-row-texts">
+                <b>چندستونه بودن پیش‌فرض برگه آزمون A4</b>
+                <span>چیدمان ۱ ستونه، ۲ ستونه یا ۳ ستونه سوالات روی برگه</span>
+              </div>
+            </div>
+            <select style="width:110px;height:34px;font-size:12px" onchange="setSectionPrefValue('exam_default_cols', this.value)">
+              <option value="1" ${Number(prefs.exam_default_cols) === 1 ? 'selected' : ''}>۱ ستونه</option>
+              <option value="2" ${Number(prefs.exam_default_cols) === 2 ? 'selected' : ''}>۲ ستونه</option>
+              <option value="3" ${Number(prefs.exam_default_cols) === 3 ? 'selected' : ''}>۳ ستونه</option>
+            </select>
+          </div>
+
+          <div class="dam-settings-row" style="cursor:default">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-emerald">🎯</span>
+              <div class="dam-settings-row-texts">
+                <b>جمع کل بارم پیش‌فرض آزمون</b>
+                <span>تراز خودکار نمرات سوالات بر اساس این بارم</span>
+              </div>
+            </div>
+            <select style="width:110px;height:34px;font-size:12px" onchange="setSectionPrefValue('exam_default_score', this.value)">
+              <option value="20" ${Number(prefs.exam_default_score) === 20 ? 'selected' : ''}>۲۰ نمره</option>
+              <option value="15" ${Number(prefs.exam_default_score) === 15 ? 'selected' : ''}>۱۵ نمره</option>
+              <option value="10" ${Number(prefs.exam_default_score) === 10 ? 'selected' : ''}>۱۰ نمره</option>
+            </select>
+          </div>
+
+          <div class="dam-settings-row" onclick="closeModal();openTeacherExamResultsManagerModal()">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-purple">📊</span>
+              <div class="dam-settings-row-texts">
+                <b>مدیریت لینک نتایج و کارنامه آزمون‌ها</b>
+                <span>مشاهده و ویرایش نمرات برگه‌های تصحیح‌شده</span>
+              </div>
+            </div>
+            <span class="dam-settings-row-left">باز کردن ‹</span>
+          </div>
+        </div>
+        <div class="formactions"><button type="button" class="btn gray" onclick="closeModal()">بستن</button></div>
+      `);
+      return;
+    }
+
+    if (sectionId === 'statuses') {
+      openModal(formHeader('🚨 تنظیمات پایش وضعیت‌ها و مشاوره کرامت انسانی') + `
+        <div class="dam-settings-island">
+          <div class="dam-settings-row" onclick="toggleSectionPref('statuses_show_psych_advice', this.querySelector('.dam-capsule-switch'))">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-emerald">🌿</span>
+              <div class="dam-settings-row-texts">
+                <b>نمایش راهکار اختصاصی روانشناختی زیر کارت دانش‌آموز</b>
+                <span>توصیه ۲ تا ۳ خطی مبتنی بر کرامت انسانی، احترام، توجه و آرامش</span>
+              </div>
+            </div>
+            <button type="button" class="dam-capsule-switch ${prefs.statuses_show_psych_advice ? 'on' : ''}"></button>
+          </div>
+
+          <div class="dam-settings-row" onclick="closeModal();openClassroomGuidanceModal()">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-rose">🚨</span>
+              <div class="dam-settings-row-texts">
+                <b>راهنمای جامع برخورد علمی با انواع کلاس‌ها</b>
+                <span>راهکارهای کلاس خوب، شلوغ، خسته یا ناهنجار</span>
+              </div>
+            </div>
+            <span class="dam-settings-row-left">مشاهده ‹</span>
+          </div>
+
+          <div class="dam-settings-row" onclick="closeModal();openQuickAssignAttentionModal()">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-purple">➕</span>
+              <div class="dam-settings-row-texts">
+                <b>ثبت سریع مورد نیازمند توجه یا بیماری</b>
+                <span>افزودن وضعیت درسی، انضباطی، پزشکی، غیبت یا مشاوره</span>
+              </div>
+            </div>
+            <span class="dam-settings-row-left">ثبت مورد ‹</span>
+          </div>
+        </div>
+        <div class="formactions"><button type="button" class="btn gray" onclick="closeModal()">بستن</button></div>
+      `);
+      return;
+    }
+  };
+
+  window.filterOriginalSettingsRows = function(query) {
+    const q = String(query || '').trim().toLowerCase();
+    document.querySelectorAll('#tgSettingsHomeWrap .dam-settings-row').forEach(row => {
+      const txt = (row.textContent || '').toLowerCase();
+      row.style.display = (!q || txt.includes(q)) ? 'flex' : 'none';
+    });
+  };
+
+  const buildOriginalPhoneStyleSettings = function() {
+    const homeWrap = document.getElementById('tgSettingsHomeWrap');
+    if (!homeWrap) return;
+
+    const tName = getTeacherName();
+    const curTheme = localStorage.getItem('danesh_theme_v5') || 'classic-orange';
+    const isNightBlack = curTheme === 'amoled-black';
+
+    homeWrap.innerHTML = `
+      <div class="dam-settings-wrap">
+        <div class="dam-settings-header-row">
+          <h1 class="dam-settings-main-title">تنظیمات</h1>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v8.6</span>
+        </div>
+
+        <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
+        <div class="dam-settings-search">
+          <span style="font-size:16px">🔍</span>
+          <input type="text" placeholder="جستجو در تنظیمات همه بخش‌ها..." oninput="filterOriginalSettingsRows(this.value)">
+        </div>
+
+        <!-- دو کارت بالای تنظیمات (پروفایل معلم + حالت شب مشکی / پوسته) -->
+        <div class="dam-settings-bento">
+          <div class="dam-bento-card" onclick="openCloudSettingsSubpage('account')">
+            <div class="dam-3d-orb" style="width:46px!important;height:46px!important;font-size:22px!important">👨‍🏫</div>
+            <div style="margin-top:10px">
+              <b style="font-size:14.5px;display:block;color:var(--text)" id="tgProfileNameText">${esc(tName)}</b>
+              <span style="font-size:11px;color:var(--muted);margin-top:2px;display:block" id="tgProfileMetaText">حساب کاربری و پروفایل دبیر ‹</span>
+            </div>
+          </div>
+
+          <div class="dam-bento-card" onclick="setCyberThemeMode(document.body.getAttribute('data-theme-mode')==='amoled-black'?'classic-orange':'amoled-black')">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span class="dam-3d-orb orb-purple">🌙</span>
+              <button type="button" id="damNightBlackToggleBtn" class="dam-capsule-switch ${isNightBlack ? 'on' : ''}"></button>
+            </div>
+            <div style="margin-top:10px">
+              <b style="font-size:13.5px;display:block;color:var(--text)">حالت شب مشکی</b>
+              <span style="font-size:11px;color:var(--muted);margin-top:2px;display:block">مشکی خالص / نارنجی گرم</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- گروه ۱: تنظیمات اختصاصی هر بخش از برنامه -->
+        <div class="dam-settings-sec-label">تنظیمات بخش‌های برنامه</div>
+        <div class="dam-settings-island">
+          <button type="button" class="dam-settings-row" onclick="openSectionSettingsModal('schools')">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb">🏫</span>
+              <div class="dam-settings-row-texts">
+                <b>مدارس، کلاس‌ها و صفحه خانه</b>
+                <span>عکس‌های لیست کلاسی، ورود دسته‌جمعی اسامی و گنجینه مدارس</span>
+              </div>
+            </div>
+            <div class="dam-settings-row-left"><span>تنظیم ‹</span></div>
+          </button>
+
+          <button type="button" class="dam-settings-row" onclick="openCloudSettingsSubpage('rules')">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-blue">📐</span>
+              <div class="dam-settings-row-texts">
+                <b>نمره‌دهی، فرمول مستمر و ضرایب پایانی</b>
+                <span>تنظیم وزن مستمر، کتبی، مثبت و منفی و کدهای اختصاری</span>
+              </div>
+            </div>
+            <div class="dam-settings-row-left"><span>ضرایب ‹</span></div>
+          </button>
+
+          <button type="button" class="dam-settings-row" onclick="openSectionSettingsModal('teach')">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-emerald">📖</span>
+              <div class="dam-settings-row-texts">
+                <b>آموزش، کتاب‌خوان PDF و تخته هوشمند</b>
+                <span>قفل ورق‌زدن در حالت زوم، حل خودکار صفحه و کلید هوش‌واره</span>
+              </div>
+            </div>
+            <div class="dam-settings-row-left"><span>تنظیم ‹</span></div>
+          </button>
+
+          <button type="button" class="dam-settings-row" onclick="openSectionSettingsModal('exam')">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-purple">💎</span>
+              <div class="dam-settings-row-texts">
+                <b>آزمون‌ساز، چیدمان ستون‌ها و تصحیح</b>
+                <span>تنظیم ۱/۲/۳ ستونه، بارم پیش‌فرض و لینک نتایج آزمون</span>
+              </div>
+            </div>
+            <div class="dam-settings-row-left"><span>تنظیم ‹</span></div>
+          </button>
+
+          <button type="button" class="dam-settings-row" onclick="openSectionSettingsModal('statuses')">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-rose">🚨</span>
+              <div class="dam-settings-row-texts">
+                <b>پایش وضعیت‌ها و مشاوره کرامت انسانی</b>
+                <span>راهکارهای روانشناختی دانش‌آموزان و راهنمای کلاس‌داری</span>
+              </div>
+            </div>
+            <div class="dam-settings-row-left"><span>تنظیم ‹</span></div>
+          </button>
+
+          <button type="button" class="dam-settings-row" onclick="ReportApp.openModal('class')">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb">📊</span>
+              <div class="dam-settings-row-texts">
+                <b>گزارش‌گیری ۴سطحی و انتخاب ستون‌های کارنامه</b>
+                <span>تیک‌زدن ستون‌های دلخواه (تلفن، وضعیت، نام پدر و...)</span>
+              </div>
+            </div>
+            <div class="dam-settings-row-left"><span>باز کردن ‹</span></div>
+          </button>
+        </div>
+
+        <!-- گروه ۲: ظاهر، پشتیبان‌گیری ابری و سیستم -->
+        <div class="dam-settings-sec-label">ظاهر، فضای ابری و سیستم</div>
+        <div class="dam-settings-island">
+          <button type="button" class="dam-settings-row" onclick="openCloudSettingsSubpage('theme')">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb">🎨</span>
+              <div class="dam-settings-row-texts">
+                <b>پوسته‌ها، حالت شب مشکی و انیمیشن‌ها</b>
+                <span>نارنجی اصیل، شب مشکی خالص AMOLED، روز روشن و جلوه‌ها</span>
+              </div>
+            </div>
+            <div class="dam-settings-row-left"><span>پوسته‌ها ‹</span></div>
+          </button>
+
+          <button type="button" class="dam-settings-row" onclick="openCloudSettingsSubpage('data')">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-blue">☁️</span>
+              <div class="dam-settings-row-texts">
+                <b>پشتیبان‌گیری ابری، فایل بکاپ و گاوصندوق</b>
+                <span>ذخیره خودکار عکس‌ها و اطلاعات کلاس‌ها در حافظه امن</span>
+              </div>
+            </div>
+            <div class="dam-settings-row-left"><span>پشتیبان ‹</span></div>
+          </button>
+
+          <button type="button" class="dam-settings-row" onclick="openCloudSettingsSubpage('help')">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-emerald">🛠️</span>
+              <div class="dam-settings-row-texts">
+                <b>عیب‌یاب خودکار و تعمیرکار هوشمند اسامی</b>
+                <span>بررسی سلامت برنامه، حذف اسامی تکراری و راهنمای کامل</span>
+              </div>
+            </div>
+            <div class="dam-settings-row-left"><span>بررسی ‹</span></div>
+          </button>
+
+          <button type="button" class="dam-settings-row" onclick="openCloudSettingsSubpage('about')">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-purple">🎓</span>
+              <div class="dam-settings-row-texts">
+                <b>درباره سامانه «دانش‌آموز من»</b>
+                <span>نسخه 8.6 Pro · اورجینال و اختصاصی</span>
+              </div>
+            </div>
+            <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
+          </button>
+        </div>
+      </div>
+    `;
+
+    // به‌روزرسانی لیست کارت‌های انتخاب پوسته در زیرصفحه ظاهر (setPane-theme)
+    const themeGrid = document.getElementById('themePickerCardsGrid');
+    if (themeGrid) {
+      themeGrid.innerHTML = `
+        <div class="theme-pick-card" data-theme-id="classic-orange" onclick="setCyberThemeMode('classic-orange')">
+          <div>
+            <b style="display:block;font-size:13.5px">🍊 نارنجی اصیل و گرم (پیش‌فرض)</b>
+            <span class="muted" style="font-size:11px">پوسته اختصاصی و محبوب دانش‌آموز من</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#FFF9F2;border-color:#EA580C"></span>
+            <span style="background:#EA580C"></span>
+            <span style="background:#F97316"></span>
+          </div>
+        </div>
+        <div class="theme-pick-card" data-theme-id="amoled-black" onclick="setCyberThemeMode('amoled-black')">
+          <div>
+            <b style="display:block;font-size:13.5px">🌑 حالت شب مشکی خالص (AMOLED)</b>
+            <span class="muted" style="font-size:11px">پس‌زمینه مشکی ۱۰۰٪ خالص با کارت‌های تیره و آرام‌بخش</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#000000;border-color:#F97316"></span>
+            <span style="background:#161618"></span>
+            <span style="background:#F97316"></span>
+          </div>
+        </div>
+        <div class="theme-pick-card" data-theme-id="light" onclick="setCyberThemeMode('light')">
+          <div>
+            <b style="display:block;font-size:13.5px">☀️ روشن روز (مرواریدی)</b>
+            <span class="muted" style="font-size:11px">سفید جزیره‌ای با کنتراست بالا</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#F5F6F8;border-color:#0284C7"></span>
+            <span style="background:#FFFFFF"></span>
+            <span style="background:#0284C7"></span>
+          </div>
+        </div>
+        <div class="theme-pick-card" data-theme-id="cyber-dark" onclick="setCyberThemeMode('cyber-dark')">
+          <div>
+            <b style="display:block;font-size:13.5px">🌌 سرمه‌ای تیره</b>
+            <span class="muted" style="font-size:11px">سرمه‌ای عمیق و فیروزه‌ای</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#050914"></span>
+            <span style="background:#22D3EE"></span>
+            <span style="background:#A78BFA"></span>
+          </div>
+        </div>
+        <div class="theme-pick-card" data-theme-id="emerald-luxury" onclick="setCyberThemeMode('emerald-luxury')">
+          <div>
+            <b style="display:block;font-size:13.5px">🌿 زمردی لوکس و طلایی</b>
+            <span class="muted" style="font-size:11px">سبز زمردی تیره با درخشش طلایی</span>
+          </div>
+          <div class="theme-swatch-dots">
+            <span style="background:#03110E"></span>
+            <span style="background:#10B981"></span>
+            <span style="background:#F59E0B"></span>
+          </div>
+        </div>
+      `;
+    }
+  };
+
+
+  /* ==========================================================================================
+     بخش ۴: راه‌اندازی نسخه 8.6.0 Pro (حفظ خلوتی صفحه خانه + اصلاح متن کارت‌های بالا + فعال‌سازی گارد زوم)
+     ========================================================================================== */
+  const bootOriginalV86 = function() {
+    try {
+      // ۱. حذف دکمه‌های جعبه ابزار موقت از DOM
+      document.querySelectorAll('button[onclick*="openTeacherProToolkitModal"], #dashXiaomiAlarmPill, #miHyperQuickSwitcherBar').forEach(el => el.remove());
+
+      // ۲. اصلاح متن دو کارت بالای صفحه خانه تا کامل و بدون ... خوانده شوند (IMG_20261105_120936_892.jpg)
+      const dock = document.getElementById('v83DashboardLuxuryDock');
+      if (dock) {
+        dock.innerHTML = `
+          <button type="button" class="v83-luxury-card-btn" onclick="openClassroomGuidanceModal()">
+            <span class="siren-rotating-orb"><span class="siren-emoji-core">🚨</span></span>
+            <span class="v83-luxury-card-text">
+              <b>راهنمای کلاس‌داری</b>
+              <span>کرامت انسانی و آرامش کلاس</span>
+            </span>
+          </button>
+          <button type="button" class="v83-luxury-card-btn" onclick="openTransparentReportModal('class')">
+            <span class="report-luxury-orb">📊</span>
+            <span class="v83-luxury-card-text">
+              <b>گزارش‌های ۴سطحی</b>
+              <span>دانش‌آموز · کلاس · مدرسه · کل</span>
+            </span>
+          </button>
+        `;
+      }
+
+      // ۳. ساخت صفحه تنظیمات جامع برای تمام بخش‌ها
+      buildOriginalPhoneStyleSettings();
+
+      // ۴. نصب گارد ضد ورق‌خوردن در حالت زوم بخش آموزش
+      installTeachPdfZoomAndSwipeGuard();
+
+      // ۵. تنظیم پوسته نارنجی اصیل به عنوان پیش‌فرض (مگر اینکه کاربر خودش حالت شب مشکی را انتخاب کرده باشد)
+      let curTheme = localStorage.getItem('danesh_theme_v5') || 'classic-orange';
+      if (curTheme === 'hyperos-light') curTheme = 'classic-orange';
+      if (curTheme === 'hyperos-black') curTheme = 'amoled-black';
+      window.setCyberThemeMode(curTheme);
+    } catch (e) {
+      console.warn('v8.6 init warning:', e);
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bootOriginalV86, 200));
+  } else {
+    setTimeout(bootOriginalV86, 200);
+  }
+})();
+</script>
+<!-- ==================== END V8.6.0 ORIGINAL PRO ==================== -->
 
 </body>
 </html>
