@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v9.2</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.9</span>
         </div>
       </div>
     </div>
@@ -36773,6 +36773,391 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 </script>
 <!-- ==================== END V8.7.0 COUNSELOR PRO ==================== -->
 
+<!-- ==================== START V8.8.0 ANIMATED BORDERS PRO ==================== -->
+<style id="v88AnimatedBordersAllStyle">
+/* ==========================================================================================
+   ۱. موتور چرخش ۳۶۰ درجه حاشیه نوری دور تمام آیتم‌های برنامه (۶۰ فریم بر ثانیه و کاملاً نرم)
+   ========================================================================================== */
+@property --dam-orbit-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: true;
+}
+
+@keyframes damGlobalOrbitSpin360 {
+  0% { --dam-orbit-angle: 0deg; }
+  100% { --dam-orbit-angle: 360deg; }
+}
+
+@keyframes damBorderShimmerPulse {
+  0%, 100% {
+    box-shadow: 0 3px 12px rgba(234, 88, 12, 0.14), 0 0 0 1px rgba(251, 146, 60, 0.28);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.22), 0 0 0 1.5px rgba(249, 115, 22, 0.55);
+  }
+}
+
+:root,
+body {
+  animation: damGlobalOrbitSpin360 2.6s linear infinite !important;
+}
+
+/* ==========================================================================================
+   ۲. حاشیه متحرک و گردون دور تمام کارت‌ها، باکس‌ها، پنل‌ها و کانتینرها در کل برنامه
+   ========================================================================================== */
+.card,
+.box-card,
+.box-card.highlight,
+.stat,
+.stu-card,
+.branch-bar,
+.exam-subnav,
+#teachView .teach-workbench-tabs,
+.jarvis-command-deck,
+.dignity-charter-banner,
+.auto-ai-master-banner,
+.dam-settings-island,
+.dam-bento-card,
+.rep-classlist-card,
+.counselor-ai-result-card,
+.counselor-ai-sec-item,
+.switch-card,
+.theme-pick-card,
+.cmd-palette-item,
+.pdf-page-card,
+.q-item-card,
+.top-icons-capsule,
+.counselor-mode-tabs,
+.rep-v84-col-toggles,
+#teacherPdfStage {
+  border: 2px solid transparent !important;
+  background-image:
+    linear-gradient(180deg, #FFFFFF 0%, #FFFBF5 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #FFEDD5 0deg,
+      #FB923C 65deg,
+      #EA580C 130deg,
+      #EF4444 190deg,
+      #F59E0B 255deg,
+      #FED7AA 315deg,
+      #FFEDD5 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  animation: damGlobalOrbitSpin360 2.6s linear infinite, damBorderShimmerPulse 2.8s ease-in-out infinite !important;
+}
+
+/* ==========================================================================================
+   ۳. حاشیه متحرک و گردون دور تمام دکمه‌های روشن/نرم، کپسول‌ها، تب‌ها، چیپ‌ها و شعبه‌ها
+   ========================================================================================== */
+.btn:not(.primary):not(.green):not(.danger):not(.red),
+.btn.soft,
+.btn.gray,
+.dash-q-pill,
+.chip,
+.branch-pill:not(.active),
+.ex-nav-btn:not(.active),
+.teach-wb-tab:not(.active),
+.set-tab-btn:not(.active),
+.counselor-mode-tab:not(.active),
+.rep-v84-scope-btn:not(.active),
+.rep-v84-col-chip,
+.attn-cat-pill:not(.active),
+.jarvis-metric-btn:not(.active),
+.teach-icon-btn,
+.sb-tool-btn:not(.active),
+.class-side-counselor-btn,
+.class-beacon-reminder-btn,
+.bottomnav button.active,
+.pill-btn:not(.active),
+.speed-opt-btn:not(.selected) {
+  border: 2px solid transparent !important;
+  background-image:
+    linear-gradient(180deg, #FFFFFF 0%, #FFF7ED 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #FED7AA 0deg,
+      #EA580C 75deg,
+      #EF4444 145deg,
+      #F59E0B 215deg,
+      #FB923C 285deg,
+      #FED7AA 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #9A3412 !important;
+  animation: damGlobalOrbitSpin360 2.4s linear infinite !important;
+}
+
+/* ==========================================================================================
+   ۴. حاشیه متحرک طلایی-نقره‌ای دور دکمه‌های نارنجی پررنگ (.btn.primary) و تب‌های فعال (.active)
+   ========================================================================================== */
+.btn.primary,
+.branch-pill.active,
+.ex-nav-btn.active,
+.teach-wb-tab.active,
+.set-tab-btn.active,
+.counselor-mode-tab.active,
+.rep-v84-scope-btn.active,
+.attn-cat-pill.active,
+.jarvis-metric-btn.active,
+.sb-tool-btn.active,
+.pill-btn.active,
+.speed-opt-btn.selected {
+  border: 2.2px solid transparent !important;
+  background-image:
+    linear-gradient(135deg, #EA580C 0%, #F97316 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #9A3412 0deg,
+      #FDE047 80deg,
+      #FFFFFF 150deg,
+      #FDBA74 230deg,
+      #EF4444 300deg,
+      #9A3412 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.28) !important;
+  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
+}
+
+/* ==========================================================================================
+   ۵. حاشیه متحرک دور دکمه‌های سبز (.btn.green) و دکمه‌های قرمز (.btn.danger) و باکس نارنجی بالای آزمون‌ساز
+   ========================================================================================== */
+.btn.green {
+  border: 2.2px solid transparent !important;
+  background-image:
+    linear-gradient(135deg, #059669 0%, #10B981 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #064E3B 0deg,
+      #A7F3D0 80deg,
+      #FFFFFF 150deg,
+      #FDE047 230deg,
+      #34D399 300deg,
+      #064E3B 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.26) !important;
+  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
+}
+
+.btn.danger,
+.btn.red {
+  border: 2.2px solid transparent !important;
+  background-image:
+    linear-gradient(135deg, #DC2626 0%, #EF4444 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #7F1D1D 0deg,
+      #FECACA 85deg,
+      #FFFFFF 155deg,
+      #FDE047 235deg,
+      #7F1D1D 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #FFFFFF !important;
+  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
+}
+
+.exam-top-actions {
+  border: 2.5px solid transparent !important;
+  background-image:
+    linear-gradient(135deg, #C2410C 0%, #EA580C 52%, #F97316 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #7C2D12 0deg,
+      #FDE047 75deg,
+      #FFFFFF 145deg,
+      #FDBA74 225deg,
+      #EF4444 295deg,
+      #7C2D12 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.25) !important;
+  animation: damGlobalOrbitSpin360 2.6s linear infinite !important;
+}
+
+.exam-collapse-btn,
+#topStatsText {
+  border: 1.8px solid transparent !important;
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 237, 213, 0.28)),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      rgba(255,255,255,0.2) 0deg,
+      #FDE047 90deg,
+      #FFFFFF 180deg,
+      #FED7AA 270deg,
+      rgba(255,255,255,0.2) 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================================
+   ۶. حاشیه متحرک دور تمام کادرهای ورودی، انتخابگرها، جعبه‌های جستجو و آیکون‌های هدر
+   ========================================================================================== */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+select,
+textarea,
+.searchbox,
+.dam-settings-search {
+  border: 1.8px solid transparent !important;
+  background-image:
+    linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #FED7AA 0deg,
+      #F97316 80deg,
+      #EA580C 160deg,
+      #F59E0B 240deg,
+      #FED7AA 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  animation: damGlobalOrbitSpin360 2.8s linear infinite !important;
+}
+
+.topbar .logo,
+.topbar .iconbtn,
+.topbar .top-ver-pill {
+  border: 2px solid transparent !important;
+  background-image:
+    radial-gradient(circle at 30% 25%, #FFFFFF 0%, #FFF7ED 55%, #FFEDD5 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #FED7AA 0deg,
+      #EA580C 75deg,
+      #EF4444 150deg,
+      #F59E0B 230deg,
+      #FED7AA 360deg
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
+}
+
+/* ==========================================================================================
+   ۷. تطبیق کامل حاشیه‌های متحرک در حالت شب مشکی خالص (amoled-black)
+   ========================================================================================== */
+body[data-theme-mode="amoled-black"] .card,
+body[data-theme-mode="amoled-black"] .box-card,
+body[data-theme-mode="amoled-black"] .stat,
+body[data-theme-mode="amoled-black"] .stu-card,
+body[data-theme-mode="amoled-black"] .branch-bar,
+body[data-theme-mode="amoled-black"] .exam-subnav,
+body[data-theme-mode="amoled-black"] #teachView .teach-workbench-tabs,
+body[data-theme-mode="amoled-black"] .jarvis-command-deck,
+body[data-theme-mode="amoled-black"] .dignity-charter-banner,
+body[data-theme-mode="amoled-black"] .auto-ai-master-banner,
+body[data-theme-mode="amoled-black"] .dam-settings-island,
+body[data-theme-mode="amoled-black"] .dam-bento-card,
+body[data-theme-mode="amoled-black"] .switch-card,
+body[data-theme-mode="amoled-black"] .theme-pick-card,
+body[data-theme-mode="amoled-black"] .top-icons-capsule,
+body[data-theme-mode="amoled-black"] #teacherPdfStage {
+  background-image:
+    linear-gradient(180deg, #161618 0%, #1C1C1F 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #27272A 0deg,
+      #F97316 75deg,
+      #EF4444 150deg,
+      #F59E0B 230deg,
+      #27272A 360deg
+    ) !important;
+  color: #FFFFFF !important;
+}
+
+body[data-theme-mode="amoled-black"] .btn:not(.primary):not(.green):not(.danger):not(.red),
+body[data-theme-mode="amoled-black"] .btn.soft,
+body[data-theme-mode="amoled-black"] .btn.gray,
+body[data-theme-mode="amoled-black"] .dash-q-pill,
+body[data-theme-mode="amoled-black"] .chip,
+body[data-theme-mode="amoled-black"] .branch-pill:not(.active),
+body[data-theme-mode="amoled-black"] .ex-nav-btn:not(.active),
+body[data-theme-mode="amoled-black"] .teach-wb-tab:not(.active),
+body[data-theme-mode="amoled-black"] .class-side-counselor-btn,
+body[data-theme-mode="amoled-black"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+body[data-theme-mode="amoled-black"] select,
+body[data-theme-mode="amoled-black"] textarea,
+body[data-theme-mode="amoled-black"] .searchbox,
+body[data-theme-mode="amoled-black"] .dam-settings-search {
+  background-image:
+    linear-gradient(180deg, #222226 0%, #18181B 100%),
+    conic-gradient(
+      from var(--dam-orbit-angle),
+      #3F3F46 0deg,
+      #F97316 80deg,
+      #EF4444 160deg,
+      #FBBF24 240deg,
+      #3F3F46 360deg
+    ) !important;
+  color: #FDBA74 !important;
+}
+
+/* ==========================================================================================
+   ۸. رفع بریدگی نوار تب‌های آزمون‌ساز (.exam-subnav) و چیدمان منظم دکمه‌های شعبه (1000186078_8c858a.jpg)
+   ========================================================================================== */
+#examView .exam-subnav {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  overflow: visible !important;
+  padding: 7px !important;
+  border-radius: 16px !important;
+}
+#examView .exam-subnav .ex-nav-btn {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 8px 6px !important;
+  font-size: 11.5px !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  border-radius: 11px !important;
+}
+#examView .exam-subnav .ex-nav-btn:first-child {
+  grid-column: 1 / -1 !important;
+  font-size: 12.5px !important;
+}
+@media (min-width: 680px) {
+  #examView .exam-subnav {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+  #examView .exam-subnav .ex-nav-btn:first-child {
+    grid-column: auto !important;
+  }
+}
+
+#examView .branch-pills-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 5px !important;
+  justify-content: center !important;
+}
+#examView .branch-pills-row .branch-pill {
+  padding: 6px 9px !important;
+  font-size: 11px !important;
+  flex: 1 1 auto !important;
+  text-align: center !important;
+  justify-content: center !important;
+}
+</style>
+<!-- ==================== END V8.8.0 ANIMATED BORDERS PRO ==================== -->
+
 <!-- ==================== START V8.9.0 AI & GRADES PRO ==================== -->
 <style id="v89AiGradesReportStyle">
 /* ۱. استایل بخش اختصاصی «هوش‌واره (AI)» و پیام‌های راهنمای فارسی محدودیت هوش مصنوعی */
@@ -38212,286 +38597,9 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 </script>
 <!-- ==================== END V8.9.0 AI & GRADES PRO ==================== -->
 
-<!-- ==================== START V9.2.0 ULTRA SMOOTH & DEDUP PRO ==================== -->
-<style id="v92UltraSmoothDedupStyle">
-/* ==========================================================================================
-   ۱. بهینه‌سازی فوق‌حرفه‌ای ۶۰/۱۲۰ فریم بر ثانیه (حذف کامل لگ اسکرول و لمس در موبایل)
-   - حذف backdrop-filter: blur از نوارهای ثابت که عامل اصلی کندی اسکرول در مرورگرهای اندروید است
-   - حذف انیمیشن‌های سنگین box-shadow و conic-gradientِ کلپ‌شده و جایگزینی با چرخش سخت‌افزاری خالص (GPU)
-   ========================================================================================== */
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-html, body {
-  scroll-behavior: auto !important;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* حذف کامل بلور پس‌زمینه روی نوارهای چسبان که در موبایل باعث افت شدید فریم هنگام اسکرول می‌شود */
-.topbar,
-.bottomnav,
-.modal,
-.modal-overlay,
-.td-sticky-header-group,
-.att-top-sticky-bar,
-.smartboard-dock,
-.card,
-.detailhead {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-.topbar {
-  background: #FFFDF9 !important;
-  border-bottom: 1.5px solid #FED7AA !important;
-}
-.bottomnav {
-  background: #FFFDF9 !important;
-  border-top: 1.5px solid #FED7AA !important;
-}
-body[data-theme-mode="amoled-black"] .topbar,
-body[data-theme-mode="amoled-black"] .bottomnav {
-  background: #121215 !important;
-  border-color: #27272A !important;
-}
-
-/* حذف کامل انیمیشن‌های ورود کارت و ریپل لمسی که هنگام اسکرول باعث پرش و تاخیر می‌شوند */
-.card,
-.studentcard,
-.stu-card,
-.today-class-card,
-.b-card,
-.stat,
-.box-card,
-.view.active {
-  animation: none !important;
-  transition: none !important;
-  will-change: auto !important;
-  transform: none !important;
-  opacity: 1 !important;
-}
-
-.cyber-ripple-wave,
-.cyber-scan-line,
-#cyberNetworkCanvas {
-  display: none !important;
-}
-
-/* متوقف کردن انیمیشن سنگین box-shadow روی دکمه‌های مشاور کلاس */
-.class-beacon-reminder-btn,
-.class-side-counselor-btn {
-  animation: none !important;
-  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.14) !important;
-}
-
-/* بازطراحی گوی گردون (چراغ گردان و آیکون‌های بخش‌ها) با چرخش ۱۰۰٪ سخت‌افزاری (بدون conic-gradient سنگین) */
-@keyframes damLightRingSpin360 {
-  0% { transform: translateZ(0) rotate(0deg); }
-  100% { transform: translateZ(0) rotate(360deg); }
-}
-
-.siren-rotating-orb,
-.class-beacon-mini-orb,
-.dam-3d-orb,
-.school-icon,
-.dam-settings-row-icon {
-  isolation: isolate !important;
-  position: relative !important;
-  overflow: visible !important;
-  border-radius: 13px !important;
-  background: #FFF7ED !important;
-  border: 1.5px solid #FB923C !important;
-  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.12) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  z-index: 1 !important;
-}
-
-/* حلقه گردون سبک و خوشگل دور آیکون‌ها که فقط با transform: rotate روی GPU می‌چرخد (صفر درصد بار پردازشی!) */
-.siren-rotating-orb::before,
-.class-beacon-mini-orb::before,
-.dam-3d-orb::before,
-.school-icon::before,
-.dam-settings-row-icon::before {
-  content: '' !important;
-  position: absolute !important;
-  inset: 2px !important;
-  border-radius: 50% !important;
-  background: none !important;
-  border: 2px solid rgba(251, 146, 60, 0.18) !important;
-  border-top-color: #EA580C !important;
-  border-right-color: #F97316 !important;
-  animation: damLightRingSpin360 2.6s linear infinite !important;
-  will-change: transform !important;
-  pointer-events: none !important;
-  z-index: -1 !important;
-}
-
-.siren-rotating-orb::after,
-.class-beacon-mini-orb::after,
-.dam-3d-orb::after,
-.school-icon::after,
-.dam-settings-row-icon::after {
-  display: none !important;
-  content: none !important;
-}
-
-.siren-rotating-orb > *,
-.class-beacon-mini-orb > *,
-.dam-3d-orb > *,
-.school-icon > *,
-.dam-settings-row-icon > * {
-  position: relative !important;
-  z-index: 2 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  animation: none !important;
-  transform: none !important;
-}
-
-#examView .exam-subnav {
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 6px !important;
-  overflow: visible !important;
-  padding: 7px !important;
-  border-radius: 16px !important;
-}
-#examView .exam-subnav .ex-nav-btn {
-  width: 100% !important;
-  min-width: 0 !important;
-  margin: 0 !important;
-  padding: 8px 6px !important;
-  font-size: 11.5px !important;
-  justify-content: center !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  border-radius: 11px !important;
-}
-#examView .exam-subnav .ex-nav-btn:first-child {
-  grid-column: 1 / -1 !important;
-  font-size: 12.5px !important;
-}
-@media (min-width: 680px) {
-  #examView .exam-subnav {
-    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-  }
-  #examView .exam-subnav .ex-nav-btn:first-child {
-    grid-column: auto !important;
-  }
-}
-
-/* ==========================================================================================
-   ۲. استایل جدول گزارش استاندارد کلاسی با عرض ۱۰۰٪ تطبیقی (رفع کامل بریدگی انتهای چپ لیست در پرینت/PDF)
-   ========================================================================================== */
-.rep-oneline-top-guide {
-  background: #FFF7ED;
-  border: 1px solid #FDBA74;
-  border-radius: 8px;
-  padding: 4px 8px;
-  margin-bottom: 6px;
-  font-size: 9px;
-  font-weight: 800;
-  color: #7C2D12;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 4px;
-  line-height: 1.35;
-}
-
-.rep-table-scroll-wrap {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.rep-std-table {
-  width: 100% !important;
-  max-width: 100% !important;
-  border-collapse: collapse !important;
-  table-layout: fixed !important;
-  font-size: 9.6px !important;
-  direction: rtl !important;
-}
-.rep-std-table thead th {
-  background: #EA580C;
-  color: #FFFFFF;
-  font-weight: 900;
-  font-size: 8.8px !important;
-  padding: 4px 2px !important;
-  border: 1px solid #C2410C;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 24px;
-  line-height: 1.15;
-}
-.rep-std-student-group {
-  break-inside: avoid !important;
-  page-break-inside: avoid !important;
-}
-.rep-std-main-row {
-  height: 25px !important;
-  max-height: 25px !important;
-  break-inside: avoid !important;
-  page-break-inside: avoid !important;
-}
-.rep-std-main-row td {
-  height: 25px !important;
-  max-height: 25px !important;
-  padding: 2px 3px !important;
-  border: 1px solid #CBD5E1 !important;
-  white-space: nowrap !important;
-  vertical-align: middle !important;
-  line-height: 20px !important;
-  font-size: 9.5px !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-}
-.rep-std-sub-row {
-  height: 18px !important;
-  break-inside: avoid !important;
-  page-break-inside: avoid !important;
-}
-.rep-std-sub-row td {
-  height: 18px !important;
-  padding: 1px 6px !important;
-  background: #FFFDF9 !important;
-  border: 1px solid #CBD5E1 !important;
-  border-top: 1px dashed #FED7AA !important;
-  font-size: 8.2px !important;
-  line-height: 15px !important;
-  color: #334155 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  text-align: right !important;
-  max-width: 0 !important;
-}
-
-@media print {
-  .rep-classlist-card {
-    overflow: visible !important;
-  }
-  .rep-table-scroll-wrap {
-    overflow: visible !important;
-  }
-  .rep-std-table {
-    width: 100% !important;
-    max-width: 100% !important;
-    table-layout: fixed !important;
-  }
-}
-
-/* ==========================================================================================
-   ۳. استایل بخش «انتخاب چندگانه کلاس‌ها» و «دانلود جداگانه در پوشه دلخواه» در استودیو گزارش
-   ========================================================================================== */
+<!-- ==================== START V8.9.5 MASTER EDITION ==================== -->
+<style id="v89MasterAddonStyle">
+/* حفظ ۱۰۰٪ قالب و انیمیشن‌های نسخه ۸.۹ + استایل کادر انتخاب چندگانه کلاس‌ها و دانلود پوشه‌ای در استودیو گزارش */
 .rep-multi-class-box {
   background: #FFFBF5;
   border: 1.5px solid #FDBA74;
@@ -38533,6 +38641,7 @@ body[data-theme-mode="amoled-black"] .bottomnav {
   background: #FFF7ED;
   border-color: #EA580C;
   color: #9A3412;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.14);
 }
 .rep-multi-class-chip input[type="checkbox"] {
   width: 16px;
@@ -38541,7 +38650,6 @@ body[data-theme-mode="amoled-black"] .bottomnav {
   margin: 0;
   flex-shrink: 0;
 }
-
 .rep-folder-download-panel {
   background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
   border: 1.5px solid #EA580C;
@@ -38549,56 +38657,158 @@ body[data-theme-mode="amoled-black"] .bottomnav {
   padding: 9px 10px;
   margin-top: 8px;
 }
+
+/* تضمین دیده شدن شفاف ایموجی آیکون مدرسه در هدر صفحه داخلی مدرسه بدون حذف افکت گردون نسخه ۸.۹ */
+.siren-rotating-orb,
+.class-beacon-mini-orb,
+.dam-3d-orb,
+.school-icon {
+  isolation: isolate !important;
+}
+.siren-rotating-orb::before,
+.class-beacon-mini-orb::before,
+.dam-3d-orb::before,
+.school-icon::before,
+.siren-rotating-orb::after,
+.class-beacon-mini-orb::after,
+.dam-3d-orb::after,
+.school-icon::after {
+  z-index: -1 !important;
+}
 </style>
 
-<script id="v92UltraSmoothDedupScript">
+<script id="v89MasterAddonScript">
 (function() {
   'use strict';
 
   /* ==========================================================================================
-     بخش ۰: توقف کامل حلقه‌های پس‌زمینه و انیمیشن‌های مزاحم جاوااسکریپت برای روانی مطلق برنامه
+     بخش ۱: تعمیر خودکار باگ ادغام دانش‌آموزان بین کلاس‌های هم‌نام (مثلاً ۶۱ نفر شدن کلاس «ب»)
+     و پاک‌سازی نمرات صفر کاذب در پس‌زمینه (بدون هیچ تغییری در ظاهر و قالب نسخه ۸.۹)
      ========================================================================================== */
-  try {
-    if (window.CyberNetwork) {
-      window.CyberNetwork.stop?.();
-      window.CyberNetwork.start = function() {};
-      window.CyberNetwork.draw = function() {};
-    }
-    if (window.ScrollFX) {
-      window.ScrollFX.refresh = function() {};
-      window.ScrollFX.init = function() {};
-    }
-    window.applyStaggeredCardEntrance = function() {};
-    window.triggerCyberScan = function() {};
-    window.isCyberAnimOn = function() { return false; };
-  } catch (_) {}
-
-
-  /* ==========================================================================================
-     بخش ۱: تعمیر خودکار و دائمی باگ ادغام اشتباهی دانش‌آموزان بین کلاس‌های هم‌نام (مثلاً «هفتم ب» و «نهم ب»)
-     ========================================================================================== */
-  window.getFullClassDisplayTitle = function(c) {
-    if (!c) return '';
-    const cleanName = typeof window.cleanClassDisplayName === 'function'
-      ? window.cleanClassDisplayName(c.name)
-      : String(c.name || '').trim();
-    const grade = String(c.grade || '').trim();
-    if (grade && !cleanName.includes(grade)) {
-      return `پایه ${grade} — کلاس ${cleanName}`;
-    }
-    return `کلاس ${cleanName}`;
+  window.isValidGradeNumber = function(val) {
+    if (val === undefined || val === null || typeof val === 'boolean') return false;
+    const str = String(val).trim();
+    if (str === '') return false;
+    const num = Number(enDigits(str));
+    return Number.isFinite(num) && num > 0 && num <= 20;
   };
 
-  window.getShortClassWithGrade = function(c) {
-    if (!c) return '';
-    const cleanName = typeof window.cleanClassDisplayName === 'function'
-      ? window.cleanClassDisplayName(c.name)
-      : String(c.name || '').trim();
-    const grade = String(c.grade || '').trim();
-    if (grade && !cleanName.includes(grade)) {
-      return `${grade} ${cleanName}`;
+  window.attendanceScore = function(c, d, stid) {
+    const rec = c?.attendance?.[d]?.[stid];
+    if (!rec || !window.isValidGradeNumber(rec.score)) return null;
+    return Number(enDigits(String(rec.score)));
+  };
+
+  window.cleanPhantomZeroAttendanceGrades = function() {
+    if (!db || !Array.isArray(db.schools)) return 0;
+    let cleaned = 0;
+    db.schools.forEach(s => {
+      (s.classes || []).forEach(c => {
+        if (c.attendance && typeof c.attendance === 'object') {
+          Object.keys(c.attendance).forEach(d => {
+            const dayObj = c.attendance[d];
+            if (!dayObj || typeof dayObj !== 'object') return;
+            Object.keys(dayObj).forEach(stid => {
+              const rec = dayObj[stid];
+              if (rec && typeof rec === 'object' && 'score' in rec) {
+                if (!window.isValidGradeNumber(rec.score)) {
+                  delete rec.score;
+                  cleaned++;
+                }
+              }
+            });
+          });
+        }
+
+        (c.students || []).forEach(st => {
+          let studentCleaned = false;
+          if (Array.isArray(st.grades)) {
+            const beforeLen = st.grades.length;
+            st.grades = st.grades.filter(g => {
+              if (!g || typeof g !== 'object') return false;
+              if (!window.isValidGradeNumber(g.score)) return false;
+              return true;
+            });
+            if (st.grades.length !== beforeLen) {
+              cleaned += (beforeLen - st.grades.length);
+              studentCleaned = true;
+            }
+          }
+          if (c.contExamScores && st.id in c.contExamScores) {
+            if (!window.isValidGradeNumber(c.contExamScores[st.id])) {
+              delete c.contExamScores[st.id];
+              cleaned++;
+              studentCleaned = true;
+            }
+          }
+          if (c.termScores && st.id in c.termScores) {
+            if (!window.isValidGradeNumber(c.termScores[st.id])) {
+              delete c.termScores[st.id];
+              cleaned++;
+              studentCleaned = true;
+            }
+          }
+          if (studentCleaned && typeof evaluateAutoStatus === 'function') {
+            try { evaluateAutoStatus(c, st); } catch (_) {}
+          }
+        });
+      });
+    });
+    if (cleaned > 0) {
+      try { savePersistent(); } catch (_) {}
     }
-    return cleanName;
+    return cleaned;
+  };
+
+  // فیلتر ضد-صفر کاذب در توابع نمرات نسخه ۸.۹ با حفظ دقیق ساختار خروجی نسخه ۸.۹
+  window.getStudentWrittenContList = function(c, st) {
+    if (!st) return [];
+    if (!Array.isArray(st.grades)) st.grades = [];
+
+    if (c && c.contExamScores && window.isValidGradeNumber(c.contExamScores[st.id])) {
+      const legacyVal = Number(enDigits(String(c.contExamScores[st.id])));
+      const hasContGrade = st.grades.some(g => g && g.gradeType === 'cont_exam' && window.isValidGradeNumber(g.score));
+      if (!hasContGrade && legacyVal > 0) {
+        st.grades.push({
+          id: uid(),
+          date: new Date().toISOString(),
+          subject: 'کتبی مستمر ۱',
+          score: legacyVal,
+          source: 'direct_cont_col',
+          gradeType: 'cont_exam'
+        });
+      }
+    }
+
+    const list = [];
+    st.grades.forEach((g, idx) => {
+      if (g && g.gradeType === 'cont_exam' && window.isValidGradeNumber(g.score)) {
+        list.push({
+          id: g.id || ('cont_' + idx),
+          title: g.subject || `کتبی مستمر ${fa(list.length + 1)}`,
+          score: Number(enDigits(String(g.score))),
+          date: g.date || '',
+          ref: g
+        });
+      }
+    });
+    return list;
+  };
+
+  window.getStudentOralClassList = function(c, st) {
+    if (!st) return [];
+    const list = [];
+    (st.grades || []).forEach((g, idx) => {
+      if (g && g.gradeType !== 'cont_exam' && g.gradeType !== 'group_score' && window.isValidGradeNumber(g.score)) {
+        list.push({
+          id: g.id || ('oral_' + idx),
+          title: g.subject || `پرسش کلاسی ${fa(list.length + 1)}`,
+          score: Number(enDigits(String(g.score))),
+          date: g.date || ''
+        });
+      }
+    });
+    return list;
   };
 
   const _normStudentFullKey = function(st) {
@@ -38626,7 +38836,7 @@ body[data-theme-mode="amoled-black"] .bottomnav {
     db.schools.forEach(s => {
       const classes = s.classes || [];
 
-      // گام ۱: حذف دانش‌آموزان تکراری در داخل هر کلاس (بر اساس id یا نام + نام خانوادگی + نام پدر)
+      // ۱. حذف دانش‌آموزان تکراری داخل هر کلاس
       classes.forEach(c => {
         if (!Array.isArray(c.students) || c.students.length <= 1) return;
         const kept = [];
@@ -38659,7 +38869,7 @@ body[data-theme-mode="amoled-black"] .bottomnav {
         c.students = kept;
       });
 
-      // گام ۲: تشخیص و حذف دانش‌آموزانی که به خاطر تشابه نام کلاس (مثلاً «ب» پایه هفتم و «ب» پایه نهم) از یک کلاس به کلاس دیگر کپی شده‌اند!
+      // ۲. حذف دانش‌آموزانی که به خاطر هم‌نام بودن دو کلاس (مثلاً «ب» در پایه هفتم و «ب» در پایه نهم) از یک کلاس به کلاس دیگر کپی شده بودند
       for (let i = 0; i < classes.length; i++) {
         for (let j = 0; j < classes.length; j++) {
           if (i === j) continue;
@@ -38782,7 +38992,7 @@ body[data-theme-mode="amoled-black"] .bottomnav {
           if (!st.phone && extSt.phone) st.phone = extSt.phone;
           if (!st.birth && extSt.birth) st.birth = extSt.birth;
           if ((!st.grades || !st.grades.length) && extSt.grades?.length) st.grades = [...extSt.grades];
-          if ((!st.behavior?.positives?.length) && st.behavior?.positives?.length) st.behavior.positives = [...st.behavior.positives];
+          if ((!st.behavior?.positives?.length) && extSt.behavior?.positives?.length) st.behavior.positives = [...st.behavior.positives];
           if ((!st.behavior?.negatives?.length) && st.behavior?.negatives?.length) st.behavior.negatives = [...st.behavior.negatives];
           if ((!st.examPapers || !st.examPapers.length) && extSt.examPapers?.length) st.examPapers = [...extSt.examPapers];
         });
@@ -38792,11 +39002,10 @@ body[data-theme-mode="amoled-black"] .bottomnav {
     return sanitizeDb(base);
   };
 
-  // اتصال مستقیم تعمیر خودکار به restorePersistent تا به محض خواندن IndexedDB، کلاس هفتم ب (۶۱ نفر) به تعداد واقعی اصلاح و در IndexedDB ذخیره شود
-  const _origRestorePersistentV92 = window.restorePersistent;
-  if (typeof _origRestorePersistentV92 === 'function') {
+  const _origRestorePersistentV89M = window.restorePersistent;
+  if (typeof _origRestorePersistentV89M === 'function') {
     window.restorePersistent = async function() {
-      await _origRestorePersistentV92();
+      await _origRestorePersistentV89M();
       const fixed = window.repairDuplicateAndCrossMergedStudents(true);
       window.cleanPhantomZeroAttendanceGrades();
       if (fixed > 0) {
@@ -38808,7 +39017,7 @@ body[data-theme-mode="amoled-black"] .bottomnav {
 
 
   /* ==========================================================================================
-     بخش ۲: بهینه‌سازی فوق‌سریع savePersistent و به‌روزرسانی جراحی‌شده DOM در «لیست امروز»
+     بخش ۲: بهینه‌سازی سرعت ذخیره‌سازی پس‌زمینه و ثبت سریع در لیست امروز (بدون حذف هیچ انیمیشنی از ۸.۹)
      ========================================================================================== */
   window.savePersistent = function() {
     if (window._isDbLoading && !window._dbRestoredReady) return;
@@ -38823,328 +39032,36 @@ body[data-theme-mode="amoled-black"] .bottomnav {
         const fastMeta = buildFastMetadataOnlyDb(db);
         localStorage.setItem(KEY, JSON.stringify(fastMeta));
       } catch (_) {}
-    }, 220);
+    }, 180);
 
     clearTimeout(window._idbSaveDebounceTimer);
     window._idbSaveDebounceTimer = setTimeout(() => {
       if (typeof flushDbToIndexedDbNow === 'function') {
         flushDbToIndexedDbNow();
       }
-    }, 650);
-  };
-
-  window.inlAtt = function(sid, cid, stid) {
-    const c = findClass(sid, cid);
-    const d = window.currentListDate || localISODate();
-    if (!c) return;
-    if (!c.attendance) c.attendance = {};
-    if (!c.attendance[d]) c.attendance[d] = {};
-    const curAbs = attendanceStatus(c, d, stid) === 'absent';
-    if (curAbs) {
-      delete c.attendance[d][stid];
-    } else {
-      c.attendance[d][stid] = { status: 'absent' };
-    }
-    const isNowAbs = !curAbs;
-    const btn = document.getElementById('tdAttBtn_' + stid);
-    if (btn) {
-      btn.className = `att-cell ${isNowAbs ? 'absent' : 'present'}`;
-      btn.textContent = isNowAbs ? '✖' : '✓';
-      btn.title = isNowAbs ? 'غایب' : 'حاضر';
-    }
-    savePersistent();
-  };
-
-  window.inlScore = function(sid, cid, stid, type) {
-    const c = findClass(sid, cid);
-    const st = findStudent(sid, cid, stid);
-    if (!c || !st) return;
-    const r = getRules();
-    const b = behaviorData(st);
-    b[type === 'positive' ? 'positives' : 'negatives'].push({
-      id: uid(),
-      date: new Date().toISOString(),
-      reason: 'ثبت از لیست امروز',
-      value: type === 'positive' ? r.positiveValue : r.penaltyPerNeg,
-      code: ''
-    });
-    evaluateAutoStatus(c, st);
-    const posEl = document.getElementById('tdPos_' + stid);
-    const negEl = document.getElementById('tdNeg_' + stid);
-    if (posEl) posEl.textContent = fa(b.positives.length);
-    if (negEl) negEl.textContent = fa(b.negatives.length);
-    savePersistent();
-    toast(type === 'positive' ? '➕ مثبت ثبت شد' : '➖ منفی ثبت شد');
+    }, 550);
   };
 
 
   /* ==========================================================================================
-     بخش ۳: پاک‌سازی عمیق تمام نمرات صفر کاذب (Number(g.score) <= 0) از تمام بخش‌ها
+     بخش ۳: افزودن «انتخاب چندگانه کلاس‌ها» و «دانلود جداگانه در پوشه دلخواه» + «تنظیم خودکار چاپ A4»
+     روی همان قالب کامل و دست‌نخوردهٔ گزارش نسخه ۸.۹ (ReportApp.buildClassListStyleHTML نسخه ۸.۹)
      ========================================================================================== */
-  window.isValidGradeNumber = function(val) {
-    if (val === undefined || val === null || typeof val === 'boolean') return false;
-    const str = String(val).trim();
-    if (str === '') return false;
-    const num = Number(enDigits(str));
-    return Number.isFinite(num) && num > 0 && num <= 20;
+  window.formatClassOptionLabelV89 = function(c) {
+    if (!c) return '';
+    const cleanName = window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name;
+    const gradeTxt = c.grade ? ` (پایه ${c.grade})` : '';
+    const subjTxt = c.subject ? ` · ${c.subject}` : '';
+    return `${cleanName}${gradeTxt}${subjTxt}`;
   };
 
-  window.attendanceScore = function(c, d, stid) {
-    const rec = c?.attendance?.[d]?.[stid];
-    if (!rec || !window.isValidGradeNumber(rec.score)) return null;
-    return Number(enDigits(String(rec.score)));
-  };
-
-  window.cleanPhantomZeroAttendanceGrades = function() {
-    if (!db || !Array.isArray(db.schools)) return 0;
-    let cleaned = 0;
-    db.schools.forEach(s => {
-      (s.classes || []).forEach(c => {
-        if (c.attendance && typeof c.attendance === 'object') {
-          Object.keys(c.attendance).forEach(d => {
-            const dayObj = c.attendance[d];
-            if (!dayObj || typeof dayObj !== 'object') return;
-            Object.keys(dayObj).forEach(stid => {
-              const rec = dayObj[stid];
-              if (rec && typeof rec === 'object' && 'score' in rec) {
-                if (!window.isValidGradeNumber(rec.score)) {
-                  delete rec.score;
-                  cleaned++;
-                }
-              }
-            });
-          });
-        }
-
-        (c.students || []).forEach(st => {
-          let studentCleaned = false;
-          if (Array.isArray(st.grades)) {
-            const beforeLen = st.grades.length;
-            st.grades = st.grades.filter(g => {
-              if (!g || typeof g !== 'object') return false;
-              if (!window.isValidGradeNumber(g.score)) return false;
-              return true;
-            });
-            if (st.grades.length !== beforeLen) {
-              cleaned += (beforeLen - st.grades.length);
-              studentCleaned = true;
-            }
-          }
-          if (c.contExamScores && st.id in c.contExamScores) {
-            if (!window.isValidGradeNumber(c.contExamScores[st.id])) {
-              delete c.contExamScores[st.id];
-              cleaned++;
-              studentCleaned = true;
-            }
-          }
-          if (c.termScores && st.id in c.termScores) {
-            if (!window.isValidGradeNumber(c.termScores[st.id])) {
-              delete c.termScores[st.id];
-              cleaned++;
-              studentCleaned = true;
-            }
-          }
-          if (studentCleaned && typeof evaluateAutoStatus === 'function') {
-            try { evaluateAutoStatus(c, st); } catch (_) {}
-          }
-        });
-      });
-    });
-    if (cleaned > 0) {
-      try { savePersistent(); } catch (_) {}
-    }
-    return cleaned;
-  };
-
-  window.getStudentWrittenContList = function(c, st) {
-    if (!st) return [];
-    if (!Array.isArray(st.grades)) st.grades = [];
-
-    if (c && c.contExamScores && window.isValidGradeNumber(c.contExamScores[st.id])) {
-      const legacyVal = Number(enDigits(String(c.contExamScores[st.id])));
-      const hasContGrade = st.grades.some(g => g && g.gradeType === 'cont_exam' && window.isValidGradeNumber(g.score));
-      if (!hasContGrade && legacyVal > 0) {
-        st.grades.push({
-          id: uid(),
-          date: new Date().toISOString(),
-          subject: 'کتبی مستمر ۱',
-          score: legacyVal,
-          source: 'direct_cont_col',
-          gradeType: 'cont_exam'
-        });
-      }
-    }
-
-    const list = [];
-    st.grades.forEach((g, idx) => {
-      if (g && g.gradeType === 'cont_exam' && window.isValidGradeNumber(g.score)) {
-        list.push({
-          id: g.id || ('cont_' + idx),
-          title: g.subject || `کتبی ${fa(list.length + 1)}`,
-          score: Number(enDigits(String(g.score))),
-          date: g.date || '',
-          ref: g
-        });
-      }
-    });
-    return list;
-  };
-
-  window.getStudentOralClassList = function(c, st) {
-    if (!st) return [];
-    const list = [];
-    (st.grades || []).forEach((g, idx) => {
-      if (!g || g.gradeType === 'cont_exam' || g.gradeType === 'group_score') return;
-      if (!window.isValidGradeNumber(g.score)) return;
-      const sc = Number(enDigits(String(g.score)));
-      if (sc <= 0) return;
-      list.push({
-        id: g.id || ('oral_' + idx),
-        title: g.subject || `کلاسی ${fa(list.length + 1)}`,
-        score: sc,
-        date: g.date || ''
-      });
-    });
-    return list;
-  };
-
-
-  /* ==========================================================================================
-     بخش ۴: اصلاح کارت‌های کلاس و صفحه داخلی مدرسه (نمایش پایه + تعداد دقیق دانش‌آموزان بعد از حذف تکراری‌ها)
-     ========================================================================================== */
-  window.classCard = function(s, c) {
-    const photos = Array.isArray(c.photos) ? c.photos : [];
-    const fullTitle = window.getShortClassWithGrade(c);
-    const subjBadge = c.subject
-      ? `<span class="chip" style="background:#FFF7ED;color:#C2410C;border:1px solid #FDBA74;font-weight:900">📚 درس: ${esc(c.subject)}</span>`
-      : `<span class="chip" style="cursor:pointer" onclick="event.stopPropagation();editClass('${s.id}','${c.id}')">➕ ثبت نام درس</span>`;
-
-    return `<div class="card in-view">
-      ${photos.length ? `<div class="class-gallery" style="margin-top:0;margin-bottom:10px">${photos.slice(0, 2).map(src => `<img src="${src}" class="photo-clickable" onclick="openPhotoViewer('${src}','کلاس-${safeFileName(fullTitle)}.jpg')">`).join('')}</div>` : ''}
-      <div class="school-head" style="align-items:flex-start;gap:8px">
-        <div style="flex:1;min-width:0">
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
-            <h3 style="margin:0">🚪 کلاس ${esc(fullTitle)}</h3>
-            <button type="button" class="class-beacon-reminder-btn" style="padding:3px 9px;font-size:10.5px" onclick="event.stopPropagation();openClassroomGuidanceModal('${s.id}','${c.id}')">
-              <span class="class-beacon-mini-orb"><span>🚨</span></span>
-              <span>مشاور کلاس</span>
-            </button>
-          </div>
-          <div class="muted" style="margin-top:4px">پایه ${esc(c.grade || '—')}${c.subject ? ` · 📚 درس ${esc(c.subject)}` : ''}</div>
-        </div>
-        <div class="school-icon"><span>🚪</span></div>
-      </div>
-      <div class="chips" style="margin-top:6px">
-        ${subjBadge}
-        <span class="chip">👨‍🎓 ${fa((c.students || []).length)} دانش‌آموز</span>
-        <span class="chip">📷 ${fa(photos.length)} عکس</span>
-      </div>
-      <div class="actions">
-        <button class="btn primary" style="flex:1" onclick="openClass('${s.id}','${c.id}')">ورود به کلاس</button>
-        <button class="btn soft" onclick="openAttendance('${s.id}','${c.id}')">📋 جدول ترم</button>
-        <button class="btn gray" onclick="editClass('${s.id}','${c.id}')">✎</button>
-      </div>
-    </div>`;
-  };
-
-  const _origOpenSchoolV92 = window.openSchool;
-  if (typeof _origOpenSchoolV92 === 'function') {
-    window.openSchool = function(id) {
-      window.repairDuplicateAndCrossMergedStudents(false);
-      _origOpenSchoolV92(id);
-      document.querySelectorAll('#schoolDetail .school-icon').forEach(ico => {
-        if (!ico.querySelector('span')) {
-          ico.innerHTML = `<span>${ico.textContent || '🏫'}</span>`;
-        }
-      });
-    };
-  }
-
-  const _origOpenClassV92 = window.openClass;
-  if (typeof _origOpenClassV92 === 'function') {
-    window.openClass = function(sid, cid) {
-      window.repairDuplicateAndCrossMergedStudents(false);
-      _origOpenClassV92(sid, cid);
-      const c = findClass(sid, cid);
-      if (!c) return;
-      const titleEl = document.querySelector('#classMainView .class-title-with-counselor-row h1.title')
-        || document.querySelector('#classMainView .detailhead .school-head h1.title');
-      if (titleEl) {
-        titleEl.textContent = `کلاس ${window.getShortClassWithGrade(c)}`;
-      }
-      document.querySelectorAll('#classMainView .school-icon').forEach(ico => {
-        if (!ico.querySelector('span')) {
-          ico.innerHTML = `<span>${ico.textContent || '🚪'}</span>`;
-        }
-      });
-    };
-  }
-
-
-  /* ==========================================================================================
-     بخش ۵: توصیه تربیتی کوتاه، گویا و خطاب به خانواده + نشان وضعیت تک‌خطی
-     ========================================================================================== */
-  window.getShortCleanStatusBadgeHTML = function(st, det) {
-    if (!det || !det.isAttn) {
-      if (st?.status === 'good') {
-        return `<span style="display:inline-block;padding:1px 5px;border-radius:99px;background:#DCFCE7;color:#15803D;border:1px solid #86EFAC;font-size:8.5px;font-weight:800;white-space:nowrap">🟢 خوب</span>`;
-      }
-      return `<span style="color:#64748B;font-size:9px;white-space:nowrap">عادی</span>`;
-    }
-    const cats = det.categories || [];
-    const shortLabels = [];
-    if (cats.includes('academic')) shortLabels.push('📉 افت درسی');
-    if (cats.includes('discipline')) shortLabels.push('⚠️ انضباطی');
-    if (cats.includes('medical')) shortLabels.push('🏥 پزشکی');
-    if (cats.includes('absence')) shortLabels.push('📅 غیبت');
-    if (cats.includes('counseling')) shortLabels.push('💜 مشاوره');
-    if (cats.includes('special') || !shortLabels.length) shortLabels.push('⭐ توجه ویژه');
-
-    const text = shortLabels.slice(0, 2).join('·');
-    return `<span style="display:inline-block;padding:1px 5px;border-radius:99px;background:#FFE4E6;color:#BE123C;border:1px solid #FDA4AF;font-size:8.4px;font-weight:800;white-space:nowrap">${esc(text)}</span>`;
-  };
-
-  window.generateFamilyAddressedAdvice = function(c, st, det = null) {
-    if (!st) return '';
-    const d = det || (c && typeof window.getStudentAttentionDetails === 'function' ? window.getStudentAttentionDetails(c, st) : { isAttn: false, categories: [] });
-    const cats = d.categories || [];
-    const bd = window.getStudentScoreBreakdown(c, st);
-    const fullName = formatStudentName(st);
-    const absCnt = c ? attendanceDates(c).filter(dt => attendanceStatus(c, dt, st.id) === 'absent').length : 0;
-
-    if (cats.includes('medical')) {
-      return `اولیای گرامی «${fullName}»؛ سلامتی فرزندتان در اولویت ماست؛ در منزل نیز مرورهای کوتاه درسی را با آرامش و تشویق همراه فرمایید.`;
-    }
-    if (cats.includes('counseling')) {
-      return `اولیای گرامی «${fullName}»؛ تقویت آرامش، گفت‌وگوی صمیمانه در منزل و تحسین پیشرفت‌های کوچک، انگیزه فرزندتان را دوچندان می‌کند.`;
-    }
-    if (cats.includes('academic') || bd.finalSc < 12) {
-      return `اولیای گرامی «${fullName}»؛ با توجه به نمرات ثبت‌شده، برنامه‌ریزی روزانه ۲۰ دقیقه‌ای در منزل برای مرور کتاب و حل تمرین توصیه می‌شود.`;
-    }
-    if (cats.includes('discipline') || bd.negCount >= 2) {
-      return `اولیای گرامی «${fullName}»؛ جهت افزایش تمرکز کلاسی و هدایت انرژی فرزندتان به مشارکت مثبت، همراهی و گفت‌وگوی محترمانه در منزل راهگشاست.`;
-    }
-    if (cats.includes('absence') || absCnt >= 3) {
-      return `اولیای گرامی «${fullName}»؛ با توجه به ثبت ${fa(absCnt)} جلسه غیبت، حضور منظم و پیوسته در کلاس تاثیر مستقیمی بر یادگیری و نمره مستمر دارد.`;
-    }
-    if (bd.finalSc >= 17 || st.status === 'good') {
-      return `اولیای گرامی «${fullName}»؛ ضمن سپاس از همراهی شما، تلاش، ادب و مشارکت فعال فرزندتان در کلاس شایسته تحسین و مایه مباهات است.`;
-    }
-    return `اولیای گرامی «${fullName}»؛ روند حضور و تلاش فرزندتان در کلاس متعادل است؛ مرور هفتگی دروس در منزل به ارتقای بیشتر نمره کمک می‌کند.`;
-  };
-
-
-  /* ==========================================================================================
-     بخش ۶: ارتقای استودیو گزارش (ReportApp)
-     ========================================================================================== */
   if (window.ReportApp) {
     ReportApp.state.selectedCids = Array.isArray(ReportApp.state.selectedCids) ? ReportApp.state.selectedCids : [];
-    ReportApp.state.pageOrientation = ReportApp.state.pageOrientation || 'portrait';
     ReportApp.state.customFolderName = ReportApp.state.customFolderName || '';
 
-    const _origEnsureValidTargetsV92 = ReportApp.ensureValidTargets.bind(ReportApp);
+    const _origEnsureValidTargetsV89M = ReportApp.ensureValidTargets.bind(ReportApp);
     ReportApp.ensureValidTargets = function(prefScope = null, prefSid = null, prefCid = null, prefStid = null, prefStatusFilter = null) {
-      _origEnsureValidTargetsV92(prefScope, prefSid, prefCid, prefStid, prefStatusFilter);
+      _origEnsureValidTargetsV89M(prefScope, prefSid, prefCid, prefStid, prefStatusFilter);
       const sObj = findSchool(this.state.sid) || db.schools?.[0] || null;
       const classes = sObj?.classes || [];
       if (!Array.isArray(this.state.selectedCids)) this.state.selectedCids = [];
@@ -39159,9 +39076,11 @@ body[data-theme-mode="amoled-black"] .bottomnav {
       }
     };
 
+    // جمع‌آوری داده‌ها با پشتیبانی از انتخاب یک یا چند کلاس هم‌زمان (selectedCids)
     ReportApp.collectData = function(overrideOpts = null) {
       window.repairDuplicateAndCrossMergedStudents(false);
       window.cleanPhantomZeroAttendanceGrades();
+
       const scope = overrideOpts?.scope || this.state.scope || 'class';
       const schools = db.schools || [];
       let sid = overrideOpts?.sid !== undefined ? overrideOpts.sid : this.state.sid;
@@ -39234,244 +39153,35 @@ body[data-theme-mode="amoled-black"] .bottomnav {
       return { scope, sid, cid, cids: targetCids, stid, statusFilter, sections, totalStudents };
     };
 
-    ReportApp.buildClassListStyleHTML = function(res, forExcel = false) {
-      window.cleanPhantomZeroAttendanceGrades();
-
-      const cols = this.state.cols;
-      const r = getRules();
-      const themeKey = this.state.theme || document.getElementById('expColorTheme')?.value || 'orange';
-      const pal = (typeof EXPORT_COLOR_PALETTES !== 'undefined' && EXPORT_COLOR_PALETTES[themeKey])
-        ? EXPORT_COLOR_PALETTES[themeKey]
-        : { primary: '#EA580C', primaryDark: '#9A3412', lightBg: '#FFF7ED', border: '#FDBA74', thBg: '#EA580C', thText: '#FFFFFF', zebra: '#FFFBF5', gradStart: '#EA580C', gradEnd: '#F97316' };
-
-      if (res.scope === 'student' && res.totalStudents === 1 && typeof this.buildDetailedSingleStudentFamilyHTML === 'function') {
-        return this.buildDetailedSingleStudentFamilyHTML(res.sections[0].school, res.sections[0].cls, res.sections[0].items[0], forExcel);
-      }
-
-      const oneLineTopGuideHtml = `
-        <div class="rep-oneline-top-guide">
-          <span>📐 <b>راهنمای ضرایب کارنامه:</b> میانگین کتبی مستمر <b>×${fa(r.weightCont)}</b> · میانگین کلاسی <b>×${fa(r.weightClass)}</b> · پایانی ترم <b>×${fa(r.weightTerm)}</b></span>
-          <span>➕ هر مثبت: <b>+${fmtScore(r.positiveValue)}</b> · تشویقی بدون منفی: <b>+${fmtScore(r.bonusNoNeg)}</b> · سقف منفی مجاز: <b>${fa(r.maxNegAllowed)}</b> (مازاد: <b>−${fmtScore(r.penaltyPerNeg)}</b>)</span>
-        </div>
-      `;
-
-      const buildSectionCard = (sec, sIdx, includeSchoolCol) => {
-        const items = sec.items || [];
-        let sumFinal = 0, cntFinal = 0, attnCnt = 0, posCnt = 0, negCnt = 0, absTotal = 0;
-        let maxWrittenCols = 1;
-
-        items.forEach(it => {
-          const targetCls = it._c || sec.cls;
-          const bd = window.getStudentScoreBreakdown(targetCls, it.st);
-          if (bd.writtenList.length > maxWrittenCols) {
-            maxWrittenCols = Math.min(4, bd.writtenList.length);
-          }
-          if (Number.isFinite(Number(bd.finalSc))) { sumFinal += Number(bd.finalSc); cntFinal++; }
-          if (it.det?.isAttn) attnCnt++;
-          posCnt += bd.posCount;
-          negCnt += bd.negCount;
-          absTotal += (Number(it.absCnt) || 0);
-        });
-
-        const classAvg = cntFinal ? (sumFinal / cntFinal) : 0;
-        const fullClassTitle = window.getFullClassDisplayTitle(sec.cls);
-        const subjTxt = sec.cls.subject ? ` · 📚 درس: ${esc(sec.cls.subject)}` : '';
-
-        const colSpecs = [];
-        colSpecs.push({ label: 'ردیف', weight: 4.2 });
-        if (includeSchoolCol) colSpecs.push({ label: 'کلاس', weight: 8.5 });
-        colSpecs.push({ label: 'نام خانوادگی و نام دانش‌آموز', weight: 21.0 });
-        if (cols.father) colSpecs.push({ label: 'نام پدر', weight: 9.0 });
-        if (cols.phone) colSpecs.push({ label: 'تلفن', weight: 10.5 });
-        if (cols.att) colSpecs.push({ label: 'غیبت', weight: 5.0 });
-        if (cols.cont) {
-          if (maxWrittenCols > 1) {
-            for (let wi = 1; wi <= maxWrittenCols; wi++) {
-              colSpecs.push({ label: `کتبی ${fa(wi)}`, weight: 5.8 });
-            }
-            colSpecs.push({ label: 'م.کتبی', weight: 6.4 });
-          } else {
-            colSpecs.push({ label: 'کتبی مستمر', weight: 7.5 });
-          }
-          colSpecs.push({ label: 'کلاسی', weight: 6.0 });
-          colSpecs.push({ label: 'مستمر کل', weight: 6.8 });
-        }
-        if (cols.beh) {
-          colSpecs.push({ label: 'مثبت/منفی', weight: 7.2 });
-          colSpecs.push({ label: 'تاثیر', weight: 5.5 });
-        }
-        if (cols.term) {
-          colSpecs.push({ label: 'پایانی', weight: 6.2 });
-          colSpecs.push({ label: 'نمره نهایی', weight: 7.4 });
-        }
-        if (cols.status) {
-          colSpecs.push({ label: 'وضعیت', weight: 11.2 });
-        }
-
-        const totalWeight = colSpecs.reduce((acc, c) => acc + c.weight, 0) || 100;
-        const colgroupHtml = `<colgroup>${colSpecs.map(c => `<col style="width:${((c.weight / totalWeight) * 100).toFixed(2)}%">`).join('')}</colgroup>`;
-
-        const studentGroupsHtml = items.map((it, idx) => {
-          const targetCls = it._c || sec.cls;
-          const { st, det, absCnt } = it;
-          const bd = window.getStudentScoreBreakdown(targetCls, st);
-          const rowBg = det.isAttn ? '#FFF5F5' : (idx % 2 === 1 ? pal.zebra : '#FFFFFF');
-          const fullName = `${st.lastName || ''} ${st.name || ''}`.trim();
-          const initials = (st.lastName || st.name || 'د').slice(0, 1);
-
-          const studentCellHtml = (!forExcel && cols.photo)
-            ? `<div style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap;max-width:100%;overflow:hidden">
-                 <span style="width:17px;height:17px;border-radius:50%;border:1px solid #FDBA74;background:#FFF7ED;color:#C2410C;display:inline-flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:900;overflow:hidden;flex-shrink:0">
-                   ${st.photo ? `<img src="${st.photo}" style="width:100%;height:100%;object-fit:cover">` : esc(initials)}
-                 </span>
-                 <b style="font-size:9.6px;color:#0F172A;overflow:hidden;text-overflow:ellipsis">${esc(fullName)}</b>
-               </div>`
-            : `<b style="font-size:9.6px;color:#0F172A">${esc(fullName)}</b>`;
-
-          let contCellsHtml = '';
-          if (cols.cont) {
-            if (maxWrittenCols > 1) {
-              for (let wi = 0; wi < maxWrittenCols; wi++) {
-                const wItem = bd.writtenList[wi];
-                contCellsHtml += `<td style="text-align:center;font-weight:700;color:#334155">${wItem ? fmtScore(wItem.score) : '—'}</td>`;
-              }
-              contCellsHtml += `<td style="text-align:center;font-weight:900;color:#9A3412;background:#FFF7ED">${bd.writtenAvg !== null ? fmtScore(bd.writtenAvg) : '—'}</td>`;
-            } else {
-              contCellsHtml += `<td style="text-align:center;font-weight:800;color:#9A3412">${bd.writtenAvg !== null ? fmtScore(bd.writtenAvg) : '—'}</td>`;
-            }
-            const oralDisplay = bd.oralList.length === 1
-              ? fmtScore(bd.oralList[0].score)
-              : (bd.oralAvg !== null ? fmtScore(bd.oralAvg) : '—');
-            contCellsHtml += `
-              <td style="text-align:center;font-weight:700;color:#0369A1">${oralDisplay}</td>
-              <td style="text-align:center;font-weight:900;color:#0F172A;background:#F8FAFC">${bd.cAvg !== null ? fmtScore(bd.cAvg) : '—'}</td>
-            `;
-          }
-
-          const behEffectSign = bd.totalBehEffect > 0 ? '+' : '';
-          const behEffectColor = bd.totalBehEffect > 0 ? '#15803D' : (bd.totalBehEffect < 0 ? '#B91C1C' : '#64748B');
-          const behCellsHtml = cols.beh
-            ? `<td style="text-align:center"><span style="color:#15803D;font-weight:900">+${fa(bd.posCount)}</span>/<span style="color:#B91C1C;font-weight:900">−${fa(bd.negCount)}</span></td>
-               <td style="text-align:center;font-weight:800;color:${behEffectColor}">${bd.totalBehEffect === 0 ? '۰' : (behEffectSign + fmtScore(bd.totalBehEffect))}</td>`
-            : '';
-
-          const finalColor = Number(bd.finalSc) >= 17 ? '#15803D' : (Number(bd.finalSc) < 12 ? '#B91C1C' : '#0F172A');
-          const finalBg = Number(bd.finalSc) >= 17 ? '#DCFCE7' : (Number(bd.finalSc) < 12 ? '#FEE2E2' : '#FFF7ED');
-
-          const mainRowHtml = `<tr class="rep-std-main-row" style="background-color:${rowBg}">
-            <td style="text-align:center;font-weight:900;color:${pal.primaryDark};background:${pal.lightBg}">${fa(idx + 1)}</td>
-            ${includeSchoolCol ? `<td style="text-align:center;font-size:8.8px"><b>${esc(it._c ? window.getShortClassWithGrade(it._c) : window.getShortClassWithGrade(sec.cls))}</b></td>` : ''}
-            <td style="text-align:right">${studentCellHtml}</td>
-            ${cols.father ? `<td style="text-align:center;color:#334155">${esc(st.fatherName || '—')}</td>` : ''}
-            ${cols.phone ? `<td dir="ltr" style="text-align:center;font-family:monospace;font-size:8.8px">${st.phone ? fa(st.phone) : '—'}</td>` : ''}
-            ${cols.att ? `<td style="text-align:center;font-weight:800;color:${absCnt >= 3 ? '#B91C1C' : (absCnt > 0 ? '#B45309' : '#15803D')}">${absCnt === 0 ? '۰' : fa(absCnt)}</td>` : ''}
-            ${contCellsHtml}
-            ${behCellsHtml}
-            ${cols.term ? `<td style="text-align:center;font-weight:800">${bd.termSc !== null ? fmtScore(bd.termSc) : '—'}</td><td style="text-align:center;font-weight:900;color:${finalColor};background:${finalBg}">${fmtScore(bd.finalSc)}</td>` : ''}
-            ${cols.status ? `<td style="text-align:center">${window.getShortCleanStatusBadgeHTML(st, det)}</td>` : ''}
-          </tr>`;
-
-          let subRowsHtml = '';
-          if (cols.cont && bd.oralList.length > 1) {
-            const oralBreakdownTxt = bd.oralList.map((o, oi) => `نوبت ${fa(oi + 1)}: ${fmtScore(o.score)}`).join(' ، ');
-            subRowsHtml += `
-              <tr class="rep-std-sub-row">
-                <td colspan="${colSpecs.length}">
-                  <b style="color:#0369A1">🙋 ریز نمرات کلاسی (${fa(bd.oralList.length)} نوبت):</b> ${esc(oralBreakdownTxt)} ⬅ <b>میانگین کلاسی: ${fmtScore(bd.oralAvg)}</b>
-                </td>
-              </tr>
-            `;
-          }
-          if (cols.advice) {
-            const familyAdvice = window.generateFamilyAddressedAdvice(targetCls, st, det);
-            subRowsHtml += `
-              <tr class="rep-std-sub-row">
-                <td colspan="${colSpecs.length}">
-                  <b style="color:#C2410C">🌿 توصیه به خانواده:</b> ${esc(familyAdvice)}
-                </td>
-              </tr>
-            `;
-          }
-
-          return `<tbody class="rep-std-student-group">${mainRowHtml}${subRowsHtml}</tbody>`;
-        }).join('');
-
-        const pageBreak = (sIdx > 0 && !forExcel) ? 'page-break-before:always;break-before:page;' : '';
-
-        return `<div class="rep-classlist-card" style="${pageBreak}">
-          <div class="rep-classlist-head" style="padding:5px 9px">
-            <div>
-              <b style="font-size:11.5px;color:#9A3412">🏫 ${esc(sec.school.name)} — 🚪 ${esc(fullClassTitle)}${subjTxt}</b>
-              <span style="font-size:9.5px;color:#475569;margin-right:6px">👨‍🏫 دبیر: ${esc(getTeacherName())} · 📅 ${formatJalaliDate(localISODate())}</span>
-            </div>
-            <div class="rep-classlist-kpis">
-              <span class="rep-kpi-mini">👨‍🎓 ${fa(items.length)} نفر</span>
-              <span class="rep-kpi-mini">⭐ میانگین: ${fmtScore(classAvg)}</span>
-              <span class="rep-kpi-mini" style="color:#15803D">➕${fa(posCnt)} / <span style="color:#B91C1C">➖${fa(negCnt)}</span></span>
-              <span class="rep-kpi-mini">📅 غیبت: ${fa(absTotal)}</span>
-              ${attnCnt > 0 ? `<span class="rep-kpi-mini" style="background:#FFE4E6;color:#BE123C">🚨 توجه: ${fa(attnCnt)}</span>` : ''}
-            </div>
-          </div>
-          <div class="rep-table-scroll-wrap">
-            <table border="1" class="rep-std-table" style="border-color:${pal.border}">
-              ${colgroupHtml}
-              <thead>
-                <tr style="background-color:${pal.thBg};color:#FFFFFF">
-                  ${colSpecs.map(c => `<th>${esc(c.label)}</th>`).join('')}
-                </tr>
-              </thead>
-              ${studentGroupsHtml}
-            </table>
-          </div>
-        </div>`;
-      };
-
-      const splitMode = this.state.splitMode || 'separate_sections';
-      let bodyHtml = '';
-      if (splitMode === 'separate_sections' || res.sections.length <= 1) {
-        bodyHtml = res.sections.map((sec, idx) => buildSectionCard(sec, idx, false)).join('');
-      } else {
-        const merged = [];
-        res.sections.forEach(sec => sec.items.forEach(it => merged.push({ ...it, _s: sec.school, _c: sec.cls })));
-        bodyHtml = buildSectionCard({
-          school: { name: res.scope === 'school' ? (res.sections[0]?.school?.name || 'مدرسه') : 'همه مدارس' },
-          cls: { name: `${fa(res.sections.length)} کلاس ادغام‌شده`, grade: '', subject: '' },
-          items: merged
-        }, 0, true);
-      }
-
-      return `<div style="font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;color:#0F172A;width:100%">
-        ${oneLineTopGuideHtml}
-        ${bodyHtml}
-      </div>`;
-    };
-
-    ReportApp.buildFullExportDocumentHTML = function(res, titleLabel, isExcel = false) {
+    // ساخت سند کامل خروجی با حفظ ۱۰۰٪ قالب نسخه ۸.۹ + تنظیم خودکار عرض در پرینت تا انتهای چپ لیست هرگز بریده نشود
+    ReportApp.buildFullV89DocumentHTML = function(res, fileScopeLabel, isExcel = false) {
       const bodyContent = this.buildClassListStyleHTML(res, isExcel);
-      const orient = this.state.pageOrientation === 'landscape' ? 'landscape' : 'portrait';
       return `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" dir="rtl" lang="fa">
         <head>
           <meta charset="utf-8">
-          <title>گزارش کلاسی — ${esc(titleLabel)}</title>
+          <title>گزارش کلاسی — ${esc(fileScopeLabel)}</title>
           <style>
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }
-            html, body { width: 100%; max-width: 100%; margin: 0; padding: 4px; font-family: 'Vazirmatn', Tahoma, sans-serif; direction: rtl; background: #FFFFFF; color: #0F172A; }
-            .rep-oneline-top-guide { background: #FFF7ED; border: 1px solid #FDBA74; border-radius: 7px; padding: 4px 8px; margin-bottom: 5px; font-size: 8.8px; font-weight: bold; color: #7C2D12; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px; }
-            .rep-classlist-card { border: 1.5px solid #FED7AA; border-radius: 9px; overflow: visible; margin-bottom: 8px; width: 100%; }
-            .rep-classlist-head { background: #FFF7ED; border-bottom: 1.5px solid #FED7AA; padding: 5px 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px; }
-            .rep-classlist-kpis { display: flex; gap: 4px; flex-wrap: wrap; }
-            .rep-kpi-mini { font-size: 8.8px; font-weight: bold; padding: 1px 5px; border-radius: 99px; background: #FFFFFF; border: 1px solid #FDBA74; color: #9A3412; }
-            .rep-table-scroll-wrap { width: 100%; overflow: visible; }
-            table.rep-std-table { width: 100% !important; max-width: 100% !important; table-layout: fixed !important; border-collapse: collapse !important; font-size: 9.2px !important; }
-            table.rep-std-table thead th { background: #EA580C; color: #FFFFFF; font-weight: bold; font-size: 8.5px !important; padding: 3px 2px !important; border: 1px solid #C2410C; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; height: 22px; }
-            tbody.rep-std-student-group { break-inside: avoid !important; page-break-inside: avoid !important; }
-            tr.rep-std-main-row { height: 23px !important; max-height: 23px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
-            tr.rep-std-main-row td { height: 23px !important; max-height: 23px !important; padding: 1px 2px !important; border: 1px solid #CBD5E1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; font-size: 9.2px !important; }
-            tr.rep-std-sub-row { height: 17px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
-            tr.rep-std-sub-row td { height: 17px !important; padding: 1px 6px !important; background: #FFFDF9; border: 1px solid #CBD5E1; border-top: 1px dashed #FED7AA; font-size: 8px !important; color: #334155; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right; max-width: 0 !important; }
+            body { font-family: 'Vazirmatn', Tahoma, sans-serif; padding: 8px; direction: rtl; background: #FFFFFF; color: #0F172A; margin: 0; width: 100%; }
+            .rep-family-guide-box { background: #FFFBF5; border: 1.5px solid #FDBA74; border-radius: 12px; padding: 8px 11px; margin-bottom: 10px; font-size: 10.5px; line-height: 1.65; color: #334155; }
+            .rep-family-guide-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+            .rep-family-guide-pill { background: #FFFFFF; border: 1px solid #FED7AA; border-radius: 8px; padding: 2px 7px; font-size: 10px; font-weight: 800; color: #9A3412; white-space: nowrap; }
+            .rep-scores-mini-stack { display: flex; flex-direction: column; gap: 2px; font-size: 10px; line-height: 1.35; text-align: right; }
+            .rep-score-tag { display: inline-block; padding: 1px 5px; border-radius: 5px; background: #F8FAFC; border: 1px solid #CBD5E1; font-weight: 700; font-size: 9.5px; color: #1E293B; }
+            .rep-family-advice-subrow td { background: #FFFDF9 !important; border-top: 1px dashed #FED7AA !important; padding: 4px 10px !important; font-size: 10.2px !important; line-height: 1.55 !important; color: #475569 !important; text-align: right !important; white-space: normal !important; word-wrap: break-word !important; }
+            .rep-family-advice-inner { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+            .rep-family-advice-label { color: #C2410C; font-weight: 900; white-space: nowrap; font-size: 10.2px; flex-shrink: 0; }
+            .rep-classlist-card { border: 1.5px solid #FED7AA; border-radius: 12px; overflow: visible; margin-bottom: 14px; width: 100%; }
+            .rep-classlist-head { background: #FFF7ED; border-bottom: 1.5px solid #FED7AA; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+            .rep-classlist-kpis { display: flex; gap: 5px; flex-wrap: wrap; }
+            .rep-kpi-mini { font-size: 10px; font-weight: bold; padding: 2px 7px; border-radius: 99px; background: #FFFFFF; border: 1px solid #FDBA74; color: #9A3412; }
+            table { width: 100% !important; max-width: 100% !important; border-collapse: collapse; font-size: 10.5px; }
+            th { background: #EA580C; color: #FFFFFF; font-weight: bold; padding: 5px 4px; border: 1px solid #FB923C; text-align: center; }
+            td { padding: 4px 5px; border: 1px solid #CBD5E1; text-align: right; vertical-align: middle; }
+            tr { break-inside: avoid !important; page-break-inside: avoid !important; }
             @media print {
-              @page { size: A4 ${orient}; margin: 5mm; }
-              html, body { padding: 0; margin: 0; width: 100%; }
+              @page { size: A4 portrait; margin: 5mm; }
+              body { padding: 0; zoom: 0.88; }
               thead { display: table-header-group; }
             }
           </style>
@@ -39501,7 +39211,7 @@ body[data-theme-mode="amoled-black"] .bottomnav {
         { key: 'beh', label: '➕/➖ مثبت و منفی' },
         { key: 'term', label: '🎓 پایانی و نهایی' },
         { key: 'status', label: '🚦 وضعیت توجه' },
-        { key: 'advice', label: '🌿 توصیه به خانواده' }
+        { key: 'advice', label: '🌿 توصیه تربیتی' }
       ];
 
       const colChecksHtml = colDefs.map(cd => {
@@ -39512,30 +39222,30 @@ body[data-theme-mode="amoled-black"] .bottomnav {
         </label>`;
       }).join('');
 
-      openModal(formHeader('📊 استودیو یکپارچه گزارش، انتخاب چندگانه و دانلود پوشه‌ای') + `
+      openModal(formHeader('📊 استودیو یکپارچه گزارش و کارنامه (الگوی آزمون‌ساز)') + `
         <div class="card" style="background:var(--bg-panel);padding:10px;margin-bottom:10px;border:1.5px solid var(--primary)">
           <!-- ۱. انتخاب سطح گزارش (۴ سطحی) -->
           <div class="rep-v84-scope-grid" id="repModalScopeTabs">
             <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'student' ? 'active' : ''}" data-rscope="student" onclick="ReportApp.setScope('student')">👨‍🎓 ۱ دانش‌آموز</button>
             <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'class' ? 'active' : ''}" data-rscope="class" onclick="ReportApp.setScope('class')">🚪 کلاس (تکی / چندانتخابی)</button>
-            <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'school' ? 'active' : ''}" data-rscope="school" onclick="ReportApp.setScope('school')">🏫 کل مدرسه</button>
+            <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'school' ? 'active' : ''}" data-rscope="school" onclick="ReportApp.setScope('school')">🏫 ۱ مدرسه</button>
             <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'all' ? 'active' : ''}" data-rscope="all" onclick="ReportApp.setScope('all')">🌐 همه مدارس</button>
           </div>
 
-          <!-- ۲. انتخابگرهای تفکیکی مدرسه / کلاس / دانش‌آموز / وضعیت -->
+          <!-- ۲. انتخابگرهای تفکیکی مدرسه / کلاس / انتخاب چندگانه / دانش‌آموز / وضعیت -->
           <div class="formgrid" style="margin-bottom:6px;gap:6px">
             <div class="field" id="repModSchoolField">
               <label style="font-size:11px">🏫 مدرسه:</label>
               <select id="repModSchoolSel" onchange="ReportApp.onSchoolChange()" style="height:36px;font-size:12px"></select>
             </div>
             <div class="field" id="repModClassField">
-              <label style="font-size:11px">🚪 انتخاب سریع کلاس (با ذکر پایه و درس):</label>
+              <label style="font-size:11px">🚪 کلاس:</label>
               <select id="repModClassSel" onchange="ReportApp.onClassChange()" style="height:36px;font-size:12px"></select>
             </div>
             <div class="field full" id="repModMultiClassField">
               <div class="rep-multi-class-box">
                 <div class="rep-multi-class-header">
-                  <span style="font-size:11px;font-weight:900;color:#9A3412" id="repMultiClassCountLabel">☑️ انتخاب چند کلاس هم‌زمان (به همان شکل استاندارد و دانلود جداگانه):</span>
+                  <span style="font-size:11px;font-weight:900;color:#9A3412" id="repMultiClassCountLabel">☑️ انتخاب چند کلاس هم‌زمان (به همین شکل و دانلود جداگانه):</span>
                   <div style="display:flex;gap:5px">
                     <button type="button" class="btn primary btn-sm" style="padding:3px 8px;font-size:10px" onclick="ReportApp.selectAllClassesInSchool(true)">☑️ انتخاب همه کلاس‌ها</button>
                     <button type="button" class="btn soft btn-sm" style="padding:3px 8px;font-size:10px" onclick="ReportApp.selectAllClassesInSchool(false)">⬜ فقط ۱ کلاس فعلی</button>
@@ -39548,8 +39258,8 @@ body[data-theme-mode="amoled-black"] .bottomnav {
               <label style="font-size:11px">👨‍🎓 دانش‌آموز:</label>
               <select id="repModStudentSel" onchange="ReportApp.onStudentChange()" style="height:36px;font-size:12px"></select>
             </div>
-            <div class="field">
-              <label style="font-size:11px">🚦 فیلتر وضعیت دانش‌آموزان:</label>
+            <div class="field full">
+              <label style="font-size:11px">🚦 فیلتر وضعیت دانش‌آموزان در گزارش:</label>
               <select id="repModStatusFilterSel" onchange="ReportApp.onStatusFilterChange(this.value)" style="height:36px;font-size:12px">
                 <option value="all">📋 همه دانش‌آموزان کلاس</option>
                 <option value="good">🟢 فقط دانش‌آموزان خوب و برتر</option>
@@ -39561,13 +39271,6 @@ body[data-theme-mode="amoled-black"] .bottomnav {
                 <option value="attn_counseling">💜 نیازمند توجه: روحی و مشاوره</option>
               </select>
             </div>
-            <div class="field">
-              <label style="font-size:11px">📄 جهت کاغذ در پرینت / PDF:</label>
-              <select id="repModPageOrientSel" onchange="ReportApp.onOrientChange(this.value)" style="height:36px;font-size:12px">
-                <option value="portrait" ${this.state.pageOrientation !== 'landscape' ? 'selected' : ''}>📄 عمودی استاندارد (A4 Portrait — تنظیم ۱۰۰٪ عرض)</option>
-                <option value="landscape" ${this.state.pageOrientation === 'landscape' ? 'selected' : ''}>🖼️ افقی عریض (A4 Landscape)</option>
-              </select>
-            </div>
           </div>
 
           <!-- ۳. تیک انتخاب ستون‌های دلخواه معلم -->
@@ -39576,20 +39279,20 @@ body[data-theme-mode="amoled-black"] .bottomnav {
             ${colChecksHtml}
           </div>
 
-          <!-- ۴. دکمه‌های خروجی یکپارچه -->
-          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:6px">
+          <!-- ۴. دکمه‌های خروجی فوری برای همین انتخاب -->
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px">
             <button type="button" class="btn green btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('print')">🖨️ چاپ / PDF</button>
             <button type="button" class="btn primary btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('excel_color')">🎨 اکسل (.xls)</button>
             <button type="button" class="btn soft btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('word')">📘 فایل Word</button>
           </div>
 
-          <!-- ۵. دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه به همان شکل استاندارد -->
+          <!-- ۵. دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه دقیقاً با همین قالب نسخه ۸.۹ -->
           <div class="rep-folder-download-panel" id="repSeparateFolderDownloadPanel">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:6px">
-              <b style="font-size:11.5px;color:#9A3412">📂 دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه (به همین شکل لیست استاندارد):</b>
-              <div style="display:flex;align-items:center;gap:4px;flex:1;min-width:190px">
+              <b style="font-size:11.5px;color:#9A3412">📂 دانلود جداگانه هر کلاس در پوشه دلخواه (دقیقاً به همین شکل):</b>
+              <div style="display:flex;align-items:center;gap:4px;flex:1;min-width:185px">
                 <span style="font-size:10.5px;color:#7C2D12;white-space:nowrap">📁 نام پوشه:</span>
-                <input type="text" id="repCustomFolderNameInp" value="${esc(this.state.customFolderName || 'گزارشات-کلاسی')}" oninput="ReportApp.state.customFolderName=this.value;ReportApp.saveState()" placeholder="مثلاً گزارشات-شهبا-نجف-شهر" style="height:28px;font-size:11px;padding:2px 7px;border-radius:8px;border:1px solid #FDBA74;background:#FFFFFF;flex:1">
+                <input type="text" id="repCustomFolderNameInp" value="${esc(this.state.customFolderName || 'گزارشات-کلاسی')}" oninput="ReportApp.state.customFolderName=this.value;ReportApp.saveState()" placeholder="نام پوشه دلخواه..." style="height:28px;font-size:11px;padding:2px 7px;border-radius:8px;flex:1">
               </div>
             </div>
             <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px">
@@ -39597,13 +39300,10 @@ body[data-theme-mode="amoled-black"] .bottomnav {
               <button type="button" class="btn soft btn-sm" style="justify-content:center;padding:7px 4px;font-size:10.8px" onclick="ReportApp.downloadSelectedSeparatelyToFolder('word')">📂📘 Word جداگانه در پوشه</button>
               <button type="button" class="btn green btn-sm" style="justify-content:center;padding:7px 4px;font-size:10.8px" onclick="ReportApp.downloadSelectedSeparatelyToFolder('html_print')">📂🖨️ فایل چاپی جداگانه در پوشه</button>
             </div>
-            <div style="font-size:10px;color:#7C2D12;margin-top:5px;line-height:1.4">
-              💡 با زدن هر دکمه، پنجره <b>«انتخاب پوشه دلخواه»</b> باز می‌شود و هر کلاس انتخاب‌شده به صورت <b>فایل مجزا با نام پایه و کلاس</b> دقیقاً با همین ظاهر استاندارد داخل پوشه شما ذخیره می‌گردد.
-            </div>
           </div>
         </div>
 
-        <!-- ۶. پیش‌نمایش زنده و تمیز دقیقاً شبیه لیست کلاسی -->
+        <!-- ۶. پیش‌نمایش زنده با قالب اصلی نسخه ۸.۹ -->
         <div id="repModalLivePreviewWrap"></div>
 
         <div class="formactions">
@@ -39637,8 +39337,7 @@ body[data-theme-mode="amoled-black"] .bottomnav {
         }
 
         cSel.innerHTML = classes.map(c => {
-          const fullTitle = window.getFullClassDisplayTitle(c);
-          return `<option value="${c.id}" ${c.id === this.state.cid ? 'selected' : ''}>🚪 ${esc(fullTitle)}${c.subject ? ` (${esc(c.subject)})` : ''} — ${fa((c.students || []).length)} نفر</option>`;
+          return `<option value="${c.id}" ${c.id === this.state.cid ? 'selected' : ''}>🚪 ${esc(window.formatClassOptionLabelV89(c))} — ${fa((c.students || []).length)} نفر</option>`;
         }).join('');
       }
       this.renderMultiClassCheckboxes();
@@ -39661,11 +39360,10 @@ body[data-theme-mode="amoled-black"] .bottomnav {
 
       grid.innerHTML = classes.map(c => {
         const isChecked = selectedSet.has(c.id);
-        const fullTitle = window.getFullClassDisplayTitle(c);
         return `
           <label class="rep-multi-class-chip ${isChecked ? 'checked' : ''}">
             <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="ReportApp.toggleMultiClass('${c.id}', this.checked)">
-            <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🚪 ${esc(fullTitle)}${c.subject ? ` (${esc(c.subject)})` : ''} · ${fa((c.students || []).length)} نفر</span>
+            <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🚪 ${esc(window.formatClassOptionLabelV89(c))} (${fa((c.students || []).length)} نفر)</span>
           </label>
         `;
       }).join('');
@@ -39736,11 +39434,6 @@ body[data-theme-mode="amoled-black"] .bottomnav {
       this.refreshPreview();
     };
 
-    ReportApp.onOrientChange = function(val) {
-      this.state.pageOrientation = val === 'landscape' ? 'landscape' : 'portrait';
-      this.saveState();
-    };
-
     ReportApp.setScope = function(scope) {
       this.state.scope = scope;
       document.querySelectorAll('#repModalScopeTabs button').forEach(b => {
@@ -39776,7 +39469,7 @@ body[data-theme-mode="amoled-black"] .bottomnav {
         fileScopeLabel = safeFileName(res.sections[0].school.name);
       } else if (res.scope === 'class' && res.sections.length === 1) {
         const sec = res.sections[0];
-        fileScopeLabel = safeFileName(`${sec.school.name}-${window.getShortClassWithGrade(sec.cls)}`);
+        fileScopeLabel = safeFileName(`${sec.school.name}-${sec.cls.name}${sec.cls.grade ? '-' + sec.cls.grade : ''}`);
       } else if (res.scope === 'class' && res.sections.length > 1) {
         fileScopeLabel = safeFileName(`${res.sections[0].school.name}-${fa(res.sections.length)}-کلاس`);
       } else if (res.scope === 'student' && res.sections[0]?.items[0]) {
@@ -39785,7 +39478,7 @@ body[data-theme-mode="amoled-black"] .bottomnav {
       }
 
       const isExcelColor = (kind === 'excel_color' || kind === 'excel');
-      const fullDoc = this.buildFullExportDocumentHTML(res, fileScopeLabel, isExcelColor);
+      const fullDoc = this.buildFullV89DocumentHTML(res, fileScopeLabel, isExcelColor);
 
       if (kind === 'excel_color' || kind === 'excel') {
         const a = document.createElement('a');
@@ -39845,9 +39538,10 @@ body[data-theme-mode="amoled-black"] .bottomnav {
           sections: [sec],
           totalStudents: sec.items.length
         };
-        const classLabel = safeFileName(`${sec.school.name}-${window.getShortClassWithGrade(sec.cls)}${sec.cls.subject ? '-' + sec.cls.subject : ''}`);
+        const cleanCls = window.cleanClassDisplayName ? window.cleanClassDisplayName(sec.cls.name) : sec.cls.name;
+        const classLabel = safeFileName(`${sec.school.name}-${sec.cls.grade ? 'پایه-' + sec.cls.grade + '-' : ''}کلاس-${cleanCls}${sec.cls.subject ? '-' + sec.cls.subject : ''}`);
         const isExcel = (kind === 'excel_color' || kind === 'excel');
-        let docHtml = this.buildFullExportDocumentHTML(singleRes, classLabel, isExcel);
+        let docHtml = this.buildFullV89DocumentHTML(singleRes, classLabel, isExcel);
 
         let ext = 'xls';
         let mime = 'application/vnd.ms-excel;charset=utf-8';
@@ -39857,7 +39551,7 @@ body[data-theme-mode="amoled-black"] .bottomnav {
         } else if (kind === 'html_print') {
           ext = 'html';
           mime = 'text/html;charset=utf-8';
-          docHtml = docHtml.replace('<body>', `<body><div class="no-print" style="background:#FFF7ED;border:1.5px solid #EA580C;padding:8px 12px;margin-bottom:8px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;font-family:Tahoma,sans-serif"><b style="color:#9A3412;font-size:12px">🖨️ فایل آماده چاپ/PDF کلاس: ${esc(window.getFullClassDisplayTitle(sec.cls))}</b><button onclick="window.print()" style="background:#EA580C;color:#FFF;border:0;padding:6px 14px;border-radius:8px;font-weight:bold;cursor:pointer">🖨️ چاپ / ذخیره PDF</button></div><style>@media print{.no-print{display:none!important}}</style>`);
+          docHtml = docHtml.replace('<body>', `<body><div class="no-print" style="background:#FFF7ED;border:1.5px solid #EA580C;padding:8px 12px;margin-bottom:8px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;font-family:Tahoma,sans-serif"><b style="color:#9A3412;font-size:12px">🖨️ فایل آماده چاپ/PDF کلاس: ${esc(window.formatClassOptionLabelV89(sec.cls))}</b><button onclick="window.print()" style="background:#EA580C;color:#FFF;border:0;padding:6px 14px;border-radius:8px;font-weight:bold;cursor:pointer">🖨️ چاپ / ذخیره PDF</button></div><style>@media print{.no-print{display:none!important}}</style>`);
         }
 
         const fileName = `گزارش-${classLabel}-${dateStr}.${ext}`;
@@ -39915,31 +39609,14 @@ body[data-theme-mode="amoled-black"] .bottomnav {
     }
   };
 
-  const _origOnExportSchoolChangeV92 = window.onExportSchoolChange;
-  if (typeof _origOnExportSchoolChangeV92 === 'function') {
-    window.onExportSchoolChange = function(preCid = null, preStid = null) {
-      _origOnExportSchoolChangeV92(preCid, preStid);
-      const sid = document.getElementById('expSchoolSel')?.value;
-      const s = findSchool(sid) || db.schools?.[0];
-      const classSel = document.getElementById('expClassSel');
-      if (classSel && s) {
-        const curVal = classSel.value;
-        classSel.innerHTML = (s.classes || []).map(c =>
-          `<option value="${c.id}" ${c.id === curVal ? 'selected' : ''}>🚪 ${esc(window.getFullClassDisplayTitle(c))}${c.subject ? ` (${esc(c.subject)})` : ''} — ${fa((c.students || []).length)} نفر</option>`
-        ).join('');
-      }
-    };
-  }
-
-  // اجرای خودکار تعمیر تعداد دانش‌آموزان کلاس‌ها (رفع باگ ۶۱ نفر در هفتم ب) و پاک‌سازی نمرات صفر کاذب
-  const initV92Fixes = function() {
+  const initV89MasterFixes = function() {
     const fixedStudents = window.repairDuplicateAndCrossMergedStudents(true);
     window.cleanPhantomZeroAttendanceGrades();
     if (fixedStudents > 0 && typeof renderAll === 'function') {
       renderAll();
     }
     document.querySelectorAll('.school-icon').forEach(ico => {
-      if (!ico.querySelector('span')) {
+      if (!ico.querySelector('span') && !ico.querySelector('img')) {
         ico.innerHTML = `<span>${ico.textContent || '🏫'}</span>`;
       }
     });
@@ -39947,16 +39624,16 @@ body[data-theme-mode="amoled-black"] .bottomnav {
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(initV92Fixes, 120);
-      setTimeout(initV92Fixes, 950);
+      setTimeout(initV89MasterFixes, 140);
+      setTimeout(initV89MasterFixes, 950);
     });
   } else {
-    setTimeout(initV92Fixes, 120);
-    setTimeout(initV92Fixes, 950);
+    setTimeout(initV89MasterFixes, 140);
+    setTimeout(initV89MasterFixes, 950);
   }
 })();
 </script>
-<!-- ==================== END V9.2.0 ULTRA SMOOTH & DEDUP PRO ==================== -->
+<!-- ==================== END V8.9.5 MASTER EDITION ==================== -->
 
 </body>
 </html>
