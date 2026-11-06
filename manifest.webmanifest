@@ -1,6 +1,7 @@
 {
   "name": "دانش‌آموز من — دفتر هوشمند معلم",
   "short_name": "دانش‌آموز من",
+  "version": "8.9.2",
   "description": "دفتر هوشمند معلم، حضور و غیاب، کارنامه رنگی، کلاس آنلاین و آزمون‌ساز (تم نارنجی و سفید)",
   "lang": "fa",
   "dir": "rtl",
@@ -15,13 +16,25 @@
       "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

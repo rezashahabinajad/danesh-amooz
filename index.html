@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="8.3.0">
+<meta name="version" content="8.9.2">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.9</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.9.2</span>
         </div>
       </div>
     </div>
@@ -6234,7 +6234,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.5 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.9.2 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6335,7 +6335,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v8.3 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v8.9.2 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6566,7 +6566,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '8.1.0 Pro';
+const APP_VERSION = '8.9.2 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -16052,7 +16052,7 @@ TeachAssistant.switchSubjectToolPane = function(paneId, btnEl) {
 };
 
 TeachAssistant.toggleMathGridOverlay = function() {
-  const el = document.getElementById('mathGridOverlay');
+  const el = document.getElementById('' + 'mathGridOverlay');
   if (!el) return;
   const active = el.classList.toggle('show');
   toast(active ? 'صفحه شطرنجی ریاضی روی کتاب فعال شد 📐' : 'صفحه شطرنجی غیرفعال شد');
@@ -16087,8 +16087,8 @@ TeachAssistant.stampMathShape = function(shapeType) {
 };
 
 TeachAssistant.evalMathExpr = function() {
-  const raw = (document.getElementById('mathCalcExprInp')?.value || '').trim();
-  const badge = document.getElementById('mathCalcResultBadge');
+  const raw = (document.getElementById('' + 'mathCalcExprInp')?.value || '').trim();
+  const badge = document.getElementById('' + 'mathCalcResultBadge');
   if (!raw || !badge) return;
   try {
     const safeExpr = enDigits(raw)
@@ -16118,7 +16118,7 @@ TeachAssistant.toggleLabTimer = function() {
     this._labTimerSec = (this._labTimerSec || 0) + 1;
     const m = String(Math.floor(this._labTimerSec / 60)).padStart(2, '0');
     const s = String(this._labTimerSec % 60).padStart(2, '0');
-    const el = document.getElementById('labTimerDisplay');
+    const el = document.getElementById('' + 'labTimerDisplay');
     if (el) el.textContent = `${m}:${s}`;
   }, 1000);
   toast('کرنومتر آزمایشگاه فعال شد ⏱️');
@@ -16128,7 +16128,7 @@ TeachAssistant.resetLabTimer = function() {
   clearInterval(this._labTimerId);
   this._labTimerId = null;
   this._labTimerSec = 0;
-  const el = document.getElementById('labTimerDisplay');
+  const el = document.getElementById('' + 'labTimerDisplay');
   if (el) el.textContent = '00:00';
 };
 
@@ -16157,9 +16157,9 @@ TeachAssistant.openPeriodicTableModal = function() {
 };
 
 TeachAssistant.saveLabReportToPageNote = function() {
-  const title = (document.getElementById('labTitleInp')?.value || '').trim();
-  const tools = (document.getElementById('labToolsInp')?.value || '').trim();
-  const res = (document.getElementById('labResultInp')?.value || '').trim();
+  const title = (document.getElementById('' + 'labTitleInp')?.value || '').trim();
+  const tools = (document.getElementById('' + 'labToolsInp')?.value || '').trim();
+  const res = (document.getElementById('' + 'labResultInp')?.value || '').trim();
   if (!title && !res) { toast('لطفاً عنوان یا نتیجه آزمایش را بنویسید.'); return; }
   const pKey = String(Number(window._teacherPdfPage) || 1);
   this.ensureLibraryStructure();
@@ -16262,13 +16262,13 @@ TeachAssistant.insertVocabTableToNote = function() {
 };
 
 TeachAssistant.speakEnglishText = function() {
-  const txt = (document.getElementById('engPronounceInp')?.value || '').trim();
+  const txt = (document.getElementById('' + 'engPronounceInp')?.value || '').trim();
   if (!txt) { toast('لطفاً کلمه یا جمله انگلیسی را وارد کنید.'); return; }
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(txt);
     u.lang = 'en-US';
-    u.rate = parseFloat(document.getElementById('engSpeechRateSel')?.value || '0.9') || 0.9;
+    u.rate = parseFloat(document.getElementById('' + 'engSpeechRateSel')?.value || '0.9') || 0.9;
     window.speechSynthesis.speak(u);
     toast(`🔊 در حال تلفظ: "${txt}"`);
   } else {
@@ -16277,7 +16277,7 @@ TeachAssistant.speakEnglishText = function() {
 };
 
 TeachAssistant.addEnglishWordToBank = function() {
-  const txt = (document.getElementById('engPronounceInp')?.value || '').trim();
+  const txt = (document.getElementById('' + 'engPronounceInp')?.value || '').trim();
   if (!txt) return;
   this.ensureLibraryStructure();
   const pageNo = Number(window._teacherPdfPage) || 1;
@@ -25545,7 +25545,7 @@ window.renderOnlineClassHub = function(activeTab = null) {
   _origRenderOnlineClassHubV75(activeTab);
   const root = document.getElementById('onlineClassHubContent');
   if (!root || document.getElementById('hubResponsesExportCard')) return;
-  const selVal = document.getElementById('hubClassSelector')?.value || '';
+  const selVal = document.getElementById('' + 'hubClassSelector')?.value || '';
   const [sid, cid] = selVal.includes('|') ? selVal.split('|') : [currentSchoolId, currentClassId];
   const dateISO = window.currentListDate || localISODate();
 
@@ -28825,7 +28825,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     const _origRenderStudyPdfBase = TeachAssistant.renderStudyPdf.bind(TeachAssistant);
     TeachAssistant.renderStudyPdf = async function() {
       // حذف هرگونه نوار زوم شناور اضافی که در نسخه قبل باعث هل دادن کتاب به راست شده بود
-      document.getElementById('teachFloatingZoomBar')?.remove();
+      document.getElementById('' + 'teachFloatingZoomBar')?.remove();
 
       await _origRenderStudyPdfBase();
 
@@ -30248,7 +30248,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
   /* ۸. راه‌اندازی اولیه */
   const bootV81 = () => {
     try {
-      document.getElementById('teachFloatingZoomBar')?.remove();
+      document.getElementById('' + 'teachFloatingZoomBar')?.remove();
       initWhiteOrangeSlimeLogoFeel();
       unifyPdfAndSmartDesignerTabs();
       if (typeof db !== 'undefined' && db?.cachedBook?.pages) {
@@ -31535,7 +31535,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
     };
 
     TeachAssistant.renderStudyPdf = async function() {
-      document.getElementById('teachFloatingZoomBar')?.remove();
+      document.getElementById('' + 'teachFloatingZoomBar')?.remove();
       const canvas = document.getElementById('teacherPdfCanvas');
       const inner = document.getElementById('teacherCanvasInner');
       const stage = document.getElementById('teacherPdfStage');
@@ -35559,7 +35559,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v9.2</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v8.9.2</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -35701,7 +35701,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 8.6 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 8.9.2 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -36774,7 +36774,7 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 <!-- ==================== END V8.7.0 COUNSELOR PRO ==================== -->
 
 <!-- ==================== START V8.8.0 ANIMATED BORDERS PRO ==================== -->
-<style id="v88AnimatedBordersAllStyle">
+<style id="v88AnimatedBordersAllStyle" media="not all">
 /* ==========================================================================================
    ۱. موتور چرخش ۳۶۰ درجه حاشیه نوری دور تمام آیتم‌های برنامه (۶۰ فریم بر ثانیه و کاملاً نرم)
    ========================================================================================== */
@@ -38597,9 +38597,209 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
 </script>
 <!-- ==================== END V8.9.0 AI & GRADES PRO ==================== -->
 
-<!-- ==================== START V8.9.5 MASTER EDITION ==================== -->
-<style id="v89MasterAddonStyle">
-/* حفظ ۱۰۰٪ قالب و انیمیشن‌های نسخه ۸.۹ + استایل کادر انتخاب چندگانه کلاس‌ها و دانلود پوشه‌ای در استودیو گزارش */
+<!-- ==================== START V8.9.1 CLEAN REQUESTED UPGRADE ==================== -->
+<style id="v89CleanRequestedUpgradeStyle">
+/* ==========================================================================================
+   ۱. رفع باگ تصویری سفید افتادن آیکون مدرسه (🏫) و گوی‌های ۳بعدی + حفظ چیدمان تب‌های آزمون‌ساز
+   ========================================================================================== */
+.siren-rotating-orb,
+.class-beacon-mini-orb,
+.dam-3d-orb,
+.school-icon,
+.dam-settings-row-icon {
+  isolation: isolate !important;
+  position: relative !important;
+}
+.siren-rotating-orb::before,
+.siren-rotating-orb::after,
+.class-beacon-mini-orb::before,
+.class-beacon-mini-orb::after,
+.dam-3d-orb::before,
+.dam-3d-orb::after,
+.school-icon::before,
+.school-icon::after,
+.dam-settings-row-icon::before,
+.dam-settings-row-icon::after {
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+.school-icon > span,
+.dam-3d-orb > span,
+.siren-rotating-orb > span,
+.class-beacon-mini-orb > span {
+  position: relative !important;
+  z-index: 2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* وقتی گردش دور پنل‌ها غیرفعال است (پیش‌فرض برای سبکی برنامه)، چرخش مداوم گوی‌ها هم متوقف شود تا مصرف پردازنده صفر باشد */
+body:not(.dam-panel-orbit-on) .siren-rotating-orb::before,
+body:not(.dam-panel-orbit-on) .class-beacon-mini-orb::before,
+body:not(.dam-panel-orbit-on) .dam-3d-orb::before,
+body:not(.dam-panel-orbit-on) .school-icon::before,
+body:not(.dam-panel-orbit-on) .siren-rotating-orb > *,
+body:not(.dam-panel-orbit-on) .class-beacon-mini-orb > *,
+body:not(.dam-panel-orbit-on) .dam-3d-orb > *,
+body:not(.dam-panel-orbit-on) .school-icon > * {
+  animation: none !important;
+}
+
+/* حفظ همیشگی چیدمان منظم تب‌های آزمون‌ساز و شعبه‌ها حتی وقتی گردش دور پنل‌ها خاموش است */
+#examView .exam-subnav {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  overflow: visible !important;
+  padding: 7px !important;
+  border-radius: 16px !important;
+}
+#examView .exam-subnav .ex-nav-btn {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 8px 6px !important;
+  font-size: 11.5px !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  border-radius: 11px !important;
+}
+#examView .exam-subnav .ex-nav-btn:first-child {
+  grid-column: 1 / -1 !important;
+  font-size: 12.5px !important;
+}
+@media (min-width: 680px) {
+  #examView .exam-subnav {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+  #examView .exam-subnav .ex-nav-btn:first-child {
+    grid-column: auto !important;
+  }
+}
+#examView .branch-pills-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 5px !important;
+  justify-content: center !important;
+}
+#examView .branch-pills-row .branch-pill {
+  padding: 6px 9px !important;
+  font-size: 11px !important;
+  flex: 1 1 auto !important;
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+/* ==========================================================================================
+   ۲. استایل جدول گزارش استاندارد کلاسی یکدست (موارد ۱، ۲ و ۳: هم‌قد شدن ردیف‌ها، خط ریز زیر ردیف و رفع بریدگی پرینت)
+   ========================================================================================== */
+.rep-oneline-top-guide {
+  background: #FFF7ED;
+  border: 1px solid #FDBA74;
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-bottom: 6px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #7C2D12;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px;
+  line-height: 1.35;
+}
+
+.rep-table-scroll-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.rep-std-table {
+  width: 100% !important;
+  max-width: 100% !important;
+  border-collapse: collapse !important;
+  table-layout: fixed !important;
+  font-size: 9.6px !important;
+  direction: rtl !important;
+}
+.rep-std-table thead th {
+  background: #EA580C;
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 8.8px !important;
+  padding: 4px 2px !important;
+  border: 1px solid #C2410C;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 24px;
+  line-height: 1.15;
+}
+.rep-std-student-group {
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+.rep-std-main-row {
+  height: 25px !important;
+  max-height: 25px !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+.rep-std-main-row td {
+  height: 25px !important;
+  max-height: 25px !important;
+  padding: 2px 3px !important;
+  border: 1px solid #CBD5E1 !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  line-height: 20px !important;
+  font-size: 9.5px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.rep-std-sub-row {
+  height: 18px !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+.rep-std-sub-row td {
+  height: 18px !important;
+  padding: 1px 6px !important;
+  background: #FFFDF9 !important;
+  border: 1px solid #CBD5E1 !important;
+  border-top: 1px dashed #FED7AA !important;
+  font-size: 8.2px !important;
+  line-height: 15px !important;
+  color: #334155 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-align: right !important;
+  max-width: 0 !important;
+}
+
+@media print {
+  .rep-classlist-card {
+    overflow: visible !important;
+  }
+  .rep-table-scroll-wrap {
+    overflow: visible !important;
+  }
+  .rep-std-table {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+  }
+}
+
+/* ==========================================================================================
+   ۳. استایل بخش «انتخاب چندگانه کلاس‌ها» و «دانلود جداگانه در پوشه دلخواه» (مورد ۴)
+   ========================================================================================== */
 .rep-multi-class-box {
   background: #FFFBF5;
   border: 1.5px solid #FDBA74;
@@ -38635,13 +38835,14 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
   font-size: 11px;
   font-weight: 800;
   color: #334155;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
   user-select: none;
 }
 .rep-multi-class-chip.checked {
   background: #FFF7ED;
   border-color: #EA580C;
   color: #9A3412;
-  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.14);
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.12);
 }
 .rep-multi-class-chip input[type="checkbox"] {
   width: 16px;
@@ -38657,160 +38858,208 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
   padding: 9px 10px;
   margin-top: 8px;
 }
-
-/* تضمین دیده شدن شفاف ایموجی آیکون مدرسه در هدر صفحه داخلی مدرسه بدون حذف افکت گردون نسخه ۸.۹ */
-.siren-rotating-orb,
-.class-beacon-mini-orb,
-.dam-3d-orb,
-.school-icon {
-  isolation: isolate !important;
-}
-.siren-rotating-orb::before,
-.class-beacon-mini-orb::before,
-.dam-3d-orb::before,
-.school-icon::before,
-.siren-rotating-orb::after,
-.class-beacon-mini-orb::after,
-.dam-3d-orb::after,
-.school-icon::after {
-  z-index: -1 !important;
-}
 </style>
 
-<script id="v89MasterAddonScript">
+<script id="v89CleanRequestedUpgradeScript">
 (function() {
   'use strict';
 
   /* ==========================================================================================
-     بخش ۱: تعمیر خودکار باگ ادغام دانش‌آموزان بین کلاس‌های هم‌نام (مثلاً ۶۱ نفر شدن کلاس «ب»)
-     و پاک‌سازی نمرات صفر کاذب در پس‌زمینه (بدون هیچ تغییری در ظاهر و قالب نسخه ۸.۹)
+     مورد ۸: کنترل فعال و غیرفعال‌سازی «گردش دور پنل‌ها و حرکت نوری» (پیش‌فرض: غیرفعال برای سبکی برنامه)
      ========================================================================================== */
-  window.isValidGradeNumber = function(val) {
-    if (val === undefined || val === null || typeof val === 'boolean') return false;
-    const str = String(val).trim();
-    if (str === '') return false;
-    const num = Number(enDigits(str));
-    return Number.isFinite(num) && num > 0 && num <= 20;
+  const PANEL_ORBIT_STORAGE_KEY = 'dam_panel_orbit_enabled';
+
+  window.isPanelOrbitAnimationEnabled = function() {
+    try {
+      return localStorage.getItem(PANEL_ORBIT_STORAGE_KEY) === '1';
+    } catch (_) {
+      return false;
+    }
   };
 
-  window.attendanceScore = function(c, d, stid) {
-    const rec = c?.attendance?.[d]?.[stid];
-    if (!rec || !window.isValidGradeNumber(rec.score)) return null;
-    return Number(enDigits(String(rec.score)));
+  window.applyPanelOrbitAnimationState = function(enabled) {
+    const isOn = Boolean(enabled);
+    const v88StyleEl = document.getElementById('v88AnimatedBordersAllStyle');
+    if (v88StyleEl) {
+      v88StyleEl.media = isOn ? 'all' : 'not all';
+      v88StyleEl.disabled = !isOn;
+    }
+    if (document.body) {
+      document.body.classList.toggle('dam-panel-orbit-on', isOn);
+    }
+    document.querySelectorAll('.dam-panel-orbit-switch').forEach(btn => {
+      btn.classList.toggle('on', isOn);
+    });
+    document.querySelectorAll('.dam-panel-orbit-status-txt').forEach(lbl => {
+      lbl.textContent = isOn ? 'فعال (گردش نوری روشن)' : 'غیرفعال (پیش‌فرض — برنامه سبک و سریع)';
+    });
   };
 
-  window.cleanPhantomZeroAttendanceGrades = function() {
-    if (!db || !Array.isArray(db.schools)) return 0;
-    let cleaned = 0;
-    db.schools.forEach(s => {
-      (s.classes || []).forEach(c => {
-        if (c.attendance && typeof c.attendance === 'object') {
-          Object.keys(c.attendance).forEach(d => {
-            const dayObj = c.attendance[d];
-            if (!dayObj || typeof dayObj !== 'object') return;
-            Object.keys(dayObj).forEach(stid => {
-              const rec = dayObj[stid];
-              if (rec && typeof rec === 'object' && 'score' in rec) {
-                if (!window.isValidGradeNumber(rec.score)) {
-                  delete rec.score;
-                  cleaned++;
-                }
-              }
-            });
-          });
+  window.togglePanelOrbitAnimation = function(forceVal) {
+    const nextState = typeof forceVal === 'boolean' ? forceVal : !window.isPanelOrbitAnimationEnabled();
+    try {
+      localStorage.setItem(PANEL_ORBIT_STORAGE_KEY, nextState ? '1' : '0');
+    } catch (_) {}
+    window.applyPanelOrbitAnimationState(nextState);
+    if (typeof toast === 'function') {
+      toast(nextState
+        ? '✨ گردش و حرکت نوری دور پنل‌ها فعال شد!'
+        : '⚡ گردش دور پنل‌ها غیرفعال شد (حالت سبک و روان)');
+    }
+  };
+
+  // اعمال فوری در لحظه بارگذاری (پیش‌فرض: غیرفعال)
+  window.applyPanelOrbitAnimationState(window.isPanelOrbitAnimationEnabled());
+
+  const injectPanelOrbitToggleIntoSettings = function() {
+    const isOn = window.isPanelOrbitAnimationEnabled();
+
+    // ۱. افزودن کلید روشن/خاموش «گردش دور پنل‌ها و حرکت نوری» به صفحه اصلی تنظیمات (#tgSettingsHomeWrap)
+    const homeWrap = document.getElementById('tgSettingsHomeWrap');
+    if (homeWrap && !document.getElementById('damPanelOrbitSettingsRow')) {
+      const islands = homeWrap.querySelectorAll('.dam-settings-island');
+      const targetIsland = islands.length > 1 ? islands[1] : islands[0];
+      if (targetIsland) {
+        const orbitRow = document.createElement('div');
+        orbitRow.id = 'damPanelOrbitSettingsRow';
+        orbitRow.className = 'dam-settings-row';
+        orbitRow.onclick = function() { window.togglePanelOrbitAnimation(); };
+        orbitRow.innerHTML = `
+          <div class="dam-settings-row-right">
+            <span class="dam-3d-orb orb-purple"><span>✨</span></span>
+            <div class="dam-settings-row-texts">
+              <b>گردش و حرکت نوری دور پنل‌ها و دکمه‌ها</b>
+              <span class="dam-panel-orbit-status-txt">${isOn ? 'فعال (گردش نوری روشن)' : 'غیرفعال (پیش‌فرض — برنامه سبک و سریع)'}</span>
+            </div>
+          </div>
+          <button type="button" class="dam-capsule-switch dam-panel-orbit-switch ${isOn ? 'on' : ''}" aria-label="گردش دور پنل‌ها"></button>
+        `;
+        targetIsland.insertBefore(orbitRow, targetIsland.firstElementChild);
+      }
+    }
+
+    // ۲. افزودن کارت کلید روشن/خاموش «گردش دور پنل‌ها» به زیرصفحه ظاهر و پوسته‌ها (#setPane-theme)
+    const themePane = document.getElementById('setPane-theme');
+    if (themePane && !document.getElementById('damPanelOrbitThemeCard')) {
+      const card = document.createElement('div');
+      card.id = 'damPanelOrbitThemeCard';
+      card.className = 'card';
+      card.style.marginBottom = '12px';
+      card.innerHTML = `
+        <div class="dam-settings-row" style="padding:4px 0" onclick="window.togglePanelOrbitAnimation()">
+          <div class="dam-settings-row-right">
+            <span class="dam-3d-orb orb-purple"><span>✨</span></span>
+            <div class="dam-settings-row-texts">
+              <b>گردش و حرکت نوری دور پنل‌ها و کادرها</b>
+              <span class="dam-panel-orbit-status-txt">${isOn ? 'فعال (گردش نوری روشن)' : 'غیرفعال (پیش‌فرض — برنامه سبک و سریع)'}</span>
+            </div>
+          </div>
+          <button type="button" class="dam-capsule-switch dam-panel-orbit-switch ${isOn ? 'on' : ''}" aria-label="گردش دور پنل‌ها"></button>
+        </div>
+      `;
+      themePane.insertBefore(card, themePane.firstElementChild);
+    }
+  };
+
+
+  /* ==========================================================================================
+     مورد ۵: نمایش نام پایه تحصیلی کنار نام کلاس در کارت‌ها، هدر کلاس و لیست گزارش
+     ========================================================================================== */
+  window.getFullClassDisplayTitle = function(c) {
+    if (!c) return '';
+    const cleanName = typeof window.cleanClassDisplayName === 'function'
+      ? window.cleanClassDisplayName(c.name)
+      : String(c.name || '').trim();
+    const grade = String(c.grade || '').trim();
+    if (grade && !cleanName.includes(grade)) {
+      return `پایه ${grade} — کلاس ${cleanName}`;
+    }
+    return `کلاس ${cleanName}`;
+  };
+
+  window.getShortClassWithGrade = function(c) {
+    if (!c) return '';
+    const cleanName = typeof window.cleanClassDisplayName === 'function'
+      ? window.cleanClassDisplayName(c.name)
+      : String(c.name || '').trim();
+    const grade = String(c.grade || '').trim();
+    if (grade && !cleanName.includes(grade)) {
+      return `${grade} ${cleanName}`;
+    }
+    return cleanName;
+  };
+
+  window.classCard = function(s, c) {
+    const photos = Array.isArray(c.photos) ? c.photos : [];
+    const fullTitle = window.getShortClassWithGrade(c);
+    const subjBadge = c.subject
+      ? `<span class="chip" style="background:#FFF7ED;color:#C2410C;border:1px solid #FDBA74;font-weight:900">📚 درس: ${esc(c.subject)}</span>`
+      : `<span class="chip" style="cursor:pointer" onclick="event.stopPropagation();editClass('${s.id}','${c.id}')">➕ ثبت نام درس</span>`;
+
+    return `<div class="card in-view">
+      ${photos.length ? `<div class="class-gallery" style="margin-top:0;margin-bottom:10px">${photos.slice(0, 2).map(src => `<img src="${src}" class="photo-clickable" onclick="openPhotoViewer('${src}','کلاس-${safeFileName(fullTitle)}.jpg')">`).join('')}</div>` : ''}
+      <div class="school-head" style="align-items:flex-start;gap:8px">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
+            <h3 style="margin:0">🚪 کلاس ${esc(fullTitle)}</h3>
+            <button type="button" class="class-beacon-reminder-btn" style="padding:3px 9px;font-size:10.5px" onclick="event.stopPropagation();openClassroomGuidanceModal('${s.id}','${c.id}')">
+              <span class="class-beacon-mini-orb"><span>🚨</span></span>
+              <span>مشاور کلاس</span>
+            </button>
+          </div>
+          <div class="muted" style="margin-top:4px">پایه ${esc(c.grade || '—')}${c.subject ? ` · 📚 درس ${esc(c.subject)}` : ''}</div>
+        </div>
+        <div class="school-icon"><span>🚪</span></div>
+      </div>
+      <div class="chips" style="margin-top:6px">
+        ${subjBadge}
+        <span class="chip">👨‍🎓 ${fa((c.students || []).length)} دانش‌آموز</span>
+        <span class="chip">📷 ${fa(photos.length)} عکس</span>
+      </div>
+      <div class="actions">
+        <button class="btn primary" style="flex:1" onclick="openClass('${s.id}','${c.id}')">ورود به کلاس</button>
+        <button class="btn soft" onclick="openAttendance('${s.id}','${c.id}')">📋 جدول ترم</button>
+        <button class="btn gray" onclick="editClass('${s.id}','${c.id}')">✎</button>
+      </div>
+    </div>`;
+  };
+
+  // رفع سفیدی آیکون مدرسه (🏫) هنگام باز شدن صفحه داخلی مدرسه و کلاس
+  const _origOpenSchoolV89C = window.openSchool;
+  if (typeof _origOpenSchoolV89C === 'function') {
+    window.openSchool = function(id) {
+      _origOpenSchoolV89C(id);
+      document.querySelectorAll('#schoolDetail .school-icon').forEach(ico => {
+        if (!ico.querySelector('span') && !ico.querySelector('img')) {
+          ico.innerHTML = `<span>${ico.textContent || '🏫'}</span>`;
         }
-
-        (c.students || []).forEach(st => {
-          let studentCleaned = false;
-          if (Array.isArray(st.grades)) {
-            const beforeLen = st.grades.length;
-            st.grades = st.grades.filter(g => {
-              if (!g || typeof g !== 'object') return false;
-              if (!window.isValidGradeNumber(g.score)) return false;
-              return true;
-            });
-            if (st.grades.length !== beforeLen) {
-              cleaned += (beforeLen - st.grades.length);
-              studentCleaned = true;
-            }
-          }
-          if (c.contExamScores && st.id in c.contExamScores) {
-            if (!window.isValidGradeNumber(c.contExamScores[st.id])) {
-              delete c.contExamScores[st.id];
-              cleaned++;
-              studentCleaned = true;
-            }
-          }
-          if (c.termScores && st.id in c.termScores) {
-            if (!window.isValidGradeNumber(c.termScores[st.id])) {
-              delete c.termScores[st.id];
-              cleaned++;
-              studentCleaned = true;
-            }
-          }
-          if (studentCleaned && typeof evaluateAutoStatus === 'function') {
-            try { evaluateAutoStatus(c, st); } catch (_) {}
-          }
-        });
       });
-    });
-    if (cleaned > 0) {
-      try { savePersistent(); } catch (_) {}
-    }
-    return cleaned;
-  };
+    };
+  }
 
-  // فیلتر ضد-صفر کاذب در توابع نمرات نسخه ۸.۹ با حفظ دقیق ساختار خروجی نسخه ۸.۹
-  window.getStudentWrittenContList = function(c, st) {
-    if (!st) return [];
-    if (!Array.isArray(st.grades)) st.grades = [];
-
-    if (c && c.contExamScores && window.isValidGradeNumber(c.contExamScores[st.id])) {
-      const legacyVal = Number(enDigits(String(c.contExamScores[st.id])));
-      const hasContGrade = st.grades.some(g => g && g.gradeType === 'cont_exam' && window.isValidGradeNumber(g.score));
-      if (!hasContGrade && legacyVal > 0) {
-        st.grades.push({
-          id: uid(),
-          date: new Date().toISOString(),
-          subject: 'کتبی مستمر ۱',
-          score: legacyVal,
-          source: 'direct_cont_col',
-          gradeType: 'cont_exam'
-        });
+  const _origOpenClassV89C = window.openClass;
+  if (typeof _origOpenClassV89C === 'function') {
+    window.openClass = function(sid, cid) {
+      _origOpenClassV89C(sid, cid);
+      const c = findClass(sid, cid);
+      if (!c) return;
+      const titleEl = document.querySelector('#classMainView .class-title-with-counselor-row h1.title')
+        || document.querySelector('#classMainView .detailhead .school-head h1.title');
+      if (titleEl) {
+        titleEl.textContent = `کلاس ${window.getShortClassWithGrade(c)}`;
       }
-    }
+      document.querySelectorAll('#classMainView .school-icon').forEach(ico => {
+        if (!ico.querySelector('span') && !ico.querySelector('img')) {
+          ico.innerHTML = `<span>${ico.textContent || '🚪'}</span>`;
+        }
+      });
+    };
+  }
 
-    const list = [];
-    st.grades.forEach((g, idx) => {
-      if (g && g.gradeType === 'cont_exam' && window.isValidGradeNumber(g.score)) {
-        list.push({
-          id: g.id || ('cont_' + idx),
-          title: g.subject || `کتبی مستمر ${fa(list.length + 1)}`,
-          score: Number(enDigits(String(g.score))),
-          date: g.date || '',
-          ref: g
-        });
-      }
-    });
-    return list;
-  };
 
-  window.getStudentOralClassList = function(c, st) {
-    if (!st) return [];
-    const list = [];
-    (st.grades || []).forEach((g, idx) => {
-      if (g && g.gradeType !== 'cont_exam' && g.gradeType !== 'group_score' && window.isValidGradeNumber(g.score)) {
-        list.push({
-          id: g.id || ('oral_' + idx),
-          title: g.subject || `پرسش کلاسی ${fa(list.length + 1)}`,
-          score: Number(enDigits(String(g.score))),
-          date: g.date || ''
-        });
-      }
-    });
-    return list;
-  };
-
+  /* ==========================================================================================
+     مورد ۷: رفع باگ ادغام کلاس‌های هم‌نام (مثلاً هفتم ب و نهم ب) و اصلاح تعداد واقعی دانش‌آموزان
+     ========================================================================================== */
   const _normStudentFullKey = function(st) {
     if (!st) return '';
     const fn = typeof normFaKey === 'function'
@@ -38869,7 +39118,7 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
         c.students = kept;
       });
 
-      // ۲. حذف دانش‌آموزانی که به خاطر هم‌نام بودن دو کلاس (مثلاً «ب» در پایه هفتم و «ب» در پایه نهم) از یک کلاس به کلاس دیگر کپی شده بودند
+      // ۲. حذف دانش‌آموزانی که به خاطر هم‌نام بودن دو کلاس (مثلاً «ب» در پایه هفتم و «ب» در پایه نهم) در یک کلاس دیگر ادغام شده بودند
       for (let i = 0; i < classes.length; i++) {
         for (let j = 0; j < classes.length; j++) {
           if (i === j) continue;
@@ -38933,81 +39182,17 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
         if (typeof flushDbToIndexedDbNow === 'function') flushDbToIndexedDbNow();
       } catch (_) {}
       if (showToastIfFixed && typeof toast === 'function') {
-        toast(`✅ ${fa(totalRemoved)} دانش‌آموز تکراری/ادغام‌شده بین کلاس‌ها اصلاح شد!`);
+        toast(`✅ ${fa(totalRemoved)} دانش‌آموز تکراری/ادغام‌شده بین کلاس‌های هم‌نام اصلاح شد!`);
       }
     }
     return totalRemoved;
   };
 
-  window.mergeTwoDatabasesNonDestructively = function(primaryDb, secondaryDb) {
-    if (!primaryDb || !Array.isArray(primaryDb.schools) || !primaryDb.schools.length) {
-      return sanitizeDb(secondaryDb);
-    }
-    if (!secondaryDb || !Array.isArray(secondaryDb.schools) || !secondaryDb.schools.length) {
-      return sanitizeDb(primaryDb);
-    }
-
-    const base = sanitizeDb(primaryDb);
-
-    (secondaryDb.schools || []).forEach(extS => {
-      const extSNorm = normFaKey(extS.name);
-      let s = base.schools.find(x => x.id === extS.id) || (extSNorm ? base.schools.find(x => normFaKey(x.name) === extSNorm) : null);
-      if (!s) {
-        base.schools.push(extS);
-        return;
-      }
-      if ((!s.photos || !s.photos.length) && Array.isArray(extS.photos) && extS.photos.length) {
-        s.photos = [...extS.photos];
-      }
-
-      (extS.classes || []).forEach(extC => {
-        const extCNorm = normFaKey(extC.name);
-        const extGNorm = normFaKey(extC.grade || '');
-        let c = (s.classes || []).find(x => x.id === extC.id);
-        if (!c && extCNorm) {
-          c = (s.classes || []).find(x => normFaKey(x.name) === extCNorm && normFaKey(x.grade || '') === extGNorm);
-        }
-        if (!c) {
-          s.classes.push(extC);
-          return;
-        }
-        if ((!c.photos || !c.photos.length) && Array.isArray(extC.photos) && extC.photos.length) {
-          c.photos = [...extC.photos];
-        }
-        c.attendance = { ...(extC.attendance || {}), ...(c.attendance || {}) };
-        c.termScores = { ...(extC.termScores || {}), ...(c.termScores || {}) };
-        c.contExamScores = { ...(extC.contExamScores || {}), ...(c.contExamScores || {}) };
-        c.onlineExamResults = { ...(extC.onlineExamResults || {}), ...(c.onlineExamResults || {}) };
-
-        (extC.students || []).forEach(extSt => {
-          const extFn = normFaKey(`${extSt.name || ''} ${extSt.lastName || ''}`);
-          let st = (c.students || []).find(x => x.id === extSt.id)
-            || (extFn.length > 2 ? (c.students || []).find(x => normFaKey(`${x.name || ''} ${x.lastName || ''}`) === extFn) : null);
-          if (!st) {
-            c.students.push(extSt);
-            return;
-          }
-          if ((!st.photo || st.photo.length < 50) && extSt.photo && extSt.photo.length > 50) st.photo = extSt.photo;
-          if (!st.fatherName && extSt.fatherName) st.fatherName = extSt.fatherName;
-          if (!st.phone && extSt.phone) st.phone = extSt.phone;
-          if (!st.birth && extSt.birth) st.birth = extSt.birth;
-          if ((!st.grades || !st.grades.length) && extSt.grades?.length) st.grades = [...extSt.grades];
-          if ((!st.behavior?.positives?.length) && extSt.behavior?.positives?.length) st.behavior.positives = [...st.behavior.positives];
-          if ((!st.behavior?.negatives?.length) && st.behavior?.negatives?.length) st.behavior.negatives = [...st.behavior.negatives];
-          if ((!st.examPapers || !st.examPapers.length) && extSt.examPapers?.length) st.examPapers = [...extSt.examPapers];
-        });
-      });
-    });
-
-    return sanitizeDb(base);
-  };
-
-  const _origRestorePersistentV89M = window.restorePersistent;
-  if (typeof _origRestorePersistentV89M === 'function') {
+  const _origRestorePersistentV89C = window.restorePersistent;
+  if (typeof _origRestorePersistentV89C === 'function') {
     window.restorePersistent = async function() {
-      await _origRestorePersistentV89M();
+      await _origRestorePersistentV89C();
       const fixed = window.repairDuplicateAndCrossMergedStudents(true);
-      window.cleanPhantomZeroAttendanceGrades();
       if (fixed > 0) {
         if (typeof flushDbToIndexedDbNow === 'function') await flushDbToIndexedDbNow();
         if (typeof renderAll === 'function') renderAll();
@@ -39017,51 +39202,66 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
 
 
   /* ==========================================================================================
-     بخش ۲: بهینه‌سازی سرعت ذخیره‌سازی پس‌زمینه و ثبت سریع در لیست امروز (بدون حذف هیچ انیمیشنی از ۸.۹)
+     موارد ۱، ۲، ۳ و ۴: استانداردسازی جدول گزارش کلاسی (هم‌قد شدن ردیف‌ها، خط ریز زیر ردیف،
+     رفع بریدگی ستون‌های آخر در پرینت A4 و انتخاب چند کلاس هم‌زمان + دانلود پوشه‌ای جداگانه)
      ========================================================================================== */
-  window.savePersistent = function() {
-    if (window._isDbLoading && !window._dbRestoredReady) return;
-    db._updatedAt = Date.now();
-
-    clearTimeout(window._fastLocalSaveTimer);
-    window._fastLocalSaveTimer = setTimeout(() => {
-      try {
-        if (typeof extractAllPhotosFromDb === 'function') {
-          extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
-        }
-        const fastMeta = buildFastMetadataOnlyDb(db);
-        localStorage.setItem(KEY, JSON.stringify(fastMeta));
-      } catch (_) {}
-    }, 180);
-
-    clearTimeout(window._idbSaveDebounceTimer);
-    window._idbSaveDebounceTimer = setTimeout(() => {
-      if (typeof flushDbToIndexedDbNow === 'function') {
-        flushDbToIndexedDbNow();
+  window.getShortCleanStatusBadgeHTML = function(st, det) {
+    if (!det || !det.isAttn) {
+      if (st?.status === 'good') {
+        return `<span style="display:inline-block;padding:1px 5px;border-radius:99px;background:#DCFCE7;color:#15803D;border:1px solid #86EFAC;font-size:8.5px;font-weight:800;white-space:nowrap">🟢 خوب</span>`;
       }
-    }, 550);
+      return `<span style="color:#64748B;font-size:9px;white-space:nowrap">عادی</span>`;
+    }
+    const cats = det.categories || [];
+    const shortLabels = [];
+    if (cats.includes('academic')) shortLabels.push('📉 افت درسی');
+    if (cats.includes('discipline')) shortLabels.push('⚠️ انضباطی');
+    if (cats.includes('medical')) shortLabels.push('🏥 پزشکی');
+    if (cats.includes('absence')) shortLabels.push('📅 غیبت');
+    if (cats.includes('counseling')) shortLabels.push('💜 مشاوره');
+    if (cats.includes('special') || !shortLabels.length) shortLabels.push('⭐ توجه ویژه');
+
+    const text = shortLabels.slice(0, 2).join('·');
+    return `<span style="display:inline-block;padding:1px 5px;border-radius:99px;background:#FFE4E6;color:#BE123C;border:1px solid #FDA4AF;font-size:8.4px;font-weight:800;white-space:nowrap">${esc(text)}</span>`;
   };
 
+  window.generateFamilyAddressedAdvice = function(c, st, det = null) {
+    if (!st) return '';
+    const d = det || (c && typeof window.getStudentAttentionDetails === 'function' ? window.getStudentAttentionDetails(c, st) : { isAttn: false, categories: [] });
+    const cats = d.categories || [];
+    const bd = window.getStudentScoreBreakdown(c, st);
+    const fullName = formatStudentName(st);
+    const absCnt = c ? attendanceDates(c).filter(dt => attendanceStatus(c, dt, st.id) === 'absent').length : 0;
 
-  /* ==========================================================================================
-     بخش ۳: افزودن «انتخاب چندگانه کلاس‌ها» و «دانلود جداگانه در پوشه دلخواه» + «تنظیم خودکار چاپ A4»
-     روی همان قالب کامل و دست‌نخوردهٔ گزارش نسخه ۸.۹ (ReportApp.buildClassListStyleHTML نسخه ۸.۹)
-     ========================================================================================== */
-  window.formatClassOptionLabelV89 = function(c) {
-    if (!c) return '';
-    const cleanName = window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name;
-    const gradeTxt = c.grade ? ` (پایه ${c.grade})` : '';
-    const subjTxt = c.subject ? ` · ${c.subject}` : '';
-    return `${cleanName}${gradeTxt}${subjTxt}`;
+    if (cats.includes('medical')) {
+      return `اولیای گرامی «${fullName}»؛ سلامتی فرزندتان در اولویت ماست؛ در منزل نیز مرورهای کوتاه درسی را با آرامش و تشویق همراه فرمایید.`;
+    }
+    if (cats.includes('counseling')) {
+      return `اولیای گرامی «${fullName}»؛ تقویت آرامش، گفت‌وگوی صمیمانه در منزل و تحسین پیشرفت‌های کوچک، انگیزه فرزندتان را دوچندان می‌کند.`;
+    }
+    if (cats.includes('academic') || bd.finalSc < 12) {
+      return `اولیای گرامی «${fullName}»؛ با توجه به نمرات ثبت‌شده، برنامه‌ریزی روزانه ۲۰ دقیقه‌ای در منزل برای مرور کتاب و حل تمرین توصیه می‌شود.`;
+    }
+    if (cats.includes('discipline') || bd.negCount >= 2) {
+      return `اولیای گرامی «${fullName}»؛ جهت افزایش تمرکز کلاسی و هدایت انرژی فرزندتان به مشارکت مثبت، همراهی و گفت‌وگوی محترمانه در منزل راهگشاست.`;
+    }
+    if (cats.includes('absence') || absCnt >= 3) {
+      return `اولیای گرامی «${fullName}»؛ با توجه به ثبت ${fa(absCnt)} جلسه غیبت، حضور منظم و پیوسته در کلاس تاثیر مستقیمی بر یادگیری و نمره مستمر دارد.`;
+    }
+    if (bd.finalSc >= 17 || st.status === 'good') {
+      return `اولیای گرامی «${fullName}»؛ ضمن سپاس از همراهی شما، تلاش، ادب و مشارکت فعال فرزندتان در کلاس شایسته تحسین و مایه مباهات است.`;
+    }
+    return `اولیای گرامی «${fullName}»؛ روند حضور و تلاش فرزندتان در کلاس متعادل است؛ مرور هفتگی دروس در منزل به ارتقای بیشتر نمره کمک می‌کند.`;
   };
 
   if (window.ReportApp) {
     ReportApp.state.selectedCids = Array.isArray(ReportApp.state.selectedCids) ? ReportApp.state.selectedCids : [];
+    ReportApp.state.pageOrientation = ReportApp.state.pageOrientation || 'portrait';
     ReportApp.state.customFolderName = ReportApp.state.customFolderName || '';
 
-    const _origEnsureValidTargetsV89M = ReportApp.ensureValidTargets.bind(ReportApp);
+    const _origEnsureValidTargetsV89C = ReportApp.ensureValidTargets.bind(ReportApp);
     ReportApp.ensureValidTargets = function(prefScope = null, prefSid = null, prefCid = null, prefStid = null, prefStatusFilter = null) {
-      _origEnsureValidTargetsV89M(prefScope, prefSid, prefCid, prefStid, prefStatusFilter);
+      _origEnsureValidTargetsV89C(prefScope, prefSid, prefCid, prefStid, prefStatusFilter);
       const sObj = findSchool(this.state.sid) || db.schools?.[0] || null;
       const classes = sObj?.classes || [];
       if (!Array.isArray(this.state.selectedCids)) this.state.selectedCids = [];
@@ -39076,11 +39276,8 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
       }
     };
 
-    // جمع‌آوری داده‌ها با پشتیبانی از انتخاب یک یا چند کلاس هم‌زمان (selectedCids)
     ReportApp.collectData = function(overrideOpts = null) {
       window.repairDuplicateAndCrossMergedStudents(false);
-      window.cleanPhantomZeroAttendanceGrades();
-
       const scope = overrideOpts?.scope || this.state.scope || 'class';
       const schools = db.schools || [];
       let sid = overrideOpts?.sid !== undefined ? overrideOpts.sid : this.state.sid;
@@ -39153,35 +39350,243 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
       return { scope, sid, cid, cids: targetCids, stid, statusFilter, sections, totalStudents };
     };
 
-    // ساخت سند کامل خروجی با حفظ ۱۰۰٪ قالب نسخه ۸.۹ + تنظیم خودکار عرض در پرینت تا انتهای چپ لیست هرگز بریده نشود
-    ReportApp.buildFullV89DocumentHTML = function(res, fileScopeLabel, isExcel = false) {
+    // ساخت جدول استاندارد کلاسی یکدست با عرض درصدی دقیق (<colgroup>) تا در پرینت A4 هیچ ستونی در سمت چپ بریده نشود
+    ReportApp.buildClassListStyleHTML = function(res, forExcel = false) {
+      const cols = this.state.cols;
+      const r = getRules();
+      const themeKey = this.state.theme || document.getElementById('expColorTheme')?.value || 'orange';
+      const pal = (typeof EXPORT_COLOR_PALETTES !== 'undefined' && EXPORT_COLOR_PALETTES[themeKey])
+        ? EXPORT_COLOR_PALETTES[themeKey]
+        : { primary: '#EA580C', primaryDark: '#9A3412', lightBg: '#FFF7ED', border: '#FDBA74', thBg: '#EA580C', thText: '#FFFFFF', zebra: '#FFFBF5', gradStart: '#EA580C', gradEnd: '#F97316' };
+
+      if (res.scope === 'student' && res.totalStudents === 1 && typeof this.buildDetailedSingleStudentFamilyHTML === 'function') {
+        return this.buildDetailedSingleStudentFamilyHTML(res.sections[0].school, res.sections[0].cls, res.sections[0].items[0], forExcel);
+      }
+
+      const oneLineTopGuideHtml = `
+        <div class="rep-oneline-top-guide">
+          <span>📐 <b>راهنمای ضرایب کارنامه:</b> میانگین کتبی مستمر <b>×${fa(r.weightCont)}</b> · میانگین کلاسی <b>×${fa(r.weightClass)}</b> · پایانی ترم <b>×${fa(r.weightTerm)}</b></span>
+          <span>➕ هر مثبت: <b>+${fmtScore(r.positiveValue)}</b> · تشویقی بدون منفی: <b>+${fmtScore(r.bonusNoNeg)}</b> · سقف منفی مجاز: <b>${fa(r.maxNegAllowed)}</b> (مازاد: <b>−${fmtScore(r.penaltyPerNeg)}</b>)</span>
+        </div>
+      `;
+
+      const buildSectionCard = (sec, sIdx, includeSchoolCol) => {
+        const items = sec.items || [];
+        let sumFinal = 0, cntFinal = 0, attnCnt = 0, posCnt = 0, negCnt = 0, absTotal = 0;
+        let maxWrittenCols = 1;
+
+        items.forEach(it => {
+          const targetCls = it._c || sec.cls;
+          const bd = window.getStudentScoreBreakdown(targetCls, it.st);
+          if (bd.writtenList.length > maxWrittenCols) {
+            maxWrittenCols = Math.min(4, bd.writtenList.length);
+          }
+          if (Number.isFinite(Number(bd.finalSc))) { sumFinal += Number(bd.finalSc); cntFinal++; }
+          if (it.det?.isAttn) attnCnt++;
+          posCnt += bd.posCount;
+          negCnt += bd.negCount;
+          absTotal += (Number(it.absCnt) || 0);
+        });
+
+        const classAvg = cntFinal ? (sumFinal / cntFinal) : 0;
+        const fullClassTitle = window.getFullClassDisplayTitle(sec.cls);
+        const subjTxt = sec.cls.subject ? ` · 📚 درس: ${esc(sec.cls.subject)}` : '';
+
+        const colSpecs = [];
+        colSpecs.push({ label: 'ردیف', weight: 4.2 });
+        if (includeSchoolCol) colSpecs.push({ label: 'کلاس', weight: 8.5 });
+        colSpecs.push({ label: 'نام خانوادگی و نام دانش‌آموز', weight: 21.0 });
+        if (cols.father) colSpecs.push({ label: 'نام پدر', weight: 9.0 });
+        if (cols.phone) colSpecs.push({ label: 'تلفن', weight: 10.5 });
+        if (cols.att) colSpecs.push({ label: 'غیبت', weight: 5.0 });
+        if (cols.cont) {
+          if (maxWrittenCols > 1) {
+            for (let wi = 1; wi <= maxWrittenCols; wi++) {
+              colSpecs.push({ label: `کتبی ${fa(wi)}`, weight: 5.8 });
+            }
+            colSpecs.push({ label: 'م.کتبی', weight: 6.4 });
+          } else {
+            colSpecs.push({ label: 'کتبی مستمر', weight: 7.5 });
+          }
+          colSpecs.push({ label: 'کلاسی', weight: 6.0 });
+          colSpecs.push({ label: 'مستمر کل', weight: 6.8 });
+        }
+        if (cols.beh) {
+          colSpecs.push({ label: 'مثبت/منفی', weight: 7.2 });
+          colSpecs.push({ label: 'تاثیر', weight: 5.5 });
+        }
+        if (cols.term) {
+          colSpecs.push({ label: 'پایانی', weight: 6.2 });
+          colSpecs.push({ label: 'نمره نهایی', weight: 7.4 });
+        }
+        if (cols.status) {
+          colSpecs.push({ label: 'وضعیت', weight: 11.2 });
+        }
+
+        const totalWeight = colSpecs.reduce((acc, c) => acc + c.weight, 0) || 100;
+        const colgroupHtml = `<colgroup>${colSpecs.map(c => `<col style="width:${((c.weight / totalWeight) * 100).toFixed(2)}%">`).join('')}</colgroup>`;
+
+        const studentGroupsHtml = items.map((it, idx) => {
+          const targetCls = it._c || sec.cls;
+          const { st, det, absCnt } = it;
+          const bd = window.getStudentScoreBreakdown(targetCls, st);
+          const rowBg = det.isAttn ? '#FFF5F5' : (idx % 2 === 1 ? pal.zebra : '#FFFFFF');
+          const fullName = `${st.lastName || ''} ${st.name || ''}`.trim();
+          const initials = (st.lastName || st.name || 'د').slice(0, 1);
+
+          const studentCellHtml = (!forExcel && cols.photo)
+            ? `<div style="display:inline-flex;align-items:center;gap:4px;white-space:nowrap;max-width:100%;overflow:hidden">
+                 <span style="width:17px;height:17px;border-radius:50%;border:1px solid #FDBA74;background:#FFF7ED;color:#C2410C;display:inline-flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:900;overflow:hidden;flex-shrink:0">
+                   ${st.photo ? `<img src="${st.photo}" style="width:100%;height:100%;object-fit:cover">` : esc(initials)}
+                 </span>
+                 <b style="font-size:9.6px;color:#0F172A;overflow:hidden;text-overflow:ellipsis">${esc(fullName)}</b>
+               </div>`
+            : `<b style="font-size:9.6px;color:#0F172A">${esc(fullName)}</b>`;
+
+          let contCellsHtml = '';
+          if (cols.cont) {
+            if (maxWrittenCols > 1) {
+              for (let wi = 0; wi < maxWrittenCols; wi++) {
+                const wItem = bd.writtenList[wi];
+                contCellsHtml += `<td style="text-align:center;font-weight:700;color:#334155">${wItem !== undefined ? fmtScore(wItem.score) : '—'}</td>`;
+              }
+              contCellsHtml += `<td style="text-align:center;font-weight:900;color:#9A3412;background:#FFF7ED">${bd.writtenAvg !== null ? fmtScore(bd.writtenAvg) : '—'}</td>`;
+            } else {
+              contCellsHtml += `<td style="text-align:center;font-weight:800;color:#9A3412">${bd.writtenAvg !== null ? fmtScore(bd.writtenAvg) : '—'}</td>`;
+            }
+            const oralDisplay = bd.oralList.length === 1
+              ? fmtScore(bd.oralList[0].score)
+              : (bd.oralAvg !== null ? fmtScore(bd.oralAvg) : '—');
+            contCellsHtml += `
+              <td style="text-align:center;font-weight:700;color:#0369A1">${oralDisplay}</td>
+              <td style="text-align:center;font-weight:900;color:#0F172A;background:#F8FAFC">${bd.cAvg !== null ? fmtScore(bd.cAvg) : '—'}</td>
+            `;
+          }
+
+          const behEffectSign = bd.totalBehEffect > 0 ? '+' : '';
+          const behEffectColor = bd.totalBehEffect > 0 ? '#15803D' : (bd.totalBehEffect < 0 ? '#B91C1C' : '#64748B');
+          const behCellsHtml = cols.beh
+            ? `<td style="text-align:center"><span style="color:#15803D;font-weight:900">+${fa(bd.posCount)}</span>/<span style="color:#B91C1C;font-weight:900">−${fa(bd.negCount)}</span></td>
+               <td style="text-align:center;font-weight:800;color:${behEffectColor}">${bd.totalBehEffect === 0 ? '۰' : (behEffectSign + fmtScore(bd.totalBehEffect))}</td>`
+            : '';
+
+          const finalColor = Number(bd.finalSc) >= 17 ? '#15803D' : (Number(bd.finalSc) < 12 ? '#B91C1C' : '#0F172A');
+          const finalBg = Number(bd.finalSc) >= 17 ? '#DCFCE7' : (Number(bd.finalSc) < 12 ? '#FEE2E2' : '#FFF7ED');
+
+          const mainRowHtml = `<tr class="rep-std-main-row" style="background-color:${rowBg}">
+            <td style="text-align:center;font-weight:900;color:${pal.primaryDark};background:${pal.lightBg}">${fa(idx + 1)}</td>
+            ${includeSchoolCol ? `<td style="text-align:center;font-size:8.8px"><b>${esc(it._c ? window.getShortClassWithGrade(it._c) : window.getShortClassWithGrade(sec.cls))}</b></td>` : ''}
+            <td style="text-align:right">${studentCellHtml}</td>
+            ${cols.father ? `<td style="text-align:center;color:#334155">${esc(st.fatherName || '—')}</td>` : ''}
+            ${cols.phone ? `<td dir="ltr" style="text-align:center;font-family:monospace;font-size:8.8px">${st.phone ? fa(st.phone) : '—'}</td>` : ''}
+            ${cols.att ? `<td style="text-align:center;font-weight:800;color:${absCnt >= 3 ? '#B91C1C' : (absCnt > 0 ? '#B45309' : '#15803D')}">${absCnt === 0 ? '۰' : fa(absCnt)}</td>` : ''}
+            ${contCellsHtml}
+            ${behCellsHtml}
+            ${cols.term ? `<td style="text-align:center;font-weight:800">${bd.termSc !== null ? fmtScore(bd.termSc) : '—'}</td><td style="text-align:center;font-weight:900;color:${finalColor};background:${finalBg}">${fmtScore(bd.finalSc)}</td>` : ''}
+            ${cols.status ? `<td style="text-align:center">${window.getShortCleanStatusBadgeHTML(st, det)}</td>` : ''}
+          </tr>`;
+
+          let subRowsHtml = '';
+          if (cols.cont && bd.oralList.length > 1) {
+            const oralBreakdownTxt = bd.oralList.map((o, oi) => `نوبت ${fa(oi + 1)}: ${fmtScore(o.score)}`).join(' ، ');
+            subRowsHtml += `
+              <tr class="rep-std-sub-row">
+                <td colspan="${colSpecs.length}">
+                  <b style="color:#0369A1">🙋 ریز نمرات کلاسی (${fa(bd.oralList.length)} نوبت):</b> ${esc(oralBreakdownTxt)} ⬅ <b>میانگین کلاسی: ${fmtScore(bd.oralAvg)}</b>
+                </td>
+              </tr>
+            `;
+          }
+          if (cols.advice) {
+            const familyAdvice = window.generateFamilyAddressedAdvice(targetCls, st, det);
+            subRowsHtml += `
+              <tr class="rep-std-sub-row">
+                <td colspan="${colSpecs.length}">
+                  <b style="color:#C2410C">🌿 توصیه به خانواده:</b> ${esc(familyAdvice)}
+                </td>
+              </tr>
+            `;
+          }
+
+          return `<tbody class="rep-std-student-group">${mainRowHtml}${subRowsHtml}</tbody>`;
+        }).join('');
+
+        const pageBreak = (sIdx > 0 && !forExcel) ? 'page-break-before:always;break-before:page;' : '';
+
+        return `<div class="rep-classlist-card" style="${pageBreak}">
+          <div class="rep-classlist-head" style="padding:5px 9px">
+            <div>
+              <b style="font-size:11.5px;color:#9A3412">🏫 ${esc(sec.school.name)} — 🚪 ${esc(fullClassTitle)}${subjTxt}</b>
+              <span style="font-size:9.5px;color:#475569;margin-right:6px">👨‍🏫 دبیر: ${esc(getTeacherName())} · 📅 ${formatJalaliDate(localISODate())}</span>
+            </div>
+            <div class="rep-classlist-kpis">
+              <span class="rep-kpi-mini">👨‍🎓 ${fa(items.length)} نفر</span>
+              <span class="rep-kpi-mini">⭐ میانگین: ${fmtScore(classAvg)}</span>
+              <span class="rep-kpi-mini" style="color:#15803D">➕${fa(posCnt)} / <span style="color:#B91C1C">➖${fa(negCnt)}</span></span>
+              <span class="rep-kpi-mini">📅 غیبت: ${fa(absTotal)}</span>
+              ${attnCnt > 0 ? `<span class="rep-kpi-mini" style="background:#FFE4E6;color:#BE123C">🚨 توجه: ${fa(attnCnt)}</span>` : ''}
+            </div>
+          </div>
+          <div class="rep-table-scroll-wrap">
+            <table border="1" class="rep-std-table" style="border-color:${pal.border}">
+              ${colgroupHtml}
+              <thead>
+                <tr style="background-color:${pal.thBg};color:#FFFFFF">
+                  ${colSpecs.map(c => `<th>${esc(c.label)}</th>`).join('')}
+                </tr>
+              </thead>
+              ${studentGroupsHtml}
+            </table>
+          </div>
+        </div>`;
+      };
+
+      const splitMode = this.state.splitMode || 'separate_sections';
+      let bodyHtml = '';
+      if (splitMode === 'separate_sections' || res.sections.length <= 1) {
+        bodyHtml = res.sections.map((sec, idx) => buildSectionCard(sec, idx, false)).join('');
+      } else {
+        const merged = [];
+        res.sections.forEach(sec => sec.items.forEach(it => merged.push({ ...it, _s: sec.school, _c: sec.cls })));
+        bodyHtml = buildSectionCard({
+          school: { name: res.scope === 'school' ? (res.sections[0]?.school?.name || 'مدرسه') : 'همه مدارس' },
+          cls: { name: `${fa(res.sections.length)} کلاس ادغام‌شده`, grade: '', subject: '' },
+          items: merged
+        }, 0, true);
+      }
+
+      return `<div style="font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;color:#0F172A;width:100%">
+        ${oneLineTopGuideHtml}
+        ${bodyHtml}
+      </div>`;
+    };
+
+    ReportApp.buildFullExportDocumentHTML = function(res, titleLabel, isExcel = false) {
       const bodyContent = this.buildClassListStyleHTML(res, isExcel);
+      const orient = this.state.pageOrientation === 'landscape' ? 'landscape' : 'portrait';
       return `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" dir="rtl" lang="fa">
         <head>
           <meta charset="utf-8">
-          <title>گزارش کلاسی — ${esc(fileScopeLabel)}</title>
+          <title>گزارش کلاسی — ${esc(titleLabel)}</title>
           <style>
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }
-            body { font-family: 'Vazirmatn', Tahoma, sans-serif; padding: 8px; direction: rtl; background: #FFFFFF; color: #0F172A; margin: 0; width: 100%; }
-            .rep-family-guide-box { background: #FFFBF5; border: 1.5px solid #FDBA74; border-radius: 12px; padding: 8px 11px; margin-bottom: 10px; font-size: 10.5px; line-height: 1.65; color: #334155; }
-            .rep-family-guide-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
-            .rep-family-guide-pill { background: #FFFFFF; border: 1px solid #FED7AA; border-radius: 8px; padding: 2px 7px; font-size: 10px; font-weight: 800; color: #9A3412; white-space: nowrap; }
-            .rep-scores-mini-stack { display: flex; flex-direction: column; gap: 2px; font-size: 10px; line-height: 1.35; text-align: right; }
-            .rep-score-tag { display: inline-block; padding: 1px 5px; border-radius: 5px; background: #F8FAFC; border: 1px solid #CBD5E1; font-weight: 700; font-size: 9.5px; color: #1E293B; }
-            .rep-family-advice-subrow td { background: #FFFDF9 !important; border-top: 1px dashed #FED7AA !important; padding: 4px 10px !important; font-size: 10.2px !important; line-height: 1.55 !important; color: #475569 !important; text-align: right !important; white-space: normal !important; word-wrap: break-word !important; }
-            .rep-family-advice-inner { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
-            .rep-family-advice-label { color: #C2410C; font-weight: 900; white-space: nowrap; font-size: 10.2px; flex-shrink: 0; }
-            .rep-classlist-card { border: 1.5px solid #FED7AA; border-radius: 12px; overflow: visible; margin-bottom: 14px; width: 100%; }
-            .rep-classlist-head { background: #FFF7ED; border-bottom: 1.5px solid #FED7AA; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
-            .rep-classlist-kpis { display: flex; gap: 5px; flex-wrap: wrap; }
-            .rep-kpi-mini { font-size: 10px; font-weight: bold; padding: 2px 7px; border-radius: 99px; background: #FFFFFF; border: 1px solid #FDBA74; color: #9A3412; }
-            table { width: 100% !important; max-width: 100% !important; border-collapse: collapse; font-size: 10.5px; }
-            th { background: #EA580C; color: #FFFFFF; font-weight: bold; padding: 5px 4px; border: 1px solid #FB923C; text-align: center; }
-            td { padding: 4px 5px; border: 1px solid #CBD5E1; text-align: right; vertical-align: middle; }
-            tr { break-inside: avoid !important; page-break-inside: avoid !important; }
+            html, body { width: 100%; max-width: 100%; margin: 0; padding: 4px; font-family: 'Vazirmatn', Tahoma, sans-serif; direction: rtl; background: #FFFFFF; color: #0F172A; }
+            .rep-oneline-top-guide { background: #FFF7ED; border: 1px solid #FDBA74; border-radius: 7px; padding: 4px 8px; margin-bottom: 5px; font-size: 8.8px; font-weight: bold; color: #7C2D12; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px; }
+            .rep-classlist-card { border: 1.5px solid #FED7AA; border-radius: 9px; overflow: visible; margin-bottom: 8px; width: 100%; }
+            .rep-classlist-head { background: #FFF7ED; border-bottom: 1.5px solid #FED7AA; padding: 5px 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px; }
+            .rep-classlist-kpis { display: flex; gap: 4px; flex-wrap: wrap; }
+            .rep-kpi-mini { font-size: 8.8px; font-weight: bold; padding: 1px 5px; border-radius: 99px; background: #FFFFFF; border: 1px solid #FDBA74; color: #9A3412; }
+            .rep-table-scroll-wrap { width: 100%; overflow: visible; }
+            table.rep-std-table { width: 100% !important; max-width: 100% !important; table-layout: fixed !important; border-collapse: collapse !important; font-size: 9.2px !important; }
+            table.rep-std-table thead th { background: #EA580C; color: #FFFFFF; font-weight: bold; font-size: 8.5px !important; padding: 3px 2px !important; border: 1px solid #C2410C; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; height: 22px; }
+            tbody.rep-std-student-group { break-inside: avoid !important; page-break-inside: avoid !important; }
+            tr.rep-std-main-row { height: 23px !important; max-height: 23px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+            tr.rep-std-main-row td { height: 23px !important; max-height: 23px !important; padding: 1px 2px !important; border: 1px solid #CBD5E1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; font-size: 9.2px !important; }
+            tr.rep-std-sub-row { height: 17px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+            tr.rep-std-sub-row td { height: 17px !important; padding: 1px 6px !important; background: #FFFDF9; border: 1px solid #CBD5E1; border-top: 1px dashed #FED7AA; font-size: 8px !important; color: #334155; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right; max-width: 0 !important; }
             @media print {
-              @page { size: A4 portrait; margin: 5mm; }
-              body { padding: 0; zoom: 0.88; }
+              @page { size: A4 ${orient}; margin: 5mm; }
+              html, body { padding: 0; margin: 0; width: 100%; }
               thead { display: table-header-group; }
             }
           </style>
@@ -39192,7 +39597,6 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
 
     ReportApp.openModal = function(initialScope = 'class', sid = null, cid = null, stid = null, statusFilter = null) {
       window.repairDuplicateAndCrossMergedStudents(false);
-      window.cleanPhantomZeroAttendanceGrades();
       this.loadState();
       this.ensureValidTargets(
         initialScope || this.state.scope || 'class',
@@ -39211,7 +39615,7 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
         { key: 'beh', label: '➕/➖ مثبت و منفی' },
         { key: 'term', label: '🎓 پایانی و نهایی' },
         { key: 'status', label: '🚦 وضعیت توجه' },
-        { key: 'advice', label: '🌿 توصیه تربیتی' }
+        { key: 'advice', label: '🌿 توصیه به خانواده' }
       ];
 
       const colChecksHtml = colDefs.map(cd => {
@@ -39222,30 +39626,30 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
         </label>`;
       }).join('');
 
-      openModal(formHeader('📊 استودیو یکپارچه گزارش و کارنامه (الگوی آزمون‌ساز)') + `
+      openModal(formHeader('📊 استودیو یکپارچه گزارش، انتخاب چندگانه و دانلود پوشه‌ای') + `
         <div class="card" style="background:var(--bg-panel);padding:10px;margin-bottom:10px;border:1.5px solid var(--primary)">
           <!-- ۱. انتخاب سطح گزارش (۴ سطحی) -->
           <div class="rep-v84-scope-grid" id="repModalScopeTabs">
             <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'student' ? 'active' : ''}" data-rscope="student" onclick="ReportApp.setScope('student')">👨‍🎓 ۱ دانش‌آموز</button>
             <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'class' ? 'active' : ''}" data-rscope="class" onclick="ReportApp.setScope('class')">🚪 کلاس (تکی / چندانتخابی)</button>
-            <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'school' ? 'active' : ''}" data-rscope="school" onclick="ReportApp.setScope('school')">🏫 ۱ مدرسه</button>
+            <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'school' ? 'active' : ''}" data-rscope="school" onclick="ReportApp.setScope('school')">🏫 کل مدرسه</button>
             <button type="button" class="rep-v84-scope-btn ${this.state.scope === 'all' ? 'active' : ''}" data-rscope="all" onclick="ReportApp.setScope('all')">🌐 همه مدارس</button>
           </div>
 
-          <!-- ۲. انتخابگرهای تفکیکی مدرسه / کلاس / انتخاب چندگانه / دانش‌آموز / وضعیت -->
+          <!-- ۲. انتخابگرهای تفکیکی مدرسه / کلاس / دانش‌آموز / وضعیت -->
           <div class="formgrid" style="margin-bottom:6px;gap:6px">
             <div class="field" id="repModSchoolField">
               <label style="font-size:11px">🏫 مدرسه:</label>
               <select id="repModSchoolSel" onchange="ReportApp.onSchoolChange()" style="height:36px;font-size:12px"></select>
             </div>
             <div class="field" id="repModClassField">
-              <label style="font-size:11px">🚪 کلاس:</label>
+              <label style="font-size:11px">🚪 انتخاب سریع کلاس (با ذکر پایه و درس):</label>
               <select id="repModClassSel" onchange="ReportApp.onClassChange()" style="height:36px;font-size:12px"></select>
             </div>
             <div class="field full" id="repModMultiClassField">
               <div class="rep-multi-class-box">
                 <div class="rep-multi-class-header">
-                  <span style="font-size:11px;font-weight:900;color:#9A3412" id="repMultiClassCountLabel">☑️ انتخاب چند کلاس هم‌زمان (به همین شکل و دانلود جداگانه):</span>
+                  <span style="font-size:11px;font-weight:900;color:#9A3412" id="repMultiClassCountLabel">☑️ انتخاب چند کلاس هم‌زمان (به همان شکل استاندارد و دانلود جداگانه):</span>
                   <div style="display:flex;gap:5px">
                     <button type="button" class="btn primary btn-sm" style="padding:3px 8px;font-size:10px" onclick="ReportApp.selectAllClassesInSchool(true)">☑️ انتخاب همه کلاس‌ها</button>
                     <button type="button" class="btn soft btn-sm" style="padding:3px 8px;font-size:10px" onclick="ReportApp.selectAllClassesInSchool(false)">⬜ فقط ۱ کلاس فعلی</button>
@@ -39258,8 +39662,8 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
               <label style="font-size:11px">👨‍🎓 دانش‌آموز:</label>
               <select id="repModStudentSel" onchange="ReportApp.onStudentChange()" style="height:36px;font-size:12px"></select>
             </div>
-            <div class="field full">
-              <label style="font-size:11px">🚦 فیلتر وضعیت دانش‌آموزان در گزارش:</label>
+            <div class="field">
+              <label style="font-size:11px">🚦 فیلتر وضعیت دانش‌آموزان:</label>
               <select id="repModStatusFilterSel" onchange="ReportApp.onStatusFilterChange(this.value)" style="height:36px;font-size:12px">
                 <option value="all">📋 همه دانش‌آموزان کلاس</option>
                 <option value="good">🟢 فقط دانش‌آموزان خوب و برتر</option>
@@ -39271,6 +39675,13 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
                 <option value="attn_counseling">💜 نیازمند توجه: روحی و مشاوره</option>
               </select>
             </div>
+            <div class="field">
+              <label style="font-size:11px">📄 جهت کاغذ در پرینت / PDF:</label>
+              <select id="repModPageOrientSel" onchange="ReportApp.onOrientChange(this.value)" style="height:36px;font-size:12px">
+                <option value="portrait" ${this.state.pageOrientation !== 'landscape' ? 'selected' : ''}>📄 عمودی استاندارد (A4 Portrait — تنظیم ۱۰۰٪ عرض)</option>
+                <option value="landscape" ${this.state.pageOrientation === 'landscape' ? 'selected' : ''}>🖼️ افقی عریض (A4 Landscape)</option>
+              </select>
+            </div>
           </div>
 
           <!-- ۳. تیک انتخاب ستون‌های دلخواه معلم -->
@@ -39279,20 +39690,20 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
             ${colChecksHtml}
           </div>
 
-          <!-- ۴. دکمه‌های خروجی فوری برای همین انتخاب -->
-          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px">
+          <!-- ۴. دکمه‌های خروجی یکپارچه -->
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:6px">
             <button type="button" class="btn green btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('print')">🖨️ چاپ / PDF</button>
             <button type="button" class="btn primary btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('excel_color')">🎨 اکسل (.xls)</button>
             <button type="button" class="btn soft btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('word')">📘 فایل Word</button>
           </div>
 
-          <!-- ۵. دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه دقیقاً با همین قالب نسخه ۸.۹ -->
+          <!-- ۵. دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه به همان شکل استاندارد -->
           <div class="rep-folder-download-panel" id="repSeparateFolderDownloadPanel">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:6px">
-              <b style="font-size:11.5px;color:#9A3412">📂 دانلود جداگانه هر کلاس در پوشه دلخواه (دقیقاً به همین شکل):</b>
-              <div style="display:flex;align-items:center;gap:4px;flex:1;min-width:185px">
+              <b style="font-size:11.5px;color:#9A3412">📂 دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه (به همین شکل لیست استاندارد):</b>
+              <div style="display:flex;align-items:center;gap:4px;flex:1;min-width:190px">
                 <span style="font-size:10.5px;color:#7C2D12;white-space:nowrap">📁 نام پوشه:</span>
-                <input type="text" id="repCustomFolderNameInp" value="${esc(this.state.customFolderName || 'گزارشات-کلاسی')}" oninput="ReportApp.state.customFolderName=this.value;ReportApp.saveState()" placeholder="نام پوشه دلخواه..." style="height:28px;font-size:11px;padding:2px 7px;border-radius:8px;flex:1">
+                <input type="text" id="repCustomFolderNameInp" value="${esc(this.state.customFolderName || 'گزارشات-کلاسی')}" oninput="ReportApp.state.customFolderName=this.value;ReportApp.saveState()" placeholder="مثلاً گزارشات-شهبا-نجف-شهر" style="height:28px;font-size:11px;padding:2px 7px;border-radius:8px;border:1px solid #FDBA74;background:#FFFFFF;flex:1">
               </div>
             </div>
             <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px">
@@ -39303,7 +39714,7 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
           </div>
         </div>
 
-        <!-- ۶. پیش‌نمایش زنده با قالب اصلی نسخه ۸.۹ -->
+        <!-- ۶. پیش‌نمایش زنده -->
         <div id="repModalLivePreviewWrap"></div>
 
         <div class="formactions">
@@ -39337,7 +39748,8 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
         }
 
         cSel.innerHTML = classes.map(c => {
-          return `<option value="${c.id}" ${c.id === this.state.cid ? 'selected' : ''}>🚪 ${esc(window.formatClassOptionLabelV89(c))} — ${fa((c.students || []).length)} نفر</option>`;
+          const fullTitle = window.getFullClassDisplayTitle(c);
+          return `<option value="${c.id}" ${c.id === this.state.cid ? 'selected' : ''}>🚪 ${esc(fullTitle)}${c.subject ? ` (${esc(c.subject)})` : ''} — ${fa((c.students || []).length)} نفر</option>`;
         }).join('');
       }
       this.renderMultiClassCheckboxes();
@@ -39360,10 +39772,11 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
 
       grid.innerHTML = classes.map(c => {
         const isChecked = selectedSet.has(c.id);
+        const fullTitle = window.getFullClassDisplayTitle(c);
         return `
           <label class="rep-multi-class-chip ${isChecked ? 'checked' : ''}">
             <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="ReportApp.toggleMultiClass('${c.id}', this.checked)">
-            <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🚪 ${esc(window.formatClassOptionLabelV89(c))} (${fa((c.students || []).length)} نفر)</span>
+            <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🚪 ${esc(fullTitle)}${c.subject ? ` (${esc(c.subject)})` : ''} · ${fa((c.students || []).length)} نفر</span>
           </label>
         `;
       }).join('');
@@ -39434,6 +39847,11 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
       this.refreshPreview();
     };
 
+    ReportApp.onOrientChange = function(val) {
+      this.state.pageOrientation = val === 'landscape' ? 'landscape' : 'portrait';
+      this.saveState();
+    };
+
     ReportApp.setScope = function(scope) {
       this.state.scope = scope;
       document.querySelectorAll('#repModalScopeTabs button').forEach(b => {
@@ -39457,7 +39875,6 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
 
     ReportApp.exportCurrent = function(kind, customOpts = null) {
       window.repairDuplicateAndCrossMergedStudents(false);
-      window.cleanPhantomZeroAttendanceGrades();
       const res = this.collectData(customOpts);
       if (!res || !res.totalStudents) {
         window.smartAlert('هیچ دانش‌آموزی با فیلتر انتخاب‌شده یافت نشد.');
@@ -39469,7 +39886,7 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
         fileScopeLabel = safeFileName(res.sections[0].school.name);
       } else if (res.scope === 'class' && res.sections.length === 1) {
         const sec = res.sections[0];
-        fileScopeLabel = safeFileName(`${sec.school.name}-${sec.cls.name}${sec.cls.grade ? '-' + sec.cls.grade : ''}`);
+        fileScopeLabel = safeFileName(`${sec.school.name}-${window.getShortClassWithGrade(sec.cls)}`);
       } else if (res.scope === 'class' && res.sections.length > 1) {
         fileScopeLabel = safeFileName(`${res.sections[0].school.name}-${fa(res.sections.length)}-کلاس`);
       } else if (res.scope === 'student' && res.sections[0]?.items[0]) {
@@ -39478,7 +39895,7 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
       }
 
       const isExcelColor = (kind === 'excel_color' || kind === 'excel');
-      const fullDoc = this.buildFullV89DocumentHTML(res, fileScopeLabel, isExcelColor);
+      const fullDoc = this.buildFullExportDocumentHTML(res, fileScopeLabel, isExcelColor);
 
       if (kind === 'excel_color' || kind === 'excel') {
         const a = document.createElement('a');
@@ -39516,7 +39933,6 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
 
     ReportApp.downloadSelectedSeparatelyToFolder = async function(kind = 'excel_color') {
       window.repairDuplicateAndCrossMergedStudents(false);
-      window.cleanPhantomZeroAttendanceGrades();
       const res = this.collectData();
       if (!res || !res.sections || !res.sections.length) {
         window.smartAlert('هیچ کلاسی با دانش‌آموز برای دانلود یافت نشد.');
@@ -39538,10 +39954,9 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
           sections: [sec],
           totalStudents: sec.items.length
         };
-        const cleanCls = window.cleanClassDisplayName ? window.cleanClassDisplayName(sec.cls.name) : sec.cls.name;
-        const classLabel = safeFileName(`${sec.school.name}-${sec.cls.grade ? 'پایه-' + sec.cls.grade + '-' : ''}کلاس-${cleanCls}${sec.cls.subject ? '-' + sec.cls.subject : ''}`);
+        const classLabel = safeFileName(`${sec.school.name}-${window.getShortClassWithGrade(sec.cls)}${sec.cls.subject ? '-' + sec.cls.subject : ''}`);
         const isExcel = (kind === 'excel_color' || kind === 'excel');
-        let docHtml = this.buildFullV89DocumentHTML(singleRes, classLabel, isExcel);
+        let docHtml = this.buildFullExportDocumentHTML(singleRes, classLabel, isExcel);
 
         let ext = 'xls';
         let mime = 'application/vnd.ms-excel;charset=utf-8';
@@ -39551,7 +39966,7 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
         } else if (kind === 'html_print') {
           ext = 'html';
           mime = 'text/html;charset=utf-8';
-          docHtml = docHtml.replace('<body>', `<body><div class="no-print" style="background:#FFF7ED;border:1.5px solid #EA580C;padding:8px 12px;margin-bottom:8px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;font-family:Tahoma,sans-serif"><b style="color:#9A3412;font-size:12px">🖨️ فایل آماده چاپ/PDF کلاس: ${esc(window.formatClassOptionLabelV89(sec.cls))}</b><button onclick="window.print()" style="background:#EA580C;color:#FFF;border:0;padding:6px 14px;border-radius:8px;font-weight:bold;cursor:pointer">🖨️ چاپ / ذخیره PDF</button></div><style>@media print{.no-print{display:none!important}}</style>`);
+          docHtml = docHtml.replace('<body>', `<body><div class="no-print" style="background:#FFF7ED;border:1.5px solid #EA580C;padding:8px 12px;margin-bottom:8px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;font-family:Tahoma,sans-serif"><b style="color:#9A3412;font-size:12px">🖨️ فایل آماده چاپ/PDF کلاس: ${esc(window.getFullClassDisplayTitle(sec.cls))}</b><button onclick="window.print()" style="background:#EA580C;color:#FFF;border:0;padding:6px 14px;border-radius:8px;font-weight:bold;cursor:pointer">🖨️ چاپ / ذخیره PDF</button></div><style>@media print{.no-print{display:none!important}}</style>`);
         }
 
         const fileName = `گزارش-${classLabel}-${dateStr}.${ext}`;
@@ -39609,10 +40024,27 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
     }
   };
 
-  const initV89MasterFixes = function() {
-    const fixedStudents = window.repairDuplicateAndCrossMergedStudents(true);
-    window.cleanPhantomZeroAttendanceGrades();
-    if (fixedStudents > 0 && typeof renderAll === 'function') {
+  const _origOnExportSchoolChangeV89C = window.onExportSchoolChange;
+  if (typeof _origOnExportSchoolChangeV89C === 'function') {
+    window.onExportSchoolChange = function(preCid = null, preStid = null) {
+      _origOnExportSchoolChangeV89C(preCid, preStid);
+      const sid = document.getElementById('expSchoolSel')?.value;
+      const s = findSchool(sid) || db.schools?.[0];
+      const classSel = document.getElementById('expClassSel');
+      if (classSel && s) {
+        const curVal = classSel.value;
+        classSel.innerHTML = (s.classes || []).map(c =>
+          `<option value="${c.id}" ${c.id === curVal ? 'selected' : ''}>🚪 ${esc(window.getFullClassDisplayTitle(c))}${c.subject ? ` (${esc(c.subject)})` : ''} — ${fa((c.students || []).length)} نفر</option>`
+        ).join('');
+      }
+    };
+  }
+
+  const initCleanV89RequestedFeatures = function() {
+    window.applyPanelOrbitAnimationState(window.isPanelOrbitAnimationEnabled());
+    injectPanelOrbitToggleIntoSettings();
+    const fixed = window.repairDuplicateAndCrossMergedStudents(true);
+    if (fixed > 0 && typeof renderAll === 'function') {
       renderAll();
     }
     document.querySelectorAll('.school-icon').forEach(ico => {
@@ -39624,16 +40056,457 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(initV89MasterFixes, 140);
-      setTimeout(initV89MasterFixes, 950);
+      setTimeout(initCleanV89RequestedFeatures, 150);
+      setTimeout(initCleanV89RequestedFeatures, 450);
     });
   } else {
-    setTimeout(initV89MasterFixes, 140);
-    setTimeout(initV89MasterFixes, 950);
+    setTimeout(initCleanV89RequestedFeatures, 150);
+    setTimeout(initCleanV89RequestedFeatures, 450);
   }
 })();
 </script>
-<!-- ==================== END V8.9.5 MASTER EDITION ==================== -->
+<!-- ==================== END V8.9.1 CLEAN REQUESTED UPGRADE ==================== -->
+
+
+<!-- ==================== START V8.9.2 SENIOR AUDIT, SECURITY & STORAGE HARDENING ==================== -->
+<style id="v892AuditHardeningStyle">
+/* رعایت کامل تنظیمات کاهش حرکت سیستم‌عامل (prefers-reduced-motion) برای حفظ باتری و سلامت چشم */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .siren-rotating-orb::before,
+  .class-beacon-mini-orb::before,
+  .dam-3d-orb::before,
+  .school-icon::before,
+  body.dam-panel-orbit-on .card::after,
+  body.dam-panel-orbit-on .modal-box::after {
+    animation: none !important;
+    display: none !important;
+  }
+}
+
+/* نشانگر وضعیت ذخیره‌سازی امن در هدر */
+.dam-save-guard-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: #ECFDF5;
+  color: #047857;
+  border: 1px solid #A7F3D0;
+}
+</style>
+
+<script id="v892AuditHardeningScript">
+(function() {
+  'use strict';
+
+  window.DAM_AUDIT_VERSION = '8.9.2';
+
+  /* ==========================================================================================
+     ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
+        برای محافظت ۱۰۰٪ از اطلاعات دانش‌آموزان در همگام‌سازی ابری (مرحله چهارم ممیزی)
+     ========================================================================================== */
+  const u8ToB64 = function(u8) {
+    let bin = '';
+    for (let i = 0; i < u8.length; i++) bin += String.fromCharCode(u8[i]);
+    return btoa(bin);
+  };
+
+  const b64ToU8 = function(b64) {
+    const bin = atob(b64);
+    const u8 = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+    return u8;
+  };
+
+  const deriveAesGcmKey = async function(passphrase, saltU8) {
+    const enc = new TextEncoder();
+    const keyMaterial = await crypto.subtle.importKey(
+      'raw',
+      enc.encode('DAM_V892_SEC_' + String(passphrase || '').trim()),
+      { name: 'PBKDF2' },
+      false,
+      ['deriveKey']
+    );
+    return await crypto.subtle.deriveKey(
+      {
+        name: 'PBKDF2',
+        salt: saltU8,
+        iterations: 100000,
+        hash: 'SHA-256'
+      },
+      keyMaterial,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['encrypt', 'decrypt']
+    );
+  };
+
+  window.getActiveCloudEncryptionPassphrase = function() {
+    const acc = typeof window.getTeacherAccount === 'function' ? window.getTeacherAccount() : {};
+    const inpKey = document.getElementById('cloudSyncSecretKey')?.value || '';
+    const lsKey = localStorage.getItem('danesh_cloud_sync_key') || '';
+    return String(inpKey || lsKey || acc.accountCode || acc.gmail || acc.phone || 'dam_default_local_guard').trim();
+  };
+
+  window.getAllCandidateEncryptionPassphrases = function() {
+    const acc = typeof window.getTeacherAccount === 'function' ? window.getTeacherAccount() : {};
+    const candidates = [
+      window.getActiveCloudEncryptionPassphrase(),
+      document.getElementById('cloudSyncSecretKey')?.value,
+      localStorage.getItem('danesh_cloud_sync_key'),
+      acc.accountCode,
+      acc.gmail,
+      acc.phone,
+      'dam_default_local_guard'
+    ].map(x => String(x || '').trim()).filter(Boolean);
+    return Array.from(new Set(candidates));
+  };
+
+  window.encryptCloudPayloadAESGCM = async function(plainStr, customPassphrase = null) {
+    try {
+      if (!window.crypto || !window.crypto.subtle) return plainStr;
+      const pass = customPassphrase || window.getActiveCloudEncryptionPassphrase();
+      const salt = window.crypto.getRandomValues(new Uint8Array(16));
+      const iv = window.crypto.getRandomValues(new Uint8Array(12));
+      const key = await deriveAesGcmKey(pass, salt);
+      const encoded = new TextEncoder().encode(plainStr);
+      const cipherBuf = await window.crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, encoded);
+      return 'ENC1:' + u8ToB64(salt) + ':' + u8ToB64(iv) + ':' + u8ToB64(new Uint8Array(cipherBuf));
+    } catch (e) {
+      console.warn('AES-GCM encryption fallback:', e);
+      return plainStr;
+    }
+  };
+
+  window.decryptCloudPayloadAESGCM = async function(packedStr, customPassphrase = null) {
+    if (typeof packedStr !== 'string' || !packedStr.startsWith('ENC1:')) return packedStr;
+    if (!window.crypto || !window.crypto.subtle) return packedStr;
+    const parts = packedStr.slice(5).split(':');
+    if (parts.length !== 3) return packedStr;
+    const salt = b64ToU8(parts[0]);
+    const iv = b64ToU8(parts[1]);
+    const cipherBytes = b64ToU8(parts[2]);
+    const passList = customPassphrase
+      ? [customPassphrase, ...window.getAllCandidateEncryptionPassphrases()]
+      : window.getAllCandidateEncryptionPassphrases();
+
+    for (const pass of passList) {
+      try {
+        const key = await deriveAesGcmKey(pass, salt);
+        const plainBuf = await window.crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, cipherBytes);
+        return new TextDecoder().decode(plainBuf);
+      } catch (_) {}
+    }
+    throw new Error('کلید رمزگشایی پشتیبان ابری مطابقت ندارد');
+  };
+
+  // ارتقای compressStringGzipBase64 و decompressStringGzipBase64 برای رمزنگاری خودکار AES-GCM 256-bit
+  // با حفظ سازگاری ۱۰۰٪ با پشتیبان‌های قدیمی (GZ1: و RAW1:)
+  const _origCompressGzip = window.compressStringGzipBase64;
+  const _origDecompressGzip = window.decompressStringGzipBase64;
+
+  window.compressStringGzipBase64 = async function(str, skipEncryption = false) {
+    const compressed = typeof _origCompressGzip === 'function'
+      ? await _origCompressGzip(str)
+      : ('RAW1:' + encodeBase64UrlUTF8(str));
+    if (skipEncryption) return compressed;
+    return await window.encryptCloudPayloadAESGCM(compressed);
+  };
+
+  window.decompressStringGzipBase64 = async function(packed) {
+    if (typeof packed !== 'string') return JSON.stringify(packed);
+    let inner = packed;
+    if (inner.startsWith('ENC1:')) {
+      inner = await window.decryptCloudPayloadAESGCM(inner);
+    }
+    if (typeof _origDecompressGzip === 'function') {
+      return await _origDecompressGzip(inner);
+    }
+    return inner;
+  };
+
+  // غیرفعال‌سازی کامل ارسال اطلاعات شخصی معلم به کانال عمومی ntfy.sh (حفظ حریم خصوصی و محرمانگی)
+  window.registerAccountInCreatorRegistry = async function(acc) {
+    if (!acc || (!acc.gmail && !acc.phone)) return;
+    let reg = [];
+    try { reg = JSON.parse(localStorage.getItem('danesh_creator_users_registry_v59') || '[]'); } catch (_) {}
+    const idKey = (acc.gmail || acc.phone || '').toLowerCase().trim();
+    const existingIdx = reg.findIndex(u => (u.idKey || '') === idKey);
+    const entry = {
+      idKey,
+      teacherName: acc.teacherName || getTeacherName() || 'همکار فرهنگی',
+      gmail: acc.gmail || '',
+      phone: acc.phone || '',
+      updatedAt: Date.now()
+    };
+    if (existingIdx >= 0) reg[existingIdx] = { ...reg[existingIdx], ...entry };
+    else reg.unshift(entry);
+    try { localStorage.setItem('danesh_creator_users_registry_v59', JSON.stringify(reg.slice(0, 200))); } catch (_) {}
+    // ارسال به کانال عمومی خارجی به‌طور کامل مسدود شد (صرفاً ذخیره محلی در دستگاه کاربر)
+    return true;
+  };
+
+
+  /* ==========================================================================================
+     ۲. صف ترتیبی (Mutex Queue) برای ذخیره‌سازی IndexedDB، مدیریت خطای کمبود حافظه،
+        پشتیبان خودکار قبل از بازیابی و اعتبارسنجی دقیق فایل پشتیبان (مراحل دوم و چهارم ممیزی)
+     ========================================================================================== */
+  window._idbWriteQueuePromise = Promise.resolve();
+  window._lastSaveStatusOk = true;
+
+  const _origFlushDbToIndexedDbNow = window.flushDbToIndexedDbNow;
+  window.flushDbToIndexedDbNow = function() {
+    window._idbWriteQueuePromise = window._idbWriteQueuePromise.then(async () => {
+      if (window._isDbLoading && !window._dbRestoredReady) return false;
+      try {
+        if (typeof extractAllPhotosFromDb === 'function') {
+          extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
+        }
+        if (typeof _origFlushDbToIndexedDbNow === 'function') {
+          await _origFlushDbToIndexedDbNow();
+        }
+        window._lastSaveStatusOk = true;
+        return true;
+      } catch (err) {
+        window._lastSaveStatusOk = false;
+        console.error('IndexedDB flush error:', err);
+        return false;
+      }
+    }).catch(() => false);
+    return window._idbWriteQueuePromise;
+  };
+
+  // مدیریت خطای پر شدن localStorage (QuotaExceededError) بدون از دست رفتن حتی یک بایت داده
+  const _origSavePersistentV892 = window.savePersistent;
+  window.savePersistent = async function() {
+    if (window._isDbLoading && !window._dbRestoredReady) return;
+    db._updatedAt = Date.now();
+    if (typeof extractAllPhotosFromDb === 'function') {
+      extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
+    }
+    try {
+      const fastMeta = typeof buildFastMetadataOnlyDb === 'function' ? buildFastMetadataOnlyDb(db) : db;
+      localStorage.setItem(KEY, JSON.stringify(fastMeta));
+    } catch (quotaErr) {
+      // در صورت کمبود فضای localStorage، کش‌های موقت غیرضروری پاک شده و کل داده در IndexedDB تضمین می‌شود
+      try {
+        ['dam_temp_preview_cache', 'dam_old_log_cache'].forEach(k => localStorage.removeItem(k));
+        const slimMeta = typeof buildFastMetadataOnlyDb === 'function' ? buildFastMetadataOnlyDb(db) : db;
+        localStorage.setItem(KEY, JSON.stringify(slimMeta));
+      } catch (_) {
+        if (typeof toast === 'function') {
+          toast('🛡️ حافظه مرورگر محدود است؛ تمام اطلاعات و عکس‌ها مستقیماً در پایگاه دائمی IndexedDB ذخیره شد.');
+        }
+      }
+    }
+    clearTimeout(window._idbSaveDebounceTimer);
+    window._idbSaveDebounceTimer = setTimeout(() => {
+      window.flushDbToIndexedDbNow();
+    }, 180);
+  };
+
+  // تهیه نسخه پشتیبان خودکار در IndexedDB قبل از هرگونه بازیابی یا مهاجرت
+  window.createPreRestoreSafetySnapshot = async function(reasonLabel = 'پشتیبان خودکار قبل از بازیابی') {
+    try {
+      if (typeof pushUndo === 'function') pushUndo(reasonLabel);
+      if (typeof extractAllPhotosFromDb === 'function') {
+        extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
+      }
+      const d = await openStorage();
+      await new Promise((res, rej) => {
+        const tx = d.transaction([ASSET_STORE], 'readwrite');
+        tx.objectStore(ASSET_STORE).put({
+          savedAt: Date.now(),
+          reason: reasonLabel,
+          dbSnapshot: JSON.parse(JSON.stringify(db)),
+          photoVaultSnapshot: { ...(window._photoVaultMemoryCache || {}) }
+        }, 'danesh_pre_restore_safety_backup_v1');
+        tx.oncomplete = res;
+        tx.onerror = () => rej(tx.error);
+      });
+      d.close();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
+  // اعتبارسنجی دقیق ساختار فایل پشتیبان پیش از اعمال
+  window.validateBackupPayload = function(p) {
+    if (!p || typeof p !== 'object') {
+      return { valid: false, reason: 'ساختار فایل JSON معتبر نیست.' };
+    }
+    if (!Array.isArray(p.schools)) {
+      return { valid: false, reason: 'فهرست مدارس (schools) در فایل پشتیبان وجود ندارد.' };
+    }
+    for (let i = 0; i < p.schools.length; i++) {
+      const s = p.schools[i];
+      if (!s || typeof s !== 'object' || !Array.isArray(s.classes)) {
+        return { valid: false, reason: `ساختار مدرسه شماره ${i + 1} در فایل پشتیبان ناقص است.` };
+      }
+      for (let j = 0; j < s.classes.length; j++) {
+        const c = s.classes[j];
+        if (!c || typeof c !== 'object' || !Array.isArray(c.students)) {
+          return { valid: false, reason: `ساختار کلاس شماره ${j + 1} در مدرسه «${s.name || ''}» ناقص است.` };
+        }
+      }
+    }
+    return { valid: true, reason: 'OK' };
+  };
+
+  // ارتقای exportFullData برای تضمین قرارگیری تمام عکس‌های گاوصندوق در فایل پشتیبان JSON
+  window.exportFullData = function() {
+    if (typeof hydrateDbWithPhotoVault === 'function') {
+      hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
+    }
+    if (typeof extractAllPhotosFromDb === 'function') {
+      extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
+    }
+    const payload = {
+      ...db,
+      version: Number(db.version) || 1,
+      appVersion: APP_VERSION,
+      exportedAt: Date.now(),
+      examData: window.ExamApp ? ExamApp.state : null,
+      photoVault: { ...(window._photoVaultMemoryCache || {}) },
+      backupType: 'full'
+    };
+    downloadJson(payload, `پشتیبان-کامل-${localISODate()}.json`);
+    if (typeof toast === 'function') toast('📦 فایل پشتیبان کامل (همراه با تمام عکس‌ها و نمرات) دانلود شد ✅');
+  };
+
+  // ارتقای importData با اعتبارسنجی ساختار، پشتیبان ایمنی خودکار و بازیابی کامل عکس‌ها
+  window.importData = function(e) {
+    const f = e?.target?.files?.[0];
+    if (!f) return;
+    const r = new FileReader();
+    r.onload = async () => {
+      try {
+        const p = JSON.parse(r.result);
+        const check = window.validateBackupPayload(p);
+        if (!check.valid) {
+          window.smartAlert('⚠️ فایل پشتیبان نامعتبر است: ' + check.reason);
+          return;
+        }
+        const currentCounts = typeof counts === 'function' ? counts() : { schools: 0, students: 0 };
+        const incomingStudents = (p.schools || []).reduce((acc, s) => acc + (s.classes || []).reduce((a2, c) => a2 + (c.students || []).length, 0), 0);
+        if (currentCounts.students > 0 && p.schools.length === 0) {
+          window.smartAlert('⛔ جلوگیری از حذف اطلاعات: فایل انتخاب‌شده خالی است و جایگزینی دیتابیس فعلی با دیتابیس خالی مجاز نیست.');
+          return;
+        }
+        // ۱. تهیه نسخه پشتیبان خودکار از وضعیت فعلی قبل از اعمال فایل جدید
+        await window.createPreRestoreSafetySnapshot('پشتیبان خودکار پیش از بازیابی فایل JSON');
+
+        // ۲. بازیابی عکس‌های موجود در فایل پشتیبان به گاوصندوق عکس‌ها
+        if (p.photoVault && typeof p.photoVault === 'object') {
+          window._photoVaultMemoryCache = { ...(window._photoVaultMemoryCache || {}), ...p.photoVault };
+        }
+        db = sanitizeDb(p);
+        if (typeof extractAllPhotosFromDb === 'function') {
+          extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
+        }
+        if (typeof hydrateDbWithPhotoVault === 'function') {
+          hydrateDbWithPhotoVault(db, window._photoVaultMemoryCache);
+        }
+        if (p.examData && window.ExamApp) {
+          ExamApp.state = { ...ExamApp.state, ...p.examData };
+          ExamApp.save();
+          ExamApp.renderAll();
+        }
+        save();
+        await window.flushDbToIndexedDbNow();
+        showView('dashboard');
+        toast(`✅ بازیابی با موفقیت انجام شد (${fa(p.schools.length)} مدرسه و ${fa(incomingStudents)} دانش‌آموز)`);
+      } catch (err) {
+        window.smartAlert('⚠️ خطا در خواندن فایل پشتیبان: فایل JSON معتبر نیست.');
+      }
+    };
+    r.readAsText(f);
+    if (e?.target) e.target.value = '';
+  };
+
+
+  /* ==========================================================================================
+     ۳. تضمین حضور همیشگی ردیف «هوش‌واره (AI)» و کلید «گردش دور پنل‌ها» در صفحه تنظیمات
+     ========================================================================================== */
+  const ensureSettingsRowsSynced = function() {
+    try {
+      if (typeof window.applyPanelOrbitAnimationState === 'function' && typeof window.isPanelOrbitAnimationEnabled === 'function') {
+        window.applyPanelOrbitAnimationState(window.isPanelOrbitAnimationEnabled());
+      }
+      // اطمینان از وجود ردیف هوش‌واره در جزیره اول تنظیمات
+      const firstIsland = document.querySelector('#tgSettingsHomeWrap .dam-settings-island');
+      if (firstIsland && !firstIsland.querySelector('[data-ai-hub-row="1"]')) {
+        const aiRow = document.createElement('button');
+        aiRow.type = 'button';
+        aiRow.className = 'dam-settings-row';
+        aiRow.setAttribute('data-ai-hub-row', '1');
+        aiRow.onclick = () => window.openCloudSettingsSubpage('ai');
+        aiRow.innerHTML = `
+          <div class="dam-settings-row-right">
+            <span class="dam-3d-orb"><span>🤖</span></span>
+            <div class="dam-settings-row-texts">
+              <b>هوش‌واره و هوش مصنوعی (AI)</b>
+              <span>اتصال، ثبت کلید، رفع محدودیت به فارسی و راهنمای امکانات هوش مصنوعی</span>
+            </div>
+          </div>
+          <div class="dam-settings-row-left"><span>مدیریت ‹</span></div>
+        `;
+        firstIsland.insertBefore(aiRow, firstIsland.firstElementChild);
+      }
+
+      // اطمینان از وجود کلید گردش دور پنل‌ها در جزیره دوم تنظیمات
+      const homeWrap = document.getElementById('tgSettingsHomeWrap');
+      if (homeWrap && !document.getElementById('damPanelOrbitSettingsRow') && typeof window.isPanelOrbitAnimationEnabled === 'function') {
+        const isOn = window.isPanelOrbitAnimationEnabled();
+        const islands = homeWrap.querySelectorAll('.dam-settings-island');
+        const targetIsland = islands.length > 1 ? islands[1] : islands[0];
+        if (targetIsland) {
+          const orbitRow = document.createElement('div');
+          orbitRow.id = 'damPanelOrbitSettingsRow';
+          orbitRow.className = 'dam-settings-row';
+          orbitRow.onclick = function() { window.togglePanelOrbitAnimation(); };
+          orbitRow.innerHTML = `
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-purple"><span>✨</span></span>
+              <div class="dam-settings-row-texts">
+                <b>گردش و حرکت نوری دور پنل‌ها و دکمه‌ها</b>
+                <span class="dam-panel-orbit-status-txt">${isOn ? 'فعال (گردش نوری روشن)' : 'غیرفعال (پیش‌فرض — برنامه سبک و سریع)'}</span>
+              </div>
+            </div>
+            <button type="button" class="dam-capsule-switch dam-panel-orbit-switch ${isOn ? 'on' : ''}" aria-label="گردش دور پنل‌ها"></button>
+          `;
+          targetIsland.insertBefore(orbitRow, targetIsland.firstElementChild);
+        }
+      }
+    } catch (_) {}
+  };
+
+  const _origShowViewV892 = window.showView;
+  if (typeof _origShowViewV892 === 'function') {
+    window.showView = function(id) {
+      _origShowViewV892(id);
+      if (id === 'backup') {
+        ensureSettingsRowsSynced();
+        setTimeout(ensureSettingsRowsSynced, 60);
+      }
+    };
+  }
+
+  setTimeout(ensureSettingsRowsSynced, 260);
+  setTimeout(ensureSettingsRowsSynced, 600);
+})();
+</script>
+<!-- ==================== END V8.9.2 SENIOR AUDIT, SECURITY & STORAGE HARDENING ==================== -->
 
 </body>
 </html>

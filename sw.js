@@ -1,5 +1,5 @@
-const APP_VERSION = '7.6.0';
-const CACHE_NAME = 'danesh-amooz-man-v8.9.5-master';
+const APP_VERSION = '8.9.2';
+const CACHE_NAME = 'danesh-amooz-man-v8.9.2-pro';
 const CACHE_PREFIX = 'danesh-amooz-';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 
@@ -20,14 +20,19 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
-    const keys = await caches.keys();
-    // Strictly delete ONLY old caches belonging to this app (danesh-amooz-*)
-    // Never touch other apps' caches or IndexedDB / localStorage
-    await Promise.all(
-      keys
-        .filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
-        .map(key => caches.delete(key))
-    );
+    // Verify new cache is opened and ready before cleaning up older app caches
+    const activeCache = await caches.open(CACHE_NAME);
+    const cachedRequests = await activeCache.keys();
+    if (cachedRequests.length > 0) {
+      const keys = await caches.keys();
+      // Strictly delete ONLY old caches belonging to this app (danesh-amooz-*)
+      // Never touch other apps' caches or IndexedDB / localStorage
+      await Promise.all(
+        keys
+          .filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
+          .map(key => caches.delete(key))
+      );
+    }
     await self.clients.claim();
     const allClients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
     for (const client of allClients) {
