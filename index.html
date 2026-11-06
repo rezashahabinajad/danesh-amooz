@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.9</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v9.0</span>
         </div>
       </div>
     </div>
@@ -35559,7 +35559,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v8.9</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v9.0</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -36772,391 +36772,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 })();
 </script>
 <!-- ==================== END V8.7.0 COUNSELOR PRO ==================== -->
-
-<!-- ==================== START V8.8.0 ANIMATED BORDERS PRO ==================== -->
-<style id="v88AnimatedBordersAllStyle">
-/* ==========================================================================================
-   ۱. موتور چرخش ۳۶۰ درجه حاشیه نوری دور تمام آیتم‌های برنامه (۶۰ فریم بر ثانیه و کاملاً نرم)
-   ========================================================================================== */
-@property --dam-orbit-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: true;
-}
-
-@keyframes damGlobalOrbitSpin360 {
-  0% { --dam-orbit-angle: 0deg; }
-  100% { --dam-orbit-angle: 360deg; }
-}
-
-@keyframes damBorderShimmerPulse {
-  0%, 100% {
-    box-shadow: 0 3px 12px rgba(234, 88, 12, 0.14), 0 0 0 1px rgba(251, 146, 60, 0.28);
-  }
-  50% {
-    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.22), 0 0 0 1.5px rgba(249, 115, 22, 0.55);
-  }
-}
-
-:root,
-body {
-  animation: damGlobalOrbitSpin360 2.6s linear infinite !important;
-}
-
-/* ==========================================================================================
-   ۲. حاشیه متحرک و گردون دور تمام کارت‌ها، باکس‌ها، پنل‌ها و کانتینرها در کل برنامه
-   ========================================================================================== */
-.card,
-.box-card,
-.box-card.highlight,
-.stat,
-.stu-card,
-.branch-bar,
-.exam-subnav,
-#teachView .teach-workbench-tabs,
-.jarvis-command-deck,
-.dignity-charter-banner,
-.auto-ai-master-banner,
-.dam-settings-island,
-.dam-bento-card,
-.rep-classlist-card,
-.counselor-ai-result-card,
-.counselor-ai-sec-item,
-.switch-card,
-.theme-pick-card,
-.cmd-palette-item,
-.pdf-page-card,
-.q-item-card,
-.top-icons-capsule,
-.counselor-mode-tabs,
-.rep-v84-col-toggles,
-#teacherPdfStage {
-  border: 2px solid transparent !important;
-  background-image:
-    linear-gradient(180deg, #FFFFFF 0%, #FFFBF5 100%),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      #FFEDD5 0deg,
-      #FB923C 65deg,
-      #EA580C 130deg,
-      #EF4444 190deg,
-      #F59E0B 255deg,
-      #FED7AA 315deg,
-      #FFEDD5 360deg
-    ) !important;
-  background-origin: border-box !important;
-  background-clip: padding-box, border-box !important;
-  animation: damGlobalOrbitSpin360 2.6s linear infinite, damBorderShimmerPulse 2.8s ease-in-out infinite !important;
-}
-
-/* ==========================================================================================
-   ۳. حاشیه متحرک و گردون دور تمام دکمه‌های روشن/نرم، کپسول‌ها، تب‌ها، چیپ‌ها و شعبه‌ها
-   ========================================================================================== */
-.btn:not(.primary):not(.green):not(.danger):not(.red),
-.btn.soft,
-.btn.gray,
-.dash-q-pill,
-.chip,
-.branch-pill:not(.active),
-.ex-nav-btn:not(.active),
-.teach-wb-tab:not(.active),
-.set-tab-btn:not(.active),
-.counselor-mode-tab:not(.active),
-.rep-v84-scope-btn:not(.active),
-.rep-v84-col-chip,
-.attn-cat-pill:not(.active),
-.jarvis-metric-btn:not(.active),
-.teach-icon-btn,
-.sb-tool-btn:not(.active),
-.class-side-counselor-btn,
-.class-beacon-reminder-btn,
-.bottomnav button.active,
-.pill-btn:not(.active),
-.speed-opt-btn:not(.selected) {
-  border: 2px solid transparent !important;
-  background-image:
-    linear-gradient(180deg, #FFFFFF 0%, #FFF7ED 100%),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      #FED7AA 0deg,
-      #EA580C 75deg,
-      #EF4444 145deg,
-      #F59E0B 215deg,
-      #FB923C 285deg,
-      #FED7AA 360deg
-    ) !important;
-  background-origin: border-box !important;
-  background-clip: padding-box, border-box !important;
-  color: #9A3412 !important;
-  animation: damGlobalOrbitSpin360 2.4s linear infinite !important;
-}
-
-/* ==========================================================================================
-   ۴. حاشیه متحرک طلایی-نقره‌ای دور دکمه‌های نارنجی پررنگ (.btn.primary) و تب‌های فعال (.active)
-   ========================================================================================== */
-.btn.primary,
-.branch-pill.active,
-.ex-nav-btn.active,
-.teach-wb-tab.active,
-.set-tab-btn.active,
-.counselor-mode-tab.active,
-.rep-v84-scope-btn.active,
-.attn-cat-pill.active,
-.jarvis-metric-btn.active,
-.sb-tool-btn.active,
-.pill-btn.active,
-.speed-opt-btn.selected {
-  border: 2.2px solid transparent !important;
-  background-image:
-    linear-gradient(135deg, #EA580C 0%, #F97316 100%),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      #9A3412 0deg,
-      #FDE047 80deg,
-      #FFFFFF 150deg,
-      #FDBA74 230deg,
-      #EF4444 300deg,
-      #9A3412 360deg
-    ) !important;
-  background-origin: border-box !important;
-  background-clip: padding-box, border-box !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.28) !important;
-  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
-}
-
-/* ==========================================================================================
-   ۵. حاشیه متحرک دور دکمه‌های سبز (.btn.green) و دکمه‌های قرمز (.btn.danger) و باکس نارنجی بالای آزمون‌ساز
-   ========================================================================================== */
-.btn.green {
-  border: 2.2px solid transparent !important;
-  background-image:
-    linear-gradient(135deg, #059669 0%, #10B981 100%),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      #064E3B 0deg,
-      #A7F3D0 80deg,
-      #FFFFFF 150deg,
-      #FDE047 230deg,
-      #34D399 300deg,
-      #064E3B 360deg
-    ) !important;
-  background-origin: border-box !important;
-  background-clip: padding-box, border-box !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.26) !important;
-  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
-}
-
-.btn.danger,
-.btn.red {
-  border: 2.2px solid transparent !important;
-  background-image:
-    linear-gradient(135deg, #DC2626 0%, #EF4444 100%),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      #7F1D1D 0deg,
-      #FECACA 85deg,
-      #FFFFFF 155deg,
-      #FDE047 235deg,
-      #7F1D1D 360deg
-    ) !important;
-  background-origin: border-box !important;
-  background-clip: padding-box, border-box !important;
-  color: #FFFFFF !important;
-  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
-}
-
-.exam-top-actions {
-  border: 2.5px solid transparent !important;
-  background-image:
-    linear-gradient(135deg, #C2410C 0%, #EA580C 52%, #F97316 100%),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      #7C2D12 0deg,
-      #FDE047 75deg,
-      #FFFFFF 145deg,
-      #FDBA74 225deg,
-      #EF4444 295deg,
-      #7C2D12 360deg
-    ) !important;
-  background-origin: border-box !important;
-  background-clip: padding-box, border-box !important;
-  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.25) !important;
-  animation: damGlobalOrbitSpin360 2.6s linear infinite !important;
-}
-
-.exam-collapse-btn,
-#topStatsText {
-  border: 1.8px solid transparent !important;
-  background-image:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 237, 213, 0.28)),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      rgba(255,255,255,0.2) 0deg,
-      #FDE047 90deg,
-      #FFFFFF 180deg,
-      #FED7AA 270deg,
-      rgba(255,255,255,0.2) 360deg
-    ) !important;
-  background-origin: border-box !important;
-  background-clip: padding-box, border-box !important;
-  color: #FFFFFF !important;
-}
-
-/* ==========================================================================================
-   ۶. حاشیه متحرک دور تمام کادرهای ورودی، انتخابگرها، جعبه‌های جستجو و آیکون‌های هدر
-   ========================================================================================== */
-input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
-select,
-textarea,
-.searchbox,
-.dam-settings-search {
-  border: 1.8px solid transparent !important;
-  background-image:
-    linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      #FED7AA 0deg,
-      #F97316 80deg,
-      #EA580C 160deg,
-      #F59E0B 240deg,
-      #FED7AA 360deg
-    ) !important;
-  background-origin: border-box !important;
-  background-clip: padding-box, border-box !important;
-  animation: damGlobalOrbitSpin360 2.8s linear infinite !important;
-}
-
-.topbar .logo,
-.topbar .iconbtn,
-.topbar .top-ver-pill {
-  border: 2px solid transparent !important;
-  background-image:
-    radial-gradient(circle at 30% 25%, #FFFFFF 0%, #FFF7ED 55%, #FFEDD5 100%),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      #FED7AA 0deg,
-      #EA580C 75deg,
-      #EF4444 150deg,
-      #F59E0B 230deg,
-      #FED7AA 360deg
-    ) !important;
-  background-origin: border-box !important;
-  background-clip: padding-box, border-box !important;
-  animation: damGlobalOrbitSpin360 2.2s linear infinite !important;
-}
-
-/* ==========================================================================================
-   ۷. تطبیق کامل حاشیه‌های متحرک در حالت شب مشکی خالص (amoled-black)
-   ========================================================================================== */
-body[data-theme-mode="amoled-black"] .card,
-body[data-theme-mode="amoled-black"] .box-card,
-body[data-theme-mode="amoled-black"] .stat,
-body[data-theme-mode="amoled-black"] .stu-card,
-body[data-theme-mode="amoled-black"] .branch-bar,
-body[data-theme-mode="amoled-black"] .exam-subnav,
-body[data-theme-mode="amoled-black"] #teachView .teach-workbench-tabs,
-body[data-theme-mode="amoled-black"] .jarvis-command-deck,
-body[data-theme-mode="amoled-black"] .dignity-charter-banner,
-body[data-theme-mode="amoled-black"] .auto-ai-master-banner,
-body[data-theme-mode="amoled-black"] .dam-settings-island,
-body[data-theme-mode="amoled-black"] .dam-bento-card,
-body[data-theme-mode="amoled-black"] .switch-card,
-body[data-theme-mode="amoled-black"] .theme-pick-card,
-body[data-theme-mode="amoled-black"] .top-icons-capsule,
-body[data-theme-mode="amoled-black"] #teacherPdfStage {
-  background-image:
-    linear-gradient(180deg, #161618 0%, #1C1C1F 100%),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      #27272A 0deg,
-      #F97316 75deg,
-      #EF4444 150deg,
-      #F59E0B 230deg,
-      #27272A 360deg
-    ) !important;
-  color: #FFFFFF !important;
-}
-
-body[data-theme-mode="amoled-black"] .btn:not(.primary):not(.green):not(.danger):not(.red),
-body[data-theme-mode="amoled-black"] .btn.soft,
-body[data-theme-mode="amoled-black"] .btn.gray,
-body[data-theme-mode="amoled-black"] .dash-q-pill,
-body[data-theme-mode="amoled-black"] .chip,
-body[data-theme-mode="amoled-black"] .branch-pill:not(.active),
-body[data-theme-mode="amoled-black"] .ex-nav-btn:not(.active),
-body[data-theme-mode="amoled-black"] .teach-wb-tab:not(.active),
-body[data-theme-mode="amoled-black"] .class-side-counselor-btn,
-body[data-theme-mode="amoled-black"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
-body[data-theme-mode="amoled-black"] select,
-body[data-theme-mode="amoled-black"] textarea,
-body[data-theme-mode="amoled-black"] .searchbox,
-body[data-theme-mode="amoled-black"] .dam-settings-search {
-  background-image:
-    linear-gradient(180deg, #222226 0%, #18181B 100%),
-    conic-gradient(
-      from var(--dam-orbit-angle),
-      #3F3F46 0deg,
-      #F97316 80deg,
-      #EF4444 160deg,
-      #FBBF24 240deg,
-      #3F3F46 360deg
-    ) !important;
-  color: #FDBA74 !important;
-}
-
-/* ==========================================================================================
-   ۸. رفع بریدگی نوار تب‌های آزمون‌ساز (.exam-subnav) و چیدمان منظم دکمه‌های شعبه (1000186078_8c858a.jpg)
-   ========================================================================================== */
-#examView .exam-subnav {
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 6px !important;
-  overflow: visible !important;
-  padding: 7px !important;
-  border-radius: 16px !important;
-}
-#examView .exam-subnav .ex-nav-btn {
-  width: 100% !important;
-  min-width: 0 !important;
-  margin: 0 !important;
-  padding: 8px 6px !important;
-  font-size: 11.5px !important;
-  justify-content: center !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  border-radius: 11px !important;
-}
-#examView .exam-subnav .ex-nav-btn:first-child {
-  grid-column: 1 / -1 !important;
-  font-size: 12.5px !important;
-}
-@media (min-width: 680px) {
-  #examView .exam-subnav {
-    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-  }
-  #examView .exam-subnav .ex-nav-btn:first-child {
-    grid-column: auto !important;
-  }
-}
-
-#examView .branch-pills-row {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 5px !important;
-  justify-content: center !important;
-}
-#examView .branch-pills-row .branch-pill {
-  padding: 6px 9px !important;
-  font-size: 11px !important;
-  flex: 1 1 auto !important;
-  text-align: center !important;
-  justify-content: center !important;
-}
-</style>
-<!-- ==================== END V8.8.0 ANIMATED BORDERS PRO ==================== -->
 
 <!-- ==================== START V8.9.0 AI & GRADES PRO ==================== -->
 <style id="v89AiGradesReportStyle">
@@ -38596,6 +38211,617 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
 })();
 </script>
 <!-- ==================== END V8.9.0 AI & GRADES PRO ==================== -->
+
+<!-- ==================== START V9.0.0 SMOOTH & COHESIVE PRO ==================== -->
+<style id="v90SmoothCohesiveProStyle">
+/* ==========================================================================================
+   ۱. بهینه‌سازی عمیق سرعت و روانی برنامه (حذف انیمیشن‌های سنگین از روی صدها دکمه و ورودی)
+   و حفظ چرخش نرم سخت‌افزاری (GPU) فقط روی گوی‌های ۳بعدی + رفع بریدگی تب‌های آزمون‌ساز
+   ========================================================================================== */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card,
+.stu-card,
+.stat,
+.box-card {
+  will-change: auto !important;
+  animation: none !important;
+}
+
+#examView .exam-subnav {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  overflow: visible !important;
+  padding: 7px !important;
+  border-radius: 16px !important;
+}
+#examView .exam-subnav .ex-nav-btn {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 8px 6px !important;
+  font-size: 11.5px !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  border-radius: 11px !important;
+}
+#examView .exam-subnav .ex-nav-btn:first-child {
+  grid-column: 1 / -1 !important;
+  font-size: 12.5px !important;
+}
+@media (min-width: 680px) {
+  #examView .exam-subnav {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+  #examView .exam-subnav .ex-nav-btn:first-child {
+    grid-column: auto !important;
+  }
+}
+
+#examView .branch-pills-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 5px !important;
+  justify-content: center !important;
+}
+#examView .branch-pills-row .branch-pill {
+  padding: 6px 9px !important;
+  font-size: 11px !important;
+  flex: 1 1 auto !important;
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+/* ==========================================================================================
+   ۲. استایل «لیست استاندارد و منسجم کلاسی» در گزارش‌ها (همه ردیف‌ها دقیقاً یک اندازه و بدون به‌هم‌ریختگی)
+   ========================================================================================== */
+.rep-oneline-top-guide {
+  background: #FFF7ED;
+  border: 1px solid #FDBA74;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-bottom: 7px;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #7C2D12;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  line-height: 1.4;
+}
+
+.rep-std-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: 10.5px;
+  direction: rtl;
+}
+.rep-std-table thead th {
+  background: #EA580C;
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 9.8px;
+  padding: 5px 4px;
+  border: 1px solid #C2410C;
+  text-align: center;
+  white-space: nowrap;
+  height: 26px;
+  line-height: 1.2;
+}
+.rep-std-student-group {
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+.rep-std-main-row {
+  height: 26px !important;
+  max-height: 26px !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+.rep-std-main-row td {
+  height: 26px !important;
+  max-height: 26px !important;
+  padding: 2px 5px !important;
+  border: 1px solid #CBD5E1 !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  line-height: 22px !important;
+  font-size: 10.5px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+/* ردیف خط ریز تک‌خطی و هم‌اندازه برای توصیه تربیتی خطاب به خانواده (یا ریز جلسات اضافه) */
+.rep-std-sub-row {
+  height: 18px !important;
+  max-height: 18px !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+.rep-std-sub-row td {
+  height: 18px !important;
+  max-height: 18px !important;
+  padding: 1px 8px !important;
+  background: #FFFDF9 !important;
+  border: 1px solid #CBD5E1 !important;
+  border-top: 1px dashed #FED7AA !important;
+  font-size: 8.8px !important;
+  line-height: 16px !important;
+  color: #475569 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-align: right !important;
+}
+</style>
+
+<script id="v90SmoothCohesiveProScript">
+(function() {
+  'use strict';
+
+  /* ==========================================================================================
+     بخش ۱: رفع باگ بحرانی نمرات صفر کاذب (Number(null) === 0 در جلسات حضور و غیاب)
+     و پاک‌سازی خودکار نمرات صفر کاذب که در تصویر کاربر باعث «کلاسی: ۰، ۰، ۰، ۰» شده بود
+     ========================================================================================== */
+  window.isValidGradeNumber = function(val) {
+    if (val === undefined || val === null || typeof val === 'boolean') return false;
+    const str = String(val).trim();
+    if (str === '') return false;
+    const num = Number(enDigits(str));
+    return Number.isFinite(num) && num >= 0 && num <= 20;
+  };
+
+  window.attendanceScore = function(c, d, stid) {
+    const rec = c?.attendance?.[d]?.[stid];
+    if (!rec || !window.isValidGradeNumber(rec.score)) return null;
+    const s = Number(enDigits(String(rec.score)));
+    return s;
+  };
+
+  window.cleanPhantomZeroAttendanceGrades = function() {
+    if (!db || !Array.isArray(db.schools)) return 0;
+    let cleaned = 0;
+    db.schools.forEach(s => {
+      (s.classes || []).forEach(c => {
+        // ۱. پاک کردن score: null یا score: '' یا score: 0 کاذب از جلسات حضور و غیاب
+        if (c.attendance && typeof c.attendance === 'object') {
+          Object.keys(c.attendance).forEach(d => {
+            const dayObj = c.attendance[d];
+            if (!dayObj || typeof dayObj !== 'object') return;
+            Object.keys(dayObj).forEach(stid => {
+              const rec = dayObj[stid];
+              if (rec && typeof rec === 'object' && 'score' in rec) {
+                if (!window.isValidGradeNumber(rec.score) || Number(rec.score) === 0) {
+                  delete rec.score;
+                  cleaned++;
+                }
+              }
+            });
+          });
+        }
+
+        // ۲. پاک کردن رکوردهای source === 'attendance' در st.grades که نمره آن‌ها null یا خالی یا 0 کاذب بوده است
+        (c.students || []).forEach(st => {
+          if (Array.isArray(st.grades)) {
+            const beforeLen = st.grades.length;
+            st.grades = st.grades.filter(g => {
+              if (!g || typeof g !== 'object') return false;
+              if (!window.isValidGradeNumber(g.score)) return false;
+              if (g.source === 'attendance' && Number(g.score) === 0) return false;
+              return true;
+            });
+            if (st.grades.length !== beforeLen) {
+              cleaned += (beforeLen - st.grades.length);
+            }
+          }
+          if (c.contExamScores && st.id in c.contExamScores) {
+            if (!window.isValidGradeNumber(c.contExamScores[st.id])) {
+              delete c.contExamScores[st.id];
+              cleaned++;
+            }
+          }
+          if (c.termScores && st.id in c.termScores) {
+            if (!window.isValidGradeNumber(c.termScores[st.id])) {
+              delete c.termScores[st.id];
+              cleaned++;
+            }
+          }
+        });
+      });
+    });
+    if (cleaned > 0) {
+      try { savePersistent(); } catch (_) {}
+    }
+    return cleaned;
+  };
+
+  // بازنویسی دقیق لیست نمرات کتبی مستمر و کلاسی با فیلتر ضد-صفر کاذب
+  window.getStudentWrittenContList = function(c, st) {
+    if (!st) return [];
+    if (!Array.isArray(st.grades)) st.grades = [];
+
+    if (c && c.contExamScores && window.isValidGradeNumber(c.contExamScores[st.id])) {
+      const legacyVal = Number(enDigits(String(c.contExamScores[st.id])));
+      const hasContGrade = st.grades.some(g => g && g.gradeType === 'cont_exam' && window.isValidGradeNumber(g.score));
+      if (!hasContGrade && legacyVal > 0) {
+        st.grades.push({
+          id: uid(),
+          date: new Date().toISOString(),
+          subject: 'کتبی مستمر ۱',
+          score: legacyVal,
+          source: 'direct_cont_col',
+          gradeType: 'cont_exam'
+        });
+      }
+    }
+
+    const list = [];
+    st.grades.forEach((g, idx) => {
+      if (g && g.gradeType === 'cont_exam' && window.isValidGradeNumber(g.score)) {
+        list.push({
+          id: g.id || ('cont_' + idx),
+          title: g.subject || `کتبی ${fa(list.length + 1)}`,
+          score: Number(enDigits(String(g.score))),
+          date: g.date || '',
+          ref: g
+        });
+      }
+    });
+    return list;
+  };
+
+  window.getStudentOralClassList = function(c, st) {
+    if (!st) return [];
+    const list = [];
+    (st.grades || []).forEach((g, idx) => {
+      if (!g || g.gradeType === 'cont_exam' || g.gradeType === 'group_score') return;
+      if (!window.isValidGradeNumber(g.score)) return;
+      const sc = Number(enDigits(String(g.score)));
+      if (g.source === 'attendance' && sc === 0) return;
+      list.push({
+        id: g.id || ('oral_' + idx),
+        title: g.subject || `کلاسی ${fa(list.length + 1)}`,
+        score: sc,
+        date: g.date || ''
+      });
+    });
+    return list;
+  };
+
+
+  /* ==========================================================================================
+     بخش ۲: بازطراحی جدول گزارش به شکل «لیست استاندارد و منسجم کلاسی»
+     - همه ردیف‌ها دقیقاً یک اندازه (بدون بزرگ و کوچک شدن)
+     - ستون‌های مجزا برای نمرات کتبی مستمر و کلاسی (به جای انباشتن چند خط داخل یک سلول)
+     - توضیحات بالای صفحه در قالب یک ردیف شیک و خلاصه
+     - توصیه تربیتی خطاب به خانواده در قالب یک خط ریز یکنواخت بدون برهم زدن انسجام جدول
+     ========================================================================================== */
+  window.getShortCleanStatusBadgeHTML = function(st, det) {
+    if (!det || !det.isAttn) {
+      if (st?.status === 'good') {
+        return `<span style="display:inline-block;padding:1px 6px;border-radius:99px;background:#DCFCE7;color:#15803D;border:1px solid #86EFAC;font-size:9px;font-weight:800;white-space:nowrap">🟢 خوب</span>`;
+      }
+      return `<span style="color:#64748B;font-size:9.5px;white-space:nowrap">عادی</span>`;
+    }
+    const cats = det.categories || [];
+    const shortLabels = [];
+    if (cats.includes('academic')) shortLabels.push('📉 افت درسی');
+    if (cats.includes('discipline')) shortLabels.push('⚠️ انضباطی');
+    if (cats.includes('medical')) shortLabels.push('🏥 پزشکی');
+    if (cats.includes('absence')) shortLabels.push('📅 غیبت مکرر');
+    if (cats.includes('counseling')) shortLabels.push('💜 مشاوره');
+    if (cats.includes('special') || !shortLabels.length) shortLabels.push('⭐ توجه ویژه');
+
+    const text = shortLabels.slice(0, 2).join(' · ');
+    return `<span style="display:inline-block;padding:1px 6px;border-radius:99px;background:#FFE4E6;color:#BE123C;border:1px solid #FDA4AF;font-size:9px;font-weight:800;white-space:nowrap">${esc(text)}</span>`;
+  };
+
+  if (window.ReportApp) {
+    ReportApp.buildClassListStyleHTML = function(res, forExcel = false) {
+      window.cleanPhantomZeroAttendanceGrades();
+
+      const cols = this.state.cols;
+      const r = getRules();
+      const themeKey = this.state.theme || document.getElementById('expColorTheme')?.value || 'orange';
+      const pal = (typeof EXPORT_COLOR_PALETTES !== 'undefined' && EXPORT_COLOR_PALETTES[themeKey])
+        ? EXPORT_COLOR_PALETTES[themeKey]
+        : { primary: '#EA580C', primaryDark: '#9A3412', lightBg: '#FFF7ED', border: '#FDBA74', thBg: '#EA580C', thText: '#FFFFFF', zebra: '#FFFBF5', gradStart: '#EA580C', gradEnd: '#F97316' };
+
+      if (res.scope === 'student' && res.totalStudents === 1 && typeof this.buildDetailedSingleStudentFamilyHTML === 'function') {
+        return this.buildDetailedSingleStudentFamilyHTML(res.sections[0].school, res.sections[0].cls, res.sections[0].items[0], forExcel);
+      }
+
+      // توضیحات بالای برگه در قالب یک ردیف شیک، خلاصه و شفاف برای خانواده
+      const oneLineTopGuideHtml = `
+        <div class="rep-oneline-top-guide">
+          <span>📐 <b>راهنمای ضرایب کارنامه:</b> میانگین کتبی مستمر <b>×${fa(r.weightCont)}</b> · میانگین کلاسی <b>×${fa(r.weightClass)}</b> · پایانی ترم <b>×${fa(r.weightTerm)}</b></span>
+          <span>➕ هر مثبت: <b>+${fmtScore(r.positiveValue)}</b> · تشویقی بدون منفی: <b>+${fmtScore(r.bonusNoNeg)}</b> · سقف منفی مجاز: <b>${fa(r.maxNegAllowed)}</b> (مازاد: <b>−${fmtScore(r.penaltyPerNeg)}</b>)</span>
+        </div>
+      `;
+
+      const buildSectionCard = (sec, sIdx, includeSchoolCol) => {
+        const items = sec.items || [];
+        let sumFinal = 0, cntFinal = 0, attnCnt = 0, posCnt = 0, negCnt = 0, absTotal = 0;
+        let maxWrittenCols = 1;
+
+        items.forEach(it => {
+          const targetCls = it._c || sec.cls;
+          const bd = window.getStudentScoreBreakdown(targetCls, it.st);
+          if (bd.writtenList.length > maxWrittenCols) {
+            maxWrittenCols = Math.min(4, bd.writtenList.length);
+          }
+          if (Number.isFinite(Number(bd.finalSc))) { sumFinal += Number(bd.finalSc); cntFinal++; }
+          if (it.det?.isAttn) attnCnt++;
+          posCnt += bd.posCount;
+          negCnt += bd.negCount;
+          absTotal += (Number(it.absCnt) || 0);
+        });
+
+        const classAvg = cntFinal ? (sumFinal / cntFinal) : 0;
+        const cleanClsName = window.cleanClassDisplayName ? window.cleanClassDisplayName(sec.cls.name) : sec.cls.name;
+        const subjTxt = sec.cls.subject ? ` · 📚 درس: ${esc(sec.cls.subject)}` : '';
+        const gradeTxt = sec.cls.grade ? ` (${esc(sec.cls.grade)})` : '';
+
+        // ستون‌های استاندارد لیست کلاسی (هر نمره در ستون تک‌خطی خودش تا همه ردیف‌ها دقیقاً هم‌اندازه باشند)
+        const headers = ['ردیف'];
+        if (includeSchoolCol) headers.push('کلاس');
+        headers.push('نام خانوادگی و نام دانش‌آموز');
+        if (cols.father) headers.push('نام پدر');
+        if (cols.phone) headers.push('تلفن');
+        if (cols.att) headers.push('غیبت');
+        if (cols.cont) {
+          if (maxWrittenCols > 1) {
+            for (let wi = 1; wi <= maxWrittenCols; wi++) {
+              headers.push(`کتبی ${fa(wi)}`);
+            }
+            headers.push('میانگین کتبی');
+          } else {
+            headers.push('کتبی مستمر');
+          }
+          headers.push('کلاسی', 'مستمر کل');
+        }
+        if (cols.beh) {
+          headers.push('مثبت/منفی', 'تاثیر');
+        }
+        if (cols.term) {
+          headers.push('پایانی', 'نمره نهایی');
+        }
+        if (cols.status) {
+          headers.push('وضعیت');
+        }
+
+        const studentGroupsHtml = items.map((it, idx) => {
+          const targetCls = it._c || sec.cls;
+          const { st, det, absCnt } = it;
+          const bd = window.getStudentScoreBreakdown(targetCls, st);
+          const rowBg = det.isAttn ? '#FFF5F5' : (idx % 2 === 1 ? pal.zebra : '#FFFFFF');
+          const fullName = `${st.lastName || ''} ${st.name || ''}`.trim();
+          const initials = (st.lastName || st.name || 'د').slice(0, 1);
+
+          const studentCellHtml = (!forExcel && cols.photo)
+            ? `<div style="display:inline-flex;align-items:center;gap:5px;white-space:nowrap">
+                 <span style="width:19px;height:19px;border-radius:50%;border:1px solid #FDBA74;background:#FFF7ED;color:#C2410C;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;overflow:hidden;flex-shrink:0">
+                   ${st.photo ? `<img src="${st.photo}" style="width:100%;height:100%;object-fit:cover">` : esc(initials)}
+                 </span>
+                 <b style="font-size:10.5px;color:#0F172A">${esc(fullName)}</b>
+               </div>`
+            : `<b style="font-size:10.5px;color:#0F172A">${esc(fullName)}</b>`;
+
+          let contCellsHtml = '';
+          if (cols.cont) {
+            if (maxWrittenCols > 1) {
+              for (let wi = 0; wi < maxWrittenCols; wi++) {
+                const wItem = bd.writtenList[wi];
+                contCellsHtml += `<td style="text-align:center;font-weight:700;color:#334155">${wItem ? fmtScore(wItem.score) : '—'}</td>`;
+              }
+              contCellsHtml += `<td style="text-align:center;font-weight:900;color:#9A3412;background:#FFF7ED">${bd.writtenAvg !== null ? fmtScore(bd.writtenAvg) : '—'}</td>`;
+            } else {
+              contCellsHtml += `<td style="text-align:center;font-weight:800;color:#9A3412">${bd.writtenAvg !== null ? fmtScore(bd.writtenAvg) : '—'}</td>`;
+            }
+            const oralDisplay = bd.oralList.length === 1
+              ? fmtScore(bd.oralList[0].score)
+              : (bd.oralAvg !== null ? fmtScore(bd.oralAvg) : '—');
+            contCellsHtml += `
+              <td style="text-align:center;font-weight:700;color:#0369A1">${oralDisplay}</td>
+              <td style="text-align:center;font-weight:900;color:#0F172A;background:#F8FAFC">${bd.cAvg !== null ? fmtScore(bd.cAvg) : '—'}</td>
+            `;
+          }
+
+          const behEffectSign = bd.totalBehEffect > 0 ? '+' : '';
+          const behEffectColor = bd.totalBehEffect > 0 ? '#15803D' : (bd.totalBehEffect < 0 ? '#B91C1C' : '#64748B');
+          const behCellsHtml = cols.beh
+            ? `<td style="text-align:center"><span style="color:#15803D;font-weight:900">+${fa(bd.posCount)}</span> / <span style="color:#B91C1C;font-weight:900">−${fa(bd.negCount)}</span></td>
+               <td style="text-align:center;font-weight:800;color:${behEffectColor}">${bd.totalBehEffect === 0 ? '۰' : (behEffectSign + fmtScore(bd.totalBehEffect))}</td>`
+            : '';
+
+          const finalColor = Number(bd.finalSc) >= 17 ? '#15803D' : (Number(bd.finalSc) < 12 ? '#B91C1C' : '#0F172A');
+          const finalBg = Number(bd.finalSc) >= 17 ? '#DCFCE7' : (Number(bd.finalSc) < 12 ? '#FEE2E2' : '#FFF7ED');
+
+          const mainRowHtml = `<tr class="rep-std-main-row" style="background-color:${rowBg}">
+            <td style="text-align:center;font-weight:900;color:${pal.primaryDark};background:${pal.lightBg};width:24px">${fa(idx + 1)}</td>
+            ${includeSchoolCol ? `<td style="text-align:center;font-size:9.5px"><b>${esc(it._c ? (window.cleanClassDisplayName ? window.cleanClassDisplayName(it._c.name) : it._c.name) : cleanClsName)}</b></td>` : ''}
+            <td style="text-align:right">${studentCellHtml}</td>
+            ${cols.father ? `<td style="text-align:center;color:#334155">${esc(st.fatherName || '—')}</td>` : ''}
+            ${cols.phone ? `<td dir="ltr" style="text-align:center;font-family:monospace;font-size:9.5px">${st.phone ? fa(st.phone) : '—'}</td>` : ''}
+            ${cols.att ? `<td style="text-align:center;font-weight:800;color:${absCnt >= 3 ? '#B91C1C' : (absCnt > 0 ? '#B45309' : '#15803D')}">${absCnt === 0 ? '۰' : fa(absCnt)}</td>` : ''}
+            ${contCellsHtml}
+            ${behCellsHtml}
+            ${cols.term ? `<td style="text-align:center;font-weight:800">${bd.termSc !== null ? fmtScore(bd.termSc) : '—'}</td><td style="text-align:center;font-weight:900;color:${finalColor};background:${finalBg}">${fmtScore(bd.finalSc)}</td>` : ''}
+            ${cols.status ? `<td style="text-align:center">${window.getShortCleanStatusBadgeHTML(st, det)}</td>` : ''}
+          </tr>`;
+
+          // اگر تیک توصیه تربیتی روشن باشد (یا دانش‌آموز ریز نمرات متعدد کلاسی داشته باشد)، در قالب «یک خط ریز هم‌اندازه» اضافه می‌شود تا انسجام لیست کلاسی حفظ شود
+          let subRowsHtml = '';
+          if (cols.cont && bd.oralList.length > 1) {
+            const oralBreakdownTxt = bd.oralList.map((o, oi) => `نوبت ${fa(oi + 1)}: ${fmtScore(o.score)}`).join(' ، ');
+            subRowsHtml += `
+              <tr class="rep-std-sub-row">
+                <td colspan="${headers.length}">
+                  <b style="color:#0369A1">🙋 ریز نمرات کلاسی (${fa(bd.oralList.length)} نوبت):</b> ${esc(oralBreakdownTxt)} ⬅ <b>میانگین کلاسی: ${fmtScore(bd.oralAvg)}</b>
+                </td>
+              </tr>
+            `;
+          }
+          if (cols.advice) {
+            const familyAdvice = window.generateFamilyAddressedAdvice(targetCls, st, det);
+            subRowsHtml += `
+              <tr class="rep-std-sub-row">
+                <td colspan="${headers.length}">
+                  <b style="color:#C2410C">🌿 توصیه به خانواده:</b> ${esc(familyAdvice)}
+                </td>
+              </tr>
+            `;
+          }
+
+          return `<tbody class="rep-std-student-group">${mainRowHtml}${subRowsHtml}</tbody>`;
+        }).join('');
+
+        const pageBreak = (sIdx > 0 && !forExcel) ? 'page-break-before:always;break-before:page;' : '';
+
+        return `<div class="rep-classlist-card" style="${pageBreak}">
+          <div class="rep-classlist-head" style="padding:6px 10px">
+            <div>
+              <b style="font-size:12px;color:#9A3412">🏫 ${esc(sec.school.name)} — 🚪 کلاس ${esc(cleanClsName)}${gradeTxt}${subjTxt}</b>
+              <span style="font-size:10px;color:#475569;margin-right:8px">👨‍🏫 دبیر: ${esc(getTeacherName())} · 📅 ${formatJalaliDate(localISODate())}</span>
+            </div>
+            <div class="rep-classlist-kpis">
+              <span class="rep-kpi-mini">👨‍🎓 ${fa(items.length)} نفر</span>
+              <span class="rep-kpi-mini">⭐ میانگین: ${fmtScore(classAvg)}</span>
+              <span class="rep-kpi-mini" style="color:#15803D">➕${fa(posCnt)} / <span style="color:#B91C1C">➖${fa(negCnt)}</span></span>
+              <span class="rep-kpi-mini">📅 غیبت: ${fa(absTotal)}</span>
+              ${attnCnt > 0 ? `<span class="rep-kpi-mini" style="background:#FFE4E6;color:#BE123C">🚨 توجه: ${fa(attnCnt)}</span>` : ''}
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table border="1" class="rep-std-table" style="border-color:${pal.border}">
+              <thead>
+                <tr style="background-color:${pal.thBg};color:#FFFFFF">
+                  ${headers.map(h => `<th>${esc(h)}</th>`).join('')}
+                </tr>
+              </thead>
+              ${studentGroupsHtml}
+            </table>
+          </div>
+        </div>`;
+      };
+
+      const splitMode = this.state.splitMode || 'separate_sections';
+      let bodyHtml = '';
+      if (splitMode === 'separate_sections' || res.sections.length <= 1) {
+        bodyHtml = res.sections.map((sec, idx) => buildSectionCard(sec, idx, false)).join('');
+      } else {
+        const merged = [];
+        res.sections.forEach(sec => sec.items.forEach(it => merged.push({ ...it, _s: sec.school, _c: sec.cls })));
+        bodyHtml = buildSectionCard({
+          school: { name: res.scope === 'school' ? (res.sections[0]?.school?.name || 'مدرسه') : 'همه مدارس' },
+          cls: { name: `${fa(res.sections.length)} کلاس ادغام‌شده`, grade: '', subject: '' },
+          items: merged
+        }, 0, true);
+      }
+
+      return `<div style="font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;color:#0F172A">
+        ${oneLineTopGuideHtml}
+        ${bodyHtml}
+      </div>`;
+    };
+
+    // به‌روزرسانی استایل چاپ در ReportApp.exportCurrent برای حفظ ۱۰۰٪ هم‌اندازه بودن ردیف‌ها و جلوگیری از برش بین صفحات
+    const _origExportCurrentV90 = ReportApp.exportCurrent.bind(ReportApp);
+    ReportApp.exportCurrent = function(kind, customOpts = null) {
+      window.cleanPhantomZeroAttendanceGrades();
+      const res = this.collectData(customOpts);
+      if (!res || !res.totalStudents) {
+        window.smartAlert('هیچ دانش‌آموزی با فیلتر انتخاب‌شده یافت نشد.');
+        return;
+      }
+
+      let fileScopeLabel = 'کل-مدارس';
+      if (res.scope === 'school' && res.sections[0]) fileScopeLabel = safeFileName(res.sections[0].school.name);
+      if (res.scope === 'class' && res.sections[0]) fileScopeLabel = safeFileName(`${res.sections[0].school.name}-${res.sections[0].cls.name}`);
+      if (res.scope === 'student' && res.sections[0]?.items[0]) {
+        const st = res.sections[0].items[0].st;
+        fileScopeLabel = safeFileName(`${st.lastName || ''}-${st.name || ''}`);
+      }
+
+      const isExcelColor = (kind === 'excel_color' || kind === 'excel');
+      const bodyContent = this.buildClassListStyleHTML(res, isExcelColor);
+
+      const fullDoc = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" dir="rtl" lang="fa">
+        <head>
+          <meta charset="utf-8">
+          <title>گزارش کلاسی — ${esc(fileScopeLabel)}</title>
+          <style>
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }
+            body { font-family: 'Vazirmatn', Tahoma, sans-serif; padding: 8px; direction: rtl; background: #FFFFFF; color: #0F172A; margin: 0; }
+            .rep-oneline-top-guide { background: #FFF7ED; border: 1px solid #FDBA74; border-radius: 7px; padding: 4px 9px; margin-bottom: 6px; font-size: 9px; font-weight: bold; color: #7C2D12; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px; }
+            .rep-classlist-card { border: 1.5px solid #FED7AA; border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+            .rep-classlist-head { background: #FFF7ED; border-bottom: 1.5px solid #FED7AA; padding: 6px 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px; }
+            .rep-classlist-kpis { display: flex; gap: 4px; flex-wrap: wrap; }
+            .rep-kpi-mini { font-size: 9.5px; font-weight: bold; padding: 1px 6px; border-radius: 99px; background: #FFFFFF; border: 1px solid #FDBA74; color: #9A3412; }
+            table.rep-std-table { width: 100%; border-collapse: collapse; font-size: 10px; }
+            table.rep-std-table thead th { background: #EA580C; color: #FFFFFF; font-weight: bold; padding: 4px 4px; border: 1px solid #C2410C; text-align: center; white-space: nowrap; height: 24px; }
+            tbody.rep-std-student-group { break-inside: avoid !important; page-break-inside: avoid !important; }
+            tr.rep-std-main-row { height: 24px !important; max-height: 24px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+            tr.rep-std-main-row td { height: 24px !important; max-height: 24px !important; padding: 2px 4px !important; border: 1px solid #CBD5E1; white-space: nowrap; vertical-align: middle; font-size: 10px; }
+            tr.rep-std-sub-row { height: 17px !important; max-height: 17px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+            tr.rep-std-sub-row td { height: 17px !important; max-height: 17px !important; padding: 1px 7px !important; background: #FFFDF9; border: 1px solid #CBD5E1; border-top: 1px dashed #FED7AA; font-size: 8.5px; color: #475569; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right; }
+            @media print { @page { size: A4 portrait; margin: 6mm; } body { padding: 0; } thead { display: table-header-group; } }
+          </style>
+        </head>
+        <body>${bodyContent}</body>
+      </html>`;
+
+      if (kind === 'excel_color' || kind === 'excel') {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob(['\ufeff' + fullDoc], { type: 'application/vnd.ms-excel;charset=utf-8' }));
+        a.download = `گزارش-${fileScopeLabel}-${localISODate()}.xls`;
+        a.click();
+        toast(`✅ فایل اکسل «${fileScopeLabel}» دانلود شد!`);
+      } else if (kind === 'word') {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob(['\ufeff' + fullDoc], { type: 'application/msword;charset=utf-8' }));
+        a.download = `گزارش-${fileScopeLabel}-${localISODate()}.doc`;
+        a.click();
+        toast(`✅ فایل Word «${fileScopeLabel}» دانلود شد!`);
+      } else {
+        const w = window.open('', '_blank');
+        if (w) {
+          w.document.write(fullDoc);
+          w.document.close();
+          setTimeout(() => w.print(), 350);
+        } else {
+          const iframe = document.createElement('iframe');
+          iframe.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0';
+          document.body.appendChild(iframe);
+          iframe.contentDocument.open();
+          iframe.contentDocument.write(fullDoc);
+          iframe.contentDocument.close();
+          setTimeout(() => {
+            iframe.contentWindow.focus();
+            iframe.contentWindow.print();
+            setTimeout(() => iframe.remove(), 2000);
+          }, 300);
+        }
+      }
+    };
+  }
+
+  // اجرای خودکار پاک‌سازی نمرات صفر کاذب هنگام بالا آمدن برنامه
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(() => window.cleanPhantomZeroAttendanceGrades(), 150));
+  } else {
+    setTimeout(() => window.cleanPhantomZeroAttendanceGrades(), 150);
+  }
+})();
+</script>
+<!-- ==================== END V9.0.0 SMOOTH & COHESIVE PRO ==================== -->
 
 </body>
 </html>
