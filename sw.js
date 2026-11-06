@@ -1,5 +1,5 @@
-const APP_VERSION = '8.9.2';
-const CACHE_NAME = 'danesh-amooz-man-v8.9.2-pro';
+const APP_VERSION = '8.9.3';
+const CACHE_NAME = 'danesh-amooz-man-v8.9.3-pro';
 const CACHE_PREFIX = 'danesh-amooz-';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 

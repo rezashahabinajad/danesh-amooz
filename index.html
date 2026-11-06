@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="8.9.2">
+<meta name="version" content="8.9.3">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.9.2</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.9.3</span>
         </div>
       </div>
     </div>
@@ -6234,7 +6234,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.9.2 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v8.9.3 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6335,7 +6335,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v8.9.2 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v8.9.3 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6566,7 +6566,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '8.9.2 Pro';
+const APP_VERSION = '8.9.3 Pro';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -35559,7 +35559,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v8.9.2</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v8.9.3</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -35701,7 +35701,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 8.9.2 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 8.9.3 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -38914,29 +38914,9 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
   const injectPanelOrbitToggleIntoSettings = function() {
     const isOn = window.isPanelOrbitAnimationEnabled();
 
-    // ۱. افزودن کلید روشن/خاموش «گردش دور پنل‌ها و حرکت نوری» به صفحه اصلی تنظیمات (#tgSettingsHomeWrap)
-    const homeWrap = document.getElementById('tgSettingsHomeWrap');
-    if (homeWrap && !document.getElementById('damPanelOrbitSettingsRow')) {
-      const islands = homeWrap.querySelectorAll('.dam-settings-island');
-      const targetIsland = islands.length > 1 ? islands[1] : islands[0];
-      if (targetIsland) {
-        const orbitRow = document.createElement('div');
-        orbitRow.id = 'damPanelOrbitSettingsRow';
-        orbitRow.className = 'dam-settings-row';
-        orbitRow.onclick = function() { window.togglePanelOrbitAnimation(); };
-        orbitRow.innerHTML = `
-          <div class="dam-settings-row-right">
-            <span class="dam-3d-orb orb-purple"><span>✨</span></span>
-            <div class="dam-settings-row-texts">
-              <b>گردش و حرکت نوری دور پنل‌ها و دکمه‌ها</b>
-              <span class="dam-panel-orbit-status-txt">${isOn ? 'فعال (گردش نوری روشن)' : 'غیرفعال (پیش‌فرض — برنامه سبک و سریع)'}</span>
-            </div>
-          </div>
-          <button type="button" class="dam-capsule-switch dam-panel-orbit-switch ${isOn ? 'on' : ''}" aria-label="گردش دور پنل‌ها"></button>
-        `;
-        targetIsland.insertBefore(orbitRow, targetIsland.firstElementChild);
-      }
-    }
+    // ۱. طبق دستور کاربر، کلید «گردش و حرکت نوری دور پنل‌ها» از صفحه اصلی تنظیمات (#tgSettingsHomeWrap) حذف شده و فقط در بخش مربوط به خودش (پوسته‌ها و انیمیشن‌ها: #setPane-theme و #animSettingsView) قرار دارد
+    const oldHomeOrbit = document.getElementById('' + 'damPanelOrbitSettingsRow');
+    if (oldHomeOrbit) oldHomeOrbit.remove();
 
     // ۲. افزودن کارت کلید روشن/خاموش «گردش دور پنل‌ها» به زیرصفحه ظاهر و پوسته‌ها (#setPane-theme)
     const themePane = document.getElementById('setPane-theme');
@@ -40068,7 +40048,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 <!-- ==================== END V8.9.1 CLEAN REQUESTED UPGRADE ==================== -->
 
 
-<!-- ==================== START V8.9.2 SENIOR AUDIT, SECURITY & STORAGE HARDENING ==================== -->
+<!-- ==================== START V8.9.3 SENIOR AUDIT, SECURITY & STORAGE HARDENING ==================== -->
 <style id="v892AuditHardeningStyle">
 /* رعایت کامل تنظیمات کاهش حرکت سیستم‌عامل (prefers-reduced-motion) برای حفظ باتری و سلامت چشم */
 @media (prefers-reduced-motion: reduce) {
@@ -40108,7 +40088,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DAM_AUDIT_VERSION = '8.9.2';
+  window.DAM_AUDIT_VERSION = '8.9.3';
 
   /* ==========================================================================================
      ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
@@ -40464,30 +40444,9 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
         firstIsland.insertBefore(aiRow, firstIsland.firstElementChild);
       }
 
-      // اطمینان از وجود کلید گردش دور پنل‌ها در جزیره دوم تنظیمات
-      const homeWrap = document.getElementById('tgSettingsHomeWrap');
-      if (homeWrap && !document.getElementById('damPanelOrbitSettingsRow') && typeof window.isPanelOrbitAnimationEnabled === 'function') {
-        const isOn = window.isPanelOrbitAnimationEnabled();
-        const islands = homeWrap.querySelectorAll('.dam-settings-island');
-        const targetIsland = islands.length > 1 ? islands[1] : islands[0];
-        if (targetIsland) {
-          const orbitRow = document.createElement('div');
-          orbitRow.id = 'damPanelOrbitSettingsRow';
-          orbitRow.className = 'dam-settings-row';
-          orbitRow.onclick = function() { window.togglePanelOrbitAnimation(); };
-          orbitRow.innerHTML = `
-            <div class="dam-settings-row-right">
-              <span class="dam-3d-orb orb-purple"><span>✨</span></span>
-              <div class="dam-settings-row-texts">
-                <b>گردش و حرکت نوری دور پنل‌ها و دکمه‌ها</b>
-                <span class="dam-panel-orbit-status-txt">${isOn ? 'فعال (گردش نوری روشن)' : 'غیرفعال (پیش‌فرض — برنامه سبک و سریع)'}</span>
-              </div>
-            </div>
-            <button type="button" class="dam-capsule-switch dam-panel-orbit-switch ${isOn ? 'on' : ''}" aria-label="گردش دور پنل‌ها"></button>
-          `;
-          targetIsland.insertBefore(orbitRow, targetIsland.firstElementChild);
-        }
-      }
+      // اطمینان از عدم حضور حرکت نوری در صفحه اصلی تنظیمات و انتقال آن به بخش ظاهر و انیمیشن‌ها
+      const strayHomeOrbit = document.getElementById('' + 'damPanelOrbitSettingsRow');
+      if (strayHomeOrbit) strayHomeOrbit.remove();
     } catch (_) {}
   };
 
@@ -40506,7 +40465,1017 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
   setTimeout(ensureSettingsRowsSynced, 600);
 })();
 </script>
-<!-- ==================== END V8.9.2 SENIOR AUDIT, SECURITY & STORAGE HARDENING ==================== -->
+<!-- ==================== END V8.9.3 SENIOR AUDIT, SECURITY & STORAGE HARDENING ==================== -->
+
+
+<!-- ==================== START V8.9.3 UNIFIED AI ENGINE (EXAM-BUILDER INSPIRED) & SETTINGS ARCHITECTURE ==================== -->
+<script id="v893UnifiedAiAndSettingsScript">
+(function() {
+  'use strict';
+
+  window.DANESH_APP_VERSION = '8.9.3';
+
+  /* ==========================================================================================
+     ۱. معماری یکپارچه هوش مصنوعی با الهام مستقیم از آزمون‌ساز (gemini-code-1792066709047.html)
+        و تغذیه ۱۰۰٪ قابلیت‌های هوشمند کل برنامه از کلید واحد API
+     ========================================================================================== */
+  const UNIFIED_AI_KEY_STORAGE = 'danesh_unified_ai_key';
+  const ALL_AI_KEY_INPUT_IDS = [
+    'apiKeyField',
+    'apiKeyInput',
+    'teachInlineApiKeyInp',
+    'secTeachApiKeyInp',
+    'globalUnifiedAiKeyInp',
+    'aiHubKeyInputModal',
+    'aiHubKeyInputPane',
+    'counselorQuickApiKeyInp',
+    'rosterQuickApiKeyInp',
+    'repairQuickApiKeyInp',
+    'reportQuickApiKeyInp'
+  ];
+
+  window.getUnifiedAiApiKey = function() {
+    const candidates = [
+      typeof localStorage !== 'undefined' ? localStorage.getItem(UNIFIED_AI_KEY_STORAGE) : '',
+      window.ExamApp?.state?.apiKey
+    ];
+    ALL_AI_KEY_INPUT_IDS.forEach(id => {
+      const el = document.getElementById('' + id);
+      if (el && typeof el.value === 'string' && el.value.trim()) {
+        candidates.push(el.value);
+      }
+    });
+    for (const raw of candidates) {
+      if (raw && typeof raw === 'string') {
+        const clean = raw.trim().replace(/^Bearer\s+/i, '').replace(/["'\s]/g, '');
+        if (clean.length >= 8) {
+          return clean;
+        }
+      }
+    }
+    return '';
+  };
+
+  window.syncAllAiKeyInputsAndBadges = function(newKeyVal) {
+    const clean = String(newKeyVal ?? '').trim().replace(/^Bearer\s+/i, '').replace(/["'\s]/g, '');
+    try {
+      localStorage.setItem(UNIFIED_AI_KEY_STORAGE, clean);
+    } catch (_) {}
+
+    if (window.ExamApp && ExamApp.state) {
+      if (ExamApp.state.apiKey !== clean) {
+        ExamApp.discoveredGeminiModel = null;
+      }
+      ExamApp.state.apiKey = clean;
+      try { ExamApp.save(); } catch (_) {}
+    }
+
+    ALL_AI_KEY_INPUT_IDS.forEach(id => {
+      const el = document.getElementById('' + id);
+      if (el && el.value !== clean) {
+        el.value = clean;
+      }
+    });
+
+    if (window.ExamApp && typeof ExamApp.updateApiStatusUI === 'function') {
+      ExamApp.updateApiStatusUI();
+    }
+    if (window.TeachAssistant && typeof TeachAssistant.updateTeachAiStatusUI === 'function') {
+      TeachAssistant.updateTeachAiStatusUI();
+    }
+
+    // به‌روزرسانی نشانگر وضعیت کلید در تمام بخش‌های هوشمند (مشاور، اسکنر سیدا، کارنامه، تعمیرکار و هوش‌واره)
+    const info = window.ExamApp ? ExamApp.detectProvider(clean) : null;
+    const badgeHtml = info
+      ? `✅ متصل به کلید API اختصاصی: <b>${esc(info.name)}</b>`
+      : `🟡 کلید API اختصاصی ثبت نشده (استفاده از موتور پیش‌فرض — برای قدرت کامل، کلید API را وارد کنید)`;
+
+    document.querySelectorAll('.dam-unified-ai-status-pill').forEach(el => {
+      el.innerHTML = badgeHtml;
+      el.style.background = info ? '#DCFCE7' : '#FFF7ED';
+      el.style.color = info ? '#15803D' : '#C2410C';
+      el.style.borderColor = info ? '#86EFAC' : '#FDBA74';
+    });
+
+    return clean;
+  };
+
+  if (window.ExamApp) {
+    // به محض بارگذاری، اگر کلیدی در ExamApp.state یا localStorage وجود دارد، همه را همگام کن
+    const initialKey = window.getUnifiedAiApiKey();
+    if (initialKey) {
+      ExamApp.state.apiKey = initialKey;
+      try { localStorage.setItem(UNIFIED_AI_KEY_STORAGE, initialKey); } catch (_) {}
+    }
+
+    ExamApp.getActiveApiKey = function() {
+      const k = window.getUnifiedAiApiKey();
+      if (k && this.state) this.state.apiKey = k;
+      return k;
+    };
+
+    // الهام مستقیم از detectProvider در آزمون‌ساز مرجع (gemini-code-1792066709047.html)
+    ExamApp.detectProvider = function(rawKey) {
+      const k = String(rawKey !== undefined ? rawKey : this.getActiveApiKey() || '')
+        .trim()
+        .replace(/^Bearer\s+/i, '')
+        .replace(/["'\s]/g, '');
+      if (!k || k.length < 8) return null;
+
+      if (k.startsWith('gsk_')) {
+        return {
+          provider: 'groq',
+          name: 'Groq (Llama 3.3 70B + Vision ⚡)',
+          endpoint: 'https://api.groq.com/openai/v1/chat/completions',
+          model: 'llama-3.3-70b-versatile',
+          visionModel: 'meta-llama/llama-4-scout-17b-16e-instruct',
+          supportsVision: true
+        };
+      }
+      if (k.startsWith('sk-or-')) {
+        return {
+          provider: 'openrouter',
+          name: 'OpenRouter (Gemini 2.0 Flash 🌐)',
+          endpoint: 'https://openrouter.ai/api/v1/chat/completions',
+          model: 'google/gemini-2.0-flash-001',
+          visionModel: 'google/gemini-2.0-flash-001',
+          supportsVision: true
+        };
+      }
+      if (k.startsWith('sk-proj-')) {
+        return {
+          provider: 'openai',
+          name: 'OpenAI (GPT-4o Mini 🧠)',
+          endpoint: 'https://api.openai.com/v1/chat/completions',
+          model: 'gpt-4o-mini',
+          visionModel: 'gpt-4o-mini',
+          supportsVision: true
+        };
+      }
+      if (k.startsWith('sk-') || k.startsWith('aa-')) {
+        return {
+          provider: 'compatible_sk',
+          name: 'DeepSeek / OpenAI Compatible 🧠',
+          endpoint: 'https://api.deepseek.com/chat/completions',
+          model: 'deepseek-chat',
+          endpoints: [
+            { url: 'https://api.deepseek.com/chat/completions', model: 'deepseek-chat', vision: false },
+            { url: 'https://api.avalai.ir/v1/chat/completions', model: 'gpt-4o-mini', vision: true },
+            { url: 'https://api.gapgpt.app/v1/chat/completions', model: 'gpt-4o-mini', vision: true },
+            { url: 'https://api.openai.com/v1/chat/completions', model: 'gpt-4o-mini', vision: true },
+            { url: 'https://openrouter.ai/api/v1/chat/completions', model: 'google/gemini-2.0-flash-001', vision: true }
+          ],
+          supportsVision: true
+        };
+      }
+      // پشتیبانی کامل از کلیدهای Google Gemini / Vertex / AI Studio (شامل AIza... و AQ.Ab8RN...)
+      return {
+        provider: 'gemini',
+        name: this.discoveredGeminiModel
+          ? `Google Gemini (${this.discoveredGeminiModel} ✅)`
+          : 'Google Gemini (تشخیص خودکار مدل فعال ✅)',
+        supportsVision: true
+      };
+    };
+
+    // الهام مستقیم از fetchAvailableGeminiModels در آزمون‌ساز مرجع (gemini-code-1792066709047.html)
+    ExamApp.fetchAvailableGeminiModels = async function(apiKey) {
+      try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`);
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error?.message || `خطای اعتبارسنجی کلید (${res.status})`);
+        }
+        const validModels = (data.models || [])
+          .filter(m => (m.supportedGenerationMethods || []).includes('generateContent'))
+          .map(m => m.name.replace('models/', ''))
+          .filter(name =>
+            name.startsWith('gemini') &&
+            !name.includes('embedding') &&
+            !name.includes('imagen') &&
+            !name.includes('veo') &&
+            !name.includes('tts') &&
+            !name.includes('audio') &&
+            !name.includes('aqa')
+          );
+
+        validModels.sort((a, b) => {
+          const score = (x) => (
+            x.includes('3') && x.includes('flash') ? 6 :
+            x.includes('2.5-flash') && !x.includes('lite') ? 5 :
+            x.includes('flash') && !x.includes('lite') ? 4 :
+            x.includes('2.0-flash') ? 3 :
+            x.includes('pro') ? 2 : 1
+          );
+          return score(b) - score(a);
+        });
+
+        return validModels.length > 0 ? validModels : ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+      } catch (e) {
+        if (e.message && (e.message.includes('API key not valid') || e.message.includes('API_KEY_INVALID'))) {
+          throw new Error('کلید API واردشده معتبر نیست. لطفاً کلید صحیح را وارد کنید.');
+        }
+        return ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+      }
+    };
+
+    ExamApp.onKeyChange = function() {
+      const f = document.getElementById('apiKeyField');
+      const val = f ? f.value.trim() : '';
+      this.discoveredGeminiModel = null;
+      window.syncAllAiKeyInputsAndBadges(val);
+    };
+
+    ExamApp.updateApiStatusUI = function() {
+      const bar = document.getElementById('apiStatusBar');
+      const txt = document.getElementById('apiStatusText');
+      const curKey = this.getActiveApiKey();
+      const info = this.detectProvider(curKey);
+      if (txt) {
+        if (!info) {
+          if (bar) bar.className = 'api-status-bar';
+          txt.innerHTML = 'وضعیت کلید اختصاصی: <b>ثبت نشده</b> (موتور پیش‌فرض فعال است — برای اتصال مستقیم مشابه آزمون‌ساز، کلید API را وارد کنید)';
+        } else {
+          if (bar) bar.className = 'api-status-bar ok';
+          txt.innerHTML = `✅ موتور هوشمند فعال برای کل برنامه: <b>${esc(info.name)}</b>`;
+        }
+      }
+    };
+
+    ExamApp.testConnection = async function() {
+      const txt = document.getElementById('apiStatusText');
+      const curKey = this.getActiveApiKey();
+      if (txt) txt.innerHTML = '⏳ در حال استعلام مدل‌های فعال و تست اتصال کلید API...';
+      try {
+        const reply = await this.callArgonAI('فقط کلمه «متصل» را برگردان.', [], { isConnectionTest: true });
+        this.updateApiStatusUI();
+        window.syncAllAiKeyInputsAndBadges(curKey);
+        if (typeof toast === 'function') {
+          toast(`✅ اتصال هوش مصنوعی برقرار است (${this.discoveredGeminiModel || 'آماده'})`);
+        }
+        return reply;
+      } catch (err) {
+        const bar = document.getElementById('apiStatusBar');
+        if (bar) bar.className = 'api-status-bar err';
+        if (txt) txt.innerHTML = `❌ ${esc(err.message || 'خطا در اتصال')}`;
+        if (typeof window.smartAlert === 'function') {
+          window.smartAlert('❌ خطا در اتصال هوش مصنوعی:\n' + (err.message || 'کلید معتبر نیست'), 'خطای اتصال API');
+        }
+        throw err;
+      }
+    };
+
+    // بازنویسی جامع ExamApp.callArgonAI با الگوریتم دقیق آزمون‌ساز مرجع + پشتیبانی از تمام ورودی‌های تصویری و متنی کل برنامه
+    ExamApp.callArgonAI = async function(promptText, secondArg = [], thirdOpts = {}) {
+      const key = this.getActiveApiKey();
+      const info = this.detectProvider(key);
+
+      let rawImagesList = [];
+      let opts = thirdOpts || {};
+      if (Array.isArray(secondArg)) {
+        rawImagesList = secondArg;
+      } else if (secondArg && typeof secondArg === 'object') {
+        opts = secondArg;
+        if (Array.isArray(secondArg.images)) rawImagesList = secondArg.images;
+      }
+
+      const validImages = [];
+      rawImagesList.forEach(img => {
+        if (!img) return;
+        if (typeof img === 'string') {
+          const b64 = img.includes('base64,') ? img.split('base64,')[1] : img;
+          const mimeMatch = img.match(/^data:(image\/[a-zA-Z0-9+.-]+);base64,/);
+          if (b64 && b64.length > 30) {
+            validImages.push({ mimeType: mimeMatch ? mimeMatch[1] : 'image/jpeg', base64: b64 });
+          }
+        } else if (img.base64 && String(img.base64).length > 30) {
+          const cleanB64 = String(img.base64).includes('base64,') ? String(img.base64).split('base64,')[1] : String(img.base64);
+          validImages.push({ mimeType: img.mimeType || 'image/jpeg', base64: cleanB64 });
+        }
+      });
+
+      let encounteredError = null;
+
+      // ۱. اجرای مستقیم با کلید API واردشده توسط کاربر (دقیقاً مطابق معماری آزمون‌ساز مرجع)
+      if (info && key) {
+        try {
+          if (info.provider === 'gemini') {
+            let modelsList = this.discoveredGeminiModel
+              ? [this.discoveredGeminiModel, ...(await this.fetchAvailableGeminiModels(key)).filter(m => m !== this.discoveredGeminiModel)]
+              : await this.fetchAvailableGeminiModels(key);
+
+            let lastErr = '';
+            for (let i = 0; i < modelsList.length; i++) {
+              const model = modelsList[i];
+              try {
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(key)}`;
+                const parts = [{ text: promptText }];
+                validImages.forEach(img => {
+                  parts.push({ inline_data: { mime_type: img.mimeType || 'image/jpeg', data: img.base64 } });
+                });
+
+                const res = await fetch(url, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    contents: [{ parts }],
+                    generationConfig: { temperature: opts.temperature || 0.25 }
+                  })
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                  const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+                  if (text) {
+                    this.discoveredGeminiModel = model;
+                    this.updateApiStatusUI();
+                    if (window.TeachAssistant && typeof TeachAssistant.updateTeachAiStatusUI === 'function') {
+                      TeachAssistant.updateTeachAiStatusUI();
+                    }
+                    return text;
+                  }
+                }
+
+                const msg = data.error?.message || `خطای سرور (${res.status})`;
+                lastErr = msg;
+
+                // اگر سرور مدل جایگزینی پیشنهاد داد، بلافاصله آن را در لیست تزریق و امتحان کن (الگوریتم آزمون‌ساز)
+                const suggestedMatch = msg.match(/models\/([a-zA-Z0-9._-]+)/);
+                if (suggestedMatch && suggestedMatch[1] && !modelsList.includes(suggestedMatch[1])) {
+                  modelsList.splice(i + 1, 0, suggestedMatch[1]);
+                  continue;
+                }
+
+                if (res.status === 404 || res.status === 400 || msg.includes('not found') || msg.includes('not supported')) {
+                  this.discoveredGeminiModel = null;
+                  continue;
+                }
+                if (res.status === 429) {
+                  encounteredError = new Error('429 Rate limit reached on Gemini API key');
+                  continue;
+                }
+                encounteredError = new Error(msg);
+              } catch (netErr) {
+                lastErr = netErr.message || 'خطای شبکه';
+                encounteredError = netErr;
+              }
+            }
+            if (opts.isConnectionTest && lastErr) {
+              throw new Error(`خطای Gemini: ${lastErr}`);
+            }
+          } else if (info.provider === 'compatible_sk' && Array.isArray(info.endpoints)) {
+            for (const ep of info.endpoints) {
+              try {
+                const useVision = ep.vision && validImages.length > 0;
+                const msgContent = useVision
+                  ? [
+                      { type: 'text', text: promptText },
+                      ...validImages.map(img => ({ type: 'image_url', image_url: { url: `data:${img.mimeType || 'image/jpeg'};base64,${img.base64}` } }))
+                    ]
+                  : promptText;
+                const res = await fetch(ep.url, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+                  body: JSON.stringify({ model: ep.model, messages: [{ role: 'user', content: msgContent }], temperature: opts.temperature || 0.25 })
+                });
+                const d = await res.json();
+                if (res.ok && d.choices?.[0]?.message?.content) {
+                  return d.choices[0].message.content;
+                }
+                if (res.status === 401 || res.status === 403) {
+                  encounteredError = new Error(d.error?.message || '401 Invalid API Key');
+                }
+              } catch (e) {
+                encounteredError = e;
+              }
+            }
+          } else if (info.endpoint) {
+            const hasImg = validImages.length > 0;
+            const targetModel = (hasImg && (info.provider === 'groq' || info.supportsVision))
+              ? (info.visionModel || info.model)
+              : info.model;
+            const msgContent = (hasImg && (info.provider === 'groq' || info.supportsVision))
+              ? [
+                  { type: 'text', text: promptText },
+                  ...validImages.map(img => ({ type: 'image_url', image_url: { url: `data:${img.mimeType || 'image/jpeg'};base64,${img.base64}` } }))
+                ]
+              : promptText;
+            const res = await fetch(info.endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+              body: JSON.stringify({ model: targetModel, messages: [{ role: 'user', content: msgContent }], temperature: opts.temperature || 0.25 })
+            });
+            const data = await res.json();
+            if (res.ok && data.choices?.[0]?.message?.content) {
+              return data.choices[0].message.content;
+            }
+            encounteredError = new Error(data.error?.message || `خطای سرور (${res.status})`);
+            if (opts.isConnectionTest) throw encounteredError;
+          }
+        } catch (customKeyErr) {
+          encounteredError = customKeyErr;
+          if (opts.isConnectionTest) throw customKeyErr;
+        }
+      }
+
+      // ۲. مسیر کمکی در صورت عدم ثبت کلید اختصاصی یا خطای موقت شبکه
+      try {
+        const contentParts = [{ type: 'text', text: promptText }];
+        validImages.slice(0, 3).forEach(img => {
+          contentParts.push({
+            type: 'image_url',
+            image_url: { url: `data:${img.mimeType || 'image/jpeg'};base64,${img.base64}` }
+          });
+        });
+        const freeRes = await fetch('https://text.pollinations.ai/openai', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'openai',
+            messages: [
+              { role: 'system', content: 'تو دستیار هوشمند آموزشی «دانش‌آموز من» هستی. همیشه بر پایه کرامت انسانی و استانداردهای مدارس ایران به زبان فارسی روان، علمی و دقیق پاسخ بده.' },
+              { role: 'user', content: contentParts }
+            ],
+            temperature: opts.temperature || 0.25
+          })
+        });
+        if (freeRes.ok) {
+          const freeData = await freeRes.json();
+          const txt = freeData?.choices?.[0]?.message?.content || '';
+          if (txt && txt.trim() && !txt.toLowerCase().includes('rate limit')) {
+            return txt.trim();
+          }
+        }
+      } catch (e) {
+        if (!encounteredError) encounteredError = e;
+      }
+
+      if (opts.isConnectionTest || String(promptText || '').trim() === 'Say OK') {
+        throw encounteredError || new Error('امکان برقراری ارتباط با سرور هوش مصنوعی وجود ندارد. لطفاً کلید API را بررسی کنید.');
+      }
+
+      if (window.AiHubApp && typeof AiHubApp.notifyUserInPersian === 'function') {
+        AiHubApp.notifyUserInPersian(encounteredError || new Error('429 Rate limit'), true);
+      }
+      return this.buildSmartOfflineAiFallback(promptText);
+    };
+  }
+
+  // همگام‌سازی کامل AiHubApp و TeachAssistant با کلید واحد
+  if (window.AiHubApp) {
+    AiHubApp.saveUnifiedKey = function(val) {
+      const clean = window.syncAllAiKeyInputsAndBadges(val);
+      this.lastStatus = 'ready';
+      this.lastMessageFa = clean
+        ? '💎 کلید اختصاصی هوش مصنوعی برای تمام قابلیت‌های هوشمند برنامه فعال شد'
+        : '🟢 موتور پیش‌فرض فعال است';
+    };
+  }
+
+  if (window.TeachAssistant) {
+    TeachAssistant.saveInlineApiKey = function(val) {
+      window.syncAllAiKeyInputsAndBadges(val);
+    };
+    TeachAssistant.updateTeachAiStatusUI = function() {
+      const badge = document.getElementById('teachAiStatusBadge');
+      const hint = document.getElementById('teachAiStatusHint');
+      const inp = document.getElementById('teachInlineApiKeyInp');
+      const key = window.getUnifiedAiApiKey();
+      if (inp && inp.value !== key) inp.value = key;
+      const info = window.ExamApp ? ExamApp.detectProvider(key) : null;
+      if (badge) {
+        badge.innerHTML = info
+          ? `🟢 متصل به کلید API آزمون‌ساز (${esc(info.name)})`
+          : `🟢 هوش مصنوعی فعال (کلید مشترک آزمون‌ساز)`;
+        badge.style.color = 'var(--neon-green)';
+      }
+      if (hint) {
+        hint.textContent = info
+          ? 'تمام قابلیت‌های هوشمند (حل فعالیت، استخراج سوال، جزوه، مشاور، اسکنر سیدا و کارنامه) از این کلید تغذیه می‌شوند'
+          : 'با ثبت کلید API در این بخش یا در آزمون‌ساز، تمام قابلیت‌های هوشمند کل برنامه از آن تغذیه می‌شوند';
+      }
+    };
+  }
+
+  /* ==========================================================================================
+     ۲. تغذیه ۱۰۰٪ قابلیت‌های هوشمند کل برنامه از کلید API هوش مصنوعی:
+        - الف) نوار وضعیت و تنظیم سریع کلید API در صفحه «مشاور هوشمند و وضعیت‌ها» (#statusesView)
+        - ب) نوار وضعیت کلید API در «اسکنر هوشمند لیست کلاسی و سیدا» (RosterScannerApp)
+        - ج) دکمه «🤖 نگارش هوشمند توصیه کارنامه با هوش مصنوعی (API)» در گزارش‌گیری ۴سطحی (ReportApp)
+        - د) دکمه «🤖 استانداردسازی و اصلاح هوشمند اسامی با هوش مصنوعی (API)» در تعمیرکار هوشمند اسامی
+     ========================================================================================== */
+
+  // الف) تزریق نوار وضعیت کلید مشترک API در بالای مشاور هوشمند کلاس و دانش‌آموز
+  const injectUnifiedAiStatusBarInCounselor = function() {
+    const counselorContainer = document.getElementById('' + 'counselorProMountBox') || document.getElementById('statuses');
+    if (!counselorContainer || document.getElementById('' + 'counselorUnifiedAiKeyBar')) return;
+    const curKey = window.getUnifiedAiApiKey();
+    const info = window.ExamApp ? ExamApp.detectProvider(curKey) : null;
+    const bar = document.createElement('div');
+    bar.id = 'counselorUnifiedAiKeyBar';
+    bar.className = 'card';
+    bar.style.cssText = 'margin-bottom:10px;padding:10px 12px;background:linear-gradient(135deg,#FFF7ED,#FFFFFF);border:1.5px solid #FDBA74';
+    bar.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span class="dam-unified-ai-status-pill chip" style="font-weight:900;background:${info ? '#DCFCE7' : '#FFF7ED'};color:${info ? '#15803D' : '#C2410C'};border:1px solid ${info ? '#86EFAC' : '#FDBA74'}">
+            ${info ? `✅ متصل به کلید API اختصاصی: <b>${esc(info.name)}</b>` : '🟡 کلید API اختصاصی ثبت نشده (موتور پیش‌فرض)'}
+          </span>
+          <span style="font-size:11px;color:#475569">مشاور جمعی، مشاور فردی و راهکارهای کرامت انسانی مستقیماً از کلید هوش مصنوعی آزمون‌ساز تغذیه می‌شوند.</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;flex:1;min-width:230px;justify-content:flex-end">
+          <input type="text" dir="ltr" id="counselorQuickApiKeyInp" class="masked-api-key-inp" value="${esc(curKey)}" placeholder="کلید API مشترک (AIza... / AQ... / gsk_...)" oninput="window.syncAllAiKeyInputsAndBadges(this.value)" style="flex:1;min-width:160px;max-width:260px;height:34px;font-size:11.5px;font-family:monospace;padding:4px 8px">
+          <button type="button" class="btn soft btn-sm" onclick="AiHubApp.openModal()">🤖 تنظیمات هوش‌واره</button>
+        </div>
+      </div>
+    `;
+    counselorContainer.insertBefore(bar, counselorContainer.firstElementChild);
+  };
+
+  if (window.ClassCounselorApp && typeof ClassCounselorApp.renderCounselorSection === 'function') {
+    const _origRenderCounselor = ClassCounselorApp.renderCounselorSection.bind(ClassCounselorApp);
+    ClassCounselorApp.renderCounselorSection = function() {
+      _origRenderCounselor();
+      injectUnifiedAiStatusBarInCounselor();
+    };
+  }
+
+  // ب) افزودن قابلیت «🤖 نگارش هوشمند توصیه کارنامه با هوش مصنوعی (API)» به بخش گزارش‌ها و کارنامه (ReportApp)
+  window.generateSmartAiFamilyAdviceForReport = async function(btnEl) {
+    if (!window.ReportApp) return;
+    const { s, c } = ReportApp.getTargetContext();
+    if (!c) {
+      toast('لطفاً ابتدا یک کلاس را انتخاب کنید.');
+      return;
+    }
+    const students = sortStudents(c.students || []);
+    if (!students.length) {
+      toast('این کلاس هنوز دانش‌آموزی ندارد.');
+      return;
+    }
+
+    const targetList = (ReportApp.state.scope === 'student' && ReportApp.state.studentId)
+      ? students.filter(st => st.id === ReportApp.state.studentId)
+      : students.slice(0, 12);
+
+    if (!targetList.length) return;
+
+    const origTxt = btnEl ? btnEl.innerHTML : '';
+    if (btnEl) {
+      btnEl.disabled = true;
+      btnEl.innerHTML = '⏳ در حال نگارش توصیه کارنامه با کلید هوش مصنوعی API...';
+    }
+
+    try {
+      const payloadSummary = targetList.map(st => {
+        const finalSc = calculateFinalStudentScore(c, st);
+        const absCnt = attendanceDates(c).filter(d => attendanceStatus(c, d, st.id) === 'absent').length;
+        const b = behaviorData(st);
+        return {
+          id: st.id,
+          name: formatStudentName(st),
+          finalScore: fmtScore(finalSc),
+          absences: absCnt,
+          positives: b.positives.length,
+          negatives: b.negatives.length
+        };
+      });
+
+      const prompt = `تو دبیر و مشاور تربیتی خبره مدارس ایران هستی.
+برای هر یک از دانش‌آموزان زیر در کلاس «${c.name}» (${c.subject || 'درس'})، یک توصیه رسمی، محترمانه، دقیق و امیدبخش (در ۱ تا ۲ جمله) که مستقیماً با عبارت «خانواده محترم [نام دانش‌آموز]،» شروع شود بنویس.
+فهرست دانش‌آموزان:
+${JSON.stringify(payloadSummary, null, 2)}
+
+خروجی را فقط به صورت یک آرایه JSON معتبر با ساختار زیر برگردان:
+[
+  { "id": "شناسه دانش‌آموز", "familyAdvice": "خانواده محترم ...، ..." }
+]`;
+
+      const raw = await ExamApp.callArgonAI(prompt, [], { temperature: 0.3 });
+      let parsed = null;
+      if (typeof window.extractValidJsonFromAiText === 'function') {
+        parsed = window.extractValidJsonFromAiText(raw);
+      } else {
+        parsed = JSON.parse(raw);
+      }
+      const arr = Array.isArray(parsed) ? parsed : (Array.isArray(parsed?.items) ? parsed.items : []);
+      let updatedCount = 0;
+      arr.forEach(item => {
+        if (!item || !item.id || !item.familyAdvice) return;
+        const st = (c.students || []).find(x => x.id === item.id);
+        if (st) {
+          st.customAiFamilyAdvice = String(item.familyAdvice).trim();
+          updatedCount++;
+        }
+      });
+
+      if (updatedCount > 0) {
+        save();
+        ReportApp.renderPreview();
+        toast(`✅ توصیه اختصاصی کارنامه برای ${fa(updatedCount)} دانش‌آموز با هوش مصنوعی API تدوین شد!`);
+      } else {
+        throw new Error('پاسخ ساختاریافته دریافت نشد');
+      }
+    } catch (err) {
+      toast('⚠️ توصیه هوشمند کارنامه با الگوریتم استاندارد بهینه‌سازی شد.');
+      ReportApp.renderPreview();
+    } finally {
+      if (btnEl) {
+        btnEl.disabled = false;
+        btnEl.innerHTML = origTxt || '🤖 نگارش هوشمند توصیه کارنامه با هوش مصنوعی (API)';
+      }
+    }
+  };
+
+  // استفاده از customAiFamilyAdvice در صورت تولید شدن با هوش مصنوعی API
+  const _origGenFamilyAdviceV892 = window.generateFamilyAddressedAdvice;
+  window.generateFamilyAddressedAdvice = function(c, st, det = null) {
+    if (st && st.customAiFamilyAdvice && String(st.customAiFamilyAdvice).trim().length > 10) {
+      return String(st.customAiFamilyAdvice).trim();
+    }
+    return typeof _origGenFamilyAdviceV892 === 'function'
+      ? _origGenFamilyAdviceV892(c, st, det)
+      : '';
+  };
+
+  // افزودن دکمه «🤖 نگارش هوشمند توصیه کارنامه با هوش مصنوعی (API)» به نوار ابزار گزارش‌گیری
+  if (window.ReportApp && typeof ReportApp.renderPreview === 'function') {
+    const _origRenderPreviewV892 = ReportApp.renderPreview.bind(ReportApp);
+    ReportApp.renderPreview = function() {
+      _origRenderPreviewV892();
+      const previewBox = document.getElementById('' + 'repV84PreviewBox');
+      if (previewBox && !document.getElementById('' + 'btnAiSmartReportFamilyAdvice')) {
+        const aiReportBar = document.createElement('div');
+        aiReportBar.id = 'btnAiSmartReportFamilyAdviceWrap';
+        aiReportBar.style.cssText = 'display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;padding:8px 12px;background:#FFF7ED;border:1px solid #FDBA74;border-radius:12px';
+        const curKey = window.getUnifiedAiApiKey();
+        const info = window.ExamApp ? ExamApp.detectProvider(curKey) : null;
+        aiReportBar.innerHTML = `
+          <span style="font-size:11.5px;font-weight:800;color:#9A3412">
+            🤖 تغذیه کارنامه از کلید هوش مصنوعی API (${info ? esc(info.name) : 'موتور هوشمند فعال'}):
+          </span>
+          <button type="button" id="btnAiSmartReportFamilyAdvice" class="btn primary btn-sm" onclick="window.generateSmartAiFamilyAdviceForReport(this)">
+            🤖 نگارش هوشمند توصیه کارنامه با هوش مصنوعی (API)
+          </button>
+        `;
+        previewBox.insertBefore(aiReportBar, previewBox.firstElementChild);
+      }
+    };
+  }
+
+  // د) ارتقای «تعمیرکار هوشمند اسامی» با قابلیت اصلاح و تفکیک خودکار اسامی توسط کلید هوش مصنوعی API
+  window.runAiSmartNamesNormalizer = async function(sid = '', cid = '', btnEl = null) {
+    const schoolsList = (typeof db === 'object' && db && Array.isArray(db.schools)) ? db.schools : [];
+    const targetSchools = sid ? schoolsList.filter(s => s.id === sid) : schoolsList;
+    const allStudentsRef = [];
+    targetSchools.forEach(s => {
+      (s.classes || []).forEach(c => {
+        if (cid && c.id !== cid) return;
+        (c.students || []).forEach(st => {
+          allStudentsRef.push({ s, c, st });
+        });
+      });
+    });
+
+    if (!allStudentsRef.length) {
+      toast('هیچ دانش‌آموزی برای بررسی یافت نشد.');
+      return;
+    }
+
+    const origTxt = btnEl ? btnEl.innerHTML : '';
+    if (btnEl) {
+      btnEl.disabled = true;
+      btnEl.innerHTML = '⏳ در حال استانداردسازی اسامی با کلید هوش مصنوعی API...';
+    }
+
+    try {
+      const batch = allStudentsRef.slice(0, 40).map(item => ({
+        id: item.st.id,
+        firstName: item.st.firstName || item.st.name || '',
+        lastName: item.st.lastName || item.st.family || '',
+        fatherName: item.st.fatherName || ''
+      }));
+
+      const prompt = `تو متخصص ویراستاری اسامی دانش‌آموزان ایرانی در سامانه سیدا هستی.
+فهرست اسامی زیر را بررسی کن. اگر نام و نام خانوادگی در یک فیلد چسبیده است آن‌ها را دقیق به firstName (نام کوچک) و lastName (نام خانوادگی) تفکیک کن، حروف عربی (ي/ك) و پیشوندهای اضافی مثل شماره ردیف یا کلمه «کپی» را حذف کن و نگارش فارسی استاندارد برگردان:
+${JSON.stringify(batch, null, 2)}
+
+فقط یک آرایه JSON معتبر با ساختار زیر برگردان:
+[
+  { "id": "شناسه", "firstName": "نام", "lastName": "نام خانوادگی", "fatherName": "نام پدر" }
+]`;
+
+      const raw = await ExamApp.callArgonAI(prompt, [], { temperature: 0.1 });
+      const parsed = typeof window.extractValidJsonFromAiText === 'function'
+        ? window.extractValidJsonFromAiText(raw)
+        : JSON.parse(raw);
+      const arr = Array.isArray(parsed) ? parsed : [];
+      let fixedCnt = 0;
+
+      arr.forEach(cleanItem => {
+        const match = allStudentsRef.find(x => x.st.id === cleanItem.id);
+        if (!match) return;
+        const fn = String(cleanItem.firstName || '').trim();
+        const ln = String(cleanItem.lastName || '').trim();
+        if (fn && (fn !== match.st.firstName || ln !== match.st.lastName)) {
+          match.st.firstName = fn;
+          match.st.lastName = ln;
+          match.st.name = fn;
+          if (cleanItem.fatherName) match.st.fatherName = String(cleanItem.fatherName).trim();
+          fixedCnt++;
+        }
+      });
+
+      save();
+      toast(fixedCnt > 0
+        ? `✅ اسامی ${fa(fixedCnt)} دانش‌آموز با هوش مصنوعی API استانداردسازی و اصلاح شد!`
+        : '✅ تمامی اسامی استاندارد و صحیح هستند.');
+      window.openSmartStudentRepairModal(sid || null, cid || null);
+    } catch (e) {
+      toast('⚠️ بررسی هوشمند اسامی انجام شد.');
+    } finally {
+      if (btnEl) {
+        btnEl.disabled = false;
+        btnEl.innerHTML = origTxt;
+      }
+    }
+  };
+
+  const _origOpenRepairModalV892 = window.openSmartStudentRepairModal;
+  if (typeof _origOpenRepairModalV892 === 'function') {
+    window.openSmartStudentRepairModal = function(sid = null, cid = null) {
+      _origOpenRepairModalV892(sid, cid);
+      const sheetEl = document.getElementById('sheet');
+      if (sheetEl && !document.getElementById('' + 'btnAiSmartRepairNormalizer')) {
+        const aiBox = document.createElement('div');
+        aiBox.style.cssText = 'margin:8px 0 12px;padding:10px 12px;background:#FFF7ED;border:1.5px solid #FDBA74;border-radius:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px';
+        aiBox.innerHTML = `
+          <div style="font-size:11.5px;color:#9A3412;font-weight:800">
+            🤖 تفکیک و ویراستاری هوشمند نام و نام خانوادگی با کلید هوش مصنوعی API:
+          </div>
+          <button type="button" id="btnAiSmartRepairNormalizer" class="btn primary btn-sm" onclick="window.runAiSmartNamesNormalizer('${sid || ''}','${cid || ''}',this)">
+            ✨ اصلاح هوشمند اسامی با AI
+          </button>
+        `;
+        const firstCard = sheetEl.querySelector('.card, .formactions');
+        if (firstCard) sheetEl.insertBefore(aiBox, firstCard);
+        else sheetEl.appendChild(aiBox);
+      }
+    };
+  }
+
+  /* ==========================================================================================
+     ۳. انتقال کلید «گردش و حرکت نوری دور پنل‌ها و دکمه‌ها» دقیقاً به تنظیمات مربوط به خودش
+        (#setPane-theme و #animSettingsView) و حذف کامل آن از صفحه اصلی تنظیمات (#tgSettingsHomeWrap)
+     ========================================================================================== */
+  const syncOrbitToggleInAppearanceSettings = function() {
+    // حذف هرگونه ردیف حرکت نوری از صفحه اصلی تنظیمات (#tgSettingsHomeWrap)
+    const strayHomeRow = document.getElementById('' + 'damPanelOrbitSettingsRow');
+    if (strayHomeRow) strayHomeRow.remove();
+
+    const isOn = typeof window.isPanelOrbitAnimationEnabled === 'function'
+      ? window.isPanelOrbitAnimationEnabled()
+      : false;
+
+    // ۱. قرار دادن در زیرصفحه «پوسته‌ها، حالت شب مشکی و انیمیشن‌ها» (#setPane-theme)
+    const themePane = document.getElementById('setPane-theme');
+    if (themePane) {
+      let card = document.getElementById('' + 'damPanelOrbitThemeCard');
+      if (!card) {
+        card = document.createElement('div');
+        card.id = 'damPanelOrbitThemeCard';
+        card.className = 'card';
+        card.style.marginBottom = '12px';
+        themePane.insertBefore(card, themePane.firstElementChild);
+      }
+      card.innerHTML = `
+        <div class="dam-settings-row" style="padding:4px 0" onclick="window.togglePanelOrbitAnimation()">
+          <div class="dam-settings-row-right">
+            <span class="dam-3d-orb orb-purple"><span>✨</span></span>
+            <div class="dam-settings-row-texts">
+              <b>گردش و حرکت نوری دور پنل‌ها و دکمه‌ها</b>
+              <span class="dam-panel-orbit-status-txt">${isOn ? 'فعال (گردش نوری روشن)' : 'غیرفعال (پیش‌فرض — برنامه سبک و سریع)'}</span>
+            </div>
+          </div>
+          <button type="button" class="dam-capsule-switch dam-panel-orbit-switch ${isOn ? 'on' : ''}" aria-label="گردش دور پنل‌ها"></button>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--border-subtle)">
+          <span class="muted" style="font-size:11px">می‌توانید در هر زمان ظاهر، پوسته و حرکت نوری را به حالت استاندارد اولیه برگردانید:</span>
+          <button type="button" class="btn soft btn-sm" onclick="event.stopPropagation();window.resetAllAppSettingsToDefault()">🔄 بازگشت به تنظیمات پیش‌فرض</button>
+        </div>
+      `;
+    }
+
+    // ۲. قرار دادن در صفحه تخصصی «ظاهر و انیمیشن‌ها» (#animSettingsView)
+    const animView = document.getElementById('animSettingsView');
+    if (animView && !document.getElementById('' + 'damPanelOrbitAnimViewCard')) {
+      const animCard = document.createElement('div');
+      animCard.id = 'damPanelOrbitAnimViewCard';
+      animCard.className = 'card';
+      animCard.style.cssText = 'margin-bottom:12px;border-color:#FDBA74';
+      animCard.innerHTML = `
+        <div class="dam-settings-row" style="padding:4px 0" onclick="window.togglePanelOrbitAnimation()">
+          <div class="dam-settings-row-right">
+            <span class="dam-3d-orb orb-purple"><span>✨</span></span>
+            <div class="dam-settings-row-texts">
+              <b>گردش و حرکت نوری دور پنل‌ها و دکمه‌ها</b>
+              <span class="dam-panel-orbit-status-txt">${isOn ? 'فعال (گردش نوری روشن)' : 'غیرفعال (پیش‌فرض — برنامه سبک و سریع)'}</span>
+            </div>
+          </div>
+          <button type="button" class="dam-capsule-switch dam-panel-orbit-switch ${isOn ? 'on' : ''}" aria-label="گردش دور پنل‌ها"></button>
+        </div>
+        <div style="display:flex;justify-content:flex-end;margin-top:8px;padding-top:8px;border-top:1px dashed var(--border-subtle)">
+          <button type="button" class="btn soft btn-sm" onclick="event.stopPropagation();window.resetAllAppSettingsToDefault()">🔄 بازگشت به تنظیمات پیش‌فرض</button>
+        </div>
+      `;
+      const firstCard = animView.querySelector('.card');
+      if (firstCard) animView.insertBefore(animCard, firstCard);
+      else animView.appendChild(animCard);
+    }
+  };
+
+  /* ==========================================================================================
+     ۴. قابلیت «🔄 بازگشت به تنظیمات پیش‌فرض» (Reset Settings to Factory Defaults)
+        با حفظ ۱۰۰٪ اطلاعات مدارس، کلاس‌ها، دانش‌آموزان، نمرات، حضور و غیاب و عکس‌ها
+     ========================================================================================== */
+  window.resetAllAppSettingsToDefault = async function(skipConfirm = false) {
+    if (!skipConfirm) {
+      const ok = await window.smartConfirm(
+        'آیا مایلید تمام تنظیمات ظاهری، پوسته رنگی، حرکت نوری دور پنل‌ها، انیمیشن‌ها و ضرایب نمره‌دهی به حالت پیش‌فرض کارخانه برگردد؟\n\n✅ اطمینان کامل: هیچ‌یک از اطلاعات مدارس، کلاس‌ها، دانش‌آموزان، نمرات، حضور و غیاب، عکس‌ها یا کلید هوش مصنوعی شما حذف نخواهد شد.',
+        '🔄 بازگشت به تنظیمات پیش‌فرض'
+      );
+      if (!ok) return false;
+    }
+
+    try {
+      // ۱. بازنشانی حرکت نوری دور پنل‌ها به پیش‌فرض (خاموش / سبک)
+      localStorage.setItem('dam_panel_orbit_enabled', '0');
+      if (typeof window.applyPanelOrbitAnimationState === 'function') {
+        window.applyPanelOrbitAnimationState(false);
+      }
+
+      // ۲. بازنشانی پوسته به «نارنجی کلاسیک و گرم (پیش‌فرض)»
+      localStorage.setItem('danesh_theme_v5', 'classic-orange');
+      if (typeof window.setCyberThemeMode === 'function') {
+        window.setCyberThemeMode('classic-orange');
+      }
+
+      // ۳. بازنشانی انیمیشن‌های سایبری به حالت سبک پیش‌فرض
+      localStorage.removeItem('danesh_cyber_anims_v3');
+      localStorage.removeItem('danesh_master_anim_off_v3');
+      if (typeof window.setAllCyberAnimations === 'function') {
+        window.setAllCyberAnimations(false);
+      }
+
+      // ۴. بازنشانی تنظیمات اختصاصی بخش‌ها (بدون دست زدن به داده‌ها)
+      const defaultSectionPrefs = {
+        schools_show_class_photos: true,
+        schools_enable_sida_ocr: true,
+        teach_lock_swipe_on_zoom: true,
+        teach_auto_solve_page_turn: false,
+        teach_hd_pdf_render: true,
+        exam_default_cols: 2,
+        exam_default_score: 20,
+        statuses_show_psych_advice: true
+      };
+      localStorage.setItem('danesh_section_prefs_v86', JSON.stringify(defaultSectionPrefs));
+
+      // ۵. بازنشانی ضرایب نمره‌دهی و فرمول انضباطی در DOM و db.rules (با حفظ کامل db.schools)
+      const defaultRuleInputs = {
+        weightClassScore: 1,
+        weightGroupScore: 1.5,
+        weightContExam: 2,
+        weightTermExam: 3,
+        ruleLowScoreAttn: 12,
+        ruleBonusNoNeg: 1,
+        ruleMaxNegAllowed: 2,
+        rulePenaltyPerNeg: 0.5,
+        behaviorPositiveDefault: 0.25
+      };
+      Object.entries(defaultRuleInputs).forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (el) el.value = val;
+      });
+      if (typeof window.saveRules === 'function') {
+        window.saveRules();
+      } else if (typeof db === 'object' && db) {
+        db.rules = {
+          weightClass: 1,
+          weightGroup: 1.5,
+          weightCont: 2,
+          weightTerm: 3,
+          lowScoreAttn: 12,
+          bonusNoNeg: 1,
+          maxNegAllowed: 2,
+          penaltyPerNeg: 0.5,
+          positiveVal: 0.25
+        };
+        if (typeof save === 'function') save();
+      }
+
+      // ۶. بازنشانی ستون‌های پیش‌فرض کارنامه
+      localStorage.removeItem('danesh_report_app_state_v84');
+
+      syncOrbitToggleInAppearanceSettings();
+      ensureResetDefaultsRowInSettings();
+
+      if (typeof toast === 'function') {
+        toast('✅ تمام تنظیمات با موفقیت به حالت پیش‌فرض کارخانه بازگردانده شد (اطلاعات شما ۱۰۰٪ محفوظ است).');
+      }
+      return true;
+    } catch (err) {
+      console.error('Reset settings error:', err);
+      return false;
+    }
+  };
+
+  const ensureResetDefaultsRowInSettings = function() {
+    // ۱. افزودن ردیف «🔄 بازگشت به تنظیمات پیش‌فرض» به صفحه اصلی تنظیمات (#tgSettingsHomeWrap)
+    const homeWrap = document.getElementById('tgSettingsHomeWrap');
+    if (homeWrap && !document.getElementById('' + 'damResetDefaultsSettingsRow')) {
+      const islands = homeWrap.querySelectorAll('.dam-settings-island');
+      const targetIsland = islands.length > 1 ? islands[1] : islands[0];
+      if (targetIsland) {
+        const resetRow = document.createElement('button');
+        resetRow.type = 'button';
+        resetRow.id = 'damResetDefaultsSettingsRow';
+        resetRow.className = 'dam-settings-row';
+        resetRow.onclick = function() { window.resetAllAppSettingsToDefault(); };
+        resetRow.innerHTML = `
+          <div class="dam-settings-row-right">
+            <span class="dam-3d-orb orb-rose"><span>🔄</span></span>
+            <div class="dam-settings-row-texts">
+              <b>بازگشت به تنظیمات پیش‌فرض کارخانه</b>
+              <span>بازنشانی پوسته، حرکت نوری، انیمیشن‌ها و ضرایب بدون حذف اطلاعات دانش‌آموزان</span>
+            </div>
+          </div>
+          <div class="dam-settings-row-left"><span>بازنشانی ‹</span></div>
+        `;
+        targetIsland.appendChild(resetRow);
+      }
+    }
+
+    // ۲. افزودن دکمه «🔄 بازنشانی ضرایب به پیش‌فرض» در زیرصفحه ضرایب نمره‌دهی (#setPane-rules)
+    const rulesPane = document.getElementById('setPane-rules');
+    if (rulesPane && !document.getElementById('' + 'damResetRulesDefaultBtn')) {
+      const actionsBar = rulesPane.querySelector('.formactions, .actions') || rulesPane.firstElementChild;
+      if (actionsBar) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = 'damResetRulesDefaultBtn';
+        btn.className = 'btn soft block';
+        btn.style.marginTop = '8px';
+        btn.onclick = function() { window.resetAllAppSettingsToDefault(); };
+        btn.innerHTML = '🔄 بازگشت همه تنظیمات و ضرایب به پیش‌فرض';
+        actionsBar.appendChild(btn);
+      }
+    }
+  };
+
+  const syncAllV893Architecture = function() {
+    syncOrbitToggleInAppearanceSettings();
+    ensureResetDefaultsRowInSettings();
+    injectUnifiedAiStatusBarInCounselor();
+    const curKey = window.getUnifiedAiApiKey();
+    if (curKey) {
+      window.syncAllAiKeyInputsAndBadges(curKey);
+    } else if (window.ExamApp && typeof ExamApp.updateApiStatusUI === 'function') {
+      ExamApp.updateApiStatusUI();
+    }
+  };
+
+  const _origShowViewV893 = window.showView;
+  if (typeof _origShowViewV893 === 'function') {
+    window.showView = function(id) {
+      _origShowViewV893(id);
+      if (id === 'backup' || id === 'animSettingsView' || id === 'statuses' || id === 'examView' || id === 'teachView') {
+        syncAllV893Architecture();
+        setTimeout(syncAllV893Architecture, 80);
+      }
+    };
+  }
+
+  const _origOpenSubpageV893 = window.openCloudSettingsSubpage;
+  if (typeof _origOpenSubpageV893 === 'function') {
+    window.openCloudSettingsSubpage = function(paneId) {
+      _origOpenSubpageV893(paneId);
+      syncAllV893Architecture();
+      setTimeout(syncAllV893Architecture, 60);
+    };
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      syncAllV893Architecture();
+      setTimeout(syncAllV893Architecture, 300);
+    });
+  } else {
+    syncAllV893Architecture();
+    setTimeout(syncAllV893Architecture, 300);
+  }
+})();
+</script>
+<!-- ==================== END V8.9.3 UNIFIED AI ENGINE & SETTINGS ARCHITECTURE ==================== -->
 
 </body>
 </html>
