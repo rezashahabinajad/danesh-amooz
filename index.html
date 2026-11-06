@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v9.1</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v9.2</span>
         </div>
       </div>
     </div>
@@ -20790,7 +20790,7 @@ window.applyIncomingDeltaPacketsFromCloud = async function(topic) {
                 s = { id: cSnap.sid || uid(), name: cSnap.sName || 'مدرسه', year: cSnap.sYear || '۱۴۰۵-۱۴۰۶', photos: [], classes: [] };
                 db.schools.push(s);
               }
-              let c = s.classes.find(x => x.id === cSnap.cid || x.name === cSnap.name);
+              let c = s.classes.find(x => x.id === cSnap.cid) || s.classes.find(x => x.name === cSnap.name && (x.grade || '') === (cSnap.grade || ''));
               const existingPhotosMap = {};
               if (c) (c.students || []).forEach(st => { if (st.photo) existingPhotosMap[st.id] = st.photo; });
               const mergedStudents = (cSnap.students || []).map(st => ({
@@ -22083,7 +22083,7 @@ function mergeTwoDatabasesNonDestructively(primaryDb, secondaryDb) {
 
     (extS.classes || []).forEach(extC => {
       const extCNorm = normFaKey(extC.name);
-      let c = (s.classes || []).find(x => x.id === extC.id || (extCNorm && normFaKey(x.name) === extCNorm));
+      let c = (s.classes || []).find(x => x.id === extC.id) || (extCNorm ? (s.classes || []).find(x => normFaKey(x.name) === extCNorm && normFaKey(x.grade || '') === normFaKey(extC.grade || '')) : null);
       if (!c) {
         s.classes.push(extC);
         return;
@@ -22486,7 +22486,7 @@ async function applyDecodedCloudObjectToDb(obj) {
       }
 
       const cNorm = normFaKey(cSnap.name);
-      let c = (s.classes || []).find(x => x.id === cSnap.cid || (cNorm && normFaKey(x.name) === cNorm));
+      let c = (s.classes || []).find(x => x.id === cSnap.cid) || (cNorm ? (s.classes || []).find(x => normFaKey(x.name) === cNorm && normFaKey(x.grade || '') === normFaKey(cSnap.grade || '')) : null);
       const existingPhotosById = {};
       const existingPhotosByName = {};
       if (c) {
@@ -35559,7 +35559,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v9.1</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v9.2</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -38212,24 +38212,85 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 </script>
 <!-- ==================== END V8.9.0 AI & GRADES PRO ==================== -->
 
-<!-- ==================== START V9.1.0 MULTISEL & PRINT PRO ==================== -->
-<style id="v91MultiSelectPrintProStyle">
+<!-- ==================== START V9.2.0 ULTRA SMOOTH & DEDUP PRO ==================== -->
+<style id="v92UltraSmoothDedupStyle">
 /* ==========================================================================================
-   ۱. بهینه‌سازی سرعت و روانی برنامه + رفع باگ سفید افتادن آیکون مدرسه (🏫) در صفحه مدرسه
+   ۱. بهینه‌سازی فوق‌حرفه‌ای ۶۰/۱۲۰ فریم بر ثانیه (حذف کامل لگ اسکرول و لمس در موبایل)
+   - حذف backdrop-filter: blur از نوارهای ثابت که عامل اصلی کندی اسکرول در مرورگرهای اندروید است
+   - حذف انیمیشن‌های سنگین box-shadow و conic-gradientِ کلپ‌شده و جایگزینی با چرخش سخت‌افزاری خالص (GPU)
    ========================================================================================== */
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
-.card,
-.stu-card,
-.stat,
-.box-card {
-  will-change: auto !important;
-  animation: none !important;
+html, body {
+  scroll-behavior: auto !important;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* قرار دادن لایه‌های گردون در z-index: -1 تا هرگز روی ایموجی یا متن داخل آیکون مدرسه نیفتند */
+/* حذف کامل بلور پس‌زمینه روی نوارهای چسبان که در موبایل باعث افت شدید فریم هنگام اسکرول می‌شود */
+.topbar,
+.bottomnav,
+.modal,
+.modal-overlay,
+.td-sticky-header-group,
+.att-top-sticky-bar,
+.smartboard-dock,
+.card,
+.detailhead {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.topbar {
+  background: #FFFDF9 !important;
+  border-bottom: 1.5px solid #FED7AA !important;
+}
+.bottomnav {
+  background: #FFFDF9 !important;
+  border-top: 1.5px solid #FED7AA !important;
+}
+body[data-theme-mode="amoled-black"] .topbar,
+body[data-theme-mode="amoled-black"] .bottomnav {
+  background: #121215 !important;
+  border-color: #27272A !important;
+}
+
+/* حذف کامل انیمیشن‌های ورود کارت و ریپل لمسی که هنگام اسکرول باعث پرش و تاخیر می‌شوند */
+.card,
+.studentcard,
+.stu-card,
+.today-class-card,
+.b-card,
+.stat,
+.box-card,
+.view.active {
+  animation: none !important;
+  transition: none !important;
+  will-change: auto !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+.cyber-ripple-wave,
+.cyber-scan-line,
+#cyberNetworkCanvas {
+  display: none !important;
+}
+
+/* متوقف کردن انیمیشن سنگین box-shadow روی دکمه‌های مشاور کلاس */
+.class-beacon-reminder-btn,
+.class-side-counselor-btn {
+  animation: none !important;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.14) !important;
+}
+
+/* بازطراحی گوی گردون (چراغ گردان و آیکون‌های بخش‌ها) با چرخش ۱۰۰٪ سخت‌افزاری (بدون conic-gradient سنگین) */
+@keyframes damLightRingSpin360 {
+  0% { transform: translateZ(0) rotate(0deg); }
+  100% { transform: translateZ(0) rotate(360deg); }
+}
+
 .siren-rotating-orb,
 .class-beacon-mini-orb,
 .dam-3d-orb,
@@ -38237,29 +38298,58 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 .dam-settings-row-icon {
   isolation: isolate !important;
   position: relative !important;
+  overflow: visible !important;
+  border-radius: 13px !important;
+  background: #FFF7ED !important;
+  border: 1.5px solid #FB923C !important;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.12) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 1 !important;
 }
+
+/* حلقه گردون سبک و خوشگل دور آیکون‌ها که فقط با transform: rotate روی GPU می‌چرخد (صفر درصد بار پردازشی!) */
 .siren-rotating-orb::before,
-.siren-rotating-orb::after,
 .class-beacon-mini-orb::before,
-.class-beacon-mini-orb::after,
 .dam-3d-orb::before,
-.dam-3d-orb::after,
 .school-icon::before,
-.school-icon::after,
-.dam-settings-row-icon::before,
-.dam-settings-row-icon::after {
-  z-index: -1 !important;
+.dam-settings-row-icon::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 2px !important;
+  border-radius: 50% !important;
+  background: none !important;
+  border: 2px solid rgba(251, 146, 60, 0.18) !important;
+  border-top-color: #EA580C !important;
+  border-right-color: #F97316 !important;
+  animation: damLightRingSpin360 2.6s linear infinite !important;
+  will-change: transform !important;
   pointer-events: none !important;
+  z-index: -1 !important;
 }
-.school-icon > span,
-.dam-3d-orb > span,
-.siren-rotating-orb > span,
-.class-beacon-mini-orb > span {
+
+.siren-rotating-orb::after,
+.class-beacon-mini-orb::after,
+.dam-3d-orb::after,
+.school-icon::after,
+.dam-settings-row-icon::after {
+  display: none !important;
+  content: none !important;
+}
+
+.siren-rotating-orb > *,
+.class-beacon-mini-orb > *,
+.dam-3d-orb > *,
+.school-icon > *,
+.dam-settings-row-icon > * {
   position: relative !important;
   z-index: 2 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+  animation: none !important;
+  transform: none !important;
 }
 
 #examView .exam-subnav {
@@ -38364,7 +38454,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
-/* ردیف خط ریز توصیه تربیتی — کاملاً مقید به عرض ۱۰۰٪ جدول بدون هل دادن ستون‌های چپ به بیرون صفحه */
 .rep-std-sub-row {
   height: 18px !important;
   break-inside: avoid !important;
@@ -38438,14 +38527,12 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
   font-size: 11px;
   font-weight: 800;
   color: #334155;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
   user-select: none;
 }
 .rep-multi-class-chip.checked {
   background: #FFF7ED;
   border-color: #EA580C;
   color: #9A3412;
-  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.12);
 }
 .rep-multi-class-chip input[type="checkbox"] {
   width: 16px;
@@ -38464,12 +38551,31 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 }
 </style>
 
-<script id="v91MultiSelectPrintProScript">
+<script id="v92UltraSmoothDedupScript">
 (function() {
   'use strict';
 
   /* ==========================================================================================
-     بخش ۱: تابع سراسری نمایش کامل نام کلاس به همراه «پایه» (رفع ابهام دو کلاس «ب» در پایه هفتم و نهم)
+     بخش ۰: توقف کامل حلقه‌های پس‌زمینه و انیمیشن‌های مزاحم جاوااسکریپت برای روانی مطلق برنامه
+     ========================================================================================== */
+  try {
+    if (window.CyberNetwork) {
+      window.CyberNetwork.stop?.();
+      window.CyberNetwork.start = function() {};
+      window.CyberNetwork.draw = function() {};
+    }
+    if (window.ScrollFX) {
+      window.ScrollFX.refresh = function() {};
+      window.ScrollFX.init = function() {};
+    }
+    window.applyStaggeredCardEntrance = function() {};
+    window.triggerCyberScan = function() {};
+    window.isCyberAnimOn = function() { return false; };
+  } catch (_) {}
+
+
+  /* ==========================================================================================
+     بخش ۱: تعمیر خودکار و دائمی باگ ادغام اشتباهی دانش‌آموزان بین کلاس‌های هم‌نام (مثلاً «هفتم ب» و «نهم ب»)
      ========================================================================================== */
   window.getFullClassDisplayTitle = function(c) {
     if (!c) return '';
@@ -38495,10 +38601,285 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
     return cleanName;
   };
 
+  const _normStudentFullKey = function(st) {
+    if (!st) return '';
+    const fn = typeof normFaKey === 'function'
+      ? normFaKey(`${st.name || ''} ${st.lastName || ''}`)
+      : `${st.name || ''} ${st.lastName || ''}`.trim();
+    const faName = typeof normFaKey === 'function'
+      ? normFaKey(st.fatherName || '')
+      : String(st.fatherName || '').trim();
+    return `${fn}|${faName}`;
+  };
+
+  const _normStudentNameOnlyKey = function(st) {
+    if (!st) return '';
+    return typeof normFaKey === 'function'
+      ? normFaKey(`${st.name || ''} ${st.lastName || ''}`)
+      : `${st.name || ''} ${st.lastName || ''}`.replace(/\s+/g, '');
+  };
+
+  window.repairDuplicateAndCrossMergedStudents = function(showToastIfFixed = false) {
+    if (!db || !Array.isArray(db.schools)) return 0;
+    let totalRemoved = 0;
+
+    db.schools.forEach(s => {
+      const classes = s.classes || [];
+
+      // گام ۱: حذف دانش‌آموزان تکراری در داخل هر کلاس (بر اساس id یا نام + نام خانوادگی + نام پدر)
+      classes.forEach(c => {
+        if (!Array.isArray(c.students) || c.students.length <= 1) return;
+        const kept = [];
+        const byId = new Map();
+        const byKey = new Map();
+
+        c.students.forEach(st => {
+          if (!st || (!st.name && !st.lastName)) return;
+          const fullKey = _normStudentFullKey(st);
+          const nameKey = _normStudentNameOnlyKey(st);
+          let existing = byId.get(st.id) || (fullKey.length > 3 ? byKey.get(fullKey) : null);
+          if (!existing && nameKey.length > 3 && !st.fatherName) {
+            existing = byKey.get(nameKey + '|');
+          }
+
+          if (!existing) {
+            kept.push(st);
+            if (st.id) byId.set(st.id, st);
+            if (fullKey.length > 3) byKey.set(fullKey, st);
+          } else {
+            if ((!existing.photo || existing.photo.length < 50) && st.photo && st.photo.length > 50) existing.photo = st.photo;
+            if (!existing.fatherName && st.fatherName) existing.fatherName = st.fatherName;
+            if (!existing.phone && st.phone) existing.phone = st.phone;
+            if ((!existing.grades || !existing.grades.length) && st.grades?.length) existing.grades = [...st.grades];
+            if ((!existing.behavior?.positives?.length) && st.behavior?.positives?.length) existing.behavior.positives = [...st.behavior.positives];
+            if ((!existing.behavior?.negatives?.length) && st.behavior?.negatives?.length) existing.behavior.negatives = [...st.behavior.negatives];
+            totalRemoved++;
+          }
+        });
+        c.students = kept;
+      });
+
+      // گام ۲: تشخیص و حذف دانش‌آموزانی که به خاطر تشابه نام کلاس (مثلاً «ب» پایه هفتم و «ب» پایه نهم) از یک کلاس به کلاس دیگر کپی شده‌اند!
+      for (let i = 0; i < classes.length; i++) {
+        for (let j = 0; j < classes.length; j++) {
+          if (i === j) continue;
+          const cBig = classes[i];
+          const cSource = classes[j];
+          if (!Array.isArray(cBig.students) || !Array.isArray(cSource.students)) continue;
+          if (cSource.students.length < 5 || cBig.students.length <= cSource.students.length) continue;
+
+          const sourceIds = new Set(cSource.students.map(st => st.id).filter(Boolean));
+          const sourceNameKeys = new Set(cSource.students.map(st => _normStudentNameOnlyKey(st)).filter(k => k.length > 3));
+
+          const sameBaseClassName = (typeof normFaKey === 'function')
+            ? normFaKey(cBig.name) === normFaKey(cSource.name)
+            : String(cBig.name || '').trim() === String(cSource.name || '').trim();
+
+          let overlapCount = 0;
+          cBig.students.forEach(st => {
+            const nk = _normStudentNameOnlyKey(st);
+            if (sourceIds.has(st.id) || (sameBaseClassName && sourceNameKeys.has(nk))) {
+              overlapCount++;
+            }
+          });
+
+          if (overlapCount >= Math.max(8, Math.floor(cSource.students.length * 0.55))) {
+            const beforeCount = cBig.students.length;
+            const removedIds = new Set();
+            cBig.students = cBig.students.filter(st => {
+              const nk = _normStudentNameOnlyKey(st);
+              const isFromSource = sourceIds.has(st.id) || (sameBaseClassName && sourceNameKeys.has(nk));
+              if (isFromSource) {
+                removedIds.add(st.id);
+                return false;
+              }
+              return true;
+            });
+
+            if (removedIds.size > 0) {
+              totalRemoved += (beforeCount - cBig.students.length);
+              if (cBig.termScores && typeof cBig.termScores === 'object') {
+                removedIds.forEach(id => { delete cBig.termScores[id]; });
+              }
+              if (cBig.contExamScores && typeof cBig.contExamScores === 'object') {
+                removedIds.forEach(id => { delete cBig.contExamScores[id]; });
+              }
+              if (cBig.attendance && typeof cBig.attendance === 'object') {
+                Object.keys(cBig.attendance).forEach(d => {
+                  if (cBig.attendance[d] && typeof cBig.attendance[d] === 'object') {
+                    removedIds.forEach(id => { delete cBig.attendance[d][id]; });
+                  }
+                });
+              }
+            }
+          }
+        }
+      }
+    });
+
+    if (totalRemoved > 0) {
+      try {
+        savePersistent();
+        if (typeof flushDbToIndexedDbNow === 'function') flushDbToIndexedDbNow();
+      } catch (_) {}
+      if (showToastIfFixed && typeof toast === 'function') {
+        toast(`✅ ${fa(totalRemoved)} دانش‌آموز تکراری/ادغام‌شده بین کلاس‌ها اصلاح شد!`);
+      }
+    }
+    return totalRemoved;
+  };
+
+  window.mergeTwoDatabasesNonDestructively = function(primaryDb, secondaryDb) {
+    if (!primaryDb || !Array.isArray(primaryDb.schools) || !primaryDb.schools.length) {
+      return sanitizeDb(secondaryDb);
+    }
+    if (!secondaryDb || !Array.isArray(secondaryDb.schools) || !secondaryDb.schools.length) {
+      return sanitizeDb(primaryDb);
+    }
+
+    const base = sanitizeDb(primaryDb);
+
+    (secondaryDb.schools || []).forEach(extS => {
+      const extSNorm = normFaKey(extS.name);
+      let s = base.schools.find(x => x.id === extS.id) || (extSNorm ? base.schools.find(x => normFaKey(x.name) === extSNorm) : null);
+      if (!s) {
+        base.schools.push(extS);
+        return;
+      }
+      if ((!s.photos || !s.photos.length) && Array.isArray(extS.photos) && extS.photos.length) {
+        s.photos = [...extS.photos];
+      }
+
+      (extS.classes || []).forEach(extC => {
+        const extCNorm = normFaKey(extC.name);
+        const extGNorm = normFaKey(extC.grade || '');
+        let c = (s.classes || []).find(x => x.id === extC.id);
+        if (!c && extCNorm) {
+          c = (s.classes || []).find(x => normFaKey(x.name) === extCNorm && normFaKey(x.grade || '') === extGNorm);
+        }
+        if (!c) {
+          s.classes.push(extC);
+          return;
+        }
+        if ((!c.photos || !c.photos.length) && Array.isArray(extC.photos) && extC.photos.length) {
+          c.photos = [...extC.photos];
+        }
+        c.attendance = { ...(extC.attendance || {}), ...(c.attendance || {}) };
+        c.termScores = { ...(extC.termScores || {}), ...(c.termScores || {}) };
+        c.contExamScores = { ...(extC.contExamScores || {}), ...(c.contExamScores || {}) };
+        c.onlineExamResults = { ...(extC.onlineExamResults || {}), ...(c.onlineExamResults || {}) };
+
+        (extC.students || []).forEach(extSt => {
+          const extFn = normFaKey(`${extSt.name || ''} ${extSt.lastName || ''}`);
+          let st = (c.students || []).find(x => x.id === extSt.id)
+            || (extFn.length > 2 ? (c.students || []).find(x => normFaKey(`${x.name || ''} ${x.lastName || ''}`) === extFn) : null);
+          if (!st) {
+            c.students.push(extSt);
+            return;
+          }
+          if ((!st.photo || st.photo.length < 50) && extSt.photo && extSt.photo.length > 50) st.photo = extSt.photo;
+          if (!st.fatherName && extSt.fatherName) st.fatherName = extSt.fatherName;
+          if (!st.phone && extSt.phone) st.phone = extSt.phone;
+          if (!st.birth && extSt.birth) st.birth = extSt.birth;
+          if ((!st.grades || !st.grades.length) && extSt.grades?.length) st.grades = [...extSt.grades];
+          if ((!st.behavior?.positives?.length) && st.behavior?.positives?.length) st.behavior.positives = [...st.behavior.positives];
+          if ((!st.behavior?.negatives?.length) && st.behavior?.negatives?.length) st.behavior.negatives = [...st.behavior.negatives];
+          if ((!st.examPapers || !st.examPapers.length) && extSt.examPapers?.length) st.examPapers = [...extSt.examPapers];
+        });
+      });
+    });
+
+    return sanitizeDb(base);
+  };
+
+  // اتصال مستقیم تعمیر خودکار به restorePersistent تا به محض خواندن IndexedDB، کلاس هفتم ب (۶۱ نفر) به تعداد واقعی اصلاح و در IndexedDB ذخیره شود
+  const _origRestorePersistentV92 = window.restorePersistent;
+  if (typeof _origRestorePersistentV92 === 'function') {
+    window.restorePersistent = async function() {
+      await _origRestorePersistentV92();
+      const fixed = window.repairDuplicateAndCrossMergedStudents(true);
+      window.cleanPhantomZeroAttendanceGrades();
+      if (fixed > 0) {
+        if (typeof flushDbToIndexedDbNow === 'function') await flushDbToIndexedDbNow();
+        if (typeof renderAll === 'function') renderAll();
+      }
+    };
+  }
+
 
   /* ==========================================================================================
-     بخش ۲: پاک‌سازی عمیق تمام نمرات صفر کاذب (Number(g.score) <= 0) از تمام بخش‌ها
-     و بازمحاسبه وضعیت دانش‌آموزان تا هیچ دانش‌آموزی به خاطر نمره ۰ کاذب «نوبت ۱: ۰ ، نوبت ۲: ۰» نگیرد
+     بخش ۲: بهینه‌سازی فوق‌سریع savePersistent و به‌روزرسانی جراحی‌شده DOM در «لیست امروز»
+     ========================================================================================== */
+  window.savePersistent = function() {
+    if (window._isDbLoading && !window._dbRestoredReady) return;
+    db._updatedAt = Date.now();
+
+    clearTimeout(window._fastLocalSaveTimer);
+    window._fastLocalSaveTimer = setTimeout(() => {
+      try {
+        if (typeof extractAllPhotosFromDb === 'function') {
+          extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
+        }
+        const fastMeta = buildFastMetadataOnlyDb(db);
+        localStorage.setItem(KEY, JSON.stringify(fastMeta));
+      } catch (_) {}
+    }, 220);
+
+    clearTimeout(window._idbSaveDebounceTimer);
+    window._idbSaveDebounceTimer = setTimeout(() => {
+      if (typeof flushDbToIndexedDbNow === 'function') {
+        flushDbToIndexedDbNow();
+      }
+    }, 650);
+  };
+
+  window.inlAtt = function(sid, cid, stid) {
+    const c = findClass(sid, cid);
+    const d = window.currentListDate || localISODate();
+    if (!c) return;
+    if (!c.attendance) c.attendance = {};
+    if (!c.attendance[d]) c.attendance[d] = {};
+    const curAbs = attendanceStatus(c, d, stid) === 'absent';
+    if (curAbs) {
+      delete c.attendance[d][stid];
+    } else {
+      c.attendance[d][stid] = { status: 'absent' };
+    }
+    const isNowAbs = !curAbs;
+    const btn = document.getElementById('tdAttBtn_' + stid);
+    if (btn) {
+      btn.className = `att-cell ${isNowAbs ? 'absent' : 'present'}`;
+      btn.textContent = isNowAbs ? '✖' : '✓';
+      btn.title = isNowAbs ? 'غایب' : 'حاضر';
+    }
+    savePersistent();
+  };
+
+  window.inlScore = function(sid, cid, stid, type) {
+    const c = findClass(sid, cid);
+    const st = findStudent(sid, cid, stid);
+    if (!c || !st) return;
+    const r = getRules();
+    const b = behaviorData(st);
+    b[type === 'positive' ? 'positives' : 'negatives'].push({
+      id: uid(),
+      date: new Date().toISOString(),
+      reason: 'ثبت از لیست امروز',
+      value: type === 'positive' ? r.positiveValue : r.penaltyPerNeg,
+      code: ''
+    });
+    evaluateAutoStatus(c, st);
+    const posEl = document.getElementById('tdPos_' + stid);
+    const negEl = document.getElementById('tdNeg_' + stid);
+    if (posEl) posEl.textContent = fa(b.positives.length);
+    if (negEl) negEl.textContent = fa(b.negatives.length);
+    savePersistent();
+    toast(type === 'positive' ? '➕ مثبت ثبت شد' : '➖ منفی ثبت شد');
+  };
+
+
+  /* ==========================================================================================
+     بخش ۳: پاک‌سازی عمیق تمام نمرات صفر کاذب (Number(g.score) <= 0) از تمام بخش‌ها
      ========================================================================================== */
   window.isValidGradeNumber = function(val) {
     if (val === undefined || val === null || typeof val === 'boolean') return false;
@@ -38519,7 +38900,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
     let cleaned = 0;
     db.schools.forEach(s => {
       (s.classes || []).forEach(c => {
-        // ۱. پاک کردن هرگونه نمره خالی یا صفر کاذب از جلسات حضور و غیاب
         if (c.attendance && typeof c.attendance === 'object') {
           Object.keys(c.attendance).forEach(d => {
             const dayObj = c.attendance[d];
@@ -38536,7 +38916,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
           });
         }
 
-        // ۲. پاک کردن تمام نمرات صفر یا نامعتبر از آرایه st.grades (صرف‌نظر از اینکه source چه باشد)
         (c.students || []).forEach(st => {
           let studentCleaned = false;
           if (Array.isArray(st.grades)) {
@@ -38631,7 +39010,7 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 
 
   /* ==========================================================================================
-     بخش ۳: اصلاح کارت‌های کلاس و صفحه داخلی مدرسه (نمایش پایه + آیکون شفاف 🏫 + دکمه گزارش چندکلاسه)
+     بخش ۴: اصلاح کارت‌های کلاس و صفحه داخلی مدرسه (نمایش پایه + تعداد دقیق دانش‌آموزان بعد از حذف تکراری‌ها)
      ========================================================================================== */
   window.classCard = function(s, c) {
     const photos = Array.isArray(c.photos) ? c.photos : [];
@@ -38668,10 +39047,11 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
     </div>`;
   };
 
-  const _origOpenSchoolV91 = window.openSchool;
-  if (typeof _origOpenSchoolV91 === 'function') {
+  const _origOpenSchoolV92 = window.openSchool;
+  if (typeof _origOpenSchoolV92 === 'function') {
     window.openSchool = function(id) {
-      _origOpenSchoolV91(id);
+      window.repairDuplicateAndCrossMergedStudents(false);
+      _origOpenSchoolV92(id);
       document.querySelectorAll('#schoolDetail .school-icon').forEach(ico => {
         if (!ico.querySelector('span')) {
           ico.innerHTML = `<span>${ico.textContent || '🏫'}</span>`;
@@ -38680,10 +39060,11 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
     };
   }
 
-  const _origOpenClassV91 = window.openClass;
-  if (typeof _origOpenClassV91 === 'function') {
+  const _origOpenClassV92 = window.openClass;
+  if (typeof _origOpenClassV92 === 'function') {
     window.openClass = function(sid, cid) {
-      _origOpenClassV91(sid, cid);
+      window.repairDuplicateAndCrossMergedStudents(false);
+      _origOpenClassV92(sid, cid);
       const c = findClass(sid, cid);
       if (!c) return;
       const titleEl = document.querySelector('#classMainView .class-title-with-counselor-row h1.title')
@@ -38701,8 +39082,7 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 
 
   /* ==========================================================================================
-     بخش ۴: توصیه تربیتی کوتاه، گویا و خطاب به خانواده + نشان وضعیت تک‌خطی
-     تا در پرینت A4 عمودی هیچ ستونی در انتهای چپ بریده نشود
+     بخش ۵: توصیه تربیتی کوتاه، گویا و خطاب به خانواده + نشان وضعیت تک‌خطی
      ========================================================================================== */
   window.getShortCleanStatusBadgeHTML = function(st, det) {
     if (!det || !det.isAttn) {
@@ -38755,23 +39135,19 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
 
 
   /* ==========================================================================================
-     بخش ۵: ارتقای استودیو گزارش (ReportApp)
-     - انتخاب چندگانه کلاس‌ها با چک‌باکس (☑️ انتخاب چند کلاس هم‌زمان + دکمه انتخاب همه)
-     - دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه (showDirectoryPicker + دانلود تک‌به‌تک)
-     - جدول ۱۰۰٪ متناسب با عرض صفحه A4 با <colgroup> دقیق تا آخر لیست (پایانی، نمره نهایی، وضعیت) هرگز در پرینت بریده نشود
+     بخش ۶: ارتقای استودیو گزارش (ReportApp)
      ========================================================================================== */
   if (window.ReportApp) {
     ReportApp.state.selectedCids = Array.isArray(ReportApp.state.selectedCids) ? ReportApp.state.selectedCids : [];
     ReportApp.state.pageOrientation = ReportApp.state.pageOrientation || 'portrait';
     ReportApp.state.customFolderName = ReportApp.state.customFolderName || '';
 
-    const _origEnsureValidTargetsV91 = ReportApp.ensureValidTargets.bind(ReportApp);
+    const _origEnsureValidTargetsV92 = ReportApp.ensureValidTargets.bind(ReportApp);
     ReportApp.ensureValidTargets = function(prefScope = null, prefSid = null, prefCid = null, prefStid = null, prefStatusFilter = null) {
-      _origEnsureValidTargetsV91(prefScope, prefSid, prefCid, prefStid, prefStatusFilter);
+      _origEnsureValidTargetsV92(prefScope, prefSid, prefCid, prefStid, prefStatusFilter);
       const sObj = findSchool(this.state.sid) || db.schools?.[0] || null;
       const classes = sObj?.classes || [];
       if (!Array.isArray(this.state.selectedCids)) this.state.selectedCids = [];
-      // اگر کلاس مشخصی پاس داده شده یا لیست انتخاب چندگانه خالی است، آن را تنظیم کن
       this.state.selectedCids = this.state.selectedCids.filter(id => classes.some(c => c.id === id));
       if (prefCid && classes.some(c => c.id === prefCid)) {
         this.state.selectedCids = [prefCid];
@@ -38783,8 +39159,8 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
       }
     };
 
-    // جمع‌آوری داده‌ها با پشتیبانی کامل از انتخاب چند کلاس هم‌زمان (selectedCids)
     ReportApp.collectData = function(overrideOpts = null) {
+      window.repairDuplicateAndCrossMergedStudents(false);
       window.cleanPhantomZeroAttendanceGrades();
       const scope = overrideOpts?.scope || this.state.scope || 'class';
       const schools = db.schools || [];
@@ -38797,7 +39173,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
         cid = currentClassId || sForCid?.classes?.[0]?.id || '';
       }
 
-      // لیست کلاس‌های انتخاب‌شده در حالت تک‌کلاس/چندکلاس
       let targetCids = [];
       if (overrideOpts?.cids && Array.isArray(overrideOpts.cids)) {
         targetCids = overrideOpts.cids;
@@ -38859,7 +39234,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
       return { scope, sid, cid, cids: targetCids, stid, statusFilter, sections, totalStudents };
     };
 
-    // ساخت جدول استاندارد کلاسی با عرض درصدی دقیق (<colgroup>) تا در پرینت A4 عمودی هیچ ستونی در سمت چپ بریده نشود
     ReportApp.buildClassListStyleHTML = function(res, forExcel = false) {
       window.cleanPhantomZeroAttendanceGrades();
 
@@ -38903,7 +39277,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
         const fullClassTitle = window.getFullClassDisplayTitle(sec.cls);
         const subjTxt = sec.cls.subject ? ` · 📚 درس: ${esc(sec.cls.subject)}` : '';
 
-        // تعریف ستون‌ها همراه با وزن عرضی دقیق (تا مجموع عرض ستون‌ها همیشه ۱۰۰٪ عرض کاغذ A4 باشد و آخر لیست هرگز بریده نشود)
         const colSpecs = [];
         colSpecs.push({ label: 'ردیف', weight: 4.2 });
         if (includeSchoolCol) colSpecs.push({ label: 'کلاس', weight: 8.5 });
@@ -39073,7 +39446,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
       </div>`;
     };
 
-    // تولید سند کامل HTML آماده چاپ/اکسل/Word با عرض ۱۰۰٪ تضمین‌شده روی کاغذ A4
     ReportApp.buildFullExportDocumentHTML = function(res, titleLabel, isExcel = false) {
       const bodyContent = this.buildClassListStyleHTML(res, isExcel);
       const orient = this.state.pageOrientation === 'landscape' ? 'landscape' : 'portrait';
@@ -39108,8 +39480,8 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
       </html>`;
     };
 
-    // بازطراحی کامل مودال استودیو گزارش با قابلیت انتخاب چندگانه کلاس‌ها و دانلود جداگانه در پوشه دلخواه
     ReportApp.openModal = function(initialScope = 'class', sid = null, cid = null, stid = null, statusFilter = null) {
+      window.repairDuplicateAndCrossMergedStudents(false);
       window.cleanPhantomZeroAttendanceGrades();
       this.loadState();
       this.ensureValidTargets(
@@ -39204,14 +39576,14 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
             ${colChecksHtml}
           </div>
 
-          <!-- ۴. دکمه‌های خروجی یکپارچه (همه موارد انتخابی در یک پرینت/فایل) -->
+          <!-- ۴. دکمه‌های خروجی یکپارچه -->
           <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:6px">
             <button type="button" class="btn green btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('print')">🖨️ چاپ / PDF</button>
             <button type="button" class="btn primary btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('excel_color')">🎨 اکسل (.xls)</button>
             <button type="button" class="btn soft btn-sm" style="justify-content:center;padding:8px 4px;font-size:11.5px" onclick="ReportApp.exportCurrent('word')">📘 فایل Word</button>
           </div>
 
-          <!-- ۵. بخش جدید: دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه به همان شکل استاندارد -->
+          <!-- ۵. دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه به همان شکل استاندارد -->
           <div class="rep-folder-download-panel" id="repSeparateFolderDownloadPanel">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:6px">
               <b style="font-size:11.5px;color:#9A3412">📂 دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه (به همین شکل لیست استاندارد):</b>
@@ -39250,7 +39622,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
       this.setScope(this.state.scope);
     };
 
-    // پر کردن لیست کشویی کلاس‌ها (با نمایش پایه هفتم / نهم) + رندر چک‌باکس‌های انتخاب چندگانه کلاس‌ها
     ReportApp.populateClassesDropdown = function(prefCid = null, prefStid = null) {
       const s = findSchool(this.state.sid) || db.schools?.[0];
       const cSel = document.getElementById('repModClassSel');
@@ -39312,7 +39683,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
       } else {
         set.delete(cid);
         if (set.size === 0 && classes[0]) {
-          // حداقل یک کلاس فعال بماند
           const fallbackId = this.state.cid || classes[0].id;
           set.add(fallbackId);
           toast('حداقل یک کلاس باید در لیست انتخاب باشد.');
@@ -39392,8 +39762,8 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
       this.refreshPreview();
     };
 
-    // خروجی یکپارچه (چاپ / اکسل / Word) با رفع کامل بریدگی سمت چپ در پرینت
     ReportApp.exportCurrent = function(kind, customOpts = null) {
+      window.repairDuplicateAndCrossMergedStudents(false);
       window.cleanPhantomZeroAttendanceGrades();
       const res = this.collectData(customOpts);
       if (!res || !res.totalStudents) {
@@ -39451,8 +39821,8 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
       }
     };
 
-    // دانلود جداگانه هر کلاس انتخاب‌شده در پوشه دلخواه (با انتخابگر پوشه showDirectoryPicker و پشتیبان دانلود تک‌به‌تک)
     ReportApp.downloadSelectedSeparatelyToFolder = async function(kind = 'excel_color') {
+      window.repairDuplicateAndCrossMergedStudents(false);
       window.cleanPhantomZeroAttendanceGrades();
       const res = this.collectData();
       if (!res || !res.sections || !res.sections.length) {
@@ -39464,7 +39834,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
       const cleanFolder = safeFileName(folderNameRaw) || 'گزارشات-کلاسی';
       const dateStr = localISODate();
 
-      // ساخت آرایه فایل‌های مجزا برای تک‌تک کلاس‌های انتخاب‌شده دقیقاً به همان شکل استاندارد کلاسی
       const fileEntries = res.sections.map(sec => {
         const singleRes = {
           scope: 'class',
@@ -39488,7 +39857,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
         } else if (kind === 'html_print') {
           ext = 'html';
           mime = 'text/html;charset=utf-8';
-          // افزودن نوار دکمه چاپ فوری بالای فایل چاپی مجزا
           docHtml = docHtml.replace('<body>', `<body><div class="no-print" style="background:#FFF7ED;border:1.5px solid #EA580C;padding:8px 12px;margin-bottom:8px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;font-family:Tahoma,sans-serif"><b style="color:#9A3412;font-size:12px">🖨️ فایل آماده چاپ/PDF کلاس: ${esc(window.getFullClassDisplayTitle(sec.cls))}</b><button onclick="window.print()" style="background:#EA580C;color:#FFF;border:0;padding:6px 14px;border-radius:8px;font-weight:bold;cursor:pointer">🖨️ چاپ / ذخیره PDF</button></div><style>@media print{.no-print{display:none!important}}</style>`);
         }
 
@@ -39497,7 +39865,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
         return { fileName, content, mime, sec };
       });
 
-      // ۱. تلاش برای باز کردن پنجره انتخاب پوشه دلخواه در سیستم‌عامل (File System Access API)
       if (typeof window.showDirectoryPicker === 'function') {
         try {
           const rootDirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
@@ -39522,11 +39889,9 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
             toast('انتخاب پوشه لغو شد.');
             return;
           }
-          // اگر مرورگر اجازه دسترسی مستقیم به پوشه نداد، به دانلود جداگانه تک‌به‌تک می‌رویم
         }
       }
 
-      // ۲. دانلود جداگانه تک‌تک فایل‌ها (هر کلاس در یک فایل مجزا با نام پوشه و نام پایه و کلاس)
       fileEntries.forEach((entry, idx) => {
         setTimeout(() => {
           const a = document.createElement('a');
@@ -39541,7 +39906,6 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
     };
   }
 
-  // اتصال دکمه «📦 دانلود مجزای هر کلاس» در تنظیمات خروجی‌ها (#setPane-export) به دانلود پوشه‌ای جدید
   window.exportEachClassAsSeparateFiles = function() {
     if (window.ReportApp) {
       ReportApp.openModal('class');
@@ -39551,11 +39915,10 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
     }
   };
 
-  // به‌روزرسانی نام کلاس‌ها با ذکر پایه در لیست کشویی تنظیمات خروجی‌ها (#expClassSel)
-  const _origOnExportSchoolChangeV91 = window.onExportSchoolChange;
-  if (typeof _origOnExportSchoolChangeV91 === 'function') {
+  const _origOnExportSchoolChangeV92 = window.onExportSchoolChange;
+  if (typeof _origOnExportSchoolChangeV92 === 'function') {
     window.onExportSchoolChange = function(preCid = null, preStid = null) {
-      _origOnExportSchoolChangeV91(preCid, preStid);
+      _origOnExportSchoolChangeV92(preCid, preStid);
       const sid = document.getElementById('expSchoolSel')?.value;
       const s = findSchool(sid) || db.schools?.[0];
       const classSel = document.getElementById('expClassSel');
@@ -39568,9 +39931,13 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
     };
   }
 
-  // اجرای خودکار پاک‌سازی نمرات صفر کاذب و اصلاح آیکون‌ها هنگام بالا آمدن برنامه
-  const initV91Fixes = function() {
+  // اجرای خودکار تعمیر تعداد دانش‌آموزان کلاس‌ها (رفع باگ ۶۱ نفر در هفتم ب) و پاک‌سازی نمرات صفر کاذب
+  const initV92Fixes = function() {
+    const fixedStudents = window.repairDuplicateAndCrossMergedStudents(true);
     window.cleanPhantomZeroAttendanceGrades();
+    if (fixedStudents > 0 && typeof renderAll === 'function') {
+      renderAll();
+    }
     document.querySelectorAll('.school-icon').forEach(ico => {
       if (!ico.querySelector('span')) {
         ico.innerHTML = `<span>${ico.textContent || '🏫'}</span>`;
@@ -39579,13 +39946,17 @@ ${obs ? `- مشاهده و دغدغه اختصاصی معلم درباره ای�
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(initV91Fixes, 120));
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(initV92Fixes, 120);
+      setTimeout(initV92Fixes, 950);
+    });
   } else {
-    setTimeout(initV91Fixes, 120);
+    setTimeout(initV92Fixes, 120);
+    setTimeout(initV92Fixes, 950);
   }
 })();
 </script>
-<!-- ==================== END V9.1.0 MULTISEL & PRINT PRO ==================== -->
+<!-- ==================== END V9.2.0 ULTRA SMOOTH & DEDUP PRO ==================== -->
 
 </body>
 </html>
