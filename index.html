@@ -4731,7 +4731,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.8</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">v8.9</span>
         </div>
       </div>
     </div>
@@ -35559,7 +35559,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v8.8</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v8.9</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -37157,6 +37157,1445 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
 }
 </style>
 <!-- ==================== END V8.8.0 ANIMATED BORDERS PRO ==================== -->
+
+<!-- ==================== START V8.9.0 AI & GRADES PRO ==================== -->
+<style id="v89AiGradesReportStyle">
+/* ۱. استایل بخش اختصاصی «هوش‌واره (AI)» و پیام‌های راهنمای فارسی محدودیت هوش مصنوعی */
+.ai-hub-hero-banner {
+  padding: 14px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+  margin-bottom: 12px;
+}
+.ai-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+@media (max-width: 480px) {
+  .ai-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.ai-comp-box {
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 11.5px;
+  line-height: 1.75;
+}
+.ai-limit-persian-toast-banner {
+  background: #FFF7ED;
+  border: 2px solid #EA580C;
+  border-radius: 16px;
+  padding: 10px 12px;
+  margin: 8px 0;
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: #7C2D12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ۲. استایل شیک و جمع‌وجور راهنمای خانواده در بالای برگه گزارش و نوار باریک توصیه تربیتی خطاب به خانواده */
+.rep-family-guide-box {
+  background: #FFFBF5;
+  border: 1.5px solid #FDBA74;
+  border-radius: 12px;
+  padding: 8px 11px;
+  margin-bottom: 10px;
+  font-size: 10.5px;
+  line-height: 1.65;
+  color: #334155;
+}
+.rep-family-guide-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+.rep-family-guide-pill {
+  background: #FFFFFF;
+  border: 1px solid #FED7AA;
+  border-radius: 8px;
+  padding: 2px 7px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #9A3412;
+  white-space: nowrap;
+}
+.rep-scores-mini-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 10px;
+  line-height: 1.35;
+  text-align: right;
+}
+.rep-score-tag {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  font-weight: 700;
+  font-size: 9.5px;
+  color: #1E293B;
+}
+/* سطر افقی ظریف و شیک برای توصیه تربیتی خطاب به خانواده (بدون به‌هم‌ریختن یا عریض کردن ستون‌های جدول!) */
+.rep-family-advice-subrow td {
+  background: #FFFDF9 !important;
+  border-top: 1px dashed #FED7AA !important;
+  padding: 4px 10px !important;
+  font-size: 10.5px !important;
+  line-height: 1.55 !important;
+  color: #475569 !important;
+  text-align: right !important;
+}
+.rep-family-advice-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.rep-family-advice-label {
+  color: #C2410C;
+  font-weight: 900;
+  white-space: nowrap;
+  font-size: 10.5px;
+  flex-shrink: 0;
+}
+
+/* ۳. استایل دکمه و چیپ‌های چند نمره کتبی مستمر در جدول حضور و غیاب */
+.multi-cont-cell-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.multi-cont-mini-btn {
+  font-size: 9.5px !important;
+  padding: 1px 6px !important;
+  border-radius: 99px !important;
+  background: #FFF7ED !important;
+  color: #C2410C !important;
+  border: 1px solid #FDBA74 !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  font-weight: 800 !important;
+}
+</style>
+
+<script id="v89AiGradesReportScript">
+(function() {
+  'use strict';
+
+  /* ==========================================================================================
+     بخش ۱: مترجم هوشمند فارسی برای محدودیت و خطاهای هوش مصنوعی + مرکز اختصاصی «🤖 هوش‌واره (AI)»
+     ========================================================================================== */
+  window.AiHubApp = {
+    lastStatus: 'ready', // 'ready' | 'rate_limit' | 'auth_error' | 'network_error'
+    lastMessageFa: 'آماده پاسخ‌گویی (موتور هوشمند فعال است)',
+    rateLimitCount: 0,
+
+    translateErrorToPersian(rawErr) {
+      const msg = String(rawErr?.message || rawErr || '').trim();
+      const lower = msg.toLowerCase();
+
+      if (
+        lower.includes('429') ||
+        lower.includes('rate limit') ||
+        lower.includes('quota') ||
+        lower.includes('resource_exhausted') ||
+        lower.includes('too many requests') ||
+        lower.includes('limit reached') ||
+        lower.includes('queue full')
+      ) {
+        this.lastStatus = 'rate_limit';
+        this.rateLimitCount++;
+        this.lastMessageFa = '⏳ سقف درخواست لحظه‌ای هوش مصنوعی رایگان پر شده است. لطفاً ۳۰ تا ۶۰ ثانیه صبر کنید یا در بخش «🤖 هوش‌واره (AI)» کلید اختصاصی رایگان ثبت نمایید.';
+        return {
+          isRateLimit: true,
+          titleFa: '⏳ رسیدن به محدودیت لحظه‌ای هوش مصنوعی (سقف استفاده در دقیقه)',
+          messageFa: this.lastMessageFa,
+          guideFa: 'سرور عمومی رایگان در ساعات شلوغ محدودیت تعداد درخواست در دقیقه دارد. برنامه به صورت خودکار از الگوریتم هوشمند داخلی استفاده کرد تا کار شما متوقف نشود. برای سرعت ۱۰ برابری و حذف کامل محدودیت، می‌توانید در بخش «🤖 هوش‌واره (AI)» یک کلید رایگان اختصاصی وارد کنید.'
+        };
+      }
+
+      if (
+        lower.includes('401') ||
+        lower.includes('403') ||
+        lower.includes('invalid_api_key') ||
+        lower.includes('api_key_invalid') ||
+        lower.includes('unauthorized') ||
+        lower.includes('insufficient balance') ||
+        lower.includes('402')
+      ) {
+        this.lastStatus = 'auth_error';
+        this.lastMessageFa = '🔑 کلید هوش مصنوعی واردشده معتبر نیست یا اعتبار آن به پایان رسیده است.';
+        return {
+          isRateLimit: false,
+          titleFa: '🔑 خطا در کلید اختصاصی هوش مصنوعی',
+          messageFa: this.lastMessageFa,
+          guideFa: 'کلید واردشده را در بخش «🤖 هوش‌واره (AI)» بررسی یا پاک کنید تا برنامه از موتور رایگان سرخود استفاده نماید.'
+        };
+      }
+
+      if (
+        lower.includes('failed to fetch') ||
+        lower.includes('networkerror') ||
+        lower.includes('load failed') ||
+        lower.includes('timeout') ||
+        lower.includes('offline')
+      ) {
+        this.lastStatus = 'network_error';
+        this.lastMessageFa = '🌐 ارتباط اینترنت با سرور هوش مصنوعی برقرار نشد (حالت پشتیبان داخلی فعال شد).';
+        return {
+          isRateLimit: false,
+          titleFa: '🌐 عدم دسترسی به اینترنت یا سرور هوش مصنوعی',
+          messageFa: this.lastMessageFa,
+          guideFa: 'اتصال اینترنت خود را بررسی کنید. در زمان قطعی اینترنت، الگوریتم‌های آفلاین برنامه به صورت خودکار فعال می‌شوند.'
+        };
+      }
+
+      return {
+        isRateLimit: false,
+        titleFa: '⚠️ پیام سیستم هوش مصنوعی',
+        messageFa: 'دریافت پاسخ آنلاین با محدودیت مواجه شد و موتور پشتیبان داخلی جایگزین گردید.',
+        guideFa: 'برای بررسی وضعیت اتصال یا ثبت کلید اختصاصی، به بخش «🤖 هوش‌واره (AI)» در تنظیمات مراجعه فرمایید.'
+      };
+    },
+
+    notifyUserInPersian(rawErr, showBannerInDom = true) {
+      const info = this.translateErrorToPersian(rawErr);
+      toast(`${info.titleFa} — برای راهنمایی به بخش «هوش‌واره» بروید 🤖`);
+
+      if (showBannerInDom) {
+        let banner = document.getElementById('globalAiPersianLimitBanner');
+        if (!banner) {
+          banner = document.createElement('div');
+          banner.id = 'globalAiPersianLimitBanner';
+          banner.className = 'ai-limit-persian-toast-banner';
+          const activeView = document.querySelector('.view.active') || document.querySelector('main.container');
+          if (activeView) activeView.insertBefore(banner, activeView.firstElementChild);
+        }
+        banner.innerHTML = `
+          <div style="flex:1;min-width:210px">
+            <b style="color:#9A3412;display:block;font-size:12.5px">${esc(info.titleFa)}</b>
+            <div style="margin-top:2px">${esc(info.guideFa)}</div>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <button type="button" class="btn primary btn-sm" onclick="AiHubApp.openModal()">🤖 تنظیمات و راهنمای هوش‌واره</button>
+            <button type="button" class="btn gray btn-sm" onclick="this.closest('#globalAiPersianLimitBanner').remove()">✕</button>
+          </div>
+        `;
+      }
+      return info;
+    },
+
+    saveUnifiedKey(val) {
+      const clean = String(val || '').trim();
+      if (window.ExamApp && ExamApp.state) {
+        ExamApp.state.apiKey = clean;
+        ExamApp.save();
+      }
+      try { localStorage.setItem('danesh_unified_ai_key', clean); } catch (_) {}
+      ['apiKeyInput', 'teachInlineApiKeyInp', 'globalUnifiedAiKeyInp', 'aiHubKeyInputModal', 'aiHubKeyInputPane'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.value !== clean) el.value = clean;
+      });
+      if (window.TeachAssistant && typeof TeachAssistant.updateTeachAiStatusUI === 'function') {
+        TeachAssistant.updateTeachAiStatusUI();
+      }
+      this.lastStatus = 'ready';
+      this.lastMessageFa = clean ? '💎 کلید اختصاصی هوش‌واره ثبت و فعال شد' : '🟢 موتور رایگان سرخود فعال است';
+    },
+
+    async runLivePersianConnectionTest(statusTargetId = 'aiHubTestResultBox') {
+      const box = document.getElementById(statusTargetId);
+      const key = (window.ExamApp?.getActiveApiKey ? ExamApp.getActiveApiKey() : (window.ExamApp?.state?.apiKey || '')).trim();
+      if (box) {
+        box.style.display = 'block';
+        box.innerHTML = '⏳ در حال تست زنده ارتباط با سرور هوش مصنوعی و بررسی سقف محدودیت...';
+      }
+      try {
+        const res = await ExamApp.callArgonAI('فقط کلمه «متصل» را به فارسی برگردان.', [], { isConnectionTest: true });
+        this.lastStatus = 'ready';
+        this.lastMessageFa = key
+          ? '✅ کلید اختصاصی شما کاملاً سالم، پرسرعت و بدون محدودیت متصل است.'
+          : '🟢 موتور رایگان سرخود متصل و آماده پاسخ‌گویی است.';
+        if (box) {
+          box.innerHTML = `<div style="color:#15803D;font-weight:900">✅ ${esc(this.lastMessageFa)} (پاسخ سرور: ${esc(String(res || 'متصل').slice(0, 40))})</div>`;
+        }
+        toast('✅ اتصال هوش‌واره با موفقیت تایید شد!');
+      } catch (err) {
+        const info = this.translateErrorToPersian(err);
+        if (box) {
+          box.innerHTML = `
+            <div style="color:#B91C1C;font-weight:900">${esc(info.titleFa)}</div>
+            <div style="font-size:11.5px;color:#334155;margin-top:4px">${esc(info.guideFa)}</div>
+          `;
+        }
+        toast(info.titleFa);
+      }
+    },
+
+    buildHubContentHTML(inputId = 'aiHubKeyInputModal', testBoxId = 'aiHubTestResultBoxModal') {
+      const curKey = (window.ExamApp?.getActiveApiKey ? ExamApp.getActiveApiKey() : (window.ExamApp?.state?.apiKey || '')).trim();
+      const info = window.ExamApp ? ExamApp.detectProvider(curKey) : null;
+      const statusBadge = curKey
+        ? `<span class="chip" style="background:#DCFCE7;color:#15803D;font-weight:900">💎 کلید اختصاصی فعال (${esc(info?.name || 'متصل')})</span>`
+        : `<span class="chip" style="background:#FFF7ED;color:#C2410C;font-weight:900">🟢 موتور رایگان سرخود فعال</span>`;
+
+      const prefs = window.getSectionPrefsAll ? window.getSectionPrefsAll() : {};
+
+      return `
+        <div class="ai-hub-hero-banner card">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span class="dam-3d-orb"><span>🤖</span></span>
+              <div>
+                <b style="font-size:15px;color:#9A3412;display:block">مرکز هوش‌واره و هوش مصنوعی (AI)</b>
+                <span style="font-size:11.5px;color:#475569">${esc(this.lastMessageFa)}</span>
+              </div>
+            </div>
+            ${statusBadge}
+          </div>
+
+          <!-- کادر ثبت و تست کلید هوش‌واره -->
+          <div style="background:#FFFFFF;padding:10px;border-radius:14px;margin-top:8px">
+            <label style="font-size:11.5px;font-weight:900;color:#9A3412;display:block;margin-bottom:6px">
+              🔑 کلید اختصاصی هوش‌واره / AI (اختیاری — برای حذف کامل محدودیت سرعت و تعداد درخواست):
+            </label>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <input type="text" id="${inputId}" dir="ltr" value="${esc(curKey)}" placeholder="AIzaSy... یا gsk_... یا sk-..." style="flex:1;min-width:180px;font-family:monospace;font-size:12px" oninput="AiHubApp.saveUnifiedKey(this.value)">
+              <button type="button" class="btn primary btn-sm" onclick="AiHubApp.saveUnifiedKey(document.getElementById('${inputId}')?.value);AiHubApp.runLivePersianConnectionTest('${testBoxId}')">⚡ ذخیره و تست اتصال</button>
+              ${curKey ? `<button type="button" class="btn gray btn-sm" onclick="AiHubApp.saveUnifiedKey('');document.getElementById('${inputId}').value='';toast('کلید پاک شد؛ موتور رایگان سرخود فعال است 🟢')">حذف کلید</button>` : ''}
+            </div>
+            <div id="${testBoxId}" style="display:none;margin-top:8px;padding:8px 10px;border-radius:10px;background:#FFFBF5;font-size:11.5px"></div>
+          </div>
+        </div>
+
+        <!-- راهنمای جامع: مقایسه برنامه با هوش مصنوعی و بدون هوش مصنوعی (دقیقاً طبق خواسته کاربر) -->
+        <div class="card" style="margin-bottom:12px;padding:12px">
+          <b style="font-size:13.5px;color:#9A3412;display:block;margin-bottom:4px">💡 نقش هوش‌واره (AI) در برنامه چیست و بدون آن چه می‌شود؟</b>
+          <div style="font-size:11.5px;color:#334155;line-height:1.75">
+            برنامه «دانش‌آموز من» به گونه‌ای طراحی شده که در هر شرایطی دستیار مطمئن شما در کلاس باشد؛ اما خوب است تفاوت دو حالت زیر را بدانید:
+          </div>
+
+          <div class="ai-comparison-grid">
+            <div class="ai-comp-box card" style="margin:0">
+              <b style="color:#0369A1;display:block;margin-bottom:4px">📘 ۱. بدون هوش مصنوعی (حالت آفلاین / عادی):</b>
+              بدون هوش مصنوعی، <b>خیلی از قابلیت‌های هوشمند و خودکار برنامه کم می‌شود، اما برنامه همچنان عالی و کامل کار می‌کند!</b><br>
+              • ثبت سریع حضور و غیاب و تاخیر<br>
+              • ثبت چند نمره کتبی مستمر و محاسبه خودکار میانگین و ضرایب<br>
+              • ثبت مثبت و منفی و محاسبه تاثیر دقیق روی نمره<br>
+              • صدور کارنامه‌ها و گزارش‌های ۴سطحی شیک برای خانواده<br>
+              • باز کردن کتاب PDF، زوم نرم و تخته هوشمند کلاسی
+            </div>
+
+            <div class="ai-comp-box card" style="margin:0">
+              <b style="color:#15803D;display:block;margin-bottom:4px">🚀 ۲. با فعال بودن هوش‌واره (AI):</b>
+              با اتصال هوش مصنوعی، <b>تمام قدرت جادویی و متمایز برنامه</b> در اختیار شما قرار می‌گیرد:<br>
+              • ✨ طراحی خودکار آزمون ۴شعبه‌ای از روی عکس یا صفحه کتاب<br>
+              • 💡 حل تشریحی تمام فعالیت‌ها، کاردرکلاس‌ها و جدول‌های صفحه<br>
+              • 🌟 نگارش خودکار «جزوه طلایی شاگرد اول» برای هر درس<br>
+              • 📸 تصحیح خودکار برگه امتحانی از روی عکس و اسکن لیست کلاس<br>
+              • 🧠 مشاوره تخصصی روانشناختی (تکی و جمعی) برای دانش‌آموزان کلاس
+            </div>
+          </div>
+        </div>
+
+        <!-- راهنمای فارسی رفع محدودیت (Rate Limit) -->
+        <div class="card" style="margin-bottom:12px;padding:12px">
+          <b style="font-size:13px;color:#9A3412;display:block;margin-bottom:6px">⏳ چرا گاهی پیام «رسیدن به محدودیت هوش مصنوعی» نمایش داده می‌شود و راه‌حل چیست؟</b>
+          <div style="font-size:11.5px;color:#334155;line-height:1.8">
+            <b>۱. علت محدودیت:</b> موتور رایگان سرخود برنامه برای استفاده همگانی است و سرورهای رایگان هوش مصنوعی در جهان، برای جلوگیری از شلوغی، سقف مشخصی برای تعداد درخواست در هر دقیقه دارند.<br>
+            <b>۲. راه‌حل فوری اول (بدون کلید):</b> کافی است <b>۳۰ تا ۶۰ ثانیه صبر کنید</b> و دوباره دکمه را بزنید؛ همچنین برنامه به طور خودکار از الگوریتم هوشمند داخلی خود استفاده می‌کند تا هیچ وقت سر کلاس معطل نمانید.<br>
+            <b>۳. راه‌حل دائمی و پرسرعت:</b> می‌توانید یک کلید رایگان شخصی (از سرویس‌های استاندارد هوش مصنوعی که با <code>AIzaSy</code> یا <code>gsk_</code> شروع می‌شوند) دریافت کرده و در کادر بالا قرار دهید تا ظرفیت اختصاصی و بدون محدودیت داشته باشید.
+          </div>
+        </div>
+
+        <!-- تنظیمات رفتار هوش مصنوعی در بخش‌های مختلف -->
+        <div class="dam-settings-island">
+          <div class="dam-settings-row" onclick="toggleSectionPref('teach_auto_solve_page_turn', this.querySelector('.dam-capsule-switch'))">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb"><span>⚡</span></span>
+              <div class="dam-settings-row-texts">
+                <b>حل خودکار صفحه کتاب هنگام ورق‌زدن</b>
+                <span>آماده‌سازی خودکار پاسخ فعالیت‌ها و سوالات با تغییر صفحه در بخش آموزش</span>
+              </div>
+            </div>
+            <button type="button" class="dam-capsule-switch ${prefs.teach_auto_solve_page_turn ? 'on' : ''}"></button>
+          </div>
+
+          <div class="dam-settings-row" onclick="toggleSectionPref('statuses_show_psych_advice', this.querySelector('.dam-capsule-switch'))">
+            <div class="dam-settings-row-right">
+              <span class="dam-3d-orb orb-emerald"><span>🌿</span></span>
+              <div class="dam-settings-row-texts">
+                <b>مشاوره هوشمند مبتنی بر کرامت انسانی</b>
+                <span>تولید توصیه‌های تربیتی محترمانه برای معلم و خانواده دانش‌آموز</span>
+              </div>
+            </div>
+            <button type="button" class="dam-capsule-switch ${prefs.statuses_show_psych_advice !== false ? 'on' : ''}"></button>
+          </div>
+        </div>
+      `;
+    },
+
+    openModal() {
+      openModal(formHeader('🤖 مرکز هوش‌واره و هوش مصنوعی (AI)') + this.buildHubContentHTML('aiHubKeyInputModal', 'aiHubTestResultBoxModal') + `
+        <div class="formactions">
+          <button type="button" class="btn primary" onclick="closeModal()">بستن و بازگشت</button>
+        </div>
+      `);
+    }
+  };
+
+  // ارتقای ExamApp.callArgonAI برای:
+  // ۱) رفع باگ ارسال تصاویر چه به صورت آرایه و چه به صورت { images: [...] } یا رشته data:image/...
+  // ۲) تشخیص خطای محدودیت (429 / Rate Limit / Quota) و نمایش اطلاع‌رسانی و راهنمای کاملاً فارسی به کاربر
+  if (window.ExamApp) {
+    ExamApp.callArgonAI = async function(promptText, secondArg = [], thirdOpts = {}) {
+      const key = (typeof this.getActiveApiKey === 'function' ? this.getActiveApiKey() : (this.state.apiKey || '')).trim();
+      const info = this.detectProvider(key);
+
+      let rawImagesList = [];
+      let opts = thirdOpts || {};
+      if (Array.isArray(secondArg)) {
+        rawImagesList = secondArg;
+      } else if (secondArg && typeof secondArg === 'object') {
+        opts = secondArg;
+        if (Array.isArray(secondArg.images)) rawImagesList = secondArg.images;
+      }
+
+      const validImages = [];
+      rawImagesList.forEach(img => {
+        if (!img) return;
+        if (typeof img === 'string') {
+          const b64 = img.includes('base64,') ? img.split('base64,')[1] : img;
+          const mimeMatch = img.match(/^data:(image\/[a-zA-Z0-9+.-]+);base64,/);
+          if (b64 && b64.length > 30) {
+            validImages.push({ mimeType: mimeMatch ? mimeMatch[1] : 'image/jpeg', base64: b64 });
+          }
+        } else if (img.base64 && String(img.base64).length > 30) {
+          const cleanB64 = String(img.base64).includes('base64,') ? String(img.base64).split('base64,')[1] : String(img.base64);
+          validImages.push({ mimeType: img.mimeType || 'image/jpeg', base64: cleanB64 });
+        }
+      });
+
+      const isRateLimitText = (txt) => {
+        const l = String(txt || '').toLowerCase();
+        return (
+          l.includes('rate limit') ||
+          l.includes('too many requests') ||
+          l.includes('quota exceeded') ||
+          l.includes('resource_exhausted') ||
+          l.includes('queue full') ||
+          (l.startsWith('<!doctype html') && l.includes('429'))
+        );
+      };
+
+      let encounteredError = null;
+
+      // ۱. تلاش با کلید اختصاصی کاربر (در صورت وجود)
+      if (info && key) {
+        try {
+          if (info.provider === 'gemini') {
+            const models = this.discoveredGeminiModel
+              ? [this.discoveredGeminiModel, 'gemini-2.0-flash', 'gemini-1.5-flash']
+              : ['gemini-2.0-flash', 'gemini-2.5-flash', 'gemini-1.5-flash'];
+            for (const m of models) {
+              try {
+                const parts = [{ text: promptText }];
+                validImages.slice(0, 3).forEach(img => {
+                  parts.push({ inline_data: { mime_type: img.mimeType || 'image/jpeg', data: img.base64 } });
+                });
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${encodeURIComponent(key)}`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ contents: [{ parts }], generationConfig: { temperature: opts.temperature || 0.25 } })
+                });
+                const d = await res.json();
+                if (res.status === 429) {
+                  encounteredError = new Error('429 Rate limit reached on custom key');
+                  continue;
+                }
+                if (res.status === 400 || res.status === 401 || res.status === 403) {
+                  encounteredError = new Error(d?.error?.message || `${res.status} API_KEY_INVALID`);
+                }
+                if (res.ok && d.candidates?.[0]?.content?.parts?.[0]?.text) {
+                  this.discoveredGeminiModel = m;
+                  return d.candidates[0].content.parts[0].text;
+                }
+              } catch (e) {
+                encounteredError = e;
+              }
+            }
+          } else if (info.provider === 'compatible_sk' && Array.isArray(info.endpoints)) {
+            for (const ep of info.endpoints) {
+              try {
+                const useVision = ep.vision && validImages.length > 0;
+                const msgContent = useVision
+                  ? [
+                      { type: 'text', text: promptText },
+                      ...validImages.map(img => ({ type: 'image_url', image_url: { url: `data:${img.mimeType || 'image/jpeg'};base64,${img.base64}` } }))
+                    ]
+                  : promptText;
+                const res = await fetch(ep.url, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+                  body: JSON.stringify({ model: ep.model, messages: [{ role: 'user', content: msgContent }], temperature: opts.temperature || 0.25 })
+                });
+                if (res.status === 429) { encounteredError = new Error('429 Rate limit'); continue; }
+                if (res.ok) {
+                  const d = await res.json();
+                  if (d.choices?.[0]?.message?.content) return d.choices[0].message.content;
+                }
+              } catch (e) {
+                encounteredError = e;
+              }
+            }
+          } else if (info.endpoint) {
+            const hasImg = validImages.length > 0;
+            const targetModel = (hasImg && (info.provider === 'groq' || info.supportsVision)) ? (info.visionModel || info.model) : info.model;
+            const msgContent = (hasImg && (info.provider === 'groq' || info.supportsVision))
+              ? [
+                  { type: 'text', text: promptText },
+                  ...validImages.map(img => ({ type: 'image_url', image_url: { url: `data:${img.mimeType || 'image/jpeg'};base64,${img.base64}` } }))
+                ]
+              : promptText;
+            const res = await fetch(info.endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+              body: JSON.stringify({ model: targetModel, messages: [{ role: 'user', content: msgContent }], temperature: opts.temperature || 0.25 })
+            });
+            if (res.status === 429) {
+              encounteredError = new Error('429 Rate limit');
+            } else if (res.status === 401 || res.status === 403) {
+              encounteredError = new Error('401 Invalid API Key');
+            } else if (res.ok) {
+              const d = await res.json();
+              if (d.choices?.[0]?.message?.content) return d.choices[0].message.content;
+            }
+          }
+        } catch (customErr) {
+          encounteredError = customErr;
+        }
+      }
+
+      // ۲. تلاش با موتور رایگان سرخود
+      try {
+        const contentParts = [{ type: 'text', text: promptText }];
+        validImages.slice(0, 3).forEach(img => {
+          contentParts.push({
+            type: 'image_url',
+            image_url: { url: `data:${img.mimeType || 'image/jpeg'};base64,${img.base64}` }
+          });
+        });
+        const freeRes = await fetch('https://text.pollinations.ai/openai', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'openai',
+            messages: [
+              { role: 'system', content: 'تو دستیار هوشمند آموزشی «دانش‌آموز من» هستی. همیشه بر پایه کرامت انسانی و استانداردهای مدارس ایران به زبان فارسی روان، علمی و دقیق پاسخ بده.' },
+              { role: 'user', content: contentParts }
+            ],
+            temperature: opts.temperature || 0.25
+          })
+        });
+        if (freeRes.status === 429) {
+          encounteredError = new Error('429 Rate limit reached');
+        } else if (freeRes.ok) {
+          const freeData = await freeRes.json();
+          const txt = freeData?.choices?.[0]?.message?.content || '';
+          if (isRateLimitText(txt)) {
+            encounteredError = new Error('429 Rate limit in response text');
+          } else if (txt.trim()) {
+            return txt.trim();
+          }
+        }
+      } catch (e) {
+        if (!encounteredError) encounteredError = e;
+      }
+
+      try {
+        const fallbackRes = await fetch('https://text.pollinations.ai/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: [
+              { role: 'system', content: 'تو یک دبیر خبره مدارس ایران هستی. پاسخ را دقیق و به فارسی روان بنویس.' },
+              { role: 'user', content: promptText }
+            ],
+            model: 'openai'
+          })
+        });
+        if (fallbackRes.status === 429) {
+          encounteredError = new Error('429 Rate limit reached');
+        } else if (fallbackRes.ok) {
+          const fallbackTxt = await fallbackRes.text();
+          if (isRateLimitText(fallbackTxt)) {
+            encounteredError = new Error('429 Rate limit in fallback text');
+          } else if (fallbackTxt && fallbackTxt.trim()) {
+            return fallbackTxt.trim();
+          }
+        }
+      } catch (e) {
+        if (!encounteredError) encounteredError = e;
+      }
+
+      // ۳. اطلاع‌رسانی فارسی و راهنمایی کاربر در صورت رسیدن به محدودیت یا خطای شبکه
+      const persianErrInfo = AiHubApp.notifyUserInPersian(encounteredError || new Error('429 Rate limit'), !opts.isConnectionTest);
+
+      if (opts.isConnectionTest || String(promptText || '').trim() === 'Say OK') {
+        throw new Error(persianErrInfo.messageFa);
+      }
+      return this.buildSmartOfflineAiFallback(promptText);
+    };
+  }
+
+
+  /* ==========================================================================================
+     بخش ۲: پشتیبانی کامل از «چند نمره کتبی مستمر» (کتبی مستمر ۱، ۲، ۳...) و اعمال ضریب روی میانگین آن‌ها
+     ========================================================================================== */
+  // استخراج لیست تمام نمرات کتبی مستمر یک دانش‌آموز (شامل ستون مستقیم و تمام امتحانات کتبی مستمر ثبت‌شده)
+  window.getStudentWrittenContList = function(c, st) {
+    if (!st) return [];
+    if (!Array.isArray(st.grades)) st.grades = [];
+
+    // اگر در c.contExamScores نمره‌ای هست که هنوز در st.grades ثبت نشده، آن را همگام کن
+    if (c && c.contExamScores && c.contExamScores[st.id] !== undefined && c.contExamScores[st.id] !== '') {
+      const legacyVal = Number(c.contExamScores[st.id]);
+      if (Number.isFinite(legacyVal)) {
+        const hasContGrade = st.grades.some(g => g && g.gradeType === 'cont_exam' && Number.isFinite(Number(g.score)));
+        if (!hasContGrade) {
+          st.grades.push({
+            id: uid(),
+            date: new Date().toISOString(),
+            subject: 'کتبی مستمر ۱',
+            score: legacyVal,
+            source: 'direct_cont_col',
+            gradeType: 'cont_exam'
+          });
+        }
+      }
+    }
+
+    const list = [];
+    st.grades.forEach((g, idx) => {
+      if (g && g.gradeType === 'cont_exam' && Number.isFinite(Number(g.score))) {
+        list.push({
+          id: g.id || ('cont_' + idx),
+          title: g.subject || `کتبی مستمر ${fa(list.length + 1)}`,
+          score: Number(g.score),
+          date: g.date || '',
+          ref: g
+        });
+      }
+    });
+    return list;
+  };
+
+  // استخراج لیست تمام نمرات کلاسی/شفاهی (غیر از کتبی مستمر و غیر از گروهی)
+  window.getStudentOralClassList = function(c, st) {
+    if (!st) return [];
+    const list = [];
+    (st.grades || []).forEach((g, idx) => {
+      if (g && g.gradeType !== 'cont_exam' && g.gradeType !== 'group_score' && Number.isFinite(Number(g.score))) {
+        list.push({
+          id: g.id || ('oral_' + idx),
+          title: g.subject || `پرسش کلاسی ${fa(list.length + 1)}`,
+          score: Number(g.score),
+          date: g.date || ''
+        });
+      }
+    });
+    return list;
+  };
+
+  // میانگین تمام نمرات کتبی مستمر دانش‌آموز (که در ضریب کتبی مستمر ضرب می‌شود)
+  window.getStudentWrittenContScore = function(c, st) {
+    const list = window.getStudentWrittenContList(c, st);
+    if (!list.length) return null;
+    const sum = list.reduce((acc, it) => acc + Number(it.score), 0);
+    const rounder = typeof window.roundByConfigurableStep === 'function' ? window.roundByConfigurableStep : roundQuarter;
+    return rounder(sum / list.length);
+  };
+
+  // میانگین تمام نمرات کلاسی/شفاهی دانش‌آموز
+  window.getStudentOralClassAvg = function(c, st) {
+    const list = window.getStudentOralClassList(c, st);
+    if (!list.length) return null;
+    const sum = list.reduce((acc, it) => acc + Number(it.score), 0);
+    const rounder = typeof window.roundByConfigurableStep === 'function' ? window.roundByConfigurableStep : roundQuarter;
+    return rounder(sum / list.length);
+  };
+
+  // میانگین تمام نمرات گروهی دانش‌آموز
+  window.getStudentGroupAvg = function(c, st) {
+    if (!st) return null;
+    const list = (st.grades || []).filter(g => g && g.gradeType === 'group_score' && Number.isFinite(Number(g.score)));
+    if (!list.length) return null;
+    const sum = list.reduce((acc, it) => acc + Number(it.score), 0);
+    const rounder = typeof window.roundByConfigurableStep === 'function' ? window.roundByConfigurableStep : roundQuarter;
+    return rounder(sum / list.length);
+  };
+
+  // بازنویسی دقیق avgGrade:
+  // ۱) میانگین نمرات کتبی مستمر محاسبه شده و در ضریب کتبی مستمر (r.weightCont) ضرب می‌شود.
+  // ۲) میانگین نمرات کلاسی/شفاهی محاسبه شده و در ضریب کلاسی (r.weightClass) ضرب می‌شود.
+  // ۳) میانگین نمرات گروهی (در صورت وجود) در ضریب گروهی (r.weightGroup) ضرب می‌شود.
+  window.avgGrade = function(st, c = null) {
+    if (!st) return null;
+    const r = getRules();
+    const writtenAvg = window.getStudentWrittenContScore(c, st);
+    const oralAvg = window.getStudentOralClassAvg(c, st);
+    const groupAvg = window.getStudentGroupAvg(c, st);
+
+    let weightedSum = 0;
+    let totalWeight = 0;
+
+    if (writtenAvg !== null) {
+      const wCont = Math.max(0, Number(r.weightCont) || 2);
+      weightedSum += writtenAvg * wCont;
+      totalWeight += wCont;
+    }
+    if (oralAvg !== null) {
+      const wCls = Math.max(0, Number(r.weightClass) || 1);
+      weightedSum += oralAvg * wCls;
+      totalWeight += wCls;
+    }
+    if (groupAvg !== null) {
+      const wGrp = Math.max(0, Number(r.weightGroup) || 1.5);
+      weightedSum += groupAvg * wGrp;
+      totalWeight += wGrp;
+    }
+
+    if (totalWeight <= 0) return null;
+    const rounder = typeof window.roundByConfigurableStep === 'function' ? window.roundByConfigurableStep : roundQuarter;
+    return rounder(weightedSum / totalWeight);
+  };
+
+  // بازنویسی calculateFinalStudentScore با محاسبه شفاف پایه + تاثیر دقیق مثبت و منفی
+  window.getStudentScoreBreakdown = function(c, st) {
+    const r = getRules();
+    const writtenList = window.getStudentWrittenContList(c, st);
+    const writtenAvg = window.getStudentWrittenContScore(c, st);
+    const oralList = window.getStudentOralClassList(c, st);
+    const oralAvg = window.getStudentOralClassAvg(c, st);
+    const cAvg = window.avgGrade(st, c);
+
+    const rawTerm = c?.termScores?.[st?.id];
+    const hasT = rawTerm !== undefined && rawTerm !== '' && Number.isFinite(Number(rawTerm));
+    const termSc = hasT ? Number(rawTerm) : null;
+
+    let baseScore = 0;
+    if (hasT && cAvg !== null) {
+      baseScore = ((cAvg * r.weightCont) + (termSc * r.weightTerm)) / Math.max(1, r.weightCont + r.weightTerm);
+    } else if (hasT) {
+      baseScore = termSc;
+    } else if (cAvg !== null) {
+      baseScore = cAvg;
+    }
+
+    const b = behaviorData(st);
+    const bt = behaviorTotals(st);
+    const posEffect = bt.positive;
+    const noNegBonus = (b.negatives.length === 0 && b.positives.length > 0) ? Number(r.bonusNoNeg || 0) : 0;
+    const excessNegCount = Math.max(0, b.negatives.length - Number(r.maxNegAllowed || 0));
+    const negPenalty = excessNegCount * Number(r.penaltyPerNeg || 0);
+    const totalBehEffect = posEffect + noNegBonus - negPenalty;
+
+    const rounder = typeof window.roundByConfigurableStep === 'function' ? window.roundByConfigurableStep : roundQuarter;
+    const finalSc = Math.min(20, Math.max(0, rounder(baseScore + totalBehEffect)));
+
+    return {
+      writtenList,
+      writtenAvg,
+      oralList,
+      oralAvg,
+      cAvg,
+      termSc,
+      baseScore: rounder(baseScore),
+      posCount: b.positives.length,
+      negCount: b.negatives.length,
+      posEffect: rounder(posEffect),
+      noNegBonus: rounder(noNegBonus),
+      negPenalty: rounder(negPenalty),
+      totalBehEffect: rounder(totalBehEffect),
+      finalSc
+    };
+  };
+
+  window.calculateFinalStudentScore = function(c, st) {
+    if (!c || !st) return 0;
+    return window.getStudentScoreBreakdown(c, st).finalSc;
+  };
+
+  // پنجره مدیریت چند نمره کتبی مستمر برای یک دانش‌آموز (افزودن، ویرایش و حذف کتبی مستمر ۱، ۲، ۳...)
+  window.openStudentMultiContExamsModal = function(sid, cid, stid) {
+    const s = findSchool(sid), c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+    if (!s || !c || !st) return;
+    const r = getRules();
+    const bd = window.getStudentScoreBreakdown(c, st);
+    const fullName = formatStudentName(st);
+
+    const rowsHtml = bd.writtenList.length
+      ? bd.writtenList.map((it, idx) => `
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;background:#FFFFFF;padding:6px 8px;border-radius:10px;border:1px solid #FED7AA">
+            <span class="row-num-badge">${fa(idx + 1)}</span>
+            <input type="text" value="${esc(it.title)}" placeholder="عنوان (مثلاً کتبی مستمر ۱)" style="flex:1;height:32px;font-size:11.5px" onchange="updateStudentSingleContExam('${sid}','${cid}','${stid}','${it.id}','title',this.value)">
+            <input type="number" step="0.25" min="0" max="20" value="${it.score}" style="width:74px;height:32px;text-align:center;font-weight:900;font-size:13px" onchange="updateStudentSingleContExam('${sid}','${cid}','${stid}','${it.id}','score',this.value)">
+            <button type="button" class="btn danger btn-sm" style="padding:4px 8px" onclick="deleteStudentSingleContExam('${sid}','${cid}','${stid}','${it.id}')">🗑️</button>
+          </div>
+        `).join('')
+      : `<div class="muted" style="padding:10px;text-align:center">هنوز نمره کتبی مستمر برای «${esc(fullName)}» ثبت نشده است.</div>`;
+
+    openModal(formHeader(`📝 نمرات کتبی مستمر: ${fullName}`) + `
+      <div class="card" style="background:#FFF7ED;padding:10px 12px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+          <div>
+            <b style="color:#9A3412;font-size:13px">📐 میانگین کتبی‌های مستمر: ${bd.writtenAvg !== null ? fmtScore(bd.writtenAvg) : '—'} (از ${fa(bd.writtenList.length)} امتحان)</b>
+            <div style="font-size:11px;color:#475569;margin-top:2px">این میانگین با <b>ضریب ${fa(r.weightCont)}</b> در نمره مستمر و نهایی محاسبه می‌شود.</div>
+          </div>
+          <span class="chip" style="background:#EA580C;color:#FFFFFF;font-weight:900">مستمر کل: ${bd.cAvg !== null ? fmtScore(bd.cAvg) : '—'}</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom:10px">
+        ${rowsHtml}
+      </div>
+
+      <div class="card" style="padding:10px;background:var(--bg-panel)">
+        <b style="color:var(--primary);font-size:12.5px;display:block;margin-bottom:6px">➕ افزودن نمره کتبی مستمر جدید (نوبت ${fa(bd.writtenList.length + 1)}):</b>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <input type="text" id="newContExamTitleInp" value="کتبی مستمر ${fa(bd.writtenList.length + 1)}" style="flex:1;min-width:130px;height:36px;font-size:12px">
+          <input type="number" id="newContExamScoreInp" step="0.25" min="0" max="20" placeholder="نمره (۰ تا ۲۰)" style="width:110px;height:36px;text-align:center;font-weight:900;font-size:13px">
+          <button type="button" class="btn primary btn-sm" onclick="addStudentNewContExam('${sid}','${cid}','${stid}')">＋ ثبت نمره کتبی</button>
+        </div>
+      </div>
+
+      <div class="formactions">
+        <button type="button" class="btn primary" onclick="closeModal();if(document.getElementById('attendance')?.classList.contains('active'))openAttendance('${sid}','${cid}')">✅ تایید و بستن</button>
+      </div>
+    `);
+  };
+
+  window.addStudentNewContExam = function(sid, cid, stid) {
+    const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+    if (!c || !st) return;
+    const title = (document.getElementById('newContExamTitleInp')?.value || '').trim() || 'کتبی مستمر';
+    const rawSc = enDigits(document.getElementById('newContExamScoreInp')?.value || '').trim();
+    const sc = Number(rawSc);
+    if (rawSc === '' || !Number.isFinite(sc) || sc < 0 || sc > 20) {
+      toast('لطفاً نمره معتبر بین ۰ تا ۲۰ وارد کنید.');
+      return;
+    }
+    const rounder = typeof window.roundByConfigurableStep === 'function' ? window.roundByConfigurableStep : roundQuarter;
+    if (!Array.isArray(st.grades)) st.grades = [];
+    st.grades.push({
+      id: uid(),
+      date: new Date().toISOString(),
+      subject: title,
+      score: rounder(sc),
+      gradeType: 'cont_exam'
+    });
+    if (!c.contExamScores) c.contExamScores = {};
+    c.contExamScores[st.id] = window.getStudentWrittenContScore(c, st);
+    evaluateAutoStatus(c, st);
+    savePersistent();
+    window.openStudentMultiContExamsModal(sid, cid, stid);
+    toast(`✅ «${title}» ثبت شد و میانگین کتبی مستمر به‌روز گردید!`);
+  };
+
+  window.updateStudentSingleContExam = function(sid, cid, stid, gradeId, field, val) {
+    const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+    if (!c || !st) return;
+    const g = (st.grades || []).find(x => x && x.id === gradeId);
+    if (!g) return;
+    if (field === 'title') {
+      g.subject = String(val || '').trim() || 'کتبی مستمر';
+    } else if (field === 'score') {
+      const n = Number(enDigits(val));
+      if (!Number.isFinite(n) || n < 0 || n > 20) {
+        toast('نمره باید بین ۰ تا ۲۰ باشد.');
+        return;
+      }
+      const rounder = typeof window.roundByConfigurableStep === 'function' ? window.roundByConfigurableStep : roundQuarter;
+      g.score = rounder(n);
+    }
+    if (!c.contExamScores) c.contExamScores = {};
+    c.contExamScores[st.id] = window.getStudentWrittenContScore(c, st);
+    evaluateAutoStatus(c, st);
+    savePersistent();
+    window.openStudentMultiContExamsModal(sid, cid, stid);
+  };
+
+  window.deleteStudentSingleContExam = function(sid, cid, stid, gradeId) {
+    const c = findClass(sid, cid), st = findStudent(sid, cid, stid);
+    if (!c || !st) return;
+    st.grades = (st.grades || []).filter(x => x && x.id !== gradeId);
+    if (!c.contExamScores) c.contExamScores = {};
+    const newAvg = window.getStudentWrittenContScore(c, st);
+    if (newAvg === null) delete c.contExamScores[st.id];
+    else c.contExamScores[st.id] = newAvg;
+    evaluateAutoStatus(c, st);
+    savePersistent();
+    window.openStudentMultiContExamsModal(sid, cid, stid);
+    toast('نمره کتبی مستمر حذف شد.');
+  };
+
+  // پنجره ثبت دسته‌جمعی «نوبت جدید امتحان کتبی مستمر» برای کل دانش‌آموزان کلاس
+  window.openClassMultiContExamModal = function(sid, cid) {
+    const s = findSchool(sid), c = findClass(sid, cid);
+    if (!s || !c) return;
+    const students = sortStudents(c.students || []);
+    const maxExams = Math.max(1, ...students.map(st => window.getStudentWrittenContList(c, st).length));
+    const nextExamTitle = `کتبی مستمر ${fa(maxExams + 1)}`;
+
+    const rowsHtml = students.map((st, idx) => {
+      const wList = window.getStudentWrittenContList(c, st);
+      const wAvg = window.getStudentWrittenContScore(c, st);
+      const prevBadges = wList.map(x => `<span class="rep-score-tag">${esc(x.title)}: <b>${fmtScore(x.score)}</b></span>`).join(' ');
+      return `
+        <tr>
+          <td style="text-align:center;width:28px;font-weight:bold">${fa(idx + 1)}</td>
+          <td>
+            <b>${esc(formatStudentName(st))}</b>
+            <div style="margin-top:2px;display:flex;flex-wrap:wrap;gap:3px">${prevBadges || '<span class="muted" style="font-size:10px">بدون کتبی قبلی</span>'}</div>
+          </td>
+          <td style="text-align:center;font-weight:900;color:#9A3412">${wAvg !== null ? fmtScore(wAvg) : '—'}</td>
+          <td style="width:90px">
+            <input type="number" class="cls-new-cont-inp" data-stid="${st.id}" step="0.25" min="0" max="20" placeholder="نمره جدید" style="height:32px;text-align:center;font-weight:900;font-size:12.5px">
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    openModal(formHeader(`📝 ثبت نوبت جدید امتحان کتبی مستمر — کلاس ${c.name}`) + `
+      <div class="card" style="background:#FFF7ED;padding:10px;margin-bottom:10px">
+        <div class="field" style="margin-bottom:6px">
+          <label style="font-size:11.5px;font-weight:900;color:#9A3412">عنوان این نوبت امتحان کتبی مستمر:</label>
+          <input type="text" id="clsBatchContExamTitle" value="${nextExamTitle}" style="height:36px;font-size:12.5px;font-weight:800">
+        </div>
+        <div style="font-size:11px;color:#475569">
+          با وارد کردن نمره جدید برای هر دانش‌آموز، این نمره به لیست امتحانات کتبی مستمر او اضافه شده و <b>میانگین تمام کتبی‌های مستمر او ضرب در ضریب کتبی مستمر (${fa(getRules().weightCont)})</b> می‌شود.
+        </div>
+      </div>
+
+      <div style="max-height:300px;overflow-y:auto;border-radius:12px;border:1px solid #FED7AA;background:#FFFFFF">
+        <table class="rep-clean-table" style="width:100%">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>دانش‌آموز و کتبی‌های قبلی</th>
+              <th>میانگین فعلی</th>
+              <th>نمره نوبت جدید</th>
+            </tr>
+          </thead>
+          <tbody>${rowsHtml}</tbody>
+        </table>
+      </div>
+
+      <div class="formactions">
+        <button type="button" class="btn primary" style="flex:2;justify-content:center;font-weight:900" onclick="saveClassBatchContExam('${sid}','${cid}')">💾 ثبت نمره کتبی مستمر جدید و محاسبه میانگین</button>
+        <button type="button" class="btn gray" onclick="closeModal()">انصراف</button>
+      </div>
+    `);
+  };
+
+  window.saveClassBatchContExam = function(sid, cid) {
+    const c = findClass(sid, cid);
+    if (!c) return;
+    const title = (document.getElementById('clsBatchContExamTitle')?.value || '').trim() || 'کتبی مستمر جدید';
+    const rounder = typeof window.roundByConfigurableStep === 'function' ? window.roundByConfigurableStep : roundQuarter;
+    let count = 0;
+
+    document.querySelectorAll('.cls-new-cont-inp').forEach(inp => {
+      const stid = inp.getAttribute('data-stid');
+      const raw = enDigits(inp.value || '').trim();
+      if (!raw) return;
+      const sc = Number(raw);
+      if (!Number.isFinite(sc) || sc < 0 || sc > 20) return;
+      const st = findStudent(sid, cid, stid);
+      if (!st) return;
+      if (!Array.isArray(st.grades)) st.grades = [];
+      st.grades.push({
+        id: uid(),
+        date: new Date().toISOString(),
+        subject: title,
+        score: rounder(sc),
+        gradeType: 'cont_exam'
+      });
+      if (!c.contExamScores) c.contExamScores = {};
+      c.contExamScores[st.id] = window.getStudentWrittenContScore(c, st);
+      evaluateAutoStatus(c, st);
+      count++;
+    });
+
+    if (!count) {
+      toast('هیچ نمره‌ای وارد نشد.');
+      return;
+    }
+    save();
+    closeModal();
+    if (document.getElementById('attendance')?.classList.contains('active')) {
+      openAttendance(sid, cid);
+    }
+    toast(`✅ «${title}» برای ${fa(count)} دانش‌آموز ثبت شد و میانگین کتبی مستمر با ضریب اعمال گردید!`);
+  };
+
+  // افزودن دکمه «📝➕ چند نمره کتبی مستمر» به جدول جامع حضور و غیاب و سلول کتبی هر دانش‌آموز
+  const _origOpenAttendanceV89 = window.openAttendance;
+  if (typeof _origOpenAttendanceV89 === 'function') {
+    window.openAttendance = function(sid, cid) {
+      _origOpenAttendanceV89(sid, cid);
+      const c = findClass(sid, cid);
+      if (!c) return;
+
+      // ۱. افزودن دکمه ثبت نوبت جدید کتبی مستمر در نوار بالای جدول حضور و غیاب
+      const stickyBar = document.getElementById('attTopStickyBar');
+      if (stickyBar && !document.getElementById('btnOpenMultiContExamModal')) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = 'btnOpenMultiContExamModal';
+        btn.className = 'btn primary btn-sm';
+        btn.innerHTML = '📝➕ ثبت چند نمره کتبی مستمر (نوبت ۱، ۲، ۳...)';
+        btn.onclick = () => window.openClassMultiContExamModal(sid, cid);
+        stickyBar.firstElementChild?.appendChild(btn);
+      }
+
+      // ۲. افزودن دکمه ریز نمرات کتبی مستمر زیر کادر کتبی هر دانش‌آموز در جدول
+      (c.students || []).forEach(st => {
+        const inp = document.getElementById('contInp_' + st.id);
+        if (inp && inp.parentElement && !inp.parentElement.querySelector('.multi-cont-mini-btn')) {
+          const wList = window.getStudentWrittenContList(c, st);
+          const wrap = document.createElement('div');
+          wrap.className = 'multi-cont-cell-wrap';
+          inp.parentElement.insertBefore(wrap, inp);
+          wrap.appendChild(inp);
+
+          const miniBtn = document.createElement('button');
+          miniBtn.type = 'button';
+          miniBtn.className = 'multi-cont-mini-btn';
+          miniBtn.innerHTML = wList.length > 1
+            ? `📚 میانگین ${fa(wList.length)} کتبی`
+            : `➕ کتبی بعدی`;
+          miniBtn.title = wList.map(x => `${x.title}: ${fmtScore(x.score)}`).join(' | ') || 'افزودن یا مشاهده چند نمره کتبی مستمر';
+          miniBtn.onclick = () => window.openStudentMultiContExamsModal(sid, cid, st.id);
+          wrap.appendChild(miniBtn);
+        }
+      });
+    };
+  }
+
+
+  /* ==========================================================================================
+     بخش ۳: تولید توصیه تربیتی محترمانه خطاب به خانواده + گزارش شفاف با ریز تمام نمرات و راهنمای ضرایب در بالای برگه
+     ========================================================================================== */
+  window.generateFamilyAddressedAdvice = function(c, st, det = null) {
+    if (!st) return '';
+    const d = det || (c && typeof window.getStudentAttentionDetails === 'function' ? window.getStudentAttentionDetails(c, st) : { isAttn: false, categories: [] });
+    const cats = d.categories || [];
+    const bd = window.getStudentScoreBreakdown(c, st);
+    const fullName = formatStudentName(st);
+    const absCnt = c ? attendanceDates(c).filter(dt => attendanceStatus(c, dt, st.id) === 'absent').length : 0;
+
+    if (cats.includes('medical')) {
+      return `اولیای گرامی «${fullName}»؛ سلامتی و آرامش فرزند ارجمندتان در اولویت کامل ماست. در محیط کلاس شرایط همراه با آرامش و ملاحظه برای ایشان فراهم شده است؛ خواهشمندیم در منزل نیز بدون ایجاد فشار درسی، مرورهای کوتاه را با تشویق همراه فرمایید.`;
+    }
+    if (cats.includes('counseling')) {
+      return `اولیای گرامی «${fullName}»؛ فرزند عزیزمان نیازمند تقویت حس امنیت روانی، آرامش و گفت‌وگوی صمیمانه است. پیشنهاد می‌شود در منزل بدون مقایسه با دیگران، به دغدغه‌های او خوب گوش داده و پیشرفت‌های کوچک او را تحسین فرمایید.`;
+    }
+    if (cats.includes('academic') || bd.finalSc < 12) {
+      return `اولیای گرامی «${fullName}»؛ فرزند محترمتان توانایی خوبی دارد اما با توجه به نمرات ثبت‌شده (میانگین مستمر: ${bd.cAvg !== null ? fmtScore(bd.cAvg) : '—'})، نیازمند برنامه‌ریزی روزانه ۲۰ دقیقه‌ای در منزل برای مرور مباحث و حل تمرین‌های کتاب بدون استرس است.`;
+    }
+    if (cats.includes('discipline') || bd.negCount >= 2) {
+      return `اولیای گرامی «${fullName}»؛ با احترام به شخصیت ارزشمند فرزندتان، جهت افزایش تمرکز ایشان در کلاس و تبدیل انرژی بالا به مشارکت مثبت درسی، همراهی، گفت‌وگوی محترمانه و تشویق رفتارهای مسئولانه در منزل بسیار راهگشا خواهد بود.`;
+    }
+    if (cats.includes('absence') || absCnt >= 3) {
+      return `اولیای گرامی «${fullName}»؛ با توجه به ثبت ${fa(absCnt)} جلسه غیبت، حضور منظم و پیوسته فرزندتان در کلاس تاثیر مستقیمی بر یادگیری عمیق و نمره مستمر ایشان دارد. از پیگیری و همراهی صمیمانه شما سپاسگزاریم.`;
+    }
+    if (bd.finalSc >= 17 || st.status === 'good') {
+      return `اولیای گرامی «${fullName}»؛ ضمن سپاس از تربیت شایسته و همراهی ارزشمند شما، تلاش، ادب و مشارکت فعال فرزند ارجمندتان در کلاس مایه مباهات است. تداوم تشویق و آرامش در منزل ضامن درخشش پایدار ایشان خواهد بود.`;
+    }
+    return `اولیای گرامی «${fullName}»؛ روند حضور و تلاش فرزندتان در کلاس متعادل و رو به رشد است. مرور منظم هفتگی دروس در منزل و تشویق مشارکت کلاسی، به ارتقای هرچه بیشتر نمره مستمر و پایانی ایشان کمک می‌کند.`;
+  };
+
+  // ارتقای کامل ReportApp.buildClassListStyleHTML برای:
+  // ۱. درج کادر «📐 راهنمای شفاف نحوه محاسبه نمرات، ضرایب و تاثیر مثبت/منفی (ویژه اطلاع خانواده محترم)» در بالای برگه گزارش
+  // ۲. نمایش تمام ریز نمرات کتبی مستمر و کلاسی + میانگین هر بخش + میزان دقیق تاثیر مثبت و منفی به نمره
+  // ۳. نمایش «توصیه تربیتی خطاب به خانواده» به صورت نوار افقی ظریف و تمیز زیر سطر دانش‌آموز (بدون به‌هم‌ریختن یا زمخت شدن جدول!)
+  if (window.ReportApp) {
+    ReportApp.buildClassListStyleHTML = function(res, forExcel = false) {
+      const cols = this.state.cols;
+      const r = getRules();
+      const themeKey = this.state.theme || document.getElementById('expColorTheme')?.value || 'orange';
+      const pal = (typeof EXPORT_COLOR_PALETTES !== 'undefined' && EXPORT_COLOR_PALETTES[themeKey])
+        ? EXPORT_COLOR_PALETTES[themeKey]
+        : { primary: '#EA580C', primaryDark: '#9A3412', lightBg: '#FFF7ED', border: '#FDBA74', thBg: '#EA580C', thText: '#FFFFFF', zebra: '#FFFBF5', gradStart: '#EA580C', gradEnd: '#F97316' };
+
+      if (res.scope === 'student' && res.totalStudents === 1) {
+        return this.buildDetailedSingleStudentFamilyHTML(res.sections[0].school, res.sections[0].cls, res.sections[0].items[0], forExcel);
+      }
+
+      const statusFilterLabels = {
+        all: 'همه دانش‌آموزان',
+        good: '🟢 وضعیت خوب و برتر',
+        none: '⚪ وضعیت عادی',
+        attn_all: '🔴 نیازمند توجه (همه دسته‌ها)',
+        attn_academic: '📉 نیازمند توجه: درسی و آموزشی',
+        attn_discipline: '⚠️ نیازمند توجه: انضباطی و رفتاری',
+        attn_medical: '🏥 نیازمند توجه: بیماری و سلامت',
+        attn_absence: '📅 نیازمند توجه: غیبت مکرر',
+        attn_counseling: '💜 نیازمند توجه: روحی و مشاوره'
+      };
+      const filterLabel = statusFilterLabels[res.statusFilter] || 'همه دانش‌آموزان';
+
+      // کادر راهنمای شفاف ضرایب و نحوه محاسبه نمرات در بالای برگه گزارش (برای آگاهی کامل خانواده)
+      const familyFormulaGuideHtml = `
+        <div class="rep-family-guide-box">
+          <b style="color:#9A3412;font-size:11.5px;display:block">📐 راهنمای شفاف نحوه محاسبه نمرات و ضرایب در این کارنامه (ویژه اطلاع خانواده محترم):</b>
+          <div>در این گزارش، تمام نمرات دانش‌آموز به تفکیک ثبت شده است. <b>میانگین امتحانات کتبی مستمر</b> و <b>میانگین نمرات کلاسی/شفاهی</b> با ضرایب زیر ترکیب شده و سپس تاثیر امتیازات مثبت و منفی به نمره پایه اضافه یا کسر می‌گردد:</div>
+          <div class="rep-family-guide-pills">
+            <span class="rep-family-guide-pill">📝 ضریب میانگین کتبی مستمر: ×${fa(r.weightCont)}</span>
+            <span class="rep-family-guide-pill">🙋 ضریب میانگین کلاسی/شفاهی: ×${fa(r.weightClass)}</span>
+            <span class="rep-family-guide-pill">🎓 ضریب آزمون پایانی ترم: ×${fa(r.weightTerm)}</span>
+            <span class="rep-family-guide-pill" style="color:#15803D;border-color:#86EFAC">➕ هر مثبت: +${fmtScore(r.positiveValue)} نمره</span>
+            <span class="rep-family-guide-pill" style="color:#15803D;border-color:#86EFAC">🌟 تشویقی بدون منفی: +${fmtScore(r.bonusNoNeg)} نمره</span>
+            <span class="rep-family-guide-pill" style="color:#B91C1C;border-color:#FDA4AF">➖ سقف منفی بدون کسر: ${fa(r.maxNegAllowed)} مورد (مازاد: −${fmtScore(r.penaltyPerNeg)} نمره)</span>
+          </div>
+        </div>
+      `;
+
+      const buildSectionCard = (sec, sIdx, includeSchoolCol) => {
+        const items = sec.items || [];
+        let sumFinal = 0, cntFinal = 0, attnCnt = 0, posCnt = 0, negCnt = 0, absTotal = 0;
+        items.forEach(it => {
+          const bd = window.getStudentScoreBreakdown(it._c || sec.cls, it.st);
+          if (Number.isFinite(Number(bd.finalSc))) { sumFinal += Number(bd.finalSc); cntFinal++; }
+          if (it.det?.isAttn) attnCnt++;
+          posCnt += bd.posCount;
+          negCnt += bd.negCount;
+          absTotal += (Number(it.absCnt) || 0);
+        });
+        const classAvg = cntFinal ? (sumFinal / cntFinal) : 0;
+        const cleanClsName = window.cleanClassDisplayName ? window.cleanClassDisplayName(sec.cls.name) : sec.cls.name;
+        const subjTxt = sec.cls.subject ? ` · 📚 درس: ${esc(sec.cls.subject)}` : '';
+        const gradeTxt = sec.cls.grade ? ` (${esc(sec.cls.grade)})` : '';
+
+        // توجه: توصیه تربیتی به عنوان ستون عمودی اضافه نمی‌شود تا جدول زمخت و فشرده نشود؛ بلکه به صورت نوار افقی ظریف زیر ردیف می‌آید!
+        const headers = ['ردیف'];
+        if (includeSchoolCol) headers.push('مدرسه / کلاس');
+        headers.push('دانش‌آموز');
+        if (cols.father) headers.push('نام پدر');
+        if (cols.phone) headers.push('تلفن تماس');
+        if (cols.att) headers.push('غیبت');
+        if (cols.cont) headers.push('ریز نمرات مستمر (کتبی و کلاسی) و میانگین');
+        if (cols.beh) headers.push('مثبت / منفی و میزان تاثیر');
+        if (cols.term) headers.push('پایانی', 'نمره نهایی (از ۲۰)');
+        if (cols.status) headers.push('وضعیت');
+
+        const rowsHtml = items.map((it, idx) => {
+          const targetCls = it._c || sec.cls;
+          const { st, det, absCnt } = it;
+          const bd = window.getStudentScoreBreakdown(targetCls, st);
+          const rowBg = det.isAttn ? '#FFF5F5' : (idx % 2 === 1 ? pal.zebra : '#FFFFFF');
+          const fullName = `${st.lastName || ''} ${st.name || ''}`.trim();
+          const initials = (st.lastName || st.name || 'د').slice(0, 1);
+
+          const studentCellHtml = (!forExcel && cols.photo)
+            ? `<div style="display:flex;align-items:center;gap:6px">
+                 <span style="width:24px;height:24px;border-radius:50%;border:1px solid #FDBA74;background:#FFF7ED;color:#C2410C;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;overflow:hidden;flex-shrink:0">
+                   ${st.photo ? `<img src="${st.photo}" style="width:100%;height:100%;object-fit:cover">` : esc(initials)}
+                 </span>
+                 <b style="font-size:11.5px;color:#0F172A;white-space:nowrap">${esc(fullName)}</b>
+               </div>`
+            : `<b style="font-size:11.5px;color:#0F172A">${esc(fullName)}</b>`;
+
+          // جزئیات کامل تمام نمرات کتبی مستمر و کلاسی برای اطلاع دقیق خانواده
+          const writtenScoresStr = bd.writtenList.length
+            ? bd.writtenList.map(x => fmtScore(x.score)).join(' ، ')
+            : '—';
+          const oralScoresStr = bd.oralList.length
+            ? bd.oralList.map(x => fmtScore(x.score)).join(' ، ')
+            : '—';
+
+          const contDetailHtml = `
+            <div class="rep-scores-mini-stack">
+              <div><span style="color:#9A3412;font-weight:800">📝 کتبی‌ها:</span> ${esc(writtenScoresStr)} ${bd.writtenList.length > 1 ? `<b style="color:#C2410C">(میانگین: ${fmtScore(bd.writtenAvg)})</b>` : ''}</div>
+              ${bd.oralList.length ? `<div><span style="color:#0369A1;font-weight:800">🙋 کلاسی:</span> ${esc(oralScoresStr)} ${bd.oralList.length > 1 ? `<b>(میانگین: ${fmtScore(bd.oralAvg)})</b>` : ''}</div>` : ''}
+              <div style="color:#0F172A;font-weight:900;border-top:1px dotted #FED7AA;padding-top:1px">⭐ مستمر با ضریب: ${bd.cAvg !== null ? fmtScore(bd.cAvg) : '—'}</div>
+            </div>
+          `;
+
+          // جزئیات دقیق مثبت و منفی و میزان تاثیر به نمره
+          const behEffectSign = bd.totalBehEffect >= 0 ? '+' : '';
+          const behEffectColor = bd.totalBehEffect > 0 ? '#15803D' : (bd.totalBehEffect < 0 ? '#B91C1C' : '#64748B');
+          const behDetailHtml = `
+            <div style="text-align:center;line-height:1.35">
+              <div><span style="color:#15803D;font-weight:900">+${fa(bd.posCount)}</span> / <span style="color:#B91C1C;font-weight:900">−${fa(bd.negCount)}</span></div>
+              <div style="font-size:9.5px;font-weight:800;color:${behEffectColor}">تاثیر: ${behEffectSign}${fmtScore(bd.totalBehEffect)} نمره</div>
+            </div>
+          `;
+
+          const finalColor = Number(bd.finalSc) >= 17 ? '#15803D' : (Number(bd.finalSc) < 12 ? '#B91C1C' : '#0F172A');
+          const finalBg = Number(bd.finalSc) >= 17 ? '#DCFCE7' : (Number(bd.finalSc) < 12 ? '#FEE2E2' : '#FFF7ED');
+
+          let statusBadgeHtml = '';
+          if (det.isAttn) {
+            const labels = (det.badges || []).map(b => b.label).join('، ') || 'نیازمند توجه';
+            statusBadgeHtml = `<span style="display:inline-block;padding:2px 6px;border-radius:99px;background:#FFE4E6;color:#BE123C;border:1px solid #FDA4AF;font-size:9.5px;font-weight:800">${esc(labels)}</span>`;
+          } else if (st.status === 'good') {
+            statusBadgeHtml = `<span style="display:inline-block;padding:2px 6px;border-radius:99px;background:#DCFCE7;color:#15803D;border:1px solid #86EFAC;font-size:9.5px;font-weight:800">🟢 خوب</span>`;
+          } else {
+            statusBadgeHtml = `<span style="color:#64748B;font-size:10px">عادی</span>`;
+          }
+
+          const mainRowHtml = `<tr style="background-color:${rowBg}">
+            <td style="text-align:center;font-weight:900;color:${pal.primaryDark};background:${pal.lightBg};width:26px">${fa(idx + 1)}</td>
+            ${includeSchoolCol ? `<td style="font-size:10px"><b>${esc(it._c ? (window.cleanClassDisplayName ? window.cleanClassDisplayName(it._c.name) : it._c.name) : cleanClsName)}</b><br><span style="color:#64748B">${esc(it._s?.name || sec.school.name)}</span></td>` : ''}
+            <td style="padding:5px 7px">${studentCellHtml}</td>
+            ${cols.father ? `<td style="text-align:center;color:#334155">${esc(st.fatherName || '—')}</td>` : ''}
+            ${cols.phone ? `<td dir="ltr" style="text-align:center;font-family:monospace;font-size:10.5px">${st.phone ? fa(st.phone) : '—'}</td>` : ''}
+            ${cols.att ? `<td style="text-align:center;font-weight:800;color:${absCnt >= 3 ? '#B91C1C' : (absCnt > 0 ? '#B45309' : '#15803D')}">${absCnt === 0 ? '۰' : `${fa(absCnt)} جلسه`}</td>` : ''}
+            ${cols.cont ? `<td style="padding:4px 6px">${contDetailHtml}</td>` : ''}
+            ${cols.beh ? `<td style="padding:4px 5px">${behDetailHtml}</td>` : ''}
+            ${cols.term ? `<td style="text-align:center;font-weight:800">${bd.termSc !== null ? fmtScore(bd.termSc) : '—'}</td><td style="text-align:center;font-weight:900;color:${finalColor};background:${finalBg};font-size:12px">${fmtScore(bd.finalSc)}</td>` : ''}
+            ${cols.status ? `<td style="text-align:center">${statusBadgeHtml}</td>` : ''}
+          </tr>`;
+
+          // اگر تیک «توصیه تربیتی» روشن باشد، در یک نوار افقی ظریف و شیک خطاب به خانواده زیر ردیف دانش‌آموز نمایش داده می‌شود (بدون به هم ریختن جدول!)
+          if (cols.advice) {
+            const familyAdvice = window.generateFamilyAddressedAdvice(targetCls, st, det);
+            return mainRowHtml + `
+              <tr class="rep-family-advice-subrow">
+                <td colspan="${headers.length}">
+                  <div class="rep-family-advice-inner">
+                    <span class="rep-family-advice-label">🌿 توصیه تربیتی خطاب به خانواده:</span>
+                    <span>${esc(familyAdvice)}</span>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }
+          return mainRowHtml;
+        }).join('');
+
+        const pageBreak = (sIdx > 0 && !forExcel) ? 'page-break-before:always;break-before:page;' : '';
+
+        return `<div class="rep-classlist-card" style="${pageBreak}">
+          <div class="rep-classlist-head">
+            <div>
+              <b style="font-size:12.5px;color:#9A3412">🏫 ${esc(sec.school.name)} — 🚪 کلاس ${esc(cleanClsName)}${gradeTxt}${subjTxt}</b>
+              <div style="font-size:10.5px;color:#475569;margin-top:2px">👨‍🏫 دبیر: ${esc(getTeacherName())} · 📅 ${formatJalaliDate(localISODate())} · فیلتر: ${esc(filterLabel)}</div>
+            </div>
+            <div class="rep-classlist-kpis">
+              <span class="rep-kpi-mini">👨‍🎓 ${fa(items.length)} نفر</span>
+              <span class="rep-kpi-mini">⭐ میانگین کلاس: ${fmtScore(classAvg)}</span>
+              <span class="rep-kpi-mini" style="color:#15803D;border-color:#86EFAC">➕${fa(posCnt)} / <span style="color:#B91C1C">➖${fa(negCnt)}</span></span>
+              <span class="rep-kpi-mini">📅 غیبت: ${fa(absTotal)}</span>
+              ${attnCnt > 0 ? `<span class="rep-kpi-mini" style="background:#FFE4E6;color:#BE123C;border-color:#FDA4AF">🚨 توجه: ${fa(attnCnt)}</span>` : ''}
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table border="1" class="rep-clean-table" style="border-color:${pal.border}">
+              <thead>
+                <tr style="background-color:${pal.thBg};color:#FFFFFF">
+                  ${headers.map(h => `<th>${esc(h)}</th>`).join('')}
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}</tbody>
+            </table>
+          </div>
+        </div>`;
+      };
+
+      const splitMode = this.state.splitMode || 'separate_sections';
+      let bodyHtml = '';
+      if (splitMode === 'separate_sections' || res.sections.length <= 1) {
+        bodyHtml = res.sections.map((sec, idx) => buildSectionCard(sec, idx, false)).join('');
+      } else {
+        const merged = [];
+        res.sections.forEach(sec => sec.items.forEach(it => merged.push({ ...it, _s: sec.school, _c: sec.cls })));
+        bodyHtml = buildSectionCard({
+          school: { name: res.scope === 'school' ? (res.sections[0]?.school?.name || 'مدرسه') : 'همه مدارس' },
+          cls: { name: `${fa(res.sections.length)} کلاس ادغام‌شده`, grade: '', subject: '' },
+          items: merged
+        }, 0, true);
+      }
+
+      return `<div style="font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;color:#0F172A">
+        ${familyFormulaGuideHtml}
+        ${bodyHtml}
+      </div>`;
+    };
+
+    // کارنامه تفصیلی تکی یک دانش‌آموز ویژه ارائه به خانواده (با ریز تمام نمرات کتبی مستمر، کلاسی، فرمول ضرایب و توصیه به خانواده)
+    ReportApp.buildDetailedSingleStudentFamilyHTML = function(s, c, item, forExcel = false) {
+      const { st, det, absCnt } = item;
+      const r = getRules();
+      const bd = window.getStudentScoreBreakdown(c, st);
+      const fullName = formatStudentName(st);
+      const familyAdvice = window.generateFamilyAddressedAdvice(c, st, det);
+      const cleanCls = window.cleanClassDisplayName ? window.cleanClassDisplayName(c.name) : c.name;
+
+      const writtenItemsHtml = bd.writtenList.length
+        ? bd.writtenList.map((w, i) => `<span class="rep-family-guide-pill">📝 ${esc(w.title || ('کتبی ' + fa(i + 1)))}: <b>${fmtScore(w.score)}</b></span>`).join(' ')
+        : '<span class="muted">ثبت نشده</span>';
+
+      const oralItemsHtml = bd.oralList.length
+        ? bd.oralList.map((o, i) => `<span class="rep-family-guide-pill" style="color:#0369A1">🙋 ${esc(o.title || ('کلاسی ' + fa(i + 1)))}: <b>${fmtScore(o.score)}</b></span>`).join(' ')
+        : '<span class="muted">ثبت نشده</span>';
+
+      return `
+        <div style="font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;color:#0F172A">
+          <div class="rep-classlist-card" style="padding:12px">
+            <div class="rep-classlist-head" style="border-radius:10px;margin-bottom:10px">
+              <div>
+                <b style="font-size:14px;color:#9A3412">👨‍🎓 کارنامه تفصیلی و گزارش آموزشی ویژه خانواده محترم: ${esc(fullName)}</b>
+                <div style="font-size:11px;color:#475569;margin-top:3px">🏫 مدرسه: ${esc(s.name)} · 🚪 کلاس: ${esc(cleanCls)}${c.subject ? ` · 📚 درس: ${esc(c.subject)}` : ''} · 👨‍🏫 دبیر: ${esc(getTeacherName())} · 📅 تاریخ: ${formatJalaliDate(localISODate())}</div>
+              </div>
+              <span class="rep-kpi-mini" style="font-size:13px;padding:4px 12px;background:#EA580C;color:#FFFFFF">⭐ نمره نهایی: ${fmtScore(bd.finalSc)} از ۲۰</span>
+            </div>
+
+            <div class="rep-family-guide-box">
+              <b style="color:#9A3412;display:block;margin-bottom:3px">📐 راهنمای نحوه محاسبه نمره برای اطلاع خانواده محترم:</b>
+              <div class="rep-family-guide-pills">
+                <span class="rep-family-guide-pill">ضریب میانگین کتبی مستمر: ×${fa(r.weightCont)}</span>
+                <span class="rep-family-guide-pill">ضریب میانگین کلاسی/شفاهی: ×${fa(r.weightClass)}</span>
+                <span class="rep-family-guide-pill">ضریب پایانی ترم: ×${fa(r.weightTerm)}</span>
+                <span class="rep-family-guide-pill" style="color:#15803D">هر مثبت: +${fmtScore(r.positiveValue)} نمره</span>
+                <span class="rep-family-guide-pill" style="color:#15803D">تشویقی بدون منفی: +${fmtScore(r.bonusNoNeg)} نمره</span>
+                <span class="rep-family-guide-pill" style="color:#B91C1C">سقف منفی مجاز: ${fa(r.maxNegAllowed)} (مازاد: −${fmtScore(r.penaltyPerNeg)} نمره)</span>
+              </div>
+            </div>
+
+            <table border="1" class="rep-clean-table" style="margin-bottom:10px">
+              <tbody>
+                <tr>
+                  <th style="width:32%">📝 ریز امتحانات کتبی مستمر</th>
+                  <td>${writtenItemsHtml}</td>
+                  <th style="width:20%">میانگین کتبی مستمر</th>
+                  <td style="text-align:center;font-weight:900;color:#9A3412">${bd.writtenAvg !== null ? fmtScore(bd.writtenAvg) : '—'} (با ضریب ${fa(r.weightCont)})</td>
+                </tr>
+                <tr>
+                  <th>🙋 ریز نمرات کلاسی و پرسش</th>
+                  <td>${oralItemsHtml}</td>
+                  <th>میانگین کلاسی/شفاهی</th>
+                  <td style="text-align:center;font-weight:900;color:#0369A1">${bd.oralAvg !== null ? fmtScore(bd.oralAvg) : '—'} (با ضریب ${fa(r.weightClass)})</td>
+                </tr>
+                <tr>
+                  <th>⭐ میانگین کل مستمر (با اعمال ضریب)</th>
+                  <td style="font-weight:900;font-size:12.5px;color:#0F172A">${bd.cAvg !== null ? fmtScore(bd.cAvg) : '—'} از ۲۰</td>
+                  <th>🎓 نمره آزمون پایانی ترم</th>
+                  <td style="text-align:center;font-weight:900;font-size:12.5px">${bd.termSc !== null ? `${fmtScore(bd.termSc)} (با ضریب ${fa(r.weightTerm)})` : '—'}</td>
+                </tr>
+                <tr>
+                  <th>➕/➖ فعالیت‌های مثبت و منفی</th>
+                  <td><b style="color:#15803D">+${fa(bd.posCount)} مثبت</b> (${bd.posEffect > 0 ? `+${fmtScore(bd.posEffect)}` : '۰'}) ${bd.noNegBonus > 0 ? `| <b style="color:#15803D">+${fmtScore(bd.noNegBonus)} تشویقی بدون منفی</b>` : ''} | <b style="color:#B91C1C">−${fa(bd.negCount)} منفی</b> (${bd.negPenalty > 0 ? `−${fmtScore(bd.negPenalty)} کسر` : 'بدون کسر نمره'})</td>
+                  <th>تاثیر خالص روی نمره نهایی</th>
+                  <td style="text-align:center;font-weight:900;color:${bd.totalBehEffect >= 0 ? '#15803D' : '#B91C1C'}">${bd.totalBehEffect >= 0 ? '+' : ''}${fmtScore(bd.totalBehEffect)} نمره</td>
+                </tr>
+                <tr>
+                  <th>📅 وضعیت حضور و غیاب</th>
+                  <td>${absCnt === 0 ? '<b style="color:#15803D">✓ حاضر کامل (بدون غیبت)</b>' : `<b style="color:#B91C1C">${fa(absCnt)} جلسه غیبت ثبت‌شده</b>`}</td>
+                  <th>🏆 نمره نهایی کل (از ۲۰)</th>
+                  <td style="text-align:center;font-weight:900;font-size:14px;background:#FFF7ED;color:#9A3412">${fmtScore(bd.finalSc)} از ۲۰</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="background:#FFFBF5;border:1.5px solid #FDBA74;border-radius:10px;padding:9px 12px;font-size:11.5px;line-height:1.75;color:#1E293B">
+              <b style="color:#C2410C;display:block;margin-bottom:2px">🌿 پیام و توصیه تربیتی دبیر خطاب به خانواده محترم:</b>
+              ${esc(familyAdvice)}
+            </div>
+          </div>
+        </div>
+      `;
+    };
+  }
+
+
+  /* ==========================================================================================
+     بخش ۴: افزودن ردیف و زیرصفحه اختصاصی «🤖 هوش‌واره (هوش مصنوعی / AI)» به بخش تنظیمات
+     ========================================================================================== */
+  const injectAiHubIntoSettingsV89 = function() {
+    // ۱. ایجاد زیرصفحه #setPane-ai در #backup در صورت عدم وجود
+    const backupSec = document.getElementById('backup');
+    if (backupSec && !document.getElementById('setPane-ai')) {
+      const pane = document.createElement('div');
+      pane.id = 'setPane-ai';
+      pane.className = 'settings-pane';
+      pane.innerHTML = AiHubApp.buildHubContentHTML('aiHubKeyInputPane', 'aiHubTestResultBoxPane');
+      backupSec.appendChild(pane);
+    }
+
+    // ۲. افزودن دکمه تب «🤖 هوش‌واره (AI)» به نوار تب‌های بالای زیرصفحه‌های تنظیمات
+    const tabsBar = document.getElementById('settingsTabsBar');
+    if (tabsBar && !tabsBar.querySelector('[data-stab="ai"]')) {
+      const tabBtn = document.createElement('button');
+      tabBtn.type = 'button';
+      tabBtn.className = 'set-tab-btn';
+      tabBtn.setAttribute('data-stab', 'ai');
+      tabBtn.onclick = () => window.openCloudSettingsSubpage('ai');
+      tabBtn.innerHTML = '<span>🤖</span><span>هوش‌واره (AI)</span>';
+      tabsBar.insertBefore(tabBtn, tabsBar.firstElementChild);
+    }
+
+    // ۳. افزودن ردیف برجسته «🤖 هوش‌واره و هوش مصنوعی (AI)» به بالای لیست تنظیمات (#tgSettingsHomeWrap)
+    const firstIsland = document.querySelector('#tgSettingsHomeWrap .dam-settings-island');
+    if (firstIsland && !firstIsland.querySelector('[data-ai-hub-row="1"]')) {
+      const aiRow = document.createElement('button');
+      aiRow.type = 'button';
+      aiRow.className = 'dam-settings-row';
+      aiRow.setAttribute('data-ai-hub-row', '1');
+      aiRow.onclick = () => window.openCloudSettingsSubpage('ai');
+      aiRow.innerHTML = `
+        <div class="dam-settings-row-right">
+          <span class="dam-3d-orb"><span>🤖</span></span>
+          <div class="dam-settings-row-texts">
+            <b>هوش‌واره و هوش مصنوعی (AI)</b>
+            <span>اتصال، ثبت کلید، رفع محدودیت به فارسی و راهنمای امکانات هوش مصنوعی</span>
+          </div>
+        </div>
+        <div class="dam-settings-row-left"><span>مدیریت ‹</span></div>
+      `;
+      firstIsland.insertBefore(aiRow, firstIsland.firstElementChild);
+    }
+  };
+
+  const _origOpenCloudSettingsSubpageV89 = window.openCloudSettingsSubpage;
+  window.openCloudSettingsSubpage = function(paneId) {
+    injectAiHubIntoSettingsV89();
+    if (paneId === 'ai') {
+      const pane = document.getElementById('setPane-ai');
+      if (pane) pane.innerHTML = AiHubApp.buildHubContentHTML('aiHubKeyInputPane', 'aiHubTestResultBoxPane');
+    }
+    if (typeof _origOpenCloudSettingsSubpageV89 === 'function') {
+      _origOpenCloudSettingsSubpageV89(paneId);
+    }
+    if (paneId === 'ai') {
+      const titleEl = document.getElementById('tgSubpageTitleText');
+      if (titleEl) titleEl.textContent = '🤖 مرکز هوش‌واره و هوش مصنوعی (AI)';
+      document.querySelectorAll('#backup .settings-pane').forEach(p => {
+        p.classList.toggle('active', p.id === 'setPane-ai');
+      });
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(injectAiHubIntoSettingsV89, 280));
+  } else {
+    setTimeout(injectAiHubIntoSettingsV89, 280);
+  }
+})();
+</script>
+<!-- ==================== END V8.9.0 AI & GRADES PRO ==================== -->
 
 </body>
 </html>
