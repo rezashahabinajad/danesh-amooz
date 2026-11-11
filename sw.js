@@ -1,75 +1,128 @@
-const APP_VERSION = '8.9.3';
-const CACHE_NAME = 'danesh-amooz-man-v8.9.3-pro';
-const CACHE_PREFIX = 'danesh-amooz-';
-const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
+const APP_VERSION = '9.2.0';
+const CACHE_NAME = 'danesh-amooz-man-v' + APP_VERSION + '-orange';
+const ASSETS = [
+  './',
+  './index.html',
+  './manifest.webmanifest',
+  './icon-192.png',
+  './icon-512.png'
+];
+const REQUIRED_CORE_FOR_CLEANUP = [
+  './index.html',
+  './manifest.webmanifest',
+  './icon-192.png',
+  './icon-512.png'
+];
 
+// ۱. مرحله نصب (install): دانلود و اعتبارسنجی اجباری تمام فایل‌های اصلی و آیکن‌ها
+// اگر حتی یکی از فایل‌های اصلی یا آیکن‌ها دانلود و کش نشود، نصب نسخه ناقص متوقف می‌شود تا نسخه قبلی سالم بماند.
 self.addEventListener('install', event => {
-  event.waitUntil((async () => {
-    const cache = await caches.open(CACHE_NAME);
-    try {
-      await cache.addAll(CORE);
-    } catch (e) {
-      // Keep installation resilient if optional files are missing in certain hosting setups
-      for (const url of CORE) {
-        try { await cache.add(url); } catch (_) {}
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      for (const assetUrl of ASSETS) {
+        const response = await fetch(assetUrl, { cache: 'no-cache' });
+        if (!response || !response.ok) {
+          throw new Error(`Failed to fetch required core asset during SW install: ${assetUrl} (status: ${response ? response.status : 'none'})`);
+        }
+        await cache.put(assetUrl, response.clone());
       }
-    }
-    await self.skipWaiting();
-  })());
+      // عدم اجرای خودکار skipWaiting در زمان نصب!
+      // فعال‌سازی نسخه جدید فقط پس از تأیید صریح کاربر (SKIP_WAITING با confirmedByUser === true) انجام می‌شود.
+    })()
+  );
 });
 
+// ۲. مرحله فعال‌سازی (activate): حذف کش‌های قدیمی فقط پس از اطمینان ۱۰۰٪ از سلامت کش جدید (شامل آیکن‌ها)
 self.addEventListener('activate', event => {
-  event.waitUntil((async () => {
-    // Verify new cache is opened and ready before cleaning up older app caches
-    const activeCache = await caches.open(CACHE_NAME);
-    const cachedRequests = await activeCache.keys();
-    if (cachedRequests.length > 0) {
-      const keys = await caches.keys();
-      // Strictly delete ONLY old caches belonging to this app (danesh-amooz-*)
-      // Never touch other apps' caches or IndexedDB / localStorage
-      await Promise.all(
-        keys
-          .filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
-          .map(key => caches.delete(key))
-      );
-    }
-    await self.clients.claim();
-    const allClients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-    for (const client of allClients) {
+  event.waitUntil(
+    (async () => {
+      let newCacheVerified = false;
       try {
-        client.postMessage({ type: 'SW_UPDATED', version: APP_VERSION, cacheName: CACHE_NAME });
-      } catch (_) {}
-    }
-  })());
+        const newCache = await caches.open(CACHE_NAME);
+        const checks = await Promise.all(
+          REQUIRED_CORE_FOR_CLEANUP.map(url => newCache.match(url, { ignoreSearch: true }))
+        );
+        newCacheVerified = checks.every(res => res && res.ok);
+      } catch (err) {
+        newCacheVerified = false;
+      }
+
+      if (newCacheVerified) {
+        const keys = await caches.keys();
+        await Promise.all(
+          keys
+            .filter(key => key !== CACHE_NAME)
+            .map(key => caches.delete(key))
+        );
+      }
+
+      await self.clients.claim();
+      const allClients = await self.clients.matchAll({ includeUncontrolled: true });
+      for (const client of allClients) {
+        client.postMessage({
+          type: 'SW_ACTIVATED',
+          version: APP_VERSION,
+          cacheName: CACHE_NAME,
+          oldCachesCleaned: newCacheVerified
+        });
+      }
+    })()
+  );
 });
 
+// ۳. دریافت پیام از برنامه برای اجرای هماهنگ skipWaiting فقط با تأیید صریح کاربر (confirmedByUser === true)
 self.addEventListener('message', event => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
+  if (!event.data || typeof event.data !== 'object') return;
+  if (event.data.type === 'SKIP_WAITING' && event.data.confirmedByUser === true) {
     self.skipWaiting();
+  } else if (event.data.type === 'GET_SW_VERSION') {
+    if (event.source && typeof event.source.postMessage === 'function') {
+      event.source.postMessage({
+        type: 'SW_VERSION_INFO',
+        version: APP_VERSION,
+        cacheName: CACHE_NAME
+      });
+    }
   }
 });
 
+// ۴. پاسخ‌دهی آفلاین/آنلاین هوشمند (حفظ کامل کارکرد آفلاین بدون دست زدن به درخواست‌های API خارجی)
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return;
 
-  event.respondWith((async () => {
-    try {
-      const networkResponse = await fetch(event.request, { cache: 'no-store' });
-      if (networkResponse && networkResponse.ok) {
-        const cache = await caches.open(CACHE_NAME);
-        cache.put(event.request, networkResponse.clone()).catch(() => {});
-      }
-      return networkResponse;
-    } catch (e) {
-      const cached = await caches.match(event.request, { ignoreSearch: true });
+  const reqUrl = new URL(event.request.url);
+  if (reqUrl.origin !== self.location.origin) {
+    return;
+  }
+
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(networkRes => {
+          if (networkRes && networkRes.status === 200) {
+            const copy = networkRes.clone();
+            caches.open(CACHE_NAME).then(c => c.put('./index.html', copy)).catch(() => {});
+          }
+          return networkRes;
+        })
+        .catch(() => caches.match('./index.html', { ignoreSearch: true }))
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(event.request, { ignoreSearch: true }).then(cached => {
       if (cached) return cached;
-      if (event.request.mode === 'navigate') {
-        const fallback = await caches.match('./index.html', { ignoreSearch: true });
-        if (fallback) return fallback;
-      }
-      throw e;
-    }
-  })());
+      return fetch(event.request)
+        .then(res => {
+          if (res && res.status === 200 && res.type === 'basic') {
+            const copy = res.clone();
+            caches.open(CACHE_NAME).then(c => c.put(event.request, copy)).catch(() => {});
+          }
+          return res;
+        })
+        .catch(() => caches.match('./index.html', { ignoreSearch: true }));
+    })
+  );
 });
