@@ -103,13 +103,13 @@ body.no-animations *, body.no-animations *::before, body.no-animations *::after 
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: radial-gradient(circle at 50% 0%, #0D1B32 0%, var(--bg-main) 65%);
+  background: linear-gradient(180deg, #FFF9F2 0%, #FFFFFF 100%);
   background-color: var(--bg-main);
   color: var(--text);
   font-family: 'Vazirmatn', Tahoma, "Segoe UI", sans-serif;
   font-size: 14px;
   line-height: 1.55;
-  padding-bottom: 98px !important;
+  padding-bottom: 110px !important;
   overflow-x: hidden;
 }
 body.light-mode {
@@ -140,7 +140,7 @@ body:not(.anim-network) #cyberNetworkCanvas {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: radial-gradient(circle at 50% 45%, #0D1F38 0%, #050914 75%);
+  background: radial-gradient(circle at 50% 45%, #FFF7ED 0%, #FFEDD5 75%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -270,11 +270,11 @@ body:not(.anim-network) #cyberNetworkCanvas {
   position: sticky;
   top: 0;
   z-index: 45;
-  background: rgba(5, 9, 20, 0.88);
+  background: rgba(255, 249, 242, 0.95);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 4px 18px rgba(234, 88, 12, 0.08);
   padding: 10px 14px;
 }
 body.light-mode .topbar {
@@ -287,7 +287,7 @@ body.light-mode .topbar {
   width: 42px;
   height: 42px;
   border-radius: 13px;
-  background: linear-gradient(135deg, rgba(34, 211, 238, 0.22), rgba(16, 29, 48, 0.95));
+  background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
   border: 1.5px solid var(--neon-cyan);
   display: grid;
   place-items: center;
@@ -344,7 +344,7 @@ body.anim-page-transition .view.active {
 
 /* انیمیشن شماره ۲: هسته هوشمند هولوگرافیک JARVIS در داشبورد */
 .jarvis-command-deck {
-  background: linear-gradient(145deg, rgba(16, 29, 48, 0.88), rgba(11, 20, 36, 0.94));
+  background: linear-gradient(145deg, #FFFFFF, #FFF7ED);
   border: 1px solid var(--border-cyber);
   border-radius: 22px;
   padding: 16px;
@@ -416,7 +416,7 @@ body:not(.anim-jarvis-core) .jarvis-scan-beam {
   width: 104px;
   height: 104px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(16, 29, 48, 0.96) 0%, rgba(5, 9, 20, 0.98) 100%);
+  background: radial-gradient(circle, #FFFFFF 0%, #FFF7ED 100%);
   border: 1.5px solid rgba(34, 211, 238, 0.45);
   box-shadow: inset 0 0 16px rgba(34, 211, 238, 0.22), 0 0 14px rgba(5, 9, 20, 0.8);
   display: flex;
@@ -662,7 +662,7 @@ body.anim-charts .cyber-progress-fill {
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
 .card {
-  background: rgba(11, 20, 36, 0.88);
+  background: #FFFFFF;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border);
@@ -726,15 +726,15 @@ body.light-mode .card {
 .btn:active { transform: scale(0.96); }
 .btn:disabled { opacity: 0.55; pointer-events: none; }
 .btn.primary {
-  background: linear-gradient(135deg, #06B6D4, #0284C7) !important;
-  color: #F8FAFC !important;
-  border-color: rgba(34, 211, 238, 0.5) !important;
-  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.32);
+  background: linear-gradient(135deg, #EA580C, #F97316) !important;
+  color: #FFFFFF !important;
+  border-color: #EA580C !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.28);
 }
 .btn.soft {
-  background-color: rgba(34, 211, 238, 0.12) !important;
-  color: var(--neon-cyan) !important;
-  border: 1px solid rgba(34, 211, 238, 0.30) !important;
+  background-color: #FFF7ED !important;
+  color: #C2410C !important;
+  border: 1px solid #FDBA74 !important;
 }
 .btn.danger {
   background-color: rgba(248, 113, 113, 0.14) !important;
@@ -779,7 +779,7 @@ body.light-mode .card {
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(5, 9, 20, 0.94);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-top: 1px solid var(--border);
@@ -6554,7 +6554,7 @@ const KEY = 'danesh_amooz_man_v1';
     window.fetch = function(resource, options = {}) {
       const urlStr = typeof resource === 'string' ? resource : (resource?.url || '');
       if (urlStr.startsWith('http://') || urlStr.startsWith('https://')) {
-        const isLocal = urlStr.includes('127.0.0.') || urlStr.includes('localhost');
+        const isLocal = urlStr.includes('127.0.0.') || urlStr.includes('localhost') || (typeof location !== 'undefined' && urlStr.startsWith(location.origin));
         if (!isLocal) {
           if (typeof navigator !== 'undefined' && navigator.onLine === false) {
             return Promise.reject(new Error('آفلاین هستید'));
@@ -54795,6 +54795,1811 @@ ${JSON.stringify(batch, null, 2)}
 })();
 </script>
 <!-- ==================== END V9.2.1 ROOT-CAUSE UPDATE & AI ARCHITECTURE SUITE ==================== -->
+
+
+<!-- ==================== START V9.2.1 MASTER ARCHITECTURAL & QA REMEDIATION SUITE ==================== -->
+<style id="v921MasterCleanUiStyles">
+  /* تضمین ۱۰۰٪ تم یکپارچه نارنجی و سفید، خوانایی کامل متون فارسی، عدم برش نام دانش‌آموزان و عدم هم‌پوشانی نوار پایین */
+  :root {
+    --bg-main: #FFF9F2;
+    --bg-card: #FFFFFF;
+    --bg-panel: #FFF3E4;
+    --text-main: #1E293B;
+    --text-muted: #475569;
+    --primary: #EA580C;
+    --primary2: #F97316;
+    --primary-dark: #9A3412;
+    --primary-light: #FFF7ED;
+    --border: #FED7AA;
+  }
+  body {
+    background: #FFF9F2 !important;
+    background-color: #FFF9F2 !important;
+    color: #1E293B !important;
+    padding-bottom: 112px !important;
+  }
+  .studentcard b, .student b, .td-row b, .student-name-label, .card h3, .card h4 {
+    color: #0F172A !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    line-height: 1.5 !important;
+  }
+  /* محافظت از به هم ریختن نام دانش‌آموز در موبایل */
+  @media (max-width: 640px) {
+    .student {
+      align-items: flex-start !important;
+      gap: 10px !important;
+    }
+    .student b {
+      font-size: 14px !important;
+      display: block !important;
+      min-width: 110px !important;
+    }
+    .actions .btn {
+      min-height: 36px !important;
+      padding: 6px 10px !important;
+      font-size: 12px !important;
+    }
+  }
+  /* حالت تمام‌صفحه واقعی برای مرکز گزارش‌ها و لیست‌های بزرگ */
+  .dam-true-fullscreen-modal {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    z-index: 9990 !important;
+    background: #FFF9F2 !important;
+    overflow-y: auto !important;
+    padding: 14px !important;
+  }
+  .dam-expanded-table-wrap {
+    max-height: calc(100vh - 160px) !important;
+    overflow: auto !important;
+  }
+  /* کارت داشبورد سلامت دیتابیس */
+  .db-health-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .db-health-stat {
+    background: #FFFFFF;
+    border: 1px solid #FED7AA;
+    border-radius: 12px;
+    padding: 10px 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.06);
+  }
+  .db-health-stat span {
+    display: block;
+    font-size: 11px;
+    color: #64748B;
+    font-weight: 700;
+  }
+  .db-health-stat strong {
+    display: block;
+    font-size: 18px;
+    color: #EA580C;
+    font-weight: 900;
+    margin-top: 3px;
+  }
+  /* استایل اختصاصی چاپ و PDF رنگی */
+  @media print {
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  }
+</style>
+
+<script id="v921MasterArchitecturalSuite">
+(function() {
+  'use strict';
+
+  const UNIFIED_VERSION = '9.2.1';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.2.1-orange';
+  window.DANESH_APP_VERSION = UNIFIED_VERSION;
+  window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
+  window.APP_VERSION = UNIFIED_VERSION;
+  window.CACHE_NAME = UNIFIED_CACHE_NAME;
+
+  /* ==========================================================================================
+     قانون اول: پشتیبان‌گیری خودکار غیرمخرب قبل از هر تغییر و تضمین ثبات شناسه یکتای دانش‌آموزان
+     ========================================================================================== */
+  window._preOperationSafetySnapshots = window._preOperationSafetySnapshots || [];
+
+  window.createNonDestructiveSafetySnapshot = function(reason = 'auto_safety_snapshot') {
+    try {
+      const targetDb = typeof db !== 'undefined' && db ? db : { version: 1, schools: [] };
+      const stats = typeof window.computeDbStatsSummary === 'function'
+        ? window.computeDbStatsSummary(targetDb)
+        : { schoolsCount: (targetDb.schools || []).length };
+      const snap = {
+        id: 'snap_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+        reason,
+        timestamp: Date.now(),
+        isoTime: new Date().toISOString(),
+        stats,
+        studentIdsMap: {}
+      };
+      (targetDb.schools || []).forEach(s => {
+        (s.classes || []).forEach(c => {
+          (c.students || []).forEach(st => {
+            if (st && st.id) {
+              snap.studentIdsMap[st.id] = {
+                id: st.id,
+                name: st.name || st.firstName || '',
+                lastName: st.lastName || '',
+                schoolId: s.id,
+                classId: c.id
+              };
+            }
+          });
+        });
+      });
+      window._preOperationSafetySnapshots.unshift(snap);
+      if (window._preOperationSafetySnapshots.length > 25) {
+        window._preOperationSafetySnapshots.length = 25;
+      }
+      return snap;
+    } catch (e) {
+      console.warn('[SafetySnapshot]', e);
+      return null;
+    }
+  };
+
+  /* ==========================================================================================
+     بخش اول: بازطراحی کامل سیستم ذخیره‌سازی + داشبورد سلامت دیتابیس (window.DbHealthDashboard)
+     - IndexedDB به عنوان پایگاه داده اصلی (DB_STORE = 'app', ASSET_STORE = 'assets')
+     - localStorage صرفاً برای تنظیمات کوچک و متادیتای سبک (danesh_amooz_man_v1_meta)
+     - اگر IndexedDB موفق بود ولی localStorage خطای QuotaExceededError داد، کل ذخیره موفق می‌ماند
+     - صف ترتیبی (Mutex Queue) با کنترل Revision برای جلوگیری از بازنویسی داده جدید با داده قدیمی
+     - تکمیل صف ذخیره‌سازی قبل از بستن صفحه
+     ========================================================================================== */
+  const LS_META_KEY = 'danesh_amooz_man_v1_meta';
+
+  window.savePersistent = function(opts = {}) {
+    window._hasUnsavedChanges = true;
+    window._pendingSaveCount = (Number(window._pendingSaveCount) || 0) + 1;
+    if (typeof window.updateStorageHealthBadgeUI === 'function') {
+      window.updateStorageHealthBadgeUI(true, '⏳ در حال ذخیره‌سازی اتمیک در IndexedDB...');
+    }
+
+    const runAtomicSave = async () => {
+      try {
+        if (window._isDbLoading && !window._dbRestoredReady) {
+          return {
+            ok: false,
+            dataOk: false,
+            photosOk: false,
+            indexedDbOk: false,
+            localStorageOk: true,
+            error: 'در حال بارگذاری اولیه پایگاه داده',
+            savedAt: Date.now()
+          };
+        }
+
+        clearTimeout(window._idbSaveDebounceTimer);
+        clearTimeout(window._autoSaveDebounceTimer);
+
+        // حفظ شناسه یکتای تمام دانش‌آموزان و جلوگیری از ادغام بر اساس نام یا ردیف
+        window.deduplicateDatabaseRecords(db);
+
+        const nextRev = Math.max((Number(window._dbRevisionSeq) || 0) + 1, (Number(db?._revision) || 0) + 1);
+        window._dbRevisionSeq = nextRev;
+        db._revision = nextRev;
+        db._updatedAt = Date.now();
+
+        if (!window._photoVaultMemoryCache || typeof window._photoVaultMemoryCache !== 'object') {
+          window._photoVaultMemoryCache = {};
+        }
+        window.extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
+        const photoCheck = window.validatePhotosSavedInVault(db, window._photoVaultMemoryCache);
+        const stats = window.computeDbStatsSummary(db);
+
+        let indexedDbOk = false;
+        let idbReadBackVerified = false;
+        let idbPhotoVaultVerified = false;
+        let localStorageMetaOk = false;
+        const errors = [];
+        const warnings = [];
+
+        // ۱. ابتدا ذخیره اتمیک در IndexedDB (پایگاه داده اصلی) انجام می‌شود!
+        if (window._simulateIdbFailureForTest) {
+          const simErr = new Error('Simulated IndexedDB Failure');
+          window.reportStorageError('IndexedDB', 'put(data)', simErr);
+          errors.push({ source: 'IndexedDB', operation: 'put(data)', message: simErr.message });
+          indexedDbOk = false;
+          idbPhotoVaultVerified = false;
+        } else {
+          try {
+            const d = await openStorage();
+            const hasMeaningfulData = stats.schoolsCount > 0 || stats.bookPagesCount > 0 || stats.archivedTermsCount > 0;
+            const idbPayload = window.buildFastMetadataOnlyDb(db, false);
+
+            await new Promise((res, rej) => {
+              const tx = d.transaction([DB_STORE, ASSET_STORE], 'readwrite');
+              const dbStore = tx.objectStore(DB_STORE);
+              const assetStore = tx.objectStore(ASSET_STORE);
+
+              dbStore.put(idbPayload, 'data');
+              if (hasMeaningfulData) {
+                dbStore.put(idbPayload, LAST_VALID_DB_IDB_KEY);
+              }
+              assetStore.put({ ...(window._photoVaultMemoryCache || {}) }, PHOTO_VAULT_IDB_KEY);
+              if (db.cachedBook && Object.keys(db.cachedBook.pages || {}).length > 0) {
+                assetStore.put(window.cloneCachedBookComplete(db.cachedBook), 'cached_book_vault_v921');
+              }
+
+              tx.oncomplete = () => res(true);
+              tx.onerror = () => rej(tx.error || new Error('خطا در تراکنش نوشتن IndexedDB'));
+              tx.onabort = () => rej(tx.error || new Error('تراکنش IndexedDB لغو شد'));
+            });
+
+            // خوانش متقابل (Read-Back Verification) برای تأیید ثبت قطعی روی دیسک
+            const readBack = await new Promise((res, rej) => {
+              const txVerify = d.transaction([DB_STORE, ASSET_STORE], 'readonly');
+              const rData = txVerify.objectStore(DB_STORE).get('data');
+              const rVault = txVerify.objectStore(ASSET_STORE).get(PHOTO_VAULT_IDB_KEY);
+              let gotData = null, gotVault = null;
+              rData.onsuccess = () => { gotData = rData.result; };
+              rVault.onsuccess = () => { gotVault = rVault.result; };
+              txVerify.oncomplete = () => res({ gotData, gotVault });
+              txVerify.onerror = () => rej(txVerify.error || new Error('خطا در خوانش متقابل IndexedDB'));
+            });
+            d.close();
+
+            const verifiedStats = window.computeDbStatsSummary(readBack.gotData);
+            idbReadBackVerified = Boolean(
+              readBack.gotData &&
+              verifiedStats.schoolsCount === stats.schoolsCount &&
+              verifiedStats.classesCount === stats.classesCount &&
+              verifiedStats.studentsCount === stats.studentsCount &&
+              Number(readBack.gotData._revision) === nextRev
+            );
+            indexedDbOk = idbReadBackVerified;
+            const vaultVerify = window.validatePhotosSavedInVault(db, readBack.gotVault || {});
+            idbPhotoVaultVerified = vaultVerify.photosOk;
+          } catch (idbErr) {
+            window.reportStorageError('IndexedDB', 'put(data)', idbErr);
+            errors.push({ source: 'IndexedDB', operation: 'put(data)', message: String(idbErr?.message || idbErr) });
+            indexedDbOk = false;
+            idbPhotoVaultVerified = false;
+          }
+        }
+
+        // ۲. سپس ذخیره صرفاً متادیتای سبک در localStorage (اگر localStorage پر باشد، ذخیره اصلی IndexedDB شکست نمی‌خورد!)
+        try {
+          if (window._simulateLocalStorageQuotaErrorForTest) {
+            const qErr = new DOMException('Setting the value exceeded the quota.', 'QuotaExceededError');
+            throw qErr;
+          }
+          const lightMeta = {
+            version: UNIFIED_VERSION,
+            migratedToIdb: true,
+            revision: db._revision,
+            updatedAt: db._updatedAt,
+            schoolsCount: stats.schoolsCount,
+            classesCount: stats.classesCount,
+            studentsCount: stats.studentsCount,
+            photosCount: stats.photosCount,
+            gradesCount: stats.gradesCount,
+            booksCount: (Array.isArray(db.bookLibrary) ? db.bookLibrary.length : 0) + (stats.bookPagesCount > 0 ? 1 : 0),
+            bookPagesCount: stats.bookPagesCount
+          };
+          localStorage.setItem(LS_META_KEY, JSON.stringify(lightMeta));
+          localStorageMetaOk = true;
+        } catch (lsErr) {
+          warnings.push({
+            source: 'localStorage',
+            operation: 'setItem(meta)',
+            name: lsErr?.name || 'QuotaExceededError',
+            message: String(lsErr?.message || lsErr)
+          });
+          localStorageMetaOk = false;
+          console.warn('[StorageWarning] localStorage meta write skipped due to quota; IndexedDB primary store is intact:', lsErr);
+        }
+
+        const dataOk = indexedDbOk;
+        const photosOk = photoCheck.photosOk && idbPhotoVaultVerified;
+        const overallOk = Boolean(dataOk && photosOk);
+
+        const resultObj = {
+          ok: overallOk,
+          dataOk,
+          photosOk,
+          indexedDbOk,
+          idbReadBackVerified,
+          localStorageOk: localStorageMetaOk,
+          localStorageMetaOnly: true,
+          primaryStore: 'IndexedDB',
+          expectedPhotosCount: photoCheck.expectedCount,
+          verifiedPhotosCount: photoCheck.verifiedCount,
+          error: errors.length ? errors.map(e => `${e.source}: ${e.message}`).join(' | ') : null,
+          errors,
+          warnings,
+          revision: db._revision,
+          savedAt: db._updatedAt,
+          schoolsCount: stats.schoolsCount,
+          classesCount: stats.classesCount,
+          studentsCount: stats.studentsCount,
+          photosCount: stats.photosCount,
+          gradesCount: stats.gradesCount,
+          bookPagesCount: stats.bookPagesCount
+        };
+
+        window.lastStorageResult = resultObj;
+        window._lastSaveStatusOk = overallOk;
+        window._hasUnsavedChanges = !overallOk;
+
+        if (typeof window.updateStorageHealthBadgeUI === 'function') {
+          window.updateStorageHealthBadgeUI(
+            overallOk,
+            overallOk
+              ? `🟢 ذخیره پایدار در IndexedDB (ویرایش #${fa(db._revision)})`
+              : '🔴 خطا در ذخیره‌سازی IndexedDB'
+          );
+        }
+
+        if (window.DbHealthDashboard && typeof window.DbHealthDashboard.refreshIfOpen === 'function') {
+          window.DbHealthDashboard.refreshIfOpen();
+        }
+
+        try {
+          window.dispatchEvent(new CustomEvent('dam:storage-result', { detail: resultObj }));
+        } catch (_) {}
+
+        return resultObj;
+      } finally {
+        window._pendingSaveCount = Math.max(0, (Number(window._pendingSaveCount) || 1) - 1);
+      }
+    };
+
+    window._storageMutexQueue = (window._storageMutexQueue || Promise.resolve()).then(runAtomicSave, runAtomicSave);
+    return window._storageMutexQueue;
+  };
+  savePersistent = window.savePersistent;
+
+  window.flushPendingStorageQueue = async function() {
+    if (window._autoSaveDebounceTimer) {
+      clearTimeout(window._autoSaveDebounceTimer);
+      window._autoSaveDebounceTimer = null;
+    }
+    if (window._hasUnsavedChanges || Number(window._pendingSaveCount) > 0) {
+      return await window.savePersistent({ reason: 'flush_before_close' });
+    }
+    return window.lastStorageResult;
+  };
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden' && window._hasUnsavedChanges) {
+      window.flushPendingStorageQueue().catch(() => {});
+    }
+  });
+  window.addEventListener('pagehide', () => {
+    if (window._hasUnsavedChanges) {
+      window.flushPendingStorageQueue().catch(() => {});
+    }
+  });
+
+  // داشبورد سلامت دیتابیس
+  window.DbHealthDashboard = {
+    getHealthReport() {
+      const stats = window.computeDbStatsSummary(db);
+      const booksCount = Math.max(
+        Array.isArray(db?.bookLibrary) ? db.bookLibrary.length : 0,
+        stats.bookPagesCount > 0 || (db?.cachedBook && db.cachedBook.name) ? 1 : 0
+      );
+      const lastSaveTs = Number(window.lastStorageResult?.savedAt || db?._updatedAt || 0);
+      let lastSaveFormatted = 'هنوز ذخیره نشده';
+      if (lastSaveTs > 0) {
+        try {
+          lastSaveFormatted = new Date(lastSaveTs).toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) +
+            ' (' + new Date(lastSaveTs).toLocaleDateString('fa-IR') + ')';
+        } catch (_) {
+          lastSaveFormatted = new Date(lastSaveTs).toISOString();
+        }
+      }
+      return {
+        ok: window.lastStorageResult ? Boolean(window.lastStorageResult.ok) : true,
+        primaryStore: 'IndexedDB (DB_STORE + ASSET_STORE)',
+        revision: Number(db?._revision || window._dbRevisionSeq || 1),
+        schoolsCount: stats.schoolsCount,
+        classesCount: stats.classesCount,
+        studentsCount: stats.studentsCount,
+        imagesCount: stats.photosCount,
+        booksCount,
+        bookPagesCount: stats.bookPagesCount,
+        gradesCount: stats.gradesCount,
+        examPapersCount: stats.examPapersCount,
+        archivedTermsCount: stats.archivedTermsCount,
+        lastSavedAt: lastSaveTs,
+        lastSavedAtFormatted: lastSaveFormatted,
+        pendingSaves: Number(window._pendingSaveCount) || 0,
+        migrationReport: window.lastMigrationReport || null,
+        errorCount: Array.isArray(window._storageErrorLog) ? window._storageErrorLog.length : 0
+      };
+    },
+
+    buildDashboardHTML() {
+      const r = this.getHealthReport();
+      return `
+        <div class="card" id="damDbHealthDashboardCard" style="border:1.5px solid #FDBA74;background:linear-gradient(145deg,#FFFFFF,#FFF7ED);margin-bottom:14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+            <div>
+              <h3 style="margin:0;color:#9A3412;font-size:15px">🛡️ وضعیت سلامت پایگاه داده (IndexedDB)</h3>
+              <div class="muted" style="font-size:11.5px;margin-top:2px">
+                مخزن اصلی: <b>${esc(r.primaryStore)}</b> | ویرایش: <b>#${fa(r.revision)}</b> | آخرین ذخیره‌سازی: <b id="dbHealthLastSaveTime">${esc(r.lastSavedAtFormatted)}</b>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <span class="status ${r.ok ? 'good' : 'attn'}" id="dbHealthStatusPill">
+                ${r.ok ? '🟢 سالم و پایدار' : '🔴 نیازمند بررسی'}
+              </span>
+              <button type="button" class="btn primary btn-sm" onclick="window.DbHealthDashboard.runManualVerifyAndSave()">
+                💾 ذخیره و تست سلامت فوری
+              </button>
+            </div>
+          </div>
+          <div class="db-health-grid">
+            <div class="db-health-stat"><span>تعداد مدارس</span><strong id="dbHealthSchoolsCnt">${fa(r.schoolsCount)}</strong></div>
+            <div class="db-health-stat"><span>تعداد کلاس‌ها</span><strong id="dbHealthClassesCnt">${fa(r.classesCount)}</strong></div>
+            <div class="db-health-stat"><span>تعداد دانش‌آموزان</span><strong id="dbHealthStudentsCnt">${fa(r.studentsCount)}</strong></div>
+            <div class="db-health-stat"><span>تعداد تصاویر</span><strong id="dbHealthImagesCnt">${fa(r.imagesCount)}</strong></div>
+            <div class="db-health-stat"><span>تعداد کتاب‌ها (صفحات)</span><strong id="dbHealthBooksCnt">${fa(r.booksCount)} (${fa(r.bookPagesCount)})</strong></div>
+            <div class="db-health-stat"><span>نمرات ثبت‌شده</span><strong id="dbHealthGradesCnt">${fa(r.gradesCount)}</strong></div>
+          </div>
+        </div>
+      `;
+    },
+
+    async runManualVerifyAndSave() {
+      const res = await window.savePersistent({ reason: 'manual_health_verify' });
+      this.refreshIfOpen();
+      if (typeof toast === 'function') {
+        toast(res.ok ? '✅ سلامت IndexedDB و تصاویر تأیید و ذخیره شد.' : '⚠️ خطا در تأیید سلامت ذخیره‌سازی');
+      }
+      return res;
+    },
+
+    refreshIfOpen() {
+      const container = document.getElementById('damDbHealthMount');
+      if (container) {
+        container.innerHTML = this.buildDashboardHTML();
+      }
+    },
+
+    mountIntoSettingsAndBackup() {
+      const backupView = document.getElementById('backup');
+      if (backupView && !document.getElementById('damDbHealthMount')) {
+        const mount = document.createElement('div');
+        mount.id = 'damDbHealthMount';
+        mount.innerHTML = this.buildDashboardHTML();
+        backupView.insertBefore(mount, backupView.firstChild);
+      }
+    }
+  };
+
+  setTimeout(() => {
+    window.DbHealthDashboard.mountIntoSettingsAndBackup();
+  }, 120);
+
+  /* ==========================================================================================
+     بخش دوم: تکمیل سیستم به‌روزرسانی (CentralUpdateManager)
+     ========================================================================================== */
+  if (window.CentralUpdateManager) {
+    window.CentralUpdateManager.clickLog = Array.isArray(window.CentralUpdateManager.clickLog) ? window.CentralUpdateManager.clickLog : [];
+    window.CentralUpdateManager.errorLog = Array.isArray(window.CentralUpdateManager.errorLog) ? window.CentralUpdateManager.errorLog : [];
+
+    const _origApplyUpdateV921 = window.CentralUpdateManager.applyUpdate.bind(window.CentralUpdateManager);
+    window.CentralUpdateManager.applyUpdate = async function(options = {}) {
+      const clickEntry = {
+        timestamp: Date.now(),
+        isoTime: new Date().toISOString(),
+        currentVersion: this.currentVersion,
+        waitingVersion: this.waitingVersion,
+        isUpdating: Boolean(this.isUpdating),
+        hasWaitingWorker: Boolean(this.waitingWorker || (this.registration && this.registration.waiting))
+      };
+      this.clickLog.unshift(clickEntry);
+      this.logEvent('update_button_clicked', clickEntry);
+
+      if (this.isUpdating) {
+        const reason = '⏳ عملیات نصب نسخه جدید هم‌اکنون در حال انجام است؛ لطفاً چند لحظه صبر کنید.';
+        this.setStatusUI(reason, 'warn');
+        if (typeof toast === 'function') toast(reason);
+        return { ok: false, reason: 'already_updating', message: reason };
+      }
+
+      const res = await _origApplyUpdateV921(options);
+      if (!res || !res.ok) {
+        const errEntry = {
+          timestamp: Date.now(),
+          reason: res?.reason || 'unknown_failure',
+          error: res?.error || 'عملیات به‌روزرسانی آغاز نشد یا متوقف گردید.'
+        };
+        this.errorLog.unshift(errEntry);
+        this.setButtonsDisabled(false);
+      }
+      return res;
+    };
+  }
+
+  /* ==========================================================================================
+     بخش سوم، چهارم و پنجم: بازطراحی اساسی موتور نمره‌دهی، کار عملی و امتیاز مثبت و منفی
+     ========================================================================================== */
+  if (window.StrictGradeEngine) {
+    window.StrictGradeEngine.getAbsencePolicy = function(c = null) {
+      if (c && c.gradingConfig && (c.gradingConfig.absencePolicy === 'zero' || c.gradingConfig.absencePolicy === 'exclude')) {
+        return c.gradingConfig.absencePolicy;
+      }
+      try {
+        const lsPol = localStorage.getItem('dam_absence_grade_policy');
+        if (lsPol === 'zero' || lsPol === 'exclude') return lsPol;
+      } catch (_) {}
+      return 'exclude';
+    };
+    window.StrictGradeEngine.setAbsencePolicy = function(policy, c = null) {
+      const p = (policy === 'zero') ? 'zero' : 'exclude';
+      if (c && typeof c === 'object') {
+        const cfg = window.FlexibleGradingEngine.ensureClassConfig(c);
+        cfg.absencePolicy = p;
+      }
+      try {
+        localStorage.setItem('dam_absence_grade_policy', p);
+      } catch (_) {}
+      return p;
+    };
+  }
+
+  window.FlexibleGradingEngine.roundNum = function(val, cfg = null) {
+    const n = Number(val);
+    if (!Number.isFinite(n)) return 0;
+    const c = cfg || {};
+    const mode = c.roundingMode || (c.roundToQuarterStep ? 'quarter' : (c.allowDecimals === false ? 'integer' : 'exact'));
+    if (mode === 'integer' || c.allowDecimals === false || Number(c.decimalPrecision) === 0) {
+      return Math.round(n);
+    }
+    if (mode === 'ceil') return Math.ceil(n);
+    if (mode === 'floor') return Math.floor(n);
+    if (mode === 'quarter' || c.roundToQuarterStep) {
+      return Math.round(n * 4) / 4;
+    }
+    if (mode === 'half') {
+      return Math.round(n * 2) / 2;
+    }
+    const prec = (c.decimalPrecision !== undefined && c.decimalPrecision !== null)
+      ? Math.max(0, Math.min(4, Number(c.decimalPrecision)))
+      : 2;
+    const factor = Math.pow(10, prec);
+    return Math.round((n + Number.EPSILON) * factor) / factor;
+  };
+
+  const _origEnsureClassConfigV920 = window.FlexibleGradingEngine.ensureClassConfig.bind(window.FlexibleGradingEngine);
+  window.FlexibleGradingEngine.ensureClassConfig = function(c) {
+    const cfg = _origEnsureClassConfigV920(c);
+    const r = window.getRules();
+    if (cfg.subjectName === undefined) cfg.subjectName = (c && c.subject) ? c.subject : '';
+    if (cfg.classScoreMax === undefined) cfg.classScoreMax = 20;
+    if (cfg.groupActivityMax === undefined) cfg.groupActivityMax = 20;
+    if (cfg.writtenContMax === undefined) cfg.writtenContMax = 20;
+    if (cfg.classScoreWeight === undefined) cfg.classScoreWeight = r.weightClass;
+    if (cfg.groupActivityWeight === undefined) cfg.groupActivityWeight = r.weightGroup;
+    if (cfg.writtenContWeight === undefined) cfg.writtenContWeight = r.weightCont;
+    if (cfg.roundingMode === undefined) cfg.roundingMode = cfg.roundToQuarterStep ? 'quarter' : (cfg.allowDecimals === false ? 'integer' : 'exact');
+    if (cfg.absencePolicy === undefined) cfg.absencePolicy = 'exclude';
+    if (!cfg.subjectConfigs || typeof cfg.subjectConfigs !== 'object') cfg.subjectConfigs = {};
+
+    if (!cfg.behaviorConfig) cfg.behaviorConfig = {};
+    if (cfg.behaviorConfig.enableNoNegBonus === undefined) cfg.behaviorConfig.enableNoNegBonus = true;
+    if (cfg.behaviorConfig.bonusAffectFinalGrade === undefined) cfg.behaviorConfig.bonusAffectFinalGrade = true;
+    if (cfg.behaviorConfig.bonusOnNeutralizedZero === undefined) cfg.behaviorConfig.bonusOnNeutralizedZero = true;
+
+    if (!cfg.noNegStreakConfig) cfg.noNegStreakConfig = {};
+    if (cfg.noNegStreakConfig.preserveHistoryOnDisable === undefined) {
+      cfg.noNegStreakConfig.preserveHistoryOnDisable = true;
+    }
+    return cfg;
+  };
+
+  window.FlexibleGradingEngine.getSubjectConfig = function(c, subjectName = null) {
+    const baseCfg = this.ensureClassConfig(c);
+    const subj = String(subjectName || c?.activeSubject || '').trim();
+    if (!subj || !baseCfg.subjectConfigs || !baseCfg.subjectConfigs[subj]) {
+      return baseCfg;
+    }
+    return baseCfg.subjectConfigs[subj];
+  };
+
+  window.FlexibleGradingEngine.setSubjectConfig = function(c, subjectName, customConfigUpdates = {}) {
+    const baseCfg = this.ensureClassConfig(c);
+    const subj = String(subjectName || '').trim();
+    if (!subj) return baseCfg;
+    if (!baseCfg.subjectConfigs[subj]) {
+      baseCfg.subjectConfigs[subj] = JSON.parse(JSON.stringify(baseCfg));
+      delete baseCfg.subjectConfigs[subj].subjectConfigs;
+      baseCfg.subjectConfigs[subj].subjectName = subj;
+    }
+    Object.assign(baseCfg.subjectConfigs[subj], customConfigUpdates);
+    return baseCfg.subjectConfigs[subj];
+  };
+
+  window.FlexibleGradingEngine.setPracticalSectionEnabled = function(c, enabled, maxScore = null, weight = null, shareOfTotal = null) {
+    this.ensureClassConfig(c);
+    const updates = { enabled: Boolean(enabled) };
+    if (maxScore !== null && Number.isFinite(Number(maxScore))) updates.maxScore = Math.max(0.5, Number(maxScore));
+    if (weight !== null && Number.isFinite(Number(weight))) updates.weight = Math.max(0, Number(weight));
+    if (shareOfTotal !== null && Number.isFinite(Number(shareOfTotal))) updates.shareOfTotal = Math.max(0, Number(shareOfTotal));
+    return this.setSectionConfig(c, 'practical', updates);
+  };
+
+  window.FlexibleGradingEngine.setCalculationMode = function(c, mode) {
+    const cfg = this.ensureClassConfig(c);
+    if (['direct_sum', 'weighted_average', 'proportional_share'].includes(mode)) {
+      cfg.calculationMode = mode;
+      cfg._explicitCalculationMode = true;
+    }
+    return cfg.calculationMode;
+  };
+
+  window.FlexibleGradingEngine.evaluateSectionForStudent = function(c, st, sec, cfg) {
+    if (!c || !st || !sec || !sec.enabled) {
+      return {
+        enabled: false,
+        recorded: false,
+        state: 'disabled',
+        rawScore: null,
+        rawMax: sec?.maxScore || 20,
+        scaledToSectionMax: null,
+        weight: 0,
+        shareOfTotal: 0
+      };
+    }
+
+    const activeCfg = cfg || this.ensureClassConfig(c);
+    const secMax = Math.max(0.01, Number(sec.maxScore) || 20);
+    const secWeight = Math.max(0, Number(sec.weight) ?? 1);
+    const secShare = Math.max(0, Number(sec.shareOfTotal ?? secMax));
+    const absencePolicy = window.StrictGradeEngine.getAbsencePolicy(c);
+    const r = window.getRules();
+
+    let rawScore = null;
+    let rawScaleMax = secMax;
+    let sectionState = 'unrecorded';
+
+    if (sec.key === 'continuous' || sec.type === 'system_continuous') {
+      const directRaw = c.continuousScores?.[st.id] ?? st._directContinuousScore;
+      const parsedDirect = window.StrictGradeEngine.parseRawScore(directRaw);
+      if (parsedDirect.state === 'absent') {
+        if (absencePolicy === 'zero') {
+          rawScore = 0;
+          rawScaleMax = secMax;
+          sectionState = 'absent_zero';
+        } else {
+          sectionState = 'absent';
+        }
+      } else if (parsedDirect.value !== null) {
+        if (!c.continuousInputMax) c.continuousInputMax = {};
+        if (!c.continuousLastValMap) c.continuousLastValMap = {};
+        if (!c.continuousInputMax[st.id] || c.continuousLastValMap[st.id] !== directRaw) {
+          c.continuousInputMax[st.id] = parsedDirect.value > secMax ? 20 : secMax;
+          c.continuousLastValMap[st.id] = directRaw;
+        }
+        rawScore = parsedDirect.value;
+        rawScaleMax = Number(c.continuousInputMax[st.id]) || secMax;
+        sectionState = parsedDirect.value === 0 ? 'recorded_zero' : 'recorded';
+      } else {
+        const writtenRatios = [];
+        const oralRatios = [];
+        const groupRatios = [];
+
+        const classCap = Math.max(0.01, Number(activeCfg.classScoreMax) || secMax);
+        const groupCap = Math.max(0.01, Number(activeCfg.groupActivityMax) || secMax);
+        const writtenCap = Math.max(0.01, Number(activeCfg.writtenContMax) || Number(c.contExamMax) || secMax);
+
+        const hasContExamInMap = Boolean(
+          c.contExamScores &&
+          c.contExamScores[st.id] !== undefined &&
+          c.contExamScores[st.id] !== null &&
+          String(c.contExamScores[st.id]).trim() !== ''
+        );
+        if (hasContExamInMap) {
+          const rawCE = c.contExamScores[st.id];
+          const p = window.StrictGradeEngine.parseRawScore(rawCE);
+          if (p.state === 'absent') {
+            if (absencePolicy === 'zero') {
+              writtenRatios.push(0);
+              sectionState = 'absent_zero';
+            } else {
+              sectionState = 'absent';
+            }
+          } else if (p.value !== null) {
+            if (!c.contExamInputMaxMap) c.contExamInputMaxMap = {};
+            if (!c.contExamLastValMap) c.contExamLastValMap = {};
+            if (!c.contExamInputMaxMap[st.id] || c.contExamLastValMap[st.id] !== rawCE) {
+              c.contExamInputMaxMap[st.id] = Number(c.contExamMax) || (p.value > secMax ? writtenCap : secMax);
+              c.contExamLastValMap[st.id] = rawCE;
+            }
+            const m = Math.max(0.01, Number(c.contExamInputMaxMap[st.id]) || secMax);
+            writtenRatios.push(Math.max(0, Math.min(1, p.value / m)));
+          }
+        }
+
+        const seenGradeIds = new Set();
+        (st.grades || []).forEach(g => {
+          if (!g || g.gradeType === 'practical_work') return;
+          if (hasContExamInMap && g.source === 'direct_cont_col') return;
+          const gid = g.id || `${g.gradeType}_${g.subject}_${g.date}_${g.score}`;
+          if (seenGradeIds.has(gid)) return;
+          seenGradeIds.add(gid);
+
+          const p = window.StrictGradeEngine.parseRawScore(g.score);
+          if (p.state === 'absent') {
+            if (absencePolicy === 'zero') {
+              if (g.gradeType === 'cont_exam') writtenRatios.push(0);
+              else if (g.gradeType === 'group_score') groupRatios.push(0);
+              else oralRatios.push(0);
+              sectionState = 'absent_zero';
+            } else {
+              sectionState = 'absent';
+            }
+          } else if (p.value !== null) {
+            const defaultMaxForType = g.gradeType === 'group_score'
+              ? groupCap
+              : (g.gradeType === 'cont_exam' ? writtenCap : classCap);
+            if (!g.maxScore || g._lastRecordedScore !== g.score) {
+              g.maxScore = Number(g.maxScore) || (p.value > secMax ? defaultMaxForType : secMax);
+              g._lastRecordedScore = g.score;
+            }
+            const gMax = Math.max(0.01, Number(g.maxScore) || secMax);
+            const ratio = Math.max(0, Math.min(1, p.value / gMax));
+            if (g.gradeType === 'cont_exam') writtenRatios.push(ratio);
+            else if (g.gradeType === 'group_score') groupRatios.push(ratio);
+            else oralRatios.push(ratio);
+          }
+        });
+
+        if (c.attendance && typeof c.attendance === 'object') {
+          Object.entries(c.attendance).forEach(([dISO, dayMap]) => {
+            const rec = dayMap?.[st.id];
+            if (!rec) return;
+            if (rec.status === 'absent' && absencePolicy === 'zero') {
+              oralRatios.push(0);
+            } else if (rec.score !== undefined && rec.score !== null && String(rec.score).trim() !== '') {
+              const alreadyInGrades = (st.grades || []).some(g => g && g.attendanceDate === dISO);
+              if (!alreadyInGrades) {
+                const p = window.StrictGradeEngine.parseRawScore(rec.score);
+                if (p.value !== null) {
+                  const m = p.value > secMax ? classCap : secMax;
+                  oralRatios.push(Math.max(0, Math.min(1, p.value / m)));
+                }
+              }
+            }
+          });
+        }
+
+        let catWeightedSum = 0;
+        let catWeightTotal = 0;
+
+        if (writtenRatios.length > 0) {
+          const avgW = writtenRatios.reduce((a, b) => a + b, 0) / writtenRatios.length;
+          const wCont = Math.max(0, Number(activeCfg.writtenContWeight ?? r.weightCont ?? 2));
+          if (wCont > 0) {
+            catWeightedSum += avgW * wCont;
+            catWeightTotal += wCont;
+          }
+        }
+        if (oralRatios.length > 0) {
+          const avgO = oralRatios.reduce((a, b) => a + b, 0) / oralRatios.length;
+          const wCls = Math.max(0, Number(activeCfg.classScoreWeight ?? r.weightClass ?? 1));
+          if (wCls > 0) {
+            catWeightedSum += avgO * wCls;
+            catWeightTotal += wCls;
+          }
+        }
+        if (groupRatios.length > 0) {
+          const avgG = groupRatios.reduce((a, b) => a + b, 0) / groupRatios.length;
+          const wGrp = Math.max(0, Number(activeCfg.groupActivityWeight ?? r.weightGroup ?? 1.5));
+          if (wGrp > 0) {
+            catWeightedSum += avgG * wGrp;
+            catWeightTotal += wGrp;
+          }
+        }
+
+        if (catWeightTotal > 0) {
+          const combinedRatio = catWeightedSum / catWeightTotal;
+          rawScore = combinedRatio * secMax;
+          rawScaleMax = secMax;
+          sectionState = rawScore === 0 ? (sectionState === 'absent_zero' ? 'absent_zero' : 'recorded_zero') : 'recorded';
+        }
+      }
+    } else if (sec.key === 'final_exam' || sec.type === 'system_final') {
+      const rawT = c.termScores?.[st.id];
+      const parsedT = window.StrictGradeEngine.parseRawScore(rawT);
+      if (parsedT.state === 'absent') {
+        if (absencePolicy === 'zero') {
+          rawScore = 0;
+          rawScaleMax = secMax;
+          sectionState = 'absent_zero';
+        } else {
+          sectionState = 'absent';
+        }
+      } else if (parsedT.value !== null) {
+        if (!c.termScoreMaxMap) c.termScoreMaxMap = {};
+        if (!c.termScoreLastValMap) c.termScoreLastValMap = {};
+        if (!c.termScoreMaxMap[st.id] || c.termScoreLastValMap[st.id] !== rawT) {
+          c.termScoreMaxMap[st.id] = Number(c.termExamInputMax) || (parsedT.value > secMax ? 20 : secMax);
+          c.termScoreLastValMap[st.id] = rawT;
+        }
+        rawScore = parsedT.value;
+        rawScaleMax = Number(c.termScoreMaxMap[st.id]) || secMax;
+        sectionState = parsedT.value === 0 ? 'recorded_zero' : 'recorded';
+      }
+    } else if (sec.key === 'practical' || sec.type === 'system_practical') {
+      const pracSummary = window.PracticalWorkManager.computeStudentPracticalSummary(c, st, secMax);
+      if (pracSummary.recordedCount > 0 && pracSummary.scaledAverage !== null) {
+        rawScore = pracSummary.scaledAverage;
+        rawScaleMax = secMax;
+        sectionState = rawScore === 0 ? 'recorded_zero' : 'recorded';
+      }
+    } else {
+      const customRaw = sec.scores?.[st.id] ?? (c.gradeColumns || []).find(g => g.id === sec.id || g.title === sec.title)?.scores?.[st.id];
+      const parsedC = window.StrictGradeEngine.parseRawScore(customRaw);
+      if (parsedC.state === 'absent') {
+        if (absencePolicy === 'zero') {
+          rawScore = 0;
+          rawScaleMax = secMax;
+          sectionState = 'absent_zero';
+        } else {
+          sectionState = 'absent';
+        }
+      } else if (parsedC.value !== null) {
+        if (!sec.inputMaxMap) sec.inputMaxMap = {};
+        if (!sec.inputLastValMap) sec.inputLastValMap = {};
+        if (!sec.inputMaxMap[st.id] || sec.inputLastValMap[st.id] !== customRaw) {
+          sec.inputMaxMap[st.id] = Number(sec.inputMax) || (parsedC.value > secMax ? 20 : secMax);
+          sec.inputLastValMap[st.id] = customRaw;
+        }
+        rawScore = parsedC.value;
+        rawScaleMax = Number(sec.inputMaxMap[st.id]) || secMax;
+        sectionState = parsedC.value === 0 ? 'recorded_zero' : 'recorded';
+      }
+    }
+
+    if (rawScore === null) {
+      return {
+        id: sec.id,
+        key: sec.key,
+        title: sec.title,
+        type: sec.type,
+        enabled: true,
+        recorded: false,
+        state: sectionState,
+        rawScore: null,
+        rawMax: secMax,
+        sectionMax: secMax,
+        scaledToSectionMax: null,
+        ratio: null,
+        weight: secWeight,
+        shareOfTotal: secShare,
+        displayText: sectionState === 'absent' ? `غایب (از ${fa(secMax)})` : `ثبت‌نشده (از ${fa(secMax)})`
+      };
+    }
+
+    const ratio = Math.max(0, Math.min(1, rawScore / Math.max(0.01, rawScaleMax)));
+    const scaledToSectionMax = this.roundNum(ratio * secMax, activeCfg);
+
+    return {
+      id: sec.id,
+      key: sec.key,
+      title: sec.title,
+      type: sec.type,
+      enabled: true,
+      recorded: true,
+      state: sectionState,
+      rawScore: this.roundNum(rawScore, activeCfg),
+      rawMax: rawScaleMax,
+      sectionMax: secMax,
+      scaledToSectionMax,
+      ratio,
+      weight: secWeight,
+      shareOfTotal: secShare,
+      displayText: `${this.formatNum(scaledToSectionMax)} از ${fa(secMax)}${sectionState === 'absent_zero' ? ' (غیبت = صفر)' : ''}`
+    };
+  };
+
+  window.SmartBehaviorEngine.recalculateStudentAutoNoNegRewards = function(c, st) {
+    if (!c || !st) {
+      return { currentStreak: 0, totalNoNegSessions: 0, autoRewardsCount: 0, preservedAutoHistoryCount: 0, autoRewards: [] };
+    }
+    const cfg = window.FlexibleGradingEngine.ensureClassConfig(c);
+    const streakCfg = cfg.noNegStreakConfig || {};
+    const b = behaviorData(st);
+    if (!Array.isArray(b.positives)) b.positives = [];
+    if (!Array.isArray(b.negatives)) b.negatives = [];
+
+    const att = (c.attendance && typeof c.attendance === 'object') ? c.attendance : {};
+    const dates = Object.keys(att).sort();
+    const negDatesSet = new Set(
+      b.negatives
+        .map(n => String(n?.date || n?.isoDate || '').trim())
+        .filter(Boolean)
+    );
+
+    let currentStreak = 0;
+    let totalNoNegSessions = 0;
+    const earnedStreaks = [];
+    const reqSessions = Math.max(1, Math.floor(Number(streakCfg.sessionsRequired) || 2));
+    const rewardCountPerCycle = Math.max(1, Math.floor(Number(streakCfg.rewardCount) || 1));
+    const rewardVal = Number.isFinite(Number(streakCfg.rewardValue))
+      ? Number(streakCfg.rewardValue)
+      : (Number(cfg.behaviorConfig?.positiveValue) || 0.25);
+    const rewardCode = String(streakCfg.rewardCode || 'ع.م');
+    const rewardReason = String(streakCfg.rewardReason || 'عدم دریافت امتیاز منفی');
+
+    dates.forEach(dISO => {
+      const rec = att[dISO]?.[st.id];
+      if (!rec) return;
+      if (rec.status === 'absent') return;
+      const hadNegOnDay = negDatesSet.has(dISO) || Boolean(rec.negative);
+      if (hadNegOnDay) {
+        currentStreak = 0;
+      } else {
+        currentStreak++;
+        totalNoNegSessions++;
+        if (currentStreak > 0 && currentStreak % reqSessions === 0) {
+          const cycleNum = Math.floor(currentStreak / reqSessions);
+          for (let rIdx = 1; rIdx <= rewardCountPerCycle; rIdx++) {
+            earnedStreaks.push({
+              key: `streak_${dISO}_c${cycleNum}_r${rIdx}`,
+              date: dISO,
+              sessionsCount: reqSessions,
+              cycleNum,
+              rewardIndex: rIdx
+            });
+          }
+        }
+      }
+    });
+
+    if (!streakCfg.enabled) {
+      const preserved = b.positives.filter(p => p && p.isAutoNoNegReward);
+      preserved.forEach(p => {
+        p.archivedWhenDisabled = false;
+        p.preservedFromPast = true;
+      });
+      return {
+        currentStreak,
+        totalNoNegSessions,
+        autoRewardsCount: preserved.length,
+        preservedAutoHistoryCount: preserved.length,
+        autoRewards: preserved
+      };
+    }
+
+    const existingAutoMap = new Map();
+    const manualList = [];
+    b.positives.forEach(p => {
+      if (!p) return;
+      if (p.isAutoNoNegReward && p.autoStreakKey) {
+        existingAutoMap.set(p.autoStreakKey, p);
+      } else {
+        manualList.push(p);
+      }
+    });
+
+    const updatedAutoList = earnedStreaks.map(es => {
+      const existing = existingAutoMap.get(es.key);
+      if (existing) {
+        existing.archivedWhenDisabled = false;
+        if (!existing.manuallyEdited) {
+          existing.value = rewardVal;
+          existing.code = rewardCode;
+          existing.affectFinalGrade = streakCfg.affectFinalGrade !== false;
+        }
+        return existing;
+      }
+      return {
+        id: 'auto_' + es.key,
+        autoStreakKey: es.key,
+        isAutoNoNegReward: true,
+        archivedWhenDisabled: false,
+        date: es.date,
+        code: rewardCode,
+        reason: `${rewardReason} (${fa(es.sessionsCount)} جلسه متوالی بدون منفی)`,
+        value: rewardVal,
+        affectFinalGrade: streakCfg.affectFinalGrade !== false
+      };
+    });
+
+    b.positives = [...manualList, ...updatedAutoList];
+
+    return {
+      currentStreak,
+      totalNoNegSessions,
+      autoRewardsCount: updatedAutoList.length,
+      preservedAutoHistoryCount: updatedAutoList.length,
+      autoRewards: updatedAutoList
+    };
+  };
+
+  window.SmartBehaviorEngine.computeStudentBehaviorSummary = function(c, st) {
+    if (!st) {
+      return {
+        posCount: 0, manualPosCount: 0, autoNoNegPosCount: 0, preservedAutoHistoryCount: 0, negCount: 0,
+        netCount: 0, cancelledPairsCount: 0, nettingEnabled: true, isNeutralizedZero: false,
+        posValueSum: 0, negValueSum: 0, netValue: 0,
+        posEffect: 0, negEffect: 0, noNegBonus: 0,
+        effectiveGradeDelta: 0, statusLabel: 'خنثی (۰)',
+        currentStreak: 0, totalNoNegSessions: 0,
+        historyPreserved: true
+      };
+    }
+    const cfg = window.FlexibleGradingEngine.ensureClassConfig(c);
+    const behCfg = cfg.behaviorConfig || {};
+    const streakCfg = cfg.noNegStreakConfig || {};
+
+    const streakInfo = c
+      ? this.recalculateStudentAutoNoNegRewards(c, st)
+      : { currentStreak: 0, totalNoNegSessions: 0, autoRewardsCount: 0, preservedAutoHistoryCount: 0, autoRewards: [] };
+
+    const b = behaviorData(st);
+    const rawPos = Array.isArray(b.positives) ? b.positives : [];
+    const allNeg = Array.isArray(b.negatives) ? b.negatives : [];
+
+    const seenPosIds = new Set();
+    const activePos = [];
+    rawPos.forEach((p, idx) => {
+      if (!p || typeof p !== 'object') return;
+      if (p.isAutoNoNegReward && p.archivedWhenDisabled === true && !p.manuallyEdited && !p.preservedFromPast) return;
+      const pid = p.id || `pos_idx_${idx}`;
+      if (seenPosIds.has(pid)) return;
+      seenPosIds.add(pid);
+      activePos.push(p);
+    });
+
+    const seenNegIds = new Set();
+    const dedupedNeg = [];
+    allNeg.forEach((n, idx) => {
+      if (!n || typeof n !== 'object') return;
+      const nid = n.id || `neg_idx_${idx}`;
+      if (seenNegIds.has(nid)) return;
+      seenNegIds.add(nid);
+      dedupedNeg.push(n);
+    });
+
+    const defaultPosVal = Number.isFinite(Number(behCfg.positiveValue)) ? Number(behCfg.positiveValue) : 0.25;
+    const defaultNegVal = Number.isFinite(Number(behCfg.negativeValue)) ? Number(behCfg.negativeValue) : 0.5;
+    const maxAllowedNeg = Math.max(0, Number(behCfg.maxNegAllowed) ?? 2);
+
+    const manualPosList = activePos.filter(p => !p.isAutoNoNegReward);
+    const autoPosList = activePos.filter(p => p.isAutoNoNegReward);
+
+    const effectiveAutoPosList = (streakCfg.affectFinalGrade === false)
+      ? []
+      : autoPosList.filter(p => p.affectFinalGrade !== false);
+
+    const effectivePosList = [...manualPosList, ...effectiveAutoPosList];
+
+    const posCount = activePos.length;
+    const effectivePosCount = effectivePosList.length;
+    const negCount = dedupedNeg.length;
+
+    const posValueSum = Math.round(activePos.reduce((acc, x) => acc + (Number.isFinite(Number(x?.value)) ? Number(x.value) : defaultPosVal), 0) * 100) / 100;
+    const effectivePosValueSum = Math.round(effectivePosList.reduce((acc, x) => acc + (Number.isFinite(Number(x?.value)) ? Number(x.value) : defaultPosVal), 0) * 100) / 100;
+    const negValueSum = Math.round(dedupedNeg.reduce((acc, x) => acc + (Number.isFinite(Number(x?.value)) ? Number(x.value) : defaultNegVal), 0) * 100) / 100;
+
+    const nettingEnabled = behCfg.enableNetting !== false && behCfg.evaluationBasis !== 'raw_neg_count';
+    const cancelledPairsCount = nettingEnabled ? Math.min(effectivePosCount, negCount) : 0;
+    const netCount = effectivePosCount - negCount;
+    const netValue = Math.round((effectivePosValueSum - negValueSum) * 100) / 100;
+    const isNeutralizedZero = Boolean(nettingEnabled && cancelledPairsCount > 0 && netCount === 0);
+
+    const basis = behCfg.evaluationBasis || 'net_count';
+    let posEffect = 0;
+    let negEffect = 0;
+    let baseBehDelta = 0;
+
+    if (!nettingEnabled || basis === 'raw_neg_count') {
+      posEffect = effectivePosValueSum;
+      const excessNeg = Math.max(0, negCount - maxAllowedNeg);
+      negEffect = Math.round((excessNeg * defaultNegVal) * 100) / 100;
+      baseBehDelta = posEffect - negEffect;
+    } else if (basis === 'net_count') {
+      posEffect = effectivePosValueSum;
+      negEffect = negValueSum;
+      if (netCount > 0) baseBehDelta = netCount * defaultPosVal;
+      else if (netCount < 0) baseBehDelta = netCount * defaultNegVal;
+      else baseBehDelta = 0;
+    } else {
+      posEffect = effectivePosValueSum;
+      negEffect = negValueSum;
+      baseBehDelta = isNeutralizedZero ? 0 : netValue;
+    }
+
+    let noNegBonus = 0;
+    const bonusEnabled = behCfg.enableNoNegBonus !== false && Number(behCfg.bonusNoNeg) > 0;
+    if (bonusEnabled && effectiveAutoPosList.length === 0) {
+      if (negCount === 0 && manualPosList.length > 0) {
+        noNegBonus = Number(behCfg.bonusNoNeg);
+      } else if (isNeutralizedZero && behCfg.bonusOnNeutralizedZero !== false) {
+        noNegBonus = Number(behCfg.bonusNoNeg);
+      }
+    }
+
+    const effectiveBonusDelta = (behCfg.bonusAffectFinalGrade === false) ? 0 : noNegBonus;
+    const effectiveGradeDelta = Math.round((baseBehDelta + effectiveBonusDelta) * 100) / 100;
+
+    let statusLabel = '۰ (خنثی)';
+    if (!nettingEnabled) {
+      statusLabel = `+${fa(posCount)} (${posValueSum}+) / −${fa(negCount)} (${negValueSum}−) [بدون خنثی‌سازی]`;
+    } else if (isNeutralizedZero) {
+      statusLabel = `خنثی (۰) — ${fa(cancelledPairsCount)} مثبت و ${fa(cancelledPairsCount)} منفی خنثی شد${noNegBonus > 0 ? ` (+${fa(noNegBonus)} پاداش بدون منفی)` : ''}`;
+    } else if (netCount > 0 || effectiveGradeDelta > 0) {
+      statusLabel = `+${fa(Math.max(0, netCount))} مثبت خالص (${effectiveGradeDelta >= 0 ? '+' : ''}${fa(effectiveGradeDelta)} نمره)`;
+    } else if (netCount < 0 || effectiveGradeDelta < 0) {
+      statusLabel = `−${fa(Math.abs(netCount))} منفی خالص (${fa(effectiveGradeDelta)} نمره)`;
+    }
+
+    return {
+      posCount,
+      manualPosCount: manualPosList.length,
+      autoNoNegPosCount: autoPosList.length,
+      preservedAutoHistoryCount: streakInfo.preservedAutoHistoryCount,
+      effectivePosCount,
+      negCount,
+      netCount,
+      cancelledPairsCount,
+      nettingEnabled,
+      isNeutralizedZero,
+      posValueSum,
+      effectivePosValueSum,
+      negValueSum,
+      netValue,
+      posEffect: Math.round(posEffect * 100) / 100,
+      negEffect: Math.round(negEffect * 100) / 100,
+      noNegBonus: Math.round(noNegBonus * 100) / 100,
+      effectiveBonusDelta: Math.round(effectiveBonusDelta * 100) / 100,
+      effectiveGradeDelta,
+      evaluationBasis: basis,
+      statusLabel,
+      currentStreak: streakInfo.currentStreak,
+      totalNoNegSessions: streakInfo.totalNoNegSessions,
+      autoRewards: streakInfo.autoRewards,
+      historyPreserved: true
+    };
+  };
+
+  window.FlexibleGradingEngine.calculateStudentFullGradeReport = function(c, st, subjectOverride = null) {
+    const cfg = subjectOverride ? this.getSubjectConfig(c, subjectOverride) : this.ensureClassConfig(c);
+    if (!c || !st) return null;
+
+    window.SmartBehaviorEngine.recalculateStudentAutoNoNegRewards(c, st);
+
+    const allPracWorksZeroWeight = (c.practicalWorks || []).length > 0 && (c.practicalWorks || []).every(w => Number(w?.weight ?? 1) <= 0);
+    const activeSections = (cfg.sections || []).filter(s => {
+      if (!s || !s.enabled || Number(s.weight ?? 1) <= 0) return false;
+      if ((s.key === 'practical' || s.type === 'system_practical') && allPracWorksZeroWeight) return false;
+      return true;
+    });
+
+    const evaluatedSections = (cfg.sections || []).filter(s => s && s.enabled).map(sec => this.evaluateSectionForStudent(c, st, sec, cfg));
+    const recordedSections = evaluatedSections.filter(s => s.recorded && s.scaledToSectionMax !== null && Number(s.weight ?? 1) > 0);
+    const unrecordedActiveSections = activeSections.filter(sec => {
+      const ev = evaluatedSections.find(e => e.id === sec.id || e.key === sec.key);
+      return !ev || !ev.recorded;
+    });
+
+    const isCompleteGrade = activeSections.length > 0 && unrecordedActiveSections.length === 0;
+    const isPartialGrade = recordedSections.length > 0 && unrecordedActiveSections.length > 0;
+    const isIncompleteGrade = !isCompleteGrade;
+
+    const totalMax = Math.max(1, Number(cfg.totalMaxScore) || 20);
+    const sumActiveSectionMax = activeSections.reduce((acc, s) => acc + (Number(s.maxScore) || 0), 0);
+    const totalActiveWeightSum = activeSections.reduce((acc, s) => acc + Math.max(0, Number(s.weight) ?? 1), 0);
+
+    let mode = cfg.calculationMode || 'weighted_average';
+    if (Math.abs(sumActiveSectionMax - totalMax) < 0.01 && !cfg._explicitCalculationMode) {
+      mode = 'direct_sum';
+    }
+
+    let recordedShareOfTotal = 0;
+    let unrecordedShareOfTotal = 0;
+
+    activeSections.forEach(sec => {
+      const ev = evaluatedSections.find(e => e.id === sec.id || e.key === sec.key);
+      let secShareInTotal = 0;
+      if (mode === 'direct_sum' && Math.abs(sumActiveSectionMax - totalMax) < 0.01) {
+        secShareInTotal = Number(sec.maxScore) || 0;
+      } else if (mode === 'proportional_share') {
+        secShareInTotal = Number(sec.shareOfTotal ?? sec.maxScore ?? 0);
+      } else {
+        const w = Math.max(0, Number(sec.weight) ?? 1);
+        secShareInTotal = totalActiveWeightSum > 0 ? (w / totalActiveWeightSum) * totalMax : 0;
+      }
+      if (ev && ev.recorded) {
+        recordedShareOfTotal += secShareInTotal;
+      } else {
+        unrecordedShareOfTotal += secShareInTotal;
+      }
+    });
+
+    recordedShareOfTotal = this.roundNum(recordedShareOfTotal, cfg);
+    unrecordedShareOfTotal = this.roundNum(Math.max(0, totalMax - recordedShareOfTotal), cfg);
+
+    let academicScore = null;
+    let provisionalAcademicScore = null;
+    let academicMax = totalMax;
+
+    if (recordedSections.length > 0) {
+      if (mode === 'direct_sum' && Math.abs(sumActiveSectionMax - totalMax) < 0.01) {
+        const sumEarned = recordedSections.reduce((acc, s) => acc + Number(s.scaledToSectionMax), 0);
+        provisionalAcademicScore = this.roundNum(Math.max(0, Math.min(totalMax, sumEarned)), cfg);
+        academicScore = provisionalAcademicScore;
+      } else if (mode === 'proportional_share') {
+        let shareEarnedSum = 0;
+        recordedSections.forEach(s => {
+          const share = Number(s.shareOfTotal ?? s.sectionMax ?? 0);
+          shareEarnedSum += s.ratio * share;
+        });
+        provisionalAcademicScore = this.roundNum(Math.max(0, Math.min(totalMax, shareEarnedSum)), cfg);
+        academicScore = provisionalAcademicScore;
+      } else {
+        let weightedRatioSum = 0;
+        let recordedWeightSum = 0;
+        recordedSections.forEach(s => {
+          const w = Math.max(0, Number(s.weight) ?? 1);
+          if (w > 0) {
+            weightedRatioSum += s.ratio * w;
+            recordedWeightSum += w;
+          }
+        });
+        if (isCompleteGrade && recordedWeightSum > 0) {
+          academicScore = this.roundNum(Math.max(0, Math.min(totalMax, (weightedRatioSum / recordedWeightSum) * totalMax)), cfg);
+          provisionalAcademicScore = academicScore;
+        } else if (isPartialGrade && totalActiveWeightSum > 0) {
+          if (recordedSections.length === 1 && recordedSections[0].sectionMax < totalMax) {
+            provisionalAcademicScore = recordedSections[0].scaledToSectionMax;
+          } else {
+            provisionalAcademicScore = this.roundNum(Math.max(0, Math.min(totalMax, (weightedRatioSum / totalActiveWeightSum) * totalMax)), cfg);
+          }
+          academicScore = provisionalAcademicScore;
+        }
+      }
+    }
+
+    const behSummary = window.SmartBehaviorEngine.computeStudentBehaviorSummary(c, st);
+    const scoreBeforeBehavior = academicScore;
+    let scoreAfterBehavior = academicScore;
+    if (academicScore !== null && cfg.includeBehaviorInFinal) {
+      scoreAfterBehavior = this.roundNum(
+        Math.max(0, Math.min(academicMax, academicScore + behSummary.effectiveGradeDelta)),
+        cfg
+      );
+    }
+
+    const completeFinalScore = isCompleteGrade ? scoreAfterBehavior : null;
+    const provisionalScore = isPartialGrade ? scoreAfterBehavior : (isCompleteGrade ? scoreAfterBehavior : null);
+
+    const contSec = evaluatedSections.find(s => s.key === 'continuous' || s.type === 'system_continuous');
+    const termSec = evaluatedSections.find(s => s.key === 'final_exam' || s.type === 'system_final');
+    const pracSec = evaluatedSections.find(s => s.key === 'practical' || s.type === 'system_practical');
+
+    let gradeStatusLabel = 'ثبت‌نشده';
+    if (isCompleteGrade) {
+      gradeStatusLabel = 'نمره نهایی کامل';
+    } else if (isPartialGrade) {
+      gradeStatusLabel = `نمره ناقص — سهم ثبت‌نشده: ${this.formatNum(unrecordedShareOfTotal)} نمره (${unrecordedActiveSections.map(s => s.title).join('، ')})`;
+    }
+
+    const finalDisplay = isCompleteGrade
+      ? `${this.formatNum(completeFinalScore)} از ${fa(academicMax)}`
+      : (isPartialGrade
+          ? `نمره موقت: ${this.formatNum(provisionalScore)} (از ${this.formatNum(recordedShareOfTotal)} سهم ثبت‌شده | ${this.formatNum(unrecordedShareOfTotal)} نمره ثبت‌نشده: ${unrecordedActiveSections.map(s => s.title).join('، ')})`
+          : `ثبت‌نشده (از ${fa(academicMax)})`);
+
+    return {
+      config: cfg,
+      calculationMode: mode,
+      totalMaxScore: academicMax,
+      sections: evaluatedSections,
+      continuous: contSec || null,
+      finalExam: termSec || null,
+      practical: pracSec || null,
+      isCompleteGrade,
+      isPartialGrade,
+      isIncompleteGrade,
+      recordedShareOfTotal,
+      unrecordedShareOfTotal,
+      unrecordedSectionTitles: unrecordedActiveSections.map(s => s.title),
+      gradeStatusLabel,
+      academicScore: scoreBeforeBehavior,
+      provisionalAcademicScore,
+      scoreBeforeBehavior,
+      behavior: behSummary,
+      completeFinalScore,
+      provisionalScore,
+      finalScore: isCompleteGrade ? completeFinalScore : provisionalScore,
+      scoreAfterBehavior,
+      beforeBehaviorDisplay: scoreBeforeBehavior !== null
+        ? `${this.formatNum(scoreBeforeBehavior)} از ${fa(isCompleteGrade ? academicMax : recordedShareOfTotal)}`
+        : `ثبت‌نشده (از ${fa(academicMax)})`,
+      finalDisplay
+    };
+  };
+
+  /* ==========================================================================================
+     بخش ششم: هوش مصنوعی واحد و مجوزها با دکمه انتقال مستقیم به تنظیمات مجوزها
+     ========================================================================================== */
+  if (window.AiPermissionsAndPrivacyManager) {
+    window.AiPermissionsAndPrivacyManager.openPermissionsModalAndHighlight = function(permissionKey = '') {
+      if (typeof switchView === 'function') {
+        switchView('settings');
+      }
+      if (typeof this.injectIntoSettingsView === 'function') {
+        this.injectIntoSettingsView();
+      }
+      setTimeout(() => {
+        if (permissionKey) {
+          const el = document.querySelector(`#permCard_${permissionKey}, #chkAiPerm_${permissionKey}, [data-ai-perm-key="${permissionKey}"]`);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.style.outline = '3px solid #EA580C';
+          }
+        }
+      }, 100);
+    };
+
+    const _origVerifyBeforeSendV921 = window.AiPermissionsAndPrivacyManager.verifyBeforeSendingImages.bind(window.AiPermissionsAndPrivacyManager);
+    window.AiPermissionsAndPrivacyManager.verifyBeforeSendingImages = function(feature = 'book_page_image_ai', imageCount = 1) {
+      const check = _origVerifyBeforeSendV921(feature, imageCount);
+      if (!check.allowed) {
+        const reqKey = check.requiredPermission || feature;
+        check.settingsJumpAction = () => window.AiPermissionsAndPrivacyManager.openPermissionsModalAndHighlight(reqKey);
+        check.actionButtonHtml = `<button type="button" class="btn primary btn-sm" onclick="window.AiPermissionsAndPrivacyManager.openPermissionsModalAndHighlight('${reqKey}')">⚙️ رفتن به تنظیمات مجوزهای هوش مصنوعی</button>`;
+      }
+      return check;
+    };
+
+    window.AiPermissionsAndPrivacyManager.assertPermission = function(key, customFeatureTitle = '') {
+      const allowed = this.hasPermission(key);
+      if (allowed) {
+        return { allowed: true, status: 'allowed', requiredPermission: key };
+      }
+      const title = this.getPermissionTitle(key) || customFeatureTitle || key;
+      return {
+        allowed: false,
+        status: 'permission_required',
+        requiredPermission: key,
+        error: `⛔ مجوز «${title}» غیرفعال است. لطفاً از بخش تنظیمات مجوزهای هوش مصنوعی آن را فعال نمایید.`,
+        settingsJumpAction: () => window.AiPermissionsAndPrivacyManager.openPermissionsModalAndHighlight(key),
+        actionButtonHtml: `<button type="button" class="btn primary btn-sm" onclick="window.AiPermissionsAndPrivacyManager.openPermissionsModalAndHighlight('${key}')">⚙️ رفتن به تنظیمات مجوزهای هوش مصنوعی</button>`
+      };
+    };
+  }
+
+  /* ==========================================================================================
+     بخش هفتم: پایش هوشمند دانش‌آموزان (پرونده تحلیلی هر دانش‌آموز — window.StudentAnalyticalDossier)
+     ========================================================================================== */
+  window.StudentAnalyticalDossier = {
+    analyzeStudent(c, st) {
+      if (!c || !st) return null;
+      const gradeRep = window.FlexibleGradingEngine.calculateStudentFullGradeReport(c, st);
+      const beh = gradeRep?.behavior || window.SmartBehaviorEngine.computeStudentBehaviorSummary(c, st);
+      const r = window.getRules();
+
+      const chronologicalGrades = (st.grades || [])
+        .filter(g => g && g.score !== undefined && g.score !== null && String(g.score).trim() !== '')
+        .map(g => {
+          const p = window.StrictGradeEngine.parseRawScore(g.score);
+          const m = Math.max(0.01, Number(g.maxScore) || 20);
+          return {
+            date: String(g.date || ''),
+            subject: String(g.subject || c.subject || 'عمومی'),
+            rawScore: p.value,
+            normalized20: p.value !== null ? Math.round((p.value / m) * 2000) / 100 : null
+          };
+        })
+        .filter(x => x.normalized20 !== null);
+
+      let academicTrend = 'stable';
+      let trendDelta = 0;
+      if (chronologicalGrades.length >= 2) {
+        const half = Math.floor(chronologicalGrades.length / 2);
+        const firstHalf = chronologicalGrades.slice(0, half);
+        const secondHalf = chronologicalGrades.slice(half);
+        const avgFirst = firstHalf.reduce((a, b) => a + b.normalized20, 0) / firstHalf.length;
+        const avgSecond = secondHalf.reduce((a, b) => a + b.normalized20, 0) / secondHalf.length;
+        trendDelta = Math.round((avgSecond - avgFirst) * 100) / 100;
+        if (trendDelta >= 1.5) academicTrend = 'progress';
+        else if (trendDelta <= -1.5) academicTrend = 'drop';
+      } else {
+        academicTrend = 'insufficient_data';
+      }
+
+      const att = (c.attendance && typeof c.attendance === 'object') ? c.attendance : {};
+      let absentCount = 0, lateCount = 0, presentCount = 0;
+      Object.values(att).forEach(dayMap => {
+        const rec = dayMap?.[st.id];
+        if (!rec) return;
+        if (rec.status === 'absent') absentCount++;
+        else if (rec.status === 'late') lateCount++;
+        else if (rec.status === 'present') presentCount++;
+      });
+      const hasFrequentAbsences = absentCount >= 3;
+
+      const negList = Array.isArray(st.behavior?.negatives) ? st.behavior.negatives : [];
+      const hasRisingNegatives = negList.length >= Math.max(2, Number(r.maxNegAllowed) || 2);
+
+      const subjectMap = {};
+      chronologicalGrades.forEach(g => {
+        if (!subjectMap[g.subject]) subjectMap[g.subject] = [];
+        subjectMap[g.subject].push(g.normalized20);
+      });
+      const perSubjectPerformance = Object.entries(subjectMap).map(([subj, arr]) => ({
+        subject: subj,
+        count: arr.length,
+        averageFrom20: Math.round((arr.reduce((a, b) => a + b, 0) / arr.length) * 100) / 100
+      }));
+
+      const lowScoreThreshold = Number(r.lowScoreAttn) || 12;
+      const effectiveAcademic = gradeRep?.scoreAfterBehavior;
+      const hasLowGrade = effectiveAcademic !== null && gradeRep.isCompleteGrade && effectiveAcademic < lowScoreThreshold;
+      const needsAttention = Boolean(academicTrend === 'drop' || hasFrequentAbsences || hasRisingNegatives || hasLowGrade || st.status === 'attn');
+
+      const teacherSuggestions = [];
+      if (academicTrend === 'drop') {
+        teacherSuggestions.push(`📉 افت تحصیلی (${fa(Math.abs(trendDelta))} نمره نسبت به ابتدای ترم): پیشنهاد می‌شود جلسه بازخورد فردی یا تمرین تقویتی هدفمند تنظیم گردد.`);
+      }
+      if (academicTrend === 'progress') {
+        teacherSuggestions.push(`📈 پیشرفت تحصیلی محسوس (+${fa(trendDelta)} نمره): پیشنهاد می‌شود با ثبت امتیاز تشویقی، انگیزه دانش‌آموز تقویت شود.`);
+      }
+      if (hasFrequentAbsences) {
+        teacherSuggestions.push(`📅 غیبت پرتکرار (${fa(absentCount)} جلسه غیبت): پیشنهاد می‌شود پیگیری علت غیبت با اولیا و جبران مباحث تدریس‌شده انجام شود.`);
+      }
+      if (hasRisingNegatives) {
+        teacherSuggestions.push(`⚠️ افزایش امتیازات منفی (${fa(negList.length)} مورد): پیشنهاد می‌شود گفت‌وگوی مشاوره‌ای و تعریف هدف «جلسات بدون منفی» انجام گیرد.`);
+      }
+      if (gradeRep?.isPartialGrade) {
+        teacherSuggestions.push(`📝 نمره ناقص: بخش «${gradeRep.unrecordedSectionTitles.join('، ')}» (${fa(gradeRep.unrecordedShareOfTotal)} نمره) هنوز ثبت نشده است.`);
+      }
+      if (teacherSuggestions.length === 0) {
+        teacherSuggestions.push(`✅ وضعیت تحصیلی و انضباطی متعادل است؛ ادامه روند فعلی توصیه می‌شود.`);
+      }
+
+      return {
+        studentId: st.id,
+        studentName: `${st.name || st.firstName || ''} ${st.lastName || ''}`.trim(),
+        classId: c.id,
+        className: c.name,
+        academicTrend,
+        trendDelta,
+        absentCount,
+        lateCount,
+        presentCount,
+        hasFrequentAbsences,
+        negativeCount: negList.length,
+        positiveCount: beh.posCount,
+        hasRisingNegatives,
+        needsAttention,
+        perSubjectPerformance,
+        chronologicalGrades,
+        gradeReport: gradeRep,
+        teacherSuggestions,
+        requiresTeacherConfirmation: true,
+        autoMutated: false
+      };
+    },
+
+    applyTeacherConfirmedStatus(sid, cid, stid, newStatus, teacherNote = '') {
+      const st = findStudent(sid, cid, stid);
+      if (!st) return { ok: false, error: 'دانش‌آموز یافت نشد' };
+      window.createNonDestructiveSafetySnapshot('teacher_confirmed_dossier_status');
+      st.status = newStatus;
+      if (teacherNote) st.attnNote = teacherNote;
+      st._updatedAt = Date.now();
+      save();
+      return { ok: true, studentId: st.id, status: st.status };
+    }
+  };
+
+  /* ==========================================================================================
+     بخش هشتم: اصلاح مدیریت دانش‌آموزان (آریا کشاورز و محمدحسین کشاورز، جابه‌جایی عکس، جستجو و مرتب‌سازی)
+     ========================================================================================== */
+  window.StudentPhotoSwapManager = {
+    swapHistoryStack: [],
+
+    previewPhotoSwap(sid, cid, stId1, stId2) {
+      const st1 = findStudent(sid, cid, stId1);
+      const st2 = findStudent(sid, cid, stId2);
+      if (!st1 || !st2 || st1.id === st2.id) {
+        return { ok: false, error: 'دو دانش‌آموز مجزا برای پیش‌نمایش جابه‌جایی عکس انتخاب نشده‌اند.' };
+      }
+      return {
+        ok: true,
+        sid,
+        cid,
+        student1: {
+          id: st1.id,
+          name: `${st1.name || st1.firstName || ''} ${st1.lastName || ''}`.trim(),
+          beforePhoto: st1.photo || '',
+          afterPhoto: st2.photo || ''
+        },
+        student2: {
+          id: st2.id,
+          name: `${st2.name || st2.firstName || ''} ${st2.lastName || ''}`.trim(),
+          beforePhoto: st2.photo || '',
+          afterPhoto: st1.photo || ''
+        }
+      };
+    },
+
+    executeConfirmedPhotoSwap(sid, cid, stId1, stId2) {
+      const st1 = findStudent(sid, cid, stId1);
+      const st2 = findStudent(sid, cid, stId2);
+      if (!st1 || !st2 || st1.id === st2.id) {
+        return { ok: false, error: 'دانش‌آموزان مورد نظر یافت نشدند.' };
+      }
+      window.createNonDestructiveSafetySnapshot('photo_swap_between_two_students');
+      const prevPhoto1 = st1.photo || '';
+      const prevPhoto2 = st2.photo || '';
+
+      this.swapHistoryStack.unshift({
+        swapId: 'swap_' + Date.now(),
+        timestamp: Date.now(),
+        sid,
+        cid,
+        stId1: st1.id,
+        stId2: st2.id,
+        st1Name: `${st1.name || ''} ${st1.lastName || ''}`.trim(),
+        st2Name: `${st2.name || ''} ${st2.lastName || ''}`.trim(),
+        prevPhoto1,
+        prevPhoto2
+      });
+
+      st1.photo = prevPhoto2;
+      st2.photo = prevPhoto1;
+      st1._updatedAt = Date.now();
+      st2._updatedAt = Date.now();
+      save();
+      if (typeof renderAll === 'function') renderAll();
+
+      return {
+        ok: true,
+        swapId: this.swapHistoryStack[0].swapId,
+        student1Id: st1.id,
+        student2Id: st2.id,
+        student1NewPhoto: st1.photo,
+        student2NewPhoto: st2.photo
+      };
+    },
+
+    undoLastPhotoSwap() {
+      const last = this.swapHistoryStack.shift();
+      if (!last) return { ok: false, error: 'هیچ جابه‌جایی عکسی برای بازگردانی وجود ندارد.' };
+      const st1 = findStudent(last.sid, last.cid, last.stId1);
+      const st2 = findStudent(last.sid, last.cid, last.stId2);
+      if (!st1 || !st2) return { ok: false, error: 'پرونده دانش‌آموزان برای بازگردانی یافت نشد.' };
+
+      st1.photo = last.prevPhoto1;
+      st2.photo = last.prevPhoto2;
+      st1._updatedAt = Date.now();
+      st2._updatedAt = Date.now();
+      save();
+      if (typeof renderAll === 'function') renderAll();
+      return {
+        ok: true,
+        restoredStudent1Id: st1.id,
+        restoredStudent2Id: st2.id
+      };
+    },
+
+    inspectKeshavarzPair(sid = null, cid = null) {
+      const results = [];
+      (db?.schools || []).forEach(s => {
+        if (sid && s.id !== sid) return;
+        (s.classes || []).forEach(c => {
+          if (cid && c.id !== cid) return;
+          const students = c.students || [];
+          const aria = students.find(st => {
+            const full = `${st.name || st.firstName || ''} ${st.lastName || ''}`.trim();
+            return full.includes('آریا') && full.includes('کشاورز');
+          });
+          const mh = students.find(st => {
+            const full = `${st.name || st.firstName || ''} ${st.lastName || ''}`.trim();
+            return (full.includes('محمدحسین') || full.includes('محمد حسین')) && full.includes('کشاورز');
+          });
+          if (aria && mh) {
+            results.push({
+              sid: s.id,
+              cid: c.id,
+              schoolName: s.name,
+              className: c.name,
+              aria: {
+                id: aria.id,
+                name: `${aria.name || aria.firstName || ''} ${aria.lastName || ''}`.trim(),
+                hasPhoto: Boolean(aria.photo && aria.photo.length > 30),
+                photo: aria.photo || ''
+              },
+              mohammadHossein: {
+                id: mh.id,
+                name: `${mh.name || mh.firstName || ''} ${mh.lastName || ''}`.trim(),
+                hasPhoto: Boolean(mh.photo && mh.photo.length > 30),
+                photo: mh.photo || ''
+              },
+              sameLastNameWarning: 'هر دو دانش‌آموز دارای نام خانوادگی مشترک «کشاورز» هستند؛ پیش‌نمایش تطبیق عکس آماده بررسی و تأیید معلم است.',
+              requiresTeacherConfirmation: true,
+              autoSwapped: false
+            });
+          }
+        });
+      });
+      return results;
+    }
+  };
+
+  window.StudentRosterManager = {
+    searchStudentsInClass(c, query) {
+      if (!c || !Array.isArray(c.students)) return [];
+      const q = typeof normFaKey === 'function' ? normFaKey(String(query || '')) : String(query || '').trim();
+      const qDigits = typeof enDigits === 'function' ? enDigits(String(query || '')).trim() : String(query || '').trim();
+      if (!q && !qDigits) return [...c.students];
+      return c.students.filter((st, idx) => {
+        if (!st) return false;
+        const first = typeof normFaKey === 'function' ? normFaKey(st.name || st.firstName || '') : (st.name || '');
+        const last = typeof normFaKey === 'function' ? normFaKey(st.lastName || '') : (st.lastName || '');
+        const full = `${first} ${last}`.trim();
+        const code = String(st.studentCode || st.nationalId || st.code || (idx + 1));
+        return first.includes(q) || last.includes(q) || full.includes(q) || (qDigits && code.includes(qDigits));
+      });
+    },
+
+    sortClassAlphabetically(c, byField = 'lastName') {
+      if (!c || !Array.isArray(c.students)) return [];
+      window.createNonDestructiveSafetySnapshot('sort_students_alphabetically');
+      c.students.sort((a, b) => {
+        const keyA = byField === 'firstName'
+          ? `${a.name || a.firstName || ''} ${a.lastName || ''}`.trim()
+          : `${a.lastName || ''} ${a.name || a.firstName || ''}`.trim();
+        const keyB = byField === 'firstName'
+          ? `${b.name || b.firstName || ''} ${b.lastName || ''}`.trim()
+          : `${b.lastName || ''} ${b.name || b.firstName || ''}`.trim();
+        return keyA.localeCompare(keyB, 'fa');
+      });
+      return c.students;
+    },
+
+    detectDuplicateOrSuspiciousNames(c) {
+      if (!c || !Array.isArray(c.students)) return [];
+      const warnings = [];
+      const seenFullNames = new Map();
+      const seenLastNames = new Map();
+
+      c.students.forEach(st => {
+        if (!st) return;
+        const first = String(st.name || st.firstName || '').trim();
+        const last = String(st.lastName || '').trim();
+        const fullNorm = typeof normFaKey === 'function' ? normFaKey(`${first} ${last}`) : `${first}_${last}`;
+        const lastNorm = typeof normFaKey === 'function' ? normFaKey(last) : last;
+
+        if (fullNorm && seenFullNames.has(fullNorm)) {
+          const prev = seenFullNames.get(fullNorm);
+          warnings.push({
+            type: 'exact_duplicate_name',
+            student1Id: prev.id,
+            student2Id: st.id,
+            name: `${first} ${last}`.trim(),
+            message: `نام تکراری کامل: «${first} ${last}» در دو پرونده مجزا با شناسه‌های مستقل ثبت شده است (نیازمند بررسی معلم؛ ادغام خودکار انجام نمی‌شود).`
+          });
+        } else if (fullNorm) {
+          seenFullNames.set(fullNorm, st);
+        }
+
+        if (lastNorm && seenLastNames.has(lastNorm)) {
+          const prev = seenLastNames.get(lastNorm);
+          if (prev.id !== st.id) {
+            warnings.push({
+              type: 'shared_last_name_photo_check',
+              student1Id: prev.id,
+              student1Name: `${prev.name || prev.firstName || ''} ${prev.lastName || ''}`.trim(),
+              student2Id: st.id,
+              student2Name: `${first} ${last}`.trim(),
+              message: `تشابه نام خانوادگی («${last}» بین «${prev.name || ''}» و «${first}»): پیشنهاد می‌شود تطابق عکس پرسنلی بررسی شود.`
+            });
+          }
+        } else if (lastNorm) {
+          seenLastNames.set(lastNorm, st);
+        }
+      });
+
+      return warnings;
+    },
+
+    bulkEditStudents(c, studentIds, updates = {}) {
+      if (!c || !Array.isArray(c.students) || !Array.isArray(studentIds)) return { updatedCount: 0 };
+      window.createNonDestructiveSafetySnapshot('bulk_edit_students');
+      const idSet = new Set(studentIds);
+      let updatedCount = 0;
+      c.students.forEach(st => {
+        if (!st || !idSet.has(st.id)) return;
+        if (updates.status !== undefined) st.status = updates.status;
+        if (updates.notes !== undefined) st.notes = updates.notes;
+        if (updates.groupName !== undefined) st.groupName = updates.groupName;
+        st._updatedAt = Date.now();
+        updatedCount++;
+      });
+      save();
+      return { ok: true, updatedCount };
+    }
+  };
+
+  /* ==========================================================================================
+     بخش نهم: ارتقای مرکز یکپارچه گزارش و خروجی (window.ReportApp)
+     ========================================================================================== */
+  if (window.ReportApp) {
+    window.ReportApp.state.isFullscreen = false;
+    window.ReportApp.state.isExpandedList = false;
+    window.ReportApp.state.subjectFilter = '';
+    window.ReportApp.state.fromDate = '';
+    window.ReportApp.state.toDate = '';
+    window.ReportApp.state.sortColumn = 'row';
+    window.ReportApp.state.sortDir = 'asc';
+    window.ReportApp.state.searchQuery = '';
+
+    window.ReportApp.toggleFullscreen = function(forceState = null) {
+      this.state.isFullscreen = forceState !== null ? Boolean(forceState) : !this.state.isFullscreen;
+      const modalCard = document.querySelector('#transparentReportModal .modal-card, #transparentReportModal > div');
+      if (modalCard) {
+        modalCard.classList.toggle('dam-true-fullscreen-modal', this.state.isFullscreen);
+      }
+      const btn = document.getElementById('repFullscreenToggleBtn');
+      if (btn) {
+        btn.innerHTML = this.state.isFullscreen ? '🗗 خروج از تمام‌صفحه' : '⛶ تمام‌صفحه واقعی';
+      }
+      return this.state.isFullscreen;
+    };
+
+    window.ReportApp.toggleExpandedView = function(forceState = null) {
+      this.state.isExpandedList = forceState !== null ? Boolean(forceState) : !this.state.isExpandedList;
+      const previewWrap = document.getElementById('repModLivePreviewBox');
+      if (previewWrap) {
+        previewWrap.classList.toggle('dam-expanded-table-wrap', this.state.isExpandedList);
+      }
+      return this.state.isExpandedList;
+    };
+
+    window.ReportApp.setDateRangeFilter = function(fromDate, toDate) {
+      this.state.fromDate = String(fromDate || '').trim();
+      this.state.toDate = String(toDate || '').trim();
+      if (typeof this.renderPreview === 'function') this.renderPreview();
+    };
+
+    window.ReportApp.setSubjectFilter = function(subjectName) {
+      this.state.subjectFilter = String(subjectName || '').trim();
+      if (typeof this.renderPreview === 'function') this.renderPreview();
+    };
+
+    window.ReportApp.sortByColumn = function(colKey) {
+      if (this.state.sortColumn === colKey) {
+        this.state.sortDir = this.state.sortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        this.state.sortColumn = colKey;
+        this.state.sortDir = 'asc';
+      }
+      if (typeof this.renderPreview === 'function') this.renderPreview();
+      return { sortColumn: this.state.sortColumn, sortDir: this.state.sortDir };
+    };
+  }
+
+})();
+</script>
+<!-- ==================== END V9.2.1 MASTER ARCHITECTURAL & QA REMEDIATION SUITE ==================== -->
 
 </body>
 </html>
