@@ -11,7 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="9.3.0">
+<meta name="version" content="9.4.0">
+<meta name="danesh-app-version" content="9.4.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -4703,7 +4704,7 @@ body.dark .ws-logout-inner {
 <!-- اعلان به‌روزرسانی نسخه PWA (مدیریت مرکزی نسخه 9.3.0) -->
 <div id="swUpdateBanner" class="sw-update-banner" role="region" aria-label="اعلان به‌روزرسانی نسخه جدید">
   <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:200px">
-    <span id="swUpdateBannerText">🚀 نسخه جدید (۹.۲.۱) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
+    <span id="swUpdateBannerText">🚀 نسخه جدید (۹.۴.۰) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
     <div id="swUpdateBannerError" style="display:none;font-size:11.5px;color:#FEE2E2;background:rgba(153,27,27,0.88);padding:5px 8px;border-radius:8px;border:1px solid #FCA5A5;line-height:1.6"></div>
   </div>
   <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
@@ -4736,7 +4737,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۹.۳.۰</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۹.۴.۰</span>
           <button type="button" id="btnTopCheckUpdate" class="top-ver-pill" style="cursor:pointer;border:1px solid rgba(234,88,12,0.35);background:#FFF7ED;color:#EA580C;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:999px" onclick="if(window.CentralUpdateManager)CentralUpdateManager.checkForUpdatesManual()" title="بررسی به‌روزرسانی">بررسی به‌روزرسانی</button>
         </div>
       </div>
@@ -6240,7 +6241,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.2.1 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.4.0 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6341,7 +6342,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.2.1 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.4.0 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6572,7 +6573,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '9.3.0';
+const APP_VERSION = '9.4.0';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -35537,7 +35538,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v9.2.1</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v9.4.0</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -35679,7 +35680,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 9.3.0 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 9.4.0 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -40066,7 +40067,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DAM_AUDIT_VERSION = '9.2.1';
+  window.DAM_AUDIT_VERSION = '9.4.0';
 
   /* ==========================================================================================
      ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
@@ -40451,7 +40452,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.2.1';
+  window.DANESH_APP_VERSION = '9.4.0';
 
   /* ==========================================================================================
      ۱. معماری یکپارچه هوش مصنوعی با الهام مستقیم از آزمون‌ساز (gemini-code-1792066709047.html)
@@ -47442,13 +47443,13 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.2.1';
-  window.DAM_AUDIT_VERSION = '9.2.1';
+  window.DANESH_APP_VERSION = '9.4.0';
+  window.DAM_AUDIT_VERSION = '9.4.0';
   try {
     const topVerEl = document.getElementById('topVersion');
-    if (topVerEl) topVerEl.textContent = 'نسخه ۹.۳.۰';
+    if (topVerEl) topVerEl.textContent = 'نسخه ۹.۴.۰';
     const metaVer = document.querySelector('meta[name="version"]');
-    if (metaVer) metaVer.setAttribute('content', '9.2.1');
+    if (metaVer) metaVer.setAttribute('content', '9.4.0');
   } catch (_) {}
 
   /* ==========================================================================================
@@ -49756,7 +49757,7 @@ ${JSON.stringify(batch, null, 2)}
         ctx.fillStyle = '#64748B';
         ctx.font = '10px Vazirmatn, Tahoma, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(`سامانه هوشمند «دانش‌آموز من» نسخه ۹.۳.۰ — صفحه ${fa(pIdx + 1)} از ${fa(totalPages)}`, pageW / 2, pageH - 10);
+        ctx.fillText(`سامانه هوشمند «دانش‌آموز من» نسخه ۹.۴.۰ — صفحه ${fa(pIdx + 1)} از ${fa(totalPages)}`, pageW / 2, pageH - 10);
 
         const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.90);
         pageJpegBytesList.push({
@@ -52308,14 +52309,14 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V921_VERSION = '9.3.0';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v9.3.0-orange';
+  const V921_VERSION = '9.4.0';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v9.4.0-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
   function syncVersionDisplaysV921() {
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۹.۳.۰';
+    if (topVer) topVer.textContent = 'نسخه ۹.۴.۰';
     const metaVer = document.querySelector('meta[name="version"]');
     if (metaVer) metaVer.setAttribute('content', V921_VERSION);
   }
@@ -53132,7 +53133,7 @@ ${JSON.stringify(batch, null, 2)}
           </div>
 
           <div style="background:#FFFFFF;border:1px solid #FDBA74;border-radius:10px;padding:10px;font-size:11.5px;line-height:1.8;color:#334155;margin-bottom:10px">
-            ✅ <b>اصول حریم خصوصی نسخه ۹.۳.۰:</b><br>
+            ✅ <b>اصول حریم خصوصی نسخه ۹.۴.۰:</b><br>
             ۱. <b>تفکیک مجوز دوربین از هوش مصنوعی:</b> مجوز دوربین اندروید/مرورگر (و) یا انتخاب از گالری (ز) صرفاً برای ثبت عکس در دفتر معلم است و هرگز به معنای اجازه ارسال تصویر به سرور هوش مصنوعی نیست.<br>
             ۲. <b>توقف آنی در حین کار:</b> با برداشتن تیک هر یک از مجوزها، حتی اگر درخواستی در حال ارسال باشد، ارتباط فوراً با <code>AbortController</code> قطع و ارسال تصویر متوقف می‌شود.<br>
             ۳. <b>اطلاع کامل معلم:</b> هیچ تصویری بدون اطلاع معلم و پیش از اخذ رضایت صریح ارسال نمی‌گردد.
@@ -54902,8 +54903,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const UNIFIED_VERSION = '9.3.0';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.3.0-orange';
+  const UNIFIED_VERSION = '9.4.0';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.4.0-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -58800,8 +58801,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V930_VERSION = '9.3.0';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v9.3.0-orange';
+  const V930_VERSION = '9.4.0';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v9.4.0-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -58811,9 +58812,9 @@ ${JSON.stringify(batch, null, 2)}
     const meta = document.querySelector('meta[name="danesh-app-version"]');
     if (meta) meta.setAttribute('content', V930_VERSION);
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۹.۳.۰';
+    if (topVer) topVer.textContent = 'نسخه ۹.۴.۰';
     document.querySelectorAll('[data-app-version-label], .app-version-badge').forEach(el => {
-      el.textContent = '۹.۳.۰';
+      el.textContent = '۹.۴.۰';
     });
   }
   syncAllVersionBadgesV930();
@@ -59949,5 +59950,1333 @@ ${JSON.stringify(batch, null, 2)}
 })();
 </script>
 <!-- ==================== END V9.3.0 ULTIMATE MASTER SUITE ==================== -->
+
+<!-- ==================== START V9.4.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
+<style id="v940RootCauseStyles">
+  .stu-photo-warn-badge-v940 {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: #FEF3C7;
+    color: #92400E;
+    border: 1px solid #F59E0B;
+    border-radius: 999px;
+    padding: 1px 7px;
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-right: 4px;
+    vertical-align: middle;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .stu-photo-warn-badge-v940:hover {
+    background: #FDE68A;
+    transform: scale(1.03);
+  }
+  #swUpdateBannerError {
+    margin-top: 6px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: #FEF2F2;
+    color: #991B1B;
+    border: 1px solid #FCA5A5;
+    font-size: 11.5px;
+    font-weight: 700;
+  }
+  @media (max-width: 600px) {
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+    }
+    #swUpdateBanner {
+      flex-wrap: wrap !important;
+      gap: 6px !important;
+      padding: 8px 10px !important;
+    }
+  }
+</style>
+<script id="v940RootCauseMasterSuite">
+(function() {
+  'use strict';
+
+  const V940_VERSION = '9.4.0';
+  const V940_VERSION_FA = '۹.۴.۰';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v9.4.0-orange';
+  const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
+
+  window.APP_VERSION = V940_VERSION;
+  window.DANESH_APP_VERSION = V940_VERSION;
+  window.DAM_AUDIT_VERSION = V940_VERSION;
+  window.CACHE_NAME = V940_CACHE_NAME;
+
+  function syncAllVersionBadgesV940() {
+    const meta1 = document.querySelector('meta[name="version"]');
+    if (meta1) meta1.setAttribute('content', V940_VERSION);
+    const meta2 = document.querySelector('meta[name="danesh-app-version"]');
+    if (meta2) meta2.setAttribute('content', V940_VERSION);
+
+    const topVer = document.getElementById('topVersion');
+    if (topVer) topVer.textContent = `نسخه ${V940_VERSION_FA}`;
+
+    const aboutH2 = document.querySelector('#setPane-about h2');
+    if (aboutH2) {
+      aboutH2.textContent = aboutH2.textContent.replace(/v?\d+\.\d+\.\d+/g, `v${V940_VERSION}`);
+    }
+    const subtlePill = document.querySelector('.subtle-highlight-pill');
+    if (subtlePill) {
+      subtlePill.textContent = subtlePill.textContent.replace(/v?\d+\.\d+\.\d+/g, `v${V940_VERSION}`);
+    }
+    document.querySelectorAll('[data-app-version-label], .app-version-badge').forEach(el => {
+      el.textContent = V940_VERSION_FA;
+    });
+  }
+  syncAllVersionBadgesV940();
+
+  /* ==========================================================================================
+     ۱. تعمیر ریشه‌ای سیستم به‌روزرسانی (CentralUpdateManager v9.4.0)
+     - رفع کرش متدهای ناموجود setStatusUI و setButtonsDisabled
+     - رفع ناهماهنگی کلید sessionStorage (تأیید قطعی نسخه جدید پس از Reload)
+     - حذف forceRefreshCacheAssets مخرب هنگام نبود waiting worker
+     - بررسی واقعی سلامت کش، پشتیبان‌گیری پیش از نصب، MessageChannel + ACK، انتظار controllerchange، یک‌بار Reload
+     ========================================================================================== */
+  if (window.CentralUpdateManager) {
+    const mgr = window.CentralUpdateManager;
+    mgr.version = V940_VERSION;
+    mgr.currentVersion = V940_VERSION;
+    mgr.cacheName = V940_CACHE_NAME;
+    if (!Array.isArray(mgr.clickLog)) mgr.clickLog = [];
+    if (!Array.isArray(mgr.errorLog)) mgr.errorLog = [];
+
+    mgr.setStatusUI = function(message, level = 'info') {
+      const txtEl = document.getElementById('swUpdateBannerText');
+      if (txtEl && message) {
+        txtEl.textContent = message;
+      }
+      if (level === 'error') {
+        this.showErrorOnBanner(message);
+      }
+    };
+
+    mgr.setButtonsDisabled = function(disabled) {
+      const banner = document.getElementById('swUpdateBanner');
+      const btnApply = document.getElementById('btnApplySwUpdate') || banner?.querySelector('button.primary');
+      if (btnApply) {
+        btnApply.disabled = Boolean(disabled);
+        if (!disabled && btnApply.textContent === 'در حال آماده‌سازی') {
+          btnApply.textContent = 'تلاش مجدد';
+        }
+      }
+    };
+
+    mgr.checkWaitingCacheHealth = async function(worker, timeoutMs = 3500) {
+      if (!worker || typeof worker.postMessage !== 'function') {
+        return { ok: false, reason: 'NO_WORKER' };
+      }
+      return new Promise((resolve) => {
+        const channel = new MessageChannel();
+        const timer = setTimeout(() => {
+          resolve({ ok: false, reason: 'HEALTH_CHECK_TIMEOUT' });
+        }, timeoutMs);
+        channel.port1.onmessage = (ev) => {
+          clearTimeout(timer);
+          const data = ev.data || {};
+          resolve({
+            ok: Boolean(data.ok !== false && data.cacheHealthy !== false),
+            version: data.version || null,
+            cacheName: data.cacheName || null,
+            cacheHealthy: data.cacheHealthy !== false,
+            missingAssets: data.missingAssets || []
+          });
+        };
+        try {
+          worker.postMessage({ type: 'CHECK_CACHE_HEALTH' }, [channel.port2]);
+        } catch (err) {
+          clearTimeout(timer);
+          resolve({ ok: false, error: String(err?.message || err) });
+        }
+      });
+    };
+
+    mgr.evaluateAndShowBannerIfReady = async function(reg = null, candidateVersion = null) {
+      const activeReg = reg || await this.getRegistration();
+      if (!navigator.serviceWorker || !navigator.serviceWorker.controller) {
+        this.logEvent('BANNER_SUPPRESSED_INITIAL_INSTALL', { hasController: false });
+        return { shown: false, reason: 'INITIAL_SW_INSTALL_NO_CONTROLLER' };
+      }
+      if (!activeReg || !activeReg.waiting) {
+        this.logEvent('BANNER_SUPPRESSED_NO_WAITING_WORKER', { hasReg: Boolean(activeReg) });
+        return { shown: false, reason: 'NO_WAITING_WORKER' };
+      }
+      const waitingSw = activeReg.waiting;
+      if (waitingSw.state !== 'installed') {
+        this.logEvent('BANNER_SUPPRESSED_NOT_INSTALLED_STATE', { state: waitingSw.state });
+        return { shown: false, reason: 'WORKER_NOT_INSTALLED_YET', state: waitingSw.state };
+      }
+
+      const healthInfo = await this.checkWaitingCacheHealth(waitingSw, 2500);
+      if (healthInfo && healthInfo.cacheHealthy === false) {
+        this.logEvent('BANNER_SUPPRESSED_UNHEALTHY_CACHE', healthInfo);
+        return { shown: false, reason: 'CACHE_INCOMPLETE', missingAssets: healthInfo.missingAssets || [] };
+      }
+
+      const detectedVer = candidateVersion || healthInfo?.version || V940_VERSION;
+      if (detectedVer === this.currentVersion && !this._allowSameVersionUpdate) {
+        this.logEvent('BANNER_SUPPRESSED_SAME_VERSION', { detectedVer, currentVersion: this.currentVersion });
+        return { shown: false, reason: 'ALREADY_ON_THIS_VERSION', version: detectedVer };
+      }
+
+      this.waitingWorker = waitingSw;
+      this.waitingVersion = detectedVer;
+      window._swWaitingWorker = waitingSw;
+
+      const banner = document.getElementById('swUpdateBanner');
+      const txtEl = document.getElementById('swUpdateBannerText') || banner?.querySelector('span');
+      const errEl = document.getElementById('swUpdateBannerError');
+      const btnEl = document.getElementById('btnApplySwUpdate') || banner?.querySelector('button.primary');
+
+      if (txtEl) {
+        txtEl.textContent = `🚀 نسخه جدید (${typeof fa === 'function' ? fa(detectedVer) : detectedVer}) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)`;
+      }
+      if (errEl && !this.isUpdating) {
+        errEl.style.display = 'none';
+        errEl.textContent = '';
+      }
+      if (btnEl && !this.isUpdating) {
+        btnEl.disabled = false;
+        btnEl.textContent = 'به‌روزرسانی';
+      }
+      if (banner) banner.classList.add('show');
+
+      this.logEvent('UPDATE_BANNER_SHOWN', { waitingVersion: detectedVer, workerState: waitingSw.state });
+      return { shown: true, waitingVersion: detectedVer, workerState: waitingSw.state };
+    };
+
+    mgr.applyUpdate = async function(options = {}) {
+      const banner = document.getElementById('swUpdateBanner');
+      const btnEl = document.getElementById('btnApplySwUpdate') || banner?.querySelector('button.primary');
+      const errEl = document.getElementById('swUpdateBannerError');
+      const txtEl = document.getElementById('swUpdateBannerText') || banner?.querySelector('span');
+
+      this.clickLog.unshift({
+        timestamp: Date.now(),
+        isoTime: new Date().toISOString(),
+        currentVersion: this.currentVersion,
+        waitingVersion: this.waitingVersion || null,
+        isUpdating: Boolean(this.isUpdating)
+      });
+
+      if (options.confirmed === false) {
+        return this.cancelUpdate();
+      }
+
+      if (this.isUpdating) {
+        const reason = '⏳ عملیات نصب نسخه جدید هم‌اکنون در حال انجام است؛ لطفاً چند لحظه صبر کنید.';
+        this.setStatusUI(reason, 'warn');
+        if (typeof toast === 'function') toast(reason);
+        return { ok: false, reason: 'already_updating', message: reason };
+      }
+
+      this.isUpdating = true;
+      if (btnEl) {
+        btnEl.disabled = true;
+        btnEl.textContent = 'در حال آماده‌سازی';
+      }
+      if (errEl) {
+        errEl.style.display = 'none';
+        errEl.textContent = '';
+      }
+      if (txtEl) {
+        txtEl.textContent = '⏳ گام ۱ از ۴: تهیه نسخه پشتیبان کامل از اطلاعات...';
+      }
+      this.logEvent('STEP_1_PREPARING_STARTED');
+
+      try {
+        if (this._simulateBackupFailure) {
+          throw new Error('خطا در تهیه نسخه پشتیبان ایمنی پیش از نصب آپدیت.');
+        }
+        if (typeof window.createNonDestructiveSafetySnapshot === 'function') {
+          window.createNonDestructiveSafetySnapshot('pre_update_v940');
+        }
+        if (typeof window.createPreRestoreSafetySnapshot === 'function') {
+          const backupSnap = await window.createPreRestoreSafetySnapshot(`پشتیبان کامل پیش از نصب آپدیت نسخه ${V940_VERSION}`);
+          if (backupSnap && backupSnap.ok === false) {
+            throw new Error(backupSnap.error || 'تهیه نسخه پشتیبان کامل پیش از آپدیت ناموفق بود.');
+          }
+        }
+        this.logEvent('STEP_2_FULL_BACKUP_COMPLETED', { snapshotCreated: true });
+
+        if (txtEl) {
+          txtEl.textContent = '⏳ گام ۲ از ۴: ذخیره و تأیید سلامت اطلاعات در IndexedDB...';
+        }
+        if (this._simulateStorageQuotaFull) {
+          throw new Error('QuotaExceededError: ظرفیت حافظه دستگاه پر است؛ ذخیره‌سازی پیش از آپدیت ناموفق بود.');
+        }
+        const saveRes = await window.savePersistent({ reason: 'pre_sw_update_v940' });
+        if (!saveRes || saveRes.ok !== true || saveRes.indexedDbOk === false) {
+          throw new Error(saveRes?.error || 'ذخیره‌سازی اطلاعات در IndexedDB تأیید نشد؛ برای حفظ اطلاعات، آپدیت متوقف شد.');
+        }
+        this.logEvent('STEP_3_STORAGE_VERIFIED', { saveOk: saveRes.ok, indexedDbOk: saveRes.indexedDbOk });
+
+        if (txtEl) {
+          txtEl.textContent = '⏳ گام ۳ از ۴: بررسی سلامت فایل‌های دانلودشده و کش نسخه جدید...';
+        }
+        const reg = await this.getRegistration();
+        let waitingSw = (reg && reg.waiting) ? reg.waiting : this.waitingWorker;
+
+        if (!waitingSw && reg && !options.requireStrictWaitingWorker && !this._strictWaitingCheckForTest) {
+          try { await reg.update(); } catch (_) {}
+          if (reg.installing) {
+            const inst = reg.installing;
+            await new Promise(resolve => {
+              const t = setTimeout(resolve, 4500);
+              inst.addEventListener('statechange', () => {
+                if (inst.state === 'installed' || inst.state === 'activated' || inst.state === 'redundant') {
+                  clearTimeout(t);
+                  resolve();
+                }
+              });
+            });
+          }
+          waitingSw = (reg && reg.waiting) ? reg.waiting : this.waitingWorker;
+        }
+
+        if (!waitingSw || waitingSw.state !== 'installed') {
+          throw new Error('نسخه جدید هنوز به‌طور کامل دانلود و آماده نصب نشده است (Service Worker منتظر در وضعیت installed نیست). صفحه Reload نشد.');
+        }
+        this.logEvent('STEP_4_WAITING_WORKER_VERIFIED', { state: waitingSw.state });
+
+        const health = await this.checkWaitingCacheHealth(waitingSw, 3500);
+        if (health && health.cacheHealthy === false) {
+          throw new Error(`کش نسخه جدید ناقص است (${(health.missingAssets || []).join('، ')})؛ نصب متوقف شد.`);
+        }
+        this.logEvent('STEP_4B_CACHE_HEALTH_VERIFIED', health);
+
+        if (txtEl) {
+          txtEl.textContent = '⏳ گام ۴ از ۴: فعال‌سازی نسخه جدید و دریافت تأییدیه Service Worker...';
+        }
+
+        let controllerChangeResolved = false;
+        const controllerChangePromise = new Promise((resolve, reject) => {
+          const timer = setTimeout(() => {
+            if (!controllerChangeResolved) {
+              reject(new Error('تأییدیه تغییر کنترلر (controllerchange) از مرورگر دریافت نشد.'));
+            }
+          }, options.controllerChangeTimeoutMs || 6500);
+          const onCtrlChange = () => {
+            controllerChangeResolved = true;
+            clearTimeout(timer);
+            navigator.serviceWorker.removeEventListener('controllerchange', onCtrlChange);
+            resolve({ controllerChanged: true, timestamp: Date.now() });
+          };
+          navigator.serviceWorker.addEventListener('controllerchange', onCtrlChange);
+        });
+
+        const ack = await this.sendSkipWaitingWithMessageChannel(waitingSw, options.ackTimeoutMs || 6500);
+        this.logEvent('STEP_5_AND_6_SKIP_WAITING_ACK_RECEIVED', ack);
+
+        const ctrlRes = await controllerChangePromise;
+        this.logEvent('STEP_7_CONTROLLER_CHANGE_CONFIRMED', ctrlRes);
+
+        const installedVersion = ack.version || health.version || V940_VERSION;
+        try {
+          sessionStorage.setItem(POST_UPDATE_SESSION_KEY, JSON.stringify({
+            expectedVersion: installedVersion,
+            cacheName: ack.cacheName || V940_CACHE_NAME,
+            updatedAt: new Date().toISOString()
+          }));
+        } catch (_) {}
+
+        if (banner) banner.classList.remove('show');
+        this.isUpdating = false;
+
+        const successResult = {
+          ok: true,
+          status: 'UPDATED_AND_VERIFIED',
+          newVersion: installedVersion,
+          cacheName: ack.cacheName || V940_CACHE_NAME,
+          backupVerified: true,
+          storageVerified: true,
+          cacheHealthy: true,
+          skipWaitingAck: true,
+          controllerChanged: true,
+          reloadedOnce: !this._reloadedOnce
+        };
+        this.lastUpdateAttemptResult = successResult;
+
+        if (!this._reloadedOnce) {
+          this._reloadedOnce = true;
+          this.logEvent('STEP_8_SINGLE_RELOAD_TRIGGERED', { newVersion: installedVersion });
+          if (!options.preventAutoReloadForTest) {
+            window.location.reload();
+          }
+        }
+        return successResult;
+      } catch (err) {
+        this.isUpdating = false;
+        const errMsg = String(err && err.message ? err.message : err);
+        this.errorLog.unshift({ timestamp: Date.now(), reason: 'UPDATE_FAILED', error: errMsg });
+        this.showErrorOnBanner(errMsg);
+        this.setButtonsDisabled(false);
+        const failResult = {
+          ok: false,
+          status: 'UPDATE_FAILED',
+          error: errMsg,
+          bannerVisible: Boolean(banner && banner.classList.contains('show')),
+          buttonEnabled: Boolean(btnEl && !btnEl.disabled),
+          buttonText: btnEl ? btnEl.textContent : 'تلاش مجدد',
+          reloaded: false,
+          dataPreserved: true
+        };
+        this.lastUpdateAttemptResult = failResult;
+        return failResult;
+      }
+    };
+
+    mgr.verifyPostUpdateAfterLoad = async function() {
+      syncAllVersionBadgesV940();
+      let pendingRaw = null;
+      try {
+        pendingRaw = sessionStorage.getItem(POST_UPDATE_SESSION_KEY)
+          || sessionStorage.getItem('dam_post_update_verify_v930')
+          || sessionStorage.getItem('dam_post_update_verify_v921');
+      } catch (_) {}
+
+      let swVersionInfo = null;
+      if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+        swVersionInfo = await this.queryWorkerVersionViaChannel(navigator.serviceWorker.controller, 2500);
+      }
+
+      if (pendingRaw) {
+        try {
+          sessionStorage.removeItem(POST_UPDATE_SESSION_KEY);
+          sessionStorage.removeItem('dam_post_update_verify_v930');
+          sessionStorage.removeItem('dam_post_update_verify_v921');
+          const parsed = JSON.parse(pendingRaw);
+          const confirmedVer = swVersionInfo?.version || parsed.expectedVersion || V940_VERSION;
+          if (typeof toast === 'function') {
+            toast(`✅ نسخه ${typeof fa === 'function' ? fa(confirmedVer) : confirmedVer} با موفقیت نصب شد و تمام اطلاعات شما سالم حفظ گردید.`);
+          }
+          this.logEvent('STEP_9_POST_UPDATE_VERIFIED', { appVersion: V940_VERSION, swVersion: confirmedVer });
+        } catch (_) {}
+      }
+
+      return {
+        ok: true,
+        htmlVersion: V940_VERSION,
+        appVersionVar: window.APP_VERSION,
+        swVersion: swVersionInfo?.version || V940_VERSION,
+        cacheName: swVersionInfo?.cacheName || V940_CACHE_NAME
+      };
+    };
+
+    window.handleBannerUpdateButtonClick = async function(ev) {
+      if (ev && typeof ev.preventDefault === 'function') ev.preventDefault();
+      return await window.CentralUpdateManager.applyUpdate({ confirmed: true });
+    };
+    window.applyPendingSwUpdate = function(options = {}) {
+      return window.CentralUpdateManager.applyUpdate(options);
+    };
+
+    const btnApply = document.getElementById('btnApplySwUpdate');
+    if (btnApply) {
+      btnApply.setAttribute('onclick', 'window.handleBannerUpdateButtonClick(event)');
+    }
+    mgr.verifyPostUpdateAfterLoad();
+  }
+
+  /* ==========================================================================================
+     ۲. تعمیر ریشه‌ای موتور رفتار و پاداش عدم منفی (SmartBehaviorEngine v9.4.0)
+     - احترام قطعی به فعال/غیرفعال بودن enableNoNegBonus
+     - اعمال واقعی bonusOnNeutralizedZero هنگام خنثی شدن مثبت و منفی
+     - حفظ ۱۰۰٪ سابقه پاداش‌های خودکار عدم منفی هنگام غیرفعال‌سازی (آرشیو به جای حذف)
+     ========================================================================================== */
+  if (window.SmartBehaviorEngine) {
+    const _origRecalc = window.SmartBehaviorEngine.recalculateStudentAutoNoNegRewards.bind(window.SmartBehaviorEngine);
+    window.SmartBehaviorEngine.recalculateStudentAutoNoNegRewards = function(c, st) {
+      if (!c || !st) return _origRecalc(c, st);
+      const cfg = window.FlexibleGradingEngine.ensureClassConfig(c);
+      const streakCfg = cfg.noNegStreakConfig || {};
+      const b = behaviorData(st);
+      if (!Array.isArray(b.positives)) b.positives = [];
+
+      if (!streakCfg.enabled) {
+        // حفظ کامل سابقه پاداش‌های خودکار به جای پاک کردن آن‌ها
+        let preservedCount = 0;
+        b.positives.forEach(pos => {
+          if (pos && pos.isAutoNoNegReward && !pos.manuallyEdited) {
+            pos.archivedWhenDisabled = true;
+            preservedCount++;
+          }
+        });
+        st._noNegStreakStats = {
+          currentStreak: 0,
+          totalNoNegSessions: st._noNegStreakStats?.totalNoNegSessions || 0,
+          autoRewardsCount: 0,
+          preservedAutoHistoryCount: preservedCount
+        };
+        return {
+          currentStreak: 0,
+          totalNoNegSessions: st._noNegStreakStats.totalNoNegSessions,
+          autoRewardsCount: 0,
+          preservedAutoHistoryCount: preservedCount,
+          autoRewards: []
+        };
+      }
+
+      // هنگام فعال بودن، موارد آرشیوشده قبلی را مجدداً قابل‌ارزیابی کن
+      b.positives.forEach(pos => {
+        if (pos && pos.isAutoNoNegReward && pos.archivedWhenDisabled) {
+          pos.archivedWhenDisabled = false;
+        }
+      });
+      return _origRecalc(c, st);
+    };
+
+    const _origBehSummary = window.SmartBehaviorEngine.computeStudentBehaviorSummary.bind(window.SmartBehaviorEngine);
+    window.SmartBehaviorEngine.computeStudentBehaviorSummary = function(c, st) {
+      const summary = _origBehSummary(c, st);
+      if (!c || !st || !summary) return summary;
+
+      const cfg = window.FlexibleGradingEngine.ensureClassConfig(c);
+      const behCfg = cfg.behaviorConfig || {};
+      const bonusEnabled = behCfg.enableNoNegBonus !== false;
+      const bonusVal = Math.max(0, Number(behCfg.bonusNoNeg) || 0);
+      const allowOnNeutralized = behCfg.bonusOnNeutralizedZero !== false;
+
+      // محاسبه دقیق مجدد پاداش عدم منفی (بدون دوبارشماری و با احترام به تنظیمات معلم)
+      const prevBonus = Number(summary.noNegBonus) || 0;
+      const baseDelta = Math.round(((Number(summary.effectiveGradeDelta) || 0) - prevBonus) * 100) / 100;
+
+      let newNoNegBonus = 0;
+      if (bonusEnabled && bonusVal > 0 && (summary.autoNoNegPosCount || 0) === 0) {
+        const hasNoNegs = (summary.negCount || 0) === 0 && (summary.manualPosCount || 0) > 0;
+        const isNeutralizedZero = allowOnNeutralized
+          && summary.nettingEnabled !== false
+          && (summary.negCount || 0) > 0
+          && (summary.netCount || 0) >= 0;
+        if (hasNoNegs || isNeutralizedZero) {
+          newNoNegBonus = bonusVal;
+        }
+      }
+
+      summary.noNegBonus = newNoNegBonus;
+      summary.effectiveGradeDelta = Math.round((baseDelta + newNoNegBonus) * 100) / 100;
+      summary.historyPreserved = true;
+      return summary;
+    };
+  }
+
+  /* ==========================================================================================
+     ۳. سخت‌سازی موتور مرکزی نمره‌دهی (FlexibleGradingEngine & CentralGradeEngine v9.4.0)
+     - جلوگیری قطعی از تجاوز نمره موقت ناقص از سقف بخش‌های ثبت‌شده (recordedShareOfTotal)
+     - جلوگیری قطعی از تجاوز نمره نهایی کامل از سقف تنظیم‌شده (totalMaxScore)
+     - هم‌ترازی ۱۰۰٪ تمام ماژول‌ها (کارت، شبیه‌ساز، کارنامه، رتبه‌بندی، گزارش‌گیری)
+     ========================================================================================== */
+  if (window.FlexibleGradingEngine) {
+    const _prevCalcV930 = window.FlexibleGradingEngine.calculateStudentFullGradeReport.bind(window.FlexibleGradingEngine);
+    window.FlexibleGradingEngine.calculateStudentFullGradeReport = function(c, st, subjectOverride = null) {
+      const rep = _prevCalcV930(c, st, subjectOverride);
+      if (!rep || !c || !st) return rep;
+
+      const cfg = rep.config || this.ensureClassConfig(c);
+      const academicMax = rep.totalMaxScore;
+
+      // اصلاح سقف نمره موقت (ناقص): هرگز نباید از recordedShareOfTotal بیشتر شود یا مخرج را به اشتباه ۲۰ نشان دهد
+      if (rep.isPartialGrade && rep.academicScore !== null) {
+        const partialCap = Math.min(academicMax, Math.max(0, rep.recordedShareOfTotal || academicMax));
+        const rawWithBeh = cfg.includeBehaviorInFinal
+          ? (rep.academicScore + (rep.behavior?.effectiveGradeDelta || 0))
+          : rep.academicScore;
+        const clampedPartial = this.roundNum(Math.max(0, Math.min(partialCap, rawWithBeh)), cfg);
+
+        rep.provisionalScore = clampedPartial;
+        rep.scoreAfterBehavior = clampedPartial;
+        rep.finalScore = clampedPartial;
+        rep.strictCompleteFinalScore = null;
+        rep.completeFinalScore = null;
+
+        // تعیین سطح نمره بر اساس نسبت به بخش‌های ثبت‌شده
+        if (partialCap > 0) {
+          const pct = (clampedPartial / partialCap) * 100;
+          if (pct >= 85) { rep.scoreTier = 'excellent'; rep.scoreTierLabel = '🟢 عالی (موقت)'; }
+          else if (pct >= 70) { rep.scoreTier = 'good'; rep.scoreTierLabel = '🔵 خوب (موقت)'; }
+          else if (pct >= 60) { rep.scoreTier = 'fair'; rep.scoreTierLabel = '🟡 قابل قبول (موقت)'; }
+          else { rep.scoreTier = 'low'; rep.scoreTierLabel = '🔴 نیازمند تلاش (موقت)'; }
+        }
+
+        const unrecList = (rep.unrecordedSectionTitles || []).join('، ');
+        rep.finalDisplay = `نمره موقت: ${this.formatNum(clampedPartial)} از ${this.formatNum(partialCap)} (${this.formatNum(rep.unrecordedShareOfTotal)} نمره ثبت‌نشده: ${unrecList})`;
+        rep.shortFinalTableDisplay = `موقت: ${this.formatNum(clampedPartial)} از ${this.formatNum(partialCap)} (ناقص)`;
+      } else if (rep.isCompleteGrade && rep.completeFinalScore !== null) {
+        // تضمین قطعی عدم عبور نمره نهایی کامل از سقف تنظیم‌شده
+        const strictCapped = this.roundNum(Math.max(0, Math.min(academicMax, rep.completeFinalScore)), cfg);
+        rep.completeFinalScore = strictCapped;
+        rep.strictCompleteFinalScore = strictCapped;
+        rep.finalScore = strictCapped;
+        rep.scoreAfterBehavior = strictCapped;
+        rep.finalDisplay = `${this.formatNum(strictCapped)} از ${fa(academicMax)}`;
+        rep.shortFinalTableDisplay = `${this.formatNum(strictCapped)} از ${fa(academicMax)}`;
+      }
+
+      return rep;
+    };
+
+    // هم‌ترازی یکپارچه CentralGradeEngine و توابع کمکی
+    if (window.CentralGradeEngine) {
+      window.CentralGradeEngine.evaluateStudent = function(c, st, subjectOverride = null) {
+        return window.FlexibleGradingEngine.calculateStudentFullGradeReport(c, st, subjectOverride);
+      };
+      window.CentralGradeEngine.calculateStudentFullGradeReport = function(c, st, subjectOverride = null) {
+        return window.FlexibleGradingEngine.calculateStudentFullGradeReport(c, st, subjectOverride);
+      };
+    }
+    window.calculateFinalStudentScore = function(c, st) {
+      const rep = window.FlexibleGradingEngine.calculateStudentFullGradeReport(c, st);
+      return rep ? rep.finalScore : null;
+    };
+  }
+
+  /* ==========================================================================================
+     ۴. ارتقای رنگی واقعی فایل‌های خروجی PDF، Word (.docx) و Excel (.xlsx) و گزارش‌گیری ناقص
+     ========================================================================================== */
+  const TIER_PALETTE_V940 = {
+    excellent:  { bgHex: 'DCFCE7', fgHex: '166534', cssBg: '#DCFCE7', cssFg: '#166534', xlsxStyleId: 5 },
+    good:       { bgHex: 'DBEAFE', fgHex: '1E40AF', cssBg: '#DBEAFE', cssFg: '#1E40AF', xlsxStyleId: 6 },
+    fair:       { bgHex: 'FEF3C7', fgHex: '92400E', cssBg: '#FEF3C7', cssFg: '#92400E', xlsxStyleId: 7 },
+    low:        { bgHex: 'FEE2E2', fgHex: '991B1B', cssBg: '#FEE2E2', cssFg: '#991B1B', xlsxStyleId: 8 },
+    incomplete: { bgHex: 'FEF9C3', fgHex: '854D0E', cssBg: '#FEF9C3', cssFg: '#854D0E', xlsxStyleId: 9 },
+    none:       { bgHex: 'F1F5F9', fgHex: '475569', cssBg: '#F1F5F9', cssFg: '#475569', xlsxStyleId: 3 }
+  };
+
+  if (window.GenuineOfficeExporter) {
+    // ۴.۱. اکسل باینری واقعی (.xlsx) با رنگ‌بندی سطح نمره و وضعیت ناقص داخل خود فایل
+    window.GenuineOfficeExporter.buildGenuineXlsxBlob = function(title, headers, rows, options = {}) {
+      const escX = (v) => this._xmlEsc(v);
+      const colCount = Math.max(1, headers.length);
+      const lastCol = this._colLetter(colCount - 1);
+      const rowMeta = Array.isArray(options.rowMeta) ? options.rowMeta : [];
+
+      let sheetRowsXml = '';
+      sheetRowsXml += `<row r="1" ht="28" customHeight="1"><c r="A1" t="inlineStr" s="1"><is><t>${escX(title)}</t></is></c>`;
+      for (let c = 1; c < colCount; c++) {
+        sheetRowsXml += `<c r="${this._colLetter(c)}1" s="1"/>`;
+      }
+      sheetRowsXml += `</row>`;
+
+      sheetRowsXml += `<row r="2" ht="24" customHeight="1">`;
+      headers.forEach((h, cIdx) => {
+        sheetRowsXml += `<c r="${this._colLetter(cIdx)}2" t="inlineStr" s="2"><is><t>${escX(h)}</t></is></c>`;
+      });
+      sheetRowsXml += `</row>`;
+
+      rows.forEach((rowArr, rIdx) => {
+        const rNum = rIdx + 3;
+        const baseStyleId = (rIdx % 2 === 1) ? 4 : 3;
+        const meta = rowMeta[rIdx] || {};
+        const tierKey = meta.isPartial ? 'incomplete' : (meta.tier || 'none');
+        const tierStyleId = (TIER_PALETTE_V940[tierKey] || TIER_PALETTE_V940.none).xlsxStyleId;
+
+        sheetRowsXml += `<row r="${rNum}" ht="21" customHeight="1">`;
+        headers.forEach((hName, cIdx) => {
+          const rawVal = rowArr[cIdx] ?? '—';
+          const ref = `${this._colLetter(cIdx)}${rNum}`;
+          const isTierCol = String(hName).includes('نمره نهایی') || String(hName).includes('وضعیت');
+          const cellStyle = isTierCol ? tierStyleId : baseStyleId;
+          const numCandidate = typeof rawVal === 'number' ? rawVal : null;
+          if (numCandidate !== null && Number.isFinite(numCandidate)) {
+            sheetRowsXml += `<c r="${ref}" s="${cellStyle}"><v>${numCandidate}</v></c>`;
+          } else {
+            sheetRowsXml += `<c r="${ref}" t="inlineStr" s="${cellStyle}"><is><t>${escX(String(rawVal))}</t></is></c>`;
+          }
+        });
+        sheetRowsXml += `</row>`;
+      });
+
+      const colsXml = `<cols>${headers.map((h, i) => `<col min="${i + 1}" max="${i + 1}" width="${String(h).includes('نام') ? 24 : (String(h).includes('وضعیت') || String(h).includes('نهایی') ? 22 : 14)}" customWidth="1"/>`).join('')}</cols>`;
+      const mergeXml = colCount > 1 ? `<mergeCells count="1"><mergeCell ref="A1:${lastCol}1"/></mergeCells>` : '';
+
+      const worksheetXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <sheetViews><sheetView rightToLeft="1" tabSelected="1" workbookViewId="0"/></sheetViews>
+  ${colsXml}
+  <sheetData>${sheetRowsXml}</sheetData>
+  ${mergeXml}
+</worksheet>`;
+
+      const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <fonts count="8">
+    <font><sz val="11"/><color rgb="FF0F172A"/><name val="Tahoma"/></font>
+    <font><b/><sz val="12"/><color rgb="FF9A3412"/><name val="Tahoma"/></font>
+    <font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Tahoma"/></font>
+    <font><b/><sz val="10"/><color rgb="FF166534"/><name val="Tahoma"/></font>
+    <font><b/><sz val="10"/><color rgb="FF1E40AF"/><name val="Tahoma"/></font>
+    <font><b/><sz val="10"/><color rgb="FF92400E"/><name val="Tahoma"/></font>
+    <font><b/><sz val="10"/><color rgb="FF991B1B"/><name val="Tahoma"/></font>
+    <font><b/><sz val="10"/><color rgb="FF854D0E"/><name val="Tahoma"/></font>
+  </fonts>
+  <fills count="10">
+    <fill><patternFill patternType="none"/></fill>
+    <fill><patternFill patternType="gray125"/></fill>
+    <fill><patternFill patternType="solid"><fgColor rgb="FFFFF7ED"/><bgColor indexed="64"/></patternFill></fill>
+    <fill><patternFill patternType="solid"><fgColor rgb="FFEA580C"/><bgColor indexed="64"/></patternFill></fill>
+    <fill><patternFill patternType="solid"><fgColor rgb="FFFFFBF5"/><bgColor indexed="64"/></patternFill></fill>
+    <fill><patternFill patternType="solid"><fgColor rgb="FFDCFCE7"/><bgColor indexed="64"/></patternFill></fill>
+    <fill><patternFill patternType="solid"><fgColor rgb="FFDBEAFE"/><bgColor indexed="64"/></patternFill></fill>
+    <fill><patternFill patternType="solid"><fgColor rgb="FFFEF3C7"/><bgColor indexed="64"/></patternFill></fill>
+    <fill><patternFill patternType="solid"><fgColor rgb="FFFEE2E2"/><bgColor indexed="64"/></patternFill></fill>
+    <fill><patternFill patternType="solid"><fgColor rgb="FFFEF9C3"/><bgColor indexed="64"/></patternFill></fill>
+  </fills>
+  <borders count="2">
+    <border><left/><right/><top/><bottom/><diagonal/></border>
+    <border>
+      <left style="thin"><color rgb="FFCBD5E1"/></left>
+      <right style="thin"><color rgb="FFCBD5E1"/></right>
+      <top style="thin"><color rgb="FFCBD5E1"/></top>
+      <bottom style="thin"><color rgb="FFCBD5E1"/></bottom>
+      <diagonal/>
+    </border>
+  </borders>
+  <cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>
+  <cellXfs count="10">
+    <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
+    <xf numFmtId="0" fontId="1" fillId="2" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" readingOrder="2"/></xf>
+    <xf numFmtId="0" fontId="2" fillId="3" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1" readingOrder="2"/></xf>
+    <xf numFmtId="0" fontId="0" fillId="0" borderId="1" xfId="0" applyFont="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" readingOrder="2"/></xf>
+    <xf numFmtId="0" fontId="0" fillId="4" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" readingOrder="2"/></xf>
+    <xf numFmtId="0" fontId="3" fillId="5" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1" readingOrder="2"/></xf>
+    <xf numFmtId="0" fontId="4" fillId="6" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1" readingOrder="2"/></xf>
+    <xf numFmtId="0" fontId="5" fillId="7" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1" readingOrder="2"/></xf>
+    <xf numFmtId="0" fontId="6" fillId="8" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1" readingOrder="2"/></xf>
+    <xf numFmtId="0" fontId="7" fillId="9" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1" readingOrder="2"/></xf>
+  </cellXfs>
+  <cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles>
+</styleSheet>`;
+
+      const workbookXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <sheets><sheet name="گزارش دانش‌آموز من" sheetId="1" r:id="rId1"/></sheets>
+</workbook>`;
+      const workbookRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
+  <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+</Relationships>`;
+      const rootRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
+</Relationships>`;
+      const contentTypesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
+  <Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>
+  <Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>
+</Types>`;
+
+      const zipBytes = this.buildZipBytes({
+        '[Content_Types].xml': contentTypesXml,
+        '_rels/.rels': rootRelsXml,
+        'xl/workbook.xml': workbookXml,
+        'xl/_rels/workbook.xml.rels': workbookRelsXml,
+        'xl/styles.xml': stylesXml,
+        'xl/worksheets/sheet1.xml': worksheetXml
+      });
+      const blob = new Blob([zipBytes], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      window.lastGeneratedOfficeBlobs.xlsx = { blob, bytes: zipBytes, title, rowsCount: rows.length, colorCoded: true };
+      return blob;
+    };
+
+    // ۴.۲. Word باینری واقعی (.docx) با رنگ‌بندی سلول‌های نمره و وضعیت داخل خود فایل
+    window.GenuineOfficeExporter.buildGenuineDocxBlob = function(title, subtitle, headers, rows, options = {}) {
+      const escX = (v) => this._xmlEsc(v);
+      const rowMeta = Array.isArray(options.rowMeta) ? options.rowMeta : [];
+
+      const headerCellsXml = headers.map(h => `
+        <w:tc>
+          <w:tcPr><w:shd w:val="clear" w:color="auto" w:fill="EA580C"/></w:tcPr>
+          <w:p>
+            <w:pPr><w:bidi/><w:jc w:val="center"/></w:pPr>
+            <w:r>
+              <w:rPr><w:rFonts w:ascii="Tahoma" w:hAnsi="Tahoma" w:cs="Tahoma"/><w:b/><w:bCs/><w:color w:val="FFFFFF"/><w:sz w:val="18"/><w:szCs w:val="18"/><w:rtl/></w:rPr>
+              <w:t>${escX(h)}</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>`).join('');
+
+      const bodyRowsXml = rows.map((rowArr, rIdx) => {
+        const zebraFill = (rIdx % 2 === 1) ? 'FFF7ED' : 'FFFFFF';
+        const meta = rowMeta[rIdx] || {};
+        const tierKey = meta.isPartial ? 'incomplete' : (meta.tier || 'none');
+        const pal = TIER_PALETTE_V940[tierKey] || TIER_PALETTE_V940.none;
+
+        const cellsXml = headers.map((hName, cIdx) => {
+          const val = String(rowArr[cIdx] ?? '—');
+          const isTierCol = String(hName).includes('نمره نهایی') || String(hName).includes('وضعیت');
+          const bgFill = isTierCol ? pal.bgHex : zebraFill;
+          const txtColor = isTierCol ? pal.fgHex : '0F172A';
+          const boldTags = isTierCol ? '<w:b/><w:bCs/>' : '';
+          return `
+            <w:tc>
+              <w:tcPr><w:shd w:val="clear" w:color="auto" w:fill="${bgFill}"/></w:tcPr>
+              <w:p>
+                <w:pPr><w:bidi/><w:jc w:val="center"/></w:pPr>
+                <w:r>
+                  <w:rPr><w:rFonts w:ascii="Tahoma" w:hAnsi="Tahoma" w:cs="Tahoma"/>${boldTags}<w:color w:val="${txtColor}"/><w:sz w:val="17"/><w:szCs w:val="17"/><w:rtl/></w:rPr>
+                  <w:t>${escX(val)}</w:t>
+                </w:r>
+              </w:p>
+            </w:tc>`;
+        }).join('');
+        return `<w:tr><w:trPr><w:cantSplit/></w:trPr>${cellsXml}</w:tr>`;
+      }).join('');
+
+      const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:body>
+    <w:p>
+      <w:pPr><w:bidi/><w:jc w:val="center"/></w:pPr>
+      <w:r>
+        <w:rPr><w:rFonts w:ascii="Tahoma" w:hAnsi="Tahoma" w:cs="Tahoma"/><w:b/><w:bCs/><w:color w:val="9A3412"/><w:sz w:val="28"/><w:szCs w:val="28"/><w:rtl/></w:rPr>
+        <w:t>${escX(title)}</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:pPr><w:bidi/><w:jc w:val="center"/></w:pPr>
+      <w:r>
+        <w:rPr><w:rFonts w:ascii="Tahoma" w:hAnsi="Tahoma" w:cs="Tahoma"/><w:color w:val="475569"/><w:sz w:val="19"/><w:szCs w:val="19"/><w:rtl/></w:rPr>
+        <w:t>${escX(subtitle)}</w:t>
+      </w:r>
+    </w:p>
+    <w:tbl>
+      <w:tblPr>
+        <w:bidiVisual/>
+        <w:tblW w:w="5000" w:type="pct"/>
+        <w:tblBorders>
+          <w:top w:val="single" w:sz="6" w:space="0" w:color="CBD5E1"/>
+          <w:left w:val="single" w:sz="6" w:space="0" w:color="CBD5E1"/>
+          <w:bottom w:val="single" w:sz="6" w:space="0" w:color="CBD5E1"/>
+          <w:right w:val="single" w:sz="6" w:space="0" w:color="CBD5E1"/>
+          <w:insideH w:val="single" w:sz="4" w:space="0" w:color="CBD5E1"/>
+          <w:insideV w:val="single" w:sz="4" w:space="0" w:color="CBD5E1"/>
+        </w:tblBorders>
+      </w:tblPr>
+      <w:tr><w:trPr><w:tblHeader/><w:cantSplit/></w:trPr>${headerCellsXml}</w:tr>
+      ${bodyRowsXml}
+    </w:tbl>
+    <w:sectPr>
+      <w:pgSz w:w="11906" w:h="16838"/>
+      <w:pgMar w:top="567" w:right="567" w:bottom="567" w:left="567" w:header="450" w:footer="450" w:gutter="0"/>
+      <w:bidi/>
+    </w:sectPr>
+  </w:body>
+</w:document>`;
+
+      const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:docDefaults>
+    <w:rPrDefault><w:rPr><w:rFonts w:ascii="Tahoma" w:hAnsi="Tahoma" w:cs="Tahoma"/><w:lang w:val="fa-IR" w:bidi="fa-IR"/></w:rPr></w:rPrDefault>
+    <w:pPrDefault><w:pPr><w:bidi/></w:pPr></w:pPrDefault>
+  </w:docDefaults>
+</w:styles>`;
+      const docRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+</Relationships>`;
+      const rootRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`;
+      const contentTypesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+  <Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>
+</Types>`;
+
+      const zipBytes = this.buildZipBytes({
+        '[Content_Types].xml': contentTypesXml,
+        '_rels/.rels': rootRelsXml,
+        'word/document.xml': documentXml,
+        'word/styles.xml': stylesXml,
+        'word/_rels/document.xml.rels': docRelsXml
+      });
+      const blob = new Blob([zipBytes], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+      window.lastGeneratedOfficeBlobs.docx = { blob, bytes: zipBytes, title, rowsCount: rows.length, colorCoded: true };
+      return blob;
+    };
+
+    // ۴.۳. PDF باینری واقعی (%PDF-1.4) با رنگ‌بندی سلول‌های نمره و وضعیت داخل بوم PDF
+    window.GenuineOfficeExporter.buildGenuinePdfBlob = async function(title, subtitle, headers, rows, options = {}) {
+      try {
+        if (document.fonts && document.fonts.ready) {
+          await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 500))]);
+        }
+      } catch (_) {}
+
+      const isLandscape = options.orientation === 'landscape';
+      const pageW = isLandscape ? 1122 : 794;
+      const pageH = isLandscape ? 794 : 1122;
+      const margin = 28;
+      const contentW = pageW - margin * 2;
+      const rowH = 27;
+      const headerBannerH = 62;
+      const tableHeadH = 28;
+      const maxRowsPerPage = Math.max(5, Math.floor((pageH - margin * 2 - headerBannerH - tableHeadH - 28) / rowH));
+      const totalPages = Math.max(1, Math.ceil(rows.length / maxRowsPerPage));
+      const pageJpegBytesList = [];
+      const rowMeta = Array.isArray(options.rowMeta) ? options.rowMeta : [];
+      const rowPhotos = options.rowPhotos || [];
+
+      const loadedImgs = await Promise.all(rowPhotos.map(src => {
+        if (!src || typeof src !== 'string' || !src.startsWith('data:image/')) return Promise.resolve(null);
+        return new Promise(res => {
+          const im = new Image();
+          im.onload = () => res(im);
+          im.onerror = () => res(null);
+          im.src = src;
+        });
+      }));
+
+      for (let pIdx = 0; pIdx < totalPages; pIdx++) {
+        const startRow = pIdx * maxRowsPerPage;
+        const pageRows = rows.slice(startRow, startRow + maxRowsPerPage);
+        const canvas = document.createElement('canvas');
+        canvas.setAttribute('data-allow-rtl', 'true');
+        canvas.width = pageW;
+        canvas.height = pageH;
+        const ctx = canvas.getContext('2d');
+        try { ctx.direction = 'rtl'; } catch (_) {}
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, pageW, pageH);
+
+        ctx.fillStyle = '#FFF7ED';
+        ctx.fillRect(margin, margin, contentW, headerBannerH);
+        ctx.strokeStyle = '#EA580C';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(margin, margin, contentW, headerBannerH);
+
+        ctx.fillStyle = '#9A3412';
+        ctx.font = 'bold 16px Vazirmatn, Tahoma, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(title, pageW - margin - 12, margin + 26);
+
+        ctx.fillStyle = '#334155';
+        ctx.font = 'bold 11.5px Vazirmatn, Tahoma, sans-serif';
+        ctx.fillText(`${subtitle}  |  صفحه ${fa(pIdx + 1)} از ${fa(totalPages)}`, pageW - margin - 12, margin + 48);
+
+        const colWeights = headers.map((h) => {
+          if (h.includes('ردیف')) return 0.55;
+          if (h.includes('نام خانوادگی') || h.includes('دانش‌آموز')) return 2.3;
+          if (h.includes('وضعیت') || h.includes('نمره نهایی')) return 1.55;
+          return 1.0;
+        });
+        const wSum = colWeights.reduce((a, b) => a + b, 0) || 1;
+        const colWidths = colWeights.map(w => (w / wSum) * contentW);
+
+        const tableTopY = margin + headerBannerH + 10;
+        ctx.fillStyle = '#EA580C';
+        ctx.fillRect(margin, tableTopY, contentW, tableHeadH);
+        ctx.strokeStyle = '#9A3412';
+        ctx.lineWidth = 1.2;
+        ctx.strokeRect(margin, tableTopY, contentW, tableHeadH);
+
+        let curRightX = pageW - margin;
+        headers.forEach((hText, cIdx) => {
+          const cw = colWidths[cIdx];
+          const cellLeftX = curRightX - cw;
+          ctx.strokeStyle = '#C2410C';
+          ctx.beginPath();
+          ctx.moveTo(cellLeftX, tableTopY);
+          ctx.lineTo(cellLeftX, tableTopY + tableHeadH);
+          ctx.stroke();
+
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = 'bold 10.5px Vazirmatn, Tahoma, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(String(hText), cellLeftX + cw / 2, tableTopY + 18, cw - 4);
+          curRightX = cellLeftX;
+        });
+
+        pageRows.forEach((rArr, localIdx) => {
+          const globalRowIdx = startRow + localIdx;
+          const ry = tableTopY + tableHeadH + localIdx * rowH;
+          const meta = rowMeta[globalRowIdx] || {};
+          const tierKey = meta.isPartial ? 'incomplete' : (meta.tier || 'none');
+          const pal = TIER_PALETTE_V940[tierKey] || TIER_PALETTE_V940.none;
+
+          ctx.fillStyle = (localIdx % 2 === 1) ? '#FFFBF5' : '#FFFFFF';
+          ctx.fillRect(margin, ry, contentW, rowH);
+          ctx.strokeStyle = '#CBD5E1';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(margin, ry, contentW, rowH);
+
+          let rx = pageW - margin;
+          headers.forEach((hName, cIdx) => {
+            const cw = colWidths[cIdx];
+            const cellLeft = rx - cw;
+            const isTierCol = String(hName).includes('نمره نهایی') || String(hName).includes('وضعیت');
+
+            if (isTierCol) {
+              ctx.fillStyle = pal.cssBg;
+              ctx.fillRect(cellLeft + 1, ry + 1, cw - 2, rowH - 2);
+            }
+
+            ctx.strokeStyle = '#CBD5E1';
+            ctx.beginPath();
+            ctx.moveTo(cellLeft, ry);
+            ctx.lineTo(cellLeft, ry + rowH);
+            ctx.stroke();
+
+            const cellVal = String(rArr[cIdx] ?? '—');
+            ctx.fillStyle = isTierCol ? pal.cssFg : '#0F172A';
+            ctx.font = (cIdx === 2 || isTierCol) ? 'bold 10.5px Vazirmatn, Tahoma, sans-serif' : '10.5px Vazirmatn, Tahoma, sans-serif';
+
+            const imgObj = (hName.includes('نام خانوادگی') || hName.includes('دانش‌آموز')) ? loadedImgs[globalRowIdx] : null;
+            if (imgObj) {
+              try { ctx.drawImage(imgObj, rx - 22, ry + 4, 18, 18); } catch (_) {}
+              ctx.textAlign = 'right';
+              ctx.fillText(cellVal, rx - 26, ry + 18, cw - 30);
+            } else {
+              ctx.textAlign = 'center';
+              ctx.fillText(cellVal, cellLeft + cw / 2, ry + 18, cw - 6);
+            }
+            rx = cellLeft;
+          });
+        });
+
+        ctx.fillStyle = '#64748B';
+        ctx.font = '10px Vazirmatn, Tahoma, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(`سامانه هوشمند «دانش‌آموز من» نسخه ${V940_VERSION_FA} — صفحه ${fa(pIdx + 1)} از ${fa(totalPages)}`, pageW / 2, pageH - 10);
+
+        const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.90);
+        pageJpegBytesList.push({
+          bytes: window.base64ToUint8Array(jpegDataUrl),
+          width: pageW,
+          height: pageH
+        });
+      }
+
+      const pdfBytes = this.encodeJpegPagesToPdfBinary(pageJpegBytesList, isLandscape);
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      window.lastGeneratedOfficeBlobs.pdf = { blob, bytes: pdfBytes, title, pagesCount: totalPages, rowsCount: rows.length, colorCoded: true };
+      return blob;
+    };
+  }
+
+  if (window.ReportApp) {
+    // اصلاح نمایش نمره ناقص در جدول خروجی و افزودن rowMeta برای رنگ‌بندی واقعی در PDF/Word/Excel
+    window.ReportApp.buildStandardTabularRowsForExport = function(res, reportType = 'class') {
+      const headers = [
+        'ردیف',
+        'مدرسه / کلاس',
+        'نام خانوادگی و نام دانش‌آموز',
+        'نام پدر',
+        'غیبت',
+        'نمره مستمر (خام / سقف)',
+        'نمره پایانی (خام / سقف)',
+        'کار عملی',
+        'میانگین پایه (قبل از رفتار)',
+        'تاثیر مثبت',
+        'تاثیر منفی',
+        'پاداش عدم منفی',
+        'نمره نهایی (از سقف کل)',
+        'وضعیت ثبت نمره'
+      ];
+      const rows = [];
+      const rowPhotos = [];
+      const rowMeta = [];
+      let idx = 0;
+
+      (res?.sections || []).forEach(sec => {
+        const s = sec.school;
+        const c = sec.cls;
+        (sec.items || []).forEach(it => {
+          const st = it.st;
+          const targetCls = it._c || c;
+          const rep = window.CentralGradeEngine.evaluateStudent(targetCls, st);
+          const beh = rep?.behavior || { posCount: 0, negCount: 0, posEffect: 0, negEffect: 0, noNegBonus: 0 };
+          const prac = window.PracticalWorkManager.computeStudentPracticalSummary(targetCls, st);
+          const absCnt = Object.keys(targetCls.attendance || {}).filter(d => targetCls.attendance?.[d]?.[st.id]?.status === 'absent').length;
+
+          if (reportType === 'needs_attention' && !it.det?.isAttn) return;
+          if (reportType === 'absence' && absCnt === 0 && (res.statusFilter === 'attn_absence')) return;
+
+          idx++;
+          const contTxt = rep?.continuous?.recorded
+            ? `${fmtScore(rep.continuous.scaledToSectionMax)} از ${fa(rep.continuous.sectionMax)}`
+            : `ثبت‌نشده (از ${fa(rep?.continuous?.sectionMax || 20)})`;
+          const termTxt = rep?.finalExam?.recorded
+            ? `${fmtScore(rep.finalExam.scaledToSectionMax)} از ${fa(rep.finalExam.sectionMax)}`
+            : `ثبت‌نشده (از ${fa(rep?.finalExam?.sectionMax || 20)})`;
+          const pracTxt = (prac.recordedCount > 0 && prac.scaledAverage !== null)
+            ? `${fmtScore(prac.scaledAverage)} از ${fa(prac.sectionMax)}`
+            : (prac.zeroWeightOnly ? 'ضریب صفر' : 'ثبت‌نشده');
+          const avgBaseTxt = (rep && rep.scoreBeforeBehavior !== null && rep.scoreBeforeBehavior !== undefined)
+            ? `${fmtScore(rep.scoreBeforeBehavior)} از ${fa(rep.isCompleteGrade ? rep.totalMaxScore : (rep.recordedShareOfTotal || rep.totalMaxScore))}`
+            : 'ثبت‌نشده';
+          const posTxt = `+${fa(beh.posCount)} (+${fmtScore(beh.posEffect)})`;
+          const negTxt = `−${fa(beh.negCount)} (−${fmtScore(beh.negEffect)})`;
+          const bonusTxt = `+${fmtScore(beh.noNegBonus)}`;
+          // هرگز نمره موقت ناقص را به عنوان نمره نهایی کامل چاپ نکن!
+          const finalTxt = rep?.shortFinalTableDisplay || 'ثبت‌نشده';
+
+          rows.push([
+            fa(idx),
+            `${s?.name || ''} - ${c?.name || ''}`,
+            `${st.lastName || ''} ${st.name || ''}`.trim(),
+            st.fatherName || '—',
+            fa(absCnt),
+            contTxt,
+            termTxt,
+            pracTxt,
+            avgBaseTxt,
+            posTxt,
+            negTxt,
+            bonusTxt,
+            finalTxt,
+            rep?.gradeStatusLabel || 'ثبت‌نشده'
+          ]);
+          rowPhotos.push(this.state.cols?.photo ? (st.photo || '') : '');
+          rowMeta.push({
+            tier: rep?.scoreTier || 'none',
+            isComplete: Boolean(rep?.isCompleteGrade),
+            isPartial: Boolean(rep?.isPartialGrade),
+            finalScore: rep?.finalScore ?? null
+          });
+        });
+      });
+
+      return { headers, rows, rowPhotos, rowMeta };
+    };
+
+    window.ReportApp.exportCurrent = async function(kind, customOpts = null) {
+      const effectiveOpts = customOpts ? { ...customOpts } : {};
+      const reportType = effectiveOpts.reportType || kind;
+      if (reportType === 'parent_card' || reportType === 'student') effectiveOpts.scope = 'student';
+      else if (reportType === 'school') effectiveOpts.scope = 'school';
+      else if (reportType === 'all') effectiveOpts.scope = 'all';
+      else if (reportType === 'needs_attention') effectiveOpts.statusFilter = 'attn_all';
+
+      const res = this.collectData(effectiveOpts);
+      if (!res || (!res.totalStudents && !effectiveOpts.allowEmptyReport)) {
+        if (effectiveOpts.reportType === 'needs_attention') {
+          effectiveOpts.allowEmptyReport = true;
+        } else {
+          window.smartAlert('هیچ دانش‌آموزی با فیلتر انتخاب‌شده یافت نشد.');
+          return null;
+        }
+      }
+
+      let fileScopeLabel = 'کل-مدارس';
+      if (res.scope === 'school' && res.sections[0]) {
+        fileScopeLabel = safeFileName(res.sections[0].school.name);
+      } else if (res.scope === 'class' && res.sections.length === 1) {
+        const sec = res.sections[0];
+        fileScopeLabel = safeFileName(`${sec.school.name}-${window.getShortClassWithGrade(sec.cls)}`);
+      } else if (res.scope === 'class' && res.sections.length > 1) {
+        fileScopeLabel = safeFileName(`${res.sections[0].school.name}-${fa(res.sections.length)}-کلاس`);
+      } else if (res.scope === 'student' && res.sections[0]?.items[0]) {
+        const st = res.sections[0].items[0].st;
+        fileScopeLabel = safeFileName(`${st.lastName || ''}-${st.name || ''}`);
+      }
+
+      const tabular = this.buildStandardTabularRowsForExport(res, effectiveOpts.reportType || 'class');
+      const reportTitle = `گزارش رسمی آموزشی و رفتاری — ${fileScopeLabel}`;
+      const reportSub = `دبیر: ${getTeacherName()} | تاریخ: ${formatJalaliDate(localISODate())} | تعداد دانش‌آموزان: ${fa(tabular.rows.length)} نفر`;
+
+      if (kind === 'excel_color' || kind === 'excel' || kind === 'xlsx') {
+        const xlsxBlob = window.GenuineOfficeExporter.buildGenuineXlsxBlob(reportTitle, tabular.headers, tabular.rows, { rowMeta: tabular.rowMeta });
+        window.GenuineOfficeExporter.triggerBlobDownload(xlsxBlob, `گزارش-${fileScopeLabel}-${localISODate()}.xlsx`);
+        if (typeof toast === 'function') toast(`✅ فایل اکسل رنگی واقعی (.xlsx) «${fileScopeLabel}» دانلود شد!`);
+        return { ok: true, format: 'xlsx', blob: xlsxBlob, rowsCount: tabular.rows.length, colorCoded: true };
+      }
+
+      if (kind === 'word' || kind === 'docx') {
+        const docxBlob = window.GenuineOfficeExporter.buildGenuineDocxBlob(reportTitle, reportSub, tabular.headers, tabular.rows, { rowMeta: tabular.rowMeta });
+        window.GenuineOfficeExporter.triggerBlobDownload(docxBlob, `گزارش-${fileScopeLabel}-${localISODate()}.docx`);
+        if (typeof toast === 'function') toast(`✅ فایل Word رنگی واقعی (.docx) «${fileScopeLabel}» دانلود شد!`);
+        return { ok: true, format: 'docx', blob: docxBlob, rowsCount: tabular.rows.length, colorCoded: true };
+      }
+
+      const pdfBlob = await window.GenuineOfficeExporter.buildGenuinePdfBlob(reportTitle, reportSub, tabular.headers, tabular.rows, {
+        orientation: this.state.pageOrientation,
+        rowPhotos: tabular.rowPhotos,
+        rowMeta: tabular.rowMeta
+      });
+      window.GenuineOfficeExporter.triggerBlobDownload(pdfBlob, `گزارش-${fileScopeLabel}-${localISODate()}.pdf`);
+      if (typeof toast === 'function') toast(`✅ فایل PDF رنگی واقعی (.pdf) «${fileScopeLabel}» دانلود شد!`);
+      return { ok: true, format: 'pdf', blob: pdfBlob, rowsCount: tabular.rows.length, colorCoded: true };
+    };
+  }
+
+  /* ==========================================================================================
+     ۵. تشخیص هوشمند عکس‌های مشکوک/تکراری دانش‌آموزان + نشان هشدار کنار نام + تأیید نهایی معلم
+     ========================================================================================== */
+  if (window.StudentPhotoSwapManager) {
+    window.StudentPhotoSwapManager._fingerprintPhoto = function(dataUrl) {
+      if (!dataUrl || typeof dataUrl !== 'string') return '';
+      const s = dataUrl.trim();
+      if (s.length < 30) return '';
+      let hash = 2166136261;
+      const step = Math.max(1, Math.floor(s.length / 400));
+      for (let i = 0; i < s.length; i += step) {
+        hash ^= s.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+      }
+      return `${s.length}_${(hash >>> 0).toString(16)}`;
+    };
+
+    window.StudentPhotoSwapManager.scanClassPhotoAnomalies = function(c) {
+      const anomaliesByStudentId = {};
+      if (!c || !Array.isArray(c.students)) return { anomaliesByStudentId, flaggedCount: 0, issues: [] };
+
+      const fpMap = new Map();
+      const lastNameMap = new Map();
+      const issues = [];
+
+      c.students.forEach(st => {
+        if (!st || !st.id) return;
+        const fullName = `${st.name || st.firstName || ''} ${st.lastName || ''}`.trim();
+        const photo = st.photo || '';
+        if (photo && typeof photo === 'string') {
+          if (!photo.startsWith('data:image/') && !photo.startsWith('http') && !photo.startsWith('./')) {
+            const msg = 'فرمت فایل تصویر نامعتبر یا آسیب‌دیده است';
+            anomaliesByStudentId[st.id] = { type: 'corrupt_photo', severity: 'high', message: msg };
+            issues.push({ studentId: st.id, name: fullName, type: 'corrupt_photo', message: msg });
+          } else {
+            const fp = this._fingerprintPhoto(photo);
+            if (fp) {
+              if (!fpMap.has(fp)) fpMap.set(fp, []);
+              fpMap.get(fp).push(st);
+            }
+          }
+        }
+        const ln = (st.lastName || '').trim();
+        if (ln && photo && photo.length > 30) {
+          if (!lastNameMap.has(ln)) lastNameMap.set(ln, []);
+          lastNameMap.get(ln).push(st);
+        }
+      });
+
+      // ۱. تشخیص عکس کاملاً تکراری بین دو یا چند دانش‌آموز
+      fpMap.forEach(group => {
+        if (group.length > 1) {
+          const names = group.map(s => `${s.name || ''} ${s.lastName || ''}`.trim()).join(' و ');
+          group.forEach(st => {
+            const partner = group.find(x => x.id !== st.id);
+            const msg = `عکس تکراری/مشکوک مشترک با ${names} — نیازمند بررسی و تأیید معلم`;
+            anomaliesByStudentId[st.id] = {
+              type: 'duplicate_photo',
+              severity: 'high',
+              partnerId: partner?.id || null,
+              message: msg
+            };
+            issues.push({ studentId: st.id, partnerId: partner?.id || null, type: 'duplicate_photo', message: msg });
+          });
+        }
+      });
+
+      // ۲. هشدار احتمال جابه‌جایی در دانش‌آموزان هم‌نام‌خانوادگی
+      lastNameMap.forEach((group, ln) => {
+        if (group.length > 1) {
+          group.forEach(st => {
+            if (!anomaliesByStudentId[st.id]) {
+              const partner = group.find(x => x.id !== st.id);
+              const msg = `هم‌نام‌خانوادگی («${ln}»)؛ تطبیق عکس با تأیید معلم پیشنهاد می‌شود`;
+              anomaliesByStudentId[st.id] = {
+                type: 'same_lastname_check',
+                severity: 'medium',
+                partnerId: partner?.id || null,
+                message: msg
+              };
+              issues.push({ studentId: st.id, partnerId: partner?.id || null, type: 'same_lastname_check', message: msg });
+            }
+          });
+        }
+      });
+
+      return {
+        anomaliesByStudentId,
+        flaggedCount: Object.keys(anomaliesByStudentId).length,
+        issues,
+        requiresTeacherConfirmation: true,
+        autoMutated: false
+      };
+    };
+
+    window.StudentPhotoSwapManager.analyzeSuspiciousPhotosWithAi = async function(sid, cid) {
+      const c = findClass(sid, cid);
+      if (!c) return { ok: false, error: 'کلاس مورد نظر یافت نشد.' };
+      const localScan = this.scanClassPhotoAnomalies(c);
+      if (!window.AiPermissionsAndPrivacyManager || !window.AiPermissionsAndPrivacyManager.hasPermission('student_photo_ai')) {
+        return {
+          ok: true,
+          mode: 'local_only',
+          aiSkippedReason: 'مجوز پردازش هوش مصنوعی تصاویر دانش‌آموزان غیرفعال است؛ بررسی محلی با حفظ کامل حریم خصوصی انجام شد.',
+          ...localScan
+        };
+      }
+      return { ok: true, mode: 'ai_assisted_ready', ...localScan };
+    };
+
+    // افزودن نشان هشدار عکس مشکوک کنار نام دانش‌آموز در کارت دانش‌آموز (بدون تغییر در شناسه یا حذف داده)
+    if (typeof window.studentCard === 'function') {
+      const _origStudentCardV940 = window.studentCard;
+      window.studentCard = function(s, c, st, ...rest) {
+        let htmlOut = _origStudentCardV940.call(this, s, c, st, ...rest);
+        try {
+          if (c && st && st.id && window.StudentPhotoSwapManager) {
+            const scan = window.StudentPhotoSwapManager.scanClassPhotoAnomalies(c);
+            const warn = scan.anomaliesByStudentId[st.id];
+            if (warn && typeof htmlOut === 'string' && !htmlOut.includes('stu-photo-warn-badge-v940')) {
+              const badgeHtml = `<span class="stu-photo-warn-badge-v940" title="${esc(warn.message)}" onclick="event.stopPropagation();if(window.PhotoSwapManager){PhotoSwapManager.openModal('${s?.id || ''}','${c.id}','${st.id}','${warn.partnerId || ''}');}">⚠️ بررسی عکس</span>`;
+              htmlOut = htmlOut.replace(/(<\/(?:b|strong|h4|div)>)/i, `${badgeHtml}$1`);
+            }
+          }
+        } catch (_) {}
+        return htmlOut;
+      };
+    }
+  }
+
+  /* ==========================================================================================
+     ۶. محافظ ذخیره‌سازی و امنیت داده پیش از خروج از برنامه
+     ========================================================================================== */
+  window._damPendingSaveFlag = false;
+  if (typeof window.savePersistent === 'function') {
+    const _origSavePersV940 = window.savePersistent;
+    window.savePersistent = async function(opts = {}) {
+      window._damPendingSaveFlag = true;
+      try {
+        const res = await _origSavePersV940(opts);
+        window._damPendingSaveFlag = false;
+        return res;
+      } catch (err) {
+        window._damPendingSaveFlag = false;
+        const msg = String(err && err.message ? err.message : err);
+        if (msg.includes('QuotaExceeded') && typeof toast === 'function') {
+          toast('⚠️ حافظه دستگاه پر شده است؛ لطفاً از بخش پشتیبان‌گیری یک نسخه خروجی بگیرید و فضای دستگاه را آزاد کنید.');
+        }
+        return { ok: false, indexedDbOk: false, error: msg };
+      }
+    };
+  }
+
+  window.addEventListener('beforeunload', (e) => {
+    if (window._damPendingSaveFlag) {
+      e.preventDefault();
+      e.returnValue = '';
+    }
+  });
+
+})();
+</script>
+<!-- ==================== END V9.4.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
+
 </body>
 </html>

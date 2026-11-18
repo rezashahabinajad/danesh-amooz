@@ -1,5 +1,5 @@
-const APP_VERSION = '9.3.0';
-const CACHE_NAME = 'danesh-amooz-man-v9.3.0-orange';
+const APP_VERSION = '9.4.0';
+const CACHE_NAME = 'danesh-amooz-man-v9.4.0-orange';
 const ASSETS = [
   './',
   './index.html',
@@ -8,62 +8,63 @@ const ASSETS = [
   './icon-512.png'
 ];
 const REQUIRED_CORE_FOR_CLEANUP = [
+  './',
   './index.html',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png'
 ];
 
-// ۱. مرحله نصب (install): دانلود و اعتبارسنجی اجباری تمام فایل‌های اصلی و آیکن‌ها
-// هیچ skipWaiting خودکاری در زمان نصب اجرا نمی‌شود تا نسخه قبلی تا لحظه تأیید صریح کاربر و ذخیره‌سازی کامل، پایدار بماند.
+async function verifyCacheHealth(cacheName = CACHE_NAME) {
+  try {
+    const cache = await caches.open(cacheName);
+    const checks = await Promise.all(
+      REQUIRED_CORE_FOR_CLEANUP.map(url => cache.match(url, { ignoreSearch: true }))
+    );
+    const missing = [];
+    checks.forEach((res, idx) => {
+      if (!res || !res.ok) missing.push(REQUIRED_CORE_FOR_CLEANUP[idx]);
+    });
+    return { ok: missing.length === 0, missing, cacheName };
+  } catch (err) {
+    return { ok: false, missing: [...REQUIRED_CORE_FOR_CLEANUP], error: String(err && err.message ? err.message : err), cacheName };
+  }
+}
+
+// ۱. مرحله نصب (install): دانلود کامل با دور زدن کش HTTP و اعتبارسنجی سلامت تمام فایل‌های هسته
+// هیچ skipWaiting خودکاری اجرا نمی‌شود تا نسخه قبلی تا لحظه تأیید معلم و اتمام پشتیبان‌گیری فعال بماند.
 self.addEventListener('install', event => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
       for (const assetUrl of ASSETS) {
-        const response = await fetch(assetUrl, { cache: 'no-cache' });
+        const req = new Request(assetUrl, { cache: 'reload' });
+        const response = await fetch(req);
         if (!response || !response.ok) {
-          throw new Error(`Failed to fetch required core asset during SW install: ${assetUrl} (status: ${response ? response.status : 'none'})`);
+          throw new Error(`خطا در دانلود فایل هسته هنگام نصب نسخه ${APP_VERSION}: ${assetUrl} (کد وضعیت: ${response ? response.status : 'نامشخص'})`);
         }
         await cache.put(assetUrl, response.clone());
       }
-      // پس از تکمیل واقعی کش شدن تمام فایل‌ها و ورود به وضعیت installed، به کلاینت‌ها اطلاع بده که نسخه منتظر آماده است
-      const allClients = await self.clients.matchAll({ includeUncontrolled: true });
-      for (const client of allClients) {
-        client.postMessage({
-          type: 'SW_INSTALL_COMPLETE_WAITING',
-          version: APP_VERSION,
-          cacheName: CACHE_NAME,
-          timestamp: Date.now()
-        });
+      const health = await verifyCacheHealth(CACHE_NAME);
+      if (!health.ok) {
+        throw new Error(`اعتبارسنجی کش نسخه ${APP_VERSION} ناموفق بود؛ فایل‌های ناقص: ${health.missing.join(', ')}`);
       }
     })()
   );
 });
 
-// ۲. مرحله فعال‌سازی (activate): حذف کش‌های قدیمی فقط پس از اطمینان ۱۰۰٪ از سلامت کامل کش نسخه جدید
-// دیتابیس IndexedDB، عکس‌ها، کتاب‌ها، نمرات و مدارس هرگز لمس یا پاک نمی‌شوند.
+// ۲. مرحله فعال‌سازی (activate): پاک‌سازی کش‌های قدیمی فقط پس از تأیید ۱۰۰٪ سلامت کش نسخه جدید
+// دیتابیس IndexedDB، مدارس، کلاس‌ها، دانش‌آموزان، عکس‌ها، کتاب‌ها و نمرات هرگز لمس یا پاک نمی‌شوند.
 self.addEventListener('activate', event => {
   event.waitUntil(
     (async () => {
-      let newCacheVerified = false;
-      try {
-        const newCache = await caches.open(CACHE_NAME);
-        const checks = await Promise.all(
-          REQUIRED_CORE_FOR_CLEANUP.map(url => newCache.match(url, { ignoreSearch: true }))
-        );
-        newCacheVerified = checks.every(res => res && res.ok);
-      } catch (err) {
-        newCacheVerified = false;
-      }
-
-      if (newCacheVerified) {
+      const health = await verifyCacheHealth(CACHE_NAME);
+      let cleanedKeys = [];
+      if (health.ok) {
         const keys = await caches.keys();
-        await Promise.all(
-          keys
-            .filter(key => key !== CACHE_NAME)
-            .map(key => caches.delete(key))
-        );
+        const oldKeys = keys.filter(key => key !== CACHE_NAME);
+        await Promise.all(oldKeys.map(key => caches.delete(key)));
+        cleanedKeys = oldKeys;
       }
 
       await self.clients.claim();
@@ -73,7 +74,9 @@ self.addEventListener('activate', event => {
           type: 'SW_ACTIVATED',
           version: APP_VERSION,
           cacheName: CACHE_NAME,
-          oldCachesCleaned: newCacheVerified,
+          cacheHealthy: health.ok,
+          oldCachesCleaned: health.ok,
+          cleanedKeys,
           timestamp: Date.now()
         });
       }
@@ -81,7 +84,7 @@ self.addEventListener('activate', event => {
   );
 });
 
-// ۳. دریافت پیام از مدیر مرکزی آپدیت (CentralUpdateManager) با پشتیبانی کامل از MessageChannel و تایید صریح
+// ۳. ارتباط دوطرفه با CentralUpdateManager از طریق MessageChannel + تایید قطعی ACK
 self.addEventListener('message', event => {
   if (!event.data || typeof event.data !== 'object') return;
   const replyPort = (event.ports && event.ports[0]) ? event.ports[0] : null;
@@ -105,6 +108,7 @@ self.addEventListener('message', event => {
         ok: false,
         type: 'SW_SKIP_WAITING_REJECTED',
         reason: 'USER_CONFIRMATION_REQUIRED',
+        error: 'فعال‌سازی نسخه جدید نیازمند تأیید صریح کاربر است.',
         version: APP_VERSION,
         cacheName: CACHE_NAME
       });
@@ -114,19 +118,16 @@ self.addEventListener('message', event => {
     event.waitUntil(
       (async () => {
         try {
-          // پیش از skipWaiting از سلامت کش نسخه جدید اطمینان حاصل کن
-          const cache = await caches.open(CACHE_NAME);
-          const checks = await Promise.all(
-            REQUIRED_CORE_FOR_CLEANUP.map(url => cache.match(url, { ignoreSearch: true }))
-          );
-          const cacheHealthy = checks.every(res => res && res.ok);
-          if (!cacheHealthy) {
+          const health = await verifyCacheHealth(CACHE_NAME);
+          if (!health.ok) {
             sendReply({
               ok: false,
               type: 'SW_SKIP_WAITING_ERROR',
               reason: 'NEW_CACHE_INCOMPLETE',
-              error: 'کش نسخه جدید ناقص است؛ نصب متوقف شد تا نسخه قبلی حفظ شود.',
-              version: APP_VERSION
+              missing: health.missing,
+              error: `کش نسخه ${APP_VERSION} کامل نیست (${health.missing.join('، ')})؛ نصب متوقف شد تا نسخه قبلی سالم بماند.`,
+              version: APP_VERSION,
+              cacheName: CACHE_NAME
             });
             return;
           }
@@ -137,6 +138,7 @@ self.addEventListener('message', event => {
             type: 'SW_SKIP_WAITING_ACK',
             version: APP_VERSION,
             cacheName: CACHE_NAME,
+            cacheHealthy: true,
             timestamp: Date.now()
           });
         } catch (err) {
@@ -145,28 +147,23 @@ self.addEventListener('message', event => {
             type: 'SW_SKIP_WAITING_ERROR',
             reason: 'SKIP_WAITING_EXCEPTION',
             error: String(err && err.message ? err.message : err),
-            version: APP_VERSION
+            version: APP_VERSION,
+            cacheName: CACHE_NAME
           });
         }
       })()
     );
-  } else if (event.data.type === 'GET_SW_VERSION' || event.data.type === 'PING_SW') {
+  } else if (event.data.type === 'GET_SW_VERSION' || event.data.type === 'PING_SW' || event.data.type === 'CHECK_CACHE_HEALTH') {
     event.waitUntil(
       (async () => {
-        let cacheHealthy = false;
-        try {
-          const c = await caches.open(CACHE_NAME);
-          const checks = await Promise.all(
-            REQUIRED_CORE_FOR_CLEANUP.map(url => c.match(url, { ignoreSearch: true }))
-          );
-          cacheHealthy = checks.every(res => res && res.ok);
-        } catch (_) {}
+        const health = await verifyCacheHealth(CACHE_NAME);
         sendReply({
           ok: true,
           type: 'SW_VERSION_INFO',
           version: APP_VERSION,
           cacheName: CACHE_NAME,
-          cacheHealthy,
+          cacheHealthy: health.ok,
+          missingAssets: health.missing,
           timestamp: Date.now()
         });
       })()
@@ -174,7 +171,7 @@ self.addEventListener('message', event => {
   }
 });
 
-// ۴. پاسخ‌دهی آفلاین/آنلاین هوشمند: استفاده از کش نسخه فعال برای تضمین ثبات نسخه تا زمان تأیید آپدیت، و کارکرد کامل آفلاین
+// ۴. پاسخ‌دهی آفلاین/آنلاین استاندارد با تضمین ثبات نسخه فعال و عدم تحویل فایل خراب
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
@@ -183,14 +180,29 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // برای درخواست‌های ناوبری (index.html): ابتدا کش نسخه فعال بررسی شود تا پیش از تأیید آپدیت، فایل صفحه از کش نسخه فعال خوانده شود و در نبود کش از شبکه دریافت گردد
+  // درخواست‌های sw.js و manifest.webmanifest همیشه از شبکه (با fallback به کش) بررسی شوند تا آپدیت‌ها همیشه تشخیص داده شوند
+  if (reqUrl.pathname.endsWith('/sw.js') || reqUrl.pathname.endsWith('/manifest.webmanifest')) {
+    event.respondWith(
+      fetch(event.request, { cache: 'no-cache' })
+        .then(res => {
+          if (res && res.ok && reqUrl.pathname.endsWith('/manifest.webmanifest')) {
+            caches.open(CACHE_NAME).then(c => c.put('./manifest.webmanifest', res.clone())).catch(() => {});
+          }
+          return res;
+        })
+        .catch(async () => {
+          const cached = await caches.match(event.request, { ignoreSearch: true });
+          return cached || Response.error();
+        })
+    );
+    return;
+  }
+
   if (event.request.mode === 'navigate') {
     event.respondWith(
       caches.open(CACHE_NAME).then(async cache => {
         const cachedIndex = await cache.match('./index.html', { ignoreSearch: true });
-        if (cachedIndex) {
-          return cachedIndex;
-        }
+        if (cachedIndex) return cachedIndex;
         try {
           const networkRes = await fetch(event.request);
           if (networkRes && networkRes.status === 200) {
