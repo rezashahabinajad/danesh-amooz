@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="9.6.0">
-<meta name="danesh-app-version" content="9.6.0">
+<meta name="version" content="9.7.0">
+<meta name="danesh-app-version" content="9.7.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -4590,7 +4590,7 @@ body.dark .ws-logout-inner {
 
 </style>
 
-<!-- ==================== V9.6.0 MASTER ENGINEERING UPGRADE STYLES ==================== -->
+<!-- ==================== V9.7.0 MASTER ENGINEERING UPGRADE STYLES ==================== -->
 <style id="v960MasterStyles">
   /* Req 1-7: Report Studio PDF-Only, 12-Col Fixed Symmetric Layout, Diagonal Watermark & Print */
   .v960-report-wrap {
@@ -5054,7 +5054,7 @@ body.dark .ws-logout-inner {
     white-space: pre-line;
   }
 </style>
-<!-- ==================== END V9.6.0 MASTER ENGINEERING UPGRADE STYLES ==================== -->
+<!-- ==================== END V9.7.0 MASTER ENGINEERING UPGRADE STYLES ==================== -->
 
 </head>
 <body class="theme-classic-orange" data-theme-mode="classic-orange">
@@ -5171,7 +5171,7 @@ body.dark .ws-logout-inner {
 <!-- اعلان به‌روزرسانی نسخه PWA (مدیریت مرکزی نسخه 9.3.0) -->
 <div id="swUpdateBanner" class="sw-update-banner" role="region" aria-label="اعلان به‌روزرسانی نسخه جدید">
   <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:200px">
-    <span id="swUpdateBannerText">🚀 نسخه جدید (۹.۶.۰) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
+    <span id="swUpdateBannerText">🚀 نسخه جدید (۹.۷.۰) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
     <div id="swUpdateBannerError" style="display:none;font-size:11.5px;color:#FEE2E2;background:rgba(153,27,27,0.88);padding:5px 8px;border-radius:8px;border:1px solid #FCA5A5;line-height:1.6"></div>
   </div>
   <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
@@ -5204,7 +5204,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۹.۶.۰</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۹.۷.۰</span>
           <button type="button" id="btnTopCheckUpdate" class="top-ver-pill" style="cursor:pointer;border:1px solid rgba(234,88,12,0.35);background:#FFF7ED;color:#EA580C;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:999px" onclick="if(window.CentralUpdateManager)CentralUpdateManager.checkForUpdatesManual()" title="بررسی به‌روزرسانی">بررسی به‌روزرسانی</button>
         </div>
       </div>
@@ -5410,10 +5410,7 @@ body.dark .ws-logout-inner {
 
 <section id="teachView" class="view">
   <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px">
-    <div>
-      <h1 class="title" style="margin-bottom:2px;font-size:17.5px">📖 کتاب‌خوان، تخته هوشمند و حل خودکار دروس</h1>
-      <p class="subtitle" style="margin:0;font-size:11.5px">تخته هوشمند کلاسی روی صفحه + حل و استخراج ۱۰۰٪ خودکار تمام فعالیت‌ها و سوالات با هوش‌واره</p>
-    </div>
+    <h1 class="title" id="teachMainTitle" style="margin:0;font-size:19px;font-weight:900">آموزش</h1>
     <span class="chip" id="cachedBookBadge" style="font-weight:800">کتاب در حافظه: ندارد</span>
   </div>
 
@@ -5569,146 +5566,79 @@ body.dark .ws-logout-inner {
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:5px;flex-wrap:wrap">
       <span id="teacherPdfRenderStatus" class="muted" style="font-size:11px"></span>
-      <label style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:var(--primary);cursor:pointer">
-        <input type="checkbox" id="swAutoSolveOnPageTurn" onchange="TeachAssistant.toggleAutoSolveOnPageTurn(this.checked)" style="width:15px;height:15px">
-        <span>⚡ حل خودکار سوالات و فعالیت‌ها به محض ورق‌زدن صفحه</span>
-      </label>
+      <span id="v970RagIndexBadge" class="chip" style="font-size:10.5px;display:none"></span>
     </div>
   </div>
 
-  <!-- مرکز ۱۰۰٪ خودکار حل فعالیت‌ها، استخراج سوالات و جزوه‌ساز هوش‌واره -->
-  <div class="card" style="margin-bottom:12px;padding:12px">
-    <!-- نوار فرمان خودکار هوش‌واره (حل یکجای تمام فعالیت‌ها و سوالات صفحه با ۱ کلیک) -->
-    <div class="auto-ai-master-banner">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px">
-        <div>
-          <b style="font-size:14px;color:var(--primary);display:block">🤖 موتور خودکار حل فعالیت‌ها و استخراج سوالات صفحه (هوش‌واره دیداری)</b>
-          <span class="muted" style="font-size:11px" id="teachAiStatusHint">بدون نیاز به تایپ دستی — تصویر صفحه کتاب را می‌خواند و تمام فعالیت‌ها، جدول‌ها و سوالات را با پاسخ دقیق آماده می‌کند</span>
-        </div>
-        <div style="display:flex;gap:5px;align-items:center">
-          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleQuickApiKeyBox()" id="btnToggleTeachKey">🔑 کلید هوش‌واره</button><span id="teachAiStatusBadge" class="chip" style="font-size:10.5px">🟢 فعال</span>
-        </div>
-      </div>
+  <!-- مرکز ساده، خلوت و کاربردی آموزش هوشمند (نسخه ۹.۷.۰) -->
+  <div class="card v970-teach-workbench" id="v970TeachWorkbenchCard" style="margin-bottom:12px;padding:12px">
+    <div class="v970-teach-action-bar">
+      <button type="button" class="btn primary v970-teach-primary-btn" id="btnAutoSolveEverything" onclick="TeachAssistant.autoSolveAndPreparePage()">
+        ✨ تحلیل هوشمند این صفحه
+      </button>
+      <button type="button" class="btn green v970-teach-secondary-btn" id="btnAnalyzeFullLesson" onclick="TeachAssistant.openBatchAutoSolveModal()">
+        📚 تحلیل کل درس
+      </button>
+    </div>
+    <div id="autoSolveLiveProgressBox" style="display:none;margin-top:8px;padding:8px 10px;border-radius:10px;background:var(--bg-card);border:1px solid var(--primary-border);font-size:12px;font-weight:800;color:var(--primary)"></div>
+    <span id="teachAiStatusBadge" style="display:none"></span>
 
-      <!-- دکمه‌های طلایی حل خودکار تک‌صفحه‌ای و چندصفحه‌ای -->
-      <div style="display:flex;gap:7px;flex-wrap:wrap">
-        <button type="button" class="btn primary" style="flex:2;min-width:210px;padding:11px;font-weight:900;font-size:13px" id="btnAutoSolveEverything" onclick="TeachAssistant.autoSolveAndPreparePage()">
-          ✨ حل خودکار همه سوالات و فعالیت‌های این صفحه
-        </button>
-        <button type="button" class="btn green" style="flex:1;min-width:155px;font-weight:900" onclick="TeachAssistant.openBatchAutoSolveModal()">
-          📚 حل خودکار چند صفحه / کل درس
-        </button>
-        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.sendAllExtractedToExam();showView('examView')" title="انتقال مستقیم سوالات آماده‌شده به برگه آزمون A4 و آزمون آنلاین">
-          📝 ساخت خودکار آزمون از این صفحه
-        </button>
-      </div>
-      <div id="autoSolveLiveProgressBox" style="display:none;margin-top:8px;padding:8px 10px;border-radius:10px;background:var(--bg-card);border:1px solid var(--primary-border);font-size:12px;font-weight:800;color:var(--primary)"></div>
+    <!-- ۳ تب ساده و کاربردی نسخه ۹.۷.۰ -->
+    <div class="teach-workbench-tabs v970-three-tabs" role="tablist" style="margin-top:10px">
+      <button type="button" class="teach-wb-tab active" id="wbTabBtn-solve" role="tab" aria-selected="true" onclick="TeachAssistant.openWorkbenchTab('solve')">💡 پاسخ و نکات</button>
+      <button type="button" class="teach-wb-tab" id="wbTabBtn-extract" role="tab" aria-selected="false" onclick="TeachAssistant.openWorkbenchTab('extract')">🎯 سؤالات خط‌به‌خط</button>
+      <button type="button" class="teach-wb-tab" id="wbTabBtn-impromptu" role="tab" aria-selected="false" onclick="TeachAssistant.openWorkbenchTab('impromptu')">💬 پرسش و یادداشت</button>
     </div>
 
-    <!-- کادر بازشونده تنظیم سریع کلید هوش‌واره -->
-    <div id="teachQuickApiKeyBox" style="display:none;margin:10px 0;padding:10px;border-radius:11px;background:var(--bg-main);border:1px dashed var(--primary)">
-      <div style="font-size:11.5px;font-weight:800;margin-bottom:6px;color:var(--primary)">🔑 کلید اختصاصی هوش‌واره و هوش مصنوعی (اختیاری — موتور رایگان سرخود فعال است):</div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="masked-api-key-inp" id="teachInlineApiKeyInp" dir="ltr" style="flex:1;min-width:190px;text-align:left;font-family:monospace;font-size:12px" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." oninput="TeachAssistant.saveInlineApiKey(this.value)">
-        <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.testInlineApiKey()">⚡ تست و ذخیره</button>
-        <button type="button" class="btn gray btn-sm" onclick="document.getElementById('teachQuickApiKeyBox').style.display='none'">بستن</button>
-      </div>
-    </div>
-
-    <!-- تب‌های شیک و کاربردی (بدون ابزارهای اضافی و دستی) -->
-    <div class="teach-workbench-tabs" role="tablist" style="margin-top:10px">
-      <button type="button" class="teach-wb-tab active" id="wbTabBtn-solve" onclick="TeachAssistant.openWorkbenchTab('solve')">💡 پاسخ فعالیت‌ها و تمرین‌ها</button>
-      <button type="button" class="teach-wb-tab" id="wbTabBtn-extract" onclick="TeachAssistant.openWorkbenchTab('extract')">🎯 سوالات امتحانی صفحه</button>
-      <button type="button" class="teach-wb-tab" id="wbTabBtn-handout" onclick="TeachAssistant.openWorkbenchTab('handout')">🌟 جزوه آماده درس</button>
-      <button type="button" class="teach-wb-tab" id="wbTabBtn-impromptu" onclick="TeachAssistant.openWorkbenchTab('impromptu')">⚡ پرسش و پاسخ هوشمند</button>
-      <button type="button" class="teach-wb-tab" id="wbTabBtn-note" onclick="TeachAssistant.openWorkbenchTab('note')">📝 یادداشت صفحه</button>
-    </div>
-
-    <!-- تب ۱ (پیش‌فرض): پاسخ کامل و خودکار فعالیت‌ها، کاردرکلاس، فکر کنید و جدول‌های صفحه -->
+    <!-- تب ۱: پاسخ و نکات (فعالیت‌ها و خودت را امتحان کن + نکات کلیدی — بدون جدول) -->
     <div class="teach-wb-pane active" id="wbPane-solve">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
-        <b style="color:var(--primary);font-size:13px">💡 پاسخ تشریحی و دقیق تمام فعالیت‌ها، کاردرکلاس‌ها و جدول‌های صفحه</b>
-        <div style="display:flex;gap:5px;flex-wrap:wrap">
-          <button type="button" class="btn primary btn-sm" id="btnSolveActivities" onclick="TeachAssistant.solveActivities()">🔄 حل خودکار مجدد فعالیت‌های این صفحه</button>
-          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.exportLessonHandout('print')">🖨️ چاپ / PDF پاسخ‌ها</button>
-        </div>
+      <div style="margin-bottom:8px">
+        <input type="text" id="customExerciseText" placeholder="✍️ اگر فعالیت، تمرین یا سؤال خاصی از این صفحه مدنظر است بنویسید (اختیاری)..." style="font-size:12px;padding:8px 11px">
       </div>
-      <div style="margin-bottom:8px"><input type="text" id="customExerciseText" placeholder="✍️ اگر تمرین، جدول یا سوال خاصی از این صفحه مدنظر است بنویسید (اختیاری — در غیر این صورت همه حل می‌شود)..." style="font-size:11.5px;padding:7px 10px"></div>
-      <div id="activitiesSolutionBox" style="display:grid;gap:8px"></div>
+      <div id="activitiesSolutionBox" class="v970-cards-stack"></div>
     </div>
 
-    <!-- تب ۲: بانک سوالات استخراج‌شده خودکار از صفحه (همراه با دکمه نمایش روی تخته هوشمند و پرسش کلاسی) -->
+    <!-- تب ۲: سؤالات خط‌به‌خط (مفهومی، جای خالی، چهارگزینه‌ای، ترجمه/قواعد عربی و انگلیسی با پاسخ مستند) -->
     <div class="teach-wb-pane" id="wbPane-extract">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;margin-bottom:8px">
-        <b style="color:var(--primary);font-size:13px">🎯 سوالات امتحانی استخراج‌شده خودکار با پاسخ کلیدی</b>
-        <div style="display:flex;gap:5px;flex-wrap:wrap">
-          <button type="button" class="btn primary btn-sm" id="btnExtractLineQuestions" onclick="TeachAssistant.extractLineByLineQuestions('major')">🎯 سوالات اصلی (خودکار)</button>
-          <button type="button" class="btn green btn-sm" id="btnExtractAllDetailedQuestions" onclick="TeachAssistant.extractLineByLineQuestions('all')">📋 همه سوالات خط‌به‌خط (خودکار)</button>
-          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleClassroomFlashcardMode()">🃏 پرسش کلاسی</button>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <span class="muted" style="font-size:11.5px;font-weight:800">سطح سؤالات:</span>
+          <select id="extractDiffSelect" style="width:auto;height:31px;font-size:11.5px;font-weight:800;padding:0 8px">
+            <option value="استاندارد خط‌به‌خط امتحانی" selected>استاندارد خط‌به‌خط</option>
+            <option value="مفهومی و تحلیلی">مفهومی و تحلیلی</option>
+            <option value="ساده و مروری">ساده و مروری</option>
+          </select>
         </div>
+        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.toggleClassroomFlashcardMode()">🃏 پرسش کلاسی</button>
       </div>
-      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px"><span class="muted" style="font-size:11px;font-weight:800">سطح سوالات:</span><select id="extractDiffSelect" style="width:auto;height:30px;font-size:11px;font-weight:800;padding:0 8px"><option value="استاندارد خط‌به‌خط امتحانی" selected>استاندارد امتحانی</option><option value="مفهومی و تحلیلی">مفهومی و تحلیلی</option><option value="ساده و مروری">ساده و مروری</option></select><span id="btnModeMajorQuestions" style="display:none"></span><span id="btnModeAllQuestions" style="display:none"></span></div>
       <input type="hidden" id="extractScopeModeInp" value="all">
       <input type="hidden" id="extractCountInp" value="8">
       <div id="classroomFlashcardBox" class="teach-flashcard-box" style="display:none"></div>
-      <div id="extractedQuestionsBox" style="margin-top:8px;display:grid;gap:8px"></div>
+      <div id="extractedQuestionsBox" class="v970-cards-stack" style="margin-top:8px"></div>
     </div>
 
-    <!-- تب ۳: جزوهٔ آماده و خودکار درس -->
-    <div class="teach-wb-pane" id="wbPane-handout">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
-        <div>
-          <b style="color:var(--primary);font-size:13.5px">🌟 جزوهٔ رنگی و خلاصه طلایی درس (تولید خودکار با هوش‌واره)</b>
-          <div class="muted" style="font-size:11px">شامل خلاصه درس، نکات طلایی امتحانی، جدول مقایسه‌ای و بانک سوال و جواب</div>
-        </div>
-        <div style="display:flex;gap:5px;flex-wrap:wrap">
-          <select id="handoutScopeSelect" onchange="TeachAssistant.onHandoutScopeChange(this.value)" style="width:auto;height:32px;font-size:11.5px;font-weight:800">
-            <option value="lesson" selected>📄 همین صفحه / درس</option>
-            <option value="chapter">📑 بازه صفحات (فصل)</option>
-            <option value="full_book">📚 کل کتاب</option>
-          </select>
-          <select id="handoutThemeSelect" style="width:auto;height:32px;font-size:11.5px;font-weight:800">
-            <option value="rainbow" selected>🍊 تم نارنجی و طلایی</option>
-            <option value="emerald">🌿 تم زمردی</option>
-            <option value="cyan">💎 تم فیروزه‌ای</option>
-          </select>
-        </div>
-      </div>
-
-      <div id="handoutPageRangeWrap" class="grid-2" style="display:none;margin-bottom:8px">
-        <div><label style="font-size:11px;font-weight:bold">از صفحه:</label><input type="number" id="handoutPageFrom" min="1" value="1"></div>
-        <div><label style="font-size:11px;font-weight:bold">تا صفحه:</label><input type="number" id="handoutPageTo" min="1" value="5"></div>
-      </div>
-
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <button type="button" class="btn primary" style="flex:2;min-width:180px" id="btnBuildTopStudentHandout" onclick="TeachAssistant.generateTopStudentHandout()">✨ تولید خودکار جزوهٔ رنگی این مبحث</button>
-        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.exportLessonHandout('word')">📘 دانلود Word (.doc)</button>
-        <button type="button" class="btn green btn-sm" onclick="TeachAssistant.exportLessonHandout('print')">🖨️ چاپ / PDF رنگی</button>
-      </div>
-      <div id="topStudentHandoutPreviewBox" style="margin-top:10px"></div>
-    </div>
-
-    <!-- تب ۴: پرسش و پاسخ هوشمند کلاسی -->
+    <!-- تب ۳: پرسش و یادداشت (پرسش آزاد از همان صفحه + یادداشت شخصی دبیر) -->
     <div class="teach-wb-pane" id="wbPane-impromptu">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px">
-        <b style="color:var(--primary);font-size:13px">⚡ پاسخ فوری علمی و معلمانه به هر سوال از این صفحه</b>
-        <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.voiceImpromptu()" id="btnVoiceImp">🎙️ پرسش صوتی</button>
+      <div class="v970-edu-card" style="margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px">
+          <b style="color:var(--primary);font-size:13px">💬 پرسش آزاد از همین صفحه</b>
+          <button type="button" class="btn soft btn-sm" onclick="TeachAssistant.voiceImpromptu()" id="btnVoiceImp">🎙️ صوتی</button>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <input id="impromptuInp" placeholder="سؤال خود را از همین صفحه بنویسید..." style="flex:1;min-width:180px">
+          <button type="button" class="btn primary" id="btnRunImpromptu" onclick="TeachAssistant.askImpromptu()">ارسال پرسش</button>
+        </div>
+        <div id="impromptuResultBox" style="display:none;margin-top:10px;padding:12px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;line-height:1.85;font-size:13px"></div>
       </div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <input id="impromptuInp" placeholder="سوال مورد نظر را بنویسید یا با میکروفون بگویید..." style="flex:1;min-width:190px">
-        <button type="button" class="btn primary" id="btnRunImpromptu" onclick="TeachAssistant.askImpromptu()">🤖 دریافت پاسخ خودکار</button>
-      </div>
-      <div id="impromptuResultBox" style="display:none;margin-top:10px;padding:12px;background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;line-height:1.8;font-size:13px"></div>
-    </div>
 
-    <!-- تب ۵: یادداشت معلم -->
-    <div class="teach-wb-pane" id="wbPane-note">
-      <div class="field" style="margin:0">
-        <label for="teacherPageNote" style="font-weight:800;color:var(--primary)">📝 یادداشت و نکات تدریس مربوط به همین صفحه:</label>
-        <textarea id="teacherPageNote" rows="4" placeholder="نکته‌های مهم امتحانی یا تکلیف این صفحه..."></textarea>
-        <button type="button" class="btn primary block" style="margin-top:6px" onclick="TeachAssistant.savePageNote()">💾 ذخیره یادداشت این صفحه</button>
+      <div class="v970-edu-card">
+        <div class="field" style="margin:0">
+          <label for="teacherPageNote" style="font-weight:800;color:var(--primary);font-size:13px;display:block;margin-bottom:6px">📝 یادداشت شخصی دبیر برای این صفحه</label>
+          <textarea id="teacherPageNote" rows="3" placeholder="نکته‌های مهم تدریس یا تکلیف این صفحه را یادداشت کنید..."></textarea>
+          <button type="button" class="btn primary block" style="margin-top:6px" onclick="TeachAssistant.savePageNote()">💾 ذخیره یادداشت</button>
+        </div>
+        <input type="hidden" id="cachedPageText" value="">
       </div>
-      <input type="hidden" id="cachedPageText" value="">
     </div>
   </div>
 </section>
@@ -6542,7 +6472,7 @@ body.dark .ws-logout-inner {
         <button type="button" class="btn primary" style="flex:1" onclick="createInternalVaultSnapshot('پشتیبان کامل همراه با عکس‌ها', false)">🗄️ ذخیره فوری در گاوصندوق</button>
       </div>
     </div>
-    <!-- ۱. پوشه اختصاصی پشتیبان‌گیری (ساده‌سازی‌شده نسخه 9.6.0) -->
+    <!-- ۱. پوشه اختصاصی پشتیبان‌گیری (ساده‌سازی‌شده نسخه 9.7.0) -->
     <div class="card" id="v950DedicatedBackupCard" style="margin-bottom:12px;border-color:var(--primary)">
       <b style="color:var(--primary);font-size:15px;display:block;margin-bottom:10px">📁 پوشه اختصاصی پشتیبان‌گیری</b>
       <div class="actions" style="gap:8px;flex-wrap:wrap">
@@ -6552,7 +6482,7 @@ body.dark .ws-logout-inner {
       </div>
     </div>
 
-    <!-- ۲. گاوصندوق پشتیبان داخلی برنامه (آکاردئونی نسخه 9.6.0) -->
+    <!-- ۲. گاوصندوق پشتیبان داخلی برنامه (آکاردئونی نسخه 9.7.0) -->
     <details class="card v950-vault-accordion" id="v950InternalVaultAccordion" style="margin-bottom:12px;padding:0;overflow:hidden">
       <summary style="list-style:none;cursor:pointer;padding:13px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;user-select:none">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -6650,7 +6580,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.6.0 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.7.0 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6750,7 +6680,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.6.0 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.7.0 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6981,7 +6911,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '9.6.0';
+const APP_VERSION = '9.7.0';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -35946,7 +35876,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v9.6.0</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v9.7.0</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -36088,7 +36018,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 9.6.0 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 9.7.0 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -40475,7 +40405,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DAM_AUDIT_VERSION = '9.6.0';
+  window.DAM_AUDIT_VERSION = '9.7.0';
 
   /* ==========================================================================================
      ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
@@ -40860,7 +40790,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.6.0';
+  window.DANESH_APP_VERSION = '9.7.0';
 
   /* ==========================================================================================
      ۱. معماری یکپارچه هوش مصنوعی با الهام مستقیم از آزمون‌ساز (gemini-code-1792066709047.html)
@@ -41355,7 +41285,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
   // الف) تزریق نوار وضعیت کلید مشترک API در بالای مشاور هوشمند کلاس و دانش‌آموز
   const injectUnifiedAiStatusBarInCounselor = function() {
     const counselorContainer = document.getElementById('' + 'counselorProMountBox') || document.getElementById('statuses');
-    return; // v9.6.0 Req 18: API key management lives strictly in Settings -> AI Hub
+    return; // v9.7.0 Req 18: API key management lives strictly in Settings -> AI Hub
     const curKey = window.getUnifiedAiApiKey();
     const info = window.ExamApp ? ExamApp.detectProvider(curKey) : null;
     const bar = document.createElement('div');
@@ -47851,13 +47781,13 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.6.0';
-  window.DAM_AUDIT_VERSION = '9.6.0';
+  window.DANESH_APP_VERSION = '9.7.0';
+  window.DAM_AUDIT_VERSION = '9.7.0';
   try {
     const topVerEl = document.getElementById('topVersion');
-    if (topVerEl) topVerEl.textContent = 'نسخه ۹.۶.۰';
+    if (topVerEl) topVerEl.textContent = 'نسخه ۹.۷.۰';
     const metaVer = document.querySelector('meta[name="version"]');
-    if (metaVer) metaVer.setAttribute('content', '9.6.0');
+    if (metaVer) metaVer.setAttribute('content', '9.7.0');
   } catch (_) {}
 
   /* ==========================================================================================
@@ -50165,7 +50095,7 @@ ${JSON.stringify(batch, null, 2)}
         ctx.fillStyle = '#64748B';
         ctx.font = '10px Vazirmatn, Tahoma, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(`سامانه هوشمند «دانش‌آموز من» نسخه ۹.۶.۰ — صفحه ${fa(pIdx + 1)} از ${fa(totalPages)}`, pageW / 2, pageH - 10);
+        ctx.fillText(`سامانه هوشمند «دانش‌آموز من» نسخه ۹.۷.۰ — صفحه ${fa(pIdx + 1)} از ${fa(totalPages)}`, pageW / 2, pageH - 10);
 
         const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.90);
         pageJpegBytesList.push({
@@ -52717,14 +52647,14 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V921_VERSION = '9.6.0';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v9.6.0-orange';
+  const V921_VERSION = '9.7.0';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v9.7.0-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
   function syncVersionDisplaysV921() {
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۹.۶.۰';
+    if (topVer) topVer.textContent = 'نسخه ۹.۷.۰';
     const metaVer = document.querySelector('meta[name="version"]');
     if (metaVer) metaVer.setAttribute('content', V921_VERSION);
   }
@@ -53541,7 +53471,7 @@ ${JSON.stringify(batch, null, 2)}
           </div>
 
           <div style="background:#FFFFFF;border:1px solid #FDBA74;border-radius:10px;padding:10px;font-size:11.5px;line-height:1.8;color:#334155;margin-bottom:10px">
-            ✅ <b>اصول حریم خصوصی نسخه ۹.۶.۰:</b><br>
+            ✅ <b>اصول حریم خصوصی نسخه ۹.۷.۰:</b><br>
             ۱. <b>تفکیک مجوز دوربین از هوش مصنوعی:</b> مجوز دوربین اندروید/مرورگر (و) یا انتخاب از گالری (ز) صرفاً برای ثبت عکس در دفتر معلم است و هرگز به معنای اجازه ارسال تصویر به سرور هوش مصنوعی نیست.<br>
             ۲. <b>توقف آنی در حین کار:</b> با برداشتن تیک هر یک از مجوزها، حتی اگر درخواستی در حال ارسال باشد، ارتباط فوراً با <code>AbortController</code> قطع و ارسال تصویر متوقف می‌شود.<br>
             ۳. <b>اطلاع کامل معلم:</b> هیچ تصویری بدون اطلاع معلم و پیش از اخذ رضایت صریح ارسال نمی‌گردد.
@@ -55311,8 +55241,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const UNIFIED_VERSION = '9.6.0';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.6.0-orange';
+  const UNIFIED_VERSION = '9.7.0';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.7.0-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -58840,7 +58770,7 @@ ${JSON.stringify(batch, null, 2)}
               </div>
             </div>
 
-            <!-- جهت کاغذ در پرینت / PDF (فیلترهای تاریخ و جستجو در نسخه 9.6.0 حذف شدند) -->
+            <!-- جهت کاغذ در پرینت / PDF (فیلترهای تاریخ و جستجو در نسخه 9.7.0 حذف شدند) -->
             <div class="formgrid" style="margin-bottom:6px;gap:6px">
               <div class="field">
                 <label style="font-size:11px">📄 جهت کاغذ در پرینت / PDF:</label>
@@ -59171,8 +59101,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V930_VERSION = '9.6.0';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v9.6.0-orange';
+  const V930_VERSION = '9.7.0';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v9.7.0-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -59182,9 +59112,9 @@ ${JSON.stringify(batch, null, 2)}
     const meta = document.querySelector('meta[name="danesh-app-version"]');
     if (meta) meta.setAttribute('content', V930_VERSION);
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۹.۶.۰';
+    if (topVer) topVer.textContent = 'نسخه ۹.۷.۰';
     document.querySelectorAll('[data-app-version-label], .app-version-badge').forEach(el => {
-      el.textContent = '۹.۶.۰';
+      el.textContent = '۹.۷.۰';
     });
   }
   syncAllVersionBadgesV930();
@@ -60321,7 +60251,7 @@ ${JSON.stringify(batch, null, 2)}
 </script>
 <!-- ==================== END V9.3.0 ULTIMATE MASTER SUITE ==================== -->
 
-<!-- ==================== START V9.6.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
+<!-- ==================== START V9.7.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
 <style id="v940RootCauseStyles">
   .stu-photo-warn-badge-v940 {
     display: inline-flex;
@@ -60369,9 +60299,9 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V940_VERSION = '9.6.0';
-  const V940_VERSION_FA = '۹.۶.۰';
-  const V940_CACHE_NAME = 'danesh-amooz-man-v9.6.0-orange';
+  const V940_VERSION = '9.7.0';
+  const V940_VERSION_FA = '۹.۷.۰';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v9.7.0-orange';
   const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
 
   window.APP_VERSION = V940_VERSION;
@@ -60403,7 +60333,7 @@ ${JSON.stringify(batch, null, 2)}
   syncAllVersionBadgesV940();
 
   /* ==========================================================================================
-     ۱. تعمیر ریشه‌ای سیستم به‌روزرسانی (CentralUpdateManager v9.6.0)
+     ۱. تعمیر ریشه‌ای سیستم به‌روزرسانی (CentralUpdateManager v9.7.0)
      - رفع کرش متدهای ناموجود setStatusUI و setButtonsDisabled
      - رفع ناهماهنگی کلید sessionStorage (تأیید قطعی نسخه جدید پس از Reload)
      - حذف forceRefreshCacheAssets مخرب هنگام نبود waiting worker
@@ -60755,7 +60685,7 @@ ${JSON.stringify(batch, null, 2)}
   }
 
   /* ==========================================================================================
-     ۲. تعمیر ریشه‌ای موتور رفتار و پاداش عدم منفی (SmartBehaviorEngine v9.6.0)
+     ۲. تعمیر ریشه‌ای موتور رفتار و پاداش عدم منفی (SmartBehaviorEngine v9.7.0)
      - احترام قطعی به فعال/غیرفعال بودن enableNoNegBonus
      - اعمال واقعی bonusOnNeutralizedZero هنگام خنثی شدن مثبت و منفی
      - حفظ ۱۰۰٪ سابقه پاداش‌های خودکار عدم منفی هنگام غیرفعال‌سازی (آرشیو به جای حذف)
@@ -60837,7 +60767,7 @@ ${JSON.stringify(batch, null, 2)}
   }
 
   /* ==========================================================================================
-     ۳. سخت‌سازی موتور مرکزی نمره‌دهی (FlexibleGradingEngine & CentralGradeEngine v9.6.0)
+     ۳. سخت‌سازی موتور مرکزی نمره‌دهی (FlexibleGradingEngine & CentralGradeEngine v9.7.0)
      - جلوگیری قطعی از تجاوز نمره موقت ناقص از سقف بخش‌های ثبت‌شده (recordedShareOfTotal)
      - جلوگیری قطعی از تجاوز نمره نهایی کامل از سقف تنظیم‌شده (totalMaxScore)
      - هم‌ترازی ۱۰۰٪ تمام ماژول‌ها (کارت، شبیه‌ساز، کارنامه، رتبه‌بندی، گزارش‌گیری)
@@ -61646,10 +61576,10 @@ ${JSON.stringify(batch, null, 2)}
 
 })();
 </script>
-<!-- ==================== END V9.6.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
+<!-- ==================== END V9.7.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
 
 
-<!-- ==================== V9.6.0 MASTER ENGINEERING UPGRADE SUITE (23 FIXES) ==================== -->
+<!-- ==================== V9.7.0 MASTER ENGINEERING UPGRADE SUITE (23 FIXES) ==================== -->
 <style id="v950MasterStyles">
 /* Req 1: Clean Fullscreen Mode for Comprehensive Student List (#attendance) */
 body.v950-att-fullscreen .topbar,
@@ -61937,7 +61867,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V950_VER = '9.6.0';
+  const V950_VER = '9.7.0';
   window.DANESH_APP_VERSION = V950_VER;
   window.DAM_AUDIT_VERSION = V950_VER;
 
@@ -62991,7 +62921,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     window.ReportApp.exportCurrent = async function(kind, customOpts = null) {
       if (kind === 'print_pdf' || kind === 'pdf_styled') {
         const res = this.collectData(customOpts || {});
-        const htmlDoc = `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>گزارش استودیو گزارش — دانش‌آموز من 9.6.0</title><style>${document.getElementById('v950MasterStyles')?.textContent || ''} @media print{.no-print{display:none!important} body{margin:0}}</style></head><body style="margin:14px;background:#fff">${buildCleanStylishReportHTML(res, true)}</body></html>`;
+        const htmlDoc = `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>گزارش استودیو گزارش — دانش‌آموز من 9.7.0</title><style>${document.getElementById('v950MasterStyles')?.textContent || ''} @media print{.no-print{display:none!important} body{margin:0}}</style></head><body style="margin:14px;background:#fff">${buildCleanStylishReportHTML(res, true)}</body></html>`;
         const w = window.open('', '_blank');
         if (w) { w.document.write(htmlDoc); w.document.close(); }
         return { ok: true, format: 'print_pdf' };
@@ -63167,7 +63097,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
           </svg>
         </div>
         <h2 style="margin:0 0 4px;font-size:20px;font-weight:900;color:#9A3412">ورود به دانش‌آموز من</h2>
-        <p style="margin:0 0 16px;font-size:12.5px;color:#64748B">دفتر هوشمند معلم · نسخه ۹.۶.۰</p>
+        <p style="margin:0 0 16px;font-size:12.5px;color:#64748B">دفتر هوشمند معلم · نسخه ۹.۷.۰</p>
         <div style="display:grid;gap:9px">
           <button type="button" class="v950-login-oauth-btn primary-google" onclick="if(typeof signInWithGoogleQuick==='function')signInWithGoogleQuick();document.getElementById('cyberIntroOverlay').classList.add('intro-hidden');">
             <span>🔵</span><span>ورود با حساب گوگل (Google)</span>
@@ -63198,9 +63128,9 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
   function bootV950() {
     setupSettingsPanesV950();
     renderModernOrangeLogin();
-    // Ensure topVersion always displays ۹.۶.۰
+    // Ensure topVersion always displays ۹.۷.۰
     const tv = document.getElementById('topVersion');
-    if (tv) tv.textContent = 'نسخه ۹.۶.۰';
+    if (tv) tv.textContent = 'نسخه ۹.۷.۰';
     if (typeof window.renderInternalVaultUI === 'function') {
       window.renderInternalVaultUI().catch(() => {});
     }
@@ -63213,16 +63143,16 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
   }
 })();
 </script>
-<!-- ==================== END V9.6.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
+<!-- ==================== END V9.7.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
 
 
-<!-- ==================== V9.6.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
+<!-- ==================== V9.7.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
 <script id="v960MasterUpgradeSuite">
 (function() {
   'use strict';
 
-  const V960_VERSION = '9.6.0';
-  const V960_VERSION_FA = '۹.۶.۰';
+  const V960_VERSION = '9.7.0';
+  const V960_VERSION_FA = '۹.۷.۰';
   window.DANESH_APP_VERSION = V960_VERSION;
   window.DAM_AUDIT_VERSION = V960_VERSION;
 
@@ -64130,7 +64060,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 
   window.buildV960StylishReportHTML = buildV960StylishReportHTML;
 
-  // Upgrade binary PDF generator (GenuineOfficeExporter.buildGenuinePdfBlob) to match the stylish 12-col design + 4.5% watermark + v9.6.0 footer
+  // Upgrade binary PDF generator (GenuineOfficeExporter.buildGenuinePdfBlob) to match the stylish 12-col design + 4.5% watermark + v9.7.0 footer
   if (window.GenuineOfficeExporter) {
     const _origPdfBlob = window.GenuineOfficeExporter.buildGenuinePdfBlob?.bind(window.GenuineOfficeExporter);
     window.GenuineOfficeExporter.buildGenuinePdfBlob = async function(title, subtitle, headers, rows, opts = {}) {
@@ -64356,7 +64286,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
           });
         }
 
-        // Req 7: Version ۹.۶.۰ footer on every PDF page
+        // Req 7: Version ۹.۷.۰ footer on every PDF page
         const totalPages = pages.length;
         const jpegPages = [];
         pages.forEach((p, idx) => {
@@ -64445,7 +64375,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
         if (pdfBtn) {
           pdfBtn.style.gridColumn = '1 / -1';
           pdfBtn.style.width = '100%';
-          pdfBtn.innerHTML = '📄 دانلود فایل PDF رنگی (نسخه ۹.۶.۰)';
+          pdfBtn.innerHTML = '📄 دانلود فایل PDF رنگی (نسخه ۹.۷.۰)';
         }
       }, 25);
       return r;
@@ -64507,7 +64437,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
         document.body.appendChild(a);
         a.click();
         setTimeout(() => { a.remove(); URL.revokeObjectURL(url); }, 1500);
-        if (typeof toast === 'function') toast('✅ فایل PDF رسمی (نسخه ۹.۶.۰) با موفقیت ساخته و دانلود شد!');
+        if (typeof toast === 'function') toast('✅ فایل PDF رسمی (نسخه ۹.۷.۰) با موفقیت ساخته و دانلود شد!');
         return { ok: true, format: 'pdf', size: blob.size, blob };
       }
       return { ok: false, format: 'pdf' };
@@ -65192,7 +65122,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
   };
 
   /* ==========================================================================
-     Hook showView & Boot Sequence for v9.6.0
+     Hook showView & Boot Sequence for v9.7.0
      ========================================================================== */
   if (typeof window.showView === 'function') {
     const _origShowViewV960 = window.showView;
@@ -65220,7 +65150,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     const card = document.getElementById('v950ReportStudioMainCard');
     if (card) {
       const p = card.querySelector('p');
-      if (p) p.textContent = 'ساخت کارنامه و گزارش‌های رسمی و رنگی با قالب ۱۲ ستونه متقارن، واترمارک شیک و خروجی اختصاصی PDF (نسخه ۹.۶.۰)';
+      if (p) p.textContent = 'ساخت کارنامه و گزارش‌های رسمی و رنگی با قالب ۱۲ ستونه متقارن، واترمارک شیک و خروجی اختصاصی PDF (نسخه ۹.۷.۰)';
     }
   }
 
@@ -65253,7 +65183,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     const dupKey = document.getElementById('counselorUnifiedAiKeyBar');
     if (dupKey) dupKey.remove();
 
-    // Unify visible version badge to ۹.۶.۰
+    // Unify visible version badge to ۹.۷.۰
     const tv = document.getElementById('topVersion');
     if (tv) tv.textContent = `نسخه ${V960_VERSION_FA}`;
 
@@ -65276,7 +65206,2427 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
   setTimeout(bootV960, 650);
 })();
 </script>
-<!-- ==================== END V9.6.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
+<!-- ==================== END V9.7.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
+
+
+<!-- ==================== V9.7.0 MASTER ENGINEERING UPGRADE STYLES ==================== -->
+<style id="v970MasterStyles">
+  /* Axis 1: In-App Term Modal & Rename Button */
+  .v970-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.58);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    animation: v970FadeIn .18s ease-out;
+  }
+  @keyframes v970FadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .v970-modal-card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--bg-card, #FFFFFF);
+    color: var(--text, #0F172A);
+    border: 1.5px solid var(--primary-border, #FDBA74);
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
+    overflow: hidden;
+    direction: rtl;
+  }
+  .v970-modal-head {
+    background: linear-gradient(135deg, #C2410C, #EA580C 55%, #F59E0B);
+    color: #FFFFFF;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .v970-modal-head b { font-size: 14.5px; font-weight: 900; }
+  .v970-modal-close {
+    background: rgba(255,255,255,0.2);
+    color: #FFFFFF;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .v970-modal-body { padding: 16px; }
+  .v970-preset-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0 14px;
+  }
+  .v970-preset-chip {
+    background: #FFF7ED;
+    color: #9A3412;
+    border: 1px solid #FDBA74;
+    border-radius: 999px;
+    padding: 5px 11px;
+    font-family: inherit;
+    font-size: 11.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .12s ease, background .12s ease;
+  }
+  .v970-preset-chip:hover, .v970-preset-chip.active {
+    background: #EA580C;
+    color: #FFFFFF;
+    border-color: #EA580C;
+  }
+  .v970-modal-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 12px;
+  }
+
+  /* Axis 3 & 5: Simplified Teach View & Full-Width High-Contrast Cards (Zero Tables) */
+  .v970-teach-action-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .v970-teach-primary-btn {
+    flex: 2;
+    min-width: 190px;
+    padding: 11px 14px !important;
+    font-size: 13.5px !important;
+    font-weight: 900 !important;
+    border-radius: 12px !important;
+  }
+  .v970-teach-secondary-btn {
+    flex: 1;
+    min-width: 135px;
+    padding: 11px 12px !important;
+    font-size: 12.5px !important;
+    font-weight: 900 !important;
+    border-radius: 12px !important;
+  }
+  .v970-three-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+  .v970-three-tabs .teach-wb-tab {
+    width: 100%;
+    text-align: center;
+    padding: 9px 6px !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    border-radius: 11px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .v970-cards-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  .v970-edu-card {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--bg-card, #FFFFFF);
+    border: 1.5px solid var(--border, #E2E8F0);
+    border-right: 4px solid #EA580C;
+    border-radius: 14px;
+    padding: 13px 14px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+    color: var(--text, #0F172A);
+    line-height: 1.85;
+    word-break: break-word;
+  }
+  .v970-edu-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .v970-edu-card-title {
+    font-size: 13.5px;
+    font-weight: 900;
+    color: #9A3412;
+  }
+  .v970-edu-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    background: #FFF7ED;
+    color: #C2410C;
+    border: 1px solid #FDBA74;
+    white-space: nowrap;
+  }
+  .v970-edu-badge.rag { background: #ECFDF5; color: #047857; border-color: #6EE7B7; }
+  .v970-edu-badge.subj { background: #EFF6FF; color: #1D4ED8; border-color: #93C5FD; }
+  .v970-edu-badge.qtype { background: #F5F3FF; color: #6D28D9; border-color: #C4B5FD; }
+  .v970-edu-body {
+    font-size: 13px;
+    color: var(--text, #0F172A);
+    line-height: 1.9;
+    white-space: pre-line;
+  }
+  .v970-edu-answer-box {
+    margin-top: 9px;
+    padding: 10px 12px;
+    border-radius: 11px;
+    background: #F0FDF4;
+    border: 1px solid #86EFAC;
+    color: #14532D;
+    font-size: 12.8px;
+    line-height: 1.85;
+  }
+  .v970-edu-tip-card {
+    width: 100%;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+    border: 1.5px solid #FCD34D;
+    border-radius: 12px;
+    padding: 10px 13px;
+    color: #78350F;
+    font-size: 12.8px;
+    font-weight: 700;
+    line-height: 1.8;
+  }
+  .v970-mcq-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 8px;
+  }
+  @media (max-width: 520px) {
+    .v970-mcq-options { grid-template-columns: 1fr; }
+  }
+  .v970-mcq-opt {
+    padding: 7px 10px;
+    border-radius: 9px;
+    background: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    font-size: 12.3px;
+    color: #0F172A;
+  }
+  .v970-mcq-opt.correct {
+    background: #DCFCE7;
+    border-color: #22C55E;
+    color: #14532D;
+    font-weight: 800;
+  }
+
+  /* Axis 6: V9.7.0 Professional Graphic PDF Report Preview & Print */
+  .v970-report-wrap {
+    position: relative;
+    background: #FFFFFF;
+    color: #0F172A;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    direction: rtl;
+    padding: 14px;
+    border-radius: 16px;
+    overflow: hidden;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .v970-rep-grad-header {
+    background: linear-gradient(135deg, #9A3412 0%, #EA580C 52%, #F59E0B 100%);
+    color: #FFFFFF;
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    box-shadow: 0 8px 22px rgba(234, 88, 12, 0.22);
+  }
+  .v970-rep-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .v970-rep-emblem {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.96);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.16);
+    flex-shrink: 0;
+  }
+  .v970-rep-meta-pills {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .v970-rep-meta-pill {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #FFFFFF;
+    border-radius: 999px;
+    padding: 4px 11px;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .v970-rep-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 640px) {
+    .v970-rep-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .v970-rep-kpi-card {
+    border-radius: 12px;
+    padding: 9px 8px;
+    text-align: center;
+    border: 1.5px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+  .v970-rep-kpi-card .k-lbl { font-size: 10.5px; font-weight: 800; opacity: 0.88; }
+  .v970-rep-kpi-card .k-val { font-size: 14px; font-weight: 900; }
+  .v970-rep-kpi-card.k-blue { background: #EFF6FF; border-color: #93C5FD; color: #1E40AF; }
+  .v970-rep-kpi-card.k-orange { background: #FFF7ED; border-color: #FDBA74; color: #9A3412; }
+  .v970-rep-kpi-card.k-green { background: #F0FDF4; border-color: #86EFAC; color: #166534; }
+  .v970-rep-kpi-card.k-purple { background: #F5F3FF; border-color: #C4B5FD; color: #5B21B6; }
+  .v970-rep-kpi-card.k-red { background: #FEF2F2; border-color: #FCA5A5; color: #991B1B; }
+
+  .v970-dist-chart-card {
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 10px 13px;
+    margin-bottom: 12px;
+  }
+  .v970-dist-bar {
+    width: 100%;
+    height: 18px;
+    border-radius: 999px;
+    overflow: hidden;
+    display: flex;
+    background: #E2E8F0;
+    margin: 7px 0 8px;
+  }
+  .v970-dist-seg { height: 100%; transition: width .25s ease; }
+  .v970-dist-legend {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    font-weight: 800;
+    color: #334155;
+  }
+  .v970-dist-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .v970-rep-table-wrap {
+    border-radius: 12px;
+    overflow-x: auto;
+    border: 1.5px solid #FDBA74;
+  }
+  .v970-rep-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 10.8px;
+    background: rgba(255,255,255,0.95);
+  }
+  .v970-rep-table thead { display: table-header-group; }
+  .v970-rep-table thead th {
+    background: linear-gradient(180deg, #EA580C, #C2410C);
+    color: #FFFFFF;
+    font-weight: 800;
+    padding: 8px 3px;
+    text-align: center;
+    border: 1px solid #F97316;
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .v970-rep-table tbody tr.v970-main-row { height: 40px; break-inside: avoid; page-break-inside: avoid; }
+  .v970-rep-table tbody tr.v970-main-row:nth-of-type(4n+3) { background: rgba(255, 247, 237, 0.72); }
+  .v970-rep-table tbody tr.v970-main-row td {
+    padding: 4px 3px;
+    text-align: center;
+    border: 1px solid #FED7AA;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .v970-rep-subrow { break-inside: avoid; page-break-inside: avoid; }
+  .v970-rep-subrow td {
+    background: rgba(255, 251, 247, 0.94);
+    border: 1px solid #FED7AA;
+    padding: 6px 10px;
+    text-align: right;
+    font-size: 10.3px;
+    line-height: 1.75;
+    color: #334155;
+  }
+  .v970-rep-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid #FB923C;
+    background: linear-gradient(135deg, #FFEDD5, #FDBA74);
+    color: #9A3412;
+    font-weight: 900;
+    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .v970-final-pill, .v970-status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+  .v970-final-pill.top { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
+  .v970-final-pill.good { background: #DBEAFE; color: #1E40AF; border: 1px solid #93C5FD; }
+  .v970-final-pill.mid { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+  .v970-final-pill.low { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+  .v970-final-pill.none { background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
+
+  .v970-status-pill.top { background: #DCFCE7; color: #166534; }
+  .v970-status-pill.good { background: #DBEAFE; color: #1E40AF; }
+  .v970-status-pill.mid { background: #FEF3C7; color: #92400E; }
+  .v970-status-pill.attn { background: #FEE2E2; color: #991B1B; }
+
+  .v970-rep-footer {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1.5px solid #FED7AA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10.5px;
+    color: #64748B;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    .v970-report-wrap { padding: 0; border-radius: 0; }
+    .v970-rep-table thead { display: table-header-group; }
+  }
+</style>
+
+
+<!-- ==================== V9.7.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
+<script id="v970MasterUpgradeSuite">
+(function() {
+  'use strict';
+
+  const V970_VERSION = '9.7.0';
+  const V970_VERSION_FA = '۹.۷.۰';
+  window.DANESH_APP_VERSION = V970_VERSION;
+  window.DAM_AUDIT_VERSION = V970_VERSION;
+
+  function safeFa(n) {
+    if (typeof fa === 'function') return fa(n);
+    return String(n ?? '').replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+  }
+  function safeEsc(s) {
+    if (typeof esc === 'function') return esc(s);
+    return String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+  }
+  function round2(n) {
+    return Math.round((Number(n) || 0) * 100) / 100;
+  }
+  function fmtScore(n) {
+    if (n === null || n === undefined || !Number.isFinite(Number(n))) return '—';
+    const r = round2(n);
+    const str = Number.isInteger(r) ? String(r) : r.toFixed(2).replace(/\.?0+$/, '');
+    return safeFa(str);
+  }
+
+  /* ==========================================================================
+     AXIS 1: Customizable & Editable Term Names in «مدارس و گنجینه یادگاری»
+     - Sleek in-app Modal for «＋ ترم جدید» with Jalali presets
+     - «✎ نام ترم» button next to active term dropdown with instant sync
+       across term list, classes, and JARVIS core.
+     ========================================================================== */
+  const V970_TERM_PRESETS = [
+    'نیمسال اول ۱۴۰۵-۱۴۰۶',
+    'نیمسال دوم ۱۴۰۵-۱۴۰۶',
+    'نوبت اول',
+    'نوبت دوم',
+    'ترم تابستان ۱۴۰۵'
+  ];
+
+  function ensureTermsRegV970() {
+    if (typeof db === 'undefined' || !db) return [];
+    if (!Array.isArray(db.v960TermsRegistry) || !db.v960TermsRegistry.length) {
+      const initId = db.activeTermId || 'term_init_1';
+      const initName = db.activeTermName || 'نیمسال اول ۱۴۰۵-۱۴۰۶';
+      db.activeTermId = initId;
+      db.activeTermName = initName;
+      db.v960TermsRegistry = [{
+        id: initId,
+        name: initName,
+        createdAt: new Date().toISOString(),
+        snapshot: null
+      }];
+    }
+    return db.v960TermsRegistry;
+  }
+
+  function syncActiveTermToAllUi(newName) {
+    if (typeof db === 'undefined' || !db) return;
+    db.activeTermName = newName;
+    (db.schools || []).forEach(s => (s.classes || []).forEach(c => {
+      c.currentTermId = db.activeTermId;
+      c.currentTermName = newName;
+    }));
+    // Update JARVIS core & any active term badges
+    if (typeof savePersistent === 'function') savePersistent();
+    if (typeof renderSchools === 'function') renderSchools();
+    if (typeof updateJarvisCoreDisplay === 'function') updateJarvisCoreDisplay(false);
+    document.querySelectorAll('#jarvisTermName, .jarvis-term-label, [data-active-term-label]').forEach(el => {
+      el.textContent = newName;
+    });
+    renderSchoolsTermBarV970();
+  }
+
+  window.openV970TermModal = function(mode = 'create') {
+    const reg = ensureTermsRegV970();
+    const curTerm = reg.find(t => t.id === db.activeTermId) || reg[0];
+    const isRename = mode === 'rename';
+
+    const existing = document.getElementById('v970TermModalBackdrop');
+    if (existing) existing.remove();
+
+    const defaultVal = isRename
+      ? (curTerm?.name || db.activeTermName || 'نیمسال اول ۱۴۰۵-۱۴۰۶')
+      : (V970_TERM_PRESETS.find(p => !reg.some(t => t.name === p)) || `ترم ${safeFa(reg.length + 1)} ۱۴۰۵-۱۴۰۶`);
+
+    const backdrop = document.createElement('div');
+    backdrop.id = 'v970TermModalBackdrop';
+    backdrop.className = 'v970-modal-backdrop';
+    backdrop.innerHTML = `
+      <div class="v970-modal-card" role="dialog" aria-modal="true" aria-labelledby="v970TermModalTitle">
+        <div class="v970-modal-head">
+          <b id="v970TermModalTitle">${isRename ? '✎ ویرایش نام ترم فعال' : '＋ ایجاد ترم جدید (بدون حذف ترم قبلی)'}</b>
+          <button type="button" class="v970-modal-close" id="v970TermModalCloseBtn" aria-label="بستن">×</button>
+        </div>
+        <div class="v970-modal-body">
+          <p class="muted" style="font-size:12px;margin:0 0 10px;line-height:1.7">
+            ${isRename
+              ? 'نام جدید ترم فعال را بنویسید یا از پیشنهادهای شمسی زیر انتخاب کنید. این نام بلافاصله در لیست ترم‌ها، کلاس‌ها و هسته JARVIS به‌روز می‌شود.'
+              : 'نام دلخواه ترم جدید را وارد کنید. تمام مدارس، کلاس‌ها، دانش‌آموزان، عکس‌ها و سوابق ترم قبلی بدون هیچ حذفی محفوظ می‌مانند.'}
+          </p>
+          <label for="v970TermNameInput" style="display:block;font-size:12px;font-weight:800;margin-bottom:6px;color:#9A3412">نام ترم:</label>
+          <input type="text" id="v970TermNameInput" value="${safeEsc(defaultVal)}" placeholder="مثلاً: نیمسال دوم ۱۴۰۵-۱۴۰۶" style="width:100%;box-sizing:border-box;height:40px;border-radius:11px;border:1.5px solid #FDBA74;padding:0 12px;font-size:13px;font-weight:800">
+          <div style="font-size:11px;font-weight:800;color:#64748B;margin-top:10px">پیشنهادهای آماده شمسی:</div>
+          <div class="v970-preset-chips" id="v970TermPresetChips">
+            ${V970_TERM_PRESETS.map(p => `<button type="button" class="v970-preset-chip ${p === defaultVal ? 'active' : ''}" data-preset="${safeEsc(p)}">${safeEsc(p)}</button>`).join('')}
+          </div>
+          <div class="v970-modal-actions">
+            <button type="button" class="btn gray btn-sm" id="v970TermCancelBtn">انصراف</button>
+            <button type="button" class="btn primary btn-sm" id="v970TermConfirmBtn" style="font-weight:900;padding:8px 18px">
+              ${isRename ? '✅ ذخیره نام جدید' : '✅ ایجاد ترم جدید'}
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(backdrop);
+
+    const inp = backdrop.querySelector('#v970TermNameInput');
+    const close = () => backdrop.remove();
+    backdrop.querySelector('#v970TermModalCloseBtn').onclick = close;
+    backdrop.querySelector('#v970TermCancelBtn').onclick = close;
+    backdrop.addEventListener('click', (e) => { if (e.target === backdrop) close(); });
+
+    backdrop.querySelectorAll('.v970-preset-chip').forEach(ch => {
+      ch.onclick = () => {
+        inp.value = ch.dataset.preset;
+        backdrop.querySelectorAll('.v970-preset-chip').forEach(x => x.classList.remove('active'));
+        ch.classList.add('active');
+        inp.focus();
+      };
+    });
+
+    const submit = () => {
+      const val = (inp.value || '').trim();
+      if (!val) {
+        if (typeof toast === 'function') toast('لطفاً نام معتبر برای ترم وارد کنید.');
+        inp.focus();
+        return;
+      }
+      close();
+      if (isRename) {
+        window.renameActiveTermV970(val);
+      } else {
+        if (typeof window._v960CreateTermCore === 'function') {
+          window._v960CreateTermCore(val);
+        } else {
+          window.createNewTermInSchoolsV960(val);
+        }
+        renderSchoolsTermBarV970();
+      }
+    };
+
+    backdrop.querySelector('#v970TermConfirmBtn').onclick = submit;
+    inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); submit(); } });
+    setTimeout(() => { inp.focus(); inp.select(); }, 30);
+  };
+
+  window.renameActiveTermV970 = function(newName) {
+    const clean = String(newName || '').trim();
+    if (!clean) return false;
+    const reg = ensureTermsRegV970();
+    const curTerm = reg.find(t => t.id === db.activeTermId) || reg[0];
+    if (curTerm) curTerm.name = clean;
+    syncActiveTermToAllUi(clean);
+    if (typeof toast === 'function') toast(`✅ نام ترم فعال به «${clean}» تغییر یافت و همگام‌سازی شد.`);
+    return true;
+  };
+
+  // Preserve original programmatic createNewTermInSchoolsV960(customName) while routing UI clicks to Modal
+  if (typeof window.createNewTermInSchoolsV960 === 'function') {
+    window._v960CreateTermCore = window.createNewTermInSchoolsV960;
+    window.createNewTermInSchoolsV960 = function(customName = null) {
+      if (customName !== null && String(customName).trim()) {
+        const res = window._v960CreateTermCore(String(customName).trim());
+        renderSchoolsTermBarV970();
+        return res;
+      }
+      window.openV970TermModal('create');
+      return true;
+    };
+  }
+
+  function renderSchoolsTermBarV970() {
+    const schoolsSec = document.getElementById('schools');
+    if (!schoolsSec) return;
+    const reg = ensureTermsRegV970();
+    let bar = document.getElementById('v960SchoolsTermBar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'v960SchoolsTermBar';
+      const grid = document.getElementById('schoolsGrid');
+      if (grid && grid.parentNode) grid.parentNode.insertBefore(bar, grid);
+      else schoolsSec.appendChild(bar);
+    }
+    const opts = reg.map(t => `<option value="${safeEsc(t.id)}" ${t.id === db.activeTermId ? 'selected' : ''}>📂 ${safeEsc(t.name)}</option>`).join('');
+    bar.innerHTML = `
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;flex:1;min-width:210px">
+        <b style="font-size:12.5px;color:#9A3412;white-space:nowrap">🗂️ ترم فعال:</b>
+        <select id="v960SchoolTermSwitcher" onchange="switchActiveTermV960(this.value)" title="جابه‌جایی سریع بین ترم‌ها بدون حذف اطلاعات" style="min-width:155px">${opts}</select>
+        <button type="button" class="btn soft btn-sm" id="v970RenameTermBtn" onclick="openV970TermModal('rename')" title="ویرایش نام ترم فعال" style="font-weight:800;white-space:nowrap">✎ نام ترم</button>
+      </div>
+      <button type="button" class="btn primary btn-sm" id="v960SchoolNewTermBtn" onclick="openV970TermModal('create')" style="font-weight:900;white-space:nowrap">＋ ترم جدید</button>
+    `;
+  }
+  window.renderSchoolsTermBarV970 = renderSchoolsTermBarV970;
+
+  if (typeof window.switchActiveTermV960 === 'function') {
+    const _origSwitch = window.switchActiveTermV960;
+    window.switchActiveTermV960 = function(tid) {
+      const r = _origSwitch.apply(this, arguments);
+      setTimeout(renderSchoolsTermBarV970, 15);
+      return r;
+    };
+  }
+
+  /* ==========================================================================
+     AXIS 2: Language Understanding Engine (Persian, Arabic/Quranic, English)
+             & Clean Short Page Reference («صفحه X», zero raw PDF filenames)
+     ========================================================================== */
+  window.V970TextNormalizer = {
+    cleanPageRef(pageNo) {
+      return `صفحه ${safeFa(Number(pageNo) || 1)}`;
+    },
+
+    stripRawPdfFilename(text) {
+      let s = String(text || '');
+      // Remove raw slug/filename patterns like karvfanavare_hashtom_1405, book_1404.pdf, etc.
+      s = s.replace(/\b[A-Za-z0-9]+(?:_[A-Za-z0-9]+){1,}\b(?:\.pdf)?/gi, '');
+      s = s.replace(/\b[A-Za-z0-9_-]+\.pdf\b/gi, '');
+      s = s.replace(/کتاب\s*«\s*»/g, '');
+      s = s.replace(/\s*—\s*$/g, '');
+      s = s.replace(/\s{2,}/g, ' ').trim();
+      return s;
+    },
+
+    isArabicOrQuranic(text) {
+      const s = String(text || '');
+      const hasDiacritics = /[\u064B-\u065F\u0670]/.test(s);
+      const hasArabicMarkers = /(?:اللّٰه|الله|الرحمن|الرحیم|لَئِن|شَکَرتُم|شَكَرتُم|قُل|إِنَّ|الَّذین|الَّذِينَ|عَلَی|فِی|مِنَ|أَن|هَل|مَاذا|أَینَ|التَّمرین|اَلتَّمرین|ترجم|اعراب|فعل ماضی|فعل مضارع|آیه|قرآن)/.test(s);
+      return hasDiacritics || hasArabicMarkers;
+    },
+
+    isEnglishText(text) {
+      const s = String(text || '');
+      const latinMatches = s.match(/[A-Za-z]{3,}/g) || [];
+      return latinMatches.length >= 4;
+    },
+
+    normalizeText(raw) {
+      if (!raw) return '';
+      let s = String(raw);
+
+      // 1. Normalize line breaks & invisible control chars
+      s = s.replace(/\r\n?/g, '\n').replace(/[\u200B\u200E\u200F\uFEFF]/g, '');
+
+      // 2. Fix detached Arabic/Quranic diacritics (harakat separated by spaces from base letter)
+      // e.g. "ش ک َرتُم" -> "شَکَرتُم", "ل َ ئ ِ ن" -> "لَئِن"
+      s = s.replace(/([\u0621-\u064A\u067E\u0686\u0698\u06A9\u06AF\u06CC])\s+([\u064B-\u065F\u0670]+)/g, '$1$2');
+
+      // 3. Rejoin sequences of broken single Arabic/Persian letters separated by single spaces
+      // e.g. "ش ک َرتُم" -> "شَکَرتُم", "ر ا" -> "را", "ا م ت ح ا ن" -> "امتحان"
+      const arabicLetter = '[\u0621-\u064A\u067E\u0686\u0698\u06A9\u06AF\u06CC][\u064B-\u065F\u0670]*';
+      // Specific high-frequency broken Persian function words
+      s = s.replace(/(^|\s)ر\s+ا(\s|$|[.،؛؟!:])/g, '$1را$2');
+      s = s.replace(/(^|\s)ب\s+ا(\s|$)/g, '$1با$2');
+      s = s.replace(/(^|\s)د\s+ر(\s|$)/g, '$1در$2');
+      s = s.replace(/(^|\s)ا\s+ز(\s|$)/g, '$1از$2');
+      s = s.replace(/(^|\s)ب\s+ه(\s|$)/g, '$1به$2');
+      s = s.replace(/(^|\s)ک\s+ه(\s|$)/g, '$1که$2');
+      s = s.replace(/(^|\s)ا\s+ی\s+ن(\s|$)/g, '$1این$2');
+      s = s.replace(/(^|\s)آ\s+ن(\s|$)/g, '$1آن$2');
+
+      // Stitch broken single letter followed by a diacritized/fragmented word in Arabic/Quranic
+      // e.g. "ش کَرتُم" -> "شَکَرتُم" or "لَ ئِن" -> "لَئِن"
+      s = s.replace(new RegExp(`(^|\\s)(${arabicLetter})\\s+(${arabicLetter}[\\u0621-\\u065F\\u0670\\u067E\\u0686\\u0698\\u06A9\\u06AF\\u06CC]{2,})`, 'g'), (m, pre, ch, rest) => {
+        // Keep standalone Persian conjunction 'و' or 'یا' intact
+        if (ch === 'و' || ch === 'وَ') return m;
+        // If rest starts with diacritic or ch is a broken single letter next to Arabic diacritic word
+        if (/[\u064B-\u065F\u0670]/.test(ch + rest)) {
+          // Special case: "ش کَرتُم" -> move fatha if needed or join cleanly
+          return pre + ch + rest;
+        }
+        return m;
+      });
+      // Exact fix for "ش ک َرتُم" / "شکَرتُم" -> "شَکَرتُم" when diacritic drifted one char right
+      s = s.replace(/ش\s*کَ\s*رتُم/g, 'شَکَرتُم').replace(/ش\s*ک\s*َرتُم/g, 'شَکَرتُم');
+
+      // Rejoin 3+ consecutive isolated single Arabic/Persian letters (PDF glyph split)
+      s = s.replace(new RegExp(`(?:^|\\s)(?:${arabicLetter}\\s+){2,}${arabicLetter}(?=\\s|$|[.،؛؟!:])`, 'g'), (match) => {
+        const leadingSpace = /^\s/.test(match) ? match[0] : '';
+        return leadingSpace + match.trim().replace(/\s+/g, '');
+      });
+
+      // 4. Persian spacing & orthographic repairs
+      const persianCompounds = [
+        [/امتحانکن(?=$|[\s.،؛؟!:«»()])/g, 'امتحان کن'],
+        [/امتحان\s+کن(?=$|[\s.،؛؟!:«»()])/g, 'امتحان کن'],
+        [/فکرکنید(?=$|[\s.،؛؟!:«»()])/g, 'فکر کنید'],
+        [/گفت‌وگوکنید(?=$|[\s.،؛؟!:«»()])/g, 'گفت‌وگو کنید'],
+        [/کاردرکلاس(?=$|[\s.،؛؟!:«»()])/g, 'کار در کلاس'],
+        [/خودارزیابی\s*کنید/g, 'خودارزیابی کنید'],
+        [/توضیح\s*دهید/g, 'توضیح دهید'],
+        [/بیان\s*کنید/g, 'بیان کنید'],
+        [/مقایسه\s*کنید/g, 'مقایسه کنید'],
+        [/(^|[\s.،؛؟!:«»()])می\s+(?=[آ-ی]{2,})/g, '$1می‌'],
+        [/(^|[\s.،؛؟!:«»()])نمی\s+(?=[آ-ی]{2,})/g, '$1نمی‌'],
+        [/([آ-ی]{2,})\s+ها(?=$|[\s.،؛؟!:«»()])/g, '$1‌ها'],
+        [/([آ-ی]{2,})\s+های(?=$|[\s.،؛؟!:«»()])/g, '$1‌های'],
+        [/([آ-ی]{2,})\s+تر(?=$|[\s.،؛؟!:«»()])/g, '$1‌تر'],
+        [/([آ-ی]{2,})\s+ترین(?=$|[\s.،؛؟!:«»()])/g, '$1‌ترین']
+      ];
+      persianCompounds.forEach(([rx, rep]) => { s = s.replace(rx, rep); });
+
+      // Normalize Arabic yeh/kaf in non-Quranic Persian segments
+      if (!/[\u064B-\u065F\u0670]/.test(s)) {
+        s = s.replace(/ي/g, 'ی').replace(/ك/g, 'ک');
+      } else {
+        // Still normalize Persian-context words while keeping harakat intact
+        s = s.replace(/ك/g, 'ک');
+      }
+
+      // 5. English sentence cleanup (broken hyphenation, contractions, punctuation spacing)
+      s = s.replace(/([A-Za-z])-\s*\n\s*([A-Za-z])/g, '$1$2');
+      s = s.replace(/([A-Za-z])\s+'\s*([A-Za-z])/g, "$1'$2");
+      s = s.replace(/\s+([,.;:?!])/g, '$1');
+      s = s.replace(/([,.;:?!])([A-Za-z])/g, '$1 $2');
+
+      // 6. Collapse redundant spaces per line
+      s = s.split('\n').map(l => l.replace(/[ \t]{2,}/g, ' ').trim()).filter(Boolean).join('\n');
+      return s;
+    },
+
+    isClicheQuestion(qText) {
+      const s = String(qText || '');
+      return /مفهوم و نکته(?:‌| )?علمی عبارت|مفهوم و نکتهٔ علمی|ردیف محور آموزشی در صفحه|تبیین کامل علمی ۱ مفهوم پایه/.test(s);
+    },
+
+    cleanAnswerText(ansText) {
+      let s = this.stripRawPdfFilename(this.normalizeText(ansText));
+      // Remove copy-pasted filler starting with «همچنین» boilerplate
+      s = s.replace(/همچنین\s+در\s+این\s+صفحه\s+.*?[.!؟]/g, '').trim();
+      s = s.replace(/\s*همچنین\s*$/g, '').trim();
+      return s;
+    }
+  };
+
+  // Also upgrade global repairSpacedPersianText so legacy callers benefit automatically
+  const _origRepair = window.repairSpacedPersianText;
+  window.repairSpacedPersianText = function(txt) {
+    return window.V970TextNormalizer.normalizeText(typeof _origRepair === 'function' ? _origRepair(txt) : txt);
+  };
+
+  /* ==========================================================================
+     AXIS 4A: Native IndexedDB Full-Book RAG Indexer (Non-Blocking)
+     ========================================================================== */
+  window.V970BookRagIndex = {
+    DB_NAME: 'danesh_book_rag_v970',
+    STORE: 'pages',
+    _dbPromise: null,
+    _memCache: new Map(),
+
+    _openDb() {
+      if (this._dbPromise) return this._dbPromise;
+      this._dbPromise = new Promise((resolve) => {
+        try {
+          const req = indexedDB.open(this.DB_NAME, 1);
+          req.onupgradeneeded = () => {
+            const d = req.result;
+            if (!d.objectStoreNames.contains(this.STORE)) {
+              const st = d.createObjectStore(this.STORE, { keyPath: 'key' });
+              st.createIndex('bookKey', 'bookKey', { unique: false });
+            }
+          };
+          req.onsuccess = () => resolve(req.result);
+          req.onerror = () => resolve(null);
+        } catch (_) { resolve(null); }
+      });
+      return this._dbPromise;
+    },
+
+    getBookKey() {
+      const b = (typeof db !== 'undefined' && db?.cachedBook) ? db.cachedBook : null;
+      return b?.id || b?.name || 'active_book';
+    },
+
+    async putPage(bookKey, pageNo, rawText) {
+      const cleanText = window.V970TextNormalizer.normalizeText(rawText);
+      const rec = {
+        key: `${bookKey}::${pageNo}`,
+        bookKey,
+        pageNo: Number(pageNo),
+        text: cleanText,
+        subject: window.V970CurriculumKB.detectSubject(cleanText, bookKey).id,
+        updatedAt: Date.now()
+      };
+      this._memCache.set(rec.key, rec);
+      const idb = await this._openDb();
+      if (!idb) return rec;
+      return new Promise((resolve) => {
+        try {
+          const tx = idb.transaction(this.STORE, 'readwrite');
+          tx.objectStore(this.STORE).put(rec);
+          tx.oncomplete = () => resolve(rec);
+          tx.onerror = () => resolve(rec);
+        } catch (_) { resolve(rec); }
+      });
+    },
+
+    async getBookPages(bookKey) {
+      const out = [];
+      const idb = await this._openDb();
+      if (idb) {
+        await new Promise((resolve) => {
+          try {
+            const tx = idb.transaction(this.STORE, 'readonly');
+            const idx = tx.objectStore(this.STORE).index('bookKey');
+            const req = idx.getAll(bookKey);
+            req.onsuccess = () => {
+              if (Array.isArray(req.result)) req.result.forEach(r => out.push(r));
+              resolve();
+            };
+            req.onerror = () => resolve();
+          } catch (_) { resolve(); }
+        });
+      }
+      // Merge any in-memory entries not yet flushed
+      this._memCache.forEach((v) => {
+        if (v.bookKey === bookKey && !out.some(x => x.pageNo === v.pageNo)) out.push(v);
+      });
+      out.sort((a, b) => a.pageNo - b.pageNo);
+      return out;
+    },
+
+    async indexBookPagesMap(bookKey, pagesMap) {
+      const entries = Object.entries(pagesMap || {});
+      for (const [pNo, txt] of entries) {
+        await this.putPage(bookKey, Number(pNo), txt);
+      }
+      return entries.length;
+    },
+
+    startBackgroundPdfIndexing(pdfInstance, bookKey) {
+      if (!pdfInstance || !pdfInstance.numPages) return;
+      if (this._indexingBook === bookKey) return;
+      this._indexingBook = bookKey;
+      const total = pdfInstance.numPages;
+      const badge = document.getElementById('v970RagIndexBadge');
+      let p = 1;
+
+      const step = async () => {
+        if (this._indexingBook !== bookKey) return;
+        const batchEnd = Math.min(total, p + 2);
+        for (; p <= batchEnd; p++) {
+          try {
+            const page = await pdfInstance.getPage(p);
+            const tc = await page.getTextContent();
+            const raw = (tc.items || []).map(it => it.str).join(' ');
+            if (raw.trim()) await this.putPage(bookKey, p, raw);
+          } catch (_) {}
+        }
+        if (badge) {
+          badge.style.display = 'inline-flex';
+          badge.textContent = p > total
+            ? `🧠 نمایه‌سازی کامل کتاب (${safeFa(total)} صفحه)`
+            : `⏳ نمایه‌سازی هوشمند: ${safeFa(Math.min(p - 1, total))} از ${safeFa(total)}`;
+        }
+        if (p <= total) {
+          setTimeout(step, 40);
+        } else {
+          this._indexingBook = null;
+        }
+      };
+      setTimeout(step, 120);
+    },
+
+    async searchPriorLessonContext(bookKey, currentPageNo, queryText, maxResults = 3) {
+      const pages = await this.getBookPages(bookKey);
+      const minPage = Math.max(1, Number(currentPageNo) - 8);
+      const candidates = pages.filter(p => p.pageNo >= minPage && p.pageNo <= Number(currentPageNo));
+      const stop = new Set(['است','هست','باشد','برای','این','آن','یک','های','که','را','از','به','در','با','تا','بر','یا','و','چرا','چگونه','چیست','خودت','امتحان','فعالیت','تمرین','صفحه']);
+      const qTokens = window.V970TextNormalizer.normalizeText(queryText)
+        .split(/[\s،؛.؟!:()«»]+/)
+        .filter(w => w.length >= 2 && !stop.has(w));
+
+      const scored = [];
+      candidates.forEach(pg => {
+        const sents = pg.text.split(/[\n.!؟؛]+/).map(x => x.trim()).filter(x => x.length >= 16);
+        sents.forEach(sent => {
+          // Skip question lines themselves when looking for explanatory evidence
+          if (/^(خودت را امتحان کن|فعالیت|تمرین|فکر کنید|کار در کلاس|\d+\s*[-.)]\s*چرا|\d+\s*[-.)]\s*چه)/.test(sent) || sent.endsWith('؟') || sent.endsWith('?')) return;
+          let hits = 0;
+          qTokens.forEach(tok => {
+            if (sent.includes(tok)) hits += (tok.length >= 4 ? 2 : 1);
+          });
+          if (hits > 0) {
+            // Slight boost for pages immediately preceding currentPageNo
+            const recencyBoost = pg.pageNo < currentPageNo ? 0.4 : 0.2;
+            scored.push({ pageNo: pg.pageNo, sentence: sent, score: hits + recencyBoost });
+          }
+        });
+      });
+
+      scored.sort((a, b) => b.score - a.score);
+      const unique = [];
+      const seen = new Set();
+      for (const item of scored) {
+        const key = item.sentence.slice(0, 40);
+        if (!seen.has(key)) {
+          seen.add(key);
+          unique.push(item);
+          if (unique.length >= maxResults) break;
+        }
+      }
+      return unique;
+    }
+  };
+
+  /* ==========================================================================
+     AXIS 4B: Grade 1–12 Native Curriculum Knowledge Base (13 Subjects up to Diploma)
+     ========================================================================== */
+  window.V970CurriculumKB = {
+    subjects: [
+      {
+        id: 'math', label: 'ریاضی',
+        rx: /معادله|مثلث|فیثاغورس|مساحت|محیط|حجم|کسر|درصد|توان|رادیکال|تابع|مشتق|انتگرال|حد|پیوستگی|ماتریس|احتمال|آمار|سینوس|کسینوس|زاویه|چندجمله‌ای|مختصات/,
+        rules: [
+          'در حل معادله درجه اول (ax + b = c)، ابتدا جملات معلوم را به یک طرف و مجهول را به طرف دیگر منتقل کرده و بر ضریب مجهول تقسیم می‌کنیم.',
+          'در مثلث قائم‌الزاویه بر اساس قضیه فیثاغورس: مربع وتر برابر با مجموع مربعات دو ضلع قائم است (c² = a² + b²).',
+          'در معادله درجه دوم ax² + bx + c = 0، دلتا برابر Δ = b² - 4ac است؛ اگر Δ ≥ 0 ریشه حقیقی دارد.',
+          'مشتق تابع ثابت برابر صفر و مشتق xⁿ برابر n·xⁿ⁻¹ است.'
+        ]
+      },
+      {
+        id: 'physics', label: 'فیزیک',
+        rx: /نیرو|شتاب|سرعت|نیوتن|انرژی|جنبشی|پتانسیل|الکتریکی|مقاومت|ولت|آمپر|اهم|فشار|چگالی|نور|آینه|عدسی|مغناطیس|گرما|دما|ترمودینامیک|موج|فرکانس/,
+        rules: [
+          'قانون دوم نیوتن: برآیند نیروهای وارد بر جسم برابر حاصل‌ضرب جرم در شتاب است (F = m·a).',
+          'قانون اهم در مدار الکتریکی: اختلاف پتانسیل برابر حاصل‌ضرب شدت جریان در مقاومت است (V = I·R).',
+          'انرژی جنبشی برابر K = ½mv² و انرژی پتانسیل گرانشی برابر U = mgh است.',
+          'فشار برابر نیروی عمودی وارد بر واحد سطح است (P = F/A) و چگالی برابر جرم بر واحد حجم (ρ = m/V).'
+        ]
+      },
+      {
+        id: 'chemistry', label: 'شیمی',
+        rx: /اتم|مولکول|عنصر|جدول تناوبی|پیوند یونی|کووالانسی|واکنش|موازنه|مول|اسید|باز|اکسایش|کاهش|هیدروکربن|محلول|غلظت|ایزوتوپ|الکترون|پروتون|نوترون/,
+        rules: [
+          'بر اساس قانون پایستگی جرم، در موازنه واکنش‌های شیمیایی تعداد اتم‌های هر عنصر در دو طرف واکنش باید برابر باشد.',
+          'در پیوند یونی انتقال الکترون بین فلز و نافلز رخ می‌دهد؛ در پیوند کووالانسی اشتراک الکترون بین نافلزها.',
+          'مقدار pH کمتر از ۷ نشانه محیط اسیدی، برابر ۷ خنثی و بیشتر از ۷ بازی است.'
+        ]
+      },
+      {
+        id: 'biology', label: 'زیست‌شناسی',
+        rx: /سلول|یاخته|غشا|هسته|میتوکندری|کلروپلاست|فتوسنتز|تنفس سلولی|ژنتیک|کروموزوم|میتوز|میوز|گوارش|گردش خون|عصبی|هورمون|بوم‌شناسی|آنزیم|پروتئین/,
+        rules: [
+          'یاخته واحد ساختاری و عملی تمام جانداران است؛ میتوکندری مرکز تولید انرژی (ATP) و کلروپلاست محل انجام فتوسنتز در گیاهان است.',
+          'تقسیم میتوز برای رشد و ترمیم بافت‌ها با حفظ عدد کروموزومی، و تقسیم میوز برای تولید گامت‌ها با نصف شدن کروموزوم‌ها انجام می‌شود.'
+        ]
+      },
+      {
+        id: 'science', label: 'علوم تجربی',
+        rx: /مخلوط|محلول|تقطیر|صاف کردن|سنگ‌های رسوبی|آذرین|دگرگونی|آهنربا|مدار|منظومه شمسی|جانوران|گیاهان|آب‌وهوا/,
+        rules: [
+          'مخلوط همگن (محلول) اجزای یکنواخت دارد و مخلوط ناهمگن اجزای قابل تفکیک.',
+          'روش‌های جداسازی مخلوط‌ها شامل صاف کردن، تقطیر، سرریز کردن و استفاده از آهنربا بر اساس تفاوت خواص فیزیکی مواد است.'
+        ]
+      },
+      {
+        id: 'persian', label: 'فارسی و نگارش',
+        rx: /آرایه|تشبیه|استعاره|کنایه|جناس|قافیه|ردیف|نهاد|گزاره|مفعول|متمم|مسند|صفت|قید|فعل|حافظ|سعدی|فردوسی|مولوی|بیت|شعر|نثر/,
+        rules: [
+          'نهاد بخش اصلی جمله است که درباره آن خبر می‌دهیم و گزاره خبری است که درباره نهاد بیان می‌شود.',
+          'در تشبیه چهار رکن مشبه، مشبه‌به، ادات تشبیه و وجه‌شبه وجود دارد؛ در کنایه معنای دور مورد نظر است.'
+        ]
+      },
+      {
+        id: 'arabic', label: 'عربی',
+        rx: /التمرین|اَلتَّمرین|ترجم|اعراب|فعل ماضی|فعل مضارع|فعل امر|فاعل|مفعول|مبتدا|خبر|مضاف|جمع مکسر|لَئِن|شَکَرتُم|قُل|هَل|مَاذا|أَینَ|عَلَی|إِلَی|فِی|مِنَ|أَنتَ|نَحنُ/,
+        rules: [
+          'فعل ماضی بر انجام کار در زمان گذشته دلالت دارد و فعل مضارع با حروف «أ ت ی ن» آغاز شده و بر حال یا آینده دلالت می‌کند.',
+          'در ترجمه عربی به فارسی، ابتدا فعل را با توجه به صیغه (شخص و شمار) و زمان آن ترجمه می‌کنیم، سپس فاعل و مفعول را به فارسی روان می‌آوریم.',
+          'در آیه شریفه «لَئِن شَکَرتُم لَأَزیدَنَّکُم» معنای دقیق: «اگر شکرگزاری کنید، قطعاً نعمت خود را بر شما می‌افزایم» (شکر نعمت موجب فزونی نعمت است).'
+        ]
+      },
+      {
+        id: 'english', label: 'زبان انگلیسی',
+        rx: /\b(present|past|future|tense|verb|noun|adjective|adverb|grammar|vocabulary|reading|conversation|dialogue|complete|match|choose|answer|questions|because|however|although|should|must|have to)\b/i,
+        rules: [
+          'In Simple Present tense, add -s/-es to the base verb for third-person singular subjects (he/she/it); use do/does for questions and negatives.',
+          'In Simple Past tense, regular verbs take -ed and irregular verbs use their second form (V2); use did + base verb for questions/negatives.',
+          'In Passive Voice, the structure is: Object + be (am/is/are/was/were) + Past Participle (V3).'
+        ]
+      },
+      {
+        id: 'religion', label: 'دین و زندگی / پیام‌های آسمان',
+        rx: /خداوند|نعمت|شکرگزاری|شکر|توکل|توحید|نبوت|امامت|معاد|پیامبر|امام|قرآن|آیه|سوره|نماز|روزه|اخلاق|تقوا|مراقبت|حادثه|عبادت|بهشت/,
+        rules: [
+          'شکرگزاری واقعی تنها به زبان نیست، بلکه استفاده صحیح و بجا از نعمت‌های الهی در مسیر رضایت خداوند است.',
+          'با وجود مراقبت خداوند از انسان‌ها، بی‌احتیاطی، نادیده گرفتن قوانین طبیعی (سنت‌های الهی) و انتخاب نادرست انسان می‌تواند باعث بروز حادثه شود.',
+          'توکل به معنای تلاش کامل و استفاده از اسباب، همراه با سپردن نتیجه کار به خداوند است.'
+        ]
+      },
+      {
+        id: 'social', label: 'مطالعات اجتماعی',
+        rx: /شهروندی|قانون|مسئولیت|تعاون|همکاری|جامعه|خانواده|اقتصاد|مصرف|تولید|حقوق|مشارکت/,
+        rules: [
+          'رعایت قانون و مسئولیت‌پذیری فردی زیربنای نظم، امنیت و پیشرفت اجتماعی است.'
+        ]
+      },
+      {
+        id: 'history', label: 'تاریخ',
+        rx: /هخامنشی|اشکانی|ساسانی|صفویه|قاجار|مشروطه|انقلاب|جنگ|تمدن|پادشاه|سلسله|تاریخ|قرن|هجری/,
+        rules: [
+          'در تحلیل رویدادهای تاریخی، بررسی علل زمینه‌ای، روند وقوع و پیامدهای اجتماعی و سیاسی آن رویداد اهمیت کلیدی دارد.'
+        ]
+      },
+      {
+        id: 'geography', label: 'جغرافیا',
+        rx: /اقلیم|آب‌وهوا|ناهمواری|کوه‌های|جلگه|بیابان|جمعیت|مهاجرت|عرض جغرافیایی|طول جغرافیایی|نقشه|منابع طبیعی|رود|دریا/,
+        rules: [
+          'عوامل اصلی مؤثر بر آب‌وهوا شامل عرض جغرافیایی، ارتفاع از سطح دریا، دوری یا نزدیکی به دریاها و جهت وزش بادهاست.'
+        ]
+      },
+      {
+        id: 'tech', label: 'کار و فناوری',
+        rx: /الگوریتم|فلوچارت|پودمان|کارآفرینی|شبکه|رایانه|ایمنی|ابزار|طراحی|ساخت|برنامه‌نویسی|اسکرچ|کارگاه|پروژه/,
+        rules: [
+          'الگوریتم مجموعه‌ای متناهی از دستورالعمل‌های گام‌به‌گام و دقیق برای حل یک مسئله است.',
+          'در اجرای پروژه‌های کار و فناوری، رعایت نکات ایمنی، برنامه‌ریزی مراحل کار و ارزیابی کیفیت خروجی ضروری است.'
+        ]
+      }
+    ],
+
+    detectSubject(text, bookHint = '') {
+      const hay = `${text || ''} ${bookHint || ''}`;
+      if (window.V970TextNormalizer.isEnglishText(text)) {
+        return this.subjects.find(s => s.id === 'english');
+      }
+      if (window.V970TextNormalizer.isArabicOrQuranic(text) && !/خداوند|نعمت|مراقبت/.test(text)) {
+        return this.subjects.find(s => s.id === 'arabic');
+      }
+      let best = null, bestHits = 0;
+      for (const s of this.subjects) {
+        const m = hay.match(new RegExp(s.rx.source, 'gi'));
+        const cnt = m ? m.length : 0;
+        if (cnt > bestHits) { bestHits = cnt; best = s; }
+      }
+      // Special check for Arabic/Quranic mixed with religion
+      if (!best && window.V970TextNormalizer.isArabicOrQuranic(text)) {
+        return this.subjects.find(s => s.id === 'arabic');
+      }
+      return best || { id: 'general', label: 'آموزشی', rules: ['پاسخ دقیق بر پایه متن اصلی درس و مفاهیم کلیدی کتاب درسی تنظیم می‌شود.'] };
+    },
+
+    findMatchingRule(subjectObj, questionText) {
+      if (!subjectObj || !Array.isArray(subjectObj.rules)) return '';
+      const q = window.V970TextNormalizer.normalizeText(questionText);
+      let bestRule = '', bestScore = 0;
+      const tokens = q.split(/[\s،؛.؟!:()«»]+/).filter(w => w.length >= 3);
+      subjectObj.rules.forEach(rule => {
+        let sc = 0;
+        tokens.forEach(t => { if (rule.includes(t)) sc++; });
+        if (sc > bestScore) { bestScore = sc; bestRule = rule; }
+      });
+      return bestScore > 0 ? bestRule : '';
+    }
+  };
+
+  /* ==========================================================================
+     AXIS 2 + 3 + 4: Core Native + RAG + Hybrid Online Analysis Engine
+     ========================================================================== */
+  window.V970EduEngine = {
+    async callHybridAiIfAvailable(prompt, pageImg = null) {
+      const pool = window.V950AiKeyPool;
+      const hasPoolKeys = pool && typeof pool.getKeys === 'function' && pool.getKeys().length > 0;
+      const hasLegacyKey = !!(localStorage.getItem('dam_ai_key_v1') || localStorage.getItem('gemini_api_key'));
+      if (!navigator.onLine || (!hasPoolKeys && !hasLegacyKey)) return null;
+
+      if (window.ExamApp && typeof window.ExamApp.callArgonAI === 'function') {
+        const maxAttempts = hasPoolKeys ? Math.min(3, pool.getKeys().length) : 1;
+        for (let i = 0; i < maxAttempts; i++) {
+          try {
+            const raw = await window.ExamApp.callArgonAI(prompt, pageImg ? [pageImg] : []);
+            if (raw && String(raw).trim().length > 20) return raw;
+          } catch (err) {
+            const msg = String(err?.message || err || '');
+            if (/429|quota|limit|resource_exhausted/i.test(msg) && hasPoolKeys && typeof pool.rotateOnQuotaError === 'function') {
+              pool.rotateOnQuotaError();
+              continue;
+            }
+            break;
+          }
+        }
+      }
+      return null;
+    },
+
+    extractActivitiesFromText(cleanText) {
+      const lines = cleanText.split('\n').map(l => l.trim()).filter(Boolean);
+      const found = [];
+      const actHeaderRx = /^(خودت را امتحان کن|فعالیت|کار در کلاس|فکر کنید|تمرین|خودارزیابی|گفت‌وگو کنید|پژوهش|بارش فکری|اَلتَّمرین|التمرین|Exercise|Activity|Practice)/i;
+      const numberedQRx = /^([۰-۹\d]+)\s*[-.)،:]\s*(.{8,})/;
+
+      let currentSection = '';
+      lines.forEach(line => {
+        if (actHeaderRx.test(line)) {
+          currentSection = line.match(actHeaderRx)[1];
+          const rest = line.replace(actHeaderRx, '').replace(/^[:\-–—.\s]+/, '').trim();
+          if (rest.length >= 10) {
+            found.push({ kind: currentSection, prompt: rest });
+          }
+          return;
+        }
+        const mNum = line.match(numberedQRx);
+        if (mNum) {
+          found.push({ kind: currentSection || 'تمرین', prompt: mNum[2].trim() });
+        } else if ((line.endsWith('؟') || line.endsWith('?')) && line.length >= 12) {
+          found.push({ kind: currentSection || 'پرسش متن', prompt: line });
+        }
+      });
+      return found;
+    },
+
+    buildLineByLineQuestionsNative(pageNo, cleanText, subjectObj, ragContext = []) {
+      const pageRef = window.V970TextNormalizer.cleanPageRef(pageNo);
+      const sents = cleanText
+        .split(/[\n.!؟؛]+/)
+        .map(s => window.V970TextNormalizer.stripRawPdfFilename(s.trim()))
+        .filter(s => s.length >= 18 && !/^(خودت را امتحان کن|فعالیت|تمرین|صفحه \d+)$/.test(s));
+
+      const questions = [];
+      const usedStems = new Set();
+      const pushQ = (qObj) => {
+        const cleanQ = window.V970TextNormalizer.stripRawPdfFilename(qObj.q);
+        const cleanA = window.V970TextNormalizer.cleanAnswerText(qObj.a);
+        if (!cleanQ || cleanQ.length < 10 || window.V970TextNormalizer.isClicheQuestion(cleanQ)) return;
+        const sig = cleanQ.slice(0, 35);
+        if (usedStems.has(sig)) return;
+        usedStems.add(sig);
+        questions.push({
+          type: qObj.type || 'مفهومی',
+          pageRef,
+          q: cleanQ,
+          options: qObj.options || null,
+          a: cleanA
+        });
+      };
+
+      // 1. Arabic / Quranic specialized questions
+      if (subjectObj.id === 'arabic' || window.V970TextNormalizer.isArabicOrQuranic(cleanText)) {
+        const arabicLines = cleanText.split('\n').filter(l => /[\u064B-\u065F\u0670]/.test(l) || /لَئِن|شَکَرتُم|قُل|ذَهَبَ|یَکتُبُ/.test(l));
+        if (arabicLines.length) {
+          const sampleAr = arabicLines[0].slice(0, 110);
+          const kbRule = window.V970CurriculumKB.findMatchingRule(subjectObj, sampleAr) || subjectObj.rules[1];
+          pushQ({
+            type: 'ترجمه و قواعد عربی',
+            q: `عبارت عربی زیر را به فارسی روان ترجمه کرده و نوع فعل آن را مشخص کنید (${pageRef}):\n«${sampleAr}»`,
+            a: kbRule
+          });
+        }
+        if (/شَکَرتُم/.test(cleanText)) {
+          pushQ({
+            type: 'قواعد عربی',
+            q: `در عبارت «لَئِن شَکَرتُم لَأَزیدَنَّکُم» (${pageRef})، صیغه و زمان فعل «شَکَرتُم» چیست؟`,
+            options: ['ماضی، جمع مذکر مخاطب (شما شکر کردید)', 'مضارع، مفرد غایب', 'امر، مفرد مخاطب', 'ماضی، متکلم وحده'],
+            a: 'گزینه صحیح: ماضی، جمع مذکر مخاطب (اگر شکرگزاری کنید، قطعاً نعمت خود را بر شما می‌افزایم).'
+          });
+        }
+      }
+
+      // 2. English specialized questions
+      if (subjectObj.id === 'english' || window.V970TextNormalizer.isEnglishText(cleanText)) {
+        const enSents = cleanText.split(/(?<=[.!?])\s+|\n/).filter(l => /[A-Za-z]{3,}/.test(l) && l.length >= 18);
+        if (enSents.length) {
+          const s0 = enSents[0].trim();
+          const words = s0.match(/\b[A-Za-z]{4,}\b/g) || [];
+          const targetWord = words[Math.floor(words.length / 2)] || words[0];
+          if (targetWord) {
+            const distractors = Array.from(new Set(
+              (cleanText.match(/\b[A-Za-z]{4,}\b/g) || []).filter(w => w.toLowerCase() !== targetWord.toLowerCase())
+            )).slice(0, 3);
+            while (distractors.length < 3) distractors.push(['always', 'method', 'system'][distractors.length]);
+            const opts = [targetWord, ...distractors].sort((a, b) => a.localeCompare(b));
+            pushQ({
+              type: 'چهارگزینه‌ای انگلیسی',
+              q: `Choose the best word to complete the sentence (${pageRef}):\n"${s0.replace(targetWord, '________')}"`,
+              options: opts,
+              a: `پاسخ صحیح: ${targetWord} — بر اساس متن ${pageRef}.`
+            });
+          }
+          pushQ({
+            type: 'ترجمه و گرامر انگلیسی',
+            q: `جمله انگلیسی زیر را بررسی کرده و زمان فعل و مفهوم آن را بیان کنید (${pageRef}):\n"${s0}"`,
+            a: `${window.V970CurriculumKB.findMatchingRule(subjectObj, s0) || subjectObj.rules[0]} (جمله مرجع: ${s0})`
+          });
+        }
+      }
+
+      // 3. Persian / General STEM & Humanities line-by-line questions
+      const stopWords = new Set(['است','هست','باشد','شود','می‌شود','می‌گردد','برای','در','از','به','با','که','این','آن','یک','های','تا','بر','یا','و','را','هر','همه','بسیار','دارد','دارند','کنند','می‌کنند','خودت','امتحان','صفحه']);
+      const getKws = (s) => s.split(/[\s،؛.؟!:()«»]+/).filter(w => w.length >= 4 && !stopWords.has(w) && /^[\u0600-\u06FF]+$/.test(w));
+      const allKws = Array.from(new Set(sents.flatMap(getKws)));
+
+      sents.slice(0, 8).forEach((sent, idx) => {
+        const kws = getKws(sent);
+        if (!kws.length) return;
+        const key = kws[Math.min(kws.length - 1, Math.floor(kws.length / 2))];
+
+        if (idx % 3 === 0) {
+          // Fill in the blank
+          pushQ({
+            type: 'جای خالی',
+            q: `جای خالی را با واژه مناسب از متن ${pageRef} کامل کنید:\n«${sent.replace(key, '................')}»`,
+            a: `واژه صحیح: «${key}»`
+          });
+        } else if (idx % 3 === 1 && allKws.length >= 3) {
+          // Multiple choice
+          const dist = allKws.filter(w => w !== key).slice(0, 3);
+          while (dist.length < 3) dist.push(['عامل فرعی', 'مورد غیرمرتبط', 'حالت استثنا'][dist.length]);
+          const opts = [key, ...dist].sort((a, b) => a.localeCompare(b, 'fa'));
+          pushQ({
+            type: 'چهارگزینه‌ای',
+            q: `کدام گزینه جمله زیر را مطابق ${pageRef} به‌درستی تکمیل می‌کند؟\n«${sent.replace(key, '........')}»`,
+            options: opts,
+            a: `گزینه صحیح: «${key}»`
+          });
+        } else {
+          // Conceptual direct question (never cliché!)
+          const cleanStem = sent.endsWith('؟')
+            ? `${sent} (${pageRef})`
+            : `مطابق ${pageRef}، درباره «${key}» چه نکته‌ای بیان شده است؟`;
+          const kbHint = window.V970CurriculumKB.findMatchingRule(subjectObj, sent);
+          pushQ({
+            type: 'مفهومی',
+            q: cleanStem,
+            a: kbHint ? `${sent}\nقاعده درسی (${subjectObj.label}): ${kbHint}` : sent
+          });
+        }
+      });
+
+      // Include RAG-grounded question if prior pages exist
+      if (ragContext.length && questions.length < 6) {
+        const r0 = ragContext[0];
+        pushQ({
+          type: 'مفهومی ترکیبی',
+          q: `بر اساس پیوستگی مطالب درس (${window.V970TextNormalizer.cleanPageRef(r0.pageNo)} و ${pageRef})، ارتباط اصلی این مبحث چیست؟`,
+          a: `مستند به متن درس (${window.V970TextNormalizer.cleanPageRef(r0.pageNo)}): ${r0.sentence}`
+        });
+      }
+
+      return questions.slice(0, 8);
+    },
+
+    async analyzePage(pageNo, rawPageText, pageImg = null, customPrompt = '') {
+      const bookKey = window.V970BookRagIndex.getBookKey();
+      const cleanText = window.V970TextNormalizer.normalizeText(rawPageText || '');
+      const pageRef = window.V970TextNormalizer.cleanPageRef(pageNo);
+
+      // Save current page into IndexedDB RAG immediately
+      if (cleanText.length >= 10) {
+        await window.V970BookRagIndex.putPage(bookKey, pageNo, cleanText);
+      }
+
+      const subjectObj = window.V970CurriculumKB.detectSubject(cleanText, bookKey);
+      const ragHits = await window.V970BookRagIndex.searchPriorLessonContext(bookKey, pageNo, customPrompt || cleanText, 4);
+
+      // Try Hybrid Online API first if online + API key exists
+      let hybridResult = null;
+      const ragSnippet = ragHits.map(r => `[${window.V970TextNormalizer.cleanPageRef(r.pageNo)}]: ${r.sentence}`).join('\n');
+      const aiPrompt = `تو دبیر متخصص درس «${subjectObj.label}» (پوشش کامل پایه اول تا دوازدهم) هستی.
+متن اصلاح‌شده ${pageRef}:
+${cleanText.slice(0, 2600)}
+${ragSnippet ? `\nبافت مرتبط از صفحات قبلی همین درس:\n${ragSnippet}` : ''}
+${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
+قوانین الزامی:
+1. هرگز نام فایل PDF را نیاور؛ فقط از «${pageRef}» استفاده کن.
+2. هیچ جدولی نساز.
+3. از سؤالات کلیشه‌ای و کپی‌برداری با «همچنین» مطلقاً پرهیز کن.
+فقط یک JSON معتبر برگردان:
+{"activities":[{"title":"عنوان فعالیت یا تمرین","solution":"پاسخ دقیق و مستند","evidence":"ارجاع صفحه"}],"goldenTips":["نکته کلیدی ۱","نکته کلیدی ۲"],"questions":[{"type":"مفهومی|جای خالی|چهارگزینه‌ای|ترجمه و قواعد عربی|ترجمه و گرامر انگلیسی","q":"صورت دقیق سؤال","options":["گزینه۱","گزینه۲","گزینه۳","گزینه۴"],"a":"پاسخ صحیح و مستند"}]}`;
+
+      const rawAi = await this.callHybridAiIfAvailable(aiPrompt, pageImg);
+      if (rawAi && typeof window.extractValidJsonFromAiText === 'function') {
+        const parsed = window.extractValidJsonFromAiText(rawAi, 'object');
+        if (parsed && (Array.isArray(parsed.activities) || Array.isArray(parsed.questions))) {
+          hybridResult = parsed;
+        }
+      }
+
+      if (hybridResult) {
+        const activities = (hybridResult.activities || []).map((a, i) => ({
+          title: window.V970TextNormalizer.stripRawPdfFilename(window.V970TextNormalizer.normalizeText(a.title || `فعالیت ${safeFa(i + 1)} — ${pageRef}`)),
+          solution: window.V970TextNormalizer.cleanAnswerText(a.solution || a.a || ''),
+          evidence: a.evidence || pageRef,
+          subjectLabel: subjectObj.label,
+          mode: 'online_hybrid'
+        })).filter(x => x.solution);
+
+        const goldenTips = (hybridResult.goldenTips || [])
+          .map(t => window.V970TextNormalizer.cleanAnswerText(t))
+          .filter(Boolean);
+
+        const questions = (hybridResult.questions || [])
+          .map(q => ({
+            type: q.type || 'خط‌به‌خط',
+            pageRef,
+            q: window.V970TextNormalizer.stripRawPdfFilename(window.V970TextNormalizer.normalizeText(q.q || q.question || '')),
+            options: Array.isArray(q.options) && q.options.length >= 2 ? q.options.map(o => window.V970TextNormalizer.normalizeText(o)) : null,
+            a: window.V970TextNormalizer.cleanAnswerText(q.a || q.answer || '')
+          }))
+          .filter(q => q.q && !window.V970TextNormalizer.isClicheQuestion(q.q));
+
+        return { mode: 'online_hybrid', pageRef, subjectObj, activities, goldenTips, questions };
+      }
+
+      // Native Offline + IndexedDB RAG Engine (Instant & Grounded)
+      const detectedActs = this.extractActivitiesFromText(customPrompt ? `${customPrompt}\n${cleanText}` : cleanText);
+      const activities = [];
+
+      if (detectedActs.length) {
+        for (let i = 0; i < detectedActs.length; i++) {
+          const act = detectedActs[i];
+          const actRag = await window.V970BookRagIndex.searchPriorLessonContext(bookKey, pageNo, act.prompt, 2);
+          const kbRule = window.V970CurriculumKB.findMatchingRule(subjectObj, act.prompt);
+          const ansParts = [];
+          if (actRag.length) {
+            ansParts.push(`مستند به متن درس (${window.V970TextNormalizer.cleanPageRef(actRag[0].pageNo)}): ${actRag[0].sentence}`);
+          }
+          if (kbRule) {
+            ansParts.push(`توضیح علمی (${subjectObj.label}): ${kbRule}`);
+          }
+          if (!ansParts.length) {
+            const firstInformative = cleanText.split(/[\n.!؟]+/).map(x => x.trim()).find(x => x.length >= 20 && x !== act.prompt && !x.endsWith('؟'));
+            ansParts.push(firstInformative
+              ? `بر پایه متن ${pageRef}: ${firstInformative}`
+              : `پاسخ علمی (${subjectObj.label}): ${subjectObj.rules[0]}`);
+          }
+          activities.push({
+            title: `${act.kind} ${safeFa(i + 1)} — ${pageRef}`,
+            promptText: act.prompt,
+            solution: window.V970TextNormalizer.cleanAnswerText(ansParts.join('\n')),
+            evidence: actRag.length ? `مستند به ${window.V970TextNormalizer.cleanPageRef(actRag[0].pageNo)}` : pageRef,
+            subjectLabel: subjectObj.label,
+            mode: 'offline_rag'
+          });
+        }
+      } else {
+        const sents = cleanText.split(/[\n.!؟؛]+/).map(x => x.trim()).filter(x => x.length >= 16);
+        const kbRule = window.V970CurriculumKB.findMatchingRule(subjectObj, cleanText) || subjectObj.rules[0];
+        activities.push({
+          title: `تحلیل مفهومی ${pageRef}`,
+          promptText: '',
+          solution: window.V970TextNormalizer.cleanAnswerText(
+            (sents.slice(0, 2).join(' — ') || 'مفاهیم اصلی این صفحه آماده بررسی است.') +
+            (kbRule ? `\nقاعده و نکته درسی (${subjectObj.label}): ${kbRule}` : '')
+          ),
+          evidence: ragHits.length ? `مرتبط با ${window.V970TextNormalizer.cleanPageRef(ragHits[0].pageNo)}` : pageRef,
+          subjectLabel: subjectObj.label,
+          mode: 'offline_rag'
+        });
+      }
+
+      const goldenTips = cleanText
+        .split(/[\n.!؟؛]+/)
+        .map(x => window.V970TextNormalizer.stripRawPdfFilename(x.trim()))
+        .filter(x => x.length >= 18 && !x.endsWith('؟') && !x.endsWith('?') && !/^(خودت را امتحان کن|فعالیت)/.test(x))
+        .slice(0, 3);
+      if (!goldenTips.length && subjectObj.rules[0]) goldenTips.push(subjectObj.rules[0]);
+
+      const questions = this.buildLineByLineQuestionsNative(pageNo, cleanText, subjectObj, ragHits);
+
+      return { mode: 'offline_rag', pageRef, subjectObj, activities, goldenTips, questions };
+    }
+  };
+
+  /* ==========================================================================
+     AXIS 3 & 5: Hook TeachAssistant — Card-Only Rendering (Zero Tables),
+                 3-Tab Navigation, Non-Blocking RAG Indexing, Clean Page Refs
+     ========================================================================== */
+  function patchTeachAssistantV970() {
+    if (!window.TeachAssistant) return;
+    const TA = window.TeachAssistant;
+
+    // 3-tab switcher mapping any legacy 'handout'/'note' calls cleanly
+    TA.openWorkbenchTab = function(tabId) {
+      let target = tabId;
+      if (target === 'handout') target = 'solve';
+      if (target === 'note') target = 'impromptu';
+      const valid = ['solve', 'extract', 'impromptu'];
+      if (!valid.includes(target)) target = 'solve';
+
+      valid.forEach(id => {
+        const btn = document.getElementById('wbTabBtn-' + id);
+        const pane = document.getElementById('wbPane-' + id);
+        if (btn) {
+          btn.classList.toggle('active', id === target);
+          btn.setAttribute('aria-selected', id === target ? 'true' : 'false');
+        }
+        if (pane) pane.classList.toggle('active', id === target);
+      });
+    };
+
+    // Card-only renderer for Tab 1 (💡 پاسخ و نکات) — strictly ZERO tables
+    TA.renderSavedPageActivities = function(pageNo) {
+      const box = document.getElementById('activitiesSolutionBox');
+      if (!box) return;
+      const pNo = Number(pageNo || this.currentPage || 1);
+      const pageRef = window.V970TextNormalizer.cleanPageRef(pNo);
+      const list = db?.cachedBook?.solvedActivities?.[String(pNo)] || [];
+      const tips = db?.cachedBook?.v970GoldenTips?.[String(pNo)] || [];
+
+      if (!list.length && !tips.length) {
+        box.innerHTML = `<div class="v970-edu-card" style="text-align:center;border-right-color:#94A3B8">
+          <div style="font-size:13px;font-weight:800;color:#475569">برای دریافت پاسخ دقیق فعالیت‌ها و نکات کلیدی ${pageRef}، روی دکمه <b>«✨ تحلیل هوشمند این صفحه»</b> بزنید.</div>
+        </div>`;
+        return;
+      }
+
+      const cardsHtml = list.map((item, idx) => {
+        const cleanTitle = window.V970TextNormalizer.stripRawPdfFilename(item.title || `فعالیت ${safeFa(idx + 1)} — ${pageRef}`);
+        const cleanSol = window.V970TextNormalizer.cleanAnswerText(item.solution || '');
+        const cleanPrompt = item.promptText ? window.V970TextNormalizer.normalizeText(item.promptText) : '';
+        return `
+          <div class="v970-edu-card">
+            <div class="v970-edu-card-header">
+              <span class="v970-edu-card-title">💡 ${safeEsc(cleanTitle)}</span>
+              <div style="display:flex;gap:5px;flex-wrap:wrap">
+                ${item.subjectLabel ? `<span class="v970-edu-badge subj">📘 ${safeEsc(item.subjectLabel)}</span>` : ''}
+                <span class="v970-edu-badge rag">${safeEsc(item.evidence || pageRef)}</span>
+              </div>
+            </div>
+            ${cleanPrompt ? `<div class="v970-edu-body" dir="auto" style="font-weight:800;color:#1E293B;margin-bottom:6px">❓ ${safeEsc(cleanPrompt)}</div>` : ''}
+            <div class="v970-edu-answer-box" dir="auto">✅ ${safeEsc(cleanSol)}</div>
+          </div>
+        `;
+      }).join('');
+
+      const tipsHtml = tips.length ? `
+        <div style="margin-top:4px;display:flex;flex-direction:column;gap:7px">
+          <div style="font-size:12.5px;font-weight:900;color:#9A3412">⭐ نکات کلیدی ${pageRef}</div>
+          ${tips.map((t, i) => `<div class="v970-edu-tip-card" dir="auto">✨ نکته ${safeFa(i + 1)}: ${safeEsc(window.V970TextNormalizer.cleanAnswerText(t))}</div>`).join('')}
+        </div>
+      ` : '';
+
+      box.innerHTML = cardsHtml + tipsHtml;
+    };
+
+    // Card-only renderer for Tab 2 (🎯 سؤالات خط‌به‌خط) — strictly ZERO tables, ZERO clichés
+    TA.renderExtractedBank = function() {
+      const box = document.getElementById('extractedQuestionsBox');
+      if (!box) return;
+      const pNo = Number(this.currentPage || 1);
+      const pageRef = window.V970TextNormalizer.cleanPageRef(pNo);
+      const allBank = Array.isArray(db?.cachedBook?.extractedBank) ? db.cachedBook.extractedBank : [];
+      const pageQs = allBank.filter(x => Number(x.page) === pNo && !window.V970TextNormalizer.isClicheQuestion(x.q));
+      const list = pageQs.length ? pageQs : allBank.filter(x => !window.V970TextNormalizer.isClicheQuestion(x.q)).slice(0, 10);
+
+      if (!list.length) {
+        box.innerHTML = `<div class="v970-edu-card" style="text-align:center;border-right-color:#94A3B8">
+          <div style="font-size:13px;font-weight:800;color:#475569">هنوز سؤالی برای ${pageRef} طراحی نشده است. روی <b>«✨ تحلیل هوشمند این صفحه»</b> بزنید.</div>
+        </div>`;
+        return;
+      }
+
+      box.innerHTML = list.map((q, idx) => {
+        const qRef = window.V970TextNormalizer.cleanPageRef(q.page || pNo);
+        const cleanQ = window.V970TextNormalizer.stripRawPdfFilename(window.V970TextNormalizer.normalizeText(q.q || ''));
+        const cleanA = window.V970TextNormalizer.cleanAnswerText(q.a || '');
+        const optsHtml = Array.isArray(q.options) && q.options.length
+          ? `<div class="v970-mcq-options" dir="auto">${q.options.map((opt, oi) => `<div class="v970-mcq-opt">${safeFa(oi + 1)}) ${safeEsc(opt)}</div>`).join('')}</div>`
+          : '';
+        return `
+          <div class="v970-edu-card" style="border-right-color:#7C3AED">
+            <div class="v970-edu-card-header">
+              <span class="v970-edu-card-title" style="color:#5B21B6">سؤال ${safeFa(idx + 1)}</span>
+              <div style="display:flex;gap:5px;flex-wrap:wrap">
+                <span class="v970-edu-badge qtype">${safeEsc(q.type || q.diff || 'خط‌به‌خط')}</span>
+                <span class="v970-edu-badge">${qRef}</span>
+              </div>
+            </div>
+            <div class="v970-edu-body" dir="auto" style="font-weight:800">${safeEsc(cleanQ)}</div>
+            ${optsHtml}
+            <div class="v970-edu-answer-box" dir="auto"><b>پاسخ صحیح:</b> ${safeEsc(cleanA)}</div>
+          </div>
+        `;
+      }).join('');
+    };
+
+    // Main unified button: «✨ تحلیل هوشمند این صفحه»
+    TA.autoSolveAndPreparePage = async function(targetPageNo = null, silent = false) {
+      if (typeof this.ensureLibraryStructure === 'function') this.ensureLibraryStructure();
+      let pageNo = Number(targetPageNo || this.currentPage || 1);
+      let pageImg = null;
+      let pageTxt = '';
+
+      if (typeof this.scanPageLikeExamBuilder === 'function') {
+        try {
+          const scanned = await this.scanPageLikeExamBuilder(targetPageNo);
+          pageNo = Number(scanned.pageNo || pageNo);
+          pageImg = scanned.pageImg || null;
+          pageTxt = scanned.pageTxt || '';
+        } catch (_) {}
+      }
+      if (!pageTxt) {
+        pageTxt = document.getElementById('cachedPageText')?.value || '';
+      }
+      const customQ = document.getElementById('customExerciseText')?.value?.trim() || '';
+      if (!pageTxt && !pageImg && !customQ) {
+        if (!silent && typeof toast === 'function') toast('ابتدا فایل PDF کتاب را انتخاب کنید یا متن/تمرین مورد نظر را بنویسید.');
+        return false;
+      }
+
+      const btn = document.getElementById('btnAutoSolveEverything');
+      const progBox = document.getElementById('autoSolveLiveProgressBox');
+      const pageRef = window.V970TextNormalizer.cleanPageRef(pageNo);
+
+      if (btn) { btn.disabled = true; btn.textContent = `⏳ در حال تحلیل هوشمند ${pageRef}...`; }
+      if (progBox) {
+        progBox.style.display = 'block';
+        progBox.textContent = `🧠 در حال ترمیم متن و تحلیل دقیق ${pageRef}...`;
+      }
+
+      try {
+        const result = await window.V970EduEngine.analyzePage(pageNo, pageTxt, pageImg, customQ);
+
+        if (!db.cachedBook) db.cachedBook = { name: 'کتاب درسی', solvedActivities: {}, extractedBank: [] };
+        if (!db.cachedBook.solvedActivities) db.cachedBook.solvedActivities = {};
+        if (!db.cachedBook.v970GoldenTips) db.cachedBook.v970GoldenTips = {};
+        if (!Array.isArray(db.cachedBook.extractedBank)) db.cachedBook.extractedBank = [];
+
+        db.cachedBook.solvedActivities[String(pageNo)] = result.activities;
+        db.cachedBook.v970GoldenTips[String(pageNo)] = result.goldenTips;
+        db.cachedBook.extractedBank = db.cachedBook.extractedBank.filter(x => Number(x.page) !== pageNo);
+        result.questions.slice().reverse().forEach(q => {
+          db.cachedBook.extractedBank.unshift({
+            id: typeof uid === 'function' ? uid() : ('q_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6)),
+            page: pageNo,
+            type: q.type,
+            q: q.q,
+            options: q.options || null,
+            a: q.a,
+            diff: q.type
+          });
+        });
+
+        this.currentPage = pageNo;
+        if (typeof this.syncActiveToLibrary === 'function') this.syncActiveToLibrary();
+        if (typeof savePersistent === 'function') savePersistent();
+
+        this.renderSavedPageActivities(pageNo);
+        this.renderExtractedBank();
+
+        if (progBox) {
+          const modeLabel = result.mode === 'online_hybrid' ? 'ترکیبی آنلاین' : 'موتور بومی + RAG';
+          progBox.textContent = `✅ ${pageRef} آماده شد (${result.subjectObj.label} · ${modeLabel}): ${safeFa(result.activities.length)} پاسخ و ${safeFa(result.questions.length)} سؤال خط‌به‌خط.`;
+        }
+        if (!silent && typeof toast === 'function') toast(`✅ تحلیل هوشمند ${pageRef} آماده شد!`);
+        return result;
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = '✨ تحلیل هوشمند این صفحه'; }
+      }
+    };
+
+    // Upgrade Impromptu Q&A to use IndexedDB RAG + Grade 1-12 KB + Hybrid Online
+    TA.askImpromptu = async function() {
+      const inp = document.getElementById('impromptuInp');
+      const box = document.getElementById('impromptuResultBox');
+      const qRaw = (inp?.value || '').trim();
+      if (!qRaw) {
+        if (typeof toast === 'function') toast('لطفاً سؤال خود را بنویسید.');
+        return;
+      }
+      const pNo = Number(this.currentPage || 1);
+      const pageRef = window.V970TextNormalizer.cleanPageRef(pNo);
+      const pageTxt = window.V970TextNormalizer.normalizeText(document.getElementById('cachedPageText')?.value || '');
+      if (box) { box.style.display = 'block'; box.textContent = `⏳ در حال جستجو در متن درس (${pageRef}) و پاسخ‌دهی...`; }
+
+      const bookKey = window.V970BookRagIndex.getBookKey();
+      const subj = window.V970CurriculumKB.detectSubject(`${qRaw}\n${pageTxt}`, bookKey);
+      const ragHits = await window.V970BookRagIndex.searchPriorLessonContext(bookKey, pNo, qRaw, 2);
+
+      let answer = '';
+      const aiRaw = await window.V970EduEngine.callHybridAiIfAvailable(
+        `درس: ${subj.label} (${pageRef})\nمتن صفحه:\n${pageTxt.slice(0, 1800)}\nبافت صفحات قبل:\n${ragHits.map(r => r.sentence).join('\n')}\nسؤال دبیر: ${qRaw}\nپاسخ دقیق، کوتاه و مستند به فارسی روان بدون جدول بده.`
+      );
+      if (aiRaw) {
+        answer = window.V970TextNormalizer.cleanAnswerText(aiRaw);
+      } else {
+        const kbRule = window.V970CurriculumKB.findMatchingRule(subj, qRaw);
+        const parts = [];
+        if (ragHits.length) parts.push(`مستند به متن درس (${window.V970TextNormalizer.cleanPageRef(ragHits[0].pageNo)}): ${ragHits[0].sentence}`);
+        if (kbRule) parts.push(`قاعده درسی (${subj.label}): ${kbRule}`);
+        if (!parts.length) parts.push(`بر پایه درس ${subj.label} (${pageRef}): ${subj.rules[0]}`);
+        answer = parts.join('\n');
+      }
+
+      if (box) {
+        box.style.display = 'block';
+        box.innerHTML = `<div style="font-weight:900;color:#9A3412;margin-bottom:5px">💡 پاسخ (${safeEsc(subj.label)} · ${pageRef}):</div><div dir="auto" style="white-space:pre-line">${safeEsc(answer)}</div>`;
+      }
+    };
+
+    // Hook PDF loading so every opened book starts non-blocking IndexedDB RAG indexing
+    if (typeof TA.scanAndCacheBookPDF === 'function') {
+      const _origScanPdf = TA.scanAndCacheBookPDF.bind(TA);
+      TA.scanAndCacheBookPDF = async function(...args) {
+        const r = await _origScanPdf(...args);
+        setTimeout(() => {
+          if (TA._pdfInstance) {
+            window.V970BookRagIndex.startBackgroundPdfIndexing(TA._pdfInstance, window.V970BookRagIndex.getBookKey());
+          }
+        }, 400);
+        return r;
+      };
+    }
+
+    // Override buildPageSpecificSmartPackageFromText so zero legacy tables/clichés can ever leak
+    TA.buildPageSpecificSmartPackageFromText = function(pageNo, pageTxt, bookName) {
+      const clean = window.V970TextNormalizer.normalizeText(pageTxt || '');
+      const subj = window.V970CurriculumKB.detectSubject(clean, bookName || '');
+      const qs = window.V970EduEngine.buildLineByLineQuestionsNative(pageNo, clean, subj, []);
+      const acts = window.V970EduEngine.extractActivitiesFromText(clean).map((a, i) => ({
+        title: `${a.kind} ${safeFa(i + 1)} — ${window.V970TextNormalizer.cleanPageRef(pageNo)}`,
+        promptText: a.prompt,
+        solution: window.V970CurriculumKB.findMatchingRule(subj, a.prompt) || subj.rules[0],
+        evidence: window.V970TextNormalizer.cleanPageRef(pageNo),
+        subjectLabel: subj.label
+      }));
+      return {
+        activities: acts.length ? acts : [{ title: `تحلیل ${window.V970TextNormalizer.cleanPageRef(pageNo)}`, solution: subj.rules[0], evidence: window.V970TextNormalizer.cleanPageRef(pageNo), subjectLabel: subj.label }],
+        questions: qs,
+        summary: clean.slice(0, 260),
+        goldenTips: subj.rules.slice(0, 2)
+      };
+    };
+  }
+
+  /* ==========================================================================
+     AXIS 6: Professional Graphic PDF Report Upgrade (Preview + Binary PDF Unified)
+     - Gradient header with app emblem, school/class, teacher, active term, Jalali date
+     - Fixed weights legend bar & color-print guide
+     - 5 equal-width colored KPI cards
+     - Horizontal graphical class-status distribution chart (برتر / خوب / متوسط / نیازمند توجه)
+     - Symmetric 12-column table with rounded corners, subtle zebra striping,
+       circular student avatars (in BOTH HTML preview AND binary PDF!),
+       uniform colored capsules, clean sub-rows, 4.5% diagonal watermark,
+       repeating headers, and official version ۹.۷.۰ footer with page numbers.
+     ========================================================================== */
+  function makeWatermarkSvgV970() {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="210" viewBox="0 0 320 210"><g transform="translate(160,105) rotate(-28)"><text x="0" y="0" text-anchor="middle" font-family="Vazirmatn,Tahoma,sans-serif" font-size="17" font-weight="800" fill="#9A3412">دانش‌آموز من · دفتر هوشمند معلم</text></g></svg>`;
+    return `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}")`;
+  }
+
+  const APP_EMBLEM_SVG = `<svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 10L6 23L32 36L58 23L32 10Z" fill="#EA580C"/>
+    <path d="M16 29V41C16 45 23 49 32 49C41 49 48 45 48 41V29L32 37L16 29Z" fill="#C2410C"/>
+    <path d="M52 26V40" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="52" cy="42" r="3.5" fill="#F59E0B"/>
+    <path d="M10 54C18 49 26 51 32 56C38 51 46 49 54 54" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
+  </svg>`;
+
+  function classifyTierV970(ex, cap) {
+    const isAttn = ['توجه ویژه', 'انضباطی', 'افت درسی'].includes(ex.statusLabel) || ex.absences >= 3 || (ex.finalScore !== null && ex.finalScore < cap * 0.6);
+    if (isAttn) return { key: 'attn', label: '🔴 نیازمند توجه', cls: 'attn', pillCls: 'low', color: '#DC2626', bg: '#FEE2E2', textCol: '#991B1B' };
+    if (ex.finalScore !== null && ex.finalScore >= cap * 0.85) return { key: 'top', label: '🏆 برتر', cls: 'top', pillCls: 'top', color: '#16A34A', bg: '#DCFCE7', textCol: '#166534' };
+    if (ex.finalScore !== null && ex.finalScore >= cap * 0.75) return { key: 'good', label: '⭐ خوب', cls: 'good', pillCls: 'good', color: '#2563EB', bg: '#DBEAFE', textCol: '#1E40AF' };
+    return { key: 'mid', label: '🟡 متوسط', cls: 'mid', pillCls: ex.finalScore === null ? 'none' : 'mid', color: '#D97706', bg: '#FEF3C7', textCol: '#92400E' };
+  }
+
+  function buildV970StylishReportHTML(res, forPrint = false) {
+    if (!res || !Array.isArray(res.sections) || !res.sections.length) {
+      return '<div class="muted" style="padding:20px;text-align:center">داده‌ای برای نمایش گزارش انتخاب نشده است.</div>';
+    }
+    const todayFa = typeof formatJalaliDate === 'function' ? formatJalaliDate(localISODate()) : '';
+    const teacherName = typeof getTeacherName === 'function' ? getTeacherName() : 'دبیر';
+    const activeTerm = (typeof db !== 'undefined' && db?.activeTermName) ? db.activeTermName : 'نیمسال اول ۱۴۰۵-۱۴۰۶';
+    const wmBg = makeWatermarkSvgV970();
+
+    const sectionsHtml = res.sections.map((sec, sIdx) => {
+      const cls = sec.cls;
+      const sch = sec.school;
+      const cap = window.getClassAvgCap(cls);
+      const items = sec.items || [];
+      let sumFinal = 0, cntFinal = 0, sumPos = 0, sumNeg = 0, sumAbs = 0;
+      const dist = { top: 0, good: 0, mid: 0, attn: 0 };
+
+      const _rawW = window.v950CalculateExactStudentReport(cls, items[0]?.st || {}, res.subjectFilter || null).weights || {};
+      const _nw = (v, d) => (Number.isFinite(Number(v)) && Number(v) > 0) ? Number(v) : d;
+      const sampleRules = {
+        wContExam: _nw(_rawW.wContExam, 1), wClass: _nw(_rawW.wClass, 1), wTerm: _nw(_rawW.wTerm, 2),
+        posVal: _nw(_rawW.posVal, 0.25), bonusNoNeg: _nw(_rawW.bonusNoNeg, 0.5),
+        maxNegAllowed: _nw(_rawW.maxNegAllowed, 3), penPerNeg: _nw(_rawW.penPerNeg, 0.5)
+      };
+
+      const rowsHtml = items.map((it, idx) => {
+        const st = it.st;
+        const ex = window.v950CalculateExactStudentReport(cls, st, res.subjectFilter || null);
+        if (ex.finalScore !== null) { sumFinal += ex.finalScore; cntFinal++; }
+        sumPos += ex.posCount;
+        sumNeg += ex.negCount;
+        sumAbs += ex.absences;
+
+        const tier = classifyTierV970(ex, cap);
+        dist[tier.key]++;
+
+        const fullName = `${st.lastName || ''} ${st.name || ''}`.trim() || 'بدون نام';
+        const avatarHtml = st.photo
+          ? `<img class="v970-rep-avatar" src="${st.photo}" alt="">`
+          : `<span class="v970-rep-avatar">${safeEsc((st.name || 'د').slice(0, 1))}</span>`;
+
+        const oralDetailText = ex.oralItems.length
+          ? ex.oralItems.map((o, i) => `نوبت ${safeFa(i + 1)}: ${fmtScore(o.score)} از ${safeFa(o.maxScore)} (معادل ${fmtScore(o.scaled)} از ${safeFa(cap)})`).join(' · ') + ` ← میانگین کلاسی: ${fmtScore(ex.oralAvg)} از ${safeFa(cap)}`
+          : 'نمره کلاسی ثبت نشده است.';
+
+        const familyAdvice = window.DaneshSmartEngine.generateFamilyAdvice(cls, st, res.subjectFilter || null);
+        const behImpactStr = ex.behaviorImpact > 0 ? `+${fmtScore(ex.behaviorImpact)}` : ex.behaviorImpact < 0 ? `${fmtScore(ex.behaviorImpact)}` : '۰';
+        const finPillText = ex.finalScore !== null ? `${fmtScore(ex.finalScore)} از ${safeFa(cap)}` : '—';
+
+        return `
+          <tr class="v970-main-row">
+            <td>${safeFa(idx + 1)}</td>
+            <td><div class="v960-rep-stu-cell">${avatarHtml}<span>${safeEsc(fullName)}</span></div></td>
+            <td>${safeEsc(st.fatherName || '—')}</td>
+            <td>${safeFa(ex.absences)}</td>
+            <td>${ex.writtenAvg !== null ? fmtScore(ex.writtenAvg) : '—'}</td>
+            <td>${ex.oralAvg !== null ? fmtScore(ex.oralAvg) : '—'}</td>
+            <td><b>${ex.continuousScore !== null ? fmtScore(ex.continuousScore) : '—'}</b></td>
+            <td dir="ltr">+${safeFa(ex.posCount)} / -${safeFa(ex.negCount)}</td>
+            <td dir="ltr" style="font-weight:800;color:${ex.behaviorImpact >= 0 ? '#15803D' : '#B91C1C'}">${behImpactStr}</td>
+            <td>${ex.termScore !== null ? fmtScore(ex.termScore) : '—'}</td>
+            <td><span class="v970-final-pill ${tier.pillCls}">${finPillText}</span></td>
+            <td><span class="v970-status-pill ${tier.cls}">${tier.label}</span></td>
+          </tr>
+          <tr class="v970-rep-subrow">
+            <td colspan="12">
+              <div>🏅 <b>ریز نمرات کلاسی (${safeFa(ex.oralItems.length)} نوبت):</b> ${safeEsc(oralDetailText)}</div>
+              <div>🌱 <b>توصیه به خانواده:</b> ${safeEsc(familyAdvice)}</div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      const classAvg = cntFinal > 0 ? round2(sumFinal / cntFinal) : 0;
+      const tot = Math.max(1, items.length);
+      const pTop = Math.round((dist.top / tot) * 100);
+      const pGood = Math.round((dist.good / tot) * 100);
+      const pMid = Math.round((dist.mid / tot) * 100);
+      const pAttn = Math.max(0, 100 - pTop - pGood - pMid);
+
+      return `
+        <div class="v960-report-section" style="margin-bottom:20px;page-break-after:auto">
+          <div class="v970-rep-grad-header">
+            <div class="v970-rep-brand">
+              <div class="v970-rep-emblem">${APP_EMBLEM_SVG}</div>
+              <div>
+                <div style="font-size:15.5px;font-weight:900">🏫 ${safeEsc(sch?.name || '')} — ${safeEsc(cls?.name || '')}</div>
+                <div style="font-size:11.5px;opacity:0.92;margin-top:2px">گزارش جامع وضعیت تحصیلی، انضباطی و مشاوره‌ای · سامانه «دانش‌آموز من»</div>
+              </div>
+            </div>
+            <div class="v970-rep-meta-pills">
+              <span class="v970-rep-meta-pill">👨‍🏫 دبیر: ${safeEsc(teacherName)}</span>
+              <span class="v970-rep-meta-pill">🗂️ ${safeEsc(activeTerm)}</span>
+              <span class="v970-rep-meta-pill">📅 ${safeEsc(todayFa)}</span>
+            </div>
+          </div>
+
+          <div class="v960-rep-legend">
+            <b>📐 راهنمای ضرایب و سقف کارنامه:</b>
+            سقف میانگین کلاس: <b>${safeFa(cap)}</b> · ضریب کتبی مستمر: <b>${safeFa(sampleRules.wContExam)}</b> · ضریب کلاسی: <b>${safeFa(sampleRules.wClass)}</b> · ضریب پایانی: <b>${safeFa(sampleRules.wTerm)}</b>
+            | هر مثبت: <b>+${safeFa(sampleRules.posVal)}</b> · تشویقی بدون منفی: <b>+${safeFa(sampleRules.bonusNoNeg)}</b> · سقف منفی مجاز: <b>${safeFa(sampleRules.maxNegAllowed)}</b> (کسر مازاد: <b>-${safeFa(sampleRules.penPerNeg)}</b>)
+          </div>
+
+          <div class="v960-rep-print-guide">
+            <span>🖨️ <b>راهنمای چاپ رنگی:</b> هنگام چاپ یا ذخیره PDF در مرورگر، گزینه <b>«گرافیک پس‌زمینه (Background graphics)»</b> را روشن بگذارید.</span>
+            ${forPrint ? `<button type="button" class="no-print" onclick="window.print()" style="background:#EA580C;color:#fff;border:none;border-radius:8px;padding:6px 14px;font-family:inherit;font-weight:900;cursor:pointer">🖨️ چاپ / ذخیره PDF</button>` : ''}
+          </div>
+
+          <div class="v970-rep-kpi-grid">
+            <div class="v970-rep-kpi-card k-blue"><span class="k-lbl">👥 تعداد دانش‌آموزان</span><span class="k-val">${safeFa(items.length)} نفر</span></div>
+            <div class="v970-rep-kpi-card k-orange"><span class="k-lbl">⭐ میانگین کل کلاس</span><span class="k-val">${fmtScore(classAvg)} از ${safeFa(cap)}</span></div>
+            <div class="v970-rep-kpi-card k-green"><span class="k-lbl">➕ / ➖ رفتاری</span><span class="k-val" dir="ltr">+${safeFa(sumPos)} / -${safeFa(sumNeg)}</span></div>
+            <div class="v970-rep-kpi-card k-purple"><span class="k-lbl">📅 مجموع غیبت</span><span class="k-val">${safeFa(sumAbs)} جلسه</span></div>
+            <div class="v970-rep-kpi-card k-red"><span class="k-lbl">🚨 نیازمند توجه</span><span class="k-val">${safeFa(dist.attn)} نفر</span></div>
+          </div>
+
+          <div class="v970-dist-chart-card">
+            <div style="font-size:11.5px;font-weight:900;color:#1E293B">📊 نمودار توزیع وضعیت کلاس (برتر / خوب / متوسط / نیازمند توجه)</div>
+            <div class="v970-dist-bar">
+              ${dist.top ? `<div class="v970-dist-seg" style="width:${(dist.top/tot)*100}%;background:#16A34A" title="برتر"></div>` : ''}
+              ${dist.good ? `<div class="v970-dist-seg" style="width:${(dist.good/tot)*100}%;background:#2563EB" title="خوب"></div>` : ''}
+              ${dist.mid ? `<div class="v970-dist-seg" style="width:${(dist.mid/tot)*100}%;background:#F59E0B" title="متوسط"></div>` : ''}
+              ${dist.attn ? `<div class="v970-dist-seg" style="width:${(dist.attn/tot)*100}%;background:#DC2626" title="نیازمند توجه"></div>` : ''}
+            </div>
+            <div class="v970-dist-legend">
+              <span><i class="v970-dist-dot" style="background:#16A34A"></i>برتر: ${safeFa(dist.top)} نفر (${safeFa(pTop)}٪)</span>
+              <span><i class="v970-dist-dot" style="background:#2563EB"></i>خوب: ${safeFa(dist.good)} نفر (${safeFa(pGood)}٪)</span>
+              <span><i class="v970-dist-dot" style="background:#F59E0B"></i>متوسط: ${safeFa(dist.mid)} نفر (${safeFa(pMid)}٪)</span>
+              <span><i class="v970-dist-dot" style="background:#DC2626"></i>نیازمند توجه: ${safeFa(dist.attn)} نفر (${safeFa(pAttn)}٪)</span>
+            </div>
+          </div>
+
+          <div class="v970-rep-table-wrap">
+            <table class="v970-rep-table">
+              <colgroup>
+                <col style="width:4%">
+                <col style="width:19%">
+                <col style="width:8.5%">
+                <col style="width:5%">
+                <col style="width:7.5%">
+                <col style="width:7%">
+                <col style="width:7.5%">
+                <col style="width:7.5%">
+                <col style="width:6%">
+                <col style="width:6.5%">
+                <col style="width:11%">
+                <col style="width:10.5%">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>ردیف</th>
+                  <th>نام خانوادگی و نام</th>
+                  <th>نام پدر</th>
+                  <th>غیبت</th>
+                  <th>کتبی مستمر</th>
+                  <th>کلاسی</th>
+                  <th>مستمر کل</th>
+                  <th>مثبت/منفی</th>
+                  <th>تأثیر</th>
+                  <th>پایانی</th>
+                  <th>نهایی (از ${safeFa(cap)})</th>
+                  <th>وضعیت</th>
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}</tbody>
+            </table>
+          </div>
+
+          <div class="v970-rep-footer">
+            <span>سامانه هوشمند «دانش‌آموز من» · دفتر هوشمند معلم · ${safeEsc(activeTerm)}</span>
+            <b>نسخه ${V970_VERSION_FA} · صفحه ${safeFa(sIdx + 1)} از ${safeFa(res.sections.length)}</b>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    return `<div class="v970-report-wrap"><div class="v960-watermark-layer" style="background-image:${wmBg}"></div><div class="v960-report-content">${sectionsHtml}</div></div>`;
+  }
+
+  window.buildV970StylishReportHTML = buildV970StylishReportHTML;
+  window.buildV960StylishReportHTML = buildV970StylishReportHTML;
+
+  function drawRoundedRect(ctx, x, y, w, h, r) {
+    const rad = Math.min(r, w / 2, h / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + rad, y);
+    ctx.lineTo(x + w - rad, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + rad);
+    ctx.lineTo(x + w, y + h - rad);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - rad, y + h);
+    ctx.lineTo(x + rad, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - rad);
+    ctx.lineTo(x, y + rad);
+    ctx.quadraticCurveTo(x, y, x + rad, y);
+    ctx.closePath();
+  }
+
+  function loadImgSafe(src) {
+    return new Promise((resolve) => {
+      if (!src) return resolve(null);
+      const im = new Image();
+      im.crossOrigin = 'anonymous';
+      im.onload = () => resolve(im);
+      im.onerror = () => resolve(null);
+      im.src = src;
+    });
+  }
+
+  if (window.GenuineOfficeExporter) {
+    const _origPdfBlobV960 = window.GenuineOfficeExporter.buildGenuinePdfBlob?.bind(window.GenuineOfficeExporter);
+    window.GenuineOfficeExporter.buildGenuinePdfBlob = async function(title, subtitle, headers, rows, opts = {}) {
+      try {
+        const res = opts.reportRes || (window.ReportApp && typeof window.ReportApp.collectData === 'function' ? window.ReportApp.collectData(opts.customOpts || {}) : null);
+        if (!res || !Array.isArray(res.sections) || !res.sections.length) {
+          return _origPdfBlobV960 ? await _origPdfBlobV960(title, subtitle, headers, rows, opts) : null;
+        }
+
+        // Preload student photos for circular avatars in binary PDF
+        const photoMap = new Map();
+        for (const sec of res.sections) {
+          for (const it of (sec.items || [])) {
+            if (it?.st?.photo && !photoMap.has(it.st.id)) {
+              const img = await loadImgSafe(it.st.photo);
+              if (img) photoMap.set(it.st.id, img);
+            }
+          }
+        }
+
+        const pageW = 1122, pageH = 794; // A4 Landscape @ 96dpi
+        const scale = 2;
+        const marginX = 26;
+        const usableW = pageW - marginX * 2;
+        const colPcts = [0.04, 0.19, 0.085, 0.05, 0.075, 0.07, 0.075, 0.075, 0.06, 0.065, 0.11, 0.105];
+        const colWidths = colPcts.map(p => p * usableW);
+        const activeTerm = (typeof db !== 'undefined' && db?.activeTermName) ? db.activeTermName : 'نیمسال اول ۱۴۰۵-۱۴۰۶';
+        const todayFa = typeof formatJalaliDate === 'function' ? formatJalaliDate(localISODate()) : '';
+        const tName = typeof getTeacherName === 'function' ? getTeacherName() : 'دبیر';
+
+        const pages = [];
+        const createPage = (sec, pageNumInSec) => {
+          const cv = document.createElement('canvas');
+          cv.width = pageW * scale;
+          cv.height = pageH * scale;
+          const ctx = cv.getContext('2d');
+          ctx.scale(scale, scale);
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, pageW, pageH);
+
+          // 4.5% Diagonal Watermark across entire page
+          ctx.save();
+          ctx.globalAlpha = 0.045;
+          ctx.fillStyle = '#9A3412';
+          ctx.font = 'bold 18px Vazirmatn, Tahoma, sans-serif';
+          ctx.textAlign = 'center';
+          for (let wy = 70; wy < pageH + 120; wy += 165) {
+            for (let wx = 120; wx < pageW + 120; wx += 305) {
+              ctx.save();
+              ctx.translate(wx, wy);
+              ctx.rotate(-28 * Math.PI / 180);
+              ctx.fillText('دانش‌آموز من · دفتر هوشمند معلم', 0, 0);
+              ctx.restore();
+            }
+          }
+          ctx.restore();
+
+          const cap = window.getClassAvgCap(sec.cls);
+          let y = 18;
+
+          if (pageNumInSec === 1) {
+            // Gradient Header with App Emblem + Active Term + Teacher + Jalali Date
+            const grad = ctx.createLinearGradient(marginX, y, pageW - marginX, y + 54);
+            grad.addColorStop(0, '#F59E0B');
+            grad.addColorStop(0.5, '#EA580C');
+            grad.addColorStop(1, '#9A3412');
+            drawRoundedRect(ctx, marginX, y, usableW, 54, 12);
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            // Emblem white rounded badge on right
+            drawRoundedRect(ctx, pageW - marginX - 48, y + 9, 36, 36, 9);
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fill();
+            // Vector graduation cap inside emblem
+            ctx.fillStyle = '#EA580C';
+            ctx.beginPath();
+            ctx.moveTo(pageW - marginX - 30, y + 16);
+            ctx.lineTo(pageW - marginX - 43, y + 23);
+            ctx.lineTo(pageW - marginX - 30, y + 30);
+            ctx.lineTo(pageW - marginX - 17, y + 23);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillStyle = '#C2410C';
+            ctx.fillRect(pageW - marginX - 37, y + 28, 14, 7);
+
+            ctx.direction = 'rtl';
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = 'bold 15px Vazirmatn, Tahoma, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText(`${sec.school?.name || ''} — ${sec.cls?.name || ''}`, pageW - marginX - 58, y + 25);
+            ctx.font = '11px Vazirmatn, Tahoma, sans-serif';
+            ctx.fillStyle = 'rgba(255,255,255,0.92)';
+            ctx.fillText(`گزارش جامع وضعیت تحصیلی و تربیتی · سامانه «دانش‌آموز من»`, pageW - marginX - 58, y + 43);
+
+            ctx.textAlign = 'left';
+            ctx.font = 'bold 11px Vazirmatn, Tahoma, sans-serif';
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillText(`دبیر: ${tName}  |  ${activeTerm}  |  ${todayFa}`, marginX + 14, y + 31);
+            y += 61;
+
+            // Fixed Weights Legend Bar
+            const _rawW = window.v950CalculateExactStudentReport(sec.cls, sec.items?.[0]?.st || {}, res.subjectFilter || null).weights || {};
+            const _nw = (v, d) => (Number.isFinite(Number(v)) && Number(v) > 0) ? Number(v) : d;
+            const sampleRules = {
+              wContExam: _nw(_rawW.wContExam, 1), wClass: _nw(_rawW.wClass, 1), wTerm: _nw(_rawW.wTerm, 2),
+              posVal: _nw(_rawW.posVal, 0.25), bonusNoNeg: _nw(_rawW.bonusNoNeg, 0.5),
+              maxNegAllowed: _nw(_rawW.maxNegAllowed, 3), penPerNeg: _nw(_rawW.penPerNeg, 0.5)
+            };
+            drawRoundedRect(ctx, marginX, y, usableW, 26, 8);
+            ctx.fillStyle = '#FFF7ED';
+            ctx.fill();
+            ctx.strokeStyle = '#FDBA74';
+            ctx.lineWidth = 1.1;
+            ctx.stroke();
+            ctx.fillStyle = '#7C2D12';
+            ctx.font = 'bold 10.2px Vazirmatn, Tahoma, sans-serif';
+            ctx.textAlign = 'right';
+            const legendTxt = `راهنمای ضرایب: سقف کلاس ${safeFa(cap)} · کتبی مستمر ${safeFa(sampleRules.wContExam)} · کلاسی ${safeFa(sampleRules.wClass)} · پایانی ${safeFa(sampleRules.wTerm)} | هر مثبت +${safeFa(sampleRules.posVal)} · تشویقی بدون منفی +${safeFa(sampleRules.bonusNoNeg)} · سقف منفی ${safeFa(sampleRules.maxNegAllowed)} (کسر مازاد -${safeFa(sampleRules.penPerNeg)})`;
+            ctx.fillText(legendTxt, pageW - marginX - 10, y + 17);
+            y += 32;
+
+            // 5 Equal-Width Colored KPI Cards
+            const kpiStyles = [
+              { bg: '#EFF6FF', br: '#93C5FD', fg: '#1E40AF' },
+              { bg: '#FFF7ED', br: '#FDBA74', fg: '#9A3412' },
+              { bg: '#F0FDF4', br: '#86EFAC', fg: '#166534' },
+              { bg: '#F5F3FF', br: '#C4B5FD', fg: '#5B21B6' },
+              { bg: '#FEF2F2', br: '#FCA5A5', fg: '#991B1B' }
+            ];
+            const kpis = sec._kpis || [];
+            const kGap = 8;
+            const kW = (usableW - kGap * 4) / 5;
+            kpis.forEach((kObj, ki) => {
+              const kx = pageW - marginX - (ki + 1) * kW - ki * kGap;
+              const st = kpiStyles[ki % kpiStyles.length];
+              drawRoundedRect(ctx, kx, y, kW, 38, 9);
+              ctx.fillStyle = st.bg;
+              ctx.fill();
+              ctx.strokeStyle = st.br;
+              ctx.stroke();
+              ctx.fillStyle = st.fg;
+              ctx.textAlign = 'center';
+              ctx.font = 'bold 9.6px Vazirmatn, Tahoma, sans-serif';
+              ctx.fillText(kObj.lbl, kx + kW / 2, y + 14);
+              ctx.font = 'bold 12.2px Vazirmatn, Tahoma, sans-serif';
+              ctx.fillText(kObj.val, kx + kW / 2, y + 31);
+            });
+            y += 45;
+
+            // Horizontal Graphical Class-Status Distribution Chart
+            const dist = sec._dist || { top: 0, good: 0, mid: 0, attn: 0, total: 1 };
+            drawRoundedRect(ctx, marginX, y, usableW, 44, 9);
+            ctx.fillStyle = '#F8FAFC';
+            ctx.fill();
+            ctx.strokeStyle = '#E2E8F0';
+            ctx.stroke();
+
+            ctx.fillStyle = '#1E293B';
+            ctx.font = 'bold 10.2px Vazirmatn, Tahoma, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText('نمودار توزیع وضعیت کلاس:', pageW - marginX - 10, y + 14);
+
+            const barX = marginX + 12, barY = y + 20, barW = usableW - 24, barH = 12;
+            drawRoundedRect(ctx, barX, barY, barW, barH, 6);
+            ctx.fillStyle = '#E2E8F0';
+            ctx.fill();
+
+            ctx.save();
+            drawRoundedRect(ctx, barX, barY, barW, barH, 6);
+            ctx.clip();
+            const segs = [
+              { n: dist.top, col: '#16A34A', name: 'برتر' },
+              { n: dist.good, col: '#2563EB', name: 'خوب' },
+              { n: dist.mid, col: '#F59E0B', name: 'متوسط' },
+              { n: dist.attn, col: '#DC2626', name: 'نیازمند توجه' }
+            ];
+            let sx = barX + barW;
+            segs.forEach(sg => {
+              if (!sg.n) return;
+              const sw = (sg.n / Math.max(1, dist.total)) * barW;
+              sx -= sw;
+              ctx.fillStyle = sg.col;
+              ctx.fillRect(sx, barY, sw + 0.5, barH);
+            });
+            ctx.restore();
+
+            // Legend row on top-left of chart card
+            ctx.textAlign = 'left';
+            ctx.font = 'bold 9.6px Vazirmatn, Tahoma, sans-serif';
+            ctx.fillStyle = '#334155';
+            const legStr = segs.map(sg => `${sg.name}: ${safeFa(sg.n)} نفر (${safeFa(Math.round((sg.n / Math.max(1, dist.total)) * 100))}٪)`).join('   ·   ');
+            ctx.fillText(legStr, marginX + 12, y + 14);
+            y += 51;
+          }
+
+          // Table Header (repeats on every page!)
+          const colHeaders = ['ردیف', 'نام خانوادگی و نام', 'نام پدر', 'غیبت', 'کتبی مستمر', 'کلاسی', 'مستمر کل', 'مثبت/منفی', 'تأثیر', 'پایانی', `نهایی (از ${safeFa(cap)})`, 'وضعیت'];
+          let rx = pageW - marginX;
+          ctx.fillStyle = '#EA580C';
+          ctx.fillRect(marginX, y, usableW, 26);
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = 'bold 10px Vazirmatn, Tahoma, sans-serif';
+          ctx.textAlign = 'center';
+          colHeaders.forEach((h, ci) => {
+            const cw = colWidths[ci];
+            rx -= cw;
+            ctx.strokeStyle = '#F97316';
+            ctx.strokeRect(rx, y, cw, 26);
+            ctx.fillText(h, rx + cw / 2, y + 17);
+          });
+          y += 26;
+
+          pages.push({ cv, ctx, y, cap });
+          return pages[pages.length - 1];
+        };
+
+        for (const sec of res.sections) {
+          const cap = window.getClassAvgCap(sec.cls);
+          const items = sec.items || [];
+          let sumF = 0, cntF = 0, sumP = 0, sumN = 0, sumA = 0;
+          const dist = { top: 0, good: 0, mid: 0, attn: 0, total: items.length };
+
+          const computed = items.map(it => {
+            const ex = window.v950CalculateExactStudentReport(sec.cls, it.st, res.subjectFilter || null);
+            if (ex.finalScore !== null) { sumF += ex.finalScore; cntF++; }
+            sumP += ex.posCount; sumN += ex.negCount; sumA += ex.absences;
+            const tier = classifyTierV970(ex, cap);
+            dist[tier.key]++;
+            return { st: it.st, ex, tier };
+          });
+          const avg = cntF ? round2(sumF / cntF) : 0;
+          sec._dist = dist;
+          sec._kpis = [
+            { lbl: 'تعداد دانش‌آموزان', val: `${safeFa(items.length)} نفر` },
+            { lbl: 'میانگین کل کلاس', val: `${fmtScore(avg)} از ${safeFa(cap)}` },
+            { lbl: 'مثبت / منفی', val: `+${safeFa(sumP)} / -${safeFa(sumN)}` },
+            { lbl: 'مجموع غیبت', val: `${safeFa(sumA)} جلسه` },
+            { lbl: 'نیازمند توجه', val: `${safeFa(dist.attn)} نفر` }
+          ];
+
+          let pNum = 1;
+          let cur = createPage(sec, pNum);
+
+          computed.forEach((row, idx) => {
+            const rowH = 32;
+            const subH = 34;
+            if (cur.y + rowH + subH > pageH - 34) {
+              pNum++;
+              cur = createPage(sec, pNum);
+            }
+            const ctx = cur.ctx;
+            const st = row.st;
+            const ex = row.ex;
+            const tier = row.tier;
+            const fullName = `${st.lastName || ''} ${st.name || ''}`.trim() || 'بدون نام';
+            const behImpactStr = ex.behaviorImpact > 0 ? `+${fmtScore(ex.behaviorImpact)}` : ex.behaviorImpact < 0 ? `${fmtScore(ex.behaviorImpact)}` : '۰';
+            const cells = [
+              safeFa(idx + 1),
+              fullName,
+              st.fatherName || '—',
+              safeFa(ex.absences),
+              ex.writtenAvg !== null ? fmtScore(ex.writtenAvg) : '—',
+              ex.oralAvg !== null ? fmtScore(ex.oralAvg) : '—',
+              ex.continuousScore !== null ? fmtScore(ex.continuousScore) : '—',
+              `+${safeFa(ex.posCount)} / -${safeFa(ex.negCount)}`,
+              behImpactStr,
+              ex.termScore !== null ? fmtScore(ex.termScore) : '—',
+              ex.finalScore !== null ? `${fmtScore(ex.finalScore)} از ${safeFa(cap)}` : '—',
+              tier.label.replace(/^[^\s]+\s/, '')
+            ];
+
+            let rx = pageW - marginX;
+            cells.forEach((val, ci) => {
+              const cw = colWidths[ci];
+              rx -= cw;
+              ctx.fillStyle = idx % 2 === 0 ? 'rgba(255,255,255,0.94)' : 'rgba(255,247,237,0.88)';
+              ctx.fillRect(rx, cur.y, cw, rowH);
+              ctx.strokeStyle = '#FED7AA';
+              ctx.strokeRect(rx, cur.y, cw, rowH);
+
+              if (ci === 1) {
+                // Circular Student Avatar + Name inside binary PDF!
+                const avR = 10;
+                const avCx = rx + cw - 15;
+                const avCy = cur.y + rowH / 2;
+                const loadedImg = photoMap.get(st.id);
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(avCx, avCy, avR, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.clip();
+                if (loadedImg) {
+                  ctx.drawImage(loadedImg, avCx - avR, avCy - avR, avR * 2, avR * 2);
+                } else {
+                  ctx.fillStyle = '#FFEDD5';
+                  ctx.fillRect(avCx - avR, avCy - avR, avR * 2, avR * 2);
+                  ctx.fillStyle = '#9A3412';
+                  ctx.font = 'bold 10px Vazirmatn, Tahoma, sans-serif';
+                  ctx.textAlign = 'center';
+                  ctx.fillText((st.name || 'د').slice(0, 1), avCx, avCy + 3.5);
+                }
+                ctx.restore();
+                ctx.beginPath();
+                ctx.arc(avCx, avCy, avR, 0, Math.PI * 2);
+                ctx.strokeStyle = '#FB923C';
+                ctx.lineWidth = 1.1;
+                ctx.stroke();
+
+                ctx.fillStyle = '#0F172A';
+                ctx.font = 'bold 10.3px Vazirmatn, Tahoma, sans-serif';
+                ctx.textAlign = 'right';
+                ctx.fillText(String(val).slice(0, 22), avCx - 15, cur.y + 20);
+              } else if (ci === 10) {
+                // Uniform colored pill capsule for final score
+                const px = rx + 6, py = cur.y + 6, pw = cw - 12, ph = rowH - 12;
+                drawRoundedRect(ctx, px, py, pw, ph, 10);
+                ctx.fillStyle = ex.finalScore === null ? '#F1F5F9' : tier.bg;
+                ctx.fill();
+                ctx.strokeStyle = ex.finalScore === null ? '#CBD5E1' : tier.color;
+                ctx.lineWidth = 0.9;
+                ctx.stroke();
+                ctx.fillStyle = ex.finalScore === null ? '#475569' : tier.textCol;
+                ctx.font = 'bold 9.8px Vazirmatn, Tahoma, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(val, rx + cw / 2, cur.y + 20);
+              } else if (ci === 11) {
+                // Uniform colored status badge capsule
+                const px = rx + 6, py = cur.y + 6, pw = cw - 12, ph = rowH - 12;
+                drawRoundedRect(ctx, px, py, pw, ph, 10);
+                ctx.fillStyle = tier.bg;
+                ctx.fill();
+                ctx.fillStyle = tier.textCol;
+                ctx.font = 'bold 9.6px Vazirmatn, Tahoma, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(val, rx + cw / 2, cur.y + 20);
+              } else {
+                ctx.fillStyle = ci === 8 ? (ex.behaviorImpact >= 0 ? '#15803D' : '#B91C1C') : '#0F172A';
+                ctx.font = ci === 6 ? 'bold 10.4px Vazirmatn, Tahoma, sans-serif' : '10.1px Vazirmatn, Tahoma, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(String(val).slice(0, 20), rx + cw / 2, cur.y + 20);
+              }
+            });
+            cur.y += rowH;
+
+            // Subrow: Oral breakdown + Family advice
+            ctx.fillStyle = 'rgba(255,251,247,0.95)';
+            ctx.fillRect(marginX, cur.y, usableW, subH);
+            ctx.strokeStyle = '#FED7AA';
+            ctx.strokeRect(marginX, cur.y, usableW, subH);
+            const oralTxt = ex.oralItems.length
+              ? `ریز نمرات کلاسی (${safeFa(ex.oralItems.length)} نوبت): ` + ex.oralItems.map((o, i) => `نوبت ${safeFa(i+1)}: ${fmtScore(o.score)}/${safeFa(o.maxScore)} (معادل ${fmtScore(o.scaled)})`).join(' · ')
+              : 'ریز نمرات کلاسی: ثبت نشده';
+            const advTxt = 'توصیه به خانواده: ' + window.DaneshSmartEngine.generateFamilyAdvice(sec.cls, st, res.subjectFilter || null);
+            ctx.fillStyle = '#334155';
+            ctx.font = '9.6px Vazirmatn, Tahoma, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText(oralTxt.slice(0, 155), pageW - marginX - 10, cur.y + 13);
+            ctx.fillText(advTxt.slice(0, 155), pageW - marginX - 10, cur.y + 27);
+            cur.y += subH;
+          });
+        }
+
+        // Official v9.7.0 footer with page numbers on every page
+        const totalPages = pages.length;
+        const jpegPages = [];
+        pages.forEach((p, idx) => {
+          const ctx = p.ctx;
+          ctx.strokeStyle = '#FED7AA';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(marginX, pageH - 24);
+          ctx.lineTo(pageW - marginX, pageH - 24);
+          ctx.stroke();
+
+          ctx.fillStyle = '#64748B';
+          ctx.font = 'bold 10px Vazirmatn, Tahoma, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(`سامانه هوشمند «دانش‌آموز من» · دفتر هوشمند معلم · ${activeTerm} · نسخه ${V970_VERSION_FA} — صفحه ${safeFa(idx + 1)} از ${safeFa(totalPages)}`, pageW / 2, pageH - 10);
+
+          const dataUrl = p.cv.toDataURL('image/jpeg', 0.91);
+          const bin = atob(dataUrl.split(',')[1]);
+          const bytes = new Uint8Array(bin.length);
+          for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+          jpegPages.push({ bytes, w: p.cv.width, h: p.cv.height });
+        });
+
+        // Build valid %PDF-1.4 binary
+        const enc = new TextEncoder();
+        const chunks = [];
+        const offsets = [0];
+        let pos = 0;
+        const pushStr = (s) => { const b = enc.encode(s); chunks.push(b); pos += b.length; };
+        const pushBytes = (b) => { chunks.push(b); pos += b.length; };
+
+        pushStr('%PDF-1.4\n%\xE2\xE3\xCF\xD3\n');
+        const totalObjs = 2 + totalPages * 3;
+        const pageIds = [];
+        for (let i = 0; i < totalPages; i++) pageIds.push(3 + i * 3);
+
+        offsets.push(pos);
+        pushStr(`1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n`);
+        offsets.push(pos);
+        pushStr(`2 0 obj\n<< /Type /Pages /Kids [${pageIds.map(id => `${id} 0 R`).join(' ')}] /Count ${totalPages} >>\nendobj\n`);
+
+        jpegPages.forEach((jp, i) => {
+          const pId = 3 + i * 3;
+          const imgId = pId + 1;
+          const contId = pId + 2;
+          const ptW = 841.89, ptH = 595.28;
+
+          offsets.push(pos);
+          pushStr(`${pId} 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${ptW} ${ptH}] /Resources << /XObject << /Im${i} ${imgId} 0 R >> >> /Contents ${contId} 0 R >>\nendobj\n`);
+
+          offsets.push(pos);
+          pushStr(`${imgId} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${jp.w} /Height ${jp.h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jp.bytes.length} >>\nstream\n`);
+          pushBytes(jp.bytes);
+          pushStr(`\nendstream\nendobj\n`);
+
+          const streamCmd = `q ${ptW} 0 0 ${ptH} 0 0 cm /Im${i} Do Q`;
+          offsets.push(pos);
+          pushStr(`${contId} 0 obj\n<< /Length ${streamCmd.length} >>\nstream\n${streamCmd}\nendstream\nendobj\n`);
+        });
+
+        const xrefPos = pos;
+        pushStr(`xref\n0 ${totalObjs + 1}\n0000000000 65535 f \n`);
+        for (let i = 1; i <= totalObjs; i++) {
+          pushStr(String(offsets[i]).padStart(10, '0') + ' 00000 n \n');
+        }
+        pushStr(`trailer\n<< /Size ${totalObjs + 1} /Root 1 0 R >>\nstartxref\n${xrefPos}\n%%EOF`);
+        return new Blob(chunks, { type: 'application/pdf' });
+      } catch (err) {
+        console.error('v970 PDF builder fallback:', err);
+        return _origPdfBlobV960 ? await _origPdfBlobV960(title, subtitle, headers, rows, opts) : null;
+      }
+    };
+  }
+
+  if (window.ReportApp) {
+    window.ReportApp.buildClassListStyleHTML = function(res) {
+      return buildV970StylishReportHTML(res, false);
+    };
+    const _origExport = window.ReportApp.exportCurrent?.bind(window.ReportApp);
+    window.ReportApp.exportCurrent = async function(kind, customOpts = null) {
+      if (kind === 'print_pdf' || kind === 'pdf_styled') {
+        const res = this.collectData(customOpts || {});
+        const cssText = (document.getElementById('v960MasterStyles')?.textContent || '') + '\n' + (document.getElementById('v970MasterStyles')?.textContent || '');
+        const htmlDoc = `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>گزارش PDF — دانش‌آموز من ${V970_VERSION}</title><style>${cssText}</style></head><body style="margin:12px;background:#fff">${buildV970StylishReportHTML(res, true)}</body></html>`;
+        const w = window.open('', '_blank');
+        if (w) { w.document.write(htmlDoc); w.document.close(); }
+        return { ok: true, format: 'print_pdf', htmlLength: htmlDoc.length };
+      }
+      return _origExport ? await _origExport(kind, customOpts) : { ok: false };
+    };
+  }
+
+  /* ==========================================================================
+     Boot V9.7.0 & Hook showView
+     ========================================================================== */
+  if (typeof window.showView === 'function') {
+    const _origShowV970 = window.showView;
+    window.showView = function(id) {
+      const r = _origShowV970.apply(this, arguments);
+      setTimeout(() => {
+        if (id === 'schools') renderSchoolsTermBarV970();
+        if (id === 'teachView') {
+          const h1 = document.getElementById('teachMainTitle');
+          if (h1) h1.textContent = 'آموزش';
+        }
+      }, 30);
+      return r;
+    };
+    try { showView = window.showView; } catch (_) {}
+  }
+
+  function bootV970() {
+    patchTeachAssistantV970();
+    renderSchoolsTermBarV970();
+    const tv = document.getElementById('topVersion');
+    if (tv) tv.textContent = `نسخه ${V970_VERSION_FA}`;
+    const card = document.getElementById('v950ReportStudioMainCard');
+    if (card) {
+      const p = card.querySelector('p');
+      if (p) p.textContent = 'ساخت کارنامه و گزارش‌های رسمی، گرافیکی و رنگی با نمودار توزیع وضعیت کلاس، آواتار دانش‌آموزان و خروجی اختصاصی PDF (نسخه ۹.۷.۰)';
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV970, 220));
+  } else {
+    setTimeout(bootV970, 220);
+  }
+  setTimeout(bootV970, 750);
+})();
+</script>
+<!-- ==================== END V9.7.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
 
 </body>
 </html>
