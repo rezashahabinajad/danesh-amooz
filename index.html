@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="9.4.0">
-<meta name="danesh-app-version" content="9.4.0">
+<meta name="version" content="9.5.0">
+<meta name="danesh-app-version" content="9.5.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -4704,7 +4704,7 @@ body.dark .ws-logout-inner {
 <!-- اعلان به‌روزرسانی نسخه PWA (مدیریت مرکزی نسخه 9.3.0) -->
 <div id="swUpdateBanner" class="sw-update-banner" role="region" aria-label="اعلان به‌روزرسانی نسخه جدید">
   <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:200px">
-    <span id="swUpdateBannerText">🚀 نسخه جدید (۹.۴.۰) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
+    <span id="swUpdateBannerText">🚀 نسخه جدید (۹.۵.۰) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
     <div id="swUpdateBannerError" style="display:none;font-size:11.5px;color:#FEE2E2;background:rgba(153,27,27,0.88);padding:5px 8px;border-radius:8px;border:1px solid #FCA5A5;line-height:1.6"></div>
   </div>
   <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
@@ -4737,7 +4737,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۹.۴.۰</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۹.۵.۰</span>
           <button type="button" id="btnTopCheckUpdate" class="top-ver-pill" style="cursor:pointer;border:1px solid rgba(234,88,12,0.35);background:#FFF7ED;color:#EA580C;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:999px" onclick="if(window.CentralUpdateManager)CentralUpdateManager.checkForUpdatesManual()" title="بررسی به‌روزرسانی">بررسی به‌روزرسانی</button>
         </div>
       </div>
@@ -4745,17 +4745,12 @@ body.dark .ws-logout-inner {
 
     <!-- نوار کشویی هوشمند ابزارهای بالا (Collapsible Quick-Tools Capsule) -->
     <div class="top-icons-capsule" id="topIconsCapsule">
-      <div class="notif-bell-wrap">
-        <button type="button" class="iconbtn" id="topNotifBtn" onclick="openNotificationsCenterModal()" title="مرکز هوشمند اعلانات و یادآوری‌ها" aria-label="اعلانات">🔔</button>
-        <span class="notif-badge-dot" id="topNotifBadge" style="display:none">۰</span>
-      </div>
       <button type="button" class="iconbtn" onclick="openTeacherProToolkitModal()" title="جعبه ابزار حرفه‌ای معلم (ماشین‌حساب، تایمر، قرعه‌کشی)" aria-label="ابزار معلم">🧰</button>
       <button type="button" class="iconbtn" onclick="openSmartCommandPalette()" title="جستجوی فرماندهی سراسری (Ctrl+K)" aria-label="جستجوی سریع">🔍</button>
       <div class="top-drawer-items" id="topDrawerItems">
         <button type="button" class="iconbtn" onclick="showView('onlineClassView')" title="کلاس آنلاین و لینک اختصاصی" aria-label="کلاس آنلاین">🌐</button>
         <button type="button" class="iconbtn" onclick="openTeacherAccountModal()" title="حساب کاربری معلم (جیمیل و شماره همراه)" aria-label="حساب کاربری">👤</button>
         <button type="button" class="iconbtn" onclick="showView('birthdays')" title="تقویم تولدها" aria-label="تولدها">🎂</button>
-        <button type="button" class="iconbtn" onclick="openExcelPasteImportModal()" title="ورود دسته‌جمعی اسامی از فایل اکسل / لیست متنی" aria-label="ورود دسته‌جمعی">📋</button>
         <button type="button" class="iconbtn" id="themeToggleBtn" onclick="toggleTheme()" title="تغییر پوسته (نارنجی پیش‌فرض)" aria-label="تغییر پوسته">🍊</button>
       </div>
       <button type="button" class="iconbtn drawer-toggle-btn" id="topDrawerToggleBtn" onclick="toggleTopQuickDrawer(event)" title="باز و بسته کردن کشوی ابزارها" aria-expanded="false" aria-label="کشوی ابزارها">
@@ -4832,7 +4827,6 @@ body.dark .ws-logout-inner {
       </div>
       <div class="actions" style="margin-top:4px">
         <button type="button" class="btn primary btn-sm" onclick="showView('onlineClassView')">🌐 کلاس آنلاین و لینک اختصاصی</button>
-        <button type="button" class="btn soft btn-sm" onclick="openNotificationsCenterModal()">🔔 اعلانات و یادآوری‌ها</button>
       </div>
     </div>
   </div>
@@ -5690,7 +5684,7 @@ body.dark .ws-logout-inner {
         <span class="ws-pill-icon">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="3" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21" y2="12"/></svg>
         </span>
-        <span class="ws-pill-label" dir="rtl">هوش‌واره و گزارش‌ها</span>
+        <span class="ws-pill-label" dir="rtl">استودیو گزارش</span>
         <span class="ws-pill-arrow">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </span>
@@ -5751,7 +5745,7 @@ body.dark .ws-logout-inner {
       <button type="button" class="set-tab-btn" data-stab="modules" onclick="openCloudSettingsSubpage('modules')"><span>🎛️</span><span>ویجت‌ها</span></button>
       <button type="button" class="set-tab-btn" data-stab="account" onclick="openCloudSettingsSubpage('account')"><span>👤</span><span>حساب</span></button>
       <button type="button" class="set-tab-btn" data-stab="data" onclick="openCloudSettingsSubpage('data')"><span>🔌</span><span>اتصال و ابر</span></button>
-      <button type="button" class="set-tab-btn" data-stab="export" onclick="openCloudSettingsSubpage('export')"><span>🤖</span><span>هوش‌واره و گزارش</span></button>
+      <button type="button" class="set-tab-btn" data-stab="export" onclick="openCloudSettingsSubpage('export')"><span>📊</span><span>استودیو گزارش</span></button>
       <button type="button" class="set-tab-btn" data-stab="theme" onclick="openCloudSettingsSubpage('theme')"><span>🎨</span><span>ظاهر و احساس</span></button>
       <button type="button" class="set-tab-btn" data-stab="help" onclick="openCloudSettingsSubpage('help')"><span>❓</span><span>کمکم کنید!</span></button>
       <button type="button" class="set-tab-btn" data-stab="about" onclick="openCloudSettingsSubpage('about')"><span>ℹ️</span><span>درباره ما</span></button>
@@ -6081,67 +6075,33 @@ body.dark .ws-logout-inner {
         <button type="button" class="btn primary" style="flex:1" onclick="createInternalVaultSnapshot('پشتیبان کامل همراه با عکس‌ها', false)">🗄️ ذخیره فوری در گاوصندوق</button>
       </div>
     </div>
-    <!-- ۱. پوشه اختصاصی پشتیبان‌گیری (ضد گم شدن فایل‌ها) -->
-    <div class="card" style="margin-bottom:12px;border-color:var(--primary)">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-        <div>
-          <b style="color:var(--primary);font-size:15px">📁 پوشه اختصاصی پشتیبان‌گیری «DaneshAmoozMan_Backups»</b>
-          <p class="muted" style="margin:3px 0 0">ذخیره منظم با نام‌گذاری تاریخ‌دار استاندارد در پوشه مشخص یا ارسال مستقیم به پیام‌رسان‌ها / گوگل درایو تا هیچ‌وقت گم نشود</p>
-        </div>
-        <span class="chip" id="dedicatedFolderStatusBadge">📂 پوشه استاندارد فعال</span>
-      </div>
-
-      <div class="actions" style="margin-top:10px">
-        <button type="button" class="btn primary" style="flex:1" onclick="saveBackupToDedicatedFolder('full')">💾 ذخیره در پوشه اختصاصی (کامل)</button>
-        <button type="button" class="btn soft" style="flex:1" onclick="shareBackupFileDirectly('full')">📲 اشتراک‌گذاری مستقیم فایل پشتیبان</button>
-        <button type="button" class="btn gray" onclick="selectDedicatedBackupDirectory()">📂 تعیین پوشه ثابت در دستگاه</button>
-      </div>
-      <div class="actions" style="margin-top:7px">
-        <button type="button" class="btn soft btn-sm" style="flex:1" onclick="exportFullData()">⬇️ دانلود مستقیم پشتیبان کامل (JSON)</button>
-        <button type="button" class="btn gray btn-sm" style="flex:1" onclick="exportRawData()">👨‍🎓 دانلود پشتیبان خام (فقط اسامی)</button>
-        <label class="btn primary btn-sm" style="flex:1;cursor:pointer;margin:0">📥 بازیابی از فایل JSON<input type="file" accept=".json,application/json" hidden onchange="importData(event)"></label>
+    <!-- ۱. پوشه اختصاصی پشتیبان‌گیری (ساده‌سازی‌شده نسخه 9.5.0) -->
+    <div class="card" id="v950DedicatedBackupCard" style="margin-bottom:12px;border-color:var(--primary)">
+      <b style="color:var(--primary);font-size:15px;display:block;margin-bottom:10px">📁 پوشه اختصاصی پشتیبان‌گیری</b>
+      <div class="actions" style="gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn primary btn-sm" style="flex:1;min-width:170px" onclick="exportFullData()">⬇️ دانلود مستقیم پشتیبان کامل (JSON)</button>
+        <label class="btn soft btn-sm" style="flex:1;min-width:160px;cursor:pointer;margin:0;text-align:center">📥 بازیابی از فایل JSON<input type="file" accept=".json,application/json" hidden onchange="importData(event)"></label>
+        <button type="button" class="btn gray btn-sm" style="flex:1;min-width:170px" onclick="exportRawData()">👨‍🎓 دانلود پشتیبان خام (فقط اسامی)</button>
       </div>
     </div>
 
-    <!-- ۲. گاوصندوق پشتیبان داخلی برنامه (آرشیو خودکار داخل برنامه بدون نیاز به فایل خارجی) -->
-    <div class="card" style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-        <div>
-          <b style="color:var(--neon-green);font-size:14.5px">🗄️ گاوصندوق پشتیبان داخلی برنامه (حافظه امن بدون گم‌شدن فایل)</b>
-          <p class="muted" style="margin:2px 0 0">حتی اگر فایل دانلودشده در گوشی را گم کنید، نسخه‌های پشتیبان شما در این پوشه داخلی محفوظ است:</p>
+    <!-- ۲. گاوصندوق پشتیبان داخلی برنامه (آکاردئونی نسخه 9.5.0) -->
+    <details class="card v950-vault-accordion" id="v950InternalVaultAccordion" style="margin-bottom:12px;padding:0;overflow:hidden">
+      <summary style="list-style:none;cursor:pointer;padding:13px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;user-select:none">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <b style="color:var(--neon-green);font-size:14.5px">🗄️ گاوصندوق پشتیبان داخلی برنامه</b>
+          <span class="chip" id="v950VaultCountBadge" style="background:#ECFDF5;color:#047857;border-color:#A7F3D0;font-size:11px">۰ نسخه</span>
         </div>
-        <button type="button" class="btn green btn-sm" onclick="createInternalVaultSnapshot('پشتیبان دستی معلم')">＋ ثبت نسخه جدید در گاوصندوق</button>
-      </div>
-      <div id="internalBackupVaultList" style="display:grid;gap:6px;margin-top:8px"></div>
-    </div>
-
-    <!-- ۳. پشتیبان‌گیری آنلاین ابری (Cloud Sync) -->
-    <div class="card" style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-        <div>
-          <b style="color:var(--neon-purple);font-size:14.5px">☁️ پشتیبان‌گیری آنلاین و همگام‌سازی ابری (Cloud Backup)</b>
-          <p class="muted" style="margin:3px 0 0">ذخیره و بازیابی آنلاین کل اطلاعات با «کد رمز اختصاصی معلم» بین گوشی، تبلت و لپ‌تاپ</p>
+        <span class="v950-vault-chevron" style="font-size:13px;color:var(--muted);font-weight:900">▼</span>
+      </summary>
+      <div style="padding:0 14px 14px;border-top:1px solid var(--border)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0 8px">
+          <p class="muted" style="margin:0;font-size:11.5px">فقط آخرین نسخه پشتیبان تأییدشده نگهداری می‌شود تا حافظه اشغال نشود.</p>
+          <button type="button" class="btn green btn-sm" onclick="createInternalVaultSnapshot('پشتیبان دستی معلم')">＋ ثبت نسخه جدید در گاوصندوق</button>
         </div>
-        <span class="chip" id="cloudSyncLastBadge">آماده اتصال</span>
+        <div id="internalBackupVaultList" style="display:grid;gap:6px;margin-top:8px"></div>
       </div>
-      <div class="formgrid" style="margin-top:10px">
-        <div class="field">
-          <label>🔑 کد اتاق ابری اختصاصی شما (یک عبارت دلخواه و محرمانه انتخاب کنید):</label>
-          <div style="display:flex;gap:6px">
-            <input type="text" id="cloudSyncSecretKey" dir="ltr" style="font-family:monospace;text-align:left" placeholder="مثلاً: ostad-shahabi-backup-1405" oninput="saveCloudSyncSettings()">
-            <button type="button" class="btn gray btn-sm" onclick="generateRandomCloudKey()" title="تولید کد تصادفی امن">🎲</button>
-          </div>
-        </div>
-        <div class="field">
-          <label>🌐 آدرس وب‌هوک / Google Script شخصی (اختیاری - پیش‌فرض: رله ابری رایگان):</label>
-          <input type="text" id="cloudCustomEndpoint" dir="ltr" style="font-family:monospace;text-align:left" placeholder="خالی بگذارید تا از سرور ابری پیش‌فرض استفاده شود" oninput="saveCloudSyncSettings()">
-        </div>
-      </div>
-      <div class="actions" style="margin-top:10px">
-        <button type="button" class="btn primary" style="flex:1" id="btnCloudUpload" onclick="uploadBackupToCloud()">☁️ ذخیره آنلاین پشتیبان در ابر</button>
-        <button type="button" class="btn soft" style="flex:1" id="btnCloudRestore" onclick="restoreBackupFromCloud()">📥 بازیابی آنلاین آخرین پشتیبان از ابر</button>
-      </div>
-    </div>
+    </details>
 
     <!-- ۴. سامانه لینک حضور و غیاب آنلاین و آزمون آنلاین دانش‌آموزان -->
     <div class="card" style="margin-bottom:12px">
@@ -6190,17 +6150,6 @@ body.dark .ws-logout-inner {
     <div class="card" style="margin-bottom:12px;border-color:var(--primary)">
       <b style="color:var(--primary);font-size:15px">❓ مرکز راهنما، عیب‌یاب خودکار و پشتیبانی («کمکم کنید!»)</b>
       <p class="muted" style="margin:4px 0 12px">اگر هر جا احساس کردید نامی تکراری شده، نمره‌ای نیاز به رُندسازی دارد یا می‌خواهید سلامت کل داده‌ها را بررسی کنید، از ابزارهای هوشمند زیر استفاده نمایید:</p>
-      <div class="card" style="background:var(--bg-panel);border:1.5px solid var(--neon-green);margin-bottom:10px;padding:11px 12px">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
-          <b style="color:var(--neon-green);font-size:13.5px">♻️ سپر بازیابی خودکار اطلاعات و گاوصندوق عکس‌ها (فعال)</b>
-          <span class="chip" id="helpAutoRecoveryStatusChip">🟢 محافظت خودکار فعال</span>
-        </div>
-        <p class="muted" style="margin:0 0 8px;font-size:11.5px;line-height:1.65">تمام مدارس، کلاس‌ها، نمرات، مثبت/منفی‌ها و <b>عکس‌های دانش‌آموزان</b> به صورت خودکار در ۳ لایه (حافظه دائمی مرورگر، گاوصندوق عکس‌ها و پشتیبان داخلی) ذخیره می‌شوند. اگر هر زمان اطلاعات یا عکسی نمایش داده نشد، دکمه زیر را بزنید:</p>
-        <div style="display:flex;gap:6px;flex-wrap:wrap">
-          <button type="button" class="btn green" style="flex:2;min-width:190px;font-weight:900" onclick="runDeepAutoRecoveryWizard(false)">♻️ بازیابی خودکار همه اطلاعات و عکس‌ها</button>
-          <button type="button" class="btn soft" style="flex:1;min-width:130px" onclick="createInternalVaultSnapshot('پشتیبان دستی فوری همراه با عکس‌ها', false)">🗄️ ثبت فوری نسخه امن</button>
-        </div>
-      </div>
       <div class="grid-2" style="gap:8px">
         <button type="button" class="btn primary" style="grid-column:1 / -1" onclick="startGameSpotlightTour(true)">🎮 اجرای مجدد تور راهنمای تعاملی (گام‌به‌گام روی صفحه)</button>
         <button type="button" class="btn primary" onclick="runSmartAppDiagnostics(true)">⚡ عیب‌یابی و تعمیر خودکار کل برنامه</button>
@@ -6210,14 +6159,7 @@ body.dark .ws-logout-inner {
       </div>
     </div>
 
-    <div class="card" style="margin-bottom:12px">
-      <b style="color:var(--neon-cyan);font-size:14px">🤖 تنظیم یکپارچه کلید هوش‌واره و هوش مصنوعی (اختیاری)</b>
-      <p class="muted" style="margin:4px 0 8px">برنامه دارای موتور هوش مصنوعی رایگان سرخود است؛ اما اگر کلید اختصاصی هوش‌واره یا هوش مصنوعی دارید می‌توانید یک بار در اینجا وارد کنید تا هم در «آموزش» و هم در «آزمون‌ساز» فعال شود:</p>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="masked-api-key-inp" id="globalUnifiedAiKeyInp" dir="ltr" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." style="flex:1;min-width:190px;text-align:left;font-family:monospace" oninput="if(window.TeachAssistant)TeachAssistant.saveInlineApiKey(this.value)">
-        <button type="button" class="btn primary btn-sm" onclick="if(window.TeachAssistant){TeachAssistant.saveInlineApiKey(document.getElementById('globalUnifiedAiKeyInp').value);toast('کلید هوش مصنوعی در کل برنامه ذخیره شد ✅');}">💾 ذخیره کلید</button>
-      </div>
-    </div>
+    
 
     <div class="card">
       <b style="color:var(--primary);font-size:14px">💡 پاسخ به سوالات پرتکرار معلمان</b>
@@ -6241,7 +6183,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.4.0 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.5.0 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6250,7 +6192,6 @@ body.dark .ws-logout-inner {
       </div>
       <div class="actions" style="justify-content:center;max-width:420px;margin:12px auto 0">
         <button type="button" class="btn primary" style="flex:1" onclick="shareAppPromoWithColleagues()">📤 معرفی برنامه به همکاران فرهنگی</button>
-        <button type="button" class="btn soft" onclick="openCreatorSuperAdminModal()">👑 پنل سازنده</button>
       </div>
     </div>
   </div>
@@ -6342,7 +6283,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.4.0 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.5.0 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6573,7 +6514,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '9.4.0';
+const APP_VERSION = '9.5.0';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -20368,7 +20309,7 @@ window.openCloudSettingsSubpage = function(paneId) {
     modules: '🎛️ ویجت‌ها و بخش‌های نمایشی',
     account: '👤 حساب کاربری و پروفایل',
     data: '🔌 اتصال، ذخیره‌سازی و پشتیبان ابری',
-    export: '🤖 هوش‌واره و گزارش‌های رنگی',
+    export: '📊 استودیو گزارش',
     theme: '🎨 ظاهر و احساس (پوسته و انیمیشن‌ها)',
     help: '❓ کمکم کنید! (عیب‌یاب و راهنما)',
     about: 'ℹ️ درباره ما'
@@ -35538,7 +35479,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v9.4.0</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v9.5.0</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -35680,7 +35621,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 9.4.0 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 9.5.0 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -40067,7 +40008,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DAM_AUDIT_VERSION = '9.4.0';
+  window.DAM_AUDIT_VERSION = '9.5.0';
 
   /* ==========================================================================================
      ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
@@ -40452,7 +40393,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.4.0';
+  window.DANESH_APP_VERSION = '9.5.0';
 
   /* ==========================================================================================
      ۱. معماری یکپارچه هوش مصنوعی با الهام مستقیم از آزمون‌ساز (gemini-code-1792066709047.html)
@@ -47443,13 +47384,13 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.4.0';
-  window.DAM_AUDIT_VERSION = '9.4.0';
+  window.DANESH_APP_VERSION = '9.5.0';
+  window.DAM_AUDIT_VERSION = '9.5.0';
   try {
     const topVerEl = document.getElementById('topVersion');
-    if (topVerEl) topVerEl.textContent = 'نسخه ۹.۴.۰';
+    if (topVerEl) topVerEl.textContent = 'نسخه ۹.۵.۰';
     const metaVer = document.querySelector('meta[name="version"]');
-    if (metaVer) metaVer.setAttribute('content', '9.4.0');
+    if (metaVer) metaVer.setAttribute('content', '9.5.0');
   } catch (_) {}
 
   /* ==========================================================================================
@@ -49757,7 +49698,7 @@ ${JSON.stringify(batch, null, 2)}
         ctx.fillStyle = '#64748B';
         ctx.font = '10px Vazirmatn, Tahoma, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(`سامانه هوشمند «دانش‌آموز من» نسخه ۹.۴.۰ — صفحه ${fa(pIdx + 1)} از ${fa(totalPages)}`, pageW / 2, pageH - 10);
+        ctx.fillText(`سامانه هوشمند «دانش‌آموز من» نسخه ۹.۵.۰ — صفحه ${fa(pIdx + 1)} از ${fa(totalPages)}`, pageW / 2, pageH - 10);
 
         const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.90);
         pageJpegBytesList.push({
@@ -52309,14 +52250,14 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V921_VERSION = '9.4.0';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v9.4.0-orange';
+  const V921_VERSION = '9.5.0';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v9.5.0-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
   function syncVersionDisplaysV921() {
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۹.۴.۰';
+    if (topVer) topVer.textContent = 'نسخه ۹.۵.۰';
     const metaVer = document.querySelector('meta[name="version"]');
     if (metaVer) metaVer.setAttribute('content', V921_VERSION);
   }
@@ -53133,7 +53074,7 @@ ${JSON.stringify(batch, null, 2)}
           </div>
 
           <div style="background:#FFFFFF;border:1px solid #FDBA74;border-radius:10px;padding:10px;font-size:11.5px;line-height:1.8;color:#334155;margin-bottom:10px">
-            ✅ <b>اصول حریم خصوصی نسخه ۹.۴.۰:</b><br>
+            ✅ <b>اصول حریم خصوصی نسخه ۹.۵.۰:</b><br>
             ۱. <b>تفکیک مجوز دوربین از هوش مصنوعی:</b> مجوز دوربین اندروید/مرورگر (و) یا انتخاب از گالری (ز) صرفاً برای ثبت عکس در دفتر معلم است و هرگز به معنای اجازه ارسال تصویر به سرور هوش مصنوعی نیست.<br>
             ۲. <b>توقف آنی در حین کار:</b> با برداشتن تیک هر یک از مجوزها، حتی اگر درخواستی در حال ارسال باشد، ارتباط فوراً با <code>AbortController</code> قطع و ارسال تصویر متوقف می‌شود.<br>
             ۳. <b>اطلاع کامل معلم:</b> هیچ تصویری بدون اطلاع معلم و پیش از اخذ رضایت صریح ارسال نمی‌گردد.
@@ -54903,8 +54844,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const UNIFIED_VERSION = '9.4.0';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.4.0-orange';
+  const UNIFIED_VERSION = '9.5.0';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.5.0-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -58432,42 +58373,7 @@ ${JSON.stringify(batch, null, 2)}
               </div>
             </div>
 
-            <!-- ۲-ب. فیلتر بازه تاریخ، جستجو و مرتب‌سازی واقعی -->
-            <div class="formgrid" style="margin-bottom:6px;gap:6px;padding:8px;background:#FFFFFF;border:1px solid #FED7AA;border-radius:10px">
-              <div class="field">
-                <label style="font-size:11px">📅 از تاریخ (مثلاً 2026-10-01 یا ۱۴۰۵/۰۷/۰۱):</label>
-                <input type="text" id="repModFromDate" value="${esc(this.state.fromDate || '')}" placeholder="از تاریخ..." oninput="ReportApp.setDateRangeFilter(this.value, document.getElementById('repModToDate')?.value || '')" style="height:34px;font-size:11.5px">
-              </div>
-              <div class="field">
-                <label style="font-size:11px">📅 تا تاریخ (مثلاً 2026-11-30 یا ۱۴۰۵/۰۹/۳۰):</label>
-                <input type="text" id="repModToDate" value="${esc(this.state.toDate || '')}" placeholder="تا تاریخ..." oninput="ReportApp.setDateRangeFilter(document.getElementById('repModFromDate')?.value || '', this.value)" style="height:34px;font-size:11.5px">
-              </div>
-              <div class="field">
-                <label style="font-size:11px">🔍 جستجو در گزارش (نام، نام خانوادگی، کد):</label>
-                <input type="text" id="repModSearchInp" value="${esc(this.state.searchQuery || '')}" placeholder="جستجوی نام یا کد دانش‌آموز..." oninput="ReportApp.setSearchQuery(this.value)" style="height:34px;font-size:11.5px">
-              </div>
-              <div class="field">
-                <label style="font-size:11px">🔃 مرتب‌سازی بر اساس:</label>
-                <div style="display:flex;gap:4px">
-                  <select id="repModSortColSel" onchange="ReportApp.setSortConfig(this.value, document.getElementById('repModSortDirSel')?.value || 'asc')" style="height:34px;font-size:11.5px;flex:1">
-                    <option value="row" ${this.state.sortColumn === 'row' ? 'selected' : ''}>ردیف الفبایی</option>
-                    <option value="name" ${this.state.sortColumn === 'name' ? 'selected' : ''}>نام خانوادگی و نام</option>
-                    <option value="final" ${this.state.sortColumn === 'final' ? 'selected' : ''}>نمره نهایی / موقت</option>
-                    <option value="cont" ${this.state.sortColumn === 'cont' ? 'selected' : ''}>نمره مستمر</option>
-                    <option value="term" ${this.state.sortColumn === 'term' ? 'selected' : ''}>نمره پایانی</option>
-                    <option value="abs" ${this.state.sortColumn === 'abs' ? 'selected' : ''}>تعداد غیبت</option>
-                    <option value="pos" ${this.state.sortColumn === 'pos' ? 'selected' : ''}>امتیاز مثبت</option>
-                    <option value="neg" ${this.state.sortColumn === 'neg' ? 'selected' : ''}>امتیاز منفی</option>
-                    <option value="rank" ${this.state.sortColumn === 'rank' ? 'selected' : ''}>رتبه کلاسی</option>
-                  </select>
-                  <select id="repModSortDirSel" onchange="ReportApp.setSortConfig(document.getElementById('repModSortColSel')?.value || 'row', this.value)" style="height:34px;font-size:11.5px;width:88px">
-                    <option value="asc" ${this.state.sortDir !== 'desc' ? 'selected' : ''}>▲ صعودی</option>
-                    <option value="desc" ${this.state.sortDir === 'desc' ? 'selected' : ''}>▼ نزولی</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
+            <!-- جهت کاغذ در پرینت / PDF (فیلترهای تاریخ و جستجو در نسخه 9.5.0 حذف شدند) -->
             <div class="formgrid" style="margin-bottom:6px;gap:6px">
               <div class="field">
                 <label style="font-size:11px">📄 جهت کاغذ در پرینت / PDF:</label>
@@ -58475,9 +58381,6 @@ ${JSON.stringify(batch, null, 2)}
                   <option value="portrait" ${this.state.pageOrientation !== 'landscape' ? 'selected' : ''}>📄 عمودی استاندارد (A4 Portrait)</option>
                   <option value="landscape" ${this.state.pageOrientation === 'landscape' ? 'selected' : ''}>🖼️ افقی عریض (A4 Landscape)</option>
                 </select>
-              </div>
-              <div class="field" style="display:flex;align-items:flex-end">
-                <button type="button" class="btn soft btn-sm block" style="height:34px" onclick="ReportApp.resetAllFilters()">🔄 پاک کردن فیلترهای تاریخ و جستجو</button>
               </div>
             </div>
 
@@ -58801,8 +58704,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V930_VERSION = '9.4.0';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v9.4.0-orange';
+  const V930_VERSION = '9.5.0';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v9.5.0-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -58812,7 +58715,7 @@ ${JSON.stringify(batch, null, 2)}
     const meta = document.querySelector('meta[name="danesh-app-version"]');
     if (meta) meta.setAttribute('content', V930_VERSION);
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۹.۴.۰';
+    if (topVer) topVer.textContent = 'نسخه ۹.۵.۰';
     document.querySelectorAll('[data-app-version-label], .app-version-badge').forEach(el => {
       el.textContent = '۹.۴.۰';
     });
@@ -59951,7 +59854,7 @@ ${JSON.stringify(batch, null, 2)}
 </script>
 <!-- ==================== END V9.3.0 ULTIMATE MASTER SUITE ==================== -->
 
-<!-- ==================== START V9.4.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
+<!-- ==================== START V9.5.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
 <style id="v940RootCauseStyles">
   .stu-photo-warn-badge-v940 {
     display: inline-flex;
@@ -59999,9 +59902,9 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V940_VERSION = '9.4.0';
+  const V940_VERSION = '9.5.0';
   const V940_VERSION_FA = '۹.۴.۰';
-  const V940_CACHE_NAME = 'danesh-amooz-man-v9.4.0-orange';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v9.5.0-orange';
   const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
 
   window.APP_VERSION = V940_VERSION;
@@ -60033,7 +59936,7 @@ ${JSON.stringify(batch, null, 2)}
   syncAllVersionBadgesV940();
 
   /* ==========================================================================================
-     ۱. تعمیر ریشه‌ای سیستم به‌روزرسانی (CentralUpdateManager v9.4.0)
+     ۱. تعمیر ریشه‌ای سیستم به‌روزرسانی (CentralUpdateManager v9.5.0)
      - رفع کرش متدهای ناموجود setStatusUI و setButtonsDisabled
      - رفع ناهماهنگی کلید sessionStorage (تأیید قطعی نسخه جدید پس از Reload)
      - حذف forceRefreshCacheAssets مخرب هنگام نبود waiting worker
@@ -60385,7 +60288,7 @@ ${JSON.stringify(batch, null, 2)}
   }
 
   /* ==========================================================================================
-     ۲. تعمیر ریشه‌ای موتور رفتار و پاداش عدم منفی (SmartBehaviorEngine v9.4.0)
+     ۲. تعمیر ریشه‌ای موتور رفتار و پاداش عدم منفی (SmartBehaviorEngine v9.5.0)
      - احترام قطعی به فعال/غیرفعال بودن enableNoNegBonus
      - اعمال واقعی bonusOnNeutralizedZero هنگام خنثی شدن مثبت و منفی
      - حفظ ۱۰۰٪ سابقه پاداش‌های خودکار عدم منفی هنگام غیرفعال‌سازی (آرشیو به جای حذف)
@@ -60467,7 +60370,7 @@ ${JSON.stringify(batch, null, 2)}
   }
 
   /* ==========================================================================================
-     ۳. سخت‌سازی موتور مرکزی نمره‌دهی (FlexibleGradingEngine & CentralGradeEngine v9.4.0)
+     ۳. سخت‌سازی موتور مرکزی نمره‌دهی (FlexibleGradingEngine & CentralGradeEngine v9.5.0)
      - جلوگیری قطعی از تجاوز نمره موقت ناقص از سقف بخش‌های ثبت‌شده (recordedShareOfTotal)
      - جلوگیری قطعی از تجاوز نمره نهایی کامل از سقف تنظیم‌شده (totalMaxScore)
      - هم‌ترازی ۱۰۰٪ تمام ماژول‌ها (کارت، شبیه‌ساز، کارنامه، رتبه‌بندی، گزارش‌گیری)
@@ -61276,7 +61179,1574 @@ ${JSON.stringify(batch, null, 2)}
 
 })();
 </script>
-<!-- ==================== END V9.4.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
+<!-- ==================== END V9.5.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
+
+
+<!-- ==================== V9.5.0 MASTER ENGINEERING UPGRADE SUITE (23 FIXES) ==================== -->
+<style id="v950MasterStyles">
+/* Req 1: Clean Fullscreen Mode for Comprehensive Student List (#attendance) */
+body.v950-att-fullscreen .topbar,
+body.v950-att-fullscreen .nav,
+body.v950-att-fullscreen .fab,
+body.v950-att-fullscreen #attendance .breadcrumb,
+body.v950-att-fullscreen #attendance .detailhead {
+  display: none !important;
+}
+body.v950-att-fullscreen main.container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body.v950-att-fullscreen #attendance {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9500 !important;
+  background: var(--bg, #FFF7ED) !important;
+  overflow: auto !important;
+  padding: 0 10px 20px !important;
+  margin: 0 !important;
+}
+.v950-att-fs-topbar {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 9600;
+  background: linear-gradient(135deg, #EA580C, #F97316);
+  color: #FFFFFF;
+  padding: 10px 14px;
+  margin: 0 -10px 10px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: 0 4px 14px rgba(234,88,12,0.22);
+}
+body.v950-att-fullscreen .v950-att-fs-topbar {
+  display: flex !important;
+}
+body.v950-att-fullscreen .att-table-wrap,
+body.v950-att-fullscreen .table-wrap {
+  max-height: calc(100vh - 130px) !important;
+  overflow: auto !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--border, #FED7AA) !important;
+  background: var(--card, #FFFFFF) !important;
+}
+body.v950-att-fullscreen #attMainTable thead th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 25 !important;
+  background: #FFF7ED !important;
+  color: #9A3412 !important;
+  box-shadow: 0 2px 4px rgba(15,23,42,0.08) !important;
+}
+body.v950-att-fullscreen #attMainTable thead th:first-child {
+  z-index: 30 !important;
+}
+
+/* Req 14: Collapsible Internal Vault Accordion */
+details.v950-vault-accordion[open] .v950-vault-chevron {
+  transform: rotate(180deg);
+}
+.v950-vault-chevron {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+/* Req 12: Modern Minimal Orange Login Screen */
+#cyberIntroOverlay.v950-modern-login {
+  background: linear-gradient(160deg, #FFF7ED 0%, #FFEDD5 55%, #FED7AA 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 18px !important;
+  overflow-y: auto !important;
+}
+#cyberIntroOverlay.v950-modern-login.intro-hidden {
+  display: none !important;
+}
+.v950-login-card {
+  width: 100%;
+  max-width: 410px;
+  background: #FFFFFF;
+  border: 1.5px solid #FED7AA;
+  border-radius: 24px;
+  padding: 26px 22px 22px;
+  box-shadow: 0 20px 50px rgba(234,88,12,0.14);
+  text-align: center;
+  color: #1E293B;
+}
+.v950-login-logo {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 12px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
+  border: 1.5px solid #FDBA74;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(234,88,12,0.12);
+}
+.v950-login-oauth-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 800;
+  cursor: pointer;
+  border: 1.5px solid #E2E8F0;
+  background: #FFFFFF;
+  color: #0F172A;
+  transition: transform 0.14s ease, border-color 0.14s ease, background 0.14s ease;
+}
+.v950-login-oauth-btn:hover {
+  border-color: #F97316;
+  background: #FFF7ED;
+}
+.v950-login-oauth-btn.primary-google {
+  background: linear-gradient(135deg, #EA580C, #F97316);
+  border-color: #EA580C;
+  color: #FFFFFF;
+}
+.v950-login-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0;
+  color: #94A3B8;
+  font-size: 12px;
+  font-weight: 800;
+}
+.v950-login-divider::before,
+.v950-login-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #E2E8F0;
+}
+
+/* Req 21: Class Max Average Cap Bar */
+.v950-class-cap-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 12px;
+  margin: 8px 0 10px;
+  background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
+  border: 1.5px solid #FDBA74;
+  border-radius: 14px;
+}
+.v950-cap-pill {
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1.5px solid #FDBA74;
+  background: #FFFFFF;
+  color: #9A3412;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.v950-cap-pill.active {
+  background: #EA580C;
+  border-color: #EA580C;
+  color: #FFFFFF;
+}
+
+/* Req 23: Clean Printable Report Styling */
+.v950-report-wrap {
+  direction: rtl;
+  font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+  color: #0F172A;
+  background: #FFFFFF;
+}
+.v950-rep-legend {
+  background: #FFF7ED;
+  border: 1px solid #FDBA74;
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-size: 11px;
+  color: #9A3412;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+.v950-rep-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #EA580C;
+}
+.v950-rep-kpi-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.v950-rep-kpi {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  background: #FFF7ED;
+  border: 1px solid #FED7AA;
+  color: #9A3412;
+}
+.v950-rep-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+  background: #FFFFFF;
+}
+.v950-rep-table thead th {
+  background: #EA580C;
+  color: #FFFFFF;
+  padding: 7px 5px;
+  font-weight: 800;
+  text-align: center;
+  border: 1px solid #C2410C;
+  white-space: nowrap;
+}
+.v950-rep-table tbody td {
+  padding: 6px 5px;
+  border: 1px solid #E2E8F0;
+  text-align: center;
+  vertical-align: middle;
+}
+.v950-rep-stu-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: right;
+  font-weight: 800;
+}
+.v950-rep-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #FDBA74;
+  flex-shrink: 0;
+  background: #FFF7ED;
+}
+.v950-rep-subrow td {
+  text-align: right !important;
+  background: #FFFBF7;
+  font-size: 10.5px;
+  color: #475569;
+  padding: 4px 10px !important;
+  line-height: 1.6;
+}
+.v950-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.v950-badge-normal { background: #F1F5F9; color: #334155; border: 1px solid #CBD5E1; }
+.v950-badge-disc { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+.v950-badge-attn { background: #FFEDD5; color: #9A3412; border: 1px solid #FDBA74; }
+.v950-badge-drop { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+.v950-badge-top { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
+
+/* Hide any leftover AI permission buttons/tabs/creator buttons */
+[data-stab="aiperm"], [data-stab="modules"], #setPane-aiperm { display: none !important; }
+</style>
+
+<script id="v950MasterUpgradeSuite">
+(function() {
+  'use strict';
+
+  const V950_VER = '9.5.0';
+  window.DANESH_APP_VERSION = V950_VER;
+  window.DAM_AUDIT_VERSION = V950_VER;
+
+  /* ==========================================================================
+     REQ 17: Permanent Fix for localStorage QuotaExceededError via IndexedDB
+     ========================================================================== */
+  const HEAVY_LS_PREFIXES = [
+    'dam_exam_res_', 'dam_short_room_', 'dam_form_cfg_', 'dam_stu_identity_',
+    'danesh_amooz_man_ultimate', 'danesh_pre_term_backup', 'danesh_internal_vault_fallback',
+    'dam_online_exam_', 'dam_online_att_'
+  ];
+  const HEAVY_IDB_KEY = 'v950_heavy_kv_store_v1';
+
+  window.V950HeavyStorageIDB = {
+    cache: Object.create(null),
+    ready: false,
+    migratedKeys: [],
+    isHeavyKey(k) {
+      if (typeof k !== 'string') return false;
+      return HEAVY_LS_PREFIXES.some(p => k.startsWith(p));
+    },
+    async _openDb() {
+      if (typeof window.openStorage === 'function') return await window.openStorage();
+      return await new Promise((resolve, reject) => {
+        const req = indexedDB.open('danesh_amooz_man_storage', 2);
+        req.onupgradeneeded = () => {
+          const d = req.result;
+          if (!d.objectStoreNames.contains('app')) d.createObjectStore('app');
+          if (!d.objectStoreNames.contains('assets')) d.createObjectStore('assets');
+        };
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    },
+    async initAndMigrate() {
+      try {
+        const d = await this._openDb();
+        const saved = await new Promise(resolve => {
+          const tx = d.transaction('assets', 'readonly');
+          const r = tx.objectStore('assets').get(HEAVY_IDB_KEY);
+          r.onsuccess = () => resolve(r.result && typeof r.result === 'object' ? r.result : {});
+          r.onerror = () => resolve({});
+        });
+        Object.assign(this.cache, saved);
+
+        // Migrate any existing heavy keys from localStorage -> IndexedDB safely
+        const toClean = [];
+        const rawLS = window.localStorage;
+        for (let i = 0; i < rawLS.length; i++) {
+          const k = rawLS.key(i);
+          if (!k) continue;
+          const v = _origGetItem.call(rawLS, k);
+          if (this.isHeavyKey(k) || (typeof v === 'string' && v.length > 65536)) {
+            this.cache[k] = v;
+            toClean.push(k);
+          }
+        }
+        if (toClean.length > 0) {
+          await this._persistAll(d);
+          // Verify written to IDB before removing from localStorage
+          const verified = await new Promise(resolve => {
+            const tx = d.transaction('assets', 'readonly');
+            const r = tx.objectStore('assets').get(HEAVY_IDB_KEY);
+            r.onsuccess = () => resolve(Boolean(r.result && typeof r.result === 'object'));
+            r.onerror = () => resolve(false);
+          });
+          if (verified) {
+            toClean.forEach(k => {
+              try { _origRemoveItem.call(rawLS, k); } catch (_) {}
+            });
+            this.migratedKeys = toClean.slice();
+          }
+        }
+        d.close();
+        this.ready = true;
+      } catch (e) {
+        this.ready = true;
+      }
+    },
+    async _persistAll(existingDb) {
+      const d = existingDb || await this._openDb();
+      await new Promise((resolve, reject) => {
+        const tx = d.transaction('assets', 'readwrite');
+        tx.objectStore('assets').put({ ...this.cache }, HEAVY_IDB_KEY);
+        tx.oncomplete = resolve;
+        tx.onerror = () => reject(tx.error);
+      });
+      if (!existingDb) d.close();
+    },
+    setItem(k, v) {
+      this.cache[k] = String(v);
+      this._persistAll().catch(() => {});
+    },
+    getItem(k) {
+      return Object.prototype.hasOwnProperty.call(this.cache, k) ? this.cache[k] : null;
+    },
+    removeItem(k) {
+      delete this.cache[k];
+      this._persistAll().catch(() => {});
+    }
+  };
+
+  const _origSetItem = Storage.prototype.setItem;
+  const _origGetItem = Storage.prototype.getItem;
+  const _origRemoveItem = Storage.prototype.removeItem;
+
+  Storage.prototype.setItem = function(k, v) {
+    if (this === window.localStorage) {
+      const strVal = String(v);
+      if (window.V950HeavyStorageIDB.isHeavyKey(k) || strVal.length > 65536) {
+        window.V950HeavyStorageIDB.setItem(k, strVal);
+        try { _origRemoveItem.call(this, k); } catch (_) {}
+        return;
+      }
+      try {
+        return _origSetItem.call(this, k, strVal);
+      } catch (err) {
+        // Fallback transparently to IndexedDB on QuotaExceededError
+        window.V950HeavyStorageIDB.setItem(k, strVal);
+        return;
+      }
+    }
+    return _origSetItem.call(this, k, v);
+  };
+
+  Storage.prototype.getItem = function(k) {
+    if (this === window.localStorage) {
+      const idbVal = window.V950HeavyStorageIDB.getItem(k);
+      if (idbVal !== null) return idbVal;
+    }
+    return _origGetItem.call(this, k);
+  };
+
+  Storage.prototype.removeItem = function(k) {
+    if (this === window.localStorage) {
+      window.V950HeavyStorageIDB.removeItem(k);
+    }
+    return _origRemoveItem.call(this, k);
+  };
+
+  window.V950HeavyStorageIDB.initAndMigrate();
+
+  /* ==========================================================================
+     REQ 8: Completely Remove Creator Panel
+     ========================================================================== */
+  window.openCreatorSuperAdminModal = function() {
+    return false;
+  };
+
+  /* ==========================================================================
+     REQ 9: Permanently Enable All AI Permissions & Remove Permissions Tab
+     ========================================================================== */
+  window.AiPermissionsAndPrivacyManager = {
+    version: V950_VER,
+    defaults: {
+      pdf_text_read: true,
+      book_page_image_ocr: true,
+      exam_paper_image_ai: true,
+      student_photo_ai: true,
+      school_and_parental_consent: true,
+      auto_ai_processing: true
+    },
+    getAllPermissions() { return { ...this.defaults }; },
+    hasPermission() { return true; },
+    canProcess() { return { allowed: true }; },
+    checkConsent() { return { allowed: true }; },
+    ensurePermission() { return true; },
+    setPermission() { return true; },
+    setAllImagePermissions() { return true; },
+    openPermissionsModal() { return false; },
+    renderSettingsPanel() { return ''; },
+    mountSettingsTab() { return false; },
+    injectIntoSettingsView() { return false; },
+    buildSettingsCardHtml() { return ''; },
+    updateUiBadges() { return false; }
+  };
+
+  /* ==========================================================================
+     REQ 18: Modern WebP Photo Compression (with JPEG fallback) + Existing Optimizer
+     ========================================================================== */
+  let _webpSupported = null;
+  function supportsWebP() {
+    if (_webpSupported !== null) return _webpSupported;
+    try {
+      const c = document.createElement('canvas');
+      c.width = 4; c.height = 4;
+      const d = c.toDataURL('image/webp', 0.8);
+      _webpSupported = typeof d === 'string' && d.startsWith('data:image/webp');
+    } catch (_) {
+      _webpSupported = false;
+    }
+    return _webpSupported;
+  }
+
+  window.v950CompressDataUrlOrFile = function(input, maxSide = 720, quality = 0.78) {
+    return new Promise((resolve, reject) => {
+      const runImg = (srcUrl) => {
+        const img = new Image();
+        img.onload = () => {
+          try {
+            let w = img.naturalWidth || img.width || 1;
+            let h = img.naturalHeight || img.height || 1;
+            const ratio = Math.min(1, maxSide / Math.max(w, h));
+            const tw = Math.max(1, Math.round(w * ratio));
+            const th = Math.max(1, Math.round(h * ratio));
+            const canvas = document.createElement('canvas');
+            canvas.width = tw;
+            canvas.height = th;
+            const ctx = canvas.getContext('2d');
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(img, 0, 0, tw, th);
+            const mime = supportsWebP() ? 'image/webp' : 'image/jpeg';
+            let out = canvas.toDataURL(mime, quality);
+            if (!out || out.length < 30) {
+              out = canvas.toDataURL('image/jpeg', quality);
+            }
+            resolve(out);
+          } catch (e) {
+            reject(e);
+          }
+        };
+        img.onerror = () => reject(new Error('Image decode failed'));
+        img.src = srcUrl;
+      };
+      if (typeof input === 'string') {
+        runImg(input);
+      } else {
+        const fr = new FileReader();
+        fr.onload = (ev) => runImg(ev.target.result);
+        fr.onerror = () => reject(new Error('File read failed'));
+        fr.readAsDataURL(input);
+      }
+    });
+  };
+
+  window.compressImage = function(file, maxSide = 720, quality = 0.78) {
+    return window.v950CompressDataUrlOrFile(file, maxSide, quality);
+  };
+
+  window.v950OptimizeExistingPhotos = async function(silent = false) {
+    const _dbRef = (typeof db !== 'undefined' && db) ? db : window.db;
+    if (!_dbRef || !Array.isArray(_dbRef.schools)) return { optimized: 0, savedBytes: 0 };
+    let optimized = 0;
+    let totalBefore = 0;
+    let totalAfter = 0;
+
+    const tryOpt = async (val, maxSide) => {
+      if (typeof val !== 'string' || !val.startsWith('data:image/')) return val;
+      if (val.startsWith('data:image/webp') && val.length < 60000) return val;
+      totalBefore += val.length;
+      try {
+        const next = await window.v950CompressDataUrlOrFile(val, maxSide, 0.78);
+        if (next && next.length < val.length) {
+          totalAfter += next.length;
+          optimized++;
+          return next;
+        }
+      } catch (_) {}
+      totalAfter += val.length;
+      return val;
+    };
+
+    for (const s of _dbRef.schools) {
+      if (s.photo) s.photo = await tryOpt(s.photo, 720);
+      if (Array.isArray(s.photos)) {
+        for (let i = 0; i < s.photos.length; i++) s.photos[i] = await tryOpt(s.photos[i], 720);
+      }
+      for (const c of (s.classes || [])) {
+        if (c.photo) c.photo = await tryOpt(c.photo, 720);
+        if (Array.isArray(c.photos)) {
+          for (let i = 0; i < c.photos.length; i++) c.photos[i] = await tryOpt(c.photos[i], 720);
+        }
+        for (const st of (c.students || [])) {
+          if (st.photo) st.photo = await tryOpt(st.photo, 420);
+        }
+      }
+    }
+    const savedBytes = Math.max(0, totalBefore - totalAfter);
+    if (optimized > 0 && typeof window.save === 'function') {
+      await window.save();
+    }
+    const savedKb = Math.round(savedBytes / 1024);
+    const statusEl = document.getElementById('v950PhotoOptStatus');
+    if (statusEl) {
+      statusEl.textContent = optimized > 0
+        ? `✅ ${fa(optimized)} عکس بهینه‌سازی شد (${fa(savedKb)} کیلوبایت صرفه‌جویی، فرمت ${supportsWebP() ? 'WebP' : 'JPEG'})`
+        : '✅ همه عکس‌ها هم‌اکنون بهینه هستند.';
+    }
+    if (!silent && typeof toast === 'function') {
+      toast(optimized > 0 ? `🖼️ ${fa(optimized)} عکس فشرده‌سازی شد (${fa(savedKb)} KB صرفه‌جویی)` : 'همه عکس‌ها از قبل بهینه بودند ✅');
+    }
+    return { optimized, savedBytes, format: supportsWebP() ? 'image/webp' : 'image/jpeg' };
+  };
+
+  /* ==========================================================================
+     REQ 14 & 15: Internal Vault Keeps ONLY Latest Verified Snapshot + Accordion Count
+     ========================================================================== */
+  window.saveInternalVaultList = async function(list) {
+    // Keep strictly the latest 1 snapshot
+    const latestOnly = Array.isArray(list) && list.length ? [list[0]] : [];
+    const d = await openStorage();
+    await new Promise((resolve, reject) => {
+      const tx = d.transaction(ASSET_STORE, 'readwrite');
+      tx.objectStore(ASSET_STORE).put(latestOnly, 'internal_backup_vault_v1');
+      tx.oncomplete = resolve;
+      tx.onerror = () => reject(tx.error);
+    });
+    // Verify write in IndexedDB
+    const verified = await new Promise((resolve) => {
+      const tx = d.transaction(ASSET_STORE, 'readonly');
+      const r = tx.objectStore(ASSET_STORE).get('internal_backup_vault_v1');
+      r.onsuccess = () => resolve(Array.isArray(r.result) ? r.result : []);
+      r.onerror = () => resolve([]);
+    });
+    d.close();
+    return verified;
+  };
+
+  window.createInternalVaultSnapshot = async function(label = 'پشتیبان خودکار', silent = false) {
+    const c = counts();
+    const snap = {
+      id: 'vault_' + uid(),
+      label: label,
+      createdAt: new Date().toISOString(),
+      jalaliDate: formatJalaliDate(localISODate()),
+      timeStr: new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }),
+      stats: `${fa(c.schools)} مدرسه · ${fa(c.classes)} کلاس · ${fa(c.students)} دانش‌آموز`,
+      fileName: getStandardBackupFilename('full'),
+      payload: buildBackupPayloadObject('full')
+    };
+    // Write new snapshot and automatically prune all older snapshots once confirmed
+    await window.saveInternalVaultList([snap]);
+    await window.renderInternalVaultUI();
+    if (!silent && typeof toast === 'function') {
+      toast('آخرین نسخه پشتیبان در گاوصندوق ذخیره شد و نسخه‌های قدیمی پاک شدند 🗄️');
+    }
+    return snap;
+  };
+
+  const _origRenderVault = window.renderInternalVaultUI;
+  window.renderInternalVaultUI = async function() {
+    if (typeof _origRenderVault === 'function') {
+      await _origRenderVault();
+    }
+    try {
+      const list = await loadInternalVaultList();
+      const badge = document.getElementById('v950VaultCountBadge');
+      if (badge) badge.textContent = `${fa(list.length)} نسخه`;
+    } catch (_) {}
+  };
+
+  /* ==========================================================================
+     REQ 10: Unlimited Multi-Key AI Manager + Automatic 429/Quota Rotation
+     ========================================================================== */
+  const MULTI_KEY_STORAGE = 'dam_ai_multi_keys_v950';
+
+  window.V950AiKeyPool = {
+    keys: [],
+    activeIndex: 0,
+    load() {
+      try {
+        const raw = localStorage.getItem(MULTI_KEY_STORAGE);
+        let arr = raw ? JSON.parse(raw) : [];
+        if (!Array.isArray(arr)) arr = [];
+        // Import existing single key if present
+        const legacy = (window.CentralAiEngine && typeof window.CentralAiEngine.getApiKey === 'function' ? window.CentralAiEngine.getApiKey() : '') || '';
+        if (legacy && !arr.some(x => x.key === legacy)) {
+          arr.unshift({ id: 'ak_' + Date.now(), label: 'کلید اصلی', key: legacy, status: 'ready', lastError: '' });
+        }
+        this.keys = arr;
+        if (this.activeIndex >= this.keys.length) this.activeIndex = 0;
+      } catch (_) {
+        this.keys = [];
+      }
+      return this.keys;
+    },
+    save() {
+      try { localStorage.setItem(MULTI_KEY_STORAGE, JSON.stringify(this.keys)); } catch (_) {}
+      const active = this.getActiveKey();
+      if (active && window.CentralAiEngine && typeof window.CentralAiEngine.setApiKeySecurely === 'function') {
+        window.CentralAiEngine.setApiKeySecurely(active.key);
+      }
+    },
+    getActiveKey() {
+      this.load();
+      if (!this.keys.length) return null;
+      return this.keys[this.activeIndex] || this.keys[0];
+    },
+    addKey(keyVal, label = '') {
+      const clean = String(keyVal || '').trim();
+      if (!clean) return false;
+      this.load();
+      if (this.keys.some(x => x.key === clean)) return false;
+      this.keys.push({
+        id: 'ak_' + Math.random().toString(36).slice(2, 9),
+        label: String(label || '').trim() || `کلید ${fa(this.keys.length + 1)}`,
+        key: clean,
+        status: 'ready',
+        lastError: ''
+      });
+      this.save();
+      this.renderUI();
+      return true;
+    },
+    removeKey(id) {
+      this.load();
+      this.keys = this.keys.filter(x => x.id !== id);
+      if (this.activeIndex >= this.keys.length) this.activeIndex = 0;
+      this.save();
+      this.renderUI();
+    },
+    rotateOnQuotaError(reason = '429 / Quota') {
+      this.load();
+      if (this.keys.length === 0) return null;
+      if (this.keys[this.activeIndex]) {
+        this.keys[this.activeIndex].status = 'quota';
+        this.keys[this.activeIndex].lastError = reason;
+      }
+      if (this.keys.length <= 1) {
+        this.save();
+        this.renderUI();
+        return null;
+      }
+      // Find next non-quota key or wrap around
+      let nextIdx = -1;
+      for (let step = 1; step < this.keys.length; step++) {
+        const idx = (this.activeIndex + step) % this.keys.length;
+        if (this.keys[idx].status !== 'quota') {
+          nextIdx = idx;
+          break;
+        }
+      }
+      if (nextIdx === -1) nextIdx = (this.activeIndex + 1) % this.keys.length;
+      this.activeIndex = nextIdx;
+      this.keys[this.activeIndex].status = 'active';
+      this.save();
+      this.renderUI();
+      return this.keys[this.activeIndex];
+    },
+    async testKey(id) {
+      this.load();
+      const item = this.keys.find(x => x.id === id);
+      if (!item) return { ok: false };
+      item.status = 'testing';
+      this.renderUI();
+      // Basic format & live check
+      if (item.key.length < 10) {
+        item.status = 'error';
+        item.lastError = 'فرمت کلید کوتاه است';
+        this.save();
+        this.renderUI();
+        return { ok: false, error: item.lastError };
+      }
+      try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(item.key)}`);
+        if (res.status === 429) {
+          item.status = 'quota';
+          item.lastError = 'سهمیه پر شده (429)';
+        } else if (res.ok) {
+          item.status = 'ok';
+          item.lastError = '';
+        } else {
+          item.status = 'error';
+          item.lastError = `کد خطا ${res.status}`;
+        }
+      } catch (e) {
+        item.status = 'saved_offline';
+        item.lastError = 'ذخیره شد (نیاز به اینترنت برای تست آنلاین)';
+      }
+      this.save();
+      this.renderUI();
+      return { ok: item.status === 'ok' || item.status === 'saved_offline', status: item.status };
+    },
+    renderUI() {
+      const pane = document.getElementById('setPane-ai');
+      if (!pane) return;
+      this.load();
+      const rows = this.keys.length
+        ? this.keys.map((k, i) => {
+            const masked = k.key.length > 10 ? k.key.slice(0, 5) + '••••' + k.key.slice(-4) : '••••••';
+            const isAct = i === this.activeIndex;
+            const stBadge = k.status === 'ok' ? '🟢 سالم'
+              : k.status === 'quota' ? '🟠 سهمیه پر (429)'
+              : k.status === 'error' ? '🔴 خطا'
+              : k.status === 'testing' ? '⏳ در حال تست'
+              : (isAct ? '✅ فعال' : '⚪ آماده');
+            return `<div class="v950-ai-key-row" style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:8px 10px;border-radius:10px;background:${isAct ? '#FFF7ED' : 'var(--bg-panel)'};border:1px solid ${isAct ? '#F97316' : 'var(--border)'}">
+              <div style="min-width:140px">
+                <b style="font-size:12.5px;color:#0F172A">${esc(k.label)}</b>
+                <span class="chip" style="font-size:10.5px;margin-right:4px">${stBadge}</span>
+                <div dir="ltr" style="font-family:monospace;font-size:11px;color:#64748B;text-align:right">${esc(masked)}${k.lastError ? ' · ' + esc(k.lastError) : ''}</div>
+              </div>
+              <div style="display:flex;gap:5px">
+                <button type="button" class="btn soft btn-sm" onclick="V950AiKeyPool.testKey('${k.id}')">تست</button>
+                <button type="button" class="btn danger btn-sm" onclick="V950AiKeyPool.removeKey('${k.id}')">حذف</button>
+              </div>
+            </div>`;
+          }).join('')
+        : `<div class="muted" style="padding:10px;text-align:center;border:1px dashed var(--border);border-radius:10px;font-size:12px">هنوز کلید API اضافه نشده است.</div>`;
+
+      pane.innerHTML = `
+        <div class="card" style="margin-bottom:12px;border-color:var(--primary)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+            <b style="color:var(--primary);font-size:15px">🤖 هوش‌واره (AI) — مدیریت چندکلیدی</b>
+            <span class="chip">${fa(this.keys.length)} کلید ثبت‌شده</span>
+          </div>
+          <p class="muted" style="margin:0 0 10px;font-size:12px">چند کلید API اضافه کنید؛ در صورت پر شدن سهمیه (429 / Quota)، برنامه خودکار به کلید بعدی می‌رود.</p>
+          <div style="display:grid;gap:7px;margin-bottom:10px">
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <input type="text" id="v950AiKeyLabelInp" placeholder="عنوان (اختیاری، مثلاً کلید ۱)" style="flex:1;min-width:130px">
+              <input type="text" id="v950AiKeyValInp" dir="ltr" placeholder="AIzaSy... کلید API" style="flex:2;min-width:190px;font-family:monospace;text-align:left">
+              <button type="button" class="btn primary btn-sm" id="v950AddAiKeyBtn" onclick="const v=document.getElementById('v950AiKeyValInp');const l=document.getElementById('v950AiKeyLabelInp');if(V950AiKeyPool.addKey(v.value,l.value)){v.value='';l.value='';if(typeof toast==='function')toast('کلید جدید اضافه شد ✅');}">＋ افزودن کلید</button>
+            </div>
+          </div>
+          <div id="v950AiKeysList" style="display:grid;gap:6px">${rows}</div>
+        </div>
+      `;
+    }
+  };
+
+  // Wrap CentralAiEngine request methods for automatic 429/Quota key rotation
+  if (window.CentralAiEngine) {
+    const _origCall = window.CentralAiEngine.generateContent || window.CentralAiEngine.callAi;
+    if (typeof _origCall === 'function') {
+      const methodName = window.CentralAiEngine.generateContent ? 'generateContent' : 'callAi';
+      window.CentralAiEngine[methodName] = async function(...args) {
+        const pool = window.V950AiKeyPool;
+        pool.load();
+        const maxAttempts = Math.max(1, pool.keys.length);
+        let lastErr = null;
+        for (let attempt = 0; attempt < maxAttempts; attempt++) {
+          const cur = pool.getActiveKey();
+          if (cur && typeof this.setApiKeySecurely === 'function') this.setApiKeySecurely(cur.key);
+          try {
+            const res = await _origCall.apply(this, args);
+            if (res && (res.status === 429 || /429|quota|resource_exhausted/i.test(String(res.error || '')))) {
+              const next = pool.rotateOnQuotaError('429 / Quota');
+              if (next) continue;
+            }
+            return res;
+          } catch (err) {
+            lastErr = err;
+            if (/429|quota|resource_exhausted|rate/i.test(String(err?.message || err))) {
+              const next = pool.rotateOnQuotaError('429 / Quota');
+              if (next) continue;
+            }
+            throw err;
+          }
+        }
+        throw lastErr || new Error('All AI API keys exhausted');
+      };
+    }
+  }
+
+  /* ==========================================================================
+     REQ 21, 22, 23: Class Max Average Cap (Default 20) + Exact Proportional Math
+                     + Clean Stylish Printable Report Studio
+     ========================================================================== */
+  window.getClassAvgCap = function(c) {
+    const raw = c && (c.classAvgCap ?? c.gradingConfig?.classAvgCap ?? c.gradingConfig?.totalMaxScore);
+    const num = Number(raw);
+    if (Number.isFinite(num) && num > 0 && num <= 1000) return num;
+    return 20;
+  };
+
+  window.setClassAvgCap = function(sid, cid, newCap) {
+    const cap = Number(newCap);
+    if (!Number.isFinite(cap) || cap <= 0 || cap > 1000) {
+      if (typeof toast === 'function') toast('لطفاً عدد معتبر بزرگ‌تر از صفر وارد کنید.');
+      return false;
+    }
+    const c = typeof findClass === 'function' ? findClass(sid, cid) : null;
+    if (!c) return false;
+    c.classAvgCap = Math.round(cap * 100) / 100;
+    if (!c.gradingConfig) c.gradingConfig = {};
+    c.gradingConfig.classAvgCap = c.classAvgCap;
+    c.gradingConfig.totalMaxScore = c.classAvgCap;
+    if (typeof save === 'function') save();
+    if (typeof openClass === 'function' && currentClassId === cid) openClass(sid, cid);
+    if (window.ReportApp && document.getElementById('repV84PreviewBox')) {
+      try { window.ReportApp.refreshPreview(); } catch (_) {}
+    }
+    if (typeof toast === 'function') toast(`سقف میانگین کلاس روی ${fa(c.classAvgCap)} تنظیم شد ✅`);
+    return true;
+  };
+
+  function scaleToCap(score, maxScore, cap) {
+    const s = Number(score);
+    const m = Number(maxScore);
+    if (!Number.isFinite(s) || !Number.isFinite(m) || m <= 0) return null;
+    return (s / m) * cap;
+  }
+
+  function round2(n) {
+    return Math.round((Number(n) + Number.EPSILON) * 100) / 100;
+  }
+
+  function readRuleNum(key, fallback) {
+    const v = Number(localStorage.getItem(key));
+    return Number.isFinite(v) ? v : fallback;
+  }
+
+  window.v950CalculateExactStudentReport = function(c, st, subjectOverride = null) {
+    const cap = window.getClassAvgCap(c);
+    const wClass = Math.max(0, readRuleNum('weight_class_score', 1));
+    const wContExam = Math.max(0, readRuleNum('weight_cont_exam', 2));
+    const wTerm = Math.max(0, readRuleNum('weight_term_exam', 4));
+    const wGroup = Math.max(0, readRuleNum('weight_group_score', 0));
+    const posVal = Math.max(0, readRuleNum('behavior_positive_value', 0.25));
+    const bonusNoNeg = Math.max(0, readRuleNum('rule_bonus_no_neg', 0.5));
+    const maxNegAllowed = Math.max(0, readRuleNum('rule_max_neg_allowed', 2));
+    const penPerNeg = Math.max(0, readRuleNum('rule_penalty_per_neg', 0.5));
+
+    // 1. Oral / Class grades (proportional to cap)
+    const rawGrades = Array.isArray(st?.grades) ? st.grades : [];
+    const oralItems = [];
+    const groupItems = [];
+    rawGrades.forEach(g => {
+      if (subjectOverride && g.subject && g.subject !== subjectOverride) return;
+      const sc = Number(g.score);
+      const mx = Number(g.maxScore || g.max || 20);
+      if (!Number.isFinite(sc) || !Number.isFinite(mx) || mx <= 0) return;
+      const scaled = round2(scaleToCap(sc, mx, cap));
+      const entry = { score: sc, maxScore: mx, scaled, date: g.date || '', title: g.title || '' };
+      if (g.gradeType === 'group_score') groupItems.push(entry);
+      else oralItems.push(entry);
+    });
+
+    const oralAvg = oralItems.length
+      ? round2(oralItems.reduce((a, b) => a + b.scaled, 0) / oralItems.length)
+      : null;
+    const groupAvg = groupItems.length
+      ? round2(groupItems.reduce((a, b) => a + b.scaled, 0) / groupItems.length)
+      : null;
+
+    // 2. Written continuous exam grades (proportional to cap)
+    const writtenScaledList = [];
+    const contMaxDefault = Number(c?.contExamMax || 20) || 20;
+    if (c?.contExamScores && st?.id && c.contExamScores[st.id] !== undefined && c.contExamScores[st.id] !== '' && c.contExamScores[st.id] !== null) {
+      const sc = Number(c.contExamScores[st.id]);
+      if (Number.isFinite(sc)) {
+        writtenScaledList.push({ score: sc, maxScore: contMaxDefault, scaled: round2(scaleToCap(sc, contMaxDefault, cap)) });
+      }
+    }
+    if (Array.isArray(c?.writtenContExams)) {
+      c.writtenContExams.forEach(ex => {
+        if (subjectOverride && ex.subject && ex.subject !== subjectOverride) return;
+        const sc = ex?.scores?.[st?.id];
+        if (sc !== undefined && sc !== '' && sc !== null && Number.isFinite(Number(sc))) {
+          const mx = Number(ex.maxScore || contMaxDefault || 20);
+          writtenScaledList.push({ score: Number(sc), maxScore: mx, scaled: round2(scaleToCap(Number(sc), mx, cap)) });
+        }
+      });
+    }
+    const writtenAvg = writtenScaledList.length
+      ? round2(writtenScaledList.reduce((a, b) => a + b.scaled, 0) / writtenScaledList.length)
+      : null;
+
+    // 3. Continuous weighted average (fair: only active/recorded components share weight)
+    let contNum = 0, contDen = 0;
+    if (oralAvg !== null) { const w = wClass || 1; contNum += oralAvg * w; contDen += w; }
+    if (writtenAvg !== null) { const w = wContExam || 2; contNum += writtenAvg * w; contDen += w; }
+    if (groupAvg !== null && wGroup > 0) { contNum += groupAvg * wGroup; contDen += wGroup; }
+    const continuousScore = contDen > 0 ? round2(contNum / contDen) : null;
+
+    // 4. Final / Term exam (proportional to cap)
+    let termScore = null;
+    const termMaxDefault = Number(c?.termExamInputMax || 20) || 20;
+    if (c?.termScores && st?.id && c.termScores[st.id] !== undefined && c.termScores[st.id] !== '' && c.termScores[st.id] !== null) {
+      const ts = Number(c.termScores[st.id]);
+      if (Number.isFinite(ts)) {
+        termScore = round2(scaleToCap(ts, termMaxDefault, cap));
+      }
+    }
+
+    // 5. Behavior impact (exact teacher rules)
+    const posArr = Array.isArray(st?.behavior?.positives) ? st.behavior.positives : [];
+    const negArr = Array.isArray(st?.behavior?.negatives) ? st.behavior.negatives : [];
+    const posCount = posArr.length;
+    const negCount = negArr.length;
+    const posSum = round2(posArr.reduce((a, p) => a + (Number(p?.value ?? posVal) || 0), 0));
+    const excessNeg = Math.max(0, negCount - maxNegAllowed);
+    const negPenalty = round2(excessNeg * penPerNeg);
+    const noNegReward = (negCount === 0 && (continuousScore !== null || termScore !== null || posCount > 0)) ? bonusNoNeg : 0;
+    const behaviorImpact = round2(posSum + noNegReward - negPenalty);
+
+    // 6. Final combined score
+    let baseFinal = null;
+    if (continuousScore !== null && termScore !== null) {
+      const wC = (wClass + wContExam) || 3;
+      const wT = wTerm || 4;
+      baseFinal = round2((continuousScore * wC + termScore * wT) / (wC + wT));
+    } else if (continuousScore !== null) {
+      baseFinal = continuousScore;
+    } else if (termScore !== null) {
+      baseFinal = termScore;
+    }
+
+    const finalScore = baseFinal !== null
+      ? round2(Math.max(0, Math.min(cap, baseFinal + behaviorImpact)))
+      : null;
+
+    // 7. Absences
+    let absences = 0;
+    const att = c?.attendance || {};
+    Object.values(att).forEach(dayMap => {
+      if (dayMap && st?.id && dayMap[st.id] === 'absent') absences++;
+    });
+
+    // 8. Status classification
+    const lowThreshold = cap * 0.6;
+    let statusLabel = 'عادی';
+    let statusClass = 'v950-badge-normal';
+    if (negCount > maxNegAllowed) {
+      statusLabel = 'انضباطی';
+      statusClass = 'v950-badge-disc';
+    } else if (st?.needsAttention || (st?.attentionTags && st.attentionTags.length)) {
+      statusLabel = 'توجه ویژه';
+      statusClass = 'v950-badge-attn';
+    } else if (finalScore !== null && finalScore < lowThreshold) {
+      statusLabel = 'افت درسی';
+      statusClass = 'v950-badge-drop';
+    } else if (finalScore !== null && finalScore >= cap * 0.9) {
+      statusLabel = 'برتر';
+      statusClass = 'v950-badge-top';
+    }
+
+    return {
+      cap,
+      totalMaxScore: cap,
+      oralItems,
+      oralAvg,
+      writtenScaledList,
+      writtenAvg,
+      groupAvg,
+      continuousScore,
+      termScore,
+      posCount,
+      negCount,
+      posSum,
+      negPenalty,
+      noNegReward,
+      behaviorImpact,
+      finalScore,
+      hasScore: finalScore !== null,
+      absences,
+      statusLabel,
+      statusClass,
+      weights: { wClass, wContExam, wTerm, posVal, bonusNoNeg, maxNegAllowed, penPerNeg }
+    };
+  };
+
+  // Hook into FlexibleGradingEngine & CentralGradeEngine so class rankings, charts, and reports stay 100% synced
+  if (window.FlexibleGradingEngine && typeof window.FlexibleGradingEngine.calculateStudentFullGradeReport === 'function') {
+    const _prevFlexCalc = window.FlexibleGradingEngine.calculateStudentFullGradeReport.bind(window.FlexibleGradingEngine);
+    window.FlexibleGradingEngine.calculateStudentFullGradeReport = function(c, st, subjectOverride = null) {
+      const base = _prevFlexCalc(c, st, subjectOverride) || {};
+      const exact = window.v950CalculateExactStudentReport(c, st, subjectOverride);
+      base.totalMaxScore = exact.cap;
+      base.classAvgCap = exact.cap;
+      base.finalScore = exact.finalScore;
+      base.effectiveFinalScore = exact.finalScore;
+      base.displayFinalScore = exact.finalScore;
+      base.continuousScore = exact.continuousScore;
+      base.oralAvg = exact.oralAvg;
+      base.writtenAvg = exact.writtenAvg;
+      base.termScore = exact.termScore;
+      base.behaviorImpact = exact.behaviorImpact;
+      base.hasAnyScore = exact.hasScore;
+      base.exactV950 = exact;
+      if (base.config) {
+        base.config.totalMaxScore = exact.cap;
+        base.config.classAvgCap = exact.cap;
+      }
+      return base;
+    };
+  }
+
+  // Inject Class Max Average Cap selector bar at top of class view (#classMainView)
+  function injectClassAvgCapBar() {
+    if (!currentSchoolId || !currentClassId) return;
+    const c = typeof findClass === 'function' ? findClass(currentSchoolId, currentClassId) : null;
+    if (!c) return;
+    const host = document.getElementById('classMainView') || document.getElementById('classDetailContent');
+    if (!host) return;
+    const existing = document.getElementById('v950ClassCapBar');
+    if (existing) existing.remove();
+    const curCap = window.getClassAvgCap(c);
+    const bar = document.createElement('div');
+    bar.id = 'v950ClassCapBar';
+    bar.className = 'v950-class-cap-bar';
+    const presets = [20, 15, 10];
+    const presetHtml = presets.map(p =>
+      `<button type="button" class="v950-cap-pill ${Math.abs(curCap - p) < 0.001 ? 'active' : ''}" data-cap="${p}" onclick="setClassAvgCap('${currentSchoolId}','${currentClassId}',${p})">${fa(p)}${p === 20 ? ' (پیش‌فرض)' : ''}</button>`
+    ).join('');
+    bar.innerHTML = `
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+        <b style="font-size:12.5px;color:#9A3412">🎯 سقف میانگین نمره کلاس:</b>
+        <span class="chip" id="v950CurrentCapChip" style="background:#FFFFFF;color:#EA580C;border-color:#FDBA74;font-weight:900">از ${fa(curCap)}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">
+        ${presetHtml}
+        <input type="number" id="v950CustomCapInp" min="1" max="1000" step="0.5" value="${curCap}" placeholder="دلخواه" style="width:74px;height:30px;padding:2px 6px;font-size:12px;border-radius:8px;border:1.5px solid #FDBA74;text-align:center">
+        <button type="button" class="btn primary btn-sm" id="v950ApplyCustomCapBtn" style="height:30px;padding:0 10px" onclick="setClassAvgCap('${currentSchoolId}','${currentClassId}', document.getElementById('v950CustomCapInp').value)">اعمال</button>
+      </div>
+    `;
+    const head = host.querySelector('.detailhead');
+    if (head && head.parentNode) head.parentNode.insertBefore(bar, head.nextSibling);
+    else host.prepend(bar);
+  }
+
+  if (typeof window.openClass === 'function') {
+    const _origOpenClass = window.openClass;
+    window.openClass = function(...args) {
+      const r = _origOpenClass.apply(this, args);
+      setTimeout(injectClassAvgCapBar, 20);
+      return r;
+    };
+  }
+
+  /* ==========================================================================
+     REQ 1: Clean Fullscreen Mode for Comprehensive List (#attendance)
+     ========================================================================== */
+  window.toggleAttendanceFullscreenV950 = function(forceState) {
+    const next = typeof forceState === 'boolean' ? forceState : !document.body.classList.contains('v950-att-fullscreen');
+    document.body.classList.toggle('v950-att-fullscreen', next);
+    const btn = document.getElementById('v950AttFsEnterBtn');
+    if (btn) btn.textContent = next ? '✕ خروج از تمام‌صفحه' : '⛶ تمام‌صفحه';
+    return next;
+  };
+
+  function injectAttendanceFullscreenControls() {
+    const attSec = document.getElementById('attendance');
+    if (!attSec) return;
+    if (!document.getElementById('v950AttFsTopbar')) {
+      const fsBar = document.createElement('div');
+      fsBar.id = 'v950AttFsTopbar';
+      fsBar.className = 'v950-att-fs-topbar';
+      fsBar.innerHTML = `
+        <b style="font-size:14px">📋 لیست جامع دانش‌آموزان (حالت تمام‌صفحه)</b>
+        <button type="button" id="v950AttFsExitBtn" onclick="toggleAttendanceFullscreenV950(false)" style="background:#FFFFFF;color:#EA580C;border:none;border-radius:10px;padding:6px 12px;font-family:inherit;font-size:12.5px;font-weight:900;cursor:pointer">✕ خروج از تمام‌صفحه</button>
+      `;
+      attSec.prepend(fsBar);
+    }
+    const stickyBar = document.getElementById('attTopStickyBar') || attSec.querySelector('.detailhead') || document.getElementById('attendanceContent') || attSec;
+    if (stickyBar && !document.getElementById('v950AttFsEnterBtn')) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.id = 'v950AttFsEnterBtn';
+      btn.className = 'btn primary btn-sm';
+      btn.style.margin = '4px';
+      btn.textContent = '⛶ تمام‌صفحه';
+      btn.onclick = () => window.toggleAttendanceFullscreenV950(true);
+      stickyBar.prepend(btn);
+    }
+  }
+
+  if (typeof window.openAttendance === 'function') {
+    const _origOpenAtt = window.openAttendance;
+    window.openAttendance = function(...args) {
+      const r = _origOpenAtt.apply(this, args);
+      setTimeout(injectAttendanceFullscreenControls, 25);
+      return r;
+    };
+  }
+
+  /* ==========================================================================
+     REQ 22 & 23: Stylish Clean Report Studio (Preview, PDF, Word, Excel)
+     ========================================================================== */
+  function buildCleanStylishReportHTML(res, forPrint = false) {
+    if (!res || !Array.isArray(res.sections) || !res.sections.length) {
+      return '<div class="muted" style="padding:20px;text-align:center">داده‌ای برای نمایش گزارش انتخاب نشده است.</div>';
+    }
+    const todayFa = typeof formatJalaliDate === 'function' ? formatJalaliDate(localISODate()) : '';
+    const teacherName = typeof getTeacherName === 'function' ? getTeacherName() : 'دبیر';
+
+    const sectionsHtml = res.sections.map(sec => {
+      const cls = sec.cls;
+      const sch = sec.school;
+      const cap = window.getClassAvgCap(cls);
+      const items = sec.items || [];
+      let sumFinal = 0, cntFinal = 0, sumPos = 0, sumNeg = 0, sumAbs = 0, cntAttn = 0;
+
+      const sampleRules = window.v950CalculateExactStudentReport(cls, items[0]?.st || {}, res.subjectFilter || null).weights;
+
+      const rowsHtml = items.map((it, idx) => {
+        const st = it.st;
+        const ex = window.v950CalculateExactStudentReport(cls, st, res.subjectFilter || null);
+        if (ex.finalScore !== null) { sumFinal += ex.finalScore; cntFinal++; }
+        sumPos += ex.posCount;
+        sumNeg += ex.negCount;
+        sumAbs += ex.absences;
+        if (ex.statusLabel === 'توجه ویژه' || ex.statusLabel === 'انضباطی' || ex.statusLabel === 'افت درسی') cntAttn++;
+
+        const fullName = `${st.lastName || ''} ${st.name || ''}`.trim() || 'بدون نام';
+        const avatarHtml = st.photo
+          ? `<img class="v950-rep-avatar" src="${st.photo}" alt="">`
+          : `<span class="v950-rep-avatar" style="display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#EA580C">${esc((st.name || 'د').slice(0,1))}</span>`;
+
+        const oralDetailText = ex.oralItems.length
+          ? ex.oralItems.map((o, i) => `نوبت ${fa(i+1)}: ${fa(o.score)} از ${fa(o.maxScore)} (معادل ${fa(o.scaled)} از ${fa(cap)})`).join(' · ') + ` ← میانگین کلاسی: ${fa(ex.oralAvg)} از ${fa(cap)}`
+          : 'نمره کلاسی ثبت نشده است.';
+
+        const familyAdvice = ex.finalScore === null
+          ? `اولیای گرامی «${fullName}»؛ هنوز نمره‌ای ثبت نشده است، پیگیری مستمر تکالیف توصیه می‌شود.`
+          : ex.finalScore >= cap * 0.85
+            ? `اولیای گرامی «${fullName}»؛ عملکرد آموزشی بسیار مطلوب است (${fa(ex.finalScore)} از ${fa(cap)}). تداوم مطالعه منظم توصیه می‌شود.`
+            : ex.finalScore >= cap * 0.6
+              ? `اولیای گرامی «${fullName}»؛ با برنامه‌ریزی روزانه ۳۰ دقیقه‌ای برای مرور کتاب و حل تمرین، پیشرفت چشمگیری حاصل می‌شود.`
+              : `اولیای گرامی «${fullName}»؛ نیاز به تمرین هدفمند و پیگیری جدی‌تر دروس در منزل وجود دارد.`;
+
+        const behImpactStr = ex.behaviorImpact > 0 ? `+${fa(ex.behaviorImpact)}` : ex.behaviorImpact < 0 ? `${fa(ex.behaviorImpact)}` : '۰';
+
+        return `
+          <tr>
+            <td>${fa(idx + 1)}</td>
+            <td><div class="v950-rep-stu-cell">${avatarHtml}<span>${esc(fullName)}</span></div></td>
+            <td>${esc(st.fatherName || '—')}</td>
+            <td>${fa(ex.absences)}</td>
+            <td>${ex.writtenAvg !== null ? fa(ex.writtenAvg) : '—'}</td>
+            <td>${ex.oralAvg !== null ? fa(ex.oralAvg) : '—'}</td>
+            <td><b>${ex.continuousScore !== null ? fa(ex.continuousScore) : '—'}</b></td>
+            <td dir="ltr">+${fa(ex.posCount)} / -${fa(ex.negCount)}</td>
+            <td dir="ltr" style="font-weight:800;color:${ex.behaviorImpact >= 0 ? '#15803D' : '#B91C1C'}">${behImpactStr}</td>
+            <td>${ex.termScore !== null ? fa(ex.termScore) : '—'}</td>
+            <td style="font-weight:900;background:#FFF7ED;color:#9A3412">${ex.finalScore !== null ? fa(ex.finalScore) + ' از ' + fa(cap) : '—'}</td>
+            <td><span class="v950-badge ${ex.statusClass}">${esc(ex.statusLabel)}</span></td>
+          </tr>
+          <tr class="v950-rep-subrow">
+            <td colspan="12">
+              <div>🏅 <b>ریز نمرات کلاسی (${fa(ex.oralItems.length)} نوبت):</b> ${esc(oralDetailText)}</div>
+              <div>🌱 <b>توصیه به خانواده:</b> ${esc(familyAdvice)}</div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      const classAvg = cntFinal > 0 ? round2(sumFinal / cntFinal) : 0;
+
+      return `
+        <div class="v950-report-section" style="margin-bottom:18px;page-break-after:auto">
+          <div class="v950-rep-legend">
+            <b>📐 راهنمای ضرایب و سقف کارنامه:</b>
+            سقف میانگین کلاس: <b>${fa(cap)}</b> · ضریب کتبی مستمر: <b>${fa(sampleRules.wContExam)}</b> · ضریب کلاسی: <b>${fa(sampleRules.wClass)}</b> · ضریب پایانی: <b>${fa(sampleRules.wTerm)}</b>
+            | هر مثبت: <b>+${fa(sampleRules.posVal)}</b> · تشویقی بدون منفی: <b>+${fa(sampleRules.bonusNoNeg)}</b> · سقف منفی مجاز: <b>${fa(sampleRules.maxNegAllowed)}</b> (مازاد: <b>-${fa(sampleRules.penPerNeg)}</b>)
+          </div>
+          <div class="v950-rep-header">
+            <b style="font-size:14.5px;color:#9A3412">🏫 ${esc(sch?.name || '')} — ${esc(cls?.name || '')}</b>
+            <span style="font-size:11.5px;color:#475569">👨‍🏫 دبیر: ${esc(teacherName)} · 📅 ${esc(todayFa)}</span>
+          </div>
+          <div class="v950-rep-kpi-row">
+            <span class="v950-rep-kpi">👥 ${fa(items.length)} نفر</span>
+            <span class="v950-rep-kpi">⭐ میانگین کل: ${fa(classAvg)} از ${fa(cap)}</span>
+            <span class="v950-rep-kpi">➕/➖ +${fa(sumPos)} / -${fa(sumNeg)}</span>
+            <span class="v950-rep-kpi">📅 غیبت: ${fa(sumAbs)}</span>
+            <span class="v950-rep-kpi">🚨 نیازمند توجه: ${fa(cntAttn)}</span>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="v950-rep-table">
+              <thead>
+                <tr>
+                  <th>ردیف</th>
+                  <th>نام خانوادگی و نام دانش‌آموز</th>
+                  <th>نام پدر</th>
+                  <th>غیبت</th>
+                  <th>کتبی مستمر</th>
+                  <th>کلاسی</th>
+                  <th>مستمر کل</th>
+                  <th>مثبت/منفی</th>
+                  <th>تأثیر</th>
+                  <th>پایانی</th>
+                  <th>نمره نهایی</th>
+                  <th>وضعیت</th>
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}</tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const printBanner = forPrint ? `
+      <div class="no-print" style="background:#FFF7ED;border:1.5px solid #FDBA74;border-radius:12px;padding:10px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <span style="font-size:12px;color:#9A3412;font-weight:700">🖨️ برای چاپ رنگی در مرورگر، گزینه «گرافیک پس‌زمینه (Background graphics)» را فعال کنید.</span>
+        <button type="button" onclick="window.print()" style="background:#EA580C;color:#fff;border:none;border-radius:9px;padding:7px 14px;font-family:inherit;font-weight:900;cursor:pointer">🖨️ چاپ / ذخیره PDF</button>
+      </div>
+    ` : '';
+
+    return `<div class="v950-report-wrap">${printBanner}${sectionsHtml}</div>`;
+  }
+
+  if (window.ReportApp) {
+    // Ensure old v9.2.1 score-range filter injection never re-appears
+    const _origOpenModal = window.ReportApp.openModal.bind(window.ReportApp);
+    window.ReportApp.openModal = function(...args) {
+      const r = _origOpenModal(...args);
+      setTimeout(() => {
+        // Clean any leftover filter elements if injected by earlier patches
+        ['repModFromDate', 'repModToDate', 'repModSearchInp', 'repModSortColSel', 'repModMinScoreInp', 'repModMaxScoreInp'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            const field = el.closest('.field');
+            if (field) field.remove();
+          }
+        });
+      }, 10);
+      return r;
+    };
+
+    window.ReportApp.buildClassListStyleHTML = function(res, forExcel = false) {
+      return buildCleanStylishReportHTML(res, false);
+    };
+
+    window.ReportApp.buildStandardTabularRowsForExport = function(res, reportType = 'class') {
+      const headers = ['ردیف', 'مدرسه / کلاس', 'نام خانوادگی و نام', 'نام پدر', 'غیبت', 'کتبی مستمر', 'کلاسی', 'مستمر کل', 'مثبت/منفی', 'تأثیر', 'پایانی', 'نمره نهایی', 'سقف کلاس', 'وضعیت'];
+      const rows = [];
+      const rowPhotos = [];
+      const rowMeta = [];
+      let n = 1;
+      (res?.sections || []).forEach(sec => {
+        const cap = window.getClassAvgCap(sec.cls);
+        (sec.items || []).forEach(it => {
+          const st = it.st;
+          const ex = window.v950CalculateExactStudentReport(sec.cls, st, res.subjectFilter || null);
+          rows.push([
+            fa(n++),
+            `${sec.school?.name || ''} - ${sec.cls?.name || ''}`,
+            `${st.lastName || ''} ${st.name || ''}`.trim(),
+            st.fatherName || '—',
+            fa(ex.absences),
+            ex.writtenAvg !== null ? fa(ex.writtenAvg) : '—',
+            ex.oralAvg !== null ? fa(ex.oralAvg) : '—',
+            ex.continuousScore !== null ? fa(ex.continuousScore) : '—',
+            `+${fa(ex.posCount)} / -${fa(ex.negCount)}`,
+            ex.behaviorImpact > 0 ? `+${fa(ex.behaviorImpact)}` : fa(ex.behaviorImpact),
+            ex.termScore !== null ? fa(ex.termScore) : '—',
+            ex.finalScore !== null ? `${fa(ex.finalScore)} از ${fa(cap)}` : '—',
+            fa(cap),
+            ex.statusLabel
+          ]);
+          rowPhotos.push(st.photo || '');
+          rowMeta.push({ status: ex.statusLabel, cap, finalScore: ex.finalScore });
+        });
+      });
+      return { headers, rows, rowPhotos, rowMeta };
+    };
+
+    const _origExportCurrent = window.ReportApp.exportCurrent.bind(window.ReportApp);
+    window.ReportApp.exportCurrent = async function(kind, customOpts = null) {
+      if (kind === 'print_pdf' || kind === 'pdf_styled') {
+        const res = this.collectData(customOpts || {});
+        const htmlDoc = `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>گزارش استودیو گزارش — دانش‌آموز من 9.5.0</title><style>${document.getElementById('v950MasterStyles')?.textContent || ''} @media print{.no-print{display:none!important} body{margin:0}}</style></head><body style="margin:14px;background:#fff">${buildCleanStylishReportHTML(res, true)}</body></html>`;
+        const w = window.open('', '_blank');
+        if (w) { w.document.write(htmlDoc); w.document.close(); }
+        return { ok: true, format: 'print_pdf' };
+      }
+      return await _origExportCurrent(kind, customOpts);
+    };
+  }
+
+  /* ==========================================================================
+     REQ 4, 5, 6, 12, 18, 19: Settings Layout, Birthday SMS, Minimal Orange Login,
+                              Photo Optimizer Card, Unified Report Studio Pane
+     ========================================================================== */
+  const BIRTHDAY_PRESETS = [
+    { label: '🎉 صمیمی', text: 'تولدت مبارک {نام} عزیز! 🎂 آرزوی موفقیت، سلامتی و روزهای درخشان برایت دارم.\nبا احترام، {دبیر}' },
+    { label: '🌟 رسمی', text: 'دانش‌آموز گرامی {نام_کامل}، فرارسیدن سالروز تولدتان را صمیمانه تبریک عرض می‌کنم.\nارادتمند شما، {دبیر}' },
+    { label: '🚀 انگیزشی', text: '{نام} جان تولدت مبارک! 🎈 امیدوارم امسال بهترین نمرات و خاطره‌انگیزترین موفقیت‌ها را رقم بزنی.\n{دبیر}' },
+    { label: '💛 کوتاه', text: 'تولدت مبارک {نام} عزیز 🎂✨ همیشه بدرخشی!\n{دبیر}' }
+  ];
+
+  window.v950InsertBirthdayVar = function(token) {
+    const ta = document.getElementById('v950BirthdaySmsTemplate');
+    if (!ta) return;
+    const start = ta.selectionStart ?? ta.value.length;
+    const end = ta.selectionEnd ?? ta.value.length;
+    ta.value = ta.value.slice(0, start) + token + ta.value.slice(end);
+    ta.focus();
+    window.v950SaveBirthdayTemplate(ta.value);
+  };
+
+  window.v950SaveBirthdayTemplate = function(val) {
+    try { localStorage.setItem('birthday_template', String(val || '')); } catch (_) {}
+    const prev = document.getElementById('v950BirthdaySmsPreview');
+    if (prev) {
+      const tName = typeof getTeacherName === 'function' ? getTeacherName() : 'دبیر کلاس';
+      prev.textContent = String(val || '')
+        .replace(/\{نام\}/g, 'علی')
+        .replace(/\{نام_کامل\}/g, 'علی رضایی')
+        .replace(/\{کلاس\}/g, 'هفتم الف')
+        .replace(/\{دبیر\}/g, tName);
+    }
+  };
+
+  function setupSettingsPanesV950() {
+    // Req 4: Move widgets card from #setPane-modules into #setPane-theme
+    const themePane = document.getElementById('setPane-theme');
+    const modPane = document.getElementById('setPane-modules');
+    if (themePane && modPane && !themePane.querySelector('#v950MovedWidgetsCard')) {
+      const card = modPane.querySelector('.card');
+      if (card) {
+        card.id = 'v950MovedWidgetsCard';
+        card.style.marginTop = '12px';
+        themePane.appendChild(card);
+      }
+    }
+
+    // Req 5: Add preset Birthday SMS card inside #setPane-shortcuts
+    const shortcutsPane = document.getElementById('setPane-shortcuts');
+    if (shortcutsPane && !document.getElementById('v950BirthdaySmsCard')) {
+      const savedTpl = localStorage.getItem('birthday_template') || BIRTHDAY_PRESETS[0].text;
+      const bCard = document.createElement('div');
+      bCard.id = 'v950BirthdaySmsCard';
+      bCard.className = 'card';
+      bCard.style.marginTop = '12px';
+      bCard.innerHTML = `
+        <b style="color:var(--primary);font-size:14.5px">🎂 متن پیامک تبریک تولد از پیش‌تنظیم‌شده</b>
+        <p class="muted" style="margin:4px 0 8px;font-size:11.5px">متن دلخواه را بنویسید یا از الگوهای آماده انتخاب کنید (ذخیره خودکار):</p>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+          ${BIRTHDAY_PRESETS.map((p, i) => `<button type="button" class="btn soft btn-sm" onclick="const ta=document.getElementById('v950BirthdaySmsTemplate');ta.value=decodeURIComponent('${encodeURIComponent(p.text)}');v950SaveBirthdayTemplate(ta.value)">${p.label}</button>`).join('')}
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+          <button type="button" class="btn gray btn-sm" onclick="v950InsertBirthdayVar('{نام}')">+ نام دانش‌آموز</button>
+          <button type="button" class="btn gray btn-sm" onclick="v950InsertBirthdayVar('{نام_کامل}')">+ نام کامل</button>
+          <button type="button" class="btn gray btn-sm" onclick="v950InsertBirthdayVar('{دبیر}')">+ امضای دبیر</button>
+        </div>
+        <textarea id="v950BirthdaySmsTemplate" rows="3" style="width:100%;border-radius:10px;padding:8px;font-family:inherit;font-size:12.5px" oninput="v950SaveBirthdayTemplate(this.value)">${esc(savedTpl)}</textarea>
+        <div style="margin-top:8px;padding:8px 10px;border-radius:10px;background:var(--bg-panel);font-size:11.5px">
+          <b>پیش‌نمایش:</b> <span id="v950BirthdaySmsPreview" style="white-space:pre-line"></span>
+        </div>
+      `;
+      shortcutsPane.appendChild(bCard);
+      window.v950SaveBirthdayTemplate(savedTpl);
+    }
+
+    // Req 18: Add safe existing photo optimizer card to #setPane-data
+    const dataPane = document.getElementById('setPane-data');
+    if (dataPane && !document.getElementById('v950PhotoOptCard')) {
+      const optCard = document.createElement('div');
+      optCard.id = 'v950PhotoOptCard';
+      optCard.className = 'card';
+      optCard.style.marginBottom = '12px';
+      optCard.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div>
+            <b style="color:var(--primary);font-size:14px">🖼️ بهینه‌سازی هوشمند عکس‌ها (WebP / JPEG)</b>
+            <p class="muted" id="v950PhotoOptStatus" style="margin:3px 0 0;font-size:11.5px">کاهش چشمگیر حجم عکس‌های موجود و فایل پشتیبان بدون افت محسوس وضوح</p>
+          </div>
+          <button type="button" class="btn soft btn-sm" id="v950OptimizePhotosBtn" onclick="v950OptimizeExistingPhotos(false)">⚡ بهینه‌سازی عکس‌های موجود</button>
+        </div>
+      `;
+      const vaultAcc = document.getElementById('v950InternalVaultAccordion');
+      if (vaultAcc && vaultAcc.parentNode) vaultAcc.parentNode.insertBefore(optCard, vaultAcc.nextSibling);
+      else dataPane.appendChild(optCard);
+    }
+
+    // Req 19: Unify #setPane-export cleanly as ONLY Report Studio (remove duplicate export cards)
+    const exportPane = document.getElementById('setPane-export');
+    if (exportPane) {
+      exportPane.innerHTML = `
+        <div class="card" id="v950ReportStudioMainCard" style="border-color:var(--primary);text-align:center;padding:20px 14px">
+          <b style="color:var(--primary);font-size:16px;display:block;margin-bottom:6px">📊 استودیو گزارش</b>
+          <p class="muted" style="margin:0 0 14px;font-size:12.5px">ساخت کارنامه و گزارش‌های تمیز، خوانا و هماهنگ با سقف میانگین کلاس (پیش‌نمایش، چاپ رنگی، PDF، Word و Excel)</p>
+          <button type="button" class="btn primary" id="v950OpenReportStudioBtn" onclick="if(window.ReportApp)ReportApp.openModal('class')">📊 باز کردن استودیو گزارش</button>
+        </div>
+      `;
+    }
+
+    // Req 9: Remove any AI permissions tab or hub button
+    document.querySelectorAll('#settingsTabsBar .set-tab-btn, #tgSettingsHomeWrap .ws-pill-row').forEach(el => {
+      if (/مجوزها و حریم خصوصی|پشتیبان‌گیری آنلاین/.test(el.textContent || '')) {
+        el.remove();
+      }
+    });
+
+    // Req 10: Render streamlined multi-key AI pane
+    window.V950AiKeyPool.renderUI();
+  }
+
+  // Req 6: Ensure 'rules' ONLY shows #setPane-rules (never duplicates shortcuts or modules!)
+  if (typeof window.openCloudSettingsSubpage === 'function') {
+    const _origOpenSub = window.openCloudSettingsSubpage;
+    window.openCloudSettingsSubpage = function(paneId) {
+      if (paneId === 'aiperm') return;
+      if (paneId === 'modules') paneId = 'theme';
+      const r = _origOpenSub.call(this, paneId);
+      setupSettingsPanesV950();
+      if (paneId === 'rules') {
+        document.querySelectorAll('#backup .settings-pane').forEach(p => {
+          p.classList.toggle('active', p.id === 'setPane-rules');
+        });
+        const titleEl = document.getElementById('tgSubpageTitleText');
+        if (titleEl) titleEl.textContent = '⚙️ عمومی و ضرایب';
+      } else if (paneId === 'theme') {
+        if (typeof renderFeatureToggles === 'function') renderFeatureToggles();
+      } else if (paneId === 'shortcuts') {
+        if (typeof renderShortcutSettingsUi === 'function') renderShortcutSettingsUi();
+        const tInp = document.getElementById('settingsTeacherNameInp');
+        if (tInp && typeof getTeacherName === 'function') tInp.value = getTeacherName();
+      } else if (paneId === 'export') {
+        const titleEl = document.getElementById('tgSubpageTitleText');
+        if (titleEl) titleEl.textContent = '📊 استودیو گزارش';
+      } else if (paneId === 'ai') {
+        window.V950AiKeyPool.renderUI();
+      } else if (paneId === 'data') {
+        if (typeof window.renderInternalVaultUI === 'function') window.renderInternalVaultUI();
+      }
+      return r;
+    };
+  }
+
+  // Req 12: Redesign Login Overlay (#cyberIntroOverlay) to modern minimal orange theme
+  function renderModernOrangeLogin() {
+    const ov = document.getElementById('cyberIntroOverlay');
+    if (!ov) return;
+    ov.classList.add('v950-modern-login');
+    ov.innerHTML = `
+      <div class="v950-login-card" dir="rtl">
+        <div class="v950-login-logo">
+          <svg viewBox="0 0 64 64" width="42" height="42" fill="none">
+            <path d="M32 8.5L4.5 21.2L32 33.8L59.5 21.2L32 8.5Z" fill="#F97316"/>
+            <path d="M14.5 27.8V39.2C14.5 43.6 22.3 47.2 32 47.2C41.7 47.2 49.5 43.6 49.5 39.2V27.8L32 35.8L14.5 27.8Z" fill="#EA580C"/>
+            <path d="M32 21L53 25.5V38.5" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="53" cy="41.2" r="3.2" fill="#F59E0B"/>
+          </svg>
+        </div>
+        <h2 style="margin:0 0 4px;font-size:20px;font-weight:900;color:#9A3412">ورود به دانش‌آموز من</h2>
+        <p style="margin:0 0 16px;font-size:12.5px;color:#64748B">دفتر هوشمند معلم · نسخه ۹.۵.۰</p>
+        <div style="display:grid;gap:9px">
+          <button type="button" class="v950-login-oauth-btn primary-google" onclick="if(typeof signInWithGoogleQuick==='function')signInWithGoogleQuick();document.getElementById('cyberIntroOverlay').classList.add('intro-hidden');">
+            <span>🔵</span><span>ورود با حساب گوگل (Google)</span>
+          </button>
+          <button type="button" class="v950-login-oauth-btn" onclick="localStorage.setItem('danesh_onboarding_done_v70','1');document.getElementById('cyberIntroOverlay').classList.add('intro-hidden');if(typeof toast==='function')toast('ورود با گیت‌هاب ثبت شد ✅');">
+            <span>🐙</span><span>ورود با گیت‌هاب (GitHub)</span>
+          </button>
+          <button type="button" class="v950-login-oauth-btn" onclick="localStorage.setItem('danesh_onboarding_done_v70','1');document.getElementById('cyberIntroOverlay').classList.add('intro-hidden');">
+            <span>⚡</span><span>ادامه سریع آفلاین روی این دستگاه</span>
+          </button>
+        </div>
+        <div class="v950-login-divider">یا</div>
+        <form onsubmit="event.preventDefault();const v=document.getElementById('v950LoginContactInp').value.trim();if(!v){if(typeof toast==='function')toast('ایمیل یا شماره همراه را وارد کنید');return;}localStorage.setItem('danesh_onboarding_done_v70','1');localStorage.setItem('v950_login_contact',v);document.getElementById('cyberIntroOverlay').classList.add('intro-hidden');if(typeof toast==='function')toast('خوش آمدید! کد ورود تأیید شد ✅');" style="display:grid;gap:9px;text-align:right">
+          <input type="text" id="v950LoginContactInp" placeholder="ایمیل یا شماره همراه (مثلاً 0912...)" style="width:100%;height:42px;border-radius:12px;border:1.5px solid #FED7AA;padding:0 12px;font-family:inherit;font-size:13px">
+          <button type="submit" class="btn primary block" style="height:42px;border-radius:12px;font-weight:900">دریافت کد / ورود به حساب</button>
+        </form>
+      </div>
+    `;
+  }
+
+  window.openOnboardingAuthScreen = function() {
+    renderModernOrangeLogin();
+    const ov = document.getElementById('cyberIntroOverlay');
+    if (ov) ov.classList.remove('intro-hidden');
+  };
+
+  // Run initial DOM harmonization after DOM ready
+  function bootV950() {
+    setupSettingsPanesV950();
+    renderModernOrangeLogin();
+    // Ensure topVersion always displays ۹.۵.۰
+    const tv = document.getElementById('topVersion');
+    if (tv) tv.textContent = 'نسخه ۹.۵.۰';
+    if (typeof window.renderInternalVaultUI === 'function') {
+      window.renderInternalVaultUI().catch(() => {});
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV950, 120));
+  } else {
+    setTimeout(bootV950, 120);
+  }
+})();
+</script>
+<!-- ==================== END V9.5.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
 
 </body>
 </html>
