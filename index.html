@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="9.5.0">
-<meta name="danesh-app-version" content="9.5.0">
+<meta name="version" content="9.6.0">
+<meta name="danesh-app-version" content="9.6.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -4589,6 +4589,473 @@ body.dark .ws-logout-inner {
 }
 
 </style>
+
+<!-- ==================== V9.6.0 MASTER ENGINEERING UPGRADE STYLES ==================== -->
+<style id="v960MasterStyles">
+  /* Req 1-7: Report Studio PDF-Only, 12-Col Fixed Symmetric Layout, Diagonal Watermark & Print */
+  .v960-report-wrap {
+    position: relative;
+    background: #FFFFFF;
+    color: #0F172A;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    direction: rtl;
+    padding: 12px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .v960-watermark-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.045;
+    background-repeat: repeat;
+    background-size: 320px 210px;
+  }
+  .v960-report-content {
+    position: relative;
+    z-index: 1;
+  }
+  .v960-rep-legend {
+    background: #FFF7ED;
+    border: 1.5px solid #FDBA74;
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    font-size: 11px;
+    line-height: 1.75;
+    color: #7C2D12;
+  }
+  .v960-rep-print-guide {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 9px;
+    padding: 6px 11px;
+    margin-bottom: 10px;
+    font-size: 11px;
+    color: #1E3A8A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .v960-rep-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 14px;
+    background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
+    border: 1.5px solid #FB923C;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+  .v960-rep-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .v960-rep-kpi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #FFFBF7;
+    border: 1.5px solid #FED7AA;
+    border-radius: 10px;
+    padding: 7px 6px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #9A3412;
+    min-height: 34px;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+  .v960-rep-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 11px;
+    background: rgba(255,255,255,0.92);
+    border: 1.5px solid #FDBA74;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .v960-rep-table thead {
+    display: table-header-group;
+  }
+  .v960-rep-table thead th {
+    background: #EA580C;
+    color: #FFFFFF;
+    font-weight: 800;
+    padding: 7px 3px;
+    text-align: center;
+    border: 1px solid #F97316;
+    font-size: 10.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .v960-rep-table tbody tr.v960-main-row {
+    height: 38px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .v960-rep-table tbody tr.v960-main-row td {
+    padding: 4px 3px;
+    text-align: center;
+    border: 1px solid #FED7AA;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 10.8px;
+  }
+  .v960-rep-stu-cell {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .v960-rep-stu-cell span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 800;
+    color: #0F172A;
+  }
+  .v960-rep-avatar {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid #FB923C;
+    background: #FFF7ED;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10.5px;
+    font-weight: 900;
+    color: #EA580C;
+  }
+  .v960-final-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 74px;
+    max-width: 100%;
+    height: 24px;
+    padding: 0 7px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 900;
+    background: #FFF7ED;
+    color: #9A3412;
+    border: 1.2px solid #FB923C;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+  .v960-final-pill.good { background: #DCFCE7; color: #166534; border-color: #86EFAC; }
+  .v960-final-pill.warn { background: #FEF3C7; color: #92400E; border-color: #FCD34D; }
+  .v960-final-pill.bad  { background: #FEE2E2; color: #991B1B; border-color: #FCA5A5; }
+  .v960-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    max-width: 100%;
+    height: 24px;
+    padding: 0 6px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+  .v960-status-badge.top        { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
+  .v960-status-badge.normal     { background: #F1F5F9; color: #334155; border: 1px solid #CBD5E1; }
+  .v960-status-badge.discipline { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+  .v960-status-badge.attention  { background: #FFEDD5; color: #9A3412; border: 1px solid #FDBA74; }
+  .v960-status-badge.drop       { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+  .v960-rep-subrow {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .v960-rep-subrow td {
+    background: #FFFBF7;
+    border: 1px solid #FED7AA;
+    padding: 5px 10px !important;
+    text-align: right !important;
+    font-size: 10.3px;
+    line-height: 1.65;
+    color: #334155;
+    white-space: normal !important;
+  }
+  .v960-rep-footer {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px dashed #FDBA74;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10.5px;
+    color: #64748B;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    body { margin: 0 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .v960-watermark-layer { position: fixed !important; inset: 0 !important; opacity: 0.045 !important; }
+  }
+
+  /* Req 9: Permanently hide old monitoring card on Home */
+  #home #damTeacherSmartReportHub,
+  #damTeacherSmartReportHub,
+  #home .dam-identity-error-box {
+    display: none !important;
+  }
+
+  /* Req 18: Permanently hide duplicate API key bar outside Settings */
+  #counselorUnifiedAiKeyBar,
+  #statuses #counselorUnifiedAiKeyBar {
+    display: none !important;
+  }
+
+  /* Req 11: Smooth horizontal scroll centering for JARVIS metric pills */
+  #jarvisMetricPills {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Req 15: Fast Search Bar above Student Lists */
+  .v960-list-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFFBF7;
+    border: 1.5px solid #FDBA74;
+    border-radius: 12px;
+    padding: 5px 10px;
+    margin: 8px 0 10px;
+    box-shadow: 0 2px 6px rgba(234, 88, 12, 0.06);
+  }
+  .v960-list-search-bar input {
+    flex: 1;
+    border: none !important;
+    background: transparent !important;
+    outline: none !important;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text-main, #1E293B);
+    padding: 4px 2px !important;
+    margin: 0 !important;
+    height: 30px !important;
+    box-shadow: none !important;
+  }
+  .v960-search-clear-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid #FDBA74;
+    background: #FFF7ED;
+    color: #C2410C;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+  }
+  .v960-search-clear-btn.visible { display: inline-flex; }
+  .v960-search-count {
+    font-size: 11px;
+    font-weight: 800;
+    color: #9A3412;
+    background: #FFEDD5;
+    padding: 2px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* Req 16: True Edge-to-Edge Fullscreen & Sleek Compact Fit for Comprehensive List */
+  body.v950-att-fullscreen,
+  body.v960-att-fullscreen {
+    overflow: hidden !important;
+  }
+  body.v950-att-fullscreen .topbar,
+  body.v950-att-fullscreen .nav,
+  body.v950-att-fullscreen .fab,
+  body.v950-att-fullscreen #cyberNetworkCanvas {
+    display: none !important;
+  }
+  body.v950-att-fullscreen #attendance {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: 100vw !important;
+    max-height: 100dvh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 99999 !important;
+    background: #FFFBF7 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+  body.v950-att-fullscreen #attendance .breadcrumb,
+  body.v950-att-fullscreen #attendance .detailhead {
+    display: none !important;
+  }
+  .v950-att-fs-topbar {
+    display: none;
+  }
+  body.v950-att-fullscreen #v950AttFsTopbar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    padding: 0 10px !important;
+    background: linear-gradient(135deg, #EA580C, #C2410C) !important;
+    color: #FFFFFF !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+  }
+  body.v950-att-fullscreen #attendanceContent {
+    flex: 1 1 auto !important;
+    overflow: auto !important;
+    padding: 4px 6px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Sleek compact styling inside Fullscreen & Fit-to-Screen mode */
+  body.v950-att-fullscreen #attendance table,
+  body.v960-att-fit #attendance table {
+    border-collapse: collapse !important;
+    font-size: 11px !important;
+    width: 100% !important;
+  }
+  body.v950-att-fullscreen #attendance th,
+  body.v950-att-fullscreen #attendance td {
+    padding: 3px 4px !important;
+    line-height: 1.2 !important;
+    vertical-align: middle !important;
+  }
+  body.v950-att-fullscreen #attendance .avatar,
+  body.v950-att-fullscreen #attendance img.att-stu-photo,
+  body.v950-att-fullscreen #attendance td img {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    border-radius: 50% !important;
+  }
+  body.v950-att-fullscreen #attendance .att-cell,
+  body.v950-att-fullscreen #attendance .att-score-inp,
+  body.v950-att-fullscreen #attendance input[type="number"],
+  body.v950-att-fullscreen #attendance .qb {
+    height: 24px !important;
+    min-height: 24px !important;
+    padding: 1px 4px !important;
+    font-size: 10.5px !important;
+    border-radius: 6px !important;
+  }
+  body.v950-att-fullscreen.v960-att-fit #attendance td,
+  body.v950-att-fullscreen.v960-att-fit #attendance th {
+    padding: 2px 3px !important;
+    font-size: 10px !important;
+  }
+  body.v950-att-fullscreen.v960-att-fit #attendance .avatar,
+  body.v950-att-fullscreen.v960-att-fit #attendance td img {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+  }
+  body.v950-att-fullscreen.v960-att-fit #attendance .att-cell,
+  body.v950-att-fullscreen.v960-att-fit #attendance .qb,
+  body.v950-att-fullscreen.v960-att-fit #attendance input[type="number"] {
+    height: 20px !important;
+    min-height: 20px !important;
+    font-size: 9.8px !important;
+    padding: 0 3px !important;
+  }
+
+  /* Req 17: Centralized Term Manager Bar in Schools View */
+  #v960SchoolsTermBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
+    border: 1.5px solid #FB923C;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(234, 88, 12, 0.08);
+  }
+  #v960SchoolsTermBar select {
+    height: 36px;
+    border-radius: 10px;
+    border: 1.5px solid #FDBA74;
+    background: #FFFFFF;
+    color: #7C2D12;
+    font-weight: 800;
+    font-size: 12.5px;
+    padding: 0 10px;
+    min-width: 170px;
+    max-width: 260px;
+  }
+
+  /* Req 20: DaneshSmartEngine Interactive Assistant Card */
+  .v960-smart-engine-card {
+    background: linear-gradient(135deg, #FFF7ED, #FFFFFF);
+    border: 1.5px solid #FB923C;
+    border-radius: 14px;
+    padding: 12px;
+    margin: 10px 0;
+  }
+  .v960-smart-qa-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0;
+  }
+  .v960-smart-qa-chip {
+    background: #FFEDD5;
+    color: #9A3412;
+    border: 1px solid #FDBA74;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .v960-smart-qa-ans {
+    background: #FFFFFF;
+    border: 1px solid #FED7AA;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1.75;
+    color: #1E293B;
+    white-space: pre-line;
+  }
+</style>
+<!-- ==================== END V9.6.0 MASTER ENGINEERING UPGRADE STYLES ==================== -->
+
 </head>
 <body class="theme-classic-orange" data-theme-mode="classic-orange">
 <!-- انیمیشن شماره ۳: بوم شبکه سایبری زنده -->
@@ -4704,7 +5171,7 @@ body.dark .ws-logout-inner {
 <!-- اعلان به‌روزرسانی نسخه PWA (مدیریت مرکزی نسخه 9.3.0) -->
 <div id="swUpdateBanner" class="sw-update-banner" role="region" aria-label="اعلان به‌روزرسانی نسخه جدید">
   <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:200px">
-    <span id="swUpdateBannerText">🚀 نسخه جدید (۹.۵.۰) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
+    <span id="swUpdateBannerText">🚀 نسخه جدید (۹.۶.۰) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
     <div id="swUpdateBannerError" style="display:none;font-size:11.5px;color:#FEE2E2;background:rgba(153,27,27,0.88);padding:5px 8px;border-radius:8px;border:1px solid #FCA5A5;line-height:1.6"></div>
   </div>
   <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
@@ -4737,7 +5204,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۹.۵.۰</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۹.۶.۰</span>
           <button type="button" id="btnTopCheckUpdate" class="top-ver-pill" style="cursor:pointer;border:1px solid rgba(234,88,12,0.35);background:#FFF7ED;color:#EA580C;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:999px" onclick="if(window.CentralUpdateManager)CentralUpdateManager.checkForUpdatesManual()" title="بررسی به‌روزرسانی">بررسی به‌روزرسانی</button>
         </div>
       </div>
@@ -6075,7 +6542,7 @@ body.dark .ws-logout-inner {
         <button type="button" class="btn primary" style="flex:1" onclick="createInternalVaultSnapshot('پشتیبان کامل همراه با عکس‌ها', false)">🗄️ ذخیره فوری در گاوصندوق</button>
       </div>
     </div>
-    <!-- ۱. پوشه اختصاصی پشتیبان‌گیری (ساده‌سازی‌شده نسخه 9.5.0) -->
+    <!-- ۱. پوشه اختصاصی پشتیبان‌گیری (ساده‌سازی‌شده نسخه 9.6.0) -->
     <div class="card" id="v950DedicatedBackupCard" style="margin-bottom:12px;border-color:var(--primary)">
       <b style="color:var(--primary);font-size:15px;display:block;margin-bottom:10px">📁 پوشه اختصاصی پشتیبان‌گیری</b>
       <div class="actions" style="gap:8px;flex-wrap:wrap">
@@ -6085,7 +6552,7 @@ body.dark .ws-logout-inner {
       </div>
     </div>
 
-    <!-- ۲. گاوصندوق پشتیبان داخلی برنامه (آکاردئونی نسخه 9.5.0) -->
+    <!-- ۲. گاوصندوق پشتیبان داخلی برنامه (آکاردئونی نسخه 9.6.0) -->
     <details class="card v950-vault-accordion" id="v950InternalVaultAccordion" style="margin-bottom:12px;padding:0;overflow:hidden">
       <summary style="list-style:none;cursor:pointer;padding:13px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;user-select:none">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -6183,7 +6650,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.5.0 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.6.0 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6283,7 +6750,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.5.0 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.6.0 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6514,7 +6981,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '9.5.0';
+const APP_VERSION = '9.6.0';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -35479,7 +35946,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v9.5.0</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v9.6.0</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -35621,7 +36088,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 9.5.0 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 9.6.0 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -40008,7 +40475,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DAM_AUDIT_VERSION = '9.5.0';
+  window.DAM_AUDIT_VERSION = '9.6.0';
 
   /* ==========================================================================================
      ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
@@ -40393,7 +40860,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.5.0';
+  window.DANESH_APP_VERSION = '9.6.0';
 
   /* ==========================================================================================
      ۱. معماری یکپارچه هوش مصنوعی با الهام مستقیم از آزمون‌ساز (gemini-code-1792066709047.html)
@@ -40888,7 +41355,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
   // الف) تزریق نوار وضعیت کلید مشترک API در بالای مشاور هوشمند کلاس و دانش‌آموز
   const injectUnifiedAiStatusBarInCounselor = function() {
     const counselorContainer = document.getElementById('' + 'counselorProMountBox') || document.getElementById('statuses');
-    if (!counselorContainer || document.getElementById('' + 'counselorUnifiedAiKeyBar')) return;
+    return; // v9.6.0 Req 18: API key management lives strictly in Settings -> AI Hub
     const curKey = window.getUnifiedAiApiKey();
     const info = window.ExamApp ? ExamApp.detectProvider(curKey) : null;
     const bar = document.createElement('div');
@@ -47384,13 +47851,13 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.5.0';
-  window.DAM_AUDIT_VERSION = '9.5.0';
+  window.DANESH_APP_VERSION = '9.6.0';
+  window.DAM_AUDIT_VERSION = '9.6.0';
   try {
     const topVerEl = document.getElementById('topVersion');
-    if (topVerEl) topVerEl.textContent = 'نسخه ۹.۵.۰';
+    if (topVerEl) topVerEl.textContent = 'نسخه ۹.۶.۰';
     const metaVer = document.querySelector('meta[name="version"]');
-    if (metaVer) metaVer.setAttribute('content', '9.5.0');
+    if (metaVer) metaVer.setAttribute('content', '9.6.0');
   } catch (_) {}
 
   /* ==========================================================================================
@@ -49698,7 +50165,7 @@ ${JSON.stringify(batch, null, 2)}
         ctx.fillStyle = '#64748B';
         ctx.font = '10px Vazirmatn, Tahoma, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(`سامانه هوشمند «دانش‌آموز من» نسخه ۹.۵.۰ — صفحه ${fa(pIdx + 1)} از ${fa(totalPages)}`, pageW / 2, pageH - 10);
+        ctx.fillText(`سامانه هوشمند «دانش‌آموز من» نسخه ۹.۶.۰ — صفحه ${fa(pIdx + 1)} از ${fa(totalPages)}`, pageW / 2, pageH - 10);
 
         const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.90);
         pageJpegBytesList.push({
@@ -52250,14 +52717,14 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V921_VERSION = '9.5.0';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v9.5.0-orange';
+  const V921_VERSION = '9.6.0';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v9.6.0-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
   function syncVersionDisplaysV921() {
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۹.۵.۰';
+    if (topVer) topVer.textContent = 'نسخه ۹.۶.۰';
     const metaVer = document.querySelector('meta[name="version"]');
     if (metaVer) metaVer.setAttribute('content', V921_VERSION);
   }
@@ -53074,7 +53541,7 @@ ${JSON.stringify(batch, null, 2)}
           </div>
 
           <div style="background:#FFFFFF;border:1px solid #FDBA74;border-radius:10px;padding:10px;font-size:11.5px;line-height:1.8;color:#334155;margin-bottom:10px">
-            ✅ <b>اصول حریم خصوصی نسخه ۹.۵.۰:</b><br>
+            ✅ <b>اصول حریم خصوصی نسخه ۹.۶.۰:</b><br>
             ۱. <b>تفکیک مجوز دوربین از هوش مصنوعی:</b> مجوز دوربین اندروید/مرورگر (و) یا انتخاب از گالری (ز) صرفاً برای ثبت عکس در دفتر معلم است و هرگز به معنای اجازه ارسال تصویر به سرور هوش مصنوعی نیست.<br>
             ۲. <b>توقف آنی در حین کار:</b> با برداشتن تیک هر یک از مجوزها، حتی اگر درخواستی در حال ارسال باشد، ارتباط فوراً با <code>AbortController</code> قطع و ارسال تصویر متوقف می‌شود.<br>
             ۳. <b>اطلاع کامل معلم:</b> هیچ تصویری بدون اطلاع معلم و پیش از اخذ رضایت صریح ارسال نمی‌گردد.
@@ -54844,8 +55311,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const UNIFIED_VERSION = '9.5.0';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.5.0-orange';
+  const UNIFIED_VERSION = '9.6.0';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.6.0-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -58373,7 +58840,7 @@ ${JSON.stringify(batch, null, 2)}
               </div>
             </div>
 
-            <!-- جهت کاغذ در پرینت / PDF (فیلترهای تاریخ و جستجو در نسخه 9.5.0 حذف شدند) -->
+            <!-- جهت کاغذ در پرینت / PDF (فیلترهای تاریخ و جستجو در نسخه 9.6.0 حذف شدند) -->
             <div class="formgrid" style="margin-bottom:6px;gap:6px">
               <div class="field">
                 <label style="font-size:11px">📄 جهت کاغذ در پرینت / PDF:</label>
@@ -58704,8 +59171,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V930_VERSION = '9.5.0';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v9.5.0-orange';
+  const V930_VERSION = '9.6.0';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v9.6.0-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -58715,9 +59182,9 @@ ${JSON.stringify(batch, null, 2)}
     const meta = document.querySelector('meta[name="danesh-app-version"]');
     if (meta) meta.setAttribute('content', V930_VERSION);
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۹.۵.۰';
+    if (topVer) topVer.textContent = 'نسخه ۹.۶.۰';
     document.querySelectorAll('[data-app-version-label], .app-version-badge').forEach(el => {
-      el.textContent = '۹.۴.۰';
+      el.textContent = '۹.۶.۰';
     });
   }
   syncAllVersionBadgesV930();
@@ -59854,7 +60321,7 @@ ${JSON.stringify(batch, null, 2)}
 </script>
 <!-- ==================== END V9.3.0 ULTIMATE MASTER SUITE ==================== -->
 
-<!-- ==================== START V9.5.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
+<!-- ==================== START V9.6.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
 <style id="v940RootCauseStyles">
   .stu-photo-warn-badge-v940 {
     display: inline-flex;
@@ -59902,9 +60369,9 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V940_VERSION = '9.5.0';
-  const V940_VERSION_FA = '۹.۴.۰';
-  const V940_CACHE_NAME = 'danesh-amooz-man-v9.5.0-orange';
+  const V940_VERSION = '9.6.0';
+  const V940_VERSION_FA = '۹.۶.۰';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v9.6.0-orange';
   const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
 
   window.APP_VERSION = V940_VERSION;
@@ -59936,7 +60403,7 @@ ${JSON.stringify(batch, null, 2)}
   syncAllVersionBadgesV940();
 
   /* ==========================================================================================
-     ۱. تعمیر ریشه‌ای سیستم به‌روزرسانی (CentralUpdateManager v9.5.0)
+     ۱. تعمیر ریشه‌ای سیستم به‌روزرسانی (CentralUpdateManager v9.6.0)
      - رفع کرش متدهای ناموجود setStatusUI و setButtonsDisabled
      - رفع ناهماهنگی کلید sessionStorage (تأیید قطعی نسخه جدید پس از Reload)
      - حذف forceRefreshCacheAssets مخرب هنگام نبود waiting worker
@@ -60288,7 +60755,7 @@ ${JSON.stringify(batch, null, 2)}
   }
 
   /* ==========================================================================================
-     ۲. تعمیر ریشه‌ای موتور رفتار و پاداش عدم منفی (SmartBehaviorEngine v9.5.0)
+     ۲. تعمیر ریشه‌ای موتور رفتار و پاداش عدم منفی (SmartBehaviorEngine v9.6.0)
      - احترام قطعی به فعال/غیرفعال بودن enableNoNegBonus
      - اعمال واقعی bonusOnNeutralizedZero هنگام خنثی شدن مثبت و منفی
      - حفظ ۱۰۰٪ سابقه پاداش‌های خودکار عدم منفی هنگام غیرفعال‌سازی (آرشیو به جای حذف)
@@ -60370,7 +60837,7 @@ ${JSON.stringify(batch, null, 2)}
   }
 
   /* ==========================================================================================
-     ۳. سخت‌سازی موتور مرکزی نمره‌دهی (FlexibleGradingEngine & CentralGradeEngine v9.5.0)
+     ۳. سخت‌سازی موتور مرکزی نمره‌دهی (FlexibleGradingEngine & CentralGradeEngine v9.6.0)
      - جلوگیری قطعی از تجاوز نمره موقت ناقص از سقف بخش‌های ثبت‌شده (recordedShareOfTotal)
      - جلوگیری قطعی از تجاوز نمره نهایی کامل از سقف تنظیم‌شده (totalMaxScore)
      - هم‌ترازی ۱۰۰٪ تمام ماژول‌ها (کارت، شبیه‌ساز، کارنامه، رتبه‌بندی، گزارش‌گیری)
@@ -61179,10 +61646,10 @@ ${JSON.stringify(batch, null, 2)}
 
 })();
 </script>
-<!-- ==================== END V9.5.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
+<!-- ==================== END V9.6.0 ROOT-CAUSE AUDIT REMEDIATION & UNIFICATION SUITE ==================== -->
 
 
-<!-- ==================== V9.5.0 MASTER ENGINEERING UPGRADE SUITE (23 FIXES) ==================== -->
+<!-- ==================== V9.6.0 MASTER ENGINEERING UPGRADE SUITE (23 FIXES) ==================== -->
 <style id="v950MasterStyles">
 /* Req 1: Clean Fullscreen Mode for Comprehensive Student List (#attendance) */
 body.v950-att-fullscreen .topbar,
@@ -61470,7 +61937,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V950_VER = '9.5.0';
+  const V950_VER = '9.6.0';
   window.DANESH_APP_VERSION = V950_VER;
   window.DAM_AUDIT_VERSION = V950_VER;
 
@@ -62524,7 +62991,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     window.ReportApp.exportCurrent = async function(kind, customOpts = null) {
       if (kind === 'print_pdf' || kind === 'pdf_styled') {
         const res = this.collectData(customOpts || {});
-        const htmlDoc = `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>گزارش استودیو گزارش — دانش‌آموز من 9.5.0</title><style>${document.getElementById('v950MasterStyles')?.textContent || ''} @media print{.no-print{display:none!important} body{margin:0}}</style></head><body style="margin:14px;background:#fff">${buildCleanStylishReportHTML(res, true)}</body></html>`;
+        const htmlDoc = `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>گزارش استودیو گزارش — دانش‌آموز من 9.6.0</title><style>${document.getElementById('v950MasterStyles')?.textContent || ''} @media print{.no-print{display:none!important} body{margin:0}}</style></head><body style="margin:14px;background:#fff">${buildCleanStylishReportHTML(res, true)}</body></html>`;
         const w = window.open('', '_blank');
         if (w) { w.document.write(htmlDoc); w.document.close(); }
         return { ok: true, format: 'print_pdf' };
@@ -62700,7 +63167,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
           </svg>
         </div>
         <h2 style="margin:0 0 4px;font-size:20px;font-weight:900;color:#9A3412">ورود به دانش‌آموز من</h2>
-        <p style="margin:0 0 16px;font-size:12.5px;color:#64748B">دفتر هوشمند معلم · نسخه ۹.۵.۰</p>
+        <p style="margin:0 0 16px;font-size:12.5px;color:#64748B">دفتر هوشمند معلم · نسخه ۹.۶.۰</p>
         <div style="display:grid;gap:9px">
           <button type="button" class="v950-login-oauth-btn primary-google" onclick="if(typeof signInWithGoogleQuick==='function')signInWithGoogleQuick();document.getElementById('cyberIntroOverlay').classList.add('intro-hidden');">
             <span>🔵</span><span>ورود با حساب گوگل (Google)</span>
@@ -62731,9 +63198,9 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
   function bootV950() {
     setupSettingsPanesV950();
     renderModernOrangeLogin();
-    // Ensure topVersion always displays ۹.۵.۰
+    // Ensure topVersion always displays ۹.۶.۰
     const tv = document.getElementById('topVersion');
-    if (tv) tv.textContent = 'نسخه ۹.۵.۰';
+    if (tv) tv.textContent = 'نسخه ۹.۶.۰';
     if (typeof window.renderInternalVaultUI === 'function') {
       window.renderInternalVaultUI().catch(() => {});
     }
@@ -62746,7 +63213,2070 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
   }
 })();
 </script>
-<!-- ==================== END V9.5.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
+<!-- ==================== END V9.6.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
+
+
+<!-- ==================== V9.6.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
+<script id="v960MasterUpgradeSuite">
+(function() {
+  'use strict';
+
+  const V960_VERSION = '9.6.0';
+  const V960_VERSION_FA = '۹.۶.۰';
+  window.DANESH_APP_VERSION = V960_VERSION;
+  window.DAM_AUDIT_VERSION = V960_VERSION;
+
+  function safeFa(n) {
+    if (typeof fa === 'function') return fa(n);
+    return String(n ?? '').replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+  }
+  function safeEsc(s) {
+    if (typeof esc === 'function') return esc(s);
+    return String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+  }
+  function round2(n) {
+    return Math.round((Number(n) || 0) * 100) / 100;
+  }
+  function fmtScoreV960(n) {
+    if (n === null || n === undefined || !Number.isFinite(Number(n))) return '—';
+    const r = round2(n);
+    const str = Number.isInteger(r) ? String(r) : r.toFixed(2).replace(/\.?0+$/, '');
+    return safeFa(str);
+  }
+  function normFa(s) {
+    return String(s || '')
+      .replace(/ي/g, 'ی')
+      .replace(/ك/g, 'ک')
+      .replace(/\u200c/g, ' ')
+      .replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLowerCase();
+  }
+
+  /* ==========================================================================
+     REQ 20: Native Offline-First Hybrid Smart Engine (window.DaneshSmartEngine)
+     Response target: < 50ms offline on Android, zero internet required.
+     ========================================================================== */
+  window.DaneshSmartEngine = {
+    version: '1.0.0-v960',
+
+    _getCap(cls) {
+      if (typeof window.getClassAvgCap === 'function') return window.getClassAvgCap(cls);
+      const v = Number(cls?.classAvgCap || cls?.gradingConfig?.totalMaxScore || 20);
+      return Number.isFinite(v) && v > 0 ? v : 20;
+    },
+
+    _getExact(cls, st, subjectOverride = null) {
+      if (typeof window.v950CalculateExactStudentReport === 'function') {
+        return window.v950CalculateExactStudentReport(cls, st, subjectOverride);
+      }
+      const cap = this._getCap(cls);
+      return {
+        cap, finalScore: null, continuousScore: null, oralAvg: null, writtenAvg: null,
+        termScore: null, oralItems: [], posCount: 0, negCount: 0, behaviorImpact: 0,
+        absences: 0, statusLabel: 'عادی', statusClass: 'normal', hasScore: false,
+        weights: { wClass: 1, wContExam: 1, wTerm: 2, posVal: 0.25, bonusNoNeg: 0.5, maxNegAllowed: 3, penPerNeg: 0.5 }
+      };
+    },
+
+    /**
+     * 1. Grade trend analysis (صعودی، پایدار، نوسانی، نزولی),
+     *    absence-vs-grade-drop correlation detection, and final score prediction.
+     */
+    analyzeStudent(cls, st, subjectOverride = null) {
+      const t0 = performance.now();
+      const cap = this._getCap(cls);
+      const ex = this._getExact(cls, st, subjectOverride);
+
+      // Build chronological series of normalized scores (scaled to cap)
+      const series = [];
+      if (ex.oralItems && ex.oralItems.length) {
+        ex.oralItems.forEach((o, i) => {
+          series.push({ idx: i, date: o.date || '', val: Number(o.scaled), kind: 'oral' });
+        });
+      }
+      const grades = Array.isArray(st?.grades) ? st.grades : [];
+      grades.forEach((g, i) => {
+        const sc = Number(g.score);
+        const mx = Number(g.maxScore || cap) || cap;
+        if (Number.isFinite(sc) && mx > 0) {
+          series.push({ idx: series.length + i, date: g.date || '', val: round2((sc / mx) * cap), kind: g.type || 'grade' });
+        }
+      });
+      series.sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+
+      let trend = 'پایدار';
+      let trendIcon = '➡️';
+      let slope = 0;
+      let volatility = 0;
+      if (series.length >= 2) {
+        const n = series.length;
+        const vals = series.map(x => x.val);
+        const mean = vals.reduce((a, b) => a + b, 0) / n;
+        let num = 0, den = 0;
+        for (let i = 0; i < n; i++) {
+          const dx = i - (n - 1) / 2;
+          num += dx * (vals[i] - mean);
+          den += dx * dx;
+        }
+        slope = den > 0 ? round2(num / den) : 0;
+        const variance = vals.reduce((a, v) => a + Math.pow(v - mean, 2), 0) / n;
+        volatility = round2(Math.sqrt(variance));
+
+        if (slope >= cap * 0.03) { trend = 'صعودی'; trendIcon = '📈'; }
+        else if (slope <= -cap * 0.03) { trend = 'نزولی'; trendIcon = '📉'; }
+        else if (volatility >= cap * 0.14) { trend = 'نوسانی'; trendIcon = '〰️'; }
+        else { trend = 'پایدار'; trendIcon = '➡️'; }
+      }
+
+      // Absence-vs-grade-drop correlation
+      let directAbs = 0;
+      Object.values(cls?.attendance || {}).forEach(dayRec => {
+        if (dayRec && dayRec[st?.id]?.status === 'absent') directAbs++;
+      });
+      const absCount = Math.max(ex.absences || 0, directAbs);
+      let absenceDropLink = false;
+      let absenceNote = '';
+      if (absCount >= 2 && (trend === 'نزولی' || (ex.finalScore !== null && ex.finalScore < cap * 0.72))) {
+        absenceDropLink = true;
+        absenceNote = `همبستگی میان ${safeFa(absCount)} جلسه غیبت و افت عملکرد درسی دیده می‌شود.`;
+      } else if (absCount >= 3) {
+        absenceDropLink = true;
+        absenceNote = `تعدد غیبت‌ها (${safeFa(absCount)} جلسه) ریسک افت درسی در ارزشیابی پایانی را بالا می‌برد.`;
+      }
+
+      // Final score prediction based on current score + trend + behavior
+      let predictedFinal = null;
+      if (ex.finalScore !== null) {
+        const trendAdj = Math.max(-cap * 0.08, Math.min(cap * 0.08, slope * 0.6));
+        const absPenalty = absCount >= 3 ? -cap * 0.03 : 0;
+        predictedFinal = round2(Math.max(0, Math.min(cap, ex.finalScore + trendAdj + absPenalty)));
+      }
+
+      const elapsedMs = round2(performance.now() - t0);
+      return {
+        cap,
+        exact: ex,
+        seriesCount: series.length,
+        trend,
+        trendIcon,
+        slope,
+        volatility,
+        absences: absCount,
+        absenceDropLink,
+        absenceNote,
+        predictedFinal,
+        elapsedMs
+      };
+    },
+
+    /**
+     * 2. Dynamic, respectful, non-cliché counseling & «توصیه به خانواده»
+     */
+    generateFamilyAdvice(cls, st, subjectOverride = null) {
+      const a = this.analyzeStudent(cls, st, subjectOverride);
+      const ex = a.exact;
+      const cap = a.cap;
+      const fullName = `${st?.name || ''} ${st?.lastName || ''}`.trim() || 'دانش‌آموز عزیز';
+      const score = ex.finalScore;
+      const parts = [];
+
+      if (score === null) {
+        parts.push(`اولیای گرامی «${fullName}»؛ هنوز نمره رسمی ثبت نشده است.`);
+        if (ex.absences > 0) parts.push(`تاکنون ${safeFa(ex.absences)} غیبت ثبت شده که پیگیری حضور منظم بسیار مؤثر خواهد بود.`);
+        else if (ex.posCount > 0) parts.push(`با ثبت ${safeFa(ex.posCount)} امتیاز مثبت، مشارکت کلاسی امیدوارکننده است.`);
+        else parts.push(`همراهی منظم در انجام تکالیف هفتگی به شروعی قوی کمک می‌کند.`);
+        return parts.join(' ');
+      }
+
+      const ratio = score / cap;
+      if (ratio >= 0.9) {
+        parts.push(`اولیای گرامی «${fullName}»؛ عملکرد درسی بسیار درخشان است (${fmtScoreV960(score)} از ${safeFa(cap)}).`);
+        if (a.trend === 'صعودی') parts.push(`روند پیشرفت صعودی و تحسین‌برانگیز است؛ تشویق به مطالعه تکمیلی پیشنهاد می‌شود.`);
+        else if (a.trend === 'نزولی') parts.push(`با وجود معدل بالا، افت جزئی اخیر نیاز به حفظ نظم مطالعه دارد.`);
+        else parts.push(`تداوم همین روال منظم و تقویت اعتمادبه‌نفس ایشان ارزشمند است.`);
+      } else if (ratio >= 0.75) {
+        parts.push(`اولیای گرامی «${fullName}»؛ سطح علمی خوب و قابل قبول است (${fmtScoreV960(score)} از ${safeFa(cap)}).`);
+        if (a.trend === 'صعودی') parts.push(`روند روبه‌رشد نمرات نشان می‌دهد با تمرین منظم، رسیدن به سطح برتر کاملاً در دسترس است.`);
+        else if (a.trend === 'نوسانی') parts.push(`به دلیل نوسان نمرات، مرور کوتاه روزانه ۲۰ دقیقه‌ای به تثبیت یادگیری کمک می‌کند.`);
+        else parts.push(`با هدف‌گذاری روی رفع اشکالات جزئی و پرسش‌های کلاسی، جای رشد بیشتری دارد.`);
+      } else if (ratio >= 0.6) {
+        parts.push(`اولیای گرامی «${fullName}»؛ نمره فعلی ${fmtScoreV960(score)} از ${safeFa(cap)} است و ظرفیت پیشرفت قابل‌توجهی دارد.`);
+        if (a.absenceDropLink) parts.push(a.absenceNote);
+        else parts.push(`تخصیص ۳۰ دقیقه مطالعه پیوسته و حل تمرین‌های کتاب درسی روند یادگیری را تقویت می‌کند.`);
+      } else {
+        parts.push(`اولیای گرامی «${fullName}»؛ با نمره ${fmtScoreV960(score)} از ${safeFa(cap)} نیاز به همراهی مهربانانه و برنامه‌ریزی تقویتی وجود دارد.`);
+        if (a.absenceDropLink) parts.push(a.absenceNote);
+        else parts.push(`مرور گام‌به‌گام مباحث پایه و هماهنگی با دبیر برای رفع اشکال فردی بسیار مؤثر است.`);
+      }
+
+      if (ex.negCount > ex.weights.maxNegAllowed) {
+        parts.push(`در بخش انضباطی (${safeFa(ex.negCount)} مورد منفی)، گفت‌وگوی آرام و توافق بر هدف «جلسات بدون منفی» توصیه می‌شود.`);
+      } else if (ex.posCount >= 3 && ex.negCount === 0) {
+        parts.push(`اخلاق و مشارکت کلاسی (+${safeFa(ex.posCount)} مثبت بدون منفی) مایه افتخار کلاس است.`);
+      }
+      if (st?.status === 'attention' || st?.specialAttention) {
+        parts.push(`حمایت عاطفی و پیگیری منظم در منزل اثر مثبتی بر آرامش و تمرکز ایشان دارد.`);
+      }
+
+      return parts.join(' ');
+    },
+
+    generateCounseling(cls, st, subjectOverride = null) {
+      const a = this.analyzeStudent(cls, st, subjectOverride);
+      const ex = a.exact;
+      const cap = a.cap;
+      const name = `${st?.name || ''} ${st?.lastName || ''}`.trim() || 'دانش‌آموز';
+      const lines = [];
+      lines.push(`${a.trendIcon} وضعیت علمی «${name}»: ${ex.finalScore !== null ? `${fmtScoreV960(ex.finalScore)} از ${safeFa(cap)}` : 'ثبت‌نشده'} | روند: ${a.trend}${a.predictedFinal !== null ? ` | پیش‌بینی پایانی: ${fmtScoreV960(a.predictedFinal)} از ${safeFa(cap)}` : ''}`);
+      if (a.absenceDropLink) lines.push(`⚠️ هشدار غیبت: ${a.absenceNote}`);
+      if (ex.negCount > 0 || ex.posCount > 0) {
+        lines.push(`✨ تعادل رفتاری: +${safeFa(ex.posCount)} مثبت و -${safeFa(ex.negCount)} منفی (تأثیر نمره: ${ex.behaviorImpact >= 0 ? '+' : ''}${fmtScoreV960(ex.behaviorImpact)})`);
+      }
+      lines.push(`🌱 توصیه تربیتی و خانواده: ${this.generateFamilyAdvice(cls, st, subjectOverride)}`);
+      return { text: lines.join('\n'), analysis: a };
+    },
+
+    /**
+     * 3. Classroom management intelligence & balanced peer-buddy grouping
+     */
+    analyzeClassroomAndBuddies(cls) {
+      const t0 = performance.now();
+      const cap = this._getCap(cls);
+      const students = Array.isArray(cls?.students) ? cls.students : [];
+      const evaluated = students.map(st => {
+        const a = this.analyzeStudent(cls, st);
+        return {
+          st,
+          name: `${st.lastName || ''} ${st.name || ''}`.trim() || 'بدون نام',
+          score: a.exact.finalScore,
+          trend: a.trend,
+          absences: a.absences,
+          pos: a.exact.posCount,
+          neg: a.exact.negCount,
+          attn: a.exact.statusLabel !== 'عادی' && a.exact.statusLabel !== 'برتر'
+        };
+      });
+
+      const scored = evaluated.filter(x => x.score !== null);
+      const classAvg = scored.length ? round2(scored.reduce((s, x) => s + x.score, 0) / scored.length) : 0;
+      const dropping = evaluated.filter(x => x.trend === 'نزولی' || (x.score !== null && x.score < cap * 0.6));
+      const top = evaluated.filter(x => x.score !== null && x.score >= cap * 0.85).sort((a, b) => b.score - a.score);
+      const highAbs = evaluated.filter(x => x.absences >= 2).sort((a, b) => b.absences - a.absences);
+
+      // Balanced peer-buddy pairing: pair strongest/calmest mentors with students needing support
+      const sortedAll = [...evaluated].sort((a, b) => (b.score ?? (cap * 0.5)) - (a.score ?? (cap * 0.5)));
+      const buddies = [];
+      let left = 0, right = sortedAll.length - 1;
+      while (left < right) {
+        buddies.push({
+          mentor: sortedAll[left],
+          partner: sortedAll[right],
+          note: `هم‌گروهی متعادل (${fmtScoreV960(sortedAll[left].score)} با ${fmtScoreV960(sortedAll[right].score)})`
+        });
+        left++; right--;
+      }
+      if (left === right && sortedAll[left]) {
+        buddies.push({ mentor: sortedAll[left], partner: null, note: 'گروه سه‌نفره همراه با گروه آخر' });
+      }
+
+      const climate = dropping.length > students.length * 0.35
+        ? 'نیازمند مرور جمعی و تقویت پایه'
+        : classAvg >= cap * 0.82
+          ? 'کلاس پویا و ممتاز'
+          : 'کلاس متعادل با ظرفیت رشد بالا';
+
+      return {
+        cap,
+        total: students.length,
+        classAvg,
+        climate,
+        topCount: top.length,
+        dropping,
+        highAbs,
+        buddies,
+        elapsedMs: round2(performance.now() - t0)
+      };
+    },
+
+    /**
+     * 4. Offline exam question generator from Persian lesson text / PDF text
+     */
+    generateOfflineExam(rawText, opts = {}) {
+      const t0 = performance.now();
+      const text = String(rawText || '').replace(/\s+/g, ' ').trim();
+      const count = Math.max(4, Math.min(20, Number(opts.count) || 8));
+      const sentences = text
+        .split(/[.!؟\n؛]+/)
+        .map(s => s.trim())
+        .filter(s => s.length >= 22);
+
+      const fallbackSentences = [
+        'ارزشیابی مستمر باعث شناسایی به‌موقع نقاط قوت و ضعف دانش‌آموزان در طول سال تحصیلی می‌شود',
+        'مشارکت فعال در فعالیت‌های کلاسی موجب تعمیق یادگیری و افزایش انگیزه دانش‌آموزان می‌گردد',
+        'مرور منظم درس‌ها در پایان هر هفته از فراموشی مطالب کلیدی جلوگیری می‌کند',
+        'همکاری گروهی متعادل در کلاس مهارت‌های ارتباطی و مسئولیت‌پذیری را تقویت می‌نماید'
+      ];
+      const pool = sentences.length >= 2 ? sentences : fallbackSentences;
+      const stopWords = new Set(['است','هست','باشد','شود','می‌شود','می‌گردد','برای','در','از','به','با','که','این','آن','یک','های','هایی','تا','بر','یا','و','را','هر','همه','بسیار','دارد','دارند','کنند','می‌کنند']);
+
+      const extractKeywords = (s) => {
+        return s.split(/\s+/)
+          .map(w => w.replace(/[،,:()«»"']/g, ''))
+          .filter(w => w.length >= 4 && !stopWords.has(w));
+      };
+      const allKeywords = Array.from(new Set(pool.flatMap(extractKeywords)));
+      const questions = [];
+
+      for (let i = 0; i < count; i++) {
+        const sent = pool[i % pool.length];
+        const kws = extractKeywords(sent);
+        const key = kws[Math.floor(kws.length / 2)] || kws[0] || 'مفهوم اصلی';
+        const kindIdx = i % 4;
+
+        if (kindIdx === 0) {
+          // MCQ
+          const distractors = allKeywords.filter(w => w !== key).slice(0, 3);
+          while (distractors.length < 3) distractors.push(['فرآیند جانبی', 'عامل فرعی', 'مورد غیرمرتبط'][distractors.length]);
+          const options = [key, ...distractors].sort((a, b) => a.localeCompare(b, 'fa'));
+          questions.push({
+            id: `dse_q_${i + 1}`,
+            type: 'mcq',
+            typeLabel: 'چهارگزینه‌ای',
+            text: `کدام گزینه جای خالی را به درستی تکمیل می‌کند؟ «${sent.replace(key, '...........')}»`,
+            options,
+            answerKey: key,
+            score: 1
+          });
+        } else if (kindIdx === 1) {
+          // Fill in the blank
+          questions.push({
+            id: `dse_q_${i + 1}`,
+            type: 'blank',
+            typeLabel: 'جای خالی',
+            text: sent.replace(key, '..................') + '.',
+            answerKey: key,
+            score: 1
+          });
+        } else if (kindIdx === 2) {
+          // True / False
+          const makeFalse = (i % 8 === 6) && allKeywords.length > 2;
+          const stmt = makeFalse ? sent.replace(key, allKeywords.find(w => w !== key) || 'عدم ' + key) : sent;
+          questions.push({
+            id: `dse_q_${i + 1}`,
+            type: 'tf',
+            typeLabel: 'صحیح / غلط',
+            text: `درستی یا نادرستی عبارت زیر را مشخص کنید: «${stmt}.»`,
+            answerKey: makeFalse ? 'غلط' : 'صحیح',
+            score: 0.5
+          });
+        } else {
+          // Descriptive
+          questions.push({
+            id: `dse_q_${i + 1}`,
+            type: 'desc',
+            typeLabel: 'تشریحی',
+            text: `نقش و اهمیت «${key}» را بر اساس متن درس به‌طور خلاصه توضیح دهید.`,
+            answerKey: sent,
+            score: 2
+          });
+        }
+      }
+
+      return {
+        ok: true,
+        offline: true,
+        questions,
+        answerKey: questions.map((q, i) => `${safeFa(i + 1)}. [${q.typeLabel}] ${q.answerKey}`),
+        elapsedMs: round2(performance.now() - t0)
+      };
+    },
+
+    /**
+     * 5. Fast Persian Q&A assistant over live class database (< 50ms)
+     */
+    answerPersianQuery(query, scope = {}) {
+      const t0 = performance.now();
+      const q = normFa(query);
+      const schools = (typeof db !== 'undefined' && Array.isArray(db?.schools)) ? db.schools : [];
+      const rows = [];
+
+      schools.forEach(s => {
+        if (scope.sid && s.id !== scope.sid) return;
+        (s.classes || []).forEach(c => {
+          if (scope.cid && c.id !== scope.cid) return;
+          const cap = this._getCap(c);
+          (c.students || []).forEach(st => {
+            const a = this.analyzeStudent(c, st);
+            rows.push({
+              school: s, cls: c, st, cap,
+              name: `${st.lastName || ''} ${st.name || ''}`.trim() || 'بدون نام',
+              score: a.exact.finalScore,
+              absences: a.absences,
+              pos: a.exact.posCount,
+              neg: a.exact.negCount,
+              trend: a.trend,
+              statusLabel: a.exact.statusLabel,
+              analysis: a
+            });
+          });
+        });
+      });
+
+      if (!rows.length) {
+        return { answer: 'هنوز دانش‌آموزی در محدوده انتخاب‌شده ثبت نشده است.', elapsedMs: round2(performance.now() - t0) };
+      }
+
+      let answer = '';
+      if (/افت|ضعیف|نزولی|کمترین|نیازمند/.test(q)) {
+        const list = rows
+          .filter(r => r.trend === 'نزولی' || (r.score !== null && r.score < r.cap * 0.65) || r.statusLabel === 'توجه ویژه')
+          .sort((a, b) => (a.score ?? 999) - (b.score ?? 999))
+          .slice(0, 8);
+        answer = list.length
+          ? `📉 دانش‌آموزان دارای افت یا نیازمند توجه (${safeFa(list.length)} نفر):\n` +
+            list.map((r, i) => `${safeFa(i + 1)}. ${r.name} (${r.cls.name}) — نمره: ${fmtScoreV960(r.score)} از ${safeFa(r.cap)} | روند: ${r.trend} | غیبت: ${safeFa(r.absences)}`).join('\n')
+          : '✅ خوشبختانه در حال حاضر دانش‌آموزی با افت درسی محسوس یافت نشد.';
+      } else if (/غیبت|غایب/.test(q)) {
+        const list = [...rows].filter(r => r.absences > 0).sort((a, b) => b.absences - a.absences).slice(0, 8);
+        answer = list.length
+          ? `📅 بیشترین غیبت‌ها:\n` +
+            list.map((r, i) => `${safeFa(i + 1)}. ${r.name} (${r.cls.name}) — ${safeFa(r.absences)} غیبت | نمره: ${fmtScoreV960(r.score)} از ${safeFa(r.cap)}`).join('\n')
+          : '✅ هیچ غیبتی ثبت نشده است.';
+      } else if (/برتر|بهترین|ممتاز|بالاترین|اول/.test(q)) {
+        const list = [...rows].filter(r => r.score !== null).sort((a, b) => (b.score / b.cap) - (a.score / a.cap)).slice(0, 6);
+        answer = list.length
+          ? `🏆 نفرات برتر:\n` +
+            list.map((r, i) => `${safeFa(i + 1)}. ${r.name} (${r.cls.name}) — ${fmtScoreV960(r.score)} از ${safeFa(r.cap)} (+${safeFa(r.pos)} مثبت)`).join('\n')
+          : 'هنوز نمره‌ای برای رتبه‌بندی ثبت نشده است.';
+      } else if (/مثبت/.test(q)) {
+        const list = [...rows].filter(r => r.pos > 0).sort((a, b) => b.pos - a.pos).slice(0, 6);
+        answer = list.length
+          ? `➕ بیشترین امتیاز مثبت:\n` + list.map((r, i) => `${safeFa(i + 1)}. ${r.name} — +${safeFa(r.pos)} مثبت`).join('\n')
+          : 'امتیاز مثبتی ثبت نشده است.';
+      } else if (/منفی|انضباط/.test(q)) {
+        const list = [...rows].filter(r => r.neg > 0).sort((a, b) => b.neg - a.neg).slice(0, 6);
+        answer = list.length
+          ? `⚠️ بیشترین موارد منفی:\n` + list.map((r, i) => `${safeFa(i + 1)}. ${r.name} — -${safeFa(r.neg)} منفی`).join('\n')
+          : '✅ هیچ مورد منفی ثبت نشده است.';
+      } else if (/میانگین|معدل|آمار/.test(q)) {
+        const scored = rows.filter(r => r.score !== null);
+        const avg = scored.length ? round2(scored.reduce((s, r) => s + r.score, 0) / scored.length) : 0;
+        const cap = rows[0].cap;
+        const totalAbs = rows.reduce((s, r) => s + r.absences, 0);
+        answer = `📊 خلاصه آمار (${safeFa(rows.length)} دانش‌آموز):\n• میانگین کل: ${fmtScoreV960(avg)} از ${safeFa(cap)}\n• مجموع غیبت‌ها: ${safeFa(totalAbs)}\n• نفرات برتر: ${safeFa(rows.filter(r => r.score !== null && r.score >= r.cap * 0.85).length)} نفر`;
+      } else if (/گروه|همیار|بندی/.test(q)) {
+        const targetCls = rows[0].cls;
+        const grp = this.analyzeClassroomAndBuddies(targetCls);
+        answer = `🤝 پیشنهاد هم‌گروهی متعادل کلاس ${targetCls.name} (${grp.climate}):\n` +
+          grp.buddies.slice(0, 6).map((b, i) => `${safeFa(i + 1)}. ${b.mentor.name}${b.partner ? ` + ${b.partner.name}` : ''} (${b.note})`).join('\n');
+      } else {
+        // Try matching a student name
+        const matched = rows.find(r => q.length >= 2 && (normFa(r.name).includes(q) || normFa(r.st.lastName).includes(q) || normFa(r.st.name).includes(q)));
+        if (matched) {
+          answer = this.generateCounseling(matched.cls, matched.st).text;
+        } else {
+          const scored = rows.filter(r => r.score !== null);
+          const avg = scored.length ? round2(scored.reduce((s, r) => s + r.score, 0) / scored.length) : 0;
+          answer = `🧠 دستیار بومی «دانش‌آموز من» آماده است (${safeFa(rows.length)} دانش‌آموز | میانگین: ${fmtScoreV960(avg)} از ${safeFa(rows[0].cap)}).\nمی‌توانید بپرسید: «کیا افت کردن؟»، «بیشترین غیبت مال کیه؟»، «نفرات برتر کیان؟»، «گروه‌بندی همیار» یا نام یک دانش‌آموز را بنویسید.`;
+        }
+      }
+
+      return { answer, elapsedMs: round2(performance.now() - t0) };
+    },
+
+    /**
+     * 6. Hybrid Router: Online multi-key API pool with automatic 429/Quota rotation & offline fallback
+     */
+    async runHybridTask(taskType, payload = {}) {
+      const pool = window.V950AiKeyPool;
+      const hasOnlineKey = navigator.onLine && pool && typeof pool.getKeys === 'function' && pool.getKeys().length > 0;
+
+      if (hasOnlineKey && window.CentralAiEngine && typeof window.CentralAiEngine[taskType] === 'function') {
+        const keys = pool.getKeys();
+        for (let attempt = 0; attempt < keys.length; attempt++) {
+          try {
+            const res = await window.CentralAiEngine[taskType](payload);
+            if (res && !res.error) return { ok: true, mode: 'online_api', data: res };
+          } catch (err) {
+            const msg = String(err?.message || err || '');
+            if (/429|quota|limit|resource_exhausted/i.test(msg) && typeof pool.rotateOnQuotaError === 'function') {
+              pool.rotateOnQuotaError();
+              continue;
+            }
+            break;
+          }
+        }
+      }
+
+      // Seamless instant offline fallback to DaneshSmartEngine
+      if (taskType === 'qa') return { ok: true, mode: 'offline_native', data: this.answerPersianQuery(payload.query || '', payload.scope || {}) };
+      if (taskType === 'exam') return { ok: true, mode: 'offline_native', data: this.generateOfflineExam(payload.text || '', payload.opts || {}) };
+      if (taskType === 'counseling' && payload.cls && payload.st) return { ok: true, mode: 'offline_native', data: this.generateCounseling(payload.cls, payload.st) };
+      if (taskType === 'classroom' && payload.cls) return { ok: true, mode: 'offline_native', data: this.analyzeClassroomAndBuddies(payload.cls) };
+      return { ok: true, mode: 'offline_native', data: { message: 'پردازش آفلاین بومی انجام شد.' } };
+    }
+  };
+
+  /* ==========================================================================
+     REQ 19: Real-Time Counseling Sync Bus
+     Any change in grades, attendance, positives/negatives, or attention
+     immediately refreshes counseling across Counselor, Profile, Statuses & PDF.
+     ========================================================================== */
+  window.DaneshCounselingSync = {
+    lastTick: 0,
+    notify(reason = 'data_change') {
+      this.lastTick = Date.now();
+      try {
+        // Clear any stale cached counseling strings on students
+        if (typeof db !== 'undefined' && Array.isArray(db?.schools)) {
+          db.schools.forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+            delete st._cachedCounselingV960;
+          })));
+        }
+        // Live refresh student detail counseling box if open
+        const sd = document.getElementById('studentDetail');
+        if (sd && sd.classList.contains('active') && typeof currentSchoolId !== 'undefined' && typeof currentClassId !== 'undefined') {
+          const box = document.getElementById('v960LiveStudentCounselBox');
+          if (box && box.dataset.stid) {
+            const cls = typeof findClass === 'function' ? findClass(currentSchoolId, currentClassId) : null;
+            const st = typeof findStudent === 'function' ? findStudent(currentSchoolId, currentClassId, box.dataset.stid) : null;
+            if (cls && st) {
+              box.textContent = window.DaneshSmartEngine.generateCounseling(cls, st).text;
+            }
+          }
+        }
+        // Live refresh statuses view if active
+        const stView = document.getElementById('statuses');
+        if (stView && stView.classList.contains('active') && typeof window.renderStatuses === 'function' && !window._v960InStatusRender) {
+          clearTimeout(this._stTimer);
+          this._stTimer = setTimeout(() => {
+            window._v960InStatusRender = true;
+            try { window.renderStatuses(window._currentStatusFilter || 'attn'); } finally { window._v960InStatusRender = false; }
+          }, 40);
+        }
+      } catch (e) {}
+    }
+  };
+
+  if (typeof window.savePersistent === 'function') {
+    const _origSaveP = window.savePersistent;
+    window.savePersistent = function(...args) {
+      const r = _origSaveP.apply(this, args);
+      window.DaneshCounselingSync.notify('savePersistent');
+      return r;
+    };
+  }
+
+  /* ==========================================================================
+     REQ 13 & 14: Default ALL Class Grades Out of 20 & Eliminate "موقت: ۵ از ۵ (ناقص)"
+     ========================================================================== */
+  if (typeof window.getClassAvgCap === 'function') {
+    const _origGetCap = window.getClassAvgCap;
+    window.getClassAvgCap = function(c) {
+      const cap = _origGetCap(c);
+      return (Number.isFinite(cap) && cap > 0) ? cap : 20;
+    };
+  }
+
+  if (window.FlexibleGradingEngine) {
+    if (typeof window.FlexibleGradingEngine.ensureClassConfig === 'function') {
+      const _origEnsureCfg = window.FlexibleGradingEngine.ensureClassConfig.bind(window.FlexibleGradingEngine);
+      window.FlexibleGradingEngine.ensureClassConfig = function(c) {
+        const cfg = _origEnsureCfg(c);
+        if (cfg && !c?._v960CustomCapSet) {
+          const cap = window.getClassAvgCap(c);
+          cfg.totalMaxScore = cap;
+          cfg.classAvgCap = cap;
+          if (cfg.sections) {
+            ['continuous', 'oral', 'classwork', 'written', 'final', 'term'].forEach(k => {
+              if (cfg.sections[k] && (!cfg.sections[k].maxScore || cfg.sections[k].maxScore === 5)) {
+                cfg.sections[k].maxScore = cap;
+              }
+            });
+          }
+        }
+        return cfg;
+      };
+    }
+
+    if (typeof window.FlexibleGradingEngine.calculateStudentFullGradeReport === 'function') {
+      const _origFlexV960 = window.FlexibleGradingEngine.calculateStudentFullGradeReport.bind(window.FlexibleGradingEngine);
+      window.FlexibleGradingEngine.calculateStudentFullGradeReport = function(c, st, subjectOverride = null) {
+        const base = _origFlexV960(c, st, subjectOverride) || {};
+        const exact = window.v950CalculateExactStudentReport(c, st, subjectOverride);
+        const cap = exact.cap || 20;
+        base.totalMaxScore = cap;
+        base.classAvgCap = cap;
+        base.recordedShareOfTotal = cap;
+        base.unrecordedShareOfTotal = 0;
+        base.isComplete = exact.finalScore !== null;
+        base.hasAnyScore = exact.hasScore;
+        base.finalScore = exact.finalScore;
+        base.provisionalScore = exact.finalScore;
+        base.effectiveFinalScore = exact.finalScore;
+        base.displayFinalScore = exact.finalScore;
+        base.continuousScore = exact.continuousScore;
+        base.oralAvg = exact.oralAvg;
+        base.writtenAvg = exact.writtenAvg;
+        base.termScore = exact.termScore;
+        base.behaviorImpact = exact.behaviorImpact;
+        base.exactV950 = exact;
+        const txt = exact.finalScore !== null ? `${fmtScoreV960(exact.finalScore)} از ${safeFa(cap)}` : 'ثبت‌نشده';
+        base.finalDisplay = txt;
+        base.shortFinalTableDisplay = txt;
+        if (base.config) {
+          base.config.totalMaxScore = cap;
+          base.config.classAvgCap = cap;
+        }
+        return base;
+      };
+    }
+  }
+
+  // Override renderTopStudents so it ALWAYS shows exact score out of class cap (default 20)
+  window.renderTopStudents = function(c) {
+    if (!c || !Array.isArray(c.students)) return '';
+    const cap = window.getClassAvgCap(c);
+    const items = c.students.map(st => {
+      const ex = window.v950CalculateExactStudentReport(c, st);
+      return { st, score: ex.finalScore, cap };
+    }).filter(x => x.score !== null).sort((a, b) => b.score - a.score).slice(0, 5);
+
+    if (!items.length) return '';
+    return `<div class="card" id="v960TopStudentsCard" style="margin:12px 0">
+      <b>🏆 نفرات برتر کلاس (از ${safeFa(cap)})</b>
+      <div style="display:grid;gap:6px;margin-top:8px">
+        ${items.map((x, i) => `
+          <div class="leader-item">
+            <span><b>${['🥇','🥈','🥉','۴.','۵.'][i]}</b> ${safeEsc(formatStudentName(x.st))}</span>
+            <b style="color:var(--primary-dark)">${fmtScoreV960(x.score)} از ${safeFa(x.cap)}</b>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  };
+  try { renderTopStudents = window.renderTopStudents; } catch (_) {}
+
+  // Override renderClassLineChart to normalize against class cap (default 20)
+  if (typeof window.renderClassLineChart === 'function') {
+    window.renderClassLineChart = function(c) {
+      const cap = window.getClassAvgCap(c);
+      let pts = [];
+      attendanceDates(c).forEach(d => {
+        const scs = (c.students || []).map(st => attendanceScore(c, d, st.id)).filter(x => x !== null);
+        if (scs.length) {
+          const avg = scs.reduce((a, b) => a + b, 0) / scs.length;
+          pts.push({ label: formatAttendanceDate(d), avg: round2(avg) });
+        }
+      });
+      if (pts.length < 2) return '';
+      const w = 560, h = 125;
+      const svgPts = pts.map((p, i) => `${(i / (pts.length - 1)) * (w - 60) + 30},${h - (Math.min(cap, p.avg) / cap) * (h - 40) - 20}`).join(' ');
+      return `<div class="chart-container"><b>📈 روند میانگین جلسات کلاس (از ${safeFa(cap)})</b><div class="chart-box"><svg class="chart" viewBox="0 0 ${w} ${h}"><line x1="25" y1="${h - 20}" x2="${w - 25}" y2="${h - 20}" stroke="rgba(56,189,248,0.28)" stroke-width="1.5"/><polyline fill="none" stroke="#22D3EE" stroke-width="3" points="${svgPts}"/>${pts.map((p, i) => { const x = (i / (pts.length - 1)) * (w - 60) + 30, y = h - (Math.min(cap, p.avg) / cap) * (h - 40) - 20; return `<circle cx="${x}" cy="${y}" r="4" fill="#22D3EE"/><text x="${x}" y="${y - 7}" font-size="9.5" text-anchor="middle" fill="currentColor">${fmtScoreV960(p.avg)}</text>`; }).join('')}</svg></div></div>`;
+    };
+  }
+
+  // Fix getStudentAttentionDetails & renderStatuses to evaluate accurately on out-of-20 class cap
+  if (typeof window.getStudentAttentionDetails === 'function') {
+    const _origAttnDet = window.getStudentAttentionDetails;
+    window.getStudentAttentionDetails = function(c, st) {
+      const det = _origAttnDet(c, st) || { isAttn: false, categories: [], reasons: [] };
+      const ex = window.v950CalculateExactStudentReport(c, st);
+      const cap = ex.cap || 20;
+      const cats = new Set(det.categories || []);
+      const reasons = [];
+
+      // Rebuild accurate academic check on out-of-cap scale
+      cats.delete('academic');
+      if (ex.finalScore !== null && ex.finalScore < cap * 0.6) {
+        cats.add('academic');
+        reasons.push(`افت درسی (${fmtScoreV960(ex.finalScore)} از ${safeFa(cap)})`);
+      }
+      if (ex.negCount > (ex.weights?.maxNegAllowed ?? 3)) {
+        cats.add('discipline');
+        reasons.push(`انضباطی (${safeFa(ex.negCount)} منفی)`);
+      }
+      if (ex.absences >= 3) {
+        cats.add('absence');
+        reasons.push(`غیبت مکرر (${safeFa(ex.absences)} جلسه)`);
+      }
+      if (st?.status === 'attention' || st?.specialAttention) {
+        cats.add('special');
+        if (st.attentionNote) reasons.push(st.attentionNote);
+      }
+
+      const isAttn = cats.size > 0;
+      const isGood = !isAttn && (st?.status === 'good' || (ex.finalScore !== null && ex.finalScore >= cap * 0.85));
+      return {
+        ...det,
+        isAttn,
+        isGood,
+        score: ex.finalScore,
+        cap,
+        categories: Array.from(cats),
+        reasons: reasons.length ? reasons : (det.reasons || [])
+      };
+    };
+  }
+
+  if (typeof window.renderStatuses === 'function') {
+    const _origRenderStatusesV960 = window.renderStatuses;
+    window.renderStatuses = function(filter = 'attn') {
+      const r = _origRenderStatusesV960(filter);
+      // Re-count good / attn / none accurately on class cap scale and inject live DaneshSmartEngine counseling
+      try {
+        const fSid = window._statusFilterSid || '';
+        const fCid = window._statusFilterCid || '';
+        let gCnt = 0, aCnt = 0, nCnt = 0;
+        const goodItems = [];
+        (db.schools || []).forEach(s => {
+          if (fSid && s.id !== fSid) return;
+          (s.classes || []).forEach(c => {
+            if (fCid && c.id !== fCid) return;
+            (c.students || []).forEach(st => {
+              const det = window.getStudentAttentionDetails(c, st);
+              if (det.isAttn) aCnt++;
+              else if (det.isGood) { gCnt++; goodItems.push({ s, c, st, det }); }
+              else nCnt++;
+            });
+          });
+        });
+        const gc = document.getElementById('goodCount');
+        const ac = document.getElementById('attentionCount');
+        const nc = document.getElementById('noneCount');
+        if (gc) gc.textContent = safeFa(gCnt);
+        if (ac) ac.textContent = safeFa(aCnt);
+        if (nc) nc.textContent = safeFa(nCnt);
+
+        // If viewing 'good' tab and list was empty due to old st.status==='good' only check, populate good students
+        const listEl = document.getElementById('statusesList');
+        if (filter === 'good' && listEl && goodItems.length > 0 && /هیچ|یافت نشد|ثبت نشده/.test(listEl.textContent || '')) {
+          listEl.innerHTML = `<div class="grid">${goodItems.map(x => {
+            const advice = window.DaneshSmartEngine.generateFamilyAdvice(x.c, x.st);
+            return `<div class="card" style="border-color:#86EFAC;background:#F0FDF4">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px">
+                <b style="color:#166534;cursor:pointer" onclick="openStudent('${x.s.id}','${x.c.id}','${x.st.id}')">🏆 ${safeEsc(formatStudentName(x.st))}</b>
+                <span class="chip" style="background:#DCFCE7;color:#166534;font-weight:900">${fmtScoreV960(x.det.score)} از ${safeFa(x.det.cap)}</span>
+              </div>
+              <div class="muted" style="font-size:11.5px;margin-bottom:6px">${safeEsc(x.s.name)} · ${safeEsc(x.c.name)}</div>
+              <div style="font-size:11.5px;line-height:1.65;color:#1E293B;background:#FFFFFF;padding:7px 9px;border-radius:9px;border:1px solid #BBF7D0">🌱 ${safeEsc(advice)}</div>
+            </div>`;
+          }).join('')}</div>`;
+        }
+
+        // Remove duplicate API key bar (Req 18)
+        const dupKeyBar = document.getElementById('counselorUnifiedAiKeyBar');
+        if (dupKeyBar) dupKeyBar.remove();
+      } catch (e) {}
+      return r;
+    };
+    try { renderStatuses = window.renderStatuses; } catch (_) {}
+  }
+
+  /* ==========================================================================
+     REQ 1-7: PDF-Only Report Studio + Clean 12-Col Fixed Symmetric PDF Export
+     ========================================================================== */
+  function makeWatermarkSvgDataUri() {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="210" viewBox="0 0 320 210"><g transform="translate(160,105) rotate(-28)"><text x="0" y="0" text-anchor="middle" font-family="Vazirmatn,Tahoma,sans-serif" font-size="17" font-weight="800" fill="#9A3412">دانش‌آموز من · دفتر هوشمند معلم</text></g></svg>`;
+    return `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}")`;
+  }
+
+  function mapStatusBadgeV960(label, clsName) {
+    if (/برتر/.test(label)) return { text: '🏆 برتر', cls: 'top' };
+    if (/انضباطی/.test(label)) return { text: '⚠️ انضباطی', cls: 'discipline' };
+    if (/افت/.test(label)) return { text: '📉 افت درسی', cls: 'drop' };
+    if (/توجه/.test(label)) return { text: '⭐ توجه ویژه', cls: 'attention' };
+    return { text: 'عادی', cls: 'normal' };
+  }
+
+  function buildV960StylishReportHTML(res, forPrint = false) {
+    if (!res || !Array.isArray(res.sections) || !res.sections.length) {
+      return '<div class="muted" style="padding:20px;text-align:center">داده‌ای برای نمایش گزارش انتخاب نشده است.</div>';
+    }
+    const todayFa = typeof formatJalaliDate === 'function' ? formatJalaliDate(localISODate()) : '';
+    const teacherName = typeof getTeacherName === 'function' ? getTeacherName() : 'دبیر';
+    const wmBg = makeWatermarkSvgDataUri();
+
+    const sectionsHtml = res.sections.map(sec => {
+      const cls = sec.cls;
+      const sch = sec.school;
+      const cap = window.getClassAvgCap(cls);
+      const items = sec.items || [];
+      let sumFinal = 0, cntFinal = 0, sumPos = 0, sumNeg = 0, sumAbs = 0, cntAttn = 0;
+
+      const sampleRules = window.v950CalculateExactStudentReport(cls, items[0]?.st || {}, res.subjectFilter || null).weights;
+
+      const rowsHtml = items.map((it, idx) => {
+        const st = it.st;
+        const ex = window.v950CalculateExactStudentReport(cls, st, res.subjectFilter || null);
+        if (ex.finalScore !== null) { sumFinal += ex.finalScore; cntFinal++; }
+        sumPos += ex.posCount;
+        sumNeg += ex.negCount;
+        sumAbs += ex.absences;
+        if (ex.statusLabel === 'توجه ویژه' || ex.statusLabel === 'انضباطی' || ex.statusLabel === 'افت درسی') cntAttn++;
+
+        const fullName = `${st.lastName || ''} ${st.name || ''}`.trim() || 'بدون نام';
+        const avatarHtml = st.photo
+          ? `<img class="v960-rep-avatar" src="${st.photo}" alt="">`
+          : `<span class="v960-rep-avatar">${safeEsc((st.name || 'د').slice(0, 1))}</span>`;
+
+        const oralDetailText = ex.oralItems.length
+          ? ex.oralItems.map((o, i) => `نوبت ${safeFa(i + 1)}: ${fmtScoreV960(o.score)} از ${safeFa(o.maxScore)} (معادل ${fmtScoreV960(o.scaled)} از ${safeFa(cap)})`).join(' · ') + ` ← میانگین کلاسی: ${fmtScoreV960(ex.oralAvg)} از ${safeFa(cap)}`
+          : 'نمره کلاسی ثبت نشده است.';
+
+        // Req 19 & 20: Live tailored family advice from DaneshSmartEngine
+        const familyAdvice = window.DaneshSmartEngine.generateFamilyAdvice(cls, st, res.subjectFilter || null);
+        const behImpactStr = ex.behaviorImpact > 0 ? `+${fmtScoreV960(ex.behaviorImpact)}` : ex.behaviorImpact < 0 ? `${fmtScoreV960(ex.behaviorImpact)}` : '۰';
+
+        const finClass = ex.finalScore === null ? '' : (ex.finalScore >= cap * 0.85 ? 'good' : ex.finalScore >= cap * 0.6 ? 'warn' : 'bad');
+        const finPillText = ex.finalScore !== null ? `${fmtScoreV960(ex.finalScore)} از ${safeFa(cap)}` : '—';
+        const badge = mapStatusBadgeV960(ex.statusLabel, ex.statusClass);
+
+        return `
+          <tr class="v960-main-row">
+            <td>${safeFa(idx + 1)}</td>
+            <td><div class="v960-rep-stu-cell">${avatarHtml}<span>${safeEsc(fullName)}</span></div></td>
+            <td>${safeEsc(st.fatherName || '—')}</td>
+            <td>${safeFa(ex.absences)}</td>
+            <td>${ex.writtenAvg !== null ? fmtScoreV960(ex.writtenAvg) : '—'}</td>
+            <td>${ex.oralAvg !== null ? fmtScoreV960(ex.oralAvg) : '—'}</td>
+            <td><b>${ex.continuousScore !== null ? fmtScoreV960(ex.continuousScore) : '—'}</b></td>
+            <td dir="ltr">+${safeFa(ex.posCount)} / -${safeFa(ex.negCount)}</td>
+            <td dir="ltr" style="font-weight:800;color:${ex.behaviorImpact >= 0 ? '#15803D' : '#B91C1C'}">${behImpactStr}</td>
+            <td>${ex.termScore !== null ? fmtScoreV960(ex.termScore) : '—'}</td>
+            <td><span class="v960-final-pill ${finClass}">${finPillText}</span></td>
+            <td><span class="v960-status-badge ${badge.cls}">${badge.text}</span></td>
+          </tr>
+          <tr class="v960-rep-subrow">
+            <td colspan="12">
+              <div>🏅 <b>ریز نمرات کلاسی (${safeFa(ex.oralItems.length)} نوبت):</b> ${safeEsc(oralDetailText)}</div>
+              <div>🌱 <b>توصیه به خانواده:</b> ${safeEsc(familyAdvice)}</div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      const classAvg = cntFinal > 0 ? round2(sumFinal / cntFinal) : 0;
+
+      return `
+        <div class="v960-report-section" style="margin-bottom:18px;page-break-after:auto">
+          <div class="v960-rep-legend">
+            <b>📐 راهنمای ضرایب و سقف کارنامه:</b>
+            سقف میانگین کلاس: <b>${safeFa(cap)}</b> · ضریب کتبی مستمر: <b>${safeFa(sampleRules.wContExam)}</b> · ضریب کلاسی: <b>${safeFa(sampleRules.wClass)}</b> · ضریب پایانی: <b>${safeFa(sampleRules.wTerm)}</b>
+            | هر مثبت: <b>+${safeFa(sampleRules.posVal)}</b> · تشویقی بدون منفی: <b>+${safeFa(sampleRules.bonusNoNeg)}</b> · سقف منفی مجاز: <b>${safeFa(sampleRules.maxNegAllowed)}</b> (کسر مازاد: <b>-${safeFa(sampleRules.penPerNeg)}</b>)
+          </div>
+          <div class="v960-rep-print-guide">
+            <span>🖨️ <b>راهنمای چاپ رنگی:</b> هنگام چاپ یا ذخیره PDF در مرورگر، گزینه <b>«گرافیک پس‌زمینه (Background graphics)»</b> را روشن بگذارید.</span>
+            ${forPrint ? `<button type="button" class="no-print" onclick="window.print()" style="background:#EA580C;color:#fff;border:none;border-radius:8px;padding:6px 14px;font-family:inherit;font-weight:900;cursor:pointer">🖨️ چاپ / ذخیره PDF</button>` : ''}
+          </div>
+          <div class="v960-rep-header">
+            <b style="font-size:14.5px;color:#9A3412">🏫 ${safeEsc(sch?.name || '')} — ${safeEsc(cls?.name || '')}</b>
+            <span style="font-size:11.5px;color:#475569">👨‍🏫 دبیر: ${safeEsc(teacherName)} · 📅 ${safeEsc(todayFa)}</span>
+          </div>
+          <div class="v960-rep-kpi-row">
+            <div class="v960-rep-kpi">👥 ${safeFa(items.length)} دانش‌آموز</div>
+            <div class="v960-rep-kpi">⭐ میانگین کل: ${fmtScoreV960(classAvg)} از ${safeFa(cap)}</div>
+            <div class="v960-rep-kpi">➕/➖ +${safeFa(sumPos)} / -${safeFa(sumNeg)}</div>
+            <div class="v960-rep-kpi">📅 غیبت: ${safeFa(sumAbs)}</div>
+            <div class="v960-rep-kpi">🚨 نیازمند توجه: ${safeFa(cntAttn)}</div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="v960-rep-table">
+              <colgroup>
+                <col style="width:4%">
+                <col style="width:19%">
+                <col style="width:9%">
+                <col style="width:5%">
+                <col style="width:7.5%">
+                <col style="width:7%">
+                <col style="width:7.5%">
+                <col style="width:7.5%">
+                <col style="width:6%">
+                <col style="width:6.5%">
+                <col style="width:11%">
+                <col style="width:10%">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>ردیف</th>
+                  <th>نام خانوادگی و نام</th>
+                  <th>نام پدر</th>
+                  <th>غیبت</th>
+                  <th>کتبی مستمر</th>
+                  <th>کلاسی</th>
+                  <th>مستمر کل</th>
+                  <th>مثبت/منفی</th>
+                  <th>تأثیر</th>
+                  <th>پایانی</th>
+                  <th>نهایی (از ${safeFa(cap)})</th>
+                  <th>وضعیت</th>
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}</tbody>
+            </table>
+          </div>
+          <div class="v960-rep-footer">
+            <span>سامانه هوشمند «دانش‌آموز من» · دفتر هوشمند معلم</span>
+            <b>نسخه ${V960_VERSION_FA}</b>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    return `<div class="v960-report-wrap"><div class="v960-watermark-layer" style="background-image:${wmBg}"></div><div class="v960-report-content">${sectionsHtml}</div></div>`;
+  }
+
+  window.buildV960StylishReportHTML = buildV960StylishReportHTML;
+
+  // Upgrade binary PDF generator (GenuineOfficeExporter.buildGenuinePdfBlob) to match the stylish 12-col design + 4.5% watermark + v9.6.0 footer
+  if (window.GenuineOfficeExporter) {
+    const _origPdfBlob = window.GenuineOfficeExporter.buildGenuinePdfBlob?.bind(window.GenuineOfficeExporter);
+    window.GenuineOfficeExporter.buildGenuinePdfBlob = async function(title, subtitle, headers, rows, opts = {}) {
+      try {
+        const res = opts.reportRes || (window.ReportApp && typeof window.ReportApp.collectData === 'function' ? window.ReportApp.collectData(opts.customOpts || {}) : null);
+        if (!res || !Array.isArray(res.sections) || !res.sections.length) {
+          return _origPdfBlob ? await _origPdfBlob(title, subtitle, headers, rows, opts) : null;
+        }
+
+        const pageW = 1122, pageH = 794; // A4 Landscape @ 96dpi-scaled crisp canvas
+        const scale = 2;
+        const marginX = 28;
+        const usableW = pageW - marginX * 2;
+        const colPcts = [0.04, 0.19, 0.09, 0.05, 0.075, 0.07, 0.075, 0.075, 0.06, 0.065, 0.11, 0.10];
+        const colWidths = colPcts.map(p => p * usableW);
+
+        const pages = [];
+        const createPage = (sec, pageNumInSec) => {
+          const cv = document.createElement('canvas');
+          cv.width = pageW * scale;
+          cv.height = pageH * scale;
+          const ctx = cv.getContext('2d');
+          ctx.scale(scale, scale);
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, pageW, pageH);
+
+          // Req 5: Subtle diagonal watermark (~4.5% opacity) across the entire PDF page
+          ctx.save();
+          ctx.globalAlpha = 0.045;
+          ctx.fillStyle = '#9A3412';
+          ctx.font = 'bold 18px Vazirmatn, Tahoma, sans-serif';
+          ctx.textAlign = 'center';
+          for (let wy = 70; wy < pageH + 120; wy += 170) {
+            for (let wx = 120; wx < pageW + 120; wx += 310) {
+              ctx.save();
+              ctx.translate(wx, wy);
+              ctx.rotate(-28 * Math.PI / 180);
+              ctx.fillText('دانش‌آموز من · دفتر هوشمند معلم', 0, 0);
+              ctx.restore();
+            }
+          }
+          ctx.restore();
+
+          const cap = window.getClassAvgCap(sec.cls);
+          let y = 22;
+
+          if (pageNumInSec === 1) {
+            const sampleRules = window.v950CalculateExactStudentReport(sec.cls, sec.items?.[0]?.st || {}, res.subjectFilter || null).weights;
+            // Top weights legend box
+            ctx.fillStyle = '#FFF7ED';
+            ctx.strokeStyle = '#FDBA74';
+            ctx.lineWidth = 1.2;
+            ctx.fillRect(marginX, y, usableW, 30);
+            ctx.strokeRect(marginX, y, usableW, 30);
+            ctx.fillStyle = '#7C2D12';
+            ctx.font = 'bold 10.5px Vazirmatn, Tahoma, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.direction = 'rtl';
+            const legendTxt = `راهنمای ضرایب: سقف کلاس ${safeFa(cap)} · کتبی مستمر ${safeFa(sampleRules.wContExam)} · کلاسی ${safeFa(sampleRules.wClass)} · پایانی ${safeFa(sampleRules.wTerm)} | هر مثبت +${safeFa(sampleRules.posVal)} · تشویقی بدون منفی +${safeFa(sampleRules.bonusNoNeg)} · سقف منفی ${safeFa(sampleRules.maxNegAllowed)} (کسر مازاد -${safeFa(sampleRules.penPerNeg)})`;
+            ctx.fillText(legendTxt, pageW - marginX - 10, y + 19);
+            y += 36;
+
+            // Header bar
+            ctx.fillStyle = '#FFEDD5';
+            ctx.strokeStyle = '#FB923C';
+            ctx.fillRect(marginX, y, usableW, 34);
+            ctx.strokeRect(marginX, y, usableW, 34);
+            ctx.fillStyle = '#9A3412';
+            ctx.font = 'bold 14px Vazirmatn, Tahoma, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText(`${sec.school?.name || ''} — ${sec.cls?.name || ''}`, pageW - marginX - 12, y + 22);
+            ctx.fillStyle = '#475569';
+            ctx.font = '11px Vazirmatn, Tahoma, sans-serif';
+            ctx.textAlign = 'left';
+            const todayFa = typeof formatJalaliDate === 'function' ? formatJalaliDate(localISODate()) : '';
+            const tName = typeof getTeacherName === 'function' ? getTeacherName() : 'دبیر';
+            ctx.fillText(`دبیر: ${tName}  |  تاریخ: ${todayFa}`, marginX + 12, y + 21);
+            y += 40;
+
+            // 5 equal-width KPI capsules
+            const kpis = sec._kpis || [];
+            const kGap = 8;
+            const kW = (usableW - kGap * 4) / 5;
+            kpis.forEach((kTxt, ki) => {
+              const kx = pageW - marginX - (ki + 1) * kW - ki * kGap;
+              ctx.fillStyle = '#FFFBF7';
+              ctx.strokeStyle = '#FED7AA';
+              ctx.fillRect(kx, y, kW, 26);
+              ctx.strokeRect(kx, y, kW, 26);
+              ctx.fillStyle = '#9A3412';
+              ctx.font = 'bold 11px Vazirmatn, Tahoma, sans-serif';
+              ctx.textAlign = 'center';
+              ctx.fillText(kTxt, kx + kW / 2, y + 17);
+            });
+            y += 34;
+          }
+
+          // Table Header (repeats on every page!)
+          const colHeaders = ['ردیف', 'نام خانوادگی و نام', 'نام پدر', 'غیبت', 'کتبی مستمر', 'کلاسی', 'مستمر کل', 'مثبت/منفی', 'تأثیر', 'پایانی', `نهایی (از ${safeFa(cap)})`, 'وضعیت'];
+          let rx = pageW - marginX;
+          ctx.fillStyle = '#EA580C';
+          ctx.fillRect(marginX, y, usableW, 26);
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = 'bold 10.2px Vazirmatn, Tahoma, sans-serif';
+          ctx.textAlign = 'center';
+          colHeaders.forEach((h, ci) => {
+            const cw = colWidths[ci];
+            rx -= cw;
+            ctx.strokeStyle = '#F97316';
+            ctx.strokeRect(rx, y, cw, 26);
+            ctx.fillText(h, rx + cw / 2, y + 17);
+          });
+          y += 26;
+
+          pages.push({ cv, ctx, y, cap });
+          return pages[pages.length - 1];
+        };
+
+        for (const sec of res.sections) {
+          const cap = window.getClassAvgCap(sec.cls);
+          const items = sec.items || [];
+          let sumF = 0, cntF = 0, sumP = 0, sumN = 0, sumA = 0, cntAt = 0;
+          const computed = items.map(it => {
+            const ex = window.v950CalculateExactStudentReport(sec.cls, it.st, res.subjectFilter || null);
+            if (ex.finalScore !== null) { sumF += ex.finalScore; cntF++; }
+            sumP += ex.posCount; sumN += ex.negCount; sumA += ex.absences;
+            if (['توجه ویژه','انضباطی','افت درسی'].includes(ex.statusLabel)) cntAt++;
+            return { st: it.st, ex };
+          });
+          const avg = cntF ? round2(sumF / cntF) : 0;
+          sec._kpis = [
+            `تعداد: ${safeFa(items.length)} نفر`,
+            `میانگین کل: ${fmtScoreV960(avg)} از ${safeFa(cap)}`,
+            `مثبت/منفی: +${safeFa(sumP)} / -${safeFa(sumN)}`,
+            `مجموع غیبت: ${safeFa(sumA)}`,
+            `نیازمند توجه: ${safeFa(cntAt)}`
+          ];
+
+          let pNum = 1;
+          let cur = createPage(sec, pNum);
+
+          computed.forEach((row, idx) => {
+            const rowH = 30;
+            const subH = 36;
+            if (cur.y + rowH + subH > pageH - 34) {
+              pNum++;
+              cur = createPage(sec, pNum);
+            }
+            const ctx = cur.ctx;
+            const st = row.st;
+            const ex = row.ex;
+            const fullName = `${st.lastName || ''} ${st.name || ''}`.trim() || 'بدون نام';
+            const badge = mapStatusBadgeV960(ex.statusLabel, ex.statusClass);
+            const behImpactStr = ex.behaviorImpact > 0 ? `+${fmtScoreV960(ex.behaviorImpact)}` : ex.behaviorImpact < 0 ? `${fmtScoreV960(ex.behaviorImpact)}` : '۰';
+            const cells = [
+              safeFa(idx + 1),
+              fullName,
+              st.fatherName || '—',
+              safeFa(ex.absences),
+              ex.writtenAvg !== null ? fmtScoreV960(ex.writtenAvg) : '—',
+              ex.oralAvg !== null ? fmtScoreV960(ex.oralAvg) : '—',
+              ex.continuousScore !== null ? fmtScoreV960(ex.continuousScore) : '—',
+              `+${safeFa(ex.posCount)} / -${safeFa(ex.negCount)}`,
+              behImpactStr,
+              ex.termScore !== null ? fmtScoreV960(ex.termScore) : '—',
+              ex.finalScore !== null ? `${fmtScoreV960(ex.finalScore)} از ${safeFa(cap)}` : '—',
+              badge.text
+            ];
+
+            let rx = pageW - marginX;
+            cells.forEach((val, ci) => {
+              const cw = colWidths[ci];
+              rx -= cw;
+              ctx.fillStyle = idx % 2 === 0 ? 'rgba(255,255,255,0.92)' : 'rgba(255,251,247,0.92)';
+              ctx.fillRect(rx, cur.y, cw, rowH);
+              ctx.strokeStyle = '#FED7AA';
+              ctx.strokeRect(rx, cur.y, cw, rowH);
+
+              if (ci === 10) {
+                // Final grade capsule
+                const px = rx + 6, py = cur.y + 5, pw = cw - 12, ph = rowH - 10;
+                ctx.fillStyle = ex.finalScore === null ? '#FFF7ED' : (ex.finalScore >= cap * 0.85 ? '#DCFCE7' : ex.finalScore >= cap * 0.6 ? '#FEF3C7' : '#FEE2E2');
+                ctx.fillRect(px, py, pw, ph);
+                ctx.strokeStyle = '#FB923C';
+                ctx.strokeRect(px, py, pw, ph);
+                ctx.fillStyle = '#9A3412';
+                ctx.font = 'bold 10px Vazirmatn, Tahoma, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(val, rx + cw / 2, cur.y + 19);
+              } else if (ci === 11) {
+                // Status badge capsule
+                const px = rx + 6, py = cur.y + 5, pw = cw - 12, ph = rowH - 10;
+                ctx.fillStyle = badge.cls === 'top' ? '#DCFCE7' : badge.cls === 'drop' ? '#FEE2E2' : badge.cls === 'discipline' ? '#FEF3C7' : badge.cls === 'attention' ? '#FFEDD5' : '#F1F5F9';
+                ctx.fillRect(px, py, pw, ph);
+                ctx.fillStyle = '#1E293B';
+                ctx.font = 'bold 9.8px Vazirmatn, Tahoma, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(val, rx + cw / 2, cur.y + 19);
+              } else {
+                ctx.fillStyle = ci === 8 ? (ex.behaviorImpact >= 0 ? '#15803D' : '#B91C1C') : '#0F172A';
+                ctx.font = (ci === 1 || ci === 6) ? 'bold 10.5px Vazirmatn, Tahoma, sans-serif' : '10.2px Vazirmatn, Tahoma, sans-serif';
+                ctx.textAlign = ci === 1 ? 'right' : 'center';
+                ctx.fillText(String(val).slice(0, 26), ci === 1 ? (rx + cw - 8) : (rx + cw / 2), cur.y + 19);
+              }
+            });
+            cur.y += rowH;
+
+            // Subrow: Oral breakdown + Family advice
+            ctx.fillStyle = 'rgba(255,251,247,0.95)';
+            ctx.fillRect(marginX, cur.y, usableW, subH);
+            ctx.strokeStyle = '#FED7AA';
+            ctx.strokeRect(marginX, cur.y, usableW, subH);
+            const oralTxt = ex.oralItems.length
+              ? `ریز نمرات کلاسی (${safeFa(ex.oralItems.length)} نوبت): ` + ex.oralItems.map((o, i) => `نوبت ${safeFa(i+1)}: ${fmtScoreV960(o.score)}/${safeFa(o.maxScore)} (معادل ${fmtScoreV960(o.scaled)})`).join(' · ')
+              : 'ریز نمرات کلاسی: ثبت نشده';
+            const advTxt = 'توصیه به خانواده: ' + window.DaneshSmartEngine.generateFamilyAdvice(sec.cls, st, res.subjectFilter || null);
+            ctx.fillStyle = '#334155';
+            ctx.font = '9.8px Vazirmatn, Tahoma, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText(oralTxt.slice(0, 155), pageW - marginX - 10, cur.y + 14);
+            ctx.fillText(advTxt.slice(0, 155), pageW - marginX - 10, cur.y + 29);
+            cur.y += subH;
+          });
+        }
+
+        // Req 7: Version ۹.۶.۰ footer on every PDF page
+        const totalPages = pages.length;
+        const jpegPages = [];
+        pages.forEach((p, idx) => {
+          const ctx = p.ctx;
+          ctx.fillStyle = '#64748B';
+          ctx.font = 'bold 10px Vazirmatn, Tahoma, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(`سامانه هوشمند «دانش‌آموز من» · دفتر هوشمند معلم · نسخه ${V960_VERSION_FA} — صفحه ${safeFa(idx + 1)} از ${safeFa(totalPages)}`, pageW / 2, pageH - 12);
+          const dataUrl = p.cv.toDataURL('image/jpeg', 0.9);
+          const bin = atob(dataUrl.split(',')[1]);
+          const bytes = new Uint8Array(bin.length);
+          for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+          jpegPages.push({ bytes, w: p.cv.width, h: p.cv.height });
+        });
+
+        // Build clean %PDF-1.4 binary wrapping all JPEG pages
+        const enc = new TextEncoder();
+        const chunks = [];
+        const offsets = [0];
+        let pos = 0;
+        const pushStr = (s) => { const b = enc.encode(s); chunks.push(b); pos += b.length; };
+        const pushBytes = (b) => { chunks.push(b); pos += b.length; };
+
+        pushStr('%PDF-1.4\n%\xE2\xE3\xCF\xD3\n');
+        const totalObjs = 2 + totalPages * 3;
+        const pageIds = [];
+        for (let i = 0; i < totalPages; i++) pageIds.push(3 + i * 3);
+
+        offsets.push(pos);
+        pushStr(`1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n`);
+        offsets.push(pos);
+        pushStr(`2 0 obj\n<< /Type /Pages /Kids [${pageIds.map(id => `${id} 0 R`).join(' ')}] /Count ${totalPages} >>\nendobj\n`);
+
+        jpegPages.forEach((jp, i) => {
+          const pId = 3 + i * 3;
+          const imgId = pId + 1;
+          const contId = pId + 2;
+          const ptW = 841.89, ptH = 595.28; // A4 Landscape in points
+
+          offsets.push(pos);
+          pushStr(`${pId} 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${ptW} ${ptH}] /Resources << /XObject << /Im${i} ${imgId} 0 R >> >> /Contents ${contId} 0 R >>\nendobj\n`);
+
+          offsets.push(pos);
+          pushStr(`${imgId} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${jp.w} /Height ${jp.h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jp.bytes.length} >>\nstream\n`);
+          pushBytes(jp.bytes);
+          pushStr(`\nendstream\nendobj\n`);
+
+          const streamCmd = `q ${ptW} 0 0 ${ptH} 0 0 cm /Im${i} Do Q`;
+          offsets.push(pos);
+          pushStr(`${contId} 0 obj\n<< /Length ${streamCmd.length} >>\nstream\n${streamCmd}\nendstream\nendobj\n`);
+        });
+
+        const xrefPos = pos;
+        pushStr(`xref\n0 ${totalObjs + 1}\n0000000000 65535 f \n`);
+        for (let i = 1; i <= totalObjs; i++) {
+          pushStr(String(offsets[i]).padStart(10, '0') + ' 00000 n \n');
+        }
+        pushStr(`trailer\n<< /Size ${totalObjs + 1} /Root 1 0 R >>\nstartxref\n${xrefPos}\n%%EOF`);
+        return new Blob(chunks, { type: 'application/pdf' });
+      } catch (err) {
+        console.error('v960 PDF builder fallback:', err);
+        return _origPdfBlob ? await _origPdfBlob(title, subtitle, headers, rows, opts) : null;
+      }
+    };
+  }
+
+  // Enforce PDF-Only in ReportApp modal & exports
+  if (window.ReportApp) {
+    const _origOpenRepModal = window.ReportApp.openModal.bind(window.ReportApp);
+    window.ReportApp.openModal = function(...args) {
+      const r = _origOpenRepModal(...args);
+      setTimeout(() => {
+        // Req 1: Remove Word & Excel export buttons from Report Studio
+        ['btnRepExportExcel', 'btnRepExportWord'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.remove();
+        });
+        document.querySelectorAll('#sheet button, #modal button').forEach(btn => {
+          const txt = (btn.textContent || '').trim();
+          const oc = btn.getAttribute('onclick') || '';
+          if (/Word|Excel|ورد|اکسل|\.docx|\.xlsx/i.test(txt) || /exportCurrent\(['"](word|excel)['"]|downloadSelectedSeparatelyToFolder\(['"](word|excel)['"]/i.test(oc)) {
+            btn.remove();
+          }
+        });
+        const pdfBtn = document.getElementById('btnRepExportPdf');
+        if (pdfBtn) {
+          pdfBtn.style.gridColumn = '1 / -1';
+          pdfBtn.style.width = '100%';
+          pdfBtn.innerHTML = '📄 دانلود فایل PDF رنگی (نسخه ۹.۶.۰)';
+        }
+      }, 25);
+      return r;
+    };
+
+    window.ReportApp.buildClassListStyleHTML = function(res) {
+      return buildV960StylishReportHTML(res, false);
+    };
+
+    window.ReportApp.buildStandardTabularRowsForExport = function(res) {
+      const headers = ['ردیف', 'نام خانوادگی و نام', 'نام پدر', 'غیبت', 'کتبی مستمر', 'کلاسی', 'مستمر کل', 'مثبت/منفی', 'تأثیر', 'پایانی', 'نهایی (از ۲۰)', 'وضعیت'];
+      const rows = [];
+      const rowPhotos = [];
+      const rowMeta = [];
+      let n = 1;
+      (res?.sections || []).forEach(sec => {
+        const cap = window.getClassAvgCap(sec.cls);
+        (sec.items || []).forEach(it => {
+          const st = it.st;
+          const ex = window.v950CalculateExactStudentReport(sec.cls, st, res.subjectFilter || null);
+          rows.push([
+            safeFa(n++),
+            `${st.lastName || ''} ${st.name || ''}`.trim(),
+            st.fatherName || '—',
+            safeFa(ex.absences),
+            ex.writtenAvg !== null ? fmtScoreV960(ex.writtenAvg) : '—',
+            ex.oralAvg !== null ? fmtScoreV960(ex.oralAvg) : '—',
+            ex.continuousScore !== null ? fmtScoreV960(ex.continuousScore) : '—',
+            `+${safeFa(ex.posCount)} / -${safeFa(ex.negCount)}`,
+            ex.behaviorImpact > 0 ? `+${fmtScoreV960(ex.behaviorImpact)}` : fmtScoreV960(ex.behaviorImpact),
+            ex.termScore !== null ? fmtScoreV960(ex.termScore) : '—',
+            ex.finalScore !== null ? `${fmtScoreV960(ex.finalScore)} از ${safeFa(cap)}` : '—',
+            mapStatusBadgeV960(ex.statusLabel, ex.statusClass).text
+          ]);
+          rowPhotos.push(st.photo || '');
+          rowMeta.push({ status: ex.statusLabel, cap, finalScore: ex.finalScore });
+        });
+      });
+      return { headers, rows, rowPhotos, rowMeta };
+    };
+
+    window.ReportApp.exportCurrent = async function(kind, customOpts = null) {
+      const res = this.collectData(customOpts || {});
+      if (kind === 'print_pdf' || kind === 'pdf_styled') {
+        const cssText = document.getElementById('v960MasterStyles')?.textContent || '';
+        const htmlDoc = `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>گزارش PDF — دانش‌آموز من ${V960_VERSION}</title><style>${cssText}</style></head><body style="margin:12px;background:#fff">${buildV960StylishReportHTML(res, true)}</body></html>`;
+        const w = window.open('', '_blank');
+        if (w) { w.document.write(htmlDoc); w.document.close(); }
+        return { ok: true, format: 'print_pdf', htmlLength: htmlDoc.length };
+      }
+      // All exports route cleanly to genuine PDF
+      const tab = this.buildStandardTabularRowsForExport(res);
+      const blob = await window.GenuineOfficeExporter.buildGenuinePdfBlob('گزارش جامع کلاس', '', tab.headers, tab.rows, { reportRes: res, customOpts });
+      if (blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `danesh-amooz-man-report-v${V960_VERSION}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => { a.remove(); URL.revokeObjectURL(url); }, 1500);
+        if (typeof toast === 'function') toast('✅ فایل PDF رسمی (نسخه ۹.۶.۰) با موفقیت ساخته و دانلود شد!');
+        return { ok: true, format: 'pdf', size: blob.size, blob };
+      }
+      return { ok: false, format: 'pdf' };
+    };
+  }
+
+  /* ==========================================================================
+     REQ 8: Animations & Graphics Enabled by Default (Respecting Manual Toggle)
+     ========================================================================== */
+  function enforceDefaultAnimationsOn() {
+    try {
+      const manualOff = localStorage.getItem('v960_user_anim_manual_off') === '1';
+      if (!manualOff) {
+        localStorage.setItem('feat_animations', 'true');
+        const key = typeof CYBER_ANIM_KEY !== 'undefined' ? CYBER_ANIM_KEY : 'cyber_anim_state_v1';
+        let st = {};
+        try { st = JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch (_) {}
+        st.masterOff = false;
+        st.anim_jarvis_core = true;
+        st.anim_network = true;
+        st.anim_card_enter = true;
+        st.anim_card_touch = true;
+        st.anim_charts = true;
+        localStorage.setItem(key, JSON.stringify(st));
+        document.body.classList.remove('no-animations');
+        document.body.classList.add('fx-hud', 'fx-cards', 'fx-feedback', 'fx-charts', 'fx-network', 'anim-jarvis-core');
+      }
+    } catch (_) {}
+  }
+
+  if (typeof window.saveCyberAnimState === 'function') {
+    const _origSaveAnim = window.saveCyberAnimState;
+    window.saveCyberAnimState = function(st) {
+      try {
+        localStorage.setItem('v960_user_anim_manual_off', st?.masterOff ? '1' : '0');
+      } catch (_) {}
+      return _origSaveAnim.apply(this, arguments);
+    };
+  }
+
+  /* ==========================================================================
+     REQ 9: Remove «📊 گزارش هوشمند معلم و مرکز پایش» Card from Home
+     ========================================================================== */
+  if (window.TeacherSmartReportCenter) {
+    window.TeacherSmartReportCenter.renderDashboardHub = function() {
+      const el = document.getElementById('damTeacherSmartReportHub');
+      if (el) el.remove();
+    };
+  }
+
+  /* ==========================================================================
+     REQ 10: Show Only 3 Nearest Upcoming Birthdays on Home
+     ========================================================================== */
+  window.renderDashBirthdays = function() {
+    const box = document.getElementById('dashBirthdaysBox');
+    if (!box) return;
+    if (typeof isFeatOn === 'function' && !isFeatOn('feat_dash_birthdays')) { box.innerHTML = ''; return; }
+    const tp = typeof jalaliPartsFromISO === 'function' ? jalaliPartsFromISO(localISODate()) : null;
+    if (!tp) return;
+    const todayDOY = getJalaliDayOfYear(tp.m, tp.d);
+    const upcomings = [];
+    const seenKeys = new Set();
+
+    (db.schools || []).forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+      if (!st.birth) return;
+      const m = enDigits(st.birth).match(/(\d{2,4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+      if (m) {
+        let diff = getJalaliDayOfYear(+m[2], +m[3]) - todayDOY;
+        if (diff < 0) diff += 365;
+        if (diff <= 30) {
+          const normKey = `${st.lastName || ''}|${st.name || ''}|${+m[2]}/${+m[3]}`.replace(/\s+/g, '');
+          if (!seenKeys.has(normKey)) {
+            seenKeys.add(normKey);
+            upcomings.push({ s, c, st, bDay: +m[3], bMonth: +m[2], diff });
+          }
+        }
+      }
+    })));
+
+    upcomings.sort((a, b) => a.diff - b.diff || (a.st.lastName || '').localeCompare(b.st.lastName || '', 'fa'));
+    const top3 = upcomings.slice(0, 3);
+    box.innerHTML = top3.length
+      ? `<div class="dash-b-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <b style="color:var(--primary);font-size:14px">🎂 تولدهای نزدیک (${safeFa(top3.length)} از ${safeFa(upcomings.length)} نفر)</b>
+            <button class="link" style="font-size:11.5px" onclick="showView('birthdays')">همه تولدها ←</button>
+          </div>
+          ${top3.map(x => `<div class="dash-b-item"><div><b style="color:var(--primary-dark);font-size:13.5px;display:block">${safeEsc(formatStudentName(x.st))}</b><span class="muted">${safeEsc(x.c.name)} · ${x.diff === 0 ? '🎉 امروز!' : `${safeFa(x.bDay)} / ${safeFa(x.bMonth)}`}</span></div><button class="btn soft btn-sm" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 پیام تبریک</button></div>`).join('')}
+        </div>`
+      : '';
+  };
+
+  /* ==========================================================================
+     REQ 11: Auto-Center Active Pill Under Rotating JARVIS Core
+     ========================================================================== */
+  function centerActiveJarvisPill() {
+    const container = document.getElementById('jarvisMetricPills');
+    if (!container) return;
+    const activeBtn = container.querySelector('.jarvis-metric-btn.active');
+    if (!activeBtn) return;
+    try {
+      activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    } catch (_) {}
+    try {
+      const cRect = container.getBoundingClientRect();
+      const bRect = activeBtn.getBoundingClientRect();
+      const delta = (bRect.left + bRect.width / 2) - (cRect.left + cRect.width / 2);
+      container.scrollBy({ left: delta, behavior: 'smooth' });
+    } catch (_) {}
+  }
+
+  if (typeof window.updateJarvisCoreDisplay === 'function') {
+    const _origUpdateJarvis = window.updateJarvisCoreDisplay;
+    window.updateJarvisCoreDisplay = function(...args) {
+      const r = _origUpdateJarvis.apply(this, args);
+      setTimeout(centerActiveJarvisPill, 20);
+      return r;
+    };
+  }
+  if (typeof window.setJarvisCoreMetric === 'function') {
+    const _origSetJarvis = window.setJarvisCoreMetric;
+    window.setJarvisCoreMetric = function(...args) {
+      const r = _origSetJarvis.apply(this, args);
+      setTimeout(centerActiveJarvisPill, 25);
+      return r;
+    };
+  }
+
+  /* ==========================================================================
+     REQ 12: Persistent Login Across Launches (localStorage + IndexedDB)
+     ========================================================================== */
+  const AUTH_IDB_NAME = 'danesh_auth_persist_v960';
+  const AUTH_IDB_STORE = 'auth_kv';
+
+  function idbSetAuth(val) {
+    return new Promise(resolve => {
+      try {
+        const req = indexedDB.open(AUTH_IDB_NAME, 1);
+        req.onupgradeneeded = () => {
+          const d = req.result;
+          if (!d.objectStoreNames.contains(AUTH_IDB_STORE)) d.createObjectStore(AUTH_IDB_STORE);
+        };
+        req.onsuccess = () => {
+          const tx = req.result.transaction(AUTH_IDB_STORE, 'readwrite');
+          tx.objectStore(AUTH_IDB_STORE).put(val, 'logged_in');
+          tx.oncomplete = () => resolve(true);
+          tx.onerror = () => resolve(false);
+        };
+        req.onerror = () => resolve(false);
+      } catch (_) { resolve(false); }
+    });
+  }
+
+  function idbGetAuth() {
+    return new Promise(resolve => {
+      try {
+        const req = indexedDB.open(AUTH_IDB_NAME, 1);
+        req.onupgradeneeded = () => {
+          const d = req.result;
+          if (!d.objectStoreNames.contains(AUTH_IDB_STORE)) d.createObjectStore(AUTH_IDB_STORE);
+        };
+        req.onsuccess = () => {
+          const tx = req.result.transaction(AUTH_IDB_STORE, 'readonly');
+          const g = tx.objectStore(AUTH_IDB_STORE).get('logged_in');
+          g.onsuccess = () => resolve(g.result || null);
+          g.onerror = () => resolve(null);
+        };
+        req.onerror = () => resolve(null);
+      } catch (_) { resolve(null); }
+    });
+  }
+
+  window.persistDaneshLoginV960 = async function(method = 'offline', contact = '') {
+    const payload = { ok: true, method, contact, ts: Date.now(), version: V960_VERSION };
+    try {
+      localStorage.setItem('danesh_auth_persisted_v960', JSON.stringify(payload));
+      localStorage.setItem('danesh_onboarding_done_v70', '1');
+      if (contact) localStorage.setItem('v950_login_contact', contact);
+    } catch (_) {}
+    await idbSetAuth(payload);
+    const ov = document.getElementById('cyberIntroOverlay');
+    if (ov) { ov.classList.add('intro-hidden'); ov.style.display = 'none'; }
+    const gov = document.getElementById('googleAuthOnboardingOverlay');
+    if (gov) gov.style.display = 'none';
+  };
+
+  window.logoutDaneshAccountV960 = async function() {
+    try {
+      localStorage.removeItem('danesh_auth_persisted_v960');
+      localStorage.removeItem('danesh_onboarding_done_v70');
+    } catch (_) {}
+    await idbSetAuth(null);
+    window.openOnboardingAuthScreen(true);
+  };
+
+  async function checkAndSkipLoginIfPersisted() {
+    let hasAuth = false;
+    try {
+      if (localStorage.getItem('danesh_auth_persisted_v960') || localStorage.getItem('danesh_onboarding_done_v70') === '1') {
+        hasAuth = true;
+      }
+    } catch (_) {}
+    if (!hasAuth) {
+      const idbVal = await idbGetAuth();
+      if (idbVal && idbVal.ok) {
+        hasAuth = true;
+        try {
+          localStorage.setItem('danesh_auth_persisted_v960', JSON.stringify(idbVal));
+          localStorage.setItem('danesh_onboarding_done_v70', '1');
+        } catch (_) {}
+      }
+    }
+    if (!hasAuth && typeof db !== 'undefined' && Array.isArray(db?.schools) && db.schools.length > 0) {
+      hasAuth = true;
+      await window.persistDaneshLoginV960('existing_db');
+    }
+    if (hasAuth) {
+      const ov = document.getElementById('cyberIntroOverlay');
+      if (ov) { ov.classList.add('intro-hidden'); ov.style.display = 'none'; }
+      const gov = document.getElementById('googleAuthOnboardingOverlay');
+      if (gov) gov.style.display = 'none';
+    }
+  }
+
+  function wireLoginButtonsPersist() {
+    const ov = document.getElementById('cyberIntroOverlay');
+    if (!ov) return;
+    ov.querySelectorAll('p').forEach(p => {
+      if (/نسخه/.test(p.textContent || '')) p.textContent = `دفتر هوشمند معلم · نسخه ${V960_VERSION_FA}`;
+    });
+    ov.querySelectorAll('.v950-login-oauth-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.persistDaneshLoginV960('oauth');
+      });
+    });
+    const form = ov.querySelector('form');
+    if (form && !form.dataset.v960Wired) {
+      form.dataset.v960Wired = '1';
+      form.addEventListener('submit', () => {
+        const v = document.getElementById('v950LoginContactInp')?.value?.trim() || '';
+        if (v) window.persistDaneshLoginV960('contact', v);
+      });
+    }
+  }
+
+  const _origOpenAuth = window.openOnboardingAuthScreen;
+  window.openOnboardingAuthScreen = function(explicitManual = false) {
+    if (typeof _origOpenAuth === 'function') _origOpenAuth();
+    wireLoginButtonsPersist();
+    const ov = document.getElementById('cyberIntroOverlay');
+    if (ov && explicitManual) {
+      ov.style.display = '';
+      ov.classList.remove('intro-hidden');
+    }
+  };
+
+  /* ==========================================================================
+     REQ 15: Fast Live Search Bar Above Today List, Class Student List & Matrix
+     ========================================================================== */
+  function createSearchBarEl(id, placeholder, onFilter) {
+    const wrap = document.createElement('div');
+    wrap.className = 'v960-list-search-bar';
+    wrap.id = id + '_wrap';
+    wrap.innerHTML = `
+      <span style="font-size:14px">🔍</span>
+      <input type="text" id="${id}" placeholder="${placeholder}" autocomplete="off">
+      <span class="v960-search-count" id="${id}_count"></span>
+      <button type="button" class="v960-search-clear-btn" id="${id}_clear" title="پاک‌سازی جستجو">×</button>
+    `;
+    const inp = wrap.querySelector('input');
+    const clr = wrap.querySelector('button');
+    const cnt = wrap.querySelector('.v960-search-count');
+    const run = () => {
+      const q = normFa(inp.value);
+      clr.classList.toggle('visible', q.length > 0);
+      const res = onFilter(q);
+      if (res && typeof res.shown === 'number') {
+        cnt.textContent = q ? `${safeFa(res.shown)} از ${safeFa(res.total)}` : `${safeFa(res.total)} نفر`;
+      }
+    };
+    inp.addEventListener('input', run);
+    clr.addEventListener('click', () => { inp.value = ''; run(); inp.focus(); });
+    setTimeout(run, 10);
+    return wrap;
+  }
+
+  function injectTodayListSearch() {
+    const box = document.getElementById('todayListCardBox');
+    const body = document.getElementById('tdScrollBody');
+    if (!box || !body || document.getElementById('v960TodaySearchInp_wrap')) return;
+    const bar = createSearchBarEl('v960TodaySearchInp', 'جستجوی سریع با نام، نام خانوادگی یا ردیف...', (q) => {
+      const rows = Array.from(body.querySelectorAll('.td-row'));
+      let shown = 0;
+      rows.forEach((row, idx) => {
+        const hay = normFa(row.textContent + ' ' + (idx + 1));
+        const ok = !q || hay.includes(q);
+        row.style.display = ok ? '' : 'none';
+        if (ok) shown++;
+      });
+      return { shown, total: rows.length };
+    });
+    const sticky = box.querySelector('.td-sticky-header-group');
+    if (sticky) sticky.appendChild(bar);
+    else box.insertBefore(bar, body);
+  }
+
+  function injectClassListSearch() {
+    const main = document.getElementById('classMainView');
+    if (!main || document.getElementById('v960ClassStuSearchInp_wrap')) return;
+    const grids = main.querySelectorAll('.grid');
+    const grid = grids[grids.length - 1];
+    if (!grid) return;
+    const bar = createSearchBarEl('v960ClassStuSearchInp', 'جستجو در دانش‌آموزان کلاس (نام، فامیل یا ردیف)...', (q) => {
+      const cards = Array.from(grid.children);
+      let shown = 0;
+      cards.forEach((card, idx) => {
+        const hay = normFa(card.textContent + ' ' + (idx + 1));
+        const ok = !q || hay.includes(q);
+        card.style.display = ok ? '' : 'none';
+        if (ok) shown++;
+      });
+      return { shown, total: cards.length };
+    });
+    grid.parentNode.insertBefore(bar, grid);
+  }
+
+  function injectAttendanceSearch() {
+    const attCont = document.getElementById('attendanceContent');
+    if (!attCont || document.getElementById('v960AttSearchInp_wrap')) return;
+    const table = attCont.querySelector('table');
+    if (!table) return;
+    const bar = createSearchBarEl('v960AttSearchInp', 'جستجوی سریع در جدول جامع (نام، فامیل یا ردیف)...', (q) => {
+      const rows = Array.from(table.querySelectorAll('tbody tr'));
+      let shown = 0;
+      rows.forEach((tr, idx) => {
+        const hay = normFa(tr.textContent + ' ' + (idx + 1));
+        const ok = !q || hay.includes(q);
+        tr.style.display = ok ? '' : 'none';
+        if (ok) shown++;
+      });
+      return { shown, total: rows.length };
+    });
+    table.parentNode.insertBefore(bar, table);
+  }
+
+  // Fix Today List average display to use class cap (default 20) instead of raw /5
+  if (typeof window.renderTodayListInner === 'function') {
+    const _origRenderToday = window.renderTodayListInner;
+    window.renderTodayListInner = function(sid, cid) {
+      const r = _origRenderToday.apply(this, arguments);
+      setTimeout(() => {
+        const c = typeof findClass === 'function' ? findClass(sid, cid) : null;
+        if (c) {
+          const cap = window.getClassAvgCap(c);
+          (c.students || []).forEach(st => {
+            const avgEl = document.getElementById('tdAvg_' + st.id);
+            if (avgEl) {
+              const ex = window.v950CalculateExactStudentReport(c, st);
+              avgEl.textContent = ex.finalScore !== null ? `${fmtScoreV960(ex.finalScore)} از ${safeFa(cap)}` : '—';
+            }
+          });
+        }
+        injectTodayListSearch();
+      }, 20);
+      return r;
+    };
+    try { renderTodayListInner = window.renderTodayListInner; } catch (_) {}
+  }
+
+  if (typeof window.openClass === 'function') {
+    const _origOpenClassV960 = window.openClass;
+    window.openClass = function(...args) {
+      const r = _origOpenClassV960.apply(this, args);
+      setTimeout(() => {
+        injectClassListSearch();
+        // Req 17: Hide scattered New Term buttons inside class view if any
+        document.querySelectorAll('#classDetail button').forEach(b => {
+          if (/ترم جدید/.test(b.textContent || '') && b.id !== 'v960SchoolNewTermBtn') b.style.display = 'none';
+        });
+      }, 30);
+      return r;
+    };
+    try { openClass = window.openClass; } catch (_) {}
+  }
+
+  /* ==========================================================================
+     REQ 16: True Fullscreen API + Sleek Compact Fit-to-Screen for Matrix
+     ========================================================================== */
+  window.toggleAttendanceFitV960 = function(force) {
+    const next = typeof force === 'boolean' ? force : !document.body.classList.contains('v960-att-fit');
+    document.body.classList.toggle('v960-att-fit', next);
+    const btn = document.getElementById('v960AttFsFitBtn');
+    if (btn) btn.textContent = next ? '📐 حالت عادی' : '📐 تطبیق با کادر';
+    return next;
+  };
+
+  window.toggleAttendanceFullscreenV950 = function(forceState) {
+    const next = typeof forceState === 'boolean' ? forceState : !document.body.classList.contains('v950-att-fullscreen');
+    document.body.classList.toggle('v950-att-fullscreen', next);
+    document.body.classList.toggle('v960-att-fullscreen', next);
+    if (next) {
+      document.body.classList.add('v960-att-fit');
+      try {
+        if (document.documentElement.requestFullscreen && !document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
+      } catch (_) {}
+    } else {
+      document.body.classList.remove('v960-att-fit');
+      try {
+        if (document.fullscreenElement && document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        }
+      } catch (_) {}
+    }
+    const btn = document.getElementById('v950AttFsEnterBtn');
+    if (btn) btn.textContent = next ? '✕ خروج از تمام‌صفحه' : '⛶ تمام‌صفحه';
+    const fitBtn = document.getElementById('v960AttFsFitBtn');
+    if (fitBtn) fitBtn.textContent = document.body.classList.contains('v960-att-fit') ? '📐 حالت عادی' : '📐 تطبیق با کادر';
+    return next;
+  };
+
+  function upgradeAttendanceFullscreenBar() {
+    const fsBar = document.getElementById('v950AttFsTopbar');
+    if (fsBar) {
+      fsBar.innerHTML = `
+        <b style="font-size:12.5px;overflow:hidden;text-overflow:ellipsis">📋 لیست جامع (تمام‌صفحه)</b>
+        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+          <button type="button" id="v960AttFsFitBtn" onclick="toggleAttendanceFitV960()" style="background:rgba(255,255,255,0.2);color:#FFFFFF;border:1px solid rgba(255,255,255,0.45);border-radius:8px;padding:4px 9px;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer">📐 حالت عادی</button>
+          <button type="button" id="v950AttFsExitBtn" onclick="toggleAttendanceFullscreenV950(false)" style="background:#FFFFFF;color:#EA580C;border:none;border-radius:8px;padding:4px 10px;font-family:inherit;font-size:11.5px;font-weight:900;cursor:pointer">✕ خروج</button>
+        </div>
+      `;
+    }
+    // Req 17: Hide scattered "ترم جدید" buttons in attendance header
+    document.querySelectorAll('#attendance button').forEach(b => {
+      if (/ترم جدید/.test(b.textContent || '') && b.id !== 'v960SchoolNewTermBtn') b.style.display = 'none';
+    });
+    injectAttendanceSearch();
+  }
+
+  if (typeof window.openAttendance === 'function') {
+    const _origOpenAttV960 = window.openAttendance;
+    window.openAttendance = function(...args) {
+      const r = _origOpenAttV960.apply(this, args);
+      setTimeout(upgradeAttendanceFullscreenBar, 40);
+      return r;
+    };
+    try { openAttendance = window.openAttendance; } catch (_) {}
+  }
+
+  /* ==========================================================================
+     REQ 17: Centralize «+ ترم جدید» & Term Switcher in «مدارس و گنجینه یادگاری»
+     Non-destructive snapshot switching so accidental clicks are 100% reversible!
+     ========================================================================== */
+  function ensureTermsRegistry() {
+    if (typeof db === 'undefined' || !db) return [];
+    if (!Array.isArray(db.v960TermsRegistry)) {
+      const initId = db.activeTermId || 'term_init_1';
+      const initName = db.activeTermName || 'نیمسال اول ۱۴۰۵-۱۴۰۶';
+      db.activeTermId = initId;
+      db.activeTermName = initName;
+      db.v960TermsRegistry = [{
+        id: initId,
+        name: initName,
+        createdAt: new Date().toISOString(),
+        snapshot: null
+      }];
+    }
+    return db.v960TermsRegistry;
+  }
+
+  function captureActiveTermSnapshot() {
+    // Deep-clone only per-term grades/attendance/behavior/termScores keyed by schoolId+classId+studentId (preserving photos/IDs)
+    const snap = {};
+    (db.schools || []).forEach(s => {
+      (s.classes || []).forEach(c => {
+        snap[c.id] = {
+          attendance: JSON.parse(JSON.stringify(c.attendance || {})),
+          termScores: JSON.parse(JSON.stringify(c.termScores || {})),
+          sessionNotes: JSON.parse(JSON.stringify(c.sessionNotes || {})),
+          studentsData: {}
+        };
+        (c.students || []).forEach(st => {
+          snap[c.id].studentsData[st.id] = {
+            grades: JSON.parse(JSON.stringify(st.grades || [])),
+            behavior: JSON.parse(JSON.stringify(st.behavior || { positives: [], negatives: [] }))
+          };
+        });
+      });
+    });
+    return snap;
+  }
+
+  function applyTermSnapshot(snap, clearIfEmpty = false) {
+    (db.schools || []).forEach(s => {
+      (s.classes || []).forEach(c => {
+        const cSnap = snap ? snap[c.id] : null;
+        if (cSnap) {
+          c.attendance = JSON.parse(JSON.stringify(cSnap.attendance || {}));
+          c.termScores = JSON.parse(JSON.stringify(cSnap.termScores || {}));
+          c.sessionNotes = JSON.parse(JSON.stringify(cSnap.sessionNotes || {}));
+          (c.students || []).forEach(st => {
+            const sd = cSnap.studentsData?.[st.id];
+            if (sd) {
+              st.grades = JSON.parse(JSON.stringify(sd.grades || []));
+              st.behavior = JSON.parse(JSON.stringify(sd.behavior || { positives: [], negatives: [] }));
+            } else if (clearIfEmpty) {
+              st.grades = [];
+              st.behavior = { positives: [], negatives: [] };
+            }
+          });
+        } else if (clearIfEmpty) {
+          c.attendance = {};
+          c.termScores = {};
+          c.sessionNotes = {};
+          (c.students || []).forEach(st => {
+            st.grades = [];
+            st.behavior = { positives: [], negatives: [] };
+          });
+        }
+      });
+    });
+  }
+
+  window.switchActiveTermV960 = function(targetTermId) {
+    const reg = ensureTermsRegistry();
+    if (!targetTermId || targetTermId === db.activeTermId) return;
+    const curTerm = reg.find(t => t.id === db.activeTermId);
+    if (curTerm) curTerm.snapshot = captureActiveTermSnapshot();
+
+    const target = reg.find(t => t.id === targetTermId);
+    if (!target) return;
+
+    db.activeTermId = target.id;
+    db.activeTermName = target.name;
+    (db.schools || []).forEach(s => (s.classes || []).forEach(c => {
+      c.currentTermId = target.id;
+      c.currentTermName = target.name;
+    }));
+    applyTermSnapshot(target.snapshot, false);
+    if (typeof savePersistent === 'function') savePersistent();
+    if (typeof renderSchools === 'function') renderSchools();
+    if (typeof updateJarvisCoreDisplay === 'function') updateJarvisCoreDisplay(false);
+    renderSchoolsTermBarV960();
+    if (typeof toast === 'function') toast(`✅ ترم فعال به «${target.name}» تغییر یافت (تمام سوابق ترم قبلی محفوظ است)`);
+  };
+
+  window.createNewTermInSchoolsV960 = function(customName = null) {
+    const reg = ensureTermsRegistry();
+    const suggested = `ترم ${safeFa(reg.length + 1)} (${new Date().getFullYear()})`;
+    const newName = customName !== null
+      ? String(customName).trim()
+      : (typeof window.smartPrompt === 'function' ? window.smartPrompt('نام ترم جدید را وارد کنید (سوابق ترم قبلی بدون حذف محفوظ می‌ماند و هر زمان می‌توانید برگردید):', suggested) : prompt('نام ترم جدید:', suggested));
+    if (!newName || !String(newName).trim()) return false;
+
+    // 1. Save current term snapshot non-destructively
+    const curTerm = reg.find(t => t.id === db.activeTermId);
+    if (curTerm) curTerm.snapshot = captureActiveTermSnapshot();
+
+    // 2. Create new term with clean grades/attendance while preserving 100% of schools/classes/students/photos/IDs
+    const newId = 'term_' + Date.now();
+    const cleanName = String(newName).trim();
+    const newTermObj = { id: newId, name: cleanName, createdAt: new Date().toISOString(), snapshot: null };
+    reg.push(newTermObj);
+    db.activeTermId = newId;
+    db.activeTermName = cleanName;
+    (db.schools || []).forEach(s => (s.classes || []).forEach(c => {
+      c.currentTermId = newId;
+      c.currentTermName = cleanName;
+    }));
+    applyTermSnapshot(null, true);
+    newTermObj.snapshot = captureActiveTermSnapshot();
+
+    if (typeof savePersistent === 'function') savePersistent();
+    if (typeof renderSchools === 'function') renderSchools();
+    if (typeof updateJarvisCoreDisplay === 'function') updateJarvisCoreDisplay(false);
+    renderSchoolsTermBarV960();
+    if (typeof toast === 'function') toast(`✅ ترم جدید «${cleanName}» ایجاد شد! در صورت نیاز از منوی بالای صفحه می‌توانید به ترم قبلی برگردید.`);
+    return true;
+  };
+
+  function renderSchoolsTermBarV960() {
+    const schoolsSec = document.getElementById('schools');
+    if (!schoolsSec) return;
+    const reg = ensureTermsRegistry();
+    let bar = document.getElementById('v960SchoolsTermBar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'v960SchoolsTermBar';
+      const grid = document.getElementById('schoolsGrid');
+      if (grid && grid.parentNode) grid.parentNode.insertBefore(bar, grid);
+      else schoolsSec.appendChild(bar);
+    }
+    const opts = reg.map(t => `<option value="${safeEsc(t.id)}" ${t.id === db.activeTermId ? 'selected' : ''}>📂 ${safeEsc(t.name)}</option>`).join('');
+    bar.innerHTML = `
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <b style="font-size:12.5px;color:#9A3412">🗂️ ترم فعال:</b>
+        <select id="v960SchoolTermSwitcher" onchange="switchActiveTermV960(this.value)" title="جابه‌جایی سریع بین ترم‌ها بدون حذف اطلاعات">${opts}</select>
+      </div>
+      <button type="button" class="btn primary btn-sm" id="v960SchoolNewTermBtn" onclick="createNewTermInSchoolsV960()" style="font-weight:900">＋ ترم جدید</button>
+    `;
+  }
+
+  /* ==========================================================================
+     REQ 19 & 20: Inject Live Counseling Box in Student Profile &
+                  Native Smart Assistant UI in Counselor & Exam Builder
+     ========================================================================== */
+  function injectLiveStudentCounseling(sid, cid, stid) {
+    const host = document.getElementById('studentDetailContent');
+    if (!host) return;
+    const cls = typeof findClass === 'function' ? findClass(sid, cid) : null;
+    const st = typeof findStudent === 'function' ? findStudent(sid, cid, stid) : null;
+    if (!cls || !st) return;
+    const existing = document.getElementById('v960LiveStudentCounselCard');
+    if (existing) existing.remove();
+    const res = window.DaneshSmartEngine.generateCounseling(cls, st);
+    const card = document.createElement('div');
+    card.id = 'v960LiveStudentCounselCard';
+    card.className = 'v960-smart-engine-card';
+    card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px">
+        <b style="color:#9A3412;font-size:13px">🧠 تحلیل و مشاوره لحظه‌ای (DaneshSmartEngine)</b>
+        <span class="chip" style="font-size:10.5px;background:#DCFCE7;color:#166534">⚡ آفلاین (${safeFa(res.analysis.elapsedMs)}ms)</span>
+      </div>
+      <div id="v960LiveStudentCounselBox" data-stid="${safeEsc(stid)}" style="font-size:12px;line-height:1.75;white-space:pre-line;color:#1E293B">${safeEsc(res.text)}</div>
+    `;
+    const firstCard = host.querySelector('.detailhead');
+    if (firstCard && firstCard.parentNode) firstCard.parentNode.insertBefore(card, firstCard.nextSibling);
+    else host.prepend(card);
+  }
+
+  if (typeof window.openStudent === 'function') {
+    const _origOpenStudent = window.openStudent;
+    window.openStudent = function(sid, cid, stid) {
+      const r = _origOpenStudent.apply(this, arguments);
+      setTimeout(() => injectLiveStudentCounseling(sid, cid, stid), 30);
+      return r;
+    };
+    try { openStudent = window.openStudent; } catch (_) {}
+  }
+
+  function injectSmartAssistantInStatuses() {
+    const host = document.getElementById('statuses');
+    if (!host || document.getElementById('v960SmartQaCard')) return;
+    const card = document.createElement('div');
+    card.id = 'v960SmartQaCard';
+    card.className = 'v960-smart-engine-card';
+    card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+        <b style="color:#9A3412;font-size:13.5px">🧠 دستیار هوشمند بومی «دانش‌آموز من» (آفلاین و لحظه‌ای)</b>
+        <span class="chip" style="font-size:10.5px;background:#DCFCE7;color:#166534">⚡ پاسخ زیر ۵۰ میلی‌ثانیه</span>
+      </div>
+      <div class="v960-smart-qa-chips">
+        <button type="button" class="v960-smart-qa-chip" onclick="runV960SmartQa('کیا افت کردن؟')">📉 کیا افت کردن؟</button>
+        <button type="button" class="v960-smart-qa-chip" onclick="runV960SmartQa('بیشترین غیبت مال کیه؟')">📅 بیشترین غیبت مال کیه؟</button>
+        <button type="button" class="v960-smart-qa-chip" onclick="runV960SmartQa('نفرات برتر کیان؟')">🏆 نفرات برتر کیان؟</button>
+        <button type="button" class="v960-smart-qa-chip" onclick="runV960SmartQa('گروه‌بندی همیار')">🤝 گروه‌بندی همیار</button>
+      </div>
+      <div style="display:flex;gap:6px">
+        <input type="text" id="v960SmartQaInput" placeholder="سؤال خود را به فارسی بپرسید (مثلاً: میانگین کلاس چنده؟)..." style="flex:1;height:36px;border-radius:10px;border:1.5px solid #FDBA74;padding:0 10px;font-size:12px">
+        <button type="button" class="btn primary btn-sm" onclick="runV960SmartQa(document.getElementById('v960SmartQaInput').value)">پرسش</button>
+      </div>
+      <div id="v960SmartQaAnswer" class="v960-smart-qa-ans" style="display:none"></div>
+    `;
+    const list = document.getElementById('statusesList');
+    if (list && list.parentNode) list.parentNode.insertBefore(card, list);
+    else host.appendChild(card);
+  }
+
+  window.runV960SmartQa = function(query) {
+    const inp = document.getElementById('v960SmartQaInput');
+    if (inp && query) inp.value = query;
+    const q = (query || inp?.value || '').trim();
+    const out = document.getElementById('v960SmartQaAnswer');
+    if (!out) return;
+    const res = window.DaneshSmartEngine.answerPersianQuery(q, {
+      sid: window._statusFilterSid || '',
+      cid: window._statusFilterCid || ''
+    });
+    out.style.display = 'block';
+    out.textContent = `${res.answer}\n\n⚡ زمان پردازش بومی: ${safeFa(res.elapsedMs)} میلی‌ثانیه`;
+  };
+
+  /* ==========================================================================
+     Hook showView & Boot Sequence for v9.6.0
+     ========================================================================== */
+  if (typeof window.showView === 'function') {
+    const _origShowViewV960 = window.showView;
+    window.showView = function(id) {
+      const r = _origShowViewV960.apply(this, arguments);
+      setTimeout(() => {
+        if (id === 'schools') renderSchoolsTermBarV960();
+        if (id === 'statuses') {
+          const dup = document.getElementById('counselorUnifiedAiKeyBar');
+          if (dup) dup.remove();
+          injectSmartAssistantInStatuses();
+        }
+        if (id === 'home') {
+          const hub = document.getElementById('damTeacherSmartReportHub');
+          if (hub) hub.remove();
+          if (typeof window.renderDashBirthdays === 'function') window.renderDashBirthdays();
+        }
+      }, 25);
+      return r;
+    };
+    try { showView = window.showView; } catch (_) {}
+  }
+
+  function updateReportStudioCardCopyV960() {
+    const card = document.getElementById('v950ReportStudioMainCard');
+    if (card) {
+      const p = card.querySelector('p');
+      if (p) p.textContent = 'ساخت کارنامه و گزارش‌های رسمی و رنگی با قالب ۱۲ ستونه متقارن، واترمارک شیک و خروجی اختصاصی PDF (نسخه ۹.۶.۰)';
+    }
+  }
+
+  function hideScatteredTermButtons() {
+    document.querySelectorAll('button').forEach(btn => {
+      if (btn.id === 'v960SchoolNewTermBtn' || btn.id === 'btnConfirmNewTerm') return;
+      const txt = (btn.textContent || '').trim();
+      const oc = btn.getAttribute('onclick') || '';
+      if (/شروع ترم جدید|🗂️ ترم جدید/.test(txt) || /startNewTerm\(|openNewTermModal\(/.test(oc)) {
+        if (!btn.closest('#schools') && !btn.closest('#modal')) {
+          btn.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  function bootV960() {
+    enforceDefaultAnimationsOn();
+    wireLoginButtonsPersist();
+    checkAndSkipLoginIfPersisted();
+    renderSchoolsTermBarV960();
+    updateReportStudioCardCopyV960();
+    hideScatteredTermButtons();
+
+    // Remove monitoring card on Home (Req 9)
+    const hub = document.getElementById('damTeacherSmartReportHub');
+    if (hub) hub.remove();
+
+    // Remove duplicate API key bar on Statuses (Req 18)
+    const dupKey = document.getElementById('counselorUnifiedAiKeyBar');
+    if (dupKey) dupKey.remove();
+
+    // Unify visible version badge to ۹.۶.۰
+    const tv = document.getElementById('topVersion');
+    if (tv) tv.textContent = `نسخه ${V960_VERSION_FA}`;
+
+    // Center active JARVIS pill initially & on core click
+    const core = document.getElementById('jarvisCoreWidget');
+    if (core && !core.dataset.v960CenterWired) {
+      core.dataset.v960CenterWired = '1';
+      core.addEventListener('click', () => setTimeout(centerActiveJarvisPill, 35));
+    }
+    if (typeof window.renderDashBirthdays === 'function') {
+      window.renderDashBirthdays();
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV960, 180));
+  } else {
+    setTimeout(bootV960, 180);
+  }
+  setTimeout(bootV960, 650);
+})();
+</script>
+<!-- ==================== END V9.6.0 MASTER ENGINEERING UPGRADE SUITE ==================== -->
 
 </body>
 </html>
