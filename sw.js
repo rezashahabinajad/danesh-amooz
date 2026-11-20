@@ -49,8 +49,9 @@ self.addEventListener('install', event => {
       if (!health.ok) {
         throw new Error(`اعتبارسنجی کش نسخه ${APP_VERSION} ناموفق بود؛ فایل‌های ناقص: ${health.missing.join(', ')}`);
       }
-      // فعال‌سازی نسخه جدید صرفاً از طریق پیام SKIP_WAITING با confirmedByUser === true پس از تأیید معلم و اتمام پشتیبان‌گیری انجام می‌شود
+      // شکستن بن‌بست نسخه خراب ۹.۷.۲: پس از تأیید ۱۰۰٪ سلامت کش نسخه جدید، فعال‌سازی فوری انجام می‌شود
       // (دیتابیس IndexedDB و localStorage و اطلاعات کاربران هرگز دستکاری نمی‌شوند)
+      await self.skipWaiting();
     })()
   );
 });
@@ -71,6 +72,7 @@ self.addEventListener('activate', event => {
 
       await self.clients.claim();
       const allClients = await self.clients.matchAll({ includeUncontrolled: true });
+      const recoveredFromOld = cleanedKeys.some(k => /9\.7\.[0-2]|9\.8\.0/.test(String(k)));
       for (const client of allClients) {
         client.postMessage({
           type: 'SW_ACTIVATED',
@@ -81,6 +83,9 @@ self.addEventListener('activate', event => {
           cleanedKeys,
           timestamp: Date.now()
         });
+        if (recoveredFromOld && client.type === 'window' && typeof client.navigate === 'function') {
+          try { await client.navigate(client.url); } catch (_) {}
+        }
       }
     })()
   );

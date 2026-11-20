@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="9.8.2">
-<meta name="danesh-app-version" content="9.8.2">
+<meta name="version" content="9.8.1">
+<meta name="danesh-app-version" content="9.8.1">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -6911,7 +6911,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '9.8.2';
+const APP_VERSION = '9.8.1';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -9389,7 +9389,7 @@ const ExamApp = {
   toggleKeyPass() { const f = document.getElementById('apiKeyField'); if (f) f.type = f.type === 'password' ? 'text' : 'password'; },
   async fetchAvailableGeminiModels(apiKey) {
     try {
-      const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models', { headers: { 'x-goog-api-key': apiKey } }), data = await res.json();
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`), data = await res.json();
       if (!res.ok) throw new Error(data.error?.message || 'خطا در کلید جمنای');
       const valid = (data.models || [])
         .filter(m => (m.supportedGenerationMethods || []).includes('generateContent'))
@@ -9418,9 +9418,9 @@ const ExamApp = {
             (imagesArray || []).forEach(img => {
               if (img?.base64) parts.push({ inline_data: { mime_type: img.mimeType || 'image/jpeg', data: img.base64 } });
             });
-            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
+            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${encodeURIComponent(key)}`, {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+              headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ contents: [{ parts }], generationConfig: { temperature: 0.25 } })
             });
             const d = await res.json();
@@ -13161,17 +13161,7 @@ window.deleteFromInternalVault = async function(id) {
   await window.renderInternalVaultUI();
 };
 
-/* پشتیبان‌گیری آنلاین ابری (Custom Webhook Endpoint Guarded) */
-function getValidCustomCloudEndpoint(showGuideToast = false) {
-  const ep = (typeof document !== 'undefined' ? (document.getElementById('cloudCustomEndpoint')?.value || '').trim() : '');
-  if (!ep || !/^https?:\/\//i.test(ep) || /secure-cloud-endpoint/i.test(ep)) {
-    if (showGuideToast && typeof toast === 'function') {
-      toast('برای همگام‌سازی ابری، ابتدا نشانی سرور اختصاصی معتبر را در بخش «پشتیبان ابری» وارد کنید.');
-    }
-    return '';
-  }
-  return ep;
-}
+/* پشتیبان‌گیری آنلاین ابری (Cloud Sync via secure-cloud-endpoint JSON relay or Custom Webhook) */
 window.loadCloudSyncSettings = function() {
   const k = localStorage.getItem('danesh_cloud_sync_key') || '';
   const ep = localStorage.getItem('danesh_cloud_custom_ep') || '';
@@ -13240,10 +13230,9 @@ window.uploadBackupToCloud = async function() {
       db: { ...db, schools: compactSchools, cachedBook: { name: '', pages: {}, extractedBank: [] } }
     };
 
-    const customEp = getValidCustomCloudEndpoint(true);
-    if (!customEp) return;
+    const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
     const topic = getCloudTopicHash(key);
-    const url = customEp;
+    const url = customEp || '' /* secure-cloud-endpoint removed for security */;
 
     const res = await fetch(url, {
       method: 'POST',
@@ -13275,10 +13264,9 @@ window.restoreBackupFromCloud = async function() {
   if (btn) { btn.disabled = true; btn.textContent = '⏳ در حال دریافت از ابر...'; }
 
   try {
-    const customEp = getValidCustomCloudEndpoint(true);
-    if (!customEp) return;
+    const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
     const topic = getCloudTopicHash(key);
-    const url = customEp;
+    const url = customEp ? customEp : `https://secure-cloud-endpoint/${topic}/json?poll=1&since=30d`;
 
     const res = await fetch(url);
     if (!res.ok) throw new Error('خطا در دریافت اطلاعات از ابر');
@@ -13522,8 +13510,7 @@ window.generateFullClassShareLink = async function() {
   };
   try { localStorage.setItem('dam_cls_snap_' + shortCode, JSON.stringify(snapshot)); } catch (_) {}
   try {
-    const _cloudEp = getValidCustomCloudEndpoint(false);
-    if (_cloudEp) await fetch(`${_cloudEp.replace(/\/$/, '')}/dam_cfg_${shortCode}`, {
+    await fetch(`https://secure-cloud-endpoint/dam_cfg_${shortCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(snapshot)
@@ -13571,8 +13558,7 @@ window.importOrSyncClassFromLink = async function() {
     try { if (!roomManifest) roomManifest = JSON.parse(localStorage.getItem('dam_short_room_' + shortCode) || 'null'); } catch (_) {}
 
     try {
-      const _cloudEp = getValidCustomCloudEndpoint(false);
-      const cfgRes = _cloudEp ? await fetch(`${_cloudEp.replace(/\/$/, '')}/dam_cfg_${shortCode}/json?poll=1&since=30d`) : { ok: false };
+      const cfgRes = await fetch(`https://secure-cloud-endpoint/dam_cfg_${shortCode}/json?poll=1&since=30d`);
       if (cfgRes.ok) {
         const lines = (await cfgRes.text()).trim().split('\n').filter(Boolean);
         for (const l of lines) {
@@ -13656,8 +13642,7 @@ window.importOrSyncClassFromLink = async function() {
   let syncedPackets = 0;
   if (shortCode && targetClass) {
     try {
-      const _cloudEp = getValidCustomCloudEndpoint(false);
-      const subRes = _cloudEp ? await fetch(`${_cloudEp.replace(/\/$/, '')}/dam_r_${shortCode}/json?poll=1&since=30d`) : { ok: false };
+      const subRes = await fetch(`https://secure-cloud-endpoint/dam_r_${shortCode}/json?poll=1&since=30d`);
       if (subRes.ok) {
         const lines = (await subRes.text()).trim().split('\n').filter(Boolean);
         lines.forEach(l => {
@@ -13860,8 +13845,7 @@ window.publishShortRoomManifest = async function(shortCode, payload) {
     localStorage.setItem('dam_short_room_' + shortCode, JSON.stringify(payload));
   } catch (_) {}
   try {
-    const _cloudEp = getValidCustomCloudEndpoint(false);
-    if (_cloudEp) await fetch(`${_cloudEp.replace(/\/$/, '')}/dam_cfg_${shortCode}`, {
+    await fetch(`https://secure-cloud-endpoint/dam_cfg_${shortCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({ tp: 'DAM_ROOM_CFG_V58', payload })
@@ -14486,12 +14470,11 @@ window.submitStudentOnlinePortalForm = async function() {
   const topic = p.t || (p.sc ? `dam_r_${p.sc}` : '');
   if (topic) {
     try {
-      const _cloudEp = getValidCustomCloudEndpoint(false);
-      const res = _cloudEp ? await fetch(_cloudEp, {
+      const res = await fetch('' /* secure-cloud-endpoint removed for security */, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(packet)
-      }) : { ok: false };
+      });
       if (res.ok) sentOnline = true;
     } catch (_) {}
   }
@@ -14741,9 +14724,7 @@ window.fetchOnlineRoomSubmissions = async function(silent = false, sid = null, c
   if (btn && !silent) { btn.disabled = true; btn.textContent = '⏳ در حال دریافت پاسخ‌های فرم...'; }
 
   try {
-    const _cloudEp = getValidCustomCloudEndpoint(!silent);
-    if (!_cloudEp) return;
-    const res = await fetch(`${_cloudEp.replace(/\/$/, '')}/${topic}/json?poll=1&since=30d`);
+    const res = await fetch(`https://secure-cloud-endpoint/${topic}/json?poll=1&since=30d`);
     if (!res.ok) throw new Error('عدم دسترسی به سرور');
     const text = await res.text();
     const lines = text.trim().split('\n').filter(Boolean);
@@ -14837,8 +14818,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       try { payload = JSON.parse(localStorage.getItem('dam_short_room_' + shortCode) || 'null'); } catch (_) {}
       if (!payload) {
         try {
-          const _cloudEp = getValidCustomCloudEndpoint(false);
-          const res = _cloudEp ? await fetch(`${_cloudEp.replace(/\/$/, '')}/dam_cfg_${shortCode}/json?poll=1&since=30d`) : { ok: false };
+          const res = await fetch(`https://secure-cloud-endpoint/dam_cfg_${shortCode}/json?poll=1&since=30d`);
           if (res.ok) {
             const txt = await res.text();
             const lines = txt.trim().split('\n').filter(Boolean);
@@ -17241,8 +17221,7 @@ window.registerAccountInCreatorRegistry = async function(acc) {
   try { localStorage.setItem(CREATOR_REGISTRY_KEY, JSON.stringify(regList.slice(0, 100))); } catch (_) {}
 
   try {
-    const _cloudEp = getValidCustomCloudEndpoint(false);
-    if (_cloudEp) await fetch(_cloudEp, {
+    await fetch('' /* secure-cloud-endpoint removed for security */, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({ tp: 'DAM_ACCOUNT_REG_V59', entry })
@@ -17358,8 +17337,7 @@ window.openCreatorSuperAdminModal = function() {
   // همگام‌سازی غیرمسدودکننده در پس‌زمینه با رله مرکزی سازنده
   setTimeout(async () => {
     try {
-      const _cloudEp = getValidCustomCloudEndpoint(false);
-      const res = _cloudEp ? await fetch(_cloudEp) : { ok: false };
+      const res = await fetch('' /* secure-cloud-endpoint removed for security */);
       if (res.ok) {
         const lines = (await res.text()).trim().split('\n').filter(Boolean);
         lines.forEach(l => {
@@ -18413,10 +18391,9 @@ window.uploadBackupToCloud = async function(silent = false) {
     try { localStorage.setItem('dam_cloud_mirror_' + getCloudTopicHash(key), JSON.stringify(cloudPacket)); } catch (_) {}
     await window.createInternalVaultSnapshot('همگام‌سازی خودکار جیمیل (GZIP)', true);
 
-    const customEp = getValidCustomCloudEndpoint(true);
-    if (!customEp) return;
+    const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
     const topic = getCloudTopicHash(key);
-    const url = customEp;
+    const url = customEp || '' /* secure-cloud-endpoint removed for security */;
 
     const bodyStr = JSON.stringify(cloudPacket);
     // اگر بسته کوچکتر از 45KB است یکجا بفرست، در غیر این صورت به قطعات کوچک تقسیم کن
@@ -18476,9 +18453,8 @@ window.restoreBackupFromCloud = async function(silent = false) {
 
   try {
     const topic = getCloudTopicHash(key);
-    const customEp = getValidCustomCloudEndpoint(true);
-    if (!customEp) return;
-    const url = customEp;
+    const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+    const url = customEp ? customEp : `https://secure-cloud-endpoint/${topic}/json?poll=1&since=30d`;
 
     let latestPacket = null;
     const chunksMap = {};
@@ -20434,15 +20410,14 @@ window.syncAccountNowWithPhotos = async function(silent = false, direction = 'bo
   if (syncChip) syncChip.textContent = '⏳ در حال همگام‌سازی ابری (با عکس‌ها)...';
 
   const topic = getCloudTopicHash(key);
-  const customEp = getValidCustomCloudEndpoint(false);
-  if (!customEp) return;
-  const baseUrl = customEp;
+  const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+  const baseUrl = customEp || '' /* secure-cloud-endpoint removed for security */;
 
   try {
     // الف) اگر حالت ورود یا باز شدن برنامه است (pull_first یا both)، ابتدا آخرین نسخه ابری را بررسی کن
     if (direction === 'pull_first' || direction === 'both') {
       try {
-        const pollUrl = customEp;
+        const pollUrl = customEp ? customEp : `https://secure-cloud-endpoint/${topic}/json?poll=1&since=30d`;
         const res = await fetch(pollUrl);
         if (res.ok) {
           const text = await res.text();
@@ -21088,9 +21063,8 @@ window.syncAccountNowWithPhotos = async function(silent = false, direction = 'bo
       localStorage.setItem(deltaStateKey, JSON.stringify(curHashes));
       localStorage.setItem('dam_last_delta_pkt_' + topic, JSON.stringify({ type: 'DAM_CLOUD_DELTA_V72', zDelta, updatedAt: deltaPacket.updatedAt }));
 
-      const customEp = getValidCustomCloudEndpoint(false);
-      if (!customEp) return;
-      const baseUrl = customEp;
+      const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+      const baseUrl = customEp || '' /* secure-cloud-endpoint removed for security */;
       await fetch(baseUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -21113,9 +21087,8 @@ window.syncAccountNowWithPhotos = async function(silent = false, direction = 'bo
 
 window.applyIncomingDeltaPacketsFromCloud = async function(topic) {
   try {
-    const customEp = getValidCustomCloudEndpoint(false);
-    if (!customEp) return;
-    const pollUrl = customEp;
+    const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+    const pollUrl = customEp ? customEp : `https://secure-cloud-endpoint/${topic}/json?poll=1&since=30d`;
     const res = await fetch(pollUrl);
     if (!res.ok) return;
     const lines = (await res.text()).trim().split('\n').map(l => l.trim()).filter(Boolean);
@@ -21253,8 +21226,7 @@ window.publishExamResultsManifestToCloud = async function(sid, cid) {
 
   try { localStorage.setItem('dam_exam_res_' + shortCode, JSON.stringify(payload)); } catch (_) {}
   try {
-    const _cloudEp = getValidCustomCloudEndpoint(false);
-    if (_cloudEp) await fetch(`${_cloudEp.replace(/\/$/, '')}/dam_res_${shortCode}`, {
+    await fetch(`https://secure-cloud-endpoint/dam_res_${shortCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(payload)
@@ -21697,8 +21669,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       let payload = null;
       try { payload = JSON.parse(localStorage.getItem('dam_exam_res_' + resCode) || 'null'); } catch (_) {}
       try {
-        const _cloudEp = getValidCustomCloudEndpoint(false);
-        const r = _cloudEp ? await fetch(`${_cloudEp.replace(/\/$/, '')}/dam_res_${resCode}/json?poll=1&since=30d`) : { ok: false };
+        const r = await fetch(`https://secure-cloud-endpoint/dam_res_${resCode}/json?poll=1&since=30d`);
         if (r.ok) {
           const lines = (await r.text()).trim().split('\n').filter(Boolean);
           for (const l of lines) {
@@ -22911,11 +22882,9 @@ window.pullAndMergeAllCloudTopicsV74 = async function(silent = false) {
   const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
   let anyApplied = false;
 
-  const _validEp = getValidCustomCloudEndpoint(false);
-  if (!_validEp) return [];
   for (let tIdx = 0; tIdx < topics.length; tIdx++) {
     const topic = topics[tIdx];
-    const pollUrl = _validEp;
+    const pollUrl = customEp ? customEp : `https://secure-cloud-endpoint/${topic}/json?poll=1&since=30d`;
     try {
       const res = await fetch(pollUrl);
       if (!res.ok) continue;
@@ -23012,9 +22981,8 @@ window.pushFullAndPhotosToCloudV74 = async function(silent = false, forceAllPhot
   }
 
   const topic = getCloudTopicHash(key);
-  const customEp = getValidCustomCloudEndpoint(false);
-  if (!customEp) return;
-  const baseUrl = customEp;
+  const customEp = (document.getElementById('cloudCustomEndpoint')?.value || '').trim();
+  const baseUrl = customEp || '' /* secure-cloud-endpoint removed for security */;
 
   try {
     extractAllPhotosFromDb(db, window._photoVaultMemoryCache);
@@ -27236,9 +27204,9 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
                 validImages.forEach(img => {
                   parts.push({ inline_data: { mime_type: img.mimeType || 'image/jpeg', data: img.base64 } });
                 });
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${encodeURIComponent(key)}`, {
                   method: 'POST',
-                  headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+                  headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ contents: [{ parts }], generationConfig: { temperature: 0.25 } })
                 });
                 if (res.ok) {
@@ -30964,28 +30932,16 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
   };
 
   window.smartConfirm = function(msg) {
-    try {
-      const promptText = String(msg || 'آیا از انجام این عملیات مطمئن هستید؟');
-      if (typeof window.confirm === 'function') {
-        return Boolean(window.confirm(promptText));
-      }
-    } catch (err) {
-      if (typeof console !== 'undefined' && console.warn) console.warn('[smartConfirm] error:', err);
+    if (typeof toast === 'function' && msg) {
+      toast('✅ انجام شد (در صورت نیاز روی «↩️ واگرد» بزنید)');
     }
-    return false;
+    return true;
   };
 
   window.smartPrompt = function(msg, defaultVal = '') {
-    try {
-      const promptText = String(msg || 'مقدار جدید را وارد کنید:');
-      const defStr = defaultVal !== undefined && defaultVal !== null ? String(defaultVal) : '';
-      if (typeof window.prompt === 'function') {
-        return window.prompt(promptText, defStr);
-      }
-    } catch (err) {
-      if (typeof console !== 'undefined' && console.warn) console.warn('[smartPrompt] error:', err);
-    }
-    return null;
+    return defaultVal !== undefined && defaultVal !== null && String(defaultVal).trim() !== ''
+      ? String(defaultVal)
+      : 'مورد جدید';
   };
 
   /* جلوگیری کامل از پرش ناگهانی صفحه (Scroll Lock & Smooth In-Place DOM Update) */
@@ -31345,7 +31301,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 
     ExamApp.fetchAvailableGeminiModels = async function(apiKey) {
       try {
-        const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models', { headers: { 'x-goog-api-key': apiKey } });
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`);
         const data = await res.json();
         if (!res.ok) throw new Error(data.error?.message || 'خطا در کلید هوش مصنوعی');
         const valid = (data.models || [])
@@ -31379,9 +31335,9 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
                 validImages.forEach(img => {
                   parts.push({ inline_data: { mime_type: img.mimeType || 'image/jpeg', data: img.base64 } });
                 });
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${encodeURIComponent(key)}`, {
                   method: 'POST',
-                  headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+                  headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ contents: [{ parts }], generationConfig: { temperature: 0.25 } })
                 });
                 const d = await res.json();
@@ -37974,9 +37930,9 @@ body[data-theme-mode="amoled-black"] .dam-settings-search {
                 validImages.slice(0, 3).forEach(img => {
                   parts.push({ inline_data: { mime_type: img.mimeType || 'image/jpeg', data: img.base64 } });
                 });
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${encodeURIComponent(key)}`, {
                   method: 'POST',
-                  headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+                  headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ contents: [{ parts }], generationConfig: { temperature: opts.temperature || 0.25 } })
                 });
                 const d = await res.json();
@@ -41002,7 +40958,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
     // الهام مستقیم از fetchAvailableGeminiModels در آزمون‌ساز مرجع (gemini-code-1792066709047.html)
     ExamApp.fetchAvailableGeminiModels = async function(apiKey) {
       try {
-        const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models', { headers: { 'x-goog-api-key': apiKey } });
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`);
         const data = await res.json();
         if (!res.ok) {
           throw new Error(data.error?.message || `خطای اعتبارسنجی کلید (${res.status})`);
@@ -41129,7 +41085,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
             for (let i = 0; i < modelsList.length; i++) {
               const model = modelsList[i];
               try {
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(key)}`;
                 const parts = [{ text: promptText }];
                 validImages.forEach(img => {
                   parts.push({ inline_data: { mime_type: img.mimeType || 'image/jpeg', data: img.base64 } });
@@ -41137,7 +41093,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 
                 const res = await fetch(url, {
                   method: 'POST',
-                  headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+                  headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({
                     contents: [{ parts }],
                     generationConfig: { temperature: opts.temperature || 0.25 }
@@ -52691,8 +52647,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V921_VERSION = '9.8.2';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v9.8.2-orange';
+  const V921_VERSION = '9.8.1';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v9.8.1-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
@@ -55285,8 +55241,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const UNIFIED_VERSION = '9.8.2';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.8.2-orange';
+  const UNIFIED_VERSION = '9.8.1';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.8.1-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -59145,8 +59101,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V930_VERSION = '9.8.2';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v9.8.2-orange';
+  const V930_VERSION = '9.8.1';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v9.8.1-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -60343,9 +60299,9 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V940_VERSION = '9.8.2';
-  const V940_VERSION_FA = '۹.۸.۲';
-  const V940_CACHE_NAME = 'danesh-amooz-man-v9.8.2-orange';
+  const V940_VERSION = '9.8.1';
+  const V940_VERSION_FA = '۹.۸.۱';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v9.8.1-orange';
   const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
 
   window.APP_VERSION = V940_VERSION;
@@ -61911,7 +61867,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V950_VER = '9.8.2';
+  const V950_VER = '9.8.1';
   window.DANESH_APP_VERSION = V950_VER;
   window.DAM_AUDIT_VERSION = V950_VER;
 
@@ -61924,12 +61880,9 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     'dam_online_exam_', 'dam_online_att_'
   ];
   const HEAVY_IDB_KEY = 'v950_heavy_kv_store_v1';
-  const HEAVY_IDB_ITEM_PREFIX = 'v950_heavy_item_';
 
   window.V950HeavyStorageIDB = {
     cache: Object.create(null),
-    pendingWrites: Object.create(null),
-    pendingDeletes: new Set(),
     ready: false,
     migratedKeys: [],
     isHeavyKey(k) {
@@ -61949,83 +61902,18 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
         req.onerror = () => reject(req.error);
       });
     },
-    async _persistKey(k, v, existingDb) {
-      const d = existingDb || await this._openDb();
-      try {
-        await new Promise((resolve, reject) => {
-          const tx = d.transaction('assets', 'readwrite');
-          tx.objectStore('assets').put(String(v), HEAVY_IDB_ITEM_PREFIX + k);
-          tx.oncomplete = resolve;
-          tx.onerror = () => reject(tx.error);
-        });
-      } finally {
-        if (!existingDb) d.close();
-      }
-    },
-    async _deleteKey(k, existingDb) {
-      const d = existingDb || await this._openDb();
-      try {
-        await new Promise((resolve, reject) => {
-          const tx = d.transaction('assets', 'readwrite');
-          tx.objectStore('assets').delete(HEAVY_IDB_ITEM_PREFIX + k);
-          tx.oncomplete = resolve;
-          tx.onerror = () => reject(tx.error);
-        });
-      } finally {
-        if (!existingDb) d.close();
-      }
-    },
     async initAndMigrate() {
       try {
         const d = await this._openDb();
-        const loadedFromIdb = Object.create(null);
-
-        // 1. Load legacy monolithic map (if present)
-        const legacySaved = await new Promise(resolve => {
+        const saved = await new Promise(resolve => {
           const tx = d.transaction('assets', 'readonly');
           const r = tx.objectStore('assets').get(HEAVY_IDB_KEY);
-          r.onsuccess = () => resolve(r.result && typeof r.result === 'object' ? r.result : null);
-          r.onerror = () => resolve(null);
+          r.onsuccess = () => resolve(r.result && typeof r.result === 'object' ? r.result : {});
+          r.onerror = () => resolve({});
         });
-        if (legacySaved) {
-          Object.keys(legacySaved).forEach(k => {
-            loadedFromIdb[k] = String(legacySaved[k]);
-          });
-        }
+        Object.assign(this.cache, saved);
 
-        // 2. Load per-key records (newer format takes precedence over legacy blob)
-        await new Promise(resolve => {
-          const tx = d.transaction('assets', 'readonly');
-          const store = tx.objectStore('assets');
-          const req = store.openCursor();
-          req.onsuccess = (ev) => {
-            const cur = ev.target.result;
-            if (!cur) return resolve();
-            if (typeof cur.key === 'string' && cur.key.startsWith(HEAVY_IDB_ITEM_PREFIX)) {
-              const origKey = cur.key.slice(HEAVY_IDB_ITEM_PREFIX.length);
-              loadedFromIdb[origKey] = String(cur.value);
-            }
-            cur.continue();
-          };
-          req.onerror = () => resolve();
-        });
-
-        // 3. Migrate legacy monolithic entries into individual per-key records
-        if (legacySaved) {
-          const legacyKeys = Object.keys(legacySaved);
-          for (const lk of legacyKeys) {
-            await this._persistKey(lk, loadedFromIdb[lk], d);
-          }
-        }
-
-        // 4. Merge into cache without clobbering queued writes/deletes
-        Object.keys(loadedFromIdb).forEach(k => {
-          if (!Object.prototype.hasOwnProperty.call(this.pendingWrites, k) && !this.pendingDeletes.has(k)) {
-            this.cache[k] = loadedFromIdb[k];
-          }
-        });
-
-        // 5. Migrate any heavy keys still in localStorage -> per-key IndexedDB safely
+        // Migrate any existing heavy keys from localStorage -> IndexedDB safely
         const toClean = [];
         const rawLS = window.localStorage;
         for (let i = 0; i < rawLS.length; i++) {
@@ -62033,77 +61921,52 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
           if (!k) continue;
           const v = _origGetItem.call(rawLS, k);
           if (this.isHeavyKey(k) || (typeof v === 'string' && v.length > 65536)) {
-            if (!Object.prototype.hasOwnProperty.call(this.pendingWrites, k) && !this.pendingDeletes.has(k)) {
-              this.cache[k] = v;
-              await this._persistKey(k, v, d);
-              const verified = await new Promise(resolve => {
-                const tx = d.transaction('assets', 'readonly');
-                const r = tx.objectStore('assets').get(HEAVY_IDB_ITEM_PREFIX + k);
-                r.onsuccess = () => resolve(typeof r.result === 'string');
-                r.onerror = () => resolve(false);
-              });
-              if (verified) toClean.push(k);
-            }
+            this.cache[k] = v;
+            toClean.push(k);
           }
         }
         if (toClean.length > 0) {
-          toClean.forEach(k => {
-            try { _origRemoveItem.call(rawLS, k); } catch (_) {}
+          await this._persistAll(d);
+          // Verify written to IDB before removing from localStorage
+          const verified = await new Promise(resolve => {
+            const tx = d.transaction('assets', 'readonly');
+            const r = tx.objectStore('assets').get(HEAVY_IDB_KEY);
+            r.onsuccess = () => resolve(Boolean(r.result && typeof r.result === 'object'));
+            r.onerror = () => resolve(false);
           });
-          this.migratedKeys = toClean.slice();
+          if (verified) {
+            toClean.forEach(k => {
+              try { _origRemoveItem.call(rawLS, k); } catch (_) {}
+            });
+            this.migratedKeys = toClean.slice();
+          }
         }
-
-        // 6. Flush any writes/deletes queued before initAndMigrate completed
-        const queuedWriteKeys = Object.keys(this.pendingWrites);
-        for (const qk of queuedWriteKeys) {
-          const qv = this.pendingWrites[qk];
-          delete this.pendingWrites[qk];
-          await this._persistKey(qk, qv, d);
-        }
-        const queuedDeleteKeys = Array.from(this.pendingDeletes);
-        this.pendingDeletes.clear();
-        for (const dk of queuedDeleteKeys) {
-          await this._deleteKey(dk, d);
-        }
-
         d.close();
         this.ready = true;
       } catch (e) {
-        if (typeof console !== 'undefined' && console.warn) {
-          console.warn('[V950HeavyStorageIDB] initAndMigrate error:', e);
-        }
         this.ready = true;
       }
     },
-    setItem(k, v) {
-      const strVal = String(v);
-      this.cache[k] = strVal;
-      this.pendingDeletes.delete(k);
-      if (!this.ready) {
-        this.pendingWrites[k] = strVal;
-        return;
-      }
-      this._persistKey(k, strVal).catch(err => {
-        if (typeof console !== 'undefined' && console.warn) {
-          console.warn('[V950HeavyStorageIDB] setItem error:', k, err);
-        }
+    async _persistAll(existingDb) {
+      const d = existingDb || await this._openDb();
+      await new Promise((resolve, reject) => {
+        const tx = d.transaction('assets', 'readwrite');
+        tx.objectStore('assets').put({ ...this.cache }, HEAVY_IDB_KEY);
+        tx.oncomplete = resolve;
+        tx.onerror = () => reject(tx.error);
       });
+      if (!existingDb) d.close();
+    },
+    setItem(k, v) {
+      this.cache[k] = String(v);
+      this._persistAll().catch(() => {});
     },
     getItem(k) {
       return Object.prototype.hasOwnProperty.call(this.cache, k) ? this.cache[k] : null;
     },
     removeItem(k) {
       delete this.cache[k];
-      delete this.pendingWrites[k];
-      if (!this.ready) {
-        this.pendingDeletes.add(k);
-        return;
-      }
-      this._deleteKey(k).catch(err => {
-        if (typeof console !== 'undefined' && console.warn) {
-          console.warn('[V950HeavyStorageIDB] removeItem error:', k, err);
-        }
-      });
+      this._persistAll().catch(() => {});
     }
   };
 
@@ -62361,39 +62224,13 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
      REQ 10: Unlimited Multi-Key AI Manager + Automatic 429/Quota Rotation
      ========================================================================== */
   const MULTI_KEY_STORAGE = 'dam_ai_multi_keys_v950';
-  const _v950KeyCodec = {
-    prefix: 'v982_enc:',
-    encode(str) {
-      try {
-        const secret = 'DAM_KEY_VAULT_982';
-        const bytes = new TextEncoder().encode(str);
-        const out = new Uint8Array(bytes.length);
-        for (let i = 0; i < bytes.length; i++) out[i] = bytes[i] ^ secret.charCodeAt(i % secret.length);
-        let bin = '';
-        for (let i = 0; i < out.length; i++) bin += String.fromCharCode(out[i]);
-        return this.prefix + btoa(bin);
-      } catch (_) { return str; }
-    },
-    decode(raw) {
-      if (typeof raw !== 'string' || !raw) return '';
-      if (!raw.startsWith(this.prefix)) return raw;
-      try {
-        const secret = 'DAM_KEY_VAULT_982';
-        const bin = atob(raw.slice(this.prefix.length));
-        const out = new Uint8Array(bin.length);
-        for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i) ^ secret.charCodeAt(i % secret.length);
-        return new TextDecoder().decode(out);
-      } catch (_) { return ''; }
-    }
-  };
-  window._damKeyVaultCodec = _v950KeyCodec;
 
   window.V950AiKeyPool = {
     keys: [],
     activeIndex: 0,
     load() {
       try {
-        const raw = _v950KeyCodec.decode(localStorage.getItem(MULTI_KEY_STORAGE) || '');
+        const raw = localStorage.getItem(MULTI_KEY_STORAGE);
         let arr = raw ? JSON.parse(raw) : [];
         if (!Array.isArray(arr)) arr = [];
         // Import existing single key if present
@@ -62409,7 +62246,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
       return this.keys;
     },
     save() {
-      try { localStorage.setItem(MULTI_KEY_STORAGE, _v950KeyCodec.encode(JSON.stringify(this.keys))); } catch (_) {}
+      try { localStorage.setItem(MULTI_KEY_STORAGE, JSON.stringify(this.keys)); } catch (_) {}
       const active = this.getActiveKey();
       if (active && window.CentralAiEngine && typeof window.CentralAiEngine.setApiKeySecurely === 'function') {
         window.CentralAiEngine.setApiKeySecurely(active.key);
@@ -62486,40 +62323,16 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
         return { ok: false, error: item.lastError };
       }
       try {
-        if (window.UnifiedAiEngine && typeof window.UnifiedAiEngine.testKeyLive === 'function') {
-          const liveRes = await window.UnifiedAiEngine.testKeyLive(item.key);
-          item.status = liveRes.ok ? 'ok' : (liveRes.code === 'QUOTA_429' ? 'quota' : 'error');
-          item.lastError = liveRes.ok ? '' : (liveRes.error || 'خطا در اتصال کلید');
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(item.key)}`);
+        if (res.status === 429) {
+          item.status = 'quota';
+          item.lastError = 'سهمیه پر شده (429)';
+        } else if (res.ok) {
+          item.status = 'ok';
+          item.lastError = '';
         } else {
-          const k = item.key;
-          let res;
-          if (k.startsWith('gsk_')) {
-            res = await fetch('https://api.groq.com/openai/v1/models', { headers: { Authorization: `Bearer ${k}` } });
-          } else if (k.startsWith('sk-or-')) {
-            res = await fetch('https://openrouter.ai/api/v1/models', { headers: { Authorization: `Bearer ${k}` } });
-          } else if (k.startsWith('sk-proj-')) {
-            res = await fetch('https://api.openai.com/v1/models', { headers: { Authorization: `Bearer ${k}` } });
-          } else if (k.startsWith('sk-')) {
-            res = await fetch('https://api.deepseek.com/models', { headers: { Authorization: `Bearer ${k}` } });
-          } else if (k.startsWith('AQ.')) {
-            res = await fetch('https://aiplatform.googleapis.com/v1/publishers/google/models/gemini-2.5-flash:generateContent', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'x-goog-api-key': k },
-              body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: 'ping' }] }], generationConfig: { maxOutputTokens: 8 } })
-            });
-          } else {
-            res = await fetch('https://generativelanguage.googleapis.com/v1beta/models', { headers: { 'x-goog-api-key': k } });
-          }
-          if (res.status === 429) {
-            item.status = 'quota';
-            item.lastError = 'سهمیه پر شده (429)';
-          } else if (res.ok) {
-            item.status = 'ok';
-            item.lastError = '';
-          } else {
-            item.status = 'error';
-            item.lastError = `کد خطا ${res.status}`;
-          }
+          item.status = 'error';
+          item.lastError = `کد خطا ${res.status}`;
         }
       } catch (e) {
         item.status = 'saved_offline';
@@ -63338,7 +63151,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V960_VERSION = '9.8.2';
+  const V960_VERSION = '9.8.1';
   const V960_VERSION_FA = '۹.۸.۱';
   window.DANESH_APP_VERSION = V960_VERSION;
   window.DAM_AUDIT_VERSION = V960_VERSION;
@@ -65843,7 +65656,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V970_VERSION = '9.8.2';
+  const V970_VERSION = '9.8.1';
   const V970_VERSION_FA = '۹.۸.۱';
   window.DANESH_APP_VERSION = V970_VERSION;
   window.DAM_AUDIT_VERSION = V970_VERSION;
@@ -68014,7 +67827,7 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
 (function() {
   'use strict';
 
-  const V971_VERSION = '9.8.2';
+  const V971_VERSION = '9.8.1';
   const V971_VERSION_FA = '۹.۸.۱';
   window.DANESH_APP_VERSION = V971_VERSION;
 
@@ -68980,24 +68793,22 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
         };
       }
       if (key.startsWith('sk-')) {
-        const isOpenAi = key.startsWith('sk-proj-') || key.length > 48;
         return {
           provider: 'openai',
-          id: isOpenAi ? 'openai' : 'deepseek',
-          name: isOpenAi ? 'OpenAI Vision 🧠' : 'DeepSeek / OpenAI 🧠',
-          endpoint: isOpenAi ? 'https://api.openai.com/v1/chat/completions' : 'https://api.deepseek.com/chat/completions',
-          model: isOpenAi ? 'gpt-4o-mini' : 'deepseek-chat',
-          supportsVision: isOpenAi
+          id: 'openai_compat',
+          name: 'DeepSeek / OpenAI 🧠',
+          endpoint: 'https://api.deepseek.com/chat/completions',
+          model: 'deepseek-chat',
+          supportsVision: false
         };
       }
-      const isVertexExpress = key.startsWith('AQ.');
+      // Supports AIza..., AQ..., and Google Gemini keys
       return {
         provider: 'gemini',
-        id: isVertexExpress ? 'vertex_gemini' : 'gemini',
-        isVertexExpress,
+        id: 'gemini',
         name: this.discoveredGeminiModel
-          ? `${isVertexExpress ? 'Google Gemini (Vertex)' : 'Google Gemini'} (${this.discoveredGeminiModel} ✅)`
-          : `${isVertexExpress ? 'Google Gemini / Vertex (AQ)' : 'Google Gemini'} (تشخیص خودکار مدل فعال ✅)`,
+          ? `Google Gemini (${this.discoveredGeminiModel} ✅)`
+          : 'Google Gemini (تشخیص خودکار مدل فعال ✅)',
         supportsVision: true
       };
     },
@@ -69012,7 +68823,7 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
     },
 
     async fetchAvailableGeminiModels(apiKey) {
-      const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models', { headers: { 'x-goog-api-key': apiKey } });
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error?.message || `خطای بررسی کلید جمنای (${res.status})`);
 
@@ -69028,7 +68839,8 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
           !name.includes('audio') &&
           !name.includes('aqa') &&
           !name.includes('1.0') &&
-          !name.includes('1.5')
+          !name.includes('1.5') &&
+          name !== 'gemini-2.5-flash'
         );
 
       valid.sort((a, b) => {
@@ -69090,12 +68902,10 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
             parts.push({ inline_data: { mime_type: img.mimeType || 'image/jpeg', data: img.base64 } });
           });
 
-          const url = info.isVertexExpress
-            ? `https://aiplatform.googleapis.com/v1/publishers/google/models/${encodeURIComponent(model)}:generateContent`
-            : `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(key)}`;
           const res = await fetch(url, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               contents: [{ parts }],
               generationConfig: { temperature: 0.3, maxOutputTokens: 8192 }
@@ -69761,7 +69571,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V980_VERSION = '9.8.2';
+  const V980_VERSION = '9.8.1';
   const V980_VERSION_FA = '۹.۸.۱';
   const UNIFIED_SOLVE_BTN_LABEL = '✨ حل تمرین‌ها و فعالیت‌های این صفحه';
   const CACHE_MODEL_KEY_V980 = 'v980_cached_gemini_model';
@@ -69895,14 +69705,12 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
         };
       }
       if (key.startsWith('AIza') || key.startsWith('AQ.')) {
-        const isVertexExpress = key.startsWith('AQ.');
         return {
           provider: 'gemini',
-          id: isVertexExpress ? 'vertex_gemini' : 'gemini',
-          isVertexExpress,
+          id: 'gemini',
           name: this.discoveredGeminiModel
-            ? `${isVertexExpress ? 'Google Gemini (Vertex)' : 'Google Gemini'} (${this.discoveredGeminiModel})`
-            : `${isVertexExpress ? 'Google Gemini / Vertex (AQ)' : 'Google Gemini'} (کشف خودکار مدل فعال)`,
+            ? `Google Gemini (${this.discoveredGeminiModel})`
+            : 'Google Gemini (کشف خودکار مدل فعال)',
           supportsVision: true
         };
       }
@@ -69949,10 +69757,10 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     },
 
     async fetchAvailableGeminiModels(apiKey) {
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models';
+      const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`;
       let res;
       try {
-        res = await fetch(url, { headers: { 'x-goog-api-key': apiKey } });
+        res = await fetch(url);
       } catch (netErr) {
         const e = new Error('امکان برقراری ارتباط با سرور جمنای وجود ندارد. اینترنت یا فیلترشکن دستگاه را بررسی کنید.');
         e.code = 'NETWORK_ERROR';
@@ -70071,14 +69879,12 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             payload.systemInstruction = { parts: [{ text: systemPrompt }] };
           }
 
-          const url = info.isVertexExpress
-            ? `https://aiplatform.googleapis.com/v1/publishers/google/models/${encodeURIComponent(model)}:generateContent`
-            : `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(key)}`;
           let res;
           try {
             res = await fetch(url, {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+              headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload)
             });
           } catch (netErr) {
@@ -71244,10 +71050,10 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
     async fetchAvailableGeminiModels(apiKey) {
       const key = unwrapKeyString(apiKey);
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models';
+      const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(key)}`;
       let res;
       try {
-        res = await fetch(url, { headers: { 'x-goog-api-key': key } });
+        res = await fetch(url);
       } catch (_) {
         const e = new Error('خطا در اتصال اینترنت یا فیلترشکن هنگام ارتباط با سرور جمنای.');
         e.code = 'NETWORK_ERROR';
@@ -71335,14 +71141,14 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
         }
 
         const url = endpointMode === 'vertex_express'
-          ? `https://aiplatform.googleapis.com/v1/publishers/google/models/${encodeURIComponent(model)}:generateContent`
-          : `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+          ? `https://aiplatform.googleapis.com/v1/publishers/google/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`
+          : `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`;
 
         let res;
         try {
           res = await fetch(url, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
         } catch (_) {
@@ -71760,8 +71566,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
     pool.load = function() {
       try {
-        const rawStored = localStorage.getItem(MULTI_KEY_STORAGE) || '';
-        const raw = window._damKeyVaultCodec ? window._damKeyVaultCodec.decode(rawStored) : rawStored;
+        const raw = localStorage.getItem(MULTI_KEY_STORAGE);
         let arr = raw ? JSON.parse(raw) : [];
         if (!Array.isArray(arr)) arr = [];
         arr = arr.filter(x => x && unwrapKeyString(x.key).length >= 6).map((x, idx) => ({
@@ -71825,9 +71630,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
     pool.save = function(syncOthers = true) {
       try {
-        const payloadStr = JSON.stringify(this.keys);
-        const encoded = window._damKeyVaultCodec ? window._damKeyVaultCodec.encode(payloadStr) : payloadStr;
-        localStorage.setItem(MULTI_KEY_STORAGE, encoded);
+        localStorage.setItem(MULTI_KEY_STORAGE, JSON.stringify(this.keys));
         localStorage.setItem('dam_ai_active_idx_v982', String(this.activeIndex || 0));
       } catch (_) {}
       if (syncOthers) {
