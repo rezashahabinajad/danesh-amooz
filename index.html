@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="9.7.1">
-<meta name="danesh-app-version" content="9.7.1">
+<meta name="version" content="9.7.2">
+<meta name="danesh-app-version" content="9.7.2">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -5056,6 +5056,302 @@ body.dark .ws-logout-inner {
 </style>
 <!-- ==================== END V9.7.1 MASTER ENGINEERING UPGRADE STYLES ==================== -->
 
+
+<!-- ==================== V9.7.2 MASTER TEACH SOLVER STYLES ==================== -->
+<style id="v972TeachMasterStyles">
+  /* Clean single-button minimalist Teach workbench */
+  #v970TeachWorkbenchCard {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFFBF7 100%) !important;
+    border: 1.5px solid #FED7AA !important;
+    border-radius: 20px !important;
+    padding: 14px !important;
+    box-shadow: 0 10px 28px rgba(234, 88, 12, 0.08) !important;
+  }
+
+  /* Hide cluttered legacy secondary controls & tabs cleanly without breaking DOM refs */
+  #v970TeachWorkbenchCard #btnAnalyzeFullLesson,
+  #v970TeachWorkbenchCard .teach-workbench-tabs,
+  #v970TeachWorkbenchCard #wbPane-extract,
+  #v970TeachWorkbenchCard #wbPane-impromptu,
+  #v970TeachWorkbenchCard #customExerciseText,
+  #v970TeachWorkbenchCard #v971TeachAiStatusStrip {
+    display: none !important;
+  }
+
+  #v970TeachWorkbenchCard #wbPane-solve {
+    display: block !important;
+    margin-top: 12px !important;
+  }
+
+  #v970TeachWorkbenchCard .v970-teach-action-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin: 0 !important;
+  }
+
+  /* Sleek Top AI Status Bar */
+  .v972-teach-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 13px;
+    background: #FFF7ED;
+    border: 1px solid #FDBA74;
+  }
+  .v972-teach-status-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #9A3412;
+  }
+  .v972-teach-status-dot::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #16A34A;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+    flex-shrink: 0;
+  }
+  .v972-teach-status-dot.warn::before {
+    background: #EA580C;
+    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.2);
+  }
+  .v972-teach-status-dot.err::before {
+    background: #DC2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+  }
+  .v972-teach-mini-btn {
+    border: 1px solid #FDBA74;
+    background: #FFFFFF;
+    color: #C2410C;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all .18s ease;
+    font-family: inherit;
+  }
+  .v972-teach-mini-btn:hover {
+    background: #FFEDD5;
+  }
+
+  /* THE SINGLE SLEEK HERO SOLVE BUTTON */
+  #v970TeachWorkbenchCard #btnAutoSolveEverything {
+    width: 100% !important;
+    min-height: 54px !important;
+    padding: 14px 20px !important;
+    border-radius: 16px !important;
+    border: none !important;
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 52%, #C2410C 100%) !important;
+    color: #FFFFFF !important;
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.01em !important;
+    box-shadow: 0 10px 24px rgba(234, 88, 12, 0.28), inset 0 1px 0 rgba(255,255,255,0.28) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    cursor: pointer !important;
+    transition: transform .16s ease, box-shadow .16s ease, filter .16s ease !important;
+  }
+  #v970TeachWorkbenchCard #btnAutoSolveEverything:hover:not(:disabled) {
+    transform: translateY(-1.5px) !important;
+    box-shadow: 0 14px 28px rgba(234, 88, 12, 0.34), inset 0 1px 0 rgba(255,255,255,0.35) !important;
+    filter: brightness(1.03) !important;
+  }
+  #v970TeachWorkbenchCard #btnAutoSolveEverything:active:not(:disabled) {
+    transform: translateY(0) scale(0.99) !important;
+  }
+  #v970TeachWorkbenchCard #btnAutoSolveEverything:disabled {
+    opacity: 0.78 !important;
+    cursor: wait !important;
+  }
+
+  /* Answer Cards — Unlimited Height, Crystal Clear Typography, Zero Truncation */
+  .v972-ans-card {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-right: 5px solid #EA580C;
+    border-radius: 16px;
+    padding: 15px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  .v972-ans-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #E2E8F0;
+  }
+  .v972-ans-title {
+    font-size: 14px;
+    font-weight: 900;
+    color: #9A3412;
+    line-height: 1.65;
+  }
+  .v972-ans-badges {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .v972-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: #FFF7ED;
+    color: #C2410C;
+    border: 1px solid #FED7AA;
+  }
+  .v972-badge.ai {
+    background: #EEF2FF;
+    color: #3730A3;
+    border-color: #C7D2FE;
+  }
+  .v972-copy-btn {
+    border: 1px solid #CBD5E1;
+    background: #F8FAFC;
+    color: #334155;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 9px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .v972-copy-btn:hover {
+    background: #E2E8F0;
+  }
+  .v972-ans-question {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #1E293B;
+    line-height: 1.9;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .v972-ans-body {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 12px;
+    padding: 13px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F172A;
+    line-height: 2.05;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  .v972-ans-body strong, .v972-ans-body b {
+    color: #14532D;
+    font-weight: 900;
+  }
+
+  /* Honest Diagnostic / Error Card (Replaces Fake Offline Garbled Dump!) */
+  .v972-diag-card {
+    background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+    border: 1.5px solid #F59E0B;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: right;
+  }
+  .v972-diag-card.is-error {
+    background: linear-gradient(180deg, #FEF2F2 0%, #FEE2E2 100%);
+    border-color: #EF4444;
+  }
+  .v972-diag-title {
+    font-size: 14px;
+    font-weight: 900;
+    color: #92400E;
+    margin-bottom: 6px;
+  }
+  .v972-diag-card.is-error .v972-diag-title {
+    color: #991B1B;
+  }
+  .v972-diag-desc {
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    line-height: 1.9;
+    margin-bottom: 12px;
+    white-space: pre-wrap;
+  }
+  .v972-diag-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Dark mode support for V9.7.2 cards */
+  body.dark #v970TeachWorkbenchCard,
+  body[data-theme-mode="amoled-black"] #v970TeachWorkbenchCard,
+  body.theme-cyber-dark #v970TeachWorkbenchCard {
+    background: #111827 !important;
+    border-color: #374151 !important;
+  }
+  body.dark .v972-teach-top-bar,
+  body[data-theme-mode="amoled-black"] .v972-teach-top-bar,
+  body.theme-cyber-dark .v972-teach-top-bar {
+    background: #1F2937 !important;
+    border-color: #374151 !important;
+  }
+  body.dark .v972-teach-status-dot,
+  body[data-theme-mode="amoled-black"] .v972-teach-status-dot,
+  body.theme-cyber-dark .v972-teach-status-dot {
+    color: #FDBA74 !important;
+  }
+  body.dark .v972-ans-card,
+  body[data-theme-mode="amoled-black"] .v972-ans-card,
+  body.theme-cyber-dark .v972-ans-card {
+    background: #182234 !important;
+    border-color: #334155 !important;
+  }
+  body.dark .v972-ans-title,
+  body[data-theme-mode="amoled-black"] .v972-ans-title,
+  body.theme-cyber-dark .v972-ans-title {
+    color: #FDBA74 !important;
+  }
+  body.dark .v972-ans-question,
+  body[data-theme-mode="amoled-black"] .v972-ans-question,
+  body.theme-cyber-dark .v972-ans-question {
+    background: #0F172A !important;
+    border-color: #334155 !important;
+    color: #F1F5F9 !important;
+  }
+  body.dark .v972-ans-body,
+  body[data-theme-mode="amoled-black"] .v972-ans-body,
+  body.theme-cyber-dark .v972-ans-body {
+    background: #052E16 !important;
+    border-color: #166534 !important;
+    color: #ECFDF5 !important;
+  }
+</style>
+<!-- ==================== END V9.7.2 MASTER TEACH SOLVER STYLES ==================== -->
+
 </head>
 <body class="theme-classic-orange" data-theme-mode="classic-orange">
 <!-- انیمیشن شماره ۳: بوم شبکه سایبری زنده -->
@@ -6580,7 +6876,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.7.1 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.7.2 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6680,7 +6976,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.7.1 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.7.2 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6911,7 +7207,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '9.7.1';
+const APP_VERSION = '9.7.2';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -7578,6 +7874,767 @@ function printParentReport() {
   const content = document.getElementById('parentReportPrintable')?.innerHTML; if (!content) return;
   const w = window.open('', '_blank'); if (!w) return;
   w.document.write(`<html dir="rtl"><head><meta charset="utf-8"><style>body{font-family:Tahoma;padding:20px;direction:rtl}.report-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.report-summary>div{border:1px solid #ccc;padding:8px;text-align:center;border-radius:8px}svg{max-width:100%;height:130px}</style></head><body>${content}
+
+<!-- ==================== V9.7.2 MASTER TEACH SOLVER ENGINE ==================== -->
+<script id="v972MasterTeachSolverSuite">
+(function() {
+  'use strict';
+
+  const V972_VERSION = '9.7.2';
+  const V972_VERSION_FA = '۹.۷.۲';
+  const V972_CACHE_MODEL_KEY = 'v972_cached_gemini_model';
+
+  const safeEsc = (s) => (typeof esc === 'function' ? esc(s) : String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])));
+  const safeFa = (n) => (typeof fa === 'function' ? fa(n) : String(n ?? ''));
+
+  /* ==========================================================================
+     1. Open AI Settings Helper (1-click jump from Teach section to AI Hub)
+     ========================================================================== */
+  function openAiSettingsDirectV972() {
+    try {
+      if (typeof nav === 'function') nav('backup');
+      else if (typeof showView === 'function') showView('backup');
+      else {
+        const btn = document.querySelector('[data-view="backup"]');
+        if (btn) btn.click();
+      }
+      setTimeout(() => {
+        if (typeof window.openCloudSettingsSubpage === 'function') {
+          window.openCloudSettingsSubpage('ai');
+        }
+      }, 140);
+    } catch (_) {}
+  }
+  window.openAiSettingsDirectV972 = openAiSettingsDirectV972;
+
+  /* ==========================================================================
+     2. Collect All Available API Keys (Supports Key Pool Rotation on 429)
+     ========================================================================== */
+  function getAllApiKeysV972() {
+    const out = [];
+    const seen = new Set();
+    const pushKey = (k) => {
+      const s = String(k || '').trim();
+      if (s.length >= 12 && !seen.has(s)) {
+        seen.add(s);
+        out.push(s);
+      }
+    };
+    try {
+      if (window.V950AiKeyPool && typeof window.V950AiKeyPool.getActiveKey === 'function') {
+        pushKey(window.V950AiKeyPool.getActiveKey());
+      }
+      if (window.V950AiKeyPool && Array.isArray(window.V950AiKeyPool.keys)) {
+        window.V950AiKeyPool.keys.forEach(item => pushKey(item && (item.value || item.key || item)));
+      }
+    } catch (_) {}
+    try { pushKey(window.CentralAiEngine?.getApiKey?.()); } catch (_) {}
+    try { pushKey(window.ExamApp?.state?.apiKey); } catch (_) {}
+    try { pushKey(localStorage.getItem('danesh_gemini_api_key')); } catch (_) {}
+    try { pushKey(localStorage.getItem('central_ai_api_key')); } catch (_) {}
+    try { pushKey(localStorage.getItem('exam_api_key')); } catch (_) {}
+    return out;
+  }
+
+  /* ==========================================================================
+     3. Upgraded Vision-First AI Engine (Inspired by gemini-code-1792066709047.html)
+     - Auto-discovers healthy Gemini models (prioritizing 2.5-flash / 3-flash / 2.0-flash / 2.5-pro)
+     - Rotates across ALL healthy models AND ALL saved API keys on 404/400/429
+     - Supports AIza / AQ. / sk-or- / gsk_ / sk-
+     - Zero silent nonsense fallback: returns explicit structured diagnostics on failure
+     ========================================================================== */
+  window.V972VisionSolver = {
+    discoveredModel: (() => {
+      try { return localStorage.getItem(V972_CACHE_MODEL_KEY) || localStorage.getItem('v971_cached_gemini_model') || null; } catch (_) { return null; }
+    })(),
+
+    saveHealthyModel(model) {
+      this.discoveredModel = model || null;
+      try {
+        if (model) {
+          localStorage.setItem(V972_CACHE_MODEL_KEY, model);
+          localStorage.setItem('v971_cached_gemini_model', model);
+        } else {
+          localStorage.removeItem(V972_CACHE_MODEL_KEY);
+          localStorage.removeItem('v971_cached_gemini_model');
+        }
+      } catch (_) {}
+      this.refreshStatusBar();
+    },
+
+    detectProvider(rawKey) {
+      const key = String(rawKey || '').trim();
+      if (!key) return null;
+      if (key.startsWith('gsk_')) {
+        return {
+          provider: 'openai',
+          id: 'groq',
+          name: 'Groq AI ⚡',
+          endpoint: 'https://api.groq.com/openai/v1/chat/completions',
+          models: ['meta-llama/llama-4-scout-17b-16e-instruct', 'llama-3.3-70b-versatile'],
+          supportsVision: true
+        };
+      }
+      if (key.startsWith('sk-or-')) {
+        return {
+          provider: 'openai',
+          id: 'openrouter',
+          name: 'OpenRouter 🌐',
+          endpoint: 'https://openrouter.ai/api/v1/chat/completions',
+          models: ['google/gemini-2.5-flash', 'google/gemini-2.0-flash-001', 'openai/gpt-4o-mini'],
+          supportsVision: true
+        };
+      }
+      if (key.startsWith('sk-')) {
+        return {
+          provider: 'openai',
+          id: 'openai_compat',
+          name: 'OpenAI / DeepSeek 🧠',
+          endpoint: 'https://api.deepseek.com/chat/completions',
+          models: ['deepseek-chat'],
+          supportsVision: false
+        };
+      }
+      return {
+        provider: 'gemini',
+        id: 'gemini',
+        name: this.discoveredModel ? `Gemini (${this.discoveredModel})` : 'Google Gemini Vision',
+        supportsVision: true
+      };
+    },
+
+    async fetchAvailableGeminiModels(apiKey) {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`);
+      let data = {};
+      try { data = await res.json(); } catch (_) {}
+      if (!res.ok) {
+        const msg = data.error?.message || `خطای بررسی کلید جمنای (${res.status})`;
+        const err = new Error(msg);
+        err.status = res.status;
+        throw err;
+      }
+
+      const valid = (data.models || [])
+        .filter(m => (m.supportedGenerationMethods || []).includes('generateContent'))
+        .map(m => String(m.name || '').replace(/^models\//, ''))
+        .filter(name =>
+          name.startsWith('gemini') &&
+          !/embedding|imagen|veo|tts|audio|aqa|robotics|computer-use|1\.0|1\.5/i.test(name)
+        );
+
+      valid.sort((a, b) => {
+        const score = (n) => {
+          let s = 0;
+          if (n.includes('gemini-3')) s += 120;
+          else if (n.includes('gemini-2.5')) s += 100;
+          else if (n.includes('gemini-2.0')) s += 70;
+          if (n.includes('flash') && !n.includes('lite')) s += 45;
+          else if (n.includes('pro')) s += 35;
+          else if (n.includes('lite')) s += 20;
+          if (n.includes('exp') || n.includes('thinking')) s -= 10;
+          return s;
+        };
+        return score(b) - score(a);
+      });
+
+      const defaults = ['gemini-2.5-flash', 'gemini-3-flash-preview', 'gemini-2.0-flash', 'gemini-2.5-flash-lite'];
+      const merged = [...valid];
+      defaults.forEach(d => { if (!merged.includes(d)) merged.push(d); });
+      return merged;
+    },
+
+    normalizeImage(img) {
+      if (!img) return null;
+      if (typeof img === 'string') {
+        const m = img.match(/^data:(image\/[a-zA-Z0-9.+-]+);base64,(.+)$/);
+        if (m) return { mimeType: m[1], base64: m[2] };
+        return { mimeType: 'image/jpeg', base64: img };
+      }
+      if (img.base64) {
+        const b64 = String(img.base64).replace(/^data:image\/[a-zA-Z0-9.+-]+;base64,/, '');
+        return { mimeType: img.mimeType || 'image/jpeg', base64: b64 };
+      }
+      return null;
+    },
+
+    async callWithGeminiKey(key, promptText, normImages) {
+      let modelsList = [];
+      if (this.discoveredModel) {
+        modelsList = [this.discoveredModel];
+      } else {
+        modelsList = await this.fetchAvailableGeminiModels(key);
+      }
+
+      let lastErr = null;
+      let fetchedFresh = false;
+
+      for (let i = 0; i < modelsList.length; i++) {
+        const model = modelsList[i];
+        const parts = [];
+        // Vision-First: Put high-res page image(s) FIRST so the model reads the actual page image before instructions
+        normImages.forEach(img => {
+          parts.push({ inline_data: { mime_type: img.mimeType || 'image/jpeg', data: img.base64 } });
+        });
+        parts.push({ text: promptText });
+
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(key)}`;
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts }],
+            generationConfig: {
+              temperature: 0.25,
+              maxOutputTokens: 8192
+            }
+          })
+        });
+
+        let data = {};
+        try { data = await res.json(); } catch (_) {}
+
+        if (res.ok) {
+          const out = (data.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('\n').trim();
+          if (out) {
+            this.saveHealthyModel(model);
+            return { text: out, provider: 'gemini', model, usedVision: normImages.length > 0 };
+          }
+          const blockReason = data.promptFeedback?.blockReason || data.candidates?.[0]?.finishReason;
+          lastErr = new Error(blockReason ? `پاسخ توسط مدل متوقف شد (${blockReason})` : `پاسخ خالی از مدل ${model}`);
+          continue;
+        }
+
+        const msg = data.error?.message || `خطای مدل ${model} (کد ${res.status})`;
+        const errObj = new Error(msg);
+        errObj.status = res.status;
+        lastErr = errObj;
+
+        // If API suggests a replacement model, try it immediately
+        const suggested = msg.match(/models\/([a-zA-Z0-9._-]+)/);
+        if (suggested && suggested[1] && !modelsList.includes(suggested[1])) {
+          modelsList.splice(i + 1, 0, suggested[1]);
+          continue;
+        }
+
+        // On 404/400/429/deprecated, try other models in the same key before failing
+        if (res.status === 404 || res.status === 400 || res.status === 429 || /no longer available|not found|deprecated|quota|rate.?limit|resource.?exhausted/i.test(msg)) {
+          if (res.status === 404 || res.status === 400 || /deprecated|not found/i.test(msg)) {
+            this.saveHealthyModel(null);
+          }
+          if (!fetchedFresh && modelsList.length <= 1) {
+            fetchedFresh = true;
+            try {
+              const fresh = await this.fetchAvailableGeminiModels(key);
+              fresh.forEach(fm => { if (!modelsList.includes(fm)) modelsList.push(fm); });
+            } catch (_) {}
+          }
+          continue;
+        }
+
+        // Auth / invalid key error -> stop trying models on this key
+        if (res.status === 401 || res.status === 403 || /API_KEY_INVALID|permission/i.test(msg)) {
+          errObj.code = 'INVALID_KEY';
+          throw errObj;
+        }
+      }
+
+      if (lastErr && (lastErr.status === 429 || /quota|rate.?limit|resource.?exhausted/i.test(lastErr.message))) {
+        lastErr.code = 'QUOTA_429';
+      }
+      throw lastErr || new Error('مدل فعالی برای این کلید یافت نشد.');
+    },
+
+    async callWithOpenAiKey(key, info, promptText, normImages) {
+      let lastErr = null;
+      for (const model of info.models) {
+        const useVis = info.supportsVision && normImages.length > 0 && !/llama-3\.3-70b|deepseek-chat/i.test(model);
+        const userContent = useVis
+          ? [
+              ...normImages.map(img => ({ type: 'image_url', image_url: { url: `data:${img.mimeType};base64,${img.base64}` } })),
+              { type: 'text', text: promptText }
+            ]
+          : promptText;
+
+        const res = await fetch(info.endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${key}`
+          },
+          body: JSON.stringify({
+            model,
+            messages: [{ role: 'user', content: userContent }],
+            temperature: 0.25,
+            max_tokens: 4096
+          })
+        });
+
+        let d = {};
+        try { d = await res.json(); } catch (_) {}
+        if (res.ok) {
+          const txt = String(d.choices?.[0]?.message?.content || '').trim();
+          if (txt) return { text: txt, provider: info.id, model, usedVision: useVis };
+        }
+        const msg = d.error?.message || `خطای اتصال به ${info.name} (کد ${res.status})`;
+        const err = new Error(msg);
+        err.status = res.status;
+        if (res.status === 429) err.code = 'QUOTA_429';
+        lastErr = err;
+      }
+      throw lastErr || new Error(`خطا در اتصال به ${info.name}`);
+    },
+
+    async solve(promptText, imagesArray = []) {
+      if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+        const err = new Error('اتصال اینترنت دستگاه برقرار نیست.');
+        err.code = 'OFFLINE';
+        throw err;
+      }
+
+      const keys = getAllApiKeysV972();
+      if (!keys.length) {
+        const err = new Error('هیچ کلید هوش مصنوعی در برنامه ثبت نشده است.');
+        err.code = 'NO_KEY';
+        throw err;
+      }
+
+      const normImages = (Array.isArray(imagesArray) ? imagesArray : [imagesArray])
+        .map(x => this.normalizeImage(x))
+        .filter(Boolean);
+
+      let lastErr = null;
+      for (const key of keys) {
+        const info = this.detectProvider(key);
+        if (!info) continue;
+        try {
+          if (info.provider === 'gemini') {
+            return await this.callWithGeminiKey(key, promptText, normImages);
+          } else {
+            return await this.callWithOpenAiKey(key, info, promptText, normImages);
+          }
+        } catch (err) {
+          lastErr = err;
+          // Try next saved key in pool automatically!
+          continue;
+        }
+      }
+      throw lastErr || new Error('خطای ناشناخته در ارتباط با هوش مصنوعی.');
+    },
+
+    refreshStatusBar() {
+      const dot = document.getElementById('v972TeachStatusDot');
+      if (!dot) return;
+      const keys = getAllApiKeysV972();
+      const online = typeof navigator === 'undefined' ? true : navigator.onLine !== false;
+      dot.classList.remove('warn', 'err');
+      if (!keys.length) {
+        dot.classList.add('warn');
+        dot.textContent = 'کلید هوش مصنوعی ثبت نشده (برای حل دقیق، کلید را در تنظیمات وارد کنید)';
+        return;
+      }
+      if (!online) {
+        dot.classList.add('err');
+        dot.textContent = 'آفلاین · برای حل تمرین‌ها با هوش مصنوعی دیداری اینترنت را وصل کنید';
+        return;
+      }
+      const info = this.detectProvider(keys[0]);
+      dot.textContent = info.provider === 'gemini'
+        ? (this.discoveredModel ? `آماده · ${this.discoveredModel} (دیداری)` : 'آماده · Google Gemini Vision (تشخیص خودکار مدل)')
+        : `آماده · ${info.name}`;
+    }
+  };
+
+  /* ==========================================================================
+     4. Resilient Structured Response Parser (Never breaks on Persian/Math/Quotes)
+     ========================================================================== */
+  function parseSolverResponseV972(rawText, pageRef) {
+    const text = String(rawText || '').trim();
+    if (!text) return [];
+
+    // 1. Try our ultra-reliable ===ITEM=== ... ===END=== delimiter format
+    const items = [];
+    const blockRegex = /===ITEM===([\s\S]*?)(?:===END===|(?====ITEM===)|$)/g;
+    let m;
+    while ((m = blockRegex.exec(text)) !== null) {
+      const block = m[1].trim();
+      if (!block) continue;
+      const titleMatch = block.match(/(?:^|\n)\s*TITLE\s*:\s*([^\n]+)/i);
+      const qMatch = block.match(/(?:^|\n)\s*QUESTION\s*:\s*([\s\S]*?)(?=\n\s*ANSWER\s*:|$)/i);
+      const aMatch = block.match(/(?:^|\n)\s*ANSWER\s*:\s*([\s\S]*?)$/i);
+
+      const title = (titleMatch ? titleMatch[1].trim() : '').replace(/^[*#\s]+|[*#\s]+$/g, '');
+      const question = (qMatch ? qMatch[1].trim() : '');
+      const answer = (aMatch ? aMatch[1].trim() : block.trim());
+
+      if (answer) {
+        items.push({
+          title: title || `پاسخ تمرین ${safeFa(items.length + 1)} — ${pageRef}`,
+          promptText: question,
+          solution: answer,
+          evidence: pageRef
+        });
+      }
+    }
+    if (items.length) return items;
+
+    // 2. Fallback: Try JSON if model returned JSON anyway
+    if (typeof window.extractValidJsonFromAiText === 'function') {
+      try {
+        const parsed = window.extractValidJsonFromAiText(text, 'object');
+        if (parsed && Array.isArray(parsed.activities) && parsed.activities.length) {
+          return parsed.activities.map((a, idx) => ({
+            title: String(a.title || `پاسخ تمرین ${safeFa(idx + 1)} — ${pageRef}`).trim(),
+            promptText: String(a.promptText || a.question || '').trim(),
+            solution: String(a.solution || a.answer || a.a || '').trim(),
+            evidence: a.evidence || pageRef
+          })).filter(x => x.solution);
+        }
+      } catch (_) {}
+    }
+
+    // 3. Fallback: Preserve 100% of full prose answer with zero truncation
+    return [{
+      title: `پاسخ کامل تمرین‌ها و فعالیت‌های ${pageRef}`,
+      promptText: '',
+      solution: text,
+      evidence: pageRef
+    }];
+  }
+
+  /* ==========================================================================
+     5. High-Resolution PDF Page Capture + Clean Neighboring Page Context
+     ========================================================================== */
+  async function captureHighResPageV972(TA, targetPageNo) {
+    const pNo = Math.max(1, Number(targetPageNo || window._teacherPdfPage || TA.currentPage || 1));
+    let pdfDoc = TA._pdfInstance || window.ExamApp?.pdfDoc || null;
+
+    if (!pdfDoc && window.pdfjsLib) {
+      try {
+        const buf = TA._pdfBufferCache || (typeof loadBookPdfAsset === 'function' ? await loadBookPdfAsset(db.cachedBook?.id) : null);
+        if (buf) {
+          TA._pdfBufferCache = buf;
+          pdfDoc = await pdfjsLib.getDocument(TA.getPdfDocumentConfig(buf)).promise;
+          TA._pdfInstance = pdfDoc;
+        }
+      } catch (_) {}
+    }
+
+    let pageImg = null;
+    let neighboringContext = '';
+
+    if (pdfDoc && pNo >= 1 && pNo <= pdfDoc.numPages) {
+      try {
+        const page = await pdfDoc.getPage(pNo);
+        const baseVp = page.getViewport({ scale: 1 });
+        // Target crisp ~1500px width (scale 1.75–2.0) for crystal-clear Persian, Arabic diacritics & Math
+        const targetScale = Math.min(2.0, Math.max(1.5, 1500 / Math.max(1, baseVp.width)));
+        const vp = page.getViewport({ scale: targetScale });
+        const c = document.createElement('canvas');
+        c.width = Math.floor(vp.width);
+        c.height = Math.floor(vp.height);
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, c.width, c.height);
+        try { ctx.direction = 'ltr'; } catch (_) {}
+        await page.render({ canvasContext: ctx, viewport: vp }).promise;
+        const dataUrl = c.toDataURL('image/jpeg', 0.88);
+        pageImg = { mimeType: 'image/jpeg', base64: dataUrl.split(',')[1], dataUrl };
+      } catch (_) {}
+
+      // Gather optional neighboring pages (pNo - 2, pNo - 1, pNo + 1) text as supplementary context
+      // (Remember: user noted answers may be on another page — we give AI both neighboring context AND full freedom to use curriculum knowledge!)
+      const neighborPages = [pNo - 2, pNo - 1, pNo + 1].filter(n => n >= 1 && n <= pdfDoc.numPages);
+      const chunks = [];
+      for (const np of neighborPages) {
+        try {
+          let txt = db?.cachedBook?.pages?.[String(np)] || '';
+          if (!txt) {
+            const pObj = await pdfDoc.getPage(np);
+            const tc = await pObj.getTextContent();
+            txt = typeof TA.cleanPersianPdfText === 'function' ? TA.cleanPersianPdfText(tc.items) : '';
+          }
+          if (txt && txt.trim().length > 25) {
+            chunks.push(`[بافت کمکی از صفحه ${safeFa(np)}]: ${txt.trim().slice(0, 900)}`);
+          }
+        } catch (_) {}
+      }
+      if (chunks.length) neighboringContext = chunks.join('\n\n');
+    }
+
+    // Fallback to currently visible canvas if pdfDoc wasn't directly available
+    if (!pageImg) {
+      const canvas = document.getElementById('teacherPdfCanvas');
+      if (canvas && canvas.style.display !== 'none' && canvas.width > 10) {
+        try {
+          const maxW = 1500;
+          const sc = Math.min(1, maxW / canvas.width);
+          const tmp = document.createElement('canvas');
+          tmp.width = Math.max(1, Math.round(canvas.width * sc));
+          tmp.height = Math.max(1, Math.round(canvas.height * sc));
+          const ctx = tmp.getContext('2d');
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, tmp.width, tmp.height);
+          ctx.drawImage(canvas, 0, 0, tmp.width, tmp.height);
+          const dataUrl = tmp.toDataURL('image/jpeg', 0.88);
+          pageImg = { mimeType: 'image/jpeg', base64: dataUrl.split(',')[1], dataUrl };
+        } catch (_) {}
+      }
+    }
+
+    const bookName = db?.cachedBook?.name || window.ExamApp?.state?.header?.subject || 'کتاب درسی';
+    return { pageNo: pNo, pageImg, neighboringContext, bookName };
+  }
+
+  /* ==========================================================================
+     6. Build Friendly Diagnostic Card (NEVER Fake Garbled PDF Text!)
+     ========================================================================== */
+  function renderDiagnosticCardV972(box, err) {
+    if (!box) return;
+    const code = err?.code || '';
+    const rawMsg = String(err?.message || 'خطا در ارتباط با هوش مصنوعی');
+    let title = '⚠️ امکان دریافت پاسخ دقیق از هوش مصنوعی فراهم نشد';
+    let desc = '';
+    let isErr = true;
+
+    if (code === 'NO_KEY') {
+      isErr = false;
+      title = '🔑 کلید هوش مصنوعی تنظیم نشده است';
+      desc = 'برای حل دقیق تمرین‌ها، فعالیت‌ها و پرسش‌های کتاب از روی تصویر صفحه، کافی است کلید رایگان هوش مصنوعی (Gemini با پیشوند AIza یا AQ، یا OpenRouter / Groq) را یک‌بار در بخش تنظیمات وارد کنید.';
+    } else if (code === 'OFFLINE') {
+      isErr = false;
+      title = '📡 اتصال اینترنت برقرار نیست';
+      desc = 'برای خواندن تصویر صفحه کتاب و حل دقیق تمرین‌ها به اتصال اینترنت نیاز است. پس از وصل شدن اینترنت، دوباره روی دکمه حل تمرین بزنید.';
+    } else if (code === 'QUOTA_429' || /quota|rate.?limit|429/i.test(rawMsg)) {
+      title = '⏳ سهمیه موقت کلید هوش مصنوعی تکمیل شده است';
+      desc = 'سهمیه فعلی کلید API شما موقتاً پر شده است. می‌توانید چند ثانیه بعد دوباره تلاش کنید یا کلید دوم را در بخش تنظیمات هوش مصنوعی اضافه کنید.\nجزئیات فنی: ' + rawMsg;
+    } else if (/Failed to fetch|NetworkError|Load failed/i.test(rawMsg)) {
+      title = '🌐 خطا در اتصال به سرور هوش مصنوعی';
+      desc = 'ارتباط با سرور هوش مصنوعی برقرار نشد. اگر از کلید Google Gemini استفاده می‌کنید، روشن بودن فیلترشکن (VPN) و پایداری اینترنت را بررسی کنید.';
+    } else {
+      desc = 'علت خطا: ' + rawMsg + '\n\nلطفاً کلید هوش مصنوعی یا وضعیت اینترنت/VPN را بررسی کرده و دوباره تلاش کنید.';
+    }
+
+    box.innerHTML = `
+      <div class="v972-diag-card ${isErr ? 'is-error' : ''}">
+        <div class="v972-diag-title">${safeEsc(title)}</div>
+        <div class="v972-diag-desc">${safeEsc(desc)}</div>
+        <div class="v972-diag-actions">
+          <button type="button" class="btn primary btn-sm" onclick="TeachAssistant.autoSolveAndPreparePage()">🔄 تلاش مجدد</button>
+          <button type="button" class="btn soft btn-sm" onclick="openAiSettingsDirectV972()">⚙️ تنظیم کلید هوش مصنوعی</button>
+        </div>
+      </div>
+    `;
+  }
+
+  /* ==========================================================================
+     7. Copy Answer Helper
+     ========================================================================== */
+  window.copyV972Answer = function(btnEl, idx, pageNo) {
+    try {
+      const list = db?.cachedBook?.solvedActivities?.[String(pageNo)] || [];
+      const item = list[idx];
+      if (!item) return;
+      const fullText = [item.title, item.promptText ? ('پرسش: ' + item.promptText) : '', 'پاسخ:\n' + item.solution].filter(Boolean).join('\n\n');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(fullText);
+      }
+      const old = btnEl.textContent;
+      btnEl.textContent = '✅ کپی شد';
+      setTimeout(() => { btnEl.textContent = old; }, 1600);
+    } catch (_) {}
+  };
+
+  /* ==========================================================================
+     8. Patch Teach Section UI & Behavior (v9.7.2)
+     ========================================================================== */
+  function patchTeachMasterV972() {
+    if (!window.TeachAssistant) return;
+    const TA = window.TeachAssistant;
+
+    // A. Clean Single-Button UI inside #v970TeachWorkbenchCard
+    const wb = document.getElementById('v970TeachWorkbenchCard');
+    if (wb) {
+      if (!document.getElementById('v972TeachTopBar')) {
+        wb.insertAdjacentHTML('afterbegin', `
+          <div id="v972TeachTopBar" class="v972-teach-top-bar">
+            <span id="v972TeachStatusDot" class="v972-teach-status-dot">آماده حل دقیق تمرین‌ها</span>
+            <button type="button" class="v972-teach-mini-btn" onclick="openAiSettingsDirectV972()">⚙️ کلید هوش مصنوعی</button>
+          </div>
+        `);
+      }
+      const btnMain = document.getElementById('btnAutoSolveEverything');
+      if (btnMain && !btnMain.disabled) {
+        btnMain.innerHTML = '<span>✨</span><span>حل تمرین‌ها، فعالیت‌ها و پرسش‌های این صفحه</span>';
+      }
+    }
+    window.V972VisionSolver.refreshStatusBar();
+
+    // B. Override renderSavedPageActivities with Unlimited Full-Width Cards & Copy Button
+    TA.renderSavedPageActivities = function(pageNo) {
+      const box = document.getElementById('activitiesSolutionBox');
+      if (!box) return;
+      const pNo = Number(pageNo || this.currentPage || window._teacherPdfPage || 1);
+      const pageRef = `صفحه ${safeFa(pNo)}`;
+      const list = db?.cachedBook?.solvedActivities?.[String(pNo)] || [];
+
+      if (!list.length) {
+        box.innerHTML = `
+          <div class="v972-ans-card" style="text-align:center;border-right-color:#FDBA74">
+            <div style="font-size:13.5px;font-weight:800;color:#475569;line-height:1.85">
+              برای دریافت پاسخ کامل، علمی و بدون محدودیت تمرین‌ها، فعالیت‌ها و پرسش‌های <b>${pageRef}</b>، روی دکمه نارنجی بالا بزنید.
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      box.innerHTML = list.map((item, idx) => {
+        const cleanTitle = String(item.title || `حل تمرین ${safeFa(idx + 1)} — ${pageRef}`).trim();
+        const fullPrompt = String(item.promptText || '').trim();
+        const fullSol = String(item.solution || '').trim();
+        return `
+          <div class="v972-ans-card">
+            <div class="v972-ans-head">
+              <div class="v972-ans-title">📌 ${safeEsc(cleanTitle)}</div>
+              <div class="v972-ans-badges">
+                ${item.modelUsed ? `<span class="v972-badge ai">🤖 ${safeEsc(item.modelUsed)}</span>` : ''}
+                <span class="v972-badge">${safeEsc(item.evidence || pageRef)}</span>
+                <button type="button" class="v972-copy-btn" onclick="copyV972Answer(this, ${idx}, ${pNo})">📋 کپی</button>
+              </div>
+            </div>
+            ${fullPrompt ? `<div class="v972-ans-question" dir="auto">❓ ${safeEsc(fullPrompt)}</div>` : ''}
+            <div class="v972-ans-body" dir="auto">${safeEsc(fullSol)}</div>
+          </div>
+        `;
+      }).join('');
+    };
+
+    // C. Override autoSolveAndPreparePage -> Vision-First, Unlimited Length, Full Curriculum Knowledge, Zero Fake Answers
+    TA.autoSolveAndPreparePage = async function(targetPageNo = null, silent = false) {
+      if (typeof this.ensureLibraryStructure === 'function') this.ensureLibraryStructure();
+
+      const btn = document.getElementById('btnAutoSolveEverything');
+      const progBox = document.getElementById('autoSolveLiveProgressBox');
+      const box = document.getElementById('activitiesSolutionBox');
+
+      const { pageNo, pageImg, neighboringContext, bookName } = await captureHighResPageV972(this, targetPageNo);
+      const pageRef = `صفحه ${safeFa(pageNo)}`;
+
+      if (!pageImg) {
+        if (box) {
+          box.innerHTML = `
+            <div class="v972-diag-card">
+              <div class="v972-diag-title">📖 ابتدا کتاب درسی (PDF) را باز کنید</div>
+              <div class="v972-diag-desc">هنوز تصویری از صفحه کتاب روی صفحه نمایش وجود ندارد. لطفاً فایل PDF کتاب درسی را انتخاب کنید تا صفحه نمایش داده شود و سپس دکمه حل تمرین را بزنید.</div>
+            </div>
+          `;
+        }
+        if (!silent && typeof toast === 'function') toast('ابتدا فایل PDF کتاب درسی را باز کنید.');
+        return false;
+      }
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span>⏳</span><span>در حال خواندن تصویر ${pageRef} و حل دقیق تمرین‌ها...</span>`;
+      }
+      if (progBox) {
+        progBox.style.display = 'block';
+        progBox.textContent = `🔍 در حال ارسال تصویر باکیفیت ${pageRef} به هوش مصنوعی دیداری...`;
+      }
+
+      try {
+        const masterPrompt = `تو یک معلم حرفه‌ای، دقیق و مسلط به تمام کتاب‌های درسی آموزش و پرورش ایران (از پایه اول ابتدایی تا دوازدهم) هستی.
+نام کتاب (در صورت ثبت): ${bookName} — شماره صفحه فعلی: ${pageRef}.
+
+مأموریت تو:
+1. **منبع اصلی خواندن سؤالات، تصویر پیوست‌شده همین صفحه است.** با دقت بالا تمام فعالیت‌ها، تمرین‌ها، «خودت را امتحان کن»، «کار در کلاس»، «فکر کنید»، «گفت‌وگو کنید»، «آزمایش کنید»، «تحقیق کنید»، مسائل ریاضی/فیزیک/شیمی، ترجمه و قواعد عربی/قرآن و انگلیسی موجود در تصویر این صفحه را شناسایی کن.
+2. **هرگز متن خام صفحه را به‌جای پاسخ کپی نکن!** برای هر پرسش یا زیربخش (مثلاً سؤال ۱، ۲، ۳ یا الف، ب، ج)، **پاسخ واقعی، علمی، دقیق، مرحله‌به‌مرحله و کامل** بنویس.
+3. **آزادی کامل در یافتن پاسخ (بسیار مهم):** پاسخ بسیاری از پرسش‌ها ممکن است در صفحات قبلی/بعدی کتاب یا در دانش تخصصی همان درس باشد؛ بنابراین **به‌هیچ‌وجه خود را محدود به متن همین یک صفحه نکن**. هم از بافت درس و هم از دانش کامل و معتبر کتاب درسی ایران استفاده کن تا پاسخ ۱۰۰٪ درست و کامل باشد.
+4. **بدون محدودیت طول پاسخ:** چه پاسخ یک خط کوتاه باشد و چه یک حل تشریحی مفصل چندپاراگرافی یا مرحله‌به‌مرحله، آن را کاملاً کامل و بدون هیچ کوتاه‌سازی به فارسی روان بنویس.
+5. اگر در این صفحه هیچ فعالیت، تمرین یا پرسشی وجود نداشت (مثلاً صرفاً متن درسنامه یا داستان بود)، در یک مورد صریحاً بنویس این صفحه تمرین/فعالیت ندارد و سپس نکات کلیدی و آموزشی این صفحه را منظم و کامل توضیح بده.
+6. هیچ جدولی نساز و از قالب دقیق زیر برای هر فعالیت یا تمرین استفاده کن:
+
+===ITEM===
+TITLE: عنوان دقیق فعالیت یا تمرین (مثلاً: خودت را امتحان کن — سؤال ۱)
+QUESTION: صورت کامل و صحیح پرسش یا فعالیت (دقیقاً خوانده‌شده از روی تصویر)
+ANSWER: پاسخ کاملاً دقیق، علمی، مرحله‌به‌مرحله و بدون محدودیت طول
+===END===
+
+${neighboringContext ? `\n(بافت کمکی از صفحات مجاور همین کتاب برای کمک به دقت بیشتر؛ اگر در آن غلط تایپی PDF بود آن را نادیده بگیر و به دانش علمی خودت و تصویر تکیه کن):\n${neighboringContext}` : ''}`;
+
+        const aiRes = await window.V972VisionSolver.solve(masterPrompt, [pageImg]);
+        const parsedActivities = parseSolverResponseV972(aiRes.text, pageRef).map(item => ({
+          ...item,
+          modelUsed: aiRes.model || aiRes.provider,
+          mode: 'v972_vision_ai'
+        }));
+
+        if (!parsedActivities.length) {
+          throw new Error('پاسخی از هوش مصنوعی دریافت نشد.');
+        }
+
+        if (!db.cachedBook) db.cachedBook = { name: bookName, solvedActivities: {}, extractedBank: [] };
+        if (!db.cachedBook.solvedActivities) db.cachedBook.solvedActivities = {};
+        db.cachedBook.solvedActivities[String(pageNo)] = parsedActivities;
+
+        this.currentPage = pageNo;
+        if (typeof this.syncActiveToLibrary === 'function') this.syncActiveToLibrary();
+        if (typeof savePersistent === 'function') savePersistent();
+
+        this.renderSavedPageActivities(pageNo);
+
+        if (progBox) {
+          progBox.style.display = 'block';
+          progBox.textContent = `✅ ${safeFa(parsedActivities.length)} مورد در ${pageRef} با موفقیت و دقت کامل حل شد (${aiRes.model}).`;
+        }
+        if (!silent && typeof toast === 'function') {
+          toast(`✅ تمرین‌ها و فعالیت‌های ${pageRef} حل شدند!`);
+        }
+        return { mode: 'v972_vision_ai', model: aiRes.model, activities: parsedActivities };
+      } catch (err) {
+        renderDiagnosticCardV972(box, err);
+        if (progBox) {
+          progBox.style.display = 'none';
+        }
+        if (!silent && typeof toast === 'function') {
+          toast(err?.code === 'NO_KEY' ? 'ابتدا کلید هوش مصنوعی را در تنظیمات وارد کنید.' : 'خطا در دریافت پاسخ از هوش مصنوعی');
+        }
+        return false;
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<span>✨</span><span>حل تمرین‌ها، فعالیت‌ها و پرسش‌های این صفحه</span>';
+        }
+        window.V972VisionSolver.refreshStatusBar();
+      }
+    };
+
+    // Refresh current page cards cleanly
+    if (document.getElementById('activitiesSolutionBox')) {
+      TA.renderSavedPageActivities(TA.currentPage || window._teacherPdfPage || 1);
+    }
+
+    // Sync top version badge
+    const tv = document.getElementById('topVersion');
+    if (tv) tv.textContent = `نسخه ${V972_VERSION_FA}`;
+  }
+
+  function bootV972() {
+    patchTeachMasterV972();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bootV972, 480));
+  } else {
+    setTimeout(bootV972, 480);
+  }
+  setTimeout(bootV972, 1150);
+  window.addEventListener('online', () => window.V972VisionSolver?.refreshStatusBar?.());
+  window.addEventListener('offline', () => window.V972VisionSolver?.refreshStatusBar?.());
+})();
+</script>
+<!-- ==================== END V9.7.2 MASTER TEACH SOLVER ENGINE ==================== -->
+
 </body></html>`);
   w.document.close(); w.focus(); setTimeout(() => w.print(), 350);
 }
@@ -35876,7 +36933,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v9.7.1</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v9.7.2</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -36018,7 +37075,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 9.7.1 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 9.7.2 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -40405,7 +41462,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DAM_AUDIT_VERSION = '9.7.1';
+  window.DAM_AUDIT_VERSION = '9.7.2';
 
   /* ==========================================================================================
      ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
@@ -40790,7 +41847,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.7.1';
+  window.DANESH_APP_VERSION = '9.7.2';
 
   /* ==========================================================================================
      ۱. معماری یکپارچه هوش مصنوعی با الهام مستقیم از آزمون‌ساز (gemini-code-1792066709047.html)
@@ -47781,13 +48838,13 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.7.1';
-  window.DAM_AUDIT_VERSION = '9.7.1';
+  window.DANESH_APP_VERSION = '9.7.2';
+  window.DAM_AUDIT_VERSION = '9.7.2';
   try {
     const topVerEl = document.getElementById('topVersion');
     if (topVerEl) topVerEl.textContent = 'نسخه ۹.۷.۱';
     const metaVer = document.querySelector('meta[name="version"]');
-    if (metaVer) metaVer.setAttribute('content', '9.7.1');
+    if (metaVer) metaVer.setAttribute('content', '9.7.2');
   } catch (_) {}
 
   /* ==========================================================================================
@@ -52647,8 +53704,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V921_VERSION = '9.7.1';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v9.7.1-orange';
+  const V921_VERSION = '9.7.2';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v9.7.2-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
@@ -55241,8 +56298,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const UNIFIED_VERSION = '9.7.1';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.7.1-orange';
+  const UNIFIED_VERSION = '9.7.2';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.7.2-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -59101,8 +60158,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V930_VERSION = '9.7.1';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v9.7.1-orange';
+  const V930_VERSION = '9.7.2';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v9.7.2-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -60299,9 +61356,9 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V940_VERSION = '9.7.1';
+  const V940_VERSION = '9.7.2';
   const V940_VERSION_FA = '۹.۷.۱';
-  const V940_CACHE_NAME = 'danesh-amooz-man-v9.7.1-orange';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v9.7.2-orange';
   const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
 
   window.APP_VERSION = V940_VERSION;
@@ -67827,8 +68884,8 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
 (function() {
   'use strict';
 
-  const V971_VERSION = '9.7.1';
-  const V971_VERSION_FA = '۹.۷.۱';
+  const V971_VERSION = '9.7.2';
+  const V971_VERSION_FA = '۹.۷.۲';
   window.DANESH_APP_VERSION = V971_VERSION;
 
   const safeEsc = (s) => typeof esc === 'function' ? esc(s) : String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
