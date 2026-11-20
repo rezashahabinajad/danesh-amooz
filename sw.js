@@ -1,5 +1,5 @@
-const APP_VERSION = '9.7.1';
-const CACHE_NAME = 'danesh-amooz-man-v9.7.1-orange';
+const APP_VERSION = '9.8.2';
+const CACHE_NAME = 'danesh-amooz-man-v9.8.2-orange';
 const ASSETS = [
   './',
   './index.html',
@@ -49,6 +49,8 @@ self.addEventListener('install', event => {
       if (!health.ok) {
         throw new Error(`اعتبارسنجی کش نسخه ${APP_VERSION} ناموفق بود؛ فایل‌های ناقص: ${health.missing.join(', ')}`);
       }
+      // فعال‌سازی نسخه جدید صرفاً از طریق پیام SKIP_WAITING با confirmedByUser === true پس از تأیید معلم و اتمام پشتیبان‌گیری انجام می‌شود
+      // (دیتابیس IndexedDB و localStorage و اطلاعات کاربران هرگز دستکاری نمی‌شوند)
     })()
   );
 });
