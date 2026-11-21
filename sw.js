@@ -1,5 +1,5 @@
-const APP_VERSION = '9.8.5';
-const CACHE_NAME = 'danesh-amooz-man-v9.8.5-orange';
+const APP_VERSION = '9.8.6';
+const CACHE_NAME = 'danesh-amooz-man-v9.8.6-orange';
 const ASSETS = [
   './',
   './index.html',
