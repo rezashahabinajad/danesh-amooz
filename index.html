@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="9.8.2">
-<meta name="danesh-app-version" content="9.8.2">
+<meta name="version" content="9.8.3">
+<meta name="danesh-app-version" content="9.8.3">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -72271,6 +72271,785 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 })();
 </script>
 <!-- ==================== END V9.8.2 UNIFIED AI MASTER ENGINE ==================== -->
+
+<!-- ==================== V9.8.3 SUPABASE REAL CLOUD SYNC ENGINE ==================== -->
+<style id="v983SupabaseSyncStyles">
+  .v983-cloud-pill {
+    cursor: pointer;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.12);
+    color: #047857;
+    font-weight: 800;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .v983-cloud-pill.is-guest {
+    border-color: rgba(234, 88, 12, 0.35);
+    background: rgba(234, 88, 12, 0.1);
+    color: var(--primary, #EA580C);
+  }
+  .v983-cloud-pill.is-syncing {
+    border-color: rgba(37, 99, 235, 0.4);
+    background: rgba(37, 99, 235, 0.1);
+    color: #1D4ED8;
+  }
+  .v983-cloud-pill.is-err {
+    border-color: rgba(220, 38, 38, 0.4);
+    background: rgba(220, 38, 38, 0.1);
+    color: #B91C1C;
+  }
+  .v983-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.58);
+    backdrop-filter: blur(4px);
+    z-index: 99990;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+  }
+  .v983-modal-backdrop.open {
+    display: flex;
+  }
+  .v983-modal-card {
+    width: 100%;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--card, #FFFFFF);
+    color: var(--text, #0F172A);
+    border: 1px solid var(--border, #E2E8F0);
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
+  }
+  .v983-sync-card {
+    border: 1.5px solid rgba(234, 88, 12, 0.35);
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 12px;
+    background: var(--card, #FFFFFF);
+  }
+  .v983-status-box {
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 12.5px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: #FFF7ED;
+    border: 1px solid #FDBA74;
+    color: #9A3412;
+  }
+  .v983-status-box.ok {
+    background: #ECFDF5;
+    border-color: #6EE7B7;
+    color: #065F46;
+  }
+  .v983-status-box.err {
+    background: #FEF2F2;
+    border-color: #FCA5A5;
+    color: #991B1B;
+  }
+  .v983-field {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border, #CBD5E1);
+    background: var(--bg, #F8FAFC);
+    color: var(--text, #0F172A);
+    font-family: inherit;
+    font-size: 13.5px;
+    margin-bottom: 8px;
+  }
+  .v983-btn-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+</style>
+
+<script id="v983SupabaseCloudSyncEngine">
+(function() {
+  'use strict';
+
+  const V983_VERSION = '9.8.3';
+  const V983_VERSION_FA = '۹.۸.۳';
+  const SB_URL = 'https://wazycdrhwlnoylfmsenx.supabase.co';
+  const SB_KEY = 'sb_publishable_SjneXL0bzHA-mXFfdQwklw_0x9fwo0N';
+  const SESSION_STORAGE_KEY = 'dam_sb_session_v983';
+  const SYNC_META_KEY = 'dam_sb_sync_meta_v983';
+  const TABLE_NAME = 'teacher_backups';
+
+  window.APP_VERSION = V983_VERSION;
+  window.DANESH_APP_VERSION = V983_VERSION;
+
+  function safeEsc(v) {
+    try { return typeof esc === 'function' ? esc(v) : String(v ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
+    catch (_) { return String(v ?? ''); }
+  }
+  function notify(msg) {
+    try { if (typeof toast === 'function') toast(msg); } catch (_) {}
+  }
+  function formatTimeFa(ts) {
+    if (!ts) return '—';
+    try {
+      return new Date(ts).toLocaleString('fa-IR', { dateStyle: 'short', timeStyle: 'short' });
+    } catch (_) {
+      return new Date(ts).toLocaleString();
+    }
+  }
+  function countDbItems(obj) {
+    if (!obj || !Array.isArray(obj.schools)) return { schools: 0, classes: 0, students: 0, total: 0 };
+    let classes = 0, students = 0;
+    obj.schools.forEach(s => {
+      const cls = Array.isArray(s.classes) ? s.classes : [];
+      classes += cls.length;
+      cls.forEach(c => {
+        students += Array.isArray(c.students) ? c.students.length : 0;
+      });
+    });
+    return { schools: obj.schools.length, classes, students, total: obj.schools.length + classes + students };
+  }
+
+  const SupabaseCloudSync = {
+    session: null,
+    syncState: 'idle', // idle | syncing | synced | error | offline
+    lastSyncAt: 0,
+    lastError: '',
+    pendingDirty: false,
+    _debounceTimer: null,
+    _isRestoring: false,
+    _modalMode: 'login', // login | signup
+
+    loadSession() {
+      try {
+        const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+        if (!raw) { this.session = null; return null; }
+        const parsed = JSON.parse(raw);
+        if (parsed && parsed.access_token && parsed.user && parsed.user.id) {
+          this.session = parsed;
+        } else {
+          this.session = null;
+        }
+      } catch (_) {
+        this.session = null;
+      }
+      try {
+        const meta = JSON.parse(localStorage.getItem(SYNC_META_KEY) || '{}');
+        this.lastSyncAt = Number(meta.lastSyncAt) || 0;
+        this.pendingDirty = Boolean(meta.pendingDirty);
+      } catch (_) {}
+      return this.session;
+    },
+
+    saveSession(sess) {
+      this.session = sess || null;
+      try {
+        if (sess) localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(sess));
+        else localStorage.removeItem(SESSION_STORAGE_KEY);
+      } catch (_) {}
+      this.updateAllUI();
+    },
+
+    saveSyncMeta() {
+      try {
+        localStorage.setItem(SYNC_META_KEY, JSON.stringify({
+          lastSyncAt: this.lastSyncAt,
+          pendingDirty: this.pendingDirty
+        }));
+      } catch (_) {}
+    },
+
+    isLoggedIn() {
+      return Boolean(this.session && this.session.access_token && this.session.user && this.session.user.id);
+    },
+
+    async _authFetch(path, bodyObj) {
+      const res = await fetch(`${SB_URL}${path}`, {
+        method: 'POST',
+        headers: {
+          'apikey': SB_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(bodyObj)
+      });
+      let data = {};
+      try { data = await res.json(); } catch (_) {}
+      if (!res.ok) {
+        const rawMsg = data.msg || data.error_description || data.message || data.error || `خطای سرور (${res.status})`;
+        let faMsg = rawMsg;
+        if (/invalid login credentials/i.test(rawMsg)) faMsg = 'ایمیل یا رمز عبور اشتباه است.';
+        else if (/email not confirmed/i.test(rawMsg)) faMsg = 'ایمیل شما هنوز تأیید نشده است؛ لطفاً لینک تأیید در ایمیل خود را بزنید.';
+        else if (/already registered|user already/i.test(rawMsg)) faMsg = 'این ایمیل قبلاً ثبت‌نام شده است؛ از بخش «ورود» استفاده کنید.';
+        else if (/password.*at least/i.test(rawMsg)) faMsg = 'رمز عبور باید حداقل ۶ کاراکتر باشد.';
+        else if (/rate limit/i.test(rawMsg)) faMsg = 'تعداد درخواست‌ها زیاد بود؛ لطفاً چند دقیقه دیگر دوباره تلاش کنید.';
+        const err = new Error(faMsg);
+        err.status = res.status;
+        throw err;
+      }
+      return data;
+    },
+
+    async ensureFreshToken() {
+      if (!this.isLoggedIn()) return false;
+      const nowSec = Math.floor(Date.now() / 1000);
+      const exp = Number(this.session.expires_at) || 0;
+      if (exp && exp - nowSec > 90) return true;
+      if (!this.session.refresh_token) return true;
+      try {
+        const data = await this._authFetch('/auth/v1/token?grant_type=refresh_token', {
+          refresh_token: this.session.refresh_token
+        });
+        if (data && data.access_token) {
+          this.saveSession({
+            access_token: data.access_token,
+            refresh_token: data.refresh_token || this.session.refresh_token,
+            expires_at: data.expires_at || (Math.floor(Date.now() / 1000) + (Number(data.expires_in) || 3600)),
+            user: data.user || this.session.user
+          });
+          return true;
+        }
+      } catch (err) {
+        if (err && (err.status === 400 || err.status === 401)) {
+          this.lastError = 'نشست کاربری منقضی شد؛ لطفاً دوباره وارد شوید.';
+          this.saveSession(null);
+          return false;
+        }
+      }
+      return true;
+    },
+
+    async signUp(email, password) {
+      const cleanEmail = String(email || '').trim().toLowerCase();
+      const cleanPass = String(password || '');
+      if (!cleanEmail || !cleanEmail.includes('@')) {
+        throw new Error('لطفاً یک نشانی ایمیل معتبر وارد کنید.');
+      }
+      if (cleanPass.length < 6) {
+        throw new Error('رمز عبور باید حداقل ۶ کاراکتر باشد.');
+      }
+      this.syncState = 'syncing';
+      this.lastError = '';
+      this.updateAllUI();
+      try {
+        const data = await this._authFetch('/auth/v1/signup', {
+          email: cleanEmail,
+          password: cleanPass
+        });
+        if (data && data.access_token && data.user) {
+          this.saveSession({
+            access_token: data.access_token,
+            refresh_token: data.refresh_token || '',
+            expires_at: data.expires_at || (Math.floor(Date.now() / 1000) + (Number(data.expires_in) || 3600)),
+            user: { id: data.user.id, email: data.user.email || cleanEmail }
+          });
+          notify('✅ ثبت‌نام انجام شد و وارد حساب ابری شدید!');
+          await this.syncUp(false);
+          return { ok: true, needsConfirm: false };
+        }
+        this.syncState = 'idle';
+        this.updateAllUI();
+        notify('📧 حساب ساخته شد! لطفاً ایمیلتان را چک کنید و پس از تأیید وارد شوید.');
+        return { ok: true, needsConfirm: true };
+      } catch (err) {
+        this.syncState = 'error';
+        this.lastError = err.message || 'خطا در ثبت‌نام';
+        this.updateAllUI();
+        throw err;
+      }
+    },
+
+    async signIn(email, password) {
+      const cleanEmail = String(email || '').trim().toLowerCase();
+      const cleanPass = String(password || '');
+      if (!cleanEmail || !cleanEmail.includes('@')) {
+        throw new Error('لطفاً ایمیل معتبر وارد کنید.');
+      }
+      if (!cleanPass) {
+        throw new Error('لطفاً رمز عبور را وارد کنید.');
+      }
+      this.syncState = 'syncing';
+      this.lastError = '';
+      this.updateAllUI();
+      try {
+        const data = await this._authFetch('/auth/v1/token?grant_type=password', {
+          email: cleanEmail,
+          password: cleanPass
+        });
+        this.saveSession({
+          access_token: data.access_token,
+          refresh_token: data.refresh_token || '',
+          expires_at: data.expires_at || (Math.floor(Date.now() / 1000) + (Number(data.expires_in) || 3600)),
+          user: { id: data.user.id, email: data.user.email || cleanEmail }
+        });
+        notify('✅ ورود موفق! در حال همگام‌سازی اطلاعات ابری...');
+        await this.reconcileOnSignIn();
+        return { ok: true };
+      } catch (err) {
+        this.syncState = 'error';
+        this.lastError = err.message || 'خطا در ورود';
+        this.updateAllUI();
+        throw err;
+      }
+    },
+
+    async resetPassword(email) {
+      const cleanEmail = String(email || '').trim().toLowerCase();
+      if (!cleanEmail || !cleanEmail.includes('@')) {
+        throw new Error('ابتدا ایمیل خود را در کادر ایمیل وارد کنید.');
+      }
+      await this._authFetch('/auth/v1/recover', { email: cleanEmail });
+      notify('📧 لینک بازیابی رمز عبور به ایمیل شما ارسال شد.');
+      return true;
+    },
+
+    async signOut() {
+      try {
+        if (this.session && this.session.access_token) {
+          fetch(`${SB_URL}/auth/v1/logout`, {
+            method: 'POST',
+            headers: {
+              'apikey': SB_KEY,
+              'Authorization': `Bearer ${this.session.access_token}`
+            }
+          }).catch(() => {});
+        }
+      } catch (_) {}
+      this.syncState = 'idle';
+      this.lastError = '';
+      this.saveSession(null);
+      notify('از حساب ابری خارج شدید (اطلاعات محلی دستگاه دست‌نخورده باقی ماند).');
+    },
+
+    buildPayload() {
+      const currentDb = (typeof db !== 'undefined' && db) ? db : { version: 1, schools: [] };
+      return {
+        appVersion: V983_VERSION,
+        updatedAt: Number(currentDb._updatedAt) || Date.now(),
+        savedAtIso: new Date().toISOString(),
+        db: currentDb
+      };
+    },
+
+    async fetchCloudRecord() {
+      if (!this.isLoggedIn()) return null;
+      const ok = await this.ensureFreshToken();
+      if (!ok) return null;
+      const uid = encodeURIComponent(this.session.user.id);
+      const res = await fetch(`${SB_URL}/rest/v1/${TABLE_NAME}?user_id=eq.${uid}&select=payload,updated_at&limit=1`, {
+        method: 'GET',
+        headers: {
+          'apikey': SB_KEY,
+          'Authorization': `Bearer ${this.session.access_token}`,
+          'Accept': 'application/json'
+        }
+      });
+      if (!res.ok) {
+        const txt = await res.text().catch(() => '');
+        if (res.status === 404 || /relation .* does not exist/i.test(txt)) {
+          throw new Error('جدول teacher_backups در Supabase هنوز ساخته نشده است. لطفاً کد SQL را در SQL Editor اجرا کنید.');
+        }
+        throw new Error(`خطای دریافت از سرور ابری (${res.status})`);
+      }
+      const rows = await res.json();
+      return Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+    },
+
+    async syncUp(silent = false) {
+      if (!this.isLoggedIn()) return false;
+      if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+        this.pendingDirty = true;
+        this.syncState = 'offline';
+        this.saveSyncMeta();
+        this.updateAllUI();
+        return false;
+      }
+      this.syncState = 'syncing';
+      this.lastError = '';
+      this.updateAllUI();
+      try {
+        const ok = await this.ensureFreshToken();
+        if (!ok) return false;
+        const payload = this.buildPayload();
+        const res = await fetch(`${SB_URL}/rest/v1/${TABLE_NAME}?on_conflict=user_id`, {
+          method: 'POST',
+          headers: {
+            'apikey': SB_KEY,
+            'Authorization': `Bearer ${this.session.access_token}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'resolution=merge-duplicates,return=minimal'
+          },
+          body: JSON.stringify([{
+            user_id: this.session.user.id,
+            payload,
+            updated_at: new Date().toISOString()
+          }])
+        });
+        if (!res.ok) {
+          const txt = await res.text().catch(() => '');
+          if (res.status === 404 || /relation .* does not exist/i.test(txt)) {
+            throw new Error('جدول teacher_backups در Supabase هنوز ساخته نشده است. لطفاً کد SQL را در SQL Editor اجرا کنید.');
+          }
+          throw new Error(`خطای ذخیره در ابر (${res.status})`);
+        }
+        this.lastSyncAt = Date.now();
+        this.pendingDirty = false;
+        this.syncState = 'synced';
+        this.lastError = '';
+        this.saveSyncMeta();
+        this.updateAllUI();
+        if (!silent) notify('☁️ تمام اطلاعات با موفقیت در حساب ابری ذخیره شد.');
+        return true;
+      } catch (err) {
+        this.pendingDirty = true;
+        this.syncState = 'error';
+        this.lastError = err.message || 'خطا در همگام‌سازی ابری';
+        this.saveSyncMeta();
+        this.updateAllUI();
+        if (!silent) notify('❌ ' + this.lastError);
+        return false;
+      }
+    },
+
+    async applyCloudDb(cloudDb) {
+      if (!cloudDb || !Array.isArray(cloudDb.schools)) return false;
+      this._isRestoring = true;
+      try {
+        const clean = typeof sanitizeDb === 'function' ? sanitizeDb(cloudDb) : cloudDb;
+        if (typeof db !== 'undefined') {
+          db = clean;
+        } else {
+          window.db = clean;
+        }
+        if (typeof savePersistent === 'function') await savePersistent();
+        if (typeof renderAll === 'function') renderAll();
+        return true;
+      } finally {
+        this._isRestoring = false;
+      }
+    },
+
+    async syncDown(silent = false) {
+      if (!this.isLoggedIn()) return false;
+      this.syncState = 'syncing';
+      this.lastError = '';
+      this.updateAllUI();
+      try {
+        const rec = await this.fetchCloudRecord();
+        if (!rec || !rec.payload || !rec.payload.db) {
+          this.syncState = 'synced';
+          this.updateAllUI();
+          if (!silent) notify('ℹ️ هنوز نسخه‌ای در حساب ابری ذخیره نشده است؛ روی «ذخیره در ابر» بزنید.');
+          return false;
+        }
+        const stats = countDbItems(rec.payload.db);
+        const ok = await this.applyCloudDb(rec.payload.db);
+        if (ok) {
+          this.lastSyncAt = Date.now();
+          this.pendingDirty = false;
+          this.syncState = 'synced';
+          this.saveSyncMeta();
+          this.updateAllUI();
+          if (!silent) notify(`☁️ بازیابی موفق: ${stats.schools} مدرسه، ${stats.classes} کلاس و ${stats.students} دانش‌آموز بارگذاری شد.`);
+          return true;
+        }
+        return false;
+      } catch (err) {
+        this.syncState = 'error';
+        this.lastError = err.message || 'خطا در بازیابی ابری';
+        this.updateAllUI();
+        if (!silent) notify('❌ ' + this.lastError);
+        return false;
+      }
+    },
+
+    async reconcileOnSignIn() {
+      try {
+        const rec = await this.fetchCloudRecord();
+        const localDb = (typeof db !== 'undefined' && db) ? db : { schools: [] };
+        const localStats = countDbItems(localDb);
+        const cloudDb = rec?.payload?.db || null;
+        const cloudStats = countDbItems(cloudDb);
+
+        if (cloudStats.total > 0 && localStats.total === 0) {
+          await this.applyCloudDb(cloudDb);
+          this.lastSyncAt = Date.now();
+          this.syncState = 'synced';
+          this.saveSyncMeta();
+          this.updateAllUI();
+          notify(`☁️ اطلاعات حساب ابری بازیابی شد (${cloudStats.schools} مدرسه، ${cloudStats.students} دانش‌آموز).`);
+          return;
+        }
+        if (cloudStats.total === 0 && localStats.total > 0) {
+          await this.syncUp(false);
+          return;
+        }
+        if (cloudStats.total > 0 && localStats.total > 0) {
+          const cloudTime = Number(rec?.payload?.updatedAt) || new Date(rec?.updated_at || 0).getTime() || 0;
+          const localTime = Number(localDb._updatedAt) || 0;
+          if (cloudTime > localTime) {
+            const useCloud = typeof window.smartConfirm === 'function'
+              ? window.smartConfirm(`در حساب ابری نسخه جدیدتری یافت شد (${cloudStats.schools} مدرسه، ${cloudStats.students} دانش‌آموز).
+آیا اطلاعات ابری جایگزین دستگاه شود؟
+(در صورت لغو، اطلاعات فعلی دستگاه روی ابر ذخیره می‌شود)`)
+              : true;
+            if (useCloud) {
+              await this.applyCloudDb(cloudDb);
+              this.lastSyncAt = Date.now();
+              this.syncState = 'synced';
+              this.saveSyncMeta();
+              this.updateAllUI();
+              notify('☁️ نسخه جدیدتر از حساب ابری بارگذاری شد.');
+              return;
+            }
+          }
+          await this.syncUp(false);
+          return;
+        }
+        this.syncState = 'synced';
+        this.updateAllUI();
+      } catch (err) {
+        this.syncState = 'error';
+        this.lastError = err.message || 'خطا در بررسی نسخه ابری';
+        this.updateAllUI();
+        notify('⚠️ ' + this.lastError);
+      }
+    },
+
+    scheduleAutoSync() {
+      if (this._isRestoring || !this.isLoggedIn()) return;
+      this.pendingDirty = true;
+      this.saveSyncMeta();
+      clearTimeout(this._debounceTimer);
+      this._debounceTimer = setTimeout(() => {
+        this.syncUp(true);
+      }, 2500);
+    },
+
+    hookSavePersistent() {
+      if (typeof window.savePersistent === 'function' && !window.savePersistent._v983Wrapped) {
+        const _origSaveP = window.savePersistent;
+        const wrapped = function() {
+          const out = _origSaveP.apply(this, arguments);
+          try { SupabaseCloudSync.scheduleAutoSync(); } catch (_) {}
+          return out;
+        };
+        wrapped._v983Wrapped = true;
+        window.savePersistent = wrapped;
+      }
+    },
+
+    renderCardHTML(prefix) {
+      const logged = this.isLoggedIn();
+      const email = this.session?.user?.email || '';
+      let stCls = 'v983-status-box';
+      let stText = '☁️ برای ذخیره دائمی و خودکار اطلاعات در ابر، وارد حساب کاربری خود شوید.';
+      if (logged) {
+        if (this.syncState === 'syncing') {
+          stText = '⏳ در حال همگام‌سازی با سرور ابری...';
+        } else if (this.syncState === 'error') {
+          stCls += ' err';
+          stText = `⚠️ خطا در همگام‌سازی: ${safeEsc(this.lastError || 'اتصال اینترنت را بررسی کنید')}`;
+        } else if (this.syncState === 'offline') {
+          stText = '📴 آفلاین — تغییرات به‌محض اتصال اینترنت خودکار ذخیره می‌شوند.';
+        } else {
+          stCls += ' ok';
+          stText = `✅ متصل به حساب ابری (${safeEsc(email)}) · آخرین همگام‌سازی: ${safeEsc(formatTimeFa(this.lastSyncAt))}`;
+        }
+      } else if (this.lastError) {
+        stCls += ' err';
+        stText = `⚠️ ${safeEsc(this.lastError)}`;
+      }
+
+      if (logged) {
+        return `
+          <div class="v983-sync-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px">
+              <b style="color:var(--primary,#EA580C);font-size:14.5px">☁️ حساب ابری و همگام‌سازی خودکار</b>
+              <span class="chip" style="background:#ECFDF5;color:#047857;border-color:#6EE7B7">فعال</span>
+            </div>
+            <div class="${stCls}">${stText}</div>
+            <p class="muted" style="font-size:12px;margin:0 0 10px">تمام تغییرات شما (مدارس، کلاس‌ها، دانش‌آموزان، نمرات و حضوروغیاب) به‌صورت خودکار در حساب شخصی شما ذخیره می‌شود و روی هر گوشی یا سیستم دیگری با همین ایمیل در دسترس است.</p>
+            <div class="v983-btn-row">
+              <button type="button" class="btn primary btn-sm" onclick="SupabaseCloudSync.syncUp(false)">☁️ ذخیره فوری در ابر</button>
+              <button type="button" class="btn soft btn-sm" onclick="SupabaseCloudSync.syncDown(false)">⬇️ بازیابی از ابر</button>
+              <button type="button" class="btn danger btn-sm" onclick="SupabaseCloudSync.signOut()">خروج از حساب</button>
+            </div>
+          </div>
+        `;
+      }
+
+      const isSignup = this._modalMode === 'signup';
+      return `
+        <div class="v983-sync-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px">
+            <b style="color:var(--primary,#EA580C);font-size:14.5px">☁️ ورود / ثبت‌نام با ایمیل (همگام‌سازی واقعی)</b>
+          </div>
+          <div class="${stCls}">${stText}</div>
+          <div style="display:flex;gap:6px;margin-bottom:10px">
+            <button type="button" class="btn ${!isSignup ? 'primary' : 'soft'} btn-sm" style="flex:1" onclick="SupabaseCloudSync.setAuthMode('login')">ورود به حساب</button>
+            <button type="button" class="btn ${isSignup ? 'primary' : 'soft'} btn-sm" style="flex:1" onclick="SupabaseCloudSync.setAuthMode('signup')">ساخت حساب جدید</button>
+          </div>
+          <input type="email" id="${prefix}_sbEmail" class="v983-field" dir="ltr" placeholder="ایمیل شما (مثلاً name@gmail.com)" autocomplete="email">
+          <input type="password" id="${prefix}_sbPass" class="v983-field" dir="ltr" placeholder="رمز عبور (حداقل ۶ کاراکتر)" autocomplete="${isSignup ? 'new-password' : 'current-password'}">
+          <div class="v983-btn-row">
+            <button type="button" class="btn primary btn-sm" style="flex:1" onclick="SupabaseCloudSync.handleFormSubmit('${prefix}')">
+              ${isSignup ? '✨ ثبت‌نام و فعال‌سازی همگام‌سازی' : '🔐 ورود و همگام‌سازی اطلاعات'}
+            </button>
+            ${!isSignup ? `<button type="button" class="btn soft btn-sm" onclick="SupabaseCloudSync.handleResetFromForm('${prefix}')">فراموشی رمز</button>` : ''}
+          </div>
+        </div>
+      `;
+    },
+
+    setAuthMode(mode) {
+      this._modalMode = mode === 'signup' ? 'signup' : 'login';
+      this.lastError = '';
+      this.updateAllUI();
+    },
+
+    async handleFormSubmit(prefix) {
+      const emailEl = document.getElementById(prefix + '_sbEmail');
+      const passEl = document.getElementById(prefix + '_sbPass');
+      const email = emailEl ? emailEl.value : '';
+      const pass = passEl ? passEl.value : '';
+      try {
+        if (this._modalMode === 'signup') {
+          await this.signUp(email, pass);
+        } else {
+          await this.signIn(email, pass);
+        }
+      } catch (err) {
+        notify('❌ ' + (err.message || 'خطا در ارتباط با سرور'));
+      }
+    },
+
+    async handleResetFromForm(prefix) {
+      const emailEl = document.getElementById(prefix + '_sbEmail');
+      const email = emailEl ? emailEl.value : '';
+      try {
+        await this.resetPassword(email);
+      } catch (err) {
+        notify('❌ ' + (err.message || 'خطا در ارسال لینک بازیابی'));
+      }
+    },
+
+    openModal() {
+      let bd = document.getElementById('v983CloudSyncModal');
+      if (!bd) {
+        bd = document.createElement('div');
+        bd.id = 'v983CloudSyncModal';
+        bd.className = 'v983-modal-backdrop';
+        bd.onclick = (e) => { if (e.target === bd) this.closeModal(); };
+        bd.innerHTML = `
+          <div class="v983-modal-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <b style="font-size:15px">☁️ حساب کاربری و پشتیبان‌گیری ابری</b>
+              <button type="button" class="btn soft btn-sm" onclick="SupabaseCloudSync.closeModal()">بستن ✕</button>
+            </div>
+            <div id="v983CloudSyncModalBody"></div>
+          </div>
+        `;
+        document.body.appendChild(bd);
+      }
+      this.updateAllUI();
+      bd.classList.add('open');
+    },
+
+    closeModal() {
+      const bd = document.getElementById('v983CloudSyncModal');
+      if (bd) bd.classList.remove('open');
+    },
+
+    injectHeaderButton() {
+      const row = document.querySelector('.brand-sub-row');
+      if (!row || document.getElementById('btnTopCloudSync')) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.id = 'btnTopCloudSync';
+      btn.className = 'top-ver-pill v983-cloud-pill is-guest';
+      btn.onclick = () => this.openModal();
+      btn.textContent = '☁️ ورود ابری';
+      row.appendChild(btn);
+    },
+
+    injectSettingsCards() {
+      ['setPane-account', 'setPane-data'].forEach(paneId => {
+        const pane = document.getElementById(paneId);
+        if (!pane) return;
+        let host = document.getElementById('v983Host_' + paneId);
+        if (!host) {
+          host = document.createElement('div');
+          host.id = 'v983Host_' + paneId;
+          pane.insertBefore(host, pane.firstChild);
+        }
+        host.innerHTML = this.renderCardHTML('pane_' + paneId);
+      });
+    },
+
+    updateAllUI() {
+      this.injectHeaderButton();
+      const btn = document.getElementById('btnTopCloudSync');
+      if (btn) {
+        btn.classList.remove('is-guest', 'is-syncing', 'is-err');
+        if (!this.isLoggedIn()) {
+          btn.classList.add('is-guest');
+          btn.textContent = '☁️ ورود ابری';
+          btn.title = 'ورود با ایمیل برای همگام‌سازی خودکار اطلاعات';
+        } else if (this.syncState === 'syncing') {
+          btn.classList.add('is-syncing');
+          btn.textContent = '⏳ در حال سینک...';
+        } else if (this.syncState === 'error') {
+          btn.classList.add('is-err');
+          btn.textContent = '⚠️ خطای سینک';
+        } else {
+          btn.textContent = '☁️ سینک فعال';
+          btn.title = `متصل: ${this.session.user.email}`;
+        }
+      }
+      const modalBody = document.getElementById('v983CloudSyncModalBody');
+      if (modalBody) modalBody.innerHTML = this.renderCardHTML('modal');
+      this.injectSettingsCards();
+    },
+
+    boot() {
+      this.loadSession();
+      this.hookSavePersistent();
+      this.updateAllUI();
+      const tv = document.getElementById('topVersion');
+      if (tv) tv.textContent = `نسخه ${V983_VERSION_FA}`;
+
+      if (!this._eventsBound) {
+        this._eventsBound = true;
+        window.addEventListener('online', () => {
+          if (this.isLoggedIn() && this.pendingDirty) {
+            this.syncUp(true);
+          }
+        });
+        if (this.isLoggedIn() && (typeof navigator === 'undefined' || navigator.onLine !== false)) {
+          setTimeout(() => {
+            this.ensureFreshToken().then(ok => {
+              if (ok && this.pendingDirty) this.syncUp(true);
+            }).catch(() => {});
+          }, 1800);
+        }
+      }
+    }
+  };
+
+  window.SupabaseCloudSync = SupabaseCloudSync;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(() => SupabaseCloudSync.boot(), 600));
+  } else {
+    setTimeout(() => SupabaseCloudSync.boot(), 600);
+  }
+  setTimeout(() => SupabaseCloudSync.boot(), 1500);
+})();
+</script>
+<!-- ==================== END V9.8.3 SUPABASE REAL CLOUD SYNC ENGINE ==================== -->
 
 </body>
 </html>
