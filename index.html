@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="9.8.3">
-<meta name="danesh-app-version" content="9.8.3">
+<meta name="version" content="9.8.4">
+<meta name="danesh-app-version" content="9.8.4">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -6899,7 +6899,7 @@ const KEY = 'danesh_amooz_man_v1';
             return Promise.reject(new Error('آفلاین هستید'));
           }
           if (!options.signal && typeof AbortController !== 'undefined') {
-            const timeoutMs = urlStr.includes('cloud-sync') ? 5500 : (urlStr.includes('pollinations') || urlStr.includes('googleapis') || urlStr.includes('openai') || urlStr.includes('openrouter') || urlStr.includes('groq') || urlStr.includes('deepseek') ? 45000 : 18000);
+            const timeoutMs = urlStr.includes('cloud-sync') ? 5500 : (urlStr.includes('pollinations') || urlStr.includes('googleapis') || urlStr.includes('openai') || urlStr.includes('openrouter') || urlStr.includes('groq') || urlStr.includes('deepseek') || urlStr.includes('supabase.co') ? 60000 : 18000);
             const ctrl = new AbortController();
             const tid = setTimeout(() => { try { ctrl.abort(); } catch (_) {} }, timeoutMs);
             return _origFetch(resource, { ...options, signal: ctrl.signal }).finally(() => clearTimeout(tid));
@@ -72374,8 +72374,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V983_VERSION = '9.8.3';
-  const V983_VERSION_FA = '۹.۸.۳';
+  const V983_VERSION = '9.8.4';
+  const V983_VERSION_FA = '۹.۸.۴';
   const SB_URL = 'https://wazycdrhwlnoylfmsenx.supabase.co';
   const SB_KEY = 'sb_publishable_SjneXL0bzHA-mXFfdQwklw_0x9fwo0N';
   const SESSION_STORAGE_KEY = 'dam_sb_session_v983';
@@ -72467,7 +72467,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     },
 
     async _authFetch(path, bodyObj) {
-      const res = await fetch(`${SB_URL}${path}`, {
+      const res = await this._fetchWithTimeout(`${SB_URL}${path}`, {
         method: 'POST',
         headers: {
           'apikey': SB_KEY,
@@ -72623,13 +72623,56 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
       notify('از حساب ابری خارج شدید (اطلاعات محلی دستگاه دست‌نخورده باقی ماند).');
     },
 
+    _fetchWithTimeout(url, options = {}, timeoutMs = 60000) {
+      if (typeof AbortController === 'undefined') {
+        return fetch(url, options);
+      }
+      const ctrl = new AbortController();
+      const tid = setTimeout(() => {
+        try { ctrl.abort(); } catch (_) {}
+      }, timeoutMs);
+      return fetch(url, { ...options, signal: ctrl.signal }).catch(err => {
+        if (err && (err.name === 'AbortError' || /abort/i.test(String(err.message || '')))) {
+          throw new Error('زمان اتصال به سرور ابری تمام شد؛ اینترنت یا فیلترشکن را بررسی کرده و دوباره روی «ذخیره فوری در ابر» بزنید.');
+        }
+        throw err;
+      }).finally(() => clearTimeout(tid));
+    },
+
+    _stripHeavyBinaryForCloud(input) {
+      const MAX_DATA_URL_LEN = 35000;
+      const walk = (val, keyName) => {
+        if (val === null || val === undefined) return val;
+        if (typeof val === 'string') {
+          if (val.length > MAX_DATA_URL_LEN && (val.startsWith('data:') || keyName === 'pdfData' || keyName === 'base64' || keyName === 'dataUrl')) {
+            return '';
+          }
+          return val;
+        }
+        if (Array.isArray(val)) {
+          return val.map(item => walk(item, ''));
+        }
+        if (typeof val === 'object') {
+          const out = {};
+          for (const k of Object.keys(val)) {
+            if (k === 'cachedBook' || k === 'pdfBytes' || k === 'pageImages') continue;
+            out[k] = walk(val[k], k);
+          }
+          return out;
+        }
+        return val;
+      };
+      return walk(input, '');
+    },
+
     buildPayload() {
       const currentDb = (typeof db !== 'undefined' && db) ? db : { version: 1, schools: [] };
+      const lightDb = this._stripHeavyBinaryForCloud(currentDb);
       return {
         appVersion: V983_VERSION,
         updatedAt: Number(currentDb._updatedAt) || Date.now(),
         savedAtIso: new Date().toISOString(),
-        db: currentDb
+        db: lightDb
       };
     },
 
@@ -72638,7 +72681,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
       const ok = await this.ensureFreshToken();
       if (!ok) return null;
       const uid = encodeURIComponent(this.session.user.id);
-      const res = await fetch(`${SB_URL}/rest/v1/${TABLE_NAME}?user_id=eq.${uid}&select=payload,updated_at&limit=1`, {
+      const res = await this._fetchWithTimeout(`${SB_URL}/rest/v1/${TABLE_NAME}?user_id=eq.${uid}&select=payload,updated_at&limit=1`, {
         method: 'GET',
         headers: {
           'apikey': SB_KEY,
@@ -72673,7 +72716,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
         const ok = await this.ensureFreshToken();
         if (!ok) return false;
         const payload = this.buildPayload();
-        const res = await fetch(`${SB_URL}/rest/v1/${TABLE_NAME}?on_conflict=user_id`, {
+        const res = await this._fetchWithTimeout(`${SB_URL}/rest/v1/${TABLE_NAME}?on_conflict=user_id`, {
           method: 'POST',
           headers: {
             'apikey': SB_KEY,
@@ -72717,7 +72760,9 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
       if (!cloudDb || !Array.isArray(cloudDb.schools)) return false;
       this._isRestoring = true;
       try {
+        const prevCachedBook = (typeof db !== 'undefined' && db && db.cachedBook) ? db.cachedBook : null;
         const clean = typeof sanitizeDb === 'function' ? sanitizeDb(cloudDb) : cloudDb;
+        if (prevCachedBook && !clean.cachedBook) clean.cachedBook = prevCachedBook;
         if (typeof db !== 'undefined') {
           db = clean;
         } else {
