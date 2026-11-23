@@ -1,12 +1,14 @@
-// Danesh-Amooz-Man Two-Stage Smart Iranian Textbook AI Proxy Worker (v9.9.8)
+// Danesh-Amooz-Man Full-Lesson Smart Iranian Textbook AI Proxy Worker (v9.9.9)
 // Pipeline:
-//   1. Primary: Gemini Pool (Native Vision + Deep Persian Textbook Reasoning, VPN-free)
-//   2. Fallback for Images:
-//      - Stage 2A (Fast OCR-only): Cloudflare Vision (@cf/meta/llama-3.2-11b-vision-instruct, max_tokens: 450)
-//        ONLY transcribes exact Persian titles, boxes & numbered questions (does NOT hallucinate answers).
+//   0. mode === 'ocr_pages': Parallel Cloudflare Workers AI Vision OCR for up to 3 preceding lesson pages
+//      in a single call (~4-6s wall-clock), preserving Gemini free-tier quota for final solving.
+//   1. Primary Solve: Gemini Pool (Native Vision + Full Lesson Context, VPN-free)
+//   2. Fallback Solve for Images:
+//      - Stage 2A (Fast OCR-only): Cloudflare Vision (@cf/meta/llama-3.2-11b-vision-instruct, max_tokens: 500)
+//        ONLY transcribes exact Persian titles, boxes & numbered questions of the current page.
 //      - Stage 2B (Deep 70B Textbook Solver): Groq (qwen3.8-27b / llama-3.3-70b) or Cloudflare 70B
-//        (@cf/meta/llama-3.3-70b-instruct-fp8-fast, 100% VPN-free) solves strictly per Iranian school textbooks
-//        and outputs clean structured JSON.
+//        (@cf/meta/llama-3.3-70b-instruct-fp8-fast, 100% VPN-free) solves strictly from the provided
+//        full lesson text of this textbook and outputs clean structured JSON.
 
 let cachedG = 'gemini-3.8-flash';
 let cachedQT = 'qwen/qwen3.8-27b';
@@ -70,21 +72,42 @@ function extractCfAiText(res) {
   return typeof cand === 'string' ? stripThinkTags(cand) : '';
 }
 
-async function extractPageQuestionsViaCfVision(env, imgObj) {
+async function ensureCfVisionAgreed(env) {
+  if (cfVisionAgreed || !env?.AI || typeof env.AI.run !== 'function') return;
+  try {
+    await env.AI.run(CF_VISION_MODEL, { prompt: 'agree' });
+    cfVisionAgreed = true;
+  } catch (_) {}
+}
+
+async function extractPageTextViaCfVision(env, imgObj, purpose = 'questions') {
   if (!env?.AI || typeof env.AI.run !== 'function' || !imgObj?.base64) return '';
   const dataUri = `data:${imgObj.mimeType || 'image/jpeg'};base64,${imgObj.base64}`;
-  const messages = [
-    {
-      role: 'system',
-      content: 'تو فقط یک دستگاه دقیق تایپ و استخراج متن (OCR) از تصویر کتاب درسی فارسی هستی. هرگز به سؤالات پاسخ نده! فقط عین متن فارسی، تیتر کادرها (مثل «خودت را امتحان کن»، «فعالیت»، «کار در کلاس»، «پیشنهاد») و شماره سؤالات داخل تصویر را دقیق و مرتب تایپ کن.'
-    },
-    {
-      role: 'user',
-      content: 'فقط عین متن و سؤالات موجود در این تصویر صفحه کتاب درسی را با حفظ عنوان هر کادر و شماره هر سؤال به فارسی دقیق استخراج کن (پاسخ ننویس).'
-    }
-  ];
+  const isLesson = purpose === 'lesson_text';
+  const messages = isLesson
+    ? [
+        {
+          role: 'system',
+          content: 'تو فقط یک دستگاه دقیق استخراج متن (OCR) از صفحات کتاب درسی فارسی هستی. عین متن فارسی درس، عنوان درس (مثل درس اول، درس دوم)، تیترها، شمارش‌ها، تعریف‌ها، نکات کلیدی و ترجمه آیات یا احادیث این صفحه را دقیق، خوانا و بدون هیچ توضیح اضافی تایپ کن.'
+        },
+        {
+          role: 'user',
+          content: 'فقط عین متن فارسی و تیترهای اصلی این صفحه از کتاب درسی را دقیق استخراج کن (هیچ توضیح اضافی یا پاسخ از خودت ننویس).'
+        }
+      ]
+    : [
+        {
+          role: 'system',
+          content: 'تو فقط یک دستگاه دقیق تایپ و استخراج متن (OCR) از تصویر کتاب درسی فارسی هستی. هرگز به سؤالات پاسخ نده! فقط عین متن فارسی، تیتر کادرها (مثل «خودت را امتحان کن»، «فعالیت»، «کار در کلاس»، «پیشنهاد») و شماره سؤالات داخل تصویر را دقیق و مرتب تایپ کن.'
+        },
+        {
+          role: 'user',
+          content: 'فقط عین متن و سؤالات موجود در این تصویر صفحه کتاب درسی را با حفظ عنوان هر کادر و شماره هر سؤال به فارسی دقیق استخراج کن (پاسخ ننویس).'
+        }
+      ];
+  const maxTokens = isLesson ? 650 : 500;
   try {
-    const out = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: 450 });
+    const out = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: maxTokens });
     cfVisionAgreed = true;
     return extractCfAiText(out);
   } catch (err) {
@@ -93,7 +116,7 @@ async function extractPageQuestionsViaCfVision(env, imgObj) {
       try {
         await env.AI.run(CF_VISION_MODEL, { prompt: 'agree' });
         cfVisionAgreed = true;
-        const retryOut = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: 450 });
+        const retryOut = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: maxTokens });
         return extractCfAiText(retryOut);
       } catch (_) {}
     }
@@ -106,13 +129,13 @@ async function runCfTextSolver(env, promptText) {
   const messages = [
     {
       role: 'system',
-      content: 'تو دبیر رسمی و متخصص کتاب‌های درسی آموزش و پرورش ایران هستی. پاسخ هر پرسش را دقیقاً مطابق متن، مفاهیم و کلیدواژه‌های کتاب درسی رسمی ایران بنویس. هرگز متن یک کادر دیگر صفحه (مثل کادر «پیشنهاد») را به اشتباه به‌عنوان جواب سؤال قبلی کپی نکن! اگر قالب JSON خواسته شده، فقط JSON معتبر بدون علامت‌های ستاره (**) برگردان.'
+      content: 'تو دبیر رسمی و متخصص کتاب‌های درسی آموزش و پرورش ایران هستی. اگر «متن کامل همین درس» در پیام کاربر آمده است، پاسخ هر پرسش را منحصراً و دقیقاً از عبارات، تیترها، شمارش‌ها و کلیدواژه‌های همان متن درس استخراج کن و هرگز مفاهیم پایه‌های دیگر یا دانش عمومی غیرمرتبط را جایگزین متن کتاب نکن. هرگز متن یک کادر دیگر صفحه (مثل کادر «پیشنهاد») را به اشتباه به‌عنوان جواب سؤال قبلی کپی نکن! اگر قالب JSON خواسته شده، فقط JSON معتبر بدون علامت‌های ستاره (**) برگردان.'
     },
     { role: 'user', content: promptText }
   ];
   for (const mdl of [CF_TEXT_MODEL, CF_TEXT_LITE]) {
     try {
-      const out = await env.AI.run(mdl, { messages, max_tokens: 1500 });
+      const out = await env.AI.run(mdl, { messages, max_tokens: 1700 });
       const txt = extractCfAiText(out);
       if (txt) return { text: txt, model: `cf/${mdl.split('/').pop()}` };
     } catch (_) {}
@@ -154,7 +177,7 @@ export default {
       return jsonResp({
         ok: true,
         service: 'danesh-ai-proxy',
-        version: '9.9.8',
+        version: '9.9.9',
         geminiKeys: gKeys.length,
         groqKeys: qKeys.length,
         openRouterKeys: oKeys.length,
@@ -174,6 +197,34 @@ export default {
 
     try {
       const b = await request.json().catch(() => ({}));
+
+      // 0. Fast Parallel Batch OCR Mode for Full-Lesson Scanning (up to 3 pages in parallel)
+      if (b.mode === 'ocr_pages' && Array.isArray(b.pages)) {
+        const reqPages = b.pages
+          .filter(p => p && p.base64 && Number(p.pageNo) > 0)
+          .slice(0, 3);
+        if (!reqPages.length) {
+          return jsonResp({ ok: true, mode: 'ocr_pages', pages: {}, model: 'none' }, 200);
+        }
+        const outPages = {};
+        if (hasCfAi) {
+          if (!cfVisionAgreed) await ensureCfVisionAgreed(env);
+          await Promise.all(reqPages.map(async (pg) => {
+            try {
+              const txt = await extractPageTextViaCfVision(env, pg, 'lesson_text');
+              if (txt) outPages[String(pg.pageNo)] = txt;
+            } catch (_) {}
+          }));
+          return jsonResp({
+            ok: true,
+            mode: 'ocr_pages',
+            pages: outPages,
+            model: 'cf/llama-3.2-11b-vision-instruct'
+          }, 200);
+        }
+        return jsonResp({ ok: false, mode: 'ocr_pages', pages: outPages, error: 'Workers AI Vision not bound' }, 200);
+      }
+
       const prompt = String(b.prompt || '').trim();
       const imgs = Array.isArray(b.images) ? b.images.filter(x => x && x.base64).slice(0, 1) : [];
       const temp = typeof b.temperature === 'number' ? b.temperature : 0.2;
@@ -236,18 +287,18 @@ export default {
         }
       }
 
-      // 2A. Fast OCR-only extraction on Cloudflare 11B Vision
+      // 2A. Fast OCR-only extraction on Cloudflare 11B Vision for the current page
       let ocrExtracted = '';
       if (imgs.length && hasCfAi && timeLeft() > 10000) {
         try {
-          ocrExtracted = await extractPageQuestionsViaCfVision(env, imgs[0]);
+          ocrExtracted = await extractPageTextViaCfVision(env, imgs[0], 'questions');
         } catch (cfErr) {
           errs.push(`CF_OCR:${String(cfErr?.message || 'err').slice(0, 40)}`);
         }
       }
 
       const solverPrompt = ocrExtracted
-        ? `${prompt}\n\n=== متن و سؤالات دقیق استخراج‌شده از تصویر همین صفحه ===\n${ocrExtracted}\n\nهشدار مهم آموزشی: هرگز متن کادرهای دیگر صفحه (مثل کادر «پیشنهاد») را به‌جای جواب سؤالات «خودت را امتحان کن» یا «فعالیت» کپی نکن! پاسخ هر سؤال را دقیقاً بر اساس مفاهیم علمی کتاب درسی رسمی آموزش و پرورش ایران بنویس و حتماً در قالب JSON استاندارد خواسته‌شده برگردان.`
+        ? `${prompt}\n\n=== متن و سؤالات دقیق استخراج‌شده از تصویر همین صفحه ===\n${ocrExtracted}\n\nهشدار قطعی و غیرقابل نقض آموزشی: اگر «متن کامل همین درس (صفحات قبلی کتاب)» در پیام بالا آورده شده است، پاسخ هر سؤال را منحصراً و دقیقاً از عبارات، تیترها، شمارش‌ها و کلیدواژه‌های همان متن درس استخراج کن! هرگز از مفاهیم پایه‌های دیگر (مثل دین و زندگی دبیرستان به‌جای پیام‌های آسمان) یا دانش عمومی غیرمرتبط استفاده نکن و هرگز متن کادرهای دیگر صفحه (مثل کادر «پیشنهاد») را به‌جای جواب سؤال قبلی کپی نکن. پاسخ را حتماً در قالب JSON استاندارد خواسته‌شده و بدون علامت ستاره (**) برگردان.`
         : prompt;
 
       // 2B. Deep Reasoning Solver #1: Groq Pool (Qwen3 / Llama 3.3 70B)
@@ -267,26 +318,26 @@ export default {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `Bearer ${item.key}`,
-                  'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.8'
+                  'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.9'
                 },
                 body: JSON.stringify({ model: m, messages: [{ role: 'user', content: solverPrompt }], temperature: temp })
               },
               Math.min(tMs, timeLeft() - 1000)
             );
 
-            let r = await callQ(cachedQT, 9000);
+            let r = await callQ(cachedQT, 11000);
             let d = await r.json().catch(() => ({}));
 
             if ((r.status === 404 || r.status === 400) && timeLeft() > 6000) {
               const lr = await fetchWithTimeout('https://api.groq.com/openai/v1/models', {
-                headers: { 'Authorization': `Bearer ${item.key}`, 'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.8' }
+                headers: { 'Authorization': `Bearer ${item.key}`, 'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.9' }
               }, 4000);
               const ld = await lr.json().catch(() => ({}));
               const ids = (ld?.data || []).map(x => x.id).filter(id => id && !/whisper|tts|guard|embed/i.test(id));
               const txtM = ids.find(id => /qwen|llama-3\.3|deepseek|llama-3\.1|gpt-oss/i.test(id)) || ids[0];
               if (txtM) {
                 cachedQT = txtM;
-                r = await callQ(cachedQT, 8000);
+                r = await callQ(cachedQT, 9000);
                 d = await r.json().catch(() => ({}));
               }
             }
@@ -302,7 +353,7 @@ export default {
             const txt = stripThinkTags(d?.choices?.[0]?.message?.content || '');
             if (r.ok && txt) {
               const mdlName = ocrExtracted ? `cf-ocr+groq/${cachedQT}` : `groq/${cachedQT}`;
-              return jsonResp({ text: txt, model: mdlName, provider: 'groq' }, 200);
+              return jsonResp({ text: txt, model: mdlName, provider: 'groq', extractedMainText: ocrExtracted || '' }, 200);
             }
             errs.push(`${item.name}:${r.status}`);
           } catch (e) {
@@ -317,7 +368,7 @@ export default {
           const cfRes = await runCfTextSolver(env, solverPrompt);
           if (cfRes.text) {
             const mdlName = ocrExtracted ? `cf-ocr+${cfRes.model}` : cfRes.model;
-            return jsonResp({ text: cfRes.text, model: mdlName, provider: 'cloudflare_ai' }, 200);
+            return jsonResp({ text: cfRes.text, model: mdlName, provider: 'cloudflare_ai', extractedMainText: ocrExtracted || '' }, 200);
           }
         } catch (cfTxtErr) {
           errs.push(`CF_70B:${String(cfTxtErr?.message || 'err').slice(0, 40)}`);
@@ -344,7 +395,7 @@ export default {
           if (r.status === 401) keyCooldowns[item.name] = Date.now() + 1800000;
           const txt = stripThinkTags(d?.choices?.[0]?.message?.content || '');
           if (r.ok && txt) {
-            return jsonResp({ text: txt, model: `openrouter/${cachedOR}`, provider: 'openrouter' }, 200);
+            return jsonResp({ text: txt, model: `openrouter/${cachedOR}`, provider: 'openrouter', extractedMainText: ocrExtracted || '' }, 200);
           }
           errs.push(`${item.name}:${r.status}`);
         } catch (e) {
