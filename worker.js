@@ -1,11 +1,12 @@
-// Danesh-Amooz-Man Smart Zero-Timeout AI Proxy Worker (v9.9.7)
-// Architecture:
-//   - Global 22s request deadline budget (prevents mobile/edge timeouts)
-//   - Fast per-provider timeouts (7.5s Gemini, 7s Groq)
-//   - Smart Cooldowns (429: 10m, 503: 45s, 401: 30m, regional Groq 403: instant skip)
-//   - 1-Pass Cloudflare Workers AI Vision (@cf/meta/llama-3.2-11b-vision-instruct, 100% VPN-Free)
-//   - Automatic <think>...</think> tag stripping for Qwen/DeepSeek reasoning models
-//   - Dynamic unlimited GEMINI_API_KEY*, GROQ_API_KEY*, OPENROUTER_API_KEY* discovery
+// Danesh-Amooz-Man Two-Stage Smart Iranian Textbook AI Proxy Worker (v9.9.8)
+// Pipeline:
+//   1. Primary: Gemini Pool (Native Vision + Deep Persian Textbook Reasoning, VPN-free)
+//   2. Fallback for Images:
+//      - Stage 2A (Fast OCR-only): Cloudflare Vision (@cf/meta/llama-3.2-11b-vision-instruct, max_tokens: 450)
+//        ONLY transcribes exact Persian titles, boxes & numbered questions (does NOT hallucinate answers).
+//      - Stage 2B (Deep 70B Textbook Solver): Groq (qwen3.8-27b / llama-3.3-70b) or Cloudflare 70B
+//        (@cf/meta/llama-3.3-70b-instruct-fp8-fast, 100% VPN-free) solves strictly per Iranian school textbooks
+//        and outputs clean structured JSON.
 
 let cachedG = 'gemini-3.8-flash';
 let cachedQT = 'qwen/qwen3.8-27b';
@@ -35,6 +36,7 @@ function stripThinkTags(raw) {
   return String(raw || '')
     .replace(/<think>[\s\S]*?<\/think>/gi, '')
     .replace(/^\s*<\/think>\s*/i, '')
+    .replace(/کالس/g, 'کلاس')
     .trim();
 }
 
@@ -68,18 +70,21 @@ function extractCfAiText(res) {
   return typeof cand === 'string' ? stripThinkTags(cand) : '';
 }
 
-async function runCfVisionOnePass(env, imgObj, userPrompt) {
+async function extractPageQuestionsViaCfVision(env, imgObj) {
   if (!env?.AI || typeof env.AI.run !== 'function' || !imgObj?.base64) return '';
   const dataUri = `data:${imgObj.mimeType || 'image/jpeg'};base64,${imgObj.base64}`;
   const messages = [
     {
       role: 'system',
-      content: 'شما دبیر رسمی آموزش و پرورش ایران در سامانه «دانش‌آموز من» هستید. تصویر این صفحه کتاب درسی را دقیق بخوانید و فقط تمرین‌ها، فعالیت‌ها، کادرهای «خودت را امتحان کن»، «کار در کلاس» و «پیشنهاد» همین صفحه را دقیقاً مطابق متن، مفاهیم و کلیدواژه‌های کتاب درسی رسمی ایران (کوتاه، دقیق، شماره‌بندی‌شده و بدون حاشیه‌پردازی یا مطالب خارج از کتاب) پاسخ دهید.'
+      content: 'تو فقط یک دستگاه دقیق تایپ و استخراج متن (OCR) از تصویر کتاب درسی فارسی هستی. هرگز به سؤالات پاسخ نده! فقط عین متن فارسی، تیتر کادرها (مثل «خودت را امتحان کن»، «فعالیت»، «کار در کلاس»، «پیشنهاد») و شماره سؤالات داخل تصویر را دقیق و مرتب تایپ کن.'
     },
-    { role: 'user', content: userPrompt || 'تمرین‌ها و فعالیت‌های این صفحه کتاب را کامل به فارسی حل کن.' }
+    {
+      role: 'user',
+      content: 'فقط عین متن و سؤالات موجود در این تصویر صفحه کتاب درسی را با حفظ عنوان هر کادر و شماره هر سؤال به فارسی دقیق استخراج کن (پاسخ ننویس).'
+    }
   ];
   try {
-    const out = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: 1050 });
+    const out = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: 450 });
     cfVisionAgreed = true;
     return extractCfAiText(out);
   } catch (err) {
@@ -88,7 +93,7 @@ async function runCfVisionOnePass(env, imgObj, userPrompt) {
       try {
         await env.AI.run(CF_VISION_MODEL, { prompt: 'agree' });
         cfVisionAgreed = true;
-        const retryOut = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: 1050 });
+        const retryOut = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: 450 });
         return extractCfAiText(retryOut);
       } catch (_) {}
     }
@@ -96,15 +101,18 @@ async function runCfVisionOnePass(env, imgObj, userPrompt) {
   }
 }
 
-async function runCfText(env, promptText) {
+async function runCfTextSolver(env, promptText) {
   if (!env?.AI || typeof env.AI.run !== 'function') return { text: '', model: '' };
   const messages = [
-    { role: 'system', content: 'شما دبیر رسمی آموزش و پرورش ایران در سامانه «دانش‌آموز من» هستید. پاسخ‌ها را دقیقاً مطابق متن و سرفصل کتاب درسی رسمی ایران، کوتاه، دقیق، شماره‌بندی‌شده و بدون مطالب خارج از کتاب به فارسی روان بنویسید.' },
+    {
+      role: 'system',
+      content: 'تو دبیر رسمی و متخصص کتاب‌های درسی آموزش و پرورش ایران هستی. پاسخ هر پرسش را دقیقاً مطابق متن، مفاهیم و کلیدواژه‌های کتاب درسی رسمی ایران بنویس. هرگز متن یک کادر دیگر صفحه (مثل کادر «پیشنهاد») را به اشتباه به‌عنوان جواب سؤال قبلی کپی نکن! اگر قالب JSON خواسته شده، فقط JSON معتبر بدون علامت‌های ستاره (**) برگردان.'
+    },
     { role: 'user', content: promptText }
   ];
   for (const mdl of [CF_TEXT_MODEL, CF_TEXT_LITE]) {
     try {
-      const out = await env.AI.run(mdl, { messages, max_tokens: 1200 });
+      const out = await env.AI.run(mdl, { messages, max_tokens: 1500 });
       const txt = extractCfAiText(out);
       if (txt) return { text: txt, model: `cf/${mdl.split('/').pop()}` };
     } catch (_) {}
@@ -146,7 +154,7 @@ export default {
       return jsonResp({
         ok: true,
         service: 'danesh-ai-proxy',
-        version: '9.9.7',
+        version: '9.9.8',
         geminiKeys: gKeys.length,
         groqKeys: qKeys.length,
         openRouterKeys: oKeys.length,
@@ -161,7 +169,7 @@ export default {
       }, 200);
     }
 
-    const deadline = now + 45000; // 45s total budget so Cloudflare Vision finishes cleanly
+    const deadline = now + 45000;
     const timeLeft = () => Math.max(0, deadline - Date.now());
 
     try {
@@ -171,9 +179,9 @@ export default {
       const temp = typeof b.temperature === 'number' ? b.temperature : 0.2;
       const errs = [];
 
-      // 1. Primary: Gemini Pool (Native Vision + Text, VPN-free, fast 7.5s cap)
+      // 1. Primary: Gemini Pool
       const gStart = gKeys.length ? Math.floor(Math.random() * gKeys.length) : 0;
-      for (let i = 0; i < gKeys.length && timeLeft() > 5000; i++) {
+      for (let i = 0; i < gKeys.length && timeLeft() > 10000; i++) {
         const item = gKeys[(gStart + i) % gKeys.length];
         if (keyCooldowns[item.name] && keyCooldowns[item.name] > Date.now()) {
           errs.push(`${item.name}:cooldown`);
@@ -192,13 +200,13 @@ export default {
               headers: { 'Content-Type': 'application/json', 'x-goog-api-key': item.key },
               body: JSON.stringify({ contents: [{ role: 'user', parts }], generationConfig: { temperature: temp } })
             },
-            Math.min(tMs, timeLeft() - 1000)
+            Math.min(tMs, timeLeft() - 2000)
           );
 
-          let r = await callG(cachedG, 8000);
+          let r = await callG(cachedG, 9000);
           let d = await r.json().catch(() => ({}));
 
-          if ((r.status === 404 || r.status === 400) && timeLeft() > 6000) {
+          if ((r.status === 404 || r.status === 400) && timeLeft() > 9000) {
             const lr = await fetchWithTimeout('https://generativelanguage.googleapis.com/v1beta/models', {
               headers: { 'x-goog-api-key': item.key }
             }, 4500);
@@ -209,7 +217,7 @@ export default {
               .reverse()[0];
             if (cand && cand !== cachedG) {
               cachedG = cand;
-              r = await callG(cachedG, 7500);
+              r = await callG(cachedG, 8000);
               d = await r.json().catch(() => ({}));
             }
           }
@@ -228,22 +236,24 @@ export default {
         }
       }
 
-      // 2. For IMAGE requests when Gemini is unavailable: 1-Pass Cloudflare Workers AI Vision (Fast & 100% VPN-Free!)
-      if (imgs.length && hasCfAi && timeLeft() > 3500) {
+      // 2A. Fast OCR-only extraction on Cloudflare 11B Vision
+      let ocrExtracted = '';
+      if (imgs.length && hasCfAi && timeLeft() > 10000) {
         try {
-          const cfVisTxt = await runCfVisionOnePass(env, imgs[0], prompt);
-          if (cfVisTxt) {
-            return jsonResp({ text: cfVisTxt, model: 'cf/llama-3.2-11b-vision', provider: 'cloudflare_ai' }, 200);
-          }
+          ocrExtracted = await extractPageQuestionsViaCfVision(env, imgs[0]);
         } catch (cfErr) {
-          errs.push(`CF_VIS:${String(cfErr?.message || 'err').slice(0, 40)}`);
+          errs.push(`CF_OCR:${String(cfErr?.message || 'err').slice(0, 40)}`);
         }
       }
 
-      // 3. Groq Pool (Fast Text, instant skip on regional 403)
-      if (qKeys.length && groqRegionBlockedUntil <= Date.now() && timeLeft() > 3500) {
+      const solverPrompt = ocrExtracted
+        ? `${prompt}\n\n=== متن و سؤالات دقیق استخراج‌شده از تصویر همین صفحه ===\n${ocrExtracted}\n\nهشدار مهم آموزشی: هرگز متن کادرهای دیگر صفحه (مثل کادر «پیشنهاد») را به‌جای جواب سؤالات «خودت را امتحان کن» یا «فعالیت» کپی نکن! پاسخ هر سؤال را دقیقاً بر اساس مفاهیم علمی کتاب درسی رسمی آموزش و پرورش ایران بنویس و حتماً در قالب JSON استاندارد خواسته‌شده برگردان.`
+        : prompt;
+
+      // 2B. Deep Reasoning Solver #1: Groq Pool (Qwen3 / Llama 3.3 70B)
+      if (qKeys.length && groqRegionBlockedUntil <= Date.now() && timeLeft() > 6000) {
         const qStart = Math.floor(Math.random() * qKeys.length);
-        for (let i = 0; i < qKeys.length && timeLeft() > 3000; i++) {
+        for (let i = 0; i < qKeys.length && timeLeft() > 5000; i++) {
           const item = qKeys[(qStart + i) % qKeys.length];
           if (keyCooldowns[item.name] && keyCooldowns[item.name] > Date.now()) {
             errs.push(`${item.name}:cooldown`);
@@ -257,32 +267,32 @@ export default {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `Bearer ${item.key}`,
-                  'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.7'
+                  'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.8'
                 },
-                body: JSON.stringify({ model: m, messages: [{ role: 'user', content: prompt }], temperature: temp })
+                body: JSON.stringify({ model: m, messages: [{ role: 'user', content: solverPrompt }], temperature: temp })
               },
-              Math.min(tMs, timeLeft() - 800)
+              Math.min(tMs, timeLeft() - 1000)
             );
 
-            let r = await callQ(cachedQT, 7000);
+            let r = await callQ(cachedQT, 9000);
             let d = await r.json().catch(() => ({}));
 
-            if ((r.status === 404 || r.status === 400) && timeLeft() > 5000) {
+            if ((r.status === 404 || r.status === 400) && timeLeft() > 6000) {
               const lr = await fetchWithTimeout('https://api.groq.com/openai/v1/models', {
-                headers: { 'Authorization': `Bearer ${item.key}`, 'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.7' }
+                headers: { 'Authorization': `Bearer ${item.key}`, 'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.8' }
               }, 4000);
               const ld = await lr.json().catch(() => ({}));
               const ids = (ld?.data || []).map(x => x.id).filter(id => id && !/whisper|tts|guard|embed/i.test(id));
               const txtM = ids.find(id => /qwen|llama-3\.3|deepseek|llama-3\.1|gpt-oss/i.test(id)) || ids[0];
               if (txtM) {
                 cachedQT = txtM;
-                r = await callQ(cachedQT, 6500);
+                r = await callQ(cachedQT, 8000);
                 d = await r.json().catch(() => ({}));
               }
             }
 
             if (r.status === 403) {
-              groqRegionBlockedUntil = Date.now() + 120000; // 2m skip when POP blocked
+              groqRegionBlockedUntil = Date.now() + 120000;
               errs.push(`${item.name}:403`);
               break;
             }
@@ -291,7 +301,8 @@ export default {
 
             const txt = stripThinkTags(d?.choices?.[0]?.message?.content || '');
             if (r.ok && txt) {
-              return jsonResp({ text: txt, model: `groq/${cachedQT}`, provider: 'groq' }, 200);
+              const mdlName = ocrExtracted ? `cf-ocr+groq/${cachedQT}` : `groq/${cachedQT}`;
+              return jsonResp({ text: txt, model: mdlName, provider: 'groq' }, 200);
             }
             errs.push(`${item.name}:${r.status}`);
           } catch (e) {
@@ -300,20 +311,21 @@ export default {
         }
       }
 
-      // 4. Direct Cloudflare Workers AI Text Fallback (100% VPN-Free!)
-      if (hasCfAi && timeLeft() > 2500) {
+      // 2C. Deep Reasoning Solver #2: Cloudflare 70B Text Solver (100% VPN-Free!)
+      if (hasCfAi && timeLeft() > 4000) {
         try {
-          const cfRes = await runCfText(env, prompt);
+          const cfRes = await runCfTextSolver(env, solverPrompt);
           if (cfRes.text) {
-            return jsonResp({ text: cfRes.text, model: cfRes.model, provider: 'cloudflare_ai' }, 200);
+            const mdlName = ocrExtracted ? `cf-ocr+${cfRes.model}` : cfRes.model;
+            return jsonResp({ text: cfRes.text, model: mdlName, provider: 'cloudflare_ai' }, 200);
           }
         } catch (cfTxtErr) {
-          errs.push(`CF_TXT:${String(cfTxtErr?.message || 'err').slice(0, 40)}`);
+          errs.push(`CF_70B:${String(cfTxtErr?.message || 'err').slice(0, 40)}`);
         }
       }
 
-      // 5. Optional OpenRouter Pool
-      for (let i = 0; i < oKeys.length && timeLeft() > 3000; i++) {
+      // 3. Optional OpenRouter Pool
+      for (let i = 0; i < oKeys.length && timeLeft() > 4000; i++) {
         const item = oKeys[i];
         if (keyCooldowns[item.name] && keyCooldowns[item.name] > Date.now()) continue;
         try {
@@ -325,8 +337,8 @@ export default {
               'HTTP-Referer': 'https://danesh-amooz-man.github.io',
               'X-Title': 'DaneshAmoozMan'
             },
-            body: JSON.stringify({ model: cachedOR, messages: [{ role: 'user', content: prompt }], temperature: temp })
-          }, Math.min(7000, timeLeft() - 500));
+            body: JSON.stringify({ model: cachedOR, messages: [{ role: 'user', content: solverPrompt }], temperature: temp })
+          }, Math.min(8000, timeLeft() - 500));
           const d = await r.json().catch(() => ({}));
           if (r.status === 429) keyCooldowns[item.name] = Date.now() + 300000;
           if (r.status === 401) keyCooldowns[item.name] = Date.now() + 1800000;
