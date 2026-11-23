@@ -1,4 +1,4 @@
-// Danesh-Amooz-Man Smart Zero-Timeout AI Proxy Worker (v9.9.6)
+// Danesh-Amooz-Man Smart Zero-Timeout AI Proxy Worker (v9.9.7)
 // Architecture:
 //   - Global 22s request deadline budget (prevents mobile/edge timeouts)
 //   - Fast per-provider timeouts (7.5s Gemini, 7s Groq)
@@ -74,12 +74,12 @@ async function runCfVisionOnePass(env, imgObj, userPrompt) {
   const messages = [
     {
       role: 'system',
-      content: 'شما دستیار هوشمند آموزشی معلم ایرانی («دانش‌آموز من») هستید. تصویر صفحه کتاب درسی را با دقت کامل بخوانید و تمام تمرین‌ها، فعالیت‌ها، کادرهای «خودت را امتحان کن»، «کار در کلاس» و «پیشنهاد» را دقیق، شماره‌بندی‌شده و کامل به زبان فارسی پاسخ دهید.'
+      content: 'شما دبیر رسمی آموزش و پرورش ایران در سامانه «دانش‌آموز من» هستید. تصویر این صفحه کتاب درسی را دقیق بخوانید و فقط تمرین‌ها، فعالیت‌ها، کادرهای «خودت را امتحان کن»، «کار در کلاس» و «پیشنهاد» همین صفحه را دقیقاً مطابق متن، مفاهیم و کلیدواژه‌های کتاب درسی رسمی ایران (کوتاه، دقیق، شماره‌بندی‌شده و بدون حاشیه‌پردازی یا مطالب خارج از کتاب) پاسخ دهید.'
     },
     { role: 'user', content: userPrompt || 'تمرین‌ها و فعالیت‌های این صفحه کتاب را کامل به فارسی حل کن.' }
   ];
   try {
-    const out = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: 1800 });
+    const out = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: 1050 });
     cfVisionAgreed = true;
     return extractCfAiText(out);
   } catch (err) {
@@ -88,7 +88,7 @@ async function runCfVisionOnePass(env, imgObj, userPrompt) {
       try {
         await env.AI.run(CF_VISION_MODEL, { prompt: 'agree' });
         cfVisionAgreed = true;
-        const retryOut = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: 1800 });
+        const retryOut = await env.AI.run(CF_VISION_MODEL, { messages, image: dataUri, max_tokens: 1050 });
         return extractCfAiText(retryOut);
       } catch (_) {}
     }
@@ -99,12 +99,12 @@ async function runCfVisionOnePass(env, imgObj, userPrompt) {
 async function runCfText(env, promptText) {
   if (!env?.AI || typeof env.AI.run !== 'function') return { text: '', model: '' };
   const messages = [
-    { role: 'system', content: 'شما دستیار هوشمند آموزشی «دانش‌آموز من» هستید. پاسخ‌ها را دقیق، کامل، ساختاریافته و به زبان فارسی روان بنویسید.' },
+    { role: 'system', content: 'شما دبیر رسمی آموزش و پرورش ایران در سامانه «دانش‌آموز من» هستید. پاسخ‌ها را دقیقاً مطابق متن و سرفصل کتاب درسی رسمی ایران، کوتاه، دقیق، شماره‌بندی‌شده و بدون مطالب خارج از کتاب به فارسی روان بنویسید.' },
     { role: 'user', content: promptText }
   ];
   for (const mdl of [CF_TEXT_MODEL, CF_TEXT_LITE]) {
     try {
-      const out = await env.AI.run(mdl, { messages, max_tokens: 1800 });
+      const out = await env.AI.run(mdl, { messages, max_tokens: 1200 });
       const txt = extractCfAiText(out);
       if (txt) return { text: txt, model: `cf/${mdl.split('/').pop()}` };
     } catch (_) {}
@@ -146,7 +146,7 @@ export default {
       return jsonResp({
         ok: true,
         service: 'danesh-ai-proxy',
-        version: '9.9.6',
+        version: '9.9.7',
         geminiKeys: gKeys.length,
         groqKeys: qKeys.length,
         openRouterKeys: oKeys.length,
@@ -161,7 +161,7 @@ export default {
       }, 200);
     }
 
-    const deadline = now + 22000; // Strict 22s total budget so connection never resets
+    const deadline = now + 45000; // 45s total budget so Cloudflare Vision finishes cleanly
     const timeLeft = () => Math.max(0, deadline - Date.now());
 
     try {
@@ -257,7 +257,7 @@ export default {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `Bearer ${item.key}`,
-                  'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.6'
+                  'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.7'
                 },
                 body: JSON.stringify({ model: m, messages: [{ role: 'user', content: prompt }], temperature: temp })
               },
@@ -269,7 +269,7 @@ export default {
 
             if ((r.status === 404 || r.status === 400) && timeLeft() > 5000) {
               const lr = await fetchWithTimeout('https://api.groq.com/openai/v1/models', {
-                headers: { 'Authorization': `Bearer ${item.key}`, 'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.6' }
+                headers: { 'Authorization': `Bearer ${item.key}`, 'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.7' }
               }, 4000);
               const ld = await lr.json().catch(() => ({}));
               const ids = (ld?.data || []).map(x => x.id).filter(id => id && !/whisper|tts|guard|embed/i.test(id));
