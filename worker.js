@@ -1,4 +1,4 @@
-// Danesh-Amooz-Man Full-Lesson Smart Iranian Textbook AI Proxy Worker (v9.9.9)
+// Danesh-Amooz-Man Full-Lesson Smart Iranian Textbook AI Proxy Worker (v10.0.0)
 // Pipeline:
 //   0. mode === 'ocr_pages': Parallel Cloudflare Workers AI Vision OCR for up to 3 preceding lesson pages
 //      in a single call (~4-6s wall-clock), preserving Gemini free-tier quota for final solving.
@@ -177,7 +177,7 @@ export default {
       return jsonResp({
         ok: true,
         service: 'danesh-ai-proxy',
-        version: '9.9.9',
+        version: '10.0.0',
         geminiKeys: gKeys.length,
         groqKeys: qKeys.length,
         openRouterKeys: oKeys.length,
@@ -209,16 +209,21 @@ export default {
         const outPages = {};
         if (hasCfAi) {
           if (!cfVisionAgreed) await ensureCfVisionAgreed(env);
+          const ocrErrs = [];
           await Promise.all(reqPages.map(async (pg) => {
             try {
               const txt = await extractPageTextViaCfVision(env, pg, 'lesson_text');
               if (txt) outPages[String(pg.pageNo)] = txt;
-            } catch (_) {}
+            } catch (e) {
+              ocrErrs.push(String(e?.message || e || 'err').slice(0, 80));
+            }
           }));
+          const extractedCount = Object.keys(outPages).length;
           return jsonResp({
-            ok: true,
+            ok: extractedCount > 0 || ocrErrs.length === 0,
             mode: 'ocr_pages',
             pages: outPages,
+            errors: ocrErrs,
             model: 'cf/llama-3.2-11b-vision-instruct'
           }, 200);
         }
@@ -318,7 +323,7 @@ export default {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `Bearer ${item.key}`,
-                  'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.9'
+                  'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/10.0.0'
                 },
                 body: JSON.stringify({ model: m, messages: [{ role: 'user', content: solverPrompt }], temperature: temp })
               },
@@ -330,7 +335,7 @@ export default {
 
             if ((r.status === 404 || r.status === 400) && timeLeft() > 6000) {
               const lr = await fetchWithTimeout('https://api.groq.com/openai/v1/models', {
-                headers: { 'Authorization': `Bearer ${item.key}`, 'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.9' }
+                headers: { 'Authorization': `Bearer ${item.key}`, 'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/10.0.0' }
               }, 4000);
               const ld = await lr.json().catch(() => ({}));
               const ids = (ld?.data || []).map(x => x.id).filter(id => id && !/whisper|tts|guard|embed/i.test(id));
