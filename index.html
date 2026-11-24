@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="9.9.9">
-<meta name="danesh-app-version" content="9.9.9">
+<meta name="version" content="10.0.0">
+<meta name="danesh-app-version" content="10.0.0">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -5171,7 +5171,7 @@ body.dark .ws-logout-inner {
 <!-- اعلان به‌روزرسانی نسخه PWA (مدیریت مرکزی نسخه 9.3.0) -->
 <div id="swUpdateBanner" class="sw-update-banner" role="region" aria-label="اعلان به‌روزرسانی نسخه جدید">
   <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:200px">
-    <span id="swUpdateBannerText">🚀 نسخه جدید (۹.۹.۹) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
+    <span id="swUpdateBannerText">🚀 نسخه جدید (۱۰.۰.۰) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
     <div id="swUpdateBannerError" style="display:none;font-size:11.5px;color:#FEE2E2;background:rgba(153,27,27,0.88);padding:5px 8px;border-radius:8px;border:1px solid #FCA5A5;line-height:1.6"></div>
   </div>
   <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
@@ -5204,7 +5204,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۹.۹.۹</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۱۰.۰.۰</span>
           <button type="button" id="btnTopCheckUpdate" class="top-ver-pill" style="cursor:pointer;border:1px solid rgba(234,88,12,0.35);background:#FFF7ED;color:#EA580C;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:999px" onclick="if(window.CentralUpdateManager)CentralUpdateManager.checkForUpdatesManual()" title="بررسی به‌روزرسانی">بررسی به‌روزرسانی</button>
         </div>
       </div>
@@ -5313,7 +5313,7 @@ body.dark .ws-logout-inner {
   </div>
   <div id="dashBirthdaysBox"></div>
   <div id="todayClassesBox"></div>
-  <!-- v9.9.9: ردیف ۳ کادر آماری تکراری مدارس/کلاس‌ها/دانش‌آموزان برای خلوت‌سازی صفحه خانه حذف شد -->
+  <!-- v10.0.0: ردیف ۳ کادر آماری تکراری مدارس/کلاس‌ها/دانش‌آموزان برای خلوت‌سازی صفحه خانه حذف شد -->
   <div id="dashboardSchools" class="grid"></div>
   <div id="todayAbsencesBox" style="margin-top:12px"></div>
   <div id="schoolProgressChart"></div>
@@ -5687,17 +5687,7 @@ body.dark .ws-logout-inner {
   </div>
 
   <div id="examPane-ai" class="exam-pane active">
-    <div class="box-card highlight">
-      <div class="box-header">
-        <span>🔑 کلید هوش مصنوعی (مشترک برای کل برنامه)</span>
-        <button class="btn gray btn-sm" onclick="ExamApp.testApiKeyConnection()" id="btnTestKey">تست اتصال</button>
-      </div>
-      <div style="display:flex;gap:6px">
-        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="masked-api-key-inp" id="apiKeyField" dir="ltr" style="text-align:left;font-family:monospace" placeholder="کلید اختصاصی هوش‌واره یا هوش مصنوعی..." oninput="ExamApp.onKeyChange()">
-        <button class="btn gray btn-sm" onclick="ExamApp.toggleKeyPass()">👁️</button>
-      </div>
-      <div id="apiStatusBar" style="margin-top:6px;font-size:11.5px;font-weight:bold;color:var(--green)"><span id="apiStatusText">ℹ️ کلید خود را وارد کنید</span></div>
-    </div>
+    <!-- v10.0.0: کارت کلید هوش مصنوعی از آزمون‌ساز حذف شد؛ مدیریت یکپارچه کلید در بخش تنظیمات انجام می‌شود -->
 
     <div class="box-card">
       <div class="box-header">
@@ -5710,10 +5700,7 @@ body.dark .ws-logout-inner {
         </select>
       </div>
       <textarea id="aiPromptSource" oninput="ExamApp.autoDetectHeaderFromText(this.value)" placeholder="مثال: از درس ۱ تا ۴ پیام‌های آسمان هشتم سوال طرح کن (به محض نوشتن هفتم یا هشتم، سربرگ خودکار تنظیم می‌شود)..."></textarea>
-      <div style="margin-top:10px">
-        <label class="btn soft block" style="cursor:pointer;margin:0">📸 انتخاب عکس از صفحات کتاب درسی<input type="file" id="aiImageInput" accept="image/*" multiple hidden onchange="ExamApp.handleAiImages(event)"></label>
-        <div id="aiImageBadge" style="display:none;margin-top:6px;font-size:11.5px;color:var(--green);font-weight:bold;text-align:center"></div>
-      </div>
+      <!-- v10.0.0: دکمه انتخاب عکس از صفحات کتاب درسی از آزمون‌ساز حذف شد -->
     </div>
 
     <div class="box-card">
@@ -5756,7 +5743,7 @@ body.dark .ws-logout-inner {
           <label class="switch-card" style="width:100%;background:var(--panel);border-color:var(--border)"><span>🧹 پاک شدن سوالات قبلی</span><input type="checkbox" id="swClearBeforeAi" checked onchange="ExamApp.syncSwitchesFromUI()"></label>
         </div>
       </div>
-      <button class="btn primary block" style="margin-top:8px;padding:11px" id="btnRunAi" onclick="ExamApp.generateQuestionsByAI()">✨ طراحی خودکار آزمون (با نمرات رُند ۰.۲۵ و تراز صفحه)</button>
+      <button class="btn primary block" style="margin-top:8px;padding:11px" id="btnRunAi" onclick="ExamApp.generateQuestionsByAI()">✨ طراحی آزمون طبق تنظیمات</button>
       <button class="btn gray block" style="margin-top:6px" onclick="ExamApp.openNoApiModal()">🪄 حالت بدون API (کپی دستور و پیست سریع)</button>
     </div>
   </div>
@@ -6308,7 +6295,7 @@ body.dark .ws-logout-inner {
       <button class="btn primary block" style="margin-top:12px" onclick="saveRules()">💾 ذخیره ضرایب نمرات و فرمول انضباطی</button>
     </div>
 
-    <!-- v9.9.9: ابزارهای منتقل‌شده از صفحه کلاس (کار عملی + سقف نمره و عدم منفی) و داشبورد یکپارچه تنظیمات نمره‌دهی -->
+    <!-- v10.0.0: ابزارهای منتقل‌شده از صفحه کلاس (کار عملی + سقف نمره و عدم منفی) و داشبورد یکپارچه تنظیمات نمره‌دهی -->
     <div class="card" id="v988RulesClassToolsCard" style="margin-bottom:12px;border-color:#FDBA74;background:linear-gradient(180deg,#FFFBF7 0%,#FFF7ED 100%)">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
         <div>
@@ -6526,7 +6513,7 @@ body.dark .ws-logout-inner {
       </div>
     </div>
 
-    <!-- ۵. ابزارهای نگهداری و سلامت داده (آکاردئونی یکپارچه نسخه 9.9.9) -->
+    <!-- ۵. ابزارهای نگهداری و سلامت داده (آکاردئونی یکپارچه نسخه 10.0.0) -->
     <details class="card v950-vault-accordion" id="v985MaintenanceAccordion" style="margin-bottom:12px;padding:0;overflow:hidden;border-color:var(--neon-cyan)">
       <summary style="list-style:none;cursor:pointer;padding:13px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;user-select:none">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -6611,7 +6598,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.9.9 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v10.0.0 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6711,7 +6698,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.9.9 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v10.0.0 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6808,15 +6795,28 @@ body.dark .ws-logout-inner {
 </div>
 
 <div class="modal-overlay" id="noApiModal">
-  <div class="modal-box" style="max-width:680px">
+  <div class="modal-box" style="max-width:720px">
     <div class="modal-top">
-      <span>🪄 استودیوی دقیق ساخت آزمون با هوش‌واره (بدون نیاز به کلید)</span>
+      <span>🪄 حالت بدون API — طراحی آزمون دقیق با هر هوش مصنوعی</span>
       <button class="btn gray btn-sm" onclick="ExamApp.closeModal('noApiModal')">✖ بستن</button>
     </div>
     <div class="modal-content">
+      <div class="card" style="background:linear-gradient(135deg,#FFF7ED,#FFEDD5);padding:12px 14px;margin-bottom:10px;border:1.5px solid #FDBA74">
+        <b style="color:#C2410C;font-size:13px;display:block;margin-bottom:6px">📘 راهنمای گام‌به‌گام (برای نتیجه ۱۰۰٪ واقعی و بدون خطا)</b>
+        <ol style="margin:0;padding-right:18px;font-size:11.8px;line-height:1.85;color:#1E293B">
+          <li><b>گام ۱ (تنظیم مشخصات):</b> تعداد سوالات، جمع بارم و گام رُندسازی را در کادر پایین بررسی کنید تا دستور به‌طور خودکار دقیق شود.</li>
+          <li><b>گام ۲ (کپی دستور همگانی):</b> دکمه <b>«📋 کپی دستور همگانی»</b> را بزنید. این دستور طوری مهندسی شده که در <b>ChatGPT، Gemini، Claude، DeepSeek، Copilot، Grok و هوش‌واره‌های ایرانی</b> کاملاً سازگار و بدون خطا کار می‌کند.</li>
+          <li><b>گام ۳ (پیوست کردن اسکرین‌شات کامل یا فایل PDF کتاب — بسیار مهم!):</b> وارد هوش مصنوعی دلخواه شوید، <b>اسکرین‌شات کامل صفحات کتاب درسی</b> یا <b>فایل PDF کتاب درسی</b> را به پیام پیوست (Attach / Upload) کنید و همین دستور کپی‌شده را کنار آن بفرستید تا سوالات <b>دقیقاً از متن واقعی همان صفحات</b> طرح شوند.</li>
+          <li><b>گام ۴ (ورود خودکار به برگه A4):</b> کل پاسخ هوش مصنوعی را کپی کنید، در کادر شماره ۳ همین صفحه پیست (Paste) کنید و دکمه سبز را بزنید تا آزمون فوری در برگه A4 چیده شود.</li>
+        </ol>
+        <div style="margin-top:8px;padding:7px 10px;border-radius:10px;background:#FFFFFF;border:1px dashed #FB923C;font-size:11.2px;color:#7C2D12">
+          💡 <b>نکته مهم محدودیت‌ها و راه جایگزین:</b> اگر هوش مصنوعی به فایل PDF کامل خطا داد (به‌خاطر حجم بالا)، از صفحات مورد نظر <b>اسکرین‌شات واضح</b> بگیرید و همراه دستور بفرستید. همچنین اگر خروجی به جای JSON به‌صورت متن شماره‌دار بود، نگران نباشید؛ پارسر هوشمند برنامه هر دو حالت را خودکار تشخیص می‌دهد.
+        </div>
+      </div>
+
       <div class="card" style="background:var(--bg-panel);padding:10px 12px;margin-bottom:10px;border-color:var(--primary)">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
-          <b style="color:var(--primary);font-size:12.5px">🎯 ۱. تنظیمات دقیق مهندسی آزمون (محاسبه خودکار بارم و تعداد سوالات)</b>
+          <b style="color:var(--primary);font-size:12.5px">🎯 ۱. تنظیمات دقیق آزمون (همگام با تنظیمات اصلی)</b>
           <button type="button" class="btn soft btn-sm" onclick="ExamApp.refreshPreciseNoApiPrompt()">🔄 بروزرسانی دستور</button>
         </div>
         <div id="noApiPrecisionSummary" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px"></div>
@@ -6838,22 +6838,26 @@ body.dark .ws-logout-inner {
       </div>
 
       <div class="card" style="padding:10px 12px;margin-bottom:10px">
-        <b style="color:var(--neon-cyan);font-size:12.5px;display:block;margin-bottom:5px">📋 ۲. دستور مهندسی‌شدهٔ آماده (کپی کنید و در هوش مصنوعی بفرستید):</b>
-        <textarea id="noApiPromptText" readonly style="min-height:110px;background:var(--panel);font-size:11.5px;line-height:1.65;font-family:Tahoma,sans-serif"></textarea>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:5px">
+          <b style="color:var(--neon-cyan);font-size:12.5px">📋 ۲. دستور همگانی ضدخطا (سازگار با تمام هوش مصنوعی‌ها)</b>
+          <span class="chip" style="font-size:10px">همراه PDF یا اسکرین‌شات بفرستید</span>
+        </div>
+        <textarea id="noApiPromptText" readonly style="min-height:135px;background:var(--panel);font-size:11.3px;line-height:1.7;font-family:Vazirmatn,Tahoma,sans-serif"></textarea>
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:7px">
-          <button type="button" class="btn primary btn-sm" onclick="ExamApp.copyNoApiPrompt()">📋 کپی دقیق دستور</button>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chat.deepseek.com')">🧠 کپی و باز کردن هوش‌واره ۱</button>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chatgpt.com')">🤖 کپی و باز کردن هوش مصنوعی ۲</button>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://gemini.google.com')">✨ کپی و باز کردن هوش مصنوعی ۳</button>
+          <button type="button" class="btn primary btn-sm" onclick="ExamApp.copyNoApiPrompt()">📋 کپی دستور همگانی</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chatgpt.com')">🤖 کپی و باز کردن ChatGPT</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://gemini.google.com')">✨ کپی و باز کردن Gemini</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chat.deepseek.com')">🧠 کپی و باز کردن DeepSeek</button>
         </div>
       </div>
 
       <div class="card" style="padding:10px 12px;border-color:var(--neon-green)">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:5px">
-          <b style="color:var(--neon-green);font-size:12.5px">🚀 ۳. جای‌گذاری پاسخ (پشتیبانی از کد JSON یا متن عادی سوالات فارسی)</b>
-          <button type="button" class="btn gray btn-sm" onclick="navigator.clipboard?.readText().then(t=>{if(t)document.getElementById('noApiPasteBox').value=t;})">📥 پیست از حافظه</button>
+          <b style="color:var(--neon-green);font-size:12.5px">🚀 ۳. جای‌گذاری پاسخ هوش مصنوعی (JSON یا متن فارسی — پارسر ضدخطا)</b>
+          <button type="button" class="btn gray btn-sm" onclick="navigator.clipboard?.readText().then(t=>{if(t){document.getElementById('noApiPasteBox').value=t;toast('📥 از حافظه جای‌گذاری شد');}}).catch(()=>toast('لطفاً دستی در کادر پیست کنید'))">📥 پیست از حافظه</button>
         </div>
-        <textarea id="noApiPasteBox" placeholder="پاسخ هوش مصنوعی (چه به صورت کد JSON و چه به صورت متن شماره‌دار فارسی) را اینجا پیست کنید..." style="min-height:95px;font-size:12px"></textarea>
+        <textarea id="noApiPasteBox" placeholder="کل پاسخ هوش مصنوعی را اینجا پیست کنید (برنامه خودکار کد JSON یا سوالات شماره‌دار فارسی را استخراج و روی برگه A4 تراز می‌کند)..." style="min-height:100px;font-size:12px"></textarea>
+        <div id="noApiImportFeedback" style="display:none;margin-top:6px;padding:7px 10px;border-radius:10px;font-size:11.5px;font-weight:700"></div>
         <button type="button" class="btn green block" style="margin-top:8px;padding:11px;font-weight:900" onclick="ExamApp.importNoApiJSON()">🚀 چیدن فوری در برگه A4 + انتقال خودکار به آزمون آنلاین</button>
       </div>
     </div>
@@ -6942,7 +6946,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '9.9.9';
+const APP_VERSION = '10.0.0';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -16061,7 +16065,7 @@ openClass = function(sid, cid) {
     actionsRow.appendChild(btnRep);
   }
 
-  // v9.9.9: کادر جستجوی تکراری اول حذف شد؛ فقط یک کادر جستجوی یکپارچه بالای لیست دانش‌آموزان نمایش داده می‌شود.
+  // v10.0.0: کادر جستجوی تکراری اول حذف شد؛ فقط یک کادر جستجوی یکپارچه بالای لیست دانش‌آموزان نمایش داده می‌شود.
 };
 
 /* ۵. مرکز هوشمند اعلانات و یادآوری‌ها (🔔 با قابلیت فعال/غیرفعال‌سازی اعلان تولدها و یادآوری شخصی معلم) */
@@ -28655,7 +28659,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 
     ExamApp.generateQuestionsByAI = async function(overrideText = null) {
       const btn = document.getElementById('btnRunAi');
-      const oldHtml = btn ? btn.innerHTML : '✨ طراحی خودکار آزمون (با نمرات رُند ۰.۲۵ و تراز صفحه)';
+      const oldHtml = btn ? btn.innerHTML : '✨ طراحی آزمون طبق تنظیمات';
       if (btn) {
         btn.disabled = true;
         btn.innerHTML = '⏳ در حال طراحی سوالات استاندارد طبق تنظیمات...';
@@ -30449,7 +30453,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
 
     ExamApp.generateQuestionsByAI = async function(overrideText = null) {
       const btn = document.getElementById('btnRunAi');
-      const oldHtml = btn ? btn.innerHTML : '✨ طراحی خودکار آزمون (با نمرات رُند ۰.۲۵ و تراز صفحه)';
+      const oldHtml = btn ? btn.innerHTML : '✨ طراحی آزمون طبق تنظیمات';
       if (btn) {
         btn.disabled = true;
         btn.innerHTML = '⏳ در حال خواندن دقیق صفحات و طراحی سوالات استاندارد...';
@@ -31900,7 +31904,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       } finally {
         if (btn) {
           btn.disabled = false;
-          btn.innerHTML = oldHtml || '✨ طراحی خودکار آزمون';
+          btn.innerHTML = oldHtml || '✨ طراحی آزمون طبق تنظیمات';
         }
       }
     };
@@ -36181,7 +36185,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v9.9.9</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v10.0.0</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -36323,7 +36327,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 9.9.9 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 10.0.0 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -40710,7 +40714,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DAM_AUDIT_VERSION = '9.9.9';
+  window.DAM_AUDIT_VERSION = '10.0.0';
 
   /* ==========================================================================================
      ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
@@ -41095,7 +41099,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.9.9';
+  window.DANESH_APP_VERSION = '10.0.0';
 
   /* ==========================================================================================
      ۱. معماری یکپارچه هوش مصنوعی با الهام مستقیم از آزمون‌ساز (gemini-code-1792066709047.html)
@@ -46340,7 +46344,7 @@ ${JSON.stringify(batch, null, 2)}
     const mainView = document.getElementById('classMainView');
     if (!c || !mainView) return;
 
-    // v9.9.9: کادر جستجوی تکراری دوم و دکمه‌های ابزار تصاویر/پایش از صفحه کلاس حذف و به تنظیمات منتقل شدند.
+    // v10.0.0: کادر جستجوی تکراری دوم و دکمه‌های ابزار تصاویر/پایش از صفحه کلاس حذف و به تنظیمات منتقل شدند.
   };
 
   const _origRenderDashboardV9 = window.renderDashboard;
@@ -48021,7 +48025,7 @@ ${JSON.stringify(batch, null, 2)}
     if (typeof _origOpenClassV91 === 'function') {
       _origOpenClassV91(sid, cid);
     }
-    // v9.9.9: دکمه‌های کار عملی و سقف نمره و عدم منفی به بخش ضرایب و قوانین (#setPane-rules) منتقل شدند.
+    // v10.0.0: دکمه‌های کار عملی و سقف نمره و عدم منفی به بخش ضرایب و قوانین (#setPane-rules) منتقل شدند.
   };
 
 })();
@@ -48111,13 +48115,13 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '9.9.9';
-  window.DAM_AUDIT_VERSION = '9.9.9';
+  window.DANESH_APP_VERSION = '10.0.0';
+  window.DAM_AUDIT_VERSION = '10.0.0';
   try {
     const topVerEl = document.getElementById('topVersion');
-    if (topVerEl) topVerEl.textContent = 'نسخه ۹.۹.۹';
+    if (topVerEl) topVerEl.textContent = 'نسخه ۱۰.۰.۰';
     const metaVer = document.querySelector('meta[name="version"]');
-    if (metaVer) metaVer.setAttribute('content', '9.9.9');
+    if (metaVer) metaVer.setAttribute('content', '10.0.0');
   } catch (_) {}
 
   /* ==========================================================================================
@@ -52986,14 +52990,14 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V921_VERSION = '9.9.9';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v9.9.9-orange';
+  const V921_VERSION = '10.0.0';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v10.0.0-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
   function syncVersionDisplaysV921() {
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۹.۹.۹';
+    if (topVer) topVer.textContent = 'نسخه ۱۰.۰.۰';
     const metaVer = document.querySelector('meta[name="version"]');
     if (metaVer) metaVer.setAttribute('content', V921_VERSION);
   }
@@ -55580,8 +55584,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const UNIFIED_VERSION = '9.9.9';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.9.9-orange';
+  const UNIFIED_VERSION = '10.0.0';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v10.0.0-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -55943,7 +55947,7 @@ ${JSON.stringify(batch, null, 2)}
     },
 
     mountIntoSettingsAndBackup() {
-      // v9.9.9: کارت وضعیت سلامت پایگاه داده به درخواست کاربر از بالای تنظیمات حذف شد (موتور IndexedDB همچنان فعال است)
+      // v10.0.0: کارت وضعیت سلامت پایگاه داده به درخواست کاربر از بالای تنظیمات حذف شد (موتور IndexedDB همچنان فعال است)
       document.getElementById('damDbHealthMount')?.remove();
       document.getElementById('damDbHealthDashboardCard')?.remove();
     }
@@ -59436,8 +59440,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V930_VERSION = '9.9.9';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v9.9.9-orange';
+  const V930_VERSION = '10.0.0';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v10.0.0-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -59447,7 +59451,7 @@ ${JSON.stringify(batch, null, 2)}
     const meta = document.querySelector('meta[name="danesh-app-version"]');
     if (meta) meta.setAttribute('content', V930_VERSION);
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۹.۹.۹';
+    if (topVer) topVer.textContent = 'نسخه ۱۰.۰.۰';
     document.querySelectorAll('[data-app-version-label], .app-version-badge').forEach(el => {
       el.textContent = '۹.۸.۱';
     });
@@ -60634,9 +60638,9 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V940_VERSION = '9.9.9';
-  const V940_VERSION_FA = '۹.۹.۹';
-  const V940_CACHE_NAME = 'danesh-amooz-man-v9.9.9-orange';
+  const V940_VERSION = '10.0.0';
+  const V940_VERSION_FA = '۱۰.۰.۰';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v10.0.0-orange';
   const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
 
   window.APP_VERSION = V940_VERSION;
@@ -62202,7 +62206,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V950_VER = '9.9.9';
+  const V950_VER = '10.0.0';
   window.DANESH_APP_VERSION = V950_VER;
   window.DAM_AUDIT_VERSION = V950_VER;
 
@@ -62978,7 +62982,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     const maxNegAllowed = Math.max(0, readRuleNum('rule_max_neg_allowed', 2));
     const penPerNeg = Math.max(0, readRuleNum('rule_penalty_per_neg', 0.5));
 
-    // Section on/off toggles (v9.9.9: disabled sections have ZERO effect on final score; practical is OFF by default)
+    // Section on/off toggles (v10.0.0: disabled sections have ZERO effect on final score; practical is OFF by default)
     const contEnabled = window.isClassSectionEnabled(c, 'continuous', true);
     const finalEnabled = window.isClassSectionEnabled(c, 'final_exam', true);
     const practicalEnabled = window.isClassSectionEnabled(c, 'practical', false);
@@ -63579,7 +63583,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
       window.v950SaveBirthdayTemplate(savedTpl);
     }
 
-    // v9.9.9: Photo optimization is unified inside the Supabase Cloud & Photo Sync card
+    // v10.0.0: Photo optimization is unified inside the Supabase Cloud & Photo Sync card
     const legacyOpt = document.getElementById('v950PhotoOptCard');
     if (legacyOpt) legacyOpt.remove();
 
@@ -63692,7 +63696,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     renderModernOrangeLogin();
     // Ensure topVersion always displays ۹.۸.۱
     const tv = document.getElementById('topVersion');
-    if (tv) tv.textContent = 'نسخه ۹.۹.۹';
+    if (tv) tv.textContent = 'نسخه ۱۰.۰.۰';
     if (typeof window.renderInternalVaultUI === 'function') {
       window.renderInternalVaultUI().catch(() => {});
     }
@@ -63713,8 +63717,8 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V960_VERSION = '9.9.9';
-  const V960_VERSION_FA = '۹.۹.۹';
+  const V960_VERSION = '10.0.0';
+  const V960_VERSION_FA = '۱۰.۰.۰';
   window.DANESH_APP_VERSION = V960_VERSION;
   window.DAM_AUDIT_VERSION = V960_VERSION;
 
@@ -66221,8 +66225,8 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V970_VERSION = '9.9.9';
-  const V970_VERSION_FA = '۹.۹.۹';
+  const V970_VERSION = '10.0.0';
+  const V970_VERSION_FA = '۱۰.۰.۰';
   window.DANESH_APP_VERSION = V970_VERSION;
   window.DAM_AUDIT_VERSION = V970_VERSION;
 
@@ -68392,8 +68396,8 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
 (function() {
   'use strict';
 
-  const V971_VERSION = '9.9.9';
-  const V971_VERSION_FA = '۹.۹.۹';
+  const V971_VERSION = '10.0.0';
+  const V971_VERSION_FA = '۱۰.۰.۰';
   window.DANESH_APP_VERSION = V971_VERSION;
 
   const safeEsc = (s) => typeof esc === 'function' ? esc(s) : String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
@@ -70389,8 +70393,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V980_VERSION = '9.9.9';
-  const V980_VERSION_FA = '۹.۹.۹';
+  const V980_VERSION = '10.0.0';
+  const V980_VERSION_FA = '۱۰.۰.۰';
   const UNIFIED_SOLVE_BTN_LABEL = '✨ حل تمرین‌ها و فعالیت‌های این صفحه';
   const CACHE_MODEL_KEY_V980 = 'v980_cached_gemini_model';
   const CACHE_KEY_SIG_V980 = 'v980_cached_gemini_key_sig';
@@ -71084,7 +71088,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
       }
     }
 
-    // v9.9.9: خوانش هوشمند کل درس از صفحات قبلی (تا ۶ صفحه قبل؛ با تشخیص خودکار ابتدای درس و کش دائمی)
+    // v10.0.0: خوانش هوشمند کل درس از صفحات قبلی (تا ۶ صفحه قبل؛ با تشخیص خودکار ابتدای درس و کش دائمی)
     if (includeFullLesson && pdfDoc && pNo > 1) {
       const maxLookback = Math.min(6, pNo - 1);
       const foundMap = {};
@@ -71815,8 +71819,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V982_VERSION = '9.9.9';
-  const V982_VERSION_FA = '۹.۹.۹';
+  const V982_VERSION = '10.0.0';
+  const V982_VERSION_FA = '۱۰.۰.۰';
   const MULTI_KEY_STORAGE = 'dam_ai_multi_keys_v950';
   const MODEL_CACHE_STORAGE = 'v982_ai_model_cache_map';
   const ENDPOINT_CACHE_STORAGE = 'v982_ai_endpoint_cache_map';
@@ -72577,7 +72581,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Client-App': 'DaneshAmoozMan-v9.9.9'
+              'X-Client-App': 'DaneshAmoozMan-v10.0.0'
             },
             body: payloadStr,
             signal: ctrl ? ctrl.signal : undefined
@@ -72670,7 +72674,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Client-App': 'DaneshAmoozMan-v9.9.9'
+              'X-Client-App': 'DaneshAmoozMan-v10.0.0'
             },
             body: bodyStr,
             signal: ctrl ? ctrl.signal : undefined
@@ -72828,7 +72832,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
         const qN = Number(d.groqKeys || 0);
         const oN = Number(d.openRouterKeys || 0);
         const cfOn = Boolean(d.workersAiBound);
-        const infoTxt = `✅ سرور واسط آنلاین (v${d.version || '9.9.9'}) · Gemini: ${safeFa(gN)} · Groq: ${safeFa(qN)}${cfOn ? ' · Workers AI دیداری: فعال ☁️' : ''}${oN ? ` · OpenRouter: ${safeFa(oN)}` : ''}`;
+        const infoTxt = `✅ سرور واسط آنلاین (v${d.version || '10.0.0'}) · Gemini: ${safeFa(gN)} · Groq: ${safeFa(qN)}${cfOn ? ' · Workers AI دیداری: فعال ☁️' : ''}${oN ? ` · OpenRouter: ${safeFa(oN)}` : ''}`;
         this.proxyState = {
           ...this.proxyState,
           status: (gN + qN + oN > 0 || cfOn) ? 'online' : 'error',
@@ -73545,7 +73549,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 </script>
 <!-- ==================== END V9.8.2 UNIFIED AI MASTER ENGINE ==================== -->
 
-<!-- ==================== V9.9.9 COMPLETE SUPABASE CLOUD, GOOGLE OAUTH PKCE, SETTINGS, PHOTO & PRO AUTH ENGINE ==================== -->
+<!-- ==================== V10.0.0 COMPLETE SUPABASE CLOUD, GOOGLE OAUTH PKCE, SETTINGS, PHOTO & PRO AUTH ENGINE ==================== -->
 <style id="v987SupabaseSyncStyles">
   .v985-cloud-pill {
     cursor: pointer;
@@ -73888,8 +73892,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V987_VERSION = '9.9.9';
-  const V987_VERSION_FA = '۹.۹.۹';
+  const V987_VERSION = '10.0.0';
+  const V987_VERSION_FA = '۱۰.۰.۰';
   const SB_URL = 'https://wazycdrhwlnoylfmsenx.supabase.co';
   const SB_KEY = 'sb_publishable_SjneXL0bzHA-mXFfdQwklw_0x9fwo0N';
   const SESSION_STORAGE_KEY = 'dam_sb_session_v983';
@@ -76300,11 +76304,11 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
   }
 })();
 </script>
-<!-- ==================== END V9.9.9 COMPLETE SUPABASE CLOUD, GOOGLE OAUTH PKCE, SETTINGS, PHOTO & PRO AUTH ENGINE ==================== -->
+<!-- ==================== END V10.0.0 COMPLETE SUPABASE CLOUD, GOOGLE OAUTH PKCE, SETTINGS, PHOTO & PRO AUTH ENGINE ==================== -->
 
 
 <style id="v989MasterUiGeometryStyles">
-  /* ==================== v9.9.9: هندسه، تناسب و زیبایی‌شناسی یکپارچه RTL ==================== */
+  /* ==================== v10.0.0: هندسه، تناسب و زیبایی‌شناسی یکپارچه RTL ==================== */
 
   /* ۱. کارت‌های «برنامه‌های امروز کلاس‌ها» */
   .v988-today-class-card {
@@ -76770,7 +76774,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     }
   }
 
-  /* v9.9.9: کپسول نام درس، برچسب تولد بدون شکستگی، دکمه‌های کپی و کارت هوش مصنوعی پیش‌فرض */
+  /* v10.0.0: کپسول نام درس، برچسب تولد بدون شکستگی، دکمه‌های کپی و کارت هوش مصنوعی پیش‌فرض */
   .v991-class-title-line {
     display: flex;
     align-items: center;
@@ -76974,6 +76978,1462 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
   }
 })();
 </script>
+
+
+<!-- ==================== V10.0.0 MASTER UPGRADE SUITE ==================== -->
+<style id="v10MasterSuiteStyles">
+  /* 1. App-Wide Contextual Step-by-Step Guide Bar & Modal */
+  .v10-guide-trigger-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 12px;
+    margin: 0 0 10px 0;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+    border: 1px solid #FDBA74;
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.08);
+  }
+  .v10-guide-trigger-bar .v10-gt-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    font-size: 11.8px;
+    font-weight: 800;
+    color: #9A3412;
+  }
+  .v10-guide-trigger-bar .v10-gt-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .v10-guide-btn {
+    border: 1px solid #FB923C;
+    background: #FFFFFF;
+    color: #C2410C;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .v10-guide-btn:hover { background: #FFF7ED; transform: translateY(-1px); }
+  .v10-guide-btn.ai-pill {
+    background: linear-gradient(135deg, #EA580C, #F97316);
+    color: #FFFFFF;
+    border-color: #EA580C;
+  }
+
+  .v10-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.56);
+    backdrop-filter: blur(4px);
+    z-index: 99990;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 12px;
+  }
+  .v10-overlay.open { display: flex; }
+  .v10-modal-card {
+    width: 100%;
+    max-width: 680px;
+    max-height: 88vh;
+    background: #FFFFFF;
+    border-radius: 22px;
+    border: 1.5px solid #FED7AA;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: v10SlideUp .22s ease-out;
+  }
+  @keyframes v10SlideUp {
+    from { opacity: 0; transform: translateY(20px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .v10-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 13px 16px;
+    background: linear-gradient(135deg, #EA580C, #F97316);
+    color: #FFFFFF;
+  }
+  .v10-modal-head h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .v10-close-btn {
+    border: none;
+    background: rgba(255,255,255,0.2);
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .v10-modal-body {
+    padding: 14px 16px;
+    overflow-y: auto;
+    flex: 1;
+    background: #FFFBF7;
+  }
+  .v10-guide-block {
+    background: #FFFFFF;
+    border: 1px solid #FFEDD5;
+    border-radius: 14px;
+    padding: 11px 13px;
+    margin-bottom: 10px;
+  }
+  .v10-guide-block h4 {
+    margin: 0 0 7px 0;
+    font-size: 12.5px;
+    font-weight: 900;
+    color: #C2410C;
+  }
+  .v10-guide-block ol, .v10-guide-block ul {
+    margin: 0;
+    padding-right: 18px;
+    font-size: 12px;
+    line-height: 1.85;
+    color: #334155;
+  }
+  .v10-guide-ai-box {
+    background: linear-gradient(135deg, #FFF7ED, #FEF3C7);
+    border: 1.5px solid #FDBA74;
+    border-radius: 14px;
+    padding: 12px;
+  }
+
+  /* 2. Complete Sample Exams Bank Cards */
+  .v10-sample-exam-card {
+    background: #FFFFFF;
+    border: 1.5px solid #FED7AA;
+    border-radius: 14px;
+    padding: 11px 13px;
+    margin-bottom: 9px;
+    box-shadow: 0 2px 6px rgba(234, 88, 12, 0.05);
+  }
+  .v10-sample-exam-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .v10-sample-exam-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+  .v10-sample-exam-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* 3. Embodied Companion Mascot ("دانا — همیار هوشمند دانش‌آموز من") */
+  #v10CompanionFab {
+    position: fixed;
+    left: 12px;
+    bottom: 74px;
+    z-index: 99950;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px 6px 8px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF7ED 100%);
+    border: 2px solid #F97316;
+    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.25);
+    cursor: pointer;
+    user-select: none;
+    transition: transform .2s ease, box-shadow .2s ease;
+    font-family: inherit;
+  }
+  #v10CompanionFab:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(234, 88, 12, 0.34);
+  }
+  .v10-mascot-avatar-sm {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    animation: v10Float 3s ease-in-out infinite;
+  }
+  .v10-mascot-avatar-lg {
+    width: 74px;
+    height: 74px;
+    flex-shrink: 0;
+    animation: v10Float 3.2s ease-in-out infinite;
+  }
+  .v10-mascot-thinking .v10-mascot-avatar-lg {
+    animation: v10Bounce .7s ease-in-out infinite;
+  }
+  .v10-mascot-talking .v10-mouth {
+    animation: v10Talk .28s ease-in-out infinite alternate;
+    transform-origin: center;
+  }
+  @keyframes v10Float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+  }
+  @keyframes v10Bounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(-3deg); }
+  }
+  @keyframes v10Talk {
+    0% { transform: scaleY(0.7); }
+    100% { transform: scaleY(1.35); }
+  }
+  .v10-fab-text {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    line-height: 1.25;
+  }
+  .v10-fab-title {
+    font-size: 11.5px;
+    font-weight: 900;
+    color: #9A3412;
+  }
+  .v10-fab-sub {
+    font-size: 9.8px;
+    font-weight: 700;
+    color: #16A34A;
+  }
+  .v10-fab-sub.offline { color: #D97706; }
+
+  /* Companion Chat Messages */
+  .v10-chat-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 240px;
+    max-height: 48vh;
+    background: #FFFBF7;
+  }
+  .v10-msg {
+    max-width: 88%;
+    padding: 10px 12px;
+    border-radius: 16px;
+    font-size: 12.2px;
+    line-height: 1.75;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .v10-msg.bot {
+    align-self: flex-start;
+    background: #FFFFFF;
+    border: 1px solid #FED7AA;
+    color: #1E293B;
+    border-top-right-radius: 4px;
+  }
+  .v10-msg.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #EA580C, #F97316);
+    color: #FFFFFF;
+    border-top-left-radius: 4px;
+  }
+  .v10-msg-meta {
+    font-size: 10px;
+    opacity: .75;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .v10-msg-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .v10-action-chip {
+    border: 1px solid #FDBA74;
+    background: #FFF7ED;
+    color: #C2410C;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .v10-action-chip:hover { background: #FFEDD5; }
+  .v10-quick-prompts {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 8px 12px;
+    background: #FFF7ED;
+    border-top: 1px solid #FFEDD5;
+  }
+  .v10-quick-chip {
+    white-space: nowrap;
+    border: 1px solid #FED7AA;
+    background: #FFFFFF;
+    color: #9A3412;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .v10-chat-input-bar {
+    display: flex;
+    gap: 6px;
+    padding: 10px 12px;
+    background: #FFFFFF;
+    border-top: 1px solid #FFEDD5;
+    align-items: center;
+  }
+  .v10-chat-input-bar input {
+    flex: 1;
+    height: 38px;
+    border-radius: 12px;
+    border: 1.5px solid #FED7AA;
+    padding: 0 12px;
+    font-size: 12.5px;
+    font-family: inherit;
+  }
+  @media (max-width: 480px) {
+    #v10CompanionFab { left: 8px; bottom: 72px; padding: 5px 9px 5px 6px; }
+    .v10-fab-title { font-size: 10.5px; }
+  }
+</style>
+
+<!-- Global Smart Contextual Guide Modal -->
+<div class="v10-overlay" id="v10SmartGuideModal" onclick="if(event.target===this)V10SmartGuides.close()">
+  <div class="v10-modal-card">
+    <div class="v10-modal-head">
+      <h3 id="v10GuideModalTitle">📘 راهنمای گام‌به‌گام</h3>
+      <button type="button" class="v10-close-btn" onclick="V10SmartGuides.close()">✖ بستن</button>
+    </div>
+    <div class="v10-modal-body" id="v10GuideModalBody"></div>
+  </div>
+</div>
+
+<!-- Embodied App Companion Floating Button -->
+<button type="button" id="v10CompanionFab" onclick="V10Companion.open()" title="گفت‌وگو با همیار هوشمند دانش‌آموز من">
+  <span class="v10-mascot-avatar-sm" id="v10FabMascotSvg"></span>
+  <span class="v10-fab-text">
+    <span class="v10-fab-title">همیار دانا</span>
+    <span class="v10-fab-sub" id="v10FabStatusTxt">🟢 آنلاین + آفلاین</span>
+  </span>
+</button>
+
+<!-- Embodied App Companion Chat Modal -->
+<div class="v10-overlay" id="v10CompanionModal" onclick="if(event.target===this)V10Companion.close()">
+  <div class="v10-modal-card" id="v10CompanionCard">
+    <div class="v10-modal-head" style="padding:10px 14px">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0">
+        <div class="v10-mascot-avatar-lg" id="v10ModalMascotSvg"></div>
+        <div style="min-width:0">
+          <div style="font-size:14px;font-weight:900">دانا — همیار هوشمند برنامه</div>
+          <div id="v10CompanionModeBadge" style="font-size:11px;opacity:.95;margin-top:2px">🟢 پاسخ‌گوی آنلاین (هوش مصنوعی) و آفلاین</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:5px;flex-shrink:0">
+        <button type="button" class="v10-close-btn" id="v10ModeToggleBtn" onclick="V10Companion.toggleMode()" title="تغییر حالت پاسخ‌دهی">⚡ خودکار</button>
+        <button type="button" class="v10-close-btn" onclick="V10Companion.clearChat()" title="پاک کردن تاریخچه گفت‌وگو">🗑️</button>
+        <button type="button" class="v10-close-btn" onclick="V10Companion.close()">✖</button>
+      </div>
+    </div>
+
+    <div class="v10-chat-stream" id="v10ChatStream"></div>
+
+    <div class="v10-quick-prompts" id="v10QuickPrompts">
+      <button type="button" class="v10-quick-chip" onclick="V10Companion.askQuick('آمار فعلی برنامه من چیه؟')">📊 آمار برنامه من</button>
+      <button type="button" class="v10-quick-chip" onclick="V10Companion.askQuick('چطور بدون کلید API از روی کتاب PDF آزمون بسازم؟')">🪄 آزمون بدون API</button>
+      <button type="button" class="v10-quick-chip" onclick="V10Companion.askQuick('بانک نمونه سوالات کامل چطور کار می‌کنه؟')">📚 بانک نمونه سوال</button>
+      <button type="button" class="v10-quick-chip" onclick="V10Companion.askQuick('محدودیت‌های برنامه و راه‌های جایگزین چیه؟')">⚠️ محدودیت‌ها و جایگزین‌ها</button>
+      <button type="button" class="v10-quick-chip" onclick="V10Companion.askQuick('چطور پشتیبان بگیرم که اطلاعاتم نپره؟')">💾 راهنمای پشتیبان‌گیری</button>
+    </div>
+
+    <div class="v10-chat-input-bar">
+      <button type="button" class="btn soft btn-sm" id="v10VoiceBtn" onclick="V10Companion.toggleVoice()" title="ورودی صوتی فارسی" style="height:38px;width:38px;padding:0">🎙️</button>
+      <input type="text" id="v10ChatInput" placeholder="هر سوالی درباره برنامه، آموزش یا رفع خطا دارید بپرسید..." onkeydown="if(event.key==='Enter'){event.preventDefault();V10Companion.send();}">
+      <button type="button" class="btn primary btn-sm" id="v10SendBtn" onclick="V10Companion.send()" style="height:38px;padding:0 14px;font-weight:900">ارسال</button>
+    </div>
+  </div>
+</div>
+
+<script id="v10MasterSuiteScript">
+(function() {
+  'use strict';
+
+  const safeEsc = (s) => (typeof window.esc === 'function' ? window.esc(s) : String(s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])));
+  const toFaNum = (v) => (typeof window.fa === 'function' ? window.fa(v) : String(v ?? '').replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]));
+  const toEnNum = (v) => String(v ?? '').replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+  const notify = (msg) => { if (typeof window.toast === 'function') window.toast(msg); };
+
+  /* =========================================================================
+     1. UNIVERSAL FLAWLESS NO-API PROMPT & FORGIVING MULTI-STAGE PARSER
+     ========================================================================= */
+  function installV10NoApiEngine() {
+    if (!window.ExamApp) return;
+
+    window.ExamApp.refreshPreciseNoApiPrompt = function() {
+      const step = typeof window.getScoreRoundStep === 'function' ? window.getScoreRoundStep() : 0.25;
+      const stepEl = document.getElementById('noApiStepSel');
+      if (stepEl) stepEl.value = String(step);
+
+      const targetEl = document.getElementById('noApiTargetScoreInp');
+      const targetScore = parseFloat(toEnNum(targetEl?.value || document.getElementById('aiTotalTarget')?.value || 10)) || 10;
+      const dur = Number(toEnNum(document.getElementById('aiExamDuration')?.value || 20)) || 20;
+      const mcq = Number(toEnNum(document.getElementById('aiCountMcq')?.value || 0)) || 0;
+      const tf = Number(toEnNum(document.getElementById('aiCountTf')?.value || 0)) || 0;
+      const blank = Number(toEnNum(document.getElementById('aiCountBlank')?.value || 0)) || 0;
+      const match = Number(toEnNum(document.getElementById('aiCountMatch')?.value || 0)) || 0;
+      const desc = Number(toEnNum(document.getElementById('aiCountDesc')?.value || 0)) || 0;
+      const totalCount = mcq + tf + blank + match + desc;
+      const lvl = document.getElementById('aiLevel')?.value || 'استاندارد امتحانی';
+      const subj = this.state?.header?.subject || 'درس';
+      const grade = this.state?.header?.grade || 'متوسطه';
+      const src = (document.getElementById('aiPromptSource')?.value || document.getElementById('cachedPageText')?.value || '').trim();
+
+      const sumBox = document.getElementById('noApiPrecisionSummary');
+      if (sumBox) {
+        sumBox.innerHTML = `
+          <span class="chip">📘 ${safeEsc(subj)} (${safeEsc(grade)})</span>
+          <span class="chip">⏱️ زمان: ${toFaNum(dur)} دقیقه</span>
+          <span class="chip">❓ تعداد کل: ${toFaNum(totalCount)} سوال</span>
+          <span class="chip">🎯 جمع بارم: ${toFaNum(targetScore)} نمره</span>
+          <span class="chip" style="border-color:var(--neon-green);color:var(--neon-green)">⚖️ گام بارم: مضارب ${toFaNum(step)}</span>
+        `;
+      }
+
+      const exampleItems = [];
+      if (mcq > 0) {
+        exampleItems.push(`    {"type": "mcq", "text": "صورت سوال چهارگزینه‌ای دقیق از متن کتاب؟", "score": ${step * 2}, "options": ["گزینه اول", "گزینه دوم", "گزینه سوم", "گزینه چهارم"], "correctIndex": 0, "hint": "یک گزینه را انتخاب کنید.", "explanation": "پاسخ صحیح با استناد به متن صفحه کتاب"}`);
+      }
+      if (tf > 0) {
+        exampleItems.push(`    {"type": "tf", "text": "عبارت دقیق برای تشخیص صحیح یا غلط بودن.", "score": ${step}, "tfCorrect": "صحیح", "hint": "صحیح یا غلط را مشخص کنید.", "explanation": "توضیح کوتاه دلیل درستی یا نادرستی"}`);
+      }
+      if (blank > 0) {
+        exampleItems.push(`    {"type": "blank", "text": "جمله دقیق کتاب که بخش کلیدی آن .................... جای خالی دارد.", "score": ${step * 2}, "blankWord": "کلمه دقیق کتاب", "hint": "کلمه مناسب بنویسید.", "explanation": "پاسخ صحیح جای خالی"}`);
+      }
+      if (match > 0) {
+        exampleItems.push(`    {"type": "match", "text": "موارد ستون الف را به پاسخ مناسب در ستون ب وصل کنید.", "score": ${step * 4}, "pairs": [["مورد ۱", "پاسخ ۱"], ["مورد ۲", "پاسخ ۲"]], "hint": "هر مورد را به پاسخ درست وصل کنید.", "explanation": "کلید کامل وصل‌کردنی"}`);
+      }
+      if (desc > 0 || exampleItems.length === 0) {
+        exampleItems.push(`    {"type": "desc", "text": "صورت سوال تشریحی استاندارد و شفاف از متن کتاب؟", "score": ${step * 4}, "lines": 2, "hint": "پاسخ کامل و خوانا بنویسید.", "explanation": "پاسخ کلیدی کامل بر اساس کتاب درسی"}`);
+      }
+
+      const prompt = `نقش: تو طراح رسمی و ارشد سوالات امتحانی وزارت آموزش و پرورش ایران هستی.
+
+منبع طراحی سوال (الزامی و بدون استثنا):
+- اگر همراه این پیام «اسکرین‌شات کامل صفحات کتاب درسی» یا «فایل PDF کتاب درسی» پیوست شده است، تمام سوالات را ۱۰۰٪ و صرفاً از متن، تصاویر، فعالیت‌ها و نکات واقعی همان صفحات پیوست‌شده طراحی کن.
+- هیچ مطلبی از بیرون کتاب، حافظه حدسی یا پایه‌های دیگر اضافه نکن.
+${src ? `\nمبحث / متن تکمیلی معلم:\n${src.slice(0, 2600)}\n` : ''}
+مشخصات دقیق آزمون درخواستی:
+- نام درس: ${subj} | پایه تحصیلی: ${grade}
+- سطح دشواری: ${lvl} | زمان پاسخ‌گویی: ${dur} دقیقه
+- جمع کل بارم آزمون: دقیقاً ${targetScore} نمره (قبل از ارسال، جمع کل scoreها را محاسبه کن تا دقیقاً برابر ${targetScore} باشد)
+- گام رُندسازی بارم هر سوال: فقط مضارب ${step} (مانند ${step}، ${step * 2}، ${step * 3}، ${step * 4})
+- تعداد دقیق سوالات (جمعاً ${totalCount} سوال):
+  1. چهارگزینه‌ای (mcq): ${mcq} سوال
+  2. صحیح و غلط (tf): ${tf} سوال
+  3. جای خالی (blank): ${blank} سوال
+  4. وصل‌کردنی (match): ${match} سوال
+  5. تشریحی (desc): ${desc} سوال
+
+قوانین فنی خروجی (بسیار مهم برای سازگاری با تمام هوش مصنوعی‌ها):
+1. خروجی را فقط و فقط در قالب یک بلوک JSON معتبر و استاندارد برگردان (بدون هیچ متن اضافه‌ای قبل یا بعد از JSON و بدون کامنت یا ویرگول اضافه).
+2. تمام اعداد داخل فیلدهای عددی JSON (مانند score، correctIndex، lines) حتماً با ارقام انگلیسی (0-9) نوشته شوند.
+3. متن سوالات، گزینه‌ها و پاسخ تشریحی (explanation) کاملاً به زبان فارسی روان، دقیق و با نگارش رسمی کتاب درسی باشد.
+4. در سوالات چهارگزینه‌ای دقیقاً ۴ گزینه بدون پیشوند الف/ب/ج/د بنویس و شماره گزینه درست را از 0 تا 3 در correctIndex قرار بده.
+
+قالب دقیق JSON خروجی:
+\`\`\`json
+{
+  "detectedGrade": "${grade}",
+  "detectedSubject": "${subj}",
+  "questions": [
+${exampleItems.join(',\n')}
+  ]
+}
+\`\`\``;
+
+      const txtEl = document.getElementById('noApiPromptText');
+      if (txtEl) txtEl.value = prompt;
+    };
+
+    window.ExamApp.importNoApiJSON = function() {
+      const raw = (document.getElementById('noApiPasteBox')?.value || '').trim();
+      const fb = document.getElementById('noApiImportFeedback');
+      const showFb = (ok, msg) => {
+        if (!fb) return;
+        fb.style.display = 'block';
+        fb.style.background = ok ? '#DCFCE7' : '#FEF2F2';
+        fb.style.color = ok ? '#166534' : '#991B1B';
+        fb.style.border = ok ? '1px solid #86EFAC' : '1px solid #FCA5A5';
+        fb.textContent = msg;
+      };
+      if (!raw) {
+        showFb(false, '⚠️ ابتدا پاسخ هوش مصنوعی را در کادر بالا پیست (جای‌گذاری) کنید.');
+        notify('لطفاً ابتدا پاسخ هوش مصنوعی را در کادر پیست کنید.');
+        return;
+      }
+
+      // Stage 1: Clean think tags, markdown fences, smart quotes & trailing commas
+      let cleaned = raw
+        .replace(/<think>[\s\S]*?<\/think>/gi, '')
+        .replace(/```(?:json)?/gi, '')
+        .replace(/```/g, '')
+        .replace(/[\u201C\u201D]/g, '"')
+        .trim();
+
+      let ok = false;
+
+      // Stage 2: Extract JSON candidate & repair common AI formatting quirks
+      const tryJsonParse = (str) => {
+        if (!str) return null;
+        let candidate = str.trim();
+        const firstBrace = candidate.indexOf('{');
+        const firstBracket = candidate.indexOf('[');
+        let start = -1;
+        let end = -1;
+        if (firstBrace !== -1 && (firstBracket === -1 || firstBrace < firstBracket)) {
+          start = firstBrace;
+          end = candidate.lastIndexOf('}');
+        } else if (firstBracket !== -1) {
+          start = firstBracket;
+          end = candidate.lastIndexOf(']');
+        }
+        if (start === -1 || end <= start) return null;
+        candidate = candidate.slice(start, end + 1);
+        // Fix Persian/Arabic numerals in numeric JSON values & remove trailing commas
+        candidate = candidate
+          .replace(/:\s*([۰-۹٠-٩]+(?:[\.\/٫][۰-۹٠-٩]+)?)/g, (_, n) => ': ' + toEnNum(n).replace(/[\/٫]/g, '.'))
+          .replace(/,\s*([}\]])/g, '$1');
+        try {
+          return JSON.parse(candidate);
+        } catch (_) {
+          return null;
+        }
+      };
+
+      const parsedObj = tryJsonParse(cleaned);
+      if (parsedObj) {
+        const normalizedPayload = Array.isArray(parsedObj) ? { questions: parsedObj } : parsedObj;
+        if (Array.isArray(normalizedPayload.questions) && normalizedPayload.questions.length > 0) {
+          ok = this.parseAndAddQuestions(JSON.stringify(normalizedPayload), this.currentBranch, this.state?.switches?.clearBeforeAi);
+        }
+      }
+
+      // Stage 3: Fallback raw parseAndAddQuestions
+      if (!ok && (cleaned.includes('{') || cleaned.includes('['))) {
+        ok = this.parseAndAddQuestions(cleaned, this.currentBranch, this.state?.switches?.clearBeforeAi);
+      }
+
+      // Stage 4: Smart Persian numbered text fallback (supports MCQ options too)
+      if (!ok) {
+        const lines = cleaned.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+        const parsedQs = [];
+        const step = typeof window.getScoreRoundStep === 'function' ? window.getScoreRoundStep() : 0.25;
+        let currentQ = null;
+        lines.forEach(line => {
+          if (/^([الفبجد]|1|2|3|4|[۱-۴])[\)\.\-]\s+/.test(line) && currentQ && currentQ.options) {
+            const optTxt = line.replace(/^([الفبجد]|1|2|3|4|[۱-۴])[\)\.\-]\s+/, '').trim();
+            if (optTxt) currentQ.options.push(optTxt);
+            return;
+          }
+          if (/^(\d+|[۰-۹]+)[\.\-\)\s]+/.test(line) || line.endsWith('؟') || line.endsWith('?')) {
+            const qTxt = line.replace(/^(\d+|[۰-۹]+)[\.\-\)\s]+/, '').trim();
+            if (qTxt.length > 5) {
+              const isTf = qTxt.includes('صحیح') && qTxt.includes('غلط');
+              const isBlank = qTxt.includes('...') || qTxt.includes('___');
+              currentQ = {
+                type: isTf ? 'tf' : (isBlank ? 'blank' : 'desc'),
+                text: qTxt,
+                score: step * 2,
+                lines: 2,
+                hint: 'پاسخ را با خط خوانا بنویسید.',
+                explanation: '',
+                options: []
+              };
+              parsedQs.push(currentQ);
+            }
+          }
+        });
+        parsedQs.forEach(q => {
+          if (q.options && q.options.length >= 2) {
+            q.type = 'mcq';
+            q.correctIndex = 0;
+          } else {
+            delete q.options;
+          }
+        });
+        if (parsedQs.length > 0) {
+          ok = this.parseAndAddQuestions(JSON.stringify({ questions: parsedQs }), this.currentBranch, this.state?.switches?.clearBeforeAi);
+        }
+      }
+
+      if (ok) {
+        const targetVal = document.getElementById('noApiTargetScoreInp')?.value || document.getElementById('aiTotalTarget')?.value || 10;
+        if (typeof this.balanceScoresTo === 'function') this.balanceScoresTo(targetVal);
+        if (typeof this.autoSyncToOnlineExam === 'function') this.autoSyncToOnlineExam(false);
+        showFb(true, '✅ سوالات با موفقیت استخراج، بارم‌بندی و در برگه A4 چیده شدند!');
+        this.closeModal('noApiModal');
+        this.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+        notify('✅ آزمون با موفقیت از پاسخ هوش مصنوعی ساخته و روی برگه A4 چیده شد!');
+      } else {
+        showFb(false, '❌ متن پیست‌شده ساختار سوال معتبر نداشت. لطفاً کل بلوک کد پاسخ هوش مصنوعی را کپی و مجدد پیست کنید.');
+        notify('⚠️ ساختار پاسخ تشخیص داده نشد؛ لطفاً کل پاسخ هوش مصنوعی را کپی کنید.');
+      }
+    };
+  }
+
+  /* =========================================================================
+     2. COMPLETE SAMPLE EXAMS BANK («بانک نمونه سوالات کامل»)
+     ========================================================================= */
+  const COMPLETE_BANK_KEY = 'danesh_complete_sample_exams_bank_v10';
+
+  const DEFAULT_COMPLETE_SAMPLE_EXAMS = [
+    {
+      id: 'cse_sample_1',
+      title: 'نمونه سوال کامل پیام‌های آسمان هشتم (درس ۱ تا ۴)',
+      subject: 'پیام‌های آسمان',
+      grade: 'هشتم',
+      duration: 20,
+      totalScore: 10,
+      savedDate: 'نمونه آماده استاندارد',
+      isPreset: true,
+      headerSnapshot: {
+        bismillah: 'به‌نام خداوند جان و خرد',
+        org: 'وزارت آموزش و پرورش',
+        title: 'آزمون کلاسی نوبت اول',
+        subject: 'پیام‌های آسمان',
+        grade: 'هشتم',
+        time: '۲۰ دقیقه',
+        date: '۱۴۰۵/۰۹/۰۳'
+      },
+      questions: [
+        { id: 10001, type: 'mcq', text: 'کدام مورد از مهم‌ترین نشانه‌های توکل واقعی به خداوند است؟', score: 1, options: ['تلاش حداکثری همراه با اعتماد به خدا', 'دست کشیدن از تلاش و انتظار معجزه', 'وابستگی کامل به دیگران', 'بی‌توجهی به برنامه‌ریزی'], correctIndex: 0, hint: 'یک گزینه را انتخاب کنید.', explanation: 'توکل واقعی یعنی تلاش کامل و سپردن نتیجه به خداوند.' },
+        { id: 10002, type: 'mcq', text: 'پیامبر اکرم (ص) برترین عبادت را کدام مورد معرفی کرده‌اند؟', score: 1, options: ['تفکر در آفرینش خداوند', 'سخن گفتن بسیار', 'انزوا و دوری از جامعه', 'بی‌توجهی به علم'], correctIndex: 0, hint: 'یک گزینه را انتخاب کنید.', explanation: 'یک ساعت تفکر در آفرینش ارزشمندتر از سال‌ها عبادت سطحی است.' },
+        { id: 10003, type: 'tf', text: 'قرآن کریم تنها برای زمان پیامبر (ص) نازل شده و پیام آن محدود به همان دوره است.', score: 0.5, tfCorrect: 'غلط', hint: 'صحیح یا غلط را مشخص کنید.', explanation: 'غلط؛ پیام قرآن جهانی و جاودانه برای همه زمان‌هاست.' },
+        { id: 10004, type: 'tf', text: 'اخلاص در نیت باعث ارزشمند شدن کارهای روزمره و تبدیل آن‌ها به عبادت می‌شود.', score: 0.5, tfCorrect: 'صحیح', hint: 'صحیح یا غلط را مشخص کنید.', explanation: 'صحیح؛ نیت الهی به اعمال رنگ عبادت می‌دهد.' },
+        { id: 10005, type: 'blank', text: 'به کسی که با وجود توانایی، از خطای دیگران چشم‌پوشی می‌کند .................... گفته می‌شود.', score: 1, blankWord: 'بخشنده (دارای گذشت)', hint: 'کلمه مناسب بنویسید.', explanation: 'گذشت و بخشش هنگام قدرت از صفات نیک مؤمنان است.' },
+        { id: 10006, type: 'blank', text: 'نخستین گام برای اصلاح رفتار و رشد اخلاقی، .................... از اشتباهات گذشته است.', score: 1, blankWord: 'توبه و جبران', hint: 'کلمه مناسب بنویسید.', explanation: 'توبه واقعی همراه با پشیمانی و جبران خطا است.' },
+        { id: 10007, type: 'desc', text: 'دو مورد از آثار مثبت احترام به والدین در زندگی فردی و اجتماعی دانش‌آموز را بنویسید.', score: 2.5, lines: 3, hint: 'پاسخ کامل بنویسید.', explanation: '۱. جلب رضایت خداوند و آرامش روحی ۲. برکت در زندگی و موفقیت در کارها.' },
+        { id: 10008, type: 'desc', text: 'تفاوت «حسادت» و «غبطه» را با ذکر یک مثال کوتاه توضیح دهید.', score: 2.5, lines: 3, hint: 'پاسخ کامل بنویسید.', explanation: 'در حسادت فرد آرزوی زوال نعمت دیگری را دارد، اما در غبطه ضمن خوشحالی برای موفقیت دیگران تلاش می‌کند خودش هم به آن برسد.' }
+      ]
+    }
+  ];
+
+  window.V10CompleteExamBank = {
+    items: [],
+    filterText: '',
+    load() {
+      try {
+        const raw = localStorage.getItem(COMPLETE_BANK_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            this.items = parsed;
+            return this.items;
+          }
+        }
+      } catch (_) {}
+      this.items = JSON.parse(JSON.stringify(DEFAULT_COMPLETE_SAMPLE_EXAMS));
+      this.save();
+      return this.items;
+    },
+    save() {
+      try { localStorage.setItem(COMPLETE_BANK_KEY, JSON.stringify(this.items || [])); } catch (_) {}
+    },
+    saveCurrentExam() {
+      if (!window.ExamApp) return;
+      const qs = typeof ExamApp.getQuestions === 'function' ? ExamApp.getQuestions() : [];
+      if (!qs.length) {
+        notify('⚠️ ابتدا حداقل یک سوال در برگه آزمون بسازید تا به‌عنوان نمونه سوال کامل ذخیره شود.');
+        return;
+      }
+      const hdr = ExamApp.state?.header || {};
+      const defaultTitle = `نمونه سوال کامل ${hdr.subject || 'درس'} (${hdr.grade || 'پایه'})`;
+      const titleInput = document.getElementById('v10NewSampleExamTitle');
+      const title = (titleInput?.value || '').trim() || defaultTitle;
+      const totalScore = qs.reduce((s, q) => s + (Number(q.score) || 0), 0);
+      const entry = {
+        id: 'cse_' + Date.now(),
+        title,
+        subject: hdr.subject || 'عمومی',
+        grade: hdr.grade || 'متوسطه',
+        duration: hdr.time || (document.getElementById('aiExamDuration')?.value || '۲۰ دقیقه'),
+        totalScore: Math.round(totalScore * 100) / 100,
+        savedDate: new Date().toLocaleDateString('fa-IR'),
+        headerSnapshot: JSON.parse(JSON.stringify(hdr)),
+        questions: JSON.parse(JSON.stringify(qs))
+      };
+      this.load();
+      this.items.unshift(entry);
+      this.save();
+      if (titleInput) titleInput.value = '';
+      this.render();
+      notify('✅ نمونه سوال کامل با موفقیت در «بانک نمونه سوالات کامل» ذخیره شد!');
+    },
+    loadIntoBuilder(id, openPreview = true) {
+      if (!window.ExamApp) return;
+      this.load();
+      const item = this.items.find(x => x.id === id);
+      if (!item) return;
+      if (item.headerSnapshot) {
+        ExamApp.state.header = Object.assign({}, ExamApp.state.header || {}, JSON.parse(JSON.stringify(item.headerSnapshot)));
+      }
+      const b = ExamApp.currentBranch || 'A';
+      if (!ExamApp.state.branches) ExamApp.state.branches = {};
+      ExamApp.state.branches[b] = JSON.parse(JSON.stringify(item.questions || [])).map((q, idx) => ({
+        ...q,
+        id: Date.now() + idx + Math.floor(Math.random() * 1000)
+      }));
+      if (typeof ExamApp.syncHeaderToInputs === 'function') ExamApp.syncHeaderToInputs();
+      if (typeof ExamApp.save === 'function') ExamApp.save();
+      if (typeof ExamApp.renderAll === 'function') ExamApp.renderAll();
+      if (openPreview && typeof ExamApp.openTab === 'function') {
+        ExamApp.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+      }
+      notify(`📂 نمونه سوال کامل «${item.title}» در برگه A4 بارگذاری شد!`);
+    },
+    quickPdf(id) {
+      this.loadIntoBuilder(id, true);
+      setTimeout(() => {
+        if (window.ExamApp && typeof ExamApp.exportDirectPDF === 'function') ExamApp.exportDirectPDF();
+      }, 220);
+    },
+    remove(id) {
+      this.load();
+      this.items = this.items.filter(x => x.id !== id);
+      this.save();
+      this.render();
+      notify('🗑️ نمونه سوال کامل از بانک حذف شد.');
+    },
+    mount() {
+      const archivePane = document.getElementById('examPane-archive');
+      if (!archivePane || document.getElementById('v10CompleteExamBankCard')) return;
+      const card = document.createElement('div');
+      card.id = 'v10CompleteExamBankCard';
+      card.className = 'box-card highlight';
+      card.style.marginTop = '12px';
+      card.innerHTML = `
+        <div class="box-header">
+          <span>📚 بانک نمونه سوالات کامل (<span id="v10CompleteBankCount">۰</span> نمونه آزمون)</span>
+        </div>
+        <p class="muted" style="margin:0 0 8px;font-size:11.5px;line-height:1.6">
+          هر نمونه سوال کامل شامل <b>سربرگ + تمام سوالات + بارم‌بندی + کلید پاسخ</b> است. با یک کلیک آزمون فعلی خود را ذخیره یا نمونه آزمون‌های آماده را بارگذاری کنید:
+        </p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+          <input type="text" id="v10NewSampleExamTitle" placeholder="عنوان نمونه سوال کامل (اختیاری؛ مثلاً ریاضی هشتم فصل ۱ تا ۳)..." style="flex:1;min-width:180px;height:34px;font-size:11.5px">
+          <button type="button" class="btn primary btn-sm" onclick="V10CompleteExamBank.saveCurrentExam()">💾 ذخیره آزمون فعلی در بانک</button>
+        </div>
+        <input type="text" id="v10CompleteBankSearch" placeholder="🔍 جستجو در بانک نمونه سوالات کامل (نام درس، پایه یا عنوان)..." oninput="V10CompleteExamBank.filterText=this.value;V10CompleteExamBank.render()" style="width:100%;height:33px;font-size:11.5px;margin-bottom:8px">
+        <div id="v10CompleteBankList"></div>
+      `;
+      const qBankCard = document.getElementById('examQuestionBankCardV930');
+      if (qBankCard) {
+        archivePane.insertBefore(card, qBankCard);
+      } else {
+        archivePane.appendChild(card);
+      }
+      this.render();
+    },
+    render() {
+      const listEl = document.getElementById('v10CompleteBankList');
+      const countEl = document.getElementById('v10CompleteBankCount');
+      if (!listEl) return;
+      this.load();
+      if (countEl) countEl.textContent = toFaNum(this.items.length);
+      const q = (this.filterText || '').trim().toLowerCase();
+      const filtered = q
+        ? this.items.filter(it => `${it.title} ${it.subject} ${it.grade}`.toLowerCase().includes(q))
+        : this.items;
+      if (!filtered.length) {
+        listEl.innerHTML = `<div class="muted" style="text-align:center;padding:12px">نمونه سوال کاملی با این مشخصات یافت نشد.</div>`;
+        return;
+      }
+      listEl.innerHTML = filtered.map(it => `
+        <div class="v10-sample-exam-card">
+          <div class="v10-sample-exam-head">
+            <b style="color:#9A3412;font-size:12.5px">📄 ${safeEsc(it.title)}</b>
+            <span class="chip" style="background:#FFF7ED;color:#C2410C;border-color:#FDBA74">${toFaNum(it.totalScore)} نمره</span>
+          </div>
+          <div class="v10-sample-exam-meta">
+            <span class="chip">📘 ${safeEsc(it.subject)}</span>
+            <span class="chip">🎓 ${safeEsc(it.grade)}</span>
+            <span class="chip">❓ ${toFaNum((it.questions || []).length)} سوال کامل</span>
+            <span class="chip">📅 ${safeEsc(it.savedDate)}</span>
+          </div>
+          <div class="v10-sample-exam-actions">
+            <button type="button" class="btn primary btn-sm" onclick="V10CompleteExamBank.loadIntoBuilder('${safeEsc(it.id)}', true)">📂 بارگذاری کامل در آزمون‌ساز</button>
+            <button type="button" class="btn soft btn-sm" onclick="V10CompleteExamBank.quickPdf('${safeEsc(it.id)}')">📕 خروجی PDF</button>
+            <button type="button" class="btn danger btn-sm" onclick="V10CompleteExamBank.remove('${safeEsc(it.id)}')">🗑️ حذف</button>
+          </div>
+        </div>
+      `).join('');
+    }
+  };
+
+  /* =========================================================================
+     3. APP-WIDE CONTEXTUAL STEP-BY-STEP GUIDES (AI-CONNECTED & UPDATABLE)
+     ========================================================================= */
+  const GUIDE_CACHE_KEY = 'danesh_v10_ai_guides_cache';
+
+  const SECTION_GUIDES = {
+    dashboard: {
+      title: 'راهنمای گام‌به‌گام صفحه خانه (داشبورد معلم)',
+      shortHint: 'شروع سریع، برنامه امروز و دسترسی فوری به همه ابزارها',
+      steps: [
+        'از بخش «کلاس‌های امروز» می‌توانید با یک کلیک وارد کلاس فعال شده و حضورغیاب یا نمره ثبت کنید.',
+        'برای شروع کار جدید، از نوار پایین وارد «مدارس» شوید و مدرسه و کلاس‌های خود را بسازید.',
+        'آیکون نارنجی «همیار دانا» در گوشه پایین صفحه همیشه همراه شماست و هم آفلاین و هم آنلاین پاسخ می‌دهد.'
+      ],
+      limits: [
+        'اطلاعات شما به‌صورت پیش‌فرض روی حافظه امن مرورگر گوشی ذخیره می‌شود؛ پاک کردن Cache مرورگر بدون پشتیبان‌گیری می‌تواند داده‌ها را حذف کند.',
+        'در حالت آفلاین، تمام ثبت نمرات و حضورغیاب کار می‌کند و تنها قابلیت‌های متصل به اینترنت (هوش مصنوعی آنلاین و همگام‌سازی ابری) منتظر اتصال می‌مانند.'
+      ],
+      alternatives: [
+        'برای جلوگیری از پاک شدن داده‌ها، هفته‌ای یک‌بار از تب «تنظیمات» فایل پشتیبان JSON دانلود کنید یا همگام‌سازی ابری را فعال نمایید.',
+        'در صورت قطع اینترنت، از حالت آفلاین همیار دانا و «حالت بدون API» آزمون‌ساز استفاده کنید.'
+      ]
+    },
+    schools: {
+      title: 'راهنمای گام‌به‌گام مدارس، کلاس‌ها و دانش‌آموزان',
+      shortHint: 'ساخت مدرسه، تعریف کلاس، ورود لیست دانش‌آموزان و ثبت نمره',
+      steps: [
+        'ابتدا دکمه «+ مدرسه جدید» را بزنید و نام مدرسه و مقطع را ثبت کنید.',
+        'وارد مدرسه شوید و کلاس‌های خود (مثلاً هشتم ۱، ریاضی) را ایجاد نمایید.',
+        'داخل هر کلاس می‌توانید دانش‌آموزان را تکی اضافه کنید یا لیست کل کلاس را یکجا وارد نمایید.',
+        'روی نام هر دانش‌آموز بزنید تا کارنامه، نمرات مستمر/پایانی، مثبت/منفی و وضعیت‌های رفتاری او را ببینید.'
+      ],
+      limits: [
+        'وارد کردن عکس‌های بسیار حجیم (چند مگابایتی) برای تعداد زیادی دانش‌آموز ممکن است فضای مرورگر را پر کند (برنامه خودکار عکس‌ها را فشرده می‌کند).',
+        'حذف یک مدرسه یا کلاس قابل بازگشت نیست مگر اینکه نسخه پشتیبان داشته باشید.'
+      ],
+      alternatives: [
+        'به جای تایپ تکی اسامی، لیست کلاس را از فایل متنی یا اکسل کپی و به‌صورت گروهی وارد کنید.',
+        'قبل از تغییرات بزرگ در پایان ترم، حتماً یک پشتیبان سریع در تب «تنظیمات» ذخیره کنید.'
+      ]
+    },
+    termsView: {
+      title: 'راهنمای گام‌به‌گام مدیریت ترم‌ها و سال تحصیلی',
+      shortHint: 'تفکیک نوبت اول و دوم، آرشیو سالانه و محاسبه معدل',
+      steps: [
+        'برای جداسازی نمرات نوبت اول و نوبت دوم، از این بخش ترم فعال را انتخاب یا ترم جدید تعریف کنید.',
+        'تمام نمرات و حضورغیاب جدید در ترم فعال ذخیره می‌شوند و گزارش‌ها بر اساس همان ترم محاسبه می‌گردند.',
+        'در پایان سال تحصیلی می‌توانید کل ترم را آرشیو کنید و سال جدید را تمیز شروع کنید.'
+      ],
+      limits: [
+        'تغییر ترم فعال، نمرات ترم قبلی را پاک نمی‌کند اما در صفحه کلاس فقط داده‌های ترم انتخاب‌شده نمایش داده می‌شوند.'
+      ],
+      alternatives: [
+        'اگر می‌خواهید از کارنامه ترم قبل پرینت بگیرید، کافی است موقتاً ترم قبلی را انتخاب کرده و خروجی PDF/گزارش بگیرید.'
+      ]
+    },
+    teachView: {
+      title: 'راهنمای گام‌به‌گام بخش آموزش و کتاب‌خوان هوشمند PDF',
+      shortHint: 'باز کردن کتاب درسی PDF، زوم، تخته هوشمند و حل فعالیت‌ها با AI',
+      steps: [
+        'دکمه «انتخاب فایل PDF کتاب درسی» را بزنید تا کتاب در کتابخانه داخلی برنامه ذخیره شود.',
+        'با نوار ورق‌زدن یا اسلایدر به صفحه مورد نظر بروید و در کلاس از زوم دو انگشتی و قلم تخته هوشمند استفاده کنید.',
+        'برای حل فعالیت‌ها، کاردرکلاس‌ها یا خلاصه درس، دکمه هوش مصنوعی صفحه را بزنید تا پاسخ دقیق همان صفحه تولید شود.'
+      ],
+      limits: [
+        'فایل‌های PDF بسیار حجیم (بالای ۵۰ مگابایت) در گوشی‌های با رم پایین ممکن است کمی کندتر بارگذاری شوند.',
+        'سرویس هوش مصنوعی پیش‌فرض دارای سقف مصرف روزانه است و در ساعات شلوغی ممکن است چند ثانیه زمان ببرد.'
+      ],
+      alternatives: [
+        'اگر کلید اختصاصی رایگان (Gemini یا Groq) دارید، از تب «تنظیمات» وارد کنید تا سرعت و سقف مصرف اختصاصی داشته باشید.',
+        'در صورت خطای اینترنت یا محدودیت فایل، می‌توانید صفحه کتاب را در آزمون‌ساز با «حالت بدون API» استفاده کنید.'
+      ]
+    },
+    examView: {
+      title: 'راهنمای گام‌به‌گام آزمون‌ساز هوشمند، حالت بدون API و بانک نمونه سوال',
+      shortHint: 'طراحی طبق تنظیمات، حالت بدون API با PDF/اسکرین‌شات و بانک نمونه سوالات کامل',
+      steps: [
+        'در تب «طراح هوشمند و کتاب PDF»، مبحث آزمون یا صفحات کتاب PDF را انتخاب کنید.',
+        'زمان، جمع بارم (مثلاً ۱۰ یا ۲۰)، گام رُندسازی (۰.۲۵ تا ۱) و تعداد هر نوع سوال را تنظیم کنید.',
+        'دکمه نارنجی «✨ طراحی آزمون طبق تنظیمات» را بزنید (کلید هوش مصنوعی به‌طور خودکار از بخش تنظیمات خوانده می‌شود).',
+        'اگر اینترنت/کلید API ندارید یا می‌خواهید با ChatGPT/Gemini/Claude سوال بسازید، دکمه «🪄 حالت بدون API» را بزنید، دستور همگانی را کپی کنید و همراه اسکرین‌شات کامل یا PDF کتاب به هوش مصنوعی بدهید.',
+        'در تب «آرشیو تاییدشده»، آزمون کامل خود را در «بانک نمونه سوالات کامل» ذخیره کنید تا همیشه آماده چاپ یا استفاده مجدد باشد.'
+      ],
+      limits: [
+        'تنظیمات کلید هوش مصنوعی به‌صورت یکپارچه فقط در تب «تنظیمات» قرار دارد تا صفحه آزمون‌ساز خلوت و سریع بماند.',
+        'برای خروجی PDF دقیق A4، تعداد سوالات را متناسب با ۱ یا ۲ صفحه A4 انتخاب کنید تا فونت بیش از حد کوچک نشود.'
+      ],
+      alternatives: [
+        'در صورت اتمام سهمیه هوش مصنوعی داخلی، «حالت بدون API» بهترین و بی‌نقص‌ترین جایگزین رایگان با هر هوش مصنوعی است.',
+        'اگر چاپ مستقیم PDF در مرورگر گوشی شما به‌هم ریخت، از دکمه خروجی Word یا چاپ مرورگر (ذخیره به‌عنوان PDF) استفاده کنید.'
+      ]
+    },
+    statuses: {
+      title: 'راهنمای گام‌به‌گام وضعیت‌ها، رفتار کلاسی و پیگیری دانش‌آموزان',
+      shortHint: 'ثبت وضعیت‌های انضباطی/آموزشی و گزارش سریع برای اولیا',
+      steps: [
+        'از این بخش می‌توانید برچسب‌های وضعیت (مثل غیبت مکرر، پیشرفت عالی، نیاز به تمرین) را مدیریت و فیلتر کنید.',
+        'دانش‌آموزانی که نیاز به پیگیری دارند با رنگ مشخص تفکیک می‌شوند تا گزارش اولیا سریع آماده شود.'
+      ],
+      limits: [
+        'گزارش‌های تحلیلی زمانی دقیق‌تر هستند که حداقل ۲ تا ۳ جلسه حضورغیاب و نمره ثبت شده باشد.'
+      ],
+      alternatives: [
+        'می‌توانید گزارش هر دانش‌آموز را مستقیم به‌صورت متن آماده یا تصویر کارنامه برای پیام‌رسان‌ها کپی و ارسال کنید.'
+      ]
+    },
+    backup: {
+      title: 'راهنمای گام‌به‌گام تنظیمات، کلید هوش مصنوعی و پشتیبان‌گیری',
+      shortHint: 'مدیریت یکپارچه هوش مصنوعی، دانلود پشتیبان و همگام‌سازی ابری',
+      steps: [
+        'بخش «تنظیمات هوش مصنوعی» در همین صفحه، کلید مشترک کل برنامه (آموزش + آزمون‌ساز + همیار دانا) را مدیریت می‌کند.',
+        'برای امنیت کامل اطلاعات، دکمه «دانلود فایل پشتیبان (JSON)» را بزنید و فایل را در تلگرام/ایتا یا حافظه گوشی نگه دارید.',
+        'برای انتقال اطلاعات به گوشی جدید، کافی است فایل پشتیبان را از همین صفحه «بازیابی» کنید.'
+      ],
+      limits: [
+        'همگام‌سازی ابری نیازمند اتصال پایدار به اینترنت و تنظیم صحیح مشخصات حساب است.',
+        'بازیابی فایل پشتیبان قدیمی، اطلاعات فعلی مرورگر را جایگزین می‌کند.'
+      ],
+      alternatives: [
+        'حتی بدون همگام‌سازی ابری، فایل پشتیبان JSON کاملاً آفلاین کار می‌کند و کل مدارس، نمرات و آرشیو آزمون‌ها را حفظ می‌نماید.'
+      ]
+    }
+  };
+
+  async function callUnifiedAI(promptText) {
+    if (!navigator.onLine) throw new Error('OFFLINE');
+    if (window.UnifiedAiEngine && typeof window.UnifiedAiEngine.callWithPoolRotation === 'function') {
+      const res = await window.UnifiedAiEngine.callWithPoolRotation(promptText, [], { temperature: 0.4, maxTokens: 900 });
+      const txt = typeof res === 'string' ? res : (res?.text || res?.content || '');
+      if (txt && txt.trim()) return txt.trim();
+    }
+    throw new Error('AI_UNAVAILABLE');
+  }
+
+  window.V10SmartGuides = {
+    activeSection: 'dashboard',
+    loadCache() {
+      try { return JSON.parse(localStorage.getItem(GUIDE_CACHE_KEY) || '{}'); } catch (_) { return {}; }
+    },
+    saveCache(obj) {
+      try { localStorage.setItem(GUIDE_CACHE_KEY, JSON.stringify(obj || {})); } catch (_) {}
+    },
+    mountAllBars() {
+      Object.keys(SECTION_GUIDES).forEach(secId => {
+        const secEl = document.getElementById(secId);
+        if (!secEl || secEl.querySelector('.v10-guide-trigger-bar')) return;
+        const g = SECTION_GUIDES[secId];
+        const bar = document.createElement('div');
+        bar.className = 'v10-guide-trigger-bar';
+        bar.innerHTML = `
+          <div class="v10-gt-info">
+            <span>📘</span>
+            <span>راهنمای گام‌به‌گام: <span style="font-weight:600;color:#7C2D12">${safeEsc(g.shortHint)}</span></span>
+          </div>
+          <div class="v10-gt-actions">
+            <button type="button" class="v10-guide-btn" onclick="V10SmartGuides.open('${secId}')">📖 مشاهده راهنما</button>
+            <button type="button" class="v10-guide-btn ai-pill" onclick="V10SmartGuides.open('${secId}', true)">🤖 بروزرسانی AI</button>
+          </div>
+        `;
+        secEl.insertBefore(bar, secEl.firstChild);
+      });
+    },
+    open(secId, autoRefreshAi = false) {
+      const key = SECTION_GUIDES[secId] ? secId : 'dashboard';
+      this.activeSection = key;
+      const g = SECTION_GUIDES[key];
+      const cache = this.loadCache()[key];
+      const titleEl = document.getElementById('v10GuideModalTitle');
+      const bodyEl = document.getElementById('v10GuideModalBody');
+      if (titleEl) titleEl.textContent = '📘 ' + g.title;
+      if (bodyEl) {
+        bodyEl.innerHTML = `
+          <div class="v10-guide-block">
+            <h4>🪜 گام‌به‌گام اجرا</h4>
+            <ol>${g.steps.map(s => `<li>${safeEsc(s)}</li>`).join('')}</ol>
+          </div>
+          <div class="v10-guide-block">
+            <h4>⚠️ محدودیت‌ها و نکات مهم</h4>
+            <ul>${g.limits.map(s => `<li>${safeEsc(s)}</li>`).join('')}</ul>
+          </div>
+          <div class="v10-guide-block">
+            <h4>🔄 راه‌های جایگزین و رفع مشکل</h4>
+            <ul>${g.alternatives.map(s => `<li>${safeEsc(s)}</li>`).join('')}</ul>
+          </div>
+          <div class="v10-guide-ai-box">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+              <b style="color:#9A3412;font-size:12.5px">🤖 راهنمای زنده متصل به هوش مصنوعی (قابل بروزرسانی)</b>
+              <button type="button" class="btn primary btn-sm" id="v10GuideAiRefreshBtn" onclick="V10SmartGuides.refreshWithAI('${key}')">🔄 بروزرسانی این راهنما با AI</button>
+            </div>
+            <div style="display:flex;gap:6px;margin-bottom:8px">
+              <input type="text" id="v10GuideCustomQuestion" placeholder="سوال خاص درباره همین بخش دارید؟ بنویسید (مثلاً خطای چاپ یا محدودیت)..." style="flex:1;height:34px;font-size:11.8px;background:#FFF">
+              <button type="button" class="btn soft btn-sm" onclick="V10SmartGuides.refreshWithAI('${key}', true)">پرسش</button>
+            </div>
+            <div id="v10GuideAiOutput" style="font-size:11.8px;line-height:1.8;color:#1E293B;white-space:pre-wrap;background:#FFFFFF;border-radius:10px;padding:9px 11px;border:1px solid #FED7AA">${
+              cache?.text
+                ? `${safeEsc(cache.text)}\n\n🕒 آخرین بروزرسانی هوشمند: ${safeEsc(cache.updatedAt)}`
+                : 'برای دریافت نکات تکمیلی، راهکارهای جدید یا پاسخ به سوال اختصاصی خود، دکمه «🔄 بروزرسانی این راهنما با AI» را بزنید. پاسخ هوشمند ذخیره می‌شود تا حتی در حالت آفلاین هم در دسترس باشد.'
+            }</div>
+          </div>
+        `;
+      }
+      document.getElementById('v10SmartGuideModal')?.classList.add('open');
+      if (autoRefreshAi) this.refreshWithAI(key, false);
+    },
+    async refreshWithAI(secId, useCustomQuestion = false) {
+      const g = SECTION_GUIDES[secId] || SECTION_GUIDES.dashboard;
+      const outEl = document.getElementById('v10GuideAiOutput');
+      const btn = document.getElementById('v10GuideAiRefreshBtn');
+      const customQ = useCustomQuestion ? (document.getElementById('v10GuideCustomQuestion')?.value || '').trim() : '';
+      if (outEl) outEl.textContent = '⏳ در حال اتصال به هوش مصنوعی برای بروزرسانی دقیق راهنما...';
+      if (btn) btn.disabled = true;
+
+      const prompt = `تو راهنمای رسمی و متخصص ارشد اپلیکیشن معلمی «دانش‌آموز من» نسخه 10.0.0 هستی.
+بخش فعلی: ${g.title}
+${customQ ? `سوال اختصاصی معلم: ${customQ}` : 'لطفاً ۳ نکته حرفه‌ای جدید، ۲ محدودیت واقعی که معلمان ممکن است با آن روبه‌رو شوند و راه‌حل جایگزین دقیق برای این بخش را به زبان فارسی ساده، گام‌به‌گام و کاربردی بنویس.'}
+پاسخ کوتاه، شفاف، شماره‌دار و بدون ابهام باشد.`;
+
+      try {
+        const answer = await callUnifiedAI(prompt);
+        const nowStr = new Date().toLocaleString('fa-IR');
+        const allCache = this.loadCache();
+        allCache[secId] = { text: answer, updatedAt: nowStr };
+        this.saveCache(allCache);
+        if (outEl) outEl.textContent = `${answer}\n\n🕒 آخرین بروزرسانی هوشمند: ${nowStr}`;
+        notify('✅ راهنمای این بخش با هوش مصنوعی بروزرسانی و برای حالت آفلاین ذخیره شد.');
+      } catch (_) {
+        const offlineNote = customQ
+          ? `🟠 اکنون به اینترنت یا سرور هوش مصنوعی دسترسی ندارید.\nراهکار آفلاین: می‌توانید همین سوال («${customQ}») را از «همیار دانا» در گوشه صفحه بپرسید یا از گام‌های بالا و راه‌های جایگزین (مانند حالت بدون API یا پشتیبان‌گیری JSON) استفاده کنید.`
+          : '🟠 در حالت آفلاین هستید؛ راهنمای کامل گام‌به‌گام، محدودیت‌ها و راه‌های جایگزین بالا همواره به‌صورت آفلاین در دسترس شماست. به محض اتصال به اینترنت می‌توانید این بخش را با هوش مصنوعی بروزرسانی کنید.';
+        if (outEl) outEl.textContent = offlineNote;
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    },
+    close() {
+      document.getElementById('v10SmartGuideModal')?.classList.remove('open');
+    }
+  };
+
+  /* =========================================================================
+     4. EMBODIED INTERACTIVE APP COMPANION ("دانا — همیار هوشمند دارای شکل و بدن")
+        Full SVG Character Body + Offline Brain + Online AI Brain + Actions
+     ========================================================================= */
+  const CHAT_HISTORY_KEY = 'danesh_v10_companion_chat_history';
+
+  function buildMascotSVG(mood = 'happy', compact = false) {
+    const aura = mood === 'offline' ? '#FEF3C7' : (mood === 'thinking' ? '#DBEAFE' : '#FFEDD5');
+    const stroke = mood === 'offline' ? '#D97706' : (mood === 'thinking' ? '#2563EB' : '#EA580C');
+    const mouthPath = mood === 'thinking'
+      ? 'M45 55 Q50 53 55 55'
+      : (mood === 'talking' ? 'M44 53 Q50 61 56 53 Z' : 'M43 53 Q50 60 57 53');
+
+    return `<svg viewBox="0 0 100 112" width="${compact ? 40 : 74}" height="${compact ? 40 : 74}" xmlns="http://www.w3.org/2000/svg" aria-label="همیار هوشمند دانا">
+      <circle cx="50" cy="56" r="46" fill="${aura}" stroke="${stroke}" stroke-width="2.5"/>
+      <!-- Body / Torso -->
+      <path d="M28 96 C28 74 36 68 50 68 C64 68 72 74 72 96 Z" fill="#F97316"/>
+      <path d="M40 69 L50 82 L60 69" fill="#FFFFFF" opacity="0.92"/>
+      <!-- Left & Right Arms -->
+      <path d="M31 76 Q19 82 22 92" fill="none" stroke="#EA580C" stroke-width="6.5" stroke-linecap="round"/>
+      <path d="M69 76 Q81 71 83 62" fill="none" stroke="#EA580C" stroke-width="6.5" stroke-linecap="round"/>
+      <!-- Mini Book in Hand -->
+      <rect x="75" y="54" width="13" height="10" rx="2" fill="#FFFFFF" stroke="#C2410C" stroke-width="1.6"/>
+      <line x1="81.5" y1="54" x2="81.5" y2="64" stroke="#F97316" stroke-width="1.2"/>
+      <!-- Head -->
+      <circle cx="50" cy="46" r="21" fill="#FFF7ED" stroke="#EA580C" stroke-width="2.2"/>
+      <!-- Cheeks -->
+      <circle cx="37" cy="50" r="3" fill="#FDBA74" opacity="0.75"/>
+      <circle cx="63" cy="50" r="3" fill="#FDBA74" opacity="0.75"/>
+      <!-- Eyes -->
+      <circle cx="42" cy="44" r="3.2" fill="#1E293B"/>
+      <circle cx="58" cy="44" r="3.2" fill="#1E293B"/>
+      <circle cx="43.1" cy="42.8" r="1.1" fill="#FFFFFF"/>
+      <circle cx="59.1" cy="42.8" r="1.1" fill="#FFFFFF"/>
+      <!-- Mouth -->
+      <path class="v10-mouth" d="${mouthPath}" fill="${mood === 'talking' ? '#EA580C' : 'none'}" stroke="#C2410C" stroke-width="2.4" stroke-linecap="round"/>
+      <!-- Orange Graduation Cap -->
+      <polygon points="50,14 78,24 50,33 22,24" fill="#EA580C" stroke="#9A3412" stroke-width="1.6" stroke-linejoin="round"/>
+      <rect x="37" y="26" width="26" height="6" rx="2" fill="#C2410C"/>
+      <line x1="74" y1="25" x2="77" y2="36" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="77" cy="37" r="2.6" fill="#F59E0B"/>
+    </svg>`;
+  }
+
+  function getLiveAppStats() {
+    let schools = 0, classes = 0, students = 0;
+    try {
+      const data = window.db || JSON.parse(localStorage.getItem('danesh_db') || '{}');
+      const sList = Array.isArray(data?.schools) ? data.schools : [];
+      schools = sList.length;
+      sList.forEach(s => {
+        const cList = Array.isArray(s.classes) ? s.classes : [];
+        classes += cList.length;
+        cList.forEach(c => { students += Array.isArray(c.students) ? c.students.length : 0; });
+      });
+    } catch (_) {}
+    const examQs = window.ExamApp && typeof ExamApp.getQuestions === 'function' ? ExamApp.getQuestions().length : 0;
+    const sampleBankCount = window.V10CompleteExamBank ? V10CompleteExamBank.load().length : 0;
+    return { schools, classes, students, examQs, sampleBankCount };
+  }
+
+  function buildOfflineAnswer(userText) {
+    const q = String(userText || '').trim().toLowerCase();
+    const st = getLiveAppStats();
+
+    if (/آمار|چند|تعداد|وضعیت برنامه|گزارش/.test(q)) {
+      return {
+        text: `📊 آمار لحظه‌ای برنامه «دانش‌آموز من» شما:\n• تعداد مدارس ثبت‌شده: ${toFaNum(st.schools)}\n• تعداد کلاس‌ها: ${toFaNum(st.classes)}\n• تعداد کل دانش‌آموزان: ${toFaNum(st.students)}\n• سوالات فعال در برگه آزمون فعلی: ${toFaNum(st.examQs)} سوال\n• نمونه سوالات کامل در بانک: ${toFaNum(st.sampleBankCount)} نمونه آزمون\n• وضعیت اینترنت: ${navigator.onLine ? '🟢 آنلاین' : '🟠 آفلاین (همه امکانات پایه فعال است)'}`,
+        actions: [
+          { label: '🏫 رفتن به مدارس', fn: "V10Companion.nav('schools')" },
+          { label: '📝 رفتن به آزمون‌ساز', fn: "V10Companion.nav('examView')" }
+        ]
+      };
+    }
+
+    if (/بدون api|بدون کلید|اسکرین|pdf|پرامپت|دستور/.test(q)) {
+      return {
+        text: `🪄 برای ساخت آزمون بی‌نقص در «حالت بدون API» این ۴ گام را انجام دهید:\n۱. در بخش آزمون‌ساز، تعداد سوالات و جمع بارم را تنظیم کنید و دکمه «حالت بدون API» را بزنید.\n۲. دکمه «کپی دستور همگانی» را بزنید (این دستور با ChatGPT، Gemini، Claude، DeepSeek و همه هوش مصنوعی‌ها سازگار است).\n۳. اسکرین‌شات کامل صفحات کتاب یا فایل PDF کتاب درسی را همراه همان دستور به هوش مصنوعی بدهید.\n۴. پاسخ هوش مصنوعی را کپی و در کادر مرحله ۳ پیست کنید تا فوری در برگه A4 چیده شود.`,
+        actions: [
+          { label: '🪄 باز کردن فوری حالت بدون API', fn: "V10Companion.openNoApi()" },
+          { label: '📘 راهنمای آزمون‌ساز', fn: "V10Companion.openGuide('examView')" }
+        ]
+      };
+    }
+
+    if (/بانک|نمونه سوال|آرشیو/.test(q)) {
+      return {
+        text: `📚 «بانک نمونه سوالات کامل» در بخش آزمون‌ساز ← تب «آرشیو تاییدشده» قرار دارد:\n• هر نمونه شامل سربرگ کامل، همه سوالات، بارم‌بندی و کلید پاسخ است.\n• می‌توانید آزمون فعلی خود را با یک کلیک در بانک ذخیره کنید یا نمونه آزمون‌های آماده را با یک کلیک در برگه A4 بارگذاری و PDF بگیرید.\n• در زیر آن، «بانک سوالات تکی» هم همچنان حفظ شده است.`,
+        actions: [
+          { label: '📚 باز کردن بانک نمونه سوالات کامل', fn: "V10Companion.openExamArchive()" }
+        ]
+      };
+    }
+
+    if (/پشتیبان|بکاپ|بک‌آپ|ذخیره|ابری|نپره|پاک/.test(q)) {
+      return {
+        text: `💾 برای اینکه اطلاعات شما هرگز از بین نرود:\n۱. وارد تب «تنظیمات» شوید.\n۲. دکمه «دانلود فایل پشتیبان (JSON)» را بزنید و فایل را در پیام‌رسان شخصی یا حافظه گوشی ذخیره کنید.\n۳. اگر اینترنت دارید، می‌توانید همگام‌سازی ابری را هم فعال کنید.\n⚠️ نکته: پاک کردن حافظه مرورگر (Clear Site Data) بدون فایل پشتیبان می‌تواند اطلاعات محلی را حذف کند.`,
+        actions: [
+          { label: '⚙️ رفتن به تنظیمات و پشتیبان‌گیری', fn: "V10Companion.nav('backup')" },
+          { label: '📘 راهنمای تنظیمات', fn: "V10Companion.openGuide('backup')" }
+        ]
+      };
+    }
+
+    if (/کلید|api|هوش مصنوعی|تنظیمات هوش/.test(q)) {
+      return {
+        text: `🔑 کلید هوش مصنوعی به‌صورت یکپارچه برای کل برنامه (آزمون‌ساز، آموزش و همیار دانا) در تب «تنظیمات» مدیریت می‌شود تا صفحه آزمون‌ساز خلوت و تمیز بماند.\n• به‌طور پیش‌فرض، سرور واسط هوشمند فعال است.\n• اگر کلید اختصاصی دارید، فقط یک‌بار در «تنظیمات» وارد کنید.\n• اگر به هر دلیل سهمیه تمام شد، «حالت بدون API» همیشه رایگان و آماده است!`,
+        actions: [
+          { label: '⚙️ تنظیمات هوش مصنوعی', fn: "V10Companion.nav('backup')" },
+          { label: '🪄 حالت بدون API', fn: "V10Companion.openNoApi()" }
+        ]
+      };
+    }
+
+    if (/محدودیت|خطا|ارور|مشکل|جایگزین|آفلاین|قطع/.test(q)) {
+      return {
+        text: `⚠️ مهم‌ترین محدودیت‌ها و راه‌های جایگزین در برنامه:\n۱. **قطع اینترنت / اتمام سهمیه AI:** تمام بخش‌های مدرسه، حضورغیاب، نمرات، کتاب‌خوان PDF و بانک نمونه سوالات ۱۰۰٪ آفلاین کار می‌کنند؛ برای طراحی سوال هم از «حالت بدون API» استفاده کنید.\n۲. **حجم بالای فایل PDF:** اگر هوش مصنوعی فایل PDF کامل را قبول نکرد، از صفحات درس اسکرین‌شات کامل بگیرید و پیوست کنید.\n۳. **حافظه مرورگر:** هفته‌ای یک‌بار فایل پشتیبان JSON بگیرید.\n۴. در بالای هر صفحه دکمه «📖 مشاهده راهنما» تمام نکات و جایگزین‌های همان بخش را گام‌به‌گام توضیح داده است.`,
+        actions: [
+          { label: '📘 راهنمای بخش فعلی', fn: "V10Companion.openCurrentGuide()" },
+          { label: '💾 پشتیبان‌گیری', fn: "V10Companion.nav('backup')" }
+        ]
+      };
+    }
+
+    if (/سلام|خوبی|چطوری|کی هستی|اسمت/.test(q)) {
+      return {
+        text: `سلام همکار گرامی! 👋 من **دانا**، همیار هوشمند برنامه «دانش‌آموز من» (نسخه ۱۰.۰.۰) هستم.\nمن هم در حالت **آفلاین** و هم در حالت **آنلاین متصل به هوش مصنوعی** کنارتان هستم تا در مدیریت کلاس، آزمون‌سازی، رفع خطاها و راهنمایی گام‌به‌گام کمکتان کنم. الان چه کاری برایتان انجام دهم؟`,
+        actions: [
+          { label: '📊 آمار برنامه من', fn: "V10Companion.askQuick('آمار فعلی برنامه من چیه؟')" },
+          { label: '📝 رفتن به آزمون‌ساز', fn: "V10Companion.nav('examView')" }
+        ]
+      };
+    }
+
+    return {
+      text: `من در حالت آفلاین پیام شما را دریافت کردم! 🟠\nدر حال حاضر می‌توانم در این موارد فوری راهنمایی‌تان کنم:\n• آمار لحظه‌ای مدارس، کلاس‌ها و آزمون‌ها\n• راهنمای گام‌به‌گام «حالت بدون API» و پیوست PDF/اسکرین‌شات\n• کار با «بانک نمونه سوالات کامل»\n• تنظیمات کلید هوش مصنوعی و پشتیبان‌گیری امن\n• بررسی محدودیت‌ها و راه‌های جایگزین\nاگر به اینترنت متصل شوید، پاسخ تخصصی هوش مصنوعی هم برای هر سوال آزاد شما فعال می‌شود.`,
+      actions: [
+        { label: '📘 راهنمای بخش فعلی', fn: "V10Companion.openCurrentGuide()" },
+        { label: '🪄 حالت بدون API', fn: "V10Companion.openNoApi()" },
+        { label: '💾 پشتیبان‌گیری', fn: "V10Companion.nav('backup')" }
+      ]
+    };
+  }
+
+  window.V10Companion = {
+    mode: 'auto', // 'auto' | 'offline'
+    history: [],
+    recognition: null,
+    init() {
+      this.loadHistory();
+      this.renderMascots('happy');
+      this.syncOnlineStatus();
+      window.addEventListener('online', () => this.syncOnlineStatus());
+      window.addEventListener('offline', () => this.syncOnlineStatus());
+    },
+    loadHistory() {
+      try {
+        const raw = localStorage.getItem(CHAT_HISTORY_KEY);
+        if (raw) {
+          const arr = JSON.parse(raw);
+          if (Array.isArray(arr) && arr.length) {
+            this.history = arr.slice(-40);
+            return;
+          }
+        }
+      } catch (_) {}
+      this.history = [{
+        role: 'bot',
+        source: 'آفلاین + آنلاین',
+        text: 'سلام همکار عزیز! 👋 من «دانا» همیار هوشمند برنامه دانش‌آموز من هستم.\nچه آنلاین باشید و چه آفلاین، هر سوالی درباره کار با بخش‌های برنامه، آزمون‌ساز بدون API، بانک نمونه سوالات یا رفع خطاها دارید همین‌جا بپرسید.',
+        actions: [
+          { label: '📘 راهنمای بخش فعلی', fn: "V10Companion.openCurrentGuide()" },
+          { label: '🪄 آزمون بدون API', fn: "V10Companion.openNoApi()" }
+        ]
+      }];
+    },
+    saveHistory() {
+      try { localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(this.history.slice(-40))); } catch (_) {}
+    },
+    renderMascots(mood = 'happy') {
+      const fabSvg = document.getElementById('v10FabMascotSvg');
+      const modalSvg = document.getElementById('v10ModalMascotSvg');
+      const card = document.getElementById('v10CompanionCard');
+      if (fabSvg) fabSvg.innerHTML = buildMascotSVG(mood === 'offline' ? 'offline' : 'happy', true);
+      if (modalSvg) modalSvg.innerHTML = buildMascotSVG(mood, false);
+      if (card) {
+        card.classList.toggle('v10-mascot-thinking', mood === 'thinking');
+        card.classList.toggle('v10-mascot-talking', mood === 'talking');
+      }
+    },
+    syncOnlineStatus() {
+      const online = navigator.onLine && this.mode !== 'offline';
+      const fabSub = document.getElementById('v10FabStatusTxt');
+      const badge = document.getElementById('v10CompanionModeBadge');
+      const toggleBtn = document.getElementById('v10ModeToggleBtn');
+      if (fabSub) {
+        fabSub.textContent = online ? '🟢 آنلاین + آفلاین' : '🟠 حالت آفلاین فعال';
+        fabSub.className = 'v10-fab-sub' + (online ? '' : ' offline');
+      }
+      if (badge) {
+        badge.textContent = this.mode === 'offline'
+          ? '🟠 حالت آفلاین سریع (بدون مصرف اینترنت)'
+          : (navigator.onLine ? '🟢 آنلاین (هوش مصنوعی متصل + پشتیبان آفلاین)' : '🟠 آفلاین (موتور هوشمند داخلی فعال است)');
+      }
+      if (toggleBtn) {
+        toggleBtn.textContent = this.mode === 'offline' ? '🟠 آفلاین' : '⚡ خودکار';
+      }
+      this.renderMascots(online ? 'happy' : 'offline');
+    },
+    toggleMode() {
+      this.mode = this.mode === 'auto' ? 'offline' : 'auto';
+      this.syncOnlineStatus();
+      notify(this.mode === 'offline' ? '🟠 همیار دانا روی حالت فقط آفلاین تنظیم شد.' : '⚡ همیار دانا روی حالت خودکار (آنلاین + آفلاین) تنظیم شد.');
+    },
+    open() {
+      this.syncOnlineStatus();
+      this.renderMessages();
+      document.getElementById('v10CompanionModal')?.classList.add('open');
+      setTimeout(() => document.getElementById('v10ChatInput')?.focus(), 120);
+    },
+    close() {
+      document.getElementById('v10CompanionModal')?.classList.remove('open');
+    },
+    clearChat() {
+      this.history = [];
+      try { localStorage.removeItem(CHAT_HISTORY_KEY); } catch (_) {}
+      this.loadHistory();
+      this.renderMessages();
+      notify('🧹 تاریخچه گفت‌وگو پاک شد.');
+    },
+    nav(viewId) {
+      this.close();
+      if (typeof window.showView === 'function') window.showView(viewId);
+    },
+    openNoApi() {
+      this.close();
+      if (typeof window.showView === 'function') window.showView('examView');
+      setTimeout(() => {
+        if (window.ExamApp && typeof ExamApp.openNoApiModal === 'function') ExamApp.openNoApiModal();
+      }, 150);
+    },
+    openExamArchive() {
+      this.close();
+      if (typeof window.showView === 'function') window.showView('examView');
+      setTimeout(() => {
+        if (window.ExamApp && typeof ExamApp.openTab === 'function') {
+          const btn = document.querySelector(".ex-nav-btn[onclick*=\"'archive'\"]");
+          ExamApp.openTab('archive', btn);
+        }
+      }, 150);
+    },
+    openGuide(secId) {
+      this.close();
+      V10SmartGuides.open(secId);
+    },
+    openCurrentGuide() {
+      const activeView = document.querySelector('section.view.active');
+      const id = activeView?.id && SECTION_GUIDES[activeView.id] ? activeView.id : 'dashboard';
+      this.openGuide(id);
+    },
+    renderMessages() {
+      const stream = document.getElementById('v10ChatStream');
+      if (!stream) return;
+      stream.innerHTML = this.history.map(m => `
+        <div class="v10-msg ${m.role === 'user' ? 'user' : 'bot'}">
+          <div>${safeEsc(m.text)}</div>
+          ${Array.isArray(m.actions) && m.actions.length ? `
+            <div class="v10-msg-actions">
+              ${m.actions.map(a => `<button type="button" class="v10-action-chip" onclick="${a.fn}">${safeEsc(a.label)}</button>`).join('')}
+            </div>
+          ` : ''}
+          ${m.source ? `<div class="v10-msg-meta"><span>${safeEsc(m.source)}</span></div>` : ''}
+        </div>
+      `).join('');
+      stream.scrollTop = stream.scrollHeight;
+    },
+    askQuick(text) {
+      const inp = document.getElementById('v10ChatInput');
+      if (inp) inp.value = text;
+      this.send();
+    },
+    toggleVoice() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) {
+        notify('⚠️ مرورگر شما از تایپ صوتی پشتیبانی نمی‌کند؛ لطفاً پیام را تایپ کنید.');
+        return;
+      }
+      if (this.recognition) {
+        try { this.recognition.stop(); } catch (_) {}
+        this.recognition = null;
+        return;
+      }
+      const rec = new SR();
+      rec.lang = 'fa-IR';
+      rec.interimResults = false;
+      this.recognition = rec;
+      const vBtn = document.getElementById('v10VoiceBtn');
+      if (vBtn) vBtn.textContent = '🔴';
+      rec.onresult = (e) => {
+        const transcript = e.results?.[0]?.[0]?.transcript || '';
+        const inp = document.getElementById('v10ChatInput');
+        if (inp && transcript) inp.value = transcript;
+      };
+      rec.onend = () => {
+        this.recognition = null;
+        if (vBtn) vBtn.textContent = '🎙️';
+      };
+      rec.onerror = () => {
+        this.recognition = null;
+        if (vBtn) vBtn.textContent = '🎙️';
+        notify('⚠️ دسترسی میکروفون یا سرویس صوتی در دسترس نیست.');
+      };
+      try { rec.start(); } catch (_) {}
+    },
+    async send() {
+      const inp = document.getElementById('v10ChatInput');
+      const text = (inp?.value || '').trim();
+      if (!text) return;
+      inp.value = '';
+      this.history.push({ role: 'user', text });
+      this.renderMessages();
+
+      const useOnline = this.mode !== 'offline' && navigator.onLine;
+      const offlineRes = buildOfflineAnswer(text);
+
+      if (!useOnline) {
+        this.renderMascots('talking');
+        this.history.push({
+          role: 'bot',
+          source: '🟠 پاسخ فوری آفلاین',
+          text: offlineRes.text,
+          actions: offlineRes.actions || []
+        });
+        this.saveHistory();
+        this.renderMessages();
+        setTimeout(() => this.renderMascots('offline'), 1200);
+        return;
+      }
+
+      this.renderMascots('thinking');
+      const sendBtn = document.getElementById('v10SendBtn');
+      if (sendBtn) sendBtn.disabled = true;
+
+      try {
+        const st = getLiveAppStats();
+        const activeView = document.querySelector('section.view.active')?.id || 'dashboard';
+        const aiPrompt = `تو «دانا»، همیار هوشمند رسمی داخل اپلیکیشن معلمی «دانش‌آموز من» نسخه 10.0.0 هستی.
+وضعیت فعلی برنامه معلم: مدارس=${st.schools}، کلاس‌ها=${st.classes}، دانش‌آموزان=${st.students}، سوالات برگه فعلی=${st.examQs}، نمونه سوالات کامل در بانک=${st.sampleBankCount}، صفحه فعلی=${activeView}.
+قابلیت‌های نسخه 10.0.0: کلید هوش مصنوعی یکپارچه فقط در تب تنظیمات، دکمه «طراحی آزمون طبق تنظیمات»، «حالت بدون API» با دستور همگانی سازگار با تمام هوش مصنوعی‌ها و پیوست اسکرین‌شات کامل یا PDF، «بانک نمونه سوالات کامل» در آرشیو، راهنماهای گام‌به‌گام هوشمند در همه بخش‌ها، و پشتیبان‌گیری آفلاین JSON + همگام‌سازی ابری.
+سوال معلم: ${text}
+پاسخ را صمیمی، دقیق، کوتاه، گام‌به‌گام و به زبان فارسی بنویس.`;
+
+        const aiReply = await callUnifiedAI(aiPrompt);
+        this.renderMascots('talking');
+        this.history.push({
+          role: 'bot',
+          source: '🟢 پاسخ آنلاین هوش مصنوعی',
+          text: aiReply,
+          actions: offlineRes.actions || []
+        });
+        this.saveHistory();
+        this.renderMessages();
+        setTimeout(() => this.renderMascots('happy'), 1400);
+      } catch (_) {
+        this.renderMascots('talking');
+        this.history.push({
+          role: 'bot',
+          source: '🟠 پاسخ جایگزین آفلاین (سرور آنلاین در دسترس نبود)',
+          text: offlineRes.text,
+          actions: offlineRes.actions || []
+        });
+        this.saveHistory();
+        this.renderMessages();
+        setTimeout(() => this.renderMascots('offline'), 1200);
+      } finally {
+        if (sendBtn) sendBtn.disabled = false;
+      }
+    }
+  };
+
+  /* =========================================================================
+     5. BOOTSTRAP V10.0.0 SUITE SAFELY AFTER DOM & LEGACY SCRIPTS
+     ========================================================================= */
+  function bootstrapV10() {
+    // Ensure orange button label stays clean ("✨ طراحی آزمون طبق تنظیمات")
+    const runBtn = document.getElementById('btnRunAi');
+    if (runBtn) runBtn.textContent = '✨ طراحی آزمون طبق تنظیمات';
+
+    installV10NoApiEngine();
+    V10CompleteExamBank.mount();
+    V10SmartGuides.mountAllBars();
+    V10Companion.init();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bootstrapV10, 260));
+  } else {
+    setTimeout(bootstrapV10, 260);
+  }
+})();
+</script>
+<!-- ==================== END V10.0.0 MASTER UPGRADE SUITE ==================== -->
 
 </body>
 </html>
