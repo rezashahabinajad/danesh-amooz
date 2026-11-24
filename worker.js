@@ -1,4 +1,4 @@
-// Danesh-Amooz-Man Full-Lesson Smart Iranian Textbook AI Proxy Worker (v10.0.0)
+// Danesh-Amooz-Man Full-Lesson Smart Iranian Textbook AI Proxy Worker (v10.3.0)
 // Pipeline:
 //   0. mode === 'ocr_pages': Parallel Cloudflare Workers AI Vision OCR for up to 3 preceding lesson pages
 //      in a single call (~4-6s wall-clock), preserving Gemini free-tier quota for final solving.
@@ -177,7 +177,7 @@ export default {
       return jsonResp({
         ok: true,
         service: 'danesh-ai-proxy',
-        version: '10.0.0',
+        version: '10.3.0',
         geminiKeys: gKeys.length,
         groqKeys: qKeys.length,
         openRouterKeys: oKeys.length,
