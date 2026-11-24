@@ -1,4 +1,4 @@
-// Danesh-Amooz-Man Full-Lesson Smart Iranian Textbook AI Proxy Worker (v10.3.1)
+// Danesh-Amooz-Man Full-Lesson Smart Iranian Textbook AI Proxy Worker (v10.2.0)
 // Pipeline:
 //   0. mode === 'ocr_pages': Parallel Cloudflare Workers AI Vision OCR for up to 3 preceding lesson pages
 //      in a single call (~4-6s wall-clock), preserving Gemini free-tier quota for final solving.
@@ -177,7 +177,7 @@ export default {
       return jsonResp({
         ok: true,
         service: 'danesh-ai-proxy',
-        version: '10.3.1',
+        version: '9.9.9',
         geminiKeys: gKeys.length,
         groqKeys: qKeys.length,
         openRouterKeys: oKeys.length,
@@ -318,7 +318,7 @@ export default {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `Bearer ${item.key}`,
-                  'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/10.3.1'
+                  'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.9'
                 },
                 body: JSON.stringify({ model: m, messages: [{ role: 'user', content: solverPrompt }], temperature: temp })
               },
@@ -330,7 +330,7 @@ export default {
 
             if ((r.status === 404 || r.status === 400) && timeLeft() > 6000) {
               const lr = await fetchWithTimeout('https://api.groq.com/openai/v1/models', {
-                headers: { 'Authorization': `Bearer ${item.key}`, 'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/10.3.1' }
+                headers: { 'Authorization': `Bearer ${item.key}`, 'User-Agent': 'Mozilla/5.0 DaneshAmoozMan/9.9.9' }
               }, 4000);
               const ld = await lr.json().catch(() => ({}));
               const ids = (ld?.data || []).map(x => x.id).filter(id => id && !/whisper|tts|guard|embed/i.test(id));

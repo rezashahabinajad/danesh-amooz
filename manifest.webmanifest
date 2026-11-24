@@ -1,17 +1,17 @@
 {
   "name": "دانش‌آموز من — دفتر هوشمند معلم",
   "short_name": "دانش‌آموز من",
-  "version": "10.3.1",
-  "version_name": "10.3.1",
-  "description": "دفتر هوشمند معلم، کلاس آنلاین، آزمون‌ساز، کتاب‌خوان هوش مصنوعی و استودیو گزارش — نسخه 10.3.1",
+  "version": "10.2.0",
+  "version_name": "10.2.0",
+  "description": "دفتر هوشمند معلم، کلاس آنلاین، آزمون‌ساز، کتاب‌خوان هوش مصنوعی و استودیو گزارش — نسخه 10.2.0",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "dir": "rtl",
   "lang": "fa-IR",
-  "background_color": "#FDF8F3",
-  "theme_color": "#B45309",
+  "background_color": "#FFF7ED",
+  "theme_color": "#EA580C",
   "icons": [
     {
       "src": "./icon-192.png",
