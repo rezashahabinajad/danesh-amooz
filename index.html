@@ -7809,6 +7809,1463 @@ function printParentReport() {
   const content = document.getElementById('parentReportPrintable')?.innerHTML; if (!content) return;
   const w = window.open('', '_blank'); if (!w) return;
   w.document.write(`<html dir="rtl"><head><meta charset="utf-8"><style>body{font-family:Tahoma;padding:20px;direction:rtl}.report-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.report-summary>div{border:1px solid #ccc;padding:8px;text-align:center;border-radius:8px}svg{max-width:100%;height:130px}</style></head><body>${content}
+
+<style id="v1000MasterStyles">
+/* تم لوکس کرنوگراف مسی و اجزای نسخه ۱۰.۰.۰ */
+body {
+  background: linear-gradient(180deg, #FDF8F3 0%, #FFFDFB 100%) !important;
+  color: var(--text-main);
+}
+body.light-mode {
+  background: linear-gradient(180deg, #E0F2FE 0%, #F8FAFC 35%) !important;
+}
+.topbar {
+  background: rgba(255, 253, 251, 0.94) !important;
+  border-bottom: 1.5px solid var(--border) !important;
+}
+.v10-dana-header-btn {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FEF5EB, #F7EDE2) !important;
+  border: 1.5px solid var(--primary-border) !important;
+}
+.v10-dana-status-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #FFFDFB;
+  background: #16A34A;
+}
+.v10-dana-status-dot.offline {
+  background: #EA580C;
+}
+
+/* ساعت لوکس کرنوگراف مسی با چرخش ۳بعدی */
+.v10-chrono-wrap {
+  perspective: 1200px;
+  margin-bottom: 12px;
+}
+.v10-chrono-card {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+.v10-chrono-card.flipped {
+  transform: rotateY(180deg);
+}
+.v10-chrono-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 22px;
+  border: 1.5px solid var(--primary-border);
+  background: linear-gradient(145deg, #FFFDFB 0%, #F7EDE2 58%, #EFE0CE 100%);
+  box-shadow: 0 10px 28px rgba(180, 83, 9, 0.14);
+  padding: 14px 16px;
+}
+.v10-chrono-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.v10-chrono-front-grid {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.v10-chrono-dial {
+  position: relative;
+  width: 142px;
+  height: 142px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #FFFDFB, #F3E5D5 70%, #DFC3A3 100%);
+  border: 3px solid #B45309;
+  box-shadow: inset 0 0 18px rgba(120, 53, 15, 0.18), 0 6px 18px rgba(180, 83, 9, 0.22);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.v10-chrono-ring-svg {
+  position: absolute;
+  inset: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+.v10-chrono-hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: 50% 100%;
+  border-radius: 99px;
+}
+.v10-chrono-hand.hour { width: 4px; height: 34px; background: #451A03; margin-left: -2px; }
+.v10-chrono-hand.min { width: 3px; height: 48px; background: #9A3412; margin-left: -1.5px; }
+.v10-chrono-hand.sec { width: 2px; height: 54px; background: #D97706; margin-left: -1px; }
+.v10-chrono-pin {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #78350F;
+  border: 2px solid #FDE68A;
+  z-index: 4;
+}
+.v10-chrono-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #78350F, #B45309);
+  color: #FFFDFB;
+  font-weight: 900;
+  font-size: 12.5px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(120, 53, 15, 0.25);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.v10-chrono-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 8px 0;
+}
+.v10-chrono-stat-box {
+  background: rgba(255, 253, 251, 0.88);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 6px;
+  text-align: center;
+}
+.v10-chrono-stat-box b { display: block; font-size: 16px; color: var(--primary-dark); }
+.v10-chrono-stat-box span { font-size: 10.5px; color: var(--muted); font-weight: 700; }
+
+/* کاراکتر انیمیشنی دانا */
+.v10-dana-stage {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #FEF5EB, #F7EDE2);
+  border: 1.5px solid var(--primary-border);
+  margin-bottom: 10px;
+}
+.v10-dana-avatar {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.v10-dana-avatar.state-idle { animation: v10DanaFloat 3.2s ease-in-out infinite; }
+.v10-dana-avatar.state-thinking { animation: v10DanaThink 0.9s ease-in-out infinite; }
+.v10-dana-avatar.state-answering { animation: v10DanaBounce 0.6s ease 2; }
+.v10-dana-avatar.state-offline { filter: saturate(0.85); }
+@keyframes v10DanaFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+@keyframes v10DanaThink { 0%,100%{transform:rotate(-4deg) scale(1)} 50%{transform:rotate(4deg) scale(1.05)} }
+@keyframes v10DanaBounce { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+
+.v10-dana-chat-log {
+  max-height: 310px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+.v10-dana-msg {
+  padding: 9px 11px;
+  border-radius: 12px;
+  font-size: 12.2px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+.v10-dana-msg.user {
+  align-self: flex-start;
+  background: #78350F;
+  color: #FFFDFB;
+  max-width: 85%;
+}
+.v10-dana-msg.bot {
+  align-self: flex-end;
+  background: #FFFDFB;
+  border: 1px solid var(--primary-border);
+  color: var(--text-main);
+  max-width: 96%;
+}
+.v10-dana-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 7px;
+}
+</style>
+
+<script id="v1000MasterUpgradeSuite">
+(function() {
+  'use strict';
+
+  function faNum(v) {
+    return String(v ?? '').replace(/[0-9]/g, d => '۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
+  }
+  function enNum(v) {
+    return String(v ?? '')
+      .replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))
+      .replace(/[٠-٩]/g, d => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
+  }
+  function normFaStrict(s) {
+    return enNum(String(s || ''))
+      .replace(/[يی]/g, 'ی')
+      .replace(/[كک]/g, 'ک')
+      .replace(/[\u200c\u200f\u200e]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLowerCase();
+  }
+  function escHtml(s) {
+    return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function getLiveDb() {
+    return (typeof db !== 'undefined' && db) ? db : (window.db || { schools: [] });
+  }
+  function notify(msg) {
+    if (typeof toast === 'function') toast(msg);
+  }
+
+  /* ==========================================================================
+     REQ 1: Root Fix for Today List Quick Search (v960TodaySearchInp)
+     ========================================================================== */
+  function applyTodayListFilter() {
+    const inp = document.getElementById('v960TodaySearchInp');
+    const body = document.getElementById('tdScrollBody');
+    const clr = document.getElementById('v960TodaySearchInp_clear');
+    const cnt = document.getElementById('v960TodaySearchInp_count');
+    if (!inp || !body) return;
+    const q = normFaStrict(inp.value);
+    if (clr) clr.classList.toggle('visible', q.length > 0);
+    const rows = Array.from(body.querySelectorAll('.td-row, .td-book-stu-card, [data-student-id]'));
+    let shown = 0;
+    rows.forEach((row, idx) => {
+      const hay = normFaStrict((row.textContent || '') + ' ' + (idx + 1));
+      const ok = !q || hay.includes(q);
+      if (ok) {
+        row.style.removeProperty('display');
+        shown++;
+      } else {
+        row.style.setProperty('display', 'none', 'important');
+      }
+    });
+    if (cnt) {
+      cnt.textContent = q ? `${faNum(shown)} از ${faNum(rows.length)}` : `${faNum(rows.length)} نفر`;
+    }
+  }
+
+  function ensureTodaySearchWired() {
+    const box = document.getElementById('todayListCardBox');
+    const body = document.getElementById('tdScrollBody');
+    if (!box || !body) return;
+    let wrap = document.getElementById('v960TodaySearchInp_wrap');
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.className = 'v960-list-search-bar';
+      wrap.id = 'v960TodaySearchInp_wrap';
+      wrap.innerHTML = `
+        <span style="font-size:14px">🔍</span>
+        <input type="text" id="v960TodaySearchInp" placeholder="جستجوی سریع با نام، نام خانوادگی یا ردیف..." autocomplete="off">
+        <span class="v960-search-count" id="v960TodaySearchInp_count"></span>
+        <button type="button" class="v960-search-clear-btn" id="v960TodaySearchInp_clear" title="پاک‌سازی جستجو">×</button>
+      `;
+      const sticky = box.querySelector('.td-sticky-header-group');
+      if (sticky) sticky.appendChild(wrap);
+      else box.insertBefore(wrap, body);
+    }
+    const inp = document.getElementById('v960TodaySearchInp');
+    const clr = document.getElementById('v960TodaySearchInp_clear');
+    if (inp && !inp.dataset.v10Wired) {
+      inp.dataset.v10Wired = '1';
+      ['input', 'keyup', 'change', 'search'].forEach(ev => inp.addEventListener(ev, applyTodayListFilter));
+    }
+    if (clr && !clr.dataset.v10Wired) {
+      clr.dataset.v10Wired = '1';
+      clr.addEventListener('click', () => {
+        if (inp) { inp.value = ''; inp.focus(); }
+        applyTodayListFilter();
+      });
+    }
+    applyTodayListFilter();
+  }
+
+  if (typeof window.renderTodayListInner === 'function') {
+    const _prevRenderTodayV10 = window.renderTodayListInner;
+    window.renderTodayListInner = function(sid, cid) {
+      const r = _prevRenderTodayV10.apply(this, arguments);
+      ensureTodaySearchWired();
+      requestAnimationFrame(ensureTodaySearchWired);
+      setTimeout(ensureTodaySearchWired, 60);
+      return r;
+    };
+    try { renderTodayListInner = window.renderTodayListInner; } catch (_) {}
+  }
+
+  /* ==========================================================================
+     REQ 2: Luxury Copper Chronograph Clock + 3D Flip Stats on Home (#dashboard)
+     ========================================================================== */
+  function buildCopperChronoDeck() {
+    const oldDeck = document.getElementById('jarvisCommandDeck');
+    if (!oldDeck || document.getElementById('v10CopperChronoWrap')) return;
+    const wrap = document.createElement('div');
+    wrap.id = 'v10CopperChronoWrap';
+    wrap.className = 'v10-chrono-wrap';
+    wrap.innerHTML = `
+      <div class="v10-chrono-card" id="v10CopperChronoCard" onclick="this.classList.toggle('flipped')" title="برای مشاهده آمار ۳بعدی لمس کنید">
+        <div class="v10-chrono-face v10-chrono-front">
+          <div class="v10-chrono-front-grid">
+            <div class="v10-chrono-dial" aria-hidden="true">
+              <svg class="v10-chrono-ring-svg" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="56" fill="none" stroke="rgba(180,83,9,0.18)" stroke-width="3"/>
+                <circle id="v10ChronoSecArc" cx="60" cy="60" r="56" fill="none" stroke="#D97706" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="351.86" stroke-dashoffset="351.86"/>
+              </svg>
+              <div class="v10-chrono-hand hour" id="v10ChronoHour"></div>
+              <div class="v10-chrono-hand min" id="v10ChronoMin"></div>
+              <div class="v10-chrono-hand sec" id="v10ChronoSec"></div>
+              <div class="v10-chrono-pin"></div>
+            </div>
+            <div style="flex:1;min-width:190px;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+              <div style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:6px;flex-wrap:wrap">
+                <span style="font-weight:900;font-size:15px;color:var(--primary-dark)">🔥 کرنوگراف مسی</span>
+                <span class="chip" style="font-size:10.5px;background:#FEF5EB;border-color:var(--primary-border);color:var(--primary-dark)">🔄 لمس برای آمار ۳بعدی</span>
+              </div>
+              <div class="v10-chrono-capsule" id="v10ChronoCapsule" dir="rtl">--:--:-- · ----/--/--</div>
+              <div style="font-size:11.5px;color:var(--muted);line-height:1.6">دفتر هوشمند معلم · آماده مدیریت کلاس، حضورغیاب و تصحیح برگه</div>
+            </div>
+          </div>
+        </div>
+        <div class="v10-chrono-face v10-chrono-back">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <b style="color:var(--primary-dark);font-size:14px">📊 نمای آماری زنده دفتر</b>
+            <span class="chip" style="font-size:10px">🔄 لمس برای بازگشت به ساعت</span>
+          </div>
+          <div class="v10-chrono-stats-grid" id="v10ChronoStatsGrid">
+            <div class="v10-chrono-stat-box"><b id="v10StatSchools">۰</b><span>مدارس</span></div>
+            <div class="v10-chrono-stat-box"><b id="v10StatClasses">۰</b><span>کلاس‌ها</span></div>
+            <div class="v10-chrono-stat-box"><b id="v10StatStudents">۰</b><span>دانش‌آموزان</span></div>
+            <div class="v10-chrono-stat-box"><b id="v10StatAvg">—</b><span>میانگین کل</span></div>
+            <div class="v10-chrono-stat-box"><b id="v10StatAbsent">۰</b><span>غایبین امروز</span></div>
+            <div class="v10-chrono-stat-box"><b id="v10StatAttn">۰</b><span>نیازمند توجه</span></div>
+          </div>
+        </div>
+      </div>
+    `;
+    oldDeck.style.display = 'none';
+    oldDeck.parentNode.insertBefore(wrap, oldDeck);
+    tickCopperChrono();
+    updateCopperChronoStats();
+  }
+
+  function tickCopperChrono() {
+    const now = new Date();
+    const sec = now.getSeconds() + now.getMilliseconds() / 1000;
+    const min = now.getMinutes() + sec / 60;
+    const hr = (now.getHours() % 12) + min / 60;
+    const hEl = document.getElementById('v10ChronoHour');
+    const mEl = document.getElementById('v10ChronoMin');
+    const sEl = document.getElementById('v10ChronoSec');
+    const arcEl = document.getElementById('v10ChronoSecArc');
+    const capEl = document.getElementById('v10ChronoCapsule');
+    if (hEl) hEl.style.transform = `rotate(${hr * 30}deg)`;
+    if (mEl) mEl.style.transform = `rotate(${min * 6}deg)`;
+    if (sEl) sEl.style.transform = `rotate(${sec * 6}deg)`;
+    if (arcEl) {
+      const circ = 351.86;
+      arcEl.style.strokeDashoffset = String(circ * (1 - (now.getSeconds() / 60)));
+    }
+    if (capEl) {
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      let jDate = '';
+      try {
+        jDate = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(now);
+      } catch (_) {
+        jDate = typeof formatJalaliDate === 'function' ? formatJalaliDate(new Date().toISOString().slice(0, 10)) : '';
+      }
+      capEl.textContent = `${faNum(`${hh}:${mm}:${ss}`)}  |  ${jDate}`;
+    }
+  }
+
+  function updateCopperChronoStats() {
+    const d = getLiveDb();
+    const schools = Array.isArray(d.schools) ? d.schools : [];
+    let clsCount = 0, stuCount = 0, sumAvg = 0, avgN = 0, absToday = 0, attnCount = 0;
+    const todayISO = typeof localISODate === 'function' ? localISODate() : new Date().toISOString().slice(0, 10);
+    schools.forEach(s => {
+      (s.classes || []).forEach(c => {
+        clsCount++;
+        (c.students || []).forEach(st => {
+          stuCount++;
+          if (typeof avgGrade === 'function') {
+            const ag = avgGrade(st);
+            if (ag !== null && !isNaN(ag)) { sumAvg += Number(ag); avgN++; }
+          }
+          if (c.attendance && c.attendance[todayISO] && c.attendance[todayISO][st.id] === 'absent') absToday++;
+          if (st.status === 'attn' || st.specialAttention) attnCount++;
+        });
+      });
+    });
+    const setT = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    setT('v10StatSchools', faNum(schools.length));
+    setT('v10StatClasses', faNum(clsCount));
+    setT('v10StatStudents', faNum(stuCount));
+    setT('v10StatAvg', avgN ? faNum((sumAvg / avgN).toFixed(2)) : '—');
+    setT('v10StatAbsent', faNum(absToday));
+    setT('v10StatAttn', faNum(attnCount));
+  }
+
+  setInterval(tickCopperChrono, 250);
+
+  /* ==========================================================================
+     REQ 6: One-Tap Back-and-Forth Switch between Teach & Today List
+     ========================================================================== */
+  window.V10TeachTodaySwitch = {
+    lastBookId: null,
+    lastPage: 1,
+    lastSid: null,
+    lastCid: null,
+    goToTodayList() {
+      if (window.TeachAssistant) {
+        this.lastBookId = window.TeachAssistant.currentBookId || this.lastBookId;
+        this.lastPage = window.TeachAssistant.currentPage || this.lastPage;
+      }
+      const d = getLiveDb();
+      let sid = this.lastSid || window.currentSchoolId;
+      let cid = this.lastCid || window.currentClassId;
+      if (!sid || !cid) {
+        const firstS = (d.schools || [])[0];
+        const firstC = firstS && (firstS.classes || [])[0];
+        if (firstS && firstC) { sid = firstS.id; cid = firstC.id; }
+      }
+      if (!sid || !cid) {
+        notify('ابتدا یک مدرسه و کلاس بسازید تا لیست امروز باز شود.');
+        return;
+      }
+      this.lastSid = sid;
+      this.lastCid = cid;
+      if (typeof openTodayList === 'function') openTodayList(sid, cid);
+      else if (typeof renderTodayListInner === 'function') renderTodayListInner(sid, cid);
+    },
+    goBackToTeach() {
+      if (typeof showView === 'function') showView('teachView');
+      setTimeout(() => {
+        if (window.TeachAssistant && this.lastPage) {
+          if (typeof window.TeachAssistant.goStudyPage === 'function') {
+            window.TeachAssistant.goStudyPage(this.lastPage);
+          }
+        }
+      }, 80);
+    }
+  };
+
+  if (typeof window.renderTodayListInner === 'function') {
+    const _origRT2 = window.renderTodayListInner;
+    window.renderTodayListInner = function(sid, cid) {
+      window.V10TeachTodaySwitch.lastSid = sid;
+      window.V10TeachTodaySwitch.lastCid = cid;
+      const res = _origRT2.apply(this, arguments);
+      setTimeout(() => {
+        const cont = document.getElementById('classTodayListContainer');
+        if (cont && !document.getElementById('v10TodayToTeachBtn')) {
+          const topBar = cont.querySelector('div');
+          if (topBar) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.id = 'v10TodayToTeachBtn';
+            btn.className = 'btn primary btn-sm';
+            btn.textContent = '📖 بازگشت به آموزش';
+            btn.onclick = () => window.V10TeachTodaySwitch.goBackToTeach();
+            topBar.appendChild(btn);
+          }
+        }
+      }, 25);
+      return res;
+    };
+    try { renderTodayListInner = window.renderTodayListInner; } catch (_) {}
+  }
+
+  /* ==========================================================================
+     REQ 10: Separate IndexedDB for Exam Paper Photos + 180-Day Auto-Cleanup
+     ========================================================================== */
+  const PAPER_DB_NAME = 'danesh_amooz_paper_photos_v10';
+  const PAPER_STORE = 'papers';
+  const GRADED_META_KEY = 'danesh_amooz_graded_papers_meta_v10';
+  const RETENTION_MS = 180 * 24 * 60 * 60 * 1000;
+
+  window.DaneshPaperPhotoDB = {
+    _open() {
+      return new Promise((resolve, reject) => {
+        const req = indexedDB.open(PAPER_DB_NAME, 1);
+        req.onupgradeneeded = (e) => {
+          const idb = e.target.result;
+          if (!idb.objectStoreNames.contains(PAPER_STORE)) {
+            idb.createObjectStore(PAPER_STORE, { keyPath: 'id' });
+          }
+        };
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    },
+    async compressPaper(fileOrDataUrl) {
+      if (typeof compressImage === 'function') {
+        const out = await compressImage(fileOrDataUrl, 1100, 0.78);
+        return out;
+      }
+      return String(fileOrDataUrl || '');
+    },
+    async savePhoto(id, dataUrl) {
+      const idb = await this._open();
+      const now = Date.now();
+      const rec = {
+        id,
+        dataUrl,
+        bytes: dataUrl ? dataUrl.length : 0,
+        createdAt: now,
+        expiresAt: now + RETENTION_MS
+      };
+      return new Promise((resolve, reject) => {
+        const tx = idb.transaction(PAPER_STORE, 'readwrite');
+        tx.objectStore(PAPER_STORE).put(rec);
+        tx.oncomplete = () => resolve(rec);
+        tx.onerror = () => reject(tx.error);
+      });
+    },
+    async getPhoto(id) {
+      const idb = await this._open();
+      return new Promise((resolve) => {
+        const tx = idb.transaction(PAPER_STORE, 'readonly');
+        const req = tx.objectStore(PAPER_STORE).get(id);
+        req.onsuccess = () => resolve(req.result || null);
+        req.onerror = () => resolve(null);
+      });
+    },
+    async getStats() {
+      const idb = await this._open();
+      return new Promise((resolve) => {
+        const tx = idb.transaction(PAPER_STORE, 'readonly');
+        const req = tx.objectStore(PAPER_STORE).getAll();
+        req.onsuccess = () => {
+          const list = req.result || [];
+          const totalBytes = list.reduce((s, x) => s + (x.bytes || (x.dataUrl ? x.dataUrl.length : 0)), 0);
+          resolve({ count: list.length, totalBytes });
+        };
+        req.onerror = () => resolve({ count: 0, totalBytes: 0 });
+      });
+    },
+    async cleanupExpired(forceAll = false) {
+      const idb = await this._open();
+      const now = Date.now();
+      return new Promise((resolve) => {
+        const tx = idb.transaction(PAPER_STORE, 'readwrite');
+        const store = tx.objectStore(PAPER_STORE);
+        const req = store.getAll();
+        let removed = 0;
+        req.onsuccess = () => {
+          (req.result || []).forEach(rec => {
+            if (forceAll || (rec.expiresAt && rec.expiresAt <= now)) {
+              store.delete(rec.id);
+              removed++;
+            }
+          });
+        };
+        tx.oncomplete = () => resolve(removed);
+        tx.onerror = () => resolve(0);
+      });
+    }
+  };
+
+  function loadGradedMeta() {
+    try {
+      const arr = JSON.parse(localStorage.getItem(GRADED_META_KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (_) { return []; }
+  }
+  function saveGradedMeta(arr) {
+    try { localStorage.setItem(GRADED_META_KEY, JSON.stringify(arr || [])); } catch (_) {}
+  }
+
+  /* ==========================================================================
+     REQ 8 & 9: Smart Paper Grading (Prompt Copy + Resilient Parser + Math Check)
+        & Graded Papers Archive + Live Sync + PDF + Parent Message
+     ========================================================================== */
+  window.V10PaperGrader = {
+    currentItems: [],
+    currentPhotoUrl: '',
+    openWizard() {
+      const d = getLiveDb();
+      const classesOpts = [];
+      (d.schools || []).forEach(s => (s.classes || []).forEach(c => {
+        classesOpts.push(`<option value="${escHtml(s.id)}|${escHtml(c.id)}">${escHtml(s.name)} — ${escHtml(c.name)}</option>`);
+      }));
+      const hdr = window.ExamApp?.state?.header || {};
+      const titleDef = hdr.subject || hdr.mainTitle || 'آزمون کلاسی';
+      const dateDef = hdr.date || (typeof formatJalaliDate === 'function' ? formatJalaliDate(new Date().toISOString().slice(0, 10)) : 'امروز');
+
+      const html = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <b style="font-size:15px;color:var(--primary-dark)">📸 تصحیح هوشمند برگه با کپی پرامپت</b>
+          <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖ بستن</button>
+        </div>
+        <div class="grid-2" style="gap:8px;margin-bottom:8px">
+          <div><label style="font-size:11px;font-weight:800">کلاس:</label><select id="v10PgClassSel" onchange="window.V10PaperGrader.populateStudents()">${classesOpts.join('') || '<option value="">کلاسی نیست</option>'}</select></div>
+          <div><label style="font-size:11px;font-weight:800">دانش‌آموز:</label><select id="v10PgStuSel"></select></div>
+          <div><label style="font-size:11px;font-weight:800">عنوان آزمون:</label><input type="text" id="v10PgExamTitle" value="${escHtml(titleDef)}"></div>
+          <div><label style="font-size:11px;font-weight:800">تاریخ آزمون:</label><input type="text" id="v10PgExamDate" value="${escHtml(dateDef)}"></div>
+        </div>
+        <div class="card" style="padding:10px;margin-bottom:8px">
+          <label class="btn soft block" style="cursor:pointer;margin:0">📷 انتخاب یا گرفتن عکس برگه دانش‌آموز (ذخیره کم‌حجم و خوانا)<input type="file" accept="image/*" hidden onchange="window.V10PaperGrader.onPhotoPick(event)"></label>
+          <div id="v10PgPhotoStatus" class="muted" style="font-size:11px;margin-top:5px;text-align:center">عکسی انتخاب نشده است.</div>
+        </div>
+        <div class="card" style="padding:10px;margin-bottom:8px">
+          <b style="font-size:12px;color:var(--primary)">۱. کپی پرامپت استاندارد تصحیح (قابل استفاده در جمنای، دیپ‌سیک، ChatGPT):</b>
+          <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
+            <button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.copyPrompt()">📋 کپی پرامپت تصحیح</button>
+            <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.copyPrompt('https://gemini.google.com')">✨ جمنای</button>
+            <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.copyPrompt('https://chat.deepseek.com')">🧠 دیپ‌سیک</button>
+            <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.copyPrompt('https://chatgpt.com')">🤖 ChatGPT</button>
+          </div>
+        </div>
+        <div class="card" style="padding:10px;margin-bottom:8px">
+          <b style="font-size:12px;color:var(--green)">۲. پیست نتیجه هوش مصنوعی و کنترل جمع ریاضی:</b>
+          <textarea id="v10PgPasteBox" rows="3" placeholder="نتیجه JSON یا متن سوال‌به‌سؤال را اینجا پیست کنید..." style="margin-top:5px;font-size:11.5px"></textarea>
+          <button type="button" class="btn green btn-sm block" style="margin-top:6px" onclick="window.V10PaperGrader.parsePastedResult()">🔍 تحلیل، کنترل ریاضی و پیش‌نمایش قابل ویرایش</button>
+        </div>
+        <div id="v10PgPreviewArea" style="display:none"></div>
+      `;
+      if (typeof openModal === 'function') openModal(html);
+      this.currentItems = [];
+      this.currentPhotoUrl = '';
+      this.populateStudents();
+    },
+    populateStudents() {
+      const val = document.getElementById('v10PgClassSel')?.value || '';
+      const sel = document.getElementById('v10PgStuSel');
+      if (!sel) return;
+      const [sid, cid] = val.split('|');
+      const c = typeof findClass === 'function' ? findClass(sid, cid) : null;
+      const list = c && Array.isArray(c.students) ? c.students : [];
+      sel.innerHTML = list.map(st => `<option value="${escHtml(st.id)}">${escHtml((st.lastName || '') + ' ' + (st.name || ''))}</option>`).join('') || '<option value="">دانش‌آموزی نیست</option>';
+    },
+    async onPhotoPick(e) {
+      const f = e?.target?.files?.[0];
+      if (!f) return;
+      const stEl = document.getElementById('v10PgPhotoStatus');
+      if (stEl) stEl.textContent = '⏳ در حال بهینه‌سازی عکس برگه (عرض ۱۱۰۰px)...';
+      try {
+        const compressed = await window.DaneshPaperPhotoDB.compressPaper(f);
+        this.currentPhotoUrl = compressed;
+        const kb = Math.round((compressed.length * 0.75) / 1024);
+        if (stEl) stEl.textContent = `✅ عکس برگه آماده شد (حجم بهینه: حدود ${faNum(kb)} کیلوبایت)`;
+      } catch (_) {
+        if (stEl) stEl.textContent = '⚠️ خطا در خواندن عکس.';
+      }
+    },
+    copyPrompt(openUrl) {
+      const qs = window.ExamApp?.getQuestions ? window.ExamApp.getQuestions() : [];
+      const keyData = qs.map((q, i) => ({
+        num: i + 1,
+        question: q.text,
+        maxScore: q.score,
+        answerKey: q.type === 'mcq' ? (q.options?.[q.correctIndex] || `گزینه ${q.correctIndex + 1}`) : (q.type === 'tf' ? q.tfCorrect : (q.blankWord || q.explanation || ''))
+      }));
+      const prompt = `تو مصحح دقیق و منصف اوراق امتحانی هستی. تصویر برگه امتحانی دانش‌آموز پیوست شده است.
+لطفاً بر اساس کلید سوالات زیر، تک‌تک سوالات برگه را تصحیح کن و فقط یک JSON معتبر برگردان:
+کلید سوالات:
+${JSON.stringify(keyData, null, 2)}
+
+ساختار خروجی الزامی (بدون توضیح اضافه):
+{
+  "studentName": "نام نوشته‌شده روی برگه",
+  "totalScore": 0,
+  "maxTotal": ${qs.reduce((s, q) => s + (Number(q.score) || 0), 0)},
+  "items": [
+    { "num": 1, "earnedScore": 0.5, "maxScore": 0.5, "deductionReason": "پاسخ کامل / یا دلیل دقیق کسر نمره" }
+  ]
+}`;
+      navigator.clipboard?.writeText(prompt).then(() => notify('📋 پرامپت استاندارد تصحیح کپی شد ✅')).catch(() => notify('کپی انجام نشد.'));
+      if (openUrl) window.open(openUrl, '_blank');
+    },
+    parsePastedResult() {
+      const raw = (document.getElementById('v10PgPasteBox')?.value || '').trim();
+      if (!raw) { notify('لطفاً نتیجه را پیست کنید.'); return; }
+      const cleaned = enNum(raw).replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```json/gi, '').replace(/```/g, '').trim();
+      let parsed = null;
+      const m = cleaned.match(/\{[\s\S]*\}/);
+      if (m) {
+        try { parsed = JSON.parse(m[0].replace(/,\s*([}\]])/g, '$1')); } catch (_) {}
+      }
+      if (!parsed || !Array.isArray(parsed.items)) {
+        // Fallback line-by-line parser
+        const items = [];
+        cleaned.split(/\n+/).forEach((line, idx) => {
+          const numMatch = line.match(/(\d+(?:\.\d+)?)\s*(?:از|\/)\s*(\d+(?:\.\d+)?)/);
+          if (numMatch) {
+            items.push({
+              num: items.length + 1,
+              earnedScore: Number(numMatch[1]),
+              maxScore: Number(numMatch[2]),
+              deductionReason: line.trim()
+            });
+          }
+        });
+        if (!items.length) {
+          notify('ساختار قابل خواندن یافت نشد؛ لطفاً متن کامل JSON یا نمرات هر سوال را پیست کنید.');
+          return;
+        }
+        parsed = { totalScore: items.reduce((s, x) => s + x.earnedScore, 0), items };
+      }
+      this.currentItems = parsed.items.map((x, idx) => ({
+        num: Number(x.num) || (idx + 1),
+        earnedScore: Number(x.earnedScore) || 0,
+        maxScore: Number(x.maxScore) || 0,
+        deductionReason: String(x.deductionReason || x.feedback || '—')
+      }));
+      const reportedTotal = parsed.totalScore !== undefined ? Number(parsed.totalScore) : null;
+      this.renderEditablePreview(reportedTotal);
+    },
+    renderEditablePreview(reportedTotal = null) {
+      const area = document.getElementById('v10PgPreviewArea');
+      if (!area) return;
+      const sumE = Math.round(this.currentItems.reduce((s, x) => s + (Number(x.earnedScore) || 0), 0) * 100) / 100;
+      const sumM = Math.round(this.currentItems.reduce((s, x) => s + (Number(x.maxScore) || 0), 0) * 100) / 100;
+      const mismatch = (reportedTotal !== null && Math.abs(reportedTotal - sumE) > 0.01);
+      area.style.display = 'block';
+      area.innerHTML = `
+        ${mismatch ? `<div style="background:#FEE2E2;border:1.5px solid #DC2626;color:#991B1B;padding:8px 10px;border-radius:10px;font-size:11.5px;margin-bottom:8px;font-weight:800">⚠️ مغایرت ریاضی: جمع ریزنمرات (${faNum(sumE)}) با نمره کل اعلام‌شده (${faNum(reportedTotal)}) متفاوت است! جمع دقیق (${faNum(sumE)}) مبنا قرار گرفت.</div>` : ''}
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <b style="font-size:12.5px">جمع کل: <span id="v10PgLiveTotal" style="color:var(--green)">${faNum(sumE)}</span> از ${faNum(sumM)}</b>
+          <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.addRow()">➕ ردیف</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+            <thead><tr style="background:var(--panel)"><th>سوال</th><th>نمره</th><th>بارم</th><th>دلیل مستند کسر نمره</th></tr></thead>
+            <tbody>
+              ${this.currentItems.map((it, idx) => `
+                <tr>
+                  <td style="text-align:center">${faNum(it.num)}</td>
+                  <td><input type="number" step="0.25" value="${it.earnedScore}" style="width:60px;padding:3px" oninput="window.V10PaperGrader.editItem(${idx},'earnedScore',this.value)"></td>
+                  <td><input type="number" step="0.25" value="${it.maxScore}" style="width:60px;padding:3px" oninput="window.V10PaperGrader.editItem(${idx},'maxScore',this.value)"></td>
+                  <td><input type="text" value="${escHtml(it.deductionReason)}" style="width:100%;padding:3px" oninput="window.V10PaperGrader.editItem(${idx},'deductionReason',this.value)"></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="btn primary block" style="margin-top:10px;padding:10px;font-weight:900" onclick="window.V10PaperGrader.commitGrade()">✅ ثبت نهایی در کلاس و بایگانی برگه‌های تصحیح‌شده</button>
+      `;
+    },
+    editItem(idx, key, val) {
+      if (!this.currentItems[idx]) return;
+      this.currentItems[idx][key] = key === 'deductionReason' ? val : (Number(val) || 0);
+      const sumE = Math.round(this.currentItems.reduce((s, x) => s + (Number(x.earnedScore) || 0), 0) * 100) / 100;
+      const tEl = document.getElementById('v10PgLiveTotal');
+      if (tEl) tEl.textContent = faNum(sumE);
+    },
+    addRow() {
+      this.currentItems.push({ num: this.currentItems.length + 1, earnedScore: 0, maxScore: 1, deductionReason: '—' });
+      this.renderEditablePreview();
+    },
+    async commitGrade() {
+      const clsVal = document.getElementById('v10PgClassSel')?.value || '';
+      const stId = document.getElementById('v10PgStuSel')?.value || '';
+      const [sid, cid] = clsVal.split('|');
+      const s = typeof findSchool === 'function' ? findSchool(sid) : null;
+      const c = typeof findClass === 'function' ? findClass(sid, cid) : null;
+      const st = c ? (c.students || []).find(x => x.id === stId) : null;
+      if (!s || !c || !st) { notify('لطفاً کلاس و دانش‌آموز معتبر انتخاب کنید.'); return; }
+
+      const examTitle = (document.getElementById('v10PgExamTitle')?.value || 'آزمون').trim();
+      const examDate = (document.getElementById('v10PgExamDate')?.value || '').trim();
+      const totalEarned = Math.round(this.currentItems.reduce((acc, x) => acc + (Number(x.earnedScore) || 0), 0) * 100) / 100;
+      const maxTotal = Math.round(this.currentItems.reduce((acc, x) => acc + (Number(x.maxScore) || 0), 0) * 100) / 100;
+      const recId = 'gp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+
+      let hasPhoto = false;
+      if (this.currentPhotoUrl) {
+        await window.DaneshPaperPhotoDB.savePhoto(recId, this.currentPhotoUrl);
+        hasPhoto = true;
+      }
+
+      // Sync grade directly to student's class register in db
+      if (!st.grades) st.grades = [];
+      const existingIdx = st.grades.findIndex(g => g.gradedPaperId === recId || (g.title === examTitle && g.date === examDate));
+      const gradeEntry = {
+        id: existingIdx >= 0 ? st.grades[existingIdx].id : ('g_' + Date.now()),
+        gradedPaperId: recId,
+        title: examTitle,
+        score: totalEarned,
+        max: maxTotal || 20,
+        type: 'written',
+        date: examDate
+      };
+      if (existingIdx >= 0) st.grades[existingIdx] = gradeEntry;
+      else st.grades.push(gradeEntry);
+      if (typeof save === 'function') save();
+
+      const meta = loadGradedMeta();
+      meta.unshift({
+        id: recId,
+        sid, cid, stId: st.id,
+        schoolName: s.name,
+        className: c.name,
+        studentName: `${st.name || ''} ${st.lastName || ''}`.trim(),
+        examTitle,
+        examDate,
+        totalEarned,
+        maxTotal,
+        items: this.currentItems,
+        hasPhoto,
+        createdAt: Date.now(),
+        expiresAt: Date.now() + RETENTION_MS
+      });
+      saveGradedMeta(meta);
+      if (typeof closeModal === 'function') closeModal();
+      this.renderArchiveUI();
+      notify(`✅ نمره ${faNum(totalEarned)} از ${faNum(maxTotal)} در دفتر کلاس و بایگانی برگه‌ها ثبت شد.`);
+    },
+    async renderArchiveUI(filterText = '') {
+      const box = document.getElementById('v10GradedPapersContainer');
+      if (!box) return;
+      await window.DaneshPaperPhotoDB.cleanupExpired(false);
+      const stats = await window.DaneshPaperPhotoDB.getStats();
+      const meta = loadGradedMeta();
+      const q = normFaStrict(filterText || document.getElementById('v10GpSearchInp')?.value || '');
+      const filtered = meta.filter(m => !q || normFaStrict(`${m.className} ${m.examTitle} ${m.examDate} ${m.studentName}`).includes(q));
+      const mb = (stats.totalBytes / (1024 * 1024)).toFixed(2);
+
+      box.innerHTML = `
+        <div class="box-card highlight">
+          <div class="box-header">
+            <span>📂 برگه‌های تصحیح‌شده (بایگانی مجزا در IndexedDB)</span>
+            <button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.openWizard()">➕ تصحیح برگه جدید</button>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+            <span class="chip" style="font-size:11px">📦 فضای عکس برگه‌ها: ${faNum(mb)} MB (${faNum(stats.count)} عکس)</span>
+            <span class="chip" style="font-size:11px">⏳ پاکسازی خودکار عکس: ۱۸۰ روزه (نمرات دائمی)</span>
+            <button type="button" class="btn gray btn-sm" onclick="window.V10PaperGrader.manualCleanup()">🧹 پاکسازی دستی عکس‌های قدیمی</button>
+          </div>
+          <input type="text" id="v10GpSearchInp" value="${escHtml(filterText || '')}" placeholder="🔍 جستجوی ۲ ثانیه‌ای بر اساس کلاس، عنوان آزمون یا نام دانش‌آموز..." oninput="window.V10PaperGrader.renderArchiveUI(this.value)">
+        </div>
+        ${filtered.length === 0 ? '<div class="box-card muted" style="text-align:center">هنوز برگه تصحیح‌شده‌ای ثبت نشده است.</div>' : filtered.map(m => {
+          const daysLeft = Math.max(0, Math.ceil(((m.expiresAt || (m.createdAt + RETENTION_MS)) - Date.now()) / 86400000));
+          return `
+            <div class="box-card" style="margin-bottom:8px">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+                <div>
+                  <b>👤 ${escHtml(m.studentName)}</b> <span class="muted" style="font-size:11px">(${escHtml(m.className)})</span><br>
+                  <span style="font-size:11.5px;color:var(--primary-dark)">📝 ${escHtml(m.examTitle)} · 📅 ${escHtml(m.examDate)}</span>
+                </div>
+                <div style="text-align:left">
+                  <span class="chip" style="background:#DCFCE7;color:#166534;font-weight:900">${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}</span>
+                  <div class="muted" style="font-size:10px;margin-top:3px">${m.hasPhoto ? `⏳ ${faNum(daysLeft)} روز تا حذف عکس` : '📄 فقط ریزنمرات'}</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+                <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.viewPaperDetail('${m.id}')">👁️ مشاهده برگه و ریزنمرات</button>
+                <button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.copyParentDisputeMsg('${m.id}')">🛡️ کپی پیام مستند برای ولی/دانش‌آموز</button>
+                <button type="button" class="btn gray btn-sm" onclick="window.V10PaperGrader.printPaperReport('${m.id}')">📕 گزارش PDF</button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      `;
+    },
+    async manualCleanup() {
+      const removed = await window.DaneshPaperPhotoDB.cleanupExpired(false);
+      notify(removed > 0 ? `🧹 ${faNum(removed)} عکس منقضی‌شده پاک شد (نمرات محفوظ ماندند).` : 'همه عکس‌ها هنوز در بازه ۱۸۰ روزه هستند ✅');
+      this.renderArchiveUI();
+    },
+    async viewPaperDetail(id) {
+      const meta = loadGradedMeta();
+      const m = meta.find(x => x.id === id);
+      if (!m) return;
+      const photoRec = await window.DaneshPaperPhotoDB.getPhoto(id);
+      const html = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <b>📂 پرونده برگه: ${escHtml(m.studentName)}</b>
+          <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖</button>
+        </div>
+        <div class="muted" style="font-size:11.5px;margin-bottom:8px">${escHtml(m.className)} · ${escHtml(m.examTitle)} (${escHtml(m.examDate)}) · نمره: <b>${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}</b></div>
+        ${photoRec?.dataUrl ? `<img src="${photoRec.dataUrl}" style="width:100%;border-radius:10px;border:1px solid var(--border);margin-bottom:8px">` : '<div class="card muted" style="text-align:center;margin-bottom:8px">فایل عکس منقضی یا ثبت نشده است (ریزنمرات محفوظ است).</div>'}
+        <table style="width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:8px">
+          <thead><tr style="background:var(--panel)"><th>سوال</th><th>نمره</th><th>بارم</th><th>دلیل کسر نمره</th></tr></thead>
+          <tbody>
+            ${(m.items || []).map((it, idx) => `
+              <tr>
+                <td style="text-align:center">${faNum(it.num)}</td>
+                <td><input type="number" step="0.25" value="${it.earnedScore}" style="width:58px;padding:2px" onchange="window.V10PaperGrader.updateSavedItemScore('${m.id}',${idx},this.value)"></td>
+                <td style="text-align:center">${faNum(it.maxScore)}</td>
+                <td>${escHtml(it.deductionReason)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+        <button type="button" class="btn primary btn-sm block" onclick="window.V10PaperGrader.copyParentDisputeMsg('${m.id}')">🛡️ کپی پیام مستند برای ولی/دانش‌آموز</button>
+      `;
+      if (typeof openModal === 'function') openModal(html);
+    },
+    updateSavedItemScore(id, idx, newVal) {
+      const meta = loadGradedMeta();
+      const m = meta.find(x => x.id === id);
+      if (!m || !m.items || !m.items[idx]) return;
+      m.items[idx].earnedScore = Number(newVal) || 0;
+      m.totalEarned = Math.round(m.items.reduce((s, x) => s + (Number(x.earnedScore) || 0), 0) * 100) / 100;
+      saveGradedMeta(meta);
+      // Live sync with class register in db
+      const c = typeof findClass === 'function' ? findClass(m.sid, m.cid) : null;
+      const st = c ? (c.students || []).find(x => x.id === m.stId) : null;
+      if (st && Array.isArray(st.grades)) {
+        const g = st.grades.find(x => x.gradedPaperId === m.id || (x.title === m.examTitle && x.date === m.examDate));
+        if (g) g.score = m.totalEarned;
+        if (typeof save === 'function') save();
+      }
+      this.renderArchiveUI();
+      notify(`✅ نمره به ${faNum(m.totalEarned)} تغییر یافت و با دفتر کلاس همگام شد.`);
+    },
+    copyParentDisputeMsg(id) {
+      const m = loadGradedMeta().find(x => x.id === id);
+      if (!m) return;
+      const lines = (m.items || []).map(it => `• سوال ${faNum(it.num)}: ${faNum(it.earnedScore)} از ${faNum(it.maxScore)} (${it.deductionReason})`);
+      const msg = `با سلام و احترام خدمت اولیای گرامی «${m.studentName}»\nنتیجه تصحیح دقیق «${m.examTitle}» (${m.examDate}):\n🎯 نمره نهایی: ${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}\n\nریزنمرات و توضیحات سوال‌به‌سؤال:\n${lines.join('\n')}\n\nبا احترام — دبیر مربوطه`;
+      navigator.clipboard?.writeText(msg).then(() => notify('🛡️ پیام مستند برای ولی/دانش‌آموز کپی شد ✅')).catch(() => notify('کپی انجام نشد.'));
+    },
+    printPaperReport(id) {
+      const m = loadGradedMeta().find(x => x.id === id);
+      if (!m) return;
+      const w = window.open('', '_blank');
+      if (!w) return;
+      w.document.write(`<html dir="rtl" lang="fa"><head><meta charset="utf-8"><title>گزارش تصحیح ${escHtml(m.studentName)}</title><style>body{font-family:Tahoma,sans-serif;padding:24px;line-height:1.8}table{width:100%;border-collapse:collapse;margin-top:12px}th,td{border:1px solid #ccc;padding:7px;text-align:right}</style></head><body><h2>گزارش مستند تصحیح برگه امتحانی</h2><p><b>دانش‌آموز:</b> ${escHtml(m.studentName)} | <b>کلاس:</b> ${escHtml(m.className)} | <b>آزمون:</b> ${escHtml(m.examTitle)} (${escHtml(m.examDate)})</p><p><b>نمره نهایی:</b> ${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}</p><table><thead><tr><th>سوال</th><th>نمره کسب‌شده</th><th>بارم</th><th>دلیل مستند کسر نمره</th></tr></thead><tbody>${(m.items || []).map(it => `<tr><td>${faNum(it.num)}</td><td>${faNum(it.earnedScore)}</td><td>${faNum(it.maxScore)}</td><td>${escHtml(it.deductionReason)}</td></tr>`).join('')}</tbody></table><script>window.print();<\/script></body></html>`);
+      w.document.close();
+    }
+  };
+
+  // Wire ExamApp.openGradingModal & ExamApp.openTab('gradedPapers')
+  if (window.ExamApp) {
+    window.ExamApp.openGradingModal = function() {
+      window.V10PaperGrader.openWizard();
+    };
+    const _origOpenTab = window.ExamApp.openTab.bind(window.ExamApp);
+    window.ExamApp.openTab = function(tabName, btn) {
+      const r = _origOpenTab(tabName, btn);
+      if (tabName === 'gradedPapers') window.V10PaperGrader.renderArchiveUI();
+      if (tabName === 'archive') window.V10FullExamBank.renderBankUI();
+      return r;
+    };
+  }
+
+  /* ==========================================================================
+     REQ 16: Complete Sample Exam Bank (Save Full Exam, Reload, Edit, Print, Delete)
+     ========================================================================== */
+  const FULL_BANK_KEY = 'danesh_amooz_full_exam_bank_v10';
+  window.V10FullExamBank = {
+    load() {
+      try {
+        const arr = JSON.parse(localStorage.getItem(FULL_BANK_KEY) || '[]');
+        return Array.isArray(arr) ? arr : [];
+      } catch (_) { return []; }
+    },
+    save(arr) {
+      try { localStorage.setItem(FULL_BANK_KEY, JSON.stringify(arr || [])); } catch (_) {}
+    },
+    saveCurrentExam() {
+      if (!window.ExamApp) return;
+      const qs = window.ExamApp.getQuestions ? window.ExamApp.getQuestions() : [];
+      if (!qs.length) { notify('ابتدا حداقل یک سوال در برگه بسازید.'); return; }
+      const hdr = JSON.parse(JSON.stringify(window.ExamApp.state?.header || {}));
+      const totalBarom = Math.round(qs.reduce((s, q) => s + (Number(q.score) || 0), 0) * 100) / 100;
+      const list = this.load();
+      list.unshift({
+        id: 'feb_' + Date.now(),
+        title: hdr.subject || hdr.mainTitle || 'نمونه سوال کامل',
+        grade: hdr.grade || '',
+        subject: hdr.subject || '',
+        date: hdr.date || '',
+        totalBarom,
+        header: hdr,
+        questions: JSON.parse(JSON.stringify(qs)),
+        createdAt: Date.now()
+      });
+      this.save(list);
+      this.renderBankUI();
+      notify('📚 آزمون کامل در «بانک نمونه سوالات کامل» ذخیره شد ✅');
+    },
+    loadIntoBuilder(id) {
+      const item = this.load().find(x => x.id === id);
+      if (!item || !window.ExamApp) return;
+      if (item.header) window.ExamApp.state.header = JSON.parse(JSON.stringify(item.header));
+      const b = window.ExamApp.currentBranch || 'الف';
+      if (window.ExamApp.state.branches && window.ExamApp.state.branches[b]) {
+        window.ExamApp.state.branches[b] = JSON.parse(JSON.stringify(item.questions || []));
+      }
+      if (typeof window.ExamApp.saveState === 'function') window.ExamApp.saveState();
+      if (typeof window.ExamApp.renderAll === 'function') window.ExamApp.renderAll();
+      window.ExamApp.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+      notify('✅ نمونه سوال کامل با سربرگ و کلید در برگه بارگذاری شد.');
+    },
+    remove(id) {
+      this.save(this.load().filter(x => x.id !== id));
+      this.renderBankUI();
+      notify('حذف شد.');
+    },
+    renderBankUI() {
+      const archPane = document.getElementById('examPane-archive');
+      if (!archPane) return;
+      let box = document.getElementById('v10FullBankBox');
+      if (!box) {
+        box = document.createElement('div');
+        box.id = 'v10FullBankBox';
+        box.style.marginTop = '12px';
+        archPane.appendChild(box);
+      }
+      const list = this.load();
+      box.innerHTML = `
+        <div class="box-card highlight">
+          <div class="box-header">
+            <span>📚 بانک نمونه سوالات کامل (سربرگ + سوالات + پاسخ کلیدی)</span>
+            <button type="button" class="btn primary btn-sm" onclick="window.V10FullExamBank.saveCurrentExam()">➕ ذخیره آزمون فعلی در بانک کامل</button>
+          </div>
+          ${list.length === 0 ? '<p class="muted" style="margin:0">هنوز نمونه سوال کاملی ذخیره نشده است.</p>' : list.map(it => `
+            <div class="card" style="padding:9px 11px;margin-top:8px">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+                <div><b>${escHtml(it.title)}</b> <span class="muted" style="font-size:11px">(${escHtml(it.grade)} · ${faNum((it.questions || []).length)} سوال · ${faNum(it.totalBarom)} نمره)</span></div>
+                <div style="display:flex;gap:5px">
+                  <button type="button" class="btn primary btn-sm" onclick="window.V10FullExamBank.loadIntoBuilder('${it.id}')">📥 بارگذاری یک‌لمسی</button>
+                  <button type="button" class="btn danger btn-sm" onclick="window.V10FullExamBank.remove('${it.id}')">🗑️</button>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+  };
+
+  /* ==========================================================================
+     REQ 5: Smart Class Wizard from Class Register Photo
+     ========================================================================== */
+  window.openSmartRegisterClassWizard = function() {
+    const d = getLiveDb();
+    const schools = Array.isArray(d.schools) ? d.schools : [];
+    const schoolOpts = schools.map(s => `<option value="${escHtml(s.id)}">${escHtml(s.name)}</option>`).join('');
+    const html = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <b style="font-size:14.5px;color:var(--primary-dark)">📸 ساخت کلاس هوشمند از عکس دفتر کلاسی</b>
+        <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖ بستن</button>
+      </div>
+      <div class="grid-2" style="gap:8px;margin-bottom:8px">
+        <div><label style="font-size:11px;font-weight:800">مدرسه مقصد:</label><select id="v10ScwSchool">${schoolOpts || '<option value="">ابتدا مدرسه بسازید</option>'}</select></div>
+        <div><label style="font-size:11px;font-weight:800">نام کلاس / درس:</label><input type="text" id="v10ScwClassName" placeholder="مثلاً: هشتم ب - ریاضی"></div>
+      </div>
+      <div class="card" style="padding:10px;margin-bottom:8px">
+        <label class="btn soft block" style="cursor:pointer;margin:0">📷 انتخاب عکس دفتر کلاسی<input type="file" accept="image/*" hidden onchange="window.V10SmartClassWizard.onPhoto(event)"></label>
+        <div id="v10ScwPhotoInfo" class="muted" style="font-size:11px;margin-top:5px;text-align:center">عکس دفتر کلاسی را انتخاب کنید.</div>
+        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+          <button type="button" class="btn primary btn-sm" onclick="window.V10SmartClassWizard.extractWithAI()">🤖 استخراج با هوش مصنوعی</button>
+          <button type="button" class="btn gray btn-sm" onclick="window.V10SmartClassWizard.copyPrompt()">📋 کپی پرامپت (حالت بدون API)</button>
+        </div>
+      </div>
+      <div class="card" style="padding:10px;margin-bottom:8px">
+        <textarea id="v10ScwPaste" rows="2" placeholder="یا خروجی JSON/متنی استخراج‌شده از هوش مصنوعی را اینجا پیست کنید..." style="font-size:11.5px"></textarea>
+        <button type="button" class="btn soft btn-sm block" style="margin-top:5px" onclick="window.V10SmartClassWizard.parsePaste()">📊 نمایش در جدول قابل ویرایش</button>
+      </div>
+      <div id="v10ScwTableWrap"></div>
+    `;
+    if (typeof openModal === 'function') openModal(html);
+    window.V10SmartClassWizard.rows = [];
+    window.V10SmartClassWizard.imgDataUrl = '';
+  };
+
+  window.V10SmartClassWizard = {
+    rows: [],
+    imgDataUrl: '',
+    async onPhoto(e) {
+      const f = e?.target?.files?.[0];
+      if (!f) return;
+      this.imgDataUrl = typeof compressImage === 'function' ? await compressImage(f, 1100, 0.82) : '';
+      const info = document.getElementById('v10ScwPhotoInfo');
+      if (info) info.textContent = '✅ عکس دفتر کلاسی آماده است.';
+    },
+    copyPrompt() {
+      const p = `از روی تصویر دفتر کلاسی پیوست‌شده، نام دانش‌آموزان، نمرات، تعداد غیبت‌ها و مثبت/منفی‌ها را استخراج کن و فقط یک JSON معتبر برگردان:
+{"className":"نام کلاس در صورت وجود","students":[{"name":"نام","lastName":"نام خانوادگی","grade":18,"absences":0,"positives":1,"negatives":0}]}`;
+      navigator.clipboard?.writeText(p).then(() => notify('📋 پرامپت استخراج دفتر کلاسی کپی شد ✅'));
+    },
+    async extractWithAI() {
+      if (!this.imgDataUrl) { notify('ابتدا عکس دفتر کلاسی را انتخاب کنید.'); return; }
+      const info = document.getElementById('v10ScwPhotoInfo');
+      if (info) info.textContent = '⏳ در حال استخراج لیست با هوش مصنوعی...';
+      try {
+        const base64 = this.imgDataUrl.split(',')[1] || '';
+        let raw = '';
+        if (window.ExamApp && typeof window.ExamApp.callArgonAI === 'function') {
+          raw = await window.ExamApp.callArgonAI('از روی تصویر دفتر کلاسی، لیست دانش‌آموزان را با نام، نام خانوادگی، نمره، غیبت، مثبت و منفی به صورت JSON برگردان: {"students":[{"name":"...","lastName":"...","grade":18,"absences":0,"positives":0,"negatives":0}]}', [{ mimeType: 'image/jpeg', base64 }]);
+        }
+        if (raw) {
+          const box = document.getElementById('v10ScwPaste');
+          if (box) box.value = raw;
+          this.parsePaste();
+          if (info) info.textContent = '✅ استخراج انجام شد؛ در جدول پایین بررسی و تایید کنید.';
+        } else {
+          if (info) info.textContent = '⚠️ پاسخ دریافت نشد؛ از دکمه کپی پرامپت بدون API استفاده کنید.';
+        }
+      } catch (_) {
+        if (info) info.textContent = '⚠️ خطا در اتصال AI؛ از حالت کپی پرامپت استفاده کنید.';
+      }
+    },
+    parsePaste() {
+      const raw = (document.getElementById('v10ScwPaste')?.value || '').trim();
+      if (!raw) { notify('متنی برای تحلیل وجود ندارد.'); return; }
+      const cleaned = enNum(raw).replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```json/gi, '').replace(/```/g, '').trim();
+      let parsed = null;
+      const m = cleaned.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
+      if (m) {
+        try { parsed = JSON.parse(m[0].replace(/,\s*([}\]])/g, '$1')); } catch (_) {}
+      }
+      const arr = Array.isArray(parsed) ? parsed : (Array.isArray(parsed?.students) ? parsed.students : []);
+      if (arr.length) {
+        this.rows = arr.map(s => ({
+          name: String(s.name || s.firstName || '').trim(),
+          lastName: String(s.lastName || '').trim(),
+          grade: s.grade !== undefined && s.grade !== null ? Number(s.grade) : '',
+          absences: Number(s.absences) || 0,
+          positives: Number(s.positives) || 0,
+          negatives: Number(s.negatives) || 0
+        }));
+      } else {
+        this.rows = cleaned.split(/\n+/).map(l => l.trim()).filter(Boolean).map(l => {
+          const parts = l.replace(/^\d+[\.\-\)\s]+/, '').split(/\s+/);
+          return { name: parts[0] || '', lastName: parts.slice(1).join(' ') || '', grade: '', absences: 0, positives: 0, negatives: 0 };
+        });
+      }
+      this.renderTable();
+    },
+    renderTable() {
+      const wrap = document.getElementById('v10ScwTableWrap');
+      if (!wrap) return;
+      wrap.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <b style="font-size:12px">پیش‌نمایش قابل ویرایش (${faNum(this.rows.length)} دانش‌آموز):</b>
+          <button type="button" class="btn soft btn-sm" onclick="window.V10SmartClassWizard.addBlank()">➕ ردیف</button>
+        </div>
+        <div style="max-height:200px;overflow:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:11px">
+            <thead><tr style="background:var(--panel)"><th>نام</th><th>نام خانوادگی</th><th>نمره</th><th>غیبت</th><th>+</th><th>-</th><th></th></tr></thead>
+            <tbody>
+              ${this.rows.map((r, i) => `
+                <tr>
+                  <td><input type="text" value="${escHtml(r.name)}" style="width:70px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].name=this.value"></td>
+                  <td><input type="text" value="${escHtml(r.lastName)}" style="width:85px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].lastName=this.value"></td>
+                  <td><input type="number" step="0.25" value="${r.grade}" style="width:48px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].grade=this.value"></td>
+                  <td><input type="number" value="${r.absences}" style="width:38px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].absences=Number(this.value)||0"></td>
+                  <td><input type="number" value="${r.positives}" style="width:34px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].positives=Number(this.value)||0"></td>
+                  <td><input type="number" value="${r.negatives}" style="width:34px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].negatives=Number(this.value)||0"></td>
+                  <td><button type="button" class="btn danger btn-sm" onclick="window.V10SmartClassWizard.rows.splice(${i},1);window.V10SmartClassWizard.renderTable()">×</button></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="btn green block" style="margin-top:8px;padding:10px;font-weight:900" onclick="window.V10SmartClassWizard.commitClass()">✅ تایید و ساخت نهایی کلاس در مدرسه</button>
+      `;
+    },
+    addBlank() {
+      this.rows.push({ name: '', lastName: '', grade: '', absences: 0, positives: 0, negatives: 0 });
+      this.renderTable();
+    },
+    commitClass() {
+      const sid = document.getElementById('v10ScwSchool')?.value || '';
+      const clsName = (document.getElementById('v10ScwClassName')?.value || '').trim() || 'کلاس جدید دفتر';
+      const s = typeof findSchool === 'function' ? findSchool(sid) : null;
+      if (!s) { notify('ابتدا یک مدرسه ایجاد یا انتخاب کنید.'); return; }
+      const newCid = typeof uid === 'function' ? uid() : ('c_' + Date.now());
+      const todayISO = typeof localISODate === 'function' ? localISODate() : new Date().toISOString().slice(0, 10);
+      const students = this.rows.filter(r => r.name || r.lastName).map(r => {
+        const stId = typeof uid === 'function' ? uid() : ('st_' + Date.now() + Math.random().toString(36).slice(2, 5));
+        const posArr = Array.from({ length: Math.max(0, r.positives || 0) }, (_, i) => ({ id: stId + '_p' + i, date: new Date().toISOString(), reason: 'دفتر کلاسی', value: 0.25 }));
+        const negArr = Array.from({ length: Math.max(0, r.negatives || 0) }, (_, i) => ({ id: stId + '_n' + i, date: new Date().toISOString(), reason: 'دفتر کلاسی', value: 0.25 }));
+        const gradesArr = (r.grade !== '' && !isNaN(Number(r.grade))) ? [{ id: stId + '_g1', title: 'نمره دفتر کلاسی', score: Number(r.grade), max: 20, type: 'written', date: todayISO }] : [];
+        return {
+          id: stId,
+          name: r.name || 'دانش‌آموز',
+          lastName: r.lastName || '',
+          photo: '',
+          status: 'none',
+          grades: gradesArr,
+          behavior: { positives: posArr, negatives: negArr }
+        };
+      });
+      if (!s.classes) s.classes = [];
+      s.classes.push({ id: newCid, name: clsName, subject: clsName, students, attendance: {} });
+      if (typeof save === 'function') save();
+      if (typeof closeModal === 'function') closeModal();
+      if (typeof openClass === 'function') openClass(s.id, newCid);
+      notify(`✅ کلاس «${clsName}» با ${faNum(students.length)} دانش‌آموز ساخته شد.`);
+    }
+  };
+
+  /* ==========================================================================
+     REQ 19: Smart Assistant «دانا» (Online + Offline Live DB Intelligence)
+     ========================================================================== */
+  const DANA_SVG = `<svg viewBox="0 0 64 64" width="54" height="54"><defs><linearGradient id="danaBodyG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D97706"/><stop offset="100%" stop-color="#78350F"/></linearGradient></defs><path d="M16 56C16 44 23 39 32 39C41 39 48 44 48 56Z" fill="url(#danaBodyG)"/><circle cx="32" cy="27" r="14" fill="#FEF3C7" stroke="#9A3412" stroke-width="2.2"/><path d="M14 19L32 9L50 19L32 26Z" fill="url(#danaBodyG)"/><circle cx="27" cy="27" r="2.2" fill="#1E1B18"/><circle cx="37" cy="27" r="2.2" fill="#1E1B18"/><path d="M26 33Q32 37 38 33" fill="none" stroke="#9A3412" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+
+  window.DanaAssistant = {
+    history: [],
+    updateStatusDot() {
+      const dot = document.getElementById('danaStatusDot');
+      if (dot) dot.classList.toggle('offline', !navigator.onLine);
+    },
+    getLiveContext() {
+      const activeViewEl = document.querySelector('.view.active');
+      const viewId = activeViewEl ? activeViewEl.id : 'dashboard';
+      const d = getLiveDb();
+      const s = typeof findSchool === 'function' ? findSchool(window.currentSchoolId) : null;
+      const c = (s && typeof findClass === 'function') ? findClass(s.id, window.currentClassId) : null;
+      return { viewId, school: s, cls: c, schoolsCount: (d.schools || []).length };
+    },
+    getPageGuide(viewId) {
+      const guides = {
+        dashboard: '📍 شما در **صفحه خانه** هستید. می‌توانید روی کرنوگراف مسی بزنید تا آمار ۳بعدی را ببینید، یا از نوار سریع بالا کلاس جدید بسازید.\n💡 محدودیت مرورگر: عکس‌ها در IndexedDB ذخیره می‌شوند؛ برای انتقال به گوشی دیگر از تب تنظیمات بکاپ JSON بگیرید.',
+        teachView: '📍 شما در بخش **آموزش و کتاب‌خوان** هستید. فایل PDF کتاب را انتخاب کنید، روی تخته هوشمند بنویسید و با دکمه «📋 لیست امروز» وسط تدریس به حاضری بروید و برگردید.',
+        examView: '📍 شما در **آزمون‌ساز** هستید. مبحث و بارم را تنظیم کنید؛ اگر کلید API ندارید یا سهمیه رایگان پر شده، از «🪄 حالت بدون API» استفاده کنید.',
+        classDetail: '📍 شما داخل **کلاس** هستید. برای جستجوی سریع در لیست امروز از کادر بالای لیست استفاده کنید یا برای تصحیح برگه به آزمون‌ساز بروید.'
+      };
+      return guides[viewId] || '📍 برای راهنمای دقیق هر بخش، نام دانش‌آموز، آمار کلاس یا سوال خود را بپرسید.';
+    },
+    analyzeOffline(query) {
+      const q = normFaStrict(query);
+      const ctx = this.getLiveContext();
+      const d = getLiveDb();
+      const allStudents = [];
+      (d.schools || []).forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+        const ag = typeof avgGrade === 'function' ? avgGrade(st) : null;
+        let abs = 0;
+        if (c.attendance) Object.values(c.attendance).forEach(dayMap => { if (dayMap && dayMap[st.id] === 'absent') abs++; });
+        allStudents.push({ s, c, st, fullName: `${st.name || ''} ${st.lastName || ''}`.trim(), avg: ag, abs });
+      })));
+
+      const actions = [];
+      if (/راهنما|چطور|کمک|محدودیت|سهمیه|بکاپ|آفلاین/.test(q)) {
+        actions.push({ label: '🪄 حالت بدون API', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openNoApiModal(),80)' });
+        actions.push({ label: '💾 بکاپ JSON', fn: 'closeModal();showView("backup")' });
+        return { text: this.getPageGuide(ctx.viewId), actions };
+      }
+
+      if (/برگه|تصحیح/.test(q)) {
+        actions.push({ label: '📂 باز کردن برگه‌های تصحیح‌شده', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openTab("gradedPapers",document.getElementById("v10GradedPapersTabBtn")),80)' });
+        return { text: `📂 در بایگانی برگه‌های تصحیح‌شده، ${faNum(loadGradedMeta().length)} برگه ثبت شده است.`, actions };
+      }
+
+      const belowMatch = q.match(/زیر\s*(\d+(?:\.\d+)?)/);
+      if (belowMatch || /افت|ضعیف|کمتر/.test(q)) {
+        const thr = belowMatch ? Number(belowMatch[1]) : 12;
+        const pool = ctx.cls ? allStudents.filter(x => x.c.id === ctx.cls.id) : allStudents;
+        const low = pool.filter(x => x.avg !== null && x.avg < thr).sort((a, b) => a.avg - b.avg);
+        if (!low.length) return { text: `✅ هیچ دانش‌آموزی با میانگین زیر ${faNum(thr)} یافت نشد.`, actions: [] };
+        low.slice(0, 3).forEach(x => actions.push({ label: `👤 پرونده ${x.fullName}`, fn: `closeModal();openStudent('${x.s.id}','${x.c.id}','${x.st.id}')` }));
+        return {
+          text: `📉 دانش‌آموزان زیر ${faNum(thr)} (${faNum(low.length)} نفر):\n` + low.slice(0, 8).map((x, i) => `${faNum(i + 1)}. ${x.fullName} (${x.c.name}) — نمره: ${faNum(x.avg.toFixed(2))}`).join('\n'),
+          actions
+        };
+      }
+
+      if (/غیبت|غایب/.test(q)) {
+        const pool = ctx.cls ? allStudents.filter(x => x.c.id === ctx.cls.id) : allStudents;
+        const topAbs = pool.filter(x => x.abs > 0).sort((a, b) => b.abs - a.abs).slice(0, 6);
+        if (!topAbs.length) return { text: '✅ غیبتی ثبت نشده است.', actions: [] };
+        topAbs.slice(0, 2).forEach(x => actions.push({ label: `👤 ${x.fullName}`, fn: `closeModal();openStudent('${x.s.id}','${x.c.id}','${x.st.id}')` }));
+        return { text: `📅 بیشترین غیبت‌ها:\n` + topAbs.map((x, i) => `${faNum(i + 1)}. ${x.fullName} (${x.c.name}) — ${faNum(x.abs)} غیبت`).join('\n'), actions };
+      }
+
+      if (/میانگین|آمار|کلاس|مدرسه|بانک/.test(q)) {
+        const scored = allStudents.filter(x => x.avg !== null);
+        const avg = scored.length ? (scored.reduce((s, x) => s + x.avg, 0) / scored.length).toFixed(2) : '—';
+        const bankLen = window.V10FullExamBank ? window.V10FullExamBank.load().length : 0;
+        return {
+          text: `📊 آمار زنده کل برنامه:\n• مدارس: ${faNum((d.schools || []).length)}\n• دانش‌آموزان: ${faNum(allStudents.length)}\n• میانگین کل نمرات: ${faNum(avg)}\n• بانک نمونه سوالات کامل: ${faNum(bankLen)} آزمون\n• برگه‌های تصحیح‌شده: ${faNum(loadGradedMeta().length)}`,
+          actions: [
+            { label: '💾 ذخیره آزمون فعلی در بانک', fn: 'window.V10FullExamBank.saveCurrentExam()' },
+            { label: '📂 بایگانی برگه‌ها', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openTab("gradedPapers",document.getElementById("v10GradedPapersTabBtn")),80)' }
+          ]
+        };
+      }
+
+      // Direct student search by name
+      if (q.length >= 2) {
+        const hits = allStudents.filter(x => normFaStrict(x.fullName).includes(q));
+        if (hits.length) {
+          hits.slice(0, 3).forEach(x => actions.push({ label: `👤 باز کردن پرونده ${x.fullName}`, fn: `closeModal();openStudent('${x.s.id}','${x.c.id}','${x.st.id}')` }));
+          return {
+            text: `🔎 ${faNum(hits.length)} دانش‌آموز یافت شد:\n` + hits.slice(0, 5).map(x => `• ${x.fullName} (${x.c.name}) — میانگین: ${x.avg !== null ? faNum(x.avg.toFixed(2)) : '—'} | غیبت: ${faNum(x.abs)}`).join('\n'),
+            actions
+          };
+        }
+      }
+
+      return {
+        text: this.getPageGuide(ctx.viewId) + `\n\nمی‌توانید نام یک دانش‌آموز را بنویسید یا بپرسید: «نمره زیر ۱۲»، «بیشترین غیبت»، «آمار کل».`,
+        actions: [
+          { label: '🪄 حالت بدون API', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openNoApiModal(),80)' },
+          { label: '📂 برگه‌های تصحیح‌شده', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openTab("gradedPapers",document.getElementById("v10GradedPapersTabBtn")),80)' }
+        ]
+      };
+    },
+    async ask(query) {
+      const txt = String(query || '').trim();
+      if (!txt) return;
+      this.history.push({ role: 'user', text: txt, actions: [] });
+      this.renderLog('thinking');
+      let reply = this.analyzeOffline(txt);
+
+      if (navigator.onLine && window.UnifiedAiEngine && typeof window.UnifiedAiEngine.call === 'function') {
+        try {
+          const ctx = this.getLiveContext();
+          const sys = `تو «دانا» همیار هوشمند معلم در برنامه دانش‌آموز من هستی. صفحه فعلی: ${ctx.viewId}. مدرسه: ${ctx.school?.name || 'ندارد'}. کلاس: ${ctx.cls?.name || 'ندارد'}. پاسخ کوتاه، دقیق و کاربردی به فارسی بده.`;
+          const aiRes = await window.UnifiedAiEngine.call({ prompt: txt, systemPrompt: sys, maxTokens: 450 });
+          if (aiRes && aiRes.text && String(aiRes.text).trim().length > 10) {
+            reply = { text: String(aiRes.text).trim(), actions: reply.actions || [] };
+          }
+        } catch (_) {}
+      }
+
+      this.history.push({ role: 'bot', text: reply.text, actions: reply.actions || [] });
+      this.renderLog(navigator.onLine ? 'answering' : 'offline');
+    },
+    renderLog(avatarState = 'idle') {
+      const av = document.getElementById('v10DanaAvatar');
+      if (av) av.className = 'v10-dana-avatar state-' + avatarState;
+      const log = document.getElementById('v10DanaChatLog');
+      if (!log) return;
+      log.innerHTML = this.history.map(m => `
+        <div class="v10-dana-msg ${m.role}">
+          <div>${escHtml(m.text)}</div>
+          ${m.actions && m.actions.length ? `<div class="v10-dana-actions-row">${m.actions.map(a => `<button type="button" class="btn soft btn-sm" onclick="${a.fn.replace(/"/g, '&quot;')}">${escHtml(a.label)}</button>`).join('')}</div>` : ''}
+        </div>
+      `).join('');
+      log.scrollTop = log.scrollHeight;
+    },
+    startVoice() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) { notify('مرورگر شما از ورودی صوتی پشتیبانی نمی‌کند.'); return; }
+      const rec = new SR();
+      rec.lang = 'fa-IR';
+      rec.onresult = (e) => {
+        const t = e.results?.[0]?.[0]?.transcript || '';
+        const inp = document.getElementById('v10DanaInp');
+        if (inp && t) { inp.value = t; this.ask(t); }
+      };
+      rec.start();
+    }
+  };
+
+  window.openDanaAssistantModal = function() {
+    const ctx = window.DanaAssistant.getLiveContext();
+    if (!window.DanaAssistant.history.length) {
+      window.DanaAssistant.history.push({
+        role: 'bot',
+        text: `سلام استاد! من «دانا» هستم.\n` + window.DanaAssistant.getPageGuide(ctx.viewId),
+        actions: []
+      });
+    }
+    const html = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <b style="font-size:15px;color:var(--primary-dark)">🎓 همیار هوشمند دانا (${navigator.onLine ? 'آنلاین + آفلاین' : 'آفلاین'})</b>
+        <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖</button>
+      </div>
+      <div class="v10-dana-stage">
+        <div id="v10DanaAvatar" class="v10-dana-avatar state-${navigator.onLine ? 'idle' : 'offline'}">${DANA_SVG}</div>
+        <div style="font-size:11.5px;line-height:1.6">
+          <b>درک لحظه‌ای صفحه و داده‌های زنده</b><br>
+          <span class="muted">جستجوی دانش‌آموز، تحلیل نمرات زیر حد نصاب، آمار غیبت و راهنمای تمام بخش‌ها</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('نمره زیر ۱۲')">📉 زیر ۱۲</button>
+        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('بیشترین غیبت')">📅 بیشترین غیبت</button>
+        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('آمار کل')">📊 آمار کل</button>
+        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('راهنمای این صفحه')">💡 راهنما</button>
+      </div>
+      <div class="v10-dana-chat-log" id="v10DanaChatLog"></div>
+      <div style="display:flex;gap:6px">
+        <input type="text" id="v10DanaInp" placeholder="نام دانش‌آموز یا سوالتان را بنویسید..." style="flex:1" onkeydown="if(event.key==='Enter')window.DanaAssistant.ask(this.value)">
+        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.startVoice()" title="ورودی صوتی فارسی">🎙️</button>
+        <button type="button" class="btn primary btn-sm" onclick="window.DanaAssistant.ask(document.getElementById('v10DanaInp').value);document.getElementById('v10DanaInp').value=''">ارسال</button>
+      </div>
+    `;
+    if (typeof openModal === 'function') openModal(html);
+    window.DanaAssistant.renderLog(navigator.onLine ? 'idle' : 'offline');
+  };
+
+
+  if (typeof window.openStudent === 'function') {
+    const _origOpenStuV10 = window.openStudent;
+    window.openStudent = function(sid, cid, stid) {
+      const r = _origOpenStuV10.apply(this, arguments);
+      setTimeout(() => {
+        const sheet = document.getElementById('sheet');
+        if (!sheet || document.getElementById('v10StuGradedPapersBox')) return;
+        const papers = loadGradedMeta().filter(m => m.stId === stid);
+        const box = document.createElement('div');
+        box.id = 'v10StuGradedPapersBox';
+        box.className = 'card';
+        box.style.marginTop = '10px';
+        box.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b>📂 برگه‌های تصحیح‌شده این دانش‌آموز (${faNum(papers.length)})</b><button type="button" class="btn soft btn-sm" onclick="closeModal();showView('examView');setTimeout(()=>window.V10PaperGrader.openWizard(),80)">➕ تصحیح جدید</button></div>` +
+          (papers.length ? papers.map(p => `<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-top:1px solid var(--border);font-size:12px"><span>${escHtml(p.examTitle)} (${escHtml(p.examDate)}) — <b>${faNum(p.totalEarned)}/${faNum(p.maxTotal)}</b></span><button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.viewPaperDetail('${p.id}')">👁️ مشاهده برگه</button></div>`).join('') : '<div class="muted" style="font-size:11.5px">برگه‌ای برای این دانش‌آموز ثبت نشده است.</div>');
+        sheet.appendChild(box);
+      }, 40);
+      return r;
+    };
+    try { openStudent = window.openStudent; } catch (_) {}
+  }
+
+  // Boot & hooks
+  window.addEventListener('online', () => window.DanaAssistant.updateStatusDot());
+  window.addEventListener('offline', () => window.DanaAssistant.updateStatusDot());
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      buildCopperChronoDeck();
+      window.DanaAssistant.updateStatusDot();
+      window.DaneshPaperPhotoDB.cleanupExpired(false);
+    }, 150);
+  });
+  if (typeof window.showView === 'function') {
+    const _origShowV10 = window.showView;
+    window.showView = function(id) {
+      const r = _origShowV10.apply(this, arguments);
+      if (id === 'dashboard' || id === 'home') setTimeout(() => { buildCopperChronoDeck(); updateCopperChronoStats(); }, 40);
+      return r;
+    };
+    try { showView = window.showView; } catch (_) {}
+  }
+})();
+</script>
 </body></html>`);
   w.document.close(); w.focus(); setTimeout(() => w.print(), 350);
 }
@@ -9925,11 +11382,11 @@ const ExamApp = {
     this.save(); this.renderAll();
   },
   addQuickLineQuestion() {
-    const _qlf = document.getElementById('quickLineField'); const v = (_qlf?.value || '').trim(); if (!v) return;
+    const v = document.getElementById('quickLineField').value.trim(); if (!v) return;
     const p = v.split('-').map(x => x.trim()).filter(Boolean);
     if (p.length >= 5) { let c = 0; const opts = p.slice(1, 5).map((o, i) => { if (o.includes('*')) { c = i; return o.replace('*', '').trim(); } return o; }); this.getQuestions().push({ id: Date.now(), type: 'mcq', text: p[0], score: 0.5, options: opts, correctIndex: c }); }
     else this.getQuestions().push({ id: Date.now(), type: 'desc', text: p[0], score: 1, lines: 2 });
-    if (_qlf) _qlf.value = ''; this.save(); this.renderAll();
+    document.getElementById('quickLineField').value = ''; this.save(); this.renderAll();
   },
   startVoiceRecognition() { const S = window.SpeechRecognition || window.webkitSpeechRecognition; if (!S) return; const r = new S(); r.lang = 'fa-IR'; r.onresult = (e) => document.getElementById('mQText').value += ' ' + e.results[0][0].transcript; r.start(); },
   handleManualImage(e) { const f = e.target.files?.[0]; if (!f) return; const r = new FileReader(); r.onload = (ev) => this.tempManualImg = ev.target.result; r.readAsDataURL(f); },
@@ -73873,9 +75330,9 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
   const PKCE_STORAGE_KEY = 'dam_sb_pkce_v987';
   const TABLE_NAME = 'teacher_backups';
   const PHOTO_BUCKET = 'student-photos';
-  const PHOTO_MAX_SIDE = 640;
-  const PHOTO_QUALITY = 0.84;
-  const PHOTO_TARGET_MAX_BYTES = 55000;
+  const PHOTO_MAX_SIDE = 320;
+  const PHOTO_QUALITY = 0.75;
+  const PHOTO_TARGET_MAX_BYTES = 22000;
   const PHOTO_CONCURRENCY = 4;
 
   /* فهرست کامل تمام تنظیمات، ظاهر، پروفایل و کلیدهای هوش مصنوعی همگام‌شده با سرور */
@@ -76247,7 +77704,9 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             this.syncUp(true, false);
           }
         });
-        // v10.0.0: Disabled automatic silent photo downgrade on boot/backup restore to preserve student photo quality.
+        setTimeout(() => {
+          this.migrateExistingPhotosToWebP320(true, false).catch(() => {});
+        }, 2500);
 
         if (!cbResult?.handled && this.isLoggedIn() && (typeof navigator === 'undefined' || navigator.onLine !== false)) {
           setTimeout(() => {
@@ -76948,1516 +78407,5 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 })();
 </script>
 
-
-<style id="v1000MasterStyles">
-/* تم لوکس کرنوگراف مسی و اجزای نسخه ۱۰.۰.۰ */
-body {
-  background: linear-gradient(180deg, #FDF8F3 0%, #FFFDFB 100%) !important;
-  color: var(--text-main);
-}
-body.light-mode {
-  background: linear-gradient(180deg, #E0F2FE 0%, #F8FAFC 35%) !important;
-}
-.topbar {
-  background: rgba(255, 253, 251, 0.94) !important;
-  border-bottom: 1.5px solid var(--border) !important;
-}
-.v10-dana-header-btn {
-  position: relative;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #FEF5EB, #F7EDE2) !important;
-  border: 1.5px solid var(--primary-border) !important;
-}
-.v10-dana-status-dot {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1.5px solid #FFFDFB;
-  background: #16A34A;
-}
-.v10-dana-status-dot.offline {
-  background: #EA580C;
-}
-
-/* ساعت لوکس کرنوگراف مسی با چرخش ۳بعدی */
-.v10-chrono-wrap {
-  perspective: 1200px;
-  margin-bottom: 12px;
-}
-.v10-chrono-card {
-  position: relative;
-  width: 100%;
-  min-height: 220px;
-  transform-style: preserve-3d;
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-  cursor: pointer;
-}
-.v10-chrono-card.flipped {
-  transform: rotateY(180deg);
-}
-.v10-chrono-face {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: 22px;
-  border: 1.5px solid var(--primary-border);
-  background: linear-gradient(145deg, #FFFDFB 0%, #F7EDE2 58%, #EFE0CE 100%);
-  box-shadow: 0 10px 28px rgba(180, 83, 9, 0.14);
-  padding: 14px 16px;
-}
-.v10-chrono-back {
-  position: absolute;
-  inset: 0;
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.v10-chrono-front-grid {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.v10-chrono-dial {
-  position: relative;
-  width: 142px;
-  height: 142px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #FFFDFB, #F3E5D5 70%, #DFC3A3 100%);
-  border: 3px solid #B45309;
-  box-shadow: inset 0 0 18px rgba(120, 53, 15, 0.18), 0 6px 18px rgba(180, 83, 9, 0.22);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.v10-chrono-ring-svg {
-  position: absolute;
-  inset: -4px;
-  width: calc(100% + 8px);
-  height: calc(100% + 8px);
-  transform: rotate(-90deg);
-  pointer-events: none;
-}
-.v10-chrono-hand {
-  position: absolute;
-  left: 50%;
-  bottom: 50%;
-  transform-origin: 50% 100%;
-  border-radius: 99px;
-}
-.v10-chrono-hand.hour { width: 4px; height: 34px; background: #451A03; margin-left: -2px; }
-.v10-chrono-hand.min { width: 3px; height: 48px; background: #9A3412; margin-left: -1.5px; }
-.v10-chrono-hand.sec { width: 2px; height: 54px; background: #D97706; margin-left: -1px; }
-.v10-chrono-pin {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #78350F;
-  border: 2px solid #FDE68A;
-  z-index: 4;
-}
-.v10-chrono-capsule {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #78350F, #B45309);
-  color: #FFFDFB;
-  font-weight: 900;
-  font-size: 12.5px;
-  white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(120, 53, 15, 0.25);
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.v10-chrono-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin: 8px 0;
-}
-.v10-chrono-stat-box {
-  background: rgba(255, 253, 251, 0.88);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 8px 6px;
-  text-align: center;
-}
-.v10-chrono-stat-box b { display: block; font-size: 16px; color: var(--primary-dark); }
-.v10-chrono-stat-box span { font-size: 10.5px; color: var(--muted); font-weight: 700; }
-
-/* کاراکتر انیمیشنی دانا */
-.v10-dana-stage {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #FEF5EB, #F7EDE2);
-  border: 1.5px solid var(--primary-border);
-  margin-bottom: 10px;
-}
-.v10-dana-avatar {
-  width: 56px;
-  height: 56px;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
-.v10-dana-avatar.state-idle { animation: v10DanaFloat 3.2s ease-in-out infinite; }
-.v10-dana-avatar.state-thinking { animation: v10DanaThink 0.9s ease-in-out infinite; }
-.v10-dana-avatar.state-answering { animation: v10DanaBounce 0.6s ease 2; }
-.v10-dana-avatar.state-offline { filter: saturate(0.85); }
-@keyframes v10DanaFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
-@keyframes v10DanaThink { 0%,100%{transform:rotate(-4deg) scale(1)} 50%{transform:rotate(4deg) scale(1.05)} }
-@keyframes v10DanaBounce { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
-
-.v10-dana-chat-log {
-  max-height: 310px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 8px;
-  background: var(--bg-main);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  margin-bottom: 8px;
-}
-.v10-dana-msg {
-  padding: 9px 11px;
-  border-radius: 12px;
-  font-size: 12.2px;
-  line-height: 1.75;
-  white-space: pre-wrap;
-}
-.v10-dana-msg.user {
-  align-self: flex-start;
-  background: #78350F;
-  color: #FFFDFB;
-  max-width: 85%;
-}
-.v10-dana-msg.bot {
-  align-self: flex-end;
-  background: #FFFDFB;
-  border: 1px solid var(--primary-border);
-  color: var(--text-main);
-  max-width: 96%;
-}
-.v10-dana-actions-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 7px;
-}
-</style>
-
-<script id="v1000MasterUpgradeSuite">
-(function() {
-  'use strict';
-
-  function faNum(v) {
-    return String(v ?? '').replace(/[0-9]/g, d => '۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
-  }
-  function enNum(v) {
-    return String(v ?? '')
-      .replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))
-      .replace(/[٠-٩]/g, d => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
-  }
-  function normFaStrict(s) {
-    return enNum(String(s || ''))
-      .replace(/[يی]/g, 'ی')
-      .replace(/[كک]/g, 'ک')
-      .replace(/[\u200c\u200f\u200e]/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .toLowerCase();
-  }
-  function escHtml(s) {
-    return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-  function getLiveDb() {
-    return (typeof db !== 'undefined' && db) ? db : (window.db || { schools: [] });
-  }
-  function notify(msg) {
-    if (typeof toast === 'function') toast(msg);
-  }
-
-  /* ==========================================================================
-     REQ 1: Root Fix for Today List Quick Search (v960TodaySearchInp)
-     ========================================================================== */
-  function applyTodayListFilter() {
-    const inp = document.getElementById('v960TodaySearchInp');
-    const body = document.getElementById('tdScrollBody');
-    const clr = document.getElementById('v960TodaySearchInp_clear');
-    const cnt = document.getElementById('v960TodaySearchInp_count');
-    if (!inp || !body) return;
-    const q = normFaStrict(inp.value);
-    if (clr) clr.classList.toggle('visible', q.length > 0);
-    const rows = Array.from(body.querySelectorAll('.td-row, .td-book-stu-card, [data-student-id]'));
-    let shown = 0;
-    rows.forEach((row, idx) => {
-      const hay = normFaStrict((row.textContent || '') + ' ' + (idx + 1));
-      const ok = !q || hay.includes(q);
-      if (ok) {
-        row.style.removeProperty('display');
-        shown++;
-      } else {
-        row.style.setProperty('display', 'none', 'important');
-      }
-    });
-    if (cnt) {
-      cnt.textContent = q ? `${faNum(shown)} از ${faNum(rows.length)}` : `${faNum(rows.length)} نفر`;
-    }
-  }
-
-  function ensureTodaySearchWired() {
-    const box = document.getElementById('todayListCardBox');
-    const body = document.getElementById('tdScrollBody');
-    if (!box || !body) return;
-    let wrap = document.getElementById('v960TodaySearchInp_wrap');
-    if (!wrap) {
-      wrap = document.createElement('div');
-      wrap.className = 'v960-list-search-bar';
-      wrap.id = 'v960TodaySearchInp_wrap';
-      wrap.innerHTML = `
-        <span style="font-size:14px">🔍</span>
-        <input type="text" id="v960TodaySearchInp" placeholder="جستجوی سریع با نام، نام خانوادگی یا ردیف..." autocomplete="off">
-        <span class="v960-search-count" id="v960TodaySearchInp_count"></span>
-        <button type="button" class="v960-search-clear-btn" id="v960TodaySearchInp_clear" title="پاک‌سازی جستجو">×</button>
-      `;
-      const sticky = box.querySelector('.td-sticky-header-group');
-      if (sticky) sticky.appendChild(wrap);
-      else box.insertBefore(wrap, body);
-    }
-    const inp = document.getElementById('v960TodaySearchInp');
-    const clr = document.getElementById('v960TodaySearchInp_clear');
-    if (inp && !inp.dataset.v10Wired) {
-      inp.dataset.v10Wired = '1';
-      ['input', 'keyup', 'change', 'search'].forEach(ev => inp.addEventListener(ev, applyTodayListFilter));
-    }
-    if (clr && !clr.dataset.v10Wired) {
-      clr.dataset.v10Wired = '1';
-      clr.addEventListener('click', () => {
-        if (inp) { inp.value = ''; inp.focus(); }
-        applyTodayListFilter();
-      });
-    }
-    applyTodayListFilter();
-  }
-
-  if (typeof window.renderTodayListInner === 'function') {
-    const _prevRenderTodayV10 = window.renderTodayListInner;
-    window.renderTodayListInner = function(sid, cid) {
-      const r = _prevRenderTodayV10.apply(this, arguments);
-      ensureTodaySearchWired();
-      requestAnimationFrame(ensureTodaySearchWired);
-      setTimeout(ensureTodaySearchWired, 60);
-      return r;
-    };
-    try { renderTodayListInner = window.renderTodayListInner; } catch (_) {}
-  }
-
-  /* ==========================================================================
-     REQ 2: Luxury Copper Chronograph Clock + 3D Flip Stats on Home (#dashboard)
-     ========================================================================== */
-  function buildCopperChronoDeck() {
-    const oldDeck = document.getElementById('jarvisCommandDeck');
-    if (!oldDeck || document.getElementById('v10CopperChronoWrap')) return;
-    const wrap = document.createElement('div');
-    wrap.id = 'v10CopperChronoWrap';
-    wrap.className = 'v10-chrono-wrap';
-    wrap.innerHTML = `
-      <div class="v10-chrono-card" id="v10CopperChronoCard" onclick="this.classList.toggle('flipped')" title="برای مشاهده آمار ۳بعدی لمس کنید">
-        <div class="v10-chrono-face v10-chrono-front">
-          <div class="v10-chrono-front-grid">
-            <div class="v10-chrono-dial" aria-hidden="true">
-              <svg class="v10-chrono-ring-svg" viewBox="0 0 120 120">
-                <circle cx="60" cy="60" r="56" fill="none" stroke="rgba(180,83,9,0.18)" stroke-width="3"/>
-                <circle id="v10ChronoSecArc" cx="60" cy="60" r="56" fill="none" stroke="#D97706" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="351.86" stroke-dashoffset="351.86"/>
-              </svg>
-              <div class="v10-chrono-hand hour" id="v10ChronoHour"></div>
-              <div class="v10-chrono-hand min" id="v10ChronoMin"></div>
-              <div class="v10-chrono-hand sec" id="v10ChronoSec"></div>
-              <div class="v10-chrono-pin"></div>
-            </div>
-            <div style="flex:1;min-width:190px;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-              <div style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:6px;flex-wrap:wrap">
-                <span style="font-weight:900;font-size:15px;color:var(--primary-dark)">🔥 کرنوگراف مسی</span>
-                <span class="chip" style="font-size:10.5px;background:#FEF5EB;border-color:var(--primary-border);color:var(--primary-dark)">🔄 لمس برای آمار ۳بعدی</span>
-              </div>
-              <div class="v10-chrono-capsule" id="v10ChronoCapsule" dir="rtl">--:--:-- · ----/--/--</div>
-              <div style="font-size:11.5px;color:var(--muted);line-height:1.6">دفتر هوشمند معلم · آماده مدیریت کلاس، حضورغیاب و تصحیح برگه</div>
-            </div>
-          </div>
-        </div>
-        <div class="v10-chrono-face v10-chrono-back">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <b style="color:var(--primary-dark);font-size:14px">📊 نمای آماری زنده دفتر</b>
-            <span class="chip" style="font-size:10px">🔄 لمس برای بازگشت به ساعت</span>
-          </div>
-          <div class="v10-chrono-stats-grid" id="v10ChronoStatsGrid">
-            <div class="v10-chrono-stat-box"><b id="v10StatSchools">۰</b><span>مدارس</span></div>
-            <div class="v10-chrono-stat-box"><b id="v10StatClasses">۰</b><span>کلاس‌ها</span></div>
-            <div class="v10-chrono-stat-box"><b id="v10StatStudents">۰</b><span>دانش‌آموزان</span></div>
-            <div class="v10-chrono-stat-box"><b id="v10StatAvg">—</b><span>میانگین کل</span></div>
-            <div class="v10-chrono-stat-box"><b id="v10StatAbsent">۰</b><span>غایبین امروز</span></div>
-            <div class="v10-chrono-stat-box"><b id="v10StatAttn">۰</b><span>نیازمند توجه</span></div>
-          </div>
-        </div>
-      </div>
-    `;
-    oldDeck.style.display = 'none';
-    oldDeck.parentNode.insertBefore(wrap, oldDeck);
-    tickCopperChrono();
-    updateCopperChronoStats();
-  }
-
-  function tickCopperChrono() {
-    const now = new Date();
-    const sec = now.getSeconds() + now.getMilliseconds() / 1000;
-    const min = now.getMinutes() + sec / 60;
-    const hr = (now.getHours() % 12) + min / 60;
-    const hEl = document.getElementById('v10ChronoHour');
-    const mEl = document.getElementById('v10ChronoMin');
-    const sEl = document.getElementById('v10ChronoSec');
-    const arcEl = document.getElementById('v10ChronoSecArc');
-    const capEl = document.getElementById('v10ChronoCapsule');
-    if (hEl) hEl.style.transform = `rotate(${hr * 30}deg)`;
-    if (mEl) mEl.style.transform = `rotate(${min * 6}deg)`;
-    if (sEl) sEl.style.transform = `rotate(${sec * 6}deg)`;
-    if (arcEl) {
-      const circ = 351.86;
-      arcEl.style.strokeDashoffset = String(circ * (1 - (now.getSeconds() / 60)));
-    }
-    if (capEl) {
-      const hh = String(now.getHours()).padStart(2, '0');
-      const mm = String(now.getMinutes()).padStart(2, '0');
-      const ss = String(now.getSeconds()).padStart(2, '0');
-      let jDate = '';
-      try {
-        jDate = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(now);
-      } catch (_) {
-        jDate = typeof formatJalaliDate === 'function' ? formatJalaliDate(new Date().toISOString().slice(0, 10)) : '';
-      }
-      capEl.textContent = `${faNum(`${hh}:${mm}:${ss}`)}  |  ${jDate}`;
-    }
-  }
-
-  function updateCopperChronoStats() {
-    const d = getLiveDb();
-    const schools = Array.isArray(d.schools) ? d.schools : [];
-    let clsCount = 0, stuCount = 0, sumAvg = 0, avgN = 0, absToday = 0, attnCount = 0;
-    const todayISO = typeof localISODate === 'function' ? localISODate() : new Date().toISOString().slice(0, 10);
-    schools.forEach(s => {
-      (s.classes || []).forEach(c => {
-        clsCount++;
-        (c.students || []).forEach(st => {
-          stuCount++;
-          if (typeof avgGrade === 'function') {
-            const ag = avgGrade(st);
-            if (ag !== null && !isNaN(ag)) { sumAvg += Number(ag); avgN++; }
-          }
-          if (c.attendance && c.attendance[todayISO] && c.attendance[todayISO][st.id] === 'absent') absToday++;
-          if (st.status === 'attn' || st.specialAttention) attnCount++;
-        });
-      });
-    });
-    const setT = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
-    setT('v10StatSchools', faNum(schools.length));
-    setT('v10StatClasses', faNum(clsCount));
-    setT('v10StatStudents', faNum(stuCount));
-    setT('v10StatAvg', avgN ? faNum((sumAvg / avgN).toFixed(2)) : '—');
-    setT('v10StatAbsent', faNum(absToday));
-    setT('v10StatAttn', faNum(attnCount));
-  }
-
-  setInterval(tickCopperChrono, 250);
-
-  /* ==========================================================================
-     REQ 6: One-Tap Back-and-Forth Switch between Teach & Today List
-     ========================================================================== */
-  window.V10TeachTodaySwitch = {
-    lastBookId: null,
-    lastPage: 1,
-    lastSid: null,
-    lastCid: null,
-    goToTodayList() {
-      if (window.TeachAssistant) {
-        this.lastBookId = window.TeachAssistant.currentBookId || this.lastBookId;
-        this.lastPage = window.TeachAssistant.currentPage || this.lastPage;
-      }
-      const d = getLiveDb();
-      let sid = this.lastSid || window.currentSchoolId;
-      let cid = this.lastCid || window.currentClassId;
-      if (!sid || !cid) {
-        const firstS = (d.schools || [])[0];
-        const firstC = firstS && (firstS.classes || [])[0];
-        if (firstS && firstC) { sid = firstS.id; cid = firstC.id; }
-      }
-      if (!sid || !cid) {
-        notify('ابتدا یک مدرسه و کلاس بسازید تا لیست امروز باز شود.');
-        return;
-      }
-      this.lastSid = sid;
-      this.lastCid = cid;
-      if (typeof window.openTodayList === 'function') {
-        window.openTodayList(sid, cid);
-      } else if (typeof openClass === 'function') {
-        openClass(sid, cid);
-      }
-    },
-    goBackToTeach() {
-      if (typeof showView === 'function') showView('teachView');
-      setTimeout(() => {
-        if (window.TeachAssistant && this.lastPage && typeof window.TeachAssistant.goStudyPage === 'function') {
-          window.TeachAssistant.goStudyPage(this.lastPage);
-        }
-      }, 80);
-    }
-  };
-
-  if (typeof window.renderTodayListInner === 'function') {
-    const _origRT2 = window.renderTodayListInner;
-    window.renderTodayListInner = function(sid, cid) {
-      window.V10TeachTodaySwitch.lastSid = sid;
-      window.V10TeachTodaySwitch.lastCid = cid;
-      const res = _origRT2.apply(this, arguments);
-      setTimeout(() => {
-        const cont = document.getElementById('classTodayListContainer');
-        if (cont && !document.getElementById('v10TodayToTeachBtn')) {
-          const topBar = cont.querySelector('div');
-          if (topBar) {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.id = 'v10TodayToTeachBtn';
-            btn.className = 'btn primary btn-sm';
-            btn.textContent = '📖 بازگشت به آموزش';
-            btn.onclick = () => window.V10TeachTodaySwitch.goBackToTeach();
-            topBar.appendChild(btn);
-          }
-        }
-      }, 25);
-      return res;
-    };
-    try { renderTodayListInner = window.renderTodayListInner; } catch (_) {}
-  }
-
-  /* ==========================================================================
-     REQ 10: Separate IndexedDB for Exam Paper Photos + 180-Day Auto-Cleanup
-     ========================================================================== */
-  const PAPER_DB_NAME = 'danesh_amooz_paper_photos_v10';
-  const PAPER_STORE = 'papers';
-  const GRADED_META_KEY = 'danesh_amooz_graded_papers_meta_v10';
-  const RETENTION_MS = 180 * 24 * 60 * 60 * 1000;
-
-  window.DaneshPaperPhotoDB = {
-    _open() {
-      return new Promise((resolve, reject) => {
-        const req = indexedDB.open(PAPER_DB_NAME, 1);
-        req.onupgradeneeded = (e) => {
-          const idb = e.target.result;
-          if (!idb.objectStoreNames.contains(PAPER_STORE)) {
-            idb.createObjectStore(PAPER_STORE, { keyPath: 'id' });
-          }
-        };
-        req.onsuccess = () => resolve(req.result);
-        req.onerror = () => reject(req.error);
-      });
-    },
-    async compressPaper(fileOrDataUrl) {
-      if (typeof compressImage === 'function') {
-        return await compressImage(fileOrDataUrl, 1100, 0.78);
-      }
-      return String(fileOrDataUrl || '');
-    },
-    async savePhoto(id, dataUrl) {
-      const idb = await this._open();
-      const now = Date.now();
-      const rec = {
-        id,
-        dataUrl,
-        bytes: dataUrl ? Math.round(dataUrl.length * 0.75) : 0,
-        createdAt: now,
-        expiresAt: now + RETENTION_MS
-      };
-      return new Promise((resolve, reject) => {
-        const tx = idb.transaction(PAPER_STORE, 'readwrite');
-        tx.objectStore(PAPER_STORE).put(rec);
-        tx.oncomplete = () => resolve(rec);
-        tx.onerror = () => reject(tx.error);
-      });
-    },
-    async getPhoto(id) {
-      const idb = await this._open();
-      return new Promise((resolve) => {
-        const tx = idb.transaction(PAPER_STORE, 'readonly');
-        const req = tx.objectStore(PAPER_STORE).get(id);
-        req.onsuccess = () => resolve(req.result || null);
-        req.onerror = () => resolve(null);
-      });
-    },
-    async getStats() {
-      const idb = await this._open();
-      return new Promise((resolve) => {
-        const tx = idb.transaction(PAPER_STORE, 'readonly');
-        const req = tx.objectStore(PAPER_STORE).getAll();
-        req.onsuccess = () => {
-          const list = req.result || [];
-          const totalBytes = list.reduce((s, x) => s + (x.bytes || (x.dataUrl ? Math.round(x.dataUrl.length * 0.75) : 0)), 0);
-          resolve({ count: list.length, totalBytes });
-        };
-        req.onerror = () => resolve({ count: 0, totalBytes: 0 });
-      });
-    },
-    async cleanupExpired(forceAll = false) {
-      const idb = await this._open();
-      const now = Date.now();
-      return new Promise((resolve) => {
-        const tx = idb.transaction(PAPER_STORE, 'readwrite');
-        const store = tx.objectStore(PAPER_STORE);
-        const req = store.getAll();
-        let removed = 0;
-        req.onsuccess = () => {
-          (req.result || []).forEach(rec => {
-            if (forceAll || (rec.expiresAt && rec.expiresAt <= now)) {
-              store.delete(rec.id);
-              removed++;
-            }
-          });
-        };
-        tx.oncomplete = () => resolve(removed);
-        tx.onerror = () => resolve(0);
-      });
-    }
-  };
-
-  function loadGradedMeta() {
-    try {
-      const arr = JSON.parse(localStorage.getItem(GRADED_META_KEY) || '[]');
-      return Array.isArray(arr) ? arr : [];
-    } catch (_) { return []; }
-  }
-  function saveGradedMeta(arr) {
-    try { localStorage.setItem(GRADED_META_KEY, JSON.stringify(arr || [])); } catch (_) {}
-  }
-
-  /* ==========================================================================
-     REQ 8 & 9: Smart Paper Grading (Prompt Copy + Resilient Parser + Math Check)
-        & Graded Papers Archive + Live Sync + PDF + Parent Message
-     ========================================================================== */
-  window.V10PaperGrader = {
-    currentItems: [],
-    currentPhotoUrl: '',
-    openWizard() {
-      const d = getLiveDb();
-      const classesOpts = [];
-      (d.schools || []).forEach(s => (s.classes || []).forEach(c => {
-        classesOpts.push(`<option value="${escHtml(s.id)}|${escHtml(c.id)}">${escHtml(s.name)} — ${escHtml(c.name)}</option>`);
-      }));
-      const hdr = window.ExamApp?.state?.header || {};
-      const titleDef = hdr.subject || hdr.mainTitle || 'آزمون کلاسی';
-      const dateDef = hdr.date || (typeof formatJalaliDate === 'function' ? formatJalaliDate(new Date().toISOString().slice(0, 10)) : 'امروز');
-
-      const html = `
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-          <b style="font-size:15px;color:var(--primary-dark)">📸 تصحیح هوشمند برگه با کپی پرامپت</b>
-          <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖ بستن</button>
-        </div>
-        <div class="grid-2" style="gap:8px;margin-bottom:8px">
-          <div><label style="font-size:11px;font-weight:800">کلاس:</label><select id="v10PgClassSel" onchange="window.V10PaperGrader.populateStudents()">${classesOpts.join('') || '<option value="">کلاسی نیست</option>'}</select></div>
-          <div><label style="font-size:11px;font-weight:800">دانش‌آموز:</label><select id="v10PgStuSel"></select></div>
-          <div><label style="font-size:11px;font-weight:800">عنوان آزمون:</label><input type="text" id="v10PgExamTitle" value="${escHtml(titleDef)}"></div>
-          <div><label style="font-size:11px;font-weight:800">تاریخ آزمون:</label><input type="text" id="v10PgExamDate" value="${escHtml(dateDef)}"></div>
-        </div>
-        <div class="card" style="padding:10px;margin-bottom:8px">
-          <label class="btn soft block" style="cursor:pointer;margin:0">📷 انتخاب یا گرفتن عکس برگه دانش‌آموز (ذخیره کم‌حجم و خوانا)<input type="file" accept="image/*" hidden onchange="window.V10PaperGrader.onPhotoPick(event)"></label>
-          <div id="v10PgPhotoStatus" class="muted" style="font-size:11px;margin-top:5px;text-align:center">عکسی انتخاب نشده است.</div>
-        </div>
-        <div class="card" style="padding:10px;margin-bottom:8px">
-          <b style="font-size:12px;color:var(--primary)">۱. کپی پرامپت استاندارد تصحیح (قابل استفاده در جمنای، دیپ‌سیک، ChatGPT):</b>
-          <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
-            <button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.copyPrompt()">📋 کپی پرامپت تصحیح</button>
-            <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.copyPrompt('https://gemini.google.com')">✨ جمنای</button>
-            <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.copyPrompt('https://chat.deepseek.com')">🧠 دیپ‌سیک</button>
-            <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.copyPrompt('https://chatgpt.com')">🤖 ChatGPT</button>
-          </div>
-        </div>
-        <div class="card" style="padding:10px;margin-bottom:8px">
-          <b style="font-size:12px;color:var(--green)">۲. پیست نتیجه هوش مصنوعی و کنترل جمع ریاضی:</b>
-          <textarea id="v10PgPasteBox" rows="3" placeholder="نتیجه JSON یا متن سوال‌به‌سؤال را اینجا پیست کنید..." style="margin-top:5px;font-size:11.5px"></textarea>
-          <button type="button" class="btn green btn-sm block" style="margin-top:6px" onclick="window.V10PaperGrader.parsePastedResult()">🔍 تحلیل، کنترل ریاضی و پیش‌نمایش قابل ویرایش</button>
-        </div>
-        <div id="v10PgPreviewArea" style="display:none"></div>
-      `;
-      if (typeof openModal === 'function') openModal(html);
-      this.currentItems = [];
-      this.currentPhotoUrl = '';
-      this.populateStudents();
-    },
-    populateStudents() {
-      const val = document.getElementById('v10PgClassSel')?.value || '';
-      const sel = document.getElementById('v10PgStuSel');
-      if (!sel) return;
-      const [sid, cid] = val.split('|');
-      const c = typeof findClass === 'function' ? findClass(sid, cid) : null;
-      const list = c && Array.isArray(c.students) ? c.students : [];
-      sel.innerHTML = list.map(st => `<option value="${escHtml(st.id)}">${escHtml((st.lastName || '') + ' ' + (st.name || ''))}</option>`).join('') || '<option value="">دانش‌آموزی نیست</option>';
-    },
-    async onPhotoPick(e) {
-      const f = e?.target?.files?.[0];
-      if (!f) return;
-      const stEl = document.getElementById('v10PgPhotoStatus');
-      if (stEl) stEl.textContent = '⏳ در حال بهینه‌سازی عکس برگه (عرض ۱۱۰۰px)...';
-      try {
-        const compressed = await window.DaneshPaperPhotoDB.compressPaper(f);
-        this.currentPhotoUrl = compressed;
-        const kb = Math.round((compressed.length * 0.75) / 1024);
-        if (stEl) stEl.textContent = `✅ عکس برگه آماده شد (حجم بهینه: حدود ${faNum(kb)} کیلوبایت)`;
-      } catch (_) {
-        if (stEl) stEl.textContent = '⚠️ خطا در خواندن عکس.';
-      }
-    },
-    copyPrompt(openUrl) {
-      const qs = window.ExamApp?.getQuestions ? window.ExamApp.getQuestions() : [];
-      const keyData = qs.map((q, i) => ({
-        num: i + 1,
-        question: q.text,
-        maxScore: q.score,
-        answerKey: q.type === 'mcq' ? (q.options?.[q.correctIndex] || `گزینه ${q.correctIndex + 1}`) : (q.type === 'tf' ? q.tfCorrect : (q.blankWord || q.explanation || ''))
-      }));
-      const prompt = `تو مصحح دقیق و منصف اوراق امتحانی هستی. تصویر برگه امتحانی دانش‌آموز پیوست شده است.
-لطفاً بر اساس کلید سوالات زیر، تک‌تک سوالات برگه را تصحیح کن و فقط یک JSON معتبر برگردان:
-کلید سوالات:
-${JSON.stringify(keyData, null, 2)}
-
-ساختار خروجی الزامی (بدون توضیح اضافه):
-{
-  "studentName": "نام نوشته‌شده روی برگه",
-  "totalScore": 0,
-  "maxTotal": ${qs.reduce((s, q) => s + (Number(q.score) || 0), 0)},
-  "items": [
-    { "num": 1, "earnedScore": 0.5, "maxScore": 0.5, "deductionReason": "پاسخ کامل / یا دلیل دقیق کسر نمره" }
-  ]
-}`;
-      navigator.clipboard?.writeText(prompt).then(() => notify('📋 پرامپت استاندارد تصحیح کپی شد ✅')).catch(() => notify('کپی انجام نشد.'));
-      if (openUrl) window.open(openUrl, '_blank');
-    },
-    parsePastedResult() {
-      const raw = (document.getElementById('v10PgPasteBox')?.value || '').trim();
-      if (!raw) { notify('لطفاً نتیجه را پیست کنید.'); return; }
-      const cleaned = enNum(raw).replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```json/gi, '').replace(/```/g, '').trim();
-      let parsed = null;
-      const m = cleaned.match(/\{[\s\S]*\}/);
-      if (m) {
-        try { parsed = JSON.parse(m[0].replace(/,\s*([}\]])/g, '$1')); } catch (_) {}
-      }
-      if (!parsed || !Array.isArray(parsed.items)) {
-        const items = [];
-        cleaned.split(/\n+/).forEach(line => {
-          const numMatch = line.match(/(\d+(?:\.\d+)?)\s*(?:از|\/)\s*(\d+(?:\.\d+)?)/);
-          if (numMatch) {
-            items.push({
-              num: items.length + 1,
-              earnedScore: Number(numMatch[1]),
-              maxScore: Number(numMatch[2]),
-              deductionReason: line.trim()
-            });
-          }
-        });
-        if (!items.length) {
-          notify('ساختار قابل خواندن یافت نشد؛ لطفاً متن کامل JSON یا نمرات هر سوال را پیست کنید.');
-          return;
-        }
-        parsed = { totalScore: items.reduce((s, x) => s + x.earnedScore, 0), items };
-      }
-      this.currentItems = parsed.items.map((x, idx) => ({
-        num: Number(x.num) || (idx + 1),
-        earnedScore: Number(x.earnedScore) || 0,
-        maxScore: Number(x.maxScore) || 0,
-        deductionReason: String(x.deductionReason || x.feedback || '—')
-      }));
-      const reportedTotal = parsed.totalScore !== undefined ? Number(parsed.totalScore) : null;
-      this.renderEditablePreview(reportedTotal);
-    },
-    renderEditablePreview(reportedTotal = null) {
-      const area = document.getElementById('v10PgPreviewArea');
-      if (!area) return;
-      const sumE = Math.round(this.currentItems.reduce((s, x) => s + (Number(x.earnedScore) || 0), 0) * 100) / 100;
-      const sumM = Math.round(this.currentItems.reduce((s, x) => s + (Number(x.maxScore) || 0), 0) * 100) / 100;
-      const mismatch = (reportedTotal !== null && Math.abs(reportedTotal - sumE) > 0.01);
-      area.style.display = 'block';
-      area.innerHTML = `
-        ${mismatch ? `<div style="background:#FEE2E2;border:1.5px solid #DC2626;color:#991B1B;padding:8px 10px;border-radius:10px;font-size:11.5px;margin-bottom:8px;font-weight:800">⚠️ مغایرت ریاضی: جمع ریزنمرات (${faNum(sumE)}) با نمره کل اعلام‌شده (${faNum(reportedTotal)}) متفاوت است! جمع دقیق (${faNum(sumE)}) مبنا قرار گرفت.</div>` : ''}
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-          <b style="font-size:12.5px">جمع کل: <span id="v10PgLiveTotal" style="color:var(--green)">${faNum(sumE)}</span> از ${faNum(sumM)}</b>
-          <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.addRow()">➕ ردیف</button>
-        </div>
-        <div style="overflow-x:auto">
-          <table style="width:100%;border-collapse:collapse;font-size:11.5px">
-            <thead><tr style="background:var(--panel)"><th>سوال</th><th>نمره</th><th>بارم</th><th>دلیل مستند کسر نمره</th></tr></thead>
-            <tbody>
-              ${this.currentItems.map((it, idx) => `
-                <tr>
-                  <td style="text-align:center">${faNum(it.num)}</td>
-                  <td><input type="number" step="0.25" value="${it.earnedScore}" style="width:60px;padding:3px" oninput="window.V10PaperGrader.editItem(${idx},'earnedScore',this.value)"></td>
-                  <td><input type="number" step="0.25" value="${it.maxScore}" style="width:60px;padding:3px" oninput="window.V10PaperGrader.editItem(${idx},'maxScore',this.value)"></td>
-                  <td><input type="text" value="${escHtml(it.deductionReason)}" style="width:100%;padding:3px" oninput="window.V10PaperGrader.editItem(${idx},'deductionReason',this.value)"></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-        <button type="button" class="btn primary block" style="margin-top:10px;padding:10px;font-weight:900" onclick="window.V10PaperGrader.commitGrade()">✅ ثبت نهایی در کلاس و بایگانی برگه‌های تصحیح‌شده</button>
-      `;
-    },
-    editItem(idx, key, val) {
-      if (!this.currentItems[idx]) return;
-      this.currentItems[idx][key] = key === 'deductionReason' ? val : (Number(val) || 0);
-      const sumE = Math.round(this.currentItems.reduce((s, x) => s + (Number(x.earnedScore) || 0), 0) * 100) / 100;
-      const tEl = document.getElementById('v10PgLiveTotal');
-      if (tEl) tEl.textContent = faNum(sumE);
-    },
-    addRow() {
-      this.currentItems.push({ num: this.currentItems.length + 1, earnedScore: 0, maxScore: 1, deductionReason: '—' });
-      this.renderEditablePreview();
-    },
-    async commitGrade() {
-      const clsVal = document.getElementById('v10PgClassSel')?.value || '';
-      const stId = document.getElementById('v10PgStuSel')?.value || '';
-      const [sid, cid] = clsVal.split('|');
-      const s = typeof findSchool === 'function' ? findSchool(sid) : null;
-      const c = typeof findClass === 'function' ? findClass(sid, cid) : null;
-      const st = c ? (c.students || []).find(x => x.id === stId) : null;
-      if (!s || !c || !st) { notify('لطفاً کلاس و دانش‌آموز معتبر انتخاب کنید.'); return; }
-
-      const examTitle = (document.getElementById('v10PgExamTitle')?.value || 'آزمون').trim();
-      const examDate = (document.getElementById('v10PgExamDate')?.value || '').trim();
-      const totalEarned = Math.round(this.currentItems.reduce((acc, x) => acc + (Number(x.earnedScore) || 0), 0) * 100) / 100;
-      const maxTotal = Math.round(this.currentItems.reduce((acc, x) => acc + (Number(x.maxScore) || 0), 0) * 100) / 100;
-      const recId = 'gp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
-
-      let hasPhoto = false;
-      if (this.currentPhotoUrl) {
-        await window.DaneshPaperPhotoDB.savePhoto(recId, this.currentPhotoUrl);
-        hasPhoto = true;
-      }
-
-      if (!st.grades) st.grades = [];
-      const existingIdx = st.grades.findIndex(g => g.gradedPaperId === recId || (g.subject === examTitle && g.date === examDate));
-      const gradeEntry = {
-        id: existingIdx >= 0 ? st.grades[existingIdx].id : ('g_' + Date.now()),
-        gradedPaperId: recId,
-        subject: examTitle,
-        title: examTitle,
-        score: totalEarned,
-        max: maxTotal || 20,
-        gradeType: 'cont_exam',
-        date: examDate || new Date().toISOString()
-      };
-      if (existingIdx >= 0) st.grades[existingIdx] = gradeEntry;
-      else st.grades.push(gradeEntry);
-      if (typeof save === 'function') save();
-
-      const meta = loadGradedMeta();
-      meta.unshift({
-        id: recId,
-        sid, cid, stId: st.id,
-        schoolName: s.name,
-        className: c.name,
-        studentName: `${st.name || ''} ${st.lastName || ''}`.trim(),
-        examTitle,
-        examDate,
-        totalEarned,
-        maxTotal,
-        items: this.currentItems,
-        hasPhoto,
-        createdAt: Date.now(),
-        expiresAt: Date.now() + RETENTION_MS
-      });
-      saveGradedMeta(meta);
-      if (typeof closeModal === 'function') closeModal();
-      this.renderArchiveUI();
-      notify(`✅ نمره ${faNum(totalEarned)} از ${faNum(maxTotal)} در دفتر کلاس و بایگانی برگه‌ها ثبت شد.`);
-    },
-    async renderArchiveUI(filterText = '') {
-      const box = document.getElementById('v10GradedPapersContainer');
-      if (!box) return;
-      await window.DaneshPaperPhotoDB.cleanupExpired(false);
-      const stats = await window.DaneshPaperPhotoDB.getStats();
-      const meta = loadGradedMeta();
-      const q = normFaStrict(filterText || document.getElementById('v10GpSearchInp')?.value || '');
-      const filtered = meta.filter(m => !q || normFaStrict(`${m.className} ${m.examTitle} ${m.examDate} ${m.studentName}`).includes(q));
-      const mb = (stats.totalBytes / (1024 * 1024)).toFixed(2);
-
-      box.innerHTML = `
-        <div class="box-card highlight">
-          <div class="box-header">
-            <span>📂 برگه‌های تصحیح‌شده (بایگانی مجزا در IndexedDB)</span>
-            <button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.openWizard()">➕ تصحیح برگه جدید</button>
-          </div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
-            <span class="chip" style="font-size:11px">📦 فضای عکس برگه‌ها: ${faNum(mb)} MB (${faNum(stats.count)} عکس)</span>
-            <span class="chip" style="font-size:11px">⏳ پاکسازی خودکار عکس: ۱۸۰ روزه (نمرات دائمی)</span>
-            <button type="button" class="btn gray btn-sm" onclick="window.V10PaperGrader.manualCleanup()">🧹 پاکسازی دستی عکس‌های قدیمی</button>
-          </div>
-          <input type="text" id="v10GpSearchInp" value="${escHtml(filterText || '')}" placeholder="🔍 جستجوی ۲ ثانیه‌ای بر اساس کلاس، عنوان آزمون یا نام دانش‌آموز..." oninput="window.V10PaperGrader.renderArchiveUI(this.value)">
-        </div>
-        ${filtered.length === 0 ? '<div class="box-card muted" style="text-align:center">هنوز برگه تصحیح‌شده‌ای ثبت نشده است.</div>' : filtered.map(m => {
-          const daysLeft = Math.max(0, Math.ceil(((m.expiresAt || (m.createdAt + RETENTION_MS)) - Date.now()) / 86400000));
-          return `
-            <div class="box-card" style="margin-bottom:8px">
-              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
-                <div>
-                  <b>👤 ${escHtml(m.studentName)}</b> <span class="muted" style="font-size:11px">(${escHtml(m.className)})</span><br>
-                  <span style="font-size:11.5px;color:var(--primary-dark)">📝 ${escHtml(m.examTitle)} · 📅 ${escHtml(m.examDate)}</span>
-                </div>
-                <div style="text-align:left">
-                  <span class="chip" style="background:#DCFCE7;color:#166534;font-weight:900">${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}</span>
-                  <div class="muted" style="font-size:10px;margin-top:3px">${m.hasPhoto ? `⏳ ${faNum(daysLeft)} روز تا حذف عکس` : '📄 فقط ریزنمرات'}</div>
-                </div>
-              </div>
-              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
-                <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.viewPaperDetail('${m.id}')">👁️ مشاهده برگه و ریزنمرات</button>
-                <button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.copyParentDisputeMsg('${m.id}')">🛡️ کپی پیام مستند برای ولی/دانش‌آموز</button>
-                <button type="button" class="btn gray btn-sm" onclick="window.V10PaperGrader.printPaperReport('${m.id}')">📕 گزارش PDF</button>
-              </div>
-            </div>
-          `;
-        }).join('')}
-      `;
-    },
-    async manualCleanup() {
-      const removed = await window.DaneshPaperPhotoDB.cleanupExpired(false);
-      notify(removed > 0 ? `🧹 ${faNum(removed)} عکس منقضی‌شده پاک شد (نمرات محفوظ ماندند).` : 'همه عکس‌ها هنوز در بازه ۱۸۰ روزه هستند ✅');
-      this.renderArchiveUI();
-    },
-    async viewPaperDetail(id) {
-      const meta = loadGradedMeta();
-      const m = meta.find(x => x.id === id);
-      if (!m) return;
-      const photoRec = await window.DaneshPaperPhotoDB.getPhoto(id);
-      const html = `
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <b>📂 پرونده برگه: ${escHtml(m.studentName)}</b>
-          <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖</button>
-        </div>
-        <div class="muted" style="font-size:11.5px;margin-bottom:8px">${escHtml(m.className)} · ${escHtml(m.examTitle)} (${escHtml(m.examDate)}) · نمره: <b>${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}</b></div>
-        ${photoRec?.dataUrl ? `<img src="${photoRec.dataUrl}" style="width:100%;border-radius:10px;border:1px solid var(--border);margin-bottom:8px">` : '<div class="card muted" style="text-align:center;margin-bottom:8px">فایل عکس منقضی یا ثبت نشده است (ریزنمرات محفوظ است).</div>'}
-        <table style="width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:8px">
-          <thead><tr style="background:var(--panel)"><th>سوال</th><th>نمره</th><th>بارم</th><th>دلیل کسر نمره</th></tr></thead>
-          <tbody>
-            ${(m.items || []).map((it, idx) => `
-              <tr>
-                <td style="text-align:center">${faNum(it.num)}</td>
-                <td><input type="number" step="0.25" value="${it.earnedScore}" style="width:58px;padding:2px" onchange="window.V10PaperGrader.updateSavedItemScore('${m.id}',${idx},this.value)"></td>
-                <td style="text-align:center">${faNum(it.maxScore)}</td>
-                <td>${escHtml(it.deductionReason)}</td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-        <button type="button" class="btn primary btn-sm block" onclick="window.V10PaperGrader.copyParentDisputeMsg('${m.id}')">🛡️ کپی پیام مستند برای ولی/دانش‌آموز</button>
-      `;
-      if (typeof openModal === 'function') openModal(html);
-    },
-    updateSavedItemScore(id, idx, newVal) {
-      const meta = loadGradedMeta();
-      const m = meta.find(x => x.id === id);
-      if (!m || !m.items || !m.items[idx]) return;
-      m.items[idx].earnedScore = Number(newVal) || 0;
-      m.totalEarned = Math.round(m.items.reduce((s, x) => s + (Number(x.earnedScore) || 0), 0) * 100) / 100;
-      saveGradedMeta(meta);
-      const c = typeof findClass === 'function' ? findClass(m.sid, m.cid) : null;
-      const st = c ? (c.students || []).find(x => x.id === m.stId) : null;
-      if (st && Array.isArray(st.grades)) {
-        const g = st.grades.find(x => x.gradedPaperId === m.id || (x.subject === m.examTitle && x.date === m.examDate));
-        if (g) g.score = m.totalEarned;
-        if (typeof save === 'function') save();
-      }
-      this.renderArchiveUI();
-      notify(`✅ نمره به ${faNum(m.totalEarned)} تغییر یافت و با دفتر کلاس همگام شد.`);
-    },
-    copyParentDisputeMsg(id) {
-      const m = loadGradedMeta().find(x => x.id === id);
-      if (!m) return;
-      const lines = (m.items || []).map(it => `• سوال ${faNum(it.num)}: ${faNum(it.earnedScore)} از ${faNum(it.maxScore)} (${it.deductionReason})`);
-      const msg = `با سلام و احترام خدمت اولیای گرامی «${m.studentName}»\nنتیجه تصحیح دقیق «${m.examTitle}» (${m.examDate}):\n🎯 نمره نهایی: ${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}\n\nریزنمرات و توضیحات سوال‌به‌سؤال:\n${lines.join('\n')}\n\nبا احترام — دبیر مربوطه`;
-      navigator.clipboard?.writeText(msg).then(() => notify('🛡️ پیام مستند برای ولی/دانش‌آموز کپی شد ✅')).catch(() => notify('کپی انجام نشد.'));
-    },
-    printPaperReport(id) {
-      const m = loadGradedMeta().find(x => x.id === id);
-      if (!m) return;
-      const w = window.open('', '_blank');
-      if (!w) return;
-      w.document.write(`<html dir="rtl" lang="fa"><head><meta charset="utf-8"><title>گزارش تصحیح ${escHtml(m.studentName)}</title><style>body{font-family:Tahoma,sans-serif;padding:24px;line-height:1.8}table{width:100%;border-collapse:collapse;margin-top:12px}th,td{border:1px solid #ccc;padding:7px;text-align:right}</style></head><body><h2>گزارش مستند تصحیح برگه امتحانی</h2><p><b>دانش‌آموز:</b> ${escHtml(m.studentName)} | <b>کلاس:</b> ${escHtml(m.className)} | <b>آزمون:</b> ${escHtml(m.examTitle)} (${escHtml(m.examDate)})</p><p><b>نمره نهایی:</b> ${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}</p><table><thead><tr><th>سوال</th><th>نمره کسب‌شده</th><th>بارم</th><th>دلیل مستند کسر نمره</th></tr></thead><tbody>${(m.items || []).map(it => `<tr><td>${faNum(it.num)}</td><td>${faNum(it.earnedScore)}</td><td>${faNum(it.maxScore)}</td><td>${escHtml(it.deductionReason)}</td></tr>`).join('')}</tbody></table><script>window.print();<\/script></body></html>`);
-      w.document.close();
-    }
-  };
-
-  /* ==========================================================================
-     REQ 17: Upgraded Universal No-API Prompt & Resilient Paste Parser
-     ========================================================================== */
-  if (window.ExamApp) {
-    window.ExamApp.openGradingModal = function() {
-      window.V10PaperGrader.openWizard();
-    };
-    const _origOpenTab = window.ExamApp.openTab.bind(window.ExamApp);
-    window.ExamApp.openTab = function(tabName, btn) {
-      const r = _origOpenTab(tabName, btn);
-      if (tabName === 'gradedPapers') window.V10PaperGrader.renderArchiveUI();
-      if (tabName === 'archive') window.V10FullExamBank.renderBankUI();
-      return r;
-    };
-
-    const _origRefreshNoApi = window.ExamApp.refreshPreciseNoApiPrompt?.bind(window.ExamApp);
-    window.ExamApp.refreshPreciseNoApiPrompt = function() {
-      if (_origRefreshNoApi) _origRefreshNoApi();
-      const txtEl = document.getElementById('noApiPromptText');
-      if (txtEl && txtEl.value && !txtEl.value.includes('فایل PDF یا تصاویر')) {
-        txtEl.value = `⚠️ قانون طلایی منبع: سوالات را منحصراً از روی فایل PDF یا تصاویر پیوست‌شده (و متن زیر در صورت وجود) طراحی کن و هیچ مطلبی خارج از کتاب درسی اضافه نکن. هیچ متن خوشامدگویی یا توضیح اضافه بیرون از بلوک JSON ننویس.\n\n` + txtEl.value;
-      }
-    };
-
-    const _origImportNoApi = window.ExamApp.importNoApiJSON?.bind(window.ExamApp);
-    window.ExamApp.importNoApiJSON = function() {
-      const box = document.getElementById('noApiPasteBox');
-      if (!box) return;
-      let raw = String(box.value || '').trim();
-      if (!raw) { notify('لطفاً ابتدا پاسخ هوش مصنوعی را در کادر پیست کنید.'); return; }
-      // Strip <think>, markdown fences, trailing commas, and normalize Persian/Arabic digits in numeric JSON fields
-      raw = raw
-        .replace(/<think>[\s\S]*?<\/think>/gi, '')
-        .replace(/```(?:json)?/gi, '')
-        .replace(/```/g, '')
-        .trim();
-      const jsonBlock = raw.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
-      if (jsonBlock) {
-        let jStr = jsonBlock[0]
-          .replace(/,\s*([}\]])/g, '$1')
-          .replace(/"(score|correctIndex|lines)"\s*:\s*"?([۰-۹٠-٩0-9.]+)"?/g, (_, k, num) => `"${k}": ${enNum(num)}`);
-        box.value = jStr;
-      } else {
-        box.value = enNum(raw);
-      }
-      if (_origImportNoApi) return _origImportNoApi();
-    };
-  }
-
-  /* ==========================================================================
-     REQ 16: Complete Sample Exam Bank (Save Full Exam, Reload, Edit, Print, Delete)
-     ========================================================================== */
-  const FULL_BANK_KEY = 'danesh_amooz_full_exam_bank_v10';
-  window.V10FullExamBank = {
-    load() {
-      try {
-        const arr = JSON.parse(localStorage.getItem(FULL_BANK_KEY) || '[]');
-        return Array.isArray(arr) ? arr : [];
-      } catch (_) { return []; }
-    },
-    save(arr) {
-      try { localStorage.setItem(FULL_BANK_KEY, JSON.stringify(arr || [])); } catch (_) {}
-    },
-    saveCurrentExam() {
-      if (!window.ExamApp) return;
-      const qs = window.ExamApp.getQuestions ? window.ExamApp.getQuestions() : [];
-      if (!qs.length) { notify('ابتدا حداقل یک سوال در برگه بسازید.'); return; }
-      const hdr = JSON.parse(JSON.stringify(window.ExamApp.state?.header || {}));
-      const totalBarom = Math.round(qs.reduce((s, q) => s + (Number(q.score) || 0), 0) * 100) / 100;
-      const list = this.load();
-      list.unshift({
-        id: 'feb_' + Date.now(),
-        title: hdr.subject || hdr.mainTitle || 'نمونه سوال کامل',
-        grade: hdr.grade || '',
-        subject: hdr.subject || '',
-        date: hdr.date || '',
-        totalBarom,
-        header: hdr,
-        questions: JSON.parse(JSON.stringify(qs)),
-        createdAt: Date.now()
-      });
-      this.save(list);
-      this.renderBankUI();
-      notify('📚 آزمون کامل در «بانک نمونه سوالات کامل» ذخیره شد ✅');
-    },
-    loadIntoBuilder(id) {
-      const item = this.load().find(x => x.id === id);
-      if (!item || !window.ExamApp) return;
-      if (item.header) window.ExamApp.state.header = JSON.parse(JSON.stringify(item.header));
-      const b = window.ExamApp.currentBranch || 'الف';
-      if (window.ExamApp.state.branches && window.ExamApp.state.branches[b]) {
-        window.ExamApp.state.branches[b] = JSON.parse(JSON.stringify(item.questions || []));
-      }
-      if (typeof window.ExamApp.saveState === 'function') window.ExamApp.saveState();
-      if (typeof window.ExamApp.renderAll === 'function') window.ExamApp.renderAll();
-      window.ExamApp.openTab('preview', document.getElementById('mobPreviewTabBtn'));
-      notify('✅ نمونه سوال کامل با سربرگ و کلید در برگه بارگذاری شد.');
-    },
-    remove(id) {
-      this.save(this.load().filter(x => x.id !== id));
-      this.renderBankUI();
-      notify('حذف شد.');
-    },
-    renderBankUI() {
-      const archPane = document.getElementById('examPane-archive');
-      if (!archPane) return;
-      let box = document.getElementById('v10FullBankBox');
-      if (!box) {
-        box = document.createElement('div');
-        box.id = 'v10FullBankBox';
-        box.style.marginTop = '12px';
-        archPane.appendChild(box);
-      }
-      const list = this.load();
-      box.innerHTML = `
-        <div class="box-card highlight">
-          <div class="box-header">
-            <span>📚 بانک نمونه سوالات کامل (سربرگ + سوالات + پاسخ کلیدی)</span>
-            <button type="button" class="btn primary btn-sm" onclick="window.V10FullExamBank.saveCurrentExam()">➕ ذخیره آزمون فعلی در بانک کامل</button>
-          </div>
-          ${list.length === 0 ? '<p class="muted" style="margin:0">هنوز نمونه سوال کاملی ذخیره نشده است.</p>' : list.map(it => `
-            <div class="card" style="padding:9px 11px;margin-top:8px">
-              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
-                <div><b>${escHtml(it.title)}</b> <span class="muted" style="font-size:11px">(${escHtml(it.grade)} · ${faNum((it.questions || []).length)} سوال · ${faNum(it.totalBarom)} نمره)</span></div>
-                <div style="display:flex;gap:5px">
-                  <button type="button" class="btn primary btn-sm" onclick="window.V10FullExamBank.loadIntoBuilder('${it.id}')">📥 بارگذاری یک‌لمسی</button>
-                  <button type="button" class="btn danger btn-sm" onclick="window.V10FullExamBank.remove('${it.id}')">🗑️</button>
-                </div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      `;
-    }
-  };
-
-  /* ==========================================================================
-     REQ 5: Smart Class Wizard from Class Register Photo
-     ========================================================================== */
-  window.openSmartRegisterClassWizard = function() {
-    const d = getLiveDb();
-    const schools = Array.isArray(d.schools) ? d.schools : [];
-    const schoolOpts = schools.map(s => `<option value="${escHtml(s.id)}">${escHtml(s.name)}</option>`).join('');
-    const html = `
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-        <b style="font-size:14.5px;color:var(--primary-dark)">📸 ساخت کلاس هوشمند از عکس دفتر کلاسی</b>
-        <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖ بستن</button>
-      </div>
-      <div class="grid-2" style="gap:8px;margin-bottom:8px">
-        <div><label style="font-size:11px;font-weight:800">مدرسه مقصد:</label><select id="v10ScwSchool">${schoolOpts || '<option value="">ابتدا مدرسه بسازید</option>'}</select></div>
-        <div><label style="font-size:11px;font-weight:800">نام کلاس / درس:</label><input type="text" id="v10ScwClassName" placeholder="مثلاً: هشتم ب - ریاضی"></div>
-      </div>
-      <div class="card" style="padding:10px;margin-bottom:8px">
-        <label class="btn soft block" style="cursor:pointer;margin:0">📷 انتخاب عکس دفتر کلاسی<input type="file" accept="image/*" hidden onchange="window.V10SmartClassWizard.onPhoto(event)"></label>
-        <div id="v10ScwPhotoInfo" class="muted" style="font-size:11px;margin-top:5px;text-align:center">عکس دفتر کلاسی را انتخاب کنید.</div>
-        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
-          <button type="button" class="btn primary btn-sm" onclick="window.V10SmartClassWizard.extractWithAI()">🤖 استخراج با هوش مصنوعی</button>
-          <button type="button" class="btn gray btn-sm" onclick="window.V10SmartClassWizard.copyPrompt()">📋 کپی پرامپت (حالت بدون API)</button>
-        </div>
-      </div>
-      <div class="card" style="padding:10px;margin-bottom:8px">
-        <textarea id="v10ScwPaste" rows="2" placeholder="یا خروجی JSON/متنی استخراج‌شده از هوش مصنوعی را اینجا پیست کنید..." style="font-size:11.5px"></textarea>
-        <button type="button" class="btn soft btn-sm block" style="margin-top:5px" onclick="window.V10SmartClassWizard.parsePaste()">📊 نمایش در جدول قابل ویرایش</button>
-      </div>
-      <div id="v10ScwTableWrap"></div>
-    `;
-    if (typeof openModal === 'function') openModal(html);
-    window.V10SmartClassWizard.rows = [];
-    window.V10SmartClassWizard.imgDataUrl = '';
-  };
-
-  window.V10SmartClassWizard = {
-    rows: [],
-    imgDataUrl: '',
-    async onPhoto(e) {
-      const f = e?.target?.files?.[0];
-      if (!f) return;
-      this.imgDataUrl = typeof compressImage === 'function' ? await compressImage(f, 1100, 0.82) : '';
-      const info = document.getElementById('v10ScwPhotoInfo');
-      if (info) info.textContent = '✅ عکس دفتر کلاسی آماده است.';
-    },
-    copyPrompt() {
-      const p = `از روی تصویر دفتر کلاسی پیوست‌شده، نام دانش‌آموزان، نمرات، تعداد غیبت‌ها و مثبت/منفی‌ها را استخراج کن و فقط یک JSON معتبر برگردان:
-{"className":"نام کلاس در صورت وجود","students":[{"name":"نام","lastName":"نام خانوادگی","grade":18,"absences":0,"positives":1,"negatives":0}]}`;
-      navigator.clipboard?.writeText(p).then(() => notify('📋 پرامپت استخراج دفتر کلاسی کپی شد ✅'));
-    },
-    async extractWithAI() {
-      if (!this.imgDataUrl) { notify('ابتدا عکس دفتر کلاسی را انتخاب کنید.'); return; }
-      const info = document.getElementById('v10ScwPhotoInfo');
-      if (info) info.textContent = '⏳ در حال استخراج لیست با هوش مصنوعی...';
-      try {
-        const base64 = this.imgDataUrl.split(',')[1] || '';
-        const prompt = 'از روی تصویر دفتر کلاسی، لیست دانش‌آموزان را با نام، نام خانوادگی، نمره، غیبت، مثبت و منفی فقط به صورت JSON برگردان: {"students":[{"name":"...","lastName":"...","grade":18,"absences":0,"positives":0,"negatives":0}]}';
-        let raw = '';
-        if (window.UnifiedAiEngine && typeof window.UnifiedAiEngine.callWithPoolRotation === 'function') {
-          const res = await window.UnifiedAiEngine.callWithPoolRotation(prompt, [{ mimeType: 'image/jpeg', base64 }], { temperature: 0.2 });
-          raw = typeof res === 'string' ? res : (res?.text || '');
-        } else if (window.ExamApp && typeof window.ExamApp.callArgonAI === 'function') {
-          raw = await window.ExamApp.callArgonAI(prompt, [{ mimeType: 'image/jpeg', base64 }]);
-        }
-        if (raw) {
-          const box = document.getElementById('v10ScwPaste');
-          if (box) box.value = raw;
-          this.parsePaste();
-          if (info) info.textContent = '✅ استخراج انجام شد؛ در جدول پایین بررسی و تایید کنید.';
-        } else {
-          if (info) info.textContent = '⚠️ پاسخ دریافت نشد؛ از دکمه کپی پرامپت بدون API استفاده کنید.';
-        }
-      } catch (_) {
-        if (info) info.textContent = '⚠️ خطا در اتصال AI؛ از حالت کپی پرامپت استفاده کنید.';
-      }
-    },
-    parsePaste() {
-      const raw = (document.getElementById('v10ScwPaste')?.value || '').trim();
-      if (!raw) { notify('متنی برای تحلیل وجود ندارد.'); return; }
-      const cleaned = enNum(raw).replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```json/gi, '').replace(/```/g, '').trim();
-      let parsed = null;
-      const m = cleaned.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
-      if (m) {
-        try { parsed = JSON.parse(m[0].replace(/,\s*([}\]])/g, '$1')); } catch (_) {}
-      }
-      const arr = Array.isArray(parsed) ? parsed : (Array.isArray(parsed?.students) ? parsed.students : []);
-      if (arr.length) {
-        this.rows = arr.map(s => ({
-          name: String(s.name || s.firstName || '').trim(),
-          lastName: String(s.lastName || '').trim(),
-          grade: s.grade !== undefined && s.grade !== null ? Number(s.grade) : '',
-          absences: Number(s.absences) || 0,
-          positives: Number(s.positives) || 0,
-          negatives: Number(s.negatives) || 0
-        }));
-      } else {
-        this.rows = cleaned.split(/\n+/).map(l => l.trim()).filter(Boolean).map(l => {
-          const parts = l.replace(/^\d+[\.\-\)\s]+/, '').split(/\s+/);
-          return { name: parts[0] || '', lastName: parts.slice(1).join(' ') || '', grade: '', absences: 0, positives: 0, negatives: 0 };
-        });
-      }
-      this.renderTable();
-    },
-    renderTable() {
-      const wrap = document.getElementById('v10ScwTableWrap');
-      if (!wrap) return;
-      wrap.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-          <b style="font-size:12px">پیش‌نمایش قابل ویرایش (${faNum(this.rows.length)} دانش‌آموز):</b>
-          <button type="button" class="btn soft btn-sm" onclick="window.V10SmartClassWizard.addBlank()">➕ ردیف</button>
-        </div>
-        <div style="max-height:200px;overflow:auto">
-          <table style="width:100%;border-collapse:collapse;font-size:11px">
-            <thead><tr style="background:var(--panel)"><th>نام</th><th>نام خانوادگی</th><th>نمره</th><th>غیبت</th><th>+</th><th>-</th><th></th></tr></thead>
-            <tbody>
-              ${this.rows.map((r, i) => `
-                <tr>
-                  <td><input type="text" value="${escHtml(r.name)}" style="width:70px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].name=this.value"></td>
-                  <td><input type="text" value="${escHtml(r.lastName)}" style="width:85px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].lastName=this.value"></td>
-                  <td><input type="number" step="0.25" value="${r.grade}" style="width:48px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].grade=this.value"></td>
-                  <td><input type="number" value="${r.absences}" style="width:38px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].absences=Number(this.value)||0"></td>
-                  <td><input type="number" value="${r.positives}" style="width:34px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].positives=Number(this.value)||0"></td>
-                  <td><input type="number" value="${r.negatives}" style="width:34px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].negatives=Number(this.value)||0"></td>
-                  <td><button type="button" class="btn danger btn-sm" onclick="window.V10SmartClassWizard.rows.splice(${i},1);window.V10SmartClassWizard.renderTable()">×</button></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-        <button type="button" class="btn green block" style="margin-top:8px;padding:10px;font-weight:900" onclick="window.V10SmartClassWizard.commitClass()">✅ تایید و ساخت نهایی کلاس در مدرسه</button>
-      `;
-    },
-    addBlank() {
-      this.rows.push({ name: '', lastName: '', grade: '', absences: 0, positives: 0, negatives: 0 });
-      this.renderTable();
-    },
-    commitClass() {
-      const sid = document.getElementById('v10ScwSchool')?.value || '';
-      const clsName = (document.getElementById('v10ScwClassName')?.value || '').trim() || 'کلاس جدید دفتر';
-      const s = typeof findSchool === 'function' ? findSchool(sid) : null;
-      if (!s) { notify('ابتدا یک مدرسه ایجاد یا انتخاب کنید.'); return; }
-      const newCid = typeof uid === 'function' ? uid() : ('c_' + Date.now());
-      const todayISO = typeof localISODate === 'function' ? localISODate() : new Date().toISOString().slice(0, 10);
-      const students = this.rows.filter(r => r.name || r.lastName).map(r => {
-        const stId = typeof uid === 'function' ? uid() : ('st_' + Date.now() + Math.random().toString(36).slice(2, 5));
-        const posArr = Array.from({ length: Math.max(0, r.positives || 0) }, (_, i) => ({ id: stId + '_p' + i, date: new Date().toISOString(), reason: 'دفتر کلاسی', value: 0.25 }));
-        const negArr = Array.from({ length: Math.max(0, r.negatives || 0) }, (_, i) => ({ id: stId + '_n' + i, date: new Date().toISOString(), reason: 'دفتر کلاسی', value: 0.25 }));
-        const gradesArr = (r.grade !== '' && !isNaN(Number(r.grade))) ? [{ id: stId + '_g1', subject: 'نمره دفتر کلاسی', title: 'نمره دفتر کلاسی', score: Number(r.grade), max: 20, gradeType: 'cont_exam', date: new Date().toISOString() }] : [];
-        return {
-          id: stId,
-          name: r.name || 'دانش‌آموز',
-          lastName: r.lastName || '',
-          photo: '',
-          status: 'none',
-          grades: gradesArr,
-          behavior: { positives: posArr, negatives: negArr }
-        };
-      });
-      const attMap = {};
-      this.rows.forEach((r, idx) => {
-        const stObj = students[idx];
-        if (stObj && r.absences > 0) {
-          for (let a = 0; a < Math.min(20, r.absences); a++) {
-            const dObj = new Date();
-            dObj.setDate(dObj.getDate() - a);
-            const dKey = dObj.toISOString().slice(0, 10);
-            if (!attMap[dKey]) attMap[dKey] = {};
-            attMap[dKey][stObj.id] = 'absent';
-          }
-        }
-      });
-      if (!s.classes) s.classes = [];
-      s.classes.push({ id: newCid, name: clsName, subject: clsName, students, attendance: attMap, termScores: {}, sessionNotes: {} });
-      if (typeof save === 'function') save();
-      if (typeof closeModal === 'function') closeModal();
-      if (typeof openClass === 'function') openClass(s.id, newCid);
-      notify(`✅ کلاس «${clsName}» با ${faNum(students.length)} دانش‌آموز ساخته شد.`);
-    }
-  };
-
-  /* ==========================================================================
-     REQ 19: Smart Assistant «دانا» (Online UnifiedAiEngine + Offline Live DB)
-     ========================================================================== */
-  const DANA_SVG = `<svg viewBox="0 0 64 64" width="54" height="54"><defs><linearGradient id="danaBodyG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D97706"/><stop offset="100%" stop-color="#78350F"/></linearGradient></defs><path d="M16 56C16 44 23 39 32 39C41 39 48 44 48 56Z" fill="url(#danaBodyG)"/><circle cx="32" cy="27" r="14" fill="#FEF3C7" stroke="#9A3412" stroke-width="2.2"/><path d="M14 19L32 9L50 19L32 26Z" fill="url(#danaBodyG)"/><circle cx="27" cy="27" r="2.2" fill="#1E1B18"/><circle cx="37" cy="27" r="2.2" fill="#1E1B18"/><path d="M26 33Q32 37 38 33" fill="none" stroke="#9A3412" stroke-width="2.2" stroke-linecap="round"/></svg>`;
-
-  window.DanaAssistant = {
-    history: [],
-    updateStatusDot() {
-      const dot = document.getElementById('danaStatusDot');
-      if (dot) dot.classList.toggle('offline', !navigator.onLine);
-    },
-    getLiveContext() {
-      const activeViewEl = document.querySelector('.view.active');
-      const viewId = activeViewEl ? activeViewEl.id : 'dashboard';
-      const d = getLiveDb();
-      const s = typeof findSchool === 'function' ? findSchool(window.currentSchoolId) : null;
-      const c = (s && typeof findClass === 'function') ? findClass(s.id, window.currentClassId) : null;
-      return { viewId, school: s, cls: c, schoolsCount: (d.schools || []).length };
-    },
-    getPageGuide(viewId) {
-      const guides = {
-        dashboard: '📍 شما در صفحه خانه هستید. روی کرنوگراف مسی بزنید تا آمار ۳بعدی را ببینید، یا از نوار سریع بالا کلاس جدید از عکس دفتر بسازید.\n💡 نکته ذخیره‌سازی: عکس‌ها در IndexedDB ذخیره می‌شوند؛ برای انتقال به گوشی دیگر از تب تنظیمات بکاپ JSON بگیرید.',
-        teachView: '📍 شما در بخش آموزش و کتاب‌خوان هستید. فایل PDF کتاب را انتخاب کنید، روی تخته هوشمند بنویسید و با دکمه «📋 لیست امروز» وسط تدریس به حاضری بروید و با یک لمس به همین صفحه برگردید.',
-        examView: '📍 شما در آزمون‌ساز هستید. مبحث و بارم را تنظیم کنید؛ اگر کلید API ندارید یا سهمیه رایگان پر شده، از «🪄 حالت بدون API» استفاده کنید.',
-        classDetail: '📍 شما داخل کلاس هستید. برای جستجوی سریع در لیست امروز از کادر بالای لیست استفاده کنید یا برای تصحیح برگه به آزمون‌ساز بروید.'
-      };
-      return guides[viewId] || '📍 برای راهنمای دقیق هر بخش، نام دانش‌آموز، آمار کلاس یا سوال خود را بپرسید.';
-    },
-    analyzeOffline(query) {
-      const q = normFaStrict(query);
-      const ctx = this.getLiveContext();
-      const d = getLiveDb();
-      const allStudents = [];
-      (d.schools || []).forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
-        const ag = typeof avgGrade === 'function' ? avgGrade(st) : null;
-        let abs = 0;
-        if (c.attendance) Object.values(c.attendance).forEach(dayMap => { if (dayMap && dayMap[st.id] === 'absent') abs++; });
-        allStudents.push({ s, c, st, fullName: `${st.name || ''} ${st.lastName || ''}`.trim(), avg: ag, abs });
-      })));
-
-      const actions = [];
-      if (/راهنما|چطور|کمک|محدودیت|سهمیه|بکاپ|آفلاین/.test(q)) {
-        actions.push({ label: '🪄 حالت بدون API', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openNoApiModal(),80)' });
-        actions.push({ label: '💾 بکاپ JSON', fn: 'closeModal();showView("backup")' });
-        return { text: this.getPageGuide(ctx.viewId), actions, matchedLocal: true };
-      }
-
-      if (/برگه|تصحیح/.test(q)) {
-        actions.push({ label: '📂 باز کردن برگه‌های تصحیح‌شده', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openTab("gradedPapers",document.getElementById("v10GradedPapersTabBtn")),80)' });
-        return { text: `📂 در بایگانی برگه‌های تصحیح‌شده، ${faNum(loadGradedMeta().length)} برگه ثبت شده است.`, actions, matchedLocal: true };
-      }
-
-      const belowMatch = q.match(/زیر\s*(\d+(?:\.\d+)?)/);
-      if (belowMatch || /افت|ضعیف|کمتر/.test(q)) {
-        const thr = belowMatch ? Number(belowMatch[1]) : 12;
-        const pool = ctx.cls ? allStudents.filter(x => x.c.id === ctx.cls.id) : allStudents;
-        const low = pool.filter(x => x.avg !== null && x.avg < thr).sort((a, b) => a.avg - b.avg);
-        if (!low.length) return { text: `✅ هیچ دانش‌آموزی با میانگین زیر ${faNum(thr)} یافت نشد.`, actions: [], matchedLocal: true };
-        low.slice(0, 3).forEach(x => actions.push({ label: `👤 پرونده ${x.fullName}`, fn: `closeModal();openStudent('${x.s.id}','${x.c.id}','${x.st.id}')` }));
-        return {
-          text: `📉 دانش‌آموزان زیر ${faNum(thr)} (${faNum(low.length)} نفر):\n` + low.slice(0, 8).map((x, i) => `${faNum(i + 1)}. ${x.fullName} (${x.c.name}) — نمره: ${faNum(x.avg.toFixed(2))}`).join('\n'),
-          actions,
-          matchedLocal: true
-        };
-      }
-
-      if (/غیبت|غایب/.test(q)) {
-        const pool = ctx.cls ? allStudents.filter(x => x.c.id === ctx.cls.id) : allStudents;
-        const topAbs = pool.filter(x => x.abs > 0).sort((a, b) => b.abs - a.abs).slice(0, 6);
-        if (!topAbs.length) return { text: '✅ غیبتی ثبت نشده است.', actions: [], matchedLocal: true };
-        topAbs.slice(0, 2).forEach(x => actions.push({ label: `👤 ${x.fullName}`, fn: `closeModal();openStudent('${x.s.id}','${x.c.id}','${x.st.id}')` }));
-        return { text: `📅 بیشترین غیبت‌ها:\n` + topAbs.map((x, i) => `${faNum(i + 1)}. ${x.fullName} (${x.c.name}) — ${faNum(x.abs)} غیبت`).join('\n'), actions, matchedLocal: true };
-      }
-
-      if (/میانگین|آمار|کلاس|مدرسه|بانک/.test(q)) {
-        const scored = allStudents.filter(x => x.avg !== null);
-        const avg = scored.length ? (scored.reduce((s, x) => s + x.avg, 0) / scored.length).toFixed(2) : '—';
-        const bankLen = window.V10FullExamBank ? window.V10FullExamBank.load().length : 0;
-        return {
-          text: `📊 آمار زنده کل برنامه:\n• مدارس: ${faNum((d.schools || []).length)}\n• دانش‌آموزان: ${faNum(allStudents.length)}\n• میانگین کل نمرات: ${faNum(avg)}\n• بانک نمونه سوالات کامل: ${faNum(bankLen)} آزمون\n• برگه‌های تصحیح‌شده: ${faNum(loadGradedMeta().length)}`,
-          actions: [
-            { label: '💾 ذخیره آزمون فعلی در بانک', fn: 'window.V10FullExamBank.saveCurrentExam()' },
-            { label: '📂 بایگانی برگه‌ها', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openTab("gradedPapers",document.getElementById("v10GradedPapersTabBtn")),80)' }
-          ],
-          matchedLocal: true
-        };
-      }
-
-      if (q.length >= 2) {
-        const hits = allStudents.filter(x => normFaStrict(x.fullName).includes(q));
-        if (hits.length) {
-          hits.slice(0, 3).forEach(x => actions.push({ label: `👤 باز کردن پرونده ${x.fullName}`, fn: `closeModal();openStudent('${x.s.id}','${x.c.id}','${x.st.id}')` }));
-          return {
-            text: `🔎 ${faNum(hits.length)} دانش‌آموز یافت شد:\n` + hits.slice(0, 5).map(x => `• ${x.fullName} (${x.c.name}) — میانگین: ${x.avg !== null ? faNum(x.avg.toFixed(2)) : '—'} | غیبت: ${faNum(x.abs)}`).join('\n'),
-            actions,
-            matchedLocal: true
-          };
-        }
-      }
-
-      return {
-        text: this.getPageGuide(ctx.viewId) + `\n\nمی‌توانید نام یک دانش‌آموز را بنویسید یا بپرسید: «نمره زیر ۱۲»، «بیشترین غیبت»، «آمار کل».`,
-        actions: [
-          { label: '🪄 حالت بدون API', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openNoApiModal(),80)' },
-          { label: '📂 برگه‌های تصحیح‌شده', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openTab("gradedPapers",document.getElementById("v10GradedPapersTabBtn")),80)' }
-        ],
-        matchedLocal: false
-      };
-    },
-    async ask(query) {
-      const txt = String(query || '').trim();
-      if (!txt) return;
-      this.history.push({ role: 'user', text: txt, actions: [] });
-      this.renderLog('thinking');
-      let reply = this.analyzeOffline(txt);
-
-      if (navigator.onLine && !reply.matchedLocal && window.UnifiedAiEngine && typeof window.UnifiedAiEngine.callWithPoolRotation === 'function') {
-        try {
-          const ctx = this.getLiveContext();
-          const fullPrompt = `تو «دانا» همیار هوشمند معلم در برنامه دانش‌آموز من هستی.\nوضعیت زنده: صفحه=${ctx.viewId} | مدرسه=${ctx.school?.name || 'ندارد'} | کلاس=${ctx.cls?.name || 'ندارد'} | تعداد مدارس=${ctx.schoolsCount}.\nپاسخ دقیق، کوتاه و کاربردی به فارسی بده.\nپرسش معلم: ${txt}`;
-          const aiRes = await window.UnifiedAiEngine.callWithPoolRotation(fullPrompt, [], { temperature: 0.4 });
-          const aiTxt = typeof aiRes === 'string' ? aiRes : (aiRes?.text || '');
-          if (aiTxt && String(aiTxt).trim().length > 10) {
-            reply = { text: String(aiTxt).trim(), actions: reply.actions || [] };
-          }
-        } catch (_) {}
-      }
-
-      this.history.push({ role: 'bot', text: reply.text, actions: reply.actions || [] });
-      this.renderLog(navigator.onLine ? 'answering' : 'offline');
-    },
-    renderLog(avatarState = 'idle') {
-      const av = document.getElementById('v10DanaAvatar');
-      if (av) av.className = 'v10-dana-avatar state-' + avatarState;
-      const log = document.getElementById('v10DanaChatLog');
-      if (!log) return;
-      log.innerHTML = this.history.map(m => `
-        <div class="v10-dana-msg ${m.role}">
-          <div>${escHtml(m.text)}</div>
-          ${m.actions && m.actions.length ? `<div class="v10-dana-actions-row">${m.actions.map(a => `<button type="button" class="btn soft btn-sm" onclick="${a.fn.replace(/"/g, '&quot;')}">${escHtml(a.label)}</button>`).join('')}</div>` : ''}
-        </div>
-      `).join('');
-      log.scrollTop = log.scrollHeight;
-    },
-    startVoice() {
-      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SR) { notify('مرورگر شما از ورودی صوتی پشتیبانی نمی‌کند.'); return; }
-      const rec = new SR();
-      rec.lang = 'fa-IR';
-      rec.onresult = (e) => {
-        const t = e.results?.[0]?.[0]?.transcript || '';
-        const inp = document.getElementById('v10DanaInp');
-        if (inp && t) { inp.value = t; this.ask(t); }
-      };
-      rec.start();
-    }
-  };
-
-  window.openDanaAssistantModal = function() {
-    const ctx = window.DanaAssistant.getLiveContext();
-    if (!window.DanaAssistant.history.length) {
-      window.DanaAssistant.history.push({
-        role: 'bot',
-        text: `سلام استاد! من «دانا» هستم.\n` + window.DanaAssistant.getPageGuide(ctx.viewId),
-        actions: []
-      });
-    }
-    const html = `
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <b style="font-size:15px;color:var(--primary-dark)">🎓 همیار هوشمند دانا (${navigator.onLine ? 'آنلاین + آفلاین' : 'آفلاین'})</b>
-        <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖</button>
-      </div>
-      <div class="v10-dana-stage">
-        <div id="v10DanaAvatar" class="v10-dana-avatar state-${navigator.onLine ? 'idle' : 'offline'}">${DANA_SVG}</div>
-        <div style="font-size:11.5px;line-height:1.6">
-          <b>درک لحظه‌ای صفحه و داده‌های زنده</b><br>
-          <span class="muted">جستجوی دانش‌آموز، تحلیل نمرات زیر حد نصاب، آمار غیبت و راهنمای تمام بخش‌ها</span>
-        </div>
-      </div>
-      <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('نمره زیر ۱۲')">📉 زیر ۱۲</button>
-        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('بیشترین غیبت')">📅 بیشترین غیبت</button>
-        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('آمار کل')">📊 آمار کل</button>
-        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('راهنمای این صفحه')">💡 راهنما</button>
-      </div>
-      <div class="v10-dana-chat-log" id="v10DanaChatLog"></div>
-      <div style="display:flex;gap:6px">
-        <input type="text" id="v10DanaInp" placeholder="نام دانش‌آموز یا سوالتان را بنویسید..." style="flex:1" onkeydown="if(event.key==='Enter'){window.DanaAssistant.ask(this.value);this.value='';}">
-        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.startVoice()" title="ورودی صوتی فارسی">🎙️</button>
-        <button type="button" class="btn primary btn-sm" onclick="window.DanaAssistant.ask(document.getElementById('v10DanaInp').value);document.getElementById('v10DanaInp').value=''">ارسال</button>
-      </div>
-    `;
-    if (typeof openModal === 'function') openModal(html);
-    window.DanaAssistant.renderLog(navigator.onLine ? 'idle' : 'offline');
-  };
-
-  // REQ 10: Show graded papers directly inside student's profile (#studentDetailContent)
-  if (typeof window.openStudent === 'function') {
-    const _origOpenStuV10 = window.openStudent;
-    window.openStudent = function(sid, cid, stid) {
-      const r = _origOpenStuV10.apply(this, arguments);
-      setTimeout(() => {
-        const host = document.getElementById('studentDetailContent');
-        if (!host || document.getElementById('v10StuGradedPapersBox')) return;
-        const papers = loadGradedMeta().filter(m => m.stId === stid);
-        const box = document.createElement('div');
-        box.id = 'v10StuGradedPapersBox';
-        box.className = 'card';
-        box.style.marginTop = '12px';
-        box.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b>📂 برگه‌های تصحیح‌شده این دانش‌آموز (${faNum(papers.length)})</b><button type="button" class="btn soft btn-sm" onclick="showView('examView');setTimeout(()=>window.V10PaperGrader.openWizard(),80)">➕ تصحیح جدید</button></div>` +
-          (papers.length ? papers.map(p => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-top:1px solid var(--border);font-size:12px"><span>${escHtml(p.examTitle)} (${escHtml(p.examDate)}) — <b>${faNum(p.totalEarned)}/${faNum(p.maxTotal)}</b></span><button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.viewPaperDetail('${p.id}')">👁️ مشاهده برگه</button></div>`).join('') : '<div class="muted" style="font-size:11.5px">برگه‌ای برای این دانش‌آموز ثبت نشده است.</div>');
-        host.appendChild(box);
-      }, 40);
-      return r;
-    };
-    try { openStudent = window.openStudent; } catch (_) {}
-  }
-
-  // Boot & hooks
-  window.addEventListener('online', () => window.DanaAssistant.updateStatusDot());
-  window.addEventListener('offline', () => window.DanaAssistant.updateStatusDot());
-  document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      buildCopperChronoDeck();
-      window.DanaAssistant.updateStatusDot();
-      window.DaneshPaperPhotoDB.cleanupExpired(false);
-    }, 150);
-  });
-  if (typeof window.showView === 'function') {
-    const _origShowV10 = window.showView;
-    window.showView = function(id) {
-      const r = _origShowV10.apply(this, arguments);
-      if (id === 'dashboard' || id === 'home') setTimeout(() => { buildCopperChronoDeck(); updateCopperChronoStats(); }, 40);
-      return r;
-    };
-    try { showView = window.showView; } catch (_) {}
-  }
-})();
-</script>
 </body>
 </html>
