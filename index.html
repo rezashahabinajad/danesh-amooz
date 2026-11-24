@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#EA580C">
+<meta name="theme-color" content="#B45309">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -22,32 +22,32 @@
 <style>
 :root {
   color-scheme: light;
-  /* پالت پیش‌فرض نارنجی کلاسیک و سفید تمیز (Orange & White Default) */
-  --bg-main: #FFF9F2;
-  --bg-card: #FFFFFF;
-  --bg-panel: #FFF3E4;
-  --neon-cyan: #EA580C;
-  --neon-blue: #F97316;
-  --neon-green: #16A34A;
-  --neon-red: #DC2626;
-  --neon-purple: #D97706;
-  --text-main: #1E293B;
-  --text-muted: #64748B;
-  --border-cyber: #FED7AA;
-  --border-subtle: #FFEDD5;
+  /* تم پیش‌فرض لوکس «کرنوگراف مسی» (Copper Chronograph Luxury Default) */
+  --bg-main: #FDF8F3;
+  --bg-card: #FFFDFB;
+  --bg-panel: #F7EDE2;
+  --neon-cyan: #B45309;
+  --neon-blue: #C25E28;
+  --neon-green: #15803D;
+  --neon-red: #B91C1C;
+  --neon-purple: #9A3412;
+  --text-main: #1E1B18;
+  --text-muted: #57534E;
+  --border-cyber: #E7D3BE;
+  --border-subtle: #F2E4D5;
 
-  /* نگاشت متغیرهای برنامه به پالت نارنجی و سفید پیش‌فرض */
+  /* نگاشت متغیرهای برنامه به طیف مسی و برنز کرنوگراف */
   --bg: var(--bg-main);
   --card: var(--bg-card);
   --panel: var(--bg-panel);
   --text: var(--text-main);
   --muted: var(--text-muted);
-  --primary: #EA580C;
-  --primary2: #F97316;
-  --primary-dark: #9A3412;
-  --primary-light: #FFF7ED;
-  --primary-border: #FDBA74;
-  --border: #FED7AA;
+  --primary: #B45309;
+  --primary2: #C25E28;
+  --primary-dark: #78350F;
+  --primary-light: #FEF5EB;
+  --primary-border: #D9A066;
+  --border: #E7D3BE;
   --green: var(--neon-green);
   --success: var(--neon-green);
   --success-bg: #DCFCE7;
@@ -5214,6 +5214,7 @@ body.dark .ws-logout-inner {
     <div class="top-icons-capsule" id="topIconsCapsule">
       <button type="button" class="iconbtn" onclick="openTeacherProToolkitModal()" title="جعبه ابزار حرفه‌ای معلم (ماشین‌حساب، تایمر، قرعه‌کشی)" aria-label="ابزار معلم">🧰</button>
       <button type="button" class="iconbtn" onclick="openSmartCommandPalette()" title="جستجوی فرماندهی سراسری (Ctrl+K)" aria-label="جستجوی سریع">🔍</button>
+      <button type="button" class="iconbtn v10-dana-header-btn" id="danaHeaderBtn" onclick="openDanaAssistantModal()" title="همیار هوشمند دانا (آنلاین + آفلاین)" aria-label="همیار هوشمند دانا"><span class="v10-dana-mini-face" aria-hidden="true"><svg viewBox="0 0 36 36" width="22" height="22"><defs><linearGradient id="danaMiniGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D97706"/><stop offset="100%" stop-color="#9A3412"/></linearGradient></defs><circle cx="18" cy="19" r="12" fill="#FEF3C7" stroke="url(#danaMiniGrad)" stroke-width="2"/><path d="M8 14L18 8L28 14L18 19Z" fill="url(#danaMiniGrad)"/><circle cx="14" cy="19.5" r="1.7" fill="#1E1B18"/><circle cx="22" cy="19.5" r="1.7" fill="#1E1B18"/><path d="M14.5 23.5Q18 26 21.5 23.5" fill="none" stroke="#9A3412" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="v10-dana-status-dot" id="danaStatusDot"></span></button>
       <div class="top-drawer-items" id="topDrawerItems">
         <button type="button" class="iconbtn" onclick="showView('onlineClassView')" title="کلاس آنلاین و لینک اختصاصی" aria-label="کلاس آنلاین">🌐</button>
         <button type="button" class="iconbtn" onclick="openTeacherAccountModal()" title="حساب کاربری معلم (جیمیل و شماره همراه)" aria-label="حساب کاربری">👤</button>
@@ -5300,7 +5301,7 @@ body.dark .ws-logout-inner {
 
   <!-- نوار کشویی دسترسی سریع ۱کلیکی معلم در داشبورد -->
   <div class="dash-quick-strip" id="dashQuickStrip">
-    <button type="button" class="dash-q-pill" onclick="startGameSpotlightTour(true)" style="border-color:var(--primary);background:var(--primary-light);color:var(--primary-dark)">🎮 راهنمای تعاملی</button>
+    <button type="button" class="dash-q-pill" onclick="openSmartRegisterClassWizard()" style="border-color:var(--primary);background:var(--primary-light);color:var(--primary-dark);font-weight:900">📸 ساخت کلاس از عکس دفتر</button>
     <button type="button" class="dash-q-pill" onclick="openTeacherProToolkitModal()" style="border-color:var(--primary);font-weight:900">🧰 جعبه ابزار معلم (ماشین‌حساب/تایمر)</button>
     <button type="button" class="dash-q-pill" onclick="openKeepsakeSchoolsGalleryModal()">🏛️ گنجینه یادگاری مدارس</button>
     <button type="button" class="dash-q-pill" onclick="openTeacherExamResultsManagerModal()">📊 لینک نتایج و ویرایش نمرات آزمون</button>
@@ -5313,7 +5314,7 @@ body.dark .ws-logout-inner {
   </div>
   <div id="dashBirthdaysBox"></div>
   <div id="todayClassesBox"></div>
-  <!-- v10.0.0: ردیف ۳ کادر آماری تکراری مدارس/کلاس‌ها/دانش‌آموزان برای خلوت‌سازی صفحه خانه حذف شد -->
+  <!-- v9.9.9: ردیف ۳ کادر آماری تکراری مدارس/کلاس‌ها/دانش‌آموزان برای خلوت‌سازی صفحه خانه حذف شد -->
   <div id="dashboardSchools" class="grid"></div>
   <div id="todayAbsencesBox" style="margin-top:12px"></div>
   <div id="schoolProgressChart"></div>
@@ -5324,6 +5325,7 @@ body.dark .ws-logout-inner {
     <div><h1 class="title">🏫 مدارس و گنجینه یادگاری</h1><p class="subtitle" style="margin:0">مدارس فعال و بایگانی همیشگی خاطرات سال‌های تحصیلی</p></div>
     <div style="display:flex;gap:6px;flex-wrap:wrap">
       <button class="btn soft" style="border-color:#F59E0B;font-weight:900" onclick="openKeepsakeSchoolsGalleryModal()">🏛️ گنجینه یادگاری مدارس <span id="keepsakeSchoolsCountBadge"></span></button>
+      <button class="btn soft" style="border-color:var(--primary);font-weight:800" onclick="openSmartRegisterClassWizard()">📸 ساخت کلاس هوشمند از عکس دفتر کلاسی</button>
       <button class="btn green" onclick="openLinkClassBuilderModal()">🔗 کلاس‌سازی با لینک</button>
       <button class="btn primary" onclick="addSchool()">＋ مدرسه جدید</button>
     </div>
@@ -5407,7 +5409,7 @@ body.dark .ws-logout-inner {
 <section id="teachView" class="view">
   <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px">
     <h1 class="title" id="teachMainTitle" style="margin:0;font-size:19px;font-weight:900">آموزش</h1>
-    <span class="chip" id="cachedBookBadge" style="font-weight:800">کتاب در حافظه: ندارد</span>
+    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap"><button type="button" class="btn primary btn-sm" id="v10TeachToTodayBtn" onclick="window.V10TeachTodaySwitch.goToTodayList()">📋 لیست امروز</button><span class="chip" id="cachedBookBadge" style="font-weight:800">کتاب در حافظه: ندارد</span></div>
   </div>
 
   <!-- کارت یکپارچه کتاب‌خوان و تخته هوشمند کلاسی -->
@@ -5655,7 +5657,6 @@ body.dark .ws-logout-inner {
       <button class="btn soft btn-sm" onclick="ExamApp.exportDirectPDF()" id="btnDirectPdf">📕 PDF</button>
       <button class="btn soft btn-sm" onclick="ExamApp.shareExamSheet()" id="btnShareSheet">📤 اشتراک</button>
       <button class="btn gray btn-sm" onclick="ExamApp.printSheetNow()">🖨️ چاپ</button>
-      <button class="btn primary btn-sm" style="grid-column:1 / -1" onclick="ExamApp.openImportFromTeachModal()">📥 دریافت سوالات و جزوه از بخش آموزش (کتاب‌خوان)</button>
       <button class="btn soft btn-sm" style="grid-column:1 / -1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">🌐 ارائه این آزمون در «لینک اختصاصی» / کلاس آنلاین</button>
       <button class="btn green btn-sm" style="grid-column:1 / -1" onclick="openTeacherExamResultsManagerModal(currentSchoolId, currentClassId)">📊 لینک نتایج آزمون (مشاهده، ویرایش نمرات توسط معلم و کارنامه تحلیلی دانش‌آموز)</button>
     </div>
@@ -5682,13 +5683,12 @@ body.dark .ws-logout-inner {
     <button class="ex-nav-btn" onclick="ExamApp.openTab('pdf', this)"><span>📚</span><span>کتاب PDF</span></button>
     <button class="ex-nav-btn" onclick="ExamApp.openTab('manual', this)"><span>⚡</span><span>آزمون دسته‌متن خودکار</span></button>
     <button class="ex-nav-btn" onclick="ExamApp.openTab('archive', this)"><span>🗄️</span><span>آرشیو تاییدشده</span></button>
+    <button class="ex-nav-btn" id="v10GradedPapersTabBtn" onclick="ExamApp.openTab('gradedPapers', this)"><span>📂</span><span>برگه‌های تصحیح‌شده</span></button>
     <button class="ex-nav-btn" onclick="ExamApp.openTab('settings', this)"><span>🎛️</span><span>سربرگ و خطاطی</span></button>
     <button class="ex-nav-btn" id="mobPreviewTabBtn" onclick="ExamApp.openTab('preview', this)"><span>📄</span><span>برگه A4 و تراز</span></button>
   </div>
 
   <div id="examPane-ai" class="exam-pane active">
-    <!-- v10.0.0: کارت کلید هوش مصنوعی از آزمون‌ساز حذف شد؛ مدیریت یکپارچه کلید در بخش تنظیمات انجام می‌شود -->
-
     <div class="box-card">
       <div class="box-header">
         <span>📚 مبحث آزمون (تشخیص خودکار هفتم/هشتم/نهم در سربرگ)</span>
@@ -5700,7 +5700,6 @@ body.dark .ws-logout-inner {
         </select>
       </div>
       <textarea id="aiPromptSource" oninput="ExamApp.autoDetectHeaderFromText(this.value)" placeholder="مثال: از درس ۱ تا ۴ پیام‌های آسمان هشتم سوال طرح کن (به محض نوشتن هفتم یا هشتم، سربرگ خودکار تنظیم می‌شود)..."></textarea>
-      <!-- v10.0.0: دکمه انتخاب عکس از صفحات کتاب درسی از آزمون‌ساز حذف شد -->
     </div>
 
     <div class="box-card">
@@ -5805,17 +5804,6 @@ body.dark .ws-logout-inner {
   </div>
 
   <div id="examPane-manual" class="exam-pane">
-    <div class="box-card highlight">
-      <div class="box-header">
-        <span>🤖 تبدیل خودکار هر متن، جزوه یا نمونه سوال به آزمون استاندارد (با هوش‌واره)</span>
-      </div>
-      <textarea id="autoConvertRawQuestionsInp" rows="3" placeholder="هر متن درسی، نمونه سوال خام یا لیست سوالات را اینجا پیست کنید؛ هوش‌واره به صورت کاملاً خودکار آن‌ها را به سوالات تستی، صحیح/غلط، جای خالی و تشریحی با پاسخ کلیدی و بارم رُند تبدیل و در برگه A4 می‌چیند..."></textarea>
-      <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
-        <button type="button" class="btn primary" style="flex:2" id="btnAutoConvertRawToExam" onclick="ExamApp.autoConvertRawTextToExamQuestions()">✨ تبدیل و چیدمان خودکار با هوش‌واره</button>
-        <input type="text" id="quickLineField" placeholder="یا ثبت سریع یک‌خطی..." style="flex:1;min-width:140px">
-        <button type="button" class="btn soft btn-sm" onclick="ExamApp.addQuickLineQuestion()">➕ افزودن</button>
-      </div>
-    </div>
     <div class="box-card">
       <div class="box-header"><span>🎨 استودیوی طراحی دستی (با نمرات رُند مضرب ۰.۲۵)</span></div>
       <input type="hidden" id="editQId" value=""><input type="hidden" id="mQType" value="mcq">
@@ -5892,6 +5880,10 @@ body.dark .ws-logout-inner {
     <div id="approvedArchiveList"></div>
   </div>
 
+
+  <div id="examPane-gradedPapers" class="exam-pane">
+    <div id="v10GradedPapersContainer"></div>
+  </div>
   <div id="examPane-settings" class="exam-pane">
     <div class="box-card highlight">
       <div class="box-header"><span>🖋️ تنظیمات خطاطی و فونت آزمون (Arial، نستعلیق، وزیرمتن)</span></div>
@@ -5926,10 +5918,6 @@ body.dark .ws-logout-inner {
         <label class="switch-card"><span>👤 ردیف نام پدر / کد دانش‌آموزی</span><input type="checkbox" id="swShowFather" checked onchange="ExamApp.syncSwitchesFromUI()"></label>
         <label class="switch-card"><span>💧 نمایش واترمارک کمرنگ پس‌زمینه</span><input type="checkbox" id="swShowWatermark" checked onchange="ExamApp.syncSwitchesFromUI()"></label>
       </div>
-    </div>
-    <div class="box-card">
-      <div class="box-header"><span>⚖️ بودجه‌بندی رسمی سال تحصیلی</span><button class="btn soft btn-sm" onclick="ExamApp.addBaromBudgetRow()">➕ افزودن فصل</button></div>
-      <div id="baromBudgetContainer"></div>
     </div>
     <div class="box-card">
       <div class="box-header"><span>🏫 مشخصات جدول سربرگ</span></div>
@@ -6295,7 +6283,7 @@ body.dark .ws-logout-inner {
       <button class="btn primary block" style="margin-top:12px" onclick="saveRules()">💾 ذخیره ضرایب نمرات و فرمول انضباطی</button>
     </div>
 
-    <!-- v10.0.0: ابزارهای منتقل‌شده از صفحه کلاس (کار عملی + سقف نمره و عدم منفی) و داشبورد یکپارچه تنظیمات نمره‌دهی -->
+    <!-- v9.9.9: ابزارهای منتقل‌شده از صفحه کلاس (کار عملی + سقف نمره و عدم منفی) و داشبورد یکپارچه تنظیمات نمره‌دهی -->
     <div class="card" id="v988RulesClassToolsCard" style="margin-bottom:12px;border-color:#FDBA74;background:linear-gradient(180deg,#FFFBF7 0%,#FFF7ED 100%)">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
         <div>
@@ -6598,7 +6586,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v10.0.0 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v9.9.9 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6698,7 +6686,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v10.0.0 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v9.9.9 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6795,28 +6783,15 @@ body.dark .ws-logout-inner {
 </div>
 
 <div class="modal-overlay" id="noApiModal">
-  <div class="modal-box" style="max-width:720px">
+  <div class="modal-box" style="max-width:680px">
     <div class="modal-top">
-      <span>🪄 حالت بدون API — طراحی آزمون دقیق با هر هوش مصنوعی</span>
+      <span>🪄 استودیوی دقیق ساخت آزمون با هوش‌واره (بدون نیاز به کلید)</span>
       <button class="btn gray btn-sm" onclick="ExamApp.closeModal('noApiModal')">✖ بستن</button>
     </div>
     <div class="modal-content">
-      <div class="card" style="background:linear-gradient(135deg,#FFF7ED,#FFEDD5);padding:12px 14px;margin-bottom:10px;border:1.5px solid #FDBA74">
-        <b style="color:#C2410C;font-size:13px;display:block;margin-bottom:6px">📘 راهنمای گام‌به‌گام (برای نتیجه ۱۰۰٪ واقعی و بدون خطا)</b>
-        <ol style="margin:0;padding-right:18px;font-size:11.8px;line-height:1.85;color:#1E293B">
-          <li><b>گام ۱ (تنظیم مشخصات):</b> تعداد سوالات، جمع بارم و گام رُندسازی را در کادر پایین بررسی کنید تا دستور به‌طور خودکار دقیق شود.</li>
-          <li><b>گام ۲ (کپی دستور همگانی):</b> دکمه <b>«📋 کپی دستور همگانی»</b> را بزنید. این دستور طوری مهندسی شده که در <b>ChatGPT، Gemini، Claude، DeepSeek، Copilot، Grok و هوش‌واره‌های ایرانی</b> کاملاً سازگار و بدون خطا کار می‌کند.</li>
-          <li><b>گام ۳ (پیوست کردن اسکرین‌شات کامل یا فایل PDF کتاب — بسیار مهم!):</b> وارد هوش مصنوعی دلخواه شوید، <b>اسکرین‌شات کامل صفحات کتاب درسی</b> یا <b>فایل PDF کتاب درسی</b> را به پیام پیوست (Attach / Upload) کنید و همین دستور کپی‌شده را کنار آن بفرستید تا سوالات <b>دقیقاً از متن واقعی همان صفحات</b> طرح شوند.</li>
-          <li><b>گام ۴ (ورود خودکار به برگه A4):</b> کل پاسخ هوش مصنوعی را کپی کنید، در کادر شماره ۳ همین صفحه پیست (Paste) کنید و دکمه سبز را بزنید تا آزمون فوری در برگه A4 چیده شود.</li>
-        </ol>
-        <div style="margin-top:8px;padding:7px 10px;border-radius:10px;background:#FFFFFF;border:1px dashed #FB923C;font-size:11.2px;color:#7C2D12">
-          💡 <b>نکته مهم محدودیت‌ها و راه جایگزین:</b> اگر هوش مصنوعی به فایل PDF کامل خطا داد (به‌خاطر حجم بالا)، از صفحات مورد نظر <b>اسکرین‌شات واضح</b> بگیرید و همراه دستور بفرستید. همچنین اگر خروجی به جای JSON به‌صورت متن شماره‌دار بود، نگران نباشید؛ پارسر هوشمند برنامه هر دو حالت را خودکار تشخیص می‌دهد.
-        </div>
-      </div>
-
       <div class="card" style="background:var(--bg-panel);padding:10px 12px;margin-bottom:10px;border-color:var(--primary)">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
-          <b style="color:var(--primary);font-size:12.5px">🎯 ۱. تنظیمات دقیق آزمون (همگام با تنظیمات اصلی)</b>
+          <b style="color:var(--primary);font-size:12.5px">🎯 ۱. تنظیمات دقیق مهندسی آزمون (محاسبه خودکار بارم و تعداد سوالات)</b>
           <button type="button" class="btn soft btn-sm" onclick="ExamApp.refreshPreciseNoApiPrompt()">🔄 بروزرسانی دستور</button>
         </div>
         <div id="noApiPrecisionSummary" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px"></div>
@@ -6838,26 +6813,28 @@ body.dark .ws-logout-inner {
       </div>
 
       <div class="card" style="padding:10px 12px;margin-bottom:10px">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:5px">
-          <b style="color:var(--neon-cyan);font-size:12.5px">📋 ۲. دستور همگانی ضدخطا (سازگار با تمام هوش مصنوعی‌ها)</b>
-          <span class="chip" style="font-size:10px">همراه PDF یا اسکرین‌شات بفرستید</span>
+        <div style="background:var(--primary-light);border:1px solid var(--primary-border);border-radius:10px;padding:8px 10px;margin-bottom:8px;font-size:11.5px;line-height:1.7">
+          <b>راهنمای سریع ۳ مرحله‌ای:</b><br>
+          ۱️⃣ دستور استاندارد زیر را کپی کنید.<br>
+          ۲️⃣ فایل PDF یا عکس صفحات کتاب را در هر هوش مصنوعی (جمنای، دیپ‌سیک، ChatGPT) پیوست و ارسال کنید.<br>
+          ۳️⃣ کل پاسخ هوش مصنوعی را در کادر پایین پیست کنید.
         </div>
-        <textarea id="noApiPromptText" readonly style="min-height:135px;background:var(--panel);font-size:11.3px;line-height:1.7;font-family:Vazirmatn,Tahoma,sans-serif"></textarea>
+        <b style="color:var(--neon-cyan);font-size:12.5px;display:block;margin-bottom:5px">📋 ۲. دستور مهندسی‌شدهٔ آماده:</b>
+        <textarea id="noApiPromptText" readonly style="min-height:110px;background:var(--panel);font-size:11.5px;line-height:1.65;font-family:Tahoma,sans-serif"></textarea>
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:7px">
-          <button type="button" class="btn primary btn-sm" onclick="ExamApp.copyNoApiPrompt()">📋 کپی دستور همگانی</button>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chatgpt.com')">🤖 کپی و باز کردن ChatGPT</button>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://gemini.google.com')">✨ کپی و باز کردن Gemini</button>
-          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chat.deepseek.com')">🧠 کپی و باز کردن DeepSeek</button>
+          <button type="button" class="btn primary btn-sm" onclick="ExamApp.copyNoApiPrompt()">📋 کپی دقیق دستور</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chat.deepseek.com')">🧠 کپی و باز کردن هوش‌واره ۱</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://chatgpt.com')">🤖 کپی و باز کردن هوش مصنوعی ۲</button>
+          <button type="button" class="btn soft btn-sm" onclick="ExamApp.copyNoApiPromptAndOpen('https://gemini.google.com')">✨ کپی و باز کردن هوش مصنوعی ۳</button>
         </div>
       </div>
 
       <div class="card" style="padding:10px 12px;border-color:var(--neon-green)">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:5px">
-          <b style="color:var(--neon-green);font-size:12.5px">🚀 ۳. جای‌گذاری پاسخ هوش مصنوعی (JSON یا متن فارسی — پارسر ضدخطا)</b>
-          <button type="button" class="btn gray btn-sm" onclick="navigator.clipboard?.readText().then(t=>{if(t){document.getElementById('noApiPasteBox').value=t;toast('📥 از حافظه جای‌گذاری شد');}}).catch(()=>toast('لطفاً دستی در کادر پیست کنید'))">📥 پیست از حافظه</button>
+          <b style="color:var(--neon-green);font-size:12.5px">🚀 ۳. جای‌گذاری پاسخ (پشتیبانی از کد JSON یا متن عادی سوالات فارسی)</b>
+          <button type="button" class="btn gray btn-sm" onclick="navigator.clipboard?.readText().then(t=>{if(t)document.getElementById('noApiPasteBox').value=t;})">📥 پیست از حافظه</button>
         </div>
-        <textarea id="noApiPasteBox" placeholder="کل پاسخ هوش مصنوعی را اینجا پیست کنید (برنامه خودکار کد JSON یا سوالات شماره‌دار فارسی را استخراج و روی برگه A4 تراز می‌کند)..." style="min-height:100px;font-size:12px"></textarea>
-        <div id="noApiImportFeedback" style="display:none;margin-top:6px;padding:7px 10px;border-radius:10px;font-size:11.5px;font-weight:700"></div>
+        <textarea id="noApiPasteBox" placeholder="پاسخ هوش مصنوعی (چه به صورت کد JSON و چه به صورت متن شماره‌دار فارسی) را اینجا پیست کنید..." style="min-height:95px;font-size:12px"></textarea>
         <button type="button" class="btn green block" style="margin-top:8px;padding:11px;font-weight:900" onclick="ExamApp.importNoApiJSON()">🚀 چیدن فوری در برگه A4 + انتقال خودکار به آزمون آنلاین</button>
       </div>
     </div>
@@ -7848,7 +7825,7 @@ function studentForm(sid, cid, st) {
   let ed = !!st, photo = st?.photo || '';
   openModal(formHeader(ed ? '✎ ویرایش دانش‌آموز' : '👨‍🎓 دانش‌آموز جدید') + `<form onsubmit="saveStudentForm(event,'${sid}','${cid}',${ed ? `'${st.id}'` : 'null'})"><div class="photo-input"><div class="photo-preview" id="photoPreview">${photo ? `<img src="${photo}">` : '👤'}</div><div style="display:flex;gap:6px;flex-wrap:wrap"><label class="btn primary">📷 دوربین<input type="file" accept="image/*" capture="environment" hidden onchange="previewStudentPhoto(event)"></label><label class="btn soft">🖼️ گالری<input type="file" accept="image/*" hidden onchange="previewStudentPhoto(event)"></label><input id="photoData" type="hidden" value="${esc(photo)}"></div></div><div class="formgrid" style="margin-top:12px"><div class="field"><label>نام</label><input id="stName" required value="${esc(st?.name || '')}"></div><div class="field"><label>نام خانوادگی</label><input id="stLast" required value="${esc(st?.lastName || '')}"></div><div class="field"><label>نام پدر</label><input id="stFather" value="${esc(st?.fatherName || '')}"></div><div class="field"><label>تاریخ تولد شمسی</label><input id="stBirth" placeholder="۱۳۸۹/۰۷/۲۱" value="${esc(st?.birth || '')}"></div><div class="field"><label>تلفن والدین</label><input id="stPhone" inputmode="tel" value="${esc(st?.phone || '')}"></div><div class="field"><label>وضعیت</label><select id="stStatus"><option value="none" ${!st || st.status === 'none' ? 'selected' : ''}>⚪ عادی</option><option value="good" ${st?.status === 'good' ? 'selected' : ''}>🟢 خوب</option><option value="attn" ${st?.status === 'attn' ? 'selected' : ''}>🔴 نیازمند توجه</option></select></div><div class="field full"><label>علایق</label><input id="stInterests" value="${esc(st?.interests || '')}"></div><div class="field full"><label>🔒 یادداشت محرمانه معلم</label><textarea id="stNotes">${esc(st?.notes || '')}</textarea></div></div><div class="formactions"><button type="submit" class="btn primary">ذخیره</button><button type="button" class="btn gray" onclick="closeModal()">انصراف</button></div></form>`);
 }
-async function previewStudentPhoto(e) { let f = e.target.files?.[0]; if (!f) return; try { let d = await compressImage(f); document.getElementById('photoPreview').innerHTML = `<img src="${d}">`; document.getElementById('photoData').value = d; } catch (err) {} e.target.value = ''; }
+async function previewStudentPhoto(e) { let f = e.target.files?.[0]; if (!f) return; try { let d = await compressImage(f, 640, 0.84); document.getElementById('photoPreview').innerHTML = `<img src="${d}">`; document.getElementById('photoData').value = d; } catch (err) {} e.target.value = ''; }
 function saveStudentForm(e, sid, cid, stid) {
   e.preventDefault(); let c = findClass(sid, cid); if (!c) return;
   let old = stid ? findStudent(sid, cid, stid) : null;
@@ -9641,7 +9618,7 @@ const ExamApp = {
 ۳. 🔗 ارتباط با مبحث صفحه:
 این پرسش مستقیماً به هدف آموزشی اصلی همین صفحه و فعالیت‌های آن متصل است.`;
   },
-  onKeyChange() { this.state.apiKey = document.getElementById('apiKeyField').value.trim(); this.discoveredGeminiModel = null; this.save(); this.updateApiStatusUI(); },
+  onKeyChange() { const el = document.getElementById('apiKeyField'); if (!el) return; this.state.apiKey = el.value.trim(); this.discoveredGeminiModel = null; this.save(); this.updateApiStatusUI(); },
   updateApiStatusUI() { const t = document.getElementById('apiStatusText'), inf = this.detectProvider(this.state.apiKey); if (t) t.textContent = inf ? `✅ متصل به: ${inf.name}` : 'ℹ️ کلید خود را وارد کنید'; },
   toggleKeyPass() { const f = document.getElementById('apiKeyField'); if (f) f.type = f.type === 'password' ? 'text' : 'password'; },
   async fetchAvailableGeminiModels(apiKey) {
@@ -9836,7 +9813,7 @@ const ExamApp = {
   },
   handleAiImages(e) {
     const files = [...(e.target.files || [])]; this.tempAiImages = [];
-    files.forEach(f => { const r = new FileReader(); r.onload = (ev) => { this.tempAiImages.push({ mimeType: f.type || 'image/jpeg', base64: ev.target.result.split(',')[1] }); const b = document.getElementById('aiImageBadge'); b.style.display = 'block'; b.textContent = `✅ ${this.toFa(this.tempAiImages.length)} تصویر آماده ارسال است.`; }; r.readAsDataURL(f); });
+    files.forEach(f => { const r = new FileReader(); r.onload = (ev) => { this.tempAiImages.push({ mimeType: f.type || 'image/jpeg', base64: ev.target.result.split(',')[1] }); const b = document.getElementById('aiImageBadge'); if (b) { b.style.display = 'block'; b.textContent = `✅ ${this.toFa(this.tempAiImages.length)} تصویر آماده ارسال است.`; } }; r.readAsDataURL(f); });
   },
   buildExamPrompt(br = this.currentBranch, note = '') {
     const src = document.getElementById('aiPromptSource').value.trim() || document.getElementById('cachedPageText')?.value.trim() || 'محتوای درس';
@@ -9948,11 +9925,11 @@ const ExamApp = {
     this.save(); this.renderAll();
   },
   addQuickLineQuestion() {
-    const v = document.getElementById('quickLineField').value.trim(); if (!v) return;
+    const _qlf = document.getElementById('quickLineField'); const v = (_qlf?.value || '').trim(); if (!v) return;
     const p = v.split('-').map(x => x.trim()).filter(Boolean);
     if (p.length >= 5) { let c = 0; const opts = p.slice(1, 5).map((o, i) => { if (o.includes('*')) { c = i; return o.replace('*', '').trim(); } return o; }); this.getQuestions().push({ id: Date.now(), type: 'mcq', text: p[0], score: 0.5, options: opts, correctIndex: c }); }
     else this.getQuestions().push({ id: Date.now(), type: 'desc', text: p[0], score: 1, lines: 2 });
-    document.getElementById('quickLineField').value = ''; this.save(); this.renderAll();
+    if (_qlf) _qlf.value = ''; this.save(); this.renderAll();
   },
   startVoiceRecognition() { const S = window.SpeechRecognition || window.webkitSpeechRecognition; if (!S) return; const r = new S(); r.lang = 'fa-IR'; r.onresult = (e) => document.getElementById('mQText').value += ' ' + e.results[0][0].transcript; r.start(); },
   handleManualImage(e) { const f = e.target.files?.[0]; if (!f) return; const r = new FileReader(); r.onload = (ev) => this.tempManualImg = ev.target.result; r.readAsDataURL(f); },
@@ -16065,7 +16042,7 @@ openClass = function(sid, cid) {
     actionsRow.appendChild(btnRep);
   }
 
-  // v10.0.0: کادر جستجوی تکراری اول حذف شد؛ فقط یک کادر جستجوی یکپارچه بالای لیست دانش‌آموزان نمایش داده می‌شود.
+  // v9.9.9: کادر جستجوی تکراری اول حذف شد؛ فقط یک کادر جستجوی یکپارچه بالای لیست دانش‌آموزان نمایش داده می‌شود.
 };
 
 /* ۵. مرکز هوشمند اعلانات و یادآوری‌ها (🔔 با قابلیت فعال/غیرفعال‌سازی اعلان تولدها و یادآوری شخصی معلم) */
@@ -24654,7 +24631,7 @@ ${raw.slice(0, 3000)}
       this.save();
       this.renderAll();
       if (this.autoSyncToOnlineExam) this.autoSyncToOnlineExam(true);
-      document.getElementById('autoConvertRawQuestionsInp').value = '';
+      const _inp24653 = document.getElementById('autoConvertRawQuestionsInp'); if (_inp24653) _inp24653.value = '';
       toast(`✨ تعداد ${fa(arr.length)} سوال به صورت خودکار طراحی و در برگه آزمون چیده شد ✅`);
     } catch (e) {
       toast('خطا در تبدیل خودکار سوالات');
@@ -31904,7 +31881,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
       } finally {
         if (btn) {
           btn.disabled = false;
-          btn.innerHTML = oldHtml || '✨ طراحی آزمون طبق تنظیمات';
+          btn.innerHTML = oldHtml || '✨ طراحی خودکار آزمون';
         }
       }
     };
@@ -36185,7 +36162,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v10.0.0</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v9.9.9</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -46344,7 +46321,7 @@ ${JSON.stringify(batch, null, 2)}
     const mainView = document.getElementById('classMainView');
     if (!c || !mainView) return;
 
-    // v10.0.0: کادر جستجوی تکراری دوم و دکمه‌های ابزار تصاویر/پایش از صفحه کلاس حذف و به تنظیمات منتقل شدند.
+    // v9.9.9: کادر جستجوی تکراری دوم و دکمه‌های ابزار تصاویر/پایش از صفحه کلاس حذف و به تنظیمات منتقل شدند.
   };
 
   const _origRenderDashboardV9 = window.renderDashboard;
@@ -48025,7 +48002,7 @@ ${JSON.stringify(batch, null, 2)}
     if (typeof _origOpenClassV91 === 'function') {
       _origOpenClassV91(sid, cid);
     }
-    // v10.0.0: دکمه‌های کار عملی و سقف نمره و عدم منفی به بخش ضرایب و قوانین (#setPane-rules) منتقل شدند.
+    // v9.9.9: دکمه‌های کار عملی و سقف نمره و عدم منفی به بخش ضرایب و قوانین (#setPane-rules) منتقل شدند.
   };
 
 })();
@@ -52991,7 +52968,7 @@ ${JSON.stringify(batch, null, 2)}
   'use strict';
 
   const V921_VERSION = '10.0.0';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v10.0.0-orange';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v9.9.9-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
@@ -55585,7 +55562,7 @@ ${JSON.stringify(batch, null, 2)}
   'use strict';
 
   const UNIFIED_VERSION = '10.0.0';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v10.0.0-orange';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v9.9.9-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -55947,7 +55924,7 @@ ${JSON.stringify(batch, null, 2)}
     },
 
     mountIntoSettingsAndBackup() {
-      // v10.0.0: کارت وضعیت سلامت پایگاه داده به درخواست کاربر از بالای تنظیمات حذف شد (موتور IndexedDB همچنان فعال است)
+      // v9.9.9: کارت وضعیت سلامت پایگاه داده به درخواست کاربر از بالای تنظیمات حذف شد (موتور IndexedDB همچنان فعال است)
       document.getElementById('damDbHealthMount')?.remove();
       document.getElementById('damDbHealthDashboardCard')?.remove();
     }
@@ -59441,7 +59418,7 @@ ${JSON.stringify(batch, null, 2)}
   'use strict';
 
   const V930_VERSION = '10.0.0';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v10.0.0-orange';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v9.9.9-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -60233,13 +60210,7 @@ ${JSON.stringify(batch, null, 2)}
           }
         }
       } catch (_) {}
-      this.questionBank = [
-        { id: 'qb_101', type: 'mcq', text: 'کدام گزینه از ویژگی‌های ارزشیابی مستمر و تکوینی در فرآیند یاددهی-یادگیری است؟', score: 0.5, options: ['بازخورد مستمر برای بهبود یادگیری', 'فقط تصمیم‌گیری پایانی', 'عدم توجه به فعالیت کلاسی', 'حذف آزمون‌های کلاسی'], correctIndex: 0, explanation: 'ارزشیابی مستمر با هدف اصلاح و بهبود یادگیری در طول ترم انجام می‌شود.' },
-        { id: 'qb_102', type: 'tf', text: 'در سیستم نمره‌دهی منعطف، معلم می‌تواند سقف نمره مستمر، پایانی و کار عملی را به دلخواه تنظیم نماید.', score: 0.25, tfCorrect: 'صحیح', explanation: 'کاملاً صحیح است.' },
-        { id: 'qb_103', type: 'blank', text: 'به مجموعه فعالیت‌های عملی، کارگاهی و پروژه‌های دانش‌آموز در طول نیم‌سال، ارزشیابی ................ گفته می‌شود.', score: 0.5, blankWord: 'کار عملی', explanation: 'کار عملی' },
-        { id: 'qb_104', type: 'desc', text: 'دو مورد از مهم‌ترین مزایای استفاده از دفتر هوشمند معلم در ثبت مستمر نمرات و بازخورد به اولیا را بنویسید.', score: 1.5, lines: 3, explanation: 'دقت در محاسبات، شفافیت کارنامه برای اولیا و پایش مستمر پیشرفت تحصیلی.' },
-        { id: 'qb_105', type: 'mcq', text: 'کدام مورد باعث افزایش انگیزه و نظم مثبت در جلسات کلاسی می‌شود؟', score: 0.5, options: ['پاداش جلسات متوالی بدون منفی', 'نادیده گرفتن فعالیت‌ها', 'ثبت نمره بدون بازخورد', 'عدم ثبت حضور و غیاب'], correctIndex: 0, explanation: 'پاداش جلسات متوالی بدون منفی انگیزه خودمراقبتی دانش‌آموزان را تقویت می‌کند.' }
-      ];
+      this.questionBank = [];
       this.saveQuestionBank();
       return this.questionBank;
     };
@@ -60639,8 +60610,8 @@ ${JSON.stringify(batch, null, 2)}
   'use strict';
 
   const V940_VERSION = '10.0.0';
-  const V940_VERSION_FA = '۱۰.۰.۰';
-  const V940_CACHE_NAME = 'danesh-amooz-man-v10.0.0-orange';
+  const V940_VERSION_FA = '۹.۹.۹';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v9.9.9-orange';
   const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
 
   window.APP_VERSION = V940_VERSION;
@@ -62536,7 +62507,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     });
   };
 
-  window.compressImage = function(file, maxSide = 720, quality = 0.78) {
+  window.compressImage = function(file, maxSide = 900, quality = 0.84) {
     return window.v950CompressDataUrlOrFile(file, maxSide, quality);
   };
 
@@ -62574,7 +62545,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
           for (let i = 0; i < c.photos.length; i++) c.photos[i] = await tryOpt(c.photos[i], 720);
         }
         for (const st of (c.students || [])) {
-          if (st.photo) st.photo = await tryOpt(st.photo, 420);
+          if (st.photo && st.photo.length > 78000) st.photo = await tryOpt(st.photo, 640);
         }
       }
     }
@@ -62982,7 +62953,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     const maxNegAllowed = Math.max(0, readRuleNum('rule_max_neg_allowed', 2));
     const penPerNeg = Math.max(0, readRuleNum('rule_penalty_per_neg', 0.5));
 
-    // Section on/off toggles (v10.0.0: disabled sections have ZERO effect on final score; practical is OFF by default)
+    // Section on/off toggles (v9.9.9: disabled sections have ZERO effect on final score; practical is OFF by default)
     const contEnabled = window.isClassSectionEnabled(c, 'continuous', true);
     const finalEnabled = window.isClassSectionEnabled(c, 'final_exam', true);
     const practicalEnabled = window.isClassSectionEnabled(c, 'practical', false);
@@ -63583,7 +63554,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
       window.v950SaveBirthdayTemplate(savedTpl);
     }
 
-    // v10.0.0: Photo optimization is unified inside the Supabase Cloud & Photo Sync card
+    // v9.9.9: Photo optimization is unified inside the Supabase Cloud & Photo Sync card
     const legacyOpt = document.getElementById('v950PhotoOptCard');
     if (legacyOpt) legacyOpt.remove();
 
@@ -63718,7 +63689,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
   'use strict';
 
   const V960_VERSION = '10.0.0';
-  const V960_VERSION_FA = '۱۰.۰.۰';
+  const V960_VERSION_FA = '۹.۹.۹';
   window.DANESH_APP_VERSION = V960_VERSION;
   window.DAM_AUDIT_VERSION = V960_VERSION;
 
@@ -66226,7 +66197,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
   'use strict';
 
   const V970_VERSION = '10.0.0';
-  const V970_VERSION_FA = '۱۰.۰.۰';
+  const V970_VERSION_FA = '۹.۹.۹';
   window.DANESH_APP_VERSION = V970_VERSION;
   window.DAM_AUDIT_VERSION = V970_VERSION;
 
@@ -68397,7 +68368,7 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
   'use strict';
 
   const V971_VERSION = '10.0.0';
-  const V971_VERSION_FA = '۱۰.۰.۰';
+  const V971_VERSION_FA = '۹.۹.۹';
   window.DANESH_APP_VERSION = V971_VERSION;
 
   const safeEsc = (s) => typeof esc === 'function' ? esc(s) : String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
@@ -70394,7 +70365,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
   'use strict';
 
   const V980_VERSION = '10.0.0';
-  const V980_VERSION_FA = '۱۰.۰.۰';
+  const V980_VERSION_FA = '۹.۹.۹';
   const UNIFIED_SOLVE_BTN_LABEL = '✨ حل تمرین‌ها و فعالیت‌های این صفحه';
   const CACHE_MODEL_KEY_V980 = 'v980_cached_gemini_model';
   const CACHE_KEY_SIG_V980 = 'v980_cached_gemini_key_sig';
@@ -71088,7 +71059,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
       }
     }
 
-    // v10.0.0: خوانش هوشمند کل درس از صفحات قبلی (تا ۶ صفحه قبل؛ با تشخیص خودکار ابتدای درس و کش دائمی)
+    // v9.9.9: خوانش هوشمند کل درس از صفحات قبلی (تا ۶ صفحه قبل؛ با تشخیص خودکار ابتدای درس و کش دائمی)
     if (includeFullLesson && pdfDoc && pNo > 1) {
       const maxLookback = Math.min(6, pNo - 1);
       const foundMap = {};
@@ -71820,7 +71791,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
   'use strict';
 
   const V982_VERSION = '10.0.0';
-  const V982_VERSION_FA = '۱۰.۰.۰';
+  const V982_VERSION_FA = '۹.۹.۹';
   const MULTI_KEY_STORAGE = 'dam_ai_multi_keys_v950';
   const MODEL_CACHE_STORAGE = 'v982_ai_model_cache_map';
   const ENDPOINT_CACHE_STORAGE = 'v982_ai_endpoint_cache_map';
@@ -72581,7 +72552,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Client-App': 'DaneshAmoozMan-v10.0.0'
+              'X-Client-App': 'DaneshAmoozMan-v9.9.9'
             },
             body: payloadStr,
             signal: ctrl ? ctrl.signal : undefined
@@ -72674,7 +72645,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Client-App': 'DaneshAmoozMan-v10.0.0'
+              'X-Client-App': 'DaneshAmoozMan-v9.9.9'
             },
             body: bodyStr,
             signal: ctrl ? ctrl.signal : undefined
@@ -73549,7 +73520,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 </script>
 <!-- ==================== END V9.8.2 UNIFIED AI MASTER ENGINE ==================== -->
 
-<!-- ==================== V10.0.0 COMPLETE SUPABASE CLOUD, GOOGLE OAUTH PKCE, SETTINGS, PHOTO & PRO AUTH ENGINE ==================== -->
+<!-- ==================== V9.9.9 COMPLETE SUPABASE CLOUD, GOOGLE OAUTH PKCE, SETTINGS, PHOTO & PRO AUTH ENGINE ==================== -->
 <style id="v987SupabaseSyncStyles">
   .v985-cloud-pill {
     cursor: pointer;
@@ -73893,7 +73864,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
   'use strict';
 
   const V987_VERSION = '10.0.0';
-  const V987_VERSION_FA = '۱۰.۰.۰';
+  const V987_VERSION_FA = '۹.۹.۹';
   const SB_URL = 'https://wazycdrhwlnoylfmsenx.supabase.co';
   const SB_KEY = 'sb_publishable_SjneXL0bzHA-mXFfdQwklw_0x9fwo0N';
   const SESSION_STORAGE_KEY = 'dam_sb_session_v983';
@@ -73902,9 +73873,9 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
   const PKCE_STORAGE_KEY = 'dam_sb_pkce_v987';
   const TABLE_NAME = 'teacher_backups';
   const PHOTO_BUCKET = 'student-photos';
-  const PHOTO_MAX_SIDE = 320;
-  const PHOTO_QUALITY = 0.75;
-  const PHOTO_TARGET_MAX_BYTES = 22000;
+  const PHOTO_MAX_SIDE = 640;
+  const PHOTO_QUALITY = 0.84;
+  const PHOTO_TARGET_MAX_BYTES = 55000;
   const PHOTO_CONCURRENCY = 4;
 
   /* فهرست کامل تمام تنظیمات، ظاهر، پروفایل و کلیدهای هوش مصنوعی همگام‌شده با سرور */
@@ -76276,9 +76247,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             this.syncUp(true, false);
           }
         });
-        setTimeout(() => {
-          this.migrateExistingPhotosToWebP320(true, false).catch(() => {});
-        }, 2500);
+        // v10.0.0: Disabled automatic silent photo downgrade on boot/backup restore to preserve student photo quality.
 
         if (!cbResult?.handled && this.isLoggedIn() && (typeof navigator === 'undefined' || navigator.onLine !== false)) {
           setTimeout(() => {
@@ -76304,11 +76273,11 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
   }
 })();
 </script>
-<!-- ==================== END V10.0.0 COMPLETE SUPABASE CLOUD, GOOGLE OAUTH PKCE, SETTINGS, PHOTO & PRO AUTH ENGINE ==================== -->
+<!-- ==================== END V9.9.9 COMPLETE SUPABASE CLOUD, GOOGLE OAUTH PKCE, SETTINGS, PHOTO & PRO AUTH ENGINE ==================== -->
 
 
 <style id="v989MasterUiGeometryStyles">
-  /* ==================== v10.0.0: هندسه، تناسب و زیبایی‌شناسی یکپارچه RTL ==================== */
+  /* ==================== v9.9.9: هندسه، تناسب و زیبایی‌شناسی یکپارچه RTL ==================== */
 
   /* ۱. کارت‌های «برنامه‌های امروز کلاس‌ها» */
   .v988-today-class-card {
@@ -76774,7 +76743,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     }
   }
 
-  /* v10.0.0: کپسول نام درس، برچسب تولد بدون شکستگی، دکمه‌های کپی و کارت هوش مصنوعی پیش‌فرض */
+  /* v9.9.9: کپسول نام درس، برچسب تولد بدون شکستگی، دکمه‌های کپی و کارت هوش مصنوعی پیش‌فرض */
   .v991-class-title-line {
     display: flex;
     align-items: center;
@@ -76980,1460 +76949,1515 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 </script>
 
 
-<!-- ==================== V10.0.0 MASTER UPGRADE SUITE ==================== -->
-<style id="v10MasterSuiteStyles">
-  /* 1. App-Wide Contextual Step-by-Step Guide Bar & Modal */
-  .v10-guide-trigger-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 8px 12px;
-    margin: 0 0 10px 0;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
-    border: 1px solid #FDBA74;
-    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.08);
-  }
-  .v10-guide-trigger-bar .v10-gt-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-width: 0;
-    font-size: 11.8px;
-    font-weight: 800;
-    color: #9A3412;
-  }
-  .v10-guide-trigger-bar .v10-gt-actions {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-  }
-  .v10-guide-btn {
-    border: 1px solid #FB923C;
-    background: #FFFFFF;
-    color: #C2410C;
-    border-radius: 10px;
-    padding: 5px 10px;
-    font-size: 11px;
-    font-weight: 800;
-    cursor: pointer;
-    font-family: inherit;
-    transition: transform .15s ease, background .15s ease;
-  }
-  .v10-guide-btn:hover { background: #FFF7ED; transform: translateY(-1px); }
-  .v10-guide-btn.ai-pill {
-    background: linear-gradient(135deg, #EA580C, #F97316);
-    color: #FFFFFF;
-    border-color: #EA580C;
-  }
+<style id="v1000MasterStyles">
+/* تم لوکس کرنوگراف مسی و اجزای نسخه ۱۰.۰.۰ */
+body {
+  background: linear-gradient(180deg, #FDF8F3 0%, #FFFDFB 100%) !important;
+  color: var(--text-main);
+}
+body.light-mode {
+  background: linear-gradient(180deg, #E0F2FE 0%, #F8FAFC 35%) !important;
+}
+.topbar {
+  background: rgba(255, 253, 251, 0.94) !important;
+  border-bottom: 1.5px solid var(--border) !important;
+}
+.v10-dana-header-btn {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FEF5EB, #F7EDE2) !important;
+  border: 1.5px solid var(--primary-border) !important;
+}
+.v10-dana-status-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #FFFDFB;
+  background: #16A34A;
+}
+.v10-dana-status-dot.offline {
+  background: #EA580C;
+}
 
-  .v10-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.56);
-    backdrop-filter: blur(4px);
-    z-index: 99990;
-    display: none;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 12px;
-  }
-  .v10-overlay.open { display: flex; }
-  .v10-modal-card {
-    width: 100%;
-    max-width: 680px;
-    max-height: 88vh;
-    background: #FFFFFF;
-    border-radius: 22px;
-    border: 1.5px solid #FED7AA;
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    animation: v10SlideUp .22s ease-out;
-  }
-  @keyframes v10SlideUp {
-    from { opacity: 0; transform: translateY(20px) scale(.98); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  .v10-modal-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 13px 16px;
-    background: linear-gradient(135deg, #EA580C, #F97316);
-    color: #FFFFFF;
-  }
-  .v10-modal-head h3 {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 900;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-  .v10-close-btn {
-    border: none;
-    background: rgba(255,255,255,0.2);
-    color: #FFFFFF;
-    border-radius: 10px;
-    padding: 5px 10px;
-    font-size: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  .v10-modal-body {
-    padding: 14px 16px;
-    overflow-y: auto;
-    flex: 1;
-    background: #FFFBF7;
-  }
-  .v10-guide-block {
-    background: #FFFFFF;
-    border: 1px solid #FFEDD5;
-    border-radius: 14px;
-    padding: 11px 13px;
-    margin-bottom: 10px;
-  }
-  .v10-guide-block h4 {
-    margin: 0 0 7px 0;
-    font-size: 12.5px;
-    font-weight: 900;
-    color: #C2410C;
-  }
-  .v10-guide-block ol, .v10-guide-block ul {
-    margin: 0;
-    padding-right: 18px;
-    font-size: 12px;
-    line-height: 1.85;
-    color: #334155;
-  }
-  .v10-guide-ai-box {
-    background: linear-gradient(135deg, #FFF7ED, #FEF3C7);
-    border: 1.5px solid #FDBA74;
-    border-radius: 14px;
-    padding: 12px;
-  }
+/* ساعت لوکس کرنوگراف مسی با چرخش ۳بعدی */
+.v10-chrono-wrap {
+  perspective: 1200px;
+  margin-bottom: 12px;
+}
+.v10-chrono-card {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+.v10-chrono-card.flipped {
+  transform: rotateY(180deg);
+}
+.v10-chrono-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 22px;
+  border: 1.5px solid var(--primary-border);
+  background: linear-gradient(145deg, #FFFDFB 0%, #F7EDE2 58%, #EFE0CE 100%);
+  box-shadow: 0 10px 28px rgba(180, 83, 9, 0.14);
+  padding: 14px 16px;
+}
+.v10-chrono-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.v10-chrono-front-grid {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.v10-chrono-dial {
+  position: relative;
+  width: 142px;
+  height: 142px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #FFFDFB, #F3E5D5 70%, #DFC3A3 100%);
+  border: 3px solid #B45309;
+  box-shadow: inset 0 0 18px rgba(120, 53, 15, 0.18), 0 6px 18px rgba(180, 83, 9, 0.22);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.v10-chrono-ring-svg {
+  position: absolute;
+  inset: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+.v10-chrono-hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: 50% 100%;
+  border-radius: 99px;
+}
+.v10-chrono-hand.hour { width: 4px; height: 34px; background: #451A03; margin-left: -2px; }
+.v10-chrono-hand.min { width: 3px; height: 48px; background: #9A3412; margin-left: -1.5px; }
+.v10-chrono-hand.sec { width: 2px; height: 54px; background: #D97706; margin-left: -1px; }
+.v10-chrono-pin {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #78350F;
+  border: 2px solid #FDE68A;
+  z-index: 4;
+}
+.v10-chrono-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #78350F, #B45309);
+  color: #FFFDFB;
+  font-weight: 900;
+  font-size: 12.5px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(120, 53, 15, 0.25);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.v10-chrono-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 8px 0;
+}
+.v10-chrono-stat-box {
+  background: rgba(255, 253, 251, 0.88);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 6px;
+  text-align: center;
+}
+.v10-chrono-stat-box b { display: block; font-size: 16px; color: var(--primary-dark); }
+.v10-chrono-stat-box span { font-size: 10.5px; color: var(--muted); font-weight: 700; }
 
-  /* 2. Complete Sample Exams Bank Cards */
-  .v10-sample-exam-card {
-    background: #FFFFFF;
-    border: 1.5px solid #FED7AA;
-    border-radius: 14px;
-    padding: 11px 13px;
-    margin-bottom: 9px;
-    box-shadow: 0 2px 6px rgba(234, 88, 12, 0.05);
-  }
-  .v10-sample-exam-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-  .v10-sample-exam-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 8px;
-  }
-  .v10-sample-exam-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+/* کاراکتر انیمیشنی دانا */
+.v10-dana-stage {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #FEF5EB, #F7EDE2);
+  border: 1.5px solid var(--primary-border);
+  margin-bottom: 10px;
+}
+.v10-dana-avatar {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.v10-dana-avatar.state-idle { animation: v10DanaFloat 3.2s ease-in-out infinite; }
+.v10-dana-avatar.state-thinking { animation: v10DanaThink 0.9s ease-in-out infinite; }
+.v10-dana-avatar.state-answering { animation: v10DanaBounce 0.6s ease 2; }
+.v10-dana-avatar.state-offline { filter: saturate(0.85); }
+@keyframes v10DanaFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+@keyframes v10DanaThink { 0%,100%{transform:rotate(-4deg) scale(1)} 50%{transform:rotate(4deg) scale(1.05)} }
+@keyframes v10DanaBounce { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
 
-  /* 3. Embodied Companion Mascot ("دانا — همیار هوشمند دانش‌آموز من") */
-  #v10CompanionFab {
-    position: fixed;
-    left: 12px;
-    bottom: 74px;
-    z-index: 99950;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 6px 12px 6px 8px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #FFFFFF 0%, #FFF7ED 100%);
-    border: 2px solid #F97316;
-    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.25);
-    cursor: pointer;
-    user-select: none;
-    transition: transform .2s ease, box-shadow .2s ease;
-    font-family: inherit;
-  }
-  #v10CompanionFab:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 12px 28px rgba(234, 88, 12, 0.34);
-  }
-  .v10-mascot-avatar-sm {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
-    animation: v10Float 3s ease-in-out infinite;
-  }
-  .v10-mascot-avatar-lg {
-    width: 74px;
-    height: 74px;
-    flex-shrink: 0;
-    animation: v10Float 3.2s ease-in-out infinite;
-  }
-  .v10-mascot-thinking .v10-mascot-avatar-lg {
-    animation: v10Bounce .7s ease-in-out infinite;
-  }
-  .v10-mascot-talking .v10-mouth {
-    animation: v10Talk .28s ease-in-out infinite alternate;
-    transform-origin: center;
-  }
-  @keyframes v10Float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-3px); }
-  }
-  @keyframes v10Bounce {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-5px) rotate(-3deg); }
-  }
-  @keyframes v10Talk {
-    0% { transform: scaleY(0.7); }
-    100% { transform: scaleY(1.35); }
-  }
-  .v10-fab-text {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    line-height: 1.25;
-  }
-  .v10-fab-title {
-    font-size: 11.5px;
-    font-weight: 900;
-    color: #9A3412;
-  }
-  .v10-fab-sub {
-    font-size: 9.8px;
-    font-weight: 700;
-    color: #16A34A;
-  }
-  .v10-fab-sub.offline { color: #D97706; }
-
-  /* Companion Chat Messages */
-  .v10-chat-stream {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 12px 14px;
-    overflow-y: auto;
-    flex: 1;
-    min-height: 240px;
-    max-height: 48vh;
-    background: #FFFBF7;
-  }
-  .v10-msg {
-    max-width: 88%;
-    padding: 10px 12px;
-    border-radius: 16px;
-    font-size: 12.2px;
-    line-height: 1.75;
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-  .v10-msg.bot {
-    align-self: flex-start;
-    background: #FFFFFF;
-    border: 1px solid #FED7AA;
-    color: #1E293B;
-    border-top-right-radius: 4px;
-  }
-  .v10-msg.user {
-    align-self: flex-end;
-    background: linear-gradient(135deg, #EA580C, #F97316);
-    color: #FFFFFF;
-    border-top-left-radius: 4px;
-  }
-  .v10-msg-meta {
-    font-size: 10px;
-    opacity: .75;
-    margin-top: 4px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .v10-msg-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 8px;
-  }
-  .v10-action-chip {
-    border: 1px solid #FDBA74;
-    background: #FFF7ED;
-    color: #C2410C;
-    border-radius: 999px;
-    padding: 4px 10px;
-    font-size: 11px;
-    font-weight: 800;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  .v10-action-chip:hover { background: #FFEDD5; }
-  .v10-quick-prompts {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    padding: 8px 12px;
-    background: #FFF7ED;
-    border-top: 1px solid #FFEDD5;
-  }
-  .v10-quick-chip {
-    white-space: nowrap;
-    border: 1px solid #FED7AA;
-    background: #FFFFFF;
-    color: #9A3412;
-    border-radius: 999px;
-    padding: 5px 10px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  .v10-chat-input-bar {
-    display: flex;
-    gap: 6px;
-    padding: 10px 12px;
-    background: #FFFFFF;
-    border-top: 1px solid #FFEDD5;
-    align-items: center;
-  }
-  .v10-chat-input-bar input {
-    flex: 1;
-    height: 38px;
-    border-radius: 12px;
-    border: 1.5px solid #FED7AA;
-    padding: 0 12px;
-    font-size: 12.5px;
-    font-family: inherit;
-  }
-  @media (max-width: 480px) {
-    #v10CompanionFab { left: 8px; bottom: 72px; padding: 5px 9px 5px 6px; }
-    .v10-fab-title { font-size: 10.5px; }
-  }
+.v10-dana-chat-log {
+  max-height: 310px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+.v10-dana-msg {
+  padding: 9px 11px;
+  border-radius: 12px;
+  font-size: 12.2px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+.v10-dana-msg.user {
+  align-self: flex-start;
+  background: #78350F;
+  color: #FFFDFB;
+  max-width: 85%;
+}
+.v10-dana-msg.bot {
+  align-self: flex-end;
+  background: #FFFDFB;
+  border: 1px solid var(--primary-border);
+  color: var(--text-main);
+  max-width: 96%;
+}
+.v10-dana-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 7px;
+}
 </style>
 
-<!-- Global Smart Contextual Guide Modal -->
-<div class="v10-overlay" id="v10SmartGuideModal" onclick="if(event.target===this)V10SmartGuides.close()">
-  <div class="v10-modal-card">
-    <div class="v10-modal-head">
-      <h3 id="v10GuideModalTitle">📘 راهنمای گام‌به‌گام</h3>
-      <button type="button" class="v10-close-btn" onclick="V10SmartGuides.close()">✖ بستن</button>
-    </div>
-    <div class="v10-modal-body" id="v10GuideModalBody"></div>
-  </div>
-</div>
-
-<!-- Embodied App Companion Floating Button -->
-<button type="button" id="v10CompanionFab" onclick="V10Companion.open()" title="گفت‌وگو با همیار هوشمند دانش‌آموز من">
-  <span class="v10-mascot-avatar-sm" id="v10FabMascotSvg"></span>
-  <span class="v10-fab-text">
-    <span class="v10-fab-title">همیار دانا</span>
-    <span class="v10-fab-sub" id="v10FabStatusTxt">🟢 آنلاین + آفلاین</span>
-  </span>
-</button>
-
-<!-- Embodied App Companion Chat Modal -->
-<div class="v10-overlay" id="v10CompanionModal" onclick="if(event.target===this)V10Companion.close()">
-  <div class="v10-modal-card" id="v10CompanionCard">
-    <div class="v10-modal-head" style="padding:10px 14px">
-      <div style="display:flex;align-items:center;gap:10px;min-width:0">
-        <div class="v10-mascot-avatar-lg" id="v10ModalMascotSvg"></div>
-        <div style="min-width:0">
-          <div style="font-size:14px;font-weight:900">دانا — همیار هوشمند برنامه</div>
-          <div id="v10CompanionModeBadge" style="font-size:11px;opacity:.95;margin-top:2px">🟢 پاسخ‌گوی آنلاین (هوش مصنوعی) و آفلاین</div>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:5px;flex-shrink:0">
-        <button type="button" class="v10-close-btn" id="v10ModeToggleBtn" onclick="V10Companion.toggleMode()" title="تغییر حالت پاسخ‌دهی">⚡ خودکار</button>
-        <button type="button" class="v10-close-btn" onclick="V10Companion.clearChat()" title="پاک کردن تاریخچه گفت‌وگو">🗑️</button>
-        <button type="button" class="v10-close-btn" onclick="V10Companion.close()">✖</button>
-      </div>
-    </div>
-
-    <div class="v10-chat-stream" id="v10ChatStream"></div>
-
-    <div class="v10-quick-prompts" id="v10QuickPrompts">
-      <button type="button" class="v10-quick-chip" onclick="V10Companion.askQuick('آمار فعلی برنامه من چیه؟')">📊 آمار برنامه من</button>
-      <button type="button" class="v10-quick-chip" onclick="V10Companion.askQuick('چطور بدون کلید API از روی کتاب PDF آزمون بسازم؟')">🪄 آزمون بدون API</button>
-      <button type="button" class="v10-quick-chip" onclick="V10Companion.askQuick('بانک نمونه سوالات کامل چطور کار می‌کنه؟')">📚 بانک نمونه سوال</button>
-      <button type="button" class="v10-quick-chip" onclick="V10Companion.askQuick('محدودیت‌های برنامه و راه‌های جایگزین چیه؟')">⚠️ محدودیت‌ها و جایگزین‌ها</button>
-      <button type="button" class="v10-quick-chip" onclick="V10Companion.askQuick('چطور پشتیبان بگیرم که اطلاعاتم نپره؟')">💾 راهنمای پشتیبان‌گیری</button>
-    </div>
-
-    <div class="v10-chat-input-bar">
-      <button type="button" class="btn soft btn-sm" id="v10VoiceBtn" onclick="V10Companion.toggleVoice()" title="ورودی صوتی فارسی" style="height:38px;width:38px;padding:0">🎙️</button>
-      <input type="text" id="v10ChatInput" placeholder="هر سوالی درباره برنامه، آموزش یا رفع خطا دارید بپرسید..." onkeydown="if(event.key==='Enter'){event.preventDefault();V10Companion.send();}">
-      <button type="button" class="btn primary btn-sm" id="v10SendBtn" onclick="V10Companion.send()" style="height:38px;padding:0 14px;font-weight:900">ارسال</button>
-    </div>
-  </div>
-</div>
-
-<script id="v10MasterSuiteScript">
+<script id="v1000MasterUpgradeSuite">
 (function() {
   'use strict';
 
-  const safeEsc = (s) => (typeof window.esc === 'function' ? window.esc(s) : String(s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])));
-  const toFaNum = (v) => (typeof window.fa === 'function' ? window.fa(v) : String(v ?? '').replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]));
-  const toEnNum = (v) => String(v ?? '').replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
-  const notify = (msg) => { if (typeof window.toast === 'function') window.toast(msg); };
+  function faNum(v) {
+    return String(v ?? '').replace(/[0-9]/g, d => '۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
+  }
+  function enNum(v) {
+    return String(v ?? '')
+      .replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))
+      .replace(/[٠-٩]/g, d => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
+  }
+  function normFaStrict(s) {
+    return enNum(String(s || ''))
+      .replace(/[يی]/g, 'ی')
+      .replace(/[كک]/g, 'ک')
+      .replace(/[\u200c\u200f\u200e]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLowerCase();
+  }
+  function escHtml(s) {
+    return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function getLiveDb() {
+    return (typeof db !== 'undefined' && db) ? db : (window.db || { schools: [] });
+  }
+  function notify(msg) {
+    if (typeof toast === 'function') toast(msg);
+  }
 
-  /* =========================================================================
-     1. UNIVERSAL FLAWLESS NO-API PROMPT & FORGIVING MULTI-STAGE PARSER
-     ========================================================================= */
-  function installV10NoApiEngine() {
-    if (!window.ExamApp) return;
-
-    window.ExamApp.refreshPreciseNoApiPrompt = function() {
-      const step = typeof window.getScoreRoundStep === 'function' ? window.getScoreRoundStep() : 0.25;
-      const stepEl = document.getElementById('noApiStepSel');
-      if (stepEl) stepEl.value = String(step);
-
-      const targetEl = document.getElementById('noApiTargetScoreInp');
-      const targetScore = parseFloat(toEnNum(targetEl?.value || document.getElementById('aiTotalTarget')?.value || 10)) || 10;
-      const dur = Number(toEnNum(document.getElementById('aiExamDuration')?.value || 20)) || 20;
-      const mcq = Number(toEnNum(document.getElementById('aiCountMcq')?.value || 0)) || 0;
-      const tf = Number(toEnNum(document.getElementById('aiCountTf')?.value || 0)) || 0;
-      const blank = Number(toEnNum(document.getElementById('aiCountBlank')?.value || 0)) || 0;
-      const match = Number(toEnNum(document.getElementById('aiCountMatch')?.value || 0)) || 0;
-      const desc = Number(toEnNum(document.getElementById('aiCountDesc')?.value || 0)) || 0;
-      const totalCount = mcq + tf + blank + match + desc;
-      const lvl = document.getElementById('aiLevel')?.value || 'استاندارد امتحانی';
-      const subj = this.state?.header?.subject || 'درس';
-      const grade = this.state?.header?.grade || 'متوسطه';
-      const src = (document.getElementById('aiPromptSource')?.value || document.getElementById('cachedPageText')?.value || '').trim();
-
-      const sumBox = document.getElementById('noApiPrecisionSummary');
-      if (sumBox) {
-        sumBox.innerHTML = `
-          <span class="chip">📘 ${safeEsc(subj)} (${safeEsc(grade)})</span>
-          <span class="chip">⏱️ زمان: ${toFaNum(dur)} دقیقه</span>
-          <span class="chip">❓ تعداد کل: ${toFaNum(totalCount)} سوال</span>
-          <span class="chip">🎯 جمع بارم: ${toFaNum(targetScore)} نمره</span>
-          <span class="chip" style="border-color:var(--neon-green);color:var(--neon-green)">⚖️ گام بارم: مضارب ${toFaNum(step)}</span>
-        `;
+  /* ==========================================================================
+     REQ 1: Root Fix for Today List Quick Search (v960TodaySearchInp)
+     ========================================================================== */
+  function applyTodayListFilter() {
+    const inp = document.getElementById('v960TodaySearchInp');
+    const body = document.getElementById('tdScrollBody');
+    const clr = document.getElementById('v960TodaySearchInp_clear');
+    const cnt = document.getElementById('v960TodaySearchInp_count');
+    if (!inp || !body) return;
+    const q = normFaStrict(inp.value);
+    if (clr) clr.classList.toggle('visible', q.length > 0);
+    const rows = Array.from(body.querySelectorAll('.td-row, .td-book-stu-card, [data-student-id]'));
+    let shown = 0;
+    rows.forEach((row, idx) => {
+      const hay = normFaStrict((row.textContent || '') + ' ' + (idx + 1));
+      const ok = !q || hay.includes(q);
+      if (ok) {
+        row.style.removeProperty('display');
+        shown++;
+      } else {
+        row.style.setProperty('display', 'none', 'important');
       }
+    });
+    if (cnt) {
+      cnt.textContent = q ? `${faNum(shown)} از ${faNum(rows.length)}` : `${faNum(rows.length)} نفر`;
+    }
+  }
 
-      const exampleItems = [];
-      if (mcq > 0) {
-        exampleItems.push(`    {"type": "mcq", "text": "صورت سوال چهارگزینه‌ای دقیق از متن کتاب؟", "score": ${step * 2}, "options": ["گزینه اول", "گزینه دوم", "گزینه سوم", "گزینه چهارم"], "correctIndex": 0, "hint": "یک گزینه را انتخاب کنید.", "explanation": "پاسخ صحیح با استناد به متن صفحه کتاب"}`);
-      }
-      if (tf > 0) {
-        exampleItems.push(`    {"type": "tf", "text": "عبارت دقیق برای تشخیص صحیح یا غلط بودن.", "score": ${step}, "tfCorrect": "صحیح", "hint": "صحیح یا غلط را مشخص کنید.", "explanation": "توضیح کوتاه دلیل درستی یا نادرستی"}`);
-      }
-      if (blank > 0) {
-        exampleItems.push(`    {"type": "blank", "text": "جمله دقیق کتاب که بخش کلیدی آن .................... جای خالی دارد.", "score": ${step * 2}, "blankWord": "کلمه دقیق کتاب", "hint": "کلمه مناسب بنویسید.", "explanation": "پاسخ صحیح جای خالی"}`);
-      }
-      if (match > 0) {
-        exampleItems.push(`    {"type": "match", "text": "موارد ستون الف را به پاسخ مناسب در ستون ب وصل کنید.", "score": ${step * 4}, "pairs": [["مورد ۱", "پاسخ ۱"], ["مورد ۲", "پاسخ ۲"]], "hint": "هر مورد را به پاسخ درست وصل کنید.", "explanation": "کلید کامل وصل‌کردنی"}`);
-      }
-      if (desc > 0 || exampleItems.length === 0) {
-        exampleItems.push(`    {"type": "desc", "text": "صورت سوال تشریحی استاندارد و شفاف از متن کتاب؟", "score": ${step * 4}, "lines": 2, "hint": "پاسخ کامل و خوانا بنویسید.", "explanation": "پاسخ کلیدی کامل بر اساس کتاب درسی"}`);
-      }
+  function ensureTodaySearchWired() {
+    const box = document.getElementById('todayListCardBox');
+    const body = document.getElementById('tdScrollBody');
+    if (!box || !body) return;
+    let wrap = document.getElementById('v960TodaySearchInp_wrap');
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.className = 'v960-list-search-bar';
+      wrap.id = 'v960TodaySearchInp_wrap';
+      wrap.innerHTML = `
+        <span style="font-size:14px">🔍</span>
+        <input type="text" id="v960TodaySearchInp" placeholder="جستجوی سریع با نام، نام خانوادگی یا ردیف..." autocomplete="off">
+        <span class="v960-search-count" id="v960TodaySearchInp_count"></span>
+        <button type="button" class="v960-search-clear-btn" id="v960TodaySearchInp_clear" title="پاک‌سازی جستجو">×</button>
+      `;
+      const sticky = box.querySelector('.td-sticky-header-group');
+      if (sticky) sticky.appendChild(wrap);
+      else box.insertBefore(wrap, body);
+    }
+    const inp = document.getElementById('v960TodaySearchInp');
+    const clr = document.getElementById('v960TodaySearchInp_clear');
+    if (inp && !inp.dataset.v10Wired) {
+      inp.dataset.v10Wired = '1';
+      ['input', 'keyup', 'change', 'search'].forEach(ev => inp.addEventListener(ev, applyTodayListFilter));
+    }
+    if (clr && !clr.dataset.v10Wired) {
+      clr.dataset.v10Wired = '1';
+      clr.addEventListener('click', () => {
+        if (inp) { inp.value = ''; inp.focus(); }
+        applyTodayListFilter();
+      });
+    }
+    applyTodayListFilter();
+  }
 
-      const prompt = `نقش: تو طراح رسمی و ارشد سوالات امتحانی وزارت آموزش و پرورش ایران هستی.
-
-منبع طراحی سوال (الزامی و بدون استثنا):
-- اگر همراه این پیام «اسکرین‌شات کامل صفحات کتاب درسی» یا «فایل PDF کتاب درسی» پیوست شده است، تمام سوالات را ۱۰۰٪ و صرفاً از متن، تصاویر، فعالیت‌ها و نکات واقعی همان صفحات پیوست‌شده طراحی کن.
-- هیچ مطلبی از بیرون کتاب، حافظه حدسی یا پایه‌های دیگر اضافه نکن.
-${src ? `\nمبحث / متن تکمیلی معلم:\n${src.slice(0, 2600)}\n` : ''}
-مشخصات دقیق آزمون درخواستی:
-- نام درس: ${subj} | پایه تحصیلی: ${grade}
-- سطح دشواری: ${lvl} | زمان پاسخ‌گویی: ${dur} دقیقه
-- جمع کل بارم آزمون: دقیقاً ${targetScore} نمره (قبل از ارسال، جمع کل scoreها را محاسبه کن تا دقیقاً برابر ${targetScore} باشد)
-- گام رُندسازی بارم هر سوال: فقط مضارب ${step} (مانند ${step}، ${step * 2}، ${step * 3}، ${step * 4})
-- تعداد دقیق سوالات (جمعاً ${totalCount} سوال):
-  1. چهارگزینه‌ای (mcq): ${mcq} سوال
-  2. صحیح و غلط (tf): ${tf} سوال
-  3. جای خالی (blank): ${blank} سوال
-  4. وصل‌کردنی (match): ${match} سوال
-  5. تشریحی (desc): ${desc} سوال
-
-قوانین فنی خروجی (بسیار مهم برای سازگاری با تمام هوش مصنوعی‌ها):
-1. خروجی را فقط و فقط در قالب یک بلوک JSON معتبر و استاندارد برگردان (بدون هیچ متن اضافه‌ای قبل یا بعد از JSON و بدون کامنت یا ویرگول اضافه).
-2. تمام اعداد داخل فیلدهای عددی JSON (مانند score، correctIndex، lines) حتماً با ارقام انگلیسی (0-9) نوشته شوند.
-3. متن سوالات، گزینه‌ها و پاسخ تشریحی (explanation) کاملاً به زبان فارسی روان، دقیق و با نگارش رسمی کتاب درسی باشد.
-4. در سوالات چهارگزینه‌ای دقیقاً ۴ گزینه بدون پیشوند الف/ب/ج/د بنویس و شماره گزینه درست را از 0 تا 3 در correctIndex قرار بده.
-
-قالب دقیق JSON خروجی:
-\`\`\`json
-{
-  "detectedGrade": "${grade}",
-  "detectedSubject": "${subj}",
-  "questions": [
-${exampleItems.join(',\n')}
-  ]
-}
-\`\`\``;
-
-      const txtEl = document.getElementById('noApiPromptText');
-      if (txtEl) txtEl.value = prompt;
+  if (typeof window.renderTodayListInner === 'function') {
+    const _prevRenderTodayV10 = window.renderTodayListInner;
+    window.renderTodayListInner = function(sid, cid) {
+      const r = _prevRenderTodayV10.apply(this, arguments);
+      ensureTodaySearchWired();
+      requestAnimationFrame(ensureTodaySearchWired);
+      setTimeout(ensureTodaySearchWired, 60);
+      return r;
     };
+    try { renderTodayListInner = window.renderTodayListInner; } catch (_) {}
+  }
 
-    window.ExamApp.importNoApiJSON = function() {
-      const raw = (document.getElementById('noApiPasteBox')?.value || '').trim();
-      const fb = document.getElementById('noApiImportFeedback');
-      const showFb = (ok, msg) => {
-        if (!fb) return;
-        fb.style.display = 'block';
-        fb.style.background = ok ? '#DCFCE7' : '#FEF2F2';
-        fb.style.color = ok ? '#166534' : '#991B1B';
-        fb.style.border = ok ? '1px solid #86EFAC' : '1px solid #FCA5A5';
-        fb.textContent = msg;
-      };
-      if (!raw) {
-        showFb(false, '⚠️ ابتدا پاسخ هوش مصنوعی را در کادر بالا پیست (جای‌گذاری) کنید.');
-        notify('لطفاً ابتدا پاسخ هوش مصنوعی را در کادر پیست کنید.');
+  /* ==========================================================================
+     REQ 2: Luxury Copper Chronograph Clock + 3D Flip Stats on Home (#dashboard)
+     ========================================================================== */
+  function buildCopperChronoDeck() {
+    const oldDeck = document.getElementById('jarvisCommandDeck');
+    if (!oldDeck || document.getElementById('v10CopperChronoWrap')) return;
+    const wrap = document.createElement('div');
+    wrap.id = 'v10CopperChronoWrap';
+    wrap.className = 'v10-chrono-wrap';
+    wrap.innerHTML = `
+      <div class="v10-chrono-card" id="v10CopperChronoCard" onclick="this.classList.toggle('flipped')" title="برای مشاهده آمار ۳بعدی لمس کنید">
+        <div class="v10-chrono-face v10-chrono-front">
+          <div class="v10-chrono-front-grid">
+            <div class="v10-chrono-dial" aria-hidden="true">
+              <svg class="v10-chrono-ring-svg" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="56" fill="none" stroke="rgba(180,83,9,0.18)" stroke-width="3"/>
+                <circle id="v10ChronoSecArc" cx="60" cy="60" r="56" fill="none" stroke="#D97706" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="351.86" stroke-dashoffset="351.86"/>
+              </svg>
+              <div class="v10-chrono-hand hour" id="v10ChronoHour"></div>
+              <div class="v10-chrono-hand min" id="v10ChronoMin"></div>
+              <div class="v10-chrono-hand sec" id="v10ChronoSec"></div>
+              <div class="v10-chrono-pin"></div>
+            </div>
+            <div style="flex:1;min-width:190px;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+              <div style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:6px;flex-wrap:wrap">
+                <span style="font-weight:900;font-size:15px;color:var(--primary-dark)">🔥 کرنوگراف مسی</span>
+                <span class="chip" style="font-size:10.5px;background:#FEF5EB;border-color:var(--primary-border);color:var(--primary-dark)">🔄 لمس برای آمار ۳بعدی</span>
+              </div>
+              <div class="v10-chrono-capsule" id="v10ChronoCapsule" dir="rtl">--:--:-- · ----/--/--</div>
+              <div style="font-size:11.5px;color:var(--muted);line-height:1.6">دفتر هوشمند معلم · آماده مدیریت کلاس، حضورغیاب و تصحیح برگه</div>
+            </div>
+          </div>
+        </div>
+        <div class="v10-chrono-face v10-chrono-back">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <b style="color:var(--primary-dark);font-size:14px">📊 نمای آماری زنده دفتر</b>
+            <span class="chip" style="font-size:10px">🔄 لمس برای بازگشت به ساعت</span>
+          </div>
+          <div class="v10-chrono-stats-grid" id="v10ChronoStatsGrid">
+            <div class="v10-chrono-stat-box"><b id="v10StatSchools">۰</b><span>مدارس</span></div>
+            <div class="v10-chrono-stat-box"><b id="v10StatClasses">۰</b><span>کلاس‌ها</span></div>
+            <div class="v10-chrono-stat-box"><b id="v10StatStudents">۰</b><span>دانش‌آموزان</span></div>
+            <div class="v10-chrono-stat-box"><b id="v10StatAvg">—</b><span>میانگین کل</span></div>
+            <div class="v10-chrono-stat-box"><b id="v10StatAbsent">۰</b><span>غایبین امروز</span></div>
+            <div class="v10-chrono-stat-box"><b id="v10StatAttn">۰</b><span>نیازمند توجه</span></div>
+          </div>
+        </div>
+      </div>
+    `;
+    oldDeck.style.display = 'none';
+    oldDeck.parentNode.insertBefore(wrap, oldDeck);
+    tickCopperChrono();
+    updateCopperChronoStats();
+  }
+
+  function tickCopperChrono() {
+    const now = new Date();
+    const sec = now.getSeconds() + now.getMilliseconds() / 1000;
+    const min = now.getMinutes() + sec / 60;
+    const hr = (now.getHours() % 12) + min / 60;
+    const hEl = document.getElementById('v10ChronoHour');
+    const mEl = document.getElementById('v10ChronoMin');
+    const sEl = document.getElementById('v10ChronoSec');
+    const arcEl = document.getElementById('v10ChronoSecArc');
+    const capEl = document.getElementById('v10ChronoCapsule');
+    if (hEl) hEl.style.transform = `rotate(${hr * 30}deg)`;
+    if (mEl) mEl.style.transform = `rotate(${min * 6}deg)`;
+    if (sEl) sEl.style.transform = `rotate(${sec * 6}deg)`;
+    if (arcEl) {
+      const circ = 351.86;
+      arcEl.style.strokeDashoffset = String(circ * (1 - (now.getSeconds() / 60)));
+    }
+    if (capEl) {
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      let jDate = '';
+      try {
+        jDate = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(now);
+      } catch (_) {
+        jDate = typeof formatJalaliDate === 'function' ? formatJalaliDate(new Date().toISOString().slice(0, 10)) : '';
+      }
+      capEl.textContent = `${faNum(`${hh}:${mm}:${ss}`)}  |  ${jDate}`;
+    }
+  }
+
+  function updateCopperChronoStats() {
+    const d = getLiveDb();
+    const schools = Array.isArray(d.schools) ? d.schools : [];
+    let clsCount = 0, stuCount = 0, sumAvg = 0, avgN = 0, absToday = 0, attnCount = 0;
+    const todayISO = typeof localISODate === 'function' ? localISODate() : new Date().toISOString().slice(0, 10);
+    schools.forEach(s => {
+      (s.classes || []).forEach(c => {
+        clsCount++;
+        (c.students || []).forEach(st => {
+          stuCount++;
+          if (typeof avgGrade === 'function') {
+            const ag = avgGrade(st);
+            if (ag !== null && !isNaN(ag)) { sumAvg += Number(ag); avgN++; }
+          }
+          if (c.attendance && c.attendance[todayISO] && c.attendance[todayISO][st.id] === 'absent') absToday++;
+          if (st.status === 'attn' || st.specialAttention) attnCount++;
+        });
+      });
+    });
+    const setT = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    setT('v10StatSchools', faNum(schools.length));
+    setT('v10StatClasses', faNum(clsCount));
+    setT('v10StatStudents', faNum(stuCount));
+    setT('v10StatAvg', avgN ? faNum((sumAvg / avgN).toFixed(2)) : '—');
+    setT('v10StatAbsent', faNum(absToday));
+    setT('v10StatAttn', faNum(attnCount));
+  }
+
+  setInterval(tickCopperChrono, 250);
+
+  /* ==========================================================================
+     REQ 6: One-Tap Back-and-Forth Switch between Teach & Today List
+     ========================================================================== */
+  window.V10TeachTodaySwitch = {
+    lastBookId: null,
+    lastPage: 1,
+    lastSid: null,
+    lastCid: null,
+    goToTodayList() {
+      if (window.TeachAssistant) {
+        this.lastBookId = window.TeachAssistant.currentBookId || this.lastBookId;
+        this.lastPage = window.TeachAssistant.currentPage || this.lastPage;
+      }
+      const d = getLiveDb();
+      let sid = this.lastSid || window.currentSchoolId;
+      let cid = this.lastCid || window.currentClassId;
+      if (!sid || !cid) {
+        const firstS = (d.schools || [])[0];
+        const firstC = firstS && (firstS.classes || [])[0];
+        if (firstS && firstC) { sid = firstS.id; cid = firstC.id; }
+      }
+      if (!sid || !cid) {
+        notify('ابتدا یک مدرسه و کلاس بسازید تا لیست امروز باز شود.');
         return;
       }
+      this.lastSid = sid;
+      this.lastCid = cid;
+      if (typeof window.openTodayList === 'function') {
+        window.openTodayList(sid, cid);
+      } else if (typeof openClass === 'function') {
+        openClass(sid, cid);
+      }
+    },
+    goBackToTeach() {
+      if (typeof showView === 'function') showView('teachView');
+      setTimeout(() => {
+        if (window.TeachAssistant && this.lastPage && typeof window.TeachAssistant.goStudyPage === 'function') {
+          window.TeachAssistant.goStudyPage(this.lastPage);
+        }
+      }, 80);
+    }
+  };
 
-      // Stage 1: Clean think tags, markdown fences, smart quotes & trailing commas
-      let cleaned = raw
+  if (typeof window.renderTodayListInner === 'function') {
+    const _origRT2 = window.renderTodayListInner;
+    window.renderTodayListInner = function(sid, cid) {
+      window.V10TeachTodaySwitch.lastSid = sid;
+      window.V10TeachTodaySwitch.lastCid = cid;
+      const res = _origRT2.apply(this, arguments);
+      setTimeout(() => {
+        const cont = document.getElementById('classTodayListContainer');
+        if (cont && !document.getElementById('v10TodayToTeachBtn')) {
+          const topBar = cont.querySelector('div');
+          if (topBar) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.id = 'v10TodayToTeachBtn';
+            btn.className = 'btn primary btn-sm';
+            btn.textContent = '📖 بازگشت به آموزش';
+            btn.onclick = () => window.V10TeachTodaySwitch.goBackToTeach();
+            topBar.appendChild(btn);
+          }
+        }
+      }, 25);
+      return res;
+    };
+    try { renderTodayListInner = window.renderTodayListInner; } catch (_) {}
+  }
+
+  /* ==========================================================================
+     REQ 10: Separate IndexedDB for Exam Paper Photos + 180-Day Auto-Cleanup
+     ========================================================================== */
+  const PAPER_DB_NAME = 'danesh_amooz_paper_photos_v10';
+  const PAPER_STORE = 'papers';
+  const GRADED_META_KEY = 'danesh_amooz_graded_papers_meta_v10';
+  const RETENTION_MS = 180 * 24 * 60 * 60 * 1000;
+
+  window.DaneshPaperPhotoDB = {
+    _open() {
+      return new Promise((resolve, reject) => {
+        const req = indexedDB.open(PAPER_DB_NAME, 1);
+        req.onupgradeneeded = (e) => {
+          const idb = e.target.result;
+          if (!idb.objectStoreNames.contains(PAPER_STORE)) {
+            idb.createObjectStore(PAPER_STORE, { keyPath: 'id' });
+          }
+        };
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    },
+    async compressPaper(fileOrDataUrl) {
+      if (typeof compressImage === 'function') {
+        return await compressImage(fileOrDataUrl, 1100, 0.78);
+      }
+      return String(fileOrDataUrl || '');
+    },
+    async savePhoto(id, dataUrl) {
+      const idb = await this._open();
+      const now = Date.now();
+      const rec = {
+        id,
+        dataUrl,
+        bytes: dataUrl ? Math.round(dataUrl.length * 0.75) : 0,
+        createdAt: now,
+        expiresAt: now + RETENTION_MS
+      };
+      return new Promise((resolve, reject) => {
+        const tx = idb.transaction(PAPER_STORE, 'readwrite');
+        tx.objectStore(PAPER_STORE).put(rec);
+        tx.oncomplete = () => resolve(rec);
+        tx.onerror = () => reject(tx.error);
+      });
+    },
+    async getPhoto(id) {
+      const idb = await this._open();
+      return new Promise((resolve) => {
+        const tx = idb.transaction(PAPER_STORE, 'readonly');
+        const req = tx.objectStore(PAPER_STORE).get(id);
+        req.onsuccess = () => resolve(req.result || null);
+        req.onerror = () => resolve(null);
+      });
+    },
+    async getStats() {
+      const idb = await this._open();
+      return new Promise((resolve) => {
+        const tx = idb.transaction(PAPER_STORE, 'readonly');
+        const req = tx.objectStore(PAPER_STORE).getAll();
+        req.onsuccess = () => {
+          const list = req.result || [];
+          const totalBytes = list.reduce((s, x) => s + (x.bytes || (x.dataUrl ? Math.round(x.dataUrl.length * 0.75) : 0)), 0);
+          resolve({ count: list.length, totalBytes });
+        };
+        req.onerror = () => resolve({ count: 0, totalBytes: 0 });
+      });
+    },
+    async cleanupExpired(forceAll = false) {
+      const idb = await this._open();
+      const now = Date.now();
+      return new Promise((resolve) => {
+        const tx = idb.transaction(PAPER_STORE, 'readwrite');
+        const store = tx.objectStore(PAPER_STORE);
+        const req = store.getAll();
+        let removed = 0;
+        req.onsuccess = () => {
+          (req.result || []).forEach(rec => {
+            if (forceAll || (rec.expiresAt && rec.expiresAt <= now)) {
+              store.delete(rec.id);
+              removed++;
+            }
+          });
+        };
+        tx.oncomplete = () => resolve(removed);
+        tx.onerror = () => resolve(0);
+      });
+    }
+  };
+
+  function loadGradedMeta() {
+    try {
+      const arr = JSON.parse(localStorage.getItem(GRADED_META_KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (_) { return []; }
+  }
+  function saveGradedMeta(arr) {
+    try { localStorage.setItem(GRADED_META_KEY, JSON.stringify(arr || [])); } catch (_) {}
+  }
+
+  /* ==========================================================================
+     REQ 8 & 9: Smart Paper Grading (Prompt Copy + Resilient Parser + Math Check)
+        & Graded Papers Archive + Live Sync + PDF + Parent Message
+     ========================================================================== */
+  window.V10PaperGrader = {
+    currentItems: [],
+    currentPhotoUrl: '',
+    openWizard() {
+      const d = getLiveDb();
+      const classesOpts = [];
+      (d.schools || []).forEach(s => (s.classes || []).forEach(c => {
+        classesOpts.push(`<option value="${escHtml(s.id)}|${escHtml(c.id)}">${escHtml(s.name)} — ${escHtml(c.name)}</option>`);
+      }));
+      const hdr = window.ExamApp?.state?.header || {};
+      const titleDef = hdr.subject || hdr.mainTitle || 'آزمون کلاسی';
+      const dateDef = hdr.date || (typeof formatJalaliDate === 'function' ? formatJalaliDate(new Date().toISOString().slice(0, 10)) : 'امروز');
+
+      const html = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <b style="font-size:15px;color:var(--primary-dark)">📸 تصحیح هوشمند برگه با کپی پرامپت</b>
+          <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖ بستن</button>
+        </div>
+        <div class="grid-2" style="gap:8px;margin-bottom:8px">
+          <div><label style="font-size:11px;font-weight:800">کلاس:</label><select id="v10PgClassSel" onchange="window.V10PaperGrader.populateStudents()">${classesOpts.join('') || '<option value="">کلاسی نیست</option>'}</select></div>
+          <div><label style="font-size:11px;font-weight:800">دانش‌آموز:</label><select id="v10PgStuSel"></select></div>
+          <div><label style="font-size:11px;font-weight:800">عنوان آزمون:</label><input type="text" id="v10PgExamTitle" value="${escHtml(titleDef)}"></div>
+          <div><label style="font-size:11px;font-weight:800">تاریخ آزمون:</label><input type="text" id="v10PgExamDate" value="${escHtml(dateDef)}"></div>
+        </div>
+        <div class="card" style="padding:10px;margin-bottom:8px">
+          <label class="btn soft block" style="cursor:pointer;margin:0">📷 انتخاب یا گرفتن عکس برگه دانش‌آموز (ذخیره کم‌حجم و خوانا)<input type="file" accept="image/*" hidden onchange="window.V10PaperGrader.onPhotoPick(event)"></label>
+          <div id="v10PgPhotoStatus" class="muted" style="font-size:11px;margin-top:5px;text-align:center">عکسی انتخاب نشده است.</div>
+        </div>
+        <div class="card" style="padding:10px;margin-bottom:8px">
+          <b style="font-size:12px;color:var(--primary)">۱. کپی پرامپت استاندارد تصحیح (قابل استفاده در جمنای، دیپ‌سیک، ChatGPT):</b>
+          <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
+            <button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.copyPrompt()">📋 کپی پرامپت تصحیح</button>
+            <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.copyPrompt('https://gemini.google.com')">✨ جمنای</button>
+            <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.copyPrompt('https://chat.deepseek.com')">🧠 دیپ‌سیک</button>
+            <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.copyPrompt('https://chatgpt.com')">🤖 ChatGPT</button>
+          </div>
+        </div>
+        <div class="card" style="padding:10px;margin-bottom:8px">
+          <b style="font-size:12px;color:var(--green)">۲. پیست نتیجه هوش مصنوعی و کنترل جمع ریاضی:</b>
+          <textarea id="v10PgPasteBox" rows="3" placeholder="نتیجه JSON یا متن سوال‌به‌سؤال را اینجا پیست کنید..." style="margin-top:5px;font-size:11.5px"></textarea>
+          <button type="button" class="btn green btn-sm block" style="margin-top:6px" onclick="window.V10PaperGrader.parsePastedResult()">🔍 تحلیل، کنترل ریاضی و پیش‌نمایش قابل ویرایش</button>
+        </div>
+        <div id="v10PgPreviewArea" style="display:none"></div>
+      `;
+      if (typeof openModal === 'function') openModal(html);
+      this.currentItems = [];
+      this.currentPhotoUrl = '';
+      this.populateStudents();
+    },
+    populateStudents() {
+      const val = document.getElementById('v10PgClassSel')?.value || '';
+      const sel = document.getElementById('v10PgStuSel');
+      if (!sel) return;
+      const [sid, cid] = val.split('|');
+      const c = typeof findClass === 'function' ? findClass(sid, cid) : null;
+      const list = c && Array.isArray(c.students) ? c.students : [];
+      sel.innerHTML = list.map(st => `<option value="${escHtml(st.id)}">${escHtml((st.lastName || '') + ' ' + (st.name || ''))}</option>`).join('') || '<option value="">دانش‌آموزی نیست</option>';
+    },
+    async onPhotoPick(e) {
+      const f = e?.target?.files?.[0];
+      if (!f) return;
+      const stEl = document.getElementById('v10PgPhotoStatus');
+      if (stEl) stEl.textContent = '⏳ در حال بهینه‌سازی عکس برگه (عرض ۱۱۰۰px)...';
+      try {
+        const compressed = await window.DaneshPaperPhotoDB.compressPaper(f);
+        this.currentPhotoUrl = compressed;
+        const kb = Math.round((compressed.length * 0.75) / 1024);
+        if (stEl) stEl.textContent = `✅ عکس برگه آماده شد (حجم بهینه: حدود ${faNum(kb)} کیلوبایت)`;
+      } catch (_) {
+        if (stEl) stEl.textContent = '⚠️ خطا در خواندن عکس.';
+      }
+    },
+    copyPrompt(openUrl) {
+      const qs = window.ExamApp?.getQuestions ? window.ExamApp.getQuestions() : [];
+      const keyData = qs.map((q, i) => ({
+        num: i + 1,
+        question: q.text,
+        maxScore: q.score,
+        answerKey: q.type === 'mcq' ? (q.options?.[q.correctIndex] || `گزینه ${q.correctIndex + 1}`) : (q.type === 'tf' ? q.tfCorrect : (q.blankWord || q.explanation || ''))
+      }));
+      const prompt = `تو مصحح دقیق و منصف اوراق امتحانی هستی. تصویر برگه امتحانی دانش‌آموز پیوست شده است.
+لطفاً بر اساس کلید سوالات زیر، تک‌تک سوالات برگه را تصحیح کن و فقط یک JSON معتبر برگردان:
+کلید سوالات:
+${JSON.stringify(keyData, null, 2)}
+
+ساختار خروجی الزامی (بدون توضیح اضافه):
+{
+  "studentName": "نام نوشته‌شده روی برگه",
+  "totalScore": 0,
+  "maxTotal": ${qs.reduce((s, q) => s + (Number(q.score) || 0), 0)},
+  "items": [
+    { "num": 1, "earnedScore": 0.5, "maxScore": 0.5, "deductionReason": "پاسخ کامل / یا دلیل دقیق کسر نمره" }
+  ]
+}`;
+      navigator.clipboard?.writeText(prompt).then(() => notify('📋 پرامپت استاندارد تصحیح کپی شد ✅')).catch(() => notify('کپی انجام نشد.'));
+      if (openUrl) window.open(openUrl, '_blank');
+    },
+    parsePastedResult() {
+      const raw = (document.getElementById('v10PgPasteBox')?.value || '').trim();
+      if (!raw) { notify('لطفاً نتیجه را پیست کنید.'); return; }
+      const cleaned = enNum(raw).replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```json/gi, '').replace(/```/g, '').trim();
+      let parsed = null;
+      const m = cleaned.match(/\{[\s\S]*\}/);
+      if (m) {
+        try { parsed = JSON.parse(m[0].replace(/,\s*([}\]])/g, '$1')); } catch (_) {}
+      }
+      if (!parsed || !Array.isArray(parsed.items)) {
+        const items = [];
+        cleaned.split(/\n+/).forEach(line => {
+          const numMatch = line.match(/(\d+(?:\.\d+)?)\s*(?:از|\/)\s*(\d+(?:\.\d+)?)/);
+          if (numMatch) {
+            items.push({
+              num: items.length + 1,
+              earnedScore: Number(numMatch[1]),
+              maxScore: Number(numMatch[2]),
+              deductionReason: line.trim()
+            });
+          }
+        });
+        if (!items.length) {
+          notify('ساختار قابل خواندن یافت نشد؛ لطفاً متن کامل JSON یا نمرات هر سوال را پیست کنید.');
+          return;
+        }
+        parsed = { totalScore: items.reduce((s, x) => s + x.earnedScore, 0), items };
+      }
+      this.currentItems = parsed.items.map((x, idx) => ({
+        num: Number(x.num) || (idx + 1),
+        earnedScore: Number(x.earnedScore) || 0,
+        maxScore: Number(x.maxScore) || 0,
+        deductionReason: String(x.deductionReason || x.feedback || '—')
+      }));
+      const reportedTotal = parsed.totalScore !== undefined ? Number(parsed.totalScore) : null;
+      this.renderEditablePreview(reportedTotal);
+    },
+    renderEditablePreview(reportedTotal = null) {
+      const area = document.getElementById('v10PgPreviewArea');
+      if (!area) return;
+      const sumE = Math.round(this.currentItems.reduce((s, x) => s + (Number(x.earnedScore) || 0), 0) * 100) / 100;
+      const sumM = Math.round(this.currentItems.reduce((s, x) => s + (Number(x.maxScore) || 0), 0) * 100) / 100;
+      const mismatch = (reportedTotal !== null && Math.abs(reportedTotal - sumE) > 0.01);
+      area.style.display = 'block';
+      area.innerHTML = `
+        ${mismatch ? `<div style="background:#FEE2E2;border:1.5px solid #DC2626;color:#991B1B;padding:8px 10px;border-radius:10px;font-size:11.5px;margin-bottom:8px;font-weight:800">⚠️ مغایرت ریاضی: جمع ریزنمرات (${faNum(sumE)}) با نمره کل اعلام‌شده (${faNum(reportedTotal)}) متفاوت است! جمع دقیق (${faNum(sumE)}) مبنا قرار گرفت.</div>` : ''}
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <b style="font-size:12.5px">جمع کل: <span id="v10PgLiveTotal" style="color:var(--green)">${faNum(sumE)}</span> از ${faNum(sumM)}</b>
+          <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.addRow()">➕ ردیف</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+            <thead><tr style="background:var(--panel)"><th>سوال</th><th>نمره</th><th>بارم</th><th>دلیل مستند کسر نمره</th></tr></thead>
+            <tbody>
+              ${this.currentItems.map((it, idx) => `
+                <tr>
+                  <td style="text-align:center">${faNum(it.num)}</td>
+                  <td><input type="number" step="0.25" value="${it.earnedScore}" style="width:60px;padding:3px" oninput="window.V10PaperGrader.editItem(${idx},'earnedScore',this.value)"></td>
+                  <td><input type="number" step="0.25" value="${it.maxScore}" style="width:60px;padding:3px" oninput="window.V10PaperGrader.editItem(${idx},'maxScore',this.value)"></td>
+                  <td><input type="text" value="${escHtml(it.deductionReason)}" style="width:100%;padding:3px" oninput="window.V10PaperGrader.editItem(${idx},'deductionReason',this.value)"></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="btn primary block" style="margin-top:10px;padding:10px;font-weight:900" onclick="window.V10PaperGrader.commitGrade()">✅ ثبت نهایی در کلاس و بایگانی برگه‌های تصحیح‌شده</button>
+      `;
+    },
+    editItem(idx, key, val) {
+      if (!this.currentItems[idx]) return;
+      this.currentItems[idx][key] = key === 'deductionReason' ? val : (Number(val) || 0);
+      const sumE = Math.round(this.currentItems.reduce((s, x) => s + (Number(x.earnedScore) || 0), 0) * 100) / 100;
+      const tEl = document.getElementById('v10PgLiveTotal');
+      if (tEl) tEl.textContent = faNum(sumE);
+    },
+    addRow() {
+      this.currentItems.push({ num: this.currentItems.length + 1, earnedScore: 0, maxScore: 1, deductionReason: '—' });
+      this.renderEditablePreview();
+    },
+    async commitGrade() {
+      const clsVal = document.getElementById('v10PgClassSel')?.value || '';
+      const stId = document.getElementById('v10PgStuSel')?.value || '';
+      const [sid, cid] = clsVal.split('|');
+      const s = typeof findSchool === 'function' ? findSchool(sid) : null;
+      const c = typeof findClass === 'function' ? findClass(sid, cid) : null;
+      const st = c ? (c.students || []).find(x => x.id === stId) : null;
+      if (!s || !c || !st) { notify('لطفاً کلاس و دانش‌آموز معتبر انتخاب کنید.'); return; }
+
+      const examTitle = (document.getElementById('v10PgExamTitle')?.value || 'آزمون').trim();
+      const examDate = (document.getElementById('v10PgExamDate')?.value || '').trim();
+      const totalEarned = Math.round(this.currentItems.reduce((acc, x) => acc + (Number(x.earnedScore) || 0), 0) * 100) / 100;
+      const maxTotal = Math.round(this.currentItems.reduce((acc, x) => acc + (Number(x.maxScore) || 0), 0) * 100) / 100;
+      const recId = 'gp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+
+      let hasPhoto = false;
+      if (this.currentPhotoUrl) {
+        await window.DaneshPaperPhotoDB.savePhoto(recId, this.currentPhotoUrl);
+        hasPhoto = true;
+      }
+
+      if (!st.grades) st.grades = [];
+      const existingIdx = st.grades.findIndex(g => g.gradedPaperId === recId || (g.subject === examTitle && g.date === examDate));
+      const gradeEntry = {
+        id: existingIdx >= 0 ? st.grades[existingIdx].id : ('g_' + Date.now()),
+        gradedPaperId: recId,
+        subject: examTitle,
+        title: examTitle,
+        score: totalEarned,
+        max: maxTotal || 20,
+        gradeType: 'cont_exam',
+        date: examDate || new Date().toISOString()
+      };
+      if (existingIdx >= 0) st.grades[existingIdx] = gradeEntry;
+      else st.grades.push(gradeEntry);
+      if (typeof save === 'function') save();
+
+      const meta = loadGradedMeta();
+      meta.unshift({
+        id: recId,
+        sid, cid, stId: st.id,
+        schoolName: s.name,
+        className: c.name,
+        studentName: `${st.name || ''} ${st.lastName || ''}`.trim(),
+        examTitle,
+        examDate,
+        totalEarned,
+        maxTotal,
+        items: this.currentItems,
+        hasPhoto,
+        createdAt: Date.now(),
+        expiresAt: Date.now() + RETENTION_MS
+      });
+      saveGradedMeta(meta);
+      if (typeof closeModal === 'function') closeModal();
+      this.renderArchiveUI();
+      notify(`✅ نمره ${faNum(totalEarned)} از ${faNum(maxTotal)} در دفتر کلاس و بایگانی برگه‌ها ثبت شد.`);
+    },
+    async renderArchiveUI(filterText = '') {
+      const box = document.getElementById('v10GradedPapersContainer');
+      if (!box) return;
+      await window.DaneshPaperPhotoDB.cleanupExpired(false);
+      const stats = await window.DaneshPaperPhotoDB.getStats();
+      const meta = loadGradedMeta();
+      const q = normFaStrict(filterText || document.getElementById('v10GpSearchInp')?.value || '');
+      const filtered = meta.filter(m => !q || normFaStrict(`${m.className} ${m.examTitle} ${m.examDate} ${m.studentName}`).includes(q));
+      const mb = (stats.totalBytes / (1024 * 1024)).toFixed(2);
+
+      box.innerHTML = `
+        <div class="box-card highlight">
+          <div class="box-header">
+            <span>📂 برگه‌های تصحیح‌شده (بایگانی مجزا در IndexedDB)</span>
+            <button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.openWizard()">➕ تصحیح برگه جدید</button>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+            <span class="chip" style="font-size:11px">📦 فضای عکس برگه‌ها: ${faNum(mb)} MB (${faNum(stats.count)} عکس)</span>
+            <span class="chip" style="font-size:11px">⏳ پاکسازی خودکار عکس: ۱۸۰ روزه (نمرات دائمی)</span>
+            <button type="button" class="btn gray btn-sm" onclick="window.V10PaperGrader.manualCleanup()">🧹 پاکسازی دستی عکس‌های قدیمی</button>
+          </div>
+          <input type="text" id="v10GpSearchInp" value="${escHtml(filterText || '')}" placeholder="🔍 جستجوی ۲ ثانیه‌ای بر اساس کلاس، عنوان آزمون یا نام دانش‌آموز..." oninput="window.V10PaperGrader.renderArchiveUI(this.value)">
+        </div>
+        ${filtered.length === 0 ? '<div class="box-card muted" style="text-align:center">هنوز برگه تصحیح‌شده‌ای ثبت نشده است.</div>' : filtered.map(m => {
+          const daysLeft = Math.max(0, Math.ceil(((m.expiresAt || (m.createdAt + RETENTION_MS)) - Date.now()) / 86400000));
+          return `
+            <div class="box-card" style="margin-bottom:8px">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+                <div>
+                  <b>👤 ${escHtml(m.studentName)}</b> <span class="muted" style="font-size:11px">(${escHtml(m.className)})</span><br>
+                  <span style="font-size:11.5px;color:var(--primary-dark)">📝 ${escHtml(m.examTitle)} · 📅 ${escHtml(m.examDate)}</span>
+                </div>
+                <div style="text-align:left">
+                  <span class="chip" style="background:#DCFCE7;color:#166534;font-weight:900">${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}</span>
+                  <div class="muted" style="font-size:10px;margin-top:3px">${m.hasPhoto ? `⏳ ${faNum(daysLeft)} روز تا حذف عکس` : '📄 فقط ریزنمرات'}</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+                <button type="button" class="btn soft btn-sm" onclick="window.V10PaperGrader.viewPaperDetail('${m.id}')">👁️ مشاهده برگه و ریزنمرات</button>
+                <button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.copyParentDisputeMsg('${m.id}')">🛡️ کپی پیام مستند برای ولی/دانش‌آموز</button>
+                <button type="button" class="btn gray btn-sm" onclick="window.V10PaperGrader.printPaperReport('${m.id}')">📕 گزارش PDF</button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      `;
+    },
+    async manualCleanup() {
+      const removed = await window.DaneshPaperPhotoDB.cleanupExpired(false);
+      notify(removed > 0 ? `🧹 ${faNum(removed)} عکس منقضی‌شده پاک شد (نمرات محفوظ ماندند).` : 'همه عکس‌ها هنوز در بازه ۱۸۰ روزه هستند ✅');
+      this.renderArchiveUI();
+    },
+    async viewPaperDetail(id) {
+      const meta = loadGradedMeta();
+      const m = meta.find(x => x.id === id);
+      if (!m) return;
+      const photoRec = await window.DaneshPaperPhotoDB.getPhoto(id);
+      const html = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <b>📂 پرونده برگه: ${escHtml(m.studentName)}</b>
+          <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖</button>
+        </div>
+        <div class="muted" style="font-size:11.5px;margin-bottom:8px">${escHtml(m.className)} · ${escHtml(m.examTitle)} (${escHtml(m.examDate)}) · نمره: <b>${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}</b></div>
+        ${photoRec?.dataUrl ? `<img src="${photoRec.dataUrl}" style="width:100%;border-radius:10px;border:1px solid var(--border);margin-bottom:8px">` : '<div class="card muted" style="text-align:center;margin-bottom:8px">فایل عکس منقضی یا ثبت نشده است (ریزنمرات محفوظ است).</div>'}
+        <table style="width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:8px">
+          <thead><tr style="background:var(--panel)"><th>سوال</th><th>نمره</th><th>بارم</th><th>دلیل کسر نمره</th></tr></thead>
+          <tbody>
+            ${(m.items || []).map((it, idx) => `
+              <tr>
+                <td style="text-align:center">${faNum(it.num)}</td>
+                <td><input type="number" step="0.25" value="${it.earnedScore}" style="width:58px;padding:2px" onchange="window.V10PaperGrader.updateSavedItemScore('${m.id}',${idx},this.value)"></td>
+                <td style="text-align:center">${faNum(it.maxScore)}</td>
+                <td>${escHtml(it.deductionReason)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+        <button type="button" class="btn primary btn-sm block" onclick="window.V10PaperGrader.copyParentDisputeMsg('${m.id}')">🛡️ کپی پیام مستند برای ولی/دانش‌آموز</button>
+      `;
+      if (typeof openModal === 'function') openModal(html);
+    },
+    updateSavedItemScore(id, idx, newVal) {
+      const meta = loadGradedMeta();
+      const m = meta.find(x => x.id === id);
+      if (!m || !m.items || !m.items[idx]) return;
+      m.items[idx].earnedScore = Number(newVal) || 0;
+      m.totalEarned = Math.round(m.items.reduce((s, x) => s + (Number(x.earnedScore) || 0), 0) * 100) / 100;
+      saveGradedMeta(meta);
+      const c = typeof findClass === 'function' ? findClass(m.sid, m.cid) : null;
+      const st = c ? (c.students || []).find(x => x.id === m.stId) : null;
+      if (st && Array.isArray(st.grades)) {
+        const g = st.grades.find(x => x.gradedPaperId === m.id || (x.subject === m.examTitle && x.date === m.examDate));
+        if (g) g.score = m.totalEarned;
+        if (typeof save === 'function') save();
+      }
+      this.renderArchiveUI();
+      notify(`✅ نمره به ${faNum(m.totalEarned)} تغییر یافت و با دفتر کلاس همگام شد.`);
+    },
+    copyParentDisputeMsg(id) {
+      const m = loadGradedMeta().find(x => x.id === id);
+      if (!m) return;
+      const lines = (m.items || []).map(it => `• سوال ${faNum(it.num)}: ${faNum(it.earnedScore)} از ${faNum(it.maxScore)} (${it.deductionReason})`);
+      const msg = `با سلام و احترام خدمت اولیای گرامی «${m.studentName}»\nنتیجه تصحیح دقیق «${m.examTitle}» (${m.examDate}):\n🎯 نمره نهایی: ${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}\n\nریزنمرات و توضیحات سوال‌به‌سؤال:\n${lines.join('\n')}\n\nبا احترام — دبیر مربوطه`;
+      navigator.clipboard?.writeText(msg).then(() => notify('🛡️ پیام مستند برای ولی/دانش‌آموز کپی شد ✅')).catch(() => notify('کپی انجام نشد.'));
+    },
+    printPaperReport(id) {
+      const m = loadGradedMeta().find(x => x.id === id);
+      if (!m) return;
+      const w = window.open('', '_blank');
+      if (!w) return;
+      w.document.write(`<html dir="rtl" lang="fa"><head><meta charset="utf-8"><title>گزارش تصحیح ${escHtml(m.studentName)}</title><style>body{font-family:Tahoma,sans-serif;padding:24px;line-height:1.8}table{width:100%;border-collapse:collapse;margin-top:12px}th,td{border:1px solid #ccc;padding:7px;text-align:right}</style></head><body><h2>گزارش مستند تصحیح برگه امتحانی</h2><p><b>دانش‌آموز:</b> ${escHtml(m.studentName)} | <b>کلاس:</b> ${escHtml(m.className)} | <b>آزمون:</b> ${escHtml(m.examTitle)} (${escHtml(m.examDate)})</p><p><b>نمره نهایی:</b> ${faNum(m.totalEarned)} از ${faNum(m.maxTotal)}</p><table><thead><tr><th>سوال</th><th>نمره کسب‌شده</th><th>بارم</th><th>دلیل مستند کسر نمره</th></tr></thead><tbody>${(m.items || []).map(it => `<tr><td>${faNum(it.num)}</td><td>${faNum(it.earnedScore)}</td><td>${faNum(it.maxScore)}</td><td>${escHtml(it.deductionReason)}</td></tr>`).join('')}</tbody></table><script>window.print();<\/script></body></html>`);
+      w.document.close();
+    }
+  };
+
+  /* ==========================================================================
+     REQ 17: Upgraded Universal No-API Prompt & Resilient Paste Parser
+     ========================================================================== */
+  if (window.ExamApp) {
+    window.ExamApp.openGradingModal = function() {
+      window.V10PaperGrader.openWizard();
+    };
+    const _origOpenTab = window.ExamApp.openTab.bind(window.ExamApp);
+    window.ExamApp.openTab = function(tabName, btn) {
+      const r = _origOpenTab(tabName, btn);
+      if (tabName === 'gradedPapers') window.V10PaperGrader.renderArchiveUI();
+      if (tabName === 'archive') window.V10FullExamBank.renderBankUI();
+      return r;
+    };
+
+    const _origRefreshNoApi = window.ExamApp.refreshPreciseNoApiPrompt?.bind(window.ExamApp);
+    window.ExamApp.refreshPreciseNoApiPrompt = function() {
+      if (_origRefreshNoApi) _origRefreshNoApi();
+      const txtEl = document.getElementById('noApiPromptText');
+      if (txtEl && txtEl.value && !txtEl.value.includes('فایل PDF یا تصاویر')) {
+        txtEl.value = `⚠️ قانون طلایی منبع: سوالات را منحصراً از روی فایل PDF یا تصاویر پیوست‌شده (و متن زیر در صورت وجود) طراحی کن و هیچ مطلبی خارج از کتاب درسی اضافه نکن. هیچ متن خوشامدگویی یا توضیح اضافه بیرون از بلوک JSON ننویس.\n\n` + txtEl.value;
+      }
+    };
+
+    const _origImportNoApi = window.ExamApp.importNoApiJSON?.bind(window.ExamApp);
+    window.ExamApp.importNoApiJSON = function() {
+      const box = document.getElementById('noApiPasteBox');
+      if (!box) return;
+      let raw = String(box.value || '').trim();
+      if (!raw) { notify('لطفاً ابتدا پاسخ هوش مصنوعی را در کادر پیست کنید.'); return; }
+      // Strip <think>, markdown fences, trailing commas, and normalize Persian/Arabic digits in numeric JSON fields
+      raw = raw
         .replace(/<think>[\s\S]*?<\/think>/gi, '')
         .replace(/```(?:json)?/gi, '')
         .replace(/```/g, '')
-        .replace(/[\u201C\u201D]/g, '"')
         .trim();
-
-      let ok = false;
-
-      // Stage 2: Extract JSON candidate & repair common AI formatting quirks
-      const tryJsonParse = (str) => {
-        if (!str) return null;
-        let candidate = str.trim();
-        const firstBrace = candidate.indexOf('{');
-        const firstBracket = candidate.indexOf('[');
-        let start = -1;
-        let end = -1;
-        if (firstBrace !== -1 && (firstBracket === -1 || firstBrace < firstBracket)) {
-          start = firstBrace;
-          end = candidate.lastIndexOf('}');
-        } else if (firstBracket !== -1) {
-          start = firstBracket;
-          end = candidate.lastIndexOf(']');
-        }
-        if (start === -1 || end <= start) return null;
-        candidate = candidate.slice(start, end + 1);
-        // Fix Persian/Arabic numerals in numeric JSON values & remove trailing commas
-        candidate = candidate
-          .replace(/:\s*([۰-۹٠-٩]+(?:[\.\/٫][۰-۹٠-٩]+)?)/g, (_, n) => ': ' + toEnNum(n).replace(/[\/٫]/g, '.'))
-          .replace(/,\s*([}\]])/g, '$1');
-        try {
-          return JSON.parse(candidate);
-        } catch (_) {
-          return null;
-        }
-      };
-
-      const parsedObj = tryJsonParse(cleaned);
-      if (parsedObj) {
-        const normalizedPayload = Array.isArray(parsedObj) ? { questions: parsedObj } : parsedObj;
-        if (Array.isArray(normalizedPayload.questions) && normalizedPayload.questions.length > 0) {
-          ok = this.parseAndAddQuestions(JSON.stringify(normalizedPayload), this.currentBranch, this.state?.switches?.clearBeforeAi);
-        }
-      }
-
-      // Stage 3: Fallback raw parseAndAddQuestions
-      if (!ok && (cleaned.includes('{') || cleaned.includes('['))) {
-        ok = this.parseAndAddQuestions(cleaned, this.currentBranch, this.state?.switches?.clearBeforeAi);
-      }
-
-      // Stage 4: Smart Persian numbered text fallback (supports MCQ options too)
-      if (!ok) {
-        const lines = cleaned.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
-        const parsedQs = [];
-        const step = typeof window.getScoreRoundStep === 'function' ? window.getScoreRoundStep() : 0.25;
-        let currentQ = null;
-        lines.forEach(line => {
-          if (/^([الفبجد]|1|2|3|4|[۱-۴])[\)\.\-]\s+/.test(line) && currentQ && currentQ.options) {
-            const optTxt = line.replace(/^([الفبجد]|1|2|3|4|[۱-۴])[\)\.\-]\s+/, '').trim();
-            if (optTxt) currentQ.options.push(optTxt);
-            return;
-          }
-          if (/^(\d+|[۰-۹]+)[\.\-\)\s]+/.test(line) || line.endsWith('؟') || line.endsWith('?')) {
-            const qTxt = line.replace(/^(\d+|[۰-۹]+)[\.\-\)\s]+/, '').trim();
-            if (qTxt.length > 5) {
-              const isTf = qTxt.includes('صحیح') && qTxt.includes('غلط');
-              const isBlank = qTxt.includes('...') || qTxt.includes('___');
-              currentQ = {
-                type: isTf ? 'tf' : (isBlank ? 'blank' : 'desc'),
-                text: qTxt,
-                score: step * 2,
-                lines: 2,
-                hint: 'پاسخ را با خط خوانا بنویسید.',
-                explanation: '',
-                options: []
-              };
-              parsedQs.push(currentQ);
-            }
-          }
-        });
-        parsedQs.forEach(q => {
-          if (q.options && q.options.length >= 2) {
-            q.type = 'mcq';
-            q.correctIndex = 0;
-          } else {
-            delete q.options;
-          }
-        });
-        if (parsedQs.length > 0) {
-          ok = this.parseAndAddQuestions(JSON.stringify({ questions: parsedQs }), this.currentBranch, this.state?.switches?.clearBeforeAi);
-        }
-      }
-
-      if (ok) {
-        const targetVal = document.getElementById('noApiTargetScoreInp')?.value || document.getElementById('aiTotalTarget')?.value || 10;
-        if (typeof this.balanceScoresTo === 'function') this.balanceScoresTo(targetVal);
-        if (typeof this.autoSyncToOnlineExam === 'function') this.autoSyncToOnlineExam(false);
-        showFb(true, '✅ سوالات با موفقیت استخراج، بارم‌بندی و در برگه A4 چیده شدند!');
-        this.closeModal('noApiModal');
-        this.openTab('preview', document.getElementById('mobPreviewTabBtn'));
-        notify('✅ آزمون با موفقیت از پاسخ هوش مصنوعی ساخته و روی برگه A4 چیده شد!');
+      const jsonBlock = raw.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
+      if (jsonBlock) {
+        let jStr = jsonBlock[0]
+          .replace(/,\s*([}\]])/g, '$1')
+          .replace(/"(score|correctIndex|lines)"\s*:\s*"?([۰-۹٠-٩0-9.]+)"?/g, (_, k, num) => `"${k}": ${enNum(num)}`);
+        box.value = jStr;
       } else {
-        showFb(false, '❌ متن پیست‌شده ساختار سوال معتبر نداشت. لطفاً کل بلوک کد پاسخ هوش مصنوعی را کپی و مجدد پیست کنید.');
-        notify('⚠️ ساختار پاسخ تشخیص داده نشد؛ لطفاً کل پاسخ هوش مصنوعی را کپی کنید.');
+        box.value = enNum(raw);
       }
+      if (_origImportNoApi) return _origImportNoApi();
     };
   }
 
-  /* =========================================================================
-     2. COMPLETE SAMPLE EXAMS BANK («بانک نمونه سوالات کامل»)
-     ========================================================================= */
-  const COMPLETE_BANK_KEY = 'danesh_complete_sample_exams_bank_v10';
-
-  const DEFAULT_COMPLETE_SAMPLE_EXAMS = [
-    {
-      id: 'cse_sample_1',
-      title: 'نمونه سوال کامل پیام‌های آسمان هشتم (درس ۱ تا ۴)',
-      subject: 'پیام‌های آسمان',
-      grade: 'هشتم',
-      duration: 20,
-      totalScore: 10,
-      savedDate: 'نمونه آماده استاندارد',
-      isPreset: true,
-      headerSnapshot: {
-        bismillah: 'به‌نام خداوند جان و خرد',
-        org: 'وزارت آموزش و پرورش',
-        title: 'آزمون کلاسی نوبت اول',
-        subject: 'پیام‌های آسمان',
-        grade: 'هشتم',
-        time: '۲۰ دقیقه',
-        date: '۱۴۰۵/۰۹/۰۳'
-      },
-      questions: [
-        { id: 10001, type: 'mcq', text: 'کدام مورد از مهم‌ترین نشانه‌های توکل واقعی به خداوند است؟', score: 1, options: ['تلاش حداکثری همراه با اعتماد به خدا', 'دست کشیدن از تلاش و انتظار معجزه', 'وابستگی کامل به دیگران', 'بی‌توجهی به برنامه‌ریزی'], correctIndex: 0, hint: 'یک گزینه را انتخاب کنید.', explanation: 'توکل واقعی یعنی تلاش کامل و سپردن نتیجه به خداوند.' },
-        { id: 10002, type: 'mcq', text: 'پیامبر اکرم (ص) برترین عبادت را کدام مورد معرفی کرده‌اند؟', score: 1, options: ['تفکر در آفرینش خداوند', 'سخن گفتن بسیار', 'انزوا و دوری از جامعه', 'بی‌توجهی به علم'], correctIndex: 0, hint: 'یک گزینه را انتخاب کنید.', explanation: 'یک ساعت تفکر در آفرینش ارزشمندتر از سال‌ها عبادت سطحی است.' },
-        { id: 10003, type: 'tf', text: 'قرآن کریم تنها برای زمان پیامبر (ص) نازل شده و پیام آن محدود به همان دوره است.', score: 0.5, tfCorrect: 'غلط', hint: 'صحیح یا غلط را مشخص کنید.', explanation: 'غلط؛ پیام قرآن جهانی و جاودانه برای همه زمان‌هاست.' },
-        { id: 10004, type: 'tf', text: 'اخلاص در نیت باعث ارزشمند شدن کارهای روزمره و تبدیل آن‌ها به عبادت می‌شود.', score: 0.5, tfCorrect: 'صحیح', hint: 'صحیح یا غلط را مشخص کنید.', explanation: 'صحیح؛ نیت الهی به اعمال رنگ عبادت می‌دهد.' },
-        { id: 10005, type: 'blank', text: 'به کسی که با وجود توانایی، از خطای دیگران چشم‌پوشی می‌کند .................... گفته می‌شود.', score: 1, blankWord: 'بخشنده (دارای گذشت)', hint: 'کلمه مناسب بنویسید.', explanation: 'گذشت و بخشش هنگام قدرت از صفات نیک مؤمنان است.' },
-        { id: 10006, type: 'blank', text: 'نخستین گام برای اصلاح رفتار و رشد اخلاقی، .................... از اشتباهات گذشته است.', score: 1, blankWord: 'توبه و جبران', hint: 'کلمه مناسب بنویسید.', explanation: 'توبه واقعی همراه با پشیمانی و جبران خطا است.' },
-        { id: 10007, type: 'desc', text: 'دو مورد از آثار مثبت احترام به والدین در زندگی فردی و اجتماعی دانش‌آموز را بنویسید.', score: 2.5, lines: 3, hint: 'پاسخ کامل بنویسید.', explanation: '۱. جلب رضایت خداوند و آرامش روحی ۲. برکت در زندگی و موفقیت در کارها.' },
-        { id: 10008, type: 'desc', text: 'تفاوت «حسادت» و «غبطه» را با ذکر یک مثال کوتاه توضیح دهید.', score: 2.5, lines: 3, hint: 'پاسخ کامل بنویسید.', explanation: 'در حسادت فرد آرزوی زوال نعمت دیگری را دارد، اما در غبطه ضمن خوشحالی برای موفقیت دیگران تلاش می‌کند خودش هم به آن برسد.' }
-      ]
-    }
-  ];
-
-  window.V10CompleteExamBank = {
-    items: [],
-    filterText: '',
+  /* ==========================================================================
+     REQ 16: Complete Sample Exam Bank (Save Full Exam, Reload, Edit, Print, Delete)
+     ========================================================================== */
+  const FULL_BANK_KEY = 'danesh_amooz_full_exam_bank_v10';
+  window.V10FullExamBank = {
     load() {
       try {
-        const raw = localStorage.getItem(COMPLETE_BANK_KEY);
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            this.items = parsed;
-            return this.items;
-          }
-        }
-      } catch (_) {}
-      this.items = JSON.parse(JSON.stringify(DEFAULT_COMPLETE_SAMPLE_EXAMS));
-      this.save();
-      return this.items;
+        const arr = JSON.parse(localStorage.getItem(FULL_BANK_KEY) || '[]');
+        return Array.isArray(arr) ? arr : [];
+      } catch (_) { return []; }
     },
-    save() {
-      try { localStorage.setItem(COMPLETE_BANK_KEY, JSON.stringify(this.items || [])); } catch (_) {}
+    save(arr) {
+      try { localStorage.setItem(FULL_BANK_KEY, JSON.stringify(arr || [])); } catch (_) {}
     },
     saveCurrentExam() {
       if (!window.ExamApp) return;
-      const qs = typeof ExamApp.getQuestions === 'function' ? ExamApp.getQuestions() : [];
-      if (!qs.length) {
-        notify('⚠️ ابتدا حداقل یک سوال در برگه آزمون بسازید تا به‌عنوان نمونه سوال کامل ذخیره شود.');
-        return;
-      }
-      const hdr = ExamApp.state?.header || {};
-      const defaultTitle = `نمونه سوال کامل ${hdr.subject || 'درس'} (${hdr.grade || 'پایه'})`;
-      const titleInput = document.getElementById('v10NewSampleExamTitle');
-      const title = (titleInput?.value || '').trim() || defaultTitle;
-      const totalScore = qs.reduce((s, q) => s + (Number(q.score) || 0), 0);
-      const entry = {
-        id: 'cse_' + Date.now(),
-        title,
-        subject: hdr.subject || 'عمومی',
-        grade: hdr.grade || 'متوسطه',
-        duration: hdr.time || (document.getElementById('aiExamDuration')?.value || '۲۰ دقیقه'),
-        totalScore: Math.round(totalScore * 100) / 100,
-        savedDate: new Date().toLocaleDateString('fa-IR'),
-        headerSnapshot: JSON.parse(JSON.stringify(hdr)),
-        questions: JSON.parse(JSON.stringify(qs))
-      };
-      this.load();
-      this.items.unshift(entry);
-      this.save();
-      if (titleInput) titleInput.value = '';
-      this.render();
-      notify('✅ نمونه سوال کامل با موفقیت در «بانک نمونه سوالات کامل» ذخیره شد!');
+      const qs = window.ExamApp.getQuestions ? window.ExamApp.getQuestions() : [];
+      if (!qs.length) { notify('ابتدا حداقل یک سوال در برگه بسازید.'); return; }
+      const hdr = JSON.parse(JSON.stringify(window.ExamApp.state?.header || {}));
+      const totalBarom = Math.round(qs.reduce((s, q) => s + (Number(q.score) || 0), 0) * 100) / 100;
+      const list = this.load();
+      list.unshift({
+        id: 'feb_' + Date.now(),
+        title: hdr.subject || hdr.mainTitle || 'نمونه سوال کامل',
+        grade: hdr.grade || '',
+        subject: hdr.subject || '',
+        date: hdr.date || '',
+        totalBarom,
+        header: hdr,
+        questions: JSON.parse(JSON.stringify(qs)),
+        createdAt: Date.now()
+      });
+      this.save(list);
+      this.renderBankUI();
+      notify('📚 آزمون کامل در «بانک نمونه سوالات کامل» ذخیره شد ✅');
     },
-    loadIntoBuilder(id, openPreview = true) {
-      if (!window.ExamApp) return;
-      this.load();
-      const item = this.items.find(x => x.id === id);
-      if (!item) return;
-      if (item.headerSnapshot) {
-        ExamApp.state.header = Object.assign({}, ExamApp.state.header || {}, JSON.parse(JSON.stringify(item.headerSnapshot)));
+    loadIntoBuilder(id) {
+      const item = this.load().find(x => x.id === id);
+      if (!item || !window.ExamApp) return;
+      if (item.header) window.ExamApp.state.header = JSON.parse(JSON.stringify(item.header));
+      const b = window.ExamApp.currentBranch || 'الف';
+      if (window.ExamApp.state.branches && window.ExamApp.state.branches[b]) {
+        window.ExamApp.state.branches[b] = JSON.parse(JSON.stringify(item.questions || []));
       }
-      const b = ExamApp.currentBranch || 'A';
-      if (!ExamApp.state.branches) ExamApp.state.branches = {};
-      ExamApp.state.branches[b] = JSON.parse(JSON.stringify(item.questions || [])).map((q, idx) => ({
-        ...q,
-        id: Date.now() + idx + Math.floor(Math.random() * 1000)
-      }));
-      if (typeof ExamApp.syncHeaderToInputs === 'function') ExamApp.syncHeaderToInputs();
-      if (typeof ExamApp.save === 'function') ExamApp.save();
-      if (typeof ExamApp.renderAll === 'function') ExamApp.renderAll();
-      if (openPreview && typeof ExamApp.openTab === 'function') {
-        ExamApp.openTab('preview', document.getElementById('mobPreviewTabBtn'));
-      }
-      notify(`📂 نمونه سوال کامل «${item.title}» در برگه A4 بارگذاری شد!`);
-    },
-    quickPdf(id) {
-      this.loadIntoBuilder(id, true);
-      setTimeout(() => {
-        if (window.ExamApp && typeof ExamApp.exportDirectPDF === 'function') ExamApp.exportDirectPDF();
-      }, 220);
+      if (typeof window.ExamApp.saveState === 'function') window.ExamApp.saveState();
+      if (typeof window.ExamApp.renderAll === 'function') window.ExamApp.renderAll();
+      window.ExamApp.openTab('preview', document.getElementById('mobPreviewTabBtn'));
+      notify('✅ نمونه سوال کامل با سربرگ و کلید در برگه بارگذاری شد.');
     },
     remove(id) {
-      this.load();
-      this.items = this.items.filter(x => x.id !== id);
-      this.save();
-      this.render();
-      notify('🗑️ نمونه سوال کامل از بانک حذف شد.');
+      this.save(this.load().filter(x => x.id !== id));
+      this.renderBankUI();
+      notify('حذف شد.');
     },
-    mount() {
-      const archivePane = document.getElementById('examPane-archive');
-      if (!archivePane || document.getElementById('v10CompleteExamBankCard')) return;
-      const card = document.createElement('div');
-      card.id = 'v10CompleteExamBankCard';
-      card.className = 'box-card highlight';
-      card.style.marginTop = '12px';
-      card.innerHTML = `
-        <div class="box-header">
-          <span>📚 بانک نمونه سوالات کامل (<span id="v10CompleteBankCount">۰</span> نمونه آزمون)</span>
+    renderBankUI() {
+      const archPane = document.getElementById('examPane-archive');
+      if (!archPane) return;
+      let box = document.getElementById('v10FullBankBox');
+      if (!box) {
+        box = document.createElement('div');
+        box.id = 'v10FullBankBox';
+        box.style.marginTop = '12px';
+        archPane.appendChild(box);
+      }
+      const list = this.load();
+      box.innerHTML = `
+        <div class="box-card highlight">
+          <div class="box-header">
+            <span>📚 بانک نمونه سوالات کامل (سربرگ + سوالات + پاسخ کلیدی)</span>
+            <button type="button" class="btn primary btn-sm" onclick="window.V10FullExamBank.saveCurrentExam()">➕ ذخیره آزمون فعلی در بانک کامل</button>
+          </div>
+          ${list.length === 0 ? '<p class="muted" style="margin:0">هنوز نمونه سوال کاملی ذخیره نشده است.</p>' : list.map(it => `
+            <div class="card" style="padding:9px 11px;margin-top:8px">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+                <div><b>${escHtml(it.title)}</b> <span class="muted" style="font-size:11px">(${escHtml(it.grade)} · ${faNum((it.questions || []).length)} سوال · ${faNum(it.totalBarom)} نمره)</span></div>
+                <div style="display:flex;gap:5px">
+                  <button type="button" class="btn primary btn-sm" onclick="window.V10FullExamBank.loadIntoBuilder('${it.id}')">📥 بارگذاری یک‌لمسی</button>
+                  <button type="button" class="btn danger btn-sm" onclick="window.V10FullExamBank.remove('${it.id}')">🗑️</button>
+                </div>
+              </div>
+            </div>
+          `).join('')}
         </div>
-        <p class="muted" style="margin:0 0 8px;font-size:11.5px;line-height:1.6">
-          هر نمونه سوال کامل شامل <b>سربرگ + تمام سوالات + بارم‌بندی + کلید پاسخ</b> است. با یک کلیک آزمون فعلی خود را ذخیره یا نمونه آزمون‌های آماده را بارگذاری کنید:
-        </p>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
-          <input type="text" id="v10NewSampleExamTitle" placeholder="عنوان نمونه سوال کامل (اختیاری؛ مثلاً ریاضی هشتم فصل ۱ تا ۳)..." style="flex:1;min-width:180px;height:34px;font-size:11.5px">
-          <button type="button" class="btn primary btn-sm" onclick="V10CompleteExamBank.saveCurrentExam()">💾 ذخیره آزمون فعلی در بانک</button>
-        </div>
-        <input type="text" id="v10CompleteBankSearch" placeholder="🔍 جستجو در بانک نمونه سوالات کامل (نام درس، پایه یا عنوان)..." oninput="V10CompleteExamBank.filterText=this.value;V10CompleteExamBank.render()" style="width:100%;height:33px;font-size:11.5px;margin-bottom:8px">
-        <div id="v10CompleteBankList"></div>
       `;
-      const qBankCard = document.getElementById('examQuestionBankCardV930');
-      if (qBankCard) {
-        archivePane.insertBefore(card, qBankCard);
-      } else {
-        archivePane.appendChild(card);
-      }
-      this.render();
-    },
-    render() {
-      const listEl = document.getElementById('v10CompleteBankList');
-      const countEl = document.getElementById('v10CompleteBankCount');
-      if (!listEl) return;
-      this.load();
-      if (countEl) countEl.textContent = toFaNum(this.items.length);
-      const q = (this.filterText || '').trim().toLowerCase();
-      const filtered = q
-        ? this.items.filter(it => `${it.title} ${it.subject} ${it.grade}`.toLowerCase().includes(q))
-        : this.items;
-      if (!filtered.length) {
-        listEl.innerHTML = `<div class="muted" style="text-align:center;padding:12px">نمونه سوال کاملی با این مشخصات یافت نشد.</div>`;
-        return;
-      }
-      listEl.innerHTML = filtered.map(it => `
-        <div class="v10-sample-exam-card">
-          <div class="v10-sample-exam-head">
-            <b style="color:#9A3412;font-size:12.5px">📄 ${safeEsc(it.title)}</b>
-            <span class="chip" style="background:#FFF7ED;color:#C2410C;border-color:#FDBA74">${toFaNum(it.totalScore)} نمره</span>
-          </div>
-          <div class="v10-sample-exam-meta">
-            <span class="chip">📘 ${safeEsc(it.subject)}</span>
-            <span class="chip">🎓 ${safeEsc(it.grade)}</span>
-            <span class="chip">❓ ${toFaNum((it.questions || []).length)} سوال کامل</span>
-            <span class="chip">📅 ${safeEsc(it.savedDate)}</span>
-          </div>
-          <div class="v10-sample-exam-actions">
-            <button type="button" class="btn primary btn-sm" onclick="V10CompleteExamBank.loadIntoBuilder('${safeEsc(it.id)}', true)">📂 بارگذاری کامل در آزمون‌ساز</button>
-            <button type="button" class="btn soft btn-sm" onclick="V10CompleteExamBank.quickPdf('${safeEsc(it.id)}')">📕 خروجی PDF</button>
-            <button type="button" class="btn danger btn-sm" onclick="V10CompleteExamBank.remove('${safeEsc(it.id)}')">🗑️ حذف</button>
-          </div>
+    }
+  };
+
+  /* ==========================================================================
+     REQ 5: Smart Class Wizard from Class Register Photo
+     ========================================================================== */
+  window.openSmartRegisterClassWizard = function() {
+    const d = getLiveDb();
+    const schools = Array.isArray(d.schools) ? d.schools : [];
+    const schoolOpts = schools.map(s => `<option value="${escHtml(s.id)}">${escHtml(s.name)}</option>`).join('');
+    const html = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <b style="font-size:14.5px;color:var(--primary-dark)">📸 ساخت کلاس هوشمند از عکس دفتر کلاسی</b>
+        <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖ بستن</button>
+      </div>
+      <div class="grid-2" style="gap:8px;margin-bottom:8px">
+        <div><label style="font-size:11px;font-weight:800">مدرسه مقصد:</label><select id="v10ScwSchool">${schoolOpts || '<option value="">ابتدا مدرسه بسازید</option>'}</select></div>
+        <div><label style="font-size:11px;font-weight:800">نام کلاس / درس:</label><input type="text" id="v10ScwClassName" placeholder="مثلاً: هشتم ب - ریاضی"></div>
+      </div>
+      <div class="card" style="padding:10px;margin-bottom:8px">
+        <label class="btn soft block" style="cursor:pointer;margin:0">📷 انتخاب عکس دفتر کلاسی<input type="file" accept="image/*" hidden onchange="window.V10SmartClassWizard.onPhoto(event)"></label>
+        <div id="v10ScwPhotoInfo" class="muted" style="font-size:11px;margin-top:5px;text-align:center">عکس دفتر کلاسی را انتخاب کنید.</div>
+        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+          <button type="button" class="btn primary btn-sm" onclick="window.V10SmartClassWizard.extractWithAI()">🤖 استخراج با هوش مصنوعی</button>
+          <button type="button" class="btn gray btn-sm" onclick="window.V10SmartClassWizard.copyPrompt()">📋 کپی پرامپت (حالت بدون API)</button>
         </div>
-      `).join('');
-    }
+      </div>
+      <div class="card" style="padding:10px;margin-bottom:8px">
+        <textarea id="v10ScwPaste" rows="2" placeholder="یا خروجی JSON/متنی استخراج‌شده از هوش مصنوعی را اینجا پیست کنید..." style="font-size:11.5px"></textarea>
+        <button type="button" class="btn soft btn-sm block" style="margin-top:5px" onclick="window.V10SmartClassWizard.parsePaste()">📊 نمایش در جدول قابل ویرایش</button>
+      </div>
+      <div id="v10ScwTableWrap"></div>
+    `;
+    if (typeof openModal === 'function') openModal(html);
+    window.V10SmartClassWizard.rows = [];
+    window.V10SmartClassWizard.imgDataUrl = '';
   };
 
-  /* =========================================================================
-     3. APP-WIDE CONTEXTUAL STEP-BY-STEP GUIDES (AI-CONNECTED & UPDATABLE)
-     ========================================================================= */
-  const GUIDE_CACHE_KEY = 'danesh_v10_ai_guides_cache';
-
-  const SECTION_GUIDES = {
-    dashboard: {
-      title: 'راهنمای گام‌به‌گام صفحه خانه (داشبورد معلم)',
-      shortHint: 'شروع سریع، برنامه امروز و دسترسی فوری به همه ابزارها',
-      steps: [
-        'از بخش «کلاس‌های امروز» می‌توانید با یک کلیک وارد کلاس فعال شده و حضورغیاب یا نمره ثبت کنید.',
-        'برای شروع کار جدید، از نوار پایین وارد «مدارس» شوید و مدرسه و کلاس‌های خود را بسازید.',
-        'آیکون نارنجی «همیار دانا» در گوشه پایین صفحه همیشه همراه شماست و هم آفلاین و هم آنلاین پاسخ می‌دهد.'
-      ],
-      limits: [
-        'اطلاعات شما به‌صورت پیش‌فرض روی حافظه امن مرورگر گوشی ذخیره می‌شود؛ پاک کردن Cache مرورگر بدون پشتیبان‌گیری می‌تواند داده‌ها را حذف کند.',
-        'در حالت آفلاین، تمام ثبت نمرات و حضورغیاب کار می‌کند و تنها قابلیت‌های متصل به اینترنت (هوش مصنوعی آنلاین و همگام‌سازی ابری) منتظر اتصال می‌مانند.'
-      ],
-      alternatives: [
-        'برای جلوگیری از پاک شدن داده‌ها، هفته‌ای یک‌بار از تب «تنظیمات» فایل پشتیبان JSON دانلود کنید یا همگام‌سازی ابری را فعال نمایید.',
-        'در صورت قطع اینترنت، از حالت آفلاین همیار دانا و «حالت بدون API» آزمون‌ساز استفاده کنید.'
-      ]
+  window.V10SmartClassWizard = {
+    rows: [],
+    imgDataUrl: '',
+    async onPhoto(e) {
+      const f = e?.target?.files?.[0];
+      if (!f) return;
+      this.imgDataUrl = typeof compressImage === 'function' ? await compressImage(f, 1100, 0.82) : '';
+      const info = document.getElementById('v10ScwPhotoInfo');
+      if (info) info.textContent = '✅ عکس دفتر کلاسی آماده است.';
     },
-    schools: {
-      title: 'راهنمای گام‌به‌گام مدارس، کلاس‌ها و دانش‌آموزان',
-      shortHint: 'ساخت مدرسه، تعریف کلاس، ورود لیست دانش‌آموزان و ثبت نمره',
-      steps: [
-        'ابتدا دکمه «+ مدرسه جدید» را بزنید و نام مدرسه و مقطع را ثبت کنید.',
-        'وارد مدرسه شوید و کلاس‌های خود (مثلاً هشتم ۱، ریاضی) را ایجاد نمایید.',
-        'داخل هر کلاس می‌توانید دانش‌آموزان را تکی اضافه کنید یا لیست کل کلاس را یکجا وارد نمایید.',
-        'روی نام هر دانش‌آموز بزنید تا کارنامه، نمرات مستمر/پایانی، مثبت/منفی و وضعیت‌های رفتاری او را ببینید.'
-      ],
-      limits: [
-        'وارد کردن عکس‌های بسیار حجیم (چند مگابایتی) برای تعداد زیادی دانش‌آموز ممکن است فضای مرورگر را پر کند (برنامه خودکار عکس‌ها را فشرده می‌کند).',
-        'حذف یک مدرسه یا کلاس قابل بازگشت نیست مگر اینکه نسخه پشتیبان داشته باشید.'
-      ],
-      alternatives: [
-        'به جای تایپ تکی اسامی، لیست کلاس را از فایل متنی یا اکسل کپی و به‌صورت گروهی وارد کنید.',
-        'قبل از تغییرات بزرگ در پایان ترم، حتماً یک پشتیبان سریع در تب «تنظیمات» ذخیره کنید.'
-      ]
+    copyPrompt() {
+      const p = `از روی تصویر دفتر کلاسی پیوست‌شده، نام دانش‌آموزان، نمرات، تعداد غیبت‌ها و مثبت/منفی‌ها را استخراج کن و فقط یک JSON معتبر برگردان:
+{"className":"نام کلاس در صورت وجود","students":[{"name":"نام","lastName":"نام خانوادگی","grade":18,"absences":0,"positives":1,"negatives":0}]}`;
+      navigator.clipboard?.writeText(p).then(() => notify('📋 پرامپت استخراج دفتر کلاسی کپی شد ✅'));
     },
-    termsView: {
-      title: 'راهنمای گام‌به‌گام مدیریت ترم‌ها و سال تحصیلی',
-      shortHint: 'تفکیک نوبت اول و دوم، آرشیو سالانه و محاسبه معدل',
-      steps: [
-        'برای جداسازی نمرات نوبت اول و نوبت دوم، از این بخش ترم فعال را انتخاب یا ترم جدید تعریف کنید.',
-        'تمام نمرات و حضورغیاب جدید در ترم فعال ذخیره می‌شوند و گزارش‌ها بر اساس همان ترم محاسبه می‌گردند.',
-        'در پایان سال تحصیلی می‌توانید کل ترم را آرشیو کنید و سال جدید را تمیز شروع کنید.'
-      ],
-      limits: [
-        'تغییر ترم فعال، نمرات ترم قبلی را پاک نمی‌کند اما در صفحه کلاس فقط داده‌های ترم انتخاب‌شده نمایش داده می‌شوند.'
-      ],
-      alternatives: [
-        'اگر می‌خواهید از کارنامه ترم قبل پرینت بگیرید، کافی است موقتاً ترم قبلی را انتخاب کرده و خروجی PDF/گزارش بگیرید.'
-      ]
-    },
-    teachView: {
-      title: 'راهنمای گام‌به‌گام بخش آموزش و کتاب‌خوان هوشمند PDF',
-      shortHint: 'باز کردن کتاب درسی PDF، زوم، تخته هوشمند و حل فعالیت‌ها با AI',
-      steps: [
-        'دکمه «انتخاب فایل PDF کتاب درسی» را بزنید تا کتاب در کتابخانه داخلی برنامه ذخیره شود.',
-        'با نوار ورق‌زدن یا اسلایدر به صفحه مورد نظر بروید و در کلاس از زوم دو انگشتی و قلم تخته هوشمند استفاده کنید.',
-        'برای حل فعالیت‌ها، کاردرکلاس‌ها یا خلاصه درس، دکمه هوش مصنوعی صفحه را بزنید تا پاسخ دقیق همان صفحه تولید شود.'
-      ],
-      limits: [
-        'فایل‌های PDF بسیار حجیم (بالای ۵۰ مگابایت) در گوشی‌های با رم پایین ممکن است کمی کندتر بارگذاری شوند.',
-        'سرویس هوش مصنوعی پیش‌فرض دارای سقف مصرف روزانه است و در ساعات شلوغی ممکن است چند ثانیه زمان ببرد.'
-      ],
-      alternatives: [
-        'اگر کلید اختصاصی رایگان (Gemini یا Groq) دارید، از تب «تنظیمات» وارد کنید تا سرعت و سقف مصرف اختصاصی داشته باشید.',
-        'در صورت خطای اینترنت یا محدودیت فایل، می‌توانید صفحه کتاب را در آزمون‌ساز با «حالت بدون API» استفاده کنید.'
-      ]
-    },
-    examView: {
-      title: 'راهنمای گام‌به‌گام آزمون‌ساز هوشمند، حالت بدون API و بانک نمونه سوال',
-      shortHint: 'طراحی طبق تنظیمات، حالت بدون API با PDF/اسکرین‌شات و بانک نمونه سوالات کامل',
-      steps: [
-        'در تب «طراح هوشمند و کتاب PDF»، مبحث آزمون یا صفحات کتاب PDF را انتخاب کنید.',
-        'زمان، جمع بارم (مثلاً ۱۰ یا ۲۰)، گام رُندسازی (۰.۲۵ تا ۱) و تعداد هر نوع سوال را تنظیم کنید.',
-        'دکمه نارنجی «✨ طراحی آزمون طبق تنظیمات» را بزنید (کلید هوش مصنوعی به‌طور خودکار از بخش تنظیمات خوانده می‌شود).',
-        'اگر اینترنت/کلید API ندارید یا می‌خواهید با ChatGPT/Gemini/Claude سوال بسازید، دکمه «🪄 حالت بدون API» را بزنید، دستور همگانی را کپی کنید و همراه اسکرین‌شات کامل یا PDF کتاب به هوش مصنوعی بدهید.',
-        'در تب «آرشیو تاییدشده»، آزمون کامل خود را در «بانک نمونه سوالات کامل» ذخیره کنید تا همیشه آماده چاپ یا استفاده مجدد باشد.'
-      ],
-      limits: [
-        'تنظیمات کلید هوش مصنوعی به‌صورت یکپارچه فقط در تب «تنظیمات» قرار دارد تا صفحه آزمون‌ساز خلوت و سریع بماند.',
-        'برای خروجی PDF دقیق A4، تعداد سوالات را متناسب با ۱ یا ۲ صفحه A4 انتخاب کنید تا فونت بیش از حد کوچک نشود.'
-      ],
-      alternatives: [
-        'در صورت اتمام سهمیه هوش مصنوعی داخلی، «حالت بدون API» بهترین و بی‌نقص‌ترین جایگزین رایگان با هر هوش مصنوعی است.',
-        'اگر چاپ مستقیم PDF در مرورگر گوشی شما به‌هم ریخت، از دکمه خروجی Word یا چاپ مرورگر (ذخیره به‌عنوان PDF) استفاده کنید.'
-      ]
-    },
-    statuses: {
-      title: 'راهنمای گام‌به‌گام وضعیت‌ها، رفتار کلاسی و پیگیری دانش‌آموزان',
-      shortHint: 'ثبت وضعیت‌های انضباطی/آموزشی و گزارش سریع برای اولیا',
-      steps: [
-        'از این بخش می‌توانید برچسب‌های وضعیت (مثل غیبت مکرر، پیشرفت عالی، نیاز به تمرین) را مدیریت و فیلتر کنید.',
-        'دانش‌آموزانی که نیاز به پیگیری دارند با رنگ مشخص تفکیک می‌شوند تا گزارش اولیا سریع آماده شود.'
-      ],
-      limits: [
-        'گزارش‌های تحلیلی زمانی دقیق‌تر هستند که حداقل ۲ تا ۳ جلسه حضورغیاب و نمره ثبت شده باشد.'
-      ],
-      alternatives: [
-        'می‌توانید گزارش هر دانش‌آموز را مستقیم به‌صورت متن آماده یا تصویر کارنامه برای پیام‌رسان‌ها کپی و ارسال کنید.'
-      ]
-    },
-    backup: {
-      title: 'راهنمای گام‌به‌گام تنظیمات، کلید هوش مصنوعی و پشتیبان‌گیری',
-      shortHint: 'مدیریت یکپارچه هوش مصنوعی، دانلود پشتیبان و همگام‌سازی ابری',
-      steps: [
-        'بخش «تنظیمات هوش مصنوعی» در همین صفحه، کلید مشترک کل برنامه (آموزش + آزمون‌ساز + همیار دانا) را مدیریت می‌کند.',
-        'برای امنیت کامل اطلاعات، دکمه «دانلود فایل پشتیبان (JSON)» را بزنید و فایل را در تلگرام/ایتا یا حافظه گوشی نگه دارید.',
-        'برای انتقال اطلاعات به گوشی جدید، کافی است فایل پشتیبان را از همین صفحه «بازیابی» کنید.'
-      ],
-      limits: [
-        'همگام‌سازی ابری نیازمند اتصال پایدار به اینترنت و تنظیم صحیح مشخصات حساب است.',
-        'بازیابی فایل پشتیبان قدیمی، اطلاعات فعلی مرورگر را جایگزین می‌کند.'
-      ],
-      alternatives: [
-        'حتی بدون همگام‌سازی ابری، فایل پشتیبان JSON کاملاً آفلاین کار می‌کند و کل مدارس، نمرات و آرشیو آزمون‌ها را حفظ می‌نماید.'
-      ]
-    }
-  };
-
-  async function callUnifiedAI(promptText) {
-    if (!navigator.onLine) throw new Error('OFFLINE');
-    if (window.UnifiedAiEngine && typeof window.UnifiedAiEngine.callWithPoolRotation === 'function') {
-      const res = await window.UnifiedAiEngine.callWithPoolRotation(promptText, [], { temperature: 0.4, maxTokens: 900 });
-      const txt = typeof res === 'string' ? res : (res?.text || res?.content || '');
-      if (txt && txt.trim()) return txt.trim();
-    }
-    throw new Error('AI_UNAVAILABLE');
-  }
-
-  window.V10SmartGuides = {
-    activeSection: 'dashboard',
-    loadCache() {
-      try { return JSON.parse(localStorage.getItem(GUIDE_CACHE_KEY) || '{}'); } catch (_) { return {}; }
-    },
-    saveCache(obj) {
-      try { localStorage.setItem(GUIDE_CACHE_KEY, JSON.stringify(obj || {})); } catch (_) {}
-    },
-    mountAllBars() {
-      Object.keys(SECTION_GUIDES).forEach(secId => {
-        const secEl = document.getElementById(secId);
-        if (!secEl || secEl.querySelector('.v10-guide-trigger-bar')) return;
-        const g = SECTION_GUIDES[secId];
-        const bar = document.createElement('div');
-        bar.className = 'v10-guide-trigger-bar';
-        bar.innerHTML = `
-          <div class="v10-gt-info">
-            <span>📘</span>
-            <span>راهنمای گام‌به‌گام: <span style="font-weight:600;color:#7C2D12">${safeEsc(g.shortHint)}</span></span>
-          </div>
-          <div class="v10-gt-actions">
-            <button type="button" class="v10-guide-btn" onclick="V10SmartGuides.open('${secId}')">📖 مشاهده راهنما</button>
-            <button type="button" class="v10-guide-btn ai-pill" onclick="V10SmartGuides.open('${secId}', true)">🤖 بروزرسانی AI</button>
-          </div>
-        `;
-        secEl.insertBefore(bar, secEl.firstChild);
-      });
-    },
-    open(secId, autoRefreshAi = false) {
-      const key = SECTION_GUIDES[secId] ? secId : 'dashboard';
-      this.activeSection = key;
-      const g = SECTION_GUIDES[key];
-      const cache = this.loadCache()[key];
-      const titleEl = document.getElementById('v10GuideModalTitle');
-      const bodyEl = document.getElementById('v10GuideModalBody');
-      if (titleEl) titleEl.textContent = '📘 ' + g.title;
-      if (bodyEl) {
-        bodyEl.innerHTML = `
-          <div class="v10-guide-block">
-            <h4>🪜 گام‌به‌گام اجرا</h4>
-            <ol>${g.steps.map(s => `<li>${safeEsc(s)}</li>`).join('')}</ol>
-          </div>
-          <div class="v10-guide-block">
-            <h4>⚠️ محدودیت‌ها و نکات مهم</h4>
-            <ul>${g.limits.map(s => `<li>${safeEsc(s)}</li>`).join('')}</ul>
-          </div>
-          <div class="v10-guide-block">
-            <h4>🔄 راه‌های جایگزین و رفع مشکل</h4>
-            <ul>${g.alternatives.map(s => `<li>${safeEsc(s)}</li>`).join('')}</ul>
-          </div>
-          <div class="v10-guide-ai-box">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px">
-              <b style="color:#9A3412;font-size:12.5px">🤖 راهنمای زنده متصل به هوش مصنوعی (قابل بروزرسانی)</b>
-              <button type="button" class="btn primary btn-sm" id="v10GuideAiRefreshBtn" onclick="V10SmartGuides.refreshWithAI('${key}')">🔄 بروزرسانی این راهنما با AI</button>
-            </div>
-            <div style="display:flex;gap:6px;margin-bottom:8px">
-              <input type="text" id="v10GuideCustomQuestion" placeholder="سوال خاص درباره همین بخش دارید؟ بنویسید (مثلاً خطای چاپ یا محدودیت)..." style="flex:1;height:34px;font-size:11.8px;background:#FFF">
-              <button type="button" class="btn soft btn-sm" onclick="V10SmartGuides.refreshWithAI('${key}', true)">پرسش</button>
-            </div>
-            <div id="v10GuideAiOutput" style="font-size:11.8px;line-height:1.8;color:#1E293B;white-space:pre-wrap;background:#FFFFFF;border-radius:10px;padding:9px 11px;border:1px solid #FED7AA">${
-              cache?.text
-                ? `${safeEsc(cache.text)}\n\n🕒 آخرین بروزرسانی هوشمند: ${safeEsc(cache.updatedAt)}`
-                : 'برای دریافت نکات تکمیلی، راهکارهای جدید یا پاسخ به سوال اختصاصی خود، دکمه «🔄 بروزرسانی این راهنما با AI» را بزنید. پاسخ هوشمند ذخیره می‌شود تا حتی در حالت آفلاین هم در دسترس باشد.'
-            }</div>
-          </div>
-        `;
-      }
-      document.getElementById('v10SmartGuideModal')?.classList.add('open');
-      if (autoRefreshAi) this.refreshWithAI(key, false);
-    },
-    async refreshWithAI(secId, useCustomQuestion = false) {
-      const g = SECTION_GUIDES[secId] || SECTION_GUIDES.dashboard;
-      const outEl = document.getElementById('v10GuideAiOutput');
-      const btn = document.getElementById('v10GuideAiRefreshBtn');
-      const customQ = useCustomQuestion ? (document.getElementById('v10GuideCustomQuestion')?.value || '').trim() : '';
-      if (outEl) outEl.textContent = '⏳ در حال اتصال به هوش مصنوعی برای بروزرسانی دقیق راهنما...';
-      if (btn) btn.disabled = true;
-
-      const prompt = `تو راهنمای رسمی و متخصص ارشد اپلیکیشن معلمی «دانش‌آموز من» نسخه 10.0.0 هستی.
-بخش فعلی: ${g.title}
-${customQ ? `سوال اختصاصی معلم: ${customQ}` : 'لطفاً ۳ نکته حرفه‌ای جدید، ۲ محدودیت واقعی که معلمان ممکن است با آن روبه‌رو شوند و راه‌حل جایگزین دقیق برای این بخش را به زبان فارسی ساده، گام‌به‌گام و کاربردی بنویس.'}
-پاسخ کوتاه، شفاف، شماره‌دار و بدون ابهام باشد.`;
-
+    async extractWithAI() {
+      if (!this.imgDataUrl) { notify('ابتدا عکس دفتر کلاسی را انتخاب کنید.'); return; }
+      const info = document.getElementById('v10ScwPhotoInfo');
+      if (info) info.textContent = '⏳ در حال استخراج لیست با هوش مصنوعی...';
       try {
-        const answer = await callUnifiedAI(prompt);
-        const nowStr = new Date().toLocaleString('fa-IR');
-        const allCache = this.loadCache();
-        allCache[secId] = { text: answer, updatedAt: nowStr };
-        this.saveCache(allCache);
-        if (outEl) outEl.textContent = `${answer}\n\n🕒 آخرین بروزرسانی هوشمند: ${nowStr}`;
-        notify('✅ راهنمای این بخش با هوش مصنوعی بروزرسانی و برای حالت آفلاین ذخیره شد.');
-      } catch (_) {
-        const offlineNote = customQ
-          ? `🟠 اکنون به اینترنت یا سرور هوش مصنوعی دسترسی ندارید.\nراهکار آفلاین: می‌توانید همین سوال («${customQ}») را از «همیار دانا» در گوشه صفحه بپرسید یا از گام‌های بالا و راه‌های جایگزین (مانند حالت بدون API یا پشتیبان‌گیری JSON) استفاده کنید.`
-          : '🟠 در حالت آفلاین هستید؛ راهنمای کامل گام‌به‌گام، محدودیت‌ها و راه‌های جایگزین بالا همواره به‌صورت آفلاین در دسترس شماست. به محض اتصال به اینترنت می‌توانید این بخش را با هوش مصنوعی بروزرسانی کنید.';
-        if (outEl) outEl.textContent = offlineNote;
-      } finally {
-        if (btn) btn.disabled = false;
-      }
-    },
-    close() {
-      document.getElementById('v10SmartGuideModal')?.classList.remove('open');
-    }
-  };
-
-  /* =========================================================================
-     4. EMBODIED INTERACTIVE APP COMPANION ("دانا — همیار هوشمند دارای شکل و بدن")
-        Full SVG Character Body + Offline Brain + Online AI Brain + Actions
-     ========================================================================= */
-  const CHAT_HISTORY_KEY = 'danesh_v10_companion_chat_history';
-
-  function buildMascotSVG(mood = 'happy', compact = false) {
-    const aura = mood === 'offline' ? '#FEF3C7' : (mood === 'thinking' ? '#DBEAFE' : '#FFEDD5');
-    const stroke = mood === 'offline' ? '#D97706' : (mood === 'thinking' ? '#2563EB' : '#EA580C');
-    const mouthPath = mood === 'thinking'
-      ? 'M45 55 Q50 53 55 55'
-      : (mood === 'talking' ? 'M44 53 Q50 61 56 53 Z' : 'M43 53 Q50 60 57 53');
-
-    return `<svg viewBox="0 0 100 112" width="${compact ? 40 : 74}" height="${compact ? 40 : 74}" xmlns="http://www.w3.org/2000/svg" aria-label="همیار هوشمند دانا">
-      <circle cx="50" cy="56" r="46" fill="${aura}" stroke="${stroke}" stroke-width="2.5"/>
-      <!-- Body / Torso -->
-      <path d="M28 96 C28 74 36 68 50 68 C64 68 72 74 72 96 Z" fill="#F97316"/>
-      <path d="M40 69 L50 82 L60 69" fill="#FFFFFF" opacity="0.92"/>
-      <!-- Left & Right Arms -->
-      <path d="M31 76 Q19 82 22 92" fill="none" stroke="#EA580C" stroke-width="6.5" stroke-linecap="round"/>
-      <path d="M69 76 Q81 71 83 62" fill="none" stroke="#EA580C" stroke-width="6.5" stroke-linecap="round"/>
-      <!-- Mini Book in Hand -->
-      <rect x="75" y="54" width="13" height="10" rx="2" fill="#FFFFFF" stroke="#C2410C" stroke-width="1.6"/>
-      <line x1="81.5" y1="54" x2="81.5" y2="64" stroke="#F97316" stroke-width="1.2"/>
-      <!-- Head -->
-      <circle cx="50" cy="46" r="21" fill="#FFF7ED" stroke="#EA580C" stroke-width="2.2"/>
-      <!-- Cheeks -->
-      <circle cx="37" cy="50" r="3" fill="#FDBA74" opacity="0.75"/>
-      <circle cx="63" cy="50" r="3" fill="#FDBA74" opacity="0.75"/>
-      <!-- Eyes -->
-      <circle cx="42" cy="44" r="3.2" fill="#1E293B"/>
-      <circle cx="58" cy="44" r="3.2" fill="#1E293B"/>
-      <circle cx="43.1" cy="42.8" r="1.1" fill="#FFFFFF"/>
-      <circle cx="59.1" cy="42.8" r="1.1" fill="#FFFFFF"/>
-      <!-- Mouth -->
-      <path class="v10-mouth" d="${mouthPath}" fill="${mood === 'talking' ? '#EA580C' : 'none'}" stroke="#C2410C" stroke-width="2.4" stroke-linecap="round"/>
-      <!-- Orange Graduation Cap -->
-      <polygon points="50,14 78,24 50,33 22,24" fill="#EA580C" stroke="#9A3412" stroke-width="1.6" stroke-linejoin="round"/>
-      <rect x="37" y="26" width="26" height="6" rx="2" fill="#C2410C"/>
-      <line x1="74" y1="25" x2="77" y2="36" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
-      <circle cx="77" cy="37" r="2.6" fill="#F59E0B"/>
-    </svg>`;
-  }
-
-  function getLiveAppStats() {
-    let schools = 0, classes = 0, students = 0;
-    try {
-      const data = window.db || JSON.parse(localStorage.getItem('danesh_db') || '{}');
-      const sList = Array.isArray(data?.schools) ? data.schools : [];
-      schools = sList.length;
-      sList.forEach(s => {
-        const cList = Array.isArray(s.classes) ? s.classes : [];
-        classes += cList.length;
-        cList.forEach(c => { students += Array.isArray(c.students) ? c.students.length : 0; });
-      });
-    } catch (_) {}
-    const examQs = window.ExamApp && typeof ExamApp.getQuestions === 'function' ? ExamApp.getQuestions().length : 0;
-    const sampleBankCount = window.V10CompleteExamBank ? V10CompleteExamBank.load().length : 0;
-    return { schools, classes, students, examQs, sampleBankCount };
-  }
-
-  function buildOfflineAnswer(userText) {
-    const q = String(userText || '').trim().toLowerCase();
-    const st = getLiveAppStats();
-
-    if (/آمار|چند|تعداد|وضعیت برنامه|گزارش/.test(q)) {
-      return {
-        text: `📊 آمار لحظه‌ای برنامه «دانش‌آموز من» شما:\n• تعداد مدارس ثبت‌شده: ${toFaNum(st.schools)}\n• تعداد کلاس‌ها: ${toFaNum(st.classes)}\n• تعداد کل دانش‌آموزان: ${toFaNum(st.students)}\n• سوالات فعال در برگه آزمون فعلی: ${toFaNum(st.examQs)} سوال\n• نمونه سوالات کامل در بانک: ${toFaNum(st.sampleBankCount)} نمونه آزمون\n• وضعیت اینترنت: ${navigator.onLine ? '🟢 آنلاین' : '🟠 آفلاین (همه امکانات پایه فعال است)'}`,
-        actions: [
-          { label: '🏫 رفتن به مدارس', fn: "V10Companion.nav('schools')" },
-          { label: '📝 رفتن به آزمون‌ساز', fn: "V10Companion.nav('examView')" }
-        ]
-      };
-    }
-
-    if (/بدون api|بدون کلید|اسکرین|pdf|پرامپت|دستور/.test(q)) {
-      return {
-        text: `🪄 برای ساخت آزمون بی‌نقص در «حالت بدون API» این ۴ گام را انجام دهید:\n۱. در بخش آزمون‌ساز، تعداد سوالات و جمع بارم را تنظیم کنید و دکمه «حالت بدون API» را بزنید.\n۲. دکمه «کپی دستور همگانی» را بزنید (این دستور با ChatGPT، Gemini، Claude، DeepSeek و همه هوش مصنوعی‌ها سازگار است).\n۳. اسکرین‌شات کامل صفحات کتاب یا فایل PDF کتاب درسی را همراه همان دستور به هوش مصنوعی بدهید.\n۴. پاسخ هوش مصنوعی را کپی و در کادر مرحله ۳ پیست کنید تا فوری در برگه A4 چیده شود.`,
-        actions: [
-          { label: '🪄 باز کردن فوری حالت بدون API', fn: "V10Companion.openNoApi()" },
-          { label: '📘 راهنمای آزمون‌ساز', fn: "V10Companion.openGuide('examView')" }
-        ]
-      };
-    }
-
-    if (/بانک|نمونه سوال|آرشیو/.test(q)) {
-      return {
-        text: `📚 «بانک نمونه سوالات کامل» در بخش آزمون‌ساز ← تب «آرشیو تاییدشده» قرار دارد:\n• هر نمونه شامل سربرگ کامل، همه سوالات، بارم‌بندی و کلید پاسخ است.\n• می‌توانید آزمون فعلی خود را با یک کلیک در بانک ذخیره کنید یا نمونه آزمون‌های آماده را با یک کلیک در برگه A4 بارگذاری و PDF بگیرید.\n• در زیر آن، «بانک سوالات تکی» هم همچنان حفظ شده است.`,
-        actions: [
-          { label: '📚 باز کردن بانک نمونه سوالات کامل', fn: "V10Companion.openExamArchive()" }
-        ]
-      };
-    }
-
-    if (/پشتیبان|بکاپ|بک‌آپ|ذخیره|ابری|نپره|پاک/.test(q)) {
-      return {
-        text: `💾 برای اینکه اطلاعات شما هرگز از بین نرود:\n۱. وارد تب «تنظیمات» شوید.\n۲. دکمه «دانلود فایل پشتیبان (JSON)» را بزنید و فایل را در پیام‌رسان شخصی یا حافظه گوشی ذخیره کنید.\n۳. اگر اینترنت دارید، می‌توانید همگام‌سازی ابری را هم فعال کنید.\n⚠️ نکته: پاک کردن حافظه مرورگر (Clear Site Data) بدون فایل پشتیبان می‌تواند اطلاعات محلی را حذف کند.`,
-        actions: [
-          { label: '⚙️ رفتن به تنظیمات و پشتیبان‌گیری', fn: "V10Companion.nav('backup')" },
-          { label: '📘 راهنمای تنظیمات', fn: "V10Companion.openGuide('backup')" }
-        ]
-      };
-    }
-
-    if (/کلید|api|هوش مصنوعی|تنظیمات هوش/.test(q)) {
-      return {
-        text: `🔑 کلید هوش مصنوعی به‌صورت یکپارچه برای کل برنامه (آزمون‌ساز، آموزش و همیار دانا) در تب «تنظیمات» مدیریت می‌شود تا صفحه آزمون‌ساز خلوت و تمیز بماند.\n• به‌طور پیش‌فرض، سرور واسط هوشمند فعال است.\n• اگر کلید اختصاصی دارید، فقط یک‌بار در «تنظیمات» وارد کنید.\n• اگر به هر دلیل سهمیه تمام شد، «حالت بدون API» همیشه رایگان و آماده است!`,
-        actions: [
-          { label: '⚙️ تنظیمات هوش مصنوعی', fn: "V10Companion.nav('backup')" },
-          { label: '🪄 حالت بدون API', fn: "V10Companion.openNoApi()" }
-        ]
-      };
-    }
-
-    if (/محدودیت|خطا|ارور|مشکل|جایگزین|آفلاین|قطع/.test(q)) {
-      return {
-        text: `⚠️ مهم‌ترین محدودیت‌ها و راه‌های جایگزین در برنامه:\n۱. **قطع اینترنت / اتمام سهمیه AI:** تمام بخش‌های مدرسه، حضورغیاب، نمرات، کتاب‌خوان PDF و بانک نمونه سوالات ۱۰۰٪ آفلاین کار می‌کنند؛ برای طراحی سوال هم از «حالت بدون API» استفاده کنید.\n۲. **حجم بالای فایل PDF:** اگر هوش مصنوعی فایل PDF کامل را قبول نکرد، از صفحات درس اسکرین‌شات کامل بگیرید و پیوست کنید.\n۳. **حافظه مرورگر:** هفته‌ای یک‌بار فایل پشتیبان JSON بگیرید.\n۴. در بالای هر صفحه دکمه «📖 مشاهده راهنما» تمام نکات و جایگزین‌های همان بخش را گام‌به‌گام توضیح داده است.`,
-        actions: [
-          { label: '📘 راهنمای بخش فعلی', fn: "V10Companion.openCurrentGuide()" },
-          { label: '💾 پشتیبان‌گیری', fn: "V10Companion.nav('backup')" }
-        ]
-      };
-    }
-
-    if (/سلام|خوبی|چطوری|کی هستی|اسمت/.test(q)) {
-      return {
-        text: `سلام همکار گرامی! 👋 من **دانا**، همیار هوشمند برنامه «دانش‌آموز من» (نسخه ۱۰.۰.۰) هستم.\nمن هم در حالت **آفلاین** و هم در حالت **آنلاین متصل به هوش مصنوعی** کنارتان هستم تا در مدیریت کلاس، آزمون‌سازی، رفع خطاها و راهنمایی گام‌به‌گام کمکتان کنم. الان چه کاری برایتان انجام دهم؟`,
-        actions: [
-          { label: '📊 آمار برنامه من', fn: "V10Companion.askQuick('آمار فعلی برنامه من چیه؟')" },
-          { label: '📝 رفتن به آزمون‌ساز', fn: "V10Companion.nav('examView')" }
-        ]
-      };
-    }
-
-    return {
-      text: `من در حالت آفلاین پیام شما را دریافت کردم! 🟠\nدر حال حاضر می‌توانم در این موارد فوری راهنمایی‌تان کنم:\n• آمار لحظه‌ای مدارس، کلاس‌ها و آزمون‌ها\n• راهنمای گام‌به‌گام «حالت بدون API» و پیوست PDF/اسکرین‌شات\n• کار با «بانک نمونه سوالات کامل»\n• تنظیمات کلید هوش مصنوعی و پشتیبان‌گیری امن\n• بررسی محدودیت‌ها و راه‌های جایگزین\nاگر به اینترنت متصل شوید، پاسخ تخصصی هوش مصنوعی هم برای هر سوال آزاد شما فعال می‌شود.`,
-      actions: [
-        { label: '📘 راهنمای بخش فعلی', fn: "V10Companion.openCurrentGuide()" },
-        { label: '🪄 حالت بدون API', fn: "V10Companion.openNoApi()" },
-        { label: '💾 پشتیبان‌گیری', fn: "V10Companion.nav('backup')" }
-      ]
-    };
-  }
-
-  window.V10Companion = {
-    mode: 'auto', // 'auto' | 'offline'
-    history: [],
-    recognition: null,
-    init() {
-      this.loadHistory();
-      this.renderMascots('happy');
-      this.syncOnlineStatus();
-      window.addEventListener('online', () => this.syncOnlineStatus());
-      window.addEventListener('offline', () => this.syncOnlineStatus());
-    },
-    loadHistory() {
-      try {
-        const raw = localStorage.getItem(CHAT_HISTORY_KEY);
+        const base64 = this.imgDataUrl.split(',')[1] || '';
+        const prompt = 'از روی تصویر دفتر کلاسی، لیست دانش‌آموزان را با نام، نام خانوادگی، نمره، غیبت، مثبت و منفی فقط به صورت JSON برگردان: {"students":[{"name":"...","lastName":"...","grade":18,"absences":0,"positives":0,"negatives":0}]}';
+        let raw = '';
+        if (window.UnifiedAiEngine && typeof window.UnifiedAiEngine.callWithPoolRotation === 'function') {
+          const res = await window.UnifiedAiEngine.callWithPoolRotation(prompt, [{ mimeType: 'image/jpeg', base64 }], { temperature: 0.2 });
+          raw = typeof res === 'string' ? res : (res?.text || '');
+        } else if (window.ExamApp && typeof window.ExamApp.callArgonAI === 'function') {
+          raw = await window.ExamApp.callArgonAI(prompt, [{ mimeType: 'image/jpeg', base64 }]);
+        }
         if (raw) {
-          const arr = JSON.parse(raw);
-          if (Array.isArray(arr) && arr.length) {
-            this.history = arr.slice(-40);
-            return;
+          const box = document.getElementById('v10ScwPaste');
+          if (box) box.value = raw;
+          this.parsePaste();
+          if (info) info.textContent = '✅ استخراج انجام شد؛ در جدول پایین بررسی و تایید کنید.';
+        } else {
+          if (info) info.textContent = '⚠️ پاسخ دریافت نشد؛ از دکمه کپی پرامپت بدون API استفاده کنید.';
+        }
+      } catch (_) {
+        if (info) info.textContent = '⚠️ خطا در اتصال AI؛ از حالت کپی پرامپت استفاده کنید.';
+      }
+    },
+    parsePaste() {
+      const raw = (document.getElementById('v10ScwPaste')?.value || '').trim();
+      if (!raw) { notify('متنی برای تحلیل وجود ندارد.'); return; }
+      const cleaned = enNum(raw).replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```json/gi, '').replace(/```/g, '').trim();
+      let parsed = null;
+      const m = cleaned.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
+      if (m) {
+        try { parsed = JSON.parse(m[0].replace(/,\s*([}\]])/g, '$1')); } catch (_) {}
+      }
+      const arr = Array.isArray(parsed) ? parsed : (Array.isArray(parsed?.students) ? parsed.students : []);
+      if (arr.length) {
+        this.rows = arr.map(s => ({
+          name: String(s.name || s.firstName || '').trim(),
+          lastName: String(s.lastName || '').trim(),
+          grade: s.grade !== undefined && s.grade !== null ? Number(s.grade) : '',
+          absences: Number(s.absences) || 0,
+          positives: Number(s.positives) || 0,
+          negatives: Number(s.negatives) || 0
+        }));
+      } else {
+        this.rows = cleaned.split(/\n+/).map(l => l.trim()).filter(Boolean).map(l => {
+          const parts = l.replace(/^\d+[\.\-\)\s]+/, '').split(/\s+/);
+          return { name: parts[0] || '', lastName: parts.slice(1).join(' ') || '', grade: '', absences: 0, positives: 0, negatives: 0 };
+        });
+      }
+      this.renderTable();
+    },
+    renderTable() {
+      const wrap = document.getElementById('v10ScwTableWrap');
+      if (!wrap) return;
+      wrap.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <b style="font-size:12px">پیش‌نمایش قابل ویرایش (${faNum(this.rows.length)} دانش‌آموز):</b>
+          <button type="button" class="btn soft btn-sm" onclick="window.V10SmartClassWizard.addBlank()">➕ ردیف</button>
+        </div>
+        <div style="max-height:200px;overflow:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:11px">
+            <thead><tr style="background:var(--panel)"><th>نام</th><th>نام خانوادگی</th><th>نمره</th><th>غیبت</th><th>+</th><th>-</th><th></th></tr></thead>
+            <tbody>
+              ${this.rows.map((r, i) => `
+                <tr>
+                  <td><input type="text" value="${escHtml(r.name)}" style="width:70px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].name=this.value"></td>
+                  <td><input type="text" value="${escHtml(r.lastName)}" style="width:85px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].lastName=this.value"></td>
+                  <td><input type="number" step="0.25" value="${r.grade}" style="width:48px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].grade=this.value"></td>
+                  <td><input type="number" value="${r.absences}" style="width:38px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].absences=Number(this.value)||0"></td>
+                  <td><input type="number" value="${r.positives}" style="width:34px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].positives=Number(this.value)||0"></td>
+                  <td><input type="number" value="${r.negatives}" style="width:34px;padding:2px" oninput="window.V10SmartClassWizard.rows[${i}].negatives=Number(this.value)||0"></td>
+                  <td><button type="button" class="btn danger btn-sm" onclick="window.V10SmartClassWizard.rows.splice(${i},1);window.V10SmartClassWizard.renderTable()">×</button></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="btn green block" style="margin-top:8px;padding:10px;font-weight:900" onclick="window.V10SmartClassWizard.commitClass()">✅ تایید و ساخت نهایی کلاس در مدرسه</button>
+      `;
+    },
+    addBlank() {
+      this.rows.push({ name: '', lastName: '', grade: '', absences: 0, positives: 0, negatives: 0 });
+      this.renderTable();
+    },
+    commitClass() {
+      const sid = document.getElementById('v10ScwSchool')?.value || '';
+      const clsName = (document.getElementById('v10ScwClassName')?.value || '').trim() || 'کلاس جدید دفتر';
+      const s = typeof findSchool === 'function' ? findSchool(sid) : null;
+      if (!s) { notify('ابتدا یک مدرسه ایجاد یا انتخاب کنید.'); return; }
+      const newCid = typeof uid === 'function' ? uid() : ('c_' + Date.now());
+      const todayISO = typeof localISODate === 'function' ? localISODate() : new Date().toISOString().slice(0, 10);
+      const students = this.rows.filter(r => r.name || r.lastName).map(r => {
+        const stId = typeof uid === 'function' ? uid() : ('st_' + Date.now() + Math.random().toString(36).slice(2, 5));
+        const posArr = Array.from({ length: Math.max(0, r.positives || 0) }, (_, i) => ({ id: stId + '_p' + i, date: new Date().toISOString(), reason: 'دفتر کلاسی', value: 0.25 }));
+        const negArr = Array.from({ length: Math.max(0, r.negatives || 0) }, (_, i) => ({ id: stId + '_n' + i, date: new Date().toISOString(), reason: 'دفتر کلاسی', value: 0.25 }));
+        const gradesArr = (r.grade !== '' && !isNaN(Number(r.grade))) ? [{ id: stId + '_g1', subject: 'نمره دفتر کلاسی', title: 'نمره دفتر کلاسی', score: Number(r.grade), max: 20, gradeType: 'cont_exam', date: new Date().toISOString() }] : [];
+        return {
+          id: stId,
+          name: r.name || 'دانش‌آموز',
+          lastName: r.lastName || '',
+          photo: '',
+          status: 'none',
+          grades: gradesArr,
+          behavior: { positives: posArr, negatives: negArr }
+        };
+      });
+      const attMap = {};
+      this.rows.forEach((r, idx) => {
+        const stObj = students[idx];
+        if (stObj && r.absences > 0) {
+          for (let a = 0; a < Math.min(20, r.absences); a++) {
+            const dObj = new Date();
+            dObj.setDate(dObj.getDate() - a);
+            const dKey = dObj.toISOString().slice(0, 10);
+            if (!attMap[dKey]) attMap[dKey] = {};
+            attMap[dKey][stObj.id] = 'absent';
           }
         }
-      } catch (_) {}
-      this.history = [{
-        role: 'bot',
-        source: 'آفلاین + آنلاین',
-        text: 'سلام همکار عزیز! 👋 من «دانا» همیار هوشمند برنامه دانش‌آموز من هستم.\nچه آنلاین باشید و چه آفلاین، هر سوالی درباره کار با بخش‌های برنامه، آزمون‌ساز بدون API، بانک نمونه سوالات یا رفع خطاها دارید همین‌جا بپرسید.',
-        actions: [
-          { label: '📘 راهنمای بخش فعلی', fn: "V10Companion.openCurrentGuide()" },
-          { label: '🪄 آزمون بدون API', fn: "V10Companion.openNoApi()" }
-        ]
-      }];
-    },
-    saveHistory() {
-      try { localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(this.history.slice(-40))); } catch (_) {}
-    },
-    renderMascots(mood = 'happy') {
-      const fabSvg = document.getElementById('v10FabMascotSvg');
-      const modalSvg = document.getElementById('v10ModalMascotSvg');
-      const card = document.getElementById('v10CompanionCard');
-      if (fabSvg) fabSvg.innerHTML = buildMascotSVG(mood === 'offline' ? 'offline' : 'happy', true);
-      if (modalSvg) modalSvg.innerHTML = buildMascotSVG(mood, false);
-      if (card) {
-        card.classList.toggle('v10-mascot-thinking', mood === 'thinking');
-        card.classList.toggle('v10-mascot-talking', mood === 'talking');
-      }
-    },
-    syncOnlineStatus() {
-      const online = navigator.onLine && this.mode !== 'offline';
-      const fabSub = document.getElementById('v10FabStatusTxt');
-      const badge = document.getElementById('v10CompanionModeBadge');
-      const toggleBtn = document.getElementById('v10ModeToggleBtn');
-      if (fabSub) {
-        fabSub.textContent = online ? '🟢 آنلاین + آفلاین' : '🟠 حالت آفلاین فعال';
-        fabSub.className = 'v10-fab-sub' + (online ? '' : ' offline');
-      }
-      if (badge) {
-        badge.textContent = this.mode === 'offline'
-          ? '🟠 حالت آفلاین سریع (بدون مصرف اینترنت)'
-          : (navigator.onLine ? '🟢 آنلاین (هوش مصنوعی متصل + پشتیبان آفلاین)' : '🟠 آفلاین (موتور هوشمند داخلی فعال است)');
-      }
-      if (toggleBtn) {
-        toggleBtn.textContent = this.mode === 'offline' ? '🟠 آفلاین' : '⚡ خودکار';
-      }
-      this.renderMascots(online ? 'happy' : 'offline');
-    },
-    toggleMode() {
-      this.mode = this.mode === 'auto' ? 'offline' : 'auto';
-      this.syncOnlineStatus();
-      notify(this.mode === 'offline' ? '🟠 همیار دانا روی حالت فقط آفلاین تنظیم شد.' : '⚡ همیار دانا روی حالت خودکار (آنلاین + آفلاین) تنظیم شد.');
-    },
-    open() {
-      this.syncOnlineStatus();
-      this.renderMessages();
-      document.getElementById('v10CompanionModal')?.classList.add('open');
-      setTimeout(() => document.getElementById('v10ChatInput')?.focus(), 120);
-    },
-    close() {
-      document.getElementById('v10CompanionModal')?.classList.remove('open');
-    },
-    clearChat() {
-      this.history = [];
-      try { localStorage.removeItem(CHAT_HISTORY_KEY); } catch (_) {}
-      this.loadHistory();
-      this.renderMessages();
-      notify('🧹 تاریخچه گفت‌وگو پاک شد.');
-    },
-    nav(viewId) {
-      this.close();
-      if (typeof window.showView === 'function') window.showView(viewId);
-    },
-    openNoApi() {
-      this.close();
-      if (typeof window.showView === 'function') window.showView('examView');
-      setTimeout(() => {
-        if (window.ExamApp && typeof ExamApp.openNoApiModal === 'function') ExamApp.openNoApiModal();
-      }, 150);
-    },
-    openExamArchive() {
-      this.close();
-      if (typeof window.showView === 'function') window.showView('examView');
-      setTimeout(() => {
-        if (window.ExamApp && typeof ExamApp.openTab === 'function') {
-          const btn = document.querySelector(".ex-nav-btn[onclick*=\"'archive'\"]");
-          ExamApp.openTab('archive', btn);
-        }
-      }, 150);
-    },
-    openGuide(secId) {
-      this.close();
-      V10SmartGuides.open(secId);
-    },
-    openCurrentGuide() {
-      const activeView = document.querySelector('section.view.active');
-      const id = activeView?.id && SECTION_GUIDES[activeView.id] ? activeView.id : 'dashboard';
-      this.openGuide(id);
-    },
-    renderMessages() {
-      const stream = document.getElementById('v10ChatStream');
-      if (!stream) return;
-      stream.innerHTML = this.history.map(m => `
-        <div class="v10-msg ${m.role === 'user' ? 'user' : 'bot'}">
-          <div>${safeEsc(m.text)}</div>
-          ${Array.isArray(m.actions) && m.actions.length ? `
-            <div class="v10-msg-actions">
-              ${m.actions.map(a => `<button type="button" class="v10-action-chip" onclick="${a.fn}">${safeEsc(a.label)}</button>`).join('')}
-            </div>
-          ` : ''}
-          ${m.source ? `<div class="v10-msg-meta"><span>${safeEsc(m.source)}</span></div>` : ''}
-        </div>
-      `).join('');
-      stream.scrollTop = stream.scrollHeight;
-    },
-    askQuick(text) {
-      const inp = document.getElementById('v10ChatInput');
-      if (inp) inp.value = text;
-      this.send();
-    },
-    toggleVoice() {
-      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SR) {
-        notify('⚠️ مرورگر شما از تایپ صوتی پشتیبانی نمی‌کند؛ لطفاً پیام را تایپ کنید.');
-        return;
-      }
-      if (this.recognition) {
-        try { this.recognition.stop(); } catch (_) {}
-        this.recognition = null;
-        return;
-      }
-      const rec = new SR();
-      rec.lang = 'fa-IR';
-      rec.interimResults = false;
-      this.recognition = rec;
-      const vBtn = document.getElementById('v10VoiceBtn');
-      if (vBtn) vBtn.textContent = '🔴';
-      rec.onresult = (e) => {
-        const transcript = e.results?.[0]?.[0]?.transcript || '';
-        const inp = document.getElementById('v10ChatInput');
-        if (inp && transcript) inp.value = transcript;
-      };
-      rec.onend = () => {
-        this.recognition = null;
-        if (vBtn) vBtn.textContent = '🎙️';
-      };
-      rec.onerror = () => {
-        this.recognition = null;
-        if (vBtn) vBtn.textContent = '🎙️';
-        notify('⚠️ دسترسی میکروفون یا سرویس صوتی در دسترس نیست.');
-      };
-      try { rec.start(); } catch (_) {}
-    },
-    async send() {
-      const inp = document.getElementById('v10ChatInput');
-      const text = (inp?.value || '').trim();
-      if (!text) return;
-      inp.value = '';
-      this.history.push({ role: 'user', text });
-      this.renderMessages();
-
-      const useOnline = this.mode !== 'offline' && navigator.onLine;
-      const offlineRes = buildOfflineAnswer(text);
-
-      if (!useOnline) {
-        this.renderMascots('talking');
-        this.history.push({
-          role: 'bot',
-          source: '🟠 پاسخ فوری آفلاین',
-          text: offlineRes.text,
-          actions: offlineRes.actions || []
-        });
-        this.saveHistory();
-        this.renderMessages();
-        setTimeout(() => this.renderMascots('offline'), 1200);
-        return;
-      }
-
-      this.renderMascots('thinking');
-      const sendBtn = document.getElementById('v10SendBtn');
-      if (sendBtn) sendBtn.disabled = true;
-
-      try {
-        const st = getLiveAppStats();
-        const activeView = document.querySelector('section.view.active')?.id || 'dashboard';
-        const aiPrompt = `تو «دانا»، همیار هوشمند رسمی داخل اپلیکیشن معلمی «دانش‌آموز من» نسخه 10.0.0 هستی.
-وضعیت فعلی برنامه معلم: مدارس=${st.schools}، کلاس‌ها=${st.classes}، دانش‌آموزان=${st.students}، سوالات برگه فعلی=${st.examQs}، نمونه سوالات کامل در بانک=${st.sampleBankCount}، صفحه فعلی=${activeView}.
-قابلیت‌های نسخه 10.0.0: کلید هوش مصنوعی یکپارچه فقط در تب تنظیمات، دکمه «طراحی آزمون طبق تنظیمات»، «حالت بدون API» با دستور همگانی سازگار با تمام هوش مصنوعی‌ها و پیوست اسکرین‌شات کامل یا PDF، «بانک نمونه سوالات کامل» در آرشیو، راهنماهای گام‌به‌گام هوشمند در همه بخش‌ها، و پشتیبان‌گیری آفلاین JSON + همگام‌سازی ابری.
-سوال معلم: ${text}
-پاسخ را صمیمی، دقیق، کوتاه، گام‌به‌گام و به زبان فارسی بنویس.`;
-
-        const aiReply = await callUnifiedAI(aiPrompt);
-        this.renderMascots('talking');
-        this.history.push({
-          role: 'bot',
-          source: '🟢 پاسخ آنلاین هوش مصنوعی',
-          text: aiReply,
-          actions: offlineRes.actions || []
-        });
-        this.saveHistory();
-        this.renderMessages();
-        setTimeout(() => this.renderMascots('happy'), 1400);
-      } catch (_) {
-        this.renderMascots('talking');
-        this.history.push({
-          role: 'bot',
-          source: '🟠 پاسخ جایگزین آفلاین (سرور آنلاین در دسترس نبود)',
-          text: offlineRes.text,
-          actions: offlineRes.actions || []
-        });
-        this.saveHistory();
-        this.renderMessages();
-        setTimeout(() => this.renderMascots('offline'), 1200);
-      } finally {
-        if (sendBtn) sendBtn.disabled = false;
-      }
+      });
+      if (!s.classes) s.classes = [];
+      s.classes.push({ id: newCid, name: clsName, subject: clsName, students, attendance: attMap, termScores: {}, sessionNotes: {} });
+      if (typeof save === 'function') save();
+      if (typeof closeModal === 'function') closeModal();
+      if (typeof openClass === 'function') openClass(s.id, newCid);
+      notify(`✅ کلاس «${clsName}» با ${faNum(students.length)} دانش‌آموز ساخته شد.`);
     }
   };
 
-  /* =========================================================================
-     5. BOOTSTRAP V10.0.0 SUITE SAFELY AFTER DOM & LEGACY SCRIPTS
-     ========================================================================= */
-  function bootstrapV10() {
-    // Ensure orange button label stays clean ("✨ طراحی آزمون طبق تنظیمات")
-    const runBtn = document.getElementById('btnRunAi');
-    if (runBtn) runBtn.textContent = '✨ طراحی آزمون طبق تنظیمات';
+  /* ==========================================================================
+     REQ 19: Smart Assistant «دانا» (Online UnifiedAiEngine + Offline Live DB)
+     ========================================================================== */
+  const DANA_SVG = `<svg viewBox="0 0 64 64" width="54" height="54"><defs><linearGradient id="danaBodyG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D97706"/><stop offset="100%" stop-color="#78350F"/></linearGradient></defs><path d="M16 56C16 44 23 39 32 39C41 39 48 44 48 56Z" fill="url(#danaBodyG)"/><circle cx="32" cy="27" r="14" fill="#FEF3C7" stroke="#9A3412" stroke-width="2.2"/><path d="M14 19L32 9L50 19L32 26Z" fill="url(#danaBodyG)"/><circle cx="27" cy="27" r="2.2" fill="#1E1B18"/><circle cx="37" cy="27" r="2.2" fill="#1E1B18"/><path d="M26 33Q32 37 38 33" fill="none" stroke="#9A3412" stroke-width="2.2" stroke-linecap="round"/></svg>`;
 
-    installV10NoApiEngine();
-    V10CompleteExamBank.mount();
-    V10SmartGuides.mountAllBars();
-    V10Companion.init();
+  window.DanaAssistant = {
+    history: [],
+    updateStatusDot() {
+      const dot = document.getElementById('danaStatusDot');
+      if (dot) dot.classList.toggle('offline', !navigator.onLine);
+    },
+    getLiveContext() {
+      const activeViewEl = document.querySelector('.view.active');
+      const viewId = activeViewEl ? activeViewEl.id : 'dashboard';
+      const d = getLiveDb();
+      const s = typeof findSchool === 'function' ? findSchool(window.currentSchoolId) : null;
+      const c = (s && typeof findClass === 'function') ? findClass(s.id, window.currentClassId) : null;
+      return { viewId, school: s, cls: c, schoolsCount: (d.schools || []).length };
+    },
+    getPageGuide(viewId) {
+      const guides = {
+        dashboard: '📍 شما در صفحه خانه هستید. روی کرنوگراف مسی بزنید تا آمار ۳بعدی را ببینید، یا از نوار سریع بالا کلاس جدید از عکس دفتر بسازید.\n💡 نکته ذخیره‌سازی: عکس‌ها در IndexedDB ذخیره می‌شوند؛ برای انتقال به گوشی دیگر از تب تنظیمات بکاپ JSON بگیرید.',
+        teachView: '📍 شما در بخش آموزش و کتاب‌خوان هستید. فایل PDF کتاب را انتخاب کنید، روی تخته هوشمند بنویسید و با دکمه «📋 لیست امروز» وسط تدریس به حاضری بروید و با یک لمس به همین صفحه برگردید.',
+        examView: '📍 شما در آزمون‌ساز هستید. مبحث و بارم را تنظیم کنید؛ اگر کلید API ندارید یا سهمیه رایگان پر شده، از «🪄 حالت بدون API» استفاده کنید.',
+        classDetail: '📍 شما داخل کلاس هستید. برای جستجوی سریع در لیست امروز از کادر بالای لیست استفاده کنید یا برای تصحیح برگه به آزمون‌ساز بروید.'
+      };
+      return guides[viewId] || '📍 برای راهنمای دقیق هر بخش، نام دانش‌آموز، آمار کلاس یا سوال خود را بپرسید.';
+    },
+    analyzeOffline(query) {
+      const q = normFaStrict(query);
+      const ctx = this.getLiveContext();
+      const d = getLiveDb();
+      const allStudents = [];
+      (d.schools || []).forEach(s => (s.classes || []).forEach(c => (c.students || []).forEach(st => {
+        const ag = typeof avgGrade === 'function' ? avgGrade(st) : null;
+        let abs = 0;
+        if (c.attendance) Object.values(c.attendance).forEach(dayMap => { if (dayMap && dayMap[st.id] === 'absent') abs++; });
+        allStudents.push({ s, c, st, fullName: `${st.name || ''} ${st.lastName || ''}`.trim(), avg: ag, abs });
+      })));
+
+      const actions = [];
+      if (/راهنما|چطور|کمک|محدودیت|سهمیه|بکاپ|آفلاین/.test(q)) {
+        actions.push({ label: '🪄 حالت بدون API', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openNoApiModal(),80)' });
+        actions.push({ label: '💾 بکاپ JSON', fn: 'closeModal();showView("backup")' });
+        return { text: this.getPageGuide(ctx.viewId), actions, matchedLocal: true };
+      }
+
+      if (/برگه|تصحیح/.test(q)) {
+        actions.push({ label: '📂 باز کردن برگه‌های تصحیح‌شده', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openTab("gradedPapers",document.getElementById("v10GradedPapersTabBtn")),80)' });
+        return { text: `📂 در بایگانی برگه‌های تصحیح‌شده، ${faNum(loadGradedMeta().length)} برگه ثبت شده است.`, actions, matchedLocal: true };
+      }
+
+      const belowMatch = q.match(/زیر\s*(\d+(?:\.\d+)?)/);
+      if (belowMatch || /افت|ضعیف|کمتر/.test(q)) {
+        const thr = belowMatch ? Number(belowMatch[1]) : 12;
+        const pool = ctx.cls ? allStudents.filter(x => x.c.id === ctx.cls.id) : allStudents;
+        const low = pool.filter(x => x.avg !== null && x.avg < thr).sort((a, b) => a.avg - b.avg);
+        if (!low.length) return { text: `✅ هیچ دانش‌آموزی با میانگین زیر ${faNum(thr)} یافت نشد.`, actions: [], matchedLocal: true };
+        low.slice(0, 3).forEach(x => actions.push({ label: `👤 پرونده ${x.fullName}`, fn: `closeModal();openStudent('${x.s.id}','${x.c.id}','${x.st.id}')` }));
+        return {
+          text: `📉 دانش‌آموزان زیر ${faNum(thr)} (${faNum(low.length)} نفر):\n` + low.slice(0, 8).map((x, i) => `${faNum(i + 1)}. ${x.fullName} (${x.c.name}) — نمره: ${faNum(x.avg.toFixed(2))}`).join('\n'),
+          actions,
+          matchedLocal: true
+        };
+      }
+
+      if (/غیبت|غایب/.test(q)) {
+        const pool = ctx.cls ? allStudents.filter(x => x.c.id === ctx.cls.id) : allStudents;
+        const topAbs = pool.filter(x => x.abs > 0).sort((a, b) => b.abs - a.abs).slice(0, 6);
+        if (!topAbs.length) return { text: '✅ غیبتی ثبت نشده است.', actions: [], matchedLocal: true };
+        topAbs.slice(0, 2).forEach(x => actions.push({ label: `👤 ${x.fullName}`, fn: `closeModal();openStudent('${x.s.id}','${x.c.id}','${x.st.id}')` }));
+        return { text: `📅 بیشترین غیبت‌ها:\n` + topAbs.map((x, i) => `${faNum(i + 1)}. ${x.fullName} (${x.c.name}) — ${faNum(x.abs)} غیبت`).join('\n'), actions, matchedLocal: true };
+      }
+
+      if (/میانگین|آمار|کلاس|مدرسه|بانک/.test(q)) {
+        const scored = allStudents.filter(x => x.avg !== null);
+        const avg = scored.length ? (scored.reduce((s, x) => s + x.avg, 0) / scored.length).toFixed(2) : '—';
+        const bankLen = window.V10FullExamBank ? window.V10FullExamBank.load().length : 0;
+        return {
+          text: `📊 آمار زنده کل برنامه:\n• مدارس: ${faNum((d.schools || []).length)}\n• دانش‌آموزان: ${faNum(allStudents.length)}\n• میانگین کل نمرات: ${faNum(avg)}\n• بانک نمونه سوالات کامل: ${faNum(bankLen)} آزمون\n• برگه‌های تصحیح‌شده: ${faNum(loadGradedMeta().length)}`,
+          actions: [
+            { label: '💾 ذخیره آزمون فعلی در بانک', fn: 'window.V10FullExamBank.saveCurrentExam()' },
+            { label: '📂 بایگانی برگه‌ها', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openTab("gradedPapers",document.getElementById("v10GradedPapersTabBtn")),80)' }
+          ],
+          matchedLocal: true
+        };
+      }
+
+      if (q.length >= 2) {
+        const hits = allStudents.filter(x => normFaStrict(x.fullName).includes(q));
+        if (hits.length) {
+          hits.slice(0, 3).forEach(x => actions.push({ label: `👤 باز کردن پرونده ${x.fullName}`, fn: `closeModal();openStudent('${x.s.id}','${x.c.id}','${x.st.id}')` }));
+          return {
+            text: `🔎 ${faNum(hits.length)} دانش‌آموز یافت شد:\n` + hits.slice(0, 5).map(x => `• ${x.fullName} (${x.c.name}) — میانگین: ${x.avg !== null ? faNum(x.avg.toFixed(2)) : '—'} | غیبت: ${faNum(x.abs)}`).join('\n'),
+            actions,
+            matchedLocal: true
+          };
+        }
+      }
+
+      return {
+        text: this.getPageGuide(ctx.viewId) + `\n\nمی‌توانید نام یک دانش‌آموز را بنویسید یا بپرسید: «نمره زیر ۱۲»، «بیشترین غیبت»، «آمار کل».`,
+        actions: [
+          { label: '🪄 حالت بدون API', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openNoApiModal(),80)' },
+          { label: '📂 برگه‌های تصحیح‌شده', fn: 'closeModal();showView("examView");setTimeout(()=>ExamApp?.openTab("gradedPapers",document.getElementById("v10GradedPapersTabBtn")),80)' }
+        ],
+        matchedLocal: false
+      };
+    },
+    async ask(query) {
+      const txt = String(query || '').trim();
+      if (!txt) return;
+      this.history.push({ role: 'user', text: txt, actions: [] });
+      this.renderLog('thinking');
+      let reply = this.analyzeOffline(txt);
+
+      if (navigator.onLine && !reply.matchedLocal && window.UnifiedAiEngine && typeof window.UnifiedAiEngine.callWithPoolRotation === 'function') {
+        try {
+          const ctx = this.getLiveContext();
+          const fullPrompt = `تو «دانا» همیار هوشمند معلم در برنامه دانش‌آموز من هستی.\nوضعیت زنده: صفحه=${ctx.viewId} | مدرسه=${ctx.school?.name || 'ندارد'} | کلاس=${ctx.cls?.name || 'ندارد'} | تعداد مدارس=${ctx.schoolsCount}.\nپاسخ دقیق، کوتاه و کاربردی به فارسی بده.\nپرسش معلم: ${txt}`;
+          const aiRes = await window.UnifiedAiEngine.callWithPoolRotation(fullPrompt, [], { temperature: 0.4 });
+          const aiTxt = typeof aiRes === 'string' ? aiRes : (aiRes?.text || '');
+          if (aiTxt && String(aiTxt).trim().length > 10) {
+            reply = { text: String(aiTxt).trim(), actions: reply.actions || [] };
+          }
+        } catch (_) {}
+      }
+
+      this.history.push({ role: 'bot', text: reply.text, actions: reply.actions || [] });
+      this.renderLog(navigator.onLine ? 'answering' : 'offline');
+    },
+    renderLog(avatarState = 'idle') {
+      const av = document.getElementById('v10DanaAvatar');
+      if (av) av.className = 'v10-dana-avatar state-' + avatarState;
+      const log = document.getElementById('v10DanaChatLog');
+      if (!log) return;
+      log.innerHTML = this.history.map(m => `
+        <div class="v10-dana-msg ${m.role}">
+          <div>${escHtml(m.text)}</div>
+          ${m.actions && m.actions.length ? `<div class="v10-dana-actions-row">${m.actions.map(a => `<button type="button" class="btn soft btn-sm" onclick="${a.fn.replace(/"/g, '&quot;')}">${escHtml(a.label)}</button>`).join('')}</div>` : ''}
+        </div>
+      `).join('');
+      log.scrollTop = log.scrollHeight;
+    },
+    startVoice() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) { notify('مرورگر شما از ورودی صوتی پشتیبانی نمی‌کند.'); return; }
+      const rec = new SR();
+      rec.lang = 'fa-IR';
+      rec.onresult = (e) => {
+        const t = e.results?.[0]?.[0]?.transcript || '';
+        const inp = document.getElementById('v10DanaInp');
+        if (inp && t) { inp.value = t; this.ask(t); }
+      };
+      rec.start();
+    }
+  };
+
+  window.openDanaAssistantModal = function() {
+    const ctx = window.DanaAssistant.getLiveContext();
+    if (!window.DanaAssistant.history.length) {
+      window.DanaAssistant.history.push({
+        role: 'bot',
+        text: `سلام استاد! من «دانا» هستم.\n` + window.DanaAssistant.getPageGuide(ctx.viewId),
+        actions: []
+      });
+    }
+    const html = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <b style="font-size:15px;color:var(--primary-dark)">🎓 همیار هوشمند دانا (${navigator.onLine ? 'آنلاین + آفلاین' : 'آفلاین'})</b>
+        <button type="button" class="btn gray btn-sm" onclick="closeModal()">✖</button>
+      </div>
+      <div class="v10-dana-stage">
+        <div id="v10DanaAvatar" class="v10-dana-avatar state-${navigator.onLine ? 'idle' : 'offline'}">${DANA_SVG}</div>
+        <div style="font-size:11.5px;line-height:1.6">
+          <b>درک لحظه‌ای صفحه و داده‌های زنده</b><br>
+          <span class="muted">جستجوی دانش‌آموز، تحلیل نمرات زیر حد نصاب، آمار غیبت و راهنمای تمام بخش‌ها</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('نمره زیر ۱۲')">📉 زیر ۱۲</button>
+        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('بیشترین غیبت')">📅 بیشترین غیبت</button>
+        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('آمار کل')">📊 آمار کل</button>
+        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.ask('راهنمای این صفحه')">💡 راهنما</button>
+      </div>
+      <div class="v10-dana-chat-log" id="v10DanaChatLog"></div>
+      <div style="display:flex;gap:6px">
+        <input type="text" id="v10DanaInp" placeholder="نام دانش‌آموز یا سوالتان را بنویسید..." style="flex:1" onkeydown="if(event.key==='Enter'){window.DanaAssistant.ask(this.value);this.value='';}">
+        <button type="button" class="btn soft btn-sm" onclick="window.DanaAssistant.startVoice()" title="ورودی صوتی فارسی">🎙️</button>
+        <button type="button" class="btn primary btn-sm" onclick="window.DanaAssistant.ask(document.getElementById('v10DanaInp').value);document.getElementById('v10DanaInp').value=''">ارسال</button>
+      </div>
+    `;
+    if (typeof openModal === 'function') openModal(html);
+    window.DanaAssistant.renderLog(navigator.onLine ? 'idle' : 'offline');
+  };
+
+  // REQ 10: Show graded papers directly inside student's profile (#studentDetailContent)
+  if (typeof window.openStudent === 'function') {
+    const _origOpenStuV10 = window.openStudent;
+    window.openStudent = function(sid, cid, stid) {
+      const r = _origOpenStuV10.apply(this, arguments);
+      setTimeout(() => {
+        const host = document.getElementById('studentDetailContent');
+        if (!host || document.getElementById('v10StuGradedPapersBox')) return;
+        const papers = loadGradedMeta().filter(m => m.stId === stid);
+        const box = document.createElement('div');
+        box.id = 'v10StuGradedPapersBox';
+        box.className = 'card';
+        box.style.marginTop = '12px';
+        box.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b>📂 برگه‌های تصحیح‌شده این دانش‌آموز (${faNum(papers.length)})</b><button type="button" class="btn soft btn-sm" onclick="showView('examView');setTimeout(()=>window.V10PaperGrader.openWizard(),80)">➕ تصحیح جدید</button></div>` +
+          (papers.length ? papers.map(p => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-top:1px solid var(--border);font-size:12px"><span>${escHtml(p.examTitle)} (${escHtml(p.examDate)}) — <b>${faNum(p.totalEarned)}/${faNum(p.maxTotal)}</b></span><button type="button" class="btn primary btn-sm" onclick="window.V10PaperGrader.viewPaperDetail('${p.id}')">👁️ مشاهده برگه</button></div>`).join('') : '<div class="muted" style="font-size:11.5px">برگه‌ای برای این دانش‌آموز ثبت نشده است.</div>');
+        host.appendChild(box);
+      }, 40);
+      return r;
+    };
+    try { openStudent = window.openStudent; } catch (_) {}
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(bootstrapV10, 260));
-  } else {
-    setTimeout(bootstrapV10, 260);
+  // Boot & hooks
+  window.addEventListener('online', () => window.DanaAssistant.updateStatusDot());
+  window.addEventListener('offline', () => window.DanaAssistant.updateStatusDot());
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      buildCopperChronoDeck();
+      window.DanaAssistant.updateStatusDot();
+      window.DaneshPaperPhotoDB.cleanupExpired(false);
+    }, 150);
+  });
+  if (typeof window.showView === 'function') {
+    const _origShowV10 = window.showView;
+    window.showView = function(id) {
+      const r = _origShowV10.apply(this, arguments);
+      if (id === 'dashboard' || id === 'home') setTimeout(() => { buildCopperChronoDeck(); updateCopperChronoStats(); }, 40);
+      return r;
+    };
+    try { showView = window.showView; } catch (_) {}
   }
 })();
 </script>
-<!-- ==================== END V10.0.0 MASTER UPGRADE SUITE ==================== -->
-
 </body>
 </html>
