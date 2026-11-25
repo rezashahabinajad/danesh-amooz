@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="10.3.1">
-<meta name="danesh-app-version" content="10.3.1">
+<meta name="version" content="10.3.2">
+<meta name="danesh-app-version" content="10.3.2">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -5171,7 +5171,7 @@ body.dark .ws-logout-inner {
 <!-- اعلان به‌روزرسانی نسخه PWA (مدیریت مرکزی نسخه 9.3.0) -->
 <div id="swUpdateBanner" class="sw-update-banner" role="region" aria-label="اعلان به‌روزرسانی نسخه جدید">
   <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:200px">
-    <span id="swUpdateBannerText">🚀 نسخه جدید (۱۰.۳.۱) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
+    <span id="swUpdateBannerText">🚀 نسخه جدید (۱۰.۳.۲) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
     <div id="swUpdateBannerError" style="display:none;font-size:11.5px;color:#FEE2E2;background:rgba(153,27,27,0.88);padding:5px 8px;border-radius:8px;border:1px solid #FCA5A5;line-height:1.6"></div>
   </div>
   <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
@@ -5204,7 +5204,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۱۰.۳.۱</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۱۰.۳.۲</span>
           <button type="button" id="btnTopCheckUpdate" class="top-ver-pill" style="cursor:pointer;border:1px solid rgba(234,88,12,0.35);background:#FFF7ED;color:#EA580C;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:999px" onclick="if(window.CentralUpdateManager)CentralUpdateManager.checkForUpdatesManual()" title="بررسی به‌روزرسانی">بررسی به‌روزرسانی</button>
         </div>
       </div>
@@ -5657,7 +5657,7 @@ body.dark .ws-logout-inner {
       <button class="btn soft btn-sm" onclick="ExamApp.exportDirectPDF()" id="btnDirectPdf">📕 PDF</button>
       <button class="btn soft btn-sm" onclick="ExamApp.shareExamSheet()" id="btnShareSheet">📤 اشتراک</button>
       <button class="btn gray btn-sm" onclick="ExamApp.printSheetNow()">🖨️ چاپ</button>
-      <!-- v10.3.1: دکمه دریافت سوالات از بخش آموزش طبق فاز دوم حذف شد -->
+      <!-- v10.3.2: دکمه دریافت سوالات از بخش آموزش طبق فاز دوم حذف شد -->
       <button class="btn soft btn-sm" style="grid-column:1 / -1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">🌐 ارائه این آزمون در «لینک اختصاصی» / کلاس آنلاین</button>
       <button class="btn green btn-sm" style="grid-column:1 / -1" onclick="openTeacherExamResultsManagerModal(currentSchoolId, currentClassId)">📊 لینک نتایج آزمون (مشاهده، ویرایش نمرات توسط معلم و کارنامه تحلیلی دانش‌آموز)</button>
     </div>
@@ -5689,7 +5689,7 @@ body.dark .ws-logout-inner {
   </div>
 
   <div id="examPane-ai" class="exam-pane active">
-    <!-- v10.3.1: کارت تکراری کلید هوش مصنوعی در آزمون‌ساز حذف شد (اتصال مستقیم به کلید تنظیمات و سرور واسط برقرار است) -->
+    <!-- v10.3.2: کارت تکراری کلید هوش مصنوعی در آزمون‌ساز حذف شد (اتصال مستقیم به کلید تنظیمات و سرور واسط برقرار است) -->
 
     <div class="box-card">
       <div class="box-header">
@@ -5702,7 +5702,7 @@ body.dark .ws-logout-inner {
         </select>
       </div>
       <textarea id="aiPromptSource" oninput="ExamApp.autoDetectHeaderFromText(this.value)" placeholder="مثال: از درس ۱ تا ۴ پیام‌های آسمان هشتم سوال طرح کن (به محض نوشتن هفتم یا هشتم، سربرگ خودکار تنظیم می‌شود)..."></textarea>
-      <!-- v10.3.1: دکمه انتخاب عکس از صفحات کتاب درسی در این کارت حذف شد -->
+      <!-- v10.3.2: دکمه انتخاب عکس از صفحات کتاب درسی در این کارت حذف شد -->
     </div>
 
     <div class="box-card">
@@ -5807,7 +5807,7 @@ body.dark .ws-logout-inner {
   </div>
 
   <div id="examPane-manual" class="exam-pane">
-    <!-- v10.3.1: کارت نارنجی تبدیل خودکار متن حذف شد و استودیوی طراحی دستی حفظ گردید -->
+    <!-- v10.3.2: کارت نارنجی تبدیل خودکار متن حذف شد و استودیوی طراحی دستی حفظ گردید -->
     <div class="box-card">
       <div class="box-header"><span>🎨 استودیوی طراحی دستی (با نمرات رُند مضرب ۰.۲۵)</span></div>
       <input type="hidden" id="editQId" value=""><input type="hidden" id="mQType" value="mcq">
@@ -5919,7 +5919,7 @@ body.dark .ws-logout-inner {
         <label class="switch-card"><span>💧 نمایش واترمارک کمرنگ پس‌زمینه</span><input type="checkbox" id="swShowWatermark" checked onchange="ExamApp.syncSwitchesFromUI()"></label>
       </div>
     </div>
-    <!-- v10.3.1: کارت بودجه‌بندی رسمی سال تحصیلی حذف شد -->
+    <!-- v10.3.2: کارت بودجه‌بندی رسمی سال تحصیلی حذف شد -->
     <div class="box-card">
       <div class="box-header"><span>🏫 مشخصات جدول سربرگ</span></div>
       <div class="grid-2"><div><label>سرلوحه</label><input type="text" id="hdrGod" oninput="ExamApp.updateHeaderState()"></div><div><label>عنوان سربرگ</label><input type="text" id="hdrMainTitle" oninput="ExamApp.updateHeaderState()"></div></div>
@@ -6314,11 +6314,11 @@ body.dark .ws-logout-inner {
       <b style="color:var(--primary)">🧮 شبیه‌ساز زنده فرمول نمره (تست محاسبه قبل از ذخیره)</b>
       <p class="muted" style="margin:4px 0 8px">اعداد آزمایشی را تغییر دهید تا ببینید نمره نهایی دانش‌آموز با ضرایب فعلی چند می‌شود:</p>
       <div class="grid-5">
-        <div><label style="font-size:11px">کلاسی</label><input id="simClassSc" type="number" value="15" min="0" max="20" step="0.25" oninput="updateLiveFormulaPreview()"></div>
-        <div><label style="font-size:11px">کتبی مستمر</label><input id="simContSc" type="number" value="18" min="0" max="20" step="0.25" oninput="updateLiveFormulaPreview()"></div>
-        <div><label style="font-size:11px">پایانی ترم</label><input id="simTermSc" type="number" value="17" min="0" max="20" step="0.25" oninput="updateLiveFormulaPreview()"></div>
-        <div><label style="font-size:11px">تعداد مثبت</label><input id="simPosCnt" type="number" value="2" min="0" max="20" oninput="updateLiveFormulaPreview()"></div>
-        <div><label style="font-size:11px">تعداد منفی</label><input id="simNegCnt" type="number" value="0" min="0" max="20" oninput="updateLiveFormulaPreview()"></div>
+        <div><label style="font-size:11px">کلاسی</label><input id="simClassSc" type="text" inputmode="decimal" value="15" oninput="updateLiveFormulaPreview()"></div>
+        <div><label style="font-size:11px">کتبی مستمر</label><input id="simContSc" type="text" inputmode="decimal" value="18" oninput="updateLiveFormulaPreview()"></div>
+        <div><label style="font-size:11px">پایانی ترم</label><input id="simTermSc" type="text" inputmode="decimal" value="17" placeholder="خالی=موقت" oninput="updateLiveFormulaPreview()"></div>
+        <div><label style="font-size:11px">تعداد مثبت</label><input id="simPosCnt" type="text" inputmode="numeric" value="2" oninput="updateLiveFormulaPreview()"></div>
+        <div><label style="font-size:11px">تعداد منفی</label><input id="simNegCnt" type="text" inputmode="numeric" value="0" oninput="updateLiveFormulaPreview()"></div>
       </div>
       <div id="liveFormulaResultBox" style="padding:10px 12px;border-radius:11px;background:var(--panel);border:1px solid var(--border);font-weight:800;text-align:center;color:var(--primary)"></div>
     </div>
@@ -6599,7 +6599,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v10.3.1 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v10.3.2 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6699,7 +6699,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v10.3.1 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v10.3.2 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6957,7 +6957,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '10.3.1';
+const APP_VERSION = '10.3.2';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -36200,7 +36200,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v10.3.1</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v10.3.2</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -36342,7 +36342,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 10.3.1 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 10.3.2 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -40740,7 +40740,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DAM_AUDIT_VERSION = '10.3.1';
+  window.DAM_AUDIT_VERSION = '10.3.2';
 
   /* ==========================================================================================
      ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
@@ -41125,7 +41125,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '10.3.1';
+  window.DANESH_APP_VERSION = '10.3.2';
 
   /* ==========================================================================================
      ۱. معماری یکپارچه هوش مصنوعی با الهام مستقیم از آزمون‌ساز (gemini-code-1792066709047.html)
@@ -46664,16 +46664,21 @@ ${JSON.stringify(batch, null, 2)}
         } else {
           // ۲. بررسی نمرات مستمر کتبی و کلاسی ثبت‌شده در st.grades و c.contExamScores
           const gradeItems = [];
+          const includeZero = (typeof localStorage === 'undefined') ? true : (localStorage.getItem('rule_include_zero_score') !== '0');
+          let hasDirectContScore = false;
           if (c.contExamScores && c.contExamScores[st.id] !== undefined && c.contExamScores[st.id] !== null && String(c.contExamScores[st.id]).trim() !== '') {
             const p = window.StrictGradeEngine.parseRawScore(c.contExamScores[st.id]);
-            if (p.value !== null) {
+            if (p.value !== null && (includeZero || p.value > 0)) {
+              hasDirectContScore = true;
               gradeItems.push({ score: p.value, max: Number(c.contExamMax) || secMax, weight: Number(getRules().weightCont) || 2 });
             }
           }
           (st.grades || []).forEach(g => {
             if (!g || g.gradeType === 'practical_work') return;
+            // جلوگیری قطعی از دوبارشماری نمره کتبی مستمر ستون مستقیم
+            if (hasDirectContScore && g.source === 'direct_cont_col') return;
             const p = window.StrictGradeEngine.parseRawScore(g.score);
-            if (p.value !== null) {
+            if (p.value !== null && (includeZero || p.value > 0)) {
               const gMax = Number(g.maxScore) || (p.value > secMax ? 20 : secMax);
               const w = g.gradeType === 'cont_exam' ? (Number(getRules().weightCont) || 2) : (Number(getRules().weightClass) || 1);
               gradeItems.push({ score: p.value, max: gMax, weight: w });
@@ -47625,9 +47630,9 @@ ${JSON.stringify(batch, null, 2)}
 
       const otherClassesCheckboxes = (db.schools || []).flatMap(sch =>
         (sch.classes || []).filter(cls => cls.id !== c.id).map(cls => `
-          <label style="display:inline-flex;align-items:center;gap:5px;padding:4px 8px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;font-size:11px;cursor:pointer">
-            <input type="checkbox" class="gs-copy-target-cls" value="${sch.id}|${cls.id}">
-            <span>${esc(sch.name)} · ${esc(fmtCls(cls))}</span>
+          <label class="v1032-cls-chk-pill" style="display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;padding:8px 11px;background:var(--bg-card);border:1px solid var(--border);border-radius:11px;font-size:11.5px;font-weight:700;cursor:pointer;box-sizing:border-box">
+            <span style="flex:1;text-align:right;line-height:1.45">${esc(sch.name)} · ${esc(fmtCls(cls))}</span>
+            <input type="checkbox" class="gs-copy-target-cls" value="${sch.id}|${cls.id}" style="width:18px !important;height:18px !important;min-width:18px !important;flex:0 0 18px !important;margin:0 !important;accent-color:var(--primary)">
           </label>
         `)
       ).join('');
@@ -48141,13 +48146,13 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '10.3.1';
-  window.DAM_AUDIT_VERSION = '10.3.1';
+  window.DANESH_APP_VERSION = '10.3.2';
+  window.DAM_AUDIT_VERSION = '10.3.2';
   try {
     const topVerEl = document.getElementById('topVersion');
-    if (topVerEl) topVerEl.textContent = 'نسخه ۱۰.۳.۱';
+    if (topVerEl) topVerEl.textContent = 'نسخه ۱۰.۳.۲';
     const metaVer = document.querySelector('meta[name="version"]');
-    if (metaVer) metaVer.setAttribute('content', '10.3.1');
+    if (metaVer) metaVer.setAttribute('content', '10.3.2');
   } catch (_) {}
 
   /* ==========================================================================================
@@ -52442,7 +52447,7 @@ ${JSON.stringify(batch, null, 2)}
       }
       payload.bookPdfBase64 = window._cachedBookPdfBase64 || null;
       payload.hasBookPdfBinary = Boolean(payload.bookPdfBase64);
-      payload.appVersion = '10.3.1';
+      payload.appVersion = '10.3.2';
     }
     return payload;
   };
@@ -53016,14 +53021,14 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V921_VERSION = '10.3.1';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v10.3.1-orange';
+  const V921_VERSION = '10.3.2';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v10.3.2-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
   function syncVersionDisplaysV921() {
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۱۰.۳.۱';
+    if (topVer) topVer.textContent = 'نسخه ۱۰.۳.۲';
     const metaVer = document.querySelector('meta[name="version"]');
     if (metaVer) metaVer.setAttribute('content', V921_VERSION);
   }
@@ -55610,8 +55615,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const UNIFIED_VERSION = '10.3.1';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v10.3.1-orange';
+  const UNIFIED_VERSION = '10.3.2';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v10.3.2-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -59466,8 +59471,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V930_VERSION = '10.3.1';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v10.3.1-orange';
+  const V930_VERSION = '10.3.2';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v10.3.2-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -59477,7 +59482,7 @@ ${JSON.stringify(batch, null, 2)}
     const meta = document.querySelector('meta[name="danesh-app-version"]');
     if (meta) meta.setAttribute('content', V930_VERSION);
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۱۰.۳.۱';
+    if (topVer) topVer.textContent = 'نسخه ۱۰.۳.۲';
     document.querySelectorAll('[data-app-version-label], .app-version-badge').forEach(el => {
       el.textContent = '۹.۸.۱';
     });
@@ -60658,9 +60663,9 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V940_VERSION = '10.3.1';
-  const V940_VERSION_FA = '۱۰.۳.۱';
-  const V940_CACHE_NAME = 'danesh-amooz-man-v10.3.1-orange';
+  const V940_VERSION = '10.3.2';
+  const V940_VERSION_FA = '۱۰.۳.۲';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v10.3.2-orange';
   const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
 
   window.APP_VERSION = V940_VERSION;
@@ -62226,7 +62231,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V950_VER = '10.3.1';
+  const V950_VER = '10.3.2';
   window.DANESH_APP_VERSION = V950_VER;
   window.DAM_AUDIT_VERSION = V950_VER;
 
@@ -63716,7 +63721,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     renderModernOrangeLogin();
     // Ensure topVersion always displays ۹.۸.۱
     const tv = document.getElementById('topVersion');
-    if (tv) tv.textContent = 'نسخه ۱۰.۳.۱';
+    if (tv) tv.textContent = 'نسخه ۱۰.۳.۲';
     if (typeof window.renderInternalVaultUI === 'function') {
       window.renderInternalVaultUI().catch(() => {});
     }
@@ -63737,8 +63742,8 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V960_VERSION = '10.3.1';
-  const V960_VERSION_FA = '۱۰.۳.۱';
+  const V960_VERSION = '10.3.2';
+  const V960_VERSION_FA = '۱۰.۳.۲';
   window.DANESH_APP_VERSION = V960_VERSION;
   window.DAM_AUDIT_VERSION = V960_VERSION;
 
@@ -65113,7 +65118,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
           </div>
           ${top3.map(x => {
             const clsFull = typeof window.formatFullClassDotTitle === 'function' ? window.formatFullClassDotTitle(x.c) : (x.c?.name || '');
-            return `<div class="dash-b-item"><div style="min-width:0;flex:1"><b style="color:var(--primary-dark);font-size:13.5px;display:block">${safeEsc(formatStudentName(x.st))}</b><span class="muted" style="font-size:11.5px;display:block;margin-top:2px">${safeEsc(clsFull)} · ${safeEsc(x.s?.name || '')} · <b style="color:var(--primary)">${x.diff === 0 ? '🎉 امروز!' : `${safeFa(x.bDay)} / ${safeFa(x.bMonth)}`}</b></span></div><button class="btn soft btn-sm" style="flex-shrink:0" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 پیام تبریک</button></div>`;
+            return `<div class="dash-b-item"><div style="min-width:0;flex:1"><b style="color:var(--primary-dark);font-size:13.5px;display:block">${safeEsc(formatStudentName(x.st))}</b><span class="muted" style="font-size:11.5px;display:block;margin-top:2px">${safeEsc(clsFull)} · ${safeEsc(x.s?.name || '')} · <b style="color:var(--primary);white-space:nowrap;display:inline-block;direction:ltr;unicode-bidi:isolate">${x.diff === 0 ? '🎉 امروز!' : `${safeFa(x.bMonth)}/${safeFa(x.bDay)}`}</b></span></div><button class="btn soft btn-sm" style="flex-shrink:0" onclick="openBirthdaySender('${x.st.id}','${x.c.id}','${x.s.id}')">💌 پیام تبریک</button></div>`;
           }).join('')}
         </div>`
       : '';
@@ -66245,8 +66250,8 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V970_VERSION = '10.3.1';
-  const V970_VERSION_FA = '۱۰.۳.۱';
+  const V970_VERSION = '10.3.2';
+  const V970_VERSION_FA = '۱۰.۳.۲';
   window.DANESH_APP_VERSION = V970_VERSION;
   window.DAM_AUDIT_VERSION = V970_VERSION;
 
@@ -68416,8 +68421,8 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
 (function() {
   'use strict';
 
-  const V971_VERSION = '10.3.1';
-  const V971_VERSION_FA = '۱۰.۳.۱';
+  const V971_VERSION = '10.3.2';
+  const V971_VERSION_FA = '۱۰.۳.۲';
   window.DANESH_APP_VERSION = V971_VERSION;
 
   const safeEsc = (s) => typeof esc === 'function' ? esc(s) : String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
@@ -70413,8 +70418,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V980_VERSION = '10.3.1';
-  const V980_VERSION_FA = '۱۰.۳.۱';
+  const V980_VERSION = '10.3.2';
+  const V980_VERSION_FA = '۱۰.۳.۲';
   const UNIFIED_SOLVE_BTN_LABEL = '✨ حل تمرین‌ها و فعالیت‌های این صفحه';
   const CACHE_MODEL_KEY_V980 = 'v980_cached_gemini_model';
   const CACHE_KEY_SIG_V980 = 'v980_cached_gemini_key_sig';
@@ -71839,8 +71844,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V982_VERSION = '10.3.1';
-  const V982_VERSION_FA = '۱۰.۳.۱';
+  const V982_VERSION = '10.3.2';
+  const V982_VERSION_FA = '۱۰.۳.۲';
   const MULTI_KEY_STORAGE = 'dam_ai_multi_keys_v950';
   const MODEL_CACHE_STORAGE = 'v982_ai_model_cache_map';
   const ENDPOINT_CACHE_STORAGE = 'v982_ai_endpoint_cache_map';
@@ -72601,7 +72606,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Client-App': 'DaneshAmoozMan-v10.3.1'
+              'X-Client-App': 'DaneshAmoozMan-v10.3.2'
             },
             body: payloadStr,
             signal: ctrl ? ctrl.signal : undefined
@@ -72694,7 +72699,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Client-App': 'DaneshAmoozMan-v10.3.1'
+              'X-Client-App': 'DaneshAmoozMan-v10.3.2'
             },
             body: bodyStr,
             signal: ctrl ? ctrl.signal : undefined
@@ -72852,7 +72857,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
         const qN = Number(d.groqKeys || 0);
         const oN = Number(d.openRouterKeys || 0);
         const cfOn = Boolean(d.workersAiBound);
-        const infoTxt = `✅ سرور واسط آنلاین (v${d.version || '10.3.1'}) · Gemini: ${safeFa(gN)} · Groq: ${safeFa(qN)}${cfOn ? ' · Workers AI دیداری: فعال ☁️' : ''}${oN ? ` · OpenRouter: ${safeFa(oN)}` : ''}`;
+        const infoTxt = `✅ سرور واسط آنلاین (v${d.version || '10.3.2'}) · Gemini: ${safeFa(gN)} · Groq: ${safeFa(qN)}${cfOn ? ' · Workers AI دیداری: فعال ☁️' : ''}${oN ? ` · OpenRouter: ${safeFa(oN)}` : ''}`;
         this.proxyState = {
           ...this.proxyState,
           status: (gN + qN + oN > 0 || cfOn) ? 'online' : 'error',
@@ -73912,8 +73917,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V987_VERSION = '10.3.1';
-  const V987_VERSION_FA = '۱۰.۳.۱';
+  const V987_VERSION = '10.3.2';
+  const V987_VERSION_FA = '۱۰.۳.۲';
   const SB_URL = 'https://wazycdrhwlnoylfmsenx.supabase.co';
   const SB_KEY = 'sb_publishable_SjneXL0bzHA-mXFfdQwklw_0x9fwo0N';
   const SESSION_STORAGE_KEY = 'dam_sb_session_v983';
@@ -76297,7 +76302,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
           }
         });
         setTimeout(() => {
-          // v10.3.1: غیرفعال‌سازی کاهش کیفیت خودکار عکس‌ها هنگام باز شدن برنامه برای حفظ کیفیت اصلی تصاویر
+          // v10.3.2: غیرفعال‌سازی کاهش کیفیت خودکار عکس‌ها هنگام باز شدن برنامه برای حفظ کیفیت اصلی تصاویر
         }, 2500);
 
         if (!cbResult?.handled && this.isLoggedIn() && (typeof navigator === 'undefined' || navigator.onLine !== false)) {
@@ -77001,7 +77006,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.1 — فاز اول (تم کرنوگراف مسی لوکس، جستجوی لیست امروز،
+     دانش‌آموز من · نسخه 10.3.2 — فاز اول (تم کرنوگراف مسی لوکس، جستجوی لیست امروز،
      کیفیت تصاویر و بکاپ هوشمند، دکمه رفت‌وبرگشت آموزش ↔ لیست امروز)
      ========================================================================== -->
 <style id="v10Phase1Styles">
@@ -77406,7 +77411,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     text-align: center;
   }
 
-  /* v10.3.1: نمایش ساعت کرنوگراف و تاریخ شمسی روی همه تم‌ها + انیمیشن لمس (بدون چرخش صفحه) */
+  /* v10.3.2: نمایش ساعت کرنوگراف و تاریخ شمسی روی همه تم‌ها + انیمیشن لمس (بدون چرخش صفحه) */
   #jarvisCoreWidget {
     display: none !important;
   }
@@ -77472,7 +77477,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     color: #9A3412 !important;
   }
 
-  /* v10.3.1: اصلاح کامل کنتراست و متغیرهای رنگ تم «کرنوگراف مسی لوکس» (رفع کامل مشکل سفید-روی-سفید در تنظیمات و آموزش) */
+  /* v10.3.2: اصلاح کامل کنتراست و متغیرهای رنگ تم «کرنوگراف مسی لوکس» (رفع کامل مشکل سفید-روی-سفید در تنظیمات و آموزش) */
   html[data-theme-mode="copper-chronograph"],
   body[data-theme-mode="copper-chronograph"],
   body.theme-copper-chronograph {
@@ -77562,8 +77567,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V10_VERSION = '10.3.1';
-  const V10_VERSION_FA = '۱۰.۳.۱';
+  const V10_VERSION = '10.3.2';
+  const V10_VERSION_FA = '۱۰.۳.۲';
   const TEACH_RETURN_KEY = 'dam_v10_teach_return_state';
   const TODAY_LAST_CLASS_KEY = 'dam_v10_today_last_class';
   const BACKUP_TARGET_BYTES = 15 * 1024 * 1024; // 15 MB target guidance
@@ -77835,7 +77840,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
         </div>
         <div class="v10-chrono-digital-pill">
           <span class="v10-chrono-digital-dot"></span>
-          <span class="v10-chrono-digital-time" id="v10ChronoDigitalTime">۰۰:۰۰:۰۰</span>
+          <span class="v10-chrono-digital-time" id="v10ChronoDigitalTime" dir="ltr" style="unicode-bidi:isolate">۰۰:۰۰:۰۰</span>
         </div>
       </div>
 
@@ -77884,11 +77889,19 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     if (mEl) mEl.setAttribute('transform', `rotate(${minDeg.toFixed(2)} 120 120)`);
     if (sEl) sEl.setAttribute('transform', `rotate(${secDeg.toFixed(2)} 120 120)`);
 
-    const isNight = (h >= 18 || h < 6);
+    let dialShiftLbl = '🌙 شب';
+    let fullShiftLbl = '🌙 نوبت شب';
+    if (h >= 6 && h < 13) {
+      dialShiftLbl = '🌅 صبح';
+      fullShiftLbl = '🌅 نوبت صبح';
+    } else if (h >= 13 && h < 18) {
+      dialShiftLbl = '🌇 عصر';
+      fullShiftLbl = '🌇 نوبت عصر';
+    }
     const dialShift = document.getElementById('v10ChronoDialShift');
-    if (dialShift) dialShift.textContent = isNight ? '🌙 شب' : '☀️ روز';
+    if (dialShift) dialShift.textContent = dialShiftLbl;
     const shiftText = document.getElementById('v10ChronoShiftText');
-    if (shiftText) shiftText.textContent = isNight ? '🌙 نوبت شب' : '☀️ نوبت روز';
+    if (shiftText) shiftText.textContent = fullShiftLbl;
 
     const pad = n => String(n).padStart(2, '0');
     const digEl = document.getElementById('v10ChronoDigitalTime');
@@ -78294,7 +78307,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.1 — فاز دوم (پاکسازی آزمون‌ساز، ارتقای حالت بدون API
+     دانش‌آموز من · نسخه 10.3.2 — فاز دوم (پاکسازی آزمون‌ساز، ارتقای حالت بدون API
      با پارسر هوشمند و پیش‌نمایش قابل ویرایش، بانک نمونه سؤالات کامل)
      ========================================================================== -->
 <style id="v101Phase2Styles">
@@ -79028,7 +79041,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.1 — فاز سوم:
+     دانش‌آموز من · نسخه 10.3.2 — فاز سوم:
      ۱. جادوگر ورود کلاس از عکس دفتر میانه سال
      ۲. تصحیح هوشمند برگه‌های امتحانی با راستی‌آزمایی جمع نمرات و ثبت مستقیم در دفتر
      ۳. بخش مستقل «برگه‌های تصحیح‌شده» + نمایش در پروفایل دانش‌آموز
@@ -80468,7 +80481,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.1 — بازیابی انتخابی از فایل پشتیبان آفلاین
+     دانش‌آموز من · نسخه 10.3.2 — بازیابی انتخابی از فایل پشتیبان آفلاین
      (استخراج جداگانه عکس‌ها، نمرات، آزمون‌ها و انتخاب/دانلود تکی هر عکس)
      ========================================================================== -->
 <style id="v103SelectiveRestoreStyles">
@@ -81078,7 +81091,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.1 — نسخه هنری «کرنوگراف مسی لوکس» (Atelier Copper)
+     دانش‌آموز من · نسخه 10.3.2 — نسخه هنری «کرنوگراف مسی لوکس» (Atelier Copper)
      ۱۰۰٪ ایزوله روی body.theme-copper-chronograph بدون کوچک‌ترین تغییر در سایر تم‌ها
      ========================================================================== -->
 <style id="v1031CopperArtistMasterpiece">
@@ -81395,6 +81408,152 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
     border-radius: 999px;
   }
 </style>
+
+
+<!-- ==========================================================================
+     دانش‌آموز من · نسخه 10.3.2 — شبیه‌ساز دقیق نمره + هماهنگی قرص‌های سریع تم مسی
+     ========================================================================== -->
+<style id="v1032PolishStyles">
+  /* هماهنگی کامل قرص‌های سریع بالای صفحه خانه در تم کرنوگراف مسی لوکس */
+  body.theme-copper-chronograph .dash-q-pill,
+  body.theme-copper-chronograph .dash-q-pill[style] {
+    background: linear-gradient(165deg, #2B1D14 0%, #1F140E 100%) !important;
+    color: #FFEAD5 !important;
+    border: 1px solid rgba(234, 138, 72, 0.38) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 224, 194, 0.10) !important;
+  }
+  body.theme-copper-chronograph .v1032-cls-chk-pill {
+    background: #231812 !important;
+    border-color: rgba(234, 138, 72, 0.28) !important;
+    color: #FBF3EA !important;
+  }
+</style>
+
+<script id="v1032GradePrecisionModule">
+(function() {
+  'use strict';
+
+  function parseFaNum(raw) {
+    if (raw === undefined || raw === null) return null;
+    const s = String(raw)
+      .replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))
+      .replace(/[٠-٩]/g, d => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)))
+      .replace(/[٫,\/]/g, '.')
+      .trim();
+    if (s === '' || s === '-' || s === '—') return null;
+    const n = Number(s);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  function r2(n) {
+    return Math.round((Number(n) + Number.EPSILON) * 100) / 100;
+  }
+
+  function toFaFmt(n) {
+    if (typeof fmtScore === 'function') return fmtScore(n);
+    return Number(n || 0).toLocaleString('fa-IR', { maximumFractionDigits: 2 });
+  }
+
+  function computeExactSim(p) {
+    const totalMax = Math.max(1, Number(p.totalMax) || 20);
+    const wClass = Math.max(0, Number(p.wClass) ?? 1);
+    const wCont = Math.max(0, Number(p.wCont) ?? 2);
+    const wTerm = Math.max(0, Number(p.wTerm) ?? 3);
+    const posVal = Math.max(0, Number(p.posVal) ?? 0.25);
+    const bonusNoNeg = Math.max(0, Number(p.bonusNoNeg) ?? 1);
+    const maxNeg = Math.max(0, Number(p.maxNeg) ?? 2);
+    const penNeg = Math.max(0, Number(p.penNeg) ?? 0.5);
+    const includeZero = p.includeZero !== false;
+
+    const sClass = (p.sClass !== null && (includeZero || p.sClass > 0)) ? Math.max(0, Math.min(totalMax, p.sClass)) : null;
+    const sCont = (p.sCont !== null && (includeZero || p.sCont > 0)) ? Math.max(0, Math.min(totalMax, p.sCont)) : null;
+    const sTerm = (p.sTerm !== null && (includeZero || p.sTerm > 0)) ? Math.max(0, Math.min(totalMax, p.sTerm)) : null;
+    const pCnt = Math.max(0, Math.floor(p.pCnt || 0));
+    const nCnt = Math.max(0, Math.floor(p.nCnt || 0));
+
+    // ۱. میانگین مستمر (ترکیب وزنی دقیق کلاسی و کتبی مستمر)
+    let contAvg = null;
+    if (sClass !== null && sCont !== null) {
+      const denom = (wClass + wCont) > 0 ? (wClass + wCont) : 2;
+      contAvg = r2(((sClass * (wClass || 0)) + (sCont * (wCont || 0))) / denom);
+      if (wClass === 0 && wCont === 0) contAvg = r2((sClass + sCont) / 2);
+    } else if (sClass !== null) {
+      contAvg = r2(sClass);
+    } else if (sCont !== null) {
+      contAvg = r2(sCont);
+    }
+
+    // ۲. نمره پایه قبل از انضباطی
+    let baseScore = null;
+    let isProvisional = false;
+    if (contAvg !== null && sTerm !== null) {
+      const denom = (wCont + wTerm) > 0 ? (wCont + wTerm) : 2;
+      baseScore = (wCont === 0 && wTerm === 0)
+        ? r2((contAvg + sTerm) / 2)
+        : r2(((contAvg * wCont) + (sTerm * wTerm)) / denom);
+    } else if (contAvg !== null) {
+      baseScore = contAvg;
+      isProvisional = true;
+    } else if (sTerm !== null) {
+      baseScore = r2(sTerm);
+      isProvisional = true;
+    }
+
+    // ۳. تغییر انضباطی دقیق (بدون دوبارشماری و با سقف ۲۰ و کف ۰)
+    let delta = pCnt * posVal;
+    if (nCnt === 0 && pCnt > 0) delta += bonusNoNeg;
+    if (nCnt > maxNeg) delta -= (nCnt - maxNeg) * penNeg;
+    delta = r2(delta);
+
+    const finalScore = baseScore !== null ? r2(Math.max(0, Math.min(totalMax, baseScore + delta))) : null;
+    return { contAvg, baseScore, delta, finalScore, isProvisional, totalMax };
+  }
+
+  window.V1032ComputeExactSim = computeExactSim;
+
+  window.updateLiveFormulaPreview = function() {
+    const box = document.getElementById('liveFormulaResultBox');
+    if (!box) return null;
+
+    const getR = (id, def) => {
+      const v = parseFaNum(document.getElementById(id)?.value);
+      return v !== null ? v : def;
+    };
+    const activeCls = (typeof currentSchoolId !== 'undefined' && typeof currentClassId !== 'undefined' && currentSchoolId && currentClassId && typeof findClass === 'function')
+      ? findClass(currentSchoolId, currentClassId) : null;
+    const totalMax = Number(activeCls?.gradingConfig?.totalMaxScore) || 20;
+    const includeZero = (typeof localStorage === 'undefined') ? true : (localStorage.getItem('rule_include_zero_score') !== '0');
+
+    const res = computeExactSim({
+      totalMax,
+      includeZero,
+      wClass: getR('weightClassScore', 1),
+      wCont: getR('weightContExam', 2),
+      wTerm: getR('weightTermExam', 3),
+      bonusNoNeg: getR('ruleBonusNoNeg', 1),
+      maxNeg: getR('ruleMaxNegAllowed', 2),
+      penNeg: getR('rulePenaltyPerNeg', 0.5),
+      posVal: getR('behaviorPositiveDefault', 0.25),
+      sClass: parseFaNum(document.getElementById('simClassSc')?.value),
+      sCont: parseFaNum(document.getElementById('simContSc')?.value),
+      sTerm: parseFaNum(document.getElementById('simTermSc')?.value),
+      pCnt: parseFaNum(document.getElementById('simPosCnt')?.value) || 0,
+      nCnt: parseFaNum(document.getElementById('simNegCnt')?.value) || 0
+    });
+
+    const provTag = res.isProvisional ? ' <span style="font-size:11px;opacity:0.85">(موقت - بدون پایانی)</span>' : '';
+    box.innerHTML = `میانگین مستمر: <b>${res.contAvg !== null ? toFaFmt(res.contAvg) : '—'}</b> · نمره پایه: <b>${res.baseScore !== null ? toFaFmt(res.baseScore) : '—'}</b> · تغییر انضباطی: <b>${res.delta >= 0 ? '+' : ''}${toFaFmt(res.delta)}</b> ⬅️ ⭐ نمره نهایی: <b style="font-size:16px;color:var(--neon-green)">${res.finalScore !== null ? toFaFmt(res.finalScore) : '—'} از ${toFaFmt(res.totalMax)}</b>${provTag}`;
+    return res;
+  };
+  try { updateLiveFormulaPreview = window.updateLiveFormulaPreview; } catch (_) {}
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(() => window.updateLiveFormulaPreview(), 250));
+  } else {
+    setTimeout(() => window.updateLiveFormulaPreview(), 250);
+  }
+})();
+</script>
 
 </body>
 </html>
