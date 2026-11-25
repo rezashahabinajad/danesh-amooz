@@ -1,5 +1,5 @@
-const APP_VERSION = '10.3.2';
-const CACHE_NAME = 'danesh-amooz-man-v10.3.2-orange';
+const APP_VERSION = '10.3.3';
+const CACHE_NAME = 'danesh-amooz-man-v10.3.3-orange';
 const ASSETS = [
   './',
   './index.html',
@@ -175,6 +175,7 @@ self.addEventListener('message', event => {
 
 // ۴. پاسخ‌دهی آفلاین/آنلاین استاندارد با تضمین ثبات نسخه فعال و عدم تحویل فایل خراب
 self.addEventListener('fetch', event => {
+  if (event.request.url.includes('v_check=')) { event.respondWith(fetch(event.request, { cache: 'no-store' })); return; }
   if (event.request.method !== 'GET') return;
 
   const reqUrl = new URL(event.request.url);
