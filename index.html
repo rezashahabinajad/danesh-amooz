@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="10.3.3">
-<meta name="danesh-app-version" content="10.3.3">
+<meta name="version" content="10.3.4">
+<meta name="danesh-app-version" content="10.3.4">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -5171,7 +5171,7 @@ body.dark .ws-logout-inner {
 <!-- اعلان به‌روزرسانی نسخه PWA (مدیریت مرکزی نسخه 9.3.0) -->
 <div id="swUpdateBanner" class="sw-update-banner" role="region" aria-label="اعلان به‌روزرسانی نسخه جدید">
   <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:200px">
-    <span id="swUpdateBannerText">🚀 نسخه جدید (۱۰.۳.۳) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
+    <span id="swUpdateBannerText">🚀 نسخه جدید (۱۰.۳.۴) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
     <div id="swUpdateBannerError" style="display:none;font-size:11.5px;color:#FEE2E2;background:rgba(153,27,27,0.88);padding:5px 8px;border-radius:8px;border:1px solid #FCA5A5;line-height:1.6"></div>
   </div>
   <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
@@ -5204,7 +5204,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۱۰.۳.۳</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۱۰.۳.۴</span>
           <button type="button" id="btnTopCheckUpdate" class="top-ver-pill" style="cursor:pointer;border:1px solid rgba(234,88,12,0.35);background:#FFF7ED;color:#EA580C;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:999px" onclick="if(window.CentralUpdateManager)CentralUpdateManager.checkForUpdatesManual()" title="بررسی به‌روزرسانی">بررسی به‌روزرسانی</button>
         </div>
       </div>
@@ -5657,7 +5657,7 @@ body.dark .ws-logout-inner {
       <button class="btn soft btn-sm" onclick="ExamApp.exportDirectPDF()" id="btnDirectPdf">📕 PDF</button>
       <button class="btn soft btn-sm" onclick="ExamApp.shareExamSheet()" id="btnShareSheet">📤 اشتراک</button>
       <button class="btn gray btn-sm" onclick="ExamApp.printSheetNow()">🖨️ چاپ</button>
-      <!-- v10.3.3: دکمه دریافت سوالات از بخش آموزش طبق فاز دوم حذف شد -->
+      <!-- v10.3.4: دکمه دریافت سوالات از بخش آموزش طبق فاز دوم حذف شد -->
       <button class="btn soft btn-sm" style="grid-column:1 / -1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">🌐 ارائه این آزمون در «لینک اختصاصی» / کلاس آنلاین</button>
       <button class="btn green btn-sm" style="grid-column:1 / -1" onclick="openTeacherExamResultsManagerModal(currentSchoolId, currentClassId)">📊 لینک نتایج آزمون (مشاهده، ویرایش نمرات توسط معلم و کارنامه تحلیلی دانش‌آموز)</button>
     </div>
@@ -5689,7 +5689,7 @@ body.dark .ws-logout-inner {
   </div>
 
   <div id="examPane-ai" class="exam-pane active">
-    <!-- v10.3.3: کارت تکراری کلید هوش مصنوعی در آزمون‌ساز حذف شد (اتصال مستقیم به کلید تنظیمات و سرور واسط برقرار است) -->
+    <!-- v10.3.4: کارت تکراری کلید هوش مصنوعی در آزمون‌ساز حذف شد (اتصال مستقیم به کلید تنظیمات و سرور واسط برقرار است) -->
 
     <div class="box-card">
       <div class="box-header">
@@ -5702,7 +5702,7 @@ body.dark .ws-logout-inner {
         </select>
       </div>
       <textarea id="aiPromptSource" oninput="ExamApp.autoDetectHeaderFromText(this.value)" placeholder="مثال: از درس ۱ تا ۴ پیام‌های آسمان هشتم سوال طرح کن (به محض نوشتن هفتم یا هشتم، سربرگ خودکار تنظیم می‌شود)..."></textarea>
-      <!-- v10.3.3: دکمه انتخاب عکس از صفحات کتاب درسی در این کارت حذف شد -->
+      <!-- v10.3.4: دکمه انتخاب عکس از صفحات کتاب درسی در این کارت حذف شد -->
     </div>
 
     <div class="box-card">
@@ -5807,7 +5807,7 @@ body.dark .ws-logout-inner {
   </div>
 
   <div id="examPane-manual" class="exam-pane">
-    <!-- v10.3.3: کارت نارنجی تبدیل خودکار متن حذف شد و استودیوی طراحی دستی حفظ گردید -->
+    <!-- v10.3.4: کارت نارنجی تبدیل خودکار متن حذف شد و استودیوی طراحی دستی حفظ گردید -->
     <div class="box-card">
       <div class="box-header"><span>🎨 استودیوی طراحی دستی (با نمرات رُند مضرب ۰.۲۵)</span></div>
       <input type="hidden" id="editQId" value=""><input type="hidden" id="mQType" value="mcq">
@@ -5919,7 +5919,7 @@ body.dark .ws-logout-inner {
         <label class="switch-card"><span>💧 نمایش واترمارک کمرنگ پس‌زمینه</span><input type="checkbox" id="swShowWatermark" checked onchange="ExamApp.syncSwitchesFromUI()"></label>
       </div>
     </div>
-    <!-- v10.3.3: کارت بودجه‌بندی رسمی سال تحصیلی حذف شد -->
+    <!-- v10.3.4: کارت بودجه‌بندی رسمی سال تحصیلی حذف شد -->
     <div class="box-card">
       <div class="box-header"><span>🏫 مشخصات جدول سربرگ</span></div>
       <div class="grid-2"><div><label>سرلوحه</label><input type="text" id="hdrGod" oninput="ExamApp.updateHeaderState()"></div><div><label>عنوان سربرگ</label><input type="text" id="hdrMainTitle" oninput="ExamApp.updateHeaderState()"></div></div>
@@ -6599,7 +6599,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v10.3.3 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v10.3.4 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6699,7 +6699,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v10.3.3 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v10.3.4 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6957,7 +6957,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '10.3.3';
+const APP_VERSION = '10.3.4';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -36200,7 +36200,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v10.3.3</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v10.3.4</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -36342,7 +36342,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 10.3.3 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 10.3.4 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -40740,7 +40740,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DAM_AUDIT_VERSION = '10.3.3';
+  window.DAM_AUDIT_VERSION = '10.3.4';
 
   /* ==========================================================================================
      ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
@@ -41125,7 +41125,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '10.3.3';
+  window.DANESH_APP_VERSION = '10.3.4';
 
   /* ==========================================================================================
      ۱. معماری یکپارچه هوش مصنوعی با الهام مستقیم از آزمون‌ساز (gemini-code-1792066709047.html)
@@ -48146,13 +48146,13 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '10.3.3';
-  window.DAM_AUDIT_VERSION = '10.3.3';
+  window.DANESH_APP_VERSION = '10.3.4';
+  window.DAM_AUDIT_VERSION = '10.3.4';
   try {
     const topVerEl = document.getElementById('topVersion');
-    if (topVerEl) topVerEl.textContent = 'نسخه ۱۰.۳.۳';
+    if (topVerEl) topVerEl.textContent = 'نسخه ۱۰.۳.۴';
     const metaVer = document.querySelector('meta[name="version"]');
-    if (metaVer) metaVer.setAttribute('content', '10.3.3');
+    if (metaVer) metaVer.setAttribute('content', '10.3.4');
   } catch (_) {}
 
   /* ==========================================================================================
@@ -52447,7 +52447,7 @@ ${JSON.stringify(batch, null, 2)}
       }
       payload.bookPdfBase64 = window._cachedBookPdfBase64 || null;
       payload.hasBookPdfBinary = Boolean(payload.bookPdfBase64);
-      payload.appVersion = '10.3.3';
+      payload.appVersion = '10.3.4';
     }
     return payload;
   };
@@ -53021,14 +53021,14 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V921_VERSION = '10.3.3';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v10.3.3-orange';
+  const V921_VERSION = '10.3.4';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v10.3.4-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
   function syncVersionDisplaysV921() {
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۱۰.۳.۳';
+    if (topVer) topVer.textContent = 'نسخه ۱۰.۳.۴';
     const metaVer = document.querySelector('meta[name="version"]');
     if (metaVer) metaVer.setAttribute('content', V921_VERSION);
   }
@@ -55615,8 +55615,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const UNIFIED_VERSION = '10.3.3';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v10.3.3-orange';
+  const UNIFIED_VERSION = '10.3.4';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v10.3.4-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -59471,8 +59471,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V930_VERSION = '10.3.3';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v10.3.3-orange';
+  const V930_VERSION = '10.3.4';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v10.3.4-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -59482,7 +59482,7 @@ ${JSON.stringify(batch, null, 2)}
     const meta = document.querySelector('meta[name="danesh-app-version"]');
     if (meta) meta.setAttribute('content', V930_VERSION);
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۱۰.۳.۳';
+    if (topVer) topVer.textContent = 'نسخه ۱۰.۳.۴';
     document.querySelectorAll('[data-app-version-label], .app-version-badge').forEach(el => {
       el.textContent = '۹.۸.۱';
     });
@@ -60663,9 +60663,9 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V940_VERSION = '10.3.3';
-  const V940_VERSION_FA = '۱۰.۳.۳';
-  const V940_CACHE_NAME = 'danesh-amooz-man-v10.3.3-orange';
+  const V940_VERSION = '10.3.4';
+  const V940_VERSION_FA = '۱۰.۳.۴';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v10.3.4-orange';
   const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
 
   window.APP_VERSION = V940_VERSION;
@@ -62231,7 +62231,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V950_VER = '10.3.3';
+  const V950_VER = '10.3.4';
   window.DANESH_APP_VERSION = V950_VER;
   window.DAM_AUDIT_VERSION = V950_VER;
 
@@ -63721,7 +63721,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     renderModernOrangeLogin();
     // Ensure topVersion always displays ۹.۸.۱
     const tv = document.getElementById('topVersion');
-    if (tv) tv.textContent = 'نسخه ۱۰.۳.۳';
+    if (tv) tv.textContent = 'نسخه ۱۰.۳.۴';
     if (typeof window.renderInternalVaultUI === 'function') {
       window.renderInternalVaultUI().catch(() => {});
     }
@@ -63742,8 +63742,8 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V960_VERSION = '10.3.3';
-  const V960_VERSION_FA = '۱۰.۳.۳';
+  const V960_VERSION = '10.3.4';
+  const V960_VERSION_FA = '۱۰.۳.۴';
   window.DANESH_APP_VERSION = V960_VERSION;
   window.DAM_AUDIT_VERSION = V960_VERSION;
 
@@ -66250,8 +66250,8 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V970_VERSION = '10.3.3';
-  const V970_VERSION_FA = '۱۰.۳.۳';
+  const V970_VERSION = '10.3.4';
+  const V970_VERSION_FA = '۱۰.۳.۴';
   window.DANESH_APP_VERSION = V970_VERSION;
   window.DAM_AUDIT_VERSION = V970_VERSION;
 
@@ -68421,8 +68421,8 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
 (function() {
   'use strict';
 
-  const V971_VERSION = '10.3.3';
-  const V971_VERSION_FA = '۱۰.۳.۳';
+  const V971_VERSION = '10.3.4';
+  const V971_VERSION_FA = '۱۰.۳.۴';
   window.DANESH_APP_VERSION = V971_VERSION;
 
   const safeEsc = (s) => typeof esc === 'function' ? esc(s) : String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
@@ -70418,8 +70418,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V980_VERSION = '10.3.3';
-  const V980_VERSION_FA = '۱۰.۳.۳';
+  const V980_VERSION = '10.3.4';
+  const V980_VERSION_FA = '۱۰.۳.۴';
   const UNIFIED_SOLVE_BTN_LABEL = '✨ حل تمرین‌ها و فعالیت‌های این صفحه';
   const CACHE_MODEL_KEY_V980 = 'v980_cached_gemini_model';
   const CACHE_KEY_SIG_V980 = 'v980_cached_gemini_key_sig';
@@ -71844,8 +71844,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V982_VERSION = '10.3.3';
-  const V982_VERSION_FA = '۱۰.۳.۳';
+  const V982_VERSION = '10.3.4';
+  const V982_VERSION_FA = '۱۰.۳.۴';
   const MULTI_KEY_STORAGE = 'dam_ai_multi_keys_v950';
   const MODEL_CACHE_STORAGE = 'v982_ai_model_cache_map';
   const ENDPOINT_CACHE_STORAGE = 'v982_ai_endpoint_cache_map';
@@ -72606,7 +72606,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Client-App': 'DaneshAmoozMan-v10.3.3'
+              'X-Client-App': 'DaneshAmoozMan-v10.3.4'
             },
             body: payloadStr,
             signal: ctrl ? ctrl.signal : undefined
@@ -72699,7 +72699,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Client-App': 'DaneshAmoozMan-v10.3.3'
+              'X-Client-App': 'DaneshAmoozMan-v10.3.4'
             },
             body: bodyStr,
             signal: ctrl ? ctrl.signal : undefined
@@ -72857,7 +72857,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
         const qN = Number(d.groqKeys || 0);
         const oN = Number(d.openRouterKeys || 0);
         const cfOn = Boolean(d.workersAiBound);
-        const infoTxt = `✅ سرور واسط آنلاین (v${d.version || '10.3.3'}) · Gemini: ${safeFa(gN)} · Groq: ${safeFa(qN)}${cfOn ? ' · Workers AI دیداری: فعال ☁️' : ''}${oN ? ` · OpenRouter: ${safeFa(oN)}` : ''}`;
+        const infoTxt = `✅ سرور واسط آنلاین (v${d.version || '10.3.4'}) · Gemini: ${safeFa(gN)} · Groq: ${safeFa(qN)}${cfOn ? ' · Workers AI دیداری: فعال ☁️' : ''}${oN ? ` · OpenRouter: ${safeFa(oN)}` : ''}`;
         this.proxyState = {
           ...this.proxyState,
           status: (gN + qN + oN > 0 || cfOn) ? 'online' : 'error',
@@ -73917,8 +73917,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V987_VERSION = '10.3.3';
-  const V987_VERSION_FA = '۱۰.۳.۳';
+  const V987_VERSION = '10.3.4';
+  const V987_VERSION_FA = '۱۰.۳.۴';
   const SB_URL = 'https://wazycdrhwlnoylfmsenx.supabase.co';
   const SB_KEY = 'sb_publishable_SjneXL0bzHA-mXFfdQwklw_0x9fwo0N';
   const SESSION_STORAGE_KEY = 'dam_sb_session_v983';
@@ -76302,7 +76302,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
           }
         });
         setTimeout(() => {
-          // v10.3.3: غیرفعال‌سازی کاهش کیفیت خودکار عکس‌ها هنگام باز شدن برنامه برای حفظ کیفیت اصلی تصاویر
+          // v10.3.4: غیرفعال‌سازی کاهش کیفیت خودکار عکس‌ها هنگام باز شدن برنامه برای حفظ کیفیت اصلی تصاویر
         }, 2500);
 
         if (!cbResult?.handled && this.isLoggedIn() && (typeof navigator === 'undefined' || navigator.onLine !== false)) {
@@ -77006,7 +77006,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.3 — فاز اول (تم کرنوگراف مسی لوکس، جستجوی لیست امروز،
+     دانش‌آموز من · نسخه 10.3.4 — فاز اول (تم کرنوگراف مسی لوکس، جستجوی لیست امروز،
      کیفیت تصاویر و بکاپ هوشمند، دکمه رفت‌وبرگشت آموزش ↔ لیست امروز)
      ========================================================================== -->
 <style id="v10Phase1Styles">
@@ -77411,7 +77411,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     text-align: center;
   }
 
-  /* v10.3.3: نمایش ساعت کرنوگراف و تاریخ شمسی روی همه تم‌ها + انیمیشن لمس (بدون چرخش صفحه) */
+  /* v10.3.4: نمایش ساعت کرنوگراف و تاریخ شمسی روی همه تم‌ها + انیمیشن لمس (بدون چرخش صفحه) */
   #jarvisCoreWidget {
     display: none !important;
   }
@@ -77477,7 +77477,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     color: #9A3412 !important;
   }
 
-  /* v10.3.3: اصلاح کامل کنتراست و متغیرهای رنگ تم «کرنوگراف مسی لوکس» (رفع کامل مشکل سفید-روی-سفید در تنظیمات و آموزش) */
+  /* v10.3.4: اصلاح کامل کنتراست و متغیرهای رنگ تم «کرنوگراف مسی لوکس» (رفع کامل مشکل سفید-روی-سفید در تنظیمات و آموزش) */
   html[data-theme-mode="copper-chronograph"],
   body[data-theme-mode="copper-chronograph"],
   body.theme-copper-chronograph {
@@ -77567,8 +77567,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V10_VERSION = '10.3.3';
-  const V10_VERSION_FA = '۱۰.۳.۳';
+  const V10_VERSION = '10.3.4';
+  const V10_VERSION_FA = '۱۰.۳.۴';
   const TEACH_RETURN_KEY = 'dam_v10_teach_return_state';
   const TODAY_LAST_CLASS_KEY = 'dam_v10_today_last_class';
   const BACKUP_TARGET_BYTES = 15 * 1024 * 1024; // 15 MB target guidance
@@ -78307,7 +78307,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.3 — فاز دوم (پاکسازی آزمون‌ساز، ارتقای حالت بدون API
+     دانش‌آموز من · نسخه 10.3.4 — فاز دوم (پاکسازی آزمون‌ساز، ارتقای حالت بدون API
      با پارسر هوشمند و پیش‌نمایش قابل ویرایش، بانک نمونه سؤالات کامل)
      ========================================================================== -->
 <style id="v101Phase2Styles">
@@ -79041,7 +79041,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.3 — فاز سوم:
+     دانش‌آموز من · نسخه 10.3.4 — فاز سوم:
      ۱. جادوگر ورود کلاس از عکس دفتر میانه سال
      ۲. تصحیح هوشمند برگه‌های امتحانی با راستی‌آزمایی جمع نمرات و ثبت مستقیم در دفتر
      ۳. بخش مستقل «برگه‌های تصحیح‌شده» + نمایش در پروفایل دانش‌آموز
@@ -80481,7 +80481,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.3 — بازیابی انتخابی از فایل پشتیبان آفلاین
+     دانش‌آموز من · نسخه 10.3.4 — بازیابی انتخابی از فایل پشتیبان آفلاین
      (استخراج جداگانه عکس‌ها، نمرات، آزمون‌ها و انتخاب/دانلود تکی هر عکس)
      ========================================================================== -->
 <style id="v103SelectiveRestoreStyles">
@@ -81091,7 +81091,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.3 — نسخه هنری «کرنوگراف مسی لوکس» (Atelier Copper)
+     دانش‌آموز من · نسخه 10.3.4 — نسخه هنری «کرنوگراف مسی لوکس» (Atelier Copper)
      ۱۰۰٪ ایزوله روی body.theme-copper-chronograph بدون کوچک‌ترین تغییر در سایر تم‌ها
      ========================================================================== -->
 <style id="v1031CopperArtistMasterpiece">
@@ -81411,7 +81411,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.3 — شبیه‌ساز دقیق نمره + هماهنگی قرص‌های سریع تم مسی
+     دانش‌آموز من · نسخه 10.3.4 — شبیه‌ساز دقیق نمره + هماهنگی قرص‌های سریع تم مسی
      ========================================================================== -->
 <style id="v1032PolishStyles">
   /* هماهنگی کامل قرص‌های سریع بالای صفحه خانه در تم کرنوگراف مسی لوکس */
@@ -81557,7 +81557,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.3.3 — موتور ضدکش بررسی و نصب قطعی به‌روزرسانی PWA
+     دانش‌آموز من · نسخه 10.3.4 — موتور ضدکش بررسی و نصب قطعی به‌روزرسانی PWA
      ========================================================================== -->
 <script id="v1033SmartUpdateModule">
 (function() {
@@ -81631,7 +81631,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
       const settingsBtn = document.getElementById('btnSettingsCheckUpdate');
       const localVer = (typeof APP_VERSION !== 'undefined' && APP_VERSION)
         ? String(APP_VERSION)
-        : (document.querySelector('meta[name="version"]')?.content || '10.3.3');
+        : (document.querySelector('meta[name="version"]')?.content || '10.3.4');
 
       if (btn) { btn.disabled = true; btn.textContent = '⏳ بررسی...'; }
       if (settingsBtn) { settingsBtn.disabled = true; settingsBtn.textContent = '⏳ در حال بررسی سرور...'; }
@@ -81676,6 +81676,401 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
     document.addEventListener('DOMContentLoaded', () => setTimeout(hookUpdateManager, 180));
   } else {
     setTimeout(hookUpdateManager, 180);
+  }
+})();
+</script>
+
+
+<!-- ==========================================================================
+     دانش‌آموز من · نسخه 10.3.4 — اصلاح ریشه‌ای و جامع موتور آزمون‌ساز
+     ۱. تشخیص ۱۰۰٪ دقیق نوع سؤالات (تستی، ص/غ، جاخالی، وصل‌کردنی، تشریحی) بدون افتادن در تشریحی
+     ۲. پرامپت استاندارد با اسکیما و مثال دقیق برای هر ۵ نوع سؤال (بدون لو دادن شماره صفحه در hint)
+     ۳. شماره‌گذاری پویا و پیوسته بخش‌ها (بخش اول، دوم، سوم... بدون پرش به بخش پنجم)
+     ۴. همگام‌سازی ۱۰۰٪ شماره سؤالات جدول پاسخنامه OMR با ردیف چاپی برگه
+     ۵. پاک‌سازی پیشوندهای تکراری گزینه‌ها (الف)، ۱.) و تراز دقیق بارم مضرب ۰.۲۵ بدون خطای اعشاری
+     ۶. رفع هم‌پوشانی خط راهنمای پایان صفحه A4 روی متن سؤال + مخفی‌سازی خودکار هنگام چاپ/PDF
+     ========================================================================== -->
+<style id="v1034ExamMakerFixStyles">
+  /* رفع هم‌پوشانی برچسب خط راهنمای پایان صفحه A4 روی متن سؤال */
+  .page-limit-line {
+    pointer-events: none !important;
+    opacity: 0.72 !important;
+    z-index: 4 !important;
+  }
+  .page-limit-line span {
+    position: absolute !important;
+    left: 6px !important;
+    right: auto !important;
+    top: -11px !important;
+    font-size: 9px !important;
+    padding: 1px 7px !important;
+    border-radius: 999px !important;
+    opacity: 0.92 !important;
+    pointer-events: none !important;
+  }
+  #a4Sheet.hide-tools .page-limit-line {
+    display: none !important;
+  }
+  @media print {
+    .page-limit-line {
+      display: none !important;
+    }
+  }
+  /* نمایش شیک و خوانای گزینه‌های صحیح و غلط در برگه */
+  .tf-badge-group {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    margin-right: 10px;
+    white-space: nowrap;
+    font-size: 0.92em;
+    font-weight: 800;
+  }
+  .tf-badge-group span {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+</style>
+
+<script id="v1034ExamMakerMasterFix">
+(function() {
+  'use strict';
+
+  const ORDINALS_FA = ['اول', 'دوم', 'سوم', 'چهارم', 'پنجم', 'ششم'];
+  const SECTION_META = [
+    { type: 'mcq', label: 'سؤالات چهارگزینه‌ای' },
+    { type: 'tf', label: 'سؤالات صحیح و غلط' },
+    { type: 'blank', label: 'سؤالات جای خالی' },
+    { type: 'match', label: 'سؤالات وصل‌کردنی' },
+    { type: 'desc', label: 'سؤالات تشریحی' }
+  ];
+
+  function toFa(v) {
+    return String(v ?? '').replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+  }
+  function round2(n) {
+    return Math.round((Number(n || 0) + Number.EPSILON) * 100) / 100;
+  }
+  function roundQuarter(n) {
+    const x = Number(String(n ?? '').replace(/[۰-۹]/g, d => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).replace(/[٫,]/g, '.'));
+    if (!Number.isFinite(x) || x <= 0) return 0.5;
+    return Math.max(0.25, Math.round(x * 4) / 4);
+  }
+  function cleanText(s) {
+    const raw = String(s ?? '').trim();
+    return typeof window.repairSpacedPersianText === 'function' ? window.repairSpacedPersianText(raw) : raw;
+  }
+  function stripOptionPrefix(opt) {
+    return cleanText(opt).replace(/^\s*(?:الف|ب|ج|د|ه|[1-4]|[۱-۴]|[a-dA-D])\s*[\)\.\-:]\s*/, '').trim();
+  }
+
+  /**
+   * تشخیص هوشمند و بدون خطای نوع سؤال (پوشش کامل معادل‌های انگلیسی، فارسی و استنباط از ساختار)
+   */
+  function classifyQuestionTypeV1034(it) {
+    if (!it || typeof it !== 'object') return 'desc';
+    const rawType = String(it.type || it.kind || it.qType || it.category || '')
+      .normalize('NFKC')
+      .replace(/[يى]/g, 'ی')
+      .replace(/ك/g, 'ک')
+      .trim()
+      .toLowerCase();
+
+    const text = String(it.text || it.q || it.question || '').trim();
+    const hasOptions = Array.isArray(it.options) && it.options.filter(o => String(o || '').trim()).length >= 2;
+    const hasPairs = Array.isArray(it.pairs) && it.pairs.filter(p => p && (p.a || p.left) && (p.b || p.right)).length >= 2;
+    const hasBlankDots = /(\.{3,}|…|_{3,}|ـ{3,}|\(\s*\.\.\.\s*\))/.test(text);
+    const hasBlankWord = Boolean(String(it.blankWord || it.blankAnswer || '').trim());
+    const hasTfField = it.tfCorrect !== undefined && it.tfCorrect !== null && String(it.tfCorrect).trim() !== '';
+
+    // ۱. تطبیق صریح بر اساس برچسب نوع (انگلیسی و فارسی)
+    if (['mcq', 'multiple_choice', 'multiple-choice', 'multiplechoice', 'choice', 'test', 'چهارگزینه‌ای', 'چهارگزینه ای', 'تستی', 'چندگزینه‌ای'].includes(rawType)) {
+      return hasOptions ? 'mcq' : (hasBlankDots ? 'blank' : 'desc');
+    }
+    if (['tf', 'true_false', 'true-false', 'truefalse', 'boolean', 'bool', 'صحیح/غلط', 'صحیح و غلط', 'صحیح غلط', 'ص/غ', 'درست/نادرست', 'درست و نادرست'].includes(rawType)) {
+      return 'tf';
+    }
+    if (['blank', 'fill_blank', 'fill-blank', 'fill_in_the_blank', 'fill-in-the-blank', 'fillinblank', 'fill', 'cloze', 'gap', 'جاخالی', 'جای خالی', 'جای‌خالی', 'کامل کردنی', 'کامل‌کردنی'].includes(rawType)) {
+      return 'blank';
+    }
+    if (['match', 'matching', 'pair', 'pairs', 'وصل‌کردنی', 'وصل کردنی', 'تطبیقی'].includes(rawType)) {
+      return hasPairs ? 'match' : 'desc';
+    }
+    if (['desc', 'descriptive', 'essay', 'short_answer', 'short-answer', 'open', 'تشریحی', 'پاسخ کوتاه', 'پاسخ‌کوتاه'].includes(rawType)) {
+      // حتی اگر مدل به اشتباه desc گذاشته ولی سؤال آشکارا جاخالی یا ص/غ یا تستی است، اصلاح کن:
+      if (hasOptions) return 'mcq';
+      if (hasPairs) return 'match';
+      if (hasBlankDots || hasBlankWord) return 'blank';
+      if (hasTfField) return 'tf';
+      return 'desc';
+    }
+
+    // ۲. استنباط خودکار در صورت نبود یا نامشخص بودن فیلد type
+    if (hasOptions) return 'mcq';
+    if (hasPairs) return 'match';
+    if (hasBlankDots || hasBlankWord) return 'blank';
+    if (hasTfField || /\(?\s*(?:صحیح|درست)\s*[\/\-ـو]\s*(?:غلط|نادرست)\s*\)?/.test(text)) return 'tf';
+    return 'desc';
+  }
+
+  function normalizeQuestionItemV1034(it, idx) {
+    const t = classifyQuestionTypeV1034(it);
+    const defS = t === 'tf' ? 0.25 : (t === 'mcq' || t === 'blank') ? 0.5 : (t === 'match' ? 1.0 : 1.5);
+    let txt = cleanText(it.text || it.q || it.question || 'سؤال');
+
+    // پاکسازی پیشوند شماره سؤال تکراری مثل «۱- » یا «5. » از ابتدای متن
+    txt = txt.replace(/^\s*(?:\d+|[۰-۹]+)\s*[\.\-\)\:]\s*/, '').trim();
+
+    // استانداردسازی جای خالی برای خوانایی بهتر در برگه A4
+    if (t === 'blank') {
+      txt = txt.replace(/\.{3,}|…|_{3,}/g, ' ................ ');
+      txt = txt.replace(/\s{2,}/g, ' ').trim();
+    }
+
+    // پاکسازی برچسب‌های اضافه ص/غ از انتهای متن (چون خود برگه ◯ صحیح ◯ غلط می‌گذارد)
+    if (t === 'tf') {
+      txt = txt.replace(/\s*[\(\[]?\s*(?:صحیح|درست)\s*[\/\-ـو]\s*(?:غلط|نادرست)\s*[\)\]]?\s*$/u, '').trim();
+    }
+
+    const opts = Array.isArray(it.options) && it.options.length >= 2
+      ? it.options.slice(0, 4).map(stripOptionPrefix)
+      : ['گزینه ۱', 'گزینه ۲', 'گزینه ۳', 'گزینه ۴'];
+    while (opts.length < 4) opts.push(`گزینه ${toFa(opts.length + 1)}`);
+
+    let tfAns = 'صحیح';
+    const rawTf = String(it.tfCorrect ?? it.answer ?? it.correct ?? '').trim().toLowerCase();
+    if (['غلط', 'نادرست', 'false', '0', 'f', 'no'].includes(rawTf)) tfAns = 'غلط';
+
+    const pairs = Array.isArray(it.pairs) && it.pairs.length >= 2
+      ? it.pairs.map(p => ({ a: cleanText(p.a ?? p.left ?? ''), b: cleanText(p.b ?? p.right ?? '') }))
+      : [{ a: 'مورد ۱', b: 'پاسخ الف' }, { a: 'مورد ۲', b: 'پاسخ ب' }];
+
+    // جلوگیری از قرار گرفتن راهنماهای لو‌دهنده شماره صفحه در برگه امتحان
+    let hintTxt = cleanText(it.hint || '');
+    if (/صفحه\s*[۰-۹\d]+|پاراگراف/.test(hintTxt)) {
+      hintTxt = '';
+    }
+
+    return {
+      id: Date.now() + idx + Math.floor(Math.random() * 9999),
+      type: t,
+      text: txt,
+      score: roundQuarter(it.score || defS),
+      options: opts,
+      correctIndex: Math.max(0, Math.min(3, Number(it.correctIndex) || 0)),
+      tfCorrect: tfAns,
+      blankWord: cleanText(it.blankWord || it.blankAnswer || ''),
+      pairs,
+      lines: Math.max(1, Math.min(6, Number(it.lines) || (t === 'desc' ? 2 : 1))),
+      hint: hintTxt,
+      explanation: cleanText(it.explanation || it.answerText || '')
+    };
+  }
+
+  /**
+   * گروه‌بندی پویا با شماره‌گذاری پیوسته (بخش اول، دوم، سوم...) و همگام‌سازی کامل با OMR
+   */
+  function buildGroupedSectionsV1034(qs, autoGroup) {
+    if (!autoGroup) {
+      return {
+        sections: [{ title: '', type: 'all', items: qs.map((q, i) => ({ q, num: i + 1 })), sum: round2(qs.reduce((s, q) => s + (Number(q.score) || 0), 0)) }],
+        ordered: qs.map((q, i) => ({ q, num: i + 1 }))
+      };
+    }
+    const sections = [];
+    const ordered = [];
+    let num = 1;
+    let secIdx = 0;
+
+    SECTION_META.forEach(meta => {
+      const list = qs.filter(q => q.type === meta.type);
+      if (!list.length) return;
+      const ordName = ORDINALS_FA[secIdx] || toFa(secIdx + 1);
+      secIdx++;
+      const items = list.map(q => {
+        const entry = { q, num: num++ };
+        ordered.push(entry);
+        return entry;
+      });
+      const sum = round2(list.reduce((s, q) => s + (Number(q.score) || 0), 0));
+      sections.push({
+        type: meta.type,
+        title: `بخش ${ordName}: ${meta.label}`,
+        items,
+        sum
+      });
+    });
+
+    // هر سؤالی با نوع ناشناخته هم جا نماند
+    const known = new Set(SECTION_META.map(m => m.type));
+    const extras = qs.filter(q => !known.has(q.type));
+    if (extras.length) {
+      const ordName = ORDINALS_FA[secIdx] || toFa(secIdx + 1);
+      const items = extras.map(q => {
+        const entry = { q, num: num++ };
+        ordered.push(entry);
+        return entry;
+      });
+      sections.push({
+        type: 'desc',
+        title: `بخش ${ordName}: سایر سؤالات`,
+        items,
+        sum: round2(extras.reduce((s, q) => s + (Number(q.score) || 0), 0))
+      });
+    }
+
+    return { sections, ordered };
+  }
+
+  window.V1034ExamEngine = {
+    classifyQuestionType: classifyQuestionTypeV1034,
+    normalizeQuestionItem: normalizeQuestionItemV1034,
+    buildGroupedSections: buildGroupedSectionsV1034
+  };
+
+  function patchExamAppV1034() {
+    if (!window.ExamApp || window.ExamApp._v1034Patched) return;
+    window.ExamApp._v1034Patched = true;
+
+    // ۱. ارتقای پرامپت رسمی آزمون‌ساز با اسکیما دقیق برای هر ۵ نوع سؤال
+    window.ExamApp.buildExamPrompt = function(br = this.currentBranch, note = '') {
+      const src = document.getElementById('aiPromptSource')?.value.trim()
+        || document.getElementById('cachedPageText')?.value.trim()
+        || this._lastExamSourceText
+        || 'محتوای درس';
+      const mcq = Math.max(0, Number(document.getElementById('aiCountMcq')?.value) || 0);
+      const tf = Math.max(0, Number(document.getElementById('aiCountTf')?.value) || 0);
+      const blank = Math.max(0, Number(document.getElementById('aiCountBlank')?.value) || 0);
+      const match = Math.max(0, Number(document.getElementById('aiCountMatch')?.value) || 0);
+      const desc = Math.max(0, Number(document.getElementById('aiCountDesc')?.value) || 0);
+      const lvl = document.getElementById('aiLevel')?.value || 'استاندارد امتحانی';
+      const target = roundQuarter(document.getElementById('aiTotalTarget')?.value || 10);
+      const dur = Number(document.getElementById('aiExamDuration')?.value) || 20;
+
+      return `یک آزمون رسمی، استاندارد و مفهومی برای «شعبه ${br}» با سطح «${lvl}» و زمان «${dur} دقیقه» طراحی کن که جمع بارم کل آن دقیقاً ${target} نمره باشد. ${note}
+
+قوانین الزامی ساختار JSON:
+۱. فیلد "type" برای هر سؤال باید دقیقاً یکی از این ۵ مقدار انگلیسی باشد (هیچ مقدار دیگری مجاز نیست):
+   - "mcq" برای سؤال چهارگزینه‌ای (حتماً آرایه "options" با ۴ گزینه کوتاه و بدون پیشوند الف/ب و فیلد "correctIndex" از 0 تا 3)
+   - "tf" برای سؤال صحیح و غلط (جمله خبری کامل + فیلد "tfCorrect": "صحیح" یا "غلط")
+   - "blank" برای سؤال جای خالی (حتماً شامل "........" در متن سؤال + فیلد "blankWord": کلمه پاسخ)
+   - "match" برای سؤال وصل‌کردنی (آرایه "pairs": [{"a":"...","b":"..."}])
+   - "desc" برای سؤال تشریحی (فیلد "lines": 2 یا 3 + پاسخ کلیدی در "explanation")
+۲. نمره هر سؤال مضرب رند 0.25 باشد و جمع کل بارم‌ها دقیقاً برابر ${target} شود.
+۳. فیلد "hint" را خالی ("") بگذار؛ هرگز شماره صفحه یا پاراگراف کتاب را لو نده.
+۴. پایه و نام درس را از متن یا تصویر تشخیص بده و در detectedGrade و detectedSubject بگذار.
+۵. تعداد دقیق سؤالات: تستی=${mcq}، صحیح/غلط=${tf}، جای خالی=${blank}، وصل‌کردنی=${match}، تشریحی=${desc}.
+
+منبع درس:
+"${src.slice(0, 3400)}"
+
+فقط و فقط یک آبجکت JSON معتبر بدون توضیح اضافه برگردان:
+{"detectedGrade":"پایه هشتم","detectedSubject":"پیام‌های آسمان","questions":[{"type":"mcq","text":"...","score":0.5,"options":["...","...","...","..."],"correctIndex":0,"hint":"","explanation":"..."},{"type":"tf","text":"...","score":0.25,"tfCorrect":"صحیح","hint":"","explanation":"..."},{"type":"blank","text":"... ........ ...","score":0.5,"blankWord":"...","hint":"","explanation":"..."},{"type":"desc","text":"...","score":1.5,"lines":2,"hint":"","explanation":"..."}]}`;
+    };
+
+    // ۲. ارتقای parseAndAddQuestions با تشخیص دقیق نوع سؤال و بدون افتادن ص/غ و جاخالی در تشریحی
+    window.ExamApp.parseAndAddQuestions = function(raw, branch = this.currentBranch, replace = true) {
+      try {
+        let obj = null;
+        if (typeof window.extractValidJsonFromAiText === 'function') {
+          obj = window.extractValidJsonFromAiText(raw, 'any');
+        }
+        if (!obj && typeof raw === 'string') {
+          const cleaned = raw.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
+          const om = cleaned.match(/\{[\s\S]*\}/);
+          const am = cleaned.match(/\[[\s\S]*\]/);
+          if (om) { try { obj = JSON.parse(om[0]); } catch (_) {} }
+          if (!obj && am) { try { obj = { questions: JSON.parse(am[0]) }; } catch (_) {} }
+        }
+        if (!obj) throw new Error('فرمت JSON معتبر نبود.');
+
+        if (obj.detectedGrade) this.state.header.grade = cleanText(obj.detectedGrade);
+        if (obj.detectedSubject) this.state.header.subject = cleanText(obj.detectedSubject);
+        if (typeof this.syncHeaderToInputs === 'function') this.syncHeaderToInputs();
+
+        const arr = Array.isArray(obj.questions) ? obj.questions : (Array.isArray(obj) ? obj : []);
+        if (!arr.length) throw new Error('سؤالی در پاسخ یافت نشد.');
+
+        if (replace) this.state.branches[branch] = [];
+        const targetList = this.getQuestions(branch);
+        arr.forEach((it, i) => {
+          const q = normalizeQuestionItemV1034(it, i);
+          targetList.push(q);
+          if (Array.isArray(this.state.backupPool)) this.state.backupPool.unshift({ ...q });
+        });
+
+        this.save();
+        this.renderAll();
+        return true;
+      } catch (e) {
+        if (typeof window.smartAlert === 'function') window.smartAlert('⚠️ ' + (e?.message || 'فرمت JSON معتبر نبود.'));
+        else if (typeof toast === 'function') toast('⚠️ ' + (e?.message || 'فرمت JSON معتبر نبود.'));
+        return false;
+      }
+    };
+
+    // ۳. ارتقای buildSheetHTML: شماره‌گذاری پیوسته بخش‌ها (اول، دوم، سوم...) + همگام‌سازی کامل OMR + نمایش تمیز hint فقط وقتی متن دارد
+    window.ExamApp.buildSheetHTML = function() {
+      const h = this.state.header;
+      const sw = this.state.switches;
+      const isKey = this.sheetMode === 'key';
+      const qs = this.getQuestions();
+      const total = round2(qs.reduce((s, q) => s + (Number(q.score) || 0), 0));
+      const { sections, ordered } = buildGroupedSectionsV1034(qs, !!sw.autoGroup);
+
+      let omrHtml = '';
+      if (sw.showOmr) {
+        const omrItems = ordered.filter(it => it.q.type === 'mcq' || it.q.type === 'tf');
+        if (omrItems.length) {
+          omrHtml = `<div class="omr-box"><div class="omr-title"><span>🎯 جدول پاسخنامه مکانیزه — شعبه ${this.currentBranch}</span><span>گزینه صحیح را پر کنید</span></div><div class="omr-grid">${omrItems.map(({ q, num }) => q.type === 'mcq' ? `<div class="omr-cell"><b>${this.toFa(num)}</b><div class="omr-bubbles">${[0,1,2,3].map(i => `<span class="omr-b ${isKey && Number(q.correctIndex) === i ? 'filled' : ''}">${this.toFa(i + 1)}</span>`).join('')}</div></div>` : `<div class="omr-cell"><b>${this.toFa(num)}</b><div class="omr-bubbles"><span class="omr-b ${isKey && q.tfCorrect === 'صحیح' ? 'filled' : ''}">ص</span><span class="omr-b ${isKey && q.tfCorrect === 'غلط' ? 'filled' : ''}">غ</span></div></div>`).join('')}</div></div>`;
+        }
+      }
+
+      let rowsHtml = '';
+      if (!qs.length) {
+        rowsHtml = `<tr><td colspan="3" style="text-align:center;padding:30px">سوالی ثبت نشده است.</td></tr>`;
+      } else if (sw.autoGroup) {
+        sections.forEach(sec => {
+          const words = sec.type === 'blank' && sw.showWordBank ? sec.items.map(it => it.q.blankWord).filter(Boolean) : [];
+          rowsHtml += `<tr class="section-row"><td colspan="2">◼ ${sec.title} ${words.length ? `<div class="word-bank-bar">📦 بانک کلمات: ( ${words.map(esc).join(' — ')} )</div>` : ''}</td><td style="text-align:center">${this.toFa(sec.sum)}</td></tr>`;
+          sec.items.forEach(({ q, num }) => {
+            rowsHtml += this.renderQuestionRowHTML(q, num, isKey);
+          });
+        });
+      } else {
+        ordered.forEach(({ q, num }) => {
+          rowsHtml += this.renderQuestionRowHTML(q, num, isKey);
+        });
+      }
+
+      return `${sw.showWatermark && h.watermark ? `<div class="sheet-watermark">${esc(h.watermark)}</div>` : ''}<div class="sheet-frame ${h.frame || 'frame-double'}"><div class="sheet-besmellah" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('god',this.innerText)">${esc(h.god)}</div>${sw.mandatoryNameWarn ? `<div class="mandatory-name-warning" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('mandatoryWarn',this.innerText)">${esc(h.mandatoryWarn)}</div>` : ''}<table class="official-header-table"><tr>${h.logo ? `<td rowspan="4" class="header-logo-cell"><img src="${h.logo}"></td>` : ''}<td colspan="2" class="official-title-cell"><span contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('mainTitle',this.innerText)">${esc(h.mainTitle)}</span> — <span contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('school',this.innerText)">${esc(h.school)}</span></td><td style="text-align:center;font-weight:900;background:#fff7ed">شعبه: ${this.currentBranch}</td></tr><tr><td><span class="h-lbl">${esc(h.lblName)}</span><span class="h-val" contenteditable="true"></span></td><td><span class="h-lbl">${esc(h.lblSubject)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('subject',this.innerText)">${esc(h.subject)}</span></td><td><span class="h-lbl">${esc(h.lblDate)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('date',this.innerText)">${esc(h.date)}</span></td></tr><tr><td><span class="h-lbl">${esc(h.lblGrade)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('grade',this.innerText)">${esc(h.grade)}</span></td><td><span class="h-lbl">${esc(h.lblTime)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('time',this.innerText)">${esc(h.time)}</span></td><td><span class="h-lbl">${esc(h.lblScore)}</span><span class="h-val">${this.toFa(total)} نمره</span></td></tr><tr><td><span class="h-lbl">${esc(h.lblFather)}</span><span class="h-val" contenteditable="true"></span></td><td><span class="h-lbl">${esc(h.lblTeacher)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('teacher',this.innerText)">${esc(h.teacher)}</span></td><td><span class="h-lbl">${esc(h.lblYear)}</span><span class="h-val" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('year',this.innerText)">${esc(h.year)}</span></td></tr></table>${sw.showIntro && h.intro ? `<div class="intro-row-box" contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('intro',this.innerText)">${esc(h.intro)}</div>` : ''}${omrHtml}<table class="exam-questions-table"><thead><tr><th style="width:32px">ردیف</th><th>شرح سوالات آزمون (شعبه ${this.currentBranch})</th><th style="width:50px">بارم</th></tr></thead><tbody>${rowsHtml}</tbody></table><div class="quick-add-bar"><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('mcq')">+ تستی (۰.۵)</button><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('tf')">+ ص/غ (۰.۲۵)</button><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('blank')">+ جاخالی (۰.۵)</button><button class="btn soft btn-sm" onclick="ExamApp.quickAddQuestionOnSheet('desc')">+ تشریحی (۱.۵)</button></div>${sw.showOutro ? `<div class="sheet-bottom-bar"><span contenteditable="true" onblur="ExamApp.onInlineHeaderEdit('outro',this.innerText)">${esc(h.outro)}</span><span style="font-size:0.78em;color:#475569;font-weight:700">🎓 طراحی‌شده با سامانه هوشمند «دانش‌آموز من»</span><span>جمع بارم: ${this.toFa(total)} نمره</span></div>` : `<div style="text-align:left;font-size:9px;color:#64748b;margin-top:3px">🎓 طراحی‌شده با سامانه «دانش‌آموز من»</div>`}</div>`;
+    };
+
+    // ۴. نمایش hint فقط در صورت غیرخالی بودن (بدون متن پیش‌فرض مزاحم روی هر سؤال)
+    const origRenderRow = window.ExamApp.renderQuestionRowHTML.bind(window.ExamApp);
+    window.ExamApp.renderQuestionRowHTML = function(q, rowNumber, isKey) {
+      const prevShowHints = this.state?.switches?.showQuestionHints;
+      if (prevShowHints && (!q.hint || !String(q.hint).trim())) {
+        this.state.switches.showQuestionHints = false;
+        try { return origRenderRow(q, rowNumber, isKey); }
+        finally { this.state.switches.showQuestionHints = prevShowHints; }
+      }
+      return origRenderRow(q, rowNumber, isKey);
+    };
+
+    // رفرش تمیز برگه فعلی اگر سوالی باز باشد
+    try {
+      if (this.getQuestions && this.getQuestions().length) {
+        this.renderAll();
+      }
+    } catch (_) {}
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(patchExamAppV1034, 240));
+  } else {
+    setTimeout(patchExamAppV1034, 240);
   }
 })();
 </script>
