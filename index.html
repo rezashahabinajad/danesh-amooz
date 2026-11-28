@@ -11,8 +11,8 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="application-name" content="دانش‌آموز من">
-<meta name="version" content="10.4.2">
-<meta name="danesh-app-version" content="10.4.2">
+<meta name="version" content="10.5.1">
+<meta name="danesh-app-version" content="10.5.1">
 <title>دانش‌آموز من</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -5171,7 +5171,7 @@ body.dark .ws-logout-inner {
 <!-- اعلان به‌روزرسانی نسخه PWA (مدیریت مرکزی نسخه 9.3.0) -->
 <div id="swUpdateBanner" class="sw-update-banner" role="region" aria-label="اعلان به‌روزرسانی نسخه جدید">
   <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:200px">
-    <span id="swUpdateBannerText">🚀 نسخه جدید (۱۰.۴.۲) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
+    <span id="swUpdateBannerText">🚀 نسخه جدید (۱۰.۵.۱) دانلود و آماده نصب است (اطلاعات شما ۱۰۰٪ محفوظ می‌ماند)</span>
     <div id="swUpdateBannerError" style="display:none;font-size:11.5px;color:#FEE2E2;background:rgba(153,27,27,0.88);padding:5px 8px;border-radius:8px;border:1px solid #FCA5A5;line-height:1.6"></div>
   </div>
   <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
@@ -5204,7 +5204,7 @@ body.dark .ws-logout-inner {
         <b>دانش‌آموز من</b>
         <div class="brand-sub-row" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
           <small>دفتر هوشمند معلم</small>
-          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۱۰.۴.۲</span>
+          <span id="topVersion" class="top-ver-pill" dir="ltr">نسخه ۱۰.۵.۱</span>
           <button type="button" id="btnTopCheckUpdate" class="top-ver-pill" style="cursor:pointer;border:1px solid rgba(234,88,12,0.35);background:#FFF7ED;color:#EA580C;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:999px" onclick="if(window.CentralUpdateManager)CentralUpdateManager.checkForUpdatesManual()" title="بررسی به‌روزرسانی">بررسی به‌روزرسانی</button>
         </div>
       </div>
@@ -5657,7 +5657,7 @@ body.dark .ws-logout-inner {
       <button class="btn soft btn-sm" onclick="ExamApp.exportDirectPDF()" id="btnDirectPdf">📕 PDF</button>
       <button class="btn soft btn-sm" onclick="ExamApp.shareExamSheet()" id="btnShareSheet">📤 اشتراک</button>
       <button class="btn gray btn-sm" onclick="ExamApp.printSheetNow()">🖨️ چاپ</button>
-      <!-- v10.4.2: دکمه دریافت سوالات از بخش آموزش طبق فاز دوم حذف شد -->
+      <!-- v10.5.1: دکمه دریافت سوالات از بخش آموزش طبق فاز دوم حذف شد -->
       <button class="btn soft btn-sm" style="grid-column:1 / -1" onclick="openOnlineClassLinkModal(currentSchoolId, currentClassId, 'exam')">🌐 ارائه این آزمون در «لینک اختصاصی» / کلاس آنلاین</button>
       <button class="btn green btn-sm" style="grid-column:1 / -1" onclick="openTeacherExamResultsManagerModal(currentSchoolId, currentClassId)">📊 لینک نتایج آزمون (مشاهده، ویرایش نمرات توسط معلم و کارنامه تحلیلی دانش‌آموز)</button>
     </div>
@@ -5689,8 +5689,8 @@ body.dark .ws-logout-inner {
   </div>
 
   <div id="examPane-ai" class="exam-pane active">
-    <!-- v10.4.2: کارت تکراری کلید هوش مصنوعی در آزمون‌ساز حذف شد (اتصال مستقیم به کلید تنظیمات و سرور واسط برقرار است) -->
-    <!-- v10.4.2: کارت مبحث آزمون حذف شد (دکمه پیشنهاد طبق زمان و فیلد زمان کافی است) -->
+    <!-- v10.5.1: کارت تکراری کلید هوش مصنوعی در آزمون‌ساز حذف شد (اتصال مستقیم به کلید تنظیمات و سرور واسط برقرار است) -->
+    <!-- v10.5.1: کارت مبحث آزمون حذف شد (دکمه پیشنهاد طبق زمان و فیلد زمان کافی است) -->
 <div class="box-card">
       <div class="box-header">
         <span>⏱️ زمان امتحان، گام رُندسازی نمره (۰.۲۵ / ۰.۵ / ۰.۷۵ / ۱) و تراز صفحه</span>
@@ -5792,7 +5792,7 @@ body.dark .ws-logout-inner {
   </div>
 
   <div id="examPane-manual" class="exam-pane">
-    <!-- v10.4.2: کارت نارنجی تبدیل خودکار متن حذف شد و استودیوی طراحی دستی حفظ گردید -->
+    <!-- v10.5.1: کارت نارنجی تبدیل خودکار متن حذف شد و استودیوی طراحی دستی حفظ گردید -->
     <div class="box-card">
       <div class="box-header"><span>🎨 استودیوی طراحی دستی (با نمرات رُند مضرب ۰.۲۵)</span></div>
       <input type="hidden" id="editQId" value=""><input type="hidden" id="mQType" value="mcq">
@@ -5904,7 +5904,7 @@ body.dark .ws-logout-inner {
         <label class="switch-card"><span>💧 نمایش واترمارک کمرنگ پس‌زمینه</span><input type="checkbox" id="swShowWatermark" checked onchange="ExamApp.syncSwitchesFromUI()"></label>
       </div>
     </div>
-    <!-- v10.4.2: کارت بودجه‌بندی رسمی سال تحصیلی حذف شد -->
+    <!-- v10.5.1: کارت بودجه‌بندی رسمی سال تحصیلی حذف شد -->
     <div class="box-card">
       <div class="box-header"><span>🏫 مشخصات جدول سربرگ</span></div>
       <div class="grid-2"><div><label>سرلوحه</label><input type="text" id="hdrGod" oninput="ExamApp.updateHeaderState()"></div><div><label>عنوان سربرگ</label><input type="text" id="hdrMainTitle" oninput="ExamApp.updateHeaderState()"></div></div>
@@ -6584,7 +6584,7 @@ body.dark .ws-logout-inner {
           <path d="M10.5 53C17 49.8 25 49.8 32 53.5C39 49.8 47 49.8 53.5 53" stroke="#EA580C" stroke-width="3.8" stroke-linecap="round"/>
         </svg>
       </div>
-      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v10.4.2 Pro (پوسته اختصاصی Pro)</h2>
+      <h2 style="margin:0 0 4px;color:var(--primary);font-size:19px;font-weight:900">دانش‌آموز من · نسخه v10.5.1 Pro (پوسته اختصاصی Pro)</h2>
       <div class="muted" style="font-size:12.5px;font-weight:700">دفتر هوشمند معلم، کلاس آنلاین، کتاب‌خوان هوش مصنوعی و آزمون‌ساز الماس</div>
       <div style="margin:14px auto;max-width:460px;padding:12px;border-radius:14px;background:var(--bg-panel);border:1px solid var(--border);font-size:12px;line-height:1.75;text-align:right">
         <div>👨‍🏫 <b>طراح و صاحب امتیاز:</b> استاد رضا شهابی‌نژاد</div>
@@ -6684,7 +6684,7 @@ body.dark .ws-logout-inner {
 <!-- تبلیغ و امضای هایلایت ظریف و غیرمزاحم در انتهای صفحات -->
 <footer class="subtle-app-brand-bar" id="subtleAppBrandBar">
   <div class="subtle-brand-inner">
-    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v10.4.2 Pro</span>
+    <span class="subtle-highlight-pill">✨ دانش‌آموز من · v10.5.1 Pro</span>
     <span class="subtle-brand-text">دستیار هوشمند معلم، کلاس آنلاین و آزمون‌ساز</span>
   </div>
   <div style="display:flex;gap:6px;align-items:center">
@@ -6942,7 +6942,7 @@ const KEY = 'danesh_amooz_man_v1';
   } catch (e) {}
 })();
 
-const APP_VERSION = '10.4.2';
+const APP_VERSION = '10.5.1';
 let db = load(), currentSchoolId = null, currentClassId = null, currentStudentId = null;
 let activeViewerSrc = '', activeViewerName = 'photo.jpg';
 let undoState = null, undoTimer = null;
@@ -30818,7 +30818,7 @@ ${pageTxt ? `---\n${pageTxt.slice(0, 2400)}\n---\n` : ''}
           <button type="button" class="btn soft btn-sm" onclick="pickRandomStudent('${sid}','${cid}')">🎲 قرعه‌کشی</button>
           <button type="button" class="btn soft btn-sm" onclick="openBatchScoreModal('${sid}','${cid}','bulk_pos_present')" title="نمره‌دهی، مثبت یا منفی جمعی به کل کلاس">⚡ +/− و نمره جمعی</button>
           <button type="button" class="btn soft btn-sm" onclick="openColumnTransferModal('${sid}','${cid}','${dateISO}')">🔄 به مستمر ${scoredTodayCount ? `(${fa(scoredTodayCount)})` : ''}</button>
-          <button type="button" class="btn soft btn-sm" onclick="openAttendance('${sid}','${cid}')">📋 جدول جامع</button>
+          <button type="button" class="btn soft btn-sm" onclick="openAttendance('${sid}','${cid}')">📋 جدول جامع</button><button type="button" class="btn green btn-sm" onclick="V1050VirtualAttendance.open('${sid}','${cid}')">📡 حضور مجازی</button>
         </div>
       </div>
       ${topBookPanelHtml}
@@ -36182,7 +36182,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
       <div class="dam-settings-wrap">
         <div class="dam-settings-header-row">
           <h1 class="dam-settings-main-title">تنظیمات</h1>
-          <span class="chip" style="font-weight:900">دانش‌آموز من v10.4.2</span>
+          <span class="chip" style="font-weight:900">دانش‌آموز من v10.5.1</span>
         </div>
 
         <!-- کادر جستجوی سریع در تنظیمات (به سبک تنظیمات گوشی) -->
@@ -36324,7 +36324,7 @@ body[data-theme-mode="amoled-black"] #modal #sheet {
               <span class="dam-3d-orb orb-purple">🎓</span>
               <div class="dam-settings-row-texts">
                 <b>درباره سامانه «دانش‌آموز من»</b>
-                <span>نسخه 10.4.2 Pro · اورجینال و اختصاصی</span>
+                <span>نسخه 10.5.1 Pro · اورجینال و اختصاصی</span>
               </div>
             </div>
             <div class="dam-settings-row-left"><span>مشاهده ‹</span></div>
@@ -40722,7 +40722,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DAM_AUDIT_VERSION = '10.4.2';
+  window.DAM_AUDIT_VERSION = '10.5.1';
 
   /* ==========================================================================================
      ۱. رمزنگاری سرتاسری (End-to-End Encryption) با استاندارد AES-GCM 256-bit و PBKDF2-SHA256
@@ -41107,7 +41107,7 @@ body:not(.dam-panel-orbit-on) .school-icon > * {
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '10.4.2';
+  window.DANESH_APP_VERSION = '10.5.1';
 
   /* ==========================================================================================
      ۱. معماری یکپارچه هوش مصنوعی با الهام مستقیم از آزمون‌ساز (gemini-code-1792066709047.html)
@@ -48128,13 +48128,13 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  window.DANESH_APP_VERSION = '10.4.2';
-  window.DAM_AUDIT_VERSION = '10.4.2';
+  window.DANESH_APP_VERSION = '10.5.1';
+  window.DAM_AUDIT_VERSION = '10.5.1';
   try {
     const topVerEl = document.getElementById('topVersion');
-    if (topVerEl) topVerEl.textContent = 'نسخه ۱۰.۴.۲';
+    if (topVerEl) topVerEl.textContent = 'نسخه ۱۰.۵.۱';
     const metaVer = document.querySelector('meta[name="version"]');
-    if (metaVer) metaVer.setAttribute('content', '10.4.2');
+    if (metaVer) metaVer.setAttribute('content', '10.5.1');
   } catch (_) {}
 
   /* ==========================================================================================
@@ -52429,7 +52429,7 @@ ${JSON.stringify(batch, null, 2)}
       }
       payload.bookPdfBase64 = window._cachedBookPdfBase64 || null;
       payload.hasBookPdfBinary = Boolean(payload.bookPdfBase64);
-      payload.appVersion = '10.4.2';
+      payload.appVersion = '10.5.1';
     }
     return payload;
   };
@@ -53003,14 +53003,14 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V921_VERSION = '10.4.2';
-  const V921_CACHE_NAME = 'danesh-amooz-man-v10.4.2-orange';
+  const V921_VERSION = '10.5.1';
+  const V921_CACHE_NAME = 'danesh-amooz-man-v10.5.1-orange';
   window.DANESH_APP_VERSION = V921_VERSION;
   window.DAM_AUDIT_VERSION = V921_VERSION;
 
   function syncVersionDisplaysV921() {
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۱۰.۴.۲';
+    if (topVer) topVer.textContent = 'نسخه ۱۰.۵.۱';
     const metaVer = document.querySelector('meta[name="version"]');
     if (metaVer) metaVer.setAttribute('content', V921_VERSION);
   }
@@ -55597,8 +55597,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const UNIFIED_VERSION = '10.4.2';
-  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v10.4.2-orange';
+  const UNIFIED_VERSION = '10.5.1';
+  const UNIFIED_CACHE_NAME = 'danesh-amooz-man-v10.5.1-orange';
   window.DANESH_APP_VERSION = UNIFIED_VERSION;
   window.DAM_AUDIT_VERSION = UNIFIED_VERSION;
   window.APP_VERSION = UNIFIED_VERSION;
@@ -59453,8 +59453,8 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V930_VERSION = '10.4.2';
-  const V930_CACHE_NAME = 'danesh-amooz-man-v10.4.2-orange';
+  const V930_VERSION = '10.5.1';
+  const V930_CACHE_NAME = 'danesh-amooz-man-v10.5.1-orange';
   window.DANESH_APP_VERSION = V930_VERSION;
   window.DAM_AUDIT_VERSION = V930_VERSION;
   window.APP_VERSION = V930_VERSION;
@@ -59464,7 +59464,7 @@ ${JSON.stringify(batch, null, 2)}
     const meta = document.querySelector('meta[name="danesh-app-version"]');
     if (meta) meta.setAttribute('content', V930_VERSION);
     const topVer = document.getElementById('topVersion');
-    if (topVer) topVer.textContent = 'نسخه ۱۰.۴.۲';
+    if (topVer) topVer.textContent = 'نسخه ۱۰.۵.۱';
     document.querySelectorAll('[data-app-version-label], .app-version-badge').forEach(el => {
       el.textContent = '۹.۸.۱';
     });
@@ -60645,9 +60645,9 @@ ${JSON.stringify(batch, null, 2)}
 (function() {
   'use strict';
 
-  const V940_VERSION = '10.4.2';
-  const V940_VERSION_FA = '۱۰.۴.۲';
-  const V940_CACHE_NAME = 'danesh-amooz-man-v10.4.2-orange';
+  const V940_VERSION = '10.5.1';
+  const V940_VERSION_FA = '۱۰.۵.۱';
+  const V940_CACHE_NAME = 'danesh-amooz-man-v10.5.1-orange';
   const POST_UPDATE_SESSION_KEY = 'dam_post_update_verify_v940';
 
   window.APP_VERSION = V940_VERSION;
@@ -62213,7 +62213,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V950_VER = '10.4.2';
+  const V950_VER = '10.5.1';
   window.DANESH_APP_VERSION = V950_VER;
   window.DAM_AUDIT_VERSION = V950_VER;
 
@@ -63703,7 +63703,7 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
     renderModernOrangeLogin();
     // Ensure topVersion always displays ۹.۸.۱
     const tv = document.getElementById('topVersion');
-    if (tv) tv.textContent = 'نسخه ۱۰.۴.۲';
+    if (tv) tv.textContent = 'نسخه ۱۰.۵.۱';
     if (typeof window.renderInternalVaultUI === 'function') {
       window.renderInternalVaultUI().catch(() => {});
     }
@@ -63724,8 +63724,8 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V960_VERSION = '10.4.2';
-  const V960_VERSION_FA = '۱۰.۴.۲';
+  const V960_VERSION = '10.5.1';
+  const V960_VERSION_FA = '۱۰.۵.۱';
   window.DANESH_APP_VERSION = V960_VERSION;
   window.DAM_AUDIT_VERSION = V960_VERSION;
 
@@ -66232,8 +66232,8 @@ details.v950-vault-accordion[open] .v950-vault-chevron {
 (function() {
   'use strict';
 
-  const V970_VERSION = '10.4.2';
-  const V970_VERSION_FA = '۱۰.۴.۲';
+  const V970_VERSION = '10.5.1';
+  const V970_VERSION_FA = '۱۰.۵.۱';
   window.DANESH_APP_VERSION = V970_VERSION;
   window.DAM_AUDIT_VERSION = V970_VERSION;
 
@@ -68403,8 +68403,8 @@ ${customPrompt ? `\nسؤال اختصاصی دبیر: ${customPrompt}` : ''}
 (function() {
   'use strict';
 
-  const V971_VERSION = '10.4.2';
-  const V971_VERSION_FA = '۱۰.۴.۲';
+  const V971_VERSION = '10.5.1';
+  const V971_VERSION_FA = '۱۰.۵.۱';
   window.DANESH_APP_VERSION = V971_VERSION;
 
   const safeEsc = (s) => typeof esc === 'function' ? esc(s) : String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
@@ -70400,8 +70400,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V980_VERSION = '10.4.2';
-  const V980_VERSION_FA = '۱۰.۴.۲';
+  const V980_VERSION = '10.5.1';
+  const V980_VERSION_FA = '۱۰.۵.۱';
   const UNIFIED_SOLVE_BTN_LABEL = '✨ حل تمرین‌ها و فعالیت‌های این صفحه';
   const CACHE_MODEL_KEY_V980 = 'v980_cached_gemini_model';
   const CACHE_KEY_SIG_V980 = 'v980_cached_gemini_key_sig';
@@ -71826,8 +71826,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V982_VERSION = '10.4.2';
-  const V982_VERSION_FA = '۱۰.۴.۲';
+  const V982_VERSION = '10.5.1';
+  const V982_VERSION_FA = '۱۰.۵.۱';
   const MULTI_KEY_STORAGE = 'dam_ai_multi_keys_v950';
   const MODEL_CACHE_STORAGE = 'v982_ai_model_cache_map';
   const ENDPOINT_CACHE_STORAGE = 'v982_ai_endpoint_cache_map';
@@ -72588,7 +72588,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Client-App': 'DaneshAmoozMan-v10.4.2'
+              'X-Client-App': 'DaneshAmoozMan-v10.5.1'
             },
             body: payloadStr,
             signal: ctrl ? ctrl.signal : undefined
@@ -72681,7 +72681,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Client-App': 'DaneshAmoozMan-v10.4.2'
+              'X-Client-App': 'DaneshAmoozMan-v10.5.1'
             },
             body: bodyStr,
             signal: ctrl ? ctrl.signal : undefined
@@ -72839,7 +72839,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
         const qN = Number(d.groqKeys || 0);
         const oN = Number(d.openRouterKeys || 0);
         const cfOn = Boolean(d.workersAiBound);
-        const infoTxt = `✅ سرور واسط آنلاین (v${d.version || '10.4.2'}) · Gemini: ${safeFa(gN)} · Groq: ${safeFa(qN)}${cfOn ? ' · Workers AI دیداری: فعال ☁️' : ''}${oN ? ` · OpenRouter: ${safeFa(oN)}` : ''}`;
+        const infoTxt = `✅ سرور واسط آنلاین (v${d.version || '10.5.1'}) · Gemini: ${safeFa(gN)} · Groq: ${safeFa(qN)}${cfOn ? ' · Workers AI دیداری: فعال ☁️' : ''}${oN ? ` · OpenRouter: ${safeFa(oN)}` : ''}`;
         this.proxyState = {
           ...this.proxyState,
           status: (gN + qN + oN > 0 || cfOn) ? 'online' : 'error',
@@ -73899,8 +73899,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V987_VERSION = '10.4.2';
-  const V987_VERSION_FA = '۱۰.۴.۲';
+  const V987_VERSION = '10.5.1';
+  const V987_VERSION_FA = '۱۰.۵.۱';
   const SB_URL = 'https://wazycdrhwlnoylfmsenx.supabase.co';
   const SB_KEY = 'sb_publishable_SjneXL0bzHA-mXFfdQwklw_0x9fwo0N';
   const SESSION_STORAGE_KEY = 'dam_sb_session_v983';
@@ -76284,7 +76284,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
           }
         });
         setTimeout(() => {
-          // v10.4.2: غیرفعال‌سازی کاهش کیفیت خودکار عکس‌ها هنگام باز شدن برنامه برای حفظ کیفیت اصلی تصاویر
+          // v10.5.1: غیرفعال‌سازی کاهش کیفیت خودکار عکس‌ها هنگام باز شدن برنامه برای حفظ کیفیت اصلی تصاویر
         }, 2500);
 
         if (!cbResult?.handled && this.isLoggedIn() && (typeof navigator === 'undefined' || navigator.onLine !== false)) {
@@ -76988,7 +76988,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — فاز اول (تم کرنوگراف مسی لوکس، جستجوی لیست امروز،
+     دانش‌آموز من · نسخه 10.5.1 — فاز اول (تم کرنوگراف مسی لوکس، جستجوی لیست امروز،
      کیفیت تصاویر و بکاپ هوشمند، دکمه رفت‌وبرگشت آموزش ↔ لیست امروز)
      ========================================================================== -->
 <style id="v10Phase1Styles">
@@ -77393,7 +77393,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     text-align: center;
   }
 
-  /* v10.4.2: نمایش ساعت کرنوگراف و تاریخ شمسی روی همه تم‌ها + انیمیشن لمس (بدون چرخش صفحه) */
+  /* v10.5.1: نمایش ساعت کرنوگراف و تاریخ شمسی روی همه تم‌ها + انیمیشن لمس (بدون چرخش صفحه) */
   #jarvisCoreWidget {
     display: none !important;
   }
@@ -77459,7 +77459,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
     color: #9A3412 !important;
   }
 
-  /* v10.4.2: اصلاح کامل کنتراست و متغیرهای رنگ تم «کرنوگراف مسی لوکس» (رفع کامل مشکل سفید-روی-سفید در تنظیمات و آموزش) */
+  /* v10.5.1: اصلاح کامل کنتراست و متغیرهای رنگ تم «کرنوگراف مسی لوکس» (رفع کامل مشکل سفید-روی-سفید در تنظیمات و آموزش) */
   html[data-theme-mode="copper-chronograph"],
   body[data-theme-mode="copper-chronograph"],
   body.theme-copper-chronograph {
@@ -77549,8 +77549,8 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 (function() {
   'use strict';
 
-  const V10_VERSION = '10.4.2';
-  const V10_VERSION_FA = '۱۰.۴.۲';
+  const V10_VERSION = '10.5.1';
+  const V10_VERSION_FA = '۱۰.۵.۱';
   const TEACH_RETURN_KEY = 'dam_v10_teach_return_state';
   const TODAY_LAST_CLASS_KEY = 'dam_v10_today_last_class';
   const BACKUP_TARGET_BYTES = 15 * 1024 * 1024; // 15 MB target guidance
@@ -78289,7 +78289,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — فاز دوم (پاکسازی آزمون‌ساز، ارتقای حالت بدون API
+     دانش‌آموز من · نسخه 10.5.1 — فاز دوم (پاکسازی آزمون‌ساز، ارتقای حالت بدون API
      با پارسر هوشمند و پیش‌نمایش قابل ویرایش، بانک نمونه سؤالات کامل)
      ========================================================================== -->
 <style id="v101Phase2Styles">
@@ -79023,7 +79023,7 @@ ${customPrompt ? `\nتمرین یا سؤال اختصاصی دبیر برای ح
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — فاز سوم:
+     دانش‌آموز من · نسخه 10.5.1 — فاز سوم:
      ۱. جادوگر ورود کلاس از عکس دفتر میانه سال
      ۲. تصحیح هوشمند برگه‌های امتحانی با راستی‌آزمایی جمع نمرات و ثبت مستقیم در دفتر
      ۳. بخش مستقل «برگه‌های تصحیح‌شده» + نمایش در پروفایل دانش‌آموز
@@ -80463,7 +80463,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — بازیابی انتخابی از فایل پشتیبان آفلاین
+     دانش‌آموز من · نسخه 10.5.1 — بازیابی انتخابی از فایل پشتیبان آفلاین
      (استخراج جداگانه عکس‌ها، نمرات، آزمون‌ها و انتخاب/دانلود تکی هر عکس)
      ========================================================================== -->
 <style id="v103SelectiveRestoreStyles">
@@ -81073,7 +81073,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — نسخه هنری «کرنوگراف مسی لوکس» (Atelier Copper)
+     دانش‌آموز من · نسخه 10.5.1 — نسخه هنری «کرنوگراف مسی لوکس» (Atelier Copper)
      ۱۰۰٪ ایزوله روی body.theme-copper-chronograph بدون کوچک‌ترین تغییر در سایر تم‌ها
      ========================================================================== -->
 <style id="v1031CopperArtistMasterpiece">
@@ -81393,7 +81393,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — شبیه‌ساز دقیق نمره + هماهنگی قرص‌های سریع تم مسی
+     دانش‌آموز من · نسخه 10.5.1 — شبیه‌ساز دقیق نمره + هماهنگی قرص‌های سریع تم مسی
      ========================================================================== -->
 <style id="v1032PolishStyles">
   /* هماهنگی کامل قرص‌های سریع بالای صفحه خانه در تم کرنوگراف مسی لوکس */
@@ -81539,7 +81539,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — موتور ضدکش بررسی و نصب قطعی به‌روزرسانی PWA
+     دانش‌آموز من · نسخه 10.5.1 — موتور ضدکش بررسی و نصب قطعی به‌روزرسانی PWA
      ========================================================================== -->
 <script id="v1033SmartUpdateModule">
 (function() {
@@ -81613,7 +81613,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
       const settingsBtn = document.getElementById('btnSettingsCheckUpdate');
       const localVer = (typeof APP_VERSION !== 'undefined' && APP_VERSION)
         ? String(APP_VERSION)
-        : (document.querySelector('meta[name="version"]')?.content || '10.4.2');
+        : (document.querySelector('meta[name="version"]')?.content || '10.5.1');
 
       if (btn) { btn.disabled = true; btn.textContent = '⏳ بررسی...'; }
       if (settingsBtn) { settingsBtn.disabled = true; settingsBtn.textContent = '⏳ در حال بررسی سرور...'; }
@@ -81664,7 +81664,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — اصلاح ریشه‌ای و جامع موتور آزمون‌ساز
+     دانش‌آموز من · نسخه 10.5.1 — اصلاح ریشه‌ای و جامع موتور آزمون‌ساز
      ۱. تشخیص ۱۰۰٪ دقیق نوع سؤالات (تستی، ص/غ، جاخالی، وصل‌کردنی، تشریحی) بدون افتادن در تشریحی
      ۲. پرامپت استاندارد با اسکیما و مثال دقیق برای هر ۵ نوع سؤال (بدون لو دادن شماره صفحه در hint)
      ۳. شماره‌گذاری پویا و پیوسته بخش‌ها (بخش اول، دوم، سوم... بدون پرش به بخش پنجم)
@@ -82059,7 +82059,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — ارتقای هوشمند آزمون‌ساز به استاندارد آزمون‌های هماهنگ
+     دانش‌آموز من · نسخه 10.5.1 — ارتقای هوشمند آزمون‌ساز به استاندارد آزمون‌های هماهنگ
      ۱. سطوح استاندارد سه‌گانه: آسان، استاندارد (هماهنگ)، سخت
      ۲. پالایش هوشمند صفحات زیاد (حذف شناسنامه/جلد/فهرست و نمونه‌برداری متوازن از همه صفحات انتخاب‌شده)
      ۳. الگوی تخصصی آزمون‌های هماهنگ هر درس + مسدودسازی خودکار سؤالات نامربوط و بی‌ربط
@@ -82248,7 +82248,7 @@ ${roster.length ? `فهرست نام دانش‌آموزان این کلاس (ن
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — توزیع متوازن سؤالات بین همه صفحات انتخابی +
+     دانش‌آموز من · نسخه 10.5.1 — توزیع متوازن سؤالات بین همه صفحات انتخابی +
      جلوگیری از سؤالات تکراری + جایگزینی زنده سؤال از هوش مصنوعی
      ========================================================================== -->
 <script id="v1037StratifiedAndLiveReplaceModule">
@@ -82500,7 +82500,7 @@ ${existingList}
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — ابزارهای حرفه‌ای معلم در آزمون‌ساز:
+     دانش‌آموز من · نسخه 10.5.1 — ابزارهای حرفه‌ای معلم در آزمون‌ساز:
      ۱. دکمه‌های تک‌لمسی «⬆️سخت‌تر» و «⬇️ساده‌تر» برای تغییر زنده سطح هر سؤال
      ۲. کلید پاسخنامه تشریحی آماده چاپ A4 با ریزبارم هر قسمت (برای تصحیح و پاسخ به اعتراض)
      ۳. برچسب غیرقابل‌چاپ «📄 منبع: صفحه ...» در پیش‌نمایش معلم (خودکار مخفی در چاپ و PDF)
@@ -82830,7 +82830,7 @@ ${oldQ.type === 'mcq' ? `گزینه‌های فعلی: ${JSON.stringify(oldQ.opt
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — تشخیص خودکار صفحات آموزشی + نمونه‌برداری تصادفی هوشمند
+     دانش‌آموز من · نسخه 10.5.1 — تشخیص خودکار صفحات آموزشی + نمونه‌برداری تصادفی هوشمند
      (در بازه‌های بزرگ مثل ۸۰ صفحه: انتخاب تصادفی لایه‌ای بدون اسکن همه صفحات + جایگزینی خودکار صفحات غیرآموزشی؛
       در بازه‌های کوچک مثل ۱ درس: پوشش متوازن همه صفحات آموزشی)
      ========================================================================== -->
@@ -83087,7 +83087,7 @@ ${oldQ.type === 'mcq' ? `گزینه‌های فعلی: ${JSON.stringify(oldQ.opt
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — حذف کادر بازه صفحات + تنظیم سریع نوع و بارم هر صفحه
+     دانش‌آموز من · نسخه 10.5.1 — حذف کادر بازه صفحات + تنظیم سریع نوع و بارم هر صفحه
      + قفل بارم واقعی + جبران خودکار سؤال حذف‌شده + نوار آمار پوشش صفحات معلم
      ========================================================================== -->
 <style id="v1040ExamProStyles">
@@ -83639,7 +83639,7 @@ ${oldQ.type === 'mcq' ? `گزینه‌های فعلی: ${JSON.stringify(oldQ.opt
 
 
 <!-- ==========================================================================
-     دانش‌آموز من · نسخه 10.4.2 — موتور واحد، شفاف و تصویرمحور آزمون‌ساز
+     دانش‌آموز من · نسخه 10.5.1 — موتور واحد، شفاف و تصویرمحور آزمون‌ساز
      الهام‌گرفته از سادگی و دقت gemini-code + حفظ کامل بارم صفحه‌به‌صفحه، قفل بارم و فیلتر صفحات آموزشی
      ========================================================================== -->
 <script id="v1042UnifiedCleanExamEngine">
@@ -83918,6 +83918,526 @@ ${sourceBlock}
   } else {
     setTimeout(patchUnifiedExamV1042, 520);
   }
+})();
+</script>
+
+
+<!-- ==========================================================================
+     دانش‌آموز من · نسخه 10.5.1 — پنل اختصاصی «📡 حضور و غیاب مجازی» داخل هر کلاس
+     الهام‌گرفته از سادگی دیجی‌فرم + لینک ثابت کلاس + جدول روزمحور با ساعت دقیق تا ثانیه
+     + «اطلاعات روزهای قبل» + اتصال مستقیم به «لیست امروز» و «جدول جامع»
+     ========================================================================== -->
+<style id="v1050VirtualAttStyles">
+  .v1050-box {
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 11px 12px;
+    background: var(--bg-card, var(--card));
+    margin-bottom: 10px;
+  }
+  .v1050-link-pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: var(--bg-panel, var(--panel));
+    border: 1px dashed var(--primary-border, rgba(234,88,12,0.4));
+    font-size: 11.5px;
+    direction: ltr;
+    word-break: break-all;
+    margin: 7px 0;
+  }
+  .v1050-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .v1050-table th, .v1050-table td {
+    border: 1px solid var(--border);
+    padding: 7px 8px;
+    text-align: right;
+  }
+  .v1050-table th {
+    background: var(--bg-panel, var(--panel));
+    color: var(--primary);
+    font-weight: 900;
+  }
+  .v1050-time-ok { color: #059669; font-weight: 900; white-space: nowrap; direction: ltr; display: inline-block; }
+  .v1050-time-late { color: #D97706; font-weight: 900; white-space: nowrap; direction: ltr; display: inline-block; }
+  .v1050-time-abs { color: #DC2626; font-weight: 800; }
+  body.dark .v1050-time-ok { color: #34D399; }
+  body.dark .v1050-time-late { color: #FBBF24; }
+  body.dark .v1050-time-abs { color: #F87171; }
+</style>
+
+<script id="v1050VirtualAttendanceModule">
+(function() {
+  'use strict';
+
+  const SB_URL = 'https://wazycdrhwlnoylfmsenx.supabase.co';
+  const SB_KEY = 'sb_publishable_SjneXL0bzHA-mXFfdQwklw_0x9fwo0N';
+
+  function toFa(v) {
+    return String(v ?? '').replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+  }
+  function esc(s) {
+    return String(s ?? '').replace(/[&<>"']/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[m]));
+  }
+  function normName(s) {
+    return String(s || '')
+      .normalize('NFKC')
+      .replace(/[يى]/g, 'ی')
+      .replace(/ك/g, 'ک')
+      .replace(/[\u200B-\u200D\uFEFF]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLowerCase();
+  }
+  function fullStuName(st) {
+    return `${st?.firstName || st?.name || ''} ${st?.lastName || st?.family || ''}`.trim();
+  }
+  function todayIsoStr() {
+    if (typeof localISODate === 'function') return localISODate();
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  }
+  function fmtJalali(iso) {
+    if (typeof formatJalaliDate === 'function') return formatJalaliDate(iso);
+    return iso;
+  }
+  function encodeB64Url(obj) {
+    try {
+      const bytes = new TextEncoder().encode(JSON.stringify(obj));
+      let bin = '';
+      for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+      return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    } catch (_) { return ''; }
+  }
+  function decodeB64Url(str) {
+    try {
+      let b64 = String(str || '').replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return JSON.parse(new TextDecoder('utf-8').decode(bytes));
+    } catch (_) { return null; }
+  }
+
+  function ensureClassVirtualAtt(c) {
+    if (!c.virtualAttendance || typeof c.virtualAttendance !== 'object') {
+      const rnd = Math.random().toString(36).slice(2, 8);
+      c.virtualAttendance = {
+        classCode: 'k' + String(c.id || rnd).replace(/[^a-zA-Z0-9]/g, '').slice(-4) + rnd.slice(0, 4),
+        isOpen: true,
+        oncePerDay: true,
+        lateAfterMin: 0,
+        openedAt: new Date().toISOString(),
+        logs: {} // { [dateISO]: [ { studentId, studentName, checkedTime, status, trackingCode, deviceId } ] }
+      };
+    }
+    if (!c.virtualAttendance.logs || typeof c.virtualAttendance.logs !== 'object') {
+      c.virtualAttendance.logs = {};
+    }
+    return c.virtualAttendance;
+  }
+
+  /**
+   * اعمال مستقیم حضور و غیاب مجازی در «لیست امروز» و «جدول جامع» (c.attendance[dateISO])
+   */
+  function syncVirtualLogsToClassAttendanceV1050(c, dateISO, markUncheckedAbsent = true) {
+    if (!c || !dateISO) return { presentCount: 0, lateCount: 0, absentCount: 0 };
+    const va = ensureClassVirtualAtt(c);
+    const logs = Array.isArray(va.logs[dateISO]) ? va.logs[dateISO] : [];
+    if (!c.attendance || typeof c.attendance !== 'object') c.attendance = {};
+    if (!c.attendance[dateISO] || typeof c.attendance[dateISO] !== 'object') c.attendance[dateISO] = {};
+
+    const checkedById = new Map();
+    const checkedByName = new Map();
+    logs.forEach(item => {
+      if (item.studentId) checkedById.set(String(item.studentId), item);
+      if (item.studentName) checkedByName.set(normName(item.studentName), item);
+    });
+
+    let presentCount = 0, lateCount = 0, absentCount = 0;
+    (c.students || []).forEach(st => {
+      const hit = checkedById.get(String(st.id)) || checkedByName.get(normName(fullStuName(st)));
+      const prev = c.attendance[dateISO][st.id] || {};
+      if (hit) {
+        const stVal = hit.status === 'late' ? 'late' : 'present';
+        c.attendance[dateISO][st.id] = {
+          ...prev,
+          status: stVal,
+          virtualTime: hit.checkedTime || '',
+          source: 'virtual_attendance'
+        };
+        if (stVal === 'late') lateCount++;
+        else presentCount++;
+      } else if (markUncheckedAbsent) {
+        c.attendance[dateISO][st.id] = {
+          ...prev,
+          status: 'absent',
+          source: 'virtual_attendance'
+        };
+        absentCount++;
+      }
+    });
+
+    return { presentCount, lateCount, absentCount };
+  }
+
+  /**
+   * خوانش دسته‌جمعی رسیدهای VATT:... پیست‌شده از چت کلاس
+   */
+  function parseBulkReceiptsV1050(rawText) {
+    const matches = String(rawText || '').match(/VATT:[A-Za-z0-9_-]+/g) || [];
+    const out = [];
+    for (const tok of matches) {
+      const obj = decodeB64Url(tok.slice(5));
+      if (obj && obj.n) {
+        out.push({
+          studentId: String(obj.sid || ''),
+          studentName: String(obj.n).trim(),
+          checkedTime: String(obj.t || ''),
+          status: obj.st === 'late' ? 'late' : 'present',
+          trackingCode: String(obj.trk || ''),
+          dateISO: String(obj.d || todayIsoStr())
+        });
+      }
+    }
+    return out;
+  }
+
+  const V1050VirtualAttendance = {
+    sid: null,
+    cid: null,
+    selectedDate: todayIsoStr(),
+
+    getContext() {
+      const s = typeof findSchool === 'function' ? findSchool(this.sid) : null;
+      const c = typeof findClass === 'function' ? findClass(this.sid, this.cid) : null;
+      return { s, c };
+    },
+
+    buildShareLink(s, c, includeFallbackData = false) {
+      const va = ensureClassVirtualAtt(c);
+      const base = new URL('./att.html', window.location.href);
+      base.searchParams.set('c', va.classCode);
+      if (includeFallbackData) {
+        const roster = (c.students || []).map(st => ({ id: String(st.id), n: fullStuName(st) }));
+        const fallback = encodeB64Url({
+          sn: s?.name || '',
+          cn: c?.name || '',
+          sj: c?.subject || '',
+          op: va.isOpen ? 1 : 0,
+          od: va.oncePerDay ? 1 : 0,
+          lm: Number(va.lateAfterMin) || 0,
+          oa: va.openedAt || '',
+          r: roster
+        });
+        if (fallback && fallback.length < 3200) base.searchParams.set('d', fallback);
+      }
+      return base.toString();
+    },
+
+    async publishConfigToSupabase(s, c, silent = false) {
+      const va = ensureClassVirtualAtt(c);
+      const roster = (c.students || []).map(st => ({ id: String(st.id), n: fullStuName(st) }));
+      const row = {
+        class_code: va.classCode,
+        school_name: s?.name || 'دانش‌آموز من',
+        class_name: c?.name || 'کلاس',
+        subject: c?.subject || '',
+        is_open: !!va.isOpen,
+        once_per_day: !!va.oncePerDay,
+        late_after_min: Number(va.lateAfterMin) || 0,
+        opened_at: va.openedAt || new Date().toISOString(),
+        roster,
+        updated_at: new Date().toISOString()
+      };
+      try {
+        const res = await fetch(`${SB_URL}/rest/v1/virtual_attendance_forms?on_conflict=class_code`, {
+          method: 'POST',
+          headers: {
+            'apikey': SB_KEY,
+            'Authorization': `Bearer ${SB_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'resolution=merge-duplicates,return=minimal'
+          },
+          body: JSON.stringify([row])
+        });
+        if (res.ok) {
+          if (!silent && typeof toast === 'function') toast('✅ تنظیمات زنده حضور و غیاب روی سرور ذخیره شد.');
+          return true;
+        }
+      } catch (_) {}
+      if (!silent && typeof toast === 'function') toast('⚠️ اتصال به سرور ابری برقرار نشد؛ می‌توانید از حالت رسید چت استفاده کنید.');
+      return false;
+    },
+
+    async fetchLiveLogsFromSupabase(c, dateISO, silent = false) {
+      const va = ensureClassVirtualAtt(c);
+      try {
+        const url = `${SB_URL}/rest/v1/virtual_attendance_logs?class_code=eq.${encodeURIComponent(va.classCode)}&date_iso=eq.${encodeURIComponent(dateISO)}&order=created_at.asc`;
+        const res = await fetch(url, {
+          headers: { 'apikey': SB_KEY, 'Authorization': `Bearer ${SB_KEY}`, 'Accept': 'application/json' }
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const rows = await res.json();
+        if (Array.isArray(rows)) {
+          if (!Array.isArray(va.logs[dateISO])) va.logs[dateISO] = [];
+          const existingKeys = new Set(va.logs[dateISO].map(x => `${x.studentId || normName(x.studentName)}_${x.checkedTime}`));
+          let added = 0;
+          rows.forEach(r => {
+            const k = `${r.student_id || normName(r.student_name)}_${r.checked_time}`;
+            if (!existingKeys.has(k)) {
+              existingKeys.add(k);
+              va.logs[dateISO].push({
+                studentId: r.student_id || '',
+                studentName: r.student_name || '',
+                checkedTime: r.checked_time || '',
+                status: r.status === 'late' ? 'late' : 'present',
+                trackingCode: r.tracking_code || '',
+                deviceId: r.device_id || ''
+              });
+              added++;
+            }
+          });
+          if (typeof saveDB === 'function') saveDB();
+          if (!silent && typeof toast === 'function') {
+            toast(added ? `✅ ${toFa(added)} حضور جدید دریافت شد!` : 'ℹ️ لیست حضور امروز به‌روز است.');
+          }
+          return true;
+        }
+      } catch (_) {
+        if (!silent && typeof toast === 'function') toast('⚠️ دریافت آنلاین انجام نشد؛ اتصال اینترنت را بررسی کنید یا از پیست رسید استفاده کنید.');
+      }
+      return false;
+    },
+
+    async open(sid, cid) {
+      this.sid = sid || window.currentSchoolId;
+      this.cid = cid || window.currentClassId;
+      this.selectedDate = todayIsoStr();
+      const { s, c } = this.getContext();
+      if (!s || !c) {
+        if (typeof toast === 'function') toast('ابتدا وارد یک کلاس شوید.');
+        return;
+      }
+      ensureClassVirtualAtt(c);
+      if (typeof saveDB === 'function') saveDB();
+      this.renderModal();
+      // همگام‌سازی بی‌صدا با سرور
+      await this.publishConfigToSupabase(s, c, true);
+      const ok = await this.fetchLiveLogsFromSupabase(c, this.selectedDate, true);
+      if (ok) this.renderModal();
+    },
+
+    renderModal() {
+      const { s, c } = this.getContext();
+      if (!s || !c) return;
+      const va = ensureClassVirtualAtt(c);
+      const shortLink = this.buildShareLink(s, c, false);
+      const logs = Array.isArray(va.logs[this.selectedDate]) ? va.logs[this.selectedDate] : [];
+      const allDates = Array.from(new Set([todayIsoStr(), ...Object.keys(va.logs || {})])).sort().reverse();
+      const checkedMap = new Map();
+      logs.forEach(l => {
+        if (l.studentId) checkedMap.set(String(l.studentId), l);
+        checkedMap.set(normName(l.studentName), l);
+      });
+
+      const presentList = [];
+      const absentList = [];
+      (c.students || []).forEach(st => {
+        const hit = checkedMap.get(String(st.id)) || checkedMap.get(normName(fullStuName(st)));
+        if (hit) presentList.push({ name: fullStuName(st), time: hit.checkedTime, status: hit.status, trk: hit.trackingCode });
+        else absentList.push({ name: fullStuName(st) });
+      });
+      // دانش‌آموزانی که نامشان در لیست کلاس نبود ولی ثبت کرده‌اند
+      logs.forEach(l => {
+        const found = (c.students || []).some(st => String(st.id) === String(l.studentId) || normName(fullStuName(st)) === normName(l.studentName));
+        if (!found) presentList.push({ name: l.studentName + ' (خارج از لیست)', time: l.checkedTime, status: l.status, trk: l.trackingCode });
+      });
+
+      const rowsHtml = presentList.map((item, idx) => `
+        <tr>
+          <td style="text-align:center;width:34px;font-weight:900">${toFa(idx + 1)}</td>
+          <td style="font-weight:800">${esc(item.name)}</td>
+          <td style="text-align:center">
+            <span class="${item.status === 'late' ? 'v1050-time-late' : 'v1050-time-ok'}">${item.status === 'late' ? '🟡 تأخیر' : '🟢 حضور'} ${toFa(item.time || '—')}</span>
+          </td>
+        </tr>
+      `).join('') || '<tr><td colspan="3" style="text-align:center;padding:16px;color:var(--muted)">هنوز حضوری برای این تاریخ ثبت نشده است.</td></tr>';
+
+      const hdr = typeof formHeader === 'function'
+        ? formHeader(`📡 حضور و غیاب مجازی — ${c.name}`)
+        : `<h3>📡 حضور و غیاب مجازی — ${esc(c.name)}</h3>`;
+
+      openModal(hdr + `
+        <div class="v1050-box">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+            <b style="font-size:12.5px;color:var(--primary)">🔗 لینک ثابت این کلاس (یک‌بار در گروه پین کنید):</b>
+            <button type="button" class="btn ${va.isOpen ? 'green' : 'gray'} btn-sm" onclick="V1050VirtualAttendance.toggleOpen()">
+              ${va.isOpen ? '🟢 فرم باز است (لمس برای بستن)' : '🔴 فرم بسته است (لمس برای باز کردن)'}
+            </button>
+          </div>
+          <div class="v1050-link-pill">
+            <span>${esc(shortLink)}</span>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button type="button" class="btn primary btn-sm" style="flex:1" onclick="V1050VirtualAttendance.copyLink(false)">📋 کپی لینک ثابت</button>
+            <button type="button" class="btn soft btn-sm" onclick="V1050VirtualAttendance.copyLink(true)" title="لینک همراه با لیست کلاس برای کارکرد حتی بدون سرور">📎 لینک آفلاین‌ساز</button>
+            <button type="button" class="btn gray btn-sm" onclick="window.open('${esc(this.buildShareLink(s, c, true))}','_blank')">👁️ پیش‌نمایش</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px">
+            <div>
+              <label style="font-size:10.5px;font-weight:800">محدودیت ثبت:</label>
+              <select onchange="V1050VirtualAttendance.updatePolicy('oncePerDay', this.value === '1')">
+                <option value="1" ${va.oncePerDay ? 'selected' : ''}>هر کاربر یکبار (در روز)</option>
+                <option value="0" ${!va.oncePerDay ? 'selected' : ''}>بدون محدودیت</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:10.5px;font-weight:800">تشخیص خودکار تأخیر:</label>
+              <select onchange="V1050VirtualAttendance.updatePolicy('lateAfterMin', Number(this.value))">
+                <option value="0" ${!va.lateAfterMin ? 'selected' : ''}>خاموش</option>
+                <option value="5" ${va.lateAfterMin === 5 ? 'selected' : ''}>بعد از ۵ دقیقه</option>
+                <option value="10" ${va.lateAfterMin === 10 ? 'selected' : ''}>بعد از ۱۰ دقیقه</option>
+                <option value="15" ${va.lateAfterMin === 15 ? 'selected' : ''}>بعد از ۱۵ دقیقه</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="v1050-box">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px">
+            <div style="display:flex;align-items:center;gap:6px">
+              <b style="font-size:12.5px;color:var(--primary)">📋 لیست حاضران مجازی</b>
+              <span class="chip" style="font-size:11px;font-weight:900">${toFa(presentList.length)} حاضر · ${toFa(absentList.length)} غایب</span>
+            </div>
+            <div style="display:flex;gap:5px;align-items:center">
+              <select style="width:auto;padding:4px 7px;font-size:11px" onchange="V1050VirtualAttendance.changeDate(this.value)">
+                ${allDates.map(d => `<option value="${d}" ${d === this.selectedDate ? 'selected' : ''}>📅 ${fmtJalali(d)}</option>`).join('')}
+              </select>
+              <button type="button" class="btn soft btn-sm" onclick="V1050VirtualAttendance.refreshLive()">🔄 بروزرسانی</button>
+            </div>
+          </div>
+
+          <div style="max-height:220px;overflow-y:auto">
+            <table class="v1050-table">
+              <thead>
+                <tr>
+                  <th style="text-align:center">#</th>
+                  <th>نام و نام خانوادگی</th>
+                  <th style="text-align:center">${esc(fmtJalali(this.selectedDate))}</th>
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}</tbody>
+            </table>
+          </div>
+
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:9px">
+            <button type="button" class="btn primary btn-sm" style="flex:1" onclick="V1050VirtualAttendance.applyToClass(true)">✅ ثبت مستقیم در لیست امروز و جدول جامع</button>
+            <button type="button" class="btn soft btn-sm" onclick="V1050VirtualAttendance.openPasteReceipts()">📥 پیست رسید چت</button>
+          </div>
+        </div>
+      `);
+    },
+
+    async toggleOpen() {
+      const { s, c } = this.getContext();
+      if (!s || !c) return;
+      const va = ensureClassVirtualAtt(c);
+      va.isOpen = !va.isOpen;
+      if (va.isOpen) va.openedAt = new Date().toISOString();
+      if (typeof saveDB === 'function') saveDB();
+      this.renderModal();
+      await this.publishConfigToSupabase(s, c, true);
+      if (typeof toast === 'function') toast(va.isOpen ? '🟢 فرم حضور و غیاب باز شد.' : '🔴 فرم حضور و غیاب بسته شد.');
+    },
+
+    async updatePolicy(key, val) {
+      const { s, c } = this.getContext();
+      if (!s || !c) return;
+      const va = ensureClassVirtualAtt(c);
+      va[key] = val;
+      if (typeof saveDB === 'function') saveDB();
+      await this.publishConfigToSupabase(s, c, true);
+    },
+
+    async changeDate(newIso) {
+      this.selectedDate = newIso;
+      const { c } = this.getContext();
+      if (c) await this.fetchLiveLogsFromSupabase(c, newIso, true);
+      this.renderModal();
+    },
+
+    async refreshLive() {
+      const { s, c } = this.getContext();
+      if (!s || !c) return;
+      await this.publishConfigToSupabase(s, c, true);
+      await this.fetchLiveLogsFromSupabase(c, this.selectedDate, false);
+      this.renderModal();
+    },
+
+    copyLink(withFallback) {
+      const { s, c } = this.getContext();
+      if (!s || !c) return;
+      const link = this.buildShareLink(s, c, withFallback);
+      const msg = `✋ لینک ثابت حضور و غیاب آنلاین کلاس ${c.name} (${s.name}):\n${link}`;
+      navigator.clipboard?.writeText(msg);
+      if (typeof toast === 'function') toast('📋 لینک حضور و غیاب کپی شد! در گروه کلاس ارسال یا پین کنید.');
+    },
+
+    applyToClass(markAbsent) {
+      const { c } = this.getContext();
+      if (!c) return;
+      const res = syncVirtualLogsToClassAttendanceV1050(c, this.selectedDate, markAbsent);
+      if (typeof saveDB === 'function') saveDB();
+      try {
+        if (typeof renderTodayListInner === 'function') renderTodayListInner(this.sid, this.cid);
+      } catch (_) {}
+      if (typeof toast === 'function') {
+        toast(`✅ در لیست امروز و جدول جامع ثبت شد: ${toFa(res.presentCount)} حاضر، ${toFa(res.lateCount)} تأخیر، ${toFa(res.absentCount)} غایب`);
+      }
+    },
+
+    openPasteReceipts() {
+      const raw = window.prompt('متن رسیدهای ارسال‌شده در چت کلاس (شامل VATT:...) را اینجا پیست کنید:');
+      if (!raw) return;
+      const { c } = this.getContext();
+      if (!c) return;
+      const va = ensureClassVirtualAtt(c);
+      const items = parseBulkReceiptsV1050(raw);
+      if (!items.length) {
+        if (typeof toast === 'function') toast('⚠️ هیچ رسید معتبری (VATT:...) در متن پیدا نشد.');
+        return;
+      }
+      let added = 0;
+      items.forEach(it => {
+        const d = it.dateISO || this.selectedDate;
+        if (!Array.isArray(va.logs[d])) va.logs[d] = [];
+        const dup = va.logs[d].some(x => (x.studentId && x.studentId === it.studentId) || normName(x.studentName) === normName(it.studentName));
+        if (!dup) {
+          va.logs[d].push(it);
+          added++;
+        }
+      });
+      if (typeof saveDB === 'function') saveDB();
+      this.renderModal();
+      if (typeof toast === 'function') toast(`✅ ${toFa(added)} رسید حضور با موفقیت خوانده و ثبت شد!`);
+    }
+  };
+
+  window.V1050VirtualAttendance = V1050VirtualAttendance;
+  window.V1050VirtualAttCore = {
+    syncVirtualLogsToClassAttendance: syncVirtualLogsToClassAttendanceV1050,
+    parseBulkReceipts: parseBulkReceiptsV1050,
+    encodeB64Url
+  };
 })();
 </script>
 

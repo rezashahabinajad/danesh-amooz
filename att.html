@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#EA580C">
+  <title>ثبت حضور و غیاب آنلاین | دانش‌آموز من</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, Vazirmatn, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+    body {
+      background: #FFF7ED;
+      color: #1E293B;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 14px 12px 32px;
+    }
+    .wrap { width: 100%; max-width: 440px; }
+    .hero {
+      background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%);
+      color: #fff;
+      border-radius: 18px 18px 0 0;
+      padding: 18px 16px 26px;
+      text-align: center;
+    }
+    .hero h1 { font-size: 17px; font-weight: 900; margin-bottom: 5px; }
+    .hero .sub { font-size: 12px; opacity: 0.94; }
+    .date-pill {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.2);
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      margin-top: -14px;
+      padding: 18px 16px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.10);
+      border: 1px solid #FED7AA;
+    }
+    .status-bar {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 10px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+    .status-open { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .status-closed { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+    .status-warn { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+    label { display: block; font-size: 12.5px; font-weight: 800; margin-bottom: 6px; color: #334155; }
+    .inp, .sel {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 11px;
+      font-size: 14px;
+      background: #fff;
+      color: #0F172A;
+      outline: none;
+      margin-bottom: 10px;
+    }
+    .inp:focus, .sel:focus { border-color: #EA580C; box-shadow: 0 0 0 3px rgba(234,88,12,0.14); }
+    .btn {
+      width: 100%;
+      padding: 13px 14px;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.12s ease, opacity 0.15s ease;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .btn-green { background: linear-gradient(135deg, #16A34A, #15803D); color: #fff; box-shadow: 0 6px 18px rgba(22,163,74,0.28); }
+    .btn-soft { background: #FFF7ED; color: #C2410C; border: 1.5px solid #FDBA74; font-size: 13px; padding: 10px; margin-top: 8px; }
+    .receipt {
+      background: #ECFDF5;
+      border: 1.5px solid #86EFAC;
+      border-radius: 14px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .receipt h2 { color: #166534; font-size: 16px; margin-bottom: 8px; }
+    .receipt-meta { font-size: 13px; color: #1E293B; line-height: 1.9; margin-bottom: 10px; }
+    .track-box {
+      background: #fff;
+      border: 1px dashed #16A34A;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-weight: 900;
+      color: #0F172A;
+      direction: ltr;
+      letter-spacing: 0.5px;
+      word-break: break-all;
+    }
+    .foot { margin-top: 14px; text-align: center; font-size: 11px; color: #64748B; }
+    .roster-list {
+      max-height: 220px;
+      overflow-y: auto;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 11px;
+      margin-bottom: 12px;
+      background: #F8FAFC;
+    }
+    .roster-item {
+      padding: 10px 12px;
+      border-bottom: 1px solid #E2E8F0;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .roster-item:last-child { border-bottom: none; }
+    .roster-item.active { background: #FFF7ED; color: #C2410C; font-weight: 900; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1 id="clsTitle">✋ ثبت حضور و غیاب آنلاین</h1>
+      <div class="sub" id="schTitle">در حال بارگذاری اطلاعات کلاس...</div>
+      <div class="date-pill" id="todayPill">—</div>
+    </div>
+    <div class="card" id="mainCard">
+      <div class="status-bar status-warn" id="loadingMsg">⏳ در حال اتصال سریع به کلاس...</div>
+    </div>
+    <div class="foot">سامانه هوشمند «دانش‌آموز من» · نسخه ۱۰.۵.۱</div>
+  </div>
+
+<script>
+(function() {
+  'use strict';
+  var SB_URL = 'https://wazycdrhwlnoylfmsenx.supabase.co';
+  var SB_KEY = 'sb_publishable_SjneXL0bzHA-mXFfdQwklw_0x9fwo0N';
+
+  function toFa(v) { return String(v == null ? '' : v).replace(/\d/g, function(d) { return '۰۱۲۳۴۵۶۷۸۹'[d]; }); }
+  function norm(s) {
+    return String(s || '').replace(/[يى]/g, 'ی').replace(/ك/g, 'ک').replace(/[\u200B-\u200D\uFEFF]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+  }
+  function esc(s) { return String(s || '').replace(/[&<>"']/g, function(m) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; }); }
+  function todayISO() {
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + day;
+  }
+  function todayJalali() {
+    try { return new Intl.DateTimeFormat('fa-IR-u-ca-persian', { day: '2-digit', month: 'long', year: 'numeric' }).format(new Date()); }
+    catch (_) { return todayISO(); }
+  }
+  function nowTime24() {
+    var d = new Date();
+    return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0') + ':' + String(d.getSeconds()).padStart(2,'0');
+  }
+  function getDeviceId() {
+    try {
+      var k = 'dam_vatt_dev_id_v1';
+      var id = localStorage.getItem(k);
+      if (!id) {
+        id = 'D' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
+        localStorage.setItem(k, id);
+      }
+      return id;
+    } catch (_) { return 'D_ANON'; }
+  }
+  function decodePayload(b64url) {
+    try {
+      var b64 = b64url.replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      var bin = atob(b64);
+      var bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      var jsonStr = new TextDecoder('utf-8').decode(bytes);
+      return JSON.parse(jsonStr);
+    } catch (_) { return null; }
+  }
+  function encodePayload(obj) {
+    try {
+      var bytes = new TextEncoder().encode(JSON.stringify(obj));
+      var bin = '';
+      for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+      return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    } catch (_) { return ''; }
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  var classCode = (params.get('c') || '').trim();
+  var fallbackRaw = params.get('d') || '';
+  var fallbackCfg = fallbackRaw ? decodePayload(fallbackRaw) : null;
+  var dateIso = todayISO();
+
+  document.getElementById('todayPill').textContent = '📅 ' + todayJalali();
+
+  var state = {
+    cfg: null,
+    selectedStu: null,
+    roster: [],
+    filtered: []
+  };
+
+  function showError(msg) {
+    document.getElementById('mainCard').innerHTML = '<div class="status-bar status-closed">' + esc(msg) + '</div>';
+  }
+
+  function renderReceipt(rec, syncedLive) {
+    var receiptToken = 'VATT:' + encodePayload({
+      c: classCode,
+      d: rec.date_iso,
+      sid: rec.student_id || '',
+      n: rec.student_name,
+      t: rec.checked_time,
+      st: rec.status,
+      trk: rec.tracking_code
+    });
+    var stBadge = rec.status === 'late' ? '🟡 حاضر (با تأخیر)' : '🟢 حاضر در کلاس';
+    var syncNote = syncedLive
+      ? '<div style="font-size:12px;color:#047857;font-weight:800;margin-bottom:10px">✅ حضور شما به‌صورت آنلاین و مستقیم برای دبیر ثبت شد.</div>'
+      : '<div style="font-size:12px;color:#B45309;font-weight:800;margin-bottom:10px">⚠️ ارتباط مستقیم با سرور برقرار نشد؛ روی دکمه زیر بزنید و رسید را در گروه کلاس بفرستید.</div>';
+
+    document.getElementById('mainCard').innerHTML =
+      '<div class="receipt">' +
+        '<h2>✅ اطلاعات شما با موفقیت ثبت شد</h2>' +
+        '<div class="receipt-meta">' +
+          '<b>' + esc(rec.student_name) + '</b><br>' +
+          stBadge + ' · ساعت: <b dir="ltr">' + toFa(rec.checked_time) + '</b>' +
+        '</div>' +
+        syncNote +
+        '<div style="font-size:11.5px;color:#334155;margin-bottom:5px;font-weight:800">کد پیگیری شما:</div>' +
+        '<div class="track-box">' + esc(rec.tracking_code) + '</div>' +
+        '<button type="button" class="btn btn-soft" id="btnCopyReceipt">📋 کپی رسید حضور (برای ارسال در گروه در صورت نیاز)</button>' +
+      '</div>';
+
+    var cBtn = document.getElementById('btnCopyReceipt');
+    if (cBtn) {
+      cBtn.onclick = function() {
+        var txt = '✅ رسید حضور: ' + rec.student_name + ' | ساعت ' + toFa(rec.checked_time) + '\n' + receiptToken;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(function() { cBtn.textContent = '✅ رسید کپی شد!'; });
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = txt; document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); cBtn.textContent = '✅ رسید کپی شد!'; } catch (_) {}
+          ta.remove();
+        }
+      };
+    }
+  }
+
+  function renderRosterItems() {
+    var box = document.getElementById('rosterBox');
+    if (!box) return;
+    if (!state.filtered.length) {
+      box.innerHTML = '<div style="padding:14px;text-align:center;font-size:12.5px;color:#64748B">نامی با این جستجو پیدا نشد.</div>';
+      return;
+    }
+    box.innerHTML = state.filtered.map(function(st) {
+      var isAct = state.selectedStu && state.selectedStu.id === st.id;
+      return '<div class="roster-item ' + (isAct ? 'active' : '') + '" data-id="' + esc(st.id) + '">' +
+        '<span>' + esc(st.n) + '</span>' +
+        '<span>' + (isAct ? '✅' : '○') + '</span>' +
+      '</div>';
+    }).join('');
+
+    box.querySelectorAll('.roster-item').forEach(function(el) {
+      el.onclick = function() {
+        var id = el.getAttribute('data-id');
+        state.selectedStu = state.roster.find(function(x) { return String(x.id) === String(id); }) || null;
+        renderRosterItems();
+      };
+    });
+  }
+
+  function renderForm() {
+    var cfg = state.cfg;
+    document.getElementById('clsTitle').textContent = '✋ ' + (cfg.class_name || 'حضور و غیاب کلاس');
+    document.getElementById('schTitle').textContent = (cfg.school_name || 'دانش‌آموز من') + (cfg.subject ? ' · ' + cfg.subject : '');
+
+    // چک قفل تک‌ثبت روزانه روی این گوشی
+    var lockKey = 'dam_vatt_done_' + classCode + '_' + dateIso;
+    if (cfg.once_per_day !== false) {
+      try {
+        var prev = localStorage.getItem(lockKey);
+        if (prev) {
+          var parsedPrev = JSON.parse(prev);
+          renderReceipt(parsedPrev, true);
+          return;
+        }
+      } catch (_) {}
+    }
+
+    if (cfg.is_open === false) {
+      showError('🔴 فرم حضور و غیاب این کلاس در حال حاضر توسط دبیر بسته شده است.');
+      return;
+    }
+
+    var hasRoster = Array.isArray(cfg.roster) && cfg.roster.length > 0;
+    state.roster = hasRoster ? cfg.roster : [];
+    state.filtered = state.roster.slice();
+
+    var html = '<div class="status-bar status-open">🟢 فرم حضور و غیاب امروز باز است — لطفاً نام خود را ثبت کنید</div>';
+    if (hasRoster) {
+      html +=
+        '<label>🔍 جستجو و انتخاب نام و نام خانوادگی شما:</label>' +
+        '<input type="text" class="inp" id="searchInp" placeholder="قسمتی از نام یا نام خانوادگی را بنویسید...">' +
+        '<div class="roster-list" id="rosterBox"></div>';
+    } else {
+      html +=
+        '<label>👤 نام و نام خانوادگی خود را وارد نمایید *</label>' +
+        '<input type="text" class="inp" id="typedNameInp" placeholder="مثال: علی رضایی">';
+    }
+    html += '<button type="button" class="btn btn-green" id="submitBtn">✋ ثبت حضور</button>';
+    document.getElementById('mainCard').innerHTML = html;
+
+    if (hasRoster) {
+      renderRosterItems();
+      document.getElementById('searchInp').oninput = function(e) {
+        var q = norm(e.target.value);
+        state.filtered = q ? state.roster.filter(function(st) { return norm(st.n).indexOf(q) !== -1; }) : state.roster.slice();
+        renderRosterItems();
+      };
+    }
+
+    document.getElementById('submitBtn').onclick = handleSubmit;
+  }
+
+  async function handleSubmit() {
+    var cfg = state.cfg;
+    var stuId = '';
+    var stuName = '';
+    if (state.roster.length > 0) {
+      if (!state.selectedStu) {
+        alert('لطفاً ابتدا نام خود را از لیست لمس کنید.');
+        return;
+      }
+      stuId = String(state.selectedStu.id || '');
+      stuName = String(state.selectedStu.n || '').trim();
+    } else {
+      stuName = String(document.getElementById('typedNameInp')?.value || '').trim();
+      if (stuName.length < 3) {
+        alert('لطفاً نام و نام خانوادگی کامل خود را وارد کنید.');
+        return;
+      }
+    }
+
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = '⏳ در حال ثبت حضور...';
+
+    var timeStr = nowTime24();
+    var status = 'present';
+    if (cfg.late_after_min && cfg.opened_at) {
+      var openedMs = Date.parse(cfg.opened_at);
+      if (!isNaN(openedMs)) {
+        var diffMin = (Date.now() - openedMs) / 60000;
+        if (diffMin > Number(cfg.late_after_min)) status = 'late';
+      }
+    }
+
+    var trk = 'DAM-' + Math.random().toString(36).slice(2, 6).toUpperCase() + '-' + timeStr.replace(/:/g, '').slice(0, 4);
+    var rec = {
+      class_code: classCode,
+      date_iso: dateIso,
+      student_id: stuId,
+      student_name: stuName,
+      checked_time: timeStr,
+      status: status,
+      tracking_code: trk,
+      device_id: getDeviceId()
+    };
+
+    var syncedLive = false;
+    for (var attempt = 0; attempt < 2; attempt++) {
+      try {
+        var res = await fetch(SB_URL + '/rest/v1/virtual_attendance_logs', {
+          method: 'POST',
+          headers: {
+            'apikey': SB_KEY,
+            'Authorization': 'Bearer ' + SB_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify([rec])
+        });
+        if (res.ok || res.status === 201 || res.status === 204) {
+          syncedLive = true;
+          break;
+        }
+      } catch (_) {}
+    }
+
+    if (cfg.once_per_day !== false) {
+      try { localStorage.setItem('dam_vatt_done_' + classCode + '_' + dateIso, JSON.stringify(rec)); } catch (_) {}
+    }
+    renderReceipt(rec, syncedLive);
+  }
+
+  async function boot() {
+    if (!classCode) {
+      showError('❌ لینک حضور و غیاب ناقص است؛ لطفاً لینک کامل را از دبیر خود دریافت کنید.');
+      return;
+    }
+    // ۱. تلاش برای دریافت آخرین تنظیمات زنده کلاس از Supabase (باز/بسته بودن + لیست به‌روز کلاس)
+    try {
+      var res = await fetch(SB_URL + '/rest/v1/virtual_attendance_forms?class_code=eq.' + encodeURIComponent(classCode) + '&select=*&limit=1', {
+        headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        var rows = await res.json();
+        if (Array.isArray(rows) && rows.length > 0) {
+          state.cfg = rows[0];
+          renderForm();
+          return;
+        }
+      }
+    } catch (_) {}
+
+    // ۲. پشتیبان فوری از داده‌های داخل لینک در صورت نبود جدول ابری
+    if (fallbackCfg) {
+      state.cfg = {
+        class_code: classCode,
+        school_name: fallbackCfg.sn || 'دانش‌آموز من',
+        class_name: fallbackCfg.cn || 'کلاس آنلاین',
+        subject: fallbackCfg.sj || '',
+        is_open: fallbackCfg.op !== 0,
+        once_per_day: fallbackCfg.od !== 0,
+        late_after_min: fallbackCfg.lm || 0,
+        opened_at: fallbackCfg.oa || null,
+        roster: Array.isArray(fallbackCfg.r) ? fallbackCfg.r : []
+      };
+      renderForm();
+      return;
+    }
+
+    showError('⚠️ اطلاعات این کلاس یافت نشد یا هنوز توسط دبیر منتشر نشده است.');
+  }
+
+  boot();
+})();
+</script>
+</body>
+</html>
