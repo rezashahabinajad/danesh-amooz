@@ -1,5 +1,5 @@
-const APP_VERSION = '10.5.1';
-const CACHE_NAME = 'danesh-amooz-man-v10.5.1-orange';
+const APP_VERSION = '10.5.2';
+const CACHE_NAME = 'danesh-amooz-man-v10.5.2-orange';
 const ASSETS = [
   './',
   './index.html',
@@ -11,6 +11,7 @@ const ASSETS = [
 const REQUIRED_CORE_FOR_CLEANUP = [
   './',
   './index.html',
+  './att.html',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png'
@@ -197,6 +198,24 @@ self.addEventListener('fetch', event => {
         .catch(async () => {
           const cached = await caches.match(event.request, { ignoreSearch: true });
           return cached || Response.error();
+        })
+    );
+    return;
+  }
+
+  // صفحه فوق‌سبک حضور و غیاب دانش‌آموز (att.html) هرگز نباید به index.html هدایت شود
+  if (reqUrl.pathname.endsWith('/att.html')) {
+    event.respondWith(
+      fetch(event.request, { cache: 'no-cache' })
+        .then(res => {
+          if (res && res.ok) {
+            caches.open(CACHE_NAME).then(c => c.put('./att.html', res.clone())).catch(() => {});
+          }
+          return res;
+        })
+        .catch(async () => {
+          const cachedAtt = await caches.match('./att.html', { ignoreSearch: true });
+          return cachedAtt || Response.error();
         })
     );
     return;
